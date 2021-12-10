@@ -89,7 +89,6 @@ const Animation: React.FC<{
           animationData={houseAnimation}
           loop={false}
           autoplay={false}
-          // aria-aria-labelledby="use lottie animation"
           onComplete={() => onAnimationCompleteHandler()}
           // onEnterFrame={onAnimationStartHandler}
           style={!setLoaded ? { opacity: 0 } : { opacity: 1 }}
