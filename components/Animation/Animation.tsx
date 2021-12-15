@@ -18,7 +18,7 @@ import { useUI } from "@components/UX/context";
 // import { SvgContainer } from "./styles";
 
 //Styles
-import { SvgContainer } from "@components/Animation/styles";
+import { SvgContainer } from "@components/Animation/styles.js";
 
 const Animation: React.FC<{
   isLoaded: boolean;

@@ -29,6 +29,6 @@
     "components/canvas.jsx",
     "utils/useFetchContent.js",
     "components/Layout/styles.js"
-  ],
+, "components/Animation/components/AnimationLayer/styles.js", "components/Animation/styles.js"  ],
   "exclude": ["node_modules"]
 }

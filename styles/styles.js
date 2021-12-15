@@ -22,6 +22,15 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 500;
   }
 
+  // .svgclick {
+  //   opacity: 0;
+  //   transition: all 0.5s linear;
+  // }
+
+  // .svgclick.ghost {
+  //   opacity: 0;
+  // }
+
   .svgContainer {
   height: 100vh;
   width: 100vw;
