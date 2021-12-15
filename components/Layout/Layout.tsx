@@ -1,5 +1,5 @@
 //Components
-// import Canvas from "@components/Canvas";
+import Canvas from "@components/Canvas";
 
 //styles
 import { MainStyle } from "./styles";

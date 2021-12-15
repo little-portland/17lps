@@ -1,7 +1,6 @@
 import { useLoaded } from "../store/context";
 
 //Components
-import Canvas from "@components/canvas";
 import Animation from "@components/Animation";
 
 import { motion } from "framer-motion";
