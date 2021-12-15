@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 //final svg
 import FinalSvg from "../../finalSvg";
-import Full from "../../full";
 import { useUI } from "@components/UX/context";
 import Modal from "@components/UX/Modal";
 
