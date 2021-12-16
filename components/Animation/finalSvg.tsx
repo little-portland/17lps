@@ -4408,7 +4408,8 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu }) => {
           cursor: "pointer",
           padding: "16px",
           scale: "200%",
-          opacity: 0.5,
+          opacity: 0,
+          // border: "2px solid red",
         }}
         onClick={openLineup}
       >
@@ -4468,7 +4469,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu }) => {
           cursor: "pointer",
           padding: "16px",
           scale: "200%",
-          opacity: 0.5,
+          opacity: 0,
         }}
         onClick={openLineup}
         onMouseEnter={() => ref.current.classList.add("ghost")}

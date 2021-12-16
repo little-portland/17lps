@@ -18,7 +18,7 @@ import { useUI } from "@components/UX/context";
 // import { SvgContainer } from "./styles";
 
 //Styles
-import { SvgContainer } from "@components/Animation/styles.js";
+import { SvgContainer } from "./styles.js";
 
 const Animation: React.FC<{
   isLoaded: boolean;
@@ -42,7 +42,6 @@ const Animation: React.FC<{
     setLoaded(true);
 
     // console.log("intro");
-    // lottieRef.current.style.opacity = 0;
   };
 
   const onAnimationStartHandler = (): void => {
@@ -82,25 +81,25 @@ const Animation: React.FC<{
   }, [isLoaded]);
 
   return (
-    <SvgContainer>
-      {!isMobile && (
-        <Lottie
-          lottieRef={lottieRef}
-          animationData={houseAnimation}
-          loop={false}
-          autoplay={false}
-          onComplete={() => onAnimationCompleteHandler()}
-          // onEnterFrame={onAnimationStartHandler}
-          style={!setLoaded ? { opacity: 0 } : { opacity: 1 }}
-        />
-      )}
-
+    <div className="svgcontainer">
+      <div style={{ position: "absolute" }}>
+        {!isMobile && (
+          <Lottie
+            lottieRef={lottieRef}
+            animationData={houseAnimation}
+            loop={false}
+            autoplay={false}
+            onComplete={() => onAnimationCompleteHandler()}
+            // onEnterFrame={onAnimationStartHandler}
+          />
+        )}
+      </div>
       {isLoaded && <AnimationLayer />}
 
       <Modal open={displayLineup} close={closeLineup}>
         <Image src="/tester.png" alt="pic" width="400" height="600" />
       </Modal>
-    </SvgContainer>
+    </div>
   );
 };
 

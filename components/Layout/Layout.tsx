@@ -10,11 +10,11 @@ interface IProps {
 
 const Layout: React.FC<IProps> = ({ main }) => {
   return (
-    <div className="layout">
+    <>
       {/* <Header /> */}
       {/* <Canvas /> */}
       <MainStyle>{main}</MainStyle>
-    </div>
+    </>
   );
 };
 

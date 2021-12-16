@@ -162,6 +162,7 @@ const AnimationLayer = () => {
         autoplay={true}
         // aria-aria-labelledby="use lottie animation"
       />
+
       <Lottie
         lottieRef={moonRef}
         animationData={moon}
@@ -325,7 +326,6 @@ const AnimationLayer = () => {
       />
 
       <motion.div
-        className="overlay"
         ref={overlayRef}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

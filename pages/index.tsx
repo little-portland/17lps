@@ -17,8 +17,6 @@ export default function Index() {
       // exit={{ opacity: 0 }}
       // style={{ marginTop: "60px" }}
     >
-      {/* <Canvas /> */}
-
       <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
     </motion.div>
   );
