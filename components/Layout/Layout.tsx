@@ -12,7 +12,7 @@ const Layout: React.FC<IProps> = ({ main }) => {
   return (
     <>
       {/* <Header /> */}
-      {/* <Canvas /> */}
+      <Canvas />
       <MainStyle>{main}</MainStyle>
     </>
   );
