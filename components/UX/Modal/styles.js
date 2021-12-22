@@ -26,7 +26,8 @@ export const ModalStyle = styled.div`
 `;
 
 export const BG = styled.div`
-  background: rgba(0, 0, 0, 0.5);
+  // background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
   cursor: pointer;
   height: 100vw;
   width: 100vw;

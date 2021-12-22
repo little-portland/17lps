@@ -91,6 +91,7 @@ const AnimationLayer = () => {
             break;
           case "tv-right":
             tvRightRef.current.play();
+            // console.log(tvRightRef.current.getDuration(true));
             break;
           case "plant-right":
             plantRightRef.current.play();
@@ -150,7 +151,8 @@ const AnimationLayer = () => {
   }, []);
 
   const testHandler = () => {
-    console.log(closeLineup);
+    console.log(displayLineup);
+    openLineup();
   };
 
   return (
@@ -168,7 +170,7 @@ const AnimationLayer = () => {
         animationData={moon}
         loop={false}
         autoplay={false}
-        onComplete={(e) => moonRef.current.goToAndStop(260, false)}
+        onComplete={(e) => moonRef.current.goToAndStop(0)}
         // onComplete={() => console.log(moonRef.current.getDuration(true))}
         // aria-aria-labelledby="use lottie animation"
       />
@@ -195,7 +197,7 @@ const AnimationLayer = () => {
         loop={false}
         autoplay={false}
         className={"plantRight"}
-        onComplete={(e) => plantRightRef.current.goToAndStop(800)}
+        onComplete={(e) => plantRightRef.current.goToAndStop(0)}
         // onComplete={() =>
         //   console.log(plantRightRef.current.getDuration(true))
         // }

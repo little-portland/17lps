@@ -32,6 +32,7 @@ const Animation: React.FC<{
 
   //Animation Ref
   const lottieRef = useRef<any>();
+  const wrapperRef = useRef<any>();
 
   //Check Device
   const { isMobile } = useDeviceDetect();
@@ -73,7 +74,8 @@ const Animation: React.FC<{
     if (!isLoaded) {
       lottieRef.current.play();
     } else {
-      lottieRef.current.destroy();
+      wrapperRef.current.style.opacity = 0;
+      // lottieRef.current.destroy();
     }
     // setLoaded(true);
 
@@ -82,7 +84,11 @@ const Animation: React.FC<{
 
   return (
     <div className="svgcontainer">
-      <div style={{ position: "absolute" }}>
+      <div
+        className="svgcontainerMain"
+        ref={wrapperRef}
+        style={{ position: "absolute" }}
+      >
         {!isMobile && (
           <Lottie
             lottieRef={lottieRef}
@@ -95,10 +101,6 @@ const Animation: React.FC<{
         )}
       </div>
       {isLoaded && <AnimationLayer />}
-
-      <Modal open={displayLineup} close={closeLineup}>
-        <Image src="/tester.png" alt="pic" width="400" height="600" />
-      </Modal>
     </div>
   );
 };

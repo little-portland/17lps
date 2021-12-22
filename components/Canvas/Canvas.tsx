@@ -111,7 +111,7 @@ const Canvas: React.FC = () => {
 
     const material = new THREE.ShaderMaterial({
       uniforms: {
-        color: { value: new THREE.Color(0xffffff) },
+        color: { value: new THREE.Color(0xeeeedd) },
       },
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
