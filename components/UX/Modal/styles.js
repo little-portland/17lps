@@ -3,14 +3,13 @@ import { breakpoints } from "styles/styles";
 
 export const ModalStyle = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // pointer-events: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-top;
   justify-content: center;
   box-sizing: border-box;
   padding: 60px;
@@ -22,6 +21,14 @@ export const ModalStyle = styled.div`
   @media (max-width: 700px) {
     padding: 30px;
     /* width: calc(100vw - 30px); */
+  }
+
+  img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 60vw;
+    max-height: 80vh;
   }
 `;
 
@@ -72,3 +79,17 @@ export const Close = styled.button`
     top: 30px;
   }
 `;
+
+
+export const CloserStyle = styled.div`
+  opacity: 1;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  display: block;
+
+  &:hover {
+    opacity: 0.5;
+  }
+`

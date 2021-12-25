@@ -2,6 +2,7 @@ import { FC, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 import { ModalStyle, BG, Close } from "./styles";
+import Closer from "./components/Closer";
 
 interface SidebarProps {
   children: any;
@@ -20,7 +21,17 @@ const Modal: FC<SidebarProps> = ({ children, open, close }) => {
 
           //onClick={() => setMenuState(!menuState)}
         >
-          <ModalStyle>{children}</ModalStyle>
+          <ModalStyle>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              {children}
+            </div>
+            <Closer close={close} />
+          </ModalStyle>
           {/* {children} */}
           <BG onClick={close}></BG>
         </motion.div>

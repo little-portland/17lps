@@ -21,10 +21,17 @@ const Layout: React.FC<IProps> = ({ main }) => {
   return (
     <>
       {/* <Header /> */}
-      <Canvas />
+      {/* <Canvas /> */}
       <MainStyle>{main}</MainStyle>
       <Modal open={displayLineup} close={closeLineup}>
-        <Image src="/tester.png" alt="pic" width="400" height="600" />
+        {/* <Image
+          src="/tester.png"
+          alt="pic"
+          width="400"
+          height="600"
+          // layout="responsive"
+        /> */}
+        <img src="/tester.png"></img>
       </Modal>
       {/* <div
         onClick={openLineup}

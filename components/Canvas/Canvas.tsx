@@ -37,6 +37,10 @@ const Canvas: React.FC = () => {
 			}
   `;
 
+  let removeAll = () => {
+    console.log("hi");
+  };
+
   useEffect(() => {
     const SEPARATION = 80;
     const AMOUNTX = 50;
@@ -218,6 +222,20 @@ const Canvas: React.FC = () => {
       frameId = null;
     };
 
+    //Remove all
+    removeAll = () => {
+      stop();
+      // console.log(mount);
+
+      mount.removeChild(renderer.domElement);
+
+      scene.remove(particles);
+      geometry.dispose();
+      material.dispose();
+      // Callback to cleanup three js, cancel animationFrame, etc
+      // mountRef.current.removeChild(renderer.domElement);
+    };
+
     /**
      * Setup
      */
@@ -244,9 +262,11 @@ const Canvas: React.FC = () => {
     <>
       <div
         ref={mountRef}
-        style={{ position: "fixed", top: 0, left: 0, zIndex: -2 }}
+        style={{ position: "fixed", top: 0, left: 0, zIndex: -2, opacity: 1 }}
       />
-      {/* <div className="center-logo"></div> */}
+      {/* <div className="center-logo" onClick={removeAll}>
+        CLICK ME
+      </div> */}
     </>
   );
 };
