@@ -6,6 +6,7 @@ import Modal from "@components/UX/Modal";
 
 //Hooks
 import { useUI } from "@components/UX/context";
+import { useLoaded } from "../../store/context";
 
 //styles
 import { MainStyle } from "./styles";
@@ -17,11 +18,13 @@ interface IProps {
 const Layout: React.FC<IProps> = ({ main }) => {
   //UI Handlers
   const { displayLineup, closeLineup, openLineup } = useUI();
+  const { canvasState, setCanvasState } = useLoaded();
 
   return (
     <>
       {/* <Header /> */}
-      {/* <Canvas /> */}
+      {canvasState && <Canvas removeSelf={setCanvasState} />}
+
       <MainStyle>{main}</MainStyle>
       <Modal open={displayLineup} close={closeLineup}>
         {/* <Image

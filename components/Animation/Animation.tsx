@@ -15,6 +15,7 @@ import AnimationLayer from "./components/AnimationLayer";
 //hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
 import { useUI } from "@components/UX/context";
+import { useLoaded } from "store/context";
 // import { SvgContainer } from "./styles";
 
 //Styles
@@ -29,6 +30,7 @@ const Animation: React.FC<{
 
   //UI Handlers
   const { displayLineup, closeLineup, closeMenu } = useUI();
+  const { canvasState, setCanvasState } = useLoaded();
 
   //Animation Ref
   const lottieRef = useRef<any>();
@@ -71,8 +73,9 @@ const Animation: React.FC<{
 
   useEffect(() => {
     // setLocked(true);
-    if (!isLoaded) {
+    if (!isLoaded && !canvasState) {
       lottieRef.current.play();
+      wrapperRef.current.style.opacity = 1;
     } else {
       wrapperRef.current.style.opacity = 0;
       // lottieRef.current.destroy();
@@ -80,7 +83,7 @@ const Animation: React.FC<{
     // setLoaded(true);
 
     () => {};
-  }, [isLoaded]);
+  }, [isLoaded, canvasState]);
 
   return (
     <div className="svgcontainer">
@@ -89,7 +92,7 @@ const Animation: React.FC<{
         ref={wrapperRef}
         style={{ position: "absolute" }}
       >
-        {!isMobile && (
+        {!canvasState && !isMobile && (
           <Lottie
             lottieRef={lottieRef}
             animationData={houseAnimation}

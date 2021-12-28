@@ -4,7 +4,7 @@ import { breakpoints } from "styles/styles";
 export const ModalStyle = styled.div`
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 52%;
   transform: translate(-50%, -50%);
   // pointer-events: none;
   display: flex;

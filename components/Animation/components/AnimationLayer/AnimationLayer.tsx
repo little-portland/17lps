@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 //final svg
 import FinalSvg from "../../finalSvg";
 import { useUI } from "@components/UX/context";
+import { useLoaded } from "../../../../store/context";
 import Modal from "@components/UX/Modal";
 
 //Styles
@@ -60,6 +61,7 @@ const AnimationLayer = () => {
   //UI Handlers
   const { displayLineup, closeLineup, openLineup, openMenu, closeMenu } =
     useUI();
+  const { canvasState, setCanvasState } = useLoaded();
 
   // Transition Animation
   const transition = { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.9] };
@@ -152,6 +154,7 @@ const AnimationLayer = () => {
 
   const testHandler = () => {
     console.log(displayLineup);
+    setCanvasState(false);
     openLineup();
   };
 

@@ -1,12 +1,26 @@
 import { useRef, useState, useEffect, MouseEvent } from "react";
+import useDoubleClick from "use-double-click";
 import * as THREE from "three";
-import { PerspectiveCamera } from "three";
 
 //Hooks
 // import useMousePosition from "../utils/useMousePosition";
+interface CanvasProps {
+  removeSelf: (value: boolean) => void;
+}
 
-const Canvas: React.FC = () => {
+const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
   const mountRef = useRef<HTMLDivElement>(null);
+
+  useDoubleClick({
+    onSingleClick: (e) => {
+      console.log(e, "single click");
+    },
+    onDoubleClick: (e) => {
+      removeSelf(false);
+    },
+    ref: mountRef,
+    latency: 250,
+  });
 
   const glsl = (x) => x;
 
@@ -262,7 +276,7 @@ const Canvas: React.FC = () => {
     <>
       <div
         ref={mountRef}
-        style={{ position: "fixed", top: 0, left: 0, zIndex: -2, opacity: 1 }}
+        style={{ position: "fixed", top: 0, left: 0, zIndex: 2, opacity: 1 }}
       />
       {/* <div className="center-logo" onClick={removeAll}>
         CLICK ME
