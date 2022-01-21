@@ -86,12 +86,8 @@ const Animation: React.FC<{
   }, [isLoaded, canvasState]);
 
   return (
-    <div className="svgcontainer">
-      <div
-        className="svgcontainerMain"
-        ref={wrapperRef}
-        style={{ position: "absolute" }}
-      >
+    <>
+      <SvgContainer ref={wrapperRef}>
         {!canvasState && !isMobile && (
           <Lottie
             lottieRef={lottieRef}
@@ -102,9 +98,9 @@ const Animation: React.FC<{
             // onEnterFrame={onAnimationStartHandler}
           />
         )}
-      </div>
+      </SvgContainer>
       {isLoaded && <AnimationLayer />}
-    </div>
+    </>
   );
 };
 
