@@ -8,8 +8,9 @@ import { motion } from "framer-motion";
 
 //main animation
 import houseAnimation from "public/Web_assets/mainhouse.json";
-import web from "public/Web_assets/Web_animation_still.json";
-import Modal from "@components/UX/Modal";
+import mobileMain from "public/Web_assets/mainmobile.json";
+import mobileInit from "public/Web_assets/initialmobile.json";
+import mobileLoop from "public/Web_assets/mainMobileLoop.json";
 import AnimationLayer from "./components/AnimationLayer";
 
 //hooks
@@ -34,6 +35,8 @@ const Animation: React.FC<{
 
   //Animation Ref
   const lottieRef = useRef<any>();
+  const lottieRef2 = useRef<any>();
+  const loopRef = useRef<any>();
   const wrapperRef = useRef<any>();
 
   //Check Device
@@ -75,8 +78,10 @@ const Animation: React.FC<{
     // setLocked(true);
     if (!isLoaded && !canvasState) {
       lottieRef.current.play();
+      lottieRef2 && lottieRef2.current.play();
       wrapperRef.current.style.opacity = 1;
     } else {
+      loopRef.current.play();
       wrapperRef.current.style.opacity = 0;
       // lottieRef.current.destroy();
     }
@@ -88,7 +93,7 @@ const Animation: React.FC<{
   return (
     <>
       <SvgContainer ref={wrapperRef}>
-        {!canvasState && !isMobile && (
+        {!canvasState && !isMobile ? (
           <Lottie
             lottieRef={lottieRef}
             animationData={houseAnimation}
@@ -97,6 +102,25 @@ const Animation: React.FC<{
             onComplete={() => onAnimationCompleteHandler()}
             // onEnterFrame={onAnimationStartHandler}
           />
+        ) : (
+          <>
+            <Lottie
+              lottieRef={lottieRef}
+              animationData={mobileMain}
+              loop={false}
+              autoplay={false}
+              // onComplete={() => onAnimationCompleteHandler()}
+              // onEnterFrame={onAnimationStartHandler}
+            />
+            <Lottie
+              lottieRef={lottieRef2}
+              animationData={mobileInit}
+              loop={false}
+              autoplay={false}
+              onComplete={() => onAnimationCompleteHandler()}
+              // onEnterFrame={onAnimationStartHandler}
+            />
+          </>
         )}
       </SvgContainer>
       {isLoaded && <AnimationLayer />}
