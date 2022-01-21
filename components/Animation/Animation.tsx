@@ -36,7 +36,7 @@ const Animation: React.FC<{
   //Animation Ref
   const lottieRef = useRef<any>();
   const lottieRef2 = useRef<any>();
-  const loopRef = useRef<any>();
+  // const loopRef = useRef<any>();
   const wrapperRef = useRef<any>();
 
   //Check Device
@@ -81,7 +81,7 @@ const Animation: React.FC<{
       lottieRef2 && lottieRef2.current.play();
       wrapperRef.current.style.opacity = 1;
     } else {
-      loopRef.current.play();
+      // loopRef.current.play();
       wrapperRef.current.style.opacity = 0;
       // lottieRef.current.destroy();
     }
