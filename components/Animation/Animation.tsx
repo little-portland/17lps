@@ -26,9 +26,6 @@ const Animation: React.FC<{
   isLoaded: boolean;
   setLoaded: (value: boolean) => void;
 }> = ({ isLoaded, setLoaded }) => {
-  //Router
-  const router = useRouter();
-
   //UI Handlers
   const { displayLineup, closeLineup, closeMenu } = useUI();
   const { canvasState, setCanvasState } = useLoaded();

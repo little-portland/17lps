@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react";
 import Lottie from "lottie-react";
 import { motion } from "framer-motion";
 
+import useDeviceDetect from "@utils/useDeviceDetect";
+
 //final svg
 import FinalSvg from "../../finalSvg";
 import { useUI } from "@components/UX/context";
@@ -12,6 +14,7 @@ import Modal from "@components/UX/Modal";
 import { OverlayHover } from "./styles";
 
 import web from "public/Web_assets/still.json";
+import mobileLoop from "public/Web_assets/mainmobile.json";
 //hover animations
 import plantLeft from "public/overlays/leftplant.json";
 import plantMid from "public/overlays/middleplant.json";
@@ -64,7 +67,12 @@ const AnimationLayer = () => {
   // Transition Animation
   const transition = { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.9] };
 
+  //Check Device
+  const { isMobile } = useDeviceDetect();
+
   useEffect(() => {
+    console.log(isMobile);
+
     const overlayAll: HTMLElement[] = Array.from(
       overlayRef.current.querySelectorAll("svg g")
     );
@@ -157,185 +165,200 @@ const AnimationLayer = () => {
 
   return (
     <OverlayHover>
-      <Lottie
-        lottieRef={ref}
-        animationData={web}
-        loop={false}
-        autoplay={true}
-        // aria-aria-labelledby="use lottie animation"
-      />
+      {!isMobile ? (
+        <>
+          <Lottie
+            lottieRef={ref}
+            animationData={web}
+            loop={false}
+            autoplay={true}
+            // aria-aria-labelledby="use lottie animation"
+          />
 
-      <Lottie
-        lottieRef={moonRef}
-        animationData={moon}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => moonRef.current.goToAndStop(0)}
-        // onComplete={() => console.log(moonRef.current.getDuration(true))}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      {/* //PLANTS */}
-      <Lottie
-        lottieRef={plantLeftRef}
-        animationData={plantLeft}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => plantLeftRef.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={plantMidRef}
-        animationData={plantMid}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => plantMidRef.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={plantRightRef}
-        animationData={plantRight}
-        loop={false}
-        autoplay={false}
-        className={"plantRight"}
-        onComplete={(e) => plantRightRef.current.goToAndStop(0)}
-        // onComplete={() =>
-        //   console.log(plantRightRef.current.getDuration(true))
-        // }
-        // aria-aria-labelledby="use lottie animation"
-      />
-      {/* //SPEAKERS */}
-      <Lottie
-        lottieRef={speakersLeftRef}
-        animationData={speakersLeft}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => speakersLeftRef.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={speakersRightRef}
-        animationData={speakersRight}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => speakersRightRef.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={tvLeftRef}
-        animationData={tvLeft}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => tvLeftRef.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={tvMidRef}
-        animationData={tvMid}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => tvMidRef.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={tvRightRef}
-        animationData={tvRight}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => tvRightRef.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      {/* BULLFROGS */}
-      <Lottie
-        lottieRef={bullfrog1Ref}
-        animationData={bullfrog1}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => bullfrog1Ref.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={bullfrog2Ref}
-        animationData={bullfrog2}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => bullfrog2Ref.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={bullfrog3Ref}
-        animationData={bullfrog3}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => bullfrog3Ref.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={bullfrog4Ref}
-        animationData={bullfrog4}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => bullfrog4Ref.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={bullfrog5Ref}
-        animationData={bullfrog5}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => bullfrog5Ref.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={bullfrog6Ref}
-        animationData={bullfrog6}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => bullfrog6Ref.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={bullfrog7Ref}
-        animationData={bullfrog7}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => bullfrog7Ref.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={bullfrog8Ref}
-        animationData={bullfrog8}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => bullfrog8Ref.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      {/* DANCE EAT */}
-      <Lottie
-        lottieRef={eatRef}
-        animationData={eat}
-        loop={false}
-        autoplay={false}
-        onComplete={(e) => eatRef.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
-      <Lottie
-        lottieRef={danceRef}
-        animationData={dance}
-        loop={true}
-        autoplay={true}
-        onComplete={(e) => danceRef.current.goToAndStop(0)}
-        // aria-aria-labelledby="use lottie animation"
-      />
+          <Lottie
+            lottieRef={moonRef}
+            animationData={moon}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => moonRef.current.goToAndStop(0)}
+            // onComplete={() => console.log(moonRef.current.getDuration(true))}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          {/* //PLANTS */}
+          <Lottie
+            lottieRef={plantLeftRef}
+            animationData={plantLeft}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => plantLeftRef.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={plantMidRef}
+            animationData={plantMid}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => plantMidRef.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={plantRightRef}
+            animationData={plantRight}
+            loop={false}
+            autoplay={false}
+            className={"plantRight"}
+            onComplete={(e) => plantRightRef.current.goToAndStop(0)}
+            // onComplete={() =>
+            //   console.log(plantRightRef.current.getDuration(true))
+            // }
+            // aria-aria-labelledby="use lottie animation"
+          />
+          {/* //SPEAKERS */}
+          <Lottie
+            lottieRef={speakersLeftRef}
+            animationData={speakersLeft}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => speakersLeftRef.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={speakersRightRef}
+            animationData={speakersRight}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => speakersRightRef.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={tvLeftRef}
+            animationData={tvLeft}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => tvLeftRef.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={tvMidRef}
+            animationData={tvMid}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => tvMidRef.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={tvRightRef}
+            animationData={tvRight}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => tvRightRef.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          {/* BULLFROGS */}
+          <Lottie
+            lottieRef={bullfrog1Ref}
+            animationData={bullfrog1}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => bullfrog1Ref.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={bullfrog2Ref}
+            animationData={bullfrog2}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => bullfrog2Ref.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={bullfrog3Ref}
+            animationData={bullfrog3}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => bullfrog3Ref.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={bullfrog4Ref}
+            animationData={bullfrog4}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => bullfrog4Ref.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={bullfrog5Ref}
+            animationData={bullfrog5}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => bullfrog5Ref.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={bullfrog6Ref}
+            animationData={bullfrog6}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => bullfrog6Ref.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={bullfrog7Ref}
+            animationData={bullfrog7}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => bullfrog7Ref.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={bullfrog8Ref}
+            animationData={bullfrog8}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => bullfrog8Ref.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          {/* DANCE EAT */}
+          <Lottie
+            lottieRef={eatRef}
+            animationData={eat}
+            loop={false}
+            autoplay={false}
+            onComplete={(e) => eatRef.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
+          <Lottie
+            lottieRef={danceRef}
+            animationData={dance}
+            loop={true}
+            autoplay={true}
+            onComplete={(e) => danceRef.current.goToAndStop(0)}
+            // aria-aria-labelledby="use lottie animation"
+          />
 
-      <motion.div
-        ref={overlayRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
-      >
-        <FinalSvg openLineup={testHandler} openMenu={testHandler} />
-        {/* <button onClick={testHandler}>HELLO</button> */}
-      </motion.div>
+          <motion.div
+            ref={overlayRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
+            <FinalSvg openLineup={testHandler} openMenu={testHandler} />
+            {/* <button onClick={testHandler}>HELLO</button> */}
+          </motion.div>
+        </>
+      ) : (
+        <>
+          <Lottie
+            ref={overlayRef}
+            lottieRef={ref}
+            animationData={mobileLoop}
+            loop={false}
+            autoplay={true}
+            // aria-aria-labelledby="use lottie animation"
+          />
+        </>
+      )}
     </OverlayHover>
   );
 };
