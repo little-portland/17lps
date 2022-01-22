@@ -33,6 +33,7 @@ const Animation: React.FC<{
   //Animation Ref
   const lottieRef = useRef<any>();
   const lottieRef2 = useRef<any>();
+  const lottieRef3 = useRef<any>();
   // const loopRef = useRef<any>();
   const wrapperRef = useRef<any>();
 
@@ -77,10 +78,10 @@ const Animation: React.FC<{
       lottieRef.current.play();
       lottieRef2 && lottieRef2.current.play();
       wrapperRef.current.style.opacity = 1;
+    } else if (isMobile) {
+      lottieRef2.current.destroy();
     } else {
-      // loopRef.current.play();
       wrapperRef.current.style.opacity = 0;
-      // lottieRef.current.destroy();
     }
     // setLoaded(true);
 
@@ -117,10 +118,21 @@ const Animation: React.FC<{
               onComplete={() => onAnimationCompleteHandler()}
               // onEnterFrame={onAnimationStartHandler}
             />
+
+            {isLoaded && (
+              <Lottie
+                lottieRef={lottieRef3}
+                animationData={mobileLoop}
+                loop={true}
+                autoplay={true}
+                // onComplete={() => onAnimationCompleteHandler()}
+                // onEnterFrame={onAnimationStartHandler}
+              />
+            )}
           </>
         )}
       </SvgContainer>
-      {isLoaded && <AnimationLayer />}
+      {isLoaded && !isMobile && <AnimationLayer />}
     </>
   );
 };
