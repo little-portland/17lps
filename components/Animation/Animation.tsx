@@ -9,8 +9,8 @@ import { motion } from "framer-motion";
 //main animation
 import houseAnimation from "public/Web_assets/mainhouse.json";
 import mobileMain from "public/Web_assets/mainmobile.json";
-import mobileInit from "public/Web_assets/initialmobile.json";
-import mobileLoop from "public/Web_assets/mainMobileLoop.json";
+import mobileInit from "public/Web_assets/initialmobile2.json";
+import mobileLoop from "public/Web_assets/mainMobileLoop2.json";
 import AnimationLayer from "./components/AnimationLayer";
 
 //hooks

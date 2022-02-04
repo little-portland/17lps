@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, MouseEvent } from "react";
 import useDoubleClick from "use-double-click";
 import * as THREE from "three";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 //Hooks
 // import useMousePosition from "../utils/useMousePosition";
@@ -174,6 +175,11 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     /**
+     * Controls
+     */
+    // const controls = new OrbitControls(camera, renderer.domElement);
+
+    /**
      * Animate
      */
     const clock = new THREE.Clock();
@@ -183,6 +189,7 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
 
       //Rotate
       // particles.rotation.x = elapsedTime / 128;
+      // controls.update();
 
       // Render
       render();

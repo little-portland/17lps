@@ -3,7 +3,7 @@ import { breakpoints } from "styles/styles";
 
 export const SvgContainer = styled.div`
     div {
-        height: 100vh;
+        height: 100%;
         width: 100vw;
         position: absolute;
         top: 50%;  
