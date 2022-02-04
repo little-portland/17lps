@@ -14,7 +14,7 @@ import Modal from "@components/UX/Modal";
 import { OverlayHover } from "./styles";
 
 import web from "public/Web_assets/still.json";
-import mobileLoop from "public/Web_assets/initialmobile.json";
+import mobileLoop from "public/Web_assets/initialmobile2.json";
 //hover animations
 import plantLeft from "public/overlays/leftplant.json";
 import plantMid from "public/overlays/middleplant.json";
@@ -349,14 +349,14 @@ const AnimationLayer = () => {
         </>
       ) : (
         <>
-          <Lottie
+          {/* <Lottie
             ref={overlayRef}
             lottieRef={ref}
             animationData={mobileLoop}
             loop={true}
             autoplay={true}
             // aria-aria-labelledby="use lottie animation"
-          />
+          /> */}
         </>
       )}
     </OverlayHover>
