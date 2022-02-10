@@ -13,6 +13,8 @@ import mobileInit from "public/Web_assets/initialmobile2.json";
 import mobileLoop from "public/Web_assets/mainMobileLoop2.json";
 import AnimationLayer from "./components/AnimationLayer";
 
+import eatDance from "public/Web_assets/still.json";
+
 //hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
 import { useUI } from "@components/UX/context";
@@ -120,14 +122,17 @@ const Animation: React.FC<{
             />
 
             {isLoaded && (
-              <Lottie
-                lottieRef={lottieRef3}
-                animationData={mobileLoop}
-                loop={true}
-                autoplay={true}
-                // onComplete={() => onAnimationCompleteHandler()}
-                // onEnterFrame={onAnimationStartHandler}
-              />
+              <>
+                <Lottie
+                  lottieRef={lottieRef3}
+                  animationData={mobileLoop}
+                  loop={true}
+                  autoplay={true}
+                  // onComplete={() => onAnimationCompleteHandler()}
+                  // onEnterFrame={onAnimationStartHandler}
+                />
+                {/* <img src={eatDance}></img> */}
+              </>
             )}
           </>
         )}
