@@ -7,10 +7,10 @@ import Lottie from "lottie-react";
 import { motion } from "framer-motion";
 
 //main animation
-import houseAnimation from "public/Web_assets/mainhouse.json";
-import mobileMain from "public/Web_assets/mainmobile.json";
-import mobileInit from "public/Web_assets/initialmobile2.json";
-import mobileLoop from "public/Web_assets/mainMobileLoop2.json";
+import houseAnimation from "public/Web_assets/Initial_Web.json";
+import mobileMain from "public/Web_assets/Main_Mobile.json";
+import mobileInit from "public/Web_assets/Initial_animation_Mobile.json";
+import mobileLoop from "public/Web_assets/Mobile_loop.json";
 import AnimationLayer from "./components/AnimationLayer";
 
 import eatDance from "public/Web_assets/still.json";
