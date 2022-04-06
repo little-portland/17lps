@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, MouseEvent } from "react";
 import useDoubleClick from "use-double-click";
+import useDeviceDetect from "@utils/useDeviceDetect";
 import * as THREE from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
@@ -12,12 +13,18 @@ interface CanvasProps {
 const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
   const mountRef = useRef<HTMLDivElement>(null);
 
+  const { isMobile } = useDeviceDetect();
+
   useDoubleClick({
     onSingleClick: (e) => {
-      console.log(e, "single click");
+      if (!isMobile) {
+        removeSelf(false);
+      }
     },
     onDoubleClick: (e) => {
-      removeSelf(false);
+      if (isMobile) {
+        removeSelf(false);
+      }
     },
     ref: mountRef,
     latency: 250,
@@ -164,8 +171,8 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
     function onPointerMove(event: PointerEvent) {
       if (event.isPrimary === false) return;
 
-      mouseX = event.clientX - sizes.width / 2;
-      mouseY = event.clientY - sizes.height / 2;
+      mouseX = (event.clientX - sizes.width / 2) * 3;
+      mouseY = (event.clientY - sizes.height / 2) * 3;
     }
 
     /**
@@ -276,7 +283,6 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
       geometry.dispose();
       material.dispose();
       // Callback to cleanup three js, cancel animationFrame, etc
-      // mountRef.current.removeChild(renderer.domElement);
     };
   }, [mountRef.current]);
 
@@ -285,9 +291,7 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
       <div
         ref={mountRef}
         style={{ position: "fixed", top: 0, left: 0, zIndex: 2, opacity: 1 }}
-      >
-        {/* <OrbitControls /> */}
-      </div>
+      ></div>
       {/* <div className="center-logo" onClick={removeAll}>
         CLICK ME
       </div> */}
