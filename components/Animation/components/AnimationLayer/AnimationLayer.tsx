@@ -13,8 +13,7 @@ import Modal from "@components/UX/Modal";
 //Styles
 import { OverlayHover } from "./styles";
 
-import web from "public/Web_assets/still.json";
-import mobileLoop from "public/Web_assets/initialmobile2.json";
+import staticWeb from "public/Web_assets/Static_Web.json";
 //hover animations
 import plantLeft from "public/overlays/leftplant.json";
 import plantMid from "public/overlays/middleplant.json";
@@ -27,11 +26,11 @@ import tvRight from "public/overlays/TV_RIGHT.json";
 import moon from "public/overlays/MOON.json";
 import bullfrog1 from "public/overlays/BULLFROG_01.json";
 import bullfrog2 from "public/overlays/BULLFROG_02.json";
-import bullfrog3 from "public/overlays/BULLFROG_03.json";
+import bullfrog3 from "public/overlays/BULLFROG_03_with_divider.json";
 import bullfrog4 from "public/overlays/BULLFROG_04.json";
 import bullfrog5 from "public/overlays/BULLFROG_05.json";
 import bullfrog6 from "public/overlays/BULLFROG_06.json";
-import bullfrog7 from "public/overlays/BULLFROG_07.json";
+import bullfrog7 from "public/overlays/BULLFROG_07_with_divider.json";
 import bullfrog8 from "public/overlays/BULLFROG_08.json";
 import dance from "public/overlays/DANCE.json";
 import eat from "public/overlays/EAT.json";
@@ -169,7 +168,7 @@ const AnimationLayer = () => {
         <>
           <Lottie
             lottieRef={ref}
-            animationData={web}
+            animationData={staticWeb}
             loop={false}
             autoplay={true}
             // aria-aria-labelledby="use lottie animation"

@@ -3,6 +3,7 @@ import Image from "next/image";
 //Components
 import Canvas from "@components/Canvas";
 import Modal from "@components/UX/Modal";
+import Button from "../UX/Button";
 
 //Hooks
 import { useUI } from "@components/UX/context";
@@ -24,6 +25,13 @@ const Layout: React.FC<IProps> = ({ main }) => {
     <>
       {/* <Header /> */}
       {canvasState && <Canvas removeSelf={setCanvasState} />}
+
+      <div
+        onClick={openLineup}
+        style={{ position: "absolute", top: 0, left: 0, zIndex: 9999999 }}
+      >
+        <Button>Open modal</Button>
+      </div>
 
       <MainStyle>{main}</MainStyle>
       <Modal open={displayLineup} close={closeLineup}>

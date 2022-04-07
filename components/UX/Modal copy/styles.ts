@@ -27,8 +27,8 @@ export const ModalStyle = styled.div`
     display: block;
     width: auto;
     height: auto;
-    max-width: 60vw;
-    max-height: 80vh;
+    max-width: 50vw;
+    max-height: 70vh;
   }
 `;
 

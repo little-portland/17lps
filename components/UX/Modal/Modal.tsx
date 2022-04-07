@@ -1,8 +1,9 @@
 import { FC, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-import { ModalStyle, BG, Close } from "./styles";
+import { Middle, BG, Close, Grid, ButtonWrapper } from "./styles";
 import Closer from "./components/Closer";
+import Button from "../Button/Button";
 
 interface SidebarProps {
   children: any;
@@ -14,27 +15,32 @@ const Modal: FC<SidebarProps> = ({ children, open, close }) => {
   return (
     <>
       {open && (
-        <motion.div
-          initial={{ visibility: "hidden" }}
-          animate={{ visibility: "visible", transition: { delay: 0.2 } }}
-          exit={{ visibility: "hidden", transition: { delay: 1 } }}
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0 } }}
+            exit={{ opacity: 0, transition: { delay: 1 } }}
 
-          //onClick={() => setMenuState(!menuState)}
-        >
-          <ModalStyle>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              {children}
-            </div>
-            <Closer close={close} />
-          </ModalStyle>
-          {/* {children} */}
+            //onClick={() => setMenuState(!menuState)}
+          >
+            <Grid>
+              {/* <Middle> */}
+              <div />
+              <Middle>
+                <>
+                  {children}
+                  {/* <Closer close={close} /> */}
+                </>
+              </Middle>
+              {/* </Middle> */}
+              <ButtonWrapper>
+                <Button>hire</Button>
+              </ButtonWrapper>
+            </Grid>
+            {/* {children} */}
+          </motion.div>
           <BG onClick={close}></BG>
-        </motion.div>
+        </>
       )}
     </>
   );
