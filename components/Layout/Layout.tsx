@@ -8,6 +8,7 @@ import Button from "../UX/Button";
 //Hooks
 import { useUI } from "@components/UX/context";
 import { useLoaded } from "../../store/context";
+import useDeviceDetect from "@utils/useDeviceDetect";
 
 //styles
 import { MainStyle } from "./styles";
@@ -20,18 +21,22 @@ const Layout: React.FC<IProps> = ({ main }) => {
   //UI Handlers
   const { displayLineup, closeLineup, openLineup } = useUI();
   const { canvasState, setCanvasState } = useLoaded();
+  //Check Device
+  const { isMobile } = useDeviceDetect();
 
   return (
     <>
       {/* <Header /> */}
       {canvasState && <Canvas removeSelf={setCanvasState} />}
 
-      <div
-        onClick={openLineup}
-        style={{ position: "absolute", top: 0, left: 0, zIndex: 9999999 }}
-      >
-        <Button>Open modal</Button>
-      </div>
+      {isMobile && (
+        <div
+          onClick={openLineup}
+          style={{ position: "absolute", top: 0, left: 0, zIndex: 9999999 }}
+        >
+          <Button>Open modal</Button>
+        </div>
+      )}
 
       <MainStyle>{main}</MainStyle>
       <Modal open={displayLineup} close={closeLineup}>

@@ -29,7 +29,7 @@ const Animation: React.FC<{
   setLoaded: (value: boolean) => void;
 }> = ({ isLoaded, setLoaded }) => {
   //UI Handlers
-  const { displayLineup, closeLineup, closeMenu, openLineup } = useUI();
+  const { displayLineup, closeLineup, closeMenu } = useUI();
   const { canvasState, setCanvasState } = useLoaded();
 
   //Animation Ref
