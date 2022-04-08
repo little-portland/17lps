@@ -4428,6 +4428,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu }) => {
         onClick={openLineup}
         className="svgclick"
         ref={ref}
+        fill="#5C2C7C"
       >
         <g>
           <g>

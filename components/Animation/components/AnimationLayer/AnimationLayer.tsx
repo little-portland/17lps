@@ -7,6 +7,7 @@ import useDeviceDetect from "@utils/useDeviceDetect";
 
 //final svg
 import FinalSvg from "../../finalSvg";
+import TestSvg from "../../testSvg";
 import { useUI } from "@components/UX/context";
 import Modal from "@components/UX/Modal";
 
@@ -345,6 +346,7 @@ const AnimationLayer = () => {
             <FinalSvg openLineup={testHandler} openMenu={testHandler} />
             {/* <button onClick={testHandler}>HELLO</button> */}
           </motion.div>
+          <TestSvg />
         </>
       ) : (
         <>

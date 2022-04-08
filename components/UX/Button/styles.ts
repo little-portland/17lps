@@ -4,7 +4,7 @@ export const Button = styled.button`
   font-family: inherit;
   font-weight: inherit;
   font-size: 1.2rem;
-  background-color: purple;
+  background-color: #5C2C7C;
   padding: 4px 32px;
   text-transform: uppercase;
   color: white;
