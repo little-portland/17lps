@@ -7,7 +7,6 @@ import useDeviceDetect from "@utils/useDeviceDetect";
 
 //final svg
 import FinalSvg from "../../finalSvg";
-import TestSvg from "../../testSvg";
 import { useUI } from "@components/UX/context";
 import Modal from "@components/UX/Modal";
 
@@ -33,8 +32,6 @@ import bullfrog5 from "public/overlays/BULLFROG_05.json";
 import bullfrog6 from "public/overlays/BULLFROG_06.json";
 import bullfrog7 from "public/overlays/BULLFROG_07_with_divider.json";
 import bullfrog8 from "public/overlays/BULLFROG_08.json";
-import dance from "public/overlays/DANCE.json";
-import eat from "public/overlays/EAT.json";
 
 const AnimationLayer = () => {
   //Refs
@@ -56,8 +53,6 @@ const AnimationLayer = () => {
   const bullfrog6Ref = useRef<any>();
   const bullfrog7Ref = useRef<any>();
   const bullfrog8Ref = useRef<any>();
-  const eatRef = useRef<any>();
-  const danceRef = useRef<any>();
   const ref = useRef<any>();
 
   //UI Handlers
@@ -143,12 +138,6 @@ const AnimationLayer = () => {
           case "speaker-bottom-right":
             bullfrog8Ref.current.play();
             break;
-          // case "eat":
-          //   eatRef.current.play();
-          //   break;
-          // case "dance":
-          //   danceRef.current.play();
-          //   break;
           default:
             console.log("defaut=lt");
         }
@@ -320,22 +309,6 @@ const AnimationLayer = () => {
             // aria-aria-labelledby="use lottie animation"
           />
           {/* DANCE EAT */}
-          <Lottie
-            lottieRef={eatRef}
-            animationData={eat}
-            loop={false}
-            autoplay={false}
-            onComplete={(e) => eatRef.current.goToAndStop(0)}
-            // aria-aria-labelledby="use lottie animation"
-          />
-          <Lottie
-            lottieRef={danceRef}
-            animationData={dance}
-            loop={true}
-            autoplay={true}
-            onComplete={(e) => danceRef.current.goToAndStop(0)}
-            // aria-aria-labelledby="use lottie animation"
-          />
 
           <motion.div
             ref={overlayRef}
@@ -346,7 +319,6 @@ const AnimationLayer = () => {
             <FinalSvg openLineup={testHandler} openMenu={testHandler} />
             {/* <button onClick={testHandler}>HELLO</button> */}
           </motion.div>
-          <TestSvg />
         </>
       ) : (
         <>

@@ -36,6 +36,7 @@ const Animation: React.FC<{
   const lottieRef = useRef<any>();
   const lottieRef2 = useRef<any>();
   const lottieRef3 = useRef<any>();
+  const lottieRefMobile = useRef<any>();
   // const loopRef = useRef<any>();
   const wrapperRef = useRef<any>();
 
@@ -75,13 +76,15 @@ const Animation: React.FC<{
   };
 
   useEffect(() => {
+    console.log("running stuff");
     // setLocked(true);
     if (!isLoaded && !canvasState) {
       lottieRef.current.play();
-      lottieRef2 && lottieRef2.current.play();
+      // // lottieRefMobile.current.play();
+      // lottieRef2 && lottieRef2.current.play();
       wrapperRef.current.style.opacity = 1;
     } else if (isMobile) {
-      lottieRef2.current.destroy();
+      // lottieRef2.current.destroy();
     } else {
       wrapperRef.current.style.opacity = 0;
     }
@@ -109,17 +112,17 @@ const Animation: React.FC<{
               animationData={mobileMain}
               loop={false}
               autoplay={false}
-              // onComplete={() => onAnimationCompleteHandler()}
+              onComplete={() => console.log("complete")}
               // onEnterFrame={onAnimationStartHandler}
             />
-            <Lottie
+            {/* <Lottie
               lottieRef={lottieRef2}
               animationData={mobileInit}
               loop={false}
               autoplay={false}
-              onComplete={() => onAnimationCompleteHandler()}
+              // onComplete={() => onAnimationCompleteHandler()}
               // onEnterFrame={onAnimationStartHandler}
-            />
+            /> */}
 
             {isLoaded && (
               <>
