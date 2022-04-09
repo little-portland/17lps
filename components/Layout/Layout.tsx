@@ -49,7 +49,7 @@ const Layout: React.FC<IProps> = ({ main }) => {
       )}
 
       <MainStyle>{main}</MainStyle>
-      <Modal open={displayLineup} close={closeLineup}>
+      <Modal open={displayLineup} close={closeLineup} button="dance">
         {/* <Image
           src="/tester.png"
           alt="pic"
@@ -59,10 +59,10 @@ const Layout: React.FC<IProps> = ({ main }) => {
         /> */}
         <img src="/tester.png"></img>
       </Modal>
-      <Modal open={displayMenu} close={closeMenu}>
+      <Modal open={displayMenu} close={closeMenu} button="eat">
         <h3>eat image here</h3>
       </Modal>
-      <Modal open={displayHire} close={closeHire}>
+      <Modal open={displayHire} close={closeHire} button="hire">
         <h3>hire image here</h3>
       </Modal>
       {/* <div

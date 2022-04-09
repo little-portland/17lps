@@ -9,9 +9,10 @@ interface SidebarProps {
   children: any;
   open: boolean;
   close: () => void;
+  button: string;
 }
 
-const Modal: FC<SidebarProps> = ({ children, open, close }) => {
+const Modal: FC<SidebarProps> = ({ children, open, close, button }) => {
   return (
     <>
       {open && (
@@ -34,7 +35,7 @@ const Modal: FC<SidebarProps> = ({ children, open, close }) => {
               </Middle>
               {/* </Middle> */}
               <ButtonWrapper>
-                <Button>hire</Button>
+                <Button>{button}</Button>
               </ButtonWrapper>
             </Grid>
             {/* {children} */}
