@@ -5,11 +5,12 @@ import Link from "next/link";
 export interface SvgProps {
   openLineup: () => void;
   openMenu: () => void;
+  openHire: () => void;
 }
 
 //HOVER
 
-const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu }) => {
+const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
   const ref = useRef<any>();
 
   return (
@@ -4486,7 +4487,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu }) => {
           scale: "200%",
           opacity: 0,
         }}
-        onClick={openLineup}
+        onClick={openMenu}
       >
         <polygon points="1993.6,858.1 2102.5,926.4 2155,895.8 2045,828.4 	" />
       </g>
@@ -4546,7 +4547,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu }) => {
           scale: "200%",
           opacity: 0,
         }}
-        onClick={openLineup}
+        onClick={openHire}
       >
         <polygon points="1054.1,1514.3 1126,1558.8 1251.6,1483.6 1179.3,1440.4 1054.1,1514.3 	" />
       </g>

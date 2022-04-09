@@ -19,7 +19,17 @@ interface IProps {
 
 const Layout: React.FC<IProps> = ({ main }) => {
   //UI Handlers
-  const { displayLineup, closeLineup, openLineup } = useUI();
+  const {
+    displayLineup,
+    closeLineup,
+    openLineup,
+    openMenu,
+    closeMenu,
+    displayMenu,
+    openHire,
+    closeHire,
+    displayHire,
+  } = useUI();
   const { canvasState, setCanvasState } = useLoaded();
   //Check Device
   const { isMobile } = useDeviceDetect();
@@ -48,6 +58,12 @@ const Layout: React.FC<IProps> = ({ main }) => {
           // layout="responsive"
         /> */}
         <img src="/tester.png"></img>
+      </Modal>
+      <Modal open={displayMenu} close={closeMenu}>
+        <h3>eat image here</h3>
+      </Modal>
+      <Modal open={displayHire} close={closeHire}>
+        <h3>hire image here</h3>
       </Modal>
       {/* <div
         onClick={openLineup}

@@ -3,6 +3,7 @@ import React, { FC, useCallback, useMemo } from "react";
 export interface State {
   displayLineup: boolean;
   displayMenu: boolean;
+  displayHire: boolean;
   lineupView: string;
   menuView: string;
 }
@@ -10,6 +11,7 @@ export interface State {
 const initialState = {
   displayLineup: false,
   displayMenu: false,
+  displayHire: false,
   lineupView: "LINEUP_VIEW",
   menuView: "MENU_VIEW",
 };
@@ -26,6 +28,12 @@ type Action =
     }
   | {
       type: "CLOSE_LINEUP";
+    }
+  | {
+      type: "OPEN_HIRE";
+    }
+  | {
+      type: "CLOSE_HIRE";
     };
 
 export const UIContext = React.createContext<State | any>(initialState);
@@ -58,6 +66,18 @@ function uiReducer(state: State, action: Action) {
         displayLineup: false,
       };
     }
+    case "OPEN_HIRE": {
+      return {
+        ...state,
+        displayHire: true,
+      };
+    }
+    case "CLOSE_HIRE": {
+      return {
+        ...state,
+        displayHire: false,
+      };
+    }
   }
 }
 
@@ -80,6 +100,14 @@ export const UIProvider: FC = (props) => {
     () => dispatch({ type: "CLOSE_LINEUP" }),
     [dispatch]
   );
+  const openHire = useCallback<() => void>(
+    () => dispatch({ type: "OPEN_HIRE" }),
+    [dispatch]
+  );
+  const closeHire = useCallback<() => void>(
+    () => dispatch({ type: "CLOSE_HIRE" }),
+    [dispatch]
+  );
 
   const value = useMemo(
     () => ({
@@ -88,6 +116,8 @@ export const UIProvider: FC = (props) => {
       closeLineup,
       openMenu,
       closeMenu,
+      openHire,
+      closeHire,
     }),
     [state]
   );

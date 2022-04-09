@@ -56,8 +56,17 @@ const AnimationLayer = () => {
   const ref = useRef<any>();
 
   //UI Handlers
-  const { displayLineup, closeLineup, openLineup, openMenu, closeMenu } =
-    useUI();
+  const {
+    displayLineup,
+    closeLineup,
+    openLineup,
+    openMenu,
+    closeMenu,
+    displayMenu,
+    openHire,
+    closeHire,
+    displayHire,
+  } = useUI();
 
   // Transition Animation
   const transition = { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.9] };
@@ -316,7 +325,11 @@ const AnimationLayer = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.1 }}
           >
-            <FinalSvg openLineup={testHandler} openMenu={testHandler} />
+            <FinalSvg
+              openLineup={testHandler}
+              openMenu={openMenu}
+              openHire={openHire}
+            />
             {/* <button onClick={testHandler}>HELLO</button> */}
           </motion.div>
         </>
