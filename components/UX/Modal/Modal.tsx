@@ -42,8 +42,6 @@ const Modal: FC<SidebarProps> = ({ children, open, close, button }) => {
                   <Button btnType="solid">{button}</Button>
                 </a>
               </ButtonWrapper>
-            </Grid>
-            {/* {children} */}
           </motion.div>
           <BG onClick={close}></BG>
         </>
