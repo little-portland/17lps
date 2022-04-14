@@ -5,12 +5,24 @@ export const Grid = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100vh !important;
   width: 100vw;
   display: grid;
   grid-template-rows: auto auto auto;
   z-index: 1;
-  pointer-events: none;
+`
+
+export const Top = styled.div`
+  position: absolute;
+  z-index: 9999999999999999;
+  // top: -20px;
+  right: -44px;
+  display: flex;
+
+  @media (max-width: ${breakpoints.m}px) {
+    right: 0;
+    top: -44px;
+  }
 `
 
 export const Middle = styled.div`
@@ -19,8 +31,14 @@ export const Middle = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  // overflow: scroll;
   max-height: 80vh;
+  position: relative;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   img {
     display: block;
@@ -40,17 +58,17 @@ export const ButtonWrapper = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
+  // cursor: pointer;
 `
 
 export const BG = styled.div`
-  // background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-  height: 100vw;
-  width: 100vw;
+  position: fixed;
   top: 0;
   left: 0;
-  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
   z-index: 0;
 `;
 

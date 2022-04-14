@@ -1,8 +1,8 @@
 import { FC, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-import { Middle, BG, Close, Grid, ButtonWrapper } from "./styles";
-import Closer from "./components/Closer";
+import { Middle, BG, Top, Grid, ButtonWrapper } from "./styles";
+import Closer from "./components/CloseIcon";
 import Button from "../Button/Button";
 
 interface SidebarProps {
@@ -28,14 +28,19 @@ const Modal: FC<SidebarProps> = ({ children, open, close, button }) => {
               {/* <Middle> */}
               <div />
               <Middle>
-                <>
+                <div style={{ position: "relative" }}>
+                  <Top onClick={close}>
+                    <Closer />
+                  </Top>
                   {children}
                   {/* <Closer close={close} /> */}
-                </>
+                </div>
               </Middle>
               {/* </Middle> */}
               <ButtonWrapper>
-                <Button>{button}</Button>
+                <a href="mailto:email@example.com">
+                  <Button btnType="solid">{button}</Button>
+                </a>
               </ButtonWrapper>
             </Grid>
             {/* {children} */}

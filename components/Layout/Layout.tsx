@@ -3,7 +3,7 @@ import Image from "next/image";
 //Components
 import Canvas from "@components/Canvas";
 import Modal from "@components/UX/Modal";
-import Button from "../UX/Button";
+import MobileButtons from "@components/UX/MobileButtons";
 
 //Hooks
 import { useUI } from "@components/UX/context";
@@ -29,41 +29,36 @@ const Layout: React.FC<IProps> = ({ main }) => {
     openHire,
     closeHire,
     displayHire,
+    displayMobileButtons,
   } = useUI();
-  const { canvasState, setCanvasState } = useLoaded();
+  const { canvasState, setCanvasState, isLoaded } = useLoaded();
   //Check Device
   const { isMobile } = useDeviceDetect();
 
   return (
     <>
-      {/* <Header /> */}
       {canvasState && <Canvas removeSelf={setCanvasState} />}
 
-      {isMobile && (
-        <div
-          onClick={openLineup}
-          style={{ position: "absolute", top: 0, left: 0, zIndex: 9999999 }}
-        >
-          <Button>Open modal</Button>
-        </div>
-      )}
+      {isMobile && !canvasState && displayMobileButtons ? (
+        <MobileButtons />
+      ) : null}
 
       <MainStyle>{main}</MainStyle>
       <Modal open={displayLineup} close={closeLineup} button="dance">
         {/* <Image
-          src="/tester.png"
+          src="/images/Dance.jpg"
           alt="pic"
-          width="400"
-          height="600"
-          // layout="responsive"
+          width="auto"
+          height="auto"
+          // layout="fill"
         /> */}
-        <img src="/tester.png"></img>
+        <img src="/images/Dance.jpg"></img>
       </Modal>
       <Modal open={displayMenu} close={closeMenu} button="eat">
-        <h3>eat image here</h3>
+        <img src="/images/Eat.jpg"></img>
       </Modal>
       <Modal open={displayHire} close={closeHire} button="hire">
-        <h3>hire image here</h3>
+        <img src="/images/Hire.jpg"></img>
       </Modal>
       {/* <div
         onClick={openLineup}

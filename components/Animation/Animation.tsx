@@ -79,8 +79,12 @@ const Animation: React.FC<{
     console.log("running stuff");
     // setLocked(true);
     if (!isLoaded && !canvasState) {
-      lottieRef.current.play();
+      // lottieRef.current.play();
+      lottieRef.current.playSegments([0, 120], true);
+
       lottieRef2 && lottieRef2.current.play();
+      // lottieRef2.current.playSegments([0, 312.5], true);
+      console.log(lottieRef2.current.getDuration(true));
       wrapperRef.current.style.opacity = 1;
     } else if (isMobile) {
       // lottieRef2.current.destroy();

@@ -4,6 +4,7 @@ export interface State {
   displayLineup: boolean;
   displayMenu: boolean;
   displayHire: boolean;
+  displayMobileButtons: boolean;
   lineupView: string;
   menuView: string;
 }
@@ -12,6 +13,7 @@ const initialState = {
   displayLineup: false,
   displayMenu: false,
   displayHire: false,
+  displayMobileButtons: true,
   lineupView: "LINEUP_VIEW",
   menuView: "MENU_VIEW",
 };
@@ -46,36 +48,42 @@ function uiReducer(state: State, action: Action) {
       return {
         ...state,
         displayMenu: true,
+        displayMobileButtons: false,
       };
     }
     case "CLOSE_MENU": {
       return {
         ...state,
         displayMenu: false,
+        displayMobileButtons: true,
       };
     }
     case "OPEN_LINEUP": {
       return {
         ...state,
         displayLineup: true,
+        displayMobileButtons: false,
       };
     }
     case "CLOSE_LINEUP": {
       return {
         ...state,
         displayLineup: false,
+        displayMobileButtons: true,
       };
     }
     case "OPEN_HIRE": {
       return {
         ...state,
         displayHire: true,
+        displayMobileButtons: false,
       };
     }
     case "CLOSE_HIRE": {
       return {
         ...state,
         displayHire: false,
+        displayMobileButtons: true,
       };
     }
   }
