@@ -10,6 +10,10 @@ export const Grid = styled.div`
   display: grid;
   grid-template-rows: auto auto auto;
   z-index: 1;
+
+  @media (max-width: ${breakpoints.m}px) {
+    grid-template-rows: 0 auto auto;
+  }
 `
 
 export const Top = styled.div`
@@ -45,6 +49,8 @@ export const Middle = styled.div`
     width: auto;
     height: auto;
     max-width: 50vw;
+
+    //Change to 70
     max-height: 70vh;
 
     @media (max-width: ${breakpoints.m}px) {
@@ -57,8 +63,10 @@ export const ButtonWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-  align-items: center;
-  // cursor: pointer;
+
+  @media (min-width: ${breakpoints.m}px) {
+    align-items: center;
+  }
 `
 
 export const BG = styled.div`

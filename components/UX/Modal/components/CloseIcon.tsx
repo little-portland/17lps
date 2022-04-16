@@ -11,6 +11,7 @@ const CloseIcon = () => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 2048 2048"
         style={{
+          boxSizing: "unset",
           height: "18px",
           width: "18px",
           padding: "6px",

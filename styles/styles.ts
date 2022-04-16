@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle, css } from "styled-components";
+import reset from 'styled-reset'
 
 export const breakpoints = {
   s: 576,
@@ -9,14 +10,37 @@ export const breakpoints = {
 
 export const GlobalStyle = createGlobalStyle`
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+ }
+
+${reset}
+
+:root {
+  --app-height: 100%;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+
+    @media not all and (hover:hover) {
+        height: var(--app-height);
+    }
+}
+
   body {
     color: #5c2c7c;
     background: #e8bac9;
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+    // height: 100vh;
+    // width: 100vw;
+    // overflow-x: hidden;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     font-family: 'Space Mono', monospace, sans-serif;
