@@ -63,6 +63,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  // align-items: center;
 
   @media (min-width: ${breakpoints.m}px) {
     align-items: center;

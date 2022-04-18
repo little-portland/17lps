@@ -22,7 +22,7 @@ import { useLoaded } from "store/context";
 // import { SvgContainer } from "./styles";
 
 //Styles
-import { SvgContainer } from "./styles.js";
+import { SvgContainer } from "./styles.ts";
 
 const Animation: React.FC<{
   isLoaded: boolean;
@@ -38,7 +38,8 @@ const Animation: React.FC<{
   const lottieRef3 = useRef<any>();
   const lottieRefMobile = useRef<any>();
   // const loopRef = useRef<any>();
-  const wrapperRef = useRef<any>();
+  const wrapperRef = useRef<HTMLDivElement>();
+  const opacityMobileRef = useRef<HTMLDivElement>();
 
   //Check Device
   const { isMobile } = useDeviceDetect();
@@ -48,31 +49,9 @@ const Animation: React.FC<{
   const onAnimationCompleteHandler = (): void => {
     setLoaded(true);
 
-    // console.log("intro");
-  };
-
-  const onAnimationStartHandler = (): void => {
-    if (locked) {
-      setLoaded(false);
-      console.log("outro");
-    } else {
-      // console.log("intro");
+    if (isMobile) {
+      opacityMobileRef.current.style.opacity = "0";
     }
-  };
-
-  const hhHandler = (): void => {
-    setLocked(true);
-    lottieRef.current.setSpeed(4);
-    lottieRef.current.setDirection(-1);
-    lottieRef.current.play();
-    // destroy();
-    // setLoaded();
-  };
-
-  const reverseHandler = (): void => {
-    console.log("reverse");
-    setLocked(true);
-    lottieRef.current.play();
   };
 
   useEffect(() => {
@@ -80,16 +59,15 @@ const Animation: React.FC<{
     // setLocked(true);
     if (!isLoaded && !canvasState) {
       // lottieRef.current.play();
+      // lottieRef.current.playSegments([0, 625], true);
       lottieRef.current.playSegments([0, 120], true);
 
-      lottieRef2 && lottieRef2.current.play();
-      // lottieRef2.current.playSegments([0, 312.5], true);
+      // lottieRef2 && lottieRef2.current.play();
+      lottieRef2 && lottieRef2.current.playSegments([0, 625], true);
       console.log(lottieRef2.current.getDuration(true));
-      wrapperRef.current.style.opacity = 1;
-    } else if (isMobile) {
-      // lottieRef2.current.destroy();
-    } else {
-      wrapperRef.current.style.opacity = 0;
+      wrapperRef.current.style.opacity = "1";
+    } else if (!isMobile) {
+      wrapperRef.current.style.opacity = "0";
     }
     // setLoaded(true);
 
@@ -118,14 +96,16 @@ const Animation: React.FC<{
               onComplete={() => console.log("complete")}
               // onEnterFrame={onAnimationStartHandler}
             />
-            <Lottie
-              lottieRef={lottieRef2}
-              animationData={mobileInit}
-              loop={false}
-              autoplay={false}
-              onComplete={() => onAnimationCompleteHandler()}
-              // onEnterFrame={onAnimationStartHandler}
-            />
+            <div ref={opacityMobileRef}>
+              <Lottie
+                lottieRef={lottieRef2}
+                animationData={mobileInit}
+                loop={false}
+                autoplay={false}
+                onComplete={() => onAnimationCompleteHandler()}
+                // onEnterFrame={onAnimationStartHandler}
+              />
+            </div>
 
             {isLoaded && (
               <>

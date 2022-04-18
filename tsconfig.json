@@ -29,6 +29,6 @@
     "components/canvas.jsx",
     "utils/useFetchContent.js",
     "components/Layout/styles.ts"
-, "components/Animation/components/AnimationLayer/styles.ts", "components/Animation/styles.js", "components/Canvas/Canvas.tsx"  ],
+, "components/Animation/components/AnimationLayer/styles.ts", "components/Animation/styles.ts", "components/Canvas/Canvas.tsx"  ],
   "exclude": ["node_modules"]
 }

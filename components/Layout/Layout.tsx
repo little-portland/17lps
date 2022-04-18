@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 //Components
 import Canvas from "@components/Canvas";
@@ -39,8 +40,14 @@ const Layout: React.FC<IProps> = ({ main }) => {
     <>
       {canvasState && <Canvas removeSelf={setCanvasState} />}
 
-      {isMobile && !canvasState && displayMobileButtons ? (
-        <MobileButtons />
+      {isMobile && isLoaded && displayMobileButtons ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
+        >
+          <MobileButtons />
+        </motion.div>
       ) : null}
 
       <MainStyle>{main}</MainStyle>
