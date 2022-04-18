@@ -19,7 +19,6 @@ import eatDance from "public/Web_assets/still.json";
 import useDeviceDetect from "@utils/useDeviceDetect";
 import { useUI } from "@components/UX/context";
 import { useLoaded } from "store/context";
-// import { SvgContainer } from "./styles";
 
 //Styles
 import { SvgContainer } from "./styles";

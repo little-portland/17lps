@@ -32,7 +32,24 @@ const Modal: FC<SidebarProps> = ({ children, open, close, button }) => {
                   <Top onClick={close}>
                     <Closer />
                   </Top>
-                  {children}
+                  <div style={{ position: "relative" }}>
+                    {children}
+                    {/* <div
+                      style={{
+                        position: "absolute",
+                        bottom: "0",
+                        left: 0,
+                        width: "100%",
+                        padding: "32px",
+                        backgroundColor: "red",
+                        opacity: 0.8,
+                        display: "flex",
+                        justifyContent: "info",
+                      }}
+                    >
+                      Hello
+                    </div> */}
+                  </div>
                   {/* <Closer close={close} /> */}
                 </div>
               </Middle>

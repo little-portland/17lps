@@ -57,6 +57,10 @@ export const Middle = styled.div`
       max-width: 80vw;
     }
   }
+
+  object {
+    height: 400px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
