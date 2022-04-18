@@ -22,7 +22,7 @@ import { useLoaded } from "store/context";
 // import { SvgContainer } from "./styles";
 
 //Styles
-import { SvgContainer } from "./styles.ts";
+import { SvgContainer } from "./styles";
 
 const Animation: React.FC<{
   isLoaded: boolean;
