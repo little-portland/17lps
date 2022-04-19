@@ -11,6 +11,11 @@ import { useUI } from "@components/UX/context";
 import { useLoaded } from "../../store/context";
 import useDeviceDetect from "@utils/useDeviceDetect";
 
+//image local
+import dancePic from "../../public/images/Dance.jpg";
+import eatPic from "../../public/images/Eat.jpg";
+import hirePic from "../../public/images/Hire.jpg";
+
 //styles
 import { MainStyle } from "./styles";
 
@@ -52,32 +57,34 @@ const Layout: React.FC<IProps> = ({ main }) => {
 
       <MainStyle>{main}</MainStyle>
       <Modal open={displayLineup} close={closeLineup}>
-        {/* <Image
-          src="/images/Dance.jpg"
-          alt="pic"
-          width="auto"
-          height="auto"
-          // layout="fill"
-        /> */}
-        <img src="/images/Dance.jpg"></img>
-        {/* //Try PDF */}
-        {/* <object
-          data="/images/Dance.pdf"
-          type="application/pdf"
-          width="100%"
-          height="100%"
-        >
-          <p>
-            Alternative text - include a link{" "}
-            <a href="/images/Dance.pdf">to the PDF!</a>
-          </p>
-        </object> */}
+        <Image
+          src={dancePic}
+          alt="Picture of the author"
+          // width={500} automatically provided
+          // height={500} automatically provided
+          // blurDataURL="data:..." automatically provided
+          // placeholder="blur" // Optional blur-up while loading
+        />
       </Modal>
       <Modal open={displayMenu} close={closeMenu} button="eat">
-        <img src="/images/Eat.jpg"></img>
+        <Image
+          src={eatPic}
+          alt="Picture of the author"
+          // width={500} automatically provided
+          // height={500} automatically provided
+          // blurDataURL="data:..." automatically provided
+          // placeholder="blur" // Optional blur-up while loading
+        />
       </Modal>
       <Modal open={displayHire} close={closeHire} button="hire">
-        <img src="/images/Hire.jpg"></img>
+        <Image
+          src={hirePic}
+          alt="Picture of the author"
+          // width={500} automatically provided
+          // height={500} automatically provided
+          // blurDataURL="data:..." automatically provided
+          // placeholder="blur" // Optional blur-up while loading
+        />
       </Modal>
       {/* <div
         onClick={openLineup}

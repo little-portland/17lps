@@ -22,16 +22,22 @@ const MobileButtons = () => {
 
   return (
     <MobileButtonWrapper>
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "space-between",
+        }}
+      >
         <a onClick={openMenu}>
           <Button btnType="solid">Eat</Button>
         </a>
         <a onClick={openLineup}>
-          <Button btnType="hollow">Dance</Button>
+          <Button btnType="solid">Dance</Button>
         </a>
       </div>
       <a onClick={openHire}>
-        <Button btnType="solid">Hire</Button>
+        <Button btnType="hollow">Hire</Button>
       </a>
     </MobileButtonWrapper>
   );

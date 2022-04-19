@@ -1,12 +1,20 @@
 {
   "compilerOptions": {
     "paths": {
-      "@components/*": ["components/*"],
-      "@utils/*": ["utils/*"]
+      "@components/*": [
+        "components/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ]
     },
     "target": "es2018",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": false,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
     // "strictPropertyInitialization": true,
@@ -20,7 +28,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
@@ -28,7 +37,12 @@
     "**/*.tsx",
     "components/canvas.jsx",
     "utils/useFetchContent.js",
-    "components/Layout/styles.ts"
-, "components/Animation/components/AnimationLayer/styles.ts", "components/Animation/styles.ts", "components/Canvas/Canvas.tsx"  ],
-  "exclude": ["node_modules"]
+    "components/Layout/styles.ts",
+    "components/Animation/components/AnimationLayer/styles.ts",
+    "components/Animation/styles.ts",
+    "components/Canvas/Canvas.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

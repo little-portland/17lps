@@ -1,11 +1,17 @@
-module.exports = {
-    webpack(config) {
-        config.module.rules.push({
-            test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000',
-            // test: /\.svg$/,
-            // use: ["@svgr/webpack"]
-        });
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 
-        return config;
+module.exports = (phase, { defaultConfig }) => {
+    if (phase === PHASE_DEVELOPMENT_SERVER) {
+        return {
+            /* development only config options here */
+        }
     }
-};
+
+    return {
+        /* config options for all phases except development here */
+        experimental: {
+            concurrentFeatures: true,
+            serverComponents: true,
+        },
+    }
+}
