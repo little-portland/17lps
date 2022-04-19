@@ -4354,7 +4354,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
           padding: "16px",
           scale: "200%",
           opacity: 1,
-          transform: "translateX(-20px)",
+          transform: "translateX(-20px) translateY(-15px)",
         }}
       >
         <g>
@@ -4417,7 +4417,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
           scale: "200%",
           opacity: 0,
           //visual fix:
-          transform: "translateX(-20px)",
+          transform: "translateX(-20px) translateY(-15px)",
           // border: "2px solid red",
         }}
         onClick={openLineup}

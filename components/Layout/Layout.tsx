@@ -51,7 +51,7 @@ const Layout: React.FC<IProps> = ({ main }) => {
       ) : null}
 
       <MainStyle>{main}</MainStyle>
-      <Modal open={displayLineup} close={closeLineup} button="dance">
+      <Modal open={displayLineup} close={closeLineup}>
         {/* <Image
           src="/images/Dance.jpg"
           alt="pic"
@@ -59,9 +59,9 @@ const Layout: React.FC<IProps> = ({ main }) => {
           height="auto"
           // layout="fill"
         /> */}
-        {/* <img src="/images/Dance.jpg"></img> */}
+        <img src="/images/Dance.jpg"></img>
         {/* //Try PDF */}
-        <object
+        {/* <object
           data="/images/Dance.pdf"
           type="application/pdf"
           width="100%"
@@ -71,7 +71,7 @@ const Layout: React.FC<IProps> = ({ main }) => {
             Alternative text - include a link{" "}
             <a href="/images/Dance.pdf">to the PDF!</a>
           </p>
-        </object>
+        </object> */}
       </Modal>
       <Modal open={displayMenu} close={closeMenu} button="eat">
         <img src="/images/Eat.jpg"></img>

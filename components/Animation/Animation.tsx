@@ -43,10 +43,14 @@ const Animation: React.FC<{
   //Check Device
   const { isMobile } = useDeviceDetect();
 
-  const [locked, setLocked] = useState(false);
+  const [showMobileLoop, setShowMobileLoop] = useState(false);
 
   const onAnimationCompleteHandler = (): void => {
     setLoaded(true);
+  };
+
+  const onMobileAnimationCompleteHandler = (): void => {
+    setShowMobileLoop(true);
 
     if (isMobile) {
       opacityMobileRef.current.style.opacity = "0";
@@ -92,7 +96,8 @@ const Animation: React.FC<{
               animationData={mobileMain}
               loop={false}
               autoplay={false}
-              onComplete={() => console.log("complete")}
+              onComplete={() => onAnimationCompleteHandler()}
+              // onComplete={() => console.log("complete")}
               // onEnterFrame={onAnimationStartHandler}
             />
             <div ref={opacityMobileRef}>
@@ -101,13 +106,17 @@ const Animation: React.FC<{
                 animationData={mobileInit}
                 loop={false}
                 autoplay={false}
-                onComplete={() => onAnimationCompleteHandler()}
+                onComplete={() => onMobileAnimationCompleteHandler()}
                 // onEnterFrame={onAnimationStartHandler}
               />
             </div>
 
-            {isLoaded && (
-              <>
+            {showMobileLoop && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+              >
                 <Lottie
                   lottieRef={lottieRef3}
                   animationData={mobileLoop}
@@ -117,7 +126,7 @@ const Animation: React.FC<{
                   // onEnterFrame={onAnimationStartHandler}
                 />
                 {/* <img src={eatDance}></img> */}
-              </>
+              </motion.div>
             )}
           </>
         )}

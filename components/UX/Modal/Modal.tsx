@@ -9,7 +9,7 @@ interface SidebarProps {
   children: any;
   open: boolean;
   close: () => void;
-  button: string;
+  button?: string;
 }
 
 const Modal: FC<SidebarProps> = ({ children, open, close, button }) => {
@@ -55,9 +55,11 @@ const Modal: FC<SidebarProps> = ({ children, open, close, button }) => {
               </Middle>
               {/* </Middle> */}
               <ButtonWrapper>
-                <a href="mailto:email@example.com">
-                  <Button btnType="solid">{button}</Button>
-                </a>
+                {button && (
+                  <a href="mailto:email@example.com">
+                    <Button btnType="solid">{button}</Button>
+                  </a>
+                )}
               </ButtonWrapper>
             </Grid>
           </motion.div>
