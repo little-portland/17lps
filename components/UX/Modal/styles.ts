@@ -66,11 +66,23 @@ export const Middle = styled.div`
 export const ButtonWrapper = styled.div`
   display: flex;
   width: 100%;
+  max-width: 100vw;
   justify-content: center;
   // align-items: center;
+  
 
   @media (min-width: ${breakpoints.m}px) {
     align-items: center;
+  }
+
+  * {
+    // margin: 0 20px;
+    width: 350px;
+
+    @media (max-width: ${breakpoints.m}px) {
+      width: 100px;
+      min-width: 100px;
+    }
   }
 `
 

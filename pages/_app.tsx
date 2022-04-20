@@ -40,13 +40,14 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
           <title>{global.title}</title>
         </Head>
         <GlobalStyle />
-        <Layout
+        {/* <Layout
           main={
             <AnimatePresence exitBeforeEnter>
               <Component {...pageProps} key={router.route} />
             </AnimatePresence>
           }
-        />
+        /> */}
+        <Component {...pageProps} key={router.route} />
       </ManagedUIContext>
     </ContextProvider>
   );

@@ -11,7 +11,6 @@ import MobileButtons from "@components/UX/MobileButtons";
 import { useUI } from "@components/UX/context";
 import { useLoaded } from "../../store/context";
 import useDeviceDetect from "@utils/useDeviceDetect";
-import useFetchContent from "@utils/useFetchContent";
 
 //image local
 import dancePic from "../../public/images/Dance.jpg";
@@ -20,16 +19,26 @@ import hirePic from "../../public/images/Hire.jpg";
 
 //styles
 import { MainStyle } from "./styles";
+import { compileString } from "sass";
+
+interface eatDataType {
+  image: {
+    url: string;
+    width: number;
+    height: number;
+    description: string;
+  };
+  eMail: string;
+  phoneNumber: string;
+}
 
 interface IProps {
   main: React.ReactNode;
+  eatItem: eatDataType;
+  hireItem: eatDataType;
 }
 
-interface imageDataType {
-  url: string;
-}
-
-const Layout: React.FC<IProps> = ({ main }) => {
+const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
   //UI Handlers
   const {
     displayLineup,
@@ -47,34 +56,11 @@ const Layout: React.FC<IProps> = ({ main }) => {
   //Check Device
   const { isMobile } = useDeviceDetect();
 
-  const [data, setData] = useState<imageDataType>();
+  // const [data, setData] = useState<imageDataType>();
 
-  useEffect(() => {
-    async function fetchData() {
-      const globalData = await useFetchContent(`
-    {
-      eatImageCollection {
-        items {
-          title
-          image {
-            title
-            description
-            contentType
-            fileName
-            size
-            url
-            width
-            height
-          }
-        }
-      }
-    }
-  `);
+  useEffect(() => {}, []);
 
-      setData(globalData.eatImageCollection.items[0].image);
-    }
-    fetchData();
-  }, []);
+  const testNr = "+44 20 3848 7430";
 
   return (
     <>
@@ -101,23 +87,34 @@ const Layout: React.FC<IProps> = ({ main }) => {
           // placeholder="blur" // Optional blur-up while loading
         />
       </Modal>
-      <Modal open={displayMenu} close={closeMenu} button="eat">
+      <Modal
+        open={displayMenu}
+        close={closeMenu}
+        email={eatItem.eMail}
+        phone={eatItem.phoneNumber}
+        // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
+      >
         <Image
-          src={data ? data.url : eatPic}
-          alt="Picture of the author"
-          width={500} //automatically provided
-          height={500} //automatically provided
-          // blurDataURL="data:..." automatically provided
+          src={eatItem ? eatItem.image.url : eatPic}
+          alt={eatItem.image.description}
+          width={eatItem ? eatItem.image.width : 500} //automatically provided
+          height={eatItem ? eatItem.image.height : 500} //automatically provided
+          blurDataURL={"images/Eat.jpg"} //automatically provided
           // placeholder="blur" // Optional blur-up while loading
         />
       </Modal>
-      <Modal open={displayHire} close={closeHire} button="hire">
+      <Modal
+        open={displayHire}
+        close={closeHire}
+        email={hireItem.eMail}
+        phone={hireItem.phoneNumber}
+      >
         <Image
-          src={hirePic}
-          alt="Picture of the author"
-          // width={500} automatically provided
-          // height={500} automatically provided
-          // blurDataURL="data:..." automatically provided
+          src={hireItem ? hireItem.image.url : eatPic}
+          alt={hireItem.image.description}
+          width={hireItem ? hireItem.image.width : 500} //automatically provided
+          height={hireItem ? hireItem.image.height : 500} //automatically provided
+          blurDataURL={"images/Eat.jpg"} //automatically provided
           // placeholder="blur" // Optional blur-up while loading
         />
       </Modal>
