@@ -164,14 +164,16 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
     /**
      * Mousemovement
      */
-    document.addEventListener("mousemove", onPointerMove);
-    document.addEventListener("touch", onPointerMove);
 
-    function onPointerMove(event: PointerEvent) {
+    //tsignore
+    document.addEventListener("mousemove", (e) => onPointerMove(e, 3));
+    document.addEventListener("touch", (e) => onPointerMove(e, 1));
+
+    function onPointerMove(event: PointerEvent, sensitivity: number) {
       if (event.isPrimary === false) return;
 
-      mouseX = (event.clientX - sizes.width / 2) * 3;
-      mouseY = (event.clientY - sizes.height / 2) * 3;
+      mouseX = (event.movementX - sizes.width / 2) * sensitivity;
+      mouseY = (event.movementY - sizes.height / 2) * sensitivity;
     }
 
     /**

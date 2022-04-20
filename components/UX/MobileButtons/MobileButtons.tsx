@@ -36,9 +36,17 @@ const MobileButtons = () => {
           <Button btnType="solid">Dance</Button>
         </a>
       </div>
-      <a onClick={openHire}>
-        <Button btnType="hollow">Hire</Button>
-      </a>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "flex-end",
+        }}
+      >
+        <a onClick={openHire}>
+          <Button btnType="hollow">Hire</Button>
+        </a>
+      </div>
     </MobileButtonWrapper>
   );
 };

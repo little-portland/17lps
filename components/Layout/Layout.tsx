@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -10,6 +11,7 @@ import MobileButtons from "@components/UX/MobileButtons";
 import { useUI } from "@components/UX/context";
 import { useLoaded } from "../../store/context";
 import useDeviceDetect from "@utils/useDeviceDetect";
+import useFetchContent from "@utils/useFetchContent";
 
 //image local
 import dancePic from "../../public/images/Dance.jpg";
@@ -21,6 +23,10 @@ import { MainStyle } from "./styles";
 
 interface IProps {
   main: React.ReactNode;
+}
+
+interface imageDataType {
+  url: string;
 }
 
 const Layout: React.FC<IProps> = ({ main }) => {
@@ -40,6 +46,35 @@ const Layout: React.FC<IProps> = ({ main }) => {
   const { canvasState, setCanvasState, isLoaded } = useLoaded();
   //Check Device
   const { isMobile } = useDeviceDetect();
+
+  const [data, setData] = useState<imageDataType>();
+
+  useEffect(() => {
+    async function fetchData() {
+      const globalData = await useFetchContent(`
+    {
+      eatImageCollection {
+        items {
+          title
+          image {
+            title
+            description
+            contentType
+            fileName
+            size
+            url
+            width
+            height
+          }
+        }
+      }
+    }
+  `);
+
+      setData(globalData.eatImageCollection.items[0].image);
+    }
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -68,10 +103,10 @@ const Layout: React.FC<IProps> = ({ main }) => {
       </Modal>
       <Modal open={displayMenu} close={closeMenu} button="eat">
         <Image
-          src={eatPic}
+          src={data ? data.url : eatPic}
           alt="Picture of the author"
-          // width={500} automatically provided
-          // height={500} automatically provided
+          width={500} //automatically provided
+          height={500} //automatically provided
           // blurDataURL="data:..." automatically provided
           // placeholder="blur" // Optional blur-up while loading
         />

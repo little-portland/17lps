@@ -22,7 +22,11 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
     <ContextProvider>
       <ManagedUIContext>
         <Head>
-          <link rel="shortcut icon" href={global.favicon.url} />
+          <link
+            rel="shortcut icon"
+            type="image/png"
+            href={global.favicon.url}
+          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
@@ -51,7 +55,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
 MyApp.getInitialProps = async (appContext) => {
   // Calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
-  // Fetch global site settings from Strapi
+  // Fetch global site settings from Contentful
   const globalData = await useFetchContent(`
   {
     globalCollection {

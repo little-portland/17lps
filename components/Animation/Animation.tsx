@@ -112,21 +112,14 @@ const Animation: React.FC<{
             </div>
 
             {showMobileLoop && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                <Lottie
-                  lottieRef={lottieRef3}
-                  animationData={mobileLoop}
-                  loop={true}
-                  autoplay={true}
-                  // onComplete={() => onAnimationCompleteHandler()}
-                  // onEnterFrame={onAnimationStartHandler}
-                />
-                {/* <img src={eatDance}></img> */}
-              </motion.div>
+              <Lottie
+                lottieRef={lottieRef3}
+                animationData={mobileLoop}
+                loop={true}
+                autoplay={true}
+                // onComplete={() => onAnimationCompleteHandler()}
+                // onEnterFrame={onAnimationStartHandler}
+              />
             )}
           </>
         )}
