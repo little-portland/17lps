@@ -172,8 +172,8 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
     function onPointerMove(event: PointerEvent) {
       if (event.isPrimary === false) return;
 
-      mouseX = (event.movementX - sizes.width / 2) * 3;
-      mouseY = (event.movementY - sizes.height / 2) * 3;
+      mouseX = (event.movementX - sizes.width / 2) * 2.8;
+      mouseY = (event.movementY - sizes.height / 2) * 2.8;
     }
 
     /**
