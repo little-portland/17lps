@@ -32,44 +32,40 @@ const Modal: FC<SidebarProps> = ({ children, open, close, email, phone }) => {
     <>
       {open && (
         <>
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
             exit={{ opacity: 0, transition: { delay: 0.5 } }}
 
             //onClick={() => setMenuState(!menuState)}
-          >
-            <Grid>
-              {/* <Middle> */}
-              <div />
-              <Middle>
-                <div style={{ position: "relative" }}>
-                  <Top onClick={close}>
-                    <Closer />
-                  </Top>
-                  <div style={{ maxWidth: "80vw" }}>{children}</div>
-                </div>
-              </Middle>
-              {/* </Middle> */}
-              <ButtonWrapper>
-                {email && (
-                  <a href={`mailto:${email}`}>
-                    <Button btnType="solid">
-                      {isMobile ? "email" : email}
-                    </Button>
-                  </a>
-                )}
-                {phone && (
-                  <a href={`tel:+${phone.replace(/\s/g, "")}`}>
-                    <Button btnType="hollow">
-                      {isMobile ? "call" : phone}
-                    </Button>
-                  </a>
-                )}
-              </ButtonWrapper>
-            </Grid>
-          </motion.div>
+          > */}
+          <Grid>
+            {/* <Middle> */}
+            <div />
+            <Middle>
+              <div style={{ position: "relative" }}>
+                <Top onClick={close}>
+                  <Closer />
+                </Top>
+                <div style={{ maxWidth: "80vw" }}>{children}</div>
+              </div>
+            </Middle>
+            {/* </Middle> */}
+            <ButtonWrapper>
+              {email && (
+                <a href={`mailto:${email}`}>
+                  <Button btnType="solid">{isMobile ? "email" : email}</Button>
+                </a>
+              )}
+              {phone && (
+                <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+                  <Button btnType="hollow">{isMobile ? "call" : phone}</Button>
+                </a>
+              )}
+            </ButtonWrapper>
+          </Grid>
+          {/* </motion.div> */}
           <BG onClick={close}></BG>
         </>
       )}

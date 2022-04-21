@@ -78,5 +78,6 @@ export async function getStaticProps() {
       eatItem,
       hireItem,
     }, // will be passed to the page component as props
+    revalidate: 30, // In seconds
   };
 }

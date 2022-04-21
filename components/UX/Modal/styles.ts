@@ -75,13 +75,14 @@ export const ButtonWrapper = styled.div`
     align-items: center;
   }
 
-  * {
+  button {
     // margin: 0 20px;
     width: 350px;
+    margin: 0 16px;
 
     @media (max-width: ${breakpoints.m}px) {
       width: 100px;
-      min-width: 100px;
+      // min-width: 100px;
     }
   }
 `
