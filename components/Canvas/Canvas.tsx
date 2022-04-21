@@ -2,6 +2,7 @@ import { useRef, useState, useEffect, MouseEvent } from "react";
 import useDoubleClick from "use-double-click";
 import useDeviceDetect from "@utils/useDeviceDetect";
 import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 //Hooks
 // import useMousePosition from "../utils/useMousePosition";
@@ -165,7 +166,6 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
      * Mousemovement
      */
     document.addEventListener("mousemove", onPointerMove);
-    document.addEventListener("touch", onPointerMove);
 
     function onPointerMove(event: PointerEvent) {
       if (event.isPrimary === false) return;
@@ -184,7 +184,9 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
     /**
      * Controls
      */
-    // const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
 
     /**
      * Animate
@@ -197,6 +199,9 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
       //Rotate
       // particles.rotation.x = elapsedTime / 128;
       // controls.update();
+      if (isMobile) {
+        controls.update();
+      }
 
       // Render
       render();

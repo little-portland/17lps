@@ -17,7 +17,7 @@
     "sass": "^1.34.1",
     "styled-components": "^5.3.3",
     "styled-reset": "^4.3.4",
-    "three": "^0.137.5",
+    "three": "^0.139.2",
     "use-double-click": "^1.0.5",
     "use-mouse-leave": "^1.0.0"
   },
