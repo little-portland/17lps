@@ -75,6 +75,11 @@ export const ButtonWrapper = styled.div`
     align-items: center;
   }
 
+  a {
+    height: fit-content;
+    display: block;
+  }
+
   button {
     // margin: 0 20px;
     width: 350px;

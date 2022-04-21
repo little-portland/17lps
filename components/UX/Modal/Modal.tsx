@@ -53,16 +53,22 @@ const Modal: FC<SidebarProps> = ({ children, open, close, email, phone }) => {
             </Middle>
             {/* </Middle> */}
             <ButtonWrapper>
-              {email && (
-                <a href={`mailto:${email}`}>
-                  <Button btnType="solid">{isMobile ? "email" : email}</Button>
-                </a>
-              )}
-              {phone && (
-                <a href={`tel:+${phone.replace(/\s/g, "")}`}>
-                  <Button btnType="hollow">{isMobile ? "call" : phone}</Button>
-                </a>
-              )}
+              <ButtonWrapper>
+                {email && (
+                  <a href={`mailto:${email}`}>
+                    <Button btnType="solid">
+                      {isMobile ? "email" : email}
+                    </Button>
+                  </a>
+                )}
+                {phone && (
+                  <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+                    <Button btnType="hollow">
+                      {isMobile ? "call" : phone}
+                    </Button>
+                  </a>
+                )}
+              </ButtonWrapper>
             </ButtonWrapper>
           </Grid>
           {/* </motion.div> */}
