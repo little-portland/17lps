@@ -13,6 +13,6 @@ export const SvgContainer = styled.div`
 
         @media (max-width: ${breakpoints.m}px) {
             height: 100%;
-          }
+        }
     }
 `;

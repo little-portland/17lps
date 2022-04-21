@@ -36,33 +36,6 @@ html {
     font-weight: 700;
   }
 
-  .svgcontainer {
-    width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-    max-width: 100vw;
-    display: flex;
-  }
-
-  // .svgclick {
-  //   opacity: 0;
-  //   transition: all 0.5s linear;
-  // }
-
-  // .svgclick.ghost {
-  //   opacity: 0;
-  // }
-
-  .svgContainer {
-  height: 100vh;
-  width: 100vw;
-  background: transparent;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .overlay {
   position: absolute;
   z-Index: 99;

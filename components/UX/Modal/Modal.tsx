@@ -54,7 +54,7 @@ const Modal: FC<SidebarProps> = ({ children, open, close, email, phone }) => {
               {/* </Middle> */}
               <ButtonWrapper>
                 {email && (
-                  <a href={email}>
+                  <a href={`mailto:${email}`}>
                     <Button btnType="solid">
                       {isMobile ? "email" : email}
                     </Button>
