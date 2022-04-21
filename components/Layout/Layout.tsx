@@ -80,7 +80,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
       <Modal open={displayLineup} close={closeLineup}>
         <Image
           src={dancePic}
-          alt="Picture of the author"
+          alt="Dance"
           // width={500} automatically provided
           // height={500} automatically provided
           // blurDataURL="data:..." automatically provided
@@ -97,10 +97,10 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <Image
           src={eatItem ? eatItem.image.url : eatPic}
           alt={eatItem.image.description}
-          width={eatItem ? eatItem.image.width : 500} //automatically provided
-          height={eatItem ? eatItem.image.height : 500} //automatically provided
-          blurDataURL={"images/Eat.jpg"} //automatically provided
-          // placeholder="blur" // Optional blur-up while loading
+          width={eatItem ? eatItem.image.width : 300} //automatically provided
+          height={eatItem ? eatItem.image.height : 800} //automatically provided
+          blurDataURL={"/images/Eat.jpeg"} //automatically provided
+          placeholder="blur" // Optional blur-up while loading
         />
       </Modal>
       <Modal
@@ -112,10 +112,10 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <Image
           src={hireItem ? hireItem.image.url : eatPic}
           alt={hireItem.image.description}
-          width={hireItem ? hireItem.image.width : 500} //automatically provided
-          height={hireItem ? hireItem.image.height : 500} //automatically provided
-          blurDataURL={"images/Eat.jpg"} //automatically provided
-          // placeholder="blur" // Optional blur-up while loading
+          width={hireItem ? hireItem.image.width : 300} //automatically provided
+          height={hireItem ? hireItem.image.height : 800} //automatically provided
+          blurDataURL={"/images/Hire.jpeg"} //automatically provided
+          placeholder="blur" // Optional blur-up while loading
         />
       </Modal>
       {/* <div
