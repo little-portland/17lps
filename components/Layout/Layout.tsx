@@ -13,9 +13,9 @@ import { useLoaded } from "../../store/context";
 import useDeviceDetect from "@utils/useDeviceDetect";
 
 //image local
-import dancePic from "../../public/images/Dance.jpg";
-import eatPic from "../../public/images/Eat.jpg";
-import hirePic from "../../public/images/Hire.jpg";
+import dancePic from "../../public/images/Dance.jpeg";
+import eatPic from "../../public/images/Eat.jpeg";
+import hirePic from "../../public/images/Hire.jpeg";
 
 //styles
 import { MainStyle } from "./styles";
