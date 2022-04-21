@@ -18,29 +18,18 @@ export const GlobalStyle = createGlobalStyle`
 
 ${reset}
 
-:root {
-  --app-height: 100%;
-}
-
-html,
-body {
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-
-    @media not all and (hover:hover) {
-        height: var(--app-height);
-    }
+html {
+  overflow: hidden;
+  height: -webkit-fill-available;
 }
 
   body {
     color: #5c2c7c;
+    width: 100vw;
     background: #e8bac9;
-    // height: 100vh;
-    // width: 100vw;
-    // overflow-x: hidden;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    overflow: hidden;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     font-family: 'Space Mono', monospace, sans-serif;
