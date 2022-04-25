@@ -61,13 +61,14 @@ const Modal: FC<SidebarProps> = ({ children, open, close, email, phone }) => {
                     </Button>
                   </a>
                 )}
-                {phone && (
-                  <a href={`tel:+${phone.replace(/\s/g, "")}`}>
-                    <Button btnType="hollow">
-                      {isMobile ? "call" : phone}
-                    </Button>
-                  </a>
-                )}
+                {phone &&
+                  (isMobile ? (
+                    <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+                      <Button btnType="hollow">call</Button>
+                    </a>
+                  ) : (
+                    <Button btnType="hollow">{phone}</Button>
+                  ))}
               </ButtonWrapper>
             </ButtonWrapper>
           </Grid>

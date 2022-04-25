@@ -54,6 +54,10 @@ const ButtonStyles = (btnType: BtnType) => css`
   cursor: pointer;
   text: center;
   min-width: 128px;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 
   @media (min-width: ${breakpoints.m}px) {
     overflow: hidden;
