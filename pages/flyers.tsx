@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 
 import twentyn9ne from "../public/images/April_29th.jpg";
 import thirty from "../public/images/April_30th.jpg";
@@ -12,7 +13,14 @@ const flyerTests = [
 ];
 
 const flyers = () => {
-  return <FlyerGrid flyers={flyerTests}></FlyerGrid>;
+  return (
+    <>
+      <Head>
+        <title>Flyers</title>
+      </Head>
+      <FlyerGrid flyers={flyerTests} />
+    </>
+  );
 };
 
 export default flyers;
