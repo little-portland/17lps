@@ -5,8 +5,6 @@ import Animation from "@components/Animation";
 import Layout from "@components/Layout";
 import { AnimatePresence } from "framer-motion";
 
-import { motion } from "framer-motion";
-
 //hooks
 import useFetchContent from "@utils/useFetchContent";
 

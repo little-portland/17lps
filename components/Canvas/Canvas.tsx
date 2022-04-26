@@ -60,7 +60,7 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
   `;
 
   let removeAll = () => {
-    console.log("hi");
+    // console.log("hi");
   };
 
   useEffect(() => {

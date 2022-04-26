@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 
 //Libs
 import Lottie from "lottie-react";
@@ -58,7 +57,6 @@ const Animation: React.FC<{
   };
 
   useEffect(() => {
-    console.log("running stuff");
     // setLocked(true);
     if (!isLoaded && !canvasState) {
       // lottieRef.current.play();

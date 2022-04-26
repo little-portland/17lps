@@ -32,16 +32,7 @@ const Modal: FC<SidebarProps> = ({ children, open, close, email, phone }) => {
     <>
       {open && (
         <>
-          {/* <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            exit={{ opacity: 0, transition: { delay: 0.5 } }}
-
-            //onClick={() => setMenuState(!menuState)}
-          > */}
           <Grid>
-            {/* <Middle> */}
             <div />
             <Middle>
               <div style={{ position: "relative" }}>
@@ -51,7 +42,6 @@ const Modal: FC<SidebarProps> = ({ children, open, close, email, phone }) => {
                 <div style={{ maxWidth: "80vw" }}>{children}</div>
               </div>
             </Middle>
-            {/* </Middle> */}
             <ButtonWrapper>
               <ButtonWrapper>
                 {email && (
@@ -72,7 +62,6 @@ const Modal: FC<SidebarProps> = ({ children, open, close, email, phone }) => {
               </ButtonWrapper>
             </ButtonWrapper>
           </Grid>
-          {/* </motion.div> */}
           <BG onClick={close}></BG>
         </>
       )}

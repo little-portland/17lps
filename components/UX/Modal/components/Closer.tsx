@@ -7,7 +7,7 @@ interface SidebarProps {
 }
 
 const Closer: React.FC<SidebarProps> = ({ close }) => {
-  console.log(close);
+  // console.log(close);
   return (
     <CloserStyle onClick={close}>
       <Image

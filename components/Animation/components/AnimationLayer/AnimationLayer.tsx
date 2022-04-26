@@ -8,7 +8,6 @@ import useDeviceDetect from "@utils/useDeviceDetect";
 //final svg
 import FinalSvg from "../../finalSvg";
 import { useUI } from "@components/UX/context";
-import Modal from "@components/UX/Modal";
 
 //Styles
 import { OverlayHover } from "./styles";
@@ -75,8 +74,6 @@ const AnimationLayer = () => {
   const { isMobile } = useDeviceDetect();
 
   useEffect(() => {
-    console.log(isMobile);
-
     const overlayAll: HTMLElement[] = Array.from(
       overlayRef.current.querySelectorAll("svg g")
     );
@@ -157,7 +154,7 @@ const AnimationLayer = () => {
   }, []);
 
   const testHandler = () => {
-    console.log(displayLineup);
+    // console.log(displayLineup);
     openLineup();
   };
 
@@ -323,7 +320,7 @@ const AnimationLayer = () => {
             ref={overlayRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
           >
             <FinalSvg
               openLineup={testHandler}
