@@ -71,7 +71,7 @@ const FlyerGrid: React.FC<FlyerGridProps> = ({ flyers }) => {
                     className={"image"}
                     //width={400} //automatically provided
                     //height={800} //automatically provided
-                    blurDataURL={"/images/Eat.jpeg"} //automatically provided
+                    blurDataURL={"/images/April_30th.jpg"} //automatically provided
                     placeholder="blur" // Optional blur-up while loading
                   />
                 </div>
