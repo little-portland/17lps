@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { breakpoints } from "styles/styles";
 
 export const FlyerGridContainer = styled.div`
-    position: fixed;
+    position: absolute;
+    overflow-y: scroll;
     top: 0;
     left: 0;
     width: 100%;
