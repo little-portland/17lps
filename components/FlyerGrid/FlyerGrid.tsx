@@ -67,7 +67,7 @@ const FlyerGrid: React.FC<FlyerGridProps> = ({ flyers }) => {
                   </Text>
                   <Image
                     src={flyer.url}
-                    alt={"description"}
+                    alt={flyer.date}
                     className={"image"}
                     //width={400} //automatically provided
                     //height={800} //automatically provided
