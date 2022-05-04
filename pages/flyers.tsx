@@ -1,6 +1,9 @@
 import React from "react";
 import Head from "next/head";
 
+//hooks
+import useFetchContent from "@utils/useFetchContent";
+
 import twentyn9ne from "../public/images/April_29th.jpg";
 import thirty from "../public/images/April_30th.jpg";
 
@@ -12,15 +15,43 @@ const flyerTests = [
   { url: thirty, date: "30.04.22", day: "Saturday" },
 ];
 
-const flyers = () => {
+const Flyers = ({ newestFlyers }) => {
   return (
     <>
       <Head>
         <title>Flyers</title>
       </Head>
-      <FlyerGrid flyers={flyerTests} />
+      <FlyerGrid flyers={newestFlyers} />
     </>
   );
 };
 
-export default flyers;
+export default Flyers;
+
+export async function getStaticProps() {
+  const flyerData = await useFetchContent(`
+    {
+      flyerCollection {
+        items {
+          date
+          image {
+            title
+            description
+            url
+            width
+            height
+          }
+        }
+      }
+    }
+  `);
+
+  const newestFlyers = flyerData.flyerCollection.items.slice(-2);
+
+  return {
+    props: {
+      newestFlyers,
+    }, // will be passed to the page component as props
+    revalidate: 30, // In seconds
+  };
+}

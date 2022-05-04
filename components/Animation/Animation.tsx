@@ -65,7 +65,7 @@ const Animation: React.FC<{
 
       // lottieRef2 && lottieRef2.current.play();
       lottieRef2 && lottieRef2.current.playSegments([0, 625], true);
-      console.log(lottieRef2.current.getDuration(true));
+      // console.log(lottieRef2.current.getDuration(true));
       wrapperRef.current.style.opacity = "1";
     } else if (!isMobile) {
       wrapperRef.current.style.opacity = "0";

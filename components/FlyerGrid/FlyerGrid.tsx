@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { format, compareAsc } from "date-fns";
 
 //components
 import Modal from "@components/UX/Modal";
@@ -8,10 +9,21 @@ import Modal from "@components/UX/Modal";
 //styles
 import { FlyerGridContainer, Text } from "./styles";
 
+//Lib
+import mapDays from "./lib/mapDays";
+
+type Image = {
+  url: string;
+  width: number;
+  height: number;
+  title: string;
+  description?: string;
+};
+
 export type Flyer = {
-  url: string | any;
   date: string;
-  day: string;
+  entryTitle?: string;
+  image: Image;
 };
 
 interface FlyerGridProps {
@@ -19,7 +31,7 @@ interface FlyerGridProps {
 }
 
 const FlyerGrid: React.FC<FlyerGridProps> = ({ flyers }) => {
-  const [selectedImage, setSelectedImage] = useState<string>();
+  const [selectedImage, setSelectedImage] = useState<Image>();
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const closeModalHandler = () => {
@@ -31,11 +43,11 @@ const FlyerGrid: React.FC<FlyerGridProps> = ({ flyers }) => {
       <Modal open={openModal} close={closeModalHandler}>
         {selectedImage && (
           <Image
-            src={selectedImage}
-            alt={"description"}
+            src={selectedImage.url}
+            alt={selectedImage.title}
             className={"image"}
-            //width={400} //automatically provided
-            //height={800} //automatically provided
+            width={selectedImage.width} //automatically provided
+            height={selectedImage.height} //automatically provided
             blurDataURL={"/images/Eat.jpeg"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
@@ -50,12 +62,16 @@ const FlyerGrid: React.FC<FlyerGridProps> = ({ flyers }) => {
         >
           <FlyerGridContainer>
             {flyers.map((flyer, idx) => {
+              const utcDate = new Date(flyer.date);
+              const weekday = utcDate.getUTCDay();
+
+              const dayOfWeek = mapDays(weekday);
               return (
                 <div
                   key={idx}
                   onClick={() => {
                     setOpenModal(!openModal);
-                    setSelectedImage(flyer.url);
+                    setSelectedImage(flyer.image);
                   }}
                   style={{
                     position: "relative",
@@ -63,14 +79,14 @@ const FlyerGrid: React.FC<FlyerGridProps> = ({ flyers }) => {
                   }}
                 >
                   <Text>
-                    {flyer.day} [{flyer.date}]
+                    {dayOfWeek} [{format(utcDate, "dd.MM.yy")}]
                   </Text>
                   <Image
-                    src={flyer.url}
-                    alt={flyer.date}
+                    src={flyer.image.url}
+                    alt={flyer.image.title}
                     className={"image"}
-                    //width={400} //automatically provided
-                    //height={800} //automatically provided
+                    width={flyer.image.width} //automatically provided
+                    height={flyer.image.height} //automatically provided
                     blurDataURL={"/images/April_30th.jpg"} //automatically provided
                     placeholder="blur" // Optional blur-up while loading
                   />

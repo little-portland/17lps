@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/three": "^0.129.1",
+    "date-fns": "^2.28.0",
     "framer-motion": "^4.1.17",
     "lottie-react": "^2.2.1",
     "next": "^12.1.5",
