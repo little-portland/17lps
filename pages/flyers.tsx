@@ -31,7 +31,7 @@ export default Flyers;
 export async function getStaticProps() {
   const flyerData = await useFetchContent(`
     {
-      flyerCollection {
+      flyerCollection(order: date_ASC) {
         items {
           date
           image {
