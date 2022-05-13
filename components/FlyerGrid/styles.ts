@@ -33,7 +33,7 @@ export const FlyerGridContainer = styled.div`
       grid-template-columns: 1fr;
       grid-auto-flow: row;
       grid-gap: 8%;
-      padding: 64px 16px;
+      padding: 64px;
       margin-bottom: 64px;
       align-content: start;
       padding
