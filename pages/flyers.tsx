@@ -41,12 +41,13 @@ export async function getStaticProps() {
             width
             height
           }
+          onWebsite
         }
       }
     }
   `);
 
-  const newestFlyers = flyerData.flyerCollection.items.slice(-2);
+  const newestFlyers = flyerData.flyerCollection.items;
 
   return {
     props: {

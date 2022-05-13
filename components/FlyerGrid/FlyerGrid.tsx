@@ -24,6 +24,7 @@ export type Flyer = {
   date: string;
   entryTitle?: string;
   image: Image;
+  onWebsite: boolean;
 };
 
 interface FlyerGridProps {
@@ -37,6 +38,10 @@ const FlyerGrid: React.FC<FlyerGridProps> = ({ flyers }) => {
   const closeModalHandler = () => {
     setOpenModal(!openModal);
   };
+
+  const initialFlyers = flyers.filter(function (e) {
+    return e.onWebsite;
+  });
 
   return (
     <>
@@ -61,36 +66,38 @@ const FlyerGrid: React.FC<FlyerGridProps> = ({ flyers }) => {
         transition={{ duration: 0.2, delay: 0 }}
       >
         <FlyerGridContainer style={openModal ? { opacity: 0 } : { opacity: 1 }}>
-          {flyers.map((flyer, idx) => {
+          {initialFlyers.slice(-5).map((flyer, idx) => {
             const utcDate = new Date(flyer.date);
             const weekday = utcDate.getUTCDay();
 
             const dayOfWeek = mapDays(weekday);
             return (
-              <div
-                key={idx}
-                onClick={() => {
-                  setOpenModal(!openModal);
-                  setSelectedImage(flyer.image);
-                }}
-                style={{
-                  position: "relative",
-                  width: "fit-content",
-                }}
-              >
-                <Text>
-                  {dayOfWeek} [{format(utcDate, "dd.MM.yy")}]
-                </Text>
-                <Image
-                  src={flyer.image.url}
-                  alt={flyer.image.title}
-                  className={"image"}
-                  width={flyer.image.width} //automatically provided
-                  height={flyer.image.height} //automatically provided
-                  blurDataURL={"/images/April_30th.jpg"} //automatically provided
-                  placeholder="blur" // Optional blur-up while loading
-                />
-              </div>
+              <>
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setOpenModal(!openModal);
+                    setSelectedImage(flyer.image);
+                  }}
+                  style={{
+                    position: "relative",
+                    width: "fit-content",
+                  }}
+                >
+                  <Text>
+                    {dayOfWeek} [{format(utcDate, "dd.MM.yy")}]
+                  </Text>
+                  <Image
+                    src={flyer.image.url}
+                    alt={flyer.image.title}
+                    className={"image"}
+                    width={flyer.image.width} //automatically provided
+                    height={flyer.image.height} //automatically provided
+                    blurDataURL={"/images/April_30th.jpg"} //automatically provided
+                    placeholder="blur" // Optional blur-up while loading
+                  />
+                </div>
+              </>
             );
           })}
         </FlyerGridContainer>

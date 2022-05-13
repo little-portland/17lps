@@ -11,24 +11,32 @@ export const FlyerGridContainer = styled.div`
 
     display: grid;
     place-items: center;
+    grid-auto-flow: column;
+    // grid-template-columns: repeat(3, 1fr);
+    // grid-template-rows: minmax(150px, 1fr);
+    overflow-x: scroll;
 
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 0;
-    grid-template-rows: auto;
+    // grid-template-columns: 1fr 1fr;
+    // grid-gap: 0;
+    // grid-template-rows: auto;
   
     div {
       .image, span {
         max-height: 60vh;
         object-fit: contain;
         cursor: pointer;
+
       }
     }
 
     @media (max-width: ${breakpoints.m}px) {
       grid-template-columns: 1fr;
+      grid-auto-flow: row;
       grid-gap: 8%;
-      padding: 64px 8px; 
+      padding: 64px 16px;
+      margin-bottom: 64px;
       align-content: start;
+      padding
 
       div {
         .image, span {
@@ -45,7 +53,7 @@ export const Text = styled.h2`
   position: absolute;
   top: -32px;
   text-transform: uppercase;
-  overflow:hidden
+  overflow: hidden;
   white-space:nowrap;
 
   left: 50%;
