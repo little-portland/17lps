@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, {css}  from "styled-components";
 import { breakpoints } from "styles/styles";
 
-export const FlyerGridContainer = styled.div`
+export const FlyerGridContainer = styled.div<{ elements?: number }>`
     position: absolute;
     overflow-y: scroll;
     top: 0;
@@ -11,8 +11,9 @@ export const FlyerGridContainer = styled.div`
 
     display: grid;
     place-items: center;
+    grid-template-columns: repeat(${p => p.elements}, ${p => (p.elements <= 3  ? '1fr' : '30vw')});
+    // grid-template-columns: repeat(3, 50vw);
     grid-auto-flow: column;
-    // grid-template-columns: repeat(3, 1fr);
     // grid-template-rows: minmax(150px, 1fr);
     overflow-x: scroll;
 

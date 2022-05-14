@@ -65,7 +65,10 @@ const FlyerGrid: React.FC<FlyerGridProps> = ({ flyers }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2, delay: 0 }}
       >
-        <FlyerGridContainer style={openModal ? { opacity: 0 } : { opacity: 1 }}>
+        <FlyerGridContainer
+          style={openModal ? { opacity: 0 } : { opacity: 1 }}
+          elements={initialFlyers.length}
+        >
           {initialFlyers.slice(-5).map((flyer, idx) => {
             const utcDate = new Date(flyer.date);
             const weekday = utcDate.getUTCDay();
