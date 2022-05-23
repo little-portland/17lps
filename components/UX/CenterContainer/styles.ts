@@ -13,6 +13,10 @@ place-items: center;
 
 padding: 64px;
 
+@media (max-width: ${breakpoints.m}px) {
+  padding: 32px;
+}
+
 img {
     display: block;
     width: auto;
@@ -27,3 +31,15 @@ img {
     }
   }
 `
+
+export const IFrameContainerStyle = styled.div`
+width: 30%,
+height: 80vh,
+display: none,
+placeItems: center,
+
+@media (max-width: ${breakpoints.m}px) {
+  width: 100%;
+}
+
+`;
