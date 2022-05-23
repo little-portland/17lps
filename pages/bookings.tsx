@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 
 //hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
@@ -21,15 +22,21 @@ const Bookings = () => {
   };
 
   return (
-    <CenterContainer>
-      <IFrameContainerStyle
-        dangerouslySetInnerHTML={{
-          __html:
-            '<iframe src="https://tableagent.com/iframe/tassen/" style="border:0px none;" width="100%" height="100%"> </iframe>',
-        }}
-        style={style}
-      />
-    </CenterContainer>
+    <>
+      <Head>
+        <title>Bookings</title>
+      </Head>
+
+      <CenterContainer>
+        <IFrameContainerStyle
+          dangerouslySetInnerHTML={{
+            __html:
+              '<iframe src="https://tableagent.com/iframe/tassen/" style="border:0px none;" width="100%" height="100%"> </iframe>',
+          }}
+          style={style}
+        />
+      </CenterContainer>
+    </>
   );
 };
 
