@@ -20,17 +20,21 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
       if (!isMobile) {
         removeSelf(false);
       }
+      // removeSelf(false);
     },
-    onDoubleClick: (e) => {
-      if (isMobile) {
-        removeSelf(false);
-      }
-    },
+    // onDoubleClick: (e) => {
+    //   if (isMobile) {
+    //     removeSelf(false);
+    //   }
+    // },
     ref: mountRef,
     latency: 250,
   });
 
-  const glsl = (x) => x;
+  const touchHandler = (e: any) => {
+    e.preventDefault();
+    removeSelf(false);
+  };
 
   const vertexShader = `
 
@@ -294,6 +298,7 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
     <>
       <div
         ref={mountRef}
+        onTouchEnd={touchHandler}
         style={{ position: "fixed", top: 0, left: 0, zIndex: 2, opacity: 1 }}
       ></div>
       {/* <div className="center-logo" onClick={removeAll}>

@@ -8,7 +8,7 @@ export default (day: number) => {
             return 'Tuesday'
           break;
           case 3:
-            return 'Wednesdaz'
+            return 'Wednesday'
           break;
           case 4:
             return 'Thursday'
