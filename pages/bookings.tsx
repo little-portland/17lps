@@ -58,13 +58,13 @@ const Bookings = () => {
         src="https://www.sevenrooms.com/reservations/embed.js"
         onLoad={() => {
           console.log("loaded sevenrooms");
-          SevenroomsWidget.init({
-            venueId: "littleportland",
-            triggerId: "sr-res-root", // id of the dom element that will trigger this widget
-            type: "reservations", // either 'reservations' or 'waitlist' or 'events'
-            styleButton: true, // true if you are using the SevenRooms button
-            clientToken: "", //(Optional) Pass the api generated clientTokenId here
-          });
+          // SevenroomsWidget.init({
+          //   venueId: "littleportland",
+          //   triggerId: "sr-res-root", // id of the dom element that will trigger this widget
+          //   type: "reservations", // either 'reservations' or 'waitlist' or 'events'
+          //   styleButton: true, // true if you are using the SevenRooms button
+          //   clientToken: "", //(Optional) Pass the api generated clientTokenId here
+          // });
         }}
       ></Script>
       {/* <Script
