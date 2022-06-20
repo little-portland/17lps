@@ -33,10 +33,13 @@ img {
 `
 
 export const IFrameContainerStyle = styled.div`
-width: 30%,
-height: 80vh,
-display: none,
-placeItems: center,
+width: 60%;
+height: 80vh;
+placeItems: center;
+
+div.dynamic-height-adjust {
+  display: none;
+}
 
 @media (max-width: ${breakpoints.m}px) {
   width: 100%;

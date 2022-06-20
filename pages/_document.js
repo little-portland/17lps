@@ -1,4 +1,6 @@
 import Document from 'next/document'
+import { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
@@ -26,5 +28,35 @@ export default class MyDocument extends Document {
         } finally {
             sheet.seal()
         }
+    }
+
+    render() {
+        return (
+            <Html>
+                <Head>
+                    <link rel="preconnect" href="https://fonts.googleapis.com" />
+                    <link
+                        rel="preconnect"
+                        href="https://fonts.gstatic.com"
+                        crossOrigin=""
+                    />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+                        rel="stylesheet"
+                    />
+                </Head>
+                <body>
+                    <Main />
+                    <NextScript />
+                    {/* <Script
+                        src="https://www.sevenrooms.com/reservations/embed.js"
+                        strategy="beforeInteractive"
+                        onLoad={() => {
+                            console.log('loaded sevenrooms')
+                        }}
+                    ></Script> */}
+                </body>
+            </Html>
+        )
     }
 }
