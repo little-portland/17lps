@@ -4,7 +4,6 @@ import Script from "next/script";
 
 //hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
-import useScript from "@utils/useScriptTag";
 
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 import { IFrameContainerStyle } from "@components/UX/CenterContainer/styles";
@@ -56,13 +55,6 @@ const Bookings = () => {
           style={style}
         />
       </CenterContainer>
-      <Script
-        src="https://www.sevenrooms.com/reservations/embed.js"
-        strategy="afterInteractive"
-        onLoad={() => {
-          console.log("loaded sevenrooms");
-        }}
-      ></Script>
     </>
   );
 };

@@ -48,13 +48,7 @@ export default class MyDocument extends Document {
                 <body>
                     <Main />
                     <NextScript />
-                    {/* <Script
-                        src="https://www.sevenrooms.com/reservations/embed.js"
-                        strategy="beforeInteractive"
-                        onLoad={() => {
-                            console.log('loaded sevenrooms')
-                        }}
-                    ></Script> */}
+
                 </body>
             </Html>
         )
