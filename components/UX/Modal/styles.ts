@@ -14,7 +14,7 @@ export const Grid = styled.div`
   @media (max-width: ${breakpoints.m}px) {
     grid-template-rows: 0 auto auto;
   }
-`
+`;
 
 export const Top = styled.div`
   position: absolute;
@@ -27,10 +27,9 @@ export const Top = styled.div`
     right: 0;
     top: -44px;
   }
-`
+`;
 
 export const Middle = styled.div`
-
   display: flex;
   width: 100%;
   justify-content: center;
@@ -65,14 +64,17 @@ export const Middle = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 100vw;
+  height: fit-content;
   justify-content: center;
-  // align-items: center;
-  
+  flex-wrap: wrap;
 
   @media (min-width: ${breakpoints.m}px) {
     align-items: center;
+    flex-direction: column;
+    gap: 16px;
   }
 
   a {
@@ -90,7 +92,26 @@ export const ButtonWrapper = styled.div`
       // min-width: 100px;
     }
   }
-`
+`;
+
+export const FirstButtonWrapper = styled.div`
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+
+  button {
+    width: 350px !important;
+
+    @media (max-width: ${breakpoints.m}px) {
+      width: 200px !important;
+    }
+  }
+
+  @media (min-width: ${breakpoints.m}px) {
+    display: block;
+  }
+`;
 
 export const BG = styled.div`
   position: fixed;
@@ -139,7 +160,6 @@ export const Close = styled.button`
   }
 `;
 
-
 export const CloserStyle = styled.div`
   opacity: 1;
   transition: all 0.2s linear;
@@ -151,4 +171,4 @@ export const CloserStyle = styled.div`
   &:hover {
     opacity: 0.5;
   }
-`
+`;

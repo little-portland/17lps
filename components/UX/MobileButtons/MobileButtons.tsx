@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import Button from "../Button";
 //styles
@@ -40,9 +41,14 @@ const MobileButtons = () => {
         style={{
           display: "flex",
           width: "100%",
-          justifyContent: "flex-end",
+          justifyContent: "space-between",
         }}
       >
+        <Link href={"/events"}>
+          <a>
+            <Button btnType="hollow">Events</Button>
+          </a>
+        </Link>
         <a onClick={openHire}>
           <Button btnType="hollow">Hire</Button>
         </a>

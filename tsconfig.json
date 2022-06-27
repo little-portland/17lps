@@ -41,7 +41,7 @@
     "components/Animation/components/AnimationLayer/styles.ts",
     "components/Animation/styles.ts",
     "components/Canvas/Canvas.tsx"
-  ],
+, "pages/_document.js", "pages/_document.js"  ],
   "exclude": [
     "node_modules"
   ]
