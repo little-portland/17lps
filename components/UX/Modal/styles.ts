@@ -99,6 +99,7 @@ export const FirstButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 16px;
+  width: 100%;
 
   button {
     width: 350px !important;
@@ -109,7 +110,7 @@ export const FirstButtonWrapper = styled.div`
   }
 
   @media (min-width: ${breakpoints.m}px) {
-    display: block;
+    margin: 0;
   }
 `;
 
