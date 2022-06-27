@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import Script from "next/script";
 
 //hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
-import useScript from "@utils/useScriptTag";
 
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 import { IFrameContainerStyle } from "@components/UX/CenterContainer/styles";
@@ -53,12 +51,6 @@ const Bookings = () => {
           style={style}
         />
       </CenterContainer>
-
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: `SEVENROOMS_VENUE_ID =  "littleportland"`,
-        }}
-      />
     </>
   );
 };
