@@ -73,7 +73,7 @@ const Modal: FC<SidebarProps> = ({
               )}
               {email && (
                 <a href={`mailto:${email}`}>
-                  <Button btnType="solid">{isMobile ? "email" : email}</Button>
+                  <Button btnType="hollow">{isMobile ? "email" : email}</Button>
                 </a>
               )}
               {phone &&
