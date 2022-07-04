@@ -46,6 +46,7 @@ const Animation: React.FC<{
 
   const onAnimationCompleteHandler = (): void => {
     setLoaded(true);
+    sessionStorage.setItem("isLoaded", "true");
   };
 
   const onMobileAnimationCompleteHandler = (): void => {

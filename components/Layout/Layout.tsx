@@ -58,13 +58,9 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
 
   // const [data, setData] = useState<imageDataType>();
 
-  useEffect(() => {}, []);
-
-  const testNr = "+44 20 3848 7430";
-
   return (
     <>
-      {canvasState && <Canvas removeSelf={setCanvasState} />}
+      {canvasState && !isLoaded && <Canvas removeSelf={setCanvasState} />}
 
       {isMobile && isLoaded && displayMobileButtons ? (
         <motion.div

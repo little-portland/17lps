@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle, css } from "styled-components";
-import reset from 'styled-reset'
+import reset from "styled-reset";
 
 export const breakpoints = {
   s: 576,
@@ -64,4 +64,3 @@ export const Marginals = css`
   width: 100vw;
   z-index: 1;
 `;
-

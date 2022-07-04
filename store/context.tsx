@@ -1,10 +1,4 @@
-import {
-  useEffect,
-  useState,
-  useContext,
-  createContext,
-  FunctionComponent,
-} from "react";
+import { useEffect, useState, useContext, createContext } from "react";
 
 interface IContext {
   canvasState: boolean;
@@ -31,6 +25,18 @@ export const ContextProvider: React.FC<{}> = (props) => {
     setLoaded: setIsLoaded,
     setCanvasState,
   };
+
+  useEffect(() => {
+    // Access initial value from session storage
+    const isLoaded = sessionStorage.getItem("isLoaded");
+    if (isLoaded == "true") {
+      // Initialize page views count
+      setIsLoaded(true);
+    } else {
+      // Increment count
+      setIsLoaded(false);
+    }
+  }, []);
 
   return (
     <LoadedContext.Provider value={value}>

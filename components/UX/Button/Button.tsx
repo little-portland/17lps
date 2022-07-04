@@ -7,10 +7,15 @@ export type BtnType = "solid" | "hollow";
 
 export type ButtonProps = {
   btnType: BtnType;
+  onClick?: (input?: any) => void;
 };
 
-const ButtonCTA: React.FC<ButtonProps> = ({ children, btnType }) => {
-  return <Button btnType={btnType}>{children}</Button>;
+const ButtonCTA: React.FC<ButtonProps> = ({ onClick, children, btnType }) => {
+  return (
+    <Button onClick={onClick} btnType={btnType}>
+      {children}
+    </Button>
+  );
 };
 
 export default ButtonCTA;

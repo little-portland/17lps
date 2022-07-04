@@ -1,5 +1,6 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useState } from "react";
 import Link from "next/link";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import {
   Middle,
@@ -37,14 +38,16 @@ const Modal: FC<SidebarProps> = ({
 }) => {
   //Check Device
   const { isMobile } = useDeviceDetect();
+  const [copied, setCopied] = useState(false);
 
-  let phoneNr;
+  const clickHandler = ({ target: { innerHTML } }) => {
+    console.log(`Clicked on "${innerHTML}"!`); // eslint-disable-line
+  };
 
-  useEffect(() => {
-    if (phone) {
-      phoneNr = `tel:+${phone.replace(/\s/g, "")}`;
-    }
-  }, []);
+  const closeHandler = () => {
+    close();
+    setCopied(false);
+  };
 
   return (
     <>
@@ -54,7 +57,7 @@ const Modal: FC<SidebarProps> = ({
             <div />
             <Middle>
               <div style={{ position: "relative" }}>
-                <Top onClick={close}>
+                <Top onClick={closeHandler}>
                   <Closer />
                 </Top>
                 <div style={{ maxWidth: "80vw" }}>{children}</div>
@@ -84,9 +87,24 @@ const Modal: FC<SidebarProps> = ({
                     <Button btnType="hollow">call</Button>
                   </a>
                 ) : (
-                  <Button btnType="hollow">{phone}</Button>
+                  <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
+                    <Button onClick={clickHandler} btnType="hollow">
+                      {phone}
+                    </Button>
+                  </CopyToClipboard>
                 ))}
             </ButtonWrapper>
+            {copied ? (
+              <span
+                style={{
+                  textAlign: "center",
+                  textTransform: "uppercase",
+                  fontWeight: "400",
+                }}
+              >
+                Number copied
+              </span>
+            ) : null}
           </Grid>
           <BG onClick={close}></BG>
         </>
