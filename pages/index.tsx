@@ -11,15 +11,6 @@ import useFetchContent from "@utils/useFetchContent";
 export default function Index({ eatItem, hireItem }) {
   const { isLoaded, setLoaded } = useLoaded();
   return (
-    // <motion.div
-    //   initial="initial"
-    //   animate="animate"
-    //   // exit={{ opacity: 0 }}
-    //   // style={{ marginTop: "60px" }}
-    // >
-    // <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
-    // </motion.div>
-
     <Layout
       main={
         <AnimatePresence exitBeforeEnter>

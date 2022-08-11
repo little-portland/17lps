@@ -1,0 +1,29 @@
+ <!-- public/sitemap.xml -->
+   <xml version="1.0" encoding="UTF-8">
+   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+     <url>
+       <loc>http://www.little-portland.com/</loc>
+       <lastmod>2022-06-01</lastmod>
+     </url>
+     <url>
+       <loc>http://www.little-portland.com/flyers</loc>
+       <lastmod>2022-06-08</lastmod>
+     </url>
+     <url>
+       <loc>http://www.little-portland.com/bookings</loc>
+       <lastmod>2022-07-01</lastmod>
+     </url>
+     <url>
+       <loc>http://www.little-portland.com/events</loc>
+       <lastmod>2022-07-01</lastmod>
+     </url>
+     <url>
+       <loc>http://www.little-portland.com/menu</loc>
+       <lastmod>2022-07-01</lastmod>
+     </url>
+     <url>
+       <loc>http://www.little-portland.com/sundaymenu</loc>
+       <lastmod>2022-07-01</lastmod>
+     </url>
+   </urlset>
+   </xml>

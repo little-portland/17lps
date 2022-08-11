@@ -51,6 +51,7 @@ const Animation: React.FC<{
 
   const onMobileAnimationCompleteHandler = (): void => {
     setShowMobileLoop(true);
+    sessionStorage.setItem("isLoaded", "true");
 
     if (isMobile) {
       opacityMobileRef.current.style.opacity = "0";
@@ -64,7 +65,6 @@ const Animation: React.FC<{
       // lottieRef.current.playSegments([0, 625], true);
       lottieRef.current.playSegments([0, 120], true);
 
-      // lottieRef2 && lottieRef2.current.play();
       lottieRef2 && lottieRef2.current.playSegments([0, 625], true);
       // console.log(lottieRef2.current.getDuration(true));
       wrapperRef.current.style.opacity = "1";
@@ -123,7 +123,7 @@ const Animation: React.FC<{
           </>
         )}
       </SvgContainer>
-      {isLoaded && !isMobile && <AnimationLayer />}
+      {isLoaded && <AnimationLayer />}
     </>
   );
 };

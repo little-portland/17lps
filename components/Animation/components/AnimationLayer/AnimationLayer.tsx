@@ -13,6 +13,7 @@ import { useUI } from "@components/UX/context";
 import { OverlayHover } from "./styles";
 
 import staticWeb from "public/Web_assets/Static_Web.json";
+import staticMobile from "public/Web_assets/still.json";
 //hover animations
 import plantLeft from "public/overlays/leftplant.json";
 import plantMid from "public/overlays/middleplant.json";
@@ -77,10 +78,6 @@ const AnimationLayer = () => {
     const overlayAll: HTMLElement[] = Array.from(
       overlayRef.current.querySelectorAll("svg g")
     );
-
-    // overlayAll.forEach((el) => {
-    //   el.style.opacity = 0;
-    // });
 
     const filtered = overlayAll.filter((el) => el.dataset.id);
 
@@ -332,14 +329,13 @@ const AnimationLayer = () => {
         </>
       ) : (
         <>
-          {/* <Lottie
-            ref={overlayRef}
+          <Lottie
             lottieRef={ref}
-            animationData={mobileLoop}
-            loop={true}
+            animationData={staticMobile}
+            loop={false}
             autoplay={true}
             // aria-aria-labelledby="use lottie animation"
-          /> */}
+          />
         </>
       )}
     </OverlayHover>
