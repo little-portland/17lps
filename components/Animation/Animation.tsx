@@ -123,7 +123,7 @@ const Animation: React.FC<{
           </>
         )}
       </SvgContainer>
-      {isLoaded && <AnimationLayer />}
+      {isLoaded && !isMobile && <AnimationLayer />}
     </>
   );
 };
