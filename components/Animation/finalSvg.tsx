@@ -4351,7 +4351,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         style={{
           cursor: "pointer",
           padding: "16px",
-          scale: "200%",
+          // scale: "200%",
           opacity: 1,
           transform: "translateX(-20px) translateY(-15px)",
         }}
@@ -4413,7 +4413,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         style={{
           cursor: "pointer",
           padding: "16px",
-          scale: "200%",
+          // scale: "200%",
           opacity: 0,
           //visual fix:
           transform: "translateX(-20px) translateY(-15px)",
@@ -4430,7 +4430,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         style={{
           cursor: "pointer",
           padding: "16px",
-          scale: "200%",
+          // scale: "200%",
           //visual fix:
           // border: "2px solid red",
         }}
@@ -4497,7 +4497,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
             style={{
               cursor: "pointer",
               padding: "16px",
-              scale: "200%",
+              // scale: "200%",
               opacity: 0,
             }}
             // onClick={openMenu}
@@ -4511,7 +4511,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         style={{
           cursor: "pointer",
           // padding: "16px",
-          scale: "200%",
+          // scale: "200%",
           opacity: 1,
         }}
       >
@@ -4569,7 +4569,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         style={{
           cursor: "pointer",
           padding: "16px",
-          scale: "200%",
+          // scale: "200%",
           opacity: 0,
         }}
         onClick={openMenu}
@@ -4581,7 +4581,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         style={{
           cursor: "pointer",
           padding: "16px",
-          scale: "200%",
+          // scale: "200%",
           opacity: 1,
         }}
       >
@@ -4629,7 +4629,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         style={{
           cursor: "pointer",
           padding: "16px",
-          scale: "200%",
+          // scale: "200%",
           opacity: 0,
         }}
         onClick={openHire}

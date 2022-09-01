@@ -7,6 +7,8 @@ import useDeviceDetect from "@utils/useDeviceDetect";
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 import { IFrameContainerStyle } from "@components/UX/CenterContainer/styles";
 
+import Button from "@components/UX/Button";
+
 const Bookings = () => {
   //Check Device
   const { isMobile } = useDeviceDetect();

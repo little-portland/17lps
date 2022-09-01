@@ -16,7 +16,7 @@ const Bookings = () => {
     width: isMobile ? "100%" : "32%",
     height: isMobile ? "70%" : "80%",
     placeItems: "center",
-    "@media (min-width: 500px)": {
+    "@media (minWidth: 500px)": {
       display: "none",
     },
 
