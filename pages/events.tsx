@@ -66,19 +66,25 @@ const Bookings = () => {
           }}
           style={style}
         />
-        <ButtonWrapper>
+         <ButtonWrapper>
           <FirstButtonWrapper>
             <a href={"/bookings"} >
                 <Button btnType="solid">Reservations</Button>
             </a>
           </FirstButtonWrapper>
+          <FirstButtonWrapper>
           <a href={"/menu"} >
               <Button btnType="solid">Menu</Button>
           </a>
+          </FirstButtonWrapper>
+          <FirstButtonWrapper>
           <a href={"mailto:eat@little-portland.com"} >
               <Button btnType="hollow">eat@little-portland.com</Button>
           </a>
+          </FirstButtonWrapper>
+          <FirstButtonWrapper>
           <Button btnType="hollow">+44 20 3848 7430</Button>
+          </FirstButtonWrapper>
         </ButtonWrapper>
       </CenterContainer>
     </>
