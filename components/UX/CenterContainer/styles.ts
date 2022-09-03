@@ -13,6 +13,21 @@ place-items: center;
 
 padding: 64px;
 
+h1 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  text-align: center;
+ }
+
+span {
+  font-size: .8rem;
+  text-align: center;
+  line-height: 1rem;
+  font-weight: 100;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
 @media (max-width: ${breakpoints.m}px) {
   padding: 32px;
 }
@@ -35,6 +50,7 @@ img {
 export const IFrameContainerStyle = styled.div`
 width: 60%;
 height: 80vh;
+min-height: 300px;
 placeItems: center;
 
 div.dynamic-height-adjust {
