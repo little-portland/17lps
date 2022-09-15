@@ -26,6 +26,10 @@ interface SidebarProps {
     target: string;
     title: string;
   };
+  link2?: {
+    target: string;
+    title: string;
+  };
 }
 
 const Modal: FC<SidebarProps> = ({
@@ -35,6 +39,7 @@ const Modal: FC<SidebarProps> = ({
   email,
   phone,
   link,
+  link2,
 }) => {
   //Check Device
   const { isMobile } = useDeviceDetect();
@@ -48,6 +53,8 @@ const Modal: FC<SidebarProps> = ({
     close();
     setCopied(false);
   };
+  
+  const eatEmail = "eat@little-portland.com";
 
   return (
     <>
@@ -74,9 +81,16 @@ const Modal: FC<SidebarProps> = ({
                   </Link>
                 </FirstButtonWrapper>
               )}
+              {link2 && (
+                <Link href={link2.target}>
+                  <a>
+                    <Button btnType="solid">{link2.title}</Button>
+                  </a>
+                </Link>
+              )}
               {email && (
                 <a href={`mailto:${email}`}>
-                  <Button btnType={isMobile ? "hollow" : "solid"}>
+                    <Button btnType={isMobile || email === eatEmail ? "hollow" : "solid"}>
                     {isMobile ? "email" : email}
                   </Button>
                 </a>
