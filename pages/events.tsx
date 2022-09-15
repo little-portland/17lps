@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 //hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
@@ -22,6 +23,11 @@ import {
 const Bookings = () => {
   //Check Device
   const { isMobile } = useDeviceDetect();
+  const [copied, setCopied] = useState(false);
+
+  const clickHandler = ({ target: { innerHTML } }) => {
+    console.log(`Clicked on "${innerHTML}"!`); // eslint-disable-line
+  };
 
   const style = {
     width: isMobile ? "100%" : "32%",
@@ -32,6 +38,9 @@ const Bookings = () => {
       display: "none",
     },
   };
+  
+  const email = "yo@little-portland.com";
+  const phone = "+44 20 3848 7430";
 
   useEffect(() => {
     let SevenroomsWidget;
@@ -55,7 +64,7 @@ const Bookings = () => {
       </Head>
 
       <CenterContainer>
-      <h1>
+      <h1 className="events-header">
         Public Events Program <br/>
         <span>[For the private events program, <br/> Friends of the Club should see the latest What’s On email]</span>
       </h1>
@@ -66,26 +75,40 @@ const Bookings = () => {
           }}
           style={style}
         />
-         <ButtonWrapper>
-          <FirstButtonWrapper>
-            <a href={"/bookings"} >
-                <Button btnType="solid">Reservations</Button>
-            </a>
-          </FirstButtonWrapper>
-          <FirstButtonWrapper>
-          <a href={"/menu"} >
-              <Button btnType="solid">Menu</Button>
-          </a>
-          </FirstButtonWrapper>
-          <FirstButtonWrapper>
-          <a href={"mailto:eat@little-portland.com"} >
-              <Button btnType="hollow">eat@little-portland.com</Button>
-          </a>
-          </FirstButtonWrapper>
-          <FirstButtonWrapper>
-          <Button btnType="hollow">+44 20 3848 7430</Button>
-          </FirstButtonWrapper>
-        </ButtonWrapper>
+            <ButtonWrapper className="button-wrapper">
+              {email && (
+                <FirstButtonWrapper>
+                  <a href={`mailto:${email}`}>
+                    <Button btnType={isMobile ? "hollow" : "solid"}>
+                      {isMobile ? "email" : email}
+                    </Button>
+                  </a>
+                </FirstButtonWrapper>
+              )}
+              {phone &&
+                (isMobile ? (
+                  <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+                    <Button btnType="hollow">call</Button>
+                  </a>
+                ) : (
+                  <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
+                    <Button onClick={clickHandler} btnType="hollow">
+                      {phone}
+                    </Button>
+                  </CopyToClipboard>
+                ))}
+            </ButtonWrapper>
+            {copied ? (
+              <span
+                style={{
+                  textAlign: "center",
+                  textTransform: "uppercase",
+                  fontWeight: "400",
+                }}
+              >
+                Number copied
+              </span>
+            ) : null}
       </CenterContainer>
     </>
   );
