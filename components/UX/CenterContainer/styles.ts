@@ -13,19 +13,26 @@ place-items: center;
 
 padding: 64px;
 
-h1 {
+.events-header {
   font-size: 1.3rem;
   text-transform: uppercase;
   text-align: center;
+  position: relative;
+  top: -5rem;
+  margin-bottom: -5rem;
  }
 
-span {
+.events-header span {
   font-size: .8rem;
   text-align: center;
   line-height: 1rem;
   font-weight: 100;
   margin-top: 1rem;
   display: inline-block;
+}
+
+.button-wrapper {
+  margin-bottom: -5rem;
 }
 
 @media (max-width: ${breakpoints.m}px) {
