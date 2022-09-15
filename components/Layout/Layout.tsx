@@ -92,6 +92,10 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           target: "/bookings",
           title: "reservations",
         }}
+        link2={{
+          target: "/menu",
+          title: "menu",
+        }}
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
       >
         <Image
