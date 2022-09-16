@@ -90,7 +90,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         phone={eatItem.phoneNumber}
         link={{
           target: "/bookings",
-          title: "reservations",
+          title: "book",
         }}
         link2={{
           target: "/menu",
