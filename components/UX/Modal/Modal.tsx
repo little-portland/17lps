@@ -80,14 +80,16 @@ const Modal: FC<SidebarProps> = ({
                     </a>
                   </Link>
                 </FirstButtonWrapper>
-              )}
+              )}              
               {link2 && (
-                <Link href={link2.target}>
-                  <a>
-                    <Button btnType="solid">{link2.title}</Button>
-                  </a>
-                </Link>
-              )}
+                <FirstButtonWrapper>
+                  <Link href={link2.target}>
+                    <a>
+                      <Button btnType="solid">{link2.title}</Button>
+                    </a>
+                  </Link>
+                  </FirstButtonWrapper>
+              )} 
               {email && (
                 <a href={`mailto:${email}`}>
                     <Button btnType={isMobile || email === eatEmail ? "hollow" : "solid"}>
