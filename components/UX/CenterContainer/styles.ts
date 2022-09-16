@@ -32,7 +32,7 @@ padding: 64px;
 }
 
 .button-wrapper {
-  margin-top: -5rem;
+  margin-top: -2rem;
 }
 
 
