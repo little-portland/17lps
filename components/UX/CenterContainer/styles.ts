@@ -35,6 +35,7 @@ padding: 64px;
   margin-bottom: -5rem;
 }
 
+
 @media (max-width: ${breakpoints.m}px) {
   padding: 32px;
 }
