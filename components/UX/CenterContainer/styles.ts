@@ -18,7 +18,7 @@ padding: 64px;
   text-transform: uppercase;
   text-align: center;
   position: relative;
-  top: -5rem;
+  top: 0;
   margin-bottom: -5rem;
  }
 
@@ -32,7 +32,7 @@ padding: 64px;
 }
 
 .button-wrapper {
-  margin-bottom: -5rem;
+  margin-top: -5rem;
 }
 
 
