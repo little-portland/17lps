@@ -77,13 +77,11 @@ const Bookings = () => {
         />
             <ButtonWrapper className="button-wrapper">
               {email && (
-                <FirstButtonWrapper>
                   <a href={`mailto:${email}`}>
                     <Button btnType={isMobile ? "hollow" : "solid"}>
                       {isMobile ? "email" : email}
                     </Button>
                   </a>
-                </FirstButtonWrapper>
               )}
               {phone &&
                 (isMobile ? (
