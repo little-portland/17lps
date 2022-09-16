@@ -58,7 +58,7 @@ img {
 export const IFrameContainerStyle = styled.div`
 width: 60%;
 height: 80vh;
-min-height: 300px;
+min-height: 25rem;
 placeItems: center;
 
 div.dynamic-height-adjust {
