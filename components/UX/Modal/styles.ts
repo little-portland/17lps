@@ -64,12 +64,11 @@ export const Middle = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   max-width: 100vw;
   height: fit-content;
   justify-content: center;
-  flex-wrap: wrap;
+  //flex-wrap: wrap;
 
   @media (min-width: ${breakpoints.m}px) {
     align-items: center;
