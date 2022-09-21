@@ -75,6 +75,7 @@ const Bookings = () => {
           }}
           style={style}
         />
+        <Grid>
             <ButtonWrapper className="button-wrapper">
               {email && (
                   <a href={`mailto:${email}`}>
@@ -107,6 +108,7 @@ const Bookings = () => {
                 Number copied
               </span>
             ) : null}
+          </Grid>
       </CenterContainer>
     </>
   );
