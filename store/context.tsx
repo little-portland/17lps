@@ -28,13 +28,13 @@ export const ContextProvider: React.FC<{}> = (props) => {
 
   useEffect(() => {
     // Access initial value from session storage
-    const isLoaded = sessionStorage.getItem("isLoaded");
+    const isLoaded = sessionStorage.getItem("canvas");
     if (isLoaded == "true") {
       // Initialize page views count
-      setIsLoaded(true);
+      setCanvasState(false);
     } else {
       // Increment count
-      setIsLoaded(false);
+      setCanvasState(true);
     }
   }, []);
 
