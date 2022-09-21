@@ -32,7 +32,9 @@ padding: 64px;
 }
 
 .button-wrapper {
-  margin-top: -2rem;
+   position: absolute;
+  bottom: 5rem;
+  flex-wrap: nowrap;
 }
 
 
