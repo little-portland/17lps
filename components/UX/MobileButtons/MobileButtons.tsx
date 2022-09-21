@@ -44,11 +44,9 @@ const MobileButtons = () => {
           justifyContent: "space-between",
         }}
       >
-        <Link href={"/events"}>
-          <a>
+        <a href={"/events"}>
             <Button btnType="hollow">Events</Button>
-          </a>
-        </Link>
+        </a>
         <a onClick={openHire}>
           <Button btnType="hollow">Hire</Button>
         </a>
