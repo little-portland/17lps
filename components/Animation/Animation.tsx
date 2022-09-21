@@ -46,12 +46,20 @@ const Animation: React.FC<{
 
   const onAnimationCompleteHandler = (): void => {
     setLoaded(true);
-    sessionStorage.setItem("isLoaded", "true");
+    setCanvasState(false)
+
+    sessionStorage.setItem("canvas", "true");
+
+    //sessionStorage.setItem("isLoaded", "true");
   };
 
   const onMobileAnimationCompleteHandler = (): void => {
     setShowMobileLoop(true);
-    sessionStorage.setItem("isLoaded", "true");
+    setLoaded(true);
+    setCanvasState(false)
+
+    sessionStorage.setItem("canvas", "true");
+    //sessionStorage.setItem("isLoaded", "true");
 
     if (isMobile) {
       opacityMobileRef.current.style.opacity = "0";
