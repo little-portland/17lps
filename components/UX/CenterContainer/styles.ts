@@ -43,6 +43,10 @@ padding: 64px;
   flex-wrap: nowrap;
 }
 
+.button-wrapper .events-button {
+  font-size: 1.2rem;
+  padding: 4px 32px;
+}
 
 @media (max-width: ${breakpoints.m}px) {
   padding: 32px;
