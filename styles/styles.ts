@@ -32,7 +32,7 @@ html {
     overflow: hidden;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Space Mono', monospace, sans-serif;
+    font-family: 'Space Mono', monospace, sans-serif!important;
     font-weight: 700;
   }
 
