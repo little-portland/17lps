@@ -14,11 +14,12 @@ place-items: center;
 padding: 64px;
 
 .events-header {
+  font-family: 'Space Mono',monospace,sans-serif!important;
   font-size: 1.3rem;
   text-transform: uppercase;
   text-align: center;
   position: relative;
-  top: 0;
+  top: -2rem;
   margin-bottom: -5rem;
  }
 
@@ -31,9 +32,14 @@ padding: 64px;
   display: inline-block;
 }
 
+.events-iframe {
+  top: -1rem;
+  position: relative;
+}
+
 .button-wrapper {
-   position: absolute;
-  bottom: 5rem;
+  position: absolute;
+  bottom: 2rem;
   flex-wrap: nowrap;
 }
 
