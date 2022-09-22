@@ -77,9 +77,9 @@ const Bookings = () => {
         />
         <Grid>
             <ButtonWrapper className="button-wrapper">
-              {email && (
+                {email && (
                   <a href={`mailto:${email}`}>
-                    <Button btnType={isMobile ? "hollow" : "solid"}>
+                    <Button className="events-button" btnType={isMobile ? "hollow" : "solid"}>
                       {isMobile ? "email" : email}
                     </Button>
                   </a>
@@ -87,11 +87,11 @@ const Bookings = () => {
               {phone &&
                 (isMobile ? (
                   <a href={`tel:+${phone.replace(/\s/g, "")}`}>
-                    <Button btnType="hollow">call</Button>
+                    <Button className="events-button" btnType="hollow">call</Button>
                   </a>
                 ) : (
                   <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
-                    <Button onClick={clickHandler} btnType="hollow">
+                    <Button className="events-button" onClick={clickHandler} btnType="hollow">
                       {phone}
                     </Button>
                   </CopyToClipboard>
