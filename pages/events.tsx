@@ -64,7 +64,7 @@ const Bookings = () => {
       </Head>
 
       <CenterContainer>
-      <h1 className="events-header">
+      <h1 style={{ fontFamily: 'Space Mono' }} className="events-header">
         Public Events Program <br/>
         <span>[For the private events program, <br/> Friends of the Club should see the latest What’s On email]</span>
       </h1>
@@ -79,7 +79,7 @@ const Bookings = () => {
             <ButtonWrapper className="button-wrapper">
                 {email && (
                   <a href={`mailto:${email}`}>
-                    <Button className="events-button" btnType={isMobile ? "hollow" : "solid"}>
+                    <Button style={{ fontFamily: 'Space Mono' }} className="events-button" btnType={isMobile ? "hollow" : "solid"}>
                       {isMobile ? "email" : email}
                     </Button>
                   </a>
@@ -87,7 +87,7 @@ const Bookings = () => {
               {phone &&
                 (isMobile ? (
                   <a href={`tel:+${phone.replace(/\s/g, "")}`}>
-                    <Button className="events-button" btnType="hollow">call</Button>
+                    <Button style={{ fontFamily: 'Space Mono' }} className="events-button" btnType="hollow">call</Button>
                   </a>
                 ) : (
                   <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
