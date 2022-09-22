@@ -33,13 +33,13 @@ padding: 64px;
 }
 
 .events-iframe {
-  top: -1rem;
+  top: -3rem;
   position: relative;
 }
 
 .button-wrapper {
   position: absolute;
-  bottom: 2rem;
+  bottom: 5rem;
   flex-wrap: nowrap;
 }
 
