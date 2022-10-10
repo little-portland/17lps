@@ -38,7 +38,7 @@ const Bookings = () => {
       display: "none",
     },
   };
-  
+
   const email = "yo@little-portland.com";
   const phone = "+44 20 3848 7430";
 
@@ -64,11 +64,15 @@ const Bookings = () => {
       </Head>
 
       <CenterContainer>
-      <h1 style={{ fontFamily: 'Space Mono' }} className="events-header">
-        Public Events Program <br/>
-        <span>[For the private events program, <br/> Friends of the Club should see the latest What’s On email]</span>
-      </h1>
-        <IFrameContainerStyle className="events-iframe"
+        <h1 className="events-header">
+          Public Events Program <br />
+          <span>
+            [For the private events program, <br /> Friends of the Club should
+            see the latest What’s On email]
+          </span>
+        </h1>
+        <IFrameContainerStyle
+          className="events-iframe"
           dangerouslySetInnerHTML={{
             __html:
               '<iframe src="https://www.sevenrooms.com/events/littleportland" style="border:0px none;" width="100%" height="100%"> </iframe>',
@@ -76,39 +80,48 @@ const Bookings = () => {
           style={style}
         />
         <Grid>
-            <ButtonWrapper className="button-wrapper">
-                {email && (
-                  <a href={`mailto:${email}`}>
-                    <Button style={{ fontFamily: 'Space Mono' }} className="events-button" btnType={isMobile ? "hollow" : "solid"}>
-                      {isMobile ? "email" : email}
-                    </Button>
-                  </a>
-              )}
-              {phone &&
-                (isMobile ? (
-                  <a href={`tel:+${phone.replace(/\s/g, "")}`}>
-                    <Button style={{ fontFamily: 'Space Mono' }} className="events-button" btnType="hollow">call</Button>
-                  </a>
-                ) : (
-                  <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
-                    <Button className="events-button" onClick={clickHandler} btnType="hollow">
-                      {phone}
-                    </Button>
-                  </CopyToClipboard>
-                ))}
-            </ButtonWrapper>
-            {copied ? (
-              <span
-                style={{
-                  textAlign: "center",
-                  textTransform: "uppercase",
-                  fontWeight: "400",
-                }}
-              >
-                Number copied
-              </span>
-            ) : null}
-          </Grid>
+          <ButtonWrapper className="button-wrapper">
+            {email && (
+              <a href={`mailto:${email}`}>
+                <Button
+                  classes="events-button"
+                  btnType={isMobile ? "hollow" : "solid"}
+                >
+                  {isMobile ? "email" : email}
+                </Button>
+              </a>
+            )}
+            {phone &&
+              (isMobile ? (
+                <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+                  <Button classes="events-button" btnType="hollow">
+                    call
+                  </Button>
+                </a>
+              ) : (
+                <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
+                  <Button
+                    classes="events-button"
+                    onClick={clickHandler}
+                    btnType="hollow"
+                  >
+                    {phone}
+                  </Button>
+                </CopyToClipboard>
+              ))}
+          </ButtonWrapper>
+          {copied ? (
+            <span
+              style={{
+                textAlign: "center",
+                textTransform: "uppercase",
+                fontWeight: "400",
+              }}
+            >
+              Number copied
+            </span>
+          ) : null}
+        </Grid>
       </CenterContainer>
     </>
   );

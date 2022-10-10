@@ -2,57 +2,55 @@ import styled from "styled-components";
 import { breakpoints } from "styles/styles";
 
 export const CenterContainerStyle = styled.div`
-
-position: absolute;
-left: 0;
-right: 0;
-width: 100%;
-height: 100%;
-display: grid;
-place-items: center;
-
-padding: 64px;
-
-.events-header {
-  font-family: 'Space Mono',monospace,sans-serif!important;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  text-align: center;
-  position: relative;
-  top: -2rem;
-  margin-bottom: -5rem;
- }
-
-.events-header span {
-  font-size: .8rem;
-  text-align: center;
-  line-height: 1rem;
-  font-weight: 100;
-  margin-top: 1rem;
-  display: inline-block;
-}
-
-.events-iframe {
-  top: -3rem;
-  position: relative;
-}
-
-.button-wrapper {
   position: absolute;
-  bottom: 5rem;
-  flex-wrap: nowrap;
-}
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
 
-.button-wrapper .events-button {
-  font-size: 1.2rem;
-  padding: 4px 32px;
-}
+  padding: 64px;
 
-@media (max-width: ${breakpoints.m}px) {
-  padding: 32px;
-}
+  .events-header {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: -2rem;
+    margin-bottom: -5rem;
+  }
 
-img {
+  .events-header span {
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 1rem;
+    font-weight: 100;
+    margin-top: 1rem;
+    display: inline-block;
+  }
+
+  .events-iframe {
+    top: -3rem;
+    position: relative;
+  }
+
+  .button-wrapper {
+    position: absolute;
+    bottom: 5rem;
+    flex-wrap: nowrap;
+  }
+
+  .button-wrapper .events-button {
+    font-size: 1.2rem;
+    padding: 4px 32px;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    padding: 32px;
+  }
+
+  img {
     display: block;
     width: auto;
     height: auto;
@@ -65,20 +63,19 @@ img {
       max-width: 80vw;
     }
   }
-`
+`;
 
 export const IFrameContainerStyle = styled.div`
-width: 60%;
-height: 80vh;
-min-height: 20rem;
-placeItems: center;
+  width: 60%;
+  height: 80vh;
+  min-height: 20rem;
+  placeitems: center;
 
-div.dynamic-height-adjust {
-  display: none;
-}
+  div.dynamic-height-adjust {
+    display: none;
+  }
 
-@media (max-width: ${breakpoints.m}px) {
-  width: 100%;
-}
-
+  @media (max-width: ${breakpoints.m}px) {
+    width: 100%;
+  }
 `;
