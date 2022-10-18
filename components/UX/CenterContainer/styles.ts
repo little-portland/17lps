@@ -2,57 +2,73 @@ import styled from "styled-components";
 import { breakpoints } from "styles/styles";
 
 export const CenterContainerStyle = styled.div`
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("./fonts/SpaceMono-regular.ttf") format("ttf"),
+    url("./fonts/SpaceMono-bold.ttf") format("ttf");
+  font-weight: bold;
+  font-display: swap;
+}
+
+position: absolute;
+left: 0;
+right: 0;
+width: 100%;
+height: 100%;
+display: grid;
+place-items: center;
+
+padding: 64px;
+
+.events-header {
+  font-family: 'Space Mono',monospace,sans-serif!important;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  top: -3rem;
+ }
+
+.events-header span {
+  font-size: .8rem;
+  text-align: center;
+  line-height: 1rem;
+  font-weight: 100;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.events-iframe {
+  top: -10rem;
+  position: relative;
+}
+
+.button-wrapper {
   position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
+  bottom: 8rem;
+  flex-wrap: nowrap;
+}
 
-  padding: 64px;
+.button-wrapper a {
+  font-family: 'Space Mono',monospace,sans-serif!important;
+  font-weight: 900;
+  font-style: normal;
+}
 
-  .events-header {
-    font-family: 'Space Mono',monospace,sans-serif!important;
-    font-weight: 900;
-    font-style: normal;
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    text-align: center;
-    position: relative;
-    top: -3rem;
-  }
+.button-wrapper .events-button {
+  font-size: 1.2rem!important;
+  padding: 4px 32px!important;
+}
 
-  .events-header span {
-    font-size: 0.8rem;
-    text-align: center;
-    line-height: 1rem;
-    font-weight: 100;
-    margin-top: 1rem;
-    display: inline-block;
-  }
 
-  .events-iframe {
-    top: -10rem;
-    position: relative;
-  }
+@media (max-width: ${breakpoints.m}px) {
+  padding: 32px;
+}
 
-  .button-wrapper {
-    position: absolute;
-    bottom: 8rem;
-    flex-wrap: nowrap;
-  }
-
-  .button-wrapper .events-button {
-    font-size: 1.2rem;
-    padding: 4px 32px;
-  }
-
-  @media (max-width: ${breakpoints.m}px) {
-    padding: 32px;
-  }
-
-  img {
+img {
     display: block;
     width: auto;
     height: auto;
@@ -65,19 +81,20 @@ export const CenterContainerStyle = styled.div`
       max-width: 80vw;
     }
   }
-`;
+`
 
 export const IFrameContainerStyle = styled.div`
-  width: 60%;
-  height: 80vh;
-  min-height: 20rem;
-  placeitems: center;
+width: 60%;
+height: 80vh;
+min-height: 25rem;
+placeItems: center;
 
-  div.dynamic-height-adjust {
-    display: none;
-  }
+div.dynamic-height-adjust {
+  display: none;
+}
 
-  @media (max-width: ${breakpoints.m}px) {
-    width: 100%;
-  }
+@media (max-width: ${breakpoints.m}px) {
+  width: 100%;
+}
+
 `;
