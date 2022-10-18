@@ -13,6 +13,9 @@ export const CenterContainerStyle = styled.div`
   padding: 64px;
 
   .events-header {
+    font-family: 'Space Mono',monospace,sans-serif!important;
+    font-weight: 900;
+    font-style: normal;
     font-size: 1.3rem;
     text-transform: uppercase;
     text-align: center;
