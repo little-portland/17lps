@@ -36,7 +36,7 @@ export const CenterContainerStyle = styled.div`
 
   .button-wrapper {
     position: absolute;
-    bottom: 5rem;
+    bottom: 8rem;
     flex-wrap: nowrap;
   }
 
