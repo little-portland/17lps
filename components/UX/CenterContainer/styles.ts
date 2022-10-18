@@ -17,8 +17,7 @@ export const CenterContainerStyle = styled.div`
     text-transform: uppercase;
     text-align: center;
     position: relative;
-    top: -2rem;
-    margin-bottom: -5rem;
+    top: -3rem;
   }
 
   .events-header span {
@@ -31,7 +30,7 @@ export const CenterContainerStyle = styled.div`
   }
 
   .events-iframe {
-    top: -3rem;
+    top: -10rem;
     position: relative;
   }
 
