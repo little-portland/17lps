@@ -64,22 +64,33 @@ const Bookings = () => {
       </Head>
 
       <CenterContainer>
-        <h1 className="events-header">
-          Public Events Program <br />
-          <span>
-            [For the private events program, <br /> Friends of the Club should
-            see the latest What’s On email]
-          </span>
-        </h1>
-        <IFrameContainerStyle
-          className="events-iframe"
-          dangerouslySetInnerHTML={{
-            __html:
-              '<iframe src="https://www.sevenrooms.com/events/littleportland" style="border:0px none;" width="100%" height="100%"> </iframe>',
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          style={style}
-        />
-        <Grid>
+        >
+          <h1 className="events-header">
+            Public Events Program <br />
+            <span>
+              [For the private events program, <br /> Friends of the Club should
+              see the latest What’s On email]
+            </span>
+          </h1>
+          <div>
+            <IFrameContainerStyle
+              className="events-iframe"
+              dangerouslySetInnerHTML={{
+                __html:
+                  '<iframe src="https://www.sevenrooms.com/events/littleportland" style="border:0px none;" width="100%" height="100%"> </iframe>',
+              }}
+              // style={style}
+            />
+          </div>
+
           <ButtonWrapper className="button-wrapper">
             {email && (
               <a href={`mailto:${email}`}>
@@ -121,7 +132,7 @@ const Bookings = () => {
               Number copied
             </span>
           ) : null}
-        </Grid>
+        </div>
       </CenterContainer>
     </>
   );

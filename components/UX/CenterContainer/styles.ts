@@ -2,65 +2,41 @@ import styled from "styled-components";
 import { breakpoints } from "styles/styles";
 
 export const CenterContainerStyle = styled.div`
-
-position: absolute;
-left: 0;
-right: 0;
-width: 100%;
-height: 100%;
-display: grid;
-place-items: center;
-
-padding: 64px;
-
-.events-header {
-  font-family: 'Space Mono'!important;
-  font-weight: 900;
-  font-style: normal;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  text-align: center;
-  position: relative;
-  top: -3rem;
- }
-
-.events-header span {
-  font-size: .8rem;
-  text-align: center;
-  line-height: 1rem;
-  font-weight: 100;
-  margin-top: 1rem;
-  display: inline-block;
-}
-
-.events-iframe {
-  top: -7rem;
-  position: relative;
-}
-
-.button-wrapper {
   position: absolute;
-  bottom: 6rem;
-  flex-wrap: nowrap;
-}
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
 
-.button-wrapper a {
-  font-family: 'Space Mono',monospace,sans-serif!important;
-  font-weight: 900;
-  font-style: normal;
-}
+  padding: 64px;
 
-.button-wrapper .events-button {
-  font-size: 1.2rem!important;
-  padding: 4px 32px!important;
-}
+  .events-header {
+    font-family: "Space Mono" !important;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    top: -3rem;
+  }
 
+  .events-header span {
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 1rem;
+    font-weight: 100;
+    margin-top: 1rem;
+    display: inline-block;
+  }
 
-@media (max-width: ${breakpoints.m}px) {
-  padding: 32px;
-}
+  @media (max-width: ${breakpoints.m}px) {
+    padding: 32px;
+  }
 
-img {
+  img {
     display: block;
     width: auto;
     height: auto;
@@ -73,20 +49,21 @@ img {
       max-width: 80vw;
     }
   }
-`
+`;
 
 export const IFrameContainerStyle = styled.div`
-width: 60%;
-height: 80vh;
-min-height: 25rem;
-placeItems: center;
+  // width: 60%;
+  // height: 80vh;
+  min-height: 25rem;
+  margin-bottom: 16px;
+  // placeitems: center;
+  display: grid;
 
-div.dynamic-height-adjust {
-  display: none;
-}
+  div.dynamic-height-adjust {
+    display: none;
+  }
 
-@media (max-width: ${breakpoints.m}px) {
-  width: 100%;
-}
-
+  @media (max-width: ${breakpoints.m}px) {
+    width: 100%;
+  }
 `;
