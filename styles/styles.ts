@@ -15,8 +15,9 @@ export const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: "Space Mono";
   src: url("./fonts/SpaceMono-regular.ttf") format("ttf"),
-    url("./fonts/SpaceMono-bold.ttf") format("ttf");
-  font-weight: bold;
+  url("./fonts/SpaceMono-bold.ttf") format("ttf");
+  font-style: medium;
+  font-weight: normal;
   font-display: swap;
 }
 

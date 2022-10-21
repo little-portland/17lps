@@ -3,16 +3,6 @@ import { breakpoints } from "styles/styles";
 
 export const CenterContainerStyle = styled.div`
 
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-
-@font-face {
-  font-family: "Space Mono";
-  src: url("./fonts/SpaceMono-regular.ttf") format("ttf"),
-    url("./fonts/SpaceMono-bold.ttf") format("ttf");
-  font-weight: bold;
-  font-display: swap;
-}
-
 position: absolute;
 left: 0;
 right: 0;
