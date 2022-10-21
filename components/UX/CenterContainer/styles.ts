@@ -20,7 +20,7 @@ export const CenterContainerStyle = styled.div`
     text-transform: uppercase;
     text-align: center;
     position: relative;
-    top: -3rem;
+    top: -2rem;
   }
 
   .events-header span {
