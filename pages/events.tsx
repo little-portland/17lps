@@ -127,6 +127,7 @@ const Bookings = () => {
                 textAlign: "center",
                 textTransform: "uppercase",
                 fontWeight: "400",
+                marginTop: "1rem"
               }}
             >
               Number copied
