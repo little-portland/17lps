@@ -16,11 +16,10 @@ export const GlobalStyle = createGlobalStyle`
   font-family: "Space Mono";
   src: url("./fonts/SpaceMono-regular.ttf") format("ttf"),
   url("./fonts/SpaceMono-bold.ttf") format("ttf");
-  font-style: medium;
-  font-weight: normal;
+  font-style: normal;
+  font-weight: bold;
   font-display: swap;
 }
-
 
 * {
   box-sizing: border-box;
