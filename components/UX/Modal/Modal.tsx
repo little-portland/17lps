@@ -71,7 +71,7 @@ const Modal: FC<SidebarProps> = ({
               </div>
             </Middle>
 
-            <ButtonWrapper>
+            <ButtonWrapper style={link && link2 && { flexWrap: "wrap" }}>
               {link && (
                 <FirstButtonWrapper>
                   <Link href={link.target}>
