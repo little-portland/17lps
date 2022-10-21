@@ -3,6 +3,7 @@ import { breakpoints } from "styles/styles";
 
 export const CenterContainerStyle = styled.div`
 
+// Add fonts through font face
 @font-face {
   font-family: "Space Mono";
   src: url("./fonts/SpaceMono-regular.ttf") format("ttf"),
