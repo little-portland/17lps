@@ -3,6 +3,8 @@ import { breakpoints } from "styles/styles";
 
 export const CenterContainerStyle = styled.div`
 
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 // Add fonts through font face
 @font-face {
   font-family: "Space Mono";
