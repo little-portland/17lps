@@ -4,7 +4,7 @@ import { breakpoints } from "styles/styles";
 export const CenterContainerStyle = styled.div`
 
 @font-face {
-  font-family: "Open Sans";
+  font-family: "Space Mono";
   src: url("./fonts/SpaceMono-regular.ttf") format("ttf"),
     url("./fonts/SpaceMono-bold.ttf") format("ttf");
   font-weight: bold;
@@ -42,13 +42,13 @@ padding: 64px;
 }
 
 .events-iframe {
-  top: -10rem;
+  top: -7rem;
   position: relative;
 }
 
 .button-wrapper {
   position: absolute;
-  bottom: 8rem;
+  bottom: 6rem;
   flex-wrap: nowrap;
 }
 
