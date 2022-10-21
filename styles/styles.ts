@@ -10,6 +10,16 @@ export const breakpoints = {
 
 export const GlobalStyle = createGlobalStyle`
 
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("./fonts/SpaceMono-regular.ttf") format("ttf"),
+    url("./fonts/SpaceMono-bold.ttf") format("ttf");
+  font-weight: bold;
+  font-display: swap;
+}
+
 
 * {
   box-sizing: border-box;
