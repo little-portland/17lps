@@ -32,6 +32,10 @@ export const CenterContainerStyle = styled.div`
     display: inline-block;
   }
 
+  .events-iframe {
+    margin-bottom: 2rem;
+  }
+
   @media (max-width: ${breakpoints.m}px) {
     padding: 32px;
   }
