@@ -60,6 +60,10 @@ export const GlobalStyle = createGlobalStyle`
   text-transform: uppercase;
 }
 
+.bookings-heading-1 {
+  margin-top: 1rem;
+}
+
 .bookings-heading-2 {
   margin-top: 2rem;
 }
@@ -78,6 +82,10 @@ export const GlobalStyle = createGlobalStyle`
           font-size: .8rem;
           margin-top: 1rem;
           margin-bottom: .5rem;
+        }
+
+        .bookings-heading-1 {
+          margin-top: .5rem;
         }
 
         .bookings-body-text ul li {
