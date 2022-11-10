@@ -15,6 +15,7 @@ const Bookings = () => {
   const style = {
     width: isMobile ? "100%" : "32%",
     height: isMobile ? "70%" : "80%",
+    display: "grid",
     placeItems: "center",
     "@media (minWidth: 500px)": {
       display: "none",
@@ -47,7 +48,7 @@ const Bookings = () => {
       </Head>
 
       <CenterContainer>
-        <IFrameContainerStyle
+        <IFrameContainerStyle className="bookings-iframe"
           dangerouslySetInnerHTML={{
             __html:
               '<iframe src="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa" width="100%" height="100%"></iframe>',
