@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
  }
 
 .bookings-iframe {
-
+  margin-top: -2rem!important;
 }
 
 .bookings-body-text {
