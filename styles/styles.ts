@@ -44,6 +44,10 @@ export const GlobalStyle = createGlobalStyle`
   margin-bottom: 1.5rem;
 }
 
+.bookings-body-text a {
+  cursor: pointer;
+}
+
 .bookings-body-text a, .bookings-body-text a:hover, .bookings-body-text a:focus {
   color: rgb(92, 44, 124);
 }
