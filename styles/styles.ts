@@ -26,6 +26,66 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
  }
 
+ //Bookings iframe specific styles
+ .bookings-container {
+  position: absolute;
+  padding: 5rem;
+ }
+
+.bookings-iframe {
+
+}
+
+.bookings-body-text {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid rgb(92, 44, 124);
+  margin-top: -5rem;
+  margin-bottom: 1.5rem;
+}
+
+.bookings-body-text a, .bookings-body-text a:hover, .bookings-body-text a:focus {
+  color: rgb(92, 44, 124);
+}
+
+.bookings-body-text h1 {
+  margin-bottom: 1rem;
+}
+
+.bookings-heading-1, .bookings-heading-2 {
+  font-family: "Space Mono" !important;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.bookings-heading-2 {
+  margin-top: 2rem;
+}
+
+.bookings-body-text ul li {
+  font-size: .8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 15px;
+}
+
+/* Media Query for Mobile Devices */
+  // For Iphone Pro 14 MAX and similar screen sizes  
+    @media only screen and (max-device-width: 1024px) { 
+        .bookings-heading-1, .bookings-heading-2 {
+          font-size: .8rem;
+          margin-bottom: .5rem;
+        }
+
+        .bookings-body-text ul li {
+          font-size: .5rem;
+          line-height: 10px;
+          margin-bottom: .5rem;
+        }
+    }
+
 ${reset}
 
 html {
