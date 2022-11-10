@@ -58,7 +58,7 @@ const Bookings = () => {
          <h1 className="bookings-heading-1">Large Groups</h1>
           <ul>
             <li>For larger group bookings of 10 or more, please email us at <a href="mailto:eat@little-portland.com">eat@little-portland.com</a>.</li>
-            <li>Large groups can choose from 2 set menu options. Click <a href="http://localhost:3002/menu-options">here</a> to see the menus</li>
+            <li>Large groups can choose from 2 set menu options. Click <a href="https://www.little-portland.com/menu-options">here</a> to see the menus</li>
           </ul>
           <h1 className="bookings-heading-2">Bookings &amp; Cancellations</h1>
           <ul>
