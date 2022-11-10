@@ -76,13 +76,14 @@ export const GlobalStyle = createGlobalStyle`
     @media only screen and (max-device-width: 1024px) { 
         .bookings-heading-1, .bookings-heading-2 {
           font-size: .8rem;
+          margin-top: 1rem;
           margin-bottom: .5rem;
         }
 
         .bookings-body-text ul li {
           font-size: .5rem;
           line-height: 10px;
-          margin-bottom: .5rem;
+          margin-bottom: .3rem;
         }
     }
 
