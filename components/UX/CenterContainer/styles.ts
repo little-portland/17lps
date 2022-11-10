@@ -3,10 +3,11 @@ import { breakpoints } from "styles/styles";
 
 export const CenterContainerStyle = styled.div`
   position: absolute;
+  top: 2rem;
   left: 0;
   right: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   display: grid;
   place-items: center;
 
@@ -66,6 +67,7 @@ export const IFrameContainerStyle = styled.div`
   div.dynamic-height-adjust {
     display: none;
   }
+
 
   @media (max-width: ${breakpoints.m}px) {
     width: 100%;
