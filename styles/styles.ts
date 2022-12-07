@@ -37,11 +37,11 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 .bookings-body-text {
-  text-align: center;
-  padding: 20px;
+  text-align: left;
+  padding: 5px 20px;
   border: 2px solid rgb(92, 44, 124);
-  margin-top: -5rem;
   margin-bottom: 1.5rem;
+  max-width: 80%;
 }
 
 .bookings-body-text a {
@@ -53,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 .bookings-body-text h1 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .bookings-heading-1, .bookings-heading-2 {
@@ -72,16 +72,24 @@ export const GlobalStyle = createGlobalStyle`
   margin-top: 2rem;
 }
 
+.bookings-body-text ul {
+  list-style-type:square;
+  margin: 15px;
+}
+
 .bookings-body-text ul li {
   font-size: .8rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  line-height: 15px;
+  line-height: 20px;
 }
 
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
+       .bookings-body-text {
+          max-width: none;
+        }
         .bookings-heading-1, .bookings-heading-2 {
           font-size: .8rem;
           margin-top: 1rem;
