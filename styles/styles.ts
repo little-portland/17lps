@@ -81,7 +81,7 @@ export const GlobalStyle = createGlobalStyle`
   font-size: .8rem;
   font-weight: 600;
   margin-bottom: 10px;
-  line-height: 25px;
+  line-height: 15px;
 }
 
 /* Media Query for Mobile Devices */
