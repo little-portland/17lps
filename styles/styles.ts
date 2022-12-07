@@ -20,6 +20,10 @@ export const GlobalStyle = createGlobalStyle`
   font-display: swap;
 }
 
+html, body {
+  overflow-y: auto!important;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
