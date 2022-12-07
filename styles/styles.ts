@@ -53,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 .bookings-body-text h1 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .bookings-heading-1, .bookings-heading-2 {
@@ -74,14 +74,14 @@ export const GlobalStyle = createGlobalStyle`
 
 .bookings-body-text ul {
   list-style-type:square;
-  margin: 15px;
+  margin: 10px;
 }
 
 .bookings-body-text ul li {
   font-size: .8rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  line-height: 20px;
+  margin-bottom: 10px;
+  line-height: 25px;
 }
 
 /* Media Query for Mobile Devices */
