@@ -60,7 +60,7 @@ html, body {
   margin-bottom: 1rem;
 }
 
-.bookings-heading-1, .bookings-heading-2 {
+.bookings-heading-0, .bookings-heading-1, .bookings-heading-2 {
   font-family: "Space Mono" !important;
   font-weight: 900;
   font-style: normal;
@@ -68,8 +68,12 @@ html, body {
   text-transform: uppercase;
 }
 
-.bookings-heading-1 {
+.bookings-heading-0 {
   margin-top: 1rem;
+}
+
+.bookings-heading-1 {
+  margin-top: 2rem;
 }
 
 .bookings-heading-2 {
