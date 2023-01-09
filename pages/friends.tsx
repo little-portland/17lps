@@ -56,6 +56,12 @@ const Bookings = () => {
           style={style}
         />
         <div className="bookings-body-text">
+         <h1 className="bookings-heading-0">Sundays</h1>
+          <ul>
+            <li>Sundays are ticketed. You can buy tickets <a href="https://www.little-portland.com/events">here</a>.</li>
+            <li>Tickets are £30 and include entry and food (all you can eat).</li>
+            <li>Opening hours are 1pm-11pm (kitchen closes at 10pm).</li>
+          </ul>
          <h1 className="bookings-heading-1">Large Groups</h1>
           <ul>
             <li>For larger group bookings of 10 or more, please email us at <a href="mailto:eat@little-portland.com">eat@little-portland.com</a>.</li>
