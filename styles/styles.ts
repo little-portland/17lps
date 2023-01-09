@@ -98,13 +98,13 @@ html, body {
        .bookings-body-text {
           max-width: none;
         }
-        .bookings-heading-1, .bookings-heading-2 {
+        .bookings-heading-0, .bookings-heading-1, .bookings-heading-2 {
           font-size: .8rem;
           margin-top: 1rem;
           margin-bottom: .5rem;
         }
 
-        .bookings-heading-1 {
+        .bookings-heading-0 {
           margin-top: .5rem;
         }
 
