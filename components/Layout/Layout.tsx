@@ -98,14 +98,44 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         }}
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
       >
-        <Image
-          src={eatItem ? eatItem.image.url : eatPic}
-          alt={eatItem.image.description}
-          width={eatItem ? eatItem.image.width : 300} //automatically provided
-          height={eatItem ? eatItem.image.height : 800} //automatically provided
-          blurDataURL={"/images/Eat.jpeg"} //automatically provided
-          placeholder="blur" // Optional blur-up while loading
-        />
+{<div
+        className="eat-note"
+      > 
+        <h1>The Tent</h1>
+        <h2>[At the end of the Universe]</h2>
+        <h3>What’s On</h3>
+        {<div
+        className="box-1"
+      > 
+        <h4>Chinese New Year // 22nd July</h4>
+        <p>Sunday Funday resumes with Chinese New Year celebrations. Below menu of snacks being sent out all day. Get your tickets <a href="http://sevn.ly/x40shvk8" target="_blank">here</a>.</p>
+        <ul>
+          <li>Prawn Toast</li>
+          <li>Pork and Prawn Siu Mai</li>
+          <li>Chongqing Chicken Wings</li>
+          <li>Typhoon Shelter Cauliflower</li>
+          <li>Steamed Scallop, Ginger and Spring Onion</li>
+          <li>Roasted Bone Marrow,<br></br>
+              Xo Sauce And Deep Fried Bread</li>
+        </ul>
+        <p className="links"><a href="https://www.little-portland.com/chinese-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/chinese-ny-flyer" target="_blank">[Flyer]</a></p>
+        </div>}
+        {<div
+        className="box-3"
+      > 
+        <h4>Valentine’s Day // 14th February</h4>
+        <p>Celebrate Valentine’s day with a special French menu in the tent. £100 per person for the below set menu and champagne on arrival.</p>
+        <ul>
+          <li>Oysters and Caviar</li>
+          <li>Sashimi Blue Fin Tuna and Pearls</li>
+          <li>Croque Madame with Black Truffle</li>
+          <li>Bouillabaisse</li>
+          <li>Duck L’Orange and Pink Radicchio Salad</li>
+          <li>Peach Melba</li>
+        </ul>
+        <p className="links"><a href="https://www.little-portland.com/valentines-menu" target="_blank">[Menu]</a></p>
+        </div>}
+      </div>}
       </Modal>
       <Modal
         open={displayHire}
