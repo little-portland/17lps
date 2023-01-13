@@ -133,13 +133,13 @@ html, body {
 }
 
 .eat-note a {
-  color: #5C2C7C;
+  color: #fa4882;
   text-decoration: none;
   cursor: pointer;
 }
 
 .eat-note a:hover {
-  color: #fa4882;
+  color: #5C2C7C;
 }
 
 .box-1, .box-2, .box-3 {
