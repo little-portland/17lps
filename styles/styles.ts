@@ -231,6 +231,10 @@ html, body {
         .eat-note {
           max-height: 375px;
         }
+        
+        .eat-note h2 {
+          font-size: .7rem;
+        }
     }
 
 ${reset}
