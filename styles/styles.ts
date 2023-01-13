@@ -92,6 +92,120 @@ html, body {
   line-height: 15px;
 }
 
+/* Eat popup box styles */
+
+.eat-note {
+  text-align: left;
+  padding: 20px;
+  background-color: #acd8c7;
+  margin-bottom: 1.5rem;
+  color: #4c021b;
+  max-height: 514px;
+  max-width: 550px;
+  overflow: auto;
+}
+.eat-note h1 {
+  color: #48021a;
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: .3rem;
+}
+.eat-note h2 {
+  color: #fa4882;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.eat-note h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.eat-note h4 {
+  color: #fa4882;
+  font-size: .8rem;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+
+.eat-note a {
+  color: #5C2C7C;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.eat-note a:hover {
+  color: #fa4882;
+}
+
+.box-1, .box-2, .box-3 {
+  border: 2px solid #48021a;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.box-2 {
+  padding: 20px 20px 5px 20px;
+}
+
+.box-3 {
+  margin-bottom: 0;
+}
+
+.eat-note p {
+  font-size: .8rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+  line-height: 15px;
+}
+
+.eat-note .links {
+  margin-bottom: 0;
+}
+
+.eat-note ul {
+  list-style-image: url('/images/food-tray.svg');
+  margin: 10px 15px;
+}
+
+.eat-note ul li {
+  font-size: .8rem;
+  font-weight: 600;
+  padding-left: 5px;
+  margin-bottom: 0rem;
+  line-height: 20px;
+}
+
+.eat-note ul li::marker {
+  font-size: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #4c021b; 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #4c021b; 
+}
+
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
