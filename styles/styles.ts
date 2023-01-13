@@ -227,6 +227,10 @@ html, body {
           line-height: 10px;
           margin-bottom: .3rem;
         }
+        
+        .eat-note {
+          max-height: 350px;
+        }
     }
 
 ${reset}
