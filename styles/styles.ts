@@ -229,7 +229,7 @@ html, body {
         }
         
         .eat-note {
-          max-height: 400px;
+          max-height: 375px;
         }
     }
 
