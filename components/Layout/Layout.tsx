@@ -107,7 +107,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         {<div
         className="box-1"
       > 
-        <h4>Chinese New Year // 22nd July</h4>
+        <h4>Chinese New Year // 22nd January</h4>
         <p>Sunday Funday resumes with Chinese New Year celebrations. Below menu of snacks being sent out all day. Get your tickets <a href="http://sevn.ly/x40shvk8" target="_blank">here</a>.</p>
         <ul>
           <li>Prawn Toast</li>
