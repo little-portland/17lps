@@ -123,7 +123,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         {<div
         className="box-2"
       > 
-        <h4>Special Menu // 24th-28th</h4>
+        <h4>Special Menu // 24th-28th January</h4>
         <p>We will have a special a la carte menu focusing on Cantonese and Sichuan cuisine. Our regular a la carte menu will not be available during this period.</p>
         </div>}
         {<div
