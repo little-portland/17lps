@@ -121,6 +121,12 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p className="links"><a href="https://www.little-portland.com/chinese-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/chinese-ny-flyer" target="_blank">[Flyer]</a></p>
         </div>}
         {<div
+        className="box-2"
+      > 
+        <h4>Special Menu // 24th-28th</h4>
+        <p>We will have a special a la carte menu focusing on Cantonese and Sichuan cuisine. Our regular a la carte menu will not be available during this period.</p>
+        </div>}
+        {<div
         className="box-3"
       > 
         <h4>Valentine’s Day // 14th February</h4>
