@@ -56,7 +56,12 @@ const Bookings = () => {
           <ul>
             <li>Sundays are ticketed. You can buy tickets <a href="https://www.little-portland.com/events">here</a>. Limited tickets will be available on the door on the day. No promises tho, cuz.</li>
             <li>Please note this is a party booking, not a restaurant booking. Your ticket purchase allows you entry between 1pm-11pm. Feel free to arrive whenever, cuz.</li>
-            <li>Check our instagram post for the menu. Ordering not required, food will be sent out throughout the day until we run out. There will be no changes to the menu, cuz.</li>
+            <li>Menu normally posted on Eat page (previous page). Ordering not required, food will be sent out throughout the day until we run out. There will be no changes to the menu, cuz</li>
+          </ul>
+         <h1 className="bookings-heading-1">Special Events</h1>
+          <ul>
+            <li>All menus are subject to change depending on availability.</li>
+            <li>Unfortunately we cannot cater for allergies or dietary requirements during special events. No changes can be made to special set menus.</li>
           </ul>
         <h1 className="bookings-heading-1">Large Groups</h1>
           <ul>
