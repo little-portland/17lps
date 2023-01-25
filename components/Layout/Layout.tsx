@@ -123,7 +123,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <li>Duck L’Orange and Pink Radicchio Salad</li>
           <li>Peach Melba</li>
         </ul>
-        <p className="links"><a href="https://www.little-portland.com/valentines-menu" target="_blank">[Menu]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/valentines-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/valentines-flyer" target="_blank">[Flyer]</a></p>
         </div>}
       </div>}
       </Modal>
