@@ -107,22 +107,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         {<div
         className="box-1"
       > 
-        <h4>Chinese New Year // 22nd January</h4>
-        <p>Sunday Funday resumes with Chinese New Year celebrations. Below menu of snacks being sent out all day. Get your tickets <a href="http://sevn.ly/x40shvk8" target="_blank">here</a>.</p>
-        <ul>
-          <li>Prawn Toast</li>
-          <li>Pork and Prawn Siu Mai</li>
-          <li>Chongqing Chicken Wings</li>
-          <li>Typhoon Shelter Cauliflower</li>
-          <li>Steamed Scallop, Ginger and Spring Onion</li>
-          <li>Roasted Bone Marrow,<br></br>
-              Xo Sauce And Deep Fried Bread</li>
-        </ul>
-        <p className="links"><a href="https://www.little-portland.com/chinese-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/chinese-ny-flyer" target="_blank">[Flyer]</a></p>
-        </div>}
-        {<div
-        className="box-2"
-      > 
         <h4>Special Menu // 24th-28th January</h4>
         <p>We will have a special a la carte menu focusing on Cantonese and Sichuan cuisine. Our regular a la carte menu will not be available during this period.</p>
         </div>}
