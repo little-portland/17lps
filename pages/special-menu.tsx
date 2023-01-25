@@ -12,7 +12,7 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
-        <title>Menu</title>
+        <title>Special Menu</title>
       </Head>
 
       <CenterContainer>
