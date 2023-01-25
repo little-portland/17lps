@@ -148,7 +148,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <li>Mushroom Shish</li>
           <li>Veal Sweetbreads with Parsley Toum</li>
         </ul>
-        <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
+        <p style="margin-bottom:.5rem;" className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
         </div>}
         {<div
         className="box-3"
