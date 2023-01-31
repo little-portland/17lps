@@ -104,37 +104,10 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h1>The Tent</h1>
         <h2>[At the end of the Universe]</h2>
         <h3>What’s On</h3>
-        {<div
-        className="box-1"
-      > 
-        <h4>Special Menu // 24th-28th January</h4>
-        <p>We will have a special a la carte menu focusing on Cantonese and Sichuan cuisine. Our regular a la carte menu will not be available during this period.</p>
-        <ul>
-          <li>Prawn Toast £10</li>
-          <li>Steamed Scallop, Ginger And Spring Onion £6pp</li>
-          <li>Chongqing Chicken Wings £12</li>
-          <li>Prawn And Pork Fat Siu Mai, Trout Roe £8</li>
-          <li>Cold Sliced Beef Shin, Tripe And Pig's Ears £12</li>
-          <li>Smacked Cucumbers, Jellyfish, Garlic And Pickled Chilli $8</li>
-          <li>Crab Congee £18</li>
-          <li>Crispy Skin Pigeon With Five Spice Salt £16</li>
-          <li>Burnt Cabbage, Fish Sauce Butter £16</li>
-          <li>Typhoon Shelter Cauliflower £16</li>
-          <li>Iberico Pork Char Siu £36</li>
-          <li>Wagyu Short Rib, Pickled Onions, Baby Gem £80</li>
-          <li>Garlic Lobster Noodles £80</li>
-          <li>Master Fried Rice £16</li>
-          <li>Fragrant Bone Marrow Rice £10</li>
-          <li>Egg Fried Rice £10</li>
-          <li>Black Sesame And Mango Bao Bing £12</li>
-          <li>Deep Fried Potato Ice Cream £10</li>
-         </ul>
-          <p className="links"><a href="https://www.little-portland.com/special-menu" target="_blank">[Menu]</a></p>
-        </div>}
       {<div
         className="box-1"
       > 
-        <h4>Sunday Funday // 29th January</h4>
+        <h4>Sunday Funday // 5th Frebruary</h4>
         <p>Below menu of snacks being sent out all day. Ger your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
         <ul>
           <li>Flatbread</li>
