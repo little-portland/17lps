@@ -107,8 +107,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
       {<div
         className="box-1"
       > 
-        <h4>Sunday Funday // 5th Frebruary</h4>
-        <p>Below menu of snacks being sent out all day. Ger your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
+        <h4>Sunday Funday // 12th Frebruary</h4>
+        <p>Below menu of snacks being sent out all day. Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
         <ul>
           <li>Flatbread</li>
           <li>Crudites</li>
