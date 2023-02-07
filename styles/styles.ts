@@ -244,7 +244,7 @@ html, body {
         }
         
         .eat-note {
-          max-height: 375px;
+          max-height: 300px;
         }
         
         .eat-note h1 {
