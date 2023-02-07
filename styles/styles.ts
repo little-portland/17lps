@@ -94,6 +94,16 @@ html, body {
 
 /* Eat popup box styles */
 
+.insta {
+  position: absolute;
+  top: 1.5rem;
+  right: 0rem;
+  background-color: #48021a;
+  padding: 5px 5px 3px 5px ;
+  border-radius: 10px 0 0 10px;
+  display: block;
+}
+
 .eat-note {
   text-align: left;
   padding: 20px;
