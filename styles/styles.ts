@@ -97,10 +97,10 @@ html, body {
 .insta {
   position: absolute;
   top: 1.6rem;
-  right: 0rem;
+  right: 1rem;
   background-color: #48021a;
   padding: 5px 5px 3px 5px ;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px;
   display: block;
 }
 
