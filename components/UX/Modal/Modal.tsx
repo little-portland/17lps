@@ -30,6 +30,10 @@ interface SidebarProps {
     target: string;
     title: string;
   };
+  link3?: {
+    target: string;
+    title: string;
+  };
 }
 
 const Modal: FC<SidebarProps> = ({
@@ -40,6 +44,7 @@ const Modal: FC<SidebarProps> = ({
   phone,
   link,
   link2,
+  link3
 }) => {
   //Check Device
   const { isMobile } = useDeviceDetect();
@@ -109,6 +114,15 @@ const Modal: FC<SidebarProps> = ({
                     </Button>
                   </CopyToClipboard>
                 ))}
+                {link3 && (
+                   <FirstButtonWrapper>
+                     <Link href={link3.target}>
+                        <a className="insta" target="_blank">
+                          <Button btnType="hollow">{link3.title}</Button>
+                        </a>
+                    </Link>
+                  </FirstButtonWrapper>
+              )}
             </ButtonWrapper>
             {copied ? (
               <span
