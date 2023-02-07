@@ -120,15 +120,6 @@ const Modal: FC<SidebarProps> = ({
                     </Button>
                   </CopyToClipboard>
                 ))}
-                {link3 && (
-                   <FirstButtonWrapper>
-                     <Link href={link3.target}>
-                        <a className="insta" target="_blank">
-                          <Button btnType="hollow">{link3.title}</Button>
-                        </a>
-                    </Link>
-                  </FirstButtonWrapper>
-              )}
             </ButtonWrapper>
             {copied ? (
               <span
