@@ -95,6 +95,11 @@ html, body {
 /* Eat popup box styles */
 
 .insta {
+  display: block;
+}
+
+/*
+.insta {
   position: absolute;
   top: 1.6rem;
   right: .5rem;
@@ -102,7 +107,7 @@ html, body {
   padding: 5px 5px 3px 5px ;
   border-radius: 10px;
   display: block;
-}
+}*/
 
 .eat-note {
   text-align: left;
@@ -248,6 +253,10 @@ html, body {
         
         .eat-note h2 {
           font-size: .7rem;
+        }
+        
+        .insta {
+          margin-top: 15px;
         }
     }
 
