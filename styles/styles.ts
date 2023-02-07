@@ -243,7 +243,7 @@ html, body {
         }
         
         .eat-note h1 {
-          font-size: 2.5rem;
+          font-size: 2.3rem;
         }
         
         .eat-note h2 {
