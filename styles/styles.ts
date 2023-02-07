@@ -96,7 +96,7 @@ html, body {
 
 .insta {
   position: absolute;
-  top: 1.5rem;
+  top: 1.6rem;
   right: 0rem;
   background-color: #48021a;
   padding: 5px 5px 3px 5px ;
