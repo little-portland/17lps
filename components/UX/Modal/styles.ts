@@ -104,7 +104,7 @@ export const FirstButtonWrapper = styled.div`
     width: 350px !important;
 
     @media (max-width: ${breakpoints.m}px) {
-      width: 200px !important;
+      width: 290px !important;
     }
   }
 
