@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import {
@@ -30,10 +31,6 @@ interface SidebarProps {
     target: string;
     title: string;
   };
-  link3?: {
-    target: string;
-    title: string;
-  };
 }
 
 const Modal: FC<SidebarProps> = ({
@@ -44,7 +41,6 @@ const Modal: FC<SidebarProps> = ({
   phone,
   link,
   link2,
-  link3
 }) => {
   //Check Device
   const { isMobile } = useDeviceDetect();
@@ -86,13 +82,23 @@ const Modal: FC<SidebarProps> = ({
                   </Link>
                 </FirstButtonWrapper>
               )}              
+
               {link2 && (
                 <FirstButtonWrapper>
+                  <div className="sample-menu" >
                   <Link href={link2.target}>
                     <a>
                       <Button btnType="solid">{link2.title}</Button>
                     </a>
                   </Link>
+                  <a className="insta" href="https://www.instagram.com/thetentattheendoftheuniverse/" target="_blank">
+                <Image
+                  src={"/images/instagram.svg"}
+                  width={25}
+                  height={25} 
+                />
+                </a>
+                </div>
                   </FirstButtonWrapper>
               )}
               {email && (
