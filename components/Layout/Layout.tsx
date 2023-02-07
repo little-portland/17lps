@@ -96,19 +96,15 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           target: "/menu",
           title: "sample menu",
         }}
+        link3={{
+          target: "https://www.instagram.com/thetentattheendoftheuniverse/",
+          title: "Instagram",
+        }}
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
       >
 {<div
         className="eat-note"
-      > 
-        <a className="insta" href="https://www.instagram.com/thetentattheendoftheuniverse/" target="_blank">
-         <Image
-           src={"/images/instagram.svg"}
-           width={25}
-           height={25} 
-         />
-        </a>
-    
+      >     
         <h1>The Tent</h1>
         <h2>[At the end of the Universe]</h2>
         <h3>What’s On</h3>
