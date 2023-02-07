@@ -115,7 +115,7 @@ html, body {
   background-color: #acd8c7;
   margin-bottom: 1.5rem;
   color: #4c021b;
-  max-height: 514px;
+  max-height: 450px;
   max-width: 550px;
   overflow: auto;
 }
