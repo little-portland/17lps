@@ -96,18 +96,20 @@ html, body {
 
 .insta {
   display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  background-color: #5C2C7C;
+  width: 45px;
+  height: 41px!important;
+  padding: 8px 7px;
+  border-left: 5px solid #e8bac9;
 }
 
-/*
-.insta {
-  position: absolute;
-  top: 1.6rem;
-  right: .5rem;
-  background-color: #48021a;
-  padding: 5px 5px 3px 5px ;
-  border-radius: 10px;
-  display: block;
-}*/
+.sample-menu {
+  position: relative;
+}
 
 .eat-note {
   text-align: left;
@@ -115,7 +117,7 @@ html, body {
   background-color: #acd8c7;
   margin-bottom: 1.5rem;
   color: #4c021b;
-  max-height: 450px;
+  max-height: 510px;
   max-width: 550px;
   overflow: auto;
 }
@@ -244,7 +246,7 @@ html, body {
         }
         
         .eat-note {
-          max-height: 300px;
+          max-height: 375px;
         }
         
         .eat-note h1 {
@@ -256,7 +258,16 @@ html, body {
         }
         
         .insta {
-          margin-top: 15px;
+          display: block;
+          position: absolute;
+          top: 0;
+          transform: none;
+          right: 15px;
+          background-color: #5C2C7C;
+          width: 45px;
+          height: 41px!important;
+          padding: 8px 7px;
+          border-left: 5px solid #e8bac9;
         }
     }
 
