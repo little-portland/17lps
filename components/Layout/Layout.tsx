@@ -104,10 +104,25 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h1>The Tent</h1>
         <h2>[At the end of the Universe]</h2>
         <h3>What’s On</h3>
-      {<div
+        {<div
         className="box-1"
       > 
-        <h4>Sunday Funday // 12th Frebruary</h4>
+        <h4>Valentine’s Day // 14th February</h4>
+        <p>Celebrate Valentine’s day with a special French menu in the tent. £100 per person for the below set menu and champagne on arrival.</p>
+        <ul>
+          <li>Oysters and Caviar</li>
+          <li>Sashimi Blue Fin Tuna and Pearls</li>
+          <li>Croque Madame with Black Truffle</li>
+          <li>Bouillabaisse</li>
+          <li>Duck L’Orange and Pink Radicchio Salad</li>
+          <li>Peach Melba</li>
+        </ul>
+        <p className="links"><a href="https://www.little-portland.com/valentines-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/valentines-flyer" target="_blank">[Flyer]</a></p>
+        </div>}
+          {<div
+        className="box-3"
+      > 
+        <h4>Sunday Funday // 19th Frebruary</h4>
         <p>Below menu of snacks being sent out all day. Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
         <ul>
           <li>Flatbread</li>
@@ -122,21 +137,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <li>Veal Sweetbreads with Parsley Toum</li>
         </ul>
         <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
-        </div>}
-        {<div
-        className="box-3"
-      > 
-        <h4>Valentine’s Day // 14th February</h4>
-        <p>Celebrate Valentine’s day with a special French menu in the tent. £100 per person for the below set menu and champagne on arrival.</p>
-        <ul>
-          <li>Oysters and Caviar</li>
-          <li>Sashimi Blue Fin Tuna and Pearls</li>
-          <li>Croque Madame with Black Truffle</li>
-          <li>Bouillabaisse</li>
-          <li>Duck L’Orange and Pink Radicchio Salad</li>
-          <li>Peach Melba</li>
-        </ul>
-        <p className="links"><a href="https://www.little-portland.com/valentines-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/valentines-flyer" target="_blank">[Flyer]</a></p>
         </div>}
       </div>}
       </Modal>
