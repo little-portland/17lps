@@ -18,12 +18,12 @@ const Menu = ({ menuImage }) => {
       <CenterContainer>
         {menuImage && (
           <Image
-            src={menuImage.url}
+            src={"/images/17LPS_MenU_220823.jpg"}
             alt={menuImage.title}
             className={"image"}
             width={menuImage.width} //automatically provided
             height={menuImage.height} //automatically provided
-            blurDataURL={"/images/Eat.jpeg"} //automatically provided
+            blurDataURL={"/images/17LPS_MenU_220823.jpg"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
         )}
