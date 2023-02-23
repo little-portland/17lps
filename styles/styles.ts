@@ -99,12 +99,12 @@ html, body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 15px;
+  right: 16px;
   background-color: #5C2C7C;
   width: 45px;
   height: 41px!important;
   padding: 8px 7px;
-  border-left: 5px solid #e8bac9;
+  border-left: 8px solid #e8bac9;
 }
 
 .sample-menu {
@@ -262,12 +262,12 @@ html, body {
           position: absolute;
           top: 0;
           transform: none;
-          right: 15px;
+          right: 16px;
           background-color: #5C2C7C;
           width: 45px;
           height: 41px!important;
           padding: 8px 7px;
-          border-left: 5px solid #e8bac9;
+          border-left: 8px solid #e8bac9;
         }
     }
 
