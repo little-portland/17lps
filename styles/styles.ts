@@ -101,9 +101,9 @@ html, body {
   transform: translateY(-50%);
   right: 16px;
   background-color: #5C2C7C;
-  width: 45px;
+  width: 48px;
   height: 41px!important;
-  padding: 8px 7px;
+  padding: 8px;
   border-left: 8px solid #e8bac9;
 }
 
@@ -264,9 +264,9 @@ html, body {
           transform: none;
           right: 16px;
           background-color: #5C2C7C;
-          width: 45px;
+          width: 48px;
           height: 41px!important;
-          padding: 8px 7px;
+          padding: 8px;
           border-left: 8px solid #e8bac9;
         }
     }
