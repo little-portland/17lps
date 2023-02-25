@@ -110,16 +110,11 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h4>Sunday Funday // 26th Frebruary</h4>
         <p>Below menu of snacks being sent out all day. Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
         <ul>
-          <li>Flatbread</li>
-          <li>Crudites</li>
-          <li>Tzatziki</li>
-          <li>Muhammara</li>
-          <li>Taramasalata</li>
-          <li>Borani</li>
-          <li>Chicken Wings with Za’atar</li>
-          <li>Suckling Lamb Shish</li>
-          <li>Mushroom Shish</li>
-          <li>Veal Sweetbreads with Parsley Toum</li>
+          <li>SCHOOL SHRIMP</br><span>Deep Fried with Guajillo Salt</span></li>
+          <li>CHALKSTREAM TROUT</br><span>Tomato, Kumquat, Chilli</span></li>
+          <li>ORKNEY SCALLOP</br><span>Piel de Sapo, Roasted Kelp Oil</span></li>
+          <li>PARADISE PRAWNS</br><span>Cucumber, Mezcal, Jalepeno</span></li>
+          <li>SEA BASS</br><span>Walnut Milk, Cherry, Pickled Celery</span></li>
         </ul>
         <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
         </div>}
