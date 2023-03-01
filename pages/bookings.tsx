@@ -71,6 +71,7 @@ const Bookings = () => {
           <h1 className="bookings-heading-2">Bookings &amp; Cancellations</h1>
           <ul>
             <li>We ask that any changes to your reservation be made at least 48 hours before the reservation time in order to avoid a late cancellation fee.</li>
+            <li>Changes to reservations can be made by email at <a href="mailto:eat@little-portland.com">eat@little-portland.com</a>.</li>
             <li>Late cancellations or no-shows will be subject to a £30pp late cancellation fee.</li>
             <li>Last minute reductions in group sizes may also be charged a cancellation fee.</li>
             <li>Children under the age of 16 are not permitted to enter the venue.</li>
