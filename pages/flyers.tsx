@@ -5,7 +5,7 @@ import Head from "next/head";
 import useFetchContent from "@utils/useFetchContent";
 
 //Components
-import FlyerGrid from "@components/FlyerGrid/index";
+import FlyerGrid from "@components/FlyerGrid/index"; 
 
 const Flyers = ({ newestFlyers }) => {
   return (
