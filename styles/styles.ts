@@ -151,8 +151,8 @@ html, body {
 
 .eat-note hr {
   border: none;
-  border-top: 1px dashed rgb(92, 44, 124);
-  margin: 15px 0;
+  border-top: 1px solid #4c021b;
+  margin: 20px 0;
 }
 
 .eat-note a {
