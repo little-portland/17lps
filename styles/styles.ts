@@ -149,6 +149,11 @@ html, body {
   margin-bottom: .5rem;
 }
 
+.eat-note hr {
+  border-top: 1px dashed rgb(92, 44, 124);
+  margin: 30px 0;
+}
+
 .eat-note a {
   color: #fa4882;
   text-decoration: none;
