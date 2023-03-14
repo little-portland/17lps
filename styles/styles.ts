@@ -146,12 +146,13 @@ html, body {
   color: #fa4882;
   font-size: .8rem;
   text-transform: uppercase;
-  margin-bottom: .5rem;
+  margin-bottom: 1.5rem;
 }
 
 .eat-note hr {
+  border: none;
   border-top: 1px dashed rgb(92, 44, 124);
-  margin: 30px 0;
+  margin: 15px 0;
 }
 
 .eat-note a {
