@@ -107,23 +107,20 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           {<div
         className="box-3"
       > 
-        <h4>Sunday Funday // 19th March</h4>
-        <p>Complimentary Gin Basil Smash on Arrival</p>
+        <h4>Sunday Funday // 26th March</h4>
+        <p>Complimentary Tommy Spritz on Arrival</p>
         <hr/>
         <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
         <hr/>
-        <p>Below menu of snacks being sent out all day. Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
+        <p>Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
+        <p><strong>SUNDAY ROAST</strong></p>
+        <p>Choice of one of the following</p>
         <ul>
-          <li>Bread</li>
-          <li>Crudites</li>
-          <li>Lamb Shish</li>
-          <li>Mushroom Shish</li>
-          <li>Muhammara</li>
-          <li>Tzatziki</li>
-          <li>Borani</li>
-          <li>Taramasalata</li>
-          <li>Veal Sweetbreads</li>
-          <li>Chicken wings</li>
+          <li>Crispy Pork Belly</li>
+          <li>Lamb Rump</li>
+          <li>Carpet Bag Steak</li>
+          <li>Pot Roasted Cauliflower</li>
+          <li>... and all the trimmings!</li>
         </ul>
         <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
         </div>}
