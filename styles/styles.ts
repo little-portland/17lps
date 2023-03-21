@@ -149,6 +149,10 @@ html, body {
   margin-bottom: 1.5rem;
 }
 
+.eat-note h5 {
+  margin-bottom: 1.5rem;
+}
+
 .eat-note hr {
   border: none;
   border-top: 1px solid #4c021b;
@@ -182,7 +186,7 @@ html, body {
 .eat-note p {
   font-size: .8rem;
   font-weight: 600;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
   line-height: 15px;
 }
 
