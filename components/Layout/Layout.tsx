@@ -113,8 +113,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
         <hr/>
         <p>Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
-        <h5>SUNDAY ROAST</h5>
-        </br>        
+        <h5>SUNDAY ROAST</h5>       
         <p>Choice of one of the following</p>
         <ul>
           <li>Crispy Pork Belly</li>
