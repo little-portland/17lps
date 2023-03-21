@@ -150,7 +150,8 @@ html, body {
 }
 
 .eat-note h5 {
-  margin-bottom: 1.5rem;
+   margin-top: 1.5rem;
+   margin-bottom: 1rem;
 }
 
 .eat-note hr {
