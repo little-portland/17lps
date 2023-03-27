@@ -105,24 +105,50 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>[At the end of the Universe]</h2>
         <h3>What’s On</h3>
           {<div
-        className="box-3"
+        className="box-1"
       > 
-        <h4>Sunday Funday // 26th March</h4>
-        <p>Complimentary Tommy Spritz on Arrival</p>
+        <h4>Sunday Funday // 2nd April March</h4>
+        <p>Complimentary Apple Daiquiri, on Arrival</p>
         <hr/>
         <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
         <hr/>
         <p>Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
-        <h5>SUNDAY ROAST</h5>       
-        <p>Choice of one of the following:</p>
         <ul>
-          <li>Crispy Pork Belly</li>
-          <li>Lamb Rump</li>
-          <li>Carpet Bag Steak</li>
-          <li>Pot Roasted Cauliflower</li>
+          <li>FLATBREAD</li>
+          <li>CRUDITES</li>
+          <li>TZATZIKI</li>
+          <li>MUHAMMARA</li>
+          <li>TARAMASALATA</li>
+          <li>BORANI</li>
+          <li>CHICKEN WINGS WITH ZA'ATAR</li>
+          <li>SUCKLING LAMB SHISH</li>
+          <li>MUSHROOM SHISH</li>
+          <li>VEAL SWEETBREADS WITH PARSLEY TOUM</li>
         </ul>
-        <p>... and all the trimmings!</p>
         <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
+        </div>}
+       {<div
+        className="box-3"
+      > 
+        <h4>Sunday Funday // 16th April March</h4>
+        <p>Complimentary Little Portland Mule, on Arrival</p>
+        <hr/>
+        <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
+        <hr/>
+        <p>Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
+        <ul>
+          <li>FLATBREAD</li>
+          <li>CRUDITES</li>
+          <li>TZATZIKI</li>
+          <li>MUHAMMARA</li>
+          <li>TARAMASALATA</li>
+          <li>BORANI</li>
+          <li>CHICKEN WINGS WITH ZA'ATAR</li>
+          <li>SUCKLING LAMB SHISH</li>
+          <li>MUSHROOM SHISH</li>
+          <li>VEAL SWEETBREADS WITH PARSLEY TOUM</li>
+        </ul>
+        <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a></p>
         </div>}
       </div>}
       </Modal>
