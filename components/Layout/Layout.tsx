@@ -107,7 +107,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           {<div
         className="box-1"
       > 
-        <h4>Sunday Funday // 2nd April March</h4>
+        <h4>Sunday Funday // 2nd April</h4>
         <p>Complimentary Apple Daiquiri, on Arrival</p>
         <hr/>
         <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
@@ -130,7 +130,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
        {<div
         className="box-3"
       > 
-        <h4>Sunday Funday // 16th April March</h4>
+        <h4>Sunday Funday // 16th April</h4>
         <p>Complimentary Little Portland Mule, on Arrival</p>
         <hr/>
         <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
