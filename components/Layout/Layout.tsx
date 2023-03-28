@@ -123,7 +123,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <li>CHICKEN WINGS WITH ZA'ATAR</li>
           <li>SUCKLING LAMB SHISH</li>
           <li>MUSHROOM SHISH</li>
-          <li>VEAL SWEETBREADS WITH PARSLEY TOUM</li>
         </ul>
         <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
         </div>}
@@ -146,7 +145,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <li>CHICKEN WINGS WITH ZA'ATAR</li>
           <li>SUCKLING LAMB SHISH</li>
           <li>MUSHROOM SHISH</li>
-          <li>VEAL SWEETBREADS WITH PARSLEY TOUM</li>
         </ul>
         <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a></p>
         </div>}
