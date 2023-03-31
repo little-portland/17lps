@@ -127,7 +127,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
         </div>}
        {<div
-        className="box-3"
+        className="box-1"
       > 
         <h4>Sunday Funday // 16th April</h4>
         <p>Complimentary Little Portland Mule, on Arrival</p>
