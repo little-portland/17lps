@@ -79,6 +79,7 @@ const Bookings = () => {
              <li>Late cancellations or no-shows will be subject to a £30pp late cancellation fee.</li>
             <li>Last minute reductions in group sizes may also be charged a cancellation fee.</li>
             <li>Children under the age of 16 are not permitted to enter the venue.</li>
+            <li>Reservations for the following month will become available online on the 1st of every month.</li>
           </ul>
         </div>
       </CenterContainer>
