@@ -152,7 +152,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-3"
       > 
         <h4>Sunday Funday // 23rd April</h4>
-        <p>Complimentary drink, on Arrival</p>
+        <p>Complimentary Rosita, on Arrival</p>
         <hr/>
         <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
         <hr/>
