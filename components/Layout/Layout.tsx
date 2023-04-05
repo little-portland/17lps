@@ -104,28 +104,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h1>The Tent</h1>
         <h2>[At the end of the Universe]</h2>
         <h3>What’s On</h3>
-          {<div
-        className="box-1"
-      > 
-        <h4>Sunday Funday // 2nd April</h4>
-        <p>Complimentary Apple Daiquiri, on Arrival</p>
-        <hr/>
-        <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
-        <hr/>
-        <p>Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
-        <ul>
-          <li>FLATBREAD</li>
-          <li>CRUDITES</li>
-          <li>TZATZIKI</li>
-          <li>MUHAMMARA</li>
-          <li>TARAMASALATA</li>
-          <li>BORANI</li>
-          <li>CHICKEN WINGS WITH ZA'ATAR</li>
-          <li>SUCKLING LAMB SHISH</li>
-          <li>MUSHROOM SHISH</li>
-        </ul>
-        <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
-        </div>}
        {<div
         className="box-1"
       > 
@@ -136,39 +114,34 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <hr/>
         <p>Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
         <ul>
-          <li>FLATBREAD</li>
-          <li>CRUDITES</li>
-          <li>TZATZIKI</li>
-          <li>MUHAMMARA</li>
-          <li>TARAMASALATA</li>
-          <li>BORANI</li>
-          <li>CHICKEN WINGS WITH ZA'ATAR</li>
-          <li>SUCKLING LAMB SHISH</li>
-          <li>MUSHROOM SHISH</li>
+          <li>Fried Chicken £16</li>
+          <li>Cheeseburger £12</li>
+          <li>Mushroom Burger £12</li>
+          <li>Mash and Gravy £10</li>
+          <li>Jalapeño Poppers £8</li>
+          <li>BBQ Pork Ribs £16</li>
+          <li>Chips £6</li>
         </ul>
-        <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/sunday-16-apr-menu" target="_blank">[Menu]</a></p>
         </div>}
        {<div
         className="box-3"
       > 
         <h4>Sunday Funday // 23rd April</h4>
-        <p>Complimentary Rosita, on Arrival</p>
+        <p>Complimentary Sake Sake, on Arrival</p>
         <hr/>
         <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
         <hr/>
         <p>Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
+        <p>Choice of one:</p>
         <ul>
-          <li>FLATBREAD</li>
-          <li>CRUDITES</li>
-          <li>TZATZIKI</li>
-          <li>MUHAMMARA</li>
-          <li>TARAMASALATA</li>
-          <li>BORANI</li>
-          <li>CHICKEN WINGS WITH ZA'ATAR</li>
-          <li>SUCKLING LAMB SHISH</li>
-          <li>MUSHROOM SHISH</li>
+          <li>Chicken Katsudon</li>
+          <li>Pork Katsudon</li>
+          <li>Tendon</li>
+          <li>Mushroom Donburi</li>
         </ul>
-        <p className="links"><a href="https://www.little-portland.com/sunday-funday-menu" target="_blank">[Menu]</a></p>
+        <p>+ Sashimi, Pickles, Salad and Miso Soup</p>
+        <p className="links"><a href="https://www.little-portland.com/sunday-23-apr-menu" target="_blank">[Menu]</a></p>
         </div>}
       </div>}
       </Modal>
