@@ -115,7 +115,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <li>Saganaki Cheese, Pomegranate Molasses, Honey</li>
          </ul>
                 
-         <h5>Choice of 1 dip (per person)</h5>
+         <h6>Choice of 1 dip (per person)</h6>
+                
          <ul>
            <li>Tzatziki</li>
            <li>Muhammara</li>
@@ -123,17 +124,18 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
            <li>Borani</li>
          </ul>     
         
-         <h5>Choice of 1 main (per 2 people) </h5>
+         <h6>Choice of 1 main (per 2 people) </h6>
+                
          <ul>
            <li>Masgouf, Pickled Onions, Monk’s Beard and Zhoug <b>or</b></li>
            <li>Lamb Belly Shawarma Baked in Tomato Sauce, Brown Butter and Labneh <b>or</b></li>
            <li>Pumpkin, Walnut and Pearl Cous Cous Tagine</li>
          </ul> 
-         <p><b>All served with Fattoush and Rice Pilaf</b></p>
+         <h6>All served with Fattoush and Rice Pilaf</h6>
           <ul>
            <li>Ricotta Ice Cream, Filo Pastry, Honey and Pistachio</li>
          </ul> 
-         <p><b>£80pp</b></p>
+         <h6>£80pp</h6>
          <p>* This will be the only menu available for this evening. Our regular menu will not be available. As it is a specially curated menu, no changes can be made to the dishes and we will be unable to cater any dietary requirements. Dishes may change according to availability of produce.</p>
          <p className="links"><a href="https://www.little-portland.com/Thu-21-apr-menu" target="_blank">[Menu]</a></p>
         </div>}
