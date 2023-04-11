@@ -162,6 +162,10 @@ html, body {
   margin-bottom: 1.5rem;
 }
 
+.eat-note b {
+  color: #fa4882;
+}
+
 .eat-note hr {
   border: none;
   border-top: 1px solid #4c021b;
