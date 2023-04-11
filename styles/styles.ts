@@ -154,6 +154,14 @@ html, body {
    margin-bottom: 1rem;
 }
 
+.eat-note h6 {
+  color: #fa4882;
+  font-size: .7rem;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .eat-note hr {
   border: none;
   border-top: 1px solid #4c021b;
