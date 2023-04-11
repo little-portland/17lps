@@ -107,7 +107,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
        {<div
         className="box-1"
       > 
-        <h4>Eid Mubarek! // Thursday // 21st April</h4>
+        <h4>Eid Mubarek! // Thursday 21st April</h4>
         <ul>
           <li>Crudites</li>
           <li>Coconut Flatbread with Za’atar</li>
