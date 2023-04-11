@@ -135,6 +135,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
          </ul> 
          <p><b>£80pp</b></p>
          <p>* This will be the only menu available for this evening. Our regular menu will not be available. As it is a specially curated menu, no changes can be made to the dishes and we will be unable to cater any dietary requirements. Dishes may change according to availability of produce.</p>
+         <p className="links"><a href="https://www.little-portland.com/Thu-21-apr-menu" target="_blank">[Menu]</a></p>
         </div>}
        {<div
         className="box-1"
