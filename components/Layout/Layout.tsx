@@ -107,6 +107,38 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
        {<div
         className="box-1"
       > 
+        <h4>Eid Mubarek! // Thursday // 21st April</h4>
+        <ul>
+          <li>Crudites</li>
+          <li>Coconut Flatbread with Za’atar</li>
+          <li>Lamb Kofte or Mushroom Shish</li>
+          <li>Saganaki Cheese, Pomegranate Molasses, Honey</li>
+         </ul>
+                
+         <h5>Choice of 1 dip (per person)</h5>
+         <ul>
+           <li>Tzatziki</li>
+           <li>Muhammara</li>
+           <li>Taramasalata</li>
+           <li>Borani</li>
+         </ul>     
+        
+         <h5>Choice of 1 main (per 2 people) </h5>
+         <ul>
+           <li>Masgouf, Pickled Onions, Monk’s Beard and Zhoug <b>or</b></li>
+           <li>Lamb Belly Shawarma Baked in Tomato Sauce, Brown Butter and Labneh <b>or</b></li>
+           <li>Pumpkin, Walnut and Pearl Cous Cous Tagine</li>
+         </ul> 
+         <p><b>All served with Fattoush and Rice Pilaf</b></p>
+          <ul>
+           <li>Ricotta Ice Cream, Filo Pastry, Honey and Pistachio</li>
+         </ul> 
+         <p><b>£80pp</b></p>
+         <p>* This will be the only menu available for this evening. Our regular menu will not be available. As it is a specially curated menu, no changes can be made to the dishes and we will be unable to cater any dietary requirements. Dishes may change according to availability of produce.</p>
+        </div>}
+       {<div
+        className="box-1"
+      > 
         <h4>Sunday Funday // 16th April</h4>
         <p>Complimentary Little Portland Mule, on Arrival</p>
         <hr/>
