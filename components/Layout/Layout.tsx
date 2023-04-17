@@ -107,26 +107,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
        {<div
         className="box-1"
       > 
-        <h4>Sunday Funday // 16th April</h4>
-        <p>Complimentary Little Portland Mule, on Arrival</p>
-        <hr/>
-        <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
-        <hr/>
-        <p>Book your table <a href="https://www.little-portland.com/bookings" target="_blank">here</a>.</p>
-        <ul>
-          <li>Fried Chicken £16</li>
-          <li>Cheeseburger £12</li>
-          <li>Mushroom Burger £12</li>
-          <li>Mash and Gravy £10</li>
-          <li>Jalapeño Poppers £8</li>
-          <li>BBQ Pork Ribs £16</li>
-          <li>Chips £6</li>
-        </ul>
-        <p className="links"><a href="https://www.little-portland.com/sunday-16-apr-menu" target="_blank">[Menu]</a> <a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
-        </div>}
-       {<div
-        className="box-3"
-      > 
         <h4>Sunday Funday // 23rd April</h4>
         <p>Complimentary Sake Sake, on Arrival</p>
         <hr/>
