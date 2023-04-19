@@ -135,7 +135,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             <li>Sesame Ice Cream, Burnt Meringue, Grand Marnier</li>
             <li>Baklava, Sumac, Rum Cream</li>
         </ul>
-        <p>+ Sashimi, Pickles, Salad and Miso Soup</p>
         <p className="links"><a href="https://www.little-portland.com/sunday-23-apr-menu" target="_blank">[Menu]</a><a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
         </div>}
       </div>}
