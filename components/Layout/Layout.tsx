@@ -108,17 +108,32 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-3"
       > 
         <h4>Sunday Funday // 23rd April</h4>
-        <p>Complimentary Sake Sake, on Arrival</p>
-        <hr/>
-        <p>Happy Hour 4-5pm // buy a drink, get a house cocktail free</p>
-        <hr/>
-        <p>Get your tickets <a href="https://www.little-portland.com/events" target="_blank">here</a>.</p>
-        <p>Choice of one:</p>
         <ul>
-          <li>Chicken Katsudon</li>
-          <li>Pork Katsudon</li>
-          <li>Tendon</li>
-          <li>Mushroom Donburi</li>
+          <li>Coconut Flatbread with Za’atar</li>
+          <li>Crudités</li>
+          <li>Pickles</li>
+          <li>Mushroom Shish</li>
+          <li>Lamb Shish</li>
+         </ul>
+         <ul>
+           <li>Tzatziki</li>
+           <li>Muhammara</li>
+           <li>Borani</li>
+           <li>Taramasalata</li>
+         </ul>         
+          <ul>
+            <li>Tomatoes, Whipped Feta, Zhoug</li>
+            <li>Saganaki Cheese, Pomegranate Molasses, Pistachios</li>
+            <li>Iberico Pork Secreto Schnitzel</li>
+            <li>Black Cod ‘Sayadieh’</li>
+            <li>A4 Wagyu Striploin, Bulgur, Walnuts, Oyster</li>
+            <li>Prawn Manti, Brown Butter, Labneh, Kumquat</li>
+            <li>700g UK Dairy Cow Rib, Ras El Hanout, Pink Fir Potatoes</li>
+           </ul>
+            
+           <ul>
+            <li>Sesame Ice Cream, Burnt Meringue, Grand Marnier</li>
+            <li>Baklava, Sumac, Rum Cream</li>
         </ul>
         <p>+ Sashimi, Pickles, Salad and Miso Soup</p>
         <p className="links"><a href="https://www.little-portland.com/sunday-23-apr-menu" target="_blank">[Menu]</a><a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
