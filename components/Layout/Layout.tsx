@@ -107,7 +107,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
        {<div
         className="box-3"
       > 
-        <h4>Sunday Funday // 23rd April</h4>
+        <h4>Sunday Funday // 30th April</h4>
         <ul>
           <li>Coconut Flatbread with Za’atar</li>
           <li>Crudités</li>
@@ -135,7 +135,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             <li>Sesame Ice Cream, Burnt Meringue, Grand Marnier</li>
             <li>Baklava, Sumac, Rum Cream</li>
         </ul>
-        <p className="links"><a href="https://www.little-portland.com/sunday-23-apr-menu" target="_blank">[Menu]</a><a href="https://www.little-portland.com/sunday-funday-flyer" target="_blank">[Flyer]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/sunday-23-apr-menu" target="_blank">[Menu]</a></p>
         </div>}
       </div>}
       </Modal>
