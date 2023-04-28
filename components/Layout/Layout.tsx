@@ -98,6 +98,14 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         }}
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
       >
+       <Image
+          src={eatItem ? eatItem.image.url : eatPic}
+          alt={eatItem.image.description}
+          width={eatItem ? eatItem.image.width : 300} //automatically provided
+          height={eatItem ? eatItem.image.height : 800} //automatically provided
+          blurDataURL={"/images/Eat.jpeg"} //automatically provided
+          placeholder="blur" // Optional blur-up while loading
+        />
       </Modal>
       <Modal
         open={displayHire}
