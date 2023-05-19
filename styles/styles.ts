@@ -318,7 +318,7 @@ html, body {
             width: 300px;
         }
 
-        #bookingOptions buton {
+        #bookingOptions button {
             font-size: .9rem;
         }
     }
