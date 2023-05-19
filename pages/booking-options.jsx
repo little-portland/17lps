@@ -17,7 +17,7 @@ const BookingOptions = () => {
         <title>Bookings</title>
       </Head>
 
-      <CenterContainer className="buton-wrapper">
+      <CenterContainer className="button-wrapper">
           <a href="https://www.little-portland.com/bookings">
             <Button classes="events-button" btnType="solid">
               Book Dinner (includes free club entry)
