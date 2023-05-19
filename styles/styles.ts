@@ -252,10 +252,8 @@ html, body {
     position: absolute;
     width: 600px;
     top: 50%;
-    right: 0;
-    left: 0;
-    margin: auto;
-    transform: translateX(-50%);
+    left: 50%;
+    transform: translate(-50%);
 }
 
 #bookingOptions a {
