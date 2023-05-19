@@ -313,6 +313,14 @@ html, body {
           padding: 8px;
           border-left: 8px solid #e8bac9;
         }
+
+        #bookingOptions {
+            width: 300px;
+        }
+
+        #bookingOptions buton {
+            font-size: .9rem;
+        }
     }
 
 ${reset}
