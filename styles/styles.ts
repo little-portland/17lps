@@ -246,6 +246,12 @@ html, body {
   background: #4c021b; 
 }
 
+/* booking options page */
+
+#bookingOptions {
+  position: absolute;
+}
+
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
