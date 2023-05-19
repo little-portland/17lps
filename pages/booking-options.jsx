@@ -10,6 +10,10 @@ import useFetchContent from "@utils/useFetchContent";
 
 import Button from "@components/UX/Button";
 
+import {
+  ButtonWrapper
+} from "../components/UX/Modal/styles";
+
 const SundayMenu = ({ menuImage }) => {
   return (
     <>
