@@ -249,7 +249,24 @@ html, body {
 /* booking options page */
 
 #bookingOptions {
-  position: absolute;
+    position: absolute;
+    width: 600px;
+    top: 50%
+    right: 0;
+    left: 0;
+    margin: auto;
+    transfomr: translateX(-50%);
+}
+
+#bookingOptions a {
+    display: inline-block;
+    width: 100%;
+}
+
+#bookingOptions a button {
+    width: 100%;
+    padding: 15px 30px;
+    margin-bottom: 10px
 }
 
 /* Media Query for Mobile Devices */
