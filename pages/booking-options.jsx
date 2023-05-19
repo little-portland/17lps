@@ -18,7 +18,7 @@ const BookingOptions = () => {
       </Head>
 
       <CenterContainer>
-          <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+          <a>
             <Button classes="events-button" btnType="hollow">
               Book Dinner (includes free club entry)
             </Button>
