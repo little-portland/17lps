@@ -7,6 +7,8 @@ import useDeviceDetect from "@utils/useDeviceDetect";
 
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 
+import Button from "@components/UX/Button";
+
 const BookingOptions = () => {
 
   return (
@@ -16,6 +18,11 @@ const BookingOptions = () => {
       </Head>
 
       <CenterContainer>
+          <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+            <Button classes="events-button" btnType="hollow">
+              Book Dinner (includes free club entry)
+            </Button>
+          </a>
           <ul>
             <li><a target="_blank" href="https://www.little-portland.com/bookings">Book Dinner (includes free club entry)</a>.</li>
             <li><a target="_blank" href="https://www.little-portland.com/bookings">Buy Ticket / Get on Guest List</a>.</li>
