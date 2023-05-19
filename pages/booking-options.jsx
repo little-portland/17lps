@@ -18,15 +18,16 @@ const BookingOptions = () => {
       </Head>
 
       <CenterContainer>
-          <a>
-            <Button classes="events-button" btnType="hollow">
+          <a href="https://www.little-portland.com/bookings">
+            <Button classes="events-button" btnType="solid">
               Book Dinner (includes free club entry)
             </Button>
           </a>
-          <ul>
-            <li><a target="_blank" href="https://www.little-portland.com/bookings">Book Dinner (includes free club entry)</a>.</li>
-            <li><a target="_blank" href="https://www.little-portland.com/bookings">Buy Ticket / Get on Guest List</a>.</li>
-          </ul>
+          <a href="https://www.little-portland.com/bookings">
+            <Button classes="events-button" btnType="solid">
+              Book Dinner (includes free club entry)
+            </Button>
+          </a>
       </CenterContainer>
     </>
   );
