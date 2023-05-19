@@ -251,11 +251,11 @@ html, body {
 #bookingOptions {
     position: absolute;
     width: 600px;
-    top: 50%
+    top: 50%;
     right: 0;
     left: 0;
     margin: auto;
-    transfomr: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 #bookingOptions a {
