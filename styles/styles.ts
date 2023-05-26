@@ -406,7 +406,7 @@ html, body {
 
         #bookingOptions button {
             font-size: .9rem;
-            margin-bottom: 0.3rem;
+            margin-bottom: .3rem!important;
        }
        
     }
