@@ -325,7 +325,8 @@ html, body {
 #bookingOptions a button {
     width: 100%;
     padding: 15px 30px;
-    margin-bottom: 10px
+    margin-bottom: 10px 
+    
 }
 
 /* Media Query for Mobile Devices */
