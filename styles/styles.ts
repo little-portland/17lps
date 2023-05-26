@@ -373,11 +373,37 @@ html, body {
 
         #bookingOptions {
             width: 300px;
+            top: 10%;
+        }
+        
+        #bookingOptions .event-name {
+          font-size: 2.5rem;
+        }
+        
+        #bookingOptions .event-info {
+            display: block;
+            margin-bottom: .5rem;
+        }
+        
+        #bookingOptions .date {
+          text-align: center;
+          margin-bottom: .5rem;
+          width: 100%;
+          display: block;
+        }
+        
+        #bookingOptions .artists h3 {
+            font-size: 1.1rem;
+        }
+        
+        #bookingOptions .button-wrapper {
+          display: block;
         }
 
         #bookingOptions button {
             font-size: .9rem;
         }
+       
     }
 
 ${reset}
