@@ -31,12 +31,12 @@ const BookingOptions = () => {
         <div class="button-wrapper">
           <a href="https://www.little-portland.com/bookings">
             <Button classes="events-button"  btnType="hollow">
-              Book Dinner (includes free club entry)
+              Book Dinner <span>(includes free club entry)</span>
             </Button>
           </a>
           <a href="https://www.little-portland.com/bookings">
             <Button classes="events-button" btnType="hollow">
-              Buy Ticket / Get on Guest List
+              Book Club Ticket
             </Button>
           </a>
         </div>
