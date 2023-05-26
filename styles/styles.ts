@@ -277,7 +277,6 @@ html, body {
     background-color: rgb(92, 44, 124);
     padding: 1rem;
     display: flex;
-    width: 74%;
  }
 
 #bookingOptions .date {
@@ -290,8 +289,11 @@ html, body {
     width: 74%;
  }
   
- #bookingOptions .artists h3:first-child {
+ #bookingOptions .artists h3 {
     font-size: 1.3rem;
+ }
+ 
+  #bookingOptions .artists h3:first-child {
     margin-bottom: 1rem;
  }
 
