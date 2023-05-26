@@ -304,6 +304,7 @@ html, body {
  
   #bookingOptions .events-button span {
     font-size: .8rem;
+    display: block;
  }
 
 #bookingOptions .button-wrapper {
