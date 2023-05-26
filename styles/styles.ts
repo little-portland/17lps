@@ -327,37 +327,37 @@ html, body {
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
-      .bookings-body-text {
-        max-width: none;
-      }
-      .bookings-heading-0, .bookings-heading-1, .bookings-heading-2 {
-        font-size: .8rem;
-        margin-top: 1rem;
-        margin-bottom: .5rem;
-      }
+       .bookings-body-text {
+          max-width: none;
+        }
+        .bookings-heading-0, .bookings-heading-1, .bookings-heading-2 {
+          font-size: .8rem;
+          margin-top: 1rem;
+          margin-bottom: .5rem;
+        }
 
-      .bookings-heading-0 {
-        margin-top: .5rem;
-      }
+        .bookings-heading-0 {
+          margin-top: .5rem;
+        }
 
-      .bookings-body-text ul li {
-        font-size: .5rem;
-        line-height: 10px;
-        margin-bottom: .3rem;
-      }
-      
-      .eat-note {
-        max-height: 375px;
-      }
-      
-      .eat-note h1 {
-        font-size: 2.3rem;
-      }
-      
-      .eat-note h2 {
-        font-size: .7rem;
-      }
-
+        .bookings-body-text ul li {
+          font-size: .5rem;
+          line-height: 10px;
+          margin-bottom: .3rem;
+        }
+        
+        .eat-note {
+          max-height: 375px;
+        }
+        
+        .eat-note h1 {
+          font-size: 2.3rem;
+        }
+        
+        .eat-note h2 {
+          font-size: .7rem;
+        }
+        
         .insta {
           display: block;
           position: absolute;
@@ -408,53 +408,54 @@ html, body {
             font-size: .9rem;
             margin-bottom: 0.3rem;
        }
+       
     }
 
-    ${reset}
+${reset}
 
-    html {
-      overflow: hidden;
-      height: -webkit-fill-available;
-    }
+html {
+  overflow: hidden;
+  height: -webkit-fill-available;
+}
+
+  body {
+    color: #5c2c7c;
+    width: 100vw;
+    background: #e8bac9;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    overflow: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: Space Mono, sans-serif;
+    font-weight: 700;
+  }
+
+.overlay {
+  position: absolute;
+  z-Index: 99;
+}
+
+.overlay-hover {
+  /* position: absolute; */
+  z-Index: 9;
+
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     
-      body {
-        color: #5c2c7c;
-        width: 100vw;
-        background: #e8bac9;
-        min-height: 100vh;
-        min-height: -webkit-fill-available;
-        overflow: hidden;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        font-family: Space Mono, sans-serif;
-        font-weight: 700;
-      }
-    
-    .overlay {
-      position: absolute;
-      z-Index: 99;
-    }
-    
-    .overlay-hover {
-      /* position: absolute; */
-      z-Index: 9;
-    
-      div {
-        position: absolute;
-        top: 0;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        
-      }
-    }
-    `;
-    
-    export const Marginals = css`
-      box-sizing: border-box;
-      display: flex;
-      pointer-events: none;
-      position: fixed;
-      width: 100vw;
-      z-index: 1;
-    `;
+  }
+}
+`;
+
+export const Marginals = css`
+  box-sizing: border-box;
+  display: flex;
+  pointer-events: none;
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+`;
