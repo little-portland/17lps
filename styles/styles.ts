@@ -258,7 +258,7 @@ html, body {
 }
 
 #bookingOptions .event-name {
-    font-size: 2.5rem;
+    font-size: 3rem;
     text-align: center;
     text-transform: uppercase;
     margin-bottom: .5rem;
@@ -387,7 +387,7 @@ html, body {
         
         #bookingOptions .date {
           text-align: center;
-          margin-bottom: .5rem;
+          margin-bottom: .3rem;
           width: 100%;
           display: block;
         }
