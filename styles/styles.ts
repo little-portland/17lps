@@ -305,6 +305,7 @@ html, body {
 #bookingOptions a {
     display: flex;
     width: 100%;
+    text-desoration: none;
 }
 
 #bookingOptions a button {
