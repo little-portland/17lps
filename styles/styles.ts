@@ -264,10 +264,6 @@ html, body {
     margin-bottom: .5rem;
 }
 
-#bookingOptions .event-name:before, #bookingOptions .event-name:after {
-  content: "\2022";
-}
-
 #bookingOptions .event-info {
     text-transform: uppercase;
     display: flex;
