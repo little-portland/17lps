@@ -18,6 +18,7 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
+        <h1 class="event-name">Thursday Underground</h1>
           <a href="https://www.little-portland.com/bookings">
             <Button classes="events-button" btnType="solid">
               Book Dinner (includes free club entry)
