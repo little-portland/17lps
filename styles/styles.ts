@@ -397,7 +397,7 @@ html, body {
         }
         
         #bookingOptions .artists {
-            width: 100%;
+            width: 100%!important;
         }
         
         #bookingOptions .artists h3 {
