@@ -20,10 +20,10 @@ const BookingOptions = () => {
       <div id="bookingOptions">
         <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
-            <div class="date">
-              <h2>01 June</h2>
+            <div class="info date">
+              <h2>01 Jun</h2>
             </div>
-            <div class="artists">
+            <div class="info artists">
               <h3><span>STUDIO // </span>Ralph Lawson, Subb-An</h3>
               <h3><span>TENT // </span>Georgia, Tintin</h3>
             </div>
