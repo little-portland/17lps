@@ -325,8 +325,7 @@ html, body {
 #bookingOptions a button {
     width: 100%;
     padding: 15px 30px;
-    margin-bottom: 10px;
-    
+    margin-bottom: 10px;   
 }
 
 /* Media Query for Mobile Devices */
@@ -374,44 +373,6 @@ html, body {
           height: 41px!important;
           padding: 8px;
           border-left: 8px solid #e8bac9;
-        }
-
-        #bookingOptions {
-            width: 300px;
-            top: 10%;
-        }
-        
-        #bookingOptions .event-name {
-          font-size: 2.5rem;
-        }
-        
-        #bookingOptions .event-info {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        #bookingOptions .date {
-          text-align: center;
-          margin-bottom: .5rem;
-          width: 100%;
-          display: block;
-        }
-        
-        #bookingOptions .artists {
-            width: 100%!important;
-        }
-        
-        #bookingOptions .artists h3 {
-            font-size: 1.1rem;
-        }
-        
-        #bookingOptions .button-wrapper {
-          display: block;
-        }
-
-        #bookingOptions button {
-            font-size: .9rem;
-            margin-bottom: 0.3rem;
         }
        
     }
