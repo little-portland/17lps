@@ -254,7 +254,46 @@ html, body {
     top: 40%;
     left: 50%;
     transform: translate(-50%);
+    text-transform: uppercase;
 }
+
+#bookingOptions .event-name {
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+#bookingOptions .event-info {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+ }
+ 
+  #bookingOptions .event-info .info {
+    color: rgb(232, 186, 201);
+    background-color: rgb(92, 44, 124);
+    padding: 1rem;
+    display: flex;
+    width: 74%;
+ }
+
+#bookingOptions .date {
+    font-size: 2rem;
+    align-items: center;
+    width: 25%;
+}
+ 
+ #bookingOptions .artists {
+    width: 74%;
+ }
+  
+ #bookingOptions .artists h3:first-child {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+ }
 
 #bookingOptions a {
     display: inline-block;
