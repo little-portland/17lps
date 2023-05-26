@@ -248,86 +248,6 @@ html, body {
 
 /* booking options page */
 
-#bookingOptions {
-    position: absolute;
-    width: 600px;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%);
-    text-transform: uppercase;
-}
-
-#bookingOptions .event-name {
-    font-size: 3rem;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: .5rem;
-}
-
-#bookingOptions .event-name:before, #bookingOptions .event-name:after {
-  content: "\2022";
-}
-
-#bookingOptions .event-info {
-    text-transform: uppercase;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: .3rem;
- }
- 
-  #bookingOptions .event-info .info {
-    color: rgb(232, 186, 201);
-    background-color: rgb(92, 44, 124);
-    padding: 1rem;
- }
-
-#bookingOptions .date {
-    font-size: 2rem;
-    align-items: center;
-    width: 25%;
-    display: flex;
-}
- 
- #bookingOptions .artists {
-    width: 74%;
- }
-  
- #bookingOptions .artists h3 {
-    font-size: 1.3rem;
-    font-weight: 400;
- }
- 
-  #bookingOptions .artists h3 span {
-    font-weight: 700;
- }
- 
-  #bookingOptions .artists h3:first-child {
-    margin-bottom: 1rem;
- }
- 
-  #bookingOptions .events-button span {
-    font-size: .8rem;
-    display: block;
- }
-
-#bookingOptions .button-wrapper {
-   display: flex;
-   gap: 5px;
- }
-
-#bookingOptions a {
-    display: flex;
-    width: 100%;
-    text-decoration: none;
-}
-
-#bookingOptions a button {
-    width: 100%;
-    padding: 15px 30px;
-    margin-bottom: 10px;   
-}
-
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
@@ -374,6 +294,44 @@ html, body {
           padding: 8px;
           border-left: 8px solid #e8bac9;
         }
+        
+      #bookingOptions {
+            width: 300px;
+            top: 10%;
+        }
+        
+        #bookingOptions .event-name {
+          font-size: 2.5rem;
+        }
+        
+        #bookingOptions .event-info {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        #bookingOptions .date {
+          text-align: center;
+          margin-bottom: .5rem;
+          width: 100%;
+          display: block;
+        }
+        
+        #bookingOptions .artists {
+            width: 100%!important;
+        }
+        
+        #bookingOptions .artists h3 {
+            font-size: 1.1rem;
+        }
+        
+        #bookingOptions .button-wrapper {
+          display: block;
+        }
+
+        #bookingOptions button {
+            font-size: .9rem;
+            margin-bottom: 0.3rem;
+       }
        
     }
 
