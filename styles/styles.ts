@@ -382,6 +382,7 @@ html, body {
         
         #bookingOptions .event-info {
             display: block;
+            margin-bottom: 0.5rem;
         }
         
         #bookingOptions .date {
@@ -389,6 +390,10 @@ html, body {
           margin-bottom: .5rem;
           width: 100%;
           display: block;
+        }
+        
+        #bookingOptions .artists {
+            widht: 100%;
         }
         
         #bookingOptions .artists h3 {
@@ -401,6 +406,7 @@ html, body {
 
         #bookingOptions button {
             font-size: .9rem;
+            margin-bottom: 0.3rem;
         }
        
     }
