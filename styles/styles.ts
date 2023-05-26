@@ -297,8 +297,13 @@ html, body {
     margin-bottom: 1rem;
  }
 
+#bookingOptions .button-wrapper {
+   display: flex;
+   gap: 10px;
+ }
+
 #bookingOptions a {
-    display: inline-block;
+    display: flex;
     width: 100%;
 }
 
