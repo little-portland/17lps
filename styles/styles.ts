@@ -261,7 +261,7 @@ html, body {
     font-size: 3rem;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    margin-bottom: .5rem;
 }
 
 #bookingOptions .event-info {
