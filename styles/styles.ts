@@ -287,6 +287,7 @@ html, body {
  
  #bookingOptions .artists {
     width: 74%;
+    display: block;
  }
   
  #bookingOptions .artists h3 {
