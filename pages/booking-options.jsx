@@ -28,6 +28,7 @@ const BookingOptions = () => {
               <h3><span>TENT // </span>Georgia, Tintin</h3>
             </div>
         </div>
+        <div class"button-wrapper">
           <a href="https://www.little-portland.com/bookings">
             <Button classes="events-button" btnType="hollow">
               Book Dinner (includes free club entry)
@@ -38,6 +39,7 @@ const BookingOptions = () => {
               Buy Ticket / Get on Guest List
             </Button>
           </a>
+        </div>
       </div>
     </>
   );
