@@ -8,7 +8,7 @@ export const breakpoints = {
   xl: 1200,
 };
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle` 
 
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
@@ -26,7 +26,7 @@ html, body {
 
 * {
   box-sizing: border-box;
-  margin: 0;
+  margin: 0; 
   padding: 0;
  }
 
@@ -38,11 +38,6 @@ html, body {
 
 .bookings-iframe {
   margin-top: -2rem!important;
-}
-
-.wrapper {
-  overflow-y: scroll;
-  position: absolute;
 }
 
 .bookings-body-text {
@@ -62,7 +57,7 @@ html, body {
 }
 
 .bookings-body-text h1 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .bookings-heading-0, .bookings-heading-1, .bookings-heading-2 {
@@ -87,14 +82,14 @@ html, body {
 
 .bookings-body-text ul {
   list-style-type:square;
-  margin: 15px;
+  margin: 10px;
 }
 
 .bookings-body-text ul li {
   font-size: .8rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  line-height: 20px;
+  margin-bottom: 10px;
+  line-height: 15px;
 }
 
 /* Eat popup box styles */
@@ -104,28 +99,15 @@ html, body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 15px;
+  right: 16px;
   background-color: #5C2C7C;
-  width: 45px;
+  width: 48px;
   height: 41px!important;
-  padding: 8px 7px;
-  border-left: 5px solid #e8bac9;
+  padding: 8px;
+  border-left: 8px solid #e8bac9;
 }
 
-.newsletter {
-  display: block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 15px;
-  background-color: #5C2C7C;
-  width: 45px;
-  height: 41px!important;
-  padding: 8px 7px;
-  border-left: 5px solid #e8bac9;
-}
-
-.sample-menu, .reservations {
+.sample-menu {
   position: relative;
 }
 
@@ -135,7 +117,7 @@ html, body {
   background-color: #acd8c7;
   margin-bottom: 1.5rem;
   color: #4c021b;
-  max-height: 514px;
+  max-height: 510px;
   max-width: 550px;
   overflow: auto;
 }
@@ -164,17 +146,40 @@ html, body {
   color: #fa4882;
   font-size: .8rem;
   text-transform: uppercase;
-  margin-bottom: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.eat-note h5 {
+   margin-top: 1.5rem;
+   margin-bottom: 1rem;
+}
+
+.eat-note h6 {
+  color: #fa4882;
+  font-size: .7rem;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.eat-note b {
+  color: #fa4882;
+}
+
+.eat-note hr {
+  border: none;
+  border-top: 1px solid #4c021b;
+  margin: 20px 0;
 }
 
 .eat-note a {
-  color: #5C2C7C;
+  color: #fa4882;
   text-decoration: none;
   cursor: pointer;
 }
 
 .eat-note a:hover {
-  color: #fa4882;
+  color: #5C2C7C;
 }
 
 .box-1, .box-2, .box-3 {
@@ -194,7 +199,7 @@ html, body {
 .eat-note p {
   font-size: .8rem;
   font-weight: 600;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
   line-height: 15px;
 }
 
@@ -241,97 +246,219 @@ html, body {
   background: #4c021b; 
 }
 
+/* booking options page */
+
+#bookingOptions {
+    position: absolute;
+    width: 600px;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%);
+    text-transform: uppercase;
+}
+
+#bookingOptions .event-name {
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+}
+
+#bookingOptions .event-name:before, #bookingOptions .event-name:after {
+  content: "\2022";
+}
+
+#bookingOptions .event-info {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: .3rem;
+ }
+ 
+  #bookingOptions .event-info .info {
+    color: rgb(232, 186, 201);
+    background-color: rgb(92, 44, 124);
+    padding: 1rem;
+ }
+
+#bookingOptions .date {
+    font-size: 2rem;
+    align-items: center;
+    width: 25%;
+    display: flex;
+}
+ 
+ #bookingOptions .artists {
+    width: 74%;
+ }
+  
+ #bookingOptions .artists h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+ }
+ 
+  #bookingOptions .artists h3 span {
+    font-weight: 700;
+ }
+ 
+  #bookingOptions .artists h3:first-child {
+    margin-bottom: 1rem;
+ }
+ 
+  #bookingOptions .events-button span {
+    font-size: .8rem;
+    display: block;
+ }
+
+#bookingOptions .button-wrapper {
+   display: flex;
+   gap: 5px;
+ }
+
+#bookingOptions a {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+}
+
+#bookingOptions a button {
+    width: 100%;
+    padding: 15px 30px;
+    margin-bottom: 10px;   
+}
+
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
-        .bookings-body-text {
-          max-width: none;
-        }
-        .bookings-heading-1, .bookings-heading-2 {
-          font-size: .8rem;
-          margin-top: 1rem;
-          margin-bottom: .5rem;
-        }
+      .bookings-body-text {
+        max-width: none;
+      }
+      .bookings-heading-0, .bookings-heading-1, .bookings-heading-2 {
+        font-size: .8rem;
+        margin-top: 1rem;
+        margin-bottom: .5rem;
+      }
 
-        .bookings-heading-1 {
-          margin-top: .5rem;
-        }
+      .bookings-heading-0 {
+        margin-top: .5rem;
+      }
 
-        .bookings-body-text ul li {
-          font-size: .5rem;
-          line-height: 10px;
-          margin-bottom: .3rem;
-        }
+      .bookings-body-text ul li {
+        font-size: .5rem;
+        line-height: 10px;
+        margin-bottom: .3rem;
+      }
+      
+      .eat-note {
+        max-height: 375px;
+      }
+      
+      .eat-note h1 {
+        font-size: 2.3rem;
+      }
+      
+      .eat-note h2 {
+        font-size: .7rem;
+      }
 
         .insta {
           display: block;
           position: absolute;
           top: 0;
           transform: none;
-          right: 15px;
+          right: 16px;
           background-color: #5C2C7C;
-          width: 45px;
+          width: 48px;
           height: 41px!important;
-          padding: 8px 7px;
-          border-left: 5px solid #e8bac9;
+          padding: 8px;
+          border-left: 8px solid #e8bac9;
+        }
+        
+      #bookingOptions {
+            width: 300px;
+            top: 10%;
+        }
+        
+        #bookingOptions .event-name {
+          font-size: 2.5rem;
+        }
+        
+        #bookingOptions .event-info {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        #bookingOptions .date {
+          text-align: center;
+          margin-bottom: .5rem;
+          width: 100%;
+          display: block;
+        }
+        
+        #bookingOptions .artists {
+            width: 100%!important;
+        }
+        
+        #bookingOptions .artists h3 {
+            font-size: 1.1rem;
+        }
+        
+        #bookingOptions .button-wrapper {
+          display: block;
         }
 
-        .reservations button, .sample-menu button {
-          width: 290px!important;
-        }
+        #bookingOptions button {
+            font-size: .9rem;
+            margin-bottom: 0.3rem;
+       }
     }
 
-    @media (max-width: 768px) {
-      .glNxAb button {
-        width: 290px!important;
+    ${reset}
+
+    html {
+      overflow: hidden;
+      height: -webkit-fill-available;
+    }
+    
+      body {
+        color: #5c2c7c;
+        width: 100vw;
+        background: #e8bac9;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        overflow: hidden;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        font-family: Space Mono, sans-serif;
+        font-weight: 700;
+      }
+    
+    .overlay {
+      position: absolute;
+      z-Index: 99;
+    }
+    
+    .overlay-hover {
+      /* position: absolute; */
+      z-Index: 9;
+    
+      div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        
       }
     }
-
-${reset}
-
-html {
-  overflow: hidden;
-  height: -webkit-fill-available;
-}
-
-  body {
-    color: #5c2c7c;
-    width: 100vw;
-    background: #e8bac9;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    overflow: hidden;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    font-family: Space Mono, sans-serif;
-    font-weight: 700;
-  }
-
-.overlay {
-  position: absolute;
-  z-Index: 99;
-}
-
-.overlay-hover {
-  /* position: absolute; */
-  z-Index: 9;
-
-  div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    `;
     
-  }
-}
-`;
-
-export const Marginals = css`
-  box-sizing: border-box;
-  display: flex;
-  pointer-events: none;
-  position: fixed;
-  width: 100vw;
-  z-index: 1;
-`;
+    export const Marginals = css`
+      box-sizing: border-box;
+      display: flex;
+      pointer-events: none;
+      position: fixed;
+      width: 100vw;
+      z-index: 1;
+    `;
