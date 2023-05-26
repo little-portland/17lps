@@ -276,18 +276,17 @@ html, body {
     color: rgb(232, 186, 201);
     background-color: rgb(92, 44, 124);
     padding: 1rem;
-    display: flex;
  }
 
 #bookingOptions .date {
     font-size: 2rem;
     align-items: center;
     width: 25%;
+    display: flex;
 }
  
  #bookingOptions .artists {
     width: 74%;
-    display: block;
  }
   
  #bookingOptions .artists h3 {
