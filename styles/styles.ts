@@ -251,7 +251,7 @@ html, body {
 #bookingOptions {
     position: absolute;
     width: 600px;
-    top: 40%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%);
     text-transform: uppercase;
@@ -300,6 +300,10 @@ html, body {
  
   #bookingOptions .artists h3:first-child {
     margin-bottom: 1rem;
+ }
+ 
+  #bookingOptions .events-button span {
+    font-size: .8rem;
  }
 
 #bookingOptions .button-wrapper {
