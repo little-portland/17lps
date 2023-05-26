@@ -291,6 +291,11 @@ html, body {
   
  #bookingOptions .artists h3 {
     font-size: 1.3rem;
+    font-weight: 400;
+ }
+ 
+  #bookingOptions .artists h3 span {
+    font-weight: 700;
  }
  
   #bookingOptions .artists h3:first-child {
