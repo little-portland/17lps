@@ -269,7 +269,7 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-bottom: .3rem;
  }
  
   #bookingOptions .event-info .info {
@@ -309,7 +309,7 @@ html, body {
 
 #bookingOptions .button-wrapper {
    display: flex;
-   gap: 10px;
+   gap: 5px;
  }
 
 #bookingOptions a {
@@ -382,7 +382,6 @@ html, body {
         
         #bookingOptions .event-info {
             display: block;
-            margin-bottom: .5rem;
         }
         
         #bookingOptions .date {
