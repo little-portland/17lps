@@ -380,7 +380,7 @@ html, body {
         
       #bookingOptions {
             width: 300px;
-            top: 10%;
+            top: 5%;
         }
         
         #bookingOptions .event-name {
@@ -412,7 +412,7 @@ html, body {
         }
         
         #bookingOptions .artists h3 {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             line-height: 1.5;
         }
         
