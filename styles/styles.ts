@@ -393,7 +393,7 @@ html, body {
         }
         
        #bookingOptions .event-info .info {
-          padding: .3rem 1rem;
+          padding: .3rem 1rem .5rem 1rem;
         }
         
         #bookingOptions .date {
