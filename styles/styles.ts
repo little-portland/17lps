@@ -397,6 +397,7 @@ html, body {
           margin-bottom: .3rem;
           width: 100%;
           display: block;
+          padding: 0.3rem 1rem;
         }
         
         #bookingOptions .artists {
@@ -411,8 +412,16 @@ html, body {
          display: none;
         }
         
-        #bookingOptions .artists h3 {
-            font-size: 1.3rem;
+       #bookingOptions .artists h3 {
+            font-size: 1rem;
+        }
+        
+        #bookingOptions .artists h3:first-child {
+          margin-bottom: .5rem;
+        }
+        
+        #bookingOptions .artists h3 span {
+            font-size: 1.2rem;
             line-height: 1.5;
         }
         
