@@ -307,7 +307,7 @@ html, body {
     display: block;
  }
  
-   #bookingOptions .ticket {
+   #bookingOptions .ticket span {
     font-size: 1.5rem!important;
     display: block;
  }
