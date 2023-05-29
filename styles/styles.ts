@@ -250,7 +250,7 @@ html, body {
 
 #bookingOptions {
     position: absolute;
-    width: 600px;
+    width: 700px;
     top: 35%;
     left: 50%;
     transform: translate(-50%);
@@ -258,7 +258,7 @@ html, body {
 }
 
 #bookingOptions .event-name {
-    font-size: 3rem;
+    font-size: 3.5rem;
     text-align: center;
     text-transform: uppercase;
     margin-bottom: .5rem;
@@ -279,7 +279,7 @@ html, body {
  }
 
 #bookingOptions .date {
-    font-size: 2rem;
+    font-size: 2.4rem;
     align-items: center;
     width: 25%;
     display: flex;
@@ -290,7 +290,7 @@ html, body {
  }
   
  #bookingOptions .artists h3 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-weight: 400;
  }
  
@@ -303,7 +303,11 @@ html, body {
  }
  
   #bookingOptions .events-button span {
-    font-size: .8rem;
+    font-size: .8rem!important;
+    display: block;
+ }
+ 
+   #bookingOptions .ticket {
     display: block;
  }
 
@@ -321,7 +325,8 @@ html, body {
 #bookingOptions a button {
     width: 100%;
     padding: 15px 30px;
-    margin-bottom: 10px;   
+    margin-bottom: 10px; 
+    font-size: 1.5rem;
 }
 
 /* Media Query for Mobile Devices */
