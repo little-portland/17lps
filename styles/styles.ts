@@ -309,6 +309,7 @@ html, body {
  
    #bookingOptions .ticket span {
     font-size: 1.5rem!important;
+    line-height: 1.5rem;
     display: block;
  }
 
@@ -325,7 +326,7 @@ html, body {
 
 #bookingOptions a button {
     width: 100%;
-    padding: 15px 30px;
+    padding: 50px 30px;
     margin-bottom: 10px; 
     font-size: 1.5rem;
 }
@@ -400,6 +401,14 @@ html, body {
         
         #bookingOptions .artists {
             width: 100%!important;
+        }
+        
+       #bookingOptions .artists span {
+         display: block;
+        }
+        
+       #bookingOptions .artists span b {
+         display: none;
         }
         
         #bookingOptions .artists h3 {
