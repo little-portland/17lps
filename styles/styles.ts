@@ -308,6 +308,7 @@ html, body {
  }
  
    #bookingOptions .ticket {
+    font-size: 1.5rem!important;
     display: block;
  }
 
