@@ -392,6 +392,10 @@ html, body {
             margin-bottom: 0.5rem;
         }
         
+       #bookingOptions .event-info .info {
+          padding: .3rem 1rem;
+        }
+        
         #bookingOptions .date {
           text-align: center;
           margin-bottom: .3rem;
