@@ -269,7 +269,7 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: .3rem;
+    margin-bottom: .8rem;
  }
  
   #bookingOptions .event-info .info {
@@ -279,18 +279,18 @@ html, body {
  }
 
 #bookingOptions .date {
-    font-size: 2.4rem;
+    font-size: 2.07rem;
     align-items: center;
-    width: 25%;
+    width: 22%;
     display: flex;
 }
  
  #bookingOptions .artists {
-    width: 74%;
+    width: 77%;
  }
   
  #bookingOptions .artists h3 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 400;
  }
  
@@ -398,6 +398,7 @@ html, body {
         
         #bookingOptions .date {
           text-align: center;
+          font-size: 2.4;
           margin-bottom: .3rem;
           width: 100%;
           display: block;
