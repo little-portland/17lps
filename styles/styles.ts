@@ -438,6 +438,10 @@ html, body {
             margin-bottom: .3rem!important;
        }
        
+          #bookingOptions .ticket span {
+            font-size: 1.5rem!important;
+         }
+       
     }
 
 ${reset}
