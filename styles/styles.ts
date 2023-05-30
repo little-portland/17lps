@@ -434,7 +434,7 @@ html, body {
         }
 
         #bookingOptions button {
-            font-size: .9rem!important;
+            font-size: 1.5rem!important;
             margin-bottom: .3rem!important;
        }
        
