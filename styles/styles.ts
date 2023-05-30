@@ -308,7 +308,7 @@ html, body {
  }
  
    #bookingOptions .ticket span {
-    font-size: 1.5rem!important;
+    font-size: 1.8rem!important;
     line-height: 1.5rem;
     display: block;
  }
@@ -328,7 +328,7 @@ html, body {
     width: 100%;
     padding: 50px 30px;
     margin-bottom: 10px; 
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 /* Media Query for Mobile Devices */
@@ -434,7 +434,7 @@ html, body {
         }
 
         #bookingOptions button {
-            font-size: .9rem;
+            font-size: .9rem!important;
             margin-bottom: .3rem!important;
        }
        
