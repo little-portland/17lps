@@ -268,7 +268,7 @@ html, body {
     font-size: 3.1rem;
 }
 
-#bookingOptions .openlab-presents, #bookingOptions .friday-residents {
+#bookingOptions .openlab-presents,  #bookingOptions .friday-residents {
     font-size: 4.4rem;
 }
 
