@@ -265,7 +265,15 @@ html, body {
 }
 
 #bookingOptions .function-presents {
-    font-size: 3rem;
+    font-size: 3.1rem;
+}
+
+#bookingOptions .openlab-presents, #bookingOptions .friday-residents {
+    font-size: 4.4rem;
+}
+
+#bookingOptions .disco-saturdays {
+    font-size: 4.7rem;
 }
 
 #bookingOptions .event-info {
