@@ -264,6 +264,10 @@ html, body {
     margin-bottom: .5rem;
 }
 
+#bookingOptions .function-presents {
+    font-size: 3rem;
+}
+
 #bookingOptions .event-info {
     text-transform: uppercase;
     display: flex;
