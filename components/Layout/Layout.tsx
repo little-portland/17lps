@@ -100,12 +100,12 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
       >  
           <Image
-            src={menuImage.url}
+            src={"/images/Eat.jpeg"} 
             alt={menuImage.title}
             className={"image"}
             width={menuImage.width} //automatically provided
             height={menuImage.height} //automatically provided
-            blurDataURL={"/images/Eat.jpeg"} //automatically provided
+            blurDataURL={"/images/Eat.jpg"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
       </Modal>
