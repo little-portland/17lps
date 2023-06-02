@@ -99,14 +99,15 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         }}
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
       >  
-        <Image
-          src={hireItem ? hireItem.image.url : eatPic}
-          alt={hireItem.image.description}
-          width={hireItem ? hireItem.image.width : 300} //automatically provided
-          height={hireItem ? hireItem.image.height : 800} //automatically provided
-          blurDataURL={"/images/Hire.jpeg"} //automatically provided
-          placeholder="blur" // Optional blur-up while loading
-        />
+          <Image
+            src={menuImage.url}
+            alt={menuImage.title}
+            className={"image"}
+            width={menuImage.width} //automatically provided
+            height={menuImage.height} //automatically provided
+            blurDataURL={"/images/Eat.jpeg"} //automatically provided
+            placeholder="blur" // Optional blur-up while loading
+          />
       </Modal>
       <Modal
         open={displayHire}
