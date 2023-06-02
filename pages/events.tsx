@@ -77,7 +77,7 @@ const Bookings = () => {
             Public Events Program <br />
             <span>
               [For the private events program, <br /> Friends of the Club should
-              see the latest What’s On email]
+              see the latest Program email]
             </span>
           </h1>
           <div>
