@@ -11,6 +11,7 @@ import MobileButtons from "@components/UX/MobileButtons";
 import { useUI } from "@components/UX/context";
 import { useLoaded } from "../../store/context";
 import useDeviceDetect from "@utils/useDeviceDetect";
+import Button from "@components/UX/Button";
 
 //image local
 import dancePic from "../../public/images/Dance.jpeg";
