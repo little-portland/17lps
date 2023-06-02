@@ -98,52 +98,15 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           title: "sample menu",
         }}
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
-      >
-    {<div
-        className="eat-note"
-      >     
-        <h1>The Tent</h1>
-        <h2>[At the end of the Universe]</h2>
-        <h3>What’s On</h3>
-            
-        <div id="bookingOptions">
-          <h1 className="event-name">Wednesday’s Jazz</h1>
-          <div className="event-info">
-              <div className="info date">
-                <h2>07 Jun</h2>
-              </div>
-              <div className="info artists">
-                <h3><span>STUDIO <b>//</b> </span>CLOSED</h3>
-                <h3><span>TENT <b>//</b> </span>MARIO BAKUNA & MAFALDA RAMOS</h3>
-              </div>
-          </div>
-          <div className="button-wrapper">
-            <a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2023-06-07" target="_blank">
-              <Button btnType="hollow">
-                Book Dinner <span>(includes free club entry)</span>
-              </Button>
-            </a>
-          </div>
-          
-           <div className="event-info">
-              <div className="info date">
-                <h2>14 Jun</h2>
-              </div>
-              <div className="info artists">
-                <h3><span>STUDIO <b>//</b> </span>CLOSED</h3>
-                <h3><span>TENT <b>//</b> </span>MARIO BAKUNA & JUNIOR TONIATO</h3>
-              </div>
-          </div>
-          <div className="button-wrapper">
-            <a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2023-06-14" target="_blank">
-              <Button btnType="hollow">
-                Book Dinner <span>(includes free club entry)</span>
-              </Button>
-            </a>
-          </div>
-        </div>
-            
-      </div>}
+      >  
+        <Image
+          src={hireItem ? hireItem.image.url : eatPic}
+          alt={hireItem.image.description}
+          width={hireItem ? hireItem.image.width : 300} //automatically provided
+          height={hireItem ? hireItem.image.height : 800} //automatically provided
+          blurDataURL={"/images/Hire.jpeg"} //automatically provided
+          placeholder="blur" // Optional blur-up while loading
+        />
       </Modal>
       <Modal
         open={displayHire}
