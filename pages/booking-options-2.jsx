@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>08 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Dan Andrei</h3>
-              <h3><span>TENT <b>//</b> </span>Meeran B2B Remi Mazet</h3>
+              <h3><span>STUDIO <b>//</b> </span>Dan Andrei, Gabriel Rai</h3>
+              <h3><span>TENT <b>//</b> </span>Maybe Laura, Remi Mazet</h3>
             </div>
         </div>
         <div class="button-wrapper">
