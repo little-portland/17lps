@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>09 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI (ALL NIGHT LONG)</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI & DAVID BERRIE(ALL NIGHT LONG)</h3>
               <h3><span>TENT <b>//</b> </span>RHYTHMS OF PRESCOTT, GREG SONATA</h3>
             </div>
         </div>
