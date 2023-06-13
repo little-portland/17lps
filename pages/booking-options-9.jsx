@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>17 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SUPER PAOLO</h3>
-              <h3><span>TENT <b>//</b> </span>FUNKTONIO, MARI*</h3>
+              <h3><span>STUDIO <b>//</b> </span>Funktonio & Friends</h3>
+              <h3><span>TENT <b>//</b> </span>MARI*, Super Paolo</h3>
             </div>
         </div>
         <div class="button-wrapper">
