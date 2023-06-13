@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>16 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI & FRIENDS</h3>
-              <h3><span>TENT <b>//</b> </span>DR J, GILES SMITH</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Nagual</h3>
+              <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, GILES SMITH</h3>
             </div>
         </div>
         <div class="button-wrapper">
