@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>01 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SUPER PAOLO</h3>
-              <h3><span>TENT <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>Felix Dickinson, Lex Wolf</h3>
+              <h3><span>TENT <b>//</b> </span>ECE DÜZGIT, TINTIN</h3>
             </div>
         </div>
         <div class="button-wrapper">
