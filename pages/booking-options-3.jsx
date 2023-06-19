@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>06 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>A Guy Called Gerald</h3>
+              <h3><span>STUDIO <b>//</b> </span>Felon 5, Special Guest</h3>
               <h3><span>TENT <b>//</b> </span>B. Love, Jack Wrenn</h3>
             </div>
         </div>
