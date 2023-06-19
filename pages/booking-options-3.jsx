@@ -21,20 +21,20 @@ const BookingOptions = () => {
         <h1 class="event-name" class="focal-point">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
-              <h2>15 Jun</h2>
+              <h2>06 Jul</h2>
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>A Guy Called Gerald</h3>
-              <h3><span>TENT <b>//</b> </span>Harri Pepper, Oli Silva</h3>
+              <h3><span>TENT <b>//</b> </span>B. Love, Jack Wrenn</h3>
             </div>
         </div>
         <div class="button-wrapper">
-          <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2023-06-15" target="_blank">
+          <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2023-07-06" target="_blank">
             <Button classes="events-button"  btnType="hollow">
               Book Dinner <span>(includes free club entry)</span>
             </Button>
           </a>
-          <a href="http://sevn.ly/xASzClxd" target="_blank">
+          <a href="http://sevn.ly/xICtzfKh" target="_blank">
             <Button classes="events-button ticket" btnType="hollow">
               Book Club <span>Ticket</span>
             </Button>
