@@ -272,6 +272,10 @@ html, body {
     font-size: 4.4rem;
 }
 
+#bookingOptions .focal-point-presents {
+  font-size: 3.57rem
+}
+
 #bookingOptions .disco-saturdays {
     font-size: 4.7rem;
 }
