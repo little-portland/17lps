@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>20 Jul</h2> 
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Shaun Reeves</h3>
+              <h3><span>STUDIO <b>//</b> </span>SHAUN REEVES, MARLIE	</h3>
               <h3><span>TENT <b>//</b> </span>Maybe Laura, Raoul Edwards</h3>
             </div>
         </div>
