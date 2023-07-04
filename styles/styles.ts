@@ -280,6 +280,10 @@ html, body {
     font-size: 4.7rem;
 }
 
+#bookingOptions .urban-future {
+    font-size: 5.9rem;
+}
+
 #bookingOptions .event-info {
     text-transform: uppercase;
     display: flex;
