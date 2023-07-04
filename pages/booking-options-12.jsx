@@ -18,25 +18,25 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name openlab-presents">Openlab presents</h1>
+        <h1 class="event-name">Urban Future</h1>
         <div class="event-info">
             <div class="info date">
-              <h2>01 Jul</h2>
+              <h2>05 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Felix Dickinson, Lex Wolf</h3>
-              <h3><span>TENT <b>//</b> </span>ECE DÜZGIT, TINTIN</h3>
+              <h3><span>JAZZ AT THE END OF THE UNIVERSE[8PM] <b>//</b> </span>MARIO BAKUNA & MAFALDA RAMOS</h3>
+              <h3><span>MIDNIGHT MIXTAPE[11PM] <b>//</b> </span>BILL PATRICK</h3>
             </div>
         </div>
         <div class="button-wrapper">
-          <a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2023-07-01" target="_blank">
+          <a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2023-07-05" target="_blank">
             <Button classes="events-button"  btnType="hollow">
               Book Dinner <span>(includes free club entry)</span>
             </Button>
           </a>
-          <a href="http://sevn.ly/xqyklaHK" target="_blank">
+          <a href="" target="_blank">
             <Button classes="events-button ticket" btnType="hollow">
-              Book Club <span>Ticket</span>
+              Get on Club <span>Guestlist</span>
             </Button>
           </a>
         </div>
