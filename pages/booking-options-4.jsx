@@ -36,7 +36,7 @@ const BookingOptions = () => {
           </a>
           <a href="" target="_blank">
             <Button classes="events-button ticket" btnType="hollow">
-              GET ON CLUB <span>GUESTLIST</span>
+               GET ON CLUB <span>GUESTLIST</span>
             </Button>
           </a>
         </div>
