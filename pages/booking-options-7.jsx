@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>22 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SUPER PAOLO, TRIANA Y HERMANA JUANA [LIVE]</h3>
+              <h3><span>STUDIO <b>//</b> </span>DAVID TRIANA & FRIENDS </h3>
               <h3><span>TENT <b>//</b> </span>Gilles Smith (All Night)</h3>
             </div>
         </div>
