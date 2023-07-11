@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>21 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>KAMAAL WILLIAMS & FRIENDS</h3>
+              <h3><span>STUDIO <b>//</b> </span>DAVID TRIANA & FRIENDS</h3>
               <h3><span>TENT <b>//</b> </span>Greg Sonata, Rhythms of Prescott</h3>
             </div>
         </div>
