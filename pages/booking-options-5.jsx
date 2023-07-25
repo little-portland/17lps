@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>29 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>FUNKTONIO + FRIENDS</h3>
               <h3><span>TENT <b>//</b> </span>JUNGLE JARVIN, oli silva</h3>
             </div>
         </div>
