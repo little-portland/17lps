@@ -314,6 +314,10 @@ html, body {
     align-items: center;
     display: flex;
  }
+
+ .tent .event-name {
+   font-size: 5.1rem;
+ }
   
  #bookingOptions .artists h3 {
     font-size: 1.5rem;
