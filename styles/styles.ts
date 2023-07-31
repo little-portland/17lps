@@ -489,6 +489,10 @@ html, body {
         .tent .event-name {
           font-size: 2.1rem !important;
         }
+
+        .tent a button {
+          padding: 20px 30px!important;
+      }
        
     }
 
