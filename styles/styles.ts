@@ -485,6 +485,10 @@ html, body {
         #bookingOptions .focal-point-presents {
           font-size: 2.7rem
         }
+        
+        .tent .event-name {
+          font-size: 2.1rem !important;
+        }
        
     }
 
