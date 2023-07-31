@@ -16,7 +16,7 @@ import Button from "@components/UX/Button";
 //image local
 import dancePic from "../../public/images/Dance.jpeg";
 import eatPic from "../../public/images/Eat.jpeg";
-import hirePic from "../../public/images/Hire.jpeg";
+import hirePic from "../../public/images/hire-page-collage.jpg";
 
 //styles
 import { MainStyle } from "./styles";
