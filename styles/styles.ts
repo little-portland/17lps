@@ -316,7 +316,7 @@ html, body {
  }
 
  .tent .event-name {
-   font-size: 5.1rem;
+   font-size: 5.1rem!important;
  }
   
  #bookingOptions .artists h3 {
@@ -333,7 +333,7 @@ html, body {
  }
 
   .tent .artists h3:first-child {
-   margin-bottom: 0;
+   margin-bottom: 0!important;
  }
  
   #bookingOptions .events-button span {
