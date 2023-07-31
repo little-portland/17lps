@@ -365,6 +365,11 @@ html, body {
     font-size: 1.8rem;
 }
 
+.tent a button {
+  line-height: 1.2!important;
+}
+
+
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
