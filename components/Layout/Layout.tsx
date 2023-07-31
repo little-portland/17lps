@@ -119,7 +119,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           alt={hireItem.image.description}
           width={hireItem ? hireItem.image.width : 300} //automatically provided
           height={hireItem ? hireItem.image.height : 800} //automatically provided
-          blurDataURL={"/images/hire-page-collage.jpeg"} //automatically provided
+          blurDataURL={"/images/hire-page-collage.jpg"} //automatically provided
           placeholder="blur" // Optional blur-up while loading
         />
       </Modal>
