@@ -308,6 +308,12 @@ html, body {
  #bookingOptions .artists {
     width: 77%;
  }
+
+ .tent .artists {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+ }
   
  #bookingOptions .artists h3 {
     font-size: 1.5rem;
