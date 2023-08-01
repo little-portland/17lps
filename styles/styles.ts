@@ -316,7 +316,7 @@ html, body {
  }
 
  .tent .event-name {
-   font-size: 5.1rem!important;
+   font-size: 5rem!important;
  }
   
  #bookingOptions .artists h3 {
