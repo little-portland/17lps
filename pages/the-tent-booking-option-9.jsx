@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>19 AUG</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>PASH KA </h3>
+              <h3><span>TENT <b>//</b> </span>PASH</h3>
             </div>
         </div>
         <div class="button-wrapper">
