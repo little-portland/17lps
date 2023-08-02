@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
                <h3><span>STUDIO <b>//</b> </span>TBA</h3>
-              <h3><span>TENT <b>//</b> </span>GREGORIO SOAVE B2B RHYTHMS OF PRESCOTT</h3>
+              <h3><span>TENT <b>//</b> </span>GREGORIO SOAVE B2B RHYTMS OF PRESCOTT</h3>
             </div>
         </div>
         <div class="button-wrapper">
