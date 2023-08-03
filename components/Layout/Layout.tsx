@@ -121,10 +121,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h5>Every Wednesday from 8pm</h5>   
         <Image
             src={"/images/sunday-funday-menu-16-Apr.jpg"} 
-            alt={menuImage.title}
-            className={"image"}
-            width={menuImage.width} //automatically provided
-            height={menuImage.height} //automatically provided
             blurDataURL={"/images/sunday-funday-menu-16-Apr.jpg"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
         />
