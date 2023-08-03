@@ -182,6 +182,16 @@ html, body {
   color: #5C2C7C;
 }
 
+.eat-note img {
+    position: relative;
+    margin: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    max-height: 100%;
+}
+
 .box-1, .box-2, .box-3 {
   border: 2px solid #48021a;
   padding: 20px;
