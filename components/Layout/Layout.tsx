@@ -118,7 +118,10 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-1"> 
         <h4>JAZZ AT THE END OF THE UNIVERSE</h4>
         <h5>Every Wednesday from 8pm</h5>   
-        <Image src={"/images/the-tent-jazz.png"} />
+        <Image 
+            src={"/images/the-tent-jazz.png"} 
+            blurDataURL={"/images/the-tent-jazz.png"}
+        />
         <br/>    
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
         </div>}
@@ -127,7 +130,10 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-3"> 
         <h4>DINNER & TUNES</h4>
         <h5>Every Thursday - Saturday ’til late</h5>  
-        <Image src={"/images/the-tent-dj-booth.png"} />
+        <Image 
+            src={"/images/the-tent-dj-booth.png"}
+            blurDataURL={"/images/the-tent-dj-booth.png"}
+        />
         <br/>    
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
         </div>}
