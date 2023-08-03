@@ -99,14 +99,29 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         }}
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
       >  
-        <Image
-          src={"/images/Eat.jpeg"} 
-          alt={hireItem.image.description}
-          width={hireItem ? hireItem.image.width : 300} //automatically provided
-          height={hireItem ? hireItem.image.height : 800} //automatically provided
-          blurDataURL={"/images/Eat.jpeg"} //automatically provided
-          placeholder="blur" // Optional blur-up while loading
-        />
+            {<div
+        className="eat-note"
+      >     
+        <h1>Jazz</h1>
+        <h2>[At the end of the Universe]</h2>
+          {<div
+        className="box-1"
+      > 
+        <h4>Wednesday // 07 June</h4>
+        <h5>MARIO BAKUNA &amp; MAFALDA RAMOS</h5>   
+        <br/>    
+        <p className="links"><a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2023-06-07" target="_blank">[BOOK]</a></p>
+        </div>}
+
+        {<div
+        className="box-3"
+      > 
+        <h4>Wednesday // 14 June</h4>
+        <h5>MARIO BAKUNA &amp; JUNIOR TONIATO</h5>   
+        <br/>    
+        <p className="links"><a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2023-06-14" target="_blank">[BOOK]</a></p>
+        </div>}
+      </div>}
       </Modal>
       <Modal
         open={displayHire}
@@ -119,7 +134,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           alt={hireItem.image.description}
           width={hireItem ? hireItem.image.width : 300} //automatically provided
           height={hireItem ? hireItem.image.height : 800} //automatically provided
-          blurDataURL={"/images/hire-page-collage.jpg"} //automatically provided 
+          blurDataURL={"/images/Hire.jpeg"} //automatically provided
           placeholder="blur" // Optional blur-up while loading
         />
       </Modal>
