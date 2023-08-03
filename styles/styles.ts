@@ -121,6 +121,11 @@ html, body {
   max-width: 550px;
   overflow: auto;
 }
+
+@media only screen and (min-device-width: 768px) { 
+  min-width: 550px;
+}
+
 .eat-note h1 {
   color: #48021a;
   font-size: 3rem;
