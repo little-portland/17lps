@@ -120,9 +120,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h4>JAZZ AT THE END OF THE UNIVERSE</h4>
         <h5>Every Wednesday from 8pm</h5>   
         <Image
-            src={"/images/sunday-funday-menu-16-Apr.jpg"} 
-            blurDataURL={"/images/sunday-funday-menu-16-Apr.jpg"} //automatically provided
-            placeholder="blur" // Optional blur-up while loading
+            src={"/images/the-tent-dj-booth.png"} 
+            blurDataURL={"/images/the-tent-dj-booth.png"} //automatically provided
         />
         <br/>    
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
