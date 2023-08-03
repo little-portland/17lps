@@ -183,13 +183,13 @@ html, body {
 }
 
 .eat-note img {
-    position: relative;
-    margin: auto;
-    display: block;
-    width: auto;
-    height: auto;
-    min-width: 100%;
-    max-height: 100%;
+    position: relative!important;
+    margin: auto!important;
+    display: block!important;
+    width: auto!important;
+    height: auto!important;
+    min-width: 100%!important;
+    max-height: 100%!important;
 }
 
 .box-1, .box-2, .box-3 {
