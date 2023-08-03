@@ -111,16 +111,33 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h5>Limited time offer</h5>   
         <br/> 
         <p>Enjoy a bottle of win on us.<br/> [One bottle per 2 guest in the group]<p/>
+        <br/> 
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
         </div>}
 
         {<div
-        className="box-3"
-      > 
-        <h4>Wednesday // 14 June</h4>
-        <h5>MARIO BAKUNA &amp; JUNIOR TONIATO</h5>   
+        className="box-2"> 
+        <h4>JAZZ AT THE END OF THE UNIVERSE</h4>
+        <h5>Every Wednesday from 8pm</h5>   
+        <Image
+            src={"/images/sunday-funday-menu-16-Apr.jpg"} 
+            alt={menuImage.title}
+            className={"image"}
+            width={menuImage.width} //automatically provided
+            height={menuImage.height} //automatically provided
+            blurDataURL={"/images/sunday-funday-menu-16-Apr.jpg"} //automatically provided
+            placeholder="blur" // Optional blur-up while loading
+        />
         <br/>    
-        <p className="links"><a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2023-06-14" target="_blank">[BOOK]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
+        </div>}
+
+        {<div
+        className="box-3"> 
+        <h4>DINNER & TUNES</h4>
+        <h5>Every Thursday - Saturday ’til late</h5>   
+        <br/>    
+        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
         </div>}
       </div>}
       </Modal>
