@@ -116,7 +116,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         </div>}
 
         {<div
-        className="box-2"> 
+        className="box-1"> 
         <h4>JAZZ AT THE END OF THE UNIVERSE</h4>
         <h5>Every Wednesday from 8pm</h5>   
         <Image src={"/images/the-tent-jazz.png"} />
