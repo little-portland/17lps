@@ -122,8 +122,10 @@ html, body {
   overflow: auto;
 }
 
-@media only screen and (min-device-width: 768px) { 
-  min-width: 550px;
+@media (min-width: 768px) {
+  .eat-note {
+    min-width: 550px;
+  }
 }
 
 .eat-note h1 {
