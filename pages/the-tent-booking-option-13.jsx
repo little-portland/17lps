@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>31 AUG</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>TRIXIE WONDERLUST B2B GEORGIA </h3>
+              <h3><span>TENT <b>//</b> </span>GEORGIA B2B TRIXIE</h3>
             </div>
         </div>
         <div class="button-wrapper">
