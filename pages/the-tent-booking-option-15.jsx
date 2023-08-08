@@ -33,7 +33,7 @@ const BookingOptions = () => {
               Book Dinner
             </Button>
           </a>
-          <a href="#" target="_blank">
+          <a href="http://sevn.ly/xLj5ibvI" target="_blank">
             <Button classes="events-button ticket" btnType="hollow">
               Get on the Guestlist
             </Button>
