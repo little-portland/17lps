@@ -301,6 +301,10 @@ html, body {
     font-size: 5.9rem;
 }
 
+#bookingOptions .mid-summer {
+  font-size: 2.5rem;
+}
+
 #bookingOptions .event-info {
     text-transform: uppercase;
     display: flex;
@@ -501,6 +505,10 @@ html, body {
 
         #bookingOptions .focal-point-presents {
           font-size: 2.7rem
+        }
+
+        #bookingOptions .mid-summer {
+          font-size: 3rem;
         }
         
         .tent .event-name {
