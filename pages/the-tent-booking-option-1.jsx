@@ -18,14 +18,14 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name">Thursday Underground</h1>
+        <h1 class="event-name openlab-presents">OpenLab Presents</h1>
         <div class="event-info">
             <div class="info date">
               <h2>07 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
-              <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, PAUL DAY</h3>
+              <h3><span>STUDIO <b>//</b> </span>DOUDOU MD</h3>
+              <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, RHYTHMS OF PRESCOTT </h3>
             </div>
         </div>
         <div class="button-wrapper">
