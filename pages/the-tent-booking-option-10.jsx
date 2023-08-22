@@ -18,13 +18,13 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions" class="tent">
-        <h1 class="event-name">DINNER & TUNES</h1>
+        <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
               <h2>24 AUG</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Eris</h3>
+              <h3><span>STUDIO <b>//</b> </span>ERIS</h3>
               <h3><span>TENT <b>//</b> </span>MAYBE LAURA B2B REMI MAZET </h3>
             </div>
         </div>
@@ -36,7 +36,7 @@ const BookingOptions = () => {
           </a>
           <a href="http://sevn.ly/x4UIW5FN" target="_blank">
             <Button classes="events-button ticket" btnType="hollow">
-              Get on the Guestlist
+              Book Club <span>Ticket</span>
             </Button>
           </a>
         </div>
