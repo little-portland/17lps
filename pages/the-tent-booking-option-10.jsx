@@ -24,6 +24,7 @@ const BookingOptions = () => {
               <h2>24 AUG</h2>
             </div>
             <div class="info artists">
+              <h3><span>STUDIO <b>//</b> </span>Eris</h3>
               <h3><span>TENT <b>//</b> </span>MAYBE LAURA B2B REMI MAZET </h3>
             </div>
         </div>
