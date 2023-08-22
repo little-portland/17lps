@@ -17,7 +17,7 @@ const BookingOptions = () => {
         <title>Bookings</title>
       </Head>
 
-      <div id="bookingOptions" class="tent">
+      <div id="bookingOptions">
         <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
