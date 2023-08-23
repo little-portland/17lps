@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>07 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>DOUDOU MD</h3>
+              <h3><span>STUDIO <b>//</b> </span>DOUDOU MD, LEX WOLF, TINTIN</h3>
               <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, RHYTHMS OF PRESCOTT </h3>
             </div>
         </div>
