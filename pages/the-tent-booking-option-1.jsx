@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>07 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>DOUDOU MD, RALPH LAWSON, RICHARD MARSHALL, TINTIN</h3>
-              <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, RHYTHMS OF PRESCOTT </h3>
+              <h3><span>STUDIO <b>//</b> </span>DOUDOU MD, RALPH LAWSON</h3>
+              <h3><span>TENT <b>//</b> </span>RICHARD MARSHALL, TINTIN</h3>
             </div>
         </div>
         <div class="button-wrapper">
