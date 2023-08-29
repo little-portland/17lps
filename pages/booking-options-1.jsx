@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>14 SEP</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>LUCA CAZAL & VASS</h3>
-              <h3><span>TENT <b>//</b> </span>PAUL DAY, ROBERTA CUTOLO</h3>
+              <h3><span>STUDIO <b>//</b> </span>B.LOVE, TRULY MADLY</h3>
+              <h3><span>TENT <b>//</b> </span>2STEPBEC & ZEUS</h3>
             </div>
         </div>
         <div class="button-wrapper">
