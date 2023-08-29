@@ -104,15 +104,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
       >     
         <h1>The Tent</h1>
         <h2>[At the end of the Universe]</h2>
-          {<div
-        className="box-1"
-      > 
-        <h4>AUGUST OFFER</h4>
-        <h5>Limited time offer</h5>   
-        <p>Enjoy a bottle of wine on us [One bottle per 2 guests in the group]</p>
-        <br/> 
-        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
-        </div>}
 
         {<div
         className="box-1"> 
