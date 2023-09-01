@@ -65,6 +65,7 @@ const Bookings = () => {
           <ul>
             <li>For larger group bookings of 10 or more, please email us at <a href="mailto:eat@little-portland.com">eat@little-portland.com</a>.</li>
             <li>Large groups can choose from 2 set menu options. <a href="https://www.little-portland.com/menu-options">Click here</a> to see the menus.</li>
+            <li>To confirm the booking, we will require 50% deposit of the chosen set menu (total price per head). If cancelling within 10 days of your dinner reservation, we will retain the 50% deposit made.</li>
           </ul>
           <h1 className="bookings-heading-2">Bookings &amp; Cancellations</h1>
           <ul>
