@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>30 SEP</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Luther Vine & Snad</h3>
-              <h3><span>TENT <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>TENT <b>//</b> </span>Luther Vine & Snad</h3>
             </div>
         </div>
         <div class="button-wrapper">
