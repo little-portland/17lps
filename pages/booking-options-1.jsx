@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>B.LOVE, TRULY MADLY</h3>
-              <h3><span>TENT <b>//</b> </span>2STEPBEC & ZEUS</h3>
+              <h3><span>TENT <b>//</b> </span>2STEPBEC & ZEUS + PAUL DAY</h3>
             </div>
         </div>
         <div class="button-wrapper">
