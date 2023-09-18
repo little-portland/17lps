@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>05 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BILL PATRICK, OHM OURANI</h3>
+              <h3><span>STUDIO <b>//</b> </span>BILL PATRICK, OHM HOURANI</h3>
               <h3><span>TENT <b>//</b> </span>GILLES SMITH & RHYTHMS OF PRESCOTT</h3>
             </div>
         </div>
