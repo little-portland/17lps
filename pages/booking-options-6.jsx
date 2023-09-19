@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>20 SEP</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>PHENOM AND FRIENDS</h3>
+              <h3><span>STUDIO <b>//</b> </span>DJ NOMAD, iBO3Y, TAROIMAI, ZEZE, DJ PHENOM</h3>
               <h3><span>TENT <b>//</b> </span>MARIO BAKUNA & ROBERTO MANZIN [LIVE JAZZ]</h3>
             </div>
         </div>
