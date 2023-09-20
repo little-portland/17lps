@@ -289,6 +289,10 @@ html, body {
     font-size: 4.4rem;
 }
 
+#bookingOptions .balearic-electric-openlab {
+    font-size: 2.5rem;
+}
+
 #bookingOptions .focal-point-presents {
   font-size: 3.57rem
 }
