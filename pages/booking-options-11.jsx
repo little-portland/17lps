@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>07 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>System Olympia & Lex Wolf</h3>
+              <h3><span>STUDIO <b>//</b> </span>Lex Wolf, System Olympia</h3>
               <h3><span>TENT <b>//</b> </span>DYLAN BLUE, TINTIN</h3>
             </div>
         </div>
