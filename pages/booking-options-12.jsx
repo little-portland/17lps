@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>28 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SPACED RECORDS</h3>
+              <h3><span>STUDIO <b>//</b> </span>SPACED RECORDS WITH THO & LOREN</h3>
               <h3><span>TENT <b>//</b> </span>RHYTHMS OF PRESCOTT & DEMI</h3>
             </div>
         </div>
