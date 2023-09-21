@@ -74,7 +74,7 @@ const Bookings = () => {
           </ul>
         </div>
 
-      </CenterContainer>
+      </CenterContainer> 
 
       <Script
         src="https://www.sevenrooms.com/reservations/embed.js"
