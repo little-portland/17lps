@@ -18,7 +18,7 @@ const Bookings = () => {
     display: "grid",
     placeItems: "center",
     "@media (minWidth: 500px)": {
-      display: "none",
+      display: "none", 
     },
   };
 
