@@ -137,14 +137,15 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         email={hireItem.eMail}
         phone={hireItem.phoneNumber}
       >
-        <Image
-          src={hireItem ? hireItem.image.url : eatPic}
-          alt={hireItem.image.description}
-          width={hireItem ? hireItem.image.width : 300} //automatically provided
-          height={hireItem ? hireItem.image.height : 800} //automatically provided
-          blurDataURL={"/images/Hire.jpeg"} //automatically provided
-          placeholder="blur" // Optional blur-up while loading
+    {<div
+        className="eat-note"
+      >       
+        <Image 
+            src={"/images/hire-page-chef-tent.jpg"}
+            blurDataURL={"/images/hire-page-chef-tent.jpg"}
         />
+        <br/>    
+      </div>}
       </Modal>
       {/* <div
         onClick={openLineup}
