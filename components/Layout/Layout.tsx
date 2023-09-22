@@ -144,7 +144,22 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             src={"/images/hire-page-chef-tent.jpg"}
             blurDataURL={"/images/hire-page-chef-tent.jpg"}
         />
-        <br/>    
+        <br/>  
+        <Image 
+            src={"/images/hire-page-studio.jpg"}
+            blurDataURL={"/images/hire-page-studio.jpg"}
+        />
+        <br/>
+        <Image 
+            src={"/images/hire-page-chef-studio.jpg"}
+            blurDataURL={"/images/hire-page-chef-studio.jpg"}
+        />
+        <br/>
+        <Image 
+            src={"/images/hire-page-food.jpg"}
+            blurDataURL={"/images/hire-page-food.jpg"}
+        />
+        <br/>
       </div>}
       </Modal>
       {/* <div
