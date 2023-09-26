@@ -199,6 +199,13 @@ html, body {
     max-height: 100%!important;
 }
 
+.box h2 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: .3rem;
+}
+
 .box-1, .box-2, .box-3 {
   border: 2px solid #48021a;
   padding: 20px;
