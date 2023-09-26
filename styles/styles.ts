@@ -210,7 +210,7 @@ html, body {
 .box h2 {
   color: #48021a;
   text-align: left;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 0.6rem;
 }
 
