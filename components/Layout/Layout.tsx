@@ -115,6 +115,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <p>WED & THU - 8-12 GUESTS <br/> FRI & SAT - 2 - 12 GUESTS</p>
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/chefs-menu" target="_blank">[SPECIAL SET MENU]</a></p>
+        <br/> 
         <p><span>*Unfortunately, we cannot cater for any dietary requirements, allergies, or changes for this menu.</span></p>
         </div>}
 
