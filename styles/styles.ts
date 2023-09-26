@@ -206,6 +206,7 @@ html, body {
 .box h2 {
   color: #48021a;
   font-size: 1.7rem;
+  margin-bottom: 0.6rem;
 }
 
 .box h4 {
