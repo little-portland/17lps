@@ -112,7 +112,7 @@ html, body {
 }
 
 .eat-note {
-  text-align: left;
+  text-align: centre;
   padding: 20px;
   background-color: #acd8c7;
   margin-bottom: 1.5rem;
