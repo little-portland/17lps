@@ -76,7 +76,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
       <MainStyle>{main}</MainStyle>
       <Modal open={displayLineup} close={closeLineup}>
         <Image
-          src={dancePic}
+          src={dancePic} 
           alt="Dance"
           // width={500} automatically provided
           // height={500} automatically provided
