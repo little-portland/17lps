@@ -112,8 +112,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p>An intimate 12-seater dining experience hosted by Chef John Javier. Renowned for his culinary mastery in Chinese cuisine, John has crafted an exquisite special set menu that promises to take diners on a delectable journey through the flavours of China.</p> 
         <p>Book our private dining room within our invite-only club, hidden beneath The Tent (at the End of the Universe).</p>
         <br/>  
-          <p>DINNER PARTY from 7PM</p>
-          <p>HOUSE PARTY from 9:30PM</p>
+          <p>DINNER PARTY from 7PM <br/> HOUSE PARTY from 9:30PM</p>
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
         </div>}
