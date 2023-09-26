@@ -200,7 +200,7 @@ html, body {
 }
 
 .box {
-  text-align: left!important;
+  text-align: left!important; 
 }
 
 .box h2 {
