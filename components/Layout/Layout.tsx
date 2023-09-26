@@ -131,7 +131,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         </div>}
 
         {<div
-        className="box-1 box"> 
+        className="box-3 box"> 
         <h2>DINNER & TUNES</h2>
         <h4>THURSDAYS - SATURDAYS</h4>
         <p>Join us every Thursday to Saturday, where you can enjoy a well-crafted meal prepared by Chef John Javier. Soak up the inviting atmosphere created by our resident and guest DJs, making it a perfect blend of good food and great vibes.</p>
