@@ -199,6 +199,10 @@ html, body {
     max-height: 100%!important;
 }
 
+.eat-note .foot-note {
+  margin-bottom: 0!important;
+}
+
 .box {
   text-align: left!important; 
 }
