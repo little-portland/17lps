@@ -106,20 +106,16 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>[At the end of the Universe]</h2>
 
         {<div
-        className="box-1"> 
-        <h4>JAZZ AT THE END OF THE UNIVERSE</h4>
-        <h6>Live jazz & dining experience</h6>
-        <h5>Every Wednesday from 8pm</h5>   
-        <Image 
-            src={"/images/the-tent-jazz.png"} 
-            blurDataURL={"/images/the-tent-jazz.png"}
-        />
+        className="box-1 box"> 
+        <h2>CHEF’S STUDIO <br/>@ 17 LITTLE PORTLAND STREET</h2>
+        <h4>WEDNESDAYS - SATURDAYS</h4>
+        <p>An intimate 12-seater dining experience hosted by Chef John Javier. Renowned for his culinary mastery in Chinese cuisine, John has crafted an exquisite special set menu that promises to take diners on a delectable journey through the flavours of China. Book our private dining room within our invite-only club, hidden beneath The Tent (at the End of the Universe).</p>
         <br/>    
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
         </div>}
 
         {<div
-        className="box-3"> 
+        className="box-3 box"> 
         <h4>DINNER & TUNES</h4>
         <h5>Every Thursday - Saturday ’til late</h5>  
         <Image 
