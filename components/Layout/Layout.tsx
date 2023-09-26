@@ -112,21 +112,32 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p>An intimate 12-seater dining experience hosted by Chef John Javier. Renowned for his culinary mastery in Chinese cuisine, John has crafted an exquisite special set menu that promises to take diners on a delectable journey through the flavours of China.</p> 
         <p>Book our private dining room within our invite-only club, hidden beneath The Tent (at the End of the Universe).</p>
         <br/>  
-          <p>DINNER PARTY from 7PM <br/> HOUSE PARTY from 9:30PM</p>
+          <p>WED & THU - 8-12 GUESTS <br/> FRI & SAT - 2 - 12 GUESTS</p>
         <br/>  
-        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/chefs-menu" target="_blank">[SPECIAL SET MENU]</a></p>
+        <p><span>*Unfortunately, we cannot cater for any dietary requirements, allergies, or changes for this menu.</span></p>
         </div>}
 
         {<div
-        className="box-3 box"> 
-        <h4>DINNER & TUNES</h4>
-        <h5>Every Thursday - Saturday ’til late</h5>  
-        <Image 
-            src={"/images/the-tent-dj-booth.png"}
-            blurDataURL={"/images/the-tent-dj-booth.png"}
-        />
-        <br/>    
-        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a></p>
+        className="box-1 box"> 
+        <h2>JAZZ AT THE END OF THE UNIVERSE</h2>
+        <h4>EVERY WEDNESDAY</h4>
+        <p>Step into a world of rhythm and taste with our all-new Live Jazz and Dining Experience, every Wednesday at the Tent at the End of the Universe. Nestled amidst a breath-taking cosmic backdrop, this one-of-a-kind event transports you to a realm where smooth melodies and delectable cuisine collide.</p> 
+        <br/>  
+          <p>DINNER PARTY from 7PM <br/> HOUSE PARTY from 9:30PM</p>
+        <br/>  
+        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
+        </div>}
+
+        {<div
+        className="box-1 box"> 
+        <h2>DINNER & TUNES</h2>
+        <h4>THURSDAYS - SATURDAYS</h4>
+        <p>Join us every Thursday to Saturday, where you can enjoy a well-crafted meal prepared by Chef John Javier. Soak up the inviting atmosphere created by our resident and guest DJs, making it a perfect blend of good food and great vibes.</p>
+        <br/>  
+          <p>DINNER PARTY from 7PM <br/> HOUSE PARTY from 9:30PM</p>
+        <br/>  
+        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
       </div>}
       </Modal>
