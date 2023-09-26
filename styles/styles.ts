@@ -204,10 +204,8 @@ html, body {
 }
 
 .box h2 {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: .3rem;
+  color: #48021a;
+  font-size: 1.5rem;
 }
 
 .box-1, .box-2, .box-3 {
