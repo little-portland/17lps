@@ -213,6 +213,10 @@ html, body {
   font-size: 1.2rem;
 }
 
+.box span {
+  font-size: 0.6rem;
+}
+
 .box-1, .box-2, .box-3 {
   border: 2px solid #48021a;
   padding: 20px;
