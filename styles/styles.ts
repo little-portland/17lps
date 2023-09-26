@@ -112,7 +112,7 @@ html, body {
 }
 
 .eat-note {
-  text-align: centre;
+  text-align: left;
   padding: 20px;
   background-color: #acd8c7;
   margin-bottom: 1.5rem;
@@ -200,20 +200,23 @@ html, body {
 }
 
 .box {
-  text-align: center!important;
+  text-align: left!important;
 }
 
 .box h2 {
   color: #48021a;
-  font-size: 1.7rem;
+  text-align: left;
+  font-size: 1.2rem;
   margin-bottom: 0.6rem;
 }
 
 .box h4 {
-  font-size: 1.2rem;
+  text-align: left;
+  font-size: 1rem;
 }
 
 .box span {
+  text-align: left;
   font-size: 0.6rem;
 }
 
