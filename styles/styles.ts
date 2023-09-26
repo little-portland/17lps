@@ -205,7 +205,11 @@ html, body {
 
 .box h2 {
   color: #48021a;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+}
+
+.box h4 {
+  font-size: 1.2rem;
 }
 
 .box-1, .box-2, .box-3 {
