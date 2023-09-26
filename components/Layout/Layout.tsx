@@ -109,7 +109,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-1 box"> 
         <h2>CHEF’S STUDIO <br/>@ 17 LITTLE PORTLAND STREET</h2>
         <h4>WEDNESDAYS - SATURDAYS</h4>
-        <p>An intimate 12-seater dining experience hosted by Chef John Javier. Renowned for his culinary mastery in Chinese cuisine, John has crafted an exquisite special set menu that promises to take diners on a delectable journey through the flavours of China. Book our private dining room within our invite-only club, hidden beneath The Tent (at the End of the Universe).</p>
+        <p>An intimate 12-seater dining experience hosted by Chef John Javier. Renowned for his culinary mastery in Chinese cuisine, John has crafted an exquisite special set menu that promises to take diners on a delectable journey through the flavours of China.</p> 
+        <p>Book our private dining room within our invite-only club, hidden beneath The Tent (at the End of the Universe).</p>
         <br/>  
           <p>DINNER PARTY from 7PM</p>
           <p>HOUSE PARTY from 9:30PM</p>
