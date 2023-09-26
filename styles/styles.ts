@@ -200,7 +200,7 @@ html, body {
 }
 
 .eat-note .foot-note {
-  margin-bottom: 0!important;
+  margin-bottom: 0!important; 
 }
 
 .box {
