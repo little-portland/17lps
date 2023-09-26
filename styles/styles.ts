@@ -199,6 +199,10 @@ html, body {
     max-height: 100%!important;
 }
 
+.box {
+  text-align: center!important;
+}
+
 .box h2 {
   font-size: 1.2rem;
   text-transform: uppercase;
