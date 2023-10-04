@@ -15,7 +15,7 @@ import { GlobalStyle } from "../styles/styles";
 export default function MyApp({ Component, pageProps, router }: AppProps) {
   const { global } = pageProps;
 
-  // console.log(global);
+  console.log(global);
 
   return (
     <ContextProvider>
