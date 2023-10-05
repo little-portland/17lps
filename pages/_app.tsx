@@ -27,6 +27,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
             href={global.favicon.url}
           />
           <title>{global.title}</title>
+          <meta name="description" content={global.description}/>
         </Head>
         <GlobalStyle />
         <Component {...pageProps} key={router.route} />
