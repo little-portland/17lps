@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>26 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>ISIS Special guest</h3>
-              <h3><span>TENT <b>//</b> </span>MARC JARVIN & MR SHIVER</h3>
+              <h3><span>STUDIO <b>//</b> </span>Special guest</h3>
+              <h3><span>TENT <b>//</b> </span>MR SHIVER B2B JUNGLE JARVIN</h3>
             </div>
         </div>
         <div class="button-wrapper">
