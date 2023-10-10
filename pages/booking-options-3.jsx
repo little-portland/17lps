@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>20 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, ISAAC CARTER</h3>
               <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, MR SHIVER </h3>
             </div>
         </div>
