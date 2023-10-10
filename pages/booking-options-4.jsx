@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>27 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini</h3>
+              <h3><span>STUDIO <b>//</b> </span>GLENN UNDERGROUND, WILL B</h3>
               <h3><span>TENT <b>//</b> </span>DAVIDE DEL VECCHIO, ROBERTA CUTOLO</h3>
             </div>
         </div>
