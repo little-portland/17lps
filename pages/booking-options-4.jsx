@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>GLENN UNDERGROUND, WILL B</h3>
-              <h3><span>TENT <b>//</b> </span>DAVIDE DEL VECCHIO, ROBERTA CUTOLO</h3>
+              <h3><span>TENT <b>//</b> </span>[12AM] DAVIDE DEL VECCHIO</h3>
             </div>
         </div>
         <div class="button-wrapper">
