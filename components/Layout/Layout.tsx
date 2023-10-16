@@ -112,11 +112,12 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p>An intimate 12-seater dining experience hosted by Chef John Javier. Renowned for his culinary mastery in Chinese cuisine, John has crafted an exquisite special set menu that promises to take diners on a delectable journey through the flavours of China.</p> 
         <p>Book our private dining room within our invite-only club, hidden beneath The Tent (at the End of the Universe).</p>
         <br/>  
-          <p>WED & THU - 8-12 GUESTS <br/> FRI & SAT - 2 - 12 GUESTS</p>
+          <p>WED & THU - 8-12 GUESTS <br/> FRI & SAT - 4 - 12 guests</p>
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/chefs-menu" target="_blank">[SPECIAL SET MENU]</a></p>
         <br/> 
         <p className="foot-note"><span>* Unfortunately, we cannot cater for any dietary requirements, allergies, or changes for this menu.</span></p>
+        <p className="foot-note"><span>** Bookings required 7 days in advance of event date</span></p>
         </div>}
 
         {<div
