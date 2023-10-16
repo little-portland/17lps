@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>18 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO [10PM]<b>//</b> </span>AUDI0COMINGSOON</h3>
+              <h3><span>STUDIO [10PM]<b>//</b> </span>AUDI0COMINGSOON, LEO GREENSLADE</h3>
               <h3><span>TENT <b>//</b> </span>MARIO BAKUNA & ROBERTO MANZIN	</h3>
             </div>
         </div>
