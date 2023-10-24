@@ -80,10 +80,6 @@ html, body {
   margin-top: 2rem;
 }
 
-.bookings-heading-3 {
-  margin-top: 1rem;
-}
-
 .bookings-body-text ul {
   list-style-type:square;
   margin: 10px;
