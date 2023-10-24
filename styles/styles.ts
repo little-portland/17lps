@@ -92,10 +92,6 @@ html, body {
   line-height: 15px;
 }
 
-#sr-app-body>div{
-  display: none!important;
-}
-
 /* Eat popup box styles */
 
 .insta {
