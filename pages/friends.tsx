@@ -56,7 +56,7 @@ const Bookings = () => {
           style={style}
         />
     <div className="bookings-body-text">
-        <h1 className="bookings-heading-1">LARGE GROUPS</h1>
+        <h1 className="bookings-heading-3">LARGE GROUPS</h1>
           <ul>
             <li>For group reservations for 10 persons or more, please email us at <a href="mailto:eat@little-portland.com">eat@little-portland.com</a>.</li>
             <li>We can cater for groups of up to 34 in The Tent, or 12 in the Chef’s Studio.</li>
