@@ -14,18 +14,12 @@ const Menu = ({ menuImage }) => {
       <Head>
         <title>Large Group Bookings Menu</title>
       </Head>
-
-      <CenterContainer>
+        <CenterContainer>
         {menuImage && (
-          <Image
-            src={"/images/little-portland-large-group-menu.jpg"} 
-            alt={menuImage.title}
-            className={"image"}
-            blurDataURL={"/images/little-portland-large-group-menu.jpg"} //automatically provided
-            placeholder="blur" // Optional blur-up while loading
-          />
+          <img src="/images/little-portland-large-group-menu.jpg" alt="menu options" />
         )}
       </CenterContainer>
+      
     </>
   );
 };
