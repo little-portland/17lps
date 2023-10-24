@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>27 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS, SILVERLINING + FRIENDS</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, SILVERLINING, + MORE FRIENDS</h3>
               <h3><span>TENT<b>//</b> </span>DAVIDE DEL VECCHIO, Roberta Cutolo</h3>
             </div>
         </div>
