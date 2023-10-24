@@ -87,7 +87,7 @@ const Bookings = () => {
             <li>We are able to cater for Private Dining requests for groups of up to 12 in the Chef’s Studio (see details above).</li>
           </ul>
 
-         <h1 className="bookings-heading-1">CANCELLATION POLICY FOR GROUP SIZES + lessThanTen</h1>
+         <h1 className="bookings-heading-1">CANCELLATION POLICY FOR GROUP SIZES OF LESS THAN 10</h1>
           <ul>
             <li>To confirm a reservation, we require a credit card guarantee.</li>
             <li>Cancellations within 48 hours of your dinner reservation or no-shows will be subject to a £30pp late cancellation fee.</li>
