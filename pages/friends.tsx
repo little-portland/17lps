@@ -55,7 +55,6 @@ const Bookings = () => {
           }}
           style={style}
         />
-        let lessThanTen:string = "<10";
      <div className="bookings-body-text">
         <h1 className="bookings-heading-0">LARGE GROUPS</h1>
           <ul>
