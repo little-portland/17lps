@@ -21,8 +21,6 @@ const Menu = ({ menuImage }) => {
             src={"/images/little-portland-large-group-menu.jpg"} 
             alt={menuImage.title}
             className={"image"}
-            width={menuImage.width} //automatically provided
-            height={menuImage.height} //automatically provided
             blurDataURL={"/images/little-portland-large-group-menu.jpg"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
