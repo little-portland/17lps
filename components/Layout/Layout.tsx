@@ -116,8 +116,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/chefs-menu" target="_blank">[SPECIAL SET MENU]</a></p>
         <br/> 
-        <p className="foot-note"><span>* Unfortunately, we cannot cater for any dietary requirements, allergies, or changes for this menu.</span></p>
-        <p className="foot-note"><span>** Bookings required 7 days in advance of event date</span></p>
+        <p className="foot-note"><span>* Bookings required 7 days in advance of event date</span></p>
         </div>}
 
         {<div
@@ -126,7 +125,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h4>EVERY WEDNESDAY</h4>
         <p>Step into a world of rhythm and taste with our all-new Live Jazz and Dining Experience, every Wednesday at the Tent at the End of the Universe. Nestled amidst a breath-taking cosmic backdrop, this one-of-a-kind event transports you to a realm where smooth melodies and delectable cuisine collide.</p> 
         <br/>  
-          <p>DINNER PARTY from 7PM <br/> HOUSE PARTY from 9:30PM</p>
+          <p>DINNER PARTY from 6:30pm <br/> HOUSE PARTY from 9pm</p>
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
