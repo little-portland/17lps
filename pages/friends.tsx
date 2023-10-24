@@ -56,12 +56,12 @@ const Bookings = () => {
           style={style}
         />
         let lessThanTen:string = "<10";
-    <div className="bookings-body-text">
+     <div className="bookings-body-text">
         <h1 className="bookings-heading-0">LARGE GROUPS</h1>
           <ul>
             <li>For group reservations for 10 persons or more, please email us at <a href="mailto:eat@little-portland.com">eat@little-portland.com</a>.</li>
             <li>We can cater for groups of up to 34 in The Tent, or 12 in the Chef’s Studio.</li>
-            <li>Large groups can choose from 2 set menu options. <a href="https://www.little-portland.com/large-group-bookings-menu">Click here</a> to see sample menus.</li>
+            <li>Large groups can choose from 2 set menu options. <a href="https://www.little-portland.com/large-group-bookings-menu" target="_blank">Click here</a> to see sample menus.</li>
             <li>To confirm a reservation, we require a deposit equal to 50% of the set menu price, per person.</li>
             <li>Cancellations within 10 days of your dinner reservation or no-shows will be subject to a late cancellation fee equal to the deposit paid.</li>
             <li>Reductions in group sizes within 10 days of your reservation time will also result in late cancellation fees being charged.</li>
@@ -69,7 +69,7 @@ const Bookings = () => {
           
           <h1 className="bookings-heading-1">CHEF’S STUDIO</h1>
           <ul>
-            <li>The Chef’s Studio follows a set menu format and is £100pp. <a href="https://www.little-portland.com/chefs-menu">Click here</a> to see a sample menu.</li>
+            <li>The Chef’s Studio follows a set menu format and is £100pp. <a href="https://www.little-portland.com/chefs-menu" target="_blank">Click here</a> to see a sample menu.</li>
             <li>To confirm a reservation, we require a deposit equal to £100pp.</li>
             <li>Cancellations within 10 days of your dinner reservation or no-shows will be subject to a £100pp late cancellation fee.</li>
             <li>Reductions in group sizes within 10 days of your reservation time will also result in late cancellation fees being charged.</li>
@@ -83,7 +83,7 @@ const Bookings = () => {
           <ul>
             <li>Both The Tent and the Chef’s Studio are available for private hire. Contact <a href="mailto:yo@little-portland.com">yo@little-portland.com</a> for more information.</li>
             <li>Both the large group and Chef’s Studio menus are available for private dinner events (see above for sample menu links).</li>
-            <li>We also offer canapés for private events. <a href="https://www.little-portland.com/canape-menu">Click here</a> to see the sample canapé menu.</li>
+            <li>We also offer canapés for private events. <a href="https://www.little-portland.com/canape-menu" target="_blank">Click here</a> to see the sample canapé menu.</li>
             <li>We are able to cater for Private Dining requests for groups of up to 12 in the Chef’s Studio (see details above).</li>
           </ul>
 
