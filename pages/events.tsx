@@ -38,13 +38,13 @@ const Bookings = () => {
       display: "none",
     },
   };
-
+  
   const email = "yo@little-portland.com";
   const phone = "+44 20 3848 7430";
 
   useEffect(() => {
     let SevenroomsWidget;
-
+    
     if (typeof SevenroomsWidget !== "undefined") {
       console.log(SevenroomsWidget);
       SevenroomsWidget.init({
@@ -53,6 +53,7 @@ const Bookings = () => {
         type: "reservations", // either 'reservations' or 'waitlist' or 'events'
         styleButton: true, // true if you are using the SevenRooms button
         clientToken: "", //(Optional) Pass the api generated clientTokenId here
+        hideCalendar: true,
       });
     }
   }, []);
