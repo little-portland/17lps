@@ -53,7 +53,6 @@ const Bookings = () => {
         type: "reservations", // either 'reservations' or 'waitlist' or 'events'
         styleButton: true, // true if you are using the SevenRooms button
         clientToken: "", //(Optional) Pass the api generated clientTokenId here
-        hideCalendar: true,
       });
     }
   }, []);
