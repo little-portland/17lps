@@ -422,7 +422,7 @@ html, body {
 
 /* Hide calendar on events page */
 
-#sr-app-body div:first-child {
+#sr-app-body {
   display: none!important;
 }
 
