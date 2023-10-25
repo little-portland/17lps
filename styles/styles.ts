@@ -420,6 +420,11 @@ html, body {
   line-height: 1.2!important;
 }
 
+/* Hide calendar on events page */
+
+#sr-app-body div:first-child {
+  display: none!important;
+}
 
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
