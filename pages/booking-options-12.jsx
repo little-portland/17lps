@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>Anna Wall, Thomas Bulwer</h3>
-              <h3><span>TENT <b>//</b> </span>DAVID TRIANA, LUCA, N-GYNN</h3>
+              <h3><span>TENT <b>//</b> </span>DAVID TRIANA B2B LUCA ANDREOZZI, N-GYNN</h3>
             </div>
         </div>
         <div class="button-wrapper">
