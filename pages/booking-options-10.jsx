@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI ALL NIGHT LONG</h3>
-              <h3><span>TENT <b>//</b> </span>MR Shiver, REMI MAZET</h3>
+              <h3><span>TENT <b>//</b> </span>MR shiver , Azad</h3>
             </div>
         </div>
         <div class="button-wrapper">
