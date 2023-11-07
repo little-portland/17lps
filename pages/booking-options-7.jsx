@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>Cosmodelica presents Alex from Tokyo</h3>
-              <h3><span>TENT <b>//</b> </span>RHYTHMS OF PRESCOTT, TRIXIE</h3>
+              <h3><span>TENT <b>//</b> </span>GABRIEL RAI, TRIXIE</h3>
             </div>
         </div>
         <div class="button-wrapper">
