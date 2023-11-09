@@ -109,23 +109,20 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-1 box"> 
         <h2>CHEF’S STUDIO @ 17 LITTLE PORTLAND STREET</h2>
         <h4>WEDNESDAYS - SATURDAYS</h4>
-        <p>An intimate 12-seater dining experience hosted by Chef John Javier. Renowned for his culinary mastery in Chinese cuisine, John has crafted an exquisite special set menu that promises to take diners on a delectable journey through the flavours of China.</p> 
-        <p>Book our private dining room within our invite-only club, hidden beneath The Tent (at the End of the Universe).</p>
+        <p>An intimate 12-person dining experience hosted by Chef John Javier in our invite-only club, hidden beneath The Tent. Renowned for his culinary mastery in Chinese cuisine, John has crafted an epic set menu.</p> 
         <br/>  
-          <p>WED & THU - 8-12 GUESTS <br/> FRI & SAT - 4-12 GUESTS</p>
+          <p>Wed-Thu: Minimum 8 guests per booking <br/>Fri-Sat: Minimum 3 guests per booking</p>
         <br/>  
-        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/chefs-menu" target="_blank">[SPECIAL SET MENU]</a></p>
-        <br/> 
-        <p className="foot-note"><span>* Bookings required 7 days in advance of event date</span></p>
+        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/chefs-menu" target="_blank">[CHINESE MENU]</a></p>
         </div>}
 
         {<div
         className="box-1 box"> 
         <h2>JAZZ AT THE END OF THE UNIVERSE</h2>
         <h4>EVERY WEDNESDAY</h4>
-        <p>Step into a world of rhythm and taste with our all-new Live Jazz and Dining Experience, every Wednesday at the Tent at the End of the Universe. Nestled amidst a breath-taking cosmic backdrop, this one-of-a-kind event transports you to a realm where smooth melodies and delectable cuisine collide.</p> 
+        <p>Step into a world of rhythm and taste with our Live Jazz and Dining Experience, every Wednesday at The Tent [at the End of the Universe]. Amidst a cosmic backdrop, guests are transported to a realm where smooth melodies and delectable cuisine collide.</p> 
         <br/>  
-          <p>DINNER PARTY from 6:30pm <br/> HOUSE PARTY from 9pm</p>
+          <p>7PM / 9.30PM</p>
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
@@ -134,9 +131,9 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-3 box"> 
         <h2>DINNER & TUNES</h2>
         <h4>THURSDAYS - SATURDAYS</h4>
-        <p>Join us every Thursday to Saturday, where you can enjoy a well-crafted meal prepared by Chef John Javier. Soak up the inviting atmosphere created by our resident and guest DJs, making it a perfect blend of good food and great vibes.</p>
+        <p>Join us every Thursday to Saturday, for dinner and tunes with Chef John Javier. Soundtracked by cutting-edge DJs, this is the vibiest dinner in town.</p>
         <br/>  
-          <p>DINNER PARTY from 7PM <br/> HOUSE PARTY from 9:30PM</p>
+          <p>DINNER PARTY // 7PM <br/> HOUSE PARTY // 9:30PM</p>
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
