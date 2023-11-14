@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>15 NOV</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO<b>//</b> </span>PHENOM & FRIENDS</h3>
+              <h3><span>STUDIO<b>//</b> </span>Nosa, Phenom, SanaseSh X MALIK, VILLABEATZ </h3>
               <h3><span>TENT <b>//</b> </span>MARIO BAKUNA & ROBERTO MANZIN</h3>
             </div>
         </div>
