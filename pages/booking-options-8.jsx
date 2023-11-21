@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>Brasi, Jos, Luc, Lumee</h3>
-              <h3><span>TENT <b>//</b> </span>DEMI, RHYTHMS OF PRESCOTT</h3>
+              <h3><span>TENT <b>//</b> </span>DEMI, OLI SILVA</h3>
             </div>
         </div>
         <div class="button-wrapper">
