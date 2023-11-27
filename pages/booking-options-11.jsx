@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>29 NOV</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO<b>//</b> </span>CAPTNNN, JHERI WAUYNE, PHENOOM, VILLABEATZ, YOUNG ETHERNET</h3>
+              <h3><span>STUDIO<b>//</b> </span>CAPTNNN, JHERI WAUYNE, PHENOM, VILLABEATZ, YOUNG ETHERNET</h3>
               <h3><span>TENT <b>//</b> </span>MARSELLUS TAYLOR & ROBERTO MANZIN	</h3>
             </div>
         </div>
