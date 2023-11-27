@@ -21,11 +21,11 @@ const BookingOptions = () => {
         <h1 class="event-name disco-saturdays">DISCO SATURDAYS</h1>
         <div class="event-info">
             <div class="info date"> 
-              <h2>18 NOV</h2>
+              <h2>16 DEC</h2>
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>TBA</h3>
-              <h3><span>TENT <b>//</b> </span>NATHAN COLINET </h3>
+              <h3><span>TENT <b>//</b> </span>DR J, GEORGIA</h3>
             </div>
         </div>
         <div class="button-wrapper">
