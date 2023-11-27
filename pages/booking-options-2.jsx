@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>24 NOV</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI & FRIENDS </h3>
-              <h3><span>TENT <b>//</b> </span>DAVIDE DEL VECCHIO, ROBERTA CUTOLO</h3>
+              <h3><span>STUDIO <b>//</b> </span>ISAAC CARTER, NAT WENDELL</h3>
+              <h3><span>TENT <b>//</b> </span>GABRIEL RAY, OLI SILVA</h3>
             </div>
         </div>
         <div class="button-wrapper">
