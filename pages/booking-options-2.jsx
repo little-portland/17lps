@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name friday-residents">FRIDAY RESIDENTS</h1>
         <div class="event-info">
             <div class="info date">
-              <h2>24 NOV</h2>
+              <h2>15 DEC</h2>
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>ISAAC CARTER, NAT WENDELL</h3>
