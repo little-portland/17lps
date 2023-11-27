@@ -29,7 +29,7 @@ const BookingOptions = () => {
             </div>
         </div>
         <div class="button-wrapper">
-          <a class="not-allowed" >
+          <a>
             <Button classes="events-button"  btnType="hollow">
               Book Dinner <span>(includes free club entry)</span>
             </Button>
