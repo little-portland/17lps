@@ -21,11 +21,11 @@ const BookingOptions = () => {
         <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
-              <h2>23 Nov</h2>
+              <h2>14 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>LOVE CHILD</h3>
-              <h3><span>TENT <b>//</b> </span>CLOSED</h3>
+              <h3><span>STUDIO <b>//</b> </span>CRAIG RICHARDS, BOBBY</h3>
+              <h3><span>TENT <b>//</b> </span>KEM, MAYBE LAURA, REMI</h3>
             </div>
         </div>
         <div class="button-wrapper">
@@ -34,7 +34,7 @@ const BookingOptions = () => {
               Book Dinner <span>(includes free club entry)</span>
             </Button>
           </a>
-          <a href="http://sevn.ly/xYkgHDkg" target="_blank">
+          <a href="" target="_blank">
             <Button classes="events-button ticket" btnType="hollow">
               Book Club <span>Ticket</span>
             </Button>
