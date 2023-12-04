@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>TBA</h3>
-              <h3><span>TENT <b>//</b> </span>NICK WILLIAMS, PASH (BIRTHDAY)</h3>
+              <h3><span>TENT <b>//</b> </span>NICK WILLIAMS, PASH</h3>
             </div>
         </div>
         <div class="button-wrapper">
@@ -34,7 +34,7 @@ const BookingOptions = () => {
               Book Dinner <span>(includes free club entry)</span>
             </Button>
           </a>
-          <a href="" target="_blank">
+          <a href="http://sevn.ly/xImIWpxt" target="_blank">
             <Button classes="events-button ticket" btnType="hollow">
               GET ON CLUB <span>GUESTLIST</span>
             </Button>
