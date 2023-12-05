@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>09 Dec</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>HARRI PEPPER, TIA COUSINS</h3>
               <h3><span>TENT <b>//</b> </span>DAVIDE DEL VECCHIO, MR SHIVER</h3>
             </div>
         </div>
