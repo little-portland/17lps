@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>08 DEC</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, REMI MAZET (live)</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, REMI MAZET (live), TOM TRAGO</h3>
               <h3><span>TENT <b>//</b> </span>FUNKTONIO, HARRI PEPPER</h3>
             </div>
         </div>
