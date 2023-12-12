@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>14 Dec</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>CLOSED</h3>
+              <h3><span>STUDIO <b>//</b> </span>BOBBY ,CRAIG RICHARDS </h3>
               <h3><span>TENT <b>//</b> </span>KEM, MAYBE LAURA, REMI MAZET</h3>
             </div>
         </div>
