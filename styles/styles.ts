@@ -334,6 +334,10 @@ html, body {
   font-size: 2.5rem;
 }
 
+#bookingOptions .nyd {
+  font-size: 8.9rem;
+}
+
 #bookingOptions .event-info {
     text-transform: uppercase;
     display: flex;
