@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>05 JAN</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>HASEEB IQBAL</h3>
+              <h3><span>STUDIO <b>//</b> </span>LP RESIDENTS</h3>
               <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, NICK WILLIAMS </h3>
             </div>
         </div>
