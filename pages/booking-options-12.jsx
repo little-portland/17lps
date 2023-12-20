@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>A GUY CALLED GERALD</h3>
-              <h3><span>TENT <b>//</b> </span>KEM, TRIXIS</h3>
+              <h3><span>TENT <b>//</b> </span>KEM, TRIXIE</h3>
             </div>
         </div>
         <div class="button-wrapper">
