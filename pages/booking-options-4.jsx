@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>06 JAN</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>OLI SILVA</h3>
               <h3><span>TENT <b>//</b> </span>BALEARIC LONDON (ARIANE V, BEN GOMORI & SARAHTONIN)</h3>
             </div>
         </div>
