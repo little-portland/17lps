@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>CASSY, JONNY ROCK,  ROB MELLO</h3>
-              <h3><span>TENT <b>//</b> </span>ALEX WOLFENDEN, DA, HARRI PEPPER</h3>
+              <h3><span>TENT <b>//</b> </span>ALEX WOLFENDEN, DAVID TRIANA, HARRI PEPPER, RAKIM UNDER</h3>
             </div>
         </div>
         <div class="button-wrapper">
