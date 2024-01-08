@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>26 JAN</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SEAN OD & PROFESSOR ROTH /h3>
+              <h3><span>STUDIO <b>//</b> </span>SEAN OD & PROFESSOR ROTH </h3>
               <h3><span>TENT <b>//</b> </span>MAR*O, ROBERTA CUTOLO</h3>
             </div>
         </div>
