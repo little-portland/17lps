@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>18 Jan</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>HAMISH & TOBY</h3>
+              <h3><span>STUDIO <b>//</b> </span>HAMISH & TOBY, JOSH TWEEK, TIMUR BASHA</h3>
               <h3><span>TENT <b>//</b> </span>DEMI, HARRI PEPPER</h3>
             </div>
         </div>
