@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>01 FEB</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SPECIAL GUEST (Seth Troxler)</h3>
+              <h3><span>STUDIO <b>//</b> </span>SPECIAL GUEST</h3>
               <h3><span>TENT <b>//</b> </span>FRANKIE VALENTINE, GILES SMITH</h3>
             </div>
         </div>
