@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>FUNKTONIO, GREGORIO SOAVE, LUTHER VINE, RHYTHMS OF PRESCOTT</h3>
-              <h3><span>TENT <b>//</b> </span>LUDI, MARCELINA WICK</h3>
+              <h3><span>TENT <b>//</b> </span>GREG SONATA, MARCELINA WICK</h3>
             </div>
         </div>
         <div class="button-wrapper">
