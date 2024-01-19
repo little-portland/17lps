@@ -18,7 +18,7 @@ const Menu = ({ menuImage }) => {
       <CenterContainer>
         {menuImage && (
           <Image
-            src={"/images/chinese-new-year-menu2024.jpg}  
+            src={"/images/chinese-new-year-menu2024.jpg"}  
             alt={menuImage.title}
             className={"image"}
             width={menuImage.width} //automatically provided
