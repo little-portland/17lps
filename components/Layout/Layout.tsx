@@ -125,8 +125,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <p>We will require 50% deposit of the total set menu price per head to confirm. </p>
         <br/>  
         <br/>  
-          <p>**Unfortunately, as this is a special set menu, we cannot cater to any dietary requirements</p>
-        <br/>  
+          <p>**Unfortunately, as this is a special set menu, we cannot cater to any dietary requirements</p> 
         </div>}
 
         {<div
