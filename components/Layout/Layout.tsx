@@ -110,8 +110,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>CHINESE NEW YEAR - MASTER WEEK</h2>
         <p>Join us between Wednesday 21st - 24th February for a week long MASTER kitchen takeover to celebrate the year of the dragon!</p>
         <br/>  
-          <p>Chinese Set menu & welcome drink @ £90 per person <br/> 50% deposit per head to confirm.</p>
-        <br/>  
+          <p>Chinese Set menu & welcome drink @ £90 per person <br/> 50% deposit per head to confirm.</p> 
         <br/>  
           <p>**Unfortunately as this is a special menu, we won’t be able to cater to any dietaries.</p>
         <br/>  
@@ -123,7 +122,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p>Book your Valentine's day special with our French special set menu at £120 per person and welcome glass of champagne</p>
         <br/>  
           <p>We will require 50% deposit of the total set menu price per head to confirm. </p>
-        <br/>  
         <br/>  
           <p>**Unfortunately, as this is a special set menu, we cannot cater to any dietary requirements</p> 
         </div>}
