@@ -119,6 +119,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
 
        {<div
         className="box-1 box"> 
+        <h2>VALENTINE'S</h2>
         <p>Book your Valentine's day special with our French special set menu at £120 per person and welcome glass of champagne</p>
         <br/>  
           <p>We will require 50% deposit of the total set menu price per head to confirm. </p>
