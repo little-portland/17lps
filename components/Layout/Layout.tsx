@@ -146,7 +146,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h4>EVERY WEDNESDAY</h4>
         <p>Step into a world of rhythm and taste with our Live Jazz and Dining Experience, every Wednesday at The Tent [at the End of the Universe]. Amidst a cosmic backdrop, guests are transported to a realm where smooth melodies and delectable cuisine collide.</p> 
         <br/>  
-          <p>7PM / 9.30PM</p>
+          <p>6:30PM / 9PM</p>
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
