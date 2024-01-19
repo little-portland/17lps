@@ -12,18 +12,18 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
-        <title>Menu</title>
+        <title>Valentine's Menu</title>
       </Head>
 
       <CenterContainer>
         {menuImage && (
           <Image
-            src={"/images/valentines-menu.jpg"} 
+            src={"/images/valentines-menu2024.jpg"} 
             alt={menuImage.title}
             className={"image"}
             width={menuImage.width} //automatically provided
             height={menuImage.height} //automatically provided
-            blurDataURL={"/images/valentines-menu.jpg"} //automatically provided
+            blurDataURL={"/images/valentines-menu2024.jpg"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
         )}
