@@ -15,7 +15,7 @@ const Menu = ({ menuImage }) => {
       <Head>
         <style>
             {'body{background-color: #0a1870!important;}'}
-            {'.jWUnH span:first-child{top: 0!important;}'}
+            {'.jWUnH{top: 0!important;}'}
             {'.jWUnH span:first-child{overflow: visible!important;}'}
             {'.jWUnH span:first-child img {width: unset!important;min-width: unset!important;max-height: none!important;}'}
         </style>
