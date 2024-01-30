@@ -2,6 +2,8 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 
+document.body.style = 'background: red;';
+
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 
