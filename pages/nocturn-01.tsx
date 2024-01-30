@@ -2,11 +2,6 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 
-//Change body color for this specific page
-<style>
-    {'body{background-color: #0a1870!important;}'}
-</style>
-
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 
@@ -18,6 +13,10 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
+          //Change body color for this specific page
+        <style>
+            {'body{background-color: #0a1870!important;}'}
+        </style>
         <title>Nocturn - Gray Wielebinski</title>
       </Head>
 
