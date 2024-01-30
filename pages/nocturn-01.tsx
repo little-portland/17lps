@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 
 //Change body color for this specific page
-document.body.style = 'background: red;';
+document.body.classList.add('background-red');
 
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
