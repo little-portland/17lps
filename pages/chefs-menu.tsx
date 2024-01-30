@@ -16,13 +16,6 @@ const Menu = ({ menuImage }) => {
       </Head>
 
       <CenterContainer>
-             <h1 className="events-header">
-            Public Events Program <br />
-            <span>
-              [For the private events program, <br /> Friends of the Club should
-              see the latest Program email]
-            </span>
-          </h1>
         {menuImage && (
           <Image
             src={"/images/little-portland-chefs-menu.jpg"} 
