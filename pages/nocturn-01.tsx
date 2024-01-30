@@ -19,7 +19,6 @@ const Menu = ({ menuImage }) => {
         <title>Nocturn - Gray Wielebinski</title>
       </Head>
 
-      <CenterContainer>
           <Image
             src={"/images/nocturn-01.jpg"} 
             alt={menuImage.title}
@@ -29,7 +28,6 @@ const Menu = ({ menuImage }) => {
             blurDataURL={"/images/nocturn-01.jpg"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
-      </CenterContainer>
     </>
   );
 };
