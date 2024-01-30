@@ -16,7 +16,7 @@ const Menu = ({ menuImage }) => {
         <style>
             {'body{background-color: #0a1870!important;}'}
             {'.jWUnH span:first-child{overflow: visible;}'}
-            {'.jWUnH span:first-child img {width: auto;height: auto;max-width: none;min-height: initial;max-height: none;}'}
+            {'.jWUnH span:first-child img {width: unset;min-width: unset;}'}
         </style>
         <title>Nocturn - Gray Wielebinski</title>
       </Head>
