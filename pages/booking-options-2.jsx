@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>16 FEB</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>DAVID B2B RAKIM UNDER, ROBERTA CUTOLO</h3>
-              <h3><span>TENT <b>//</b> </span>BAS IBELLINI, MATTHEW JOHSNON[LIVE]</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, MATHEW JONSON[live]</h3>
+              <h3><span>TENT <b>//</b> </span>HARRI PEPPER, ROBERTA CUTOLO</h3>
             </div>
         </div>
         <div class="button-wrapper">
