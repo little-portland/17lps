@@ -13,7 +13,6 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
-          //Change body color for this specific page
         <style>
             {'body{background-color: #0a1870!important;}'}
         </style>
