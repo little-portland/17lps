@@ -29,7 +29,6 @@ const Menu = ({ menuImage }) => {
             className={"image"}
             width={menuImage.width} //automatically provided
             height={menuImage.height} //automatically provided
-            blurDataURL={"/images/nocturn-01.jpg"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
          </CenterContainer>
