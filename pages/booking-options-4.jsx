@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>17 Feb</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>JONNY ROCK B2B ROB MELLO</h3>
-              <h3><span>TENT <b>//</b> </span>ECE DUZGÏT, HARRI PEPPER</h3>
+              <h3><span>STUDIO <b>//</b> </span>FELIX DICKINSON, ROB MELLO</h3>
+              <h3><span>TENT <b>//</b> </span>DAVID <b>B2B</b> RAKIM UNDER, ECE DUZGÏT</h3>
             </div>
         </div>
         <div class="button-wrapper">
