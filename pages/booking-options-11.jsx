@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>07 FEB</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO<b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO<b>//</b> </span>Icykof, Max Menaged</h3>
               <h3><span>TENT <b>//</b> </span>MARIO BAKUNA & ROBERTO MANZIN</h3>
             </div>
         </div>
