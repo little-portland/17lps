@@ -3,7 +3,9 @@ import Head from "next/head";
 import Image from "next/image";
 
 //Change body color for this specific page
-document.body.classList.add('background-red');
+<style>
+    {`body{background-color: #0a1870;}`}
+</style>
 
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
@@ -12,6 +14,7 @@ import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 import useFetchContent from "@utils/useFetchContent";
 
 const Menu = ({ menuImage }) => {
+  
   return (
     <>
       <Head>
