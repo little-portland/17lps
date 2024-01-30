@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>FELIX DICKINSON, ROB MELLO</h3>
-              <h3><span>TENT <b>//</b> </span>DAVID <b>B2B</b> RAKIM UNDER, ECE DUZGÏT</h3>
+              <h3><span>TENT <b>//</b> </span>DAVID TRIANA <b>B2B</b> ECE DÜZGIT</h3>
             </div>
         </div>
         <div class="button-wrapper">
