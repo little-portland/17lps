@@ -13,13 +13,6 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
-        <style>
-            {'body{background-color: #0a1870!important;}'}
-            {'.jWUnH{top: 0!important;}'}
-            {'.jWUnH span:first-child{overflow: visible!important;}'}
-            {'.jWUnH span:first-child img {width: unset!important;min-width: unset!important;max-height: none!important;}'}
-            {'@media (max-width: 768px) { .jWUnH img { height: unset!important;min-width: unset!important;max-width: none!important;min-height: unset!important;max-height: none!important;}}'}
-        </style>
         <title>Nocturn - Gray Wielebinski</title>
       </Head>
       
