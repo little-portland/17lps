@@ -16,6 +16,7 @@ const Menu = ({ menuImage }) => {
         <style>
             {'body{background-color: #0a1870!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;}}'}
         </style>
         <title>Nocturn - Gray Wielebinski</title>
       </Head>
