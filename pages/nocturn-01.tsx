@@ -24,14 +24,7 @@ const Menu = ({ menuImage }) => {
       </Head>
       
          <div className="nocturn">
-          <Image
-            src={"/images/nocturn-01.jpg"} 
-            alt={menuImage.title}
-            className={"image"}
-            width={menuImage.width} //automatically provided
-            height={menuImage.height} //automatically provided
-            placeholder="blur" // Optional blur-up while loading
-          />
+           <img src="/images/nocturn-01.jpg" alt="Nocturn" width="100%" height="100%">
          </div>
     </>
   );
