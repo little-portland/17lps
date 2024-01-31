@@ -23,7 +23,7 @@ const Menu = ({ menuImage }) => {
         <title>Nocturn - Gray Wielebinski</title>
       </Head>
       
-      <CenterContainer>
+         <div class="nocturn">
           <Image
             src={"/images/nocturn-01.jpg"} 
             alt={menuImage.title}
@@ -32,7 +32,7 @@ const Menu = ({ menuImage }) => {
             height={menuImage.height} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
-         </CenterContainer>
+         </div>
     </>
   );
 };
