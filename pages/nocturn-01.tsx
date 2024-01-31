@@ -23,7 +23,7 @@ const Menu = ({ menuImage }) => {
         <title>Nocturn - Gray Wielebinski</title>
       </Head>
       
-         <div class="nocturn">
+         <div className="nocturn">
           <Image
             src={"/images/nocturn-01.jpg"} 
             alt={menuImage.title}
