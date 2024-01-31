@@ -13,6 +13,10 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
+        <style>
+            {'body{background-color: #0a1870!important;}'}
+            {'.nocturn{width: 50%;margin: 0 auto;}'}
+        </style>
         <title>Nocturn - Gray Wielebinski</title>
       </Head>
       
