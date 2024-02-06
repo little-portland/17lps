@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>22 FEB</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SPACED WITH THO, LOREN, JACK WRENN</h3>
+              <h3><span>STUDIO <b>//</b> </span>SPACED WITH JACK WRENN, LOREN, THO</h3>
               <h3><span>TENT <b>//</b> </span>Demi, FUNKTONIO</h3>
             </div>
         </div>
