@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>08 Feb</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SPECIAL GUEST</h3>
+              <h3><span>STUDIO <b>//</b> </span>TROMMEL PRESENTS ENZO SIRAGUSA, SAM BANGURA </h3>
               <h3><span>TENT <b>//</b> </span>MR SHIVER, PAUL DAY</h3>
             </div>
         </div>
