@@ -361,6 +361,7 @@ html, body {
  
  #bookingOptions .artists {
     width: 77%;
+    text-align: left;
  }
 
  #bookingOptions .eat-heading {
