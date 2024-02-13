@@ -18,14 +18,9 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name">Eat at 17 Little Portland Street, London</h1>
           <div class="event-info">
-            <div class="info date">
-              <h2>03 FEB</h2>
-            </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>PBR STREETGANG, RALPH LAWSON</h3>
-              <h3><span>TENT <b>//</b> </span>SADEEDO, TINTIN</h3>
+              <h1>Eat at 17 Little Portland Street, London</h1>
             </div>
         </div>
         <div class="button-wrapper">
