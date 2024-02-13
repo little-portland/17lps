@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>24 Feb</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
-              <h3><span>TENT <b>//</b> </span>TIM LANG, GEORGIA </h3>
+              <h3><span>STUDIO <b>//</b> </span>AROOP ROY, JOSHUA LANG</h3>
+              <h3><span>TENT <b>//</b> </span>GEORGIA, TIM LANG</h3>
             </div>
         </div>
         <div class="button-wrapper">
