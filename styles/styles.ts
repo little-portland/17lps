@@ -410,8 +410,8 @@ html, body {
     display: block;
  }
 
-   .eat-body a button span {
-    font-size: 1rem !important;
+   .eat-body .events-button span {
+    font-size: 1rem!important;
  }
  
    #bookingOptions .ticket span {
