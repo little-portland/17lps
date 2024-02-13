@@ -361,11 +361,11 @@ html, body {
  
  #bookingOptions .artists {
     width: 77%;
-    text-align: center;
  }
 
  #bookingOptions .eat-heading {
     width: 100%;
+    text-align: center;
  }
 
   #bookingOptions .eat-heading h1 {
