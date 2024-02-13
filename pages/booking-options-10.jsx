@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>01 MAR</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, OHM HOURANI</h3>
-              <h3><span>TENT <b>//</b> </span>Frankie Valentine & Francesco Mami, PAUL DAY</h3>
+              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>TENT <b>//</b> </span>Francesco Mami, PAUL DAY</h3>
             </div>
         </div>
         <div class="button-wrapper">
