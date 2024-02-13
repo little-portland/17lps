@@ -114,7 +114,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <br/>  
           <p>**Unfortunately as this is a special menu, we won’t be able to cater to any dietaries.</p>
         <br/>  
-        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/cny-menu" target="_blank">[CNY MENU]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/cny-menu" target="_blank">[CNY MENU]</a></p>
         </div>}
 
        {<div
@@ -126,7 +126,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <br/>  
           <p>**Unfortunately, as this is a special set menu, we cannot cater to any dietary requirements</p> 
         <br/>  
-        <p className="links"><a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2024-02-14" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/valentines-menu" target="_blank">[VALENTINES MENU]</a></p>
+        <p className="links"><a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2024-02-14">[BOOK]</a> <a href="https://www.little-portland.com/valentines-menu" target="_blank">[VALENTINES MENU]</a></p>
         </div>}
 
         {<div
@@ -137,7 +137,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <br/>  
           <p>Wed-Thu: Minimum 8 guests per booking <br/>Fri-Sat: Minimum 3 guests per booking</p>
         <br/>  
-        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/chefs-menu" target="_blank">[CHINESE MENU]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/chefs-menu" target="_blank">[CHINESE MENU]</a></p>
         </div>}
 
         {<div
@@ -148,7 +148,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <br/>  
           <p>6:30PM / 9PM</p>
         <br/>  
-        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
 
         {<div
@@ -159,7 +159,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <br/>  
           <p>DINNER PARTY // 7PM <br/> HOUSE PARTY // 9:30PM</p>
         <br/>  
-        <p className="links"><a href="https://www.little-portland.com/bookings" target="_blank">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
       </div>}
       </Modal>
