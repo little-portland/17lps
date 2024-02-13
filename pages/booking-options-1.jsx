@@ -18,14 +18,14 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name nyd">OPEN NYD</h1>
+        <h1 class="event-name focal-point-presents">Focal Point Presents</h1>
         <div class="event-info">
             <div class="info date">
-              <h2>01 JAN</h2>
+              <h2>29 Feb</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>CASSY, JONNY ROCK,  ROB MELLO</h3>
-              <h3><span>TENT <b>//</b> </span>David Triana & rakim under, harri pepper, lex wolf</h3>
+              <h3><span>STUDIO <b>//</b> </span>B.LOVE, VOIGTMAN B2B SAM BANGURA</h3>
+              <h3><span>TENT <b>//</b> </span>BELLA, JACK WRENN</h3>
             </div>
         </div>
         <div class="button-wrapper">
@@ -34,7 +34,7 @@ const BookingOptions = () => {
               Book Dinner <span>(includes free club entry)</span>
             </Button>
           </a>
-          <a href="https://sevn.ly/x4B01jeh" target="_blank">
+          <a href="https://sevn.ly/xX6KBSaD" target="_blank">
             <Button classes="events-button ticket" btnType="hollow">
               Book Club <span>Ticket</span>
             </Button>
