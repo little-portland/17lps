@@ -372,6 +372,15 @@ html, body {
     font-size: 1.7rem;
  }
 
+ .eat-body a button {
+   font-size: 1.5rem;
+   line-height: 1.9rem;
+ }
+
+  .eat-body a button span {
+    font-size: 1rem !important;
+ }
+
  .tent .artists {
     -webkit-box-align: center;
     align-items: center;
