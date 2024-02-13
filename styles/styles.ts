@@ -377,10 +377,6 @@ html, body {
    line-height: 1.9rem;
  }
 
-  .eat-body a button span {
-    font-size: 1rem !important;
- }
-
  .tent .artists {
     -webkit-box-align: center;
     align-items: center;
@@ -412,6 +408,10 @@ html, body {
   #bookingOptions .events-button span {
     font-size: .8rem!important;
     display: block;
+ }
+
+   .eat-body a button span {
+    font-size: 1rem !important;
  }
  
    #bookingOptions .ticket span {
