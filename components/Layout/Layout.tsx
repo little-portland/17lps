@@ -117,18 +117,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/cny-menu" target="_blank">[CNY MENU]</a></p>
         </div>}
 
-       {<div
-        className="box-1 box"> 
-        <h2>VALENTINE'S DAY SPECIAL</h2>
-        <p>Book your Valentine's day special with our French special set menu at £120 per person and welcome glass of champagne</p>
-        <br/>  
-          <p>We will require 50% deposit of the total set menu price per head to confirm. </p>
-        <br/>  
-          <p>**Unfortunately, as this is a special set menu, we cannot cater to any dietary requirements</p> 
-        <br/>  
-        <p className="links"><a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2024-02-14">[BOOK]</a> <a href="https://www.little-portland.com/valentines-menu" target="_blank">[VALENTINES MENU]</a></p>
-        </div>}
-
         {<div
         className="box-1 box"> 
         <h2>CHEF’S STUDIO @ 17 LITTLE PORTLAND STREET</h2>
