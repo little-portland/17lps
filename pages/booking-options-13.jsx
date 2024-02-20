@@ -28,7 +28,7 @@ const BookingOptions = () => {
               <h3><span>TENT <b>//</b> </span>Demi, FUNKTONIO</h3>
             </div>
         </div>
-        <div class="event-info">
+        <div class="cny">
             <h3>CHINESE NEW YEAR - MASTER SPECIAL</h3>
         </div>
         <div class="button-wrapper">
