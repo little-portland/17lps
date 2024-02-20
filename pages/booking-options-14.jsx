@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>MAN POWER, RALPH LAWSON</h3>
-              <h3><span>TENT <b>//</b> </span>/TIGERBALM, TINTIN</h3>
+              <h3><span>TENT <b>//</b> </span>TIGERBALM, TINTIN</h3>
             </div>
         </div>
         <div class="button-wrapper">
