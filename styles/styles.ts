@@ -338,6 +338,18 @@ html, body {
   font-size: 8.9rem;
 }
 
+#bookingOptions .chinese-ny {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    background: rgb(92, 44, 124);
+    color: rgb(232, 186, 201);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 0 2px 0;
+}
+
 #bookingOptions .cny {
     font-size: 2.1rem;
     text-align: center;
