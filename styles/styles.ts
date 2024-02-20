@@ -455,6 +455,7 @@ html, body {
     padding: 50px 30px;
     margin-bottom: 10px; 
     font-size: 1.8rem;
+    position: relative;
 }
 
 .tent a button {
