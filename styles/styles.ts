@@ -338,6 +338,10 @@ html, body {
   font-size: 8.9rem;
 }
 
+#bookingOptions .cny {
+  font-size: 4.4rem;
+}
+
 #bookingOptions .event-info {
     text-transform: uppercase;
     display: flex;
@@ -572,6 +576,10 @@ html, body {
         }
 
         #bookingOptions .mid-summer {
+          font-size: 3rem;
+        }
+
+        #bookingOptions .cny {
           font-size: 3rem;
         }
         
