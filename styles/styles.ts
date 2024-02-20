@@ -339,7 +339,9 @@ html, body {
 }
 
 #bookingOptions .cny {
-  font-size: 4.4rem;
+    font-size: 2.1rem;
+    text-align: center;
+    padding: 0 0 15px;
 }
 
 #bookingOptions .event-info {
@@ -580,7 +582,7 @@ html, body {
         }
 
         #bookingOptions .cny {
-          font-size: 3rem;
+          font-size: 1.5rem;
         }
         
         .tent .event-name {
