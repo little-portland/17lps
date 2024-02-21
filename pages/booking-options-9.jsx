@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>23 FEB</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, Nick williams + friends</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, Nick williams</h3>
               <h3><span>TENT <b>//</b> </span>MR SHIVER, RHYTHMS OF PRESCOTT</h3>
             </div>
         </div>
