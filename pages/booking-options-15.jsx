@@ -29,7 +29,7 @@ const BookingOptions = () => {
               <div>Dinner+Tunes</div> in The Tent<span>(Chinese NY Special)</span>
             </Button>
           </a>
-          <a href="mailto:yo@little-portland.com?subject=Chef's Studio booking enquiry" target="_blank">
+          <a href="mailto:eat@little-portland.com?subject=Chef's Studio booking enquiry" target="_blank">
             <Button classes="events-button" btnType="hollow">
                  Chef's Studio<span>(Chinese NY Special)</span>
             </Button>
