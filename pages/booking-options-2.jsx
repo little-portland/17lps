@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>08 MAR</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>CASSY, DAVID TRIANA</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, CASSY</h3>
               <h3><span>TENT <b>//</b> </span>MR SHIVER,  ROBERTA CUTOLO</h3>
             </div>
         </div>
