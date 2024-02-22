@@ -145,7 +145,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h4>THURSDAYS - SATURDAYS</h4>
         <p>Join us every Thursday to Saturday, for dinner and tunes with Chef John Javier. Soundtracked by cutting-edge DJs, this is the vibiest dinner in town.</p>
         <br/>  
-          <p>DINNER PARTY // 7PM <br/> HOUSE PARTY // 9:30PM</p>
+          <p>7PM / 9:30PM</p>
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
