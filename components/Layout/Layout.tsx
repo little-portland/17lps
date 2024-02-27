@@ -107,18 +107,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
 
         {<div
         className="box-1 box"> 
-        <h2>CHINESE NEW YEAR - MASTER WEEK</h2>
-        <p>Join us between Wednesday 21st - 24th February for a week long MASTER kitchen takeover to celebrate the year of the dragon!</p>
-        <br/>  
-          <p>Chinese Set menu & welcome drink @ £90 per person <br/> 50% deposit per head to confirm.</p> 
-        <br/>  
-          <p>**Unfortunately as this is a special menu, we won’t be able to cater to any dietaries.</p>
-        <br/>  
-        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/cny-menu" target="_blank">[CNY MENU]</a></p>
-        </div>}
-
-        {<div
-        className="box-1 box"> 
         <h2>CHEF’S STUDIO @ 17 LITTLE PORTLAND STREET</h2>
         <h4>WEDNESDAYS - SATURDAYS</h4>
         <p>An intimate 12-person dining experience hosted by Chef John Javier in our invite-only club, hidden beneath The Tent. Renowned for his culinary mastery in Chinese cuisine, John has crafted an epic set menu.</p> 
