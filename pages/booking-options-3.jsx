@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>21 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>ADMNTi & KEARUN</h3>
               <h3><span>TENT <b>//</b> </span> ECE DUZGÏT, LUDI</h3>
             </div>
         </div>
