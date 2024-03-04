@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>08 MAR</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Morgan</h3>
-              <h3><span>TENT <b>//</b> </span>N-Gynn, Sena od</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Cassy</h3>
+              <h3><span>TENT <b>//</b> </span>Mr SHiver, Roberta Cutolo</h3>
             </div>
         </div>
         <div class="button-wrapper">
