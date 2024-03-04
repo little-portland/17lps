@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>09 MAR</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>David Triana & Rakim Under</h3>
-              <h3><span>TENT <b>//</b> </span>Luther Vine B2B Soho</h3>
+              <h3><span>STUDIO <b>//</b> </span>DAVID TRIANA & RAKIM UNDER</h3>
+              <h3><span>TENT <b>//</b> </span>Ben Gomori, Nick Williams</h3>
             </div>
         </div>
         <div class="button-wrapper">
