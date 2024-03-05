@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>14 MAr</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SPACED WITH JACK WRENN, LOREN, THO</h3>
+              <h3><span>STUDIO <b>//</b> </span>DAN ANDREI </h3>
               <h3><span>TENT <b>//</b> </span> DAVID AGRELLA B2B TRIXIE</h3>
             </div>
         </div>
