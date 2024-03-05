@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>15 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, Morgan</h3>
+              <h3><span>STUDIO <b>//</b> </span>CESAR MERVEILLE, DAYLOMAR </h3>
               <h3><span>TENT <b>//</b> </span>N-Gynn, Sean Od</h3>
             </div>
         </div>
