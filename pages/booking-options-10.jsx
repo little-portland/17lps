@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>Bas Ibellini & Friends</h3>
-              <h3><span>TENT <b>//</b> </span>COSMO SOFI, KATE HUCCHISON, MARI*</h3>
+              <h3><span>TENT <b>//</b> </span>COSMO SOFI,Kate Hutchinson N, MARI*</h3>
             </div>
         </div>
         <div class="button-wrapper">
