@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
   url("./fonts/SpaceMono-bold.ttf") format("ttf");
   font-weight: bold;
   font-display: swap;
-}
+} 
 
 html, body {
   overflow-y: auto!important;
