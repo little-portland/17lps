@@ -9,7 +9,7 @@ import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 
 import Button from "@components/UX/Button";
 
-const BookingOptions = () => {
+const BookingOptions = () => { 
 
   return (
     <>
