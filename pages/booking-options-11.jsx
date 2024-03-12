@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>27 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO<b>//</b> </span>Icykof</h3>
+              <h3><span>STUDIO<b>//</b> </span>BERNT, ICYKOF, SAM KARAM</h3>
               <h3><span>TENT <b>//</b> </span>MARIO BAKUNA & MAFALDA RAMOS</h3>
             </div>
         </div>
