@@ -31,7 +31,7 @@ const BookingOptions = () => {
         <div class="button-wrapper">
             <Button classes="events-button"  btnType="hollow">
              <a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2024-03-14" target="_blank">
-              Dinner+Tunes in the Tent
+              Dinner+Tunes </br>in the Tent
               <span>(Middle Eastern)</span>
               <span>7PM - 9:30PM</span>
              </a>
