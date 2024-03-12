@@ -44,7 +44,7 @@ const BookingOptions = () => {
               <a href="https://www.little-portland.com/bookings" target="_blank">
               CHEF’S STUDIO
               <p>(Chinese)</p>
-              <p></p>Minimum 8 people</p>
+              <p></p>Minimum 8 people now</p>
               <p>8PM</p>
              </a>
              <a href="https://www.little-portland.com/chefs-menu" target="_blank">
