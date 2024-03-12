@@ -444,7 +444,9 @@ html, body {
    gap: 5px;
  }
 
-#bookingOptions button {
+ /*
+
+ #bookingOptions button {
     display: inline;
     width: 100%;
     text-decoration: none;
@@ -459,6 +461,26 @@ html, body {
 }
 
 .tent button a {
+  line-height: 1.2!important;
+}
+
+ */
+
+#bookingOptions a {
+    display: inline;
+    width: 100%;
+    text-decoration: none;
+}
+
+#bookingOptions a button {
+    width: 100%;
+    padding: 50px 30px;
+    margin-bottom: 10px; 
+    font-size: 1.8rem;
+    position: relative;
+}
+
+.tent a button {
   line-height: 1.2!important;
 }
 
