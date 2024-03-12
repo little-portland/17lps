@@ -444,8 +444,8 @@ html, body {
    gap: 5px;
  }
 
-#bookingOptions a {
-    display: flex;
+#bookingOptions button {
+    display: inline;
     width: 100%;
     text-decoration: none;
 }
