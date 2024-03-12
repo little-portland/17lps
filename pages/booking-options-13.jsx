@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>DAN ANDREI, Morgan</h3>
-              <h3><span>TENT <b>//</b> </span> DAVID AGRELLA B2B TRIXIE</h3>
+              <h3><span>TENT <b>//</b> </span> DAVID AGRELLA B2B TRIXIE</h3> 
             </div>
         </div>
         <div class="button-wrapper">
