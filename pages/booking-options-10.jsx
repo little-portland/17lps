@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>22 MAR</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini & Friends</h3>
+              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
               <h3><span>TENT <b>//</b> </span>COSMO SOFI,Kate Hutchinson N, MARI*</h3>
             </div>
         </div>
