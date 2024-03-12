@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from "styled-components";
+  import styled, { createGlobalStyle, css } from "styled-components";
 import reset from "styled-reset";
 
 export const breakpoints = {
@@ -450,7 +450,7 @@ html, body {
     text-decoration: none;
 }
 
-#bookingOptions a button {
+#bookingOptions button a {
     width: 100%;
     padding: 50px 30px;
     margin-bottom: 10px; 
@@ -458,7 +458,7 @@ html, body {
     position: relative;
 }
 
-.tent a button {
+.tent button a {
   line-height: 1.2!important;
 }
 
