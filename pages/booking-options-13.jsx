@@ -51,12 +51,13 @@ const BookingOptions = () => {
               [MENU]
              </a>
             </Button>
-          
-          <a href="https://sevn.ly/xE8RAEDy" target="_blank">
+        </div>
+        <div class="button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              Book Club <span>Ticket</span>
+              <a href="https://sevn.ly/xE8RAEDy" target="_blank">
+                Book Club <span>Ticket</span>
+              </a>
             </Button>
-          </a>
         </div>
       </div>
     </>
