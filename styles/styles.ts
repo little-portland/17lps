@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   font-display: swap;
 } 
 
-html, body {
+html, body { 
   overflow-y: auto!important;
 }
 
