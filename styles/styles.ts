@@ -357,7 +357,7 @@ html, body {
 }
 
 #bookingOptions .dinner-tunes {
-    font-size: 5rem;
+    font-size: 6rem;
 }
 
 #bookingOptions .event-info {
@@ -625,7 +625,7 @@ html, body {
         }
 
         #bookingOptions .dinner-tunes {
-           font-size: 2rem;
+           font-size: 2.5rem;
         }
         
         .tent .event-name {
