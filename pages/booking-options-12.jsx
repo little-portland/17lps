@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>Closed</h3>
-              <h3><span>TENT <b>//</b> </span>Closed</h3>
+              <h3><span>TENT <b>//</b> </span>MARCELINA WICK B2B B.AI</h3>
             </div>
         </div>
         <div class="button-wrapper">
@@ -34,7 +34,7 @@ const BookingOptions = () => {
               Book Dinner <span>(includes free club entry)</span>
             </Button>
           </a>
-          <a href="https://sevn.ly/xy0jZQD2" target="_blank">
+          <a target="_blank" class="not-allowed">
             <Button classes="events-button ticket" btnType="hollow">
               Book Club <span>Ticket</span>
             </Button>
