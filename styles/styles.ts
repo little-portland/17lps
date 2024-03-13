@@ -356,6 +356,10 @@ html, body {
     padding: 0 0 15px;
 }
 
+#bookingOptions .dinner-tunes {
+    font-size: 5rem;
+}
+
 #bookingOptions .event-info {
     text-transform: uppercase;
     display: flex;
@@ -618,6 +622,10 @@ html, body {
 
         #bookingOptions .cny {
           font-size: 1.5rem;
+        }
+
+        #bookingOptions .dinner-tunes {
+           font-size: 2rem;
         }
         
         .tent .event-name {
