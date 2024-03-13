@@ -467,7 +467,7 @@ html, body {
  */
 
 #bookingOptions a {
-    display: inline;
+    display: flex;
     width: 100%;
     text-decoration: none;
 }
