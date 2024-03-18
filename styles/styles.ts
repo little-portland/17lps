@@ -517,7 +517,7 @@ html, body {
 
 .new-button-wrapper .ticketNew {
     width: 100%;
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 1.5rem!important;
 }
 
