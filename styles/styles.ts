@@ -617,7 +617,7 @@ html, body {
         
       #bookingOptions {
             width: 300px;
-            top: 5%;
+            top: 2%;
         }
         
         #bookingOptions .event-name {
