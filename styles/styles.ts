@@ -505,7 +505,7 @@ html, body {
  }
 
  .new-button-wrapper a {
-    display: block;
+    display: block!important;
     width: 100%;
     text-decoration: none;
 }
