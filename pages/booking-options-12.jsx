@@ -52,13 +52,6 @@ const BookingOptions = () => {
              </a>
             </Button>
         </div>
-        <div class="button-wrapper new-button-wrapper">
-            <Button classes="events-button ticketNew" btnType="hollow">
-              <a class="not-allowed" target="_blank">
-                Book Club Ticket
-              </a>
-            </Button>
-        </div>
       </div>
     </>
   );
