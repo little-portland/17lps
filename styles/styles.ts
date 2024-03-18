@@ -293,7 +293,7 @@ html, body {
 #bookingOptions {
     position: absolute;
     width: 700px;
-    top: 25%;
+    top: 12%;
     left: 50%;
     transform: translateX(-50%);
     text-transform: uppercase;
