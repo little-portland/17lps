@@ -526,8 +526,9 @@ html, body {
 }
 
 .new-button-wrapper span {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     line-height: 2rem;
+    padding-bottom: 5px;
 }
 
 .new-button-wrapper p {
