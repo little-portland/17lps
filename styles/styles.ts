@@ -392,7 +392,11 @@ html, body {
  }
 
   #bookingOptions .eat-heading h1 {
-    font-size: 1.7rem;
+    font-size: 10rem;
+ }
+
+   #bookingOptions .eat-heading h2 {
+    font-size: 2rem;
  }
 
  .eat-body a button {
