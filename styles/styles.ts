@@ -677,7 +677,7 @@ html, body {
        }
        
           #bookingOptions .ticket span {
-            font-size: 1.5rem!important;
+            font-size: 1rem!important;
          }
 
         #bookingOptions .focal-point-presents {
