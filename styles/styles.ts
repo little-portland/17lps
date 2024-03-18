@@ -429,7 +429,7 @@ html, body {
  }
  
   #bookingOptions .events-button span {
-    font-size: .8rem!important;
+    /*font-size: .8rem!important;*/
     display: block;
  }
 
@@ -502,6 +502,7 @@ html, body {
  .new-button-wrapper .events-button {
     width: 50%;
     display: inline-block; 
+    padding: 20px 0;
  }
 
  .new-button-wrapper a {
@@ -520,13 +521,12 @@ html, body {
 }
 
 .new-button-wrapper .menu-btn {
-    background: rgb(92, 44, 124);
-    padding: 5px 0;
-    color: rgb(232, 186, 201);
+    border-top: 2px solid;
+    padding-top: 20px;
 }
 
 .new-button-wrapper span {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 2rem;
 }
 
