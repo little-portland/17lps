@@ -392,11 +392,13 @@ html, body {
  }
 
   #bookingOptions .eat-heading h1 {
-    font-size: 10rem;
+    font-size: 11.3rem;
+    line-height: 10rem;
  }
 
    #bookingOptions .eat-heading h2 {
     font-size: 2rem;
+    line-height: 3rem;
  }
 
  .eat-body a button {
@@ -707,6 +709,16 @@ html, body {
         .tent a button {
           padding: 20px 30px!important;
       }
+
+        #bookingOptions .eat-heading h1 {
+          font-size: 4.7rem;
+          line-height: 5rem;
+       }
+
+       #bookingOptions .eat-heading h2 {
+          font-size: 1rem;
+          line-height: 1.7rem;
+       }
        
     }
 
