@@ -497,9 +497,49 @@ html, body {
   cursor: not-allowed;
 }
 
+/* NEW INTERMEDIARY STEP STYLES */
+
+ .new-button-wrapper .events-button {
+    width: 50%;
+    display: inline-block;
+ }
+
+ .new-button-wrapper a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+
+.new-button-wrapper .cusine {
+  font-size:  .9rem;
+}
+
+.new-button-wrapper .ticketNew {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.new-button-wrapper .menu-btn {
+    background: rgb(92, 44, 124);
+    padding: 5px 0;
+    color: rgb(232, 186, 201);
+}
+
+.new-button-wrapper span {
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.new-button-wrapper p {
+  padding-bottom: 10px;
+}
+
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
+     .new-button-wrapper .events-button {
+        width: 100%;
+     }
        .bookings-body-text {
           max-width: none;
         }
