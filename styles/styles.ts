@@ -518,6 +518,7 @@ html, body {
 .new-button-wrapper .ticketNew {
     width: 100%;
     margin-top: 5px;
+    font-size: 1.5rem!important;
 }
 
 .new-button-wrapper .menu-btn {
@@ -526,7 +527,7 @@ html, body {
 }
 
 .new-button-wrapper span {
-    font-size: 1.8rem!important;
+    font-size: 1.5rem!important;
     line-height: 2rem;
     padding-bottom: 5px;
 }
