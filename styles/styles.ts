@@ -502,7 +502,7 @@ html, body {
  .new-button-wrapper .events-button {
     width: 50%;
     display: inline-block; 
-    padding: 20px 0;
+    padding: 20px;
  }
 
  .new-button-wrapper a {
