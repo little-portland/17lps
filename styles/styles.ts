@@ -546,6 +546,27 @@ html, body {
      .new-button-wrapper .events-button {
         width: 100%;
      }
+     
+     .new-button-wrapper .ticketNew {
+        margin-top: 0;
+      }
+
+      .new-button-wrapper .events-button {
+        padding: 5px;
+      }
+
+      .new-button-wrapper span {
+        line-height: 1.2rem;
+      }
+
+      .new-button-wrapper .cusine {
+        font-size: 0.7rem;
+      }
+      
+      .new-button-wrapper .menu-btn {
+        padding-top: 5px;
+      }
+      
        .bookings-body-text {
           max-width: none;
         }
@@ -650,7 +671,7 @@ html, body {
         }
 
         #bookingOptions button {
-            font-size: 1.5rem!important;
+            font-size: 1rem!important;
             margin-bottom: .3rem!important;
        }
        
