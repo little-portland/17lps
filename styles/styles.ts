@@ -526,13 +526,13 @@ html, body {
 }
 
 .new-button-wrapper span {
-    font-size: 1.8rem;
+    font-size: 1.8rem!important;
     line-height: 2rem;
     padding-bottom: 5px;
 }
 
 .new-button-wrapper p {
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 /* Media Query for Mobile Devices */
