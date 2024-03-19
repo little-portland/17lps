@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>04 APR</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>GABRIEL RAI, VINCENT LEMEUX </h3>
+              <h3><span>STUDIO <b>//</b> </span>GABRIEL RAI, VINCENT LEMIEUX</h3>
               <h3><span>TENT <b>//</b> </span>DAVID TRIANA B2B RAKIM UNDER</h3>
             </div>
         </div>
