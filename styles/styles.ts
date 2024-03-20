@@ -509,7 +509,7 @@ html, body {
     width: 50%;
     display: inline-block; 
     padding: 15px;
-    background: #dda4b6;
+    background: #e6b0c2;
  }
 
  .new-button-wrapper a {
@@ -543,6 +543,8 @@ html, body {
 
 .new-button-wrapper p {
   padding-bottom: 10px;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
 .new-button-wrapper a, .new-button-wrapper a:hover, .new-button-wrapper a:focus {
