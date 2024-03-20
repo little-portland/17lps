@@ -525,6 +525,10 @@ html, body {
     text-decoration: none;
 }
 
+.new-button-wrapper .details span {
+  font-size:  1rem;
+}
+
 .new-button-wrapper .cusine {
   font-size:  .9rem;
   margin: 15px 0; 
