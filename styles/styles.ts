@@ -555,7 +555,6 @@ html, body {
   }
 
 .new-button-wrapper .menu-btn {
-    padding-top: 10px;
     font-size: 1rem!important;
     display: inline!important;
     align-self: end !important;
@@ -583,6 +582,7 @@ html, body {
 }
 
 .new-button-wrapper .dotted-divider {
+  padding: 0!important;
   height: 2px;
   width: 100%;
   border-bottom: 1.5px dotted;
