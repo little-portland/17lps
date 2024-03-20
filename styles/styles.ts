@@ -445,7 +445,7 @@ html, body {
  
    #bookingOptions .ticket span {
     font-size: 1.7rem!important;
-    line-height: 1.5rem;
+    line-height: 2rem;
     display: block;
  }
 
