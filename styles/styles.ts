@@ -374,6 +374,11 @@ html, body {
     padding: 1rem;
  }
 
+   #bookingOptions .event-info .info span {
+    display: block;
+    font-size: 3rem;
+ }
+
 #bookingOptions .date {
     font-size: 2.07rem;
     align-items: center;
@@ -529,11 +534,16 @@ html, body {
     font-size: 1.5rem!important;
 }
 
+.new-button-wrapper .book-link {
+    border-bottom: 1.5px dotted;
+}
+
 .new-button-wrapper .menu-btn {
-    border-top: 1.5px dotted;
     padding-top: 10px;
     font-size: 1rem!important;
 }
+
+border-top: 1.5px dotted;
 
 .new-button-wrapper span {
     font-size: 1.7rem!important;
