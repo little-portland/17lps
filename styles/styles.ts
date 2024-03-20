@@ -374,7 +374,7 @@ html, body {
     padding: 1rem;
  }
 
-   #bookingOptions .event-info .info span {
+   #bookingOptions .event-info .date span {
     display: block;
     font-size: 3rem;
  }
