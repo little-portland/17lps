@@ -513,7 +513,7 @@ html, body {
 
  .new-button-wrapper .events-button {
     width: 50%;
-    display: inline-block; 
+    display: grid; 
     padding: 15px;
     background: #e6b0c2;
     cursor: auto;
