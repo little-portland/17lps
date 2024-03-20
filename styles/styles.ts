@@ -540,6 +540,11 @@ html, body {
     font-size: 1.5rem!important;
 }
 
+.new-button-wrapper .ticketNew a {
+    font-size: 2.5rem;
+    line-height: 2rem;
+  }
+
 .new-button-wrapper .book-link {
     border-bottom: 1.5px dotted;
 }
