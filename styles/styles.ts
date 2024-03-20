@@ -571,6 +571,10 @@ html, body {
   font-size: 1.1rem;
 }
 
+.new-button-wrapper .details span {
+  font-size: 1rem!important;
+}
+
 .new-button-wrapper .space {
   font-weight: 500;
   font-size: 1.8rem !important;
