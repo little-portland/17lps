@@ -569,6 +569,7 @@ html, body {
 
 .new-button-wrapper .space {
   font-weight: 500;
+  font-size: 1.8rem !important;
 }
 
 .new-button-wrapper a, .new-button-wrapper a:hover, .new-button-wrapper a:focus {
