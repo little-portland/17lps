@@ -582,10 +582,11 @@ html, body {
 }
 
 .new-button-wrapper .dotted-divider {
-  padding: 0!important;
-  height: 2px;
-  width: 100%;
-  border-bottom: 1.5px dotted;
+    height: 2px;
+    width: 100%;
+    border-bottom: 1.5px dotted;
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
 }
 
 .new-button-wrapper a, .new-button-wrapper a:hover, .new-button-wrapper a:focus {
