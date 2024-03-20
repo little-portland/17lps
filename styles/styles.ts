@@ -365,7 +365,7 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: .8rem;
+    margin-bottom: .4rem;
  }
  
   #bookingOptions .event-info .info {
@@ -525,13 +525,14 @@ html, body {
 
 .new-button-wrapper .ticketNew {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 1.5rem!important;
 }
 
 .new-button-wrapper .menu-btn {
     border-top: 1.5px dotted;
     padding-top: 15px;
+    font-size: 1rem!important;
 }
 
 .new-button-wrapper span {
