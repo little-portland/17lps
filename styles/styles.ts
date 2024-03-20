@@ -527,6 +527,7 @@ html, body {
 
 .new-button-wrapper .details span {
   font-size:  1rem;
+  flex-grow: 1;
 }
 
 .new-button-wrapper .cusine {
