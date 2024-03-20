@@ -587,6 +587,7 @@ html, body {
     border-bottom: 1.5px dotted;
     margin: 0 0 15px 0 !important;
     padding: 0 !important;
+    align-self: end !important;
 }
 
 .new-button-wrapper .first-divider {
