@@ -525,6 +525,10 @@ html, body {
     text-decoration: none;
 }
 
+.new-button-wrapper .details {
+  display: flex;
+}
+
 .new-button-wrapper .details span {
   font-size:  1rem;
   flex-grow: 1;
