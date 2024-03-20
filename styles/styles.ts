@@ -444,7 +444,7 @@ html, body {
  }
  
    #bookingOptions .ticket span {
-    font-size: 1.5rem!important;
+    font-size: 1.7rem!important;
     line-height: 1.5rem;
     display: block;
  }
@@ -509,6 +509,7 @@ html, body {
     width: 50%;
     display: inline-block; 
     padding: 15px;
+    background: #dda4b6;
  }
 
  .new-button-wrapper a {
@@ -519,6 +520,7 @@ html, body {
 
 .new-button-wrapper .cusine {
   font-size:  .9rem;
+  margin: 15px 0; 
 }
 
 .new-button-wrapper .ticketNew {
@@ -533,7 +535,7 @@ html, body {
 }
 
 .new-button-wrapper span {
-    font-size: 1.5rem!important;
+    font-size: 1.7rem!important;
     line-height: 2rem;
     padding-bottom: 5px;
 }
