@@ -554,14 +554,11 @@ html, body {
     line-height: 2rem;
   }
 
-.new-button-wrapper .book-link {
-    border-bottom: 1.5px dotted;
-}
-
 .new-button-wrapper .menu-btn {
     padding-top: 10px;
     font-size: 1rem!important;
     display: inline!important;
+    align-self: end !important;
 }
 
 .new-button-wrapper span {
@@ -583,6 +580,12 @@ html, body {
 .new-button-wrapper .space {
   font-weight: 500;
   font-size: 1.8rem !important;
+}
+
+.new-button-wrapper .dotted-divider {
+  height: 2px;
+  width: 100%;
+  border-bottom: 1.5px dotted;
 }
 
 .new-button-wrapper a, .new-button-wrapper a:hover, .new-button-wrapper a:focus {
