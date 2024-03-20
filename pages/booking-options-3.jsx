@@ -34,8 +34,8 @@ const BookingOptions = () => {
               <span>BOOK DINNER</span>
               <span class="space">IN THE TENT</span>
               <p class="time">Includes Free Club Entry</p>
-              <p class="dotted-divider"></p>
              </a>
+             <p class="dotted-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/menu" target="_blank">
               [Middle Eastern MENU]
              </a>
@@ -49,6 +49,7 @@ const BookingOptions = () => {
               <p class="dotted-divider"></p>
               <p class="details"><span>8-12 PAX</span><span>8PM</span><span>£100PP</span></p>
              </a>
+             <p class="dotted-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/chefs-menu" target="_blank">
               [Chinese MENU]
              </a>
