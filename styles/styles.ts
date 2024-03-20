@@ -376,7 +376,8 @@ html, body {
 
    #bookingOptions .event-info .date span {
     display: block;
-    font-size: 3rem;
+    font-size: 4.2rem;
+    margin-bottom: 0.5rem;
  }
 
 #bookingOptions .date {
