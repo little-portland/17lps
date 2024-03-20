@@ -450,7 +450,7 @@ html, body {
  }
  
    #bookingOptions .ticket span {
-    font-size: 1.7rem!important;
+    font-size: 2.9rem !important
     line-height: 2rem;
     display: block;
  }
@@ -530,6 +530,10 @@ html, body {
   margin: 15px 0; 
 }
 
+.new-button-wrapper .time {
+    font-style: italic;
+}
+
 .new-button-wrapper .ticketNew {
     width: 100%;
     margin-top: 5px;
@@ -546,10 +550,8 @@ html, body {
     display: inline!important;
 }
 
-border-top: 1.5px dotted;
-
 .new-button-wrapper span {
-    font-size: 1.7rem!important;
+    font-size: 2.9rem !important;
     line-height: 2rem;
     padding-bottom: 5px;
 }
@@ -558,6 +560,10 @@ border-top: 1.5px dotted;
   padding-bottom: 10px;
   font-weight: 500;
   font-size: 1.1rem;
+}
+
+.new-button-wrapper .space {
+  font-weight: 500;
 }
 
 .new-button-wrapper a, .new-button-wrapper a:hover, .new-button-wrapper a:focus {
