@@ -45,6 +45,7 @@ const BookingOptions = () => {
               <span>BOOK DINNER</span>
               <span class="space">IN CHEF’S STUDIO</span>
               <p class="time">Includes Free Club Entry</p>
+              <p class="details"><span>8-12 PAX</span><span>8PM</span><span>£100PP</span></p>
              </a>
              <a class="menu-btn" href="https://www.little-portland.com/chefs-menu" target="_blank">
               [Chinese MENU]
