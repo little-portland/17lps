@@ -541,6 +541,7 @@ html, body {
 .new-button-wrapper .menu-btn {
     padding-top: 10px;
     font-size: 1rem!important;
+    display: inline!important;
 }
 
 border-top: 1.5px dotted;
