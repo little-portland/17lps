@@ -46,7 +46,6 @@ const BookingOptions = () => {
               <span>BOOK DINNER</span>
               <span class="space">IN CHEF’S STUDIO</span>
               <p class="time">Includes Free Club Entry</p>
-              <p class="dotted-divider"></p>
               <p class="details"><span>8-12 PAX</span><span>8PM</span><span>£100PP</span></p>
              </a>
              <p class="dotted-divider"></p>
