@@ -515,6 +515,7 @@ html, body {
     display: inline-block; 
     padding: 15px;
     background: #e6b0c2;
+    cursor: auto;
  }
 
  .new-button-wrapper a {
