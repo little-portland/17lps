@@ -531,7 +531,7 @@ html, body {
 
 .new-button-wrapper .menu-btn {
     border-top: 1.5px dotted;
-    padding-top: 15px;
+    padding-top: 10px;
     font-size: 1rem!important;
 }
 
@@ -542,7 +542,7 @@ html, body {
 }
 
 .new-button-wrapper p {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .new-button-wrapper a, .new-button-wrapper a:hover, .new-button-wrapper a:focus {
