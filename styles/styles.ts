@@ -589,6 +589,10 @@ html, body {
     padding: 0 !important;
 }
 
+.new-button-wrapper .first-divider {
+  margin-bottom: -5px !important;
+}
+
 .new-button-wrapper a, .new-button-wrapper a:hover, .new-button-wrapper a:focus {
   color: rgb(92, 44, 124);
 }
@@ -596,6 +600,10 @@ html, body {
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
+
+    .new-button-wrapper .first-divider {
+      margin-bottom: auto!important;
+    }
      .new-button-wrapper .events-button {
         width: 100%;
      }
