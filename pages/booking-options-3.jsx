@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <span class="space">IN THE TENT</span>
               <p class="time">Includes Free Club Entry</p>
              </a>
-             <p class="dotted-divider"></p>
+             <p class="dotted-divider first-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/menu" target="_blank">
               [Middle Eastern MENU]
              </a>
