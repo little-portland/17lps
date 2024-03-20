@@ -579,6 +579,7 @@ html, body {
 .new-button-wrapper .space {
   font-weight: 500;
   font-size: 1.8rem !important;
+  padding-top: 0.5rem;
 }
 
 .new-button-wrapper .dotted-divider {
