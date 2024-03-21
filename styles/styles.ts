@@ -617,6 +617,11 @@ html, body {
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
 
+       #bookingOptions .event-info .date span {
+          display: inline;
+          padding-right: 15px;
+       }
+
     .new-button-wrapper .first-divider {
       margin-bottom: auto!important;
     }
@@ -628,14 +633,23 @@ html, body {
         margin-top: 0;
       }
 
+      .new-button-wrapper .ticketNew a {
+        font-size: 1.5rem;
+      }
+
       .new-button-wrapper .events-button {
         padding: 5px;
       }
 
       .new-button-wrapper span {
         line-height: 1.2rem;
-        font-size: 1rem!important;
+        font-size: 1.7rem!important;
       }
+
+      .new-button-wrapper .space {
+        padding-top: 0.2rem;
+        font-size: 1.5rem !important;
+    }
 
       .new-button-wrapper .cusine {
         font-size: 0.7rem;
@@ -643,6 +657,10 @@ html, body {
       
       .new-button-wrapper .menu-btn {
         padding-top: 5px;
+      }
+
+      .new-button-wrapper p {
+          font-size: 1rem;
       }
       
        .bookings-body-text {
@@ -754,7 +772,7 @@ html, body {
        }
        
           #bookingOptions .ticket span {
-            font-size: 1rem!important;
+            font-size: 1.5rem!important;
          }
 
         #bookingOptions .focal-point-presents {
