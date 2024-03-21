@@ -570,8 +570,9 @@ html, body {
 }
 
 .new-button-wrapper .menu-btn span {
-    curser: pointer;
     font-size: 1rem !important;
+    cursor: pointer;
+    display: inline !important;
 }
 
 .new-button-wrapper p {
