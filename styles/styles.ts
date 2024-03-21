@@ -376,15 +376,17 @@ html, body {
 
    #bookingOptions .event-info .date span {
     display: block;
-    font-size: 4.2rem;
+    font-size: 3.7rem;
     margin-bottom: 0.5rem;
  }
 
 #bookingOptions .date {
-    font-size: 2.07rem;
+    font-size: 1.8rem;
     align-items: center;
     width: 22%;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
  
  #bookingOptions .artists {
@@ -558,6 +560,11 @@ html, body {
     font-size: 1rem!important;
     display: inline!important;
     align-self: end !important;
+    cursor: auto;
+}
+
+.new-button-wrapper .menu-btn span {
+    curser: pointer;
 }
 
 .new-button-wrapper span {
