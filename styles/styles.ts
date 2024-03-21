@@ -364,8 +364,10 @@ html, body {
     text-transform: uppercase;
     display: flex;
     flex-direction: row;
+    -webkit-box-pack: justify;
     justify-content: space-between;
-    margin-bottom: .4rem;
+    margin-bottom: 8px;
+    gap: 8px;
  }
  
   #bookingOptions .event-info .info {
@@ -376,21 +378,21 @@ html, body {
 
    #bookingOptions .event-info .date span {
     display: block;
-    font-size: 3.7rem;
+    font-size: 3rem;
+    margin-top: -5px;
     margin-bottom: 0.5rem;
  }
 
 #bookingOptions .date {
-    font-size: 1.8rem;
-    align-items: center;
-    width: 22%;
+    font-size: 1.5rem;
+    width: 17.5%;
     display: flex;
+    -webkit-box-align: center;
     align-items: center;
-    justify-content: center;
 }
  
  #bookingOptions .artists {
-    width: 77%;
+    width: 81.5%;
     text-align: left;
  }
 
@@ -459,7 +461,7 @@ html, body {
 
 #bookingOptions .button-wrapper {
    display: flex;
-   gap: 5px;
+   gap: 7px;
  }
 
  /*
@@ -547,7 +549,7 @@ html, body {
 
 .new-button-wrapper .ticketNew {
     width: 100%;
-    margin-top: 5px;
+    margin-top: 8px;
     font-size: 1.5rem!important;
 }
 
@@ -565,7 +567,7 @@ html, body {
 }
 
 .new-button-wrapper span {
-    font-size: 2.9rem !important;
+    font-size: 2.5rem !important;
     line-height: 2rem;
     padding-bottom: 5px;
 }
