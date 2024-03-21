@@ -620,6 +620,7 @@ html, body {
        #bookingOptions .event-info .date span {
           display: inline;
           padding-right: 15px;
+          font-size: 1.5rem;
        }
 
     .new-button-wrapper .first-divider {
@@ -812,6 +813,10 @@ html, body {
           font-size: 1rem;
           line-height: 1.7rem;
        }
+
+       .new-button-wrapper .menu-btn span {
+        font-size: 1rem !important;
+      }
        
     }
 
