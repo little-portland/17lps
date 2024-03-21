@@ -641,6 +641,10 @@ html, body {
         padding: 5px;
       }
 
+      .new-button-wrapper .details span {
+        font-size: 1rem !important;
+      }  
+
       .new-button-wrapper span {
         line-height: 1.2rem;
         font-size: 1.7rem!important;
