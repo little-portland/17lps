@@ -564,6 +564,7 @@ html, body {
     align-self: end !important;
     cursor: auto;
     pointer-events: none;
+    height: 25px;
 }
 
 .new-button-wrapper span {
@@ -599,13 +600,13 @@ html, body {
     height: 2px;
     width: 100%;
     border-bottom: 1.5px dotted;
-    margin: 0 0 15px 0 !important;
+    margin: 0 0 10px 0 !important;
     padding: 0 !important;
     align-self: end !important;
 }
 
 .new-button-wrapper .first-divider {
-  margin-bottom: -5px !important;
+  margin-bottom: -10px !important;
 }
 
 .new-button-wrapper a, .new-button-wrapper a:hover, .new-button-wrapper a:focus {
