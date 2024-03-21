@@ -563,14 +563,15 @@ html, body {
     cursor: auto;
 }
 
-.new-button-wrapper .menu-btn span {
-    curser: pointer;
-}
-
 .new-button-wrapper span {
     font-size: 2.9rem !important;
     line-height: 2rem;
     padding-bottom: 5px;
+}
+
+.new-button-wrapper .menu-btn span {
+    curser: pointer;
+    font-size: 1rem !important;
 }
 
 .new-button-wrapper p {
