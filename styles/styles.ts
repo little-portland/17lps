@@ -623,6 +623,10 @@ html, body {
           font-size: 1.5rem;
        }
 
+      #bookingOptions .event-info .date span:after {
+          content: "//";
+       }
+
     .new-button-wrapper .first-divider {
       margin-bottom: auto!important;
     }
