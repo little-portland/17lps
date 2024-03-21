@@ -651,11 +651,6 @@ html, body {
         font-size: 1.7rem!important;
       }
 
-      .new-button-wrapper .space {
-        padding-top: 0.2rem;
-        font-size: 1.5rem !important;
-    }
-
       .new-button-wrapper .cusine {
         font-size: 0.7rem;
       }
@@ -816,6 +811,11 @@ html, body {
 
        .new-button-wrapper .menu-btn span {
         font-size: 1rem !important;
+      }
+
+    .new-button-wrapper .space {
+        padding-top: 0.2rem;
+        font-size: 1.3rem !important;
       }
        
     }
