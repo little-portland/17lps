@@ -618,7 +618,7 @@ html, body {
     @media only screen and (max-device-width: 1024px) { 
     
     #bookingOptions .event-info .date {
-      padding-bottom: 0.3rem;
+      padding-bottom: 0.3rem!important;
     }
 
        #bookingOptions .event-info .date span {
