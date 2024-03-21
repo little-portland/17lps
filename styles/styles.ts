@@ -403,7 +403,7 @@ html, body {
 
   #bookingOptions .eat-heading h1 {
     font-size: 11.3rem;
-    line-height: 10rem;
+    line-height: 9rem;
  }
 
    #bookingOptions .eat-heading h2 {
