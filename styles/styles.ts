@@ -639,7 +639,7 @@ html, body {
       }
 
       .new-button-wrapper .events-button {
-        padding: 5px;
+        padding: 10px 5px;
       }
 
       .new-button-wrapper .details span {
