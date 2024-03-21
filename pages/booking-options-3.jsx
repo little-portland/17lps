@@ -37,7 +37,7 @@ const BookingOptions = () => {
              </a>
              <p class="dotted-divider first-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/menu" target="_blank">
-              [Middle Eastern MENU]
+              <span>[Middle Eastern MENU]</span>
              </a>
             </Button>
 
@@ -50,7 +50,7 @@ const BookingOptions = () => {
              </a>
              <p class="dotted-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/chefs-menu" target="_blank">
-              [Chinese MENU]
+              <span>[Chinese MENU]</span>
              </a>
             </Button>
         </div>
