@@ -561,6 +561,7 @@ html, body {
     display: inline!important;
     align-self: end !important;
     cursor: auto;
+    pointer-events: none;
 }
 
 .new-button-wrapper span {
@@ -573,6 +574,7 @@ html, body {
     font-size: 1rem !important;
     cursor: pointer;
     display: inline !important;
+    pointer-events: auto;
 }
 
 .new-button-wrapper p {
