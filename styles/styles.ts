@@ -770,10 +770,6 @@ html, body {
             font-size: 1rem!important;
             margin-bottom: .3rem!important;
        }
-       
-          #bookingOptions .ticket span {
-            font-size: 1.5rem!important;
-         }
 
         #bookingOptions .focal-point-presents {
           font-size: 2.7rem
@@ -816,6 +812,10 @@ html, body {
     .new-button-wrapper .space {
         padding-top: 0.2rem;
         font-size: 1.3rem !important;
+      }
+
+      .new-button-wrapper .dotted-divider {
+        margin: 0px!important;
       }
        
     }
