@@ -619,12 +619,13 @@ html, body {
 
        #bookingOptions .event-info .date span {
           display: inline;
-          padding-right: 15px;
           font-size: 1.5rem;
        }
 
       #bookingOptions .event-info .date span:after {
           content: "//";
+          padding: 0 5px;
+          font-size: 1.3rem;
        }
 
     .new-button-wrapper .first-divider {
