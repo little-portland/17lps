@@ -618,7 +618,7 @@ html, body {
 }
 
 .full-width-btn .first-divider {
-    margin-bottom: 0;
+    margin-bottom: 0!important;
 }
 
 /* Media Query for Mobile Devices */
