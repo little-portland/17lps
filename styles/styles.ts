@@ -613,6 +613,14 @@ html, body {
   color: rgb(92, 44, 124);
 }
 
+.full-width-btn .events-button {
+    width: 100%;
+}
+
+.full-width-btn .first-divider {
+    margin-bottom: 0;
+}
+
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
