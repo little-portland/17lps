@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>Silverlining</h3>
-              <h3><span>TENT <b>//</b> </span>Giles Smith, Harri Pepper B2B Oliverio</h3>
+              <h3><span>TENT <b>//</b> </span>Giles Smith, Harri Pepper B2B Oliverio Segura</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
