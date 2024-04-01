@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>13 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>KENNY JONES, VITZH, Special Guest</h3>
-              <h3><span>TENT <b>//</b> </span>CASSIUS & HARRI (TELTALE), SHARIF</h3>
+              <h3><span>STUDIO <b>//</b> </span>ALEX FROM UTOPIA </h3>
+              <h3><span>TENT <b>//</b> </span>ALEX FROM UTOPIA </h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
