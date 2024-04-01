@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>05 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, OHM HOURANI</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI & OHM HOURANI</h3>
               <h3><span>TENT <b>//</b> </span>ROBERTA CUTOLO, TIM LANG</h3>
             </div>
         </div>
