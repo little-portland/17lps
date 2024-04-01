@@ -314,6 +314,10 @@ html, body {
     font-size: 4.4rem;
 }
 
+#bookingOptions .utopia-project {
+    font-size: 3.9rem;
+}
+
 #bookingOptions .balearic-electric-openlab {
     font-size: 2.5rem;
 }
