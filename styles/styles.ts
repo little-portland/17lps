@@ -562,6 +562,10 @@ html, body {
     line-height: 2rem;
   }
 
+  .book-only-wrapper .ticketNew {
+    margin-top: 0px;
+  }
+
 .new-button-wrapper .menu-btn {
     font-size: 1rem!important;
     display: inline!important;
