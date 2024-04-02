@@ -28,7 +28,7 @@ const BookingOptions = () => {
               <h3><span>TENT <b>//</b> </span>Closed</h3>
             </div>
         </div>
-        <div class="button-wrapper new-button-wrapper">
+        <div class="button-wrapper new-button-wrapper book-only-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
               <a href="https://sevn.ly/xUSQptYT" target="_blank">
                 Book Club Ticket
