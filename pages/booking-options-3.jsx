@@ -42,7 +42,7 @@ const BookingOptions = () => {
             </Button>
 
             <Button classes="events-button ticket"  btnType="hollow">
-              <a class="book-link" href="https://www.little-portland.com/bookings" target="_blank">
+              <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
               <span>BOOK DINNER</span>
               <span class="space">IN CHEF’S STUDIO</span>
               <p class="time">Includes Free Club Entry</p>
