@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>18 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>BUSHWACKA, LAURENCE</h3>
               <h3><span>TENT <b>//</b> </span> FUNKTONIO, MR SHIVER</h3> 
             </div>
         </div>
