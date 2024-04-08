@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>20 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Kenny Jones, Vitzh</h3>
-              <h3><span>TENT <b>//</b> </span>Garret David, Luther Vine, Sharif</h3>
+              <h3><span>STUDIO <b>//</b> </span>Garret David, Kenny Jones, Vitzh</h3>
+              <h3><span>TENT <b>//</b> </span>Luther Vine, Sharif</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
