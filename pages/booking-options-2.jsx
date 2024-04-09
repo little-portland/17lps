@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>26 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, DANNY DAZE</h3>
               <h3><span>TENT <b>//</b> </span>FRANCESCO MAMI, ROBERTA CUTOLO </h3>
             </div>
         </div>
