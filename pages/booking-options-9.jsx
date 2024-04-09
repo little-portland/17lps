@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>Garret David, Kenny Jones, Vitzh</h3>
-              <h3><span>TENT <b>//</b> </span>Luther Vine, Sharif</h3>
+              <h3><span>TENT <b>//</b> </span>CASSIUS & HARRY (TELLTALE), SHARIF</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
