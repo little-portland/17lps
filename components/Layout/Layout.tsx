@@ -109,10 +109,19 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-1 box"> 
         <h2>CHEF’S STUDIO @ 17 LITTLE PORTLAND STREET</h2>
         <h4>WEDNESDAYS - SATURDAYS</h4>
-        <p>An intimate 12-person dining experience hosted by Chef John Javier in our invite-only club, hidden beneath The Tent. Renowned for his culinary mastery in Chinese cuisine, John has crafted an epic set menu.</p> 
+        <p>Experience Chef John Javier's culinary expertise in our Chef's Studio, located at 17 Little Portland Street. Join us Wednesdays through Saturdays for an exclusive intimate dining experience, hidden beneath The Tent. Chef John Javier presents two set menu options for your enjoyment:</p> 
+        <br/> 
+        <ul>
+          <li>Chinese set menu priced at £100 per person**</li>
+          <li>Standard set menu priced at £80 per person</li>
+        </ul>
         <br/>  
-          <p>Wed-Thu: Minimum 8 guests per booking <br/>Fri-Sat: Minimum 3 guests per booking</p>
-        <br/>  
+          <p>Wed - Thu: Minimum 8 guests per booking</p>
+          <p>Fri - Sat: Minimum 4 guests per booking</p>
+          <p>(Maximum 12 sit-down)</p>
+        <br/> 
+          <small>**Please note, we cannot cater to any allergens with the Chinese set menu</small>
+         <br/> 
         <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/chefs-menu" target="_blank">[CHINESE MENU]</a></p>
         </div>}
 
