@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>20 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Garret David, Kenny Jones, VITHZ</h3>
+              <h3><span>STUDIO <b>//</b> </span>Garret David, Kenny Jones, Luther Vine</h3>
               <h3><span>TENT <b>//</b> </span>CASSIUS & HARRY (TELLTALE), SHARIF</h3>
             </div>
         </div>
