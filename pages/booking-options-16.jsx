@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>BUSHWACKA, LAURENCE</h3>
-              <h3><span>TENT <b>//</b> </span> FUNKTONIO, MR SHIVER</h3> 
+              <h3><span>TENT <b>//</b> </span>Mr Shiver, Rhythms of Prescott</h3> 
             </div>
         </div>
          <div class="button-wrapper new-button-wrapper">
