@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>DAVID HOLMES, PAUL DAY </h3>
-              <h3><span>TENT <b>//</b> </span>TIA COUSINS, TIN TIN</h3>
+              <h3><span>TENT <b>//</b> </span>TIA COUSINS, TINTIN</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
