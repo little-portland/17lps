@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>ROB MELLO</h3>
-              <h3><span>TENT <b>//</b> </span>GREGORIO SOAVE, KEM</h3>
+              <h3><span>TENT <b>//</b> </span>GREGORIO SOAVE (LIVE MODULAR), KEM</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
