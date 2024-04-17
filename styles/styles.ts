@@ -465,11 +465,11 @@ html, body {
     display: inline!important;
    }
 
-  #bookingOptions .ticket .menu-btn::first-child {
+  #bookingOptions .ticket .menu-btn:first-child {
     margin-right: 15px;
    }
 
-  #bookingOptions .ticket .menu-btn::last-child {
+  #bookingOptions .ticket .menu-btn:last-child {
     margin-left: 15px;
    }
  
