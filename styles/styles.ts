@@ -464,6 +464,14 @@ html, body {
   #bookingOptions .ticket {
     display: inline!important;
    }
+
+  #bookingOptions .ticket .menu-btn::first-child {
+    margin-right: 15px;
+   }
+
+  #bookingOptions .ticket .menu-btn::last-child {
+    margin-left: 15px;
+   }
  
    #bookingOptions .ticket span {
     font-size: 2.9rem !important
@@ -641,8 +649,8 @@ html, body {
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
 
-  #bookingOptions .ticket {
-    display: grid!important;
+  #bookingOptions .ticket a {
+    margin: 20px 0 0 0;
    }
     
     #bookingOptions .event-info .date {
