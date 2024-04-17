@@ -460,6 +460,10 @@ html, body {
    .eat-body .events-button span {
     font-size: 1rem!important;
  }
+
+  #bookingOptions .ticket {
+    display: inline!important;
+   }
  
    #bookingOptions .ticket span {
     font-size: 2.9rem !important
