@@ -463,6 +463,7 @@ html, body {
 
   #bookingOptions .ticket {
     display: inline!important;
+    padding: 10px 5px 5px 5px!important;
    }
 
   #bookingOptions .ticket .menu-btn:first-child {
@@ -648,10 +649,6 @@ html, body {
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
-
-  #bookingOptions .ticket {
-    padding: 10px 5px 5px 5px!important;
-   }
    
   #bookingOptions .ticket .dotted-divider {
     margin-bottom: 5px!important;
