@@ -650,7 +650,11 @@ html, body {
     @media only screen and (max-device-width: 1024px) { 
 
   #bookingOptions .ticket .dotted-divider {
-    margin-bottom: 10px!important;
+    padding: 10px 5px 5px 10px;
+   }
+   
+  #bookingOptions .ticket .dotted-divider {
+    margin-bottom: 5px!important;
    }
     
     #bookingOptions .event-info .date {
