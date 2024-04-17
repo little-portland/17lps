@@ -649,8 +649,8 @@ html, body {
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
 
-  #bookingOptions .ticket a {
-    margin: 20px 0 0 0;
+  #bookingOptions .ticket .dotted-divider {
+    margin-bottom: 10px!important;
    }
     
     #bookingOptions .event-info .date {
