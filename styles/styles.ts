@@ -685,7 +685,7 @@ html, body {
       }
 
       .new-button-wrapper .events-button {
-        padding: 10px 5px;
+        padding: 10px 5px!important;
       }
 
       .new-button-wrapper .details span {
