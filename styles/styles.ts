@@ -463,7 +463,7 @@ html, body {
 
   #bookingOptions .ticket {
     display: inline!important;
-    padding: 15px 15px 5px 15px!important;
+    padding: 15px 15px 5px 15px;
    }
 
    .new-button-wrapper .events-button {
