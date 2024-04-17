@@ -650,7 +650,7 @@ html, body {
     @media only screen and (max-device-width: 1024px) { 
 
   #bookingOptions .ticket {
-    padding: 10px 5px 5px 10px!important;
+    padding: 10px 5px 5px 5px!important;
    }
    
   #bookingOptions .ticket .dotted-divider {
