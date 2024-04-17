@@ -463,7 +463,7 @@ html, body {
 
   #bookingOptions .ticket {
     display: inline!important;
-    padding: 10px 5px 5px 5px!important;
+    padding: 15px 15px 5px 15px!important;
    }
 
   #bookingOptions .ticket .menu-btn:first-child {
