@@ -640,6 +640,10 @@ html, body {
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
+
+  #bookingOptions .ticket {
+    display: grid!important;
+   }
     
     #bookingOptions .event-info .date {
       padding-bottom: 0.3rem!important;
