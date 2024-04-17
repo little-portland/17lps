@@ -466,6 +466,10 @@ html, body {
     padding: 15px 15px 5px 15px!important;
    }
 
+   .new-button-wrapper .events-button {
+    padding-bottom: 13px;
+}
+
   #bookingOptions .ticket .menu-btn:first-child {
     margin-right: 15px;
    }
