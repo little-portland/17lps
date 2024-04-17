@@ -649,8 +649,8 @@ html, body {
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
 
-  #bookingOptions .ticket .dotted-divider {
-    padding: 10px 5px 5px 10px;
+  #bookingOptions .ticket {
+    padding: 10px 5px 5px 10px!important;
    }
    
   #bookingOptions .ticket .dotted-divider {
