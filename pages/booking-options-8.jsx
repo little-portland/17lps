@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>ILLi b2b Ben Jones Annie Errez b2b Wax Material</h3>
-              <h3><span>TENT <b>//</b> </span>OLI SILVA, TRIXIE</h3>
+              <h3><span>TENT <b>//</b> </span>DAYLOMAR, OLI SILVA</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
