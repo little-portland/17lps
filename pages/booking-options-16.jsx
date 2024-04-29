@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+ import React, { useEffect } from "react";
 import Head from "next/head";
 import Script from "next/script";
 
@@ -9,28 +9,28 @@ import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 
 import Button from "@components/UX/Button";
 
-const BookingOptions = () => { 
+const BookingOptions = () => {
 
   return (
     <>
       <Head>
-        <title>Bookings </title> 
+        <title>Bookings</title>
       </Head>
 
       <div id="bookingOptions">
         <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
-              <h2>18 Apr</h2>
+              <h2><span>THU</span>16 MAY</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BUSHWACKA, LAURENCE</h3>
-              <h3><span>TENT <b>//</b> </span>Mr Shiver, Rhythms of Prescott</h3> 
+              <h3><span>STUDIO <b>//</b> </span>desyn & Bruno Schmidt</h3>
+              <h3><span>TENT <b>//</b> </span>JOS, PAUL DAY</h3>
             </div>
         </div>
-         <div class="button-wrapper new-button-wrapper">
+        <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-             <a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2024-04-18" target="_blank">
+            <a class="book-link" href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2024-05-16" target="_blank">
               <span>BOOK DINNER</span>
               <span class="space">IN THE TENT</span>
               <p class="time">Includes Free Club Entry</p>
@@ -40,7 +40,6 @@ const BookingOptions = () => {
               <span>[Middle Eastern MENU]</span>
              </a>
             </Button>
-
             <Button classes="events-button ticket"  btnType="hollow">
               <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
               <span>BOOK DINNER</span>
@@ -59,7 +58,7 @@ const BookingOptions = () => {
         </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xR6j5Pz2" target="_blank">
+            <a href="https://sevn.ly/xRwo4nDr" target="_blank">
                 CLUB TICKETS ONLY
               </a>
             </Button>
