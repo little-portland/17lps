@@ -18,14 +18,14 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name disco-saturdays">Disco Saturdays</h1>
+        <h1 class="event-name disco-saturdays">Keep On Dancing</h1>
         <div class="event-info">
             <div class="info date">
               <h2><span>SAT</span>18 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
-              <h3><span>TENT <b>//</b> </span>KEEP ON DANCING, MARCELINA WICK</h3>
+              <h3><span>STUDIO <b>//</b> </span>Secret Guest</h3>
+              <h3><span>TENT <b>//</b> </span>MARCELINA WICK</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
