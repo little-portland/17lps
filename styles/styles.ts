@@ -338,6 +338,10 @@ html, body {
     font-size: 5.9rem;
 }
 
+#bookingOptions .phonica {
+    font-size: 4.4rem;
+}
+
 #bookingOptions .mid-summer {
   font-size: 2.5rem;
 }
