@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>24 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI & FRIENDS</h3>
               <h3><span>TENT <b>//</b> </span>DAVIDE DEL VECCHIO, MILLIE MCKEE</h3>
             </div>
         </div>
