@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>JONNY ROCK</h3>
-              <h3><span>TENT <b>//</b> </span>MARCELINA WICK</h3>
+              <h3><span>TENT <b>//</b> </span>MARCELINA WICK, Oliver Moon</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
