@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>MARI*, PROFESSOR ROTH </h3>
-              <h3><span>TENT <b>//</b> </span>dr banana & Lukas Wigflex</h3>
+              <h3><span>TENT <b>//</b> </span>DR BANANA B2B MARLON CLARK </h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
