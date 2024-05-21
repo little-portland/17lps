@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, RENATO RATIER</h3>
-              <h3><span>TENT <b>//</b> </span>HARRI PEPPER, KEM</h3>
+              <h3><span>TENT <b>//</b> </span>KEM, TIM LANG</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
