@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name dinner-tunes">Dinner & Tunes</h1>
           <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>01 June</h2>
+              <h2><span>SAT</span>01 Jun</h2>
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>Closed</h3>
