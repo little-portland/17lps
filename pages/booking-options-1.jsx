@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name urban-future">Public image</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>WED</span>05 June</h2>
+              <h2><span>WED</span>05 Jun</h2>
             </div>
             <div class="info artists">
               <h3><span>STUDIO<b>//</b> </span>DJ HARSH, JHERI MAYNE, LILO GALERIA, LILO, TLADSS, VILLABEATZ</h3>
