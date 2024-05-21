@@ -369,7 +369,7 @@ html, body {
 }
 
 #bookingOptions .dinner-tunes {
-    font-size: 6rem;
+    font-size: 5rem;
 }
 
 #bookingOptions .event-info {
