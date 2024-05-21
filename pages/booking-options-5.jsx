@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>25 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>KIERAN JANDU, ROB MELLO</h3>
+              <h3><span>STUDIO <b>//</b> </span>KIERAN JANDU B2B Skip Wooznam, ROB MELLO</h3>
               <h3><span>TENT <b>//</b> </span>AVSLUTA, LUTHER VINE</h3>
             </div>
         </div>
