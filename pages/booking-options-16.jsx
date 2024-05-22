@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>06 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>DAVID AGRELLA, MARI*</h3>
+              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
               <h3><span>TENT <b>//</b> </span>DAVIDE DEL VECCHIO, JOS</h3>
             </div>
         </div>
