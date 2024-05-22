@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>WED</span>22 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO<b>//</b> </span>DJ HARSH, JHERI MAYNE, LILO GALERIA, LILO, TLADSS, VILLABEATZ</h3>
+              <h3><span>STUDIO<b>//</b> </span>DJ HARSH, JHERI MAYNE, LILO, TLADSS, VILLABEATZ</h3>
               <h3><span>TENT <b>//</b> </span>MARIO BAKUNA & MAFALDA RAMOS</h3>
             </div>
         </div>
