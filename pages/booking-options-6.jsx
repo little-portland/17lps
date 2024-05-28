@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>31 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI & FRIENDS</h3>
+              <h3><span>STUDIO <b>//</b> </span>Funktonio</h3>
               <h3><span>TENT <b>//</b> </span>ECE DUZGIT, HARRI PEPPER</h3>
             </div>
         </div>
