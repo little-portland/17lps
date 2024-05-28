@@ -334,6 +334,11 @@ html, body {
     font-size: 4.7rem;
 }
 
+#bookingOptions .un-mute {
+    font-size: 10rem;
+    margin-bottom: 0.5rem;
+}
+
 #bookingOptions .urban-future {
     font-size: 5.9rem;
 }
