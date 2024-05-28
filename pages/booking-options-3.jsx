@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>13 JUN</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>HARRI PEPPER, SEAN OD</h3>
-              <h3><span>TENT <b>//</b> </span>DENNY KEM, EDUARD</h3>
+              <h3><span>STUDIO <b>//</b> </span>DENNY KEM, EDUARD</h3>
+              <h3><span>TENT <b>//</b> </span>HARRI PEPPER, SEAN OD</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
