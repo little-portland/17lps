@@ -37,7 +37,7 @@ const BookingOptions = () => {
              </a>
              <p class="dotted-divider first-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/menu" target="_blank">
-              <span>[Middle Eastern MENU]</span>
+              <span>[MENU]</span>
              </a>
             </Button>
 
@@ -49,8 +49,8 @@ const BookingOptions = () => {
               <p class="details"><span>8-12 PAX</span><span>8PM</span><span>£100PP</span></p>
              </a>
              <p class="dotted-divider"></p>
-             <a class="menu-btn" href="https://www.little-portland.com/chefs-menu" target="_blank">
-              <span>[Chinese MENU]</span>
+             <a class="menu-btn" href="https://www.little-portland.com/set-menu" target="_blank">
+              <span>[MENU]</span>
              </a>
             </Button>
         </div>
