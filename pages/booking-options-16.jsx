@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>ALEC FALCONER, DAVID AGRELLA, MARIO LIBERTI</h3>
-              <h3><span>TENT <b>//</b> </span>ALEX POSTER, DAVIDE DEL VECCHIO</h3>
+              <h3><span>TENT <b>//</b> </span>ALEX PASTOR, DAVIDE DEL VECCHIO</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
