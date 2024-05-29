@@ -48,7 +48,7 @@ const BookingOptions = () => {
              <a class="menu-btn" href="https://www.little-portland.com/regular-set-menu" target="_blank">
               <span>[REGULAR MENU]</span>
              </a>
-             <a class="menu-btn" href="https://www.little-portland.com/premium-set-menu" target="_blank">
+             <a class="menu-btn premium-menu-btn" href="https://www.little-portland.com/premium-set-menu" target="_blank">
               <span>[PREMIUM MENU]</span>
              </a>
             </Button>
