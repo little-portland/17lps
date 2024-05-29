@@ -49,10 +49,10 @@ const BookingOptions = () => {
              </a>
              <p class="dotted-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/regular-set-menu" target="_blank">
-              <span>[REGULAR SET MENU]</span>
+              <span>[REGULAR MENU]</span>
              </a>
              <a class="menu-btn" href="https://www.little-portland.com/premium-set-menu" target="_blank">
-              <span>[PREMIUM SET MENU]</span>
+              <span>[PREMIUM MENU]</span>
              </a>
             </Button>
         </div>
