@@ -718,6 +718,11 @@ html, body {
         padding-top: 5px;
       }
 
+      .premium-menu-btn {
+        display: block !important;
+        margin-left: 0;
+      }
+
       .new-button-wrapper p {
           font-size: 1rem;
       }
