@@ -718,8 +718,8 @@ html, body {
         padding-top: 5px;
       }
 
-      .premium-menu-btn {
-        display: block !important;
+      .new-button-wrapper .premium-menu-btn {
+        display: block!important;
         margin-left: 0;
       }
 
