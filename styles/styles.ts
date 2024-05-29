@@ -718,11 +718,6 @@ html, body {
         padding-top: 5px;
       }
 
-      .new-button-wrapper .premium-menu-btn {
-        display: block!important;
-        margin-left: 0;
-      }
-
       .new-button-wrapper p {
           font-size: 1rem;
       }
@@ -876,6 +871,11 @@ html, body {
     .new-button-wrapper .space {
         padding-top: 0.2rem;
         font-size: 1.3rem !important;
+      }
+     
+     .new-button-wrapper .premium-menu-btn {
+        display: block!important;
+        margin-left: 0!important;
       }
 
       .new-button-wrapper .dotted-divider {
