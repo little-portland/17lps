@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>20 JUN</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>DR BANANA B2B MARLON CLARK</h3>
+              <h3><span>STUDIO <b>//</b> </span>Apollonia Orsoni & funktonio</h3>
               <h3><span>TENT <b>//</b> </span>HERODOT & HARRY MCCANNA</h3>
             </div>
         </div>
