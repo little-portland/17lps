@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>13 JUN</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>DENNY KEM, EDUARD</h3>
+              <h3><span>STUDIO <b>//</b> </span>DENNY KEM, EDWARD</h3>
               <h3><span>TENT <b>//</b> </span>HARRI PEPPER, SEAN OD</h3>
             </div>
         </div>
@@ -58,7 +58,7 @@ const BookingOptions = () => {
         </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xQwKyAvO" target="_blank">
+            <a href="https://sevn.ly/xJaD2W9q" target="_blank">
                 CLUB TICKETS ONLY
               </a>
             </Button>
