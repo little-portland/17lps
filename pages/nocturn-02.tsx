@@ -41,6 +41,8 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_09.png" />
                 <img src="/images/nocturn/nocturn02_41.png" />
                 <img src="/images/nocturn/nocturn02_42.png" />
+                <img src="/images/nocturn/nocturn02_video_01.png" />
+                <img src="/images/nocturn/nocturn02_video_02.png" />
               </div>
               <div className="column">
                 <img src="/images/nocturn/nocturn02_10.png" />
@@ -55,6 +57,8 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_22.png" />
                 <img src="/images/nocturn/nocturn02_43.png" />
                 <img src="/images/nocturn/nocturn02_44.png" />
+                <img src="/images/nocturn/nocturn02_video_03.png" />
+                <img src="/images/nocturn/nocturn02_video_04.png" />
               </div>
               <div className="column">
                 <img src="/images/nocturn/nocturn02_23.png" />
@@ -69,6 +73,8 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_30.png" />
                 <img src="/images/nocturn/nocturn02_45.png" />
                 <img src="/images/nocturn/nocturn02_46.png" />
+                <img src="/images/nocturn/nocturn02_video_05.png" />
+                <img src="/images/nocturn/nocturn02_video_06.png" />
               </div>
               <div className="column">
                 <img src="/images/nocturn/nocturn02_31.png" />
@@ -83,6 +89,7 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_40.png" />
                 <img src="/images/nocturn/nocturn02_47.png" />
                 <img src="/images/nocturn/nocturn02_48.png" />
+                <img src="/images/nocturn/nocturn02_video_07.png" />
               </div>
            </div>
          </div>      
