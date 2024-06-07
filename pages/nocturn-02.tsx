@@ -45,9 +45,6 @@ const Menu = ({ menuImage }) => {
                 <a href="https://www.youtube.com/watch?v=BWKKJwBXir4" target="_blank">
                   <img src="/images/nocturn/nocturn02_video_01.png" />
                 </a>
-                <a href="https://www.e-flux.com/journal/75/67125/tentacular-thinking-anthropocene-capitalocene-chthulucene/" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_02.png" />
-                </a>
               </div>
               <div className="column">
                 <img src="/images/nocturn/nocturn02_10.png" />
@@ -62,8 +59,15 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_22.png" />
                 <img src="/images/nocturn/nocturn02_43.png" />
                 <img src="/images/nocturn/nocturn02_44.png" />
-                <img src="/images/nocturn/nocturn02_video_03.png" />
-                <img src="/images/nocturn/nocturn02_video_04.png" />
+                <a href="https://www.e-flux.com/journal/75/67125/tentacular-thinking-anthropocene-capitalocene-chthulucene/" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_02.png" />
+                </a>
+                <a href="https://www.smithsonianmag.com/science-nature/creatures-of-the-deep-163679120/" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_03.png" />
+                </a>
+                <a href="https://www.youtube.com/watch?v=KtFFmDGIsa4" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_04.png" />
+                </a>
               </div>
               <div className="column">
                 <img src="/images/nocturn/nocturn02_23.png" />
@@ -78,8 +82,12 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_30.png" />
                 <img src="/images/nocturn/nocturn02_45.png" />
                 <img src="/images/nocturn/nocturn02_46.png" />
-                <img src="/images/nocturn/nocturn02_video_05.png" />
-                <img src="/images/nocturn/nocturn02_video_06.png" />
+                <a href="https://medium.com/@rachellee9087/the-titan-submarine-disaster-what-really-happened-c40a1acde9aa" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_05.png" />
+                </a>
+                <a href="https://www.youtube.com/watch?v=8oL6u9eujSU" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_06.png" />
+                </a>
               </div>
               <div className="column">
                 <img src="/images/nocturn/nocturn02_31.png" />
@@ -93,7 +101,9 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_40.png" />
                 <img src="/images/nocturn/nocturn02_47.png" />
                 <img src="/images/nocturn/nocturn02_48.png" />
-                <img src="/images/nocturn/nocturn02_video_07.png" />
+                 <a href="https://www.youtube.com/watch?v=fDwHwWuUuk4" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_07.png" />
+                </a>
               </div>
            </div>
 
