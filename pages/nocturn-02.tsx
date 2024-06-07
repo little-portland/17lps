@@ -23,14 +23,6 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn">
            <img src="/images/nocturn-web-page.png" alt="Nocturn" width="100%" height="100%" />
-
-           <div className="row">
-            <div className="column">
-              <img src="/images/nocturn-web-page.png">
-              <img src="/images/nocturn-web-page.png">
-              <img src="/images/nocturn-web-page.png">
-            </div>
-           </div>
          </div>
     </>
   );
