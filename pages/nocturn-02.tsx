@@ -64,9 +64,6 @@ const Menu = ({ menuImage }) => {
                 <a href="https://www.smithsonianmag.com/science-nature/creatures-of-the-deep-163679120/" target="_blank">
                   <img src="/images/nocturn/nocturn02_video_03.png" />
                 </a>
-                <a href="https://www.youtube.com/watch?v=KtFFmDGIsa4" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_04.png" />
-                </a>
               </div>
               <div className="column">
                 <img src="/images/nocturn/nocturn02_23.png" />
@@ -100,6 +97,9 @@ const Menu = ({ menuImage }) => {
                 </a>
                  <a href="https://www.youtube.com/watch?v=fDwHwWuUuk4" target="_blank">
                   <img src="/images/nocturn/nocturn02_video_07.png" />
+                </a>
+                <a href="https://www.youtube.com/watch?v=KtFFmDGIsa4" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_04.png" />
                 </a>
               </div>
            </div>
