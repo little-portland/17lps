@@ -27,9 +27,9 @@ const Menu = ({ menuImage }) => {
 
       <div className="row">
           <div className="column">
-            <img src="/images/nocturn-web-page.png">
-            <img src="/images/nocturn-web-page.png">
-            <img src="/images/nocturn-web-page.png">
+            <img src="/images/nocturn-web-page.png" />
+            <img src="/images/nocturn-web-page.png" />
+            <img src="/images/nocturn-web-page.png" />
           </div>
        </div>
       
