@@ -23,16 +23,15 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn">
            <img src="/images/nocturn-web-page.png" alt="Nocturn" width="100%" height="100%" />
-         </div>
 
-      <div className="row">
-          <div className="column">
-            <img src="/images/nocturn-web-page.png" />
-            <img src="/images/nocturn-web-page.png" />
-            <img src="/images/nocturn-web-page.png" />
-          </div>
-       </div>
-      
+           <div className="row">
+              <div className="column">
+                <img src="/images/17LPS_sample_menu.jpg" />
+                <img src="/images/17LPS_sample_menu.jpg" />
+                <img src="/images/17LPS_sample_menu.jpg" />
+              </div>
+           </div>
+         </div>      
     </>
   );
 };
