@@ -85,7 +85,6 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_31.png" />
                 <img src="/images/nocturn/nocturn02_32.png" />
                 <img src="/images/nocturn/nocturn02_33.png" />
-                <img src="/images/nocturn/nocturn02_34.mp3" />
                 <audio controls src="/images/nocturn/nocturn02_34.mp3"></audio>
                 <img src="/images/nocturn/nocturn02_36.png" />
                 <img src="/images/nocturn/nocturn02_37.png" />
