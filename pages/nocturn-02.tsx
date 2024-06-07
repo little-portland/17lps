@@ -20,7 +20,7 @@ const Menu = ({ menuImage }) => {
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
-            {'audio{ max-width: -webkit-fill-available;}'}
+            {'audio{ margin-top: 8px;max-width: -webkit-fill-available;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn - Zoë Marden</title>
@@ -43,12 +43,7 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_09.png" />
                 <img src="/images/nocturn/nocturn02_41.png" />
                 <img src="/images/nocturn/nocturn02_42.png" />
-                <a href="https://www.youtube.com/watch?v=BWKKJwBXir4" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_01.png" />
-                </a>
-              </div>
-              <div className="column">
-                <img src="/images/nocturn/nocturn02_10.png" />
+                 <img src="/images/nocturn/nocturn02_10.png" />
                 <img src="/images/nocturn/nocturn02_14.png" />
                 <img src="/images/nocturn/nocturn02_11.png" />
                 <img src="/images/nocturn/nocturn02_12.gif" />
@@ -60,6 +55,9 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_22.png" />
                 <img src="/images/nocturn/nocturn02_43.png" />
                 <img src="/images/nocturn/nocturn02_44.png" />
+                <a href="https://www.youtube.com/watch?v=BWKKJwBXir4" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_01.png" />
+                </a>
                 <a href="https://www.e-flux.com/journal/75/67125/tentacular-thinking-anthropocene-capitalocene-chthulucene/" target="_blank">
                   <img src="/images/nocturn/nocturn02_video_02.png" />
                 </a>
@@ -83,14 +81,6 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_30.png" />
                 <img src="/images/nocturn/nocturn02_45.png" />
                 <img src="/images/nocturn/nocturn02_46.png" />
-                <a href="https://medium.com/@rachellee9087/the-titan-submarine-disaster-what-really-happened-c40a1acde9aa" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_05.png" />
-                </a>
-                <a href="https://www.youtube.com/watch?v=8oL6u9eujSU" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_06.png" />
-                </a>
-              </div>
-              <div className="column">
                 <img src="/images/nocturn/nocturn02_31.png" />
                 <img src="/images/nocturn/nocturn02_32.png" />
                 <img src="/images/nocturn/nocturn02_33.png" />
@@ -102,6 +92,12 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_40.png" />
                 <img src="/images/nocturn/nocturn02_47.png" />
                 <img src="/images/nocturn/nocturn02_48.png" />
+                <a href="https://medium.com/@rachellee9087/the-titan-submarine-disaster-what-really-happened-c40a1acde9aa" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_05.png" />
+                </a>
+                <a href="https://www.youtube.com/watch?v=8oL6u9eujSU" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_06.png" />
+                </a>
                  <a href="https://www.youtube.com/watch?v=fDwHwWuUuk4" target="_blank">
                   <img src="/images/nocturn/nocturn02_video_07.png" />
                 </a>
