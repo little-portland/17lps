@@ -96,6 +96,9 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_video_07.png" />
               </div>
            </div>
+
+            <img src="/images/nocturn2-web-page-bottom.png" alt="Nocturn" width="100%" height="100%" />
+
          </div>      
     </>
   );
