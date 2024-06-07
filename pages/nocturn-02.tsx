@@ -16,7 +16,10 @@ const Menu = ({ menuImage }) => {
         <style>
             {'body{background-color: #0a1870!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;}}'}
+            {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
+            {'.column{flex: 25%;max-width: 25%;padding: 0 4px;}'}
+            {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn - Gray Wielebinski</title>
       </Head>
