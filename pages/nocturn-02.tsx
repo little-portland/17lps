@@ -52,9 +52,9 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_19.png" />
                 <img src="/images/nocturn/nocturn02_20.png" />
                 <img src="/images/nocturn/nocturn02_21.png" />
-                <img src="/images/nocturn/nocturn02_22.png" />
                 <img src="/images/nocturn/nocturn02_43.png" />
                 <img src="/images/nocturn/nocturn02_44.png" />
+                 <img src="/images/nocturn/nocturn02_45.png" />
                 <a href="https://www.youtube.com/watch?v=BWKKJwBXir4" target="_blank">
                   <img src="/images/nocturn/nocturn02_video_01.png" />
                 </a>
@@ -78,8 +78,8 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_17.png" />
                 <img src="/images/nocturn/nocturn02_28.png" />
                 <img src="/images/nocturn/nocturn02_29.png" />
+                 <img src="/images/nocturn/nocturn02_22.png" />
                 <img src="/images/nocturn/nocturn02_30.png" />
-                <img src="/images/nocturn/nocturn02_45.png" />
                 <img src="/images/nocturn/nocturn02_46.png" />
                 <img src="/images/nocturn/nocturn02_31.png" />
                 <img src="/images/nocturn/nocturn02_32.png" />
