@@ -41,8 +41,12 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_09.png" />
                 <img src="/images/nocturn/nocturn02_41.png" />
                 <img src="/images/nocturn/nocturn02_42.png" />
-                <img src="/images/nocturn/nocturn02_video_01.png" />
-                <img src="/images/nocturn/nocturn02_video_02.png" />
+                <a href="https://www.youtube.com/watch?v=BWKKJwBXir4" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_01.png" />
+                </a>
+                <a href="https://www.e-flux.com/journal/75/67125/tentacular-thinking-anthropocene-capitalocene-chthulucene/" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_02.png" />
+                </a>
               </div>
               <div className="column">
                 <img src="/images/nocturn/nocturn02_10.png" />
