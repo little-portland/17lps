@@ -33,6 +33,21 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/17LPS_sample_menu.jpg" />
                 <img src="/images/17LPS_sample_menu.jpg" />
               </div>
+              <div className="column">
+                <img src="/images/17LPS_sample_menu.jpg" />
+                <img src="/images/17LPS_sample_menu.jpg" />
+                <img src="/images/17LPS_sample_menu.jpg" />
+              </div>
+              <div className="column">
+                <img src="/images/17LPS_sample_menu.jpg" />
+                <img src="/images/17LPS_sample_menu.jpg" />
+                <img src="/images/17LPS_sample_menu.jpg" />
+              </div>
+              <div className="column">
+                <img src="/images/17LPS_sample_menu.jpg" />
+                <img src="/images/17LPS_sample_menu.jpg" />
+                <img src="/images/17LPS_sample_menu.jpg" />
+              </div>
            </div>
          </div>      
     </>
