@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
                         rel="stylesheet"
                     />
                     <link
-                        href="https://fonts.cdnfonts.com/css/helvetica-neue-5"
+                        href="https://fonts.cdnfonts.com/css/helvetica-neue-55"
                         rel="stylesheet"
                     />
                 </Head>
