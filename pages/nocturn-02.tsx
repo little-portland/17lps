@@ -105,8 +105,6 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn02_48.png" />
               </div>
            </div>
-
-            <img src="/images/nocturn2-web-page-bottom.png" alt="Nocturn" width="100%" height="100%" />
            
             <div className="nocturn-text-wrapper"> 
               <p className="nocturn-text">Zoë Marden is an artist, filmmaker, and writer living between her home town of Hong Kong and London. She graduated from the Royal College of Art’s Moving Image MA, Marden works with performance, video, text, sound, sculpture and installation to create alternate worlds and speculative futures. Her research-focused works are concerned with Post-human feminisms and where they overlap with the postcolonial. Her intimate performances play with the voice, activating soundscapes of desire and vulnerability. She is part of the CAMPerVAN collective, active since 2016, a nomadic queer performance platform that can be deployed anywhere in the world to bring performance art, film screening, panel discussion & workshop into the public realm.</p>
