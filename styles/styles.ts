@@ -519,13 +519,6 @@ html, body {
   line-height: 1.2!important;
 }
 
-.nocturn-text {
-  font-family: 'Helvetica', sans-serif!important;
-  font-weight: bold!important;
-  text-decoration: none!important;
-  color: #ffffff!important;
-}
-
  */
 
 #bookingOptions a {
