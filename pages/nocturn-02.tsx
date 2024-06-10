@@ -24,8 +24,9 @@ const Menu = ({ menuImage }) => {
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
-            {'.nocturn-text-wrapper img{ max-width: 25%;}'}
+            {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #0068ff!important;padding-bottom: 30px;line-height: 1.1;}'}
+            {'.nocturn-text{ font-family: padding-bottom: 20px;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn - Zoë Marden</title>
@@ -46,7 +47,7 @@ the space time continuum the boundaries sizzle and melt
 felt another portal crack open the walls they will not hold 
 this is a story not yet told
 </p>
-<p className="nocturn-text">fold into my luscious skin swim meet the desires 
+<p className="nocturn-text second">fold into my luscious skin swim meet the desires 
 dormant within we creatures emerge red hot geyser slip 
 slip slip leave your inhibitions on land we demand plunge 
 soak me up like a sponge and survive dive no need to hide 
