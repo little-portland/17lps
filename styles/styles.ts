@@ -518,6 +518,11 @@ html, body {
   line-height: 1.2!important;
 }
 
+.nocturn-text {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+}
+
  */
 
 #bookingOptions a {
