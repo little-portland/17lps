@@ -1,4 +1,4 @@
-  import styled, { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 import reset from "styled-reset";
 
 export const breakpoints = {
@@ -519,9 +519,11 @@ html, body {
   line-height: 1.2!important;
 }
 
-.nocturn-text {
+.nocturn-text a {
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
 }
 
  */
