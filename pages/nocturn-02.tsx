@@ -106,9 +106,9 @@ const Menu = ({ menuImage }) => {
 
             <img src="/images/nocturn2-web-page-bottom.png" alt="Nocturn" width="100%" height="100%" />
            
-            <div className="nocturn-text"> 
-              <p><a href="https://www.instagram.com/zoemarden/" target="_blank">@zoemarden</a></p>
-              <p><a href="https://www.zoemarden.com/" target="_blank">www.zoemarden.com</a></p>
+            <div> 
+              <p><a className="nocturn-text" href="https://www.instagram.com/zoemarden/" target="_blank">@zoemarden</a></p>
+              <p><a className="nocturn-text" href="https://www.zoemarden.com/" target="_blank">www.zoemarden.com</a></p>
             </div>
            
          </div>      
