@@ -20,10 +20,12 @@ const Menu = ({ menuImage }) => {
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
+            {'.top{ font-size: 35px;}'}
+            {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #0068ff!important;padding-bottom: 30px;line-height: 1.1;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 25px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn - Zoë Marden</title>
       </Head>
@@ -31,7 +33,7 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn">
            <img src="/images/nocturn2-web-page-top.png" alt="Nocturn" width="100%" height="100%" />
 
-           <div className="nocturn-text-wrapper"> 
+           <div className="nocturn-text-wrapper top"> 
               <p className="nocturn-text">crave rave creatures of the deep this is our home slip slip 
 slip into another skin within down under daddy ten 
 thousand leagues below the surface descend into the 
@@ -129,7 +131,7 @@ within
               </div>
            </div>
            
-            <div className="nocturn-text-wrapper"> 
+            <div className="nocturn-text-wrapper bottom"> 
               <p className="nocturn-text">Zoë Marden is an artist, filmmaker, and writer living between her home town of Hong Kong and London. She graduated from the Royal College of Art’s Moving Image MA, Marden works with performance, video, text, sound, sculpture and installation to create alternate worlds and speculative futures. Her research-focused works are concerned with Post-human feminisms and where they overlap with the postcolonial. Her intimate performances play with the voice, activating soundscapes of desire and vulnerability. She is part of the CAMPerVAN collective, active since 2016, a nomadic queer performance platform that can be deployed anywhere in the world to bring performance art, film screening, panel discussion & workshop into the public realm.</p>
               <p><a className="nocturn-text" href="https://www.instagram.com/zoemarden/" target="_blank">@zoemarden</a></p>
               <p><a className="nocturn-text" href="https://www.zoemarden.com/" target="_blank">www.zoemarden.com</a></p>
