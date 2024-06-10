@@ -54,6 +54,9 @@ there is no end light travels not in the farthest trench of the
 den slip slip slip into the mud slip slip slip slip slip slip in
 within
 </p>
+<p> 
+  <img src="/images/nocturn/17LPS_Nocturne2_Whole_email_bianca-quote.jpg" />
+  </p>
             </div>
 
            <div className="row">
