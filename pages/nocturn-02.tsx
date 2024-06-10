@@ -14,7 +14,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'body{background-color: #f05776!important;}'}
+            {'body{background-color: #000000!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
@@ -22,7 +22,7 @@ const Menu = ({ menuImage }) => {
             {'.column a{ cursor:pointer!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
-            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
+            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #0068ff!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn - Zoë Marden</title>
@@ -30,6 +30,29 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn">
            <img src="/images/nocturn2-web-page-top.png" alt="Nocturn" width="100%" height="100%" />
+
+           <div className="nocturn-text-wrapper"> 
+              <p className="nocturn-text">crave rave creatures of the deep this is our home slip slip 
+slip into another skin within down under daddy ten 
+thousand leagues below the surface descend into the 
+hadal zone where life has come undone every breathe 
+sacred in this watery grave sing your death song and be 
+born again shadow dancing the night sea journey turn the 
+key touch tentacles far reaching seething teething a rip in 
+the space time continuum the boundaries sizzle and melt 
+felt another portal crack open the walls they will not hold 
+this is a story not yet told
+</p>
+<p className="nocturn-text">fold into my luscious skin swim meet the desires 
+dormant within we creatures emerge red hot geyser slip 
+slip slip leave your inhibitions on land we demand plunge 
+soak me up like a sponge and survive dive no need to hide 
+carve open your insides out shout time and space bend 
+there is no end light travels not in the farthest trench of the 
+den slip slip slip into the mud slip slip slip slip slip slip in
+within
+</p>
+            </div>
 
            <div className="row">
               <div className="column">
