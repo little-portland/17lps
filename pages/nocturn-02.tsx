@@ -21,6 +21,7 @@ const Menu = ({ menuImage }) => {
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
+            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn - Zoë Marden</title>
