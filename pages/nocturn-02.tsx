@@ -33,7 +33,7 @@ const Menu = ({ menuImage }) => {
       </Head>
       
          <div className="nocturn">
-           <img src="/images/nocturn2-web-page-top.png" alt="Nocturn" width="100%" height="100%" />
+           <img src="/images/nocturn2-web-page-top.png" alt="Nocturn" width="100%" />
 
            <div className="nocturn-text-wrapper top"> 
               <p className="nocturn-text">crave rave creatures of the deep this is our home slip slip 
