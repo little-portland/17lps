@@ -520,10 +520,10 @@ html, body {
 }
 
 .nocturn-text a {
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  text-decoration: none;
-  color: #ffffff;
+  font-family: 'Helvetica', sans-serif!important;
+  font-weight: bold!important;
+  text-decoration: none!important;
+  color: #ffffff!important;
 }
 
  */
