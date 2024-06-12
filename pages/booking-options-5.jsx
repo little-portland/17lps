@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>15 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>alex bradley (utopia)</h3>
+              <h3><span>STUDIO <b>//</b> </span>Aime Fiorito, alex bradley</h3>
               <h3><span>TENT <b>//</b> </span>RHYTHMS OF PRESCOTT, SAM KARAM</h3>
             </div>
         </div>
