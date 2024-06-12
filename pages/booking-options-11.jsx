@@ -18,7 +18,7 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name disco-saturdays">Disco Saturdays</h1>
+        <h1 class="event-name dinner-tunes">Dinner & Tunes</h1>
         <div class="event-info">
             <div class="info date">
               <h2><span>SAT</span>22 Jun</h2>
@@ -55,13 +55,6 @@ const BookingOptions = () => {
              <a class="menu-btn premium-menu-btn" href="https://www.little-portland.com/premium-set-menu" target="_blank">
               <span>[PREMIUM MENU]</span>
              </a>
-            </Button>
-        </div>
-        <div class="button-wrapper new-button-wrapper">
-            <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="https://sevn.ly/x2JMC0gn" target="_blank">
-                CLUB GUESTLIST ONLY
-              </a>
             </Button>
         </div>
       </div>
