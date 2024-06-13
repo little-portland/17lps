@@ -39,7 +39,7 @@ const Menu = ({ menuImage }) => {
               <p className="nocturn-text">crave rave creatures of the deep this is our home slip slip 
 slip into another skin within down under daddy ten 
 thousand leagues below the surface descend into the 
-hadal zone where life has come undone every breathe 
+hadal zone where life has come undone every breath 
 sacred in this watery grave sing your death song and be 
 born again shadow dancing the night sea journey turn the 
 key touch tentacles far reaching seething teething a rip in 
