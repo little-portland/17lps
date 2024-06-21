@@ -14,7 +14,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'body{background-color: #96ddf3!important;overflow:scroll!important;-webkit-overflow-scrolling:touch!important;}'}
+            {'body{background-color: #340466!important;overflow:scroll!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
@@ -29,7 +29,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
-        <title>Nocturn - Zoë Marden</title>
+        <title>Nocturn</title>
       </Head>
       
          <div className="nocturn">
