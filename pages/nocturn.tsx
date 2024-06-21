@@ -24,7 +24,7 @@ const Menu = ({ menuImage }) => {
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;}'}
-            {'.nocturn .flyer{transition: all 0.5s;padding: 5px;border-bottom: 5px solid #1c043d;}'}
+            {'.nocturn .flyer{transition: all 0.5s;border-bottom: 5px solid #1c043d;}'}
             {'.nocturn .flyer:hover{border-bottom: 5px solid #bfff10;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #dddac3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;transition: all 0.5s;}'}
@@ -39,18 +39,18 @@ const Menu = ({ menuImage }) => {
               <div className="column">
                 <a href="https://www.little-portland.com/nocturn-01" target="_blank">
                   <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_1.jpg" />
+                  <div className="nocturn-text-wrapper"> 
+                    <p className="nocturn-text">Learn more &#8594;</p>
+                  </div>
                 </a>
-                <div className="nocturn-text-wrapper top"> 
-                  <p className="nocturn-text">Learn more &#8594;</p>
-                </div>
               </div>
               <div className="column">
                 <a href="https://www.little-portland.com/nocturn-02" target="_blank">
                   <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_2.jpg" />
+                  <div className="nocturn-text-wrapper"> 
+                    <p className="nocturn-text">Learn more &#8594;</p>
+                  </div>
                 </a>
-                <div className="nocturn-text-wrapper top"> 
-                  <p className="nocturn-text">Learn more &#8594;</p>
-                </div>
               </div>
            </div>
          </div>      
