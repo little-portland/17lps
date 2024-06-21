@@ -25,7 +25,7 @@ const Menu = ({ menuImage }) => {
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;}'}
             {'.nocturn .flyer{transition: all 0.5s;padding: 5px;}'}
-            {'.nocturn .flyer:hover{border: 1px solid #bfff10;filter: grayscale(50%);}'}
+            {'.nocturn .flyer:hover{border: 2px solid #bfff10; filter: blur(4px);}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #dddac3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.nocturn a:hover{color: #ff00ff;}'}
