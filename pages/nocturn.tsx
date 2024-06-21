@@ -20,12 +20,12 @@ const Menu = ({ menuImage }) => {
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
-            {'.top{ font-size: 35px;}'}
+            {'.top{ font-size: 28px;}'}
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
-            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
+            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;}'}
             {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
-            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #0068ff!important;padding-bottom: 30px;line-height: 1.1;}'}
+            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #dddac3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
@@ -39,7 +39,7 @@ const Menu = ({ menuImage }) => {
                   <img src="/images/nocturn/17LPS_Flyer_Nocturn_1.jpg" />
                 </a>
                 <div className="nocturn-text-wrapper top"> 
-                  <p className="nocturn-text">crave rave creatures of the deep this is our home slip slip </p>
+                  <p className="nocturn-text">Learn more &#8594;</p>
                 </div>
               </div>
               <div className="column">
@@ -47,7 +47,7 @@ const Menu = ({ menuImage }) => {
                   <img src="/images/nocturn/17LPS_Flyer_Nocturn_2.jpg" />
                 </a>
                 <div className="nocturn-text-wrapper top"> 
-                  <p className="nocturn-text">crave rave creatures of the deep this is our home slip slip </p>
+                  <p className="nocturn-text">Learn more &#8594;</p>
                 </div>
               </div>
            </div>
