@@ -20,7 +20,7 @@ const Menu = ({ menuImage }) => {
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
-            {'.top{ font-size: 28px;}'}
+            {'.top{ font-size: 18px;}'}
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;}'}
