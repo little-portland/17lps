@@ -24,8 +24,8 @@ const Menu = ({ menuImage }) => {
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;}'}
-            {'.nocturn .flyer{transition: all 0.5s;border-bottom: 5px solid #1c043d;}'}
-            {'.nocturn .flyer:hover{border-bottom: 5px solid #bfff10;}'}
+            {'.nocturn .flyer{transition: all 0.5s;border-bottom: 2px solid #1c043d;}'}
+            {'.nocturn .flyer:hover{border-bottom: 2px solid #bfff10;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #dddac3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.nocturn a{transition: all 0.5s;text-decoration: none;}'}
