@@ -31,10 +31,8 @@ const Menu = ({ menuImage }) => {
         </style>
         <title>Nocturn</title>
       </Head>
-      
          <div className="nocturn">
            <img src="/images/nocturn-main-web-page-header.png" alt="Nocturn" width="100%" />
-
            <div className="row">
               <div className="column">
                 <a href="https://www.little-portland.com/nocturn-01" target="_blank">
@@ -53,7 +51,6 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
            </div>
-           
          </div>      
     </>
   );
