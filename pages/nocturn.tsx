@@ -24,8 +24,8 @@ const Menu = ({ menuImage }) => {
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;}'}
-            {'.nocturn .flyer{transition: all 0.5s;}'}
-            {'.nocturn .flyer:hover{filter: blur(3px);filter: grayscale(100%);}'}
+            {'.nocturn .flyer{transition: all 0.5s;padding: 5px;}'}
+            {'.nocturn .flyer:hover{border: 1px solid #bfff10;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #dddac3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
