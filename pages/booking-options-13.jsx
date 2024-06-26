@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>29 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Greg Wilson</h3>
+              <h3><span>STUDIO <b>//</b> </span>Davide Del Vecchio, Greg Wilson</h3>
               <h3><span>TENT <b>//</b> </span>ECE DUZGÏT, Tim lang</h3>
             </div>
         </div>
