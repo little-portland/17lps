@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>18 JUL</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Chavez, max, vinyl speed adjust</h3>
+              <h3><span>STUDIO <b>//</b> </span>Chavez, Max Sprauer, vinyl speed adjust</h3>
               <h3><span>TENT <b>//</b> </span>TONY B2B LUCA ANDREOZZI</h3>
             </div>
         </div>
