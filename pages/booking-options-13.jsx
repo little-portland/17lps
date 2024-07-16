@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>20 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SEAN OD + SPECIAL GUEST</h3>
+              <h3><span>STUDIO <b>//</b> </span>Heels & Souls, Sean OD</h3>
               <h3><span>TENT <b>//</b> </span>BABA ALI, LUTHER VINE</h3>
             </div>
         </div>
