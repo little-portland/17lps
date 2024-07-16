@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>SILVERLINING & Friends</h3>
-              <h3><span>TENT <b>//</b> </span>TRIXIE</h3>
+              <h3><span>TENT <b>//</b> </span>Tom Gillieron</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
