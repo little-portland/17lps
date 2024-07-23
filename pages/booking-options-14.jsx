@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>FRENCHY, ROBERT JAMES, SUBB-AN, VOIGTMANN</h3>
-              <h3><span>TENT <b>//</b> </span>HARRI PEPPER, MARCELINA WICK</h3>
+              <h3><span>TENT <b>//</b> </span>HARRI PEPPER, MARCELINA</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
