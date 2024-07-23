@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>01 AUG</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>KT, SILVERLINING3MINDS, 3MINDS</h3>
+              <h3><span>STUDIO <b>//</b> </span>KT, SILVERLINING, 3MINDS</h3>
               <h3><span>TENT <b>//</b> </span>CHARLIE INMAN, PIETER JANSEN, TOM GILLIERON, TRIXIE</h3>
             </div>
         </div>
