@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>08 AUG</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>GILES SMITH & FRIENDS</h3>
+              <h3><span>STUDIO <b>//</b> </span>DAN MELA, GILES SMITH</h3>
               <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, Nick Williams</h3>
             </div>
         </div>
