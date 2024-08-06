@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>10 AUG</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>ALEX FROM UTOPIA</h3>
+              <h3><span>STUDIO <b>//</b> </span>ALEX FROM UTOPIA & Friends</h3>
               <h3><span>TENT <b>//</b> </span>DR J, RAOUL EDWARDS</h3>
             </div>
         </div>
