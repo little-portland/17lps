@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>FRI</span>30 Aug</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>DANNY DAZE</h3>
               <h3><span>TENT <b>//</b> </span>FREDERIKA, MILLIE MCKEE</h3>
+              <h3><span>STUDIO <b>//</b> </span>DANNY DAZE</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
