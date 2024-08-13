@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>22 AUG</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>GABRIEL RAI, GALVIN, LUKAS WIGFLEX</h3>
               <h3><span>TENT <b>//</b> </span>CHÉ, MAYBE LAURA & REMI MAZET</h3>
+              <h3><span>STUDIO <b>//</b> </span>GABRIEL RAI, GALVIN, LUKAS WIGFLEX</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
