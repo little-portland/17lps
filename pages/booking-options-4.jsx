@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>29 AUG</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>ATON, JOA (JOS & LOA SZALA)</h3>
               <h3><span>TENT <b>//</b> </span>MODERNO (DAMIANO & CRL)</h3>
+              <h3><span>STUDIO <b>//</b> </span>ATON, JOA (JOS & LOA SZALA)</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
