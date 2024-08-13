@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>STCKMAN, TONY SERBAN</h3>
-              <h3><span>STUDIO <b>//</b> </span>David Triana, Ferny</h3>
+              <h3><span>STUDIO <b>//</b> </span>David Berrie, David Triana, Ferny</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
