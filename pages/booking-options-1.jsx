@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>WED</span>04 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO<b>//</b> </span>NCT [02] // ZOË MARDEN // A NIGHT OF READINGS AND PERFORMANCES</h3>
               <h3><span>TENT <b>//</b> </span>MArio Bakuna & Fernando Demarco</h3>
+              <h3><span>STUDIO<b>//</b> </span>NCT [02] // ZOË MARDEN // A NIGHT OF READINGS AND PERFORMANCES</h3>
             </div>
         </div>
          <div class="button-wrapper new-button-wrapper">
