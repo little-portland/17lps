@@ -18,19 +18,18 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name sunday-special">Sunday Special</h1>
+        <h1 class="event-name sunday-special">Carnival Special</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>Sun</span>07 Apr</h2>
+              <h2><span>Sun</span>08 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>Hermanos Gutiérrez</h3>
-              <h3><span>TENT <b>//</b> </span>Closed</h3>
+              <h3><span>TENT & STUDIO <b>//</b> </span>Isaac Carter & Friends</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper book-only-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="https://sevn.ly/xUSQptYT" target="_blank">
+              <a href="https://sevn.ly/xDUNXJq4" target="_blank">
                 Book Club Ticket
               </a>
             </Button>
