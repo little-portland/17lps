@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>12 SEP</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>KEM, MARCELINA WICK</h3>
+              <h3><span>TENT <b>//</b> </span>KEM, MARCELINA</h3>
               <h3><span>STUDIO <b>//</b> </span>Nicky Macha & kensa</h3>
             </div>
         </div>
