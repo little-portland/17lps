@@ -55,7 +55,7 @@ const Bookings = () => {
           }}
           style={style}
         />
-     <div className="bookings-body-text">
+          <div className="bookings-body-text"> 
         <h1 className="bookings-heading-0">LARGE GROUPS</h1>
           <ul>
             <li>For group reservations for 10 persons or more, please email us at <a href="mailto:eat@little-portland.com">eat@little-portland.com</a>.</li>
@@ -68,20 +68,20 @@ const Bookings = () => {
           
           <h1 className="bookings-heading-1">CHEF’S STUDIO</h1>
           <ul>
-            <li>The Chef’s Studio follows a set menu format and is £100pp. <a href="https://www.little-portland.com/chefs-menu" target="_blank">Click here</a> to see a sample menu.</li>
-            <li>To confirm a reservation, we require a deposit equal to £100pp.</li>
-            <li>Cancellations within 10 days of your dinner reservation or no-shows will be subject to a £100pp late cancellation fee.</li>
+            <li>The Chef’s Studio follows a set menu format with a choice between our <a href="https://www.little-portland.com/regular-set-menu" target="_blank">standard</a> and <a href="https://www.little-portland.com/premium-set-menu" target="_blank">premium</a> menus.</li>
+            <li>To confirm a reservation, we require a £40 per person deposit redeemable towards your final bill.</li>
+            <li>Cancellations within 10 days of your dinner reservation or no-shows will be subject to a £40 per person cancellation fee.</li>
             <li>Reductions in group sizes within 10 days of your reservation time will also result in late cancellation fees being charged.</li>
-            <li>Reservations can be made for a minimum group size of 8 for Wednesdays and Thursdays, and 4 for Fridays and Saturdays.</li>
+            <li>Reservations can be made for a minimum group size of 8 and maximum 12 between Wednesdays – Saturdays.</li>
             <li>Reservations must be made at least 7 days in advance.</li>
-            <li>Unfortunately we cannot cater for allergies or dietary requirements in the Chef’s Studio. No changes can be made to the set menu. Menu is subject to change depending on availability of produce.</li>
+            <li>Please let us know in advance for any specific dietary requirements within the group.</li>
             <li>For more information, to make a reservation or modify an existing one, contact <a href="mailto:eat@little-portland.com">eat@little-portland.com</a></li>
           </ul>
 
           <h1 className="bookings-heading-1">PRIVATE HIRE + PRIVATE DINING</h1>
           <ul>
-            <li>Both The Tent and the Chef’s Studio are available for private hire. Contact <a href="mailto:yo@little-portland.com">yo@little-portland.com</a> for more information.</li>
-            <li>Both the large group and Chef’s Studio menus are available for private dinner events (see above for sample menu links).</li>
+            <li>Both The Tent and Studio are available for private hire. Contact <a href="mailto:yo@little-portland.com">yo@little-portland.com</a> for more information.</li>
+            <li>Large groups dining with us, must be on a chosen set menu per person.</li>
             <li>We also offer canapés for private events. <a href="https://www.little-portland.com/canape-menu" target="_blank">Click here</a> to see the sample canapé menu.</li>
             <li>We are able to cater for Private Dining requests for groups of up to 12 in the Chef’s Studio (see details above).</li>
           </ul>
@@ -97,7 +97,6 @@ const Bookings = () => {
           <h1 className="bookings-heading-2">MISCELLANEOUS</h1>
           <ul>
             <li>All menus are subject to change depending on availability.</li>
-            <li>Unfortunately we cannot cater for allergies or dietary requirements during special events. No changes can be made to special set menus.</li>
             <li>Anyone under the age of 18 is not permitted to enter the venue.</li>
             <li>Dogs are not permitted to enter the venue.</li>
             <li>No photos or videos are permitted to be taken inside the venue.</li>
