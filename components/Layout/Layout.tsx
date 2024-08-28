@@ -113,7 +113,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         Renowned for his mastery in Chinese cuisine, John draws inspiration from his culinary journey, creating a new radical menu combining Chinese and French bistronomy. With two set menus to choose from, enjoy an intimate dining setting in our invite-only club hidden beneath the Tent at the End of the Universe.</p> 
         <ul>
           <li>Standard menu at £80 per person</li>
-          <li>Premium menu at £100 per person/li>
+          <li>Premium menu at £100 per person</li>
         </ul>
         <br/>  
           <p>Wed - Thu: Minimum 8 guests per booking</p>
