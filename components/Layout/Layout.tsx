@@ -109,10 +109,11 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-1 box"> 
         <h2>CHEF’S STUDIO @ 17 LITTLE PORTLAND STREET</h2>
         <h4>WEDNESDAYS - SATURDAYS</h4>
-        <p>Experience Chef John Javier's culinary expertise in our Chef's Studio, located at 17 Little Portland Street. Join us Wednesdays through Saturdays for an exclusive intimate dining experience, hidden beneath The Tent. Chef John Javier presents two set menu options for your enjoyment:</p> 
+        <p>An intimate 12-seater dining experience hosted by Chef John Javier.<br/>
+        Renowned for his mastery in Chinese cuisine, John draws inspiration from his culinary journey, creating a new radical menu combining Chinese and French bistronomy. With two set menus to choose from, enjoy an intimate dining setting in our invite-only club hidden beneath the Tent at the End of the Universe.</p> 
         <ul>
-          <li>Chinese set menu priced at £100 per person**</li>
-          <li>Standard set menu priced at £80 per person</li>
+          <li>Standard menu at £80 per person</li>
+          <li>Premium menu at £100 per person/li>
         </ul>
         <br/>  
           <p>Wed - Thu: Minimum 8 guests per booking</p>
