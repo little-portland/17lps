@@ -116,9 +116,9 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <li>Premium menu at £100 per person</li>
         </ul>
         <br/>  
-          <p>Wed - Thu: Minimum 8 guests per booking</p>
-          <p>Fri - Sat: Minimum 4 guests per booking</p>
-          <p>(Maximum 12 sit-down)</p>
+          <p>Available Wednesdays - Saturdays</p>
+          <p>Minimum 8 guests</p>
+          <p>Maximum 12 guests seated</p>
         <br/> 
         <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/regular-set-menu" target="_blank">[REGULAR SET MENU]</a> <a href="https://www.little-portland.com/premium-set-menu" target="_blank">[PREMIUM SET MENU]</a></p>
         </div>}
