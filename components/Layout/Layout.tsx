@@ -156,6 +156,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="eat-note"
       >       
          <h1>Private Hire</h1>
+        <br/>
         <Image 
             src={"/images/hire-page-chef-tent.jpg"}
             blurDataURL={"/images/hire-page-chef-tent.jpg"}
