@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>BABA ALI, Ece Düzgit</h3>
-              <h3><span>STUDIO <b>//</b> </span>SECRET GUEST</h3>
+              <h3><span>STUDIO <b>//</b> </span>BRAWTHER</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
