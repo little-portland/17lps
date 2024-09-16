@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Frederika, Maybe Laura & Remi Mazet</h3>
-              <h3><span>STUDIO <b>//</b> </span>Sammy Dee</h3>
+              <h3><span>STUDIO <b>//</b> </span>Georgia, Sammy Dee</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
