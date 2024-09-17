@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+laimport React, { useEffect } from "react";
 import Head from "next/head";
 import Script from "next/script";
 
@@ -18,7 +18,7 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name focal-point-presents">Focal Point Presents</h1>
+        <h1 class="event-name openlab-presents">Openlab Presents</h1>
         <div class="event-info">
             <div class="info date">
               <h2><span>THU</span>04 JUL</h2>
