@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>26 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>ERIC DUNCAN, Maybe Laura & Remi Mazet</h3>
+              <h3><span>TENT <b>//</b> </span>FREDERIKA, Maybe Laura & Remi Mazet</h3>
               <h3><span>STUDIO <b>//</b> </span>Georgia, Sammy Dee</h3>
             </div>
         </div>
