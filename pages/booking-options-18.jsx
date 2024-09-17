@@ -18,10 +18,10 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name public-image">Public Image</h1>
+        <h1 class="event-name friday-residents">Digital Soundboy</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>WED</span>04 Sep</h2>
+              <h2><span>WED</span>18 Sep</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MArio Bakuna & Fernando Demarco</h3>
