@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DEMI, MR SHIVER</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
+              <h3><span>STUDIO <b>//</b> </span>ADAM SHELTON, SUBB-AN</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
