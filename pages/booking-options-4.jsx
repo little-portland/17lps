@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>10 Oct</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DE LA REEF, RADIOACTIVE MAN</h3>
-              <h3><span>STUDIO <b>//</b> </span>CHÉ, COSMO SOFI</h3>
+              <h3><span>TENT <b>//</b> </span>CHÉ, COSMO SOFI</h3>
+              <h3><span>STUDIO <b>//</b> </span>DE LA REEF, RADIOACTIVE MAN</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
