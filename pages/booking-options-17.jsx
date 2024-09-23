@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>28 SEP</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Nathan colinet</h3>
+              <h3><span>TENT <b>//</b> </span>Gregorio Soave (live), Nathan colinet</h3>
               <h3><span>STUDIO <b>//</b> </span>secret guest</h3>
             </div>
         </div>
