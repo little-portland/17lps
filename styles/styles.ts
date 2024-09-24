@@ -319,6 +319,10 @@ html, body {
     font-size: 5.1rem;
 }
 
+#bookingOptions .warmer-people {
+    font-size: 5.4rem;
+}
+
 #bookingOptions .utopia-project {
     font-size: 3.9rem;
 }
