@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MArio Bakuna & Fernando Demarco</h3>
-              <h3><span>STUDIO<b>//</b> </span>SEB CHEW, SHY FX</h3>
+              <h3><span>STUDIO<b>//</b> </span>SEB CHEW, Clipz, SHY FX</h3>
             </div>
         </div>
          <div class="button-wrapper new-button-wrapper">
