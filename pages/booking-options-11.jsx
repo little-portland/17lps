@@ -46,7 +46,7 @@ const BookingOptions = () => {
               <span>BOOK DINNER</span>
               <span class="space">IN CHEF’S STUDIO</span>
               <p class="time">Includes Free Club Entry</p>
-              <p class="details"><span>8-12 PAX</span><span>8PM</span><span>£100PP</span></p>
+              <p class="details"><span>8-12 PAX</span><span>8PM</span><span>FROM £80PP</span></p>
              </a>
              <p class="dotted-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/regular-set-menu" target="_blank">
@@ -55,6 +55,13 @@ const BookingOptions = () => {
              <a class="menu-btn premium-menu-btn" href="https://www.little-portland.com/premium-set-menu" target="_blank">
               <span>[PREMIUM MENU]</span>
              </a>
+            </Button>
+        </div>
+        <div class="button-wrapper new-button-wrapper">
+            <Button classes="events-button ticketNew" btnType="hollow">
+            <a href="https://sevn.ly/x1FNlNSY" target="_blank">
+                CLUB GUESTLIST ONLY
+              </a>
             </Button>
         </div>
       </div>
