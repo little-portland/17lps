@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>THU</span>17 Sep</h2>
+              <h2><span>THU</span>17 Oct</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>BOWYER, DELASFLORES, PIR</h3>
