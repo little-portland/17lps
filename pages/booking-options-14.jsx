@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>17 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>BOWYER, DELASFLORES, ENSEMBLE SOUNDS</h3>
+              <h3><span>TENT <b>//</b> </span>BOWYER, DELASFLORES, PIR</h3>
               <h3><span>STUDIO <b>//</b> </span>JUNKIE INOUE, KATE08, TRIXIE </h3>
             </div>
         </div>
