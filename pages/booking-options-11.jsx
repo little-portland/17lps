@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name friday-residents">Digital Soundboy</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>09 OCT</h2>
+              <h2><span>WED</span>09 OCT</h2>
             </div>
             <div class="info artists">
               <h3><span>STUDIO <b>//</b> </span>SEB CHEW, SHY FX</h3>
