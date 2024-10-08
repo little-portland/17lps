@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>WED</span>09 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>STUDIO <b>//</b> </span>SEB CHEW, SHY FX</h3>
+              <h3><span>STUDIO <b>//</b> </span>Champion, Seb Chew, Shy FX</h3>
               <h3><span>TENT <b>//</b> </span>MArio Bakuna & DEICOLA NEVES</h3>
             </div>
         </div>
