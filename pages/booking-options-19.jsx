@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>CLOSED</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
+              <h3><span>STUDIO <b>//</b> </span> FUNKTONIO, OHM HOURANI</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
