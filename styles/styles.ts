@@ -301,6 +301,15 @@ html, body {
     text-transform: uppercase;
 }
 
+#override-page {
+    position: absolute;
+    width: 700px;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+}
+
 #bookingOptions .event-name {
     font-size: 3.5rem;
     text-align: center;
