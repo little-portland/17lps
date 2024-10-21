@@ -441,7 +441,8 @@ html, body {
 }
 
 #override-page .override-btn {
-  background: rgb(0, 244, 91);
+  background: rgb(0, 244, 91)!important;
+  border: none!important;
 }
  
   #bookingOptions .event-info .info {
