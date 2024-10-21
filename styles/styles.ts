@@ -372,6 +372,10 @@ html, body {
     font-size: 1.7rem !important;
 }
 
+.override-page img {
+  margin-bottom: 20px;
+}
+
 #bookingOptions .un-mute {
     font-size: 10rem;
     margin-bottom: 0.5rem;
