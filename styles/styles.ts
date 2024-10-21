@@ -810,9 +810,6 @@ html, body {
           margin-bottom: .3rem;
         }
 
-       .override-btn .dotted-divider {
-          margin: 10px 0 !important;
-      }  
         .eat-note {
           max-height: 375px;
         }
@@ -957,6 +954,10 @@ html, body {
       .new-button-wrapper .dotted-divider {
         margin: 0px!important;
       }
+
+      .override-btn .dotted-divider {
+          margin: 10px 0 !important;
+      }  
        
     }
 
