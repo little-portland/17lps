@@ -724,10 +724,6 @@ html, body {
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
 
-    #bookingOptions .override {
-      font-size: 3.8rem!important;
-    }
-
     #bookingOptions .guest-chef-title {
       font-size: 2rem!important;
     }
@@ -853,6 +849,10 @@ html, body {
         
         #bookingOptions .event-name {
           font-size: 2.5rem;
+        }
+
+        #bookingOptions .override {
+            font-size: 3.8rem!important;
         }
         
         #bookingOptions .event-info {
