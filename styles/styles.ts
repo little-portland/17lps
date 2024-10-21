@@ -649,6 +649,12 @@ html, body {
     padding-bottom: 5px;
 }
 
+.override-btn span {
+    margin-bottom: 0!important;
+    padding-bottom: 0!important;
+    font-size: 2rem !important;
+}
+
 .new-button-wrapper .menu-btn span {
     font-size: 1rem !important;
     cursor: pointer;
