@@ -14,13 +14,6 @@ const BookingOptions = () => {
 
   return (
     <>
-      <Head>
-        <style>
-            {'body{background-color: #000!important;}'}
-            {'.override-page{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #d5ccc0!important;padding-bottom: 30px;line-height: 1.1;}'}
-        </style>
-        <title>Override - Guest CHef Takeovers</title>
-      </Head>
 
       <div id="bookingOptions" class="override-page">
         <img src="/images/override-tittle.png" alt="Override" width="100%" />           
