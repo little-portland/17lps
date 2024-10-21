@@ -20,7 +20,6 @@ const BookingOptions = () => {
 
       <div id="bookingOptions">
         <img src="/images/override-tittle.png" alt="Override" width="100%" />           
-        <h1 class="event-name override">Override</h1>
         <div class="event-info">
             <div class="info guest-chef-title">
               <h3>Guest chef takeovers</h3>
