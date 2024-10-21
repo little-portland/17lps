@@ -317,7 +317,7 @@ html, body {
     text-align: left;
 }
 
-#override-page .takeover-time {
+#override-page time {
    1.5rem!important;
 }
 
@@ -821,7 +821,7 @@ html, body {
         font-size: 1.4rem !important;
       }
 
-      .override-btn takeover-time {
+      .override-btn time {
         font-size: 1.2rem !important;
       }
 
