@@ -438,10 +438,14 @@ html, body {
     margin-bottom: 8px;
     gap: 8px;
  }
-
- .override-page h3, .override-page p, .override-page a  {
-   text-align: right;
+ 
+  .override-page h3, .override-page p {
+   text-align: center;
  }
+
+  .override-page a  {
+     text-align: right;
+   }
  
   #bookingOptions .event-info .info {
     color: rgb(232, 186, 201);
