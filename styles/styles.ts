@@ -318,7 +318,7 @@ html, body {
 }
 
 #override-page .takeover-time {
-   1.5rem!important
+   1.5rem!important;
 }
 
 #bookingOptions .event-name {
