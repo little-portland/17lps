@@ -358,7 +358,7 @@ html, body {
     margin-top: 20px;
 }
 
-.override-btn .dotted-divider {
+.override-btn .dotted-divider, .override-btn .dotted-divider {
     margin: 10px 0!important;
 }
 
