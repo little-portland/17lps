@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
-            <Button classes="events-button ticketNew override-btn" btnType="hollow">
+            <Button classes="events-button ticketNew override-btn" btnType="hollow" >
               <a href="https://sevn.ly/xeLHgzuf" target="_blank">
                 Gabriel Pryce (Rita’s)
                 <p class="dotted-divider first-divider"></p>
