@@ -20,7 +20,7 @@ const BookingOptions = () => {
       <div id="bookingOptions">
         <h1 class="event-name override">Override</h1>
         <div class="event-info">
-            <div class="info artists">
+            <div class="info guest-chef-title">
               <h3>Guest chef takeovers</h3>
             </div>
         </div>
