@@ -29,7 +29,7 @@ const BookingOptions = () => {
               <a href="https://sevn.ly/xeLHgzuf" target="_blank">
                 Gabriel Pryce (Rita’s)
                <hr />
-                <span></>28 November - From 7PM</span>
+                <span>28 November - From 7PM</span>
               </a>
             </Button>
         </div>
