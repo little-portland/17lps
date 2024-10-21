@@ -317,6 +317,10 @@ html, body {
     text-align: left;
 }
 
+#override-page .takeover-time {
+   1.5rem!important
+}
+
 #bookingOptions .event-name {
     font-size: 3.5rem;
     text-align: center;
