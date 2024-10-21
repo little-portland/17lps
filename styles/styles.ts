@@ -727,10 +727,6 @@ html, body {
     #bookingOptions .guest-chef-title {
       font-size: 2rem!important;
     }
-
-    .override-btn .dotted-divider {
-      margin: 10px 0 !important;
-    }
    
   #bookingOptions .ticket .dotted-divider {
     margin-bottom: 5px!important;
@@ -813,7 +809,10 @@ html, body {
           line-height: 10px;
           margin-bottom: .3rem;
         }
-        
+
+       .override-btn .dotted-divider {
+          margin: 10px 0 !important;
+      }  
         .eat-note {
           max-height: 375px;
         }
