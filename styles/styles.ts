@@ -318,7 +318,7 @@ html, body {
 }
 
 #override-page time {
-   display: block;
+    display: block;
     font-size: 1.5rem;
 }
 
@@ -823,6 +823,7 @@ html, body {
       }
 
       .override-btn time {
+        margin-top: .3rem;
         font-size: 1.2rem !important;
       }
 
