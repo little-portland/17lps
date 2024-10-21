@@ -1013,6 +1013,10 @@ html, body {
           font-size: 1.7rem !important;
           line-height: 2rem !important;
       } 
+
+      .override-footnote {
+          font-size: .9rem !important;
+      }
        
     }
 
