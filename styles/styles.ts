@@ -310,6 +310,13 @@ html, body {
     text-transform: uppercase;
 }
 
+#override-page .takeover-date {
+    float: left;
+    position: absolute;
+    top: 0;
+    text-align: left;
+}
+
 #bookingOptions .event-name {
     font-size: 3.5rem;
     text-align: center;
@@ -368,6 +375,7 @@ html, body {
 }
 
 .override-btn {
+    position: relative;
     font-size: 2rem !important;
     margin-top: 20px;
 }
