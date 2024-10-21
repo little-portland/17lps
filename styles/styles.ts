@@ -383,7 +383,7 @@ html, body {
 }
 
 .override-page img {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #bookingOptions .un-mute {
