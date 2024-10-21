@@ -53,6 +53,12 @@ const BookingOptions = () => {
               </a>
             </Button>
         </div>
+         <div>
+           <p class="override-footnote">
+           Override sees guest chefs taking over The Tent, curating a one-night-only special set menu. 
+Note that dietary restrictions will not be accommodated for these events.
+           </p>
+         </div>
       </div>
     </>
   );
