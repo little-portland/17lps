@@ -347,10 +347,6 @@ html, body {
     line-height: 1;
 }
 
-#bookingOptions .override .event-info {
-    margin-bottom: 0!important;
-}
-
 #bookingOptions .guest-chef-title {
     font-size: 3.4rem;
     text-align: center;
@@ -428,6 +424,10 @@ html, body {
     margin-bottom: 8px;
     gap: 8px;
  }
+
+ #bookingOptions .override .event-info {
+    margin-bottom: 0!important;
+}
  
   #bookingOptions .event-info .info {
     color: rgb(232, 186, 201);
