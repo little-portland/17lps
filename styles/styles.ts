@@ -382,6 +382,7 @@ html, body {
     position: relative;
     font-size: 2rem !important;
     margin-top: 20px;
+    padding: 15px 15px 17px 15px;
 }
 
 .override-btn .dotted-divider, .override-btn .first-divider {
