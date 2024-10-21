@@ -725,7 +725,19 @@ html, body {
     @media only screen and (max-device-width: 1024px) { 
 
     #bookingOptions .override {
-      font-size: 3.8rem;
+      font-size: 3.8rem!important;
+    }
+
+    #bookingOptions .guest-chef-title {
+      font-size: 2rem!important;
+    }
+
+    .override-btn span {
+      font-size: 1.0rem !important;
+    }
+
+    .override-btn .dotted-divider {
+      margin: 10px 0 !important;
     }
    
   #bookingOptions .ticket .dotted-divider {
