@@ -22,7 +22,7 @@ const BookingOptions = () => {
             {'.override-page a{ font-family: Oswald!important;font-weight: bold!important;text-decoration: none!important;color: #000!important;line-height: 1.1;font-size: 2.3rem!important;}'}
             {'.override-page button:hover{background: #d5ccc0!important;}'}
             {'.override-page span{display: block!important;margin-top: 15px;}'}
-            {'@media (max-width: 768px) { #override-page{ width: 300px!important;top: 2%!important;}.override-page button{margin-top:10px!important;}.override-page h3 { font-size: 3rem!important;padding-bottom: 20px!important;margin-top: -10px!important;}.override-page a {padding: 5px 10px!important;}}'}
+            {'@media (max-width: 768px) { #override-page{ width: 300px!important;top: 2%!important;}.override-page button{margin-top:10px!important;}.override-page h3 { font-size: 3rem!important;padding-bottom: 10px!important;margin-top: -10px!important;}.override-btn a {line-height: 2.5rem !important;}.override-page a {padding: 5px 10px!important;}}'}
         </style>
         <title>Override - Guest CHef Takeovers</title>
       </Head>
