@@ -430,8 +430,18 @@ html, body {
     gap: 8px;
  }
 
+ .override-page h3, .override-page p, .override-page a  {
+   text-align: right;
+ }
+
  #bookingOptions .override .event-info {
     margin-bottom: 0!important;
+    display: block;
+    text-align: right;
+}
+
+#override-page .override-btn {
+  background: rgb(0, 244, 91);
 }
  
   #bookingOptions .event-info .info {
