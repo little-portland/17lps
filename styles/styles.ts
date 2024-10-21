@@ -340,7 +340,7 @@ html, body {
 }
 
 #bookingOptions .override {
-    font-size: 9rem;
+    font-size: 9rem; 
 }
 
 #bookingOptions .guest-chef-title {
