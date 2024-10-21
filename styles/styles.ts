@@ -829,7 +829,7 @@ html, body {
       }
 
       #override-page .takeover-date {
-          top: 18px;
+          top: 21px;
       }
 
       .new-button-wrapper .cusine {
