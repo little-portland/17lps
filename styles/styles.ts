@@ -631,7 +631,7 @@ html, body {
 
 .new-button-wrapper .ticketNew a {
     font-size: 2.5rem;
-    line-height: 2rem;
+    line-height: 2.5rem;
   }
 
   .book-only-wrapper .ticketNew {
