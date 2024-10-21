@@ -17,7 +17,7 @@ const BookingOptions = () => {
       <Head>
         <style>
             {'body{background-color: #000!important;}'}
-            {'.override-page h3{ font-family: Oswald!important;font-weight: bold!important;text-decoration: none!important;color: #d5ccc0!important;padding-bottom: 15px;line-height: 1.1;font-size:4rem!important;}'}
+            {'.override-page h3{ font-family: Oswald!important;font-weight: bold!important;text-decoration: none!important;color: #d5ccc0!important;padding-bottom: 15px;line-height: 1.1;font-size:4.4rem!important;}'}
             {'.override-page p{ font-family: Oswald!important;font-weight: bold!important;text-decoration: none!important;color: #d5ccc0!important;padding-bottom: 30px;line-height: 1.5;font-weight: 300 !important; font-style: italic!important;}'}
             {'.override-page a{ font-family: Oswald!important;font-weight: bold!important;text-decoration: none!important;color: #000!important;line-height: 1.1;font-size: 2.3rem!important;}'}
             {'.override-page span{display: block!important;margin-top: 15px;}'}
