@@ -343,6 +343,10 @@ html, body {
     font-size: 9rem; 
 }
 
+#bookingOptions .override a {
+    line-height: 1;
+}
+
 #bookingOptions .override .event-info {
     margin-bottom: 0!important;
 }
