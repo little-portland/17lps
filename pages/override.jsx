@@ -28,7 +28,7 @@ const BookingOptions = () => {
             <Button classes="events-button ticketNew" btnType="hollow">
               <a href="https://sevn.ly/xeLHgzuf" target="_blank">
                 Gabriel Pryce (Rita’s)
-               <hr />
+                <p class="dotted-divider first-divider"></p>
                 <span>28 November - From 7PM</span>
               </a>
             </Button>
@@ -38,7 +38,7 @@ const BookingOptions = () => {
             <Button classes="events-button ticketNew" btnType="hollow">
               <a href="https://sevn.ly/xeLHgzuf" target="_blank">
                 Gabriel Pryce (Rita’s)
-               <hr />
+                <p class="dotted-divider first-divider"></p>
                 <span>28 November - From 7PM</span>
               </a>
             </Button>
@@ -48,7 +48,7 @@ const BookingOptions = () => {
             <Button classes="events-button ticketNew" btnType="hollow">
               <a href="https://sevn.ly/xeLHgzuf" target="_blank">
                 Gabriel Pryce (Rita’s)
-               <hr />
+                <p class="dotted-divider first-divider"></p>
                 <span>28 November - From 7PM</span>
               </a>
             </Button>
