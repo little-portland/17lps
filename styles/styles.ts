@@ -728,10 +728,6 @@ html, body {
       font-size: 2rem!important;
     }
 
-    .override-btn span {
-      font-size: 1.0rem !important;
-    }
-
     .override-btn .dotted-divider {
       margin: 10px 0 !important;
     }
@@ -781,6 +777,10 @@ html, body {
       .new-button-wrapper span {
         line-height: 1.2rem;
         font-size: 1.7rem!important;
+      }
+
+      .override-btn span {
+        font-size: 1rem !important;
       }
 
       .new-button-wrapper .cusine {
