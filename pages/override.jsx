@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Image from "next/image";
 import Head from "next/head";
 import Script from "next/script";
 
@@ -18,6 +19,10 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
+      <Image 
+            src={"/images/override-tittle.png"}
+            blurDataURL={"/images/override-tittle.png}
+        />
         <h1 class="event-name override">Override</h1>
         <div class="event-info">
             <div class="info guest-chef-title">
