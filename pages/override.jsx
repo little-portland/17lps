@@ -37,7 +37,7 @@ const BookingOptions = () => {
             <Button classes="events-button ticketNew override-btn" btnType="hollow" >
               <a href="https://sevn.ly/xeLHgzuf" target="_blank">
                 Gabriel Pryce <span class="rest-name">(Rita’s)</span>
-                <span class="takeover-date">28 Nov<time>From 7PM</time>
+                <span class="takeover-date">28 Nov<time>From 7PM</time></span>
               </a>
             </Button>
         </div>
@@ -46,7 +46,7 @@ const BookingOptions = () => {
             <Button classes="events-button ticketNew override-btn" btnType="hollow">
               <a href="https://sevn.ly/x67GScdC" target="_blank">
                 Sirichai “Siri” Kularbwong <span class="rest-name">(Singburi) </span>
-                <span class="takeover-date">11 Dec<time>From 7PM</time>/span>
+                <span class="takeover-date">11 Dec<time>From 7PM</time></span>
               </a>
             </Button>
         </div>
