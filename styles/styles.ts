@@ -818,7 +818,15 @@ html, body {
       }
 
       .override-btn span {
-        font-size: 1rem !important;
+        font-size: 1.4rem !important;
+      }
+
+      .override-btn takeover-time {
+        font-size: 1.2rem !important;
+      }
+
+      #override-page .takeover-date {
+          top: 18px;
       }
 
       .new-button-wrapper .cusine {
@@ -1002,7 +1010,8 @@ html, body {
       }  
 
       .override-btn a {
-          line-height: 2.5rem!important;
+          font-size: 1.7rem !important;
+          line-height: 2rem !important;
       } 
        
     }
