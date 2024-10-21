@@ -343,6 +343,10 @@ html, body {
     font-size: 9rem; 
 }
 
+#bookingOptions .override .event-info {
+    margin-bottom: 0!important;
+}
+
 #bookingOptions .guest-chef-title {
     font-size: 3.4rem;
     text-align: center;
