@@ -33,6 +33,26 @@ const BookingOptions = () => {
               </a>
             </Button>
         </div>
+
+        <div class="button-wrapper new-button-wrapper">
+            <Button classes="events-button ticketNew" btnType="hollow">
+              <a href="https://sevn.ly/xeLHgzuf" target="_blank">
+                Gabriel Pryce (Rita’s)
+               <hr />
+                <span>28 November - From 7PM</span>
+              </a>
+            </Button>
+        </div>
+
+       <div class="button-wrapper new-button-wrapper">
+            <Button classes="events-button ticketNew" btnType="hollow">
+              <a href="https://sevn.ly/xeLHgzuf" target="_blank">
+                Gabriel Pryce (Rita’s)
+               <hr />
+                <span>28 November - From 7PM</span>
+              </a>
+            </Button>
+        </div>
           <div>
             <p>Override sees guest chefs taking over The Tent, curating a one-night-only special set menu. Note that dietary restrictions   
 will not be accommodated for these events. Visit www.little-portland.com/override to book.</p>
