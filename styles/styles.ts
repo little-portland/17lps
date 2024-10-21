@@ -670,6 +670,7 @@ html, body {
 #override-page .override-btn {
   background: rgb(0, 244, 91)!important;
   border: none!important;
+  border-radius: 15px;
 }
 
 .new-button-wrapper .ticketNew a {
