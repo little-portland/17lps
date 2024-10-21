@@ -985,7 +985,7 @@ html, body {
       }  
 
       .override-btn a {
-          line-height: 1.7rem!important;
+          line-height: 2.5rem!important;
       } 
        
     }
