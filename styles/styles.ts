@@ -958,6 +958,10 @@ html, body {
       .override-btn .dotted-divider {
           margin: 10px 0 !important;
       }  
+
+      .override-btn a {
+          line-height: 1.7rem!important;
+      } 
        
     }
 
