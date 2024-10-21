@@ -37,7 +37,7 @@ const BookingOptions = () => {
             <Button classes="events-button ticketNew override-btn" btnType="hollow" >
               <a href="https://sevn.ly/xeLHgzuf" target="_blank">
                 Gabriel Pryce <span class="rest-name">(Rita’s)<span/>
-                <span class="takeover-date">28 November <span class="time">From 7PM<span/></span>
+                <span class="takeover-date">28 Nov<span class="time">From 7PM<span/></span>
               </a>
             </Button>
         </div>
@@ -45,8 +45,8 @@ const BookingOptions = () => {
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew override-btn" btnType="hollow">
               <a href="https://sevn.ly/x67GScdC" target="_blank">
-                Sirichai “Siri” Kularbwong (Singburi)
-                <span>11 December - From 7PM</span>
+                Sirichai “Siri” Kularbwong <span class="rest-name">(Singburi) <span/>
+                <span class="takeover-date">11 Dec<span class="time">From 7PM<span/></span>
               </a>
             </Button>
         </div>
@@ -54,8 +54,8 @@ const BookingOptions = () => {
        <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew override-btn" btnType="hollow">
               <a href="https://sevn.ly/xMWA7DA6" target="_blank">
-                SEB MEYERS (PLanque)
-                <span>29 January - From 7PM</span>
+                SEB MEYERS <span class="rest-name">(PLanque)<span/>
+                <span class="takeover-date">29 Jan<span class="time">From 7PM<span/></span>
               </a>
             </Button>
         </div>
