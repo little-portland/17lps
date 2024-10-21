@@ -14,18 +14,14 @@ const BookingOptions = () => {
   return (
     <>
       <Head>
-        <title>Bookings </title>
+        <title>Override</title>
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name disco-saturdays">Disco Saturdays</h1>
+        <h1 class="event-name override">Override</h1>
         <div class="event-info">
-            <div class="info date">
-              <h2><span>SAT</span>02 Nov</h2>
-            </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>TINTIN</h3>
-              <h3><span>STUDIO <b>//</b> </span>DAVE HARVEY, RALPH LAWSON </h3>
+              <h3>Guest chef takeovers</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
