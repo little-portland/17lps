@@ -19,10 +19,7 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-      <Image 
-            src={"/images/override-tittle.png"}
-            blurDataURL={"/images/override-tittle.png}
-        />
+        <img src="/images/override-tittle.png" alt="Override" width="100%" />           
         <h1 class="event-name override">Override</h1>
         <div class="event-info">
             <div class="info guest-chef-title">
