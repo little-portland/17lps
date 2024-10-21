@@ -339,6 +339,10 @@ html, body {
     font-size: 4.7rem;
 }
 
+#bookingOptions .override {
+    font-size: 9rem;
+}
+
 #bookingOptions .un-mute {
     font-size: 10rem;
     margin-bottom: 0.5rem;
@@ -676,6 +680,10 @@ html, body {
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
     @media only screen and (max-device-width: 1024px) { 
+
+    #bookingOptions .override {
+      font-size: 3.8rem;
+    }
    
   #bookingOptions .ticket .dotted-divider {
     margin-bottom: 5px!important;
