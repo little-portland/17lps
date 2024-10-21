@@ -348,6 +348,26 @@ html, body {
     text-align: center;
 }
 
+.override-footnote {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.override-btn {
+    font-size: 2rem !important;
+    margin-top: 20px;
+}
+
+.override-btn .dotted-divider {
+    margin: 10px 0!important;
+}
+
+.override-btn span {
+    margin-bottom: 0;
+    padding-bottom: 0!important;
+    font-size: 2rem !important;
+}
+
 #bookingOptions .un-mute {
     font-size: 10rem;
     margin-bottom: 0.5rem;
