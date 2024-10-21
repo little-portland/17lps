@@ -385,11 +385,6 @@ html, body {
     margin-top: 20px;
     padding: 15px 15px 17px 15px;
 }
-
-.override-btn:hover {
-    background: #d5ccc0!important;
-}
-
 .override-btn .dotted-divider, .override-btn .first-divider {
     margin: 10px 0!important;
 }
