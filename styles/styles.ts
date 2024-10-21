@@ -433,22 +433,17 @@ html, body {
  .override-page h3, .override-page p, .override-page a  {
    text-align: right;
  }
-
- #bookingOptions .override .event-info {
-    margin-bottom: 0!important;
-    display: block;
-    text-align: right;
-}
-
-#override-page .override-btn {
-  background: rgb(0, 244, 91)!important;
-  border: none!important;
-}
  
   #bookingOptions .event-info .info {
     color: rgb(232, 186, 201);
     background-color: rgb(92, 44, 124);
     padding: 1rem;
+ }
+
+  .override-page .event-info {
+    margin-bottom: 0!important;
+    display: block;
+    text-align: right;
  }
 
    #bookingOptions .event-info .date span {
@@ -643,6 +638,11 @@ html, body {
     width: 100%;
     margin-top: 8px;
     font-size: 1.5rem!important;
+}
+
+#override-page .override-btn {
+  background: rgb(0, 244, 91)!important;
+  border: none!important;
 }
 
 .new-button-wrapper .ticketNew a {
