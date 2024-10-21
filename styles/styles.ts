@@ -313,7 +313,7 @@ html, body {
 #override-page .takeover-date {
     float: left;
     position: absolute;
-    top: 0;
+    top: 15px;
     text-align: left;
 }
 
