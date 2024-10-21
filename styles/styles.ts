@@ -318,7 +318,8 @@ html, body {
 }
 
 #override-page time {
-   1.5rem!important;
+   display: block;
+    font-size: 1.5rem;
 }
 
 #bookingOptions .event-name {
