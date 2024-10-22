@@ -830,6 +830,7 @@ html, body {
 
       #override-page .takeover-date {
           top: 21px;
+          font-size: 1.7rem!important;
       }
 
       .new-button-wrapper .cusine {
