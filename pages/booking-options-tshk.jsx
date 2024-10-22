@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>02 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>TINTIN</h3>
+              <h3><span>TENT <b>//</b> </span>Ece Düzgit, TINTIN</h3>
               <h3><span>STUDIO <b>//</b> </span>DAVE HARVEY, RALPH LAWSON </h3>
             </div>
         </div>
