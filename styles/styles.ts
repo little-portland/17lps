@@ -338,6 +338,10 @@ html, body {
     font-size: 4.4rem;
 }
 
+#bookingOptions .possible-futures {
+  font-size: 2.4rem;
+}
+
 #bookingOptions .sunday-special {
     font-size: 5.1rem;
 }
