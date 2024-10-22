@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>LUCA ANDREOZZI & TONY SERBAN</h3>
-              <h3><span>STUDIO <b>//</b> </span>DAVID TRIANA B2B RAKIM UNDER, DER B2B ONIRIK</h3>
+              <h3><span>STUDIO <b>//</b> </span>DAVID TRIANA & RAKIM UNDER, DER & ONIRIK</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
