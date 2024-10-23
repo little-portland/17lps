@@ -54,7 +54,7 @@ const BookingOptions = () => {
        <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew override-btn" btnType="hollow">
               <a href="https://sevn.ly/xMWA7DA6" target="_blank">
-                SEB MEYERS <span class="rest-name">(PLanque)</span>
+                SEB MYERS <span class="rest-name">(PLanque)</span>
                 <span class="takeover-date">29 Jan<time>From 7PM</time></span>
               </a>
             </Button>
