@@ -18,13 +18,13 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name disco-saturdays">Disco Saturdays</h1>
+        <h1 class="event-name disco-saturdays">Roots Presents</h1>
         <div class="event-info">
             <div class="info date">
               <h2><span>SAT</span>16 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>ENZO LEEP, FERDINAND MONK, MOOULIN</h3>
+              <h3><span>TENT <b>//</b> </span>ENZO LEEP, FERDINAND MONK, MOULIN</h3>
               <h3><span>STUDIO <b>//</b> </span>ALINE BROOKLYN, ANGELESS, ENZO LEEP, FERDINAND MONK</h3>
             </div>
         </div>
@@ -59,7 +59,7 @@ const BookingOptions = () => {
         </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="" target="_blank">
+              <a href="https://sevn.ly/xMEJWFaW" target="_blank">
                 CLUB GUESTLIST ONLY
               </a>
             </Button>
