@@ -44,6 +44,7 @@ const Menu = ({ menuImage }) => {
              <p> 
               <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
             </p>
+            <br/> 
              <p className="nocturn-text"><em>
                Curator’s Log 2024-1-2 Recording FW.C.17: Something 
               incredible has happened. I am at a loss for words. Abbas 
