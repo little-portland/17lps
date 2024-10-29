@@ -14,7 +14,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'body{background-color: #FA2E2E!important;overflow:scroll!important;-webkit-overflow-scrolling:touch!important;}'}
+            {'body{background-color: #FA2E2E!important;color: #ffffff!important;overflow:scroll!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
@@ -25,7 +25,7 @@ const Menu = ({ menuImage }) => {
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper small{ margin-left: 20px;}'}
-            {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
+            {'.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.question{ color: #000000!important;}'}
