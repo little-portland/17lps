@@ -44,7 +44,6 @@ const Menu = ({ menuImage }) => {
             </p>
             <p className="nocturn-text loading">. . . LOADING . . .</p>
             <p className="nocturn-text live question">GOING LIVE FROM 7 NOVEMBER</p>
-            <br/> 
              <p> 
               <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
             </p>
