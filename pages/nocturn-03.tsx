@@ -16,6 +16,7 @@ const Menu = ({ menuImage }) => {
         <style>
             {'body{background-color: #FA2E2E!important;color: #ffffff!important;overflow:scroll!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
+            {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
@@ -30,7 +31,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.question{ color: #000000!important;font-style:italic;}'}
             {'.italic{ font-style:italic!important;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>NOCTURN [03]: it’s your turn to be - Abbas Zahedi</title>
       </Head>
@@ -82,7 +83,9 @@ const Menu = ({ menuImage }) => {
 
               <p className="nocturn-text third">Step One: Don’t Forget to Breathe.</p>
             </div>
-
+           </div>
+      
+         <div className="nocturn-wider-section">
            <div className="row">
               <div className="column">
                  <img src="/images/nocturn/studio-loo-1.gif" />
@@ -103,7 +106,9 @@ const Menu = ({ menuImage }) => {
                 </p>
               </div>
            </div>
-
+          </div>
+      
+        <div className="nocturn">
            <div className="nocturn-text-wrapper bottom"> 
               <p className="nocturn-text italic">Curator’s Log 2024-24-7 Recording FW.E. Recording 3: AI helped me to identify key words. Bodies, cybernetic body, structural exit virtual, integration, regulating, deconstruction, sound, radio, vagal nerve, transmissions, fluency, togetherness. 
 </p>
