@@ -42,7 +42,7 @@ const Menu = ({ menuImage }) => {
             <p> 
               <img src="/images/nocturn/p5js-placeholder.gif" />
             </p>
-            <p className="nocturn-text loading">. . . LOADING . . .</p>
+            <p className="nocturn-text loading">LOADING . . .</p>
             <p className="nocturn-text live question">GOING LIVE FROM 7 NOVEMBER</p>
              <p> 
               <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
