@@ -167,6 +167,7 @@ const Menu = ({ menuImage }) => {
               <p className="nocturn-text"><strong>Abbas Zahedi (b. 1984, London, UK)</strong>, studied medicine at University College London, before undertaking his MA at Central Saint Martins in 2017. As an artist and educator, Zahedi works across multiple disciplines, utilising photography, sculpture, sound, video, writing, and performance. His practice draws deeply from the discursive and emotional landscapes of urban life, combining conceptual exploration with immersive, sensory experiences. Zahedi creates environments where sound and rhythm intertwine with visual forms, fostering reflections on the intricate relationships between ecological, cultural, and human systems. His work resists conventional boundaries, offering spaces that encourage exploration of themes around grief, resilience, and care. In addition to his artistic output, Zahedi engages in curatorial work, collaborative initiatives, and experimental sonic platforms, centred on fostering vital conversations and connections with others.</p>
               <p><a className="nocturn-text" href="https://www.instagram.com/abbzah/" target="_blank">@abbzah</a></p>
               <p><a className="nocturn-text" href="https://www.abbzah.com/" target="_blank">www.abbzah.com</a></p>
+              <br/> 
             </div>
            
          </div>      
