@@ -42,11 +42,16 @@ const Menu = ({ menuImage }) => {
             <p> 
               <img src="/images/nocturn/p5js-placeholder.gif" />
             </p>
+            <br/> 
+            <p className="nocturn-text loading">. . . LOADING . . .</p>
+            <br/> 
+            <p className="nocturn-text live question">GOING LIVE FROM 7 NOVEMBER</p>
+            <br/> 
              <p> 
               <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
             </p>
             <br/> 
-             <p className="nocturn-text italic"><i>
+             <p className="nocturn-text italic">
                Curator’s Log 2024-1-2 Recording FW.C.17: Something 
               incredible has happened. I am at a loss for words. Abbas 
               and I were in the club on the same trip deep into the night 
@@ -62,7 +67,6 @@ const Menu = ({ menuImage }) => {
               always there, waiting, watching… It was everyone, it was 
               them and us all, dancing, singing, sweating, praying, 
               digesting, connecting…
-               </i>
               </p>
              
               <p className="nocturn-text">It was only a matter of time before I awoke from the deep 
@@ -104,11 +108,11 @@ const Menu = ({ menuImage }) => {
            </div>
 
            <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text italic"><i>Curator’s Log 2024-24-7 Recording FW.E. Recording 3: AI helped me to identify key words. Bodies, cybernetic body, structural exit virtual, integration, regulating, deconstruction, sound, radio, vagal nerve, transmissions, fluency, togetherness. 
-</i></p>
+              <p className="nocturn-text italic">Curator’s Log 2024-24-7 Recording FW.E. Recording 3: AI helped me to identify key words. Bodies, cybernetic body, structural exit virtual, integration, regulating, deconstruction, sound, radio, vagal nerve, transmissions, fluency, togetherness. 
+</p>
 
-             <p className="nocturn-text" italic><i>I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes. 
-</i></p>
+             <p className="nocturn-text" italic>I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes. 
+</p>
               <br/> 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>01:44</small></p>
               <p className="nocturn-text">So for me, this concept I'm constantly thinking about is between different methods of being, being lost, or being at sea. And, the idea that a lighthouse is a beacon, but it's from a solid place. The equivalent would be a search party. On top of that, you have foghorns…There's all these different ways of locating yourself within space and time. Or being located when you’ve strayed too far. And I think the club as a sort of beacon that functions in that way, but it is also there are moments when it functions more like a search party. Sound of the bullfrogs, they are like fog horns. When are you are sea, the idea of radio is so key, because all of those systems of finding come into play when the radio fails… Trying to think about this way of how sound and the ability to be located physically in time and space, sometimes come together, sometimes drift apart. What comes in between those. For me, the concept of the body is very much related to the idea that a body has to be located.</p>
