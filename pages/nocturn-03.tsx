@@ -111,7 +111,7 @@ const Menu = ({ menuImage }) => {
               <p className="nocturn-text italic">Curator’s Log 2024-24-7 Recording FW.E. Recording 3: AI helped me to identify key words. Bodies, cybernetic body, structural exit virtual, integration, regulating, deconstruction, sound, radio, vagal nerve, transmissions, fluency, togetherness. 
 </p>
 
-             <p className="nocturn-text" italic>I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes. 
+             <p className="nocturn-text italic">I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes. 
 </p>
               <br/> 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>01:44</small></p>
