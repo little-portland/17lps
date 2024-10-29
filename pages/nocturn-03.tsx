@@ -150,12 +150,16 @@ I am highlighting key excerpts from Abbas and my conversations for posterity, in
               <p className="nocturn-text"><strong>Abbas Zahedi</strong><small>07:37</small></p>
               <p className="nocturn-text">Yeah, with sound, with people, in a community...that is co-regulating altogether.</p>
               <br/> 
+
+              <p> 
+                <img src="/images/nocturn/naan-binary.gif" />
+              </p>
            </div>
            
             <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text">Zoë Marden is an artist, filmmaker, and writer living between her home town of Hong Kong and London. She graduated from the Royal College of Art’s Moving Image MA, Marden works with performance, video, text, sound, sculpture and installation to create alternate worlds and speculative futures. Her research-focused works are concerned with Post-human feminisms and where they overlap with the postcolonial. Her intimate performances play with the voice, activating soundscapes of desire and vulnerability. She is part of the CAMPerVAN collective, active since 2016, a nomadic queer performance platform that can be deployed anywhere in the world to bring performance art, film screening, panel discussion & workshop into the public realm.</p>
-              <p><a className="nocturn-text" href="https://www.instagram.com/zoemarden/" target="_blank">@zoemarden</a></p>
-              <p><a className="nocturn-text" href="https://www.zoemarden.com/" target="_blank">www.zoemarden.com</a></p>
+              <p className="nocturn-text"><strong>Abbas Zahedi (b. 1984, London, UK)</strong>, studied medicine at University College London, before undertaking his MA at Central Saint Martins in 2017. As an artist and educator, Zahedi works across multiple disciplines, utilising photography, sculpture, sound, video, writing, and performance. His practice draws deeply from the discursive and emotional landscapes of urban life, combining conceptual exploration with immersive, sensory experiences. Zahedi creates environments where sound and rhythm intertwine with visual forms, fostering reflections on the intricate relationships between ecological, cultural, and human systems. His work resists conventional boundaries, offering spaces that encourage exploration of themes around grief, resilience, and care. In addition to his artistic output, Zahedi engages in curatorial work, collaborative initiatives, and experimental sonic platforms, centred on fostering vital conversations and connections with others.</p>
+              <p><a className="nocturn-text" href="https://www.instagram.com/abbzah/" target="_blank">@abbzah</a></p>
+              <p><a className="nocturn-text" href="https://www.abbzah.com/" target="_blank">www.abbzah.com</a></p>
             </div>
            
          </div>      
