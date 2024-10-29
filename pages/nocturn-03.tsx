@@ -29,6 +29,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.question{ color: #000000!important;font-style:italic;}'}
+            {'.italic{ font-style:italic;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>NOCTURN [03]: it’s your turn to be - Abbas Zahedi</title>
@@ -45,7 +46,7 @@ const Menu = ({ menuImage }) => {
               <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
             </p>
             <br/> 
-             <p className="nocturn-text"><i>
+             <p className="nocturn-text italic"><i>
                Curator’s Log 2024-1-2 Recording FW.C.17: Something 
               incredible has happened. I am at a loss for words. Abbas 
               and I were in the club on the same trip deep into the night 
@@ -103,10 +104,10 @@ const Menu = ({ menuImage }) => {
            </div>
 
            <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text"><i>Curator’s Log 2024-24-7 Recording FW.E. Recording 3: AI helped me to identify key words. Bodies, cybernetic body, structural exit virtual, integration, regulating, deconstruction, sound, radio, vagal nerve, transmissions, fluency, togetherness. 
+              <p className="nocturn-text italic"><i>Curator’s Log 2024-24-7 Recording FW.E. Recording 3: AI helped me to identify key words. Bodies, cybernetic body, structural exit virtual, integration, regulating, deconstruction, sound, radio, vagal nerve, transmissions, fluency, togetherness. 
 </i></p>
 
-             <p className="nocturn-text"><i>I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes. 
+             <p className="nocturn-text" italic><i>I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes. 
 </i></p>
               <br/> 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>01:44</small></p>
