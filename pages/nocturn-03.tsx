@@ -30,7 +30,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.question{ color: #000000!important;font-style:italic;}'}
             {'.italic{ font-style:italic!important;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.small{ font-size: 12px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>NOCTURN [03]: it’s your turn to be - Abbas Zahedi</title>
       </Head>
@@ -42,9 +42,7 @@ const Menu = ({ menuImage }) => {
             <p> 
               <img src="/images/nocturn/p5js-placeholder.gif" />
             </p>
-            <br/> 
             <p className="nocturn-text loading">. . . LOADING . . .</p>
-            <br/> 
             <p className="nocturn-text live question">GOING LIVE FROM 7 NOVEMBER</p>
             <br/> 
              <p> 
@@ -168,7 +166,7 @@ const Menu = ({ menuImage }) => {
            </div>
            
             <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text"><strong>Abbas Zahedi (b. 1984, London, UK)</strong>, studied medicine at University College London, before undertaking his MA at Central Saint Martins in 2017. As an artist and educator, Zahedi works across multiple disciplines, utilising photography, sculpture, sound, video, writing, and performance. His practice draws deeply from the discursive and emotional landscapes of urban life, combining conceptual exploration with immersive, sensory experiences. Zahedi creates environments where sound and rhythm intertwine with visual forms, fostering reflections on the intricate relationships between ecological, cultural, and human systems. His work resists conventional boundaries, offering spaces that encourage exploration of themes around grief, resilience, and care. In addition to his artistic output, Zahedi engages in curatorial work, collaborative initiatives, and experimental sonic platforms, centred on fostering vital conversations and connections with others.</p>
+              <p className="nocturn-text"><strong className="italic">Abbas Zahedi (b. 1984, London, UK)</strong>, studied medicine at University College London, before undertaking his MA at Central Saint Martins in 2017. As an artist and educator, Zahedi works across multiple disciplines, utilising photography, sculpture, sound, video, writing, and performance. His practice draws deeply from the discursive and emotional landscapes of urban life, combining conceptual exploration with immersive, sensory experiences. Zahedi creates environments where sound and rhythm intertwine with visual forms, fostering reflections on the intricate relationships between ecological, cultural, and human systems. His work resists conventional boundaries, offering spaces that encourage exploration of themes around grief, resilience, and care. In addition to his artistic output, Zahedi engages in curatorial work, collaborative initiatives, and experimental sonic platforms, centred on fostering vital conversations and connections with others.</p>
               <p><a className="nocturn-text" href="https://www.instagram.com/abbzah/" target="_blank">@abbzah</a></p>
               <p><a className="nocturn-text" href="https://www.abbzah.com/" target="_blank">www.abbzah.com</a></p>
               <br/> 
