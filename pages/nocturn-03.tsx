@@ -24,11 +24,11 @@ const Menu = ({ menuImage }) => {
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
-            {'.nocturn-text-wrapper small{ margin-left: 20px;}'}
+            {'.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}'}
             {'.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
-            {'.question{ color: #000000!important;}'}
+            {'.question{ color: #000000!important;font-style:italic;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>NOCTURN [03]: it’s your turn to be - Abbas Zahedi</title>
@@ -105,6 +105,7 @@ const Menu = ({ menuImage }) => {
               <p className="nocturn-text"><em>Curator’s Log 2024-24-7 Recording FW.E. Recording 3: AI helped me to identify key words. Bodies, cybernetic body, structural exit virtual, integration, regulating, deconstruction, sound, radio, vagal nerve, transmissions, fluency, togetherness. 
 I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes. 
 </em></p>
+              <br/> 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>01:44</small></p>
               <p className="nocturn-text">So for me, this concept I'm constantly thinking about is between different methods of being, being lost, or being at sea. And, the idea that a lighthouse is a beacon, but it's from a solid place. The equivalent would be a search party. On top of that, you have foghorns…There's all these different ways of locating yourself within space and time. Or being located when you’ve strayed too far. And I think the club as a sort of beacon that functions in that way, but it is also there are moments when it functions more like a search party. Sound of the bullfrogs, they are like fog horns. When are you are sea, the idea of radio is so key, because all of those systems of finding come into play when the radio fails… Trying to think about this way of how sound and the ability to be located physically in time and space, sometimes come together, sometimes drift apart. What comes in between those. For me, the concept of the body is very much related to the idea that a body has to be located.</p>
               <br/>  
