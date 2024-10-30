@@ -43,12 +43,12 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn">
            <img src="/images/nocturn3-web-page.png" alt="Nocturn" width="100%" />
            <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn03.gif" /> 
+           <p> 
+              <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
+            </p>
            <img className="flyer preloader" src="/images/nocturn/loading-retro-panel.gif" />
 
            <div className="nocturn-text-wrapper top"> 
-             <p> 
-              <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
-            </p>
             <br/> 
              <p className="nocturn-text italic">
                Curator’s Log 2024-1-2 Recording FW.C.17: Something 
@@ -89,21 +89,21 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn-wider-section">
            <div className="row">
               <div className="column">
-                 <img src="/images/nocturn/studio-loo-1.gif" />
+                 <img src="/images/nocturn/studio1.gif" />
                  <p> 
-                  <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
+                  <audio controls src="/images/nocturn/studio1.mp3"></audio>
                 </p>
               </div>
               <div className="column">
-                 <img src="/images/nocturn/studio-loo-1.gif" />
+                 <img src="/images/nocturn/studio2.gif" />
                  <p> 
-                  <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
+                  <audio controls src="/images/nocturn/studio2.mp3"></audio>
                 </p>
               </div>
               <div className="column">
-                <img src="/images/nocturn/studio-loo-1.gif" />
+                <img src="/images/nocturn/studio3.gif" />
                 <p> 
-                  <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
+                  <audio controls src="/images/nocturn/studio3.mp3"></audio>
                 </p>
               </div>
            </div>
