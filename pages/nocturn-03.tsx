@@ -111,18 +111,16 @@ const Menu = ({ menuImage }) => {
       
         <div className="nocturn">
            <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text italic">Curator’s Log 2024-24-7 Recording FW.E. Recording 3: AI helped me to identify key words. Bodies, cybernetic body, structural exit virtual, integration, regulating, deconstruction, sound, radio, vagal nerve, transmissions, fluency, togetherness. 
-</p>
+              <p className="nocturn-text italic">Curator’s Log 2024-24-7 Recording FW.E. Recording 3: The machine helped me to identify key words. Bodies, cybernetic body, structural, exit, virtual, integration, regulation, deconstruction, sound, radio, vagal, nerve, transmissions, fluency, togetherness.</p>
 
-             <p className="nocturn-text italic">I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes. 
-</p>
+             <p className="nocturn-text italic">I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes.</p>
               <br/> 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>01:44</small></p>
-              <p className="nocturn-text">So for me, this concept I'm constantly thinking about is between different methods of being, being lost, or being at sea. And, the idea that a lighthouse is a beacon, but it's from a solid place. The equivalent would be a search party. On top of that, you have foghorns…There's all these different ways of locating yourself within space and time. Or being located when you’ve strayed too far. And I think the club as a sort of beacon that functions in that way, but it is also there are moments when it functions more like a search party. Sound of the bullfrogs, they are like fog horns. When are you are sea, the idea of radio is so key, because all of those systems of finding come into play when the radio fails… Trying to think about this way of how sound and the ability to be located physically in time and space, sometimes come together, sometimes drift apart. What comes in between those. For me, the concept of the body is very much related to the idea that a body has to be located.</p>
+              <p className="nocturn-text">This concept I'm constantly thinking about is between different methods of being, being lost, or being at sea. And, the idea that a lighthouse is a beacon, but it's from a static place. The equivalent in other terms would be a search party. On top of that, we have foghorns… all these different ways of locating yourself, finding and being found  being located when you’ve strayed too far, or not far enough. I think of the club as a beacon that functions in that way, it’s a static place, but you need a search party to take you there. When you are at sea, the idea of radio is so key, because all of those other systems of finding come into play when the radio fails… Trying to think about how sound and the ability to be located physically in time and space, brings us together, resisting the urge to drift apart. What comes in between that tension? For me, the concept of the body is very much related to the idea that a body has to be located.</p>
               <br/>  
 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>04:45</small></p>
-              <p className="nocturn-text">What we're describing, on the one hand, is referring to the organisation of the work and bodies around structures that are a bit more…like they have a spine. They're located like a tree has a trunk and branches. But then there's also other structures in nature, which are more diffuse, like…</p>
+              <p className="nocturn-text">What we're describing, on the one hand, is referring to the organisation of the work, and bodies around structures…like they have a spine. They're located in the way that a tree has a trunk and branches. But then there are other structures, which are diffuse,</p>
               <br/>  
 
               <p className="nocturn-text question"><strong>Bianca Chu</strong><small>05:24</small></p>
@@ -138,7 +136,7 @@ const Menu = ({ menuImage }) => {
               <br/> 
 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>05:28</small></p>
-              <p className="nocturn-text">No hierarchy. It's just more scattered. And I think the elements of it that function online or cybernetically, they feed into that kind of system. And they're more scattered. So it's a way of bridging these two modes. Because in the work itself… What I'm trying to relate in the work is more the sense that a lot of this can be integrated, it doesn’t have to be dualistic. When people discuss this concept of these more tree-like structures, arboreal structures versus rhizomatic ones. That distinction of them takes for granted the ground? That they're both growing in. So for me the question might actually be where's the ground? So, the idea of exiting [the virtual] is like when you exit a burning building, you're trying to reach safe ground. I don’t see… there’s a lot around the culture around music and the club that could be seen as escapism…But I'm trying to reframe that is not escapism. But more as finding safe ground. You're just finding your way to this other place, that you can be embedded in.</p>
+              <p className="nocturn-text">No hierarchy as such and more scattered.I think the elements of it that function online or cybernetically, they feed into that kind of system. What we’re doing here is a way of bridging these two modes. Because what I'm trying to relate in the work is more the sense that a lot of this can be integrated, it doesn’t have to be dualistic. When people discuss this concept of arboreal tree-like structures, versus rhizomatic ones. That distinction takes for granted the ground that they're both growing in. So for me the question might actually be: where's the ground? So, the idea of exiting [the virtual] is like when you exit a burning building, you're trying to reach safe ground. There's a lot around music and the club that could be seen as escapism…But I'm trying to reframe thatas finding a newground. You're just finding your way to this other place that you can be more meaningfully embedded in.</p>
               <br/> 
 
               <p className="nocturn-text question"><strong>Bianca Chu</strong><small>07:20</small></p>
@@ -146,7 +144,7 @@ const Menu = ({ menuImage }) => {
               <br/>
 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>07:32</small></p>
-              <p className="nocturn-text">So much of vagal breathing techniques and stuff is about like trying to tell the body to regulate…</p>
+              <p className="nocturn-text">Yes, vagal breathing techniques helpingthe body to regulate…</p>
               <br/> 
 
               <p className="nocturn-text question"><strong>Bianca Chu</strong><small>07:33</small></p>
@@ -154,7 +152,7 @@ const Menu = ({ menuImage }) => {
               <br/>
 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>07:34</small></p>
-              <p className="nocturn-text">Self regulate… is literally like living in this sympathetic overdrive, is trying to tell the body it is safe, by giving it a signal whether artificially, through taking drugs, or…some people have implants, like pacemakers that stimulate the vagal nerve and then nowadays, like breathwork, and other kind of accessories, that people, use to find a safe body, or a place that makes your body feel safe. And this idea of co-regulating. And I just feel that, for me, that's the kind of the experience that I have access to in that place. Was the club is like, finding this sort of way of being with sound..</p>
+              <p className="nocturn-text">And to exit hyper-connected sympathetic overdrive, like trying to tell the body it is safe, by giving it a signal...whether artificially, with drugs, or…some people have implants, like pacemakers that stimulate the vagal nerve and then nowadays, we are learning more about breathwork, techniques people use to find a safe body, or a place that makes your body feel safe. And this idea of co-regulating. For me, that's the kind of experience that I have access to in that place. Finding this way of being with breath and sound...</p>
               <br/> 
 
               <p className="nocturn-text question"><strong>Bianca Chu</strong><small>07:36</small></p>
@@ -162,7 +160,7 @@ const Menu = ({ menuImage }) => {
               <br/>
 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>07:37</small></p>
-              <p className="nocturn-text">Yeah, with sound, with people, in a community...that is co-regulating altogether.</p>
+              <p className="nocturn-text">Yes, with sound, with other bodies, in a community... co-regulating in and out of sync.</p>
               <br/> 
 
               <p> 
