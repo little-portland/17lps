@@ -40,6 +40,7 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn">
            <img src="/images/nocturn3-web-page.png" alt="Nocturn" width="100%" />
+           <img src="/images/nocturn/17LPS_Flyer_Nocturn03.gif" /> 
 
            <div className="nocturn-text-wrapper top"> 
             <p> 
