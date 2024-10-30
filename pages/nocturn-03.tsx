@@ -13,32 +13,7 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
-        <style>
-            {'html{overflow: auto!important;}'}
-            {'body{background-color: #FA2E2E!important;overflow: auto!important;overflow-x: initial!important;}'}
-            {'.nocturn{width: 50%;margin: 0 auto;}'}
-            {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
-            {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
-            {'.column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
-            {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
-            {'.column a{ cursor:pointer!important;}'}
-            {'.top{ font-size: 35px;}'}
-            {'.bottom{ font-size: 25px;}'}
-            {'audio{ margin-top: 8px!important;width:100%!important;}'}
-            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
-            {'.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}'}
-            {'.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}'}
-            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
-            {'.nocturn-text{ padding-bottom: 20px;}'}
-            {'.question{ color: #000000!important;font-style:italic;}'}
-            {'.italic{ font-style:italic!important;}'}
-            {'.loading{ font-size: 50px;text-align: center;}'}
-            {'.flyer{ max-width: 100%!important;}'}
-            {'.preloader{ margin:30px 0 10px 0!important;}'}
-            {'.spacing{ margin-top:30px!important;}'}
-            {'.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.loading{ font-size: 35px;}.live{ border-top: 3px solid #000;padding-top: 20px;border-bottom: 3px solid #000;margin-bottom: 30px}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
-        </style>
+
         <title>NOCTURN [03]: it’s your turn to be - Abbas Zahedi</title>
       </Head>
       
