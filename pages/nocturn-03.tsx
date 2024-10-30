@@ -45,7 +45,7 @@ const Menu = ({ menuImage }) => {
 
            <div className="nocturn-text-wrapper top"> 
             <p> 
-              <img className="flyer" src="/images/nocturn/retro-panelV6.gif" />
+              <img className="flyer" src="/images/nocturn/loading-retro-panel.gif" />
             </p>
              <p> 
               <audio controls src="/images/nocturn/reception-sonic.mp3"></audio>
