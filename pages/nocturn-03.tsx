@@ -14,7 +14,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'body{background-color: #FA2E2E!important;color: #ffffff!important;overflow:scroll!important;-webkit-overflow-scrolling:touch!important;}'}
+            {'body{background-color: #FA2E2E!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
