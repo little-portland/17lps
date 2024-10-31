@@ -37,7 +37,7 @@ const Menu = ({ menuImage }) => {
             {'.preloader{ margin:30px 0 10px 0!important;}'}
             {'.spacing{ margin-top:30px!important;}'}
             {'.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}'}
-            {'@media (max-width: 768px) {.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn{margin-top:30px;width: 90%;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}}'}
+            {'@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
 
         <title>NOCTURN [03]: it’s your turn to be - Abbas Zahedi</title>
