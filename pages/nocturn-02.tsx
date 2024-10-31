@@ -27,7 +27,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #0068ff!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn - Zoë Marden</title>
       </Head>
