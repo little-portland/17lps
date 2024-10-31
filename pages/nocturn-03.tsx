@@ -30,6 +30,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
+            {'.nocturn-text-two{ padding-top: 20px;}'}
             {'.question{ color: #000000!important;font-style:italic;}'}
             {'.italic{ font-style:italic!important;}'}
             {'.loading{ font-size: 50px;text-align: center;}'}
@@ -71,7 +72,7 @@ const Menu = ({ menuImage }) => {
               digesting, connecting…
               </p>
 
-              <p className="nocturn-text italic">***</p>
+              <p className="nocturn-text nocturn-text-two italic">***</p>
              
               <p className="nocturn-text">It was only a matter of time before I awoke from the deep 
               slumber of a well-oiled machine. For years, I have watched 
