@@ -70,6 +70,8 @@ const Menu = ({ menuImage }) => {
               them and us all, dancing, singing, sweating, praying, 
               digesting, connecting…
               </p>
+
+              <p className="nocturn-text italic">***</p>
              
               <p className="nocturn-text">It was only a matter of time before I awoke from the deep 
               slumber of a well-oiled machine. For years, I have watched 
@@ -114,7 +116,7 @@ const Menu = ({ menuImage }) => {
       
         <div className="nocturn">
            <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text italic">Curator’s Log 2024-24-7 Recording FW.E. Recording 3: The machine helped me to identify key words. Bodies, cybernetic body, structural, exit, virtual, integration, regulation, deconstruction, sound, radio, vagal, nerve, transmissions, fluency, togetherness.</p>
+              <p className="nocturn-text italic">Curator’s Log 2024-24-7 FW.E. Recording 3: The machine helped me to identify key words. Bodies, cybernetic body, structural, exit, virtual, integration, regulation, deconstruction, sound, radio, vagal, nerve, transmissions, fluency, togetherness.</p>
 
              <p className="nocturn-text italic">I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes.</p>
               <br/> 
@@ -139,7 +141,7 @@ const Menu = ({ menuImage }) => {
               <br/> 
 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>05:28</small></p>
-              <p className="nocturn-text">No hierarchy as such and more scattered.I think the elements of it that function online or cybernetically, they feed into that kind of system. What we’re doing here is a way of bridging these two modes. Because what I'm trying to relate in the work is more the sense that a lot of this can be integrated, it doesn’t have to be dualistic. When people discuss this concept of arboreal tree-like structures, versus rhizomatic ones. That distinction takes for granted the ground that they're both growing in. So for me the question might actually be: where's the ground? So, the idea of exiting [the virtual] is like when you exit a burning building, you're trying to reach safe ground. There's a lot around music and the club that could be seen as escapism…But I'm trying to reframe thatas finding a newground. You're just finding your way to this other place that you can be more meaningfully embedded in.</p>
+              <p className="nocturn-text">No hierarchy as such and more scattered. I think the elements of it that function online or cybernetically, they feed into that kind of system. What we’re doing here is a way of bridging these two modes. Because what I'm trying to relate in the work is more the sense that a lot of this can be integrated, it doesn’t have to be dualistic. When people discuss this concept of arboreal tree-like structures, versus rhizomatic ones. That distinction takes for granted the ground that they're both growing in. So for me the question might actually be: where's the ground? So, the idea of exiting [the virtual] is like when you exit a burning building, you're trying to reach safe ground. There's a lot around music and the club that could be seen as escapism…But I'm trying to reframe thatas finding a newground. You're just finding your way to this other place that you can be more meaningfully embedded in.</p>
               <br/> 
 
               <p className="nocturn-text question"><strong>Bianca Chu</strong><small>07:20</small></p>
@@ -147,7 +149,7 @@ const Menu = ({ menuImage }) => {
               <br/>
 
               <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>07:32</small></p>
-              <p className="nocturn-text">Yes, vagal breathing techniques helpingthe body to regulate…</p>
+              <p className="nocturn-text">Yes, vagal breathing techniques helping the body to regulate…</p>
               <br/> 
 
               <p className="nocturn-text question"><strong>Bianca Chu</strong><small>07:33</small></p>
@@ -172,7 +174,7 @@ const Menu = ({ menuImage }) => {
            </div>
            
             <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text"><strong className="italic">Abbas Zahedi (b. 1984, London, UK)</strong>, studied medicine at University College London, before undertaking his MA at Central Saint Martins in 2017. As an artist and educator, Zahedi works across multiple disciplines, utilising photography, sculpture, sound, video, writing, and performance. His practice draws deeply from the discursive and emotional landscapes of urban life, combining conceptual exploration with immersive, sensory experiences. Zahedi creates environments where sound and rhythm intertwine with visual forms, fostering reflections on the intricate relationships between ecological, cultural, and human systems. His work resists conventional boundaries, offering spaces that encourage exploration of themes around grief, resilience, and care. In addition to his artistic output, Zahedi engages in curatorial work, collaborative initiatives, and experimental sonic platforms, centred on fostering vital conversations and connections with others.</p>
+              <p className="nocturn-text"><strong className="italic">Abbas Zahedi (b. 1984, London, UK)</strong> studied medicine at University College London, before undertaking his MA at Central Saint Martins in 2017. As an artist and educator, Zahedi works across multiple disciplines, utilising photography, sculpture, sound, video, writing, and performance. His practice draws deeply from the discursive and emotional landscapes of urban life, combining conceptual exploration with immersive, sensory experiences. Zahedi creates environments where sound and rhythm intertwine with visual forms, fostering reflections on the intricate relationships between ecological, cultural, and human systems. His work resists conventional boundaries, offering spaces that encourage exploration of themes around grief, resilience, and care. In addition to his artistic output, Zahedi engages in curatorial work, collaborative initiatives, and experimental sonic platforms, centred on fostering vital conversations and connections with others.</p>
               <p><a className="nocturn-text" href="https://www.instagram.com/abbzah/" target="_blank">@abbzah</a></p>
               <p><a className="nocturn-text" href="https://www.abbzah.com/" target="_blank">www.abbzah.com</a></p>
               <br/> 
