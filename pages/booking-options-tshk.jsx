@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>23 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Carly Foxx, Gaucho, Göo!</h3>
+              <h3><span>TENT <b>//</b> </span>Carly Foxx, Gaucho, GÖO!</h3>
               <h3><span>STUDIO <b>//</b> </span>Ben Gomori, Josh Ludlow, Tigerbalm</h3>
             </div>
         </div>
