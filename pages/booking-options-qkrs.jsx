@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>07 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>BAGSY, CORNACCHIA</h3>
+              <h3><span>TENT <b>//</b> </span>BUGSY, CORNACCHIA</h3>
               <h3><span>STUDIO <b>//</b> </span>ANDREW JAMES GUSTAV, JOS, MODERNO</h3>
             </div>
         </div>
