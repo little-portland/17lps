@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Enzo Leep, Ferdinand Monk, Mari*, Moulin</h3>
-              <h3><span>STUDIO <b>//</b> </span>Aline Brooklyn, Ageless, Enzo Leep, Ferdinand Monk</h3>
+              <h3><span>STUDIO <b>//</b> </span>Ageless, Aline Brooklyn, Enzo Leep, Ferdinand Monk</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
