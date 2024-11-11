@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>30 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Rhythms of Prescott, LAbeach</h3>
+              <h3><span>TENT <b>//</b> </span>LAbeach, Rhythms of Prescott</h3>
               <h3><span>STUDIO <b>//</b> </span>ISAAC CARTER, LUKE SOLOMON, THE DUKE</h3>
             </div>
         </div>
