@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>RHTYHMS OF PRESCOTT B2B LA BEACH</h3>
-              <h3><span>STUDIO <b>//</b> </span>ISAAC CARTE, LUKE SOLOMON, THE DUKE</h3>
+              <h3><span>STUDIO <b>//</b> </span>ISAAC CARTER, LUKE SOLOMON, THE DUKE</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
