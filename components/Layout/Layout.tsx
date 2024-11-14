@@ -127,7 +127,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <hr/>
         <p className="override-footer"><i>Override sees guest chefs taking over The Tent, curating a one-night-only special set menu. </i></p> 
         <p className="override-footer"><i>Note that dietary restrictions will not be accommodated for these events. </i></p> 
-        <p className="override-footer links"><i>Visit <a href="www.little-portland.com/override">www.little-portland.com/override</a> to book.</i></p> 
+        <p className="override-footer links"><i>Visit <a className="footer-link" href="www.little-portland.com/override">www.little-portland.com/override</a> to book.</i></p> 
         </div>}
 
         {<div
