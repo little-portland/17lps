@@ -759,6 +759,40 @@ html, body {
     margin-bottom: 0!important;
 }
 
+.override-box {
+  text-align: right!important;
+}
+
+.override-box h2 {
+  text-align: right!important;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.override-box h4 {
+  text-align: right!important;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+.override-box h5 {
+  text-align: right!important;
+  font-size: 1.5rem;
+}
+
+.override-box .links {
+  font-size: 1.3rem;
+}
+
+.override-box .override-footer {
+  text-align: right!important;
+  font-size: 0.8rem!important; 
+}
+
+.override-box hr {
+    border-top: 2px solid rgb(76, 2, 27);
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
