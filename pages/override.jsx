@@ -21,11 +21,11 @@ const BookingOptions = () => {
             {'.override-page p{ font-family: Oswald!important;font-weight: bold!important;text-decoration: none!important;color: #d5ccc0!important;padding-bottom: 30px;line-height: 1.5;font-weight: 300 !important; font-style: italic!important;}'}
             {'.override-page a{ font-family: Oswald!important;font-weight: bold!important;text-decoration: none!important;color: #000!important;line-height: 1.1;font-size: 2.3rem!important;}'}
             {'.override-page span{display: block!important;margin-top: 0px;}'}
+            {'.siri-btn{pointer-events: none;cursor: not-allowed;background-color: grey !important;}'}
             {'@media (max-width: 768px) { #override-page{ width: 300px!important;top: 2%!important;}.override-page button{margin-top:10px!important;}.override-page h3 { font-size: 3rem!important;padding-bottom: 10px!important;}.override-btn a {line-height: 2.5rem !important;}.override-page a {padding: 5px 10px!important;}}'}
         </style>
         <title>Override - Guest CHef Takeovers</title>
       </Head>
-
       <div id="override-page" class="override-page">
         <img src="/images/override-tittle.png" alt="Override" width="100%" />           
         <div class="event-info">
@@ -43,7 +43,7 @@ const BookingOptions = () => {
         </div>
 
         <div class="button-wrapper new-button-wrapper">
-            <Button classes="events-button ticketNew override-btn" btnType="hollow">
+            <Button classes="events-button ticketNew override-btn siri-btn" btnType="hollow">
               <a href="https://sevn.ly/x67GScdC" target="_blank">
                 Sirichai “Siri” Kularbwong <span class="rest-name">(Singburi) </span>
                 <span class="takeover-date">11 Dec<time>From 7PM</time></span>
