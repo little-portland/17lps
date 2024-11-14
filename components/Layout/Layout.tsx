@@ -107,6 +107,34 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
 
         {<div
         className="box-1 box"> 
+        <Image 
+            src={"/images/override_eat_page.png"}
+            blurDataURL={"/images/override_eat_page.png"}
+        />
+        <h2>GUEST CHEFS TAKEOVERS</h2>
+        <hr/>
+        <h4>GABRIEL PRYCE (RITA’S)</h4>
+        <h5>28 NOVEMBER <br/> FROM 7PM</h5>
+        <br/>
+        <p className="links"><a href="https://sevn.ly/xeLHgzuf">[BOOK]</a></p>
+
+        <h4>SIRICHAI “SIRI” KULARBWONG (SINGBURI)</h4>
+        <h5>11 DECEMBER <br/> FROM 7PM</h5>
+        <br/>
+        <p className="links"><a>[SOLD OUT]</a></p>
+
+        <h4>SEB MYERS (PLANQUE)</h4>
+        <h5>29 JANUARY <br/> FROM 7PM</h5>
+        <br/>
+        <p className="links"><a href="https://sevn.ly/xMWA7DA6">[BOOK]</a></p>
+        <hr/>
+        <p><i>Override sees guest chefs taking over The Tent, curating a one-night-only special set menu. </i></p> 
+        <p><i>Note that dietary restrictions will not be accommodated for these events. </i></p> 
+        <p className="links"><i>Visit <a href="www.little-portland.com/override">www.little-portland.com/override</a> to book.</i></p> 
+        </div>}
+
+        {<div
+        className="box-1 box"> 
         <h2>CHEF’S STUDIO @ 17 LITTLE PORTLAND STREET</h2>
         <h4>WEDNESDAYS - SATURDAYS</h4>
         <p>An intimate 12-seater dining experience hosted by Chef John Javier. <br/>
