@@ -804,8 +804,8 @@ html, body {
     margin-bottom: 2rem;
 }
 
-.override-box .override-footer .links {
- margin-bottom: 0rem!important;
+.override-box .footer-link {
+ margin-bottom: 0!important;
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
@@ -1099,7 +1099,7 @@ html, body {
       font-size: 0.7rem !important;
     }    
     
-    .override-box .override-footer .links {
+    .override-box .footer-link {
       margin-bottom: 0!important;
     }
        
