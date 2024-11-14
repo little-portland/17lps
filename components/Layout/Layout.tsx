@@ -106,7 +106,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>[At the end of the Universe]</h2> 
 
         {<div
-        className="box-1 box"> 
+        className="box-1 box override-box"> 
         <Image 
             src={"/images/override_eat_page.png"}
             blurDataURL={"/images/override_eat_page.png"}
@@ -115,22 +115,19 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <hr/>
         <h4>GABRIEL PRYCE (RITA’S)</h4>
         <h5>28 NOVEMBER <br/> FROM 7PM</h5>
-        <br/>
-        <p className="links"><a href="https://sevn.ly/xeLHgzuf">[BOOK]</a></p>
-
-        <h4>SIRICHAI “SIRI” KULARBWONG (SINGBURI)</h4>
+        <p className="links"><a target="_blank" href="https://sevn.ly/xeLHgzuf">[BOOK]</a></p>
+        <br/>  
+        <h4>SIRI KULARBWONG (SINGBURI)</h4>
         <h5>11 DECEMBER <br/> FROM 7PM</h5>
-        <br/>
-        <p className="links"><a>[SOLD OUT]</a></p>
-
+        <p className="links sold-out"><a>[SOLD OUT]</a></p>
+        <br/>  
         <h4>SEB MYERS (PLANQUE)</h4>
         <h5>29 JANUARY <br/> FROM 7PM</h5>
-        <br/>
-        <p className="links"><a href="https://sevn.ly/xMWA7DA6">[BOOK]</a></p>
+        <p className="links"><a target="_blank" href="https://sevn.ly/xMWA7DA6">[BOOK]</a></p>
         <hr/>
-        <p><i>Override sees guest chefs taking over The Tent, curating a one-night-only special set menu. </i></p> 
-        <p><i>Note that dietary restrictions will not be accommodated for these events. </i></p> 
-        <p className="links"><i>Visit <a href="www.little-portland.com/override">www.little-portland.com/override</a> to book.</i></p> 
+        <p className="override-footer"><i>Override sees guest chefs taking over The Tent, curating a one-night-only special set menu. </i></p> 
+        <p className="override-footer"><i>Note that dietary restrictions will not be accommodated for these events. </i></p> 
+        <p className="override-footer links"><i>Visit <a href="www.little-portland.com/override">www.little-portland.com/override</a> to book.</i></p> 
         </div>}
 
         {<div
