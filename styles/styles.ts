@@ -788,6 +788,7 @@ html, body {
 .override-box .override-footer {
   text-align: right!important;
   font-size: 0.8rem!important; 
+  font-style: italic;
 }
 
 .override-box hr {
