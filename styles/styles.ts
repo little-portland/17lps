@@ -793,6 +793,11 @@ html, body {
     border-top: 2px solid rgb(76, 2, 27);
 }
 
+.override-box .sold-out {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
