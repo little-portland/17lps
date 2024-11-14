@@ -778,6 +778,7 @@ html, body {
 .override-box h5 {
   text-align: right!important;
   font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
 .override-box .links {
@@ -796,6 +797,14 @@ html, body {
 .override-box .sold-out {
   pointer-events: none;
   cursor: not-allowed;
+}
+
+.override-box .links {
+    margin-bottom: 2rem;
+}
+
+.override-box .override-footer .links {
+ margin-bottom: 0rem;
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
