@@ -112,11 +112,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             blurDataURL={"/images/override_eat_page.png"}
         />
         <h2>GUEST CHEFS TAKEOVERS</h2>
-        <hr/>
-        <h4>GABRIEL PRYCE (RITA’S)</h4>
-        <h5>28 NOVEMBER <br/> FROM 7PM</h5>
-        <p className="links"><a target="_blank" href="https://sevn.ly/xeLHgzuf">[BOOK]</a></p>
-        <br/>  
+        <hr/> 
         <h4>SIRI KULARBWONG (SINGBURI)</h4>
         <h5>11 DECEMBER <br/> FROM 7PM</h5>
         <p className="links sold-out"><a>[SOLD OUT]</a></p>
