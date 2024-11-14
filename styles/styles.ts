@@ -677,6 +677,11 @@ html, body {
   border-radius: 15px;
 }
 
+#override-page .siri-btn {
+  pointer-events: none;
+  cursor: not-allowed;
+  background: grey !important;
+}
 .new-button-wrapper .ticketNew a {
     font-size: 2.5rem;
     line-height: 2.5rem;
