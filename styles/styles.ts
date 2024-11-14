@@ -1074,6 +1074,34 @@ html, body {
       .override-footnote {
           font-size: .9rem !important;
       }
+
+      .override-box h2 {
+        font-size: 1.1rem;
+      }
+
+      .override-box h4 {
+          font-size: .9rem;
+          margin-bottom: .5rem;
+      }
+
+      .override-box h5 {
+        font-size: .8rem;
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+    }
+
+    .override-box .links {
+        margin-bottom: .5rem;
+        font-size: .8rem;
+    }
+
+    .override-box .override-footer {
+      font-size: 0.7rem !important;
+    }    
+    
+    .override-box .override-footer .links {
+      margin-bottom: 0!important;
+    }
        
     }
 
