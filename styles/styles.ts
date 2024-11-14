@@ -805,7 +805,7 @@ html, body {
 }
 
 .override-box .override-footer .links {
- margin-bottom: 0rem;
+ margin-bottom: 0rem!important;
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
