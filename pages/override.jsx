@@ -32,14 +32,6 @@ const BookingOptions = () => {
               <h3>Guest chef takeovers</h3>
             </div>
         </div>
-        <div class="button-wrapper new-button-wrapper">
-            <Button classes="events-button ticketNew override-btn" btnType="hollow" >
-              <a href="https://sevn.ly/xeLHgzuf" target="_blank">
-                Gabriel Pryce <span class="rest-name">(Rita’s)</span>
-                <span class="takeover-date">28 Nov<time>From 7PM</time></span>
-              </a>
-            </Button>
-        </div>
 
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew override-btn siri-btn" btnType="hollow">
