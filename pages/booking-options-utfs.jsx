@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Gaby D’Annunzio, TIM LANG</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
+              <h3><span>STUDIO <b>//</b> </span>Jus-Ed</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
