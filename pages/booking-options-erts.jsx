@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>FREDERIKA, JUNGLE JARVIN </h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
+              <h3><span>STUDIO <b>//</b> </span>DAYLOMAR</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
