@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>12 Dec</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Closed</h3>
+              <h3><span>TENT <b>//</b> </span>RHYTHMS OF PRESCOTT</h3>
               <h3><span>STUDIO <b>//</b> </span>CAP, Cem Ozden</h3>
             </div>
         </div>
