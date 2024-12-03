@@ -34,7 +34,7 @@ const BookingOptions = () => {
         </div>
 
         <div class="button-wrapper new-button-wrapper">
-            <Button classes="events-button ticketNew override-btn siri-btn" btnType="hollow">
+            <Button classes="events-button ticketNew override-btn" btnType="hollow">
               <a href="https://sevn.ly/x67GScdC" target="_blank">
                 Sirichai “Siri” Kularbwong <span class="rest-name">(Singburi) </span>
                 <span class="takeover-date">11 Dec<time>From 7PM</time></span>
