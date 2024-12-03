@@ -115,7 +115,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <hr/> 
         <h4>SIRI KULARBWONG (SINGBURI)</h4>
         <h5>11 DECEMBER <br/> FROM 7PM</h5>
-        <p className="links sold-out"><a>[SOLD OUT]</a></p>
+        <p className="links"><a target="_blank" href="https://sevn.ly/x67GScdC">[BOOK]</a></p>
         <br/>  
         <h4>SEB MYERS (PLANQUE)</h4>
         <h5>29 JANUARY <br/> FROM 7PM</h5>
