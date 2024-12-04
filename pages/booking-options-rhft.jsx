@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO, PAUL DAY</h3>
-              <h3><span>STUDIO <b>//</b> </span>JONNY ROCK B2B ROB MELLO</h3>
+              <h3><span>STUDIO <b>//</b> </span>Secret Guest B2B ROB MELLO</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
