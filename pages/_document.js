@@ -47,6 +47,10 @@ export default class MyDocument extends Document {
                         href="https://fonts.cdnfonts.com/css/helvetica-neue-55"
                         rel="stylesheet"
                     />
+                    <link
+                        href="https://forms.airship.co.uk/assets/js/embed.js"
+                        rel="preload"
+                    />
                 </Head>
                 <body>
                     <Main />
