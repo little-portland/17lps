@@ -62,7 +62,7 @@ const Menu = ({ menuImage }) => {
                 </a>
               </div>
               <div className="column">
-                <div data-airship-form-url='https://forms.airship.co.uk/forms/1364/nocturn'></div><script src='https://forms.airship.co.uk/assets/js/embed.js'></script>
+                <div data-airship-form-url='https://forms.airship.co.uk/forms/1364/nocturn'></div>
               </div>
            </div>
          </div>      
