@@ -49,7 +49,6 @@ export default class MyDocument extends Document {
                     />
                     <link
                         href="https://forms.airship.co.uk/assets/js/embed.js"
-                        rel="preload"
                     />
                 </Head>
                 <body>
