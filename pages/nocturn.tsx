@@ -53,6 +53,14 @@ const Menu = ({ menuImage }) => {
                   </div>
                 </a>
               </div>
+              <div className="column">
+                <a href="https://www.little-portland.com/nocturn-03" target="_blank">
+                  <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn03.gif" />
+                  <div className="nocturn-text-wrapper"> 
+                    <p className="nocturn-text">Learn more &#8594;</p>
+                  </div>
+                </a>
+              </div>
            </div>
          </div>      
     </>
