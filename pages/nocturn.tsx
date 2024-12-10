@@ -41,10 +41,11 @@ const Menu = ({ menuImage }) => {
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 18px;}'}
-            {'.bottom{ font-size: 25px;}'}
+            {'.bottom{ font-size: 18px;}'}
+            {'.bottom p{ margin-bottom: 15px;}'}
             {'.form-container{ background-color:transparent!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
-            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;}'}
+            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;text-align: center;}'}
             {'.nocturn-wider-section .flyer{transition: all 0.5s;}'}
             {'.nocturn-wider-section .flyer:hover{filter: invert(75%);}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #dddac3!important;padding-bottom: 30px;line-height: 1.1;}'}
