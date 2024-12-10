@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
+import Script from "next/script";
 
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
@@ -70,7 +71,7 @@ const Menu = ({ menuImage }) => {
           <div className="nocturn">
            <div className="row">
               <div className="column">
-                <div data-airship-form-url='https://forms.airship.co.uk/forms/1364/nocturn'></div>
+                <div data-airship-form-url='https://forms.airship.co.uk/forms/1364/nocturn'></div><script src='https://forms.airship.co.uk/assets/js/embed.js'></script>
               </div>
            </div>
           </div>
