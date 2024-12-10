@@ -85,14 +85,14 @@ const Menu = ({ menuImage }) => {
 
           <div className="nocturn">
            <div className="row">
-                   <IFrameContainerStyle className="bookings-iframe"
+              <div className="column">
+                                    <IFrameContainerStyle className="bookings-iframe"
                       dangerouslySetInnerHTML={{
                         __html:
                           '<iframe src="https://forms.airship.co.uk/forms/1364/nocturn" style="border:0px none;" width="100%" height="100%"> </iframe>',
                       }}
                       style={style}
                     />
-              <div className="column">
               </div>
            </div>
           </div>
