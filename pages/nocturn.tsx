@@ -18,7 +18,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
-            {'.column{flex: 50%;max-width: 50%;padding: 0 4px;margin-bottom: 30px;}'}
+            {'.column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 18px;}'}
@@ -35,8 +35,10 @@ const Menu = ({ menuImage }) => {
         </style>
         <title>Nocturn</title>
       </Head>
-         <div className="nocturn-wider-section">
+         <div className="nocturn">
            <img src="/images/nocturn-main-web-page-header.png" alt="Nocturn" width="100%" />
+         </div>
+           <div className="nocturn-wider-section">
            <div className="row">
               <div className="column">
                 <a href="https://www.little-portland.com/nocturn-01" target="_blank">
