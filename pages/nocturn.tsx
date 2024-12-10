@@ -90,9 +90,6 @@ const Menu = ({ menuImage }) => {
           <div className="nocturn-wider-section subscribe">
            <div className="row">
               <div className="column">
-                  <object id="subscribe-form" data="https://forms.airship.co.uk/forms/1364/nocturn" width="100%" height="300" type="text/html"> Alternative iframe</object>
-              </div>
-              <div className="column">
                  <IFrameContainerStyle className="bookings-iframe"
                       dangerouslySetInnerHTML={{
                         __html:
