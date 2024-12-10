@@ -90,7 +90,7 @@ const Menu = ({ menuImage }) => {
           <div className="nocturn-wider-section subscribe">
            <div className="row">
               <div className="column">
-                  <embed src="https://forms.airship.co.uk/forms/1364/nocturn" width=200 height=200 />
+                  <object data="https://forms.airship.co.uk/forms/1364/nocturn" width="100%" height="300" type="text/html"> Alternative iframe</object>
               </div>
               <div className="column">
                  <IFrameContainerStyle className="bookings-iframe"
