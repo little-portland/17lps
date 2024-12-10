@@ -89,7 +89,8 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
           </div>
-      
+          
+       <div className="nocturn">
          <CenterContainer>
               <IFrameContainerStyle className="bookings-iframe"
           dangerouslySetInnerHTML={{
@@ -99,14 +100,8 @@ const Menu = ({ menuImage }) => {
           style={style}
         />
         </CenterContainer>
-
-           <Script
-        src="https://forms.airship.co.uk/assets/js/embed.js"
-        onLoad={() => {
-          console.log("loaded Airship form");
-        }}
-      ></Script>
-      
+        <Script src="https://forms.airship.co.uk/assets/js/embed.js"></Script>
+       </div>
     </>
   );
 };
