@@ -101,7 +101,7 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
         <Script src="https://forms.airship.co.uk/assets/js/embed.js"></Script>
-        <Script src="https://code.jquery.com/jquery-3.7.1.min.js""></Script>
+        <Script src="https://code.jquery.com/jquery-3.7.1.min.js"></Script>
         <Script>
         $(document).ready(function() {
             $(iframe).load(function() {
