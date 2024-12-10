@@ -820,7 +820,7 @@ html, body {
 /* Nocturn general page */
 
 #subscribe-form .text-input-field {
-    font-size: 13px!important;
+     font-size: 13px!important;
     border-top: 0px!important;
     border-left: 0px!important;
     border-right: 0px!important;
