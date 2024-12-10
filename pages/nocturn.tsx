@@ -55,7 +55,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ text-align: left!important;}'}
             {'.nocturn-wider-section a{text-decoration: none;}'}
             {'.nocturn-wider-section a:hover .nocturn-text{color: #ff00ff!important;}'}
-            {'@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;margin: 0 auto 15px auto;}.subscribe .bookings-iframe{width: 100%!important;height: 100% !important;}.nocturn-text-wrapper{padding: 0 15px;}.nocturn-wider-section{width: 90%;}.top p{ font-size: 20px;}.bottom{ margin-top: 10px !important;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn</title>
       </Head>
