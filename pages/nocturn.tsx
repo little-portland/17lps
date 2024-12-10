@@ -54,7 +54,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ text-align: left!important;}'}
             {'.nocturn-wider-section a{text-decoration: none;}'}
             {'.nocturn-wider-section a:hover .nocturn-text{color: #ff00ff!important;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;margin: 0 auto 15px auto;}.subscribe {width: 100%!important;}.row{padding: 0!important;text-align: center!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;margin: 0 auto 15px auto;}.subscribe {width: 100%!important;}.subscribe .bookings-iframe{width: 100%!important;height: 100% !important;}.row{padding: 0!important;text-align: center!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn</title>
       </Head>
