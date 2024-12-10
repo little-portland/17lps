@@ -30,6 +30,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
+            {'body{background-color: #1c043d!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;margin-bottom: 30px;}'}
             {'.subscribe{width: 100%;margin: 0 auto;}'}
