@@ -83,10 +83,10 @@ const Menu = ({ menuImage }) => {
            </div>
          </div> 
 
-          <div className="nocturn">
+          <div className="nocturn-wider-section">
            <div className="row">
               <div className="column">
-                                    <IFrameContainerStyle className="bookings-iframe"
+                 <IFrameContainerStyle className="bookings-iframe"
                       dangerouslySetInnerHTML={{
                         __html:
                           '<iframe src="https://forms.airship.co.uk/forms/1364/nocturn" style="border:0px none;" width="100%" height="100%"> </iframe>',
@@ -96,19 +96,7 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
           </div>
-          
-       <div className="nocturn">
-         <CenterContainer>
-              <IFrameContainerStyle className="bookings-iframe"
-          dangerouslySetInnerHTML={{
-            __html:
-              '<iframe src="https://forms.airship.co.uk/forms/1364/nocturn" style="border:0px none;" width="100%" height="100%"> </iframe>',
-          }}
-          style={style}
-        />
-        </CenterContainer>
         <Script src="https://forms.airship.co.uk/assets/js/embed.js"></Script>
-       </div>
     </>
   );
 };
