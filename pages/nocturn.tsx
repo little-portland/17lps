@@ -33,7 +33,7 @@ const Menu = ({ menuImage }) => {
             {'body{background-color: #1c043d!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
-            {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
+            {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;margin-bottom: 30px;}'}
             {'.column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
