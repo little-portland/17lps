@@ -819,14 +819,14 @@ html, body {
 
 /* Nocturn general page */
 
-.text-input-field {
-    font-size: 13px;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    padding: 0px;
-    margin-top: 0px;
-    height: 40px;
+#subscribe-form .text-input-field {
+    font-size: 13px!important;
+    border-top: 0px!important;
+    border-left: 0px!important;
+    border-right: 0px!important;
+    padding: 0px!important;
+    margin-top: 0px!important;
+    height: 40px!important;
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
