@@ -103,9 +103,9 @@ const Menu = ({ menuImage }) => {
         <Script src="https://forms.airship.co.uk/assets/js/embed.js"></Script>
         <Script src="https://code.jquery.com/jquery-3.7.1.min.js"></Script>
         <Script>
-        $(document).ready(function() {
-            $(iframe).load(function() {
-                $(iframe).contents().find("head").append("<style>.text-input-field{border-top: 0!important;border-left: 0!important;border-right: 0!important;padding: 0!important;border-width: 1px!important;font-size: 13px!important;}</style>");  
+        jQuery(document).ready(function() {
+            jQuery(iframe).load(function() {
+                jQuery(iframe).contents().find("head").append("<style>.text-input-field{border-top: 0!important;border-left: 0!important;border-right: 0!important;padding: 0!important;border-width: 1px!important;font-size: 13px!important;}</style>");  
             });  
         });
         </Script>
