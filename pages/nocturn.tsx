@@ -41,8 +41,8 @@ const Menu = ({ menuImage }) => {
             {'.subscribe h2{font-family: Helvetica!important;color: #dddac3!important;font-size: 20px;margin-top: -20px;margin-bottom: -30px;text-align: center;line-height: 1.5;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
-            {'.top{ font-size: 18px;}'}
-            {'.bottom{ font-size: 18px;}'}
+            {'.top p{ font-size: 18px;}'}
+            {'.bottom p{ font-size: 18px;}'}
             {'.bottom p{ margin-bottom: 15px;}'}
             {'.form-container{ background-color:transparent!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;text-align: center;margin-bottom: 50px;}'}
