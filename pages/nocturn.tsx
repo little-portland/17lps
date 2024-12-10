@@ -93,7 +93,7 @@ const Menu = ({ menuImage }) => {
                  <IFrameContainerStyle className="bookings-iframe"
                       dangerouslySetInnerHTML={{
                         __html:
-                          '<iframe src="https://forms.airship.co.uk/forms/1364/nocturn" scrolling="no" style="border:0px none; position:absolute;" width="100%" height="100%"> </iframe>',
+                          '<iframe src="https://forms.airship.co.uk/forms/1364/nocturn" scrolling="no" style="border:0px none;" width="100%" height="100%"> </iframe>',
                       }}
                       style={style}
                     />
