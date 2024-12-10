@@ -105,7 +105,8 @@ const Menu = ({ menuImage }) => {
         <Script>
         $(document).ready(function() {
             $(iframe).load(function() {
-                $(iframe).contents().find("head").append("<style>.text-input-field{border-top: 0!important;border-left: 0!important;border-right: 0!important;padding: 0!important;border-width: 1px!important;font-size: 13px!important;}</style>");  
+                $(iframe).contents().find("head").append("<style>.text-input-field{border-top: 0!important;border-left: 0!important;border-right: 0!important;padding: 0!important;border-width: 1px!important;font-size: 13px!important;}input:focus::placeholder {
+  color: transparent;}</style>");  
             });
         });
         </Script>
