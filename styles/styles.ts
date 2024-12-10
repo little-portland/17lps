@@ -817,6 +817,16 @@ html, body {
   margin-bottom: 0!important;
 }
 
+/* Nocturn general page */
+
+.text-input-field {
+    font-size: 14px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: 0;
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
