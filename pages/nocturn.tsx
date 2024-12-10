@@ -41,6 +41,7 @@ const Menu = ({ menuImage }) => {
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 18px;}'}
             {'.bottom{ font-size: 25px;}'}
+            {'.form-container{ background-color:transparent!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;}'}
             {'.nocturn-wider-section .flyer{transition: all 0.5s;}'}
