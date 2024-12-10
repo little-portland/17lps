@@ -97,6 +97,10 @@ const Menu = ({ menuImage }) => {
                       }}
                       style={style}
                     />
+               <div className="nocturn-text-wrapper bottom"> 
+                   <p><a className="nocturn-text" href="mailto:bianca@little-portland.com" target="_blank">bianca@little-portland.com</a></p>
+                   <p><a className="nocturn-text" href="https://bianca-chu.com/" target="_blank">www.bianca-chu.com</a></p>
+                </div>
               </div>
            </div>
           </div>
