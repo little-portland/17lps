@@ -40,7 +40,6 @@ const Menu = ({ menuImage }) => {
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
-            {'iframe .text-input-field{border-top: 0!important;border-left: 0!important;border-right: 0!important;padding: 0!important;border-width: 1px!important;font-size: 13px!important;}'}
             {'.top{ font-size: 18px;}'}
             {'.bottom{ font-size: 25px;}'}
             {'.form-container{ background-color:transparent!important;}'}
@@ -102,6 +101,14 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
         <Script src="https://forms.airship.co.uk/assets/js/embed.js"></Script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function() {
+            $(iframe).load(function() {
+                $(iframe).contents().find("head").append("<style>.text-input-field{border-top: 0!important;border-left: 0!important;border-right: 0!important;padding: 0!important;border-width: 1px!important;font-size: 13px!important;}</style>");  
+            });
+        });
+        </script>
     </>
   );
 };
