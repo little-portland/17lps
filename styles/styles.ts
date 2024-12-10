@@ -820,11 +820,13 @@ html, body {
 /* Nocturn general page */
 
 .text-input-field {
-    font-size: 14px;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    padding: 0;
+    font-size: 13px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    padding: 0px;
+    margin-top: 0px;
+    height: 40px;
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
