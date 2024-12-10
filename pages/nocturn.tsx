@@ -34,7 +34,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
             {'.subscribe{width: 100%;margin: 0 auto;}'}
-            {'.subscribe .bookings-iframe{min-height: 30rem!important;}'}
+            {'.subscribe .bookings-iframe{width: 30%;height: 30% !important;display: block;place-items: center;margin: 0 auto;min-height: 30rem!important;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
