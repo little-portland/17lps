@@ -16,6 +16,7 @@ const Menu = ({ menuImage }) => {
         <style>
             {'body{background-color: #1c043d!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
+            {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;margin-bottom: 30px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
@@ -30,11 +31,11 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ padding-bottom: 20px;transition: all 0.5s;}'}
             {'.nocturn a{text-decoration: none;}'}
             {'.nocturn a:hover .nocturn-text{color: #ff00ff!important;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.nocturn-wider-section{width: 90%;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn</title>
       </Head>
-         <div className="nocturn">
+         <div className="nocturn-wider-section">
            <img src="/images/nocturn-main-web-page-header.png" alt="Nocturn" width="100%" />
            <div className="row">
               <div className="column">
@@ -61,11 +62,16 @@ const Menu = ({ menuImage }) => {
                   </div>
                 </a>
               </div>
+           </div>
+         </div> 
+
+          <div className="nocturn">
+           <div className="row">
               <div className="column">
                 <div data-airship-form-url='https://forms.airship.co.uk/forms/1364/nocturn'></div>
               </div>
            </div>
-         </div>      
+          </div>
     </>
   );
 };
