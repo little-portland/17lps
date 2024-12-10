@@ -90,6 +90,12 @@ const Menu = ({ menuImage }) => {
           <div className="nocturn-wider-section subscribe">
            <div className="row">
               <div className="column">
+                 <object data="https://forms.airship.co.uk/forms/1364/nocturn" width="100%" height="100%">
+                   <embed src="https://forms.airship.co.uk/forms/1364/nocturn" width="100%" height="100%"> </embed>
+                   Error: Embedded data could not be displayed.
+                 </object>
+              </div>
+              <div className="column">
                  <IFrameContainerStyle className="bookings-iframe"
                       dangerouslySetInnerHTML={{
                         __html:
