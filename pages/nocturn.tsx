@@ -38,7 +38,7 @@ const Menu = ({ menuImage }) => {
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
-            {'.subscribe h2{font-family: Helvetica!important;color: #dddac3!important;font-size: 20px;margin-top: -20px;margin-bottom: -30px;}'}
+            {'.subscribe h2{font-family: Helvetica!important;color: #dddac3!important;font-size: 20px;margin-top: -20px;margin-bottom: -30px;text-align: center;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 18px;}'}
