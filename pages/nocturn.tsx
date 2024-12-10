@@ -11,6 +11,19 @@ import { IFrameContainerStyle } from "@components/UX/CenterContainer/styles";
 import useFetchContent from "@utils/useFetchContent";
 
 const Menu = ({ menuImage }) => {
+
+   //Check Device
+  const { isMobile } = useDeviceDetect();
+
+  const style = {
+    width: isMobile ? "100%" : "32%",
+    height: isMobile ? "70%" : "80%",
+    display: "grid",
+    placeItems: "center",
+    "@media (minWidth: 500px)": {
+      display: "none", 
+    },
+  };
   
   return (
     <>
