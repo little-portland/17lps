@@ -26,12 +26,12 @@ const Menu = ({ menuImage }) => {
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;}'}
-            {'.nocturn .flyer{transition: all 0.5s;}'}
-            {'.nocturn .flyer:hover{filter: invert(75%);}'}
+            {'.nocturn-wider-section .flyer{transition: all 0.5s;}'}
+            {'.nocturn-wider-section .flyer:hover{filter: invert(75%);}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #dddac3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;transition: all 0.5s;}'}
-            {'.nocturn a{text-decoration: none;}'}
-            {'.nocturn a:hover .nocturn-text{color: #ff00ff!important;}'}
+            {'.nocturn-wider-section a{text-decoration: none;}'}
+            {'.nocturn-wider-section a:hover .nocturn-text{color: #ff00ff!important;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.nocturn-wider-section{width: 90%;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn</title>
