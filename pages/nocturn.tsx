@@ -55,7 +55,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ text-align: left!important;}'}
             {'.nocturn-wider-section a{text-decoration: none;}'}
             {'.nocturn-wider-section a:hover .nocturn-text{color: #ff00ff!important;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.nocturn-wider-section{width: 90%;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;margin: 0 auto 15px auto;}.nocturn-text-wrapper{padding: 0 15px;}.nocturn-wider-section{width: 90%;}.top{ font-size: 20px;}.bottom{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn</title>
       </Head>
