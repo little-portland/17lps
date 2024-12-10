@@ -33,6 +33,7 @@ const Menu = ({ menuImage }) => {
             {'body{background-color: #1c043d!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
+            {'.nocturn-wider-section{width: 100%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;margin-bottom: 30px;}'}
             {'.column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
@@ -90,7 +91,7 @@ const Menu = ({ menuImage }) => {
                  <IFrameContainerStyle className="bookings-iframe"
                       dangerouslySetInnerHTML={{
                         __html:
-                          '<iframe src="https://forms.airship.co.uk/forms/1364/nocturn" style="border:0px none;" width="100%" height="100%"> </iframe>',
+                          '<iframe src="https://forms.airship.co.uk/forms/1364/nocturn" scrolling="no" style="border:0px none; position:absolute;" width="100%" height="100%"> </iframe>',
                       }}
                       style={style}
                     />
