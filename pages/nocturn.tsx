@@ -93,7 +93,6 @@ const Menu = ({ menuImage }) => {
           <div className="nocturn-wider-section subscribe">
            <div className="row">
               <div className="column">
-                 <h2>Sign up to receive updates for forthcoming projects and events</h2>
                  <IFrameContainerStyle className="bookings-iframe"
                       dangerouslySetInnerHTML={{
                         __html:
