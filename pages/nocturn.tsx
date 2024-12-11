@@ -17,7 +17,7 @@ const Menu = ({ menuImage }) => {
   const { isMobile } = useDeviceDetect();
 
   const style = {
-    width: isMobile ? "100%" : "100%", 
+    width: isMobile ? "100%" : "100%",  
     display: "grid",
     placeItems: "center",
     "@media (minWidth: 500px)": {
