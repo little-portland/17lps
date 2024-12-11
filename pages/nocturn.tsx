@@ -8,7 +8,7 @@ import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 import { IFrameContainerStyle } from "@components/UX/CenterContainer/styles";
 
 //hooks
-import useDeviceDetect from "@utils/useDeviceDetect";
+import useDeviceDetect from "@utils/useDeviceDetect"; 
 import useFetchContent from "@utils/useFetchContent";
 
 const Menu = ({ menuImage }) => {
