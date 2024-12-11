@@ -54,8 +54,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ text-align: left!important;}'}
             {'.nocturn-wider-section a{text-decoration: none;}'} 
             {'.nocturn-wider-section a:hover .nocturn-text{color: #ff00ff!important;}'}
-            {'@media (max-width: 768px) { 
-               .nocturn{width: 90%;margin: 0 auto 15px auto;}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;margin: 0 auto 15px auto;}
                .nocturn-wider-section .flyer:hover{filter: none!important;}
                .subscribe{width: 100%!important;}
                .subscribe .bookings-iframe{width: 100%!important;height: 100% !important;}
