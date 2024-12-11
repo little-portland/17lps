@@ -31,7 +31,7 @@ const Menu = ({ menuImage }) => {
         <style>
             {'body{background-color: #1c043d!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
-            {'.nocturn-wider-section{width: 80%;margin: 0 auto;margin-bottom: 30px;}'}
+            {'.nocturn-wider-section{width: 80%;margin: 0 auto;margin-bottom:30px;}'}
             {'.subscribe{width: 100%;margin: 0 auto;}'}
             {'.subscribe .bookings-iframe{width: 30%!important;height: 30% !important;display: block!important;place-items: center;margin: 0 auto;min-height: 30rem!important;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
