@@ -44,7 +44,7 @@ const Menu = ({ menuImage }) => {
             {'.bottom p{ font-size: 18px;}'}
             {'.bottom p{ margin-bottom: 15px;}'}
             {'.form-container{ background-color:transparent!important;}'}
-            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0;text-align: center;margin-bottom: 50px;}'}
+            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding:0;text-align: center;margin-bottom: 50px;}'}
             {'.bottom{ margin-top: -20px!important;}'}
             {'.nocturn-wider-section .flyer{transition: all 0.5s;}'}
             {'.nocturn-wider-section .flyer:hover{filter: invert(75%);}'}
