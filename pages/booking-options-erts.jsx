@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>HARRI PEPPER, NATHAN COLINET</h3>
-              <h3><span>STUDIO <b>//</b> </span>Rakim Under</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Rakim Under</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
