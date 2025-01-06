@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>23 Jan</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>MAYBE LAURA & REMI MAZET</h3>
-              <h3><span>STUDIO <b>//</b> </span>TBA</h3>
+              <h3><span>TENT <b>//</b> </span>BIFA AND THE JUICE, MAYBE LAURA & REMI MAZET</h3>
+              <h3><span>STUDIO <b>//</b> </span>Eli Verveine, K-led</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
