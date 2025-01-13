@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>17 Jan</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>D'MONK, FRANKY MAMI</h3>
+              <h3><span>TENT <b>//</b> </span>D'MONK, FRANKIE MAMI</h3>
               <h3><span>STUDIO <b>//</b> </span>LABEACH, RHYTHMS OF PRESCOTT, Rubén Baiz</h3>
             </div>
         </div>
