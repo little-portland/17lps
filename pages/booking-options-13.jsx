@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name openlab-presents">Openlab Presents</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>07 Sep</h2>
+              <h2><span>SAT</span>09 Sep</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>TINTIN, VANDORTA</h3>
