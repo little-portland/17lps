@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name sunday-special">Carnival Special</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>Sun</span>08 Sep</h2>
+              <h2><span>Sun</span>09 Sep</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT & STUDIO <b>//</b> </span>Isaac Carter & Friends</h3>
