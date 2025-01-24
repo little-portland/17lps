@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name warmer-people">WARMER PEOPLE</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>28 SEP</h2>
+              <h2><span>SAT</span>29 SEP</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Captain Grog, Nathan colinet</h3>
