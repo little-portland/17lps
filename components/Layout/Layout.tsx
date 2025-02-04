@@ -106,22 +106,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>[At the end of the Universe]</h2> 
 
         {<div
-        className="box-1 box override-box"> 
-        <Image 
-            src={"/images/override_eat_page.png"}
-            blurDataURL={"/images/override_eat_page.png"}
-        />
-        <h2>GUEST CHEFS TAKEOVERS</h2>
-        <hr/>  
-        <h4>SEB MYERS (PLANQUE)</h4>
-        <h5>29 JANUARY <br/> FROM 7PM</h5>
-        <p className="links"><a target="_blank" href="https://sevn.ly/xMWA7DA6">[BOOK]</a></p>
-        <hr/>
-        <p className="override-footer"><i>Override sees guest chefs taking over The Tent, curating a one-night-only special set menu. </i></p> 
-        <p className="override-footer override-dietary"><i>Note that dietary restrictions will not be accommodated for these events. </i></p> 
-        </div>}
-
-        {<div
         className="box-1 box"> 
         <h2>CHEF’S STUDIO @ 17 LITTLE PORTLAND STREET</h2>
         <h4>WEDNESDAYS - SATURDAYS</h4>
