@@ -709,7 +709,7 @@ html, body {
 .override-btn span {
     margin-bottom: 0!important;
     padding-bottom: 0!important;
-    font-size: 2rem !important;
+    font-size: 1.5rem !important;
 }
 
 .new-button-wrapper .menu-btn span {
