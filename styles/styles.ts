@@ -397,7 +397,7 @@ html, body {
 .override-btn span {
     margin-bottom: 0!important;
     padding-bottom: 0!important;
-    font-size: 1.7rem !important;
+    font-size: 1.5rem !important;
 }
 
 .override-page img {
