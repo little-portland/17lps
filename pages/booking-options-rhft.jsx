@@ -46,7 +46,7 @@ const BookingOptions = () => {
               <span>BOOK DINNER</span>
               <span class="space">IN CHEF’S STUDIO</span>
               <p class="time">Includes Free Club Entry</p>
-              <p class="details"><span>8-12 PAX</span><span>8PM</span><span>£100PP</span></p>
+              <p class="details"><span>8-12 PAX</span><span>8PM</span><span>£80PP</span></p>
              </a>
              <p class="dotted-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/regular-set-menu" target="_blank">
@@ -59,7 +59,7 @@ const BookingOptions = () => {
         </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="" target="_blank">
+              <a href="https://sevn.ly/xGQ7jlvP" target="_blank">
                 CLUB GUESTLIST ONLY
               </a>
             </Button>
