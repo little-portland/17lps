@@ -21,16 +21,16 @@ const BookingOptions = () => {
         <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>THU</span>23 Jan</h2>
+              <h2><span>THU</span>27 Feb</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>BIFA AND THE JUICE, MAYBE LAURA & REMI MAZET</h3>
-              <h3><span>STUDIO <b>//</b> </span>Eli Verveine, K.LED</h3>
+              <h3><span>TENT <b>//</b> </span>ALEC FALCONER, TRIXIE B2B E. ALEXANDER</h3>
+              <h3><span>STUDIO <b>//</b> </span>MAURO FERNO, MOLA MOLA</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-            <a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2025-01-23" target="_blank">
+            <a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2025-02-27" target="_blank">
               <span>BOOK DINNER</span>
               <span class="space">IN THE TENT</span>
               <p class="time">Includes Free Club Entry</p>
@@ -46,7 +46,7 @@ const BookingOptions = () => {
               <span>BOOK DINNER</span>
               <span class="space">IN CHEF’S STUDIO</span>
               <p class="time">Includes Free Club Entry</p>
-              <p class="details"><span>8-12 PAX</span><span>8PM</span><span>£100PP</span></p>
+              <p class="details"><span>8-12 PAX</span><span>8PM</span><span>FROM £80PP</span></p>
              </a>
              <p class="dotted-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/regular-set-menu" target="_blank">
@@ -59,7 +59,7 @@ const BookingOptions = () => {
         </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xiXMlcw3" target="_blank">
+            <a href="" target="_blank">
                 CLUB TICKETS ONLY
               </a>
             </Button>
