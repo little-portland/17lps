@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>14 Feb</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Ece DüzgiT, DEMI</h3>
+              <h3><span>TENT <b>//</b> </span>DEMI, Ece DüzgiT</h3>
               <h3><span>STUDIO <b>//</b> </span>Bas Ibellini</h3>
             </div>
         </div>
