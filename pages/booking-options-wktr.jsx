@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>27 Feb</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>ALEC FALCONER, TRIXIE B2B E. ALEXANDER</h3>
-              <h3><span>STUDIO <b>//</b> </span>MAURO FERNO, MOLA MOLA</h3>
+              <h3><span>TENT <b>//</b> </span>MAURO FERNO, MOLA MOLA</h3>
+              <h3><span>STUDIO <b>//</b> </span>ALEC FALCONER, TRIXIE B2B E. ALEXANDER</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
