@@ -37,7 +37,7 @@ const BookingOptions = () => {
             <Button classes="events-button ticketNew override-btn" btnType="hollow">
               <a href="" target="_blank">
                 Zen Ong <span class="rest-name">LOADING...</span>
-                <span class="takeover-date">06 Mar<time>From 7PM</time></span>
+                <span class="takeover-date">07 Mar<time>From 7PM</time></span>
               </a>
             </Button>
         </div>
