@@ -37,7 +37,7 @@ const BookingOptions = () => {
             <Button classes="events-button ticketNew override-btn" btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2025-03-06" target="_blank">
                 Zen Ong <span class="rest-name">LOADING...</span>
-                <span class="takeover-date">07 Mar<time>From 7PM</time></span>
+                <span class="takeover-date">06 Mar<time>From 7PM</time></span>
               </a>
             </Button>
         </div>
