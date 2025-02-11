@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>01 MAR</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>RICHARD MARSHALL, TINTIN</h3>
+              <h3><span>TENT <b>//</b> </span>Dylan Blue, TINTIN</h3>
               <h3><span>STUDIO <b>//</b> </span>JAYE WARD, MAURICE FULTON</h3>
             </div>
         </div>
