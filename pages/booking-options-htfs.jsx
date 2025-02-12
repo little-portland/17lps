@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>KEM, OLI SILVA, SECRET GUEST</h3>
-              <h3><span>STUDIO <b>//</b> </span>Craig Richards, Gabriel Rai, Ivan Smagghe</h3>
+              <h3><span>STUDIO <b>//</b> </span>Craig Richards, Ivan Smagghe, Gabriel Rai</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
