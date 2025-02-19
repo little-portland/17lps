@@ -651,7 +651,7 @@ html, body {
     text-decoration: none;
 }
 
-.new-button-wrapper .details {
+.new-button-wrapper .details, .box .details {
   display: flex;
 }
 
