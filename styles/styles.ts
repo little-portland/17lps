@@ -278,10 +278,6 @@ html, body {
     display: grid;
 }
 
-.schedule-box .details span {
-    display: block;
-}
-
 .schedule-box .details {
   grid-row: 3!important;
   display: inline-block !important;
@@ -291,6 +287,7 @@ html, body {
 }
 
 .schedule-box .details span {
+  display: block;
   text-align: center!important;
 }
 
@@ -1015,7 +1012,15 @@ html, body {
         .header-address {
           font-size: .7rem!important;
         }
-        
+
+        .schedule-box .details span {
+          font-size: .8rem!important;
+        }
+
+        .schedule-box .details {
+          font-size: .7rem!important;
+        }
+                
         .box h2 {
           font-size: 1.2rem;
         }
