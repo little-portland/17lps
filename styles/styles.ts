@@ -655,7 +655,7 @@ html, body {
   display: flex;
 }
 
-.new-button-wrapper .details span {
+.new-button-wrapper .details span, .box .details span {
   font-size:  1rem;
   flex-grow: 1;
 }
