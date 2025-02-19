@@ -104,6 +104,18 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
       >     
         <h1>The Tent</h1>
         <h2>[At the end of the Universe]</h2> 
+        <h3>17 Little Portland Street</h3>
+
+        {<div
+        className="box-1 box"> 
+        <h2>JAZZ AT THE END OF THE UNIVERSE</h2>
+        <h4>EVERY WEDNESDAY</h4>
+        <p>Step into a world of rhythm and taste with our Live Jazz and Dining Experience, every Wednesday at The Tent [at the End of the Universe]. Amidst a cosmic backdrop, guests are transported to a realm where smooth melodies and delectable cuisine collide.</p> 
+        <br/>  
+          <p>6:30PM / 9PM</p>
+        <br/>  
+        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
+        </div>}
 
         {<div
         className="box-1 box"> 
@@ -121,17 +133,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <p>Maximum 12 guests seated</p>
         <br/> 
         <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/regular-set-menu" target="_blank">[REGULAR SET MENU]</a> <a href="https://www.little-portland.com/premium-set-menu" target="_blank">[PREMIUM SET MENU]</a></p>
-        </div>}
-
-        {<div
-        className="box-1 box"> 
-        <h2>JAZZ AT THE END OF THE UNIVERSE</h2>
-        <h4>EVERY WEDNESDAY</h4>
-        <p>Step into a world of rhythm and taste with our Live Jazz and Dining Experience, every Wednesday at The Tent [at the End of the Universe]. Amidst a cosmic backdrop, guests are transported to a realm where smooth melodies and delectable cuisine collide.</p> 
-        <br/>  
-          <p>6:30PM / 9PM</p>
-        <br/>  
-        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
 
         {<div
