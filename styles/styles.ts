@@ -1013,7 +1013,7 @@ html, body {
         }
 
         .header-address {
-          font-size: .7rem;
+          font-size: .7rem!important;
         }
         
         .box h2 {
