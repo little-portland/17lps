@@ -110,13 +110,13 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-1 box"> 
         <h3>Open Thursdays to Saturdays</h3>
         <h4>Nightly Schedule</h4>
-        <p class="details"><span>Chef's Studio</span>20:00</p>
-        <p class="details"><span>Override Dinner</span>21:00</p>
-        <p class="details"><span>Club Opens</span>22:00</p>
+        <p className="details"><span>Chef's Studio</span>20:00</p>
+        <p className="details"><span>Override Dinner</span>21:00</p>
+        <p className="details"><span>Club Opens</span>22:00</p>
         </div>}
 
         {<div
-        className="box-1 box"> 
+        className="box-1 box override-boxx"> 
         <Image 
             src={"/images/override_eat_page.png"}
             blurDataURL={"/images/override_eat_page.png"}
@@ -126,9 +126,9 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h4>Override [03] feat. Zen Ong</h4>
         <h3>Launching 06 June 2025. Menu available through June.</h3>
           <br/>  
-          <p>£65 pp (Opening night with Zen Ong - £80)</p>
-          <p>Set Menu Dinner</p>
-          <p>Club Access Included</p>
+          <p className="info">£65 pp (Opening night with Zen Ong - £80)</p>
+          <p className="info">Set Menu Dinner</p>
+          <p className="info">Club Access Included</p>
         <br/>  
         <p>Zen moved to Los Angeles in 2015 to join the opening team at EP&LP, exploring his Indonesian heritage through Asian cookery techniques. He later launched the INDA dinner series in 2019 and AWAN, an acclaimed vegan ice creamery, in 2021, where Steve Lacey premiered his album Gemini Rights. Reconnecting in 2023, Zen and our Executive Chef, John Javier, cooked together for Ye in Florence during the Vultures recording sessions. Now, Zen is bringing MEJA to The Tent, an Indonesian shared tasting menu in the main dining room that focuses on communal food offerings.</p> 
         <br/>  
@@ -136,8 +136,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         </div>}
 
         {<div
-        className="box-1 box"> 
-        <h1>CHEF’S STUDIO</h1>
+        className="box-1 box chef-studio"> 
+        <h2>CHEF’S STUDIO</h2>
         <p>An intimate 12-seater dining experience in our invite-only club hidden beneath the Tent (at the End of the Universe). This is how those in the know kick off their night.</p> 
         <br/>  
           <p>£65pp</p>
