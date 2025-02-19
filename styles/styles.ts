@@ -286,7 +286,9 @@ html, body {
   grid-row: 3;
   display: inline-block !important;
   grid-row: 3;
+  margin: auto;
   margin-bottom: 0;
+  text-align: center;
 }
 
 .header-tag {
