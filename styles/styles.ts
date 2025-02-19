@@ -1008,6 +1008,11 @@ html, body {
         .eat-note h2 {
           font-size: .7rem;
         }
+
+        .header-address {
+          font-size: .7rem;
+        }
+        
         .box h2 {
           font-size: 1.2rem;
         }
