@@ -290,6 +290,10 @@ html, body {
   text-align: center!important;
 }
 
+.schedule-box .details span {
+  text-align: center!important;
+}
+
 .header-tag {
   margin-bottom: .5rem!important;
 }
