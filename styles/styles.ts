@@ -284,7 +284,13 @@ html, body {
 
 .schedule-box .details {
   grid-row: 3;
-  margin-bottm: 0!important;
+  display: inline-block !important;
+  grid-row: 3;
+  margin-bottom: 0;
+}
+
+.header-tag {
+  margin-bottom: .5rem;
 }
 
 .eat-note p {
