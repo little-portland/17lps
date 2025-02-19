@@ -292,7 +292,7 @@ html, body {
 }
 
 .header-tag {
-  margin-bottom: .5rem;
+  margin-bottom: .5rem!important;
 }
 
 .eat-note p {
