@@ -244,10 +244,6 @@ html, body {
   margin-bottom: 0;
 }
 
-.override-boxx {
-
-}
-
 .override-boxx img {
     margin-bottom: 20px !important;
 }
@@ -265,6 +261,30 @@ html, body {
 
 .override-boxx .info {
   color: rgb(250, 72, 130);
+}
+
+.schedule-box {
+    background: rgb(72, 2, 26);
+    color: rgb(172, 216, 199);
+    padding: 10px;
+}
+
+.schedule-box h4 {
+    text-align: center!important;
+    margin-bottom: 1rem!important;
+}
+
+.schedule-box .schedule-container {
+    display: grid;
+}
+
+.schedule-box .details span {
+    display: block;
+}
+
+.schedule-box .details {
+  grid-row: 3;
+  margin-bottm: 0!important;
 }
 
 .eat-note p {
