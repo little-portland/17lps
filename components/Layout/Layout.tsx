@@ -110,9 +110,9 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-1 box"> 
         <h3>Open Thursdays to Saturdays</h3>
         <h4>Nightly Schedule</h4>
-        <p class="details"><span>Chef's Studio</span><br/>20:00</p>
-        <p class="details"><span>Override Dinner</span><br/>21:00</p>
-        <p class="details"><span>Club Opens</span><br/>22:00</p>
+        <p class="details"><span>Chef's Studio</span>20:00</p>
+        <p class="details"><span>Override Dinner</span>21:00</p>
+        <p class="details"><span>Club Opens</span>22:00</p>
         </div>}
 
         {<div
@@ -122,11 +122,16 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             blurDataURL={"/images/override_eat_page.png"}
         />
         <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
-        <h4>EVERY WEDNESDAY</h4>
-        <p>Step into a world of rhythm and taste with our Live Jazz and Dining Experience, every Wednesday at The Tent [at the End of the Universe]. Amidst a cosmic backdrop, guests are transported to a realm where smooth melodies and delectable cuisine collide.</p> 
+        <p>Override is our series of guest chef takeovers, where culinary artists develop innovative menus, setting the stage for a sensorial experience as dinner seamlessly transitions into after-dark mode.</p> 
+        <h4>Override [03] feat. Zen Ong</h4>
+        <h3>Launching 06 June 2025. Menu available through June.</h3>
+          <br/>  
+          <p>£65 pp (Opening night with Zen Ong - £80)</p>
+          <p>Set Menu Dinner</p>
+          <p>Club Access Included</p>
         <br/>  
-          <p>6:30PM / 9PM</p>
-        <br/>  
+        <p>Override is our series of guest chef takeovers, where culinary artists develop innovative menus, setting the stage for a sensorial experience as dinner seamlessly transitions into after-dark mode.</p> 
+
         <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
 
