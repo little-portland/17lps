@@ -103,8 +103,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="eat-note"
       >     
         <h1>The Tent</h1>
-        <h2>[At the end of the Universe]</h2> 
-        <h3>17 Little Portland Street</h3>
+        <h2 className="header-tag">[At the end of the Universe]</h2> 
+        <h3 className="header-address">17 Little Portland Street</h3>
 
         {<div
         className="box-1 box schedule-box"> 
