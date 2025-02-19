@@ -110,9 +110,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-1 box"> 
         <h3>Open Thursdays to Saturdays</h3>
         <h4>Nightly Schedule</h4>
-        <p class="details"><span>Chef's Studio</span>20:00</p>
-        <p class="details"><span>Override Dinner</span>21:00</p>
-        <p class="details"><span>Club Opens</span>22:00</p>
         </div>}
 
         {<div
@@ -130,27 +127,21 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <p>Set Menu Dinner</p>
           <p>Club Access Included</p>
         <br/>  
-        <p>Override is our series of guest chef takeovers, where culinary artists develop innovative menus, setting the stage for a sensorial experience as dinner seamlessly transitions into after-dark mode.</p> 
-
-        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
+        <p>Zen moved to Los Angeles in 2015 to join the opening team at EP&LP, exploring his Indonesian heritage through Asian cookery techniques. He later launched the INDA dinner series in 2019 and AWAN, an acclaimed vegan ice creamery, in 2021, where Steve Lacey premiered his album Gemini Rights. Reconnecting in 2023, Zen and our Executive Chef, John Javier, cooked together for Ye in Florence during the Vultures recording sessions. Now, Zen is bringing MEJA to The Tent, an Indonesian shared tasting menu in the main dining room that focuses on communal food offerings.</p> 
+        <br/>  
+        <p className="links"><a href="https://www.little-portland.com/oerride">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a> <a href="#" target="_blank">[EXPLORE ZEN]</a> <a href="#" target="_blank">[DISCOVER OVERRIDE]</a></p>
         </div>}
 
         {<div
         className="box-1 box"> 
-        <h2>CHEF’S STUDIO @ 17 LITTLE PORTLAND STREET</h2>
-        <h4>WEDNESDAYS - SATURDAYS</h4>
-        <p>An intimate 12-seater dining experience hosted by Chef John Javier. <br/>
-        Renowned for his mastery in Chinese cuisine, John draws inspiration from his culinary journey, creating a new radical menu combining Chinese and French bistronomy. With two set menus to choose from, enjoy an intimate dining setting in our invite-only club hidden beneath the Tent at the End of the Universe.</p> 
-        <ul>
-          <li>Standard menu at £80 per person</li>
-          <li>Premium menu at £100 per person</li>
-        </ul>
+        <h1>CHEF’S STUDIO</h1>
+        <p>An intimate 12-seater dining experience in our invite-only club hidden beneath the Tent (at the End of the Universe). This is how those in the know kick off their night.</p> 
         <br/>  
-          <p>Available Wednesdays - Saturdays</p>
-          <p>Minimum 8 guests</p>
-          <p>Maximum 12 guests seated</p>
+          <p>£65pp</p>
+          <p>Override Menu</p>
+          <p>8-12pax</p>
         <br/> 
-        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/regular-set-menu" target="_blank">[REGULAR SET MENU]</a> <a href="https://www.little-portland.com/premium-set-menu" target="_blank">[PREMIUM SET MENU]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a> <a href="#" target="_blank">[EXPLORE ZEN]</a></p>
         </div>}
 
         {<div
