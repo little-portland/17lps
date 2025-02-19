@@ -132,7 +132,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <p className="info">Set Menu Dinner</p>
           <p className="info">Club Access Included</p>
         <br/>  
-        <p>Zen moved to Los Angeles in 2015 to join the opening team at EP&LP, exploring his Indonesian heritage through Asian cookery techniques. He later launched the INDA dinner series in 2019 and AWAN, an acclaimed vegan ice creamery, in 2021, where Steve Lacey premiered his album Gemini Rights. Reconnecting in 2023, Zen and our Executive Chef, John Javier, cooked together for Ye in Florence during the Vultures recording sessions. Now, Zen is bringing MEJA to The Tent, an Indonesian shared tasting menu in the main dining room that focuses on communal food offerings.</p> 
+        <p>Zen Ong, creator of INDA and AWAN, and former head of YZY Food, moved to LA in 2015 to join the opening team at EP&LP. He launched the INDA dinner series in 2019 and AWAN, an acclaimed vegan ice creamery, in 2021, where Steve Lacey premiered his album Gemini Rights. In 2023, he and our Executive Chef, John Javier, cooked for Ye in Florence during the Vultures sessions. Now, Zen brings MEJA to The Tent, an Indonesian shared tasting menu focused on communal dining.</p> 
         <br/>  
         <p className="links"><a href="https://www.little-portland.com/override">[BOOK]</a></p>
         </div>}
