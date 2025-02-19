@@ -216,6 +216,10 @@ html, body {
   margin-bottom: 0.6rem;
 }
 
+.chef-studio h2 {
+  font-size: 2.1rem;
+}
+
 .box h4 {
   text-align: left;
   font-size: 1rem;
@@ -238,6 +242,29 @@ html, body {
 
 .box-3 {
   margin-bottom: 0;
+}
+
+.override-boxx {
+
+}
+
+.override-boxx img {
+    margin-bottom: 20px !important;
+}
+
+.override-boxx h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.override-boxx h3 {
+    font-size: .9rem !important;
+    text-align: left;
+}
+
+.override-boxx .info {
+  color: rgb(250, 72, 130);
 }
 
 .eat-note p {
@@ -955,6 +982,10 @@ html, body {
         }
         .box h2 {
           font-size: 1.2rem;
+        }
+
+       .chef-studio h2 {
+          font-size: 1.6rem;
         }
         
         .insta {
