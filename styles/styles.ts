@@ -283,12 +283,11 @@ html, body {
 }
 
 .schedule-box .details {
-  grid-row: 3;
+  grid-row: 3!important;
   display: inline-block !important;
-  grid-row: 3;
-  margin: auto;
-  margin-bottom: 0;
-  text-align: center;
+  margin: auto!important;
+  margin-bottom: 0!important;
+  text-align: center!important;
 }
 
 .header-tag {
