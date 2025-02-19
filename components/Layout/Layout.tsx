@@ -107,12 +107,14 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h3>17 Little Portland Street</h3>
 
         {<div
-        className="box-1 box"> 
+        className="box-1 box schedule-box"> 
         <h3>Open Thursdays to Saturdays</h3>
         <h4>Nightly Schedule</h4>
-        <p className="details"><span>Chef's Studio</span>20:00</p>
-        <p className="details"><span>Override Dinner</span>21:00</p>
-        <p className="details"><span>Club Opens</span>22:00</p>
+        <div className="schedule-container"> 
+          <p className="details"><span>Chef's Studio</span>20:00</p>
+          <p className="details"><span>Override Dinner</span>21:00</p>
+          <p className="details"><span>Club Opens</span>22:00</p>
+        </div>
         </div>}
 
         {<div
