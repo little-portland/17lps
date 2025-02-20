@@ -116,7 +116,7 @@ html, body {
 .eat-note {
   text-align: left;
   padding: 20px;
-  background-color: #acd8c7;
+  background-color: #000000;
   margin-bottom: 1.5rem;
   color: #4c021b;
   max-height: 510px;
@@ -131,20 +131,21 @@ html, body {
 }
 
 .eat-note h1 {
-  color: #48021a;
+  color: #3DCFD6;
   font-size: 3rem;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: .3rem;
 }
 .eat-note h2 {
-  color: #fa4882;
+  color: #F57658; 
   font-size: 1rem;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 1rem;
 }
 .eat-note h3 {
+  color: #3DCFD6; 
   font-size: 1rem;
   text-transform: uppercase;
   text-align: center;
@@ -231,7 +232,7 @@ html, body {
 }
 
 .box-1, .box-2, .box-3 {
-  border: 2px solid #48021a;
+  border: 2px solid #3DCFD6;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -264,12 +265,13 @@ html, body {
 }
 
 .schedule-box {
-    background: rgb(72, 2, 26);
-    color: rgb(172, 216, 199);
+    background: #3DCFD6;
+    color: #000000;
     padding: 10px;
 }
 
 .schedule-box h4 {
+    color: #dd674b;
     text-align: center!important;
     margin-bottom: 1rem!important;
 }
@@ -296,6 +298,7 @@ html, body {
 }
 
 .eat-note p {
+  color: #F57658!important; 
   font-size: .8rem;
   font-weight: 600;
   margin-bottom: 1rem;
