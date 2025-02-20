@@ -317,19 +317,6 @@ html, body {
   list-style-image: url('/images/food-tray.svg');
   margin: 10px 15px;
 }
-
-.btn-wrapper button, .btn-wrapper-border button {
-  color: #000000!important;
-} 
-
-.btn-wrapper button {
-  background-color: #000000!important;
-} 
-
-.btn-wrapper button, .btn-wrapper-border button {
-  border: 2px solid #000000!important;
-} 
-
 .eat-note ul li {
   font-size: .8rem;
   font-weight: 600;
@@ -607,6 +594,18 @@ button svg {
   border: 3px solid #000!important;
   fill: #000!important;
 }
+
+.btn-wrapper-border button {
+  color: #000000!important;
+} 
+
+.btn-wrapper button, .insta {
+  background-color: #000000!important;
+} 
+
+.btn-wrapper button, .btn-wrapper-border button {
+  border: 2px solid #000000!important;
+} 
  
  .tent .artists {
     -webkit-box-align: center;
