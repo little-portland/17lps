@@ -245,8 +245,13 @@ html, body {
   margin-bottom: 0;
 }
 
+.override-intro {
+    font-size: 1rem!important;
+    line-height: 1.2!important;
+}
+
 .override-boxx img {
-    margin-bottom: 20px !important;
+    margin-bottom: 20px!important;
 }
 
 .override-boxx h2 {
