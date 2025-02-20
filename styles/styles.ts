@@ -593,9 +593,9 @@ html, body {
 
 button svg {
   border: 3px solid #000!important;
+  fill: #000!important;
 }
  
-
  .tent .artists {
     -webkit-box-align: center;
     align-items: center;
