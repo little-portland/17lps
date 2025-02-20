@@ -46,11 +46,7 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn">
            <img src="/images/override_eat_page.png" alt="Override" width="100%" />
-           <img className="flyer" src="/17LPS_Flyer_Override_Zen_OngV2.jpg" /> 
-           <p> 
-              <audio className="spacing" controls src="/images/nocturn/reception-sonic.mp3"></audio>
-            </p>
-           <img className="flyer preloader" src="/images/nocturn/loading-retro-panel.gif" />
+           <img className="flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" /> 
 
            <div className="nocturn-text-wrapper top"> 
             <br/> 
