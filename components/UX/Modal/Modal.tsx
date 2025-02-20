@@ -31,6 +31,7 @@ interface SidebarProps {
     target: string;
     title: string;
   };
+  className?: string; 
 }
 
 const Modal: FC<SidebarProps> = ({
@@ -41,6 +42,7 @@ const Modal: FC<SidebarProps> = ({
   phone,
   link,
   link2,
+  className, 
 }) => {
   //Check Device
   const { isMobile } = useDeviceDetect();
@@ -61,7 +63,7 @@ const Modal: FC<SidebarProps> = ({
     <>
       {open && (
         <>
-          <Grid>
+          <Grid className={className}> 
             <div />
             <Middle>
               <div style={{ position: "relative" }}>
