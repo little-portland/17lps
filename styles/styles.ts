@@ -153,7 +153,7 @@ html, body {
 }
 
 .eat-note h4 {
-  color: #fa4882;
+  color: rgb(61, 207, 214)!important;
   font-size: .8rem;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
@@ -183,13 +183,13 @@ html, body {
 }
 
 .eat-note a {
-  color: #fa4882;
+  color: rgb(245, 118, 88)!important;
   text-decoration: none;
   cursor: pointer;
 }
 
 .eat-note a:hover {
-  color: #5C2C7C;
+  color: rgb(61, 207, 214)!important;
 }
 
 .eat-note img {
@@ -211,7 +211,7 @@ html, body {
 }
 
 .box h2 {
-  color: #48021a;
+  color: rgb(61, 207, 214)!important;
   text-align: left;
   font-size: 1.1rem;
   margin-bottom: 0.6rem;
@@ -261,13 +261,17 @@ html, body {
 }
 
 .override-boxx .info {
-  color: rgb(250, 72, 130);
+ color: rgb(61, 207, 214)!important;
 }
 
 .schedule-box {
     background: #3DCFD6;
     color: #000000;
     padding: 10px;
+}
+
+.schedule-box h3, .schedule-box p {
+    color: #000000!important;
 }
 
 .schedule-box h4 {
@@ -298,7 +302,7 @@ html, body {
 }
 
 .eat-note p {
-  color: #F57658!important; 
+  color: rgb(245, 118, 88)!important; 
   font-size: .8rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -328,6 +332,14 @@ html, body {
 
 ::-webkit-scrollbar {
   width: 6px;
+}
+
+.schedule-box h3, .schedule-box p {
+    color: #000000!important;
+}
+
+.override-boxx h2 {
+  color: rgb(61, 207, 214)!important;
 }
 
 /* Track */
