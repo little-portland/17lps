@@ -75,17 +75,19 @@ const Modal: FC<SidebarProps> = ({
             <ButtonWrapper style={link && link2 && { flexWrap: "wrap" }}>
               {link && (
                 <FirstButtonWrapper>
+                 <div className="sample-menu btn-wrapper" >
                   <Link href={link.target}>
                     <a>
                       <Button btnType="solid">{link.title}</Button>
                     </a>
                   </Link>
+                 </div>
                 </FirstButtonWrapper>
               )}              
 
               {link2 && (
                 <FirstButtonWrapper>
-                  <div className="sample-menu" >
+                  <div className="sample-menu btn-wrapper" >
                   <Link href={link2.target}>
                     <a>
                       <Button btnType="solid">{link2.title}</Button>
@@ -102,22 +104,28 @@ const Modal: FC<SidebarProps> = ({
                   </FirstButtonWrapper>
               )}
               {email && (
+              <div className="btn-wrapper-border" >
                 <a href={`mailto:${email}`}>
                     <Button btnType={isMobile || email === eatEmail ? "hollow" : "solid"}>
                     {isMobile ? "email" : email}
                   </Button>
                 </a>
+               </div>
               )}
               {phone &&
                 (isMobile ? (
+                  <div className="btn-wrapper-border" >
                   <a href={`tel:+${phone.replace(/\s/g, "")}`}>
                     <Button btnType="hollow">call</Button>
                   </a>
+                 </div>
                 ) : (
                   <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
+                    <div className="btn-wrapper-border" >
                     <Button onClick={clickHandler} btnType="hollow">
                       {phone}
                     </Button>
+                  </div>
                   </CopyToClipboard>
                 ))}
             </ButtonWrapper>
