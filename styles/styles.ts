@@ -116,12 +116,16 @@ html, body {
 .eat-note {
   text-align: left;
   padding: 20px;
-  background-color: #000000;
+  background-color: #e3b2c1;
   margin-bottom: 1.5rem;
   color: #4c021b;
   max-height: 510px;
   max-width: 550px;
   overflow: auto;
+}
+
+.eat-modal .eat-note {
+  background-color: #000000;
 }
 
 @media (min-width: 768px) {
@@ -137,6 +141,11 @@ html, body {
   text-align: center;
   margin-bottom: .3rem;
 }
+
+.eat-modal .eat-note h1 {
+  color: #50286d!;
+}
+
 .eat-note h2 {
   color: #F57658; 
   font-size: 1rem;
@@ -629,7 +638,7 @@ html, body {
   background-color: #000000!important;
 }
 
-.eat-modal .btn-wrapper button, .btn-wrapper-border button {
+.eat-modal .btn-wrapper button, .eat-modal .btn-wrapper-border button {
   border: 2px solid #000000!important;
 } 
  
