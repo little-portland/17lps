@@ -48,7 +48,7 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn">
            <img className="override-logo" src="/images/override/override_new_page_top.png" alt="Override" width="100%" />
-           <h1>More than a meal. Step into the void.</h1>
+           <img className="override-logo" src="/images/override/override_new_page_food.png" alt="Override" width="100%" />
            <img className="flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" /> 
 
            <div className="nocturn-text-wrapper top"> 
