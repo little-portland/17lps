@@ -17,6 +17,7 @@ const Menu = ({ menuImage }) => {
             {'html{overflow: auto!important;}'}
             {'body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.override-logo{margin-top: 30px;}'}
+            {'.nocturn h1{margin-top: 30px;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
@@ -46,7 +47,8 @@ const Menu = ({ menuImage }) => {
       </Head>
       
          <div className="nocturn">
-           <img className="override-logo" src="/images/override_eat_page.png" alt="Override" width="100%" />
+           <img className="override-logo" src="/images/override/override_new_page_top.png" alt="Override" width="100%" />
+           <h1>More than a meal. Step into the void.</h1>
            <img className="flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" /> 
 
            <div className="nocturn-text-wrapper top"> 
