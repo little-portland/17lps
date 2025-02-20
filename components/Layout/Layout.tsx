@@ -135,7 +135,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <br/>  
         <p>Zen Ong is the creator of INDA and AWAN, and the former head of YZY Food. He launched the INDA dinner series in 2019 and AWAN, an acclaimed vegan ice creamery, in 2021, where Steve Lacy premiered his album Gemini Rights. In 2023, he and our Executive Chef, John Javier, cooked for Ye in Florence during the Vultures sessions. Now, Zen brings MEJA to The Tent, an Indonesian shared tasting menu focused on communal dining.</p> 
         <br/>  
-        <p className="links"><a href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2025-03-06">[BOOK]</a></p>
+        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2025-03-06">[BOOK]</a></p>
         </div>}
 
         {<div
