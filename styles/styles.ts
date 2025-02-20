@@ -183,13 +183,13 @@ html, body {
 }
 
 .eat-note a {
-  color: rgb(245, 118, 88)!important;
+  color: rgb(61, 207, 214)!important;
   text-decoration: none;
   cursor: pointer;
 }
 
 .eat-note a:hover {
-  color: rgb(61, 207, 214)!important;
+  color: rgb(245, 118, 88)!important;
 }
 
 .eat-note img {
