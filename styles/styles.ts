@@ -595,6 +595,10 @@ button svg {
   fill: #000!important;
 }
 
+button svg text {
+  fill: #000!important;
+}
+
 .btn-wrapper-border button {
   color: #000000!important;
 } 
