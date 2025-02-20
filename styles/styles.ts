@@ -143,7 +143,7 @@ html, body {
 }
 
 .eat-modal .eat-note h1 {
-  color: #50286d!;
+  color: #50286d;
 }
 
 .eat-note h2 {
