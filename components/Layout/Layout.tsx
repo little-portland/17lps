@@ -97,6 +97,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           target: "/menu",
           title: "sample menu",
         }}
+        className="eat-modal"
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
       >  
             {<div
