@@ -275,7 +275,7 @@ html, body {
 }
 
 .schedule-box h4 {
-    color: #dd674b;
+    color: #dd674b!important;
     text-align: center!important;
     margin-bottom: 1rem!important;
 }
