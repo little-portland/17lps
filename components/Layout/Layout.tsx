@@ -124,7 +124,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             blurDataURL={"/images/override_eat_page.png"}
         />
         <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
-        <p>Override is our series of guest chef takeovers, where culinary artists develop innovative menus, setting the stage for a sensorial experience as dinner seamlessly transitions into after-dark mode.</p> 
+        <p>Override is our series of guest chef takeovers where culinary artists develop innovative menus, setting the stage for a sensorial experience as dinner seamlessly transitions into after-dark mode.</p> 
         <h4>Override [03] feat. Zen Ong</h4>
         <h3>Launching 06 June 2025. Menu available through June.</h3>
           <br/>  
