@@ -595,28 +595,28 @@ html, body {
    line-height: 1.9rem;
  }
 
-button svg {
+.eat-modal button svg {
   border: 3px solid #000!important;
   fill: #000!important;
 }
 
-button svg text {
+.eat-modal button svg text {
   fill: #000!important;
 }
 
-button svg path {
+.eat-modal button svg path {
   fill: #000!important;
 }
 
-.btn-wrapper-border button {
+.eat-modal .btn-wrapper-border button {
   color: #000000!important;
 } 
 
-.btn-wrapper button, .insta {
+.eat-modal .btn-wrapper button, .insta {
   background-color: #000000!important;
 }
 
-.btn-wrapper button, .btn-wrapper-border button {
+.eat-modal .btn-wrapper button, .btn-wrapper-border button {
   border: 2px solid #000000!important;
 } 
  
