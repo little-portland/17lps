@@ -135,7 +135,7 @@ html, body {
 }
 
 .eat-note h1 {
-  color: #3DCFD6;
+  color: #50286d;
   font-size: 3rem;
   text-transform: uppercase;
   text-align: center;
@@ -143,7 +143,7 @@ html, body {
 }
 
 .eat-modal .eat-note h1 {
-  color: #50286d;
+  color: #3DCFD6;
 }
 
 .eat-note h2 {
