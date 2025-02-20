@@ -609,25 +609,12 @@ html, body {
   fill: #000!important;
 }
 
-.eat-modal button svg text {
-  fill: #000!important;
+.eat-modal button svg g {
+  fill: #000 !important;
 }
 
 .eat-modal button svg {
-  fill: #000 !important;
-  transform: translateZ(0); /* Forces re-render */
-}
-
-.eat-modal button > svg {
-  fill: #000 !important;
-}
-
-.eat-modal button svg path {
-  fill: #000!important;
-}
-
-.eat-modal button svg path {
-  stroke: #000 !important;
+  filter: brightness(0);
 }
 
 .eat-modal .btn-wrapper-border button {
