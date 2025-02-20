@@ -595,7 +595,7 @@ html, body {
    line-height: 1.9rem;
  }
 
-button svg {
+/*button svg {
   border: 3px solid #000!important;
   fill: #000!important;
 }
@@ -614,7 +614,7 @@ button svg path {
 
 .btn-wrapper button, .insta {
   background-color: #000000!important;
-} 
+}*/
 
 .btn-wrapper button, .btn-wrapper-border button {
   border: 2px solid #000000!important;
