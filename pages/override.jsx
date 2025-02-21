@@ -21,16 +21,20 @@ const Menu = ({ menuImage }) => {
             {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-repeat: no-repeat;background-position: center;padding: 20px; display: flex;justify-content: flex-end;align-items: center;}`}
             {`.explore-zen li a {margin-right: 50px;display: inline-block;width: 300px;height: 65px;background-image: url('/images/override/explore_zen_bg.png'); padding: 15px;}`}
             {`.override-buttons-wrapper {
+                font-family: Helvetica !important;
+                font-weight: bold !important;
                 display: flex;
                 flex-wrap: wrap;
                 gap: 10px;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
+                margin: 50px 0;
             }
             .override-buttons-wrapper .row {
                 display: flex;
                 gap: 10px;
+                width: 100%;
             }
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -88,7 +92,7 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
            
-          <img className="override-logo" src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
+          <img src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
            
            <div className="nocturn-text-wrapper top"> 
             <br/> 
