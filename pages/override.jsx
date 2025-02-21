@@ -17,6 +17,9 @@ const Menu = ({ menuImage }) => {
             {'html{overflow: auto!important;}'}
             {'body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.override-logo{margin-top: 30px;}'}
+            {'.override .explore-zen{list-style: none;padding: 0;margin: 0;width:100%;}'}
+            {'.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-size: cover;background-position: center;padding: 20px;}'}
+            {'.explore-zen li a {display: block;width: 100%;height: 100%;background-image: url('/images/override/explore_zen_bg.png'); background-size: cover;background-position: center;padding: 15px;}'}
             {'.nocturn h1{margin-top: 30px;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
@@ -46,11 +49,16 @@ const Menu = ({ menuImage }) => {
         <title>OVERRIDE. More than a meal.  </title>
       </Head>
       
-         <div className="nocturn">
+         <div className="nocturn override">
            <img className="override-logo" src="/images/override/override_new_page_top.png" alt="Override" width="100%" />
            <img className="override-logo" src="/images/override/override_new_page_food.png" alt="Override" width="100%" />
            <br/> 
-           <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" /> 
+           <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
+           <ul className="explore-zen">
+             <li>
+               <a href="#">Explore Zen</a>
+             </li>
+           </ul>
 
            <div className="nocturn-text-wrapper top"> 
             <br/> 
