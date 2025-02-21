@@ -18,7 +18,7 @@ const Menu = ({ menuImage }) => {
             {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
             {`.override-logo{margin-top: 30px;}`}
             {`.override .explore-zen{list-style: none;padding: 0;margin: 0;width:100%;}`}
-            {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-size: cover;background-position: center;padding: 20px;}`}
+            {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-repeat: no-repeat;background-position: center;padding: 20px; display: flex;justify-content: flex-end;align-items: center;}`}
             {`.explore-zen li a {display: block;width: 100%;height: 100%;background-image: url('/images/override/explore_zen_bg.png'); background-size: cover;background-position: center;padding: 15px;}`}
             {`.nocturn h1{margin-top: 30px;}`}
             {`.nocturn{width: 50%;margin: 0 auto;}`}
@@ -56,7 +56,7 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
            <ul className="explore-zen">
              <li>
-               <a href="#">Explore Zen</a>
+               <a href="#"></a>
              </li>
            </ul>
 
