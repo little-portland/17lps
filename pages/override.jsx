@@ -87,7 +87,7 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
           </div>
-
+           
           <img className="override-logo" src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
            
            <div className="nocturn-text-wrapper top"> 
