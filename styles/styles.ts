@@ -298,15 +298,6 @@ html, body {
     color: #000000; 
 }
 
-.book-override {
-    border: 3px solid #F57658;
-}
-
-.book-override:hover {
-    background-color: #F57658;
-    color: #000000; 
-}
-
 .schedule-box {
     background: #3DCFD6;
     color: #000000;
