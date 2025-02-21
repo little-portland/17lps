@@ -14,36 +14,36 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'html{overflow: auto!important;}'}
-            {'body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}'}
-            {'.override-logo{margin-top: 30px;}'}
-            {'.override .explore-zen{list-style: none;padding: 0;margin: 0;width:100%;}'}
-            {'.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-size: cover;background-position: center;padding: 20px;}'}
-            {'.explore-zen li a {display: block;width: 100%;height: 100%;background-image: url('/images/override/explore_zen_bg.png'); background-size: cover;background-position: center;padding: 15px;}'}
-            {'.nocturn h1{margin-top: 30px;}'}
-            {'.nocturn{width: 50%;margin: 0 auto;}'}
-            {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
-            {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
-            {'.column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
-            {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
-            {'.column a{ cursor:pointer!important;}'}
-            {'.top{ font-size: 35px;}'}
-            {'.bottom{ font-size: 25px;}'}
-            {'audio{ margin-top: 8px!important;width:100%!important;}'}
-            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
-            {'.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}'}
-            {'.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}'}
-            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
-            {'.nocturn-text{ padding-bottom: 20px;}'}
-            {'.nocturn-text-two{ padding-top: 20px;}'}
-            {'.question{ color: #000000!important;font-style:italic;}'}
-            {'.italic{ font-style:italic!important;}'}
-            {'.loading{ font-size: 50px;text-align: center;}'}
-            {'.flyer{ max-width: 100%!important;}'}
-            {'.preloader{ margin:30px 0 10px 0!important;}'}
-            {'.spacing{ margin-top:30px!important;}'}
-            {'.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}'}
-            {'@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {`html{overflow: auto!important;}`}
+            {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
+            {`.override-logo{margin-top: 30px;}`}
+            {`.override .explore-zen{list-style: none;padding: 0;margin: 0;width:100%;}`}
+            {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-size: cover;background-position: center;padding: 20px;}`}
+            {`.explore-zen li a {display: block;width: 100%;height: 100%;background-image: url('/images/override/explore_zen_bg.png'); background-size: cover;background-position: center;padding: 15px;}`}
+            {`.nocturn h1{margin-top: 30px;}`}
+            {`.nocturn{width: 50%;margin: 0 auto;}`}
+            {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
+            {`.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}`}
+            {`.column{flex: 33%;max-width: 33%;padding: 0 4px;}`}
+            {`.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}`}
+            {`.column a{ cursor:pointer!important;}`}
+            {`.top{ font-size: 35px;}`}
+            {`.bottom{ font-size: 25px;}`}
+            {`audio{ margin-top: 8px!important;width:100%!important;}`}
+            {`.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}`}
+            {`.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}`}
+            {`.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}`}
+            {`.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}`}
+            {`.nocturn-text{ padding-bottom: 20px;}`}
+            {`.nocturn-text-two{ padding-top: 20px;}`}
+            {`.question{ color: #000000!important;font-style:italic;}`}
+            {`.italic{ font-style:italic!important;}`}
+            {`.loading{ font-size: 50px;text-align: center;}`}
+            {`.flyer{ max-width: 100%!important;}`}
+            {`.preloader{ margin:30px 0 10px 0!important;}`}
+            {`.spacing{ margin-top:30px!important;}`}
+            {`.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}`}
+            {`@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}`}
         </style>
 
         <title>OVERRIDE. More than a meal.  </title>
