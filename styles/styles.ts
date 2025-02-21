@@ -288,7 +288,7 @@ html, body {
     font-weight: bold;
     text-align: center; 
     text-decoration: none;
-    font-size: 16px; 
+    font-size: 35px; 
     cursor: pointer;
     transition: all 0.3s ease-in-out; 
 }
