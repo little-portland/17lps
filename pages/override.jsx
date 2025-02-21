@@ -20,6 +20,21 @@ const Menu = ({ menuImage }) => {
             {`.override .explore-zen{margin-top: 30px!important;list-style: none;padding: 0;margin: 0;width:100%;}`}
             {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-repeat: no-repeat;background-position: center;padding: 20px; display: flex;justify-content: flex-end;align-items: center;}`}
             {`.explore-zen li a {margin-right: 50px;display: inline-block;width: 300px;height: 65px;background-image: url('/images/override/explore_zen_bg.png'); padding: 15px;}`}
+            {`.override-buttons-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+            .override-buttons-wrapper .row {
+                display: flex;
+                gap: 10px;
+            }
+            .override-buttons-wrapper .column {
+                flex: 1;
+            }`}
             {`.nocturn h1{margin-top: 30px;}`}
             {`.nocturn{width: 50%;margin: 0 auto;}`}
             {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
@@ -43,7 +58,7 @@ const Menu = ({ menuImage }) => {
             {`.preloader{ margin:30px 0 10px 0!important;}`}
             {`.spacing{ margin-top:30px!important;}`}
             {`.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}`}
-            {`@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}`}
+            {`@media (max-width: 768px) { .override-buttons-wrapper {flex-direction: column;gap: 15px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}`}
         </style>
 
         <title>OVERRIDE. More than a meal.  </title>
@@ -61,11 +76,9 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
           <img className="override-logo" src="/images/override/override_schedule.png" />
                  
-         <div className="nocturn-text-wrapper">
+         <div className="override-buttons-wrapper">
+           <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
            <div className="row">
-              <div className="column">
-                    <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
-              </div>
               <div className="column">
                     <a href="#" class="override-button book-override">BOOK OVERRIDE</a>
               </div>
