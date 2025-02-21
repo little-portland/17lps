@@ -83,6 +83,14 @@ const Menu = ({ menuImage }) => {
             width: 100%;
           }
 
+        .override-buttons-wrapper {
+            margin: 25px 0;
+        }
+
+        .override-button {
+            font-size: 15px;
+        }
+
             }`}
         </style>
 
