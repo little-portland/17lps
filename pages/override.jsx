@@ -29,7 +29,7 @@ const Menu = ({ menuImage }) => {
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                margin: 50px 0;
+                margin: 50px 0 60px 0;
             }
             .override-buttons-wrapper .row {
                 display: flex;
@@ -80,10 +80,10 @@ const Menu = ({ menuImage }) => {
           <img className="override-logo" src="/images/override/override_schedule.png" />
                  
          <div className="override-buttons-wrapper">
-           <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
+           <a href="#" class="override-button book-override">BOOK OVERRIDE</a>
            <div className="row">
               <div className="column">
-                    <a href="#" class="override-button book-override">BOOK OVERRIDE</a>
+                   <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
               </div>
               <div className="column">
                     <a href="#" class="override-button">MENU</a>
