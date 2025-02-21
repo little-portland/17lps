@@ -91,6 +91,11 @@ const Menu = ({ menuImage }) => {
             font-size: 15px;
         }
 
+        .image-column {
+            flex: 100%;
+            max-width: 100%;
+        }
+
             }`}
         </style>
 
