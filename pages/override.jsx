@@ -59,7 +59,7 @@ const Menu = ({ menuImage }) => {
                <a href="#"></a>
              </li>
            </ul>
-
+           <img className="override-logo" src="/images/override/override_flyer_heading.png" />
            <div className="nocturn-text-wrapper top"> 
             <br/> 
              <p className="nocturn-text italic">
