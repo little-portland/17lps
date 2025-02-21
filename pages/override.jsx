@@ -64,7 +64,26 @@ const Menu = ({ menuImage }) => {
             {`.preloader{ margin:30px 0 10px 0!important;}`}
             {`.spacing{ margin-top:30px!important;}`}
             {`.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}`}
-            {`@media (max-width: 768px) { .override-buttons-wrapper {flex-direction: column;gap: 15px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}}`}
+            {`@media (max-width: 768px) { .override-buttons-wrapper {flex-direction: column;gap: 15px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}
+              .explore-zen li a {
+                margin-right: 30px;
+                width: 150px;
+                height: 32px;
+                background-size: 150px 32px;
+                background-repeat: no-repeat;
+            }
+            .explore-zen li {
+              background-size: 400px 20px;
+          }
+          .column {
+            width: 100%!important;
+          }
+
+          .full-width {
+            width: 100%;
+          }
+
+            }`}
         </style>
 
         <title>OVERRIDE. More than a meal.  </title>
@@ -104,9 +123,9 @@ const Menu = ({ menuImage }) => {
                <a href="#"></a>
              </li>
            </ul>
-           <img className="override-logo" src="/images/override/override_flyer_heading.png" />
+           <img className="override-logo full-width" src="/images/override/override_flyer_heading.png" />
            <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
-          <img className="override-logo" src="/images/override/override_schedule.png" />
+          <img className="override-logo full-width" src="/images/override/override_schedule.png" />
                  
          <div className="override-buttons-wrapper">
            <a href="#" class="override-button book-override">BOOK OVERRIDE</a>
