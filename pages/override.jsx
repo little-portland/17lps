@@ -60,6 +60,21 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/override/override_flyer_heading.png" />
            <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
           <img className="override-logo" src="/images/override/override_schedule.png" />
+                 
+         <div className="nocturn-text-wrapper">
+           <div className="row">
+              <div className="column">
+                    <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
+              </div>
+              <div className="column">
+                    <a href="#" class="override-button book-override">BOOK OVERRIDE</a>
+              </div>
+              <div className="column">
+                    <a href="#" class="override-button">MENU/a>
+              </div>
+           </div>
+          </div>
+           
            <div className="nocturn-text-wrapper top"> 
             <br/> 
              <p className="nocturn-text italic">
