@@ -70,10 +70,12 @@ const Menu = ({ menuImage }) => {
                     <a href="#" class="override-button book-override">BOOK OVERRIDE</a>
               </div>
               <div className="column">
-                    <a href="#" class="override-button">MENU/a>
+                    <a href="#" class="override-button">MENU</a>
               </div>
            </div>
           </div>
+
+          <img className="override-logo" src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
            
            <div className="nocturn-text-wrapper top"> 
             <br/> 
