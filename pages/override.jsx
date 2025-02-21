@@ -17,9 +17,9 @@ const Menu = ({ menuImage }) => {
             {`html{overflow: auto!important;}`}
             {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
             {`.override-logo{margin-top: 30px;}`}
-            {`.override .explore-zen{list-style: none;padding: 0;margin: 0;width:100%;}`}
-            {`.explore-zen li {margin-top: 30px;width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-repeat: no-repeat;background-position: center;padding: 20px; display: flex;justify-content: flex-end;align-items: center;}`}
-            {`.explore-zen li a {display: inline-block;width: 300px;height: 65px;background-image: url('/images/override/explore_zen_bg.png'); padding: 15px;}`}
+            {`.override .explore-zen{margin-top: 30px;list-style: none;padding: 0;margin: 0;width:100%;}`}
+            {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-repeat: no-repeat;background-position: center;padding: 20px; display: flex;justify-content: flex-end;align-items: center;}`}
+            {`.explore-zen li a {margin-right: 50px;display: inline-block;width: 300px;height: 65px;background-image: url('/images/override/explore_zen_bg.png'); padding: 15px;}`}
             {`.nocturn h1{margin-top: 30px;}`}
             {`.nocturn{width: 50%;margin: 0 auto;}`}
             {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
