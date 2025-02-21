@@ -84,12 +84,12 @@ const Menu = ({ menuImage }) => {
               </div>
              <div className="image-column">
                 <img src="/images/override/image05.jpeg" />
-                <img src="/images/override/image06.jpeg" />
                 <img src="/images/override/image07.jpeg" />
                 <img src="/images/override/image08.jpeg" />
+                <img src="/images/override/image09.jpeg" />
               </div>
              <div className="image-column">
-                <img src="/images/override/image09.jpeg" />
+                <img src="/images/override/image06.jpeg" />
                 <img src="/images/override/image10.jpeg" />
                 <img src="/images/override/image11.jpeg" />
                 <img src="/images/override/image12.jpeg" />
