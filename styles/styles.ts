@@ -278,6 +278,26 @@ html, body {
  color: rgb(61, 207, 214)!important;
 }
 
+.override-button {
+    display: block; 
+    width: 100%; 
+    background-color: transparent;
+    color: #3DCFD6; 
+    border: 3px solid #3DCFD6;
+    padding: 15px 0;
+    font-weight: bold;
+    text-align: center; 
+    text-decoration: none;
+    font-size: 16px; 
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+
+.override-button:hover {
+    background-color: #3DCFD6;
+    color: #000000; 
+}
+
 .schedule-box {
     background: #3DCFD6;
     color: #000000;
