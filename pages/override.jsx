@@ -14,7 +14,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {`html{overflow: auto!important;}`}
+            {`html{overflow-x: hidden !important;}`}
             {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
             {`.override-logo{margin-top: 30px;}`}
             {`.override .explore-zen{margin-top: 30px!important;list-style: none;padding: 0;margin: 0;width:100%;}`}
