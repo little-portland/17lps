@@ -36,6 +36,9 @@ const Menu = ({ menuImage }) => {
                 gap: 10px;
                 width: 100%;
             }
+            .full-width {
+              width: 100%;
+            }
             .override-buttons-wrapper .column {
                 flex: 1;
             }`}
@@ -77,10 +80,6 @@ const Menu = ({ menuImage }) => {
           }
           .column {
             width: 100%!important;
-          }
-
-          .full-width {
-            width: 100%;
           }
 
         .override-buttons-wrapper {
