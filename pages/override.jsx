@@ -88,7 +88,7 @@ const Menu = ({ menuImage }) => {
         }
 
         .override-button {
-            font-size: 15px;
+            font-size: 15px!important;
         }
 
         .image-column {
