@@ -116,7 +116,7 @@ html, body {
 .eat-note {
   text-align: left;
   padding: 20px;
-  background-color: #e3b2c1;
+  background-color: #a1d3c1
   margin-bottom: 1.5rem;
   color: #4c021b;
   max-height: 510px;
