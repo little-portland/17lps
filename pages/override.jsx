@@ -43,7 +43,7 @@ const Menu = ({ menuImage }) => {
             {`.nocturn{width: 50%;margin: 0 auto;}`}
             {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
             {`.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}`}
-            {`.column{flex: 33%;max-width: 33%;padding: 0 4px;}`}
+            {`.column{width: 50%}`}
             {`.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}`}
             {`.column a{ cursor:pointer!important;}`}
             {`.top{ font-size: 35px;}`}
