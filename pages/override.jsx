@@ -42,7 +42,6 @@ const Menu = ({ menuImage }) => {
             {`.nocturn h1{margin-top: 30px;}`}
             {`.nocturn{width: 50%;margin: 0 auto;}`}
             {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
-            {`.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}`}
             {`.column{width: 50%}`}
             {`.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}`}
             {`.column a{ cursor:pointer!important;}`}
@@ -62,7 +61,7 @@ const Menu = ({ menuImage }) => {
             {`.preloader{ margin:30px 0 10px 0!important;}`}
             {`.spacing{ margin-top:30px!important;}`}
             {`.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}`}
-            {`@media (max-width: 768px) { .override-buttons-wrapper {flex-direction: column;gap: 15px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}`}
+            {`@media (max-width: 768px) { .override-buttons-wrapper {flex-direction: column;gap: 15px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}}`}
         </style>
 
         <title>OVERRIDE. More than a meal.  </title>
