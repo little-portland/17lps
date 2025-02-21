@@ -59,6 +59,7 @@ const Menu = ({ menuImage }) => {
            </ul>
            <img className="override-logo" src="/images/override/override_flyer_heading.png" />
            <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
+          <img className="override-logo" src="/images/override/override_schedule.png" />
            <div className="nocturn-text-wrapper top"> 
             <br/> 
              <p className="nocturn-text italic">
