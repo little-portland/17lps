@@ -108,9 +108,8 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn-wider-section override-logo">
            <div className="image-row">
               <div className="image-column">
-                <img src="/images/override/image01.jpeg" />
+                <img src="/images/override/image01.jpg" />
                 <img src="/images/override/image02.jpeg" />
-                <img src="/images/override/image03.jpeg" />
                 <img src="/images/override/image04.jpg" />
               </div>
              <div className="image-column">
@@ -121,7 +120,6 @@ const Menu = ({ menuImage }) => {
               </div>
              <div className="image-column">
                 <img src="/images/override/image06.jpeg" />
-                <img src="/images/override/image10.jpg" />
                 <img src="/images/override/image07.jpg" />
                 <img src="/images/override/image12.jpg" />
                 <img src="/images/override/image13.jpeg" />
