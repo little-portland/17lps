@@ -147,7 +147,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <p>Override Menu</p>
           <p>6-12pax</p>
         <br/> 
-        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a></p>
+        <p className="links"><a href="https://www.little-portland.com/bookings">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override" target="_blank">[EXPLORE ZEN]</a></p>
         </div>}
 
         {<div
