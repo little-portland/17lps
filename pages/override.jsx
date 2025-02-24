@@ -130,11 +130,6 @@ const Menu = ({ menuImage }) => {
           </div>
       
          <div className="nocturn override">
-           <ul className="explore-zen">
-             <li>
-               <a href="#"></a>
-             </li>
-           </ul>
            <img className="override-logo full-width" src="/images/override/override_flyer_heading.png" />
            <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
           <img className="override-logo full-width" src="/images/override/override_schedule.png" />
