@@ -894,7 +894,7 @@ html, body {
   margin-top: 10px;
 }
 
-.book-wrapper #bookingOptions .ticket {
+.book-wrapper .ticket {
   padding: 15px!important;
 }
 
