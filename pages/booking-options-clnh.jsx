@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Ece Düzgit, Mariella</h3>
-              <h3><span>STUDIO <b>//</b> </span>Antony Serban, David Triana b2b Rakim under</h3>
+              <h3><span>STUDIO <b>//</b> </span>David Triana b2b Rakim under, Tony Serban</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
