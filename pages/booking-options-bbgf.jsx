@@ -36,8 +36,8 @@ const BookingOptions = () => {
               <p class="time">Includes Free Club Entry</p>
              </a>
              <p class="dotted-divider first-divider"></p>
-             <a class="menu-btn" href="https://www.little-portland.com/menu" target="_blank">
-              <span>[MENU]</span>
+             <a class="menu-btn" href="https://www.little-portland.com/override-menu" target="_blank">
+              <span>[OVERRIDE MENU]</span>
              </a>
             </Button>
 
@@ -46,14 +46,11 @@ const BookingOptions = () => {
               <span>BOOK DINNER</span>
               <span class="space">IN CHEF’S STUDIO</span>
               <p class="time">Includes Free Club Entry</p>
-              <p class="details"><span>8-12 PAX</span><span>8PM</span><span>FROM £80PP</span></p>
+              <p class="details"><span>6-12 PAX</span><span>9PM</span><span>£65PP</span></p>
              </a>
-             <p class="dotted-divider"></p>
-             <a class="menu-btn" href="https://www.little-portland.com/regular-set-menu" target="_blank">
-              <span>[REGULAR MENU]</span>
-             </a>
-             <a class="menu-btn premium-menu-btn" href="https://www.little-portland.com/premium-set-menu" target="_blank">
-              <span>[PREMIUM MENU]</span>
+             <p class="dotted-divider first-divider"></p>
+             <a class="menu-btn" href="https://www.little-portland.com/override-menu" target="_blank">
+              <span>[OVERRIDE MENU]</span>
              </a>
             </Button>
         </div>
