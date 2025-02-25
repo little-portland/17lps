@@ -1078,7 +1078,7 @@ html, body {
       }
 
       .override-heading h2 {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
       }
 
       .new-button-wrapper .cusine {
