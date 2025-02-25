@@ -1134,7 +1134,7 @@ html, body {
 
      .book-wrapper .button-wrapper-bottom a {
         text-align: center!important;
-        margin-top: 0;
+        margin-top: 5px!important;
       }
       
       .book-wrapper .button-wrapper-bottom a span {
