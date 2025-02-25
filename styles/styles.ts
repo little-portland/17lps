@@ -911,6 +911,10 @@ html, body {
   margin: 0 10px 0 0;
 }
 
+.book-wrapper .new-button-wrapper .space {
+  font-weight: 700!important;
+}
+
 .new-button-wrapper p {
   padding-bottom: 10px;
   font-weight: 500;
