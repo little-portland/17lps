@@ -898,6 +898,10 @@ html, body {
   padding: 15px!important;
 }
 
+.book-wrapper .details {
+  padding-bottom: 0!important;
+}
+
 .new-button-wrapper p {
   padding-bottom: 10px;
   font-weight: 500;
