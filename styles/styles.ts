@@ -1100,6 +1100,14 @@ html, body {
       .book-wrapper .button-wrapper-bottom a {
         display: block!important;
       }
+
+     .book-wrapper .button-wrapper-bottom a {
+        text-align: center!important;
+      }
+
+      .book-wrapper .button-wrapper-bottom a span {
+        font-size: 1rem !important;
+      }
       
        .bookings-body-text {
           max-width: none;
