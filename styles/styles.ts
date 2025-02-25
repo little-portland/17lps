@@ -298,6 +298,15 @@ html, body {
     color: #000000; 
 }
 
+.override-heading {
+  margin: 10px 0;
+}
+
+.override-heading h2 {
+    text-align: center;
+    font-size: 3.5rem;
+}
+
 .schedule-box {
     background: #3DCFD6;
     color: #000000;
@@ -1041,6 +1050,10 @@ html, body {
       #override-page .takeover-date {
           top: 21px;
           font-size: 1.7rem!important;
+      }
+
+      .override-heading h2 {
+          font-size: 1.5rem;
       }
 
       .new-button-wrapper .cusine {
