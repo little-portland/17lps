@@ -1092,6 +1092,13 @@ html, body {
       .new-button-wrapper p {
           font-size: 1rem;
       }
+
+      .book-wrapper {
+        margin-bottom: 5px;
+      }
+      .book-wrapper .button-wrapper-bottom a {
+        display: block!important;
+      }
       
        .bookings-body-text {
           max-width: none;
