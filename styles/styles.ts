@@ -319,19 +319,6 @@ html, body {
     text-align: left;
 }
 
-.book-wrapper {
-  width: 100%;
-  padding: 15px;
-  background: rgb(230, 176, 194);
-  border: 2px solid rgb(92, 44, 124);
-}
-
-.button-wrapper-bottom a {
-  text-align: center!important;
-  font-size: 1.5rem !important;
-  margin-top: 10px;
-}
-
 .schedule-box {
     background: #3DCFD6;
     color: #000000;
@@ -887,6 +874,19 @@ html, body {
     cursor: pointer;
     display: inline !important;
     pointer-events: auto;
+}
+
+.book-wrapper {
+  width: 100%;
+  padding: 15px;
+  background: rgb(230, 176, 194);
+  border: 2px solid rgb(92, 44, 124);
+}
+
+.button-wrapper-bottom a {
+  text-align: center!important;
+  font-size: 1.2rem !important;
+  margin-top: 10px;
 }
 
 .new-button-wrapper p {
