@@ -894,6 +894,10 @@ html, body {
   margin-top: 10px;
 }
 
+.book-wrapper #bookingOptions .ticket {
+  padding: 15px!important;
+}
+
 .new-button-wrapper p {
   padding-bottom: 10px;
   font-weight: 500;
