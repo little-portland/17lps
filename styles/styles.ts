@@ -883,6 +883,11 @@ html, body {
   border: 2px solid rgb(92, 44, 124);
 }
 
+.book-wrapper .button-wrapper-bottom a {
+  text-align: center!important;
+  margin-top: 10px!important;
+}
+
 .book-wrapper .button-wrapper-bottom a span {
   text-align: center!important;
   font-size: 1.2rem!important;
