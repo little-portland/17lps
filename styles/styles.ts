@@ -307,6 +307,18 @@ html, body {
     font-size: 3.5rem;
 }
 
+.chef-studio-details span {
+    padding: 0 10px;
+}
+
+.chef-studio-details span:first-child {
+    text-align: right;
+}
+
+.chef-studio-details span:nth-child(2) {
+    text-align: left;
+}
+
 .schedule-box {
     background: #3DCFD6;
     color: #000000;
