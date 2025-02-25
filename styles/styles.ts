@@ -877,10 +877,11 @@ html, body {
 }
 
 .book-wrapper {
-  width: 100%;
-  padding: 15px 15px 17px 15px;
-  background: rgb(230, 176, 194);
-  border: 2px solid rgb(92, 44, 124);
+    margin: 20px 0 10px;
+    width: 100%;
+    padding: 10px 5px 15px;
+    background: rgb(230, 176, 194);
+    border: 2px dotted rgb(92, 44, 124);
 }
 
 .book-wrapper .button-wrapper-bottom a {
@@ -900,6 +901,14 @@ html, body {
 
 .book-wrapper .details {
   padding-bottom: 0!important;
+}
+
+.book-wrapper .new-events-button {
+  margin: 0 0 0 10px;
+}
+
+.book-wrapper .ticket {
+  margin: 0 10px 0 0;
 }
 
 .new-button-wrapper p {
@@ -1125,6 +1134,10 @@ html, body {
       
       .book-wrapper .button-wrapper-bottom a span {
         font-size: 1rem !important;
+      }
+
+      .book-wrapper .new-events-button, .book-wrapper .ticket {
+        margin: 0!important;
       }
       
        .bookings-body-text {
