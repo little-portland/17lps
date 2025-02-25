@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name dinner-tunes">Dinner & Tunes</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>14 Mar</h2>
+              <h2><span>FRI</span>14 Mar</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DAVID DEL VECCHIO, MAYBE LAURA & REMI MAZET</h3>
