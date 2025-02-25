@@ -1090,6 +1090,10 @@ html, body {
           font-size: 1.7rem!important;
       }
 
+      .override-heading {
+          margin: 0px 0px 10px;
+      }
+
       .override-heading h2 {
           font-size: 1.3rem;
       }
@@ -1116,8 +1120,9 @@ html, body {
 
      .book-wrapper .button-wrapper-bottom a {
         text-align: center!important;
+        margin-top: 5px;
       }
-
+      
       .book-wrapper .button-wrapper-bottom a span {
         font-size: 1rem !important;
       }
