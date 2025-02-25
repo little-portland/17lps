@@ -878,7 +878,7 @@ html, body {
 
 .book-wrapper {
   width: 100%;
-  padding: 15px;
+  padding: 15px 15px 17px 15px;
   background: rgb(230, 176, 194);
   border: 2px solid rgb(92, 44, 124);
 }
