@@ -36,7 +36,7 @@ const BookingOptions = () => {
               <p class="time">Includes Free Club Entry</p>
               <p class="details"><span>9PM</span></p>
              </a>
-             <p class="dotted-divider first-divider"></p>
+             <p class="dotted-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/override-menu" target="_blank">
               <span>[OVERRIDE MENU]</span>
              </a>
