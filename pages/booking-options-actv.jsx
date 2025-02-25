@@ -46,7 +46,7 @@ const BookingOptions = () => {
               <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
               <span class="space">IN CHEF’S STUDIO</span>
               <p class="time">Includes Free Club Entry</p>
-              <p class="details"><span>6-12 PAX</span><span>8PM</span></p>
+              <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
              </a>
              <p class="dotted-divider"></p>
              <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
