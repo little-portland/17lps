@@ -299,12 +299,12 @@ html, body {
 }
 
 .override-heading {
-  margin: 10px 0;
+  margin: -5px 0 10px 0;
 }
 
 .override-heading h2 {
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 3.4rem;
 }
 
 .chef-studio-details span {
@@ -323,6 +323,13 @@ html, body {
   width: 100%;
   padding: 15px;
   background: rgb(230, 176, 194);
+  border: 2px solid rgb(92, 44, 124);
+}
+
+.button-wrapper-bottom a {
+  text-align: center!important;
+  font-size: 1.5rem !important;
+  margin-top: 10px;
 }
 
 .schedule-box {
