@@ -1091,6 +1091,7 @@ html, body {
 
       .new-button-wrapper p {
           font-size: 1rem;
+          padding-bottom: 0!important;
       }
 
       .book-wrapper {
