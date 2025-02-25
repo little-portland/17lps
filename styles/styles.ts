@@ -1108,7 +1108,7 @@ html, body {
       }
 
       .override-heading h2 {
-          font-size: 1.3rem;
+          font-size: 1.4rem;
       }
 
       .new-button-wrapper .cusine {
@@ -1125,7 +1125,8 @@ html, body {
       }
 
       .book-wrapper {
-        margin-bottom: 5px;
+        margin-bottom: 17px;
+        padding: 10px 10px 15px
       }
       .book-wrapper .button-wrapper-bottom a {
         display: block!important;
@@ -1133,7 +1134,7 @@ html, body {
 
      .book-wrapper .button-wrapper-bottom a {
         text-align: center!important;
-        margin-top: 5px;
+        margin-top: 0;
       }
       
       .book-wrapper .button-wrapper-bottom a span {
