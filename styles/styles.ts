@@ -437,6 +437,10 @@ html, body {
     font-size: 3.1rem;
 }
 
+#bookingOptions .halucinate {
+    font-size: 6rem;
+}
+
 #bookingOptions .openlab-presents,  #bookingOptions .friday-residents {
     font-size: 4.4rem;
 }
