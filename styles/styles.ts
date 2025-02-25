@@ -319,6 +319,12 @@ html, body {
     text-align: left;
 }
 
+.book-wrapper {
+  width: 100%;
+  padding: 15px;
+  background: rgb(230, 176, 194);
+}
+
 .schedule-box {
     background: #3DCFD6;
     color: #000000;
