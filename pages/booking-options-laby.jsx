@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>22 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Aegy, Demi Requismo, NIKS, Wasted Space & Grace Raw Silk</h3>
-              <h3><span>STUDIO <b>//</b> </span>ANDY LV, OR:LA</h3>
+              <h3><span>TENT <b>//</b> </span>Wasted Space & Grace Raw Silk</h3>
+              <h3><span>STUDIO <b>//</b> </span>AEGY, DEMI REQUISMO, NIKS</h3>
             </div>
         </div>
        <div class="book-wrapper">
@@ -58,7 +58,7 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="" target="_blank">
+              <a href="https://sevn.ly/xe5Fd0GD" target="_blank">
                 CLUB GUESTLIST ONLY
               </a>
             </Button>
