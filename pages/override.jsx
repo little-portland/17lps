@@ -131,7 +131,7 @@ const Menu = ({ menuImage }) => {
           <img className="override-logo full-width" src="/images/override/override_schedule.png" />
                  
          <div className="override-buttons-wrapper">
-           <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?client_id=726461756e9725a88ff001a4cae308fd0b5020c074f3e2a8324b11b92c890e1a9154f6d75f5af47a4328f2d005c03c4682b66fe2bcf82664bcbb340e918684fa&default_date=2025-03-06" class="override-button book-override">BOOK OVERRIDE</a>
+           <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=yyyy-mm-dd&default_time=21:00&default_party_size=4" class="override-button book-override">BOOK OVERRIDE</a>
            <div className="row">
               <div className="column">
                    <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
