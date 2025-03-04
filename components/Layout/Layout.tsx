@@ -147,7 +147,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <p>Override Menu</p>
           <p>6-12pax</p>
         <br/> 
-        <p className="links"><a href="https://www.sevenrooms.com/reservations/littleportland?default_date=yyyy-mm-dd&default_time=21:00&default_party_size=4">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override" target="_blank">[EXPLORE ZEN]</a></p>
+        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=yyyy-mm-dd&default_time=21:00&default_party_size=4">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override" target="_blank">[EXPLORE ZEN]</a></p>
         </div>}
 
         {<div
@@ -158,7 +158,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <br/>  
           <p>9:00PM</p>
         <br/>  
-        <p className="links"><a href="https://www.sevenrooms.com/reservations/littleportland?default_date=yyyy-mm-dd&default_time=21:00&default_party_size=4">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
+        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=yyyy-mm-dd&default_time=21:00&default_party_size=4">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
         </div>}
       </div>}
       </Modal>
