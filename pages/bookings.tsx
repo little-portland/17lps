@@ -47,7 +47,7 @@ const Bookings = () => {
         <IFrameContainerStyle className="bookings-iframe"
           dangerouslySetInnerHTML={{
             __html:
-              '<iframe src="https://www.sevenrooms.com/reservations/littleportland" style="border:0px none;" width="100%" height="100%"> </iframe>',
+              '<iframe src="https://www.sevenrooms.com/reservations/littleportland?default_date=yyyy-mm-dd&default_time=21:00&default_party_size=4" style="border:0px none;" width="100%" height="100%"> </iframe>',
           }}
           style={style}
         />
