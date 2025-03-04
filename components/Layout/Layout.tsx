@@ -152,7 +152,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
 
         {<div
         className="box-3 box"> 
-        <h2>DINNER & TUNES</h2>
+        <h2>OVERRIDE DINNER</h2>
         <h4>THURSDAYS - SATURDAYS</h4>
         <p>Join us every Thursday to Saturday, for dinner and tunes with Chef John Javier. Soundtracked by cutting-edge DJs, this is the vibiest dinner in town.</p>
         <br/>  
