@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Harrison Guyett, Marc Jarvin</h3>
-              <h3><span>STUDIO <b>//</b> </span>Sweely, B.Love</h3>
+              <h3><span>STUDIO <b>//</b> </span>B.Love, Sweely</h3>
             </div>
         </div>
         <div class="book-wrapper">
