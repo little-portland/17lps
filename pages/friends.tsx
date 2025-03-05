@@ -55,7 +55,7 @@ const Bookings = () => {
           }}
           style={style}
         />
-       <div className="bookings-body-text"> 
+             <div className="bookings-body-text"> 
          <h1 className="bookings-heading-0">DINNER RESERVATIONS</h1>
           <ul>
             <li>For all dinner reservations in the Tent, we have a specially designed set menu curated by John Javier and Zen Ong. Available until the end of June. </li>
@@ -67,9 +67,8 @@ const Bookings = () => {
           
           <h1 className="bookings-heading-1">CHEF’S STUDIO</h1>
           <ul>
-            <li>The Chef’s Studio is a private dining space located beneath the Tent and can cater between 6 - 12 guests seated at 8pm. </li>
-            <li>To confirm a reservation, we will require a pre-authorised payment of £30 per person. This will only be chargeable in the event of a cancellation, late reductions in group size (within 7 days), or no-show on the day of the reservation</li>
-            <li>Reservations can be made for a minimum group size of 6 and maximum of 12 between Thursdays – Saturdays. </li>
+            <li>For large groups of 6 of more guests, or any changes to reservations, please contact <a href="mailto:eat@little-portland.com">eat@little-portland.com</a> </li>
+            <li>To confirm a reservation, we will require a credit card guarantee. This will only be chargeable at £30 per person in the event of a cancellation, late reductions in group size (within 7 days), or no-show on the day of the reservation.</li>
             <li>We unfortunately cannot cater to any dietary requirements.</li>
             <li>To book or modify an existing reservation, please contact <a href="mailto:eat@little-portland.com">eat@little-portland.com</a></li>
           </ul>
