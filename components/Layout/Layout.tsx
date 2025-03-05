@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+riimport { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -94,8 +94,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           title: "reservations",
         }}
         link2={{
-          target: "/menu",
-          title: "sample menu",
+          target: "/override-menu",
+          title: "override menu",
         }}
         className="eat-modal"
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
