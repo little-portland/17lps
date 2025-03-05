@@ -139,7 +139,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         </div>}
 
         {<div
-        className="box-1 box chef-studio"> 
+        className="box-3 box chef-studio"> 
         <h2>CHEF’S STUDIO</h2>
         <p>An intimate 12-seater dining experience in our invite-only club hidden beneath the Tent (at the End of the Universe). This is how those in the know kick off their night.</p> 
         <br/>  
@@ -150,16 +150,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override" target="_blank">[EXPLORE ZEN]</a></p>
         </div>}
 
-        {<div
-        className="box-3 box"> 
-        <h2>OVERRIDE DINNER</h2>
-        <h4>THURSDAYS - SATURDAYS</h4>
-        <p>Join us every Thursday to Saturday, for dinner and tunes with Chef John Javier. Soundtracked by cutting-edge DJs, this is the vibiest dinner in town.</p>
-        <br/>  
-          <p>9:00PM</p>
-        <br/>  
-        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a></p>
-        </div>}
       </div>}
       </Modal>
       <Modal
