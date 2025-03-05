@@ -64,6 +64,7 @@ html, body {
   max-width: 50%;
   text-align: center;
   line-height: 2rem;
+  text-transform: uppercase;
 }
 
 .booking-heading a, .booking-heading a:hover, .booking-heading a:focus {
