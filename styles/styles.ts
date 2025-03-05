@@ -58,6 +58,18 @@ html, body {
   color: rgb(92, 44, 124);
 }
 
+.booking-heading {
+  font-size: 20px;
+  margin-bottom: 20px;
+  max-width: 50%;
+  text-align: center;
+  line-height: 2rem;
+}
+
+.booking-heading a, .booking-heading a:hover, .booking-heading a:focus {
+  color: rgb(92, 44, 124);
+}
+
 .bookings-body-text h1 {
   margin-bottom: 1rem;
 }
