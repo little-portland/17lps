@@ -146,7 +146,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
           <p>6-12pax</p>
           <p>£65pp</p>
           <p>8pm start</p>
-          <p><small></>*Unfortunately, we cannot cater to any dietary requirements.</small></p>
+          <p><small>*Unfortunately, we cannot cater to any dietary requirements.</small></p>
         <br/> 
         <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override-03" target="_blank">[EXPLORE ZEN]</a></p>
         </div>}
