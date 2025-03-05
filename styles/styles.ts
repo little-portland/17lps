@@ -1188,6 +1188,13 @@ html, body {
           font-size: .7rem;
         }
 
+        .booking-heading {
+            font-size: 15px;
+            margin-bottom: 10px;
+            max-width: 100%;
+            line-height: 1.2rem;
+        }
+
         .header-address {
           font-size: .7rem!important;
         }
