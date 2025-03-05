@@ -63,6 +63,7 @@ const Bookings = () => {
           
           <h1 className="bookings-heading-1">CHEF’S STUDIO</h1>
           <ul>
+            <li>The Chef’s Studio is a private dining space located beneath the Tent and can cater between 6 - 12 guests seated at 8pm. </li>
             <li>For large groups of 6 of more guests, or any changes to reservations, please contact <a href="mailto:eat@little-portland.com">eat@little-portland.com</a> </li>
             <li>To confirm a reservation, we will require a credit card guarantee. This will only be chargeable at £30 per person in the event of a cancellation, late reductions in group size (within 7 days), or no-show on the day of the reservation.</li>
             <li>We unfortunately cannot cater to any dietary requirements.</li>
