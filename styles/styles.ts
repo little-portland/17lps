@@ -397,6 +397,10 @@ html, body {
     color: rgb(61, 207, 214)!important;
 }
 
+.menu-available span {
+    color: rgb(61, 207, 214)!important;
+}
+
 .eat-note .links {
   margin-bottom: 0;
 }
