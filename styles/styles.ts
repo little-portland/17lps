@@ -507,6 +507,10 @@ html, body {
     font-size: 4.4rem;
 }
 
+#bookingOptions .openlab-presents {
+    font-size: 10rem;
+}
+
 #bookingOptions .possible-futures {
   font-size: 2.4rem;
 }
