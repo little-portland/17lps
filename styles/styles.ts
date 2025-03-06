@@ -372,7 +372,7 @@ html, body {
 }
 
 .open {
-  margin-bottom: 3px!important;
+  margin-bottom: 2px!important;
 }
 
 .open h3 {
