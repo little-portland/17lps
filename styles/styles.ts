@@ -422,7 +422,7 @@ html, body {
 }
 
 .eat-note ul li::marker {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 ::-webkit-scrollbar {
