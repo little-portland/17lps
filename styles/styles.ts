@@ -379,12 +379,6 @@ html, body {
   margin-bottom: 0!important;
 }
 
-.menu-available {
-    font-size: 1rem !important;
-    margin-top: -15px !important;
-    color: rgb(61, 207, 214) !important;
-}
-
 .header-tag {
   margin-bottom: .5rem!important;
 }
@@ -395,6 +389,12 @@ html, body {
   font-weight: 600;
   margin-bottom: 1rem;
   line-height: 15px;
+}
+
+.menu-available {
+    font-size: 1rem !important;
+    margin-top: -15px !important;
+    color: rgb(61, 207, 214) !important;
 }
 
 .eat-note .links {
