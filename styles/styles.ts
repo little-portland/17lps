@@ -404,7 +404,9 @@ html, body {
 .eat-note ul {
   list-style-image: url('/images/available.svg');
   margin: 10px 15px;
+  color: rgb(61, 207, 214) !important;
 }
+
 .eat-note ul li {
   font-size: .8rem;
   font-weight: 600;
