@@ -127,10 +127,11 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
         <p className="override-intro">Override is our series of guest chef takeovers, presented by John Javier, where innovative menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark scene. </p> 
         <h4>Override [03] feat. Zen Ong</h4>
-        <h3>Menu available through June.</h3>
+        <p className="menu-available">Menu available through June.</p>
           <ul>
             <li className="info">£65pp</li>
             <li className="info">Set Menu Dinner</li>
+            <li className="info">9pm start</li>
             <li className="info">Club Access Included</li>
           </ul>
         <br/>  
@@ -143,11 +144,15 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         className="box-3 box chef-studio"> 
         <h2>CHEF’S STUDIO</h2>
         <p>An intimate 12-seater dining experience in our invite-only club hidden beneath the Tent (at the End of the Universe). This is how those in the know kick off their night.</p> 
-        <br/>  
+          <ul>
+            <li className="info">Override Menu</li>
+            <li className="info">6-12pax</li>
+            <li className="info">£65pp</li>
+            <li className="info">8pm start</li>
+          </ul>
           <p>6-12pax</p>
           <p>£65pp</p>
           <p>8pm start</p>
-          <p><small>*Unfortunately, we cannot cater to any dietary requirements.</small></p>
         <br/> 
         <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override-03" target="_blank">[EXPLORE ZEN]</a></p>
         </div>}
