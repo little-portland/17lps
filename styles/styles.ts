@@ -241,6 +241,7 @@ html, body {
 
 .chef-studio h2 {
   font-size: 2.1rem;
+  margin-bottom: 1rem;
 }
 
 .box h4 {
@@ -398,6 +399,7 @@ html, body {
 }
 
 .menu-available span {
+    font-size: 1rem;
     color: rgb(61, 207, 214)!important;
 }
 
