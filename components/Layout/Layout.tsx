@@ -112,9 +112,9 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h3>Open Thursdays to Saturdays</h3>
         <h4>Nightly Schedule</h4>
         <div className="schedule-container"> 
-          <p className="details"><span>Chef's Studio</span>20:00</p>
-          <p className="details"><span>Override Dinner</span>21:00</p>
-          <p className="details"><span>Club Opens</span>22:00</p>
+          <p className="details"><span>Chef's Studio</span><small>20:00</small></p>
+          <p className="details"><span>Override Dinner</span><small>21:00</small></p>
+          <p className="details"><span>Club Opens</span><small>22:00</small></p>
         </div>
         </div>}
 
@@ -127,7 +127,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
         <p className="override-intro">Override is our series of guest chef takeovers where culinary artists develop innovative menus, setting the stage for a sensorial experience as dinner seamlessly transitions into after-dark mode.</p> 
         <h4>Override [03] feat. Zen Ong</h4>
-        <h3>Launching 06 June 2025. Menu available through June.</h3>
+        <h3>Menu available through June.</h3>
           <br/>  
           <p className="info">£65pp</p>
           <p className="info">Set Menu Dinner</p>
