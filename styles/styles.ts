@@ -346,10 +346,17 @@ html, body {
     color: #dd674b!important;
     text-align: center!important;
     margin-bottom: 1rem!important;
+    -webkit-text-stroke: .5px rgb(221, 103, 75) !important;
 }
 
 .schedule-box .schedule-container {
     display: grid;
+}
+
+.schedule-box .schedule-container .details small {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    display: block;
 }
 
 .schedule-box .details {
