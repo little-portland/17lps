@@ -106,10 +106,15 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h1>The Tent</h1>
         <h2 className="header-tag">[At the end of the Universe]</h2> 
         <h3 className="header-address">17 Little Portland Street</h3>
-
-        {<div
+        
+              {<div
         className="box-1 box schedule-box"> 
         <h3>Open Thursdays to Saturdays</h3>
+        </div>
+        </div>}
+              
+        {<div
+        className="box-1 box schedule-box"> 
         <h4>Nightly Schedule</h4>
         <div className="schedule-container"> 
           <p className="details"><span>Chef's Studio</span><small>20:00</small></p>
