@@ -119,7 +119,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <div className="schedule-container"> 
           <p className="details"><span>Chef's Studio</span><small>20:00</small></p>
           <p className="details"><span>Override Dinner</span><small>21:00</small></p>
-          <p className="details"><span>Club Opens</span><small>22:00</small></p>
+          <p className="details"><span>Club Opens</span><small>22:00</small></p> 
         </div>
         </div>}
 
