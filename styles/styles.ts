@@ -407,7 +407,7 @@ html, body {
 
 .eat-note ul {
   list-style-image: url('/images/available.svg');
-  margin: 0 15px 1rem 15px
+  margin: 0 15px 1rem 15px;
   color: rgb(61, 207, 214) !important;
 }
 
