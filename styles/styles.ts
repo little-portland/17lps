@@ -346,7 +346,6 @@ html, body {
     color: #dd674b!important;
     text-align: center!important;
     margin-bottom: 1rem!important;
-    -webkit-text-stroke: .5px rgb(221, 103, 75) !important;
 }
 
 .schedule-box .schedule-container {
@@ -370,6 +369,12 @@ html, body {
 .schedule-box .details span {
   display: block;
   text-align: center!important;
+}
+
+.menu-available {
+    font-size: 1rem !important;
+    margin-top: -15px !important;
+    color: rgb(61, 207, 214) !important;
 }
 
 .header-tag {
