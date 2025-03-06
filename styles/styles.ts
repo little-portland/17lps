@@ -394,7 +394,7 @@ html, body {
 .menu-available {
     font-size: 1rem !important;
     margin-top: -15px !important;
-    color: rgb(61, 207, 214) !important;
+    color: rgb(61, 207, 214)!important;
 }
 
 .eat-note .links {
