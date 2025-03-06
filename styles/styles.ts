@@ -371,6 +371,10 @@ html, body {
   text-align: center!important;
 }
 
+.open {
+  margin-bottom: 3px;
+}
+
 .menu-available {
     font-size: 1rem !important;
     margin-top: -15px !important;
