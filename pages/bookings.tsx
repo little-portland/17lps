@@ -51,8 +51,9 @@ const Bookings = () => {
           }}
           style={style}
         />
-       <h2 className="booking-heading">For bookings of 6 guests or more in The Tent or private dining options, please contact the restaurant directly at <a href="mailto:eat@little-portland.com">eat@little-portland.com</a></h2> 
-        <div className="bookings-body-text"> 
+       <h2 className="booking-heading">For bookings of 6 guests or more in The Tent or private dining options, please contact the restaurant directly at         
+         <br/>  
+        <a href="mailto:eat@little-portland.com">eat@little-portland.com</a></h2>         <div className="bookings-body-text"> 
          <h1 className="bookings-heading-0">DINNER RESERVATIONS</h1>
           <ul>
             <li>For all dinner reservations in the Tent, we have a specially designed set menu curated by John Javier and Zen Ong. Available until the end of June. </li>
