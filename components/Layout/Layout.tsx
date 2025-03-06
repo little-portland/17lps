@@ -128,10 +128,11 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <p className="override-intro">Override is our series of guest chef takeovers where culinary artists develop innovative menus, setting the stage for a sensorial experience as dinner seamlessly transitions into after-dark mode.</p> 
         <h4>Override [03] feat. Zen Ong</h4>
         <h3>Menu available through June.</h3>
-          <br/>  
-          <p className="info">£65pp</p>
-          <p className="info">Set Menu Dinner</p>
-          <p className="info">Club Access Included</p>
+          <ul>
+            <li className="info">£65pp</li>
+            <li className="info">Set Menu Dinner</li>
+            <li className="info">Club Access Included</li>
+          </ul>
         <br/>  
         <p>Zen Ong is the creator of INDA and AWAN, and the former head of YZY Food. He launched the INDA dinner series in 2019 and AWAN, an acclaimed vegan ice creamery, in 2021, where Steve Lacy premiered his album Gemini Rights. In 2023, he and our Executive Chef, John Javier, cooked for Ye in Florence during the Vultures sessions. Now, Zen brings MEJA to The Tent, an Indonesian shared tasting menu focused on communal dining.</p> 
         <br/>  
