@@ -372,7 +372,11 @@ html, body {
 }
 
 .open {
-  margin-bottom: 3px;
+  margin-bottom: 3px!important;
+}
+
+.open h3 {
+  margin-bottom: 0!important;
 }
 
 .menu-available {
