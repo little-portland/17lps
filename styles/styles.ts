@@ -389,7 +389,7 @@ html, body {
 }
 
 .eat-note ul {
-  list-style-image: url('/images/food-tray.svg');
+  list-style-image: url('/images/available.svg');
   margin: 10px 15px;
 }
 .eat-note ul li {
