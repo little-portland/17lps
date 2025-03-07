@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO </h3>
-              <h3><span>STUDIO <b>//</b> </span>LUKE SOLOMON, DUKE BROOKS</h3>
+              <h3><span>STUDIO <b>//</b> </span>Grace Sands, LUKE SOLOMON, The DUKE</h3>
             </div>
         </div>
         <div class="book-wrapper">
