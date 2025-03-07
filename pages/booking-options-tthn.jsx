@@ -18,7 +18,7 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name focal-point-presents">LICK THE LID</h1>
+        <h1 class="event-name lick-lid">LICK THE LID</h1>
         <div class="event-info">
             <div class="info date">
               <h2><span>THU</span>17 Apr</h2>
