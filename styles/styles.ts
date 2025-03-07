@@ -539,6 +539,10 @@ html, body {
     font-size: 4.7rem;
 }
 
+#bookingOptions .lick-lid {
+    font-size: 5.9rem;
+}
+
 #bookingOptions .balance {
     font-size: 10rem;
 }
