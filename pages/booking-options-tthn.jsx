@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>17 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Casual Max, GIORJA & LAURENZO_G</h3>
+              <h3><span>TENT <b>//</b> </span>Casual Max, LAURENZO_G</h3>
               <h3><span>STUDIO <b>//</b> </span>KATE08, MARGARET DYGAS</h3>
             </div>
         </div>
