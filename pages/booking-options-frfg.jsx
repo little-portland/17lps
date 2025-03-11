@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>20 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Gabriel Rai, TIM LANG</h3>
+              <h3><span>TENT <b>//</b> </span>Gabriel Rai, ROLO</h3>
               <h3><span>STUDIO <b>//</b> </span>Stckman, Ste Robert’s, Yuta suzuki</h3>
             </div>
         </div>
