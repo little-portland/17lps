@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>29 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Harrison Guyett, Lucy cook</h3>
+              <h3><span>TENT <b>//</b> </span>Bunney, Harrison Guyett</h3>
               <h3><span>STUDIO <b>//</b> </span>HARRI PEPPER, MELINA SERSER</h3>
             </div>
         </div>
