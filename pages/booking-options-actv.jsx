@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>CLOSED</h3>
-              <h3><span>STUDIO <b>//</b> </span>GEORGE PLANT, MLR, JAGUAR SKILLS, JUST JJ</h3>
+              <h3><span>STUDIO <b>//</b> </span>GABIJA, GEORGE PLANT, JAGUAR SKILLS, JUST JJ, MLR</h3>
             </div>
         </div>
        <div class="book-wrapper">
