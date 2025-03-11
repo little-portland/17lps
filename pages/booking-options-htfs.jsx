@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>13 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>FRENCHY, Gaby D'Annunzio</h3>
+              <h3><span>TENT <b>//</b> </span>FRENCHY, Oli Silva</h3>
               <h3><span>STUDIO <b>//</b> </span>A. M. Project, TRISTAN DA CUNHA</h3>
             </div>
         </div>
