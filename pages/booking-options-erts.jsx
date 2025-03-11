@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>21 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>MR SHIVER, TIM LANG</h3>
+              <h3><span>TENT <b>//</b> </span>MR SHIVER, SOHO</h3>
               <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, Garrett David</h3>
             </div>
         </div>
