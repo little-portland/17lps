@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>22 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Wasted Space & Grace Raw Silk</h3>
-              <h3><span>STUDIO <b>//</b> </span>AEGY, NIKS, SECRET GUEST</h3>
+              <h3><span>TENT <b>//</b> </span>DEMI, WASted space & Grace RAW SILK</h3>
+              <h3><span>STUDIO <b>//</b> </span>Aegy, Niks</h3>
             </div>
         </div>
        <div class="book-wrapper">
