@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MARCELINA, Roberta Cutolo</h3>
-              <h3><span>STUDIO <b>//</b> </span>Cem, Cristi Cons</h3>
+              <h3><span>STUDIO <b>//</b> </span>CEM OZDEN, Cristi Cons</h3>
             </div>
         </div>
         <div class="button-wrapper new-button-wrapper">
