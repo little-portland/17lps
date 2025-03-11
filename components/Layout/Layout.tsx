@@ -145,14 +145,15 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         {<div
         className="box-3 box chef-studio"> 
         <h2>CHEF’S STUDIO</h2>
-        <p>An intimate 12-seater dining experience in our invite-only club hidden beneath the Tent (at the End of the Universe). This is how those in the know kick off their night.</p> 
+        <p>Chef’s Studio is an intimate and futuristic space beneath The Tent – our table of choice for those in the know.</p> 
           <ul>
-            <li className="info">Override Menu</li>
-            <li className="info">6-12pax</li>
-            <li className="info">£65pp</li>
+            <li className="info">£65pp set menu</li>
+            <li className="info">6-12 pax</li>
             <li className="info">8pm start</li>
           </ul>
-        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override-03" target="_blank">[EXPLORE ZEN]</a></p>
+          <p>Our guests can experience the Override menu in Chef’s Studio. The current Override [03] is in collaboration with <strong>Zen Ong</strong>, the creator of Inda and Awan, and the former head of YZY Food. Zen brings MEJA to The Tent, an Indonesian tasting menu focused on communal dining.</p> 
+          <p>Override [03] runs through June. Please note, we cannot cater to any dietary requirements.</p> 
+          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override-03" target="_blank">[EXPLORE ZEN]</a></p>
         </div>}
 
       </div>}
