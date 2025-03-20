@@ -18,21 +18,21 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name override">Soursopp</h1>
+        <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>15 Mar</h2>
+              <h2><span>SAT</span>10 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Ece Düzgit, Mariella</h3>
-              <h3><span>STUDIO <b>//</b> </span>David Triana b2b Rakim under, Tony Serban</h3>
+              <h3><span>TENT <b>//</b> </span>JARDINE, KYLE TOOLE</h3>
+              <h3><span>STUDIO <b>//</b> </span>JOSH KEIT & OLDFIELD, SATOSHI TOMIIE</h3>
             </div>
         </div>
        <div class="book-wrapper">
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-15&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-04-10&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
@@ -58,7 +58,7 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="https://sevn.ly/xhILlIIT" target="_blank">
+              <a href="https://sevn.ly/xrLTidVi" target="_blank">
                 CLUB GUESTLIST ONLY
               </a>
             </Button>
