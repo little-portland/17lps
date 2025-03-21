@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DAWIDU, MARIELLA</h3>
-              <h3><span>STUDIO <b>//</b> </span>JAMIE 3:26, KENNY JONES</h3>
+              <h3><span>STUDIO <b>//</b> </span>JAMIE 3:26, Kenia</h3>
             </div>
         </div>
         <div class="book-wrapper">
