@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, James puentess</h3>
-              <h3><span>STUDIO <b>//</b> </span>B.love,Jord Kuning (live), SECRET GUEST</h3>
+              <h3><span>STUDIO <b>//</b> </span>Jord Kuning (live), SECRET GUEST, TIP TOP</h3>
             </div>
         </div>
         <div class="book-wrapper">
