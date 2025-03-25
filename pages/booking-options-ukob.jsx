@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>FREDRIKA, Paul Day</h3>
-              <h3><span>STUDIO <b>//</b> </span>Isaac Carter</h3>
+              <h3><span>STUDIO <b>//</b> </span>Der, Isaac Carter</h3>
             </div>
         </div>
         <div class="book-wrapper">
