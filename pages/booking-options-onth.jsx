@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>19 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO </h3>
+              <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO, Harri Pepper</h3>
               <h3><span>STUDIO <b>//</b> </span>Grace Sands, LUKE SOLOMON, The DUKE</h3>
             </div>
         </div>
