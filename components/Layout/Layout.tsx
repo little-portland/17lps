@@ -152,7 +152,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             <li className="info">8pm start</li>
           </ul>
           <p>Our guests can experience the Override menu in Chef’s Studio. The current Override [03] is in collaboration with <strong>Zen Ong</strong>, the creator of Inda and Awan, and the former head of YZY Food. Zen brings MEJA to The Tent, an Indonesian tasting menu focused on communal dining.</p> 
-          <p>Override [03] runs through June. Please note, we cannot cater to any dietary requirements.</p> 
+          <p>Override [03] runs through June. Please note, although we strive to cater for dietary restrictions, our kitchen space is very limited to accommodate every dietary requirement. Unfortunately we cannot guarantee changes outside our set menu. Please notify a member of staff before booking if you suffer from any allergies so we can try to meet your needs.
+</p> 
           <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override-03" target="_blank">[EXPLORE ZEN]</a></p>
         </div>}
 
