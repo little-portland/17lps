@@ -21,18 +21,18 @@ const BookingOptions = () => {
         <h1 class="event-name friday-residents">FRIDAY RESIDENTS</h1>
         <div class="event-info">
            <div class="info date">
-              <h2><span>FRI</span>28 Mar</h2>
+              <h2><span>FRI</span>25 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>FREDRIKA, Paul Day</h3>
-              <h3><span>STUDIO <b>//</b> </span>Der, Isaac Carter</h3>
+              <h3><span>TENT <b>//</b> </span>MR SHIVER, NATHAN COLINET</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
             </div>
         </div>
         <div class="book-wrapper">
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-28&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-04-25&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
@@ -58,7 +58,7 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="https://sevn.ly/xaqJTTrc" target="_blank">
+              <a href="https://sevn.ly/xJwTgOzP" target="_blank">
                 CLUB GUESTLIST ONLY
               </a>
             </Button>
