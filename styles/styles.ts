@@ -1065,7 +1065,7 @@ html, body {
 /* Nocturn general page */
 
 .subscribe .bookings-iframe {
-    height: 100% !important;
+    height: 60% !important;
     margin: 0 auto 20px auto!important;
 }
 
