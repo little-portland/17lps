@@ -1064,6 +1064,11 @@ html, body {
 
 /* Nocturn general page */
 
+.subscribe .bookings-iframe {
+    height: 100% !important;
+    margin: 0 auto 20px auto!important;
+}
+
 #subscribe-form .text-input-field {
      font-size: 13px!important;
     border-top: 0px!important;
@@ -1250,6 +1255,11 @@ html, body {
 
        .chef-studio h2 {
           font-size: 1.6rem;
+        }
+
+        .subscribe .bookings-iframe {
+          height: 30% !important;
+          margin: 0 auto!important;
         }
         
         .insta {
