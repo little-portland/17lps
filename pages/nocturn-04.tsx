@@ -26,7 +26,7 @@ const Menu = ({ menuImage }) => {
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
-            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #0068ff!important;padding-bottom: 30px;line-height: 1.1;}'}
+            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #012ccf!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
@@ -35,6 +35,7 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn">
            <img src="/images/nocturn/nocturn4-web-page-top.png" alt="Nocturn" width="100%" />
+           <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn03.gif" />
 
            <div className="nocturn-text-wrapper top"> 
               <p className="nocturn-text">crave rave creatures of the deep this is our home slip slip 
