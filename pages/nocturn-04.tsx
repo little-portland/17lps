@@ -23,6 +23,7 @@ const Menu = ({ menuImage }) => {
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 35px;}'}
             {'.bottom{ font-size: 25px;}'}
+            {'.flyer{ max-width: 100%!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
