@@ -15,7 +15,7 @@ const Menu = ({ menuImage }) => {
       <Head>
         <style>
             {'html{overflow: auto!important;}'}
-            {'body{background-color: #012ccf!important;overflow: auto!important;overflow-x: initial!important;}'}
+            {'body{background-color: #131ce0!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
