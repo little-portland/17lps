@@ -25,7 +25,7 @@ const Menu = ({ menuImage }) => {
             {'.top{ font-size: 35px;}'}
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
-            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
+            {'.nocturn-text-wrapper{ margin-top: 20px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}'}
             {'.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #121be3!important;padding-bottom: 30px;line-height: 1.1;}'}
