@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>03 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>JAIME FIORITO AND KC HAPPY</h3>
+              <h3><span>TENT <b>//</b> </span>JAIME FIORITO & KC HAPPY</h3>
               <h3><span>STUDIO <b>//</b> </span>ALEX BRADLEY, LEO MAS</h3>
             </div>
         </div>
