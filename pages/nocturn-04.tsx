@@ -80,7 +80,7 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-04/nocturn04_07.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_08.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_09.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_10.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_17.png" />
                     <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio02.mp3"></audio>
                   </div>
                   <div className="column">
@@ -91,7 +91,7 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-04/nocturn04_15.png" />
                     <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio03.mp3"></audio>
                     <img src="/images/nocturn/nocturn-04/nocturn04_16.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_17.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_10.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_18.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_19.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_20.png" />
