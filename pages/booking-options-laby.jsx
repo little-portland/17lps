@@ -18,21 +18,21 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name disco-saturdays">IN GOOD COMPANY</h1>
+        <h1 class="event-name disco-saturdays">Disco Saturdays</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>22 Mar</h2>
+              <h2><span>SAT</span>03 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DEMI, WASted space & Grace RAW SILK</h3>
-              <h3><span>STUDIO <b>//</b> </span>Aegy, SECRET GUESTS</h3>
+              <h3><span>TENT <b>//</b> </span>JAIME FIORITO AND KC HAPPY</h3>
+              <h3><span>STUDIO <b>//</b> </span>ALEX BRADLEY, LEO MAS</h3>
             </div>
         </div>
        <div class="book-wrapper">
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-22&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-05-03&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
@@ -58,7 +58,7 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="https://sevn.ly/xe5Fd0GD" target="_blank">
+              <a href="https://sevn.ly/xLrgJLa9" target="_blank">
                 CLUB GUESTLIST ONLY
               </a>
             </Button>
