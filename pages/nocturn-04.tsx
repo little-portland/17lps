@@ -31,7 +31,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #121be3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.nocturn-text-two{ padding-top: 20px;}'}
-            {'.nocturn-text-author{ padding-top: 20px;color:#9108c4!important;}'}
+            {'.nocturn-text-author{ padding-top: 20px;}'}
             {'.question{ color: #000000!important;font-style:italic;}'}
             {'.italic{ font-style:italic!important;}'}
             {'.loading{ font-size: 50px;text-align: center;}'}
