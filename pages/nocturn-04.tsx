@@ -70,76 +70,52 @@ const Menu = ({ menuImage }) => {
             </div>
                 <div className="row">
                   <div className="column">
-                    <img src="/images/nocturn/nocturn02_21.png" />
-                    <img src="/images/nocturn/nocturn02_01.png" />
-                    <img src="/images/nocturn/nocturn02_02.png" />
-                    <img src="/images/nocturn/nocturn02_03.png" />
-                    <img src="/images/nocturn/nocturn02_04.png" />
-                    <img src="/images/nocturn/nocturn02_05.png" />
-                    <img src="/images/nocturn/nocturn02_13.png" />
-                    <img src="/images/nocturn/nocturn02_06.png" />
-                    <img src="/images/nocturn/nocturn02_07.png" />
-                    <img src="/images/nocturn/nocturn02_08.png" />
-                    <a href="https://www.youtube.com/watch?v=BWKKJwBXir4" target="_blank">
-                      <img src="/images/nocturn/nocturn02_video_01.png" />
-                    </a>
-                    <img src="/images/nocturn/nocturn02_09.png" />
-                    <img src="/images/nocturn/nocturn02_41.png" />
-                    <img src="/images/nocturn/nocturn02_42.png" />
-                    <img src="/images/nocturn/nocturn02_10.png" />
-                    <img src="/images/nocturn/nocturn02_14.png" />
-                    <img src="/images/nocturn/nocturn02_11.png" />
-                    <a href="https://www.youtube.com/watch?v=KtFFmDGIsa4" target="_blank">
-                      <img src="/images/nocturn/nocturn02_video_04.png" />
-                    </a>
-                    <img src="/images/nocturn/nocturn02_12.gif" />
-                    <img src="/images/nocturn/nocturn02_15.png" />
-                    <img src="/images/nocturn/nocturn02_18.png" />
-                    <img src="/images/nocturn/nocturn02_19.png" />
-                    <img src="/images/nocturn/nocturn02_20.png" />
-                    <img src="/images/nocturn/nocturn02_43.png" />
-                    <img src="/images/nocturn/nocturn02_44.png" />
-                    <img src="/images/nocturn/nocturn02_45.png" />
-                    <a href="https://www.smithsonianmag.com/science-nature/creatures-of-the-deep-163679120/" target="_blank">
-                      <img src="/images/nocturn/nocturn02_video_03.png" />
-                    </a>
+                    <img src="/images/nocturn/nocturn-04/nocturn04_01.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_02.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_03.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_04.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_05.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_06.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_07.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_08.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_09.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_10.png" />
+                    <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio01.mp3"></audio>
+                    <img src="/images/nocturn/nocturn-04/nocturn04_11.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_12.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_13.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_14.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_15.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_16.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_17.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_18.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_19.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_20.png" />
+                    <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio02.mp3"></audio>
                   </div>
                   <div className="column">
-                    <img src="/images/nocturn/nocturn02_23.png" />
-                    <a href="https://medium.com/@rachellee9087/the-titan-submarine-disaster-what-really-happened-c40a1acde9aa" target="_blank">
-                      <img src="/images/nocturn/nocturn02_video_05.png" />
-                    </a>
-                    <img src="/images/nocturn/nocturn02_16.png" />
-                    <img src="/images/nocturn/nocturn02_24.png" />
-                    <img src="/images/nocturn/nocturn02_25.png" />
-                    <a href="https://www.youtube.com/watch?v=8oL6u9eujSU" target="_blank">
-                      <img src="/images/nocturn/nocturn02_video_06.png" />
-                    </a>
-                    <img src="/images/nocturn/nocturn02_26.png" />
-                    <img src="/images/nocturn/nocturn02_27.png" />
-                    <img src="/images/nocturn/nocturn02_17.png" />
-                    <img src="/images/nocturn/nocturn02_28.png" />
-                    <img src="/images/nocturn/nocturn02_29.png" />
-                    <a href="https://www.youtube.com/watch?v=fDwHwWuUuk4" target="_blank">
-                      <img src="/images/nocturn/nocturn02_video_07.png" />
-                    </a>
-                     <img src="/images/nocturn/nocturn02_22.png" />
-                    <img src="/images/nocturn/nocturn02_30.png" />
-                    <img src="/images/nocturn/nocturn02_46.png" />
-                    <img src="/images/nocturn/nocturn02_31.png" />
-                    <a href="https://www.e-flux.com/journal/75/67125/tentacular-thinking-anthropocene-capitalocene-chthulucene/" target="_blank">
-                      <img src="/images/nocturn/nocturn02_video_02.png" />
-                    </a>
-                    <img src="/images/nocturn/nocturn02_32.png" />
-                    <img src="/images/nocturn/nocturn02_33.png" />
-                    <audio controls src="/images/nocturn/nocturn02_34.mp3"></audio>
-                    <img src="/images/nocturn/nocturn02_36.png" />
-                    <img src="/images/nocturn/nocturn02_37.png" />
-                    <img src="/images/nocturn/nocturn02_38.png" />
-                    <img src="/images/nocturn/nocturn02_39.png" />
-                    <img src="/images/nocturn/nocturn02_40.png" />
-                    <img src="/images/nocturn/nocturn02_47.png" />
-                    <img src="/images/nocturn/nocturn02_48.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_21.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_22.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_23.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_24.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_25.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_26.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_27.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_28.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_29.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_30.png" />
+                    <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio03.mp3"></audio>
+                    <img src="/images/nocturn/nocturn-04/nocturn04_31.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_32.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_33.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_34.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_35.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_36.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_37.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_38.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_39.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_40.png" />
+                    <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio04.mp3"></audio>
                   </div>
                </div>
                
