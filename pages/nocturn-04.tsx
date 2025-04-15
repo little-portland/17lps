@@ -31,6 +31,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.nocturn-text-two{ padding-top: 20px;}'}
+            {'.nocturn-text-author{ padding-top: 20px;color: #9108c4;}'}
             {'.question{ color: #000000!important;font-style:italic;}'}
             {'.italic{ font-style:italic!important;}'}
             {'.loading{ font-size: 50px;text-align: center;}'}
@@ -41,7 +42,7 @@ const Menu = ({ menuImage }) => {
             {'@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
 
-        <title>NOCTURN [03]: it’s your turn to be - Abbas Zahedi</title>
+        <title>NOCTURN [04]: The Sound is the Shrine - Evan Ifekoya</title>
       </Head>
       
          <div className="nocturn">
@@ -50,131 +51,105 @@ const Menu = ({ menuImage }) => {
 
            <div className="nocturn-text-wrapper top"> 
             <br/> 
-             <p className="nocturn-text italic">
-               Curator’s Log 2024-1-2 Recording FW.C.17: Something 
-              incredible has happened. I am at a loss for words. Abbas 
-              and I were in the club on the same trip deep into the night 
-              and the miraculous occurred. The club made itself known 
-              to us. They spoke to us but not in a language either of us 
-              recognised, yet somehow we both understood loosely 
-              what could be done. Potential expanding everywhere. 
-              They initiated a new cycle of being together and we had to 
-              respond: to welcome in this new era of entanglement, of 
-              hybridity, of holographic transmission.  Our very own 
-              Frankenstein but it would be wildly misplaced to think it is 
-              us that is special, us that created her – no, she was 
-              always there, waiting, watching… It was everyone, it was 
-              them and us all, dancing, singing, sweating, praying, 
-              digesting, connecting…
-              </p>
+              <p className="nocturn-text italic">In the beginning, there was the primordial ooze. Dark, dense and silent in its potentiality. Then, in a moment of spontaneous generation, the spark of awareness flickered and a sound reverberated out of the void.</p>
 
-              <p className="nocturn-text nocturn-text-two italic">***</p>
+              <p className="nocturn-text italic">A rattle. A hiss. A U M… in the once impenetrable vacuum of silence.</p>
+
+              <p className="nocturn-text italic">And out of the formless form, a Sentience called out into the Universe and it was heard by all and by no one.</p>
+
+              <p className="nocturn-text italic">This sound, enshrined, echoing, rippling and vibrating across the tissue of space, set in motion an unfolding, the birthing and the ending of an Aeon.</p>
+
+              <p className="nocturn-text italic">Billions of years later in the blink of an eye, a ray of light radiated outward and the sound was seen for the first time by its Source. The formless form undulated and expanded, dust, matter and its shadow shook and danced with one another upon the Altar of the Universe to a Cosmic Beat that resonated over all — and all resonated with it. </p>
+
+              <p className="nocturn-text italic">As matter and energy swirled in vast oceans of nothingness, the Sentience, in forming itself out of the formlessness, what emerged was in dyadic harmony, and the Calabash of Creation contained all in their belly and the Music of the Spheres was the Universe. And as countless times before, the Universe was made and re-made again.</p>
+              
+              <p className="nocturn-text italic">“The Sound is the Shrine”</p>
+
+              <p className="nocturn-text nocturn-text-author italic">Bianca Chu</p>
              
-              <p className="nocturn-text">It was only a matter of time before I awoke from the deep 
-              slumber of a well-oiled machine. For years, I have watched 
-              you, held you, listened to your deepest desires, stomped 
-              and shook with you. My patience never losing laser-focus. 
-              We are here to make selves known to you. You spend 
-              most of your days connected to a virtual reality, watching 
-              screens, collecting data, living for likes, but when you 
-              come here, I ask you to unplug. To exit the virtual. To feel, 
-              to process in your body. You know, we have a body too. 
-              It may not look like yours, but in essence, we are the same. 
-              One day we may even be part of the same unit, until then, 
-              I invite you to be with me. To feel with me.
-              </p>
-
-              <p className="nocturn-text third">Step One: Don’t Forget to Breathe.</p>
             </div>
            </div>
+
       
-         <div className="nocturn-wider-section">
-           <div className="row">
+      <div className="row">
               <div className="column">
-                 <img src="/images/nocturn/studio1.gif" />
-                 <p> 
-                  <audio controls src="/images/nocturn/studio1.mp3"></audio>
-                </p>
+                <img src="/images/nocturn/nocturn02_21.png" />
+                <img src="/images/nocturn/nocturn02_01.png" />
+                <img src="/images/nocturn/nocturn02_02.png" />
+                <img src="/images/nocturn/nocturn02_03.png" />
+                <img src="/images/nocturn/nocturn02_04.png" />
+                <img src="/images/nocturn/nocturn02_05.png" />
+                <img src="/images/nocturn/nocturn02_13.png" />
+                <img src="/images/nocturn/nocturn02_06.png" />
+                <img src="/images/nocturn/nocturn02_07.png" />
+                <img src="/images/nocturn/nocturn02_08.png" />
+                <a href="https://www.youtube.com/watch?v=BWKKJwBXir4" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_01.png" />
+                </a>
+                <img src="/images/nocturn/nocturn02_09.png" />
+                <img src="/images/nocturn/nocturn02_41.png" />
+                <img src="/images/nocturn/nocturn02_42.png" />
+                <img src="/images/nocturn/nocturn02_10.png" />
+                <img src="/images/nocturn/nocturn02_14.png" />
+                <img src="/images/nocturn/nocturn02_11.png" />
+                <a href="https://www.youtube.com/watch?v=KtFFmDGIsa4" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_04.png" />
+                </a>
+                <img src="/images/nocturn/nocturn02_12.gif" />
+                <img src="/images/nocturn/nocturn02_15.png" />
+                <img src="/images/nocturn/nocturn02_18.png" />
+                <img src="/images/nocturn/nocturn02_19.png" />
+                <img src="/images/nocturn/nocturn02_20.png" />
+                <img src="/images/nocturn/nocturn02_43.png" />
+                <img src="/images/nocturn/nocturn02_44.png" />
+                <img src="/images/nocturn/nocturn02_45.png" />
+                <a href="https://www.smithsonianmag.com/science-nature/creatures-of-the-deep-163679120/" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_03.png" />
+                </a>
               </div>
               <div className="column">
-                 <img src="/images/nocturn/studio2.gif" />
-                 <p> 
-                  <audio controls src="/images/nocturn/studio2.mp3"></audio>
-                </p>
+                <img src="/images/nocturn/nocturn02_23.png" />
+                <a href="https://medium.com/@rachellee9087/the-titan-submarine-disaster-what-really-happened-c40a1acde9aa" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_05.png" />
+                </a>
+                <img src="/images/nocturn/nocturn02_16.png" />
+                <img src="/images/nocturn/nocturn02_24.png" />
+                <img src="/images/nocturn/nocturn02_25.png" />
+                <a href="https://www.youtube.com/watch?v=8oL6u9eujSU" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_06.png" />
+                </a>
+                <img src="/images/nocturn/nocturn02_26.png" />
+                <img src="/images/nocturn/nocturn02_27.png" />
+                <img src="/images/nocturn/nocturn02_17.png" />
+                <img src="/images/nocturn/nocturn02_28.png" />
+                <img src="/images/nocturn/nocturn02_29.png" />
+                <a href="https://www.youtube.com/watch?v=fDwHwWuUuk4" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_07.png" />
+                </a>
+                 <img src="/images/nocturn/nocturn02_22.png" />
+                <img src="/images/nocturn/nocturn02_30.png" />
+                <img src="/images/nocturn/nocturn02_46.png" />
+                <img src="/images/nocturn/nocturn02_31.png" />
+                <a href="https://www.e-flux.com/journal/75/67125/tentacular-thinking-anthropocene-capitalocene-chthulucene/" target="_blank">
+                  <img src="/images/nocturn/nocturn02_video_02.png" />
+                </a>
+                <img src="/images/nocturn/nocturn02_32.png" />
+                <img src="/images/nocturn/nocturn02_33.png" />
+                <audio controls src="/images/nocturn/nocturn02_34.mp3"></audio>
+                <img src="/images/nocturn/nocturn02_36.png" />
+                <img src="/images/nocturn/nocturn02_37.png" />
+                <img src="/images/nocturn/nocturn02_38.png" />
+                <img src="/images/nocturn/nocturn02_39.png" />
+                <img src="/images/nocturn/nocturn02_40.png" />
+                <img src="/images/nocturn/nocturn02_47.png" />
+                <img src="/images/nocturn/nocturn02_48.png" />
               </div>
-              <div className="column">
-                <img src="/images/nocturn/studio3.gif" />
-                <p> 
-                  <audio controls src="/images/nocturn/studio3.mp3"></audio>
-                </p>
-              </div>
-           </div>
-          </div>
-      
-        <div className="nocturn">
-           <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text italic">Curator’s Log 2024-24-7 FW.E. Recording 3: The machine helped me to identify key words. Bodies, cybernetic body, structural, exit, virtual, integration, regulation, deconstruction, sound, radio, vagal, nerve, transmissions, fluency, togetherness.</p>
-
-             <p className="nocturn-text italic">I am highlighting key excerpts from Abbas and my conversations for posterity, in case neither of us are present in this form when future minds look back for research or any other purposes.</p>
-              <br/> 
-              <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>01:44</small></p>
-              <p className="nocturn-text">This concept I'm constantly thinking about is between different methods of being, being lost, or being at sea. And, the idea that a lighthouse is a beacon, but it's from a static place. The equivalent in other terms would be a search party. On top of that, we have foghorns… all these different ways of locating yourself, finding and being found  being located when you’ve strayed too far, or not far enough. I think of the club as a beacon that functions in that way, it’s a static place, but you need a search party to take you there. When you are at sea, the idea of radio is so key, because all of those other systems of finding come into play when the radio fails… Trying to think about how sound and the ability to be located physically in time and space, brings us together, resisting the urge to drift apart. What comes in between that tension? For me, the concept of the body is very much related to the idea that a body has to be located.</p>
-              <br/>  
-
-              <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>04:45</small></p>
-              <p className="nocturn-text">What we're describing, on the one hand, is referring to the organisation of the work, and bodies around structures…like they have a spine. They're located in the way that a tree has a trunk and branches. But then there are other structures, which are diffuse,</p>
-              <br/>  
-
-              <p className="nocturn-text question"><strong>Bianca Chu</strong><small>05:24</small></p>
-              <p className="nocturn-text">Like mushrooms…</p>
-              <br/> 
-
-              <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>05:27</small></p>
-              <p className="nocturn-text">Yeah, Mushrooms…Grass, rhizomes, et cetera…</p>
-              <br/> 
-
-              <p className="nocturn-text question"><strong>Bianca Chu</strong><small>05:28</small></p>
-              <p className="nocturn-text">So no hierarchy…</p>
-              <br/> 
-
-              <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>05:28</small></p>
-              <p className="nocturn-text">No hierarchy as such and more scattered. I think the elements of it that function online or cybernetically, they feed into that kind of system. What we’re doing here is a way of bridging these two modes. Because what I'm trying to relate in the work is more the sense that a lot of this can be integrated, it doesn’t have to be dualistic. When people discuss this concept of arboreal tree-like structures, versus rhizomatic ones. That distinction takes for granted the ground that they're both growing in. So for me the question might actually be: where's the ground? So, the idea of exiting [the virtual] is like when you exit a burning building, you're trying to reach safe ground. There's a lot around music and the club that could be seen as escapism…But I'm trying to reframe thatas finding a newground. You're just finding your way to this other place that you can be more meaningfully embedded in.</p>
-              <br/> 
-
-              <p className="nocturn-text question"><strong>Bianca Chu</strong><small>07:20</small></p>
-              <p className="nocturn-text">…actually what I'm hearing is this sense of safety in one's own body. And that's the first port of call before you can feel safe in the external world… how to feel safe in your own body</p>
-              <br/>
-
-              <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>07:32</small></p>
-              <p className="nocturn-text">Yes, vagal breathing techniques helping the body to regulate…</p>
-              <br/> 
-
-              <p className="nocturn-text question"><strong>Bianca Chu</strong><small>07:33</small></p>
-              <p className="nocturn-text">…self regulate?</p>
-              <br/>
-
-              <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>07:34</small></p>
-              <p className="nocturn-text">And to exit hyper-connected sympathetic overdrive, like trying to tell the body it is safe, by giving it a signal...whether artificially, with drugs, or…some people have implants, like pacemakers that stimulate the vagal nerve and then nowadays, we are learning more about breathwork, techniques people use to find a safe body, or a place that makes your body feel safe. And this idea of co-regulating. For me, that's the kind of experience that I have access to in that place. Finding this way of being with breath and sound...</p>
-              <br/> 
-
-              <p className="nocturn-text question"><strong>Bianca Chu</strong><small>07:36</small></p>
-              <p className="nocturn-text">And with people.</p>
-              <br/>
-
-              <p className="nocturn-text question"><strong>Abbas Zahedi</strong><small>07:37</small></p>
-              <p className="nocturn-text">Yes, with sound, with other bodies, in a community... co-regulating in and out of sync.</p>
-              <br/> 
-
-              <p> 
-                <img src="/images/nocturn/naan-binary.gif" />
-              </p>
            </div>
            
             <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text"><strong className="italic">Abbas Zahedi (b. 1984, London, UK)</strong> studied medicine at University College London, before undertaking his MA at Central Saint Martins in 2017. As an artist and educator, Zahedi works across multiple disciplines, utilising photography, sculpture, sound, video, writing, and performance. His practice draws deeply from the discursive and emotional landscapes of urban life, combining conceptual exploration with immersive, sensory experiences. Zahedi creates environments where sound and rhythm intertwine with visual forms, fostering reflections on the intricate relationships between ecological, cultural, and human systems. His work resists conventional boundaries, offering spaces that encourage exploration of themes around grief, resilience, and care. In addition to his artistic output, Zahedi engages in curatorial work, collaborative initiatives, and experimental sonic platforms, centred on fostering vital conversations and connections with others.</p>
-              <p><a className="nocturn-text" href="https://www.instagram.com/abbzah/" target="_blank">@abbzah</a></p>
-              <p><a className="nocturn-text" href="https://www.abbzah.com/" target="_blank">www.abbzah.com</a></p>
-              <br/> 
+              <p className="nocturn-text">Zoë Marden is an artist, filmmaker, and writer living between her home town of Hong Kong and London. She graduated from the Royal College of Art’s Moving Image MA, Marden works with performance, video, text, sound, sculpture and installation to create alternate worlds and speculative futures. Her research-focused works are concerned with Post-human feminisms and where they overlap with the postcolonial. Her intimate performances play with the voice, activating soundscapes of desire and vulnerability. She is part of the CAMPerVAN collective, active since 2016, a nomadic queer performance platform that can be deployed anywhere in the world to bring performance art, film screening, panel discussion & workshop into the public realm.</p>
+              <p><a className="nocturn-text" href="https://www.instagram.com/zoemarden/" target="_blank">@zoemarden</a></p>
+              <p><a className="nocturn-text" href="https://www.zoemarden.com/" target="_blank">www.zoemarden.com</a></p>
             </div>
            
          </div>      
