@@ -69,83 +69,83 @@ const Menu = ({ menuImage }) => {
              
             </div>
            </div>
-
       
-      <div className="row">
-              <div className="column">
-                <img src="/images/nocturn/nocturn02_21.png" />
-                <img src="/images/nocturn/nocturn02_01.png" />
-                <img src="/images/nocturn/nocturn02_02.png" />
-                <img src="/images/nocturn/nocturn02_03.png" />
-                <img src="/images/nocturn/nocturn02_04.png" />
-                <img src="/images/nocturn/nocturn02_05.png" />
-                <img src="/images/nocturn/nocturn02_13.png" />
-                <img src="/images/nocturn/nocturn02_06.png" />
-                <img src="/images/nocturn/nocturn02_07.png" />
-                <img src="/images/nocturn/nocturn02_08.png" />
-                <a href="https://www.youtube.com/watch?v=BWKKJwBXir4" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_01.png" />
-                </a>
-                <img src="/images/nocturn/nocturn02_09.png" />
-                <img src="/images/nocturn/nocturn02_41.png" />
-                <img src="/images/nocturn/nocturn02_42.png" />
-                <img src="/images/nocturn/nocturn02_10.png" />
-                <img src="/images/nocturn/nocturn02_14.png" />
-                <img src="/images/nocturn/nocturn02_11.png" />
-                <a href="https://www.youtube.com/watch?v=KtFFmDGIsa4" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_04.png" />
-                </a>
-                <img src="/images/nocturn/nocturn02_12.gif" />
-                <img src="/images/nocturn/nocturn02_15.png" />
-                <img src="/images/nocturn/nocturn02_18.png" />
-                <img src="/images/nocturn/nocturn02_19.png" />
-                <img src="/images/nocturn/nocturn02_20.png" />
-                <img src="/images/nocturn/nocturn02_43.png" />
-                <img src="/images/nocturn/nocturn02_44.png" />
-                <img src="/images/nocturn/nocturn02_45.png" />
-                <a href="https://www.smithsonianmag.com/science-nature/creatures-of-the-deep-163679120/" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_03.png" />
-                </a>
-              </div>
-              <div className="column">
-                <img src="/images/nocturn/nocturn02_23.png" />
-                <a href="https://medium.com/@rachellee9087/the-titan-submarine-disaster-what-really-happened-c40a1acde9aa" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_05.png" />
-                </a>
-                <img src="/images/nocturn/nocturn02_16.png" />
-                <img src="/images/nocturn/nocturn02_24.png" />
-                <img src="/images/nocturn/nocturn02_25.png" />
-                <a href="https://www.youtube.com/watch?v=8oL6u9eujSU" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_06.png" />
-                </a>
-                <img src="/images/nocturn/nocturn02_26.png" />
-                <img src="/images/nocturn/nocturn02_27.png" />
-                <img src="/images/nocturn/nocturn02_17.png" />
-                <img src="/images/nocturn/nocturn02_28.png" />
-                <img src="/images/nocturn/nocturn02_29.png" />
-                <a href="https://www.youtube.com/watch?v=fDwHwWuUuk4" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_07.png" />
-                </a>
-                 <img src="/images/nocturn/nocturn02_22.png" />
-                <img src="/images/nocturn/nocturn02_30.png" />
-                <img src="/images/nocturn/nocturn02_46.png" />
-                <img src="/images/nocturn/nocturn02_31.png" />
-                <a href="https://www.e-flux.com/journal/75/67125/tentacular-thinking-anthropocene-capitalocene-chthulucene/" target="_blank">
-                  <img src="/images/nocturn/nocturn02_video_02.png" />
-                </a>
-                <img src="/images/nocturn/nocturn02_32.png" />
-                <img src="/images/nocturn/nocturn02_33.png" />
-                <audio controls src="/images/nocturn/nocturn02_34.mp3"></audio>
-                <img src="/images/nocturn/nocturn02_36.png" />
-                <img src="/images/nocturn/nocturn02_37.png" />
-                <img src="/images/nocturn/nocturn02_38.png" />
-                <img src="/images/nocturn/nocturn02_39.png" />
-                <img src="/images/nocturn/nocturn02_40.png" />
-                <img src="/images/nocturn/nocturn02_47.png" />
-                <img src="/images/nocturn/nocturn02_48.png" />
-              </div>
-           </div>
-           
+        <div className="nocturn">
+          <div className="row">
+                  <div className="column">
+                    <img src="/images/nocturn/nocturn02_21.png" />
+                    <img src="/images/nocturn/nocturn02_01.png" />
+                    <img src="/images/nocturn/nocturn02_02.png" />
+                    <img src="/images/nocturn/nocturn02_03.png" />
+                    <img src="/images/nocturn/nocturn02_04.png" />
+                    <img src="/images/nocturn/nocturn02_05.png" />
+                    <img src="/images/nocturn/nocturn02_13.png" />
+                    <img src="/images/nocturn/nocturn02_06.png" />
+                    <img src="/images/nocturn/nocturn02_07.png" />
+                    <img src="/images/nocturn/nocturn02_08.png" />
+                    <a href="https://www.youtube.com/watch?v=BWKKJwBXir4" target="_blank">
+                      <img src="/images/nocturn/nocturn02_video_01.png" />
+                    </a>
+                    <img src="/images/nocturn/nocturn02_09.png" />
+                    <img src="/images/nocturn/nocturn02_41.png" />
+                    <img src="/images/nocturn/nocturn02_42.png" />
+                    <img src="/images/nocturn/nocturn02_10.png" />
+                    <img src="/images/nocturn/nocturn02_14.png" />
+                    <img src="/images/nocturn/nocturn02_11.png" />
+                    <a href="https://www.youtube.com/watch?v=KtFFmDGIsa4" target="_blank">
+                      <img src="/images/nocturn/nocturn02_video_04.png" />
+                    </a>
+                    <img src="/images/nocturn/nocturn02_12.gif" />
+                    <img src="/images/nocturn/nocturn02_15.png" />
+                    <img src="/images/nocturn/nocturn02_18.png" />
+                    <img src="/images/nocturn/nocturn02_19.png" />
+                    <img src="/images/nocturn/nocturn02_20.png" />
+                    <img src="/images/nocturn/nocturn02_43.png" />
+                    <img src="/images/nocturn/nocturn02_44.png" />
+                    <img src="/images/nocturn/nocturn02_45.png" />
+                    <a href="https://www.smithsonianmag.com/science-nature/creatures-of-the-deep-163679120/" target="_blank">
+                      <img src="/images/nocturn/nocturn02_video_03.png" />
+                    </a>
+                  </div>
+                  <div className="column">
+                    <img src="/images/nocturn/nocturn02_23.png" />
+                    <a href="https://medium.com/@rachellee9087/the-titan-submarine-disaster-what-really-happened-c40a1acde9aa" target="_blank">
+                      <img src="/images/nocturn/nocturn02_video_05.png" />
+                    </a>
+                    <img src="/images/nocturn/nocturn02_16.png" />
+                    <img src="/images/nocturn/nocturn02_24.png" />
+                    <img src="/images/nocturn/nocturn02_25.png" />
+                    <a href="https://www.youtube.com/watch?v=8oL6u9eujSU" target="_blank">
+                      <img src="/images/nocturn/nocturn02_video_06.png" />
+                    </a>
+                    <img src="/images/nocturn/nocturn02_26.png" />
+                    <img src="/images/nocturn/nocturn02_27.png" />
+                    <img src="/images/nocturn/nocturn02_17.png" />
+                    <img src="/images/nocturn/nocturn02_28.png" />
+                    <img src="/images/nocturn/nocturn02_29.png" />
+                    <a href="https://www.youtube.com/watch?v=fDwHwWuUuk4" target="_blank">
+                      <img src="/images/nocturn/nocturn02_video_07.png" />
+                    </a>
+                     <img src="/images/nocturn/nocturn02_22.png" />
+                    <img src="/images/nocturn/nocturn02_30.png" />
+                    <img src="/images/nocturn/nocturn02_46.png" />
+                    <img src="/images/nocturn/nocturn02_31.png" />
+                    <a href="https://www.e-flux.com/journal/75/67125/tentacular-thinking-anthropocene-capitalocene-chthulucene/" target="_blank">
+                      <img src="/images/nocturn/nocturn02_video_02.png" />
+                    </a>
+                    <img src="/images/nocturn/nocturn02_32.png" />
+                    <img src="/images/nocturn/nocturn02_33.png" />
+                    <audio controls src="/images/nocturn/nocturn02_34.mp3"></audio>
+                    <img src="/images/nocturn/nocturn02_36.png" />
+                    <img src="/images/nocturn/nocturn02_37.png" />
+                    <img src="/images/nocturn/nocturn02_38.png" />
+                    <img src="/images/nocturn/nocturn02_39.png" />
+                    <img src="/images/nocturn/nocturn02_40.png" />
+                    <img src="/images/nocturn/nocturn02_47.png" />
+                    <img src="/images/nocturn/nocturn02_48.png" />
+                  </div>
+               </div>
+               
             <div className="nocturn-text-wrapper bottom"> 
               <p className="nocturn-text">Zoë Marden is an artist, filmmaker, and writer living between her home town of Hong Kong and London. She graduated from the Royal College of Art’s Moving Image MA, Marden works with performance, video, text, sound, sculpture and installation to create alternate worlds and speculative futures. Her research-focused works are concerned with Post-human feminisms and where they overlap with the postcolonial. Her intimate performances play with the voice, activating soundscapes of desire and vulnerability. She is part of the CAMPerVAN collective, active since 2016, a nomadic queer performance platform that can be deployed anywhere in the world to bring performance art, film screening, panel discussion & workshop into the public realm.</p>
               <p><a className="nocturn-text" href="https://www.instagram.com/zoemarden/" target="_blank">@zoemarden</a></p>
