@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>JACK LOVE & LUCY B</h3>
-              <h3><span>STUDIO <b>//</b> </span>RASHO B2B B.LOVE B2B JACK D</h3>
+              <h3><span>STUDIO <b>//</b> </span>B.LOVE B2B JACK D B2B RASHO</h3>
             </div>
         </div>
                <div class="book-wrapper">
