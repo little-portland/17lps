@@ -68,10 +68,7 @@ const Menu = ({ menuImage }) => {
               <p className="nocturn-text nocturn-text-author italic">Bianca Chu</p>
              
             </div>
-           </div>
-      
-        <div className="nocturn">
-          <div className="row">
+                <div className="row">
                   <div className="column">
                     <img src="/images/nocturn/nocturn02_21.png" />
                     <img src="/images/nocturn/nocturn02_01.png" />
