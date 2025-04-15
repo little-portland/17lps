@@ -15,7 +15,7 @@ const Menu = ({ menuImage }) => {
       <Head>
         <style>
             {'html{overflow: auto!important;}'}
-            {'body{background-color: #FA2E2E!important;overflow: auto!important;overflow-x: initial!important;}'}
+            {'body{background-color: #abd1e3!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
@@ -45,12 +45,8 @@ const Menu = ({ menuImage }) => {
       </Head>
       
          <div className="nocturn">
-           <img src="/images/nocturn3-web-page.png" alt="Nocturn" width="100%" />
-           <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn03.gif" /> 
-           <p> 
-              <audio className="spacing" controls src="/images/nocturn/reception-sonic.mp3"></audio>
-            </p>
-           <img className="flyer preloader" src="/images/nocturn/loading-retro-panel.gif" />
+           <img src="/images/nocturn/nocturn4-web-page-top.png" alt="Nocturn" width="100%" />
+           <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_04.jpg" /> 
 
            <div className="nocturn-text-wrapper top"> 
             <br/> 
