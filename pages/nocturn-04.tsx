@@ -78,8 +78,14 @@ const Menu = ({ menuImage }) => {
                     <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio01.mp3"></audio>
                     <img src="/images/nocturn/nocturn-04/nocturn04_06.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_07.png" />
+                    <a href="https://vimeo.com/1075724730/72ff34a944?share=copy" target="_blank">
+                        <img src="/images/nocturn/nocturn-04/nocturn04_video_01.png" />
+                    </a>
                     <img src="/images/nocturn/nocturn-04/nocturn04_08.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_09.png" />
+                    <a href="https://vimeo.com/1075726393/1d8bd9d43a?share=copy" target="_blank">
+                        <img src="/images/nocturn/nocturn-04/nocturn04_video_02.png" />
+                    </a>
                     <img src="/images/nocturn/nocturn-04/nocturn04_17.png" />
                     <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio02.mp3"></audio>
                   </div>
@@ -92,6 +98,9 @@ const Menu = ({ menuImage }) => {
                     <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio03.mp3"></audio>
                     <img src="/images/nocturn/nocturn-04/nocturn04_16.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_10.png" />
+                    <a href="https://vimeo.com/1075730885/a55afb5ca2?share=copy" target="_blank">
+                        <img src="/images/nocturn/nocturn-04/nocturn04_video_03.png" />
+                    </a>
                     <img src="/images/nocturn/nocturn-04/nocturn04_18.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_19.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_20.png" />
@@ -101,8 +110,8 @@ const Menu = ({ menuImage }) => {
                
             <div className="nocturn-text-wrapper bottom"> 
               <p className="nocturn-text">Zoë Marden is an artist, filmmaker, and writer living between her home town of Hong Kong and London. She graduated from the Royal College of Art’s Moving Image MA, Marden works with performance, video, text, sound, sculpture and installation to create alternate worlds and speculative futures. Her research-focused works are concerned with Post-human feminisms and where they overlap with the postcolonial. Her intimate performances play with the voice, activating soundscapes of desire and vulnerability. She is part of the CAMPerVAN collective, active since 2016, a nomadic queer performance platform that can be deployed anywhere in the world to bring performance art, film screening, panel discussion & workshop into the public realm.</p>
-              <p><a className="nocturn-text" href="https://www.instagram.com/zoemarden/" target="_blank">@zoemarden</a></p>
-              <p><a className="nocturn-text" href="https://www.zoemarden.com/" target="_blank">www.zoemarden.com</a></p>
+              <p><a className="nocturn-text" href="https://www.instagram.com/evan_ife/" target="_blank">@evan_ife</a></p>
+              <p><a className="nocturn-text" href="https://evanifekoya.com/" target="_blank">www.evanifekoya.com</a></p>
             </div>
            
          </div>      
