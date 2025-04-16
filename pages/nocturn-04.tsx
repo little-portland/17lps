@@ -22,6 +22,7 @@ const Menu = ({ menuImage }) => {
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.single .row{ justify-content: center; align-items: center;}'}
+            {'.video-section .row{ justify-content: center; align-items: center;}'}
             {'.single .column{flex: 80%;max-width: 80%;padding: 0 4px;}'}
             {'.video-section .column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
             {'video{ width: 100%!important; max-width: 100%;!important}'}
