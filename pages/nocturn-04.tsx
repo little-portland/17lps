@@ -18,7 +18,7 @@ const Menu = ({ menuImage }) => {
             {'body{background-color: #abd1e3!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.nocturn{width: 60%;margin: 0 auto;}'}
             {'.nocturn-wider-section{width: 60%;margin: 0 auto;}'}
-            {'.video-section{width: 80%;margin: 0 auto;}'}
+            {'.video-section{width: 80%;margin: 0 auto 30px auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.single .row{ justify-content: center; align-items: center;}'}
