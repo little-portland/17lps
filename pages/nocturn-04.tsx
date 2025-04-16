@@ -22,7 +22,7 @@ const Menu = ({ menuImage }) => {
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
-            {'.top{ font-size: 35px;}'}
+            {'.top{ font-size: 30px;}'}
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 20px!important;padding: 0 30px;}'}
@@ -68,6 +68,24 @@ const Menu = ({ menuImage }) => {
               <p className="nocturn-text nocturn-text-author italic">Bianca Chu</p>
              
             </div>
+           </div>
+
+                <div className="nocturn-wider-section">
+                   <div className="row">
+                    <div className="column">
+                       <img src="/images/nocturn/nocturn-04/nocturn04_26.png" />
+                       <p> 
+                        <audio controls src="/images/nocturn/studio1.mp3"></audio>
+                      </p>
+                    </div>
+                    <div className="column">
+                       <img src="/images/nocturn/nocturn-04/nocturn04_27.png" />
+                    </div>
+                     <p>'MODUPE' film shoot BTS Photography by Puer Deorum </p>
+                 </div>
+                </div>
+
+               <div className="nocturn">
                 <div className="row">
                   <div className="column">
                     <img src="/images/nocturn/nocturn-04/nocturn04_01.png" />
