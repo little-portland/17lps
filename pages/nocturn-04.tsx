@@ -31,6 +31,7 @@ const Menu = ({ menuImage }) => {
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
             {'.bottom{ font-size: 25px;}'}
+            {'a:hover{ text-decoration: underline!important;}'}
             {'.caption{ font-size: 20px!important;margin: 20px auto 30px auto!important;text-align: center!important;max-width: 90%!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 20px!important;padding: 0 30px;}'}
@@ -71,7 +72,7 @@ const Menu = ({ menuImage }) => {
 
               <p className="nocturn-text italic">As matter and energy swirled in vast oceans of nothingness, the Sentience, in forming itself out of the formlessness, what emerged was in dyadic harmony, and the Calabash of Creation contained all in their belly and the Music of the Spheres was the Universe. And as countless times before, the Universe was made and re-made again.</p>
               
-              <p className="nocturn-text italic">“The Sound is the Shrine”</p>
+              <p className="nocturn-text italic">“The Sound is the Shrine”*</p>
 
               <p className="nocturn-text nocturn-text-author italic">Bianca Chu</p>
                <br/> 
@@ -91,7 +92,7 @@ const Menu = ({ menuImage }) => {
 
               <div className="nocturn">
                <div className="nocturn-text-wrapper top"> 
-                     <p className="nocturn-text italic caption">'MODUPE' film shoot BTS Photography by Puer Deorum </p>
+                     <p className="nocturn-text italic caption"><a className="nocturn-text" href="https://evanifekoya.com/artworks/63-modupe-2025/" target="_blank">'MODUPE'* film shoot BTS Photography by Puer Deorum</a></p>
                 </div>
                </div>
 
@@ -178,7 +179,7 @@ const Menu = ({ menuImage }) => {
                    <div className="row">
                     <div className="column">
                       <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio02.mp3"></audio>
-                      <p className="nocturn-text italic caption">Evan Ifekoya, Omi O, Site-Specific Sonic for the Tent at Little Portland Street</p>
+                      <p className="nocturn-text italic caption">Evan Ifekoya, Omi O, Site-Specific Sonic for the Tent at Little Portland Street’ featuring vocals by MODUPE ensemble: Eden Alero, Ayebainemi Ése, Evan Ifekoya</p>
                     </div>
                     <div className="column">
                       <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio04.mp3"></audio>
@@ -191,7 +192,7 @@ const Menu = ({ menuImage }) => {
             <div className="nocturn-text-wrapper bottom"> 
               <p className="nocturn-text">Evan Ifekoya is a Spirit led artist and dream architect exploring ancestry, belief and belonging through practices of self-archiving and blackness in abundance. Through their art, they hope to foster a deeper sense of connection and awareness, creating spaces where liberation and refuge are not just ideals but lived experiences. They have presented exhibitions, moving image and performances across UK, Europe and Internationally, most recently: ‘Stranieri Ovunque –Foreigners Everywhere’ 60th Venice Biennial, ‘The Ocean in the Forest’ Wanås Konst Sculpture Park Sweden, ‘Traces of Ecstasy’ ICA VCU Richmond Virginia and Lagos Biennial (2024), ARoS Denmark and Guest Artist Space Lagos (2023), ‘~Resonant Frequencies’, Migros Museum, Zurich (2022). Upcoming exhibitions and presentations in 2025 include ‘Feel The Sound’ at Barbican and ‘MODUPE’, a new experimental documentary film supported by BFI Docs Society. They established the collectively run and QTIBPOC (queer, trans*, intersex, black and people of colour) led Black Obsidian Sound System (B.O.S.S.) in 2018. They were awarded the Paul Hamlyn bursary in 2021, the Kleinwort Hambros Emerging Artists Prize in 2019 and the Arts Foundation Award for Live Art sponsored by the Yoma Sasberg Estate in 2017.</p>
               <p><a className="nocturn-text" href="https://www.instagram.com/evan_ife/" target="_blank">@evan_ife</a></p>
-              <p><a className="nocturn-text" href="https://evanifekoya.substack.com/" target="_blank">www.evanifekoya.com</a></p>
+              <p><a className="nocturn-text" href="https://evanifekoya.com/" target="_blank">www.evanifekoya.com</a></p>
               <br/> 
             </div>
          </div>      
