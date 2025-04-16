@@ -14,7 +14,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'html{overflow: auto!important;}'}
+            {'html{overflow: auto!important;overflow-x: hidden!important;}'}
             {'body{background-color: #abd1e3!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
