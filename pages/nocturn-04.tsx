@@ -100,7 +100,6 @@ const Menu = ({ menuImage }) => {
 
               <div className="nocturn">
                <div className="nocturn-text-wrapper top"> 
-                <br/> 
                     <p className="nocturn-text italic caption">Evan Ifekoya, ‘~ Resonant Frequencies’, 2022, exhibition view, Migros Museum, Zurich; Courtesy: the artist; Photograph: Stefan Altenburger </p>
                 </div>
                </div>
