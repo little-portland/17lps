@@ -26,7 +26,7 @@ const Menu = ({ menuImage }) => {
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
             {'.bottom{ font-size: 25px;}'}
-            {'.caption{ font-size: 25px!important;margin: 20px 0 0 40px!important;}'}
+            {'.caption{ font-size: 25px!important;margin: 20px 0 0 60px!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 20px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}'}
