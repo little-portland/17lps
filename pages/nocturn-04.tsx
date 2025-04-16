@@ -22,6 +22,7 @@ const Menu = ({ menuImage }) => {
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.single .row{ justify-content: center; align-items: center;}'}
             {'.single .column{flex: 80%;max-width: 80%;padding: 0 4px;}'}
+            {'.video-section .column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
@@ -104,7 +105,7 @@ const Menu = ({ menuImage }) => {
                 </div>
                </div>
 
-                <div className="nocturn-wider-section">
+                <div className="nocturn-wider-section video-section">
                  <div className="row">
                     <div className="column">
                         <video autoPlay loop muted playsInline className="video-background">
