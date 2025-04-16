@@ -50,7 +50,7 @@ const Menu = ({ menuImage }) => {
             {'@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.video-section .column{flex: 100%;max-width: 100%;padding: 0 4px;margin-bottom: 7px;}.caption{font-size: 15px!important;margin-top: 10px!important;}.audio .caption{margin-top: 30px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
 
-        <title>NOCTURN [04]: The Sound is the Shrine - Evan Ifekoya</title>
+        <title>NOCTURN [04]. feat. Evan Ifekoya - The Sound is the Shrine</title>
       </Head>
       
          <div className="nocturn">
