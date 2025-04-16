@@ -93,7 +93,7 @@ const Menu = ({ menuImage }) => {
                <div className="nocturn-wider-section single">
                    <div className="row">
                     <div className="column">
-                       <img src="/images/nocturn/nocturn-04/nocturn04_26.png" />
+                       <img src="/images/nocturn/nocturn-04/nocturn04_28.png" />
                     </div>
                  </div>
                 </div>
@@ -101,7 +101,7 @@ const Menu = ({ menuImage }) => {
               <div className="nocturn">
                <div className="nocturn-text-wrapper top"> 
                 <br/> 
-                     <p className="nocturn-text italic caption">'MODUPE' film shoot BTS Photography by Puer Deorum </p>
+                    <p className="nocturn-text italic caption">Evan Ifekoya, ‘~ Resonant Frequencies’, 2022, exhibition view, Migros Museum, Zurich; Courtesy: the artist; Photograph: Stefan Altenburger </p>
                 </div>
                </div>
 
