@@ -17,6 +17,7 @@ const Menu = ({ menuImage }) => {
             {'html{overflow: auto!important;overflow-x: hidden!important;}'}
             {'body{background-color: #abd1e3!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.nocturn{width: 60%;margin: 0 auto;}'}
+            {'.nocturn-header{width: 50%;margin: 0 auto;}'}
             {'.nocturn-wider-section{width: 60%;margin: 0 auto;}'}
             {'.video-section{width: 80%;margin: 0 auto 30px auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
@@ -54,7 +55,7 @@ const Menu = ({ menuImage }) => {
         <title>NOCTURN [04]. feat. Evan Ifekoya - The Sound is the Shrine</title>
       </Head>
       
-         <div className="nocturn">
+         <div className="nocturn nocturn-header">
            <img src="/images/nocturn/nocturn4-web-page-top.png" alt="Nocturn" width="100%" />
            <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_04.jpg" /> 
 
