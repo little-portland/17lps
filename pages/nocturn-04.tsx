@@ -18,11 +18,12 @@ const Menu = ({ menuImage }) => {
             {'body{background-color: #abd1e3!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.nocturn{width: 60%;margin: 0 auto;}'}
             {'.nocturn-wider-section{width: 60%;margin: 0 auto;}'}
+            {'.video-section{width: 80%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.single .row{ justify-content: center; align-items: center;}'}
             {'.single .column{flex: 80%;max-width: 80%;padding: 0 4px;}'}
-            {'.video-section .column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
+            {'.video{ width: 100%!important; max-width: 100%;!important}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
