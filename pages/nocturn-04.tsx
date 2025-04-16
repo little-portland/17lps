@@ -214,7 +214,6 @@ const Menu = ({ menuImage }) => {
               <p><a className="nocturn-text" href="https://evanifekoya.substack.com/" target="_blank">www.evanifekoya.com</a></p>
               <br/> 
             </div>
-           
          </div>      
     </>
   );
