@@ -152,7 +152,6 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-04/nocturn04_03.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_04.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_05.png" />
-                    <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio01.mp3"></audio>
                     <img src="/images/nocturn/nocturn-04/nocturn04_06.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_07.png" />
                     <a href="https://vimeo.com/1075724730/72ff34a944?share=copy" target="_blank">
