@@ -75,9 +75,6 @@ const Menu = ({ menuImage }) => {
                    <div className="row">
                     <div className="column">
                        <img src="/images/nocturn/nocturn-04/nocturn04_26.png" />
-                       <p> 
-                        <audio controls src="/images/nocturn/studio1.mp3"></audio>
-                      </p>
                     </div>
                     <div className="column">
                        <img src="/images/nocturn/nocturn-04/nocturn04_27.png" />
