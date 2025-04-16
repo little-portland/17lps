@@ -58,7 +58,9 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn nocturn-header">
            <img src="/images/nocturn/nocturn4-web-page-top.png" alt="Nocturn" width="100%" />
            <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_04.jpg" /> 
+         </div>
 
+           <div className="nocturn">
            <div className="nocturn-text-wrapper top"> 
             <br/> 
               <p className="nocturn-text italic">In the beginning, there was the primordial ooze. Dark, dense and silent in its potentiality. Then, in a moment of spontaneous generation, the spark of awareness flickered and a sound reverberated out of the void.</p>
