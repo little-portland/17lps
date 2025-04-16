@@ -151,17 +151,11 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-04/nocturn04_02.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_03.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_04.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_05.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_19.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_06.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_07.png" />
-                    <a href="https://vimeo.com/1075724730/72ff34a944?share=copy" target="_blank">
-                        <img src="/images/nocturn/nocturn-04/nocturn04_video_01.png" />
-                    </a>
                     <img src="/images/nocturn/nocturn-04/nocturn04_08.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_09.png" />
-                    <a href="https://vimeo.com/1075726393/1d8bd9d43a?share=copy" target="_blank">
-                        <img src="/images/nocturn/nocturn-04/nocturn04_video_02.png" />
-                    </a>
                     <img src="/images/nocturn/nocturn-04/nocturn04_17.png" />
                   </div>
                   <div className="column">
@@ -172,11 +166,8 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-04/nocturn04_15.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_16.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_10.png" />
-                    <a href="https://vimeo.com/1075730885/a55afb5ca2?share=copy" target="_blank">
-                        <img src="/images/nocturn/nocturn-04/nocturn04_video_03.png" />
-                    </a>
                     <img src="/images/nocturn/nocturn-04/nocturn04_18.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_19.png" />
+                    <img src="/images/nocturn/nocturn-04/nocturn04_05.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_20.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_23.png" />
                   </div>
