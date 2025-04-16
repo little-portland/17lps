@@ -125,6 +125,7 @@ const Menu = ({ menuImage }) => {
                       </video>                    
                       </div>
                    </div>
+                  <br/> 
                 </div>
 
               <div className="nocturn-wider-section single">
