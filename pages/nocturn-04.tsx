@@ -58,9 +58,7 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn nocturn-header">
            <img src="/images/nocturn/nocturn4-web-page-top.png" alt="Nocturn" width="100%" />
            <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_04.jpg" /> 
-         </div>
-
-           <div className="nocturn">
+           
            <div className="nocturn-text-wrapper top"> 
             <br/> 
               <p className="nocturn-text italic">In the beginning, there was the primordial ooze. Dark, dense and silent in its potentiality. Then, in a moment of spontaneous generation, the spark of awareness flickered and a sound reverberated out of the void.</p>
@@ -191,7 +189,7 @@ const Menu = ({ menuImage }) => {
                  </div>
                 </div>
               
-           <div className="nocturn">
+           <div className="nocturn nocturn-header">
             <div className="nocturn-text-wrapper bottom"> 
               <p className="nocturn-text">Evan Ifekoya is a Spirit led artist and dream architect exploring ancestry, belief and belonging through practices of self-archiving and blackness in abundance. Through their art, they hope to foster a deeper sense of connection and awareness, creating spaces where liberation and refuge are not just ideals but lived experiences. They have presented exhibitions, moving image and performances across UK, Europe and Internationally, most recently: ‘Stranieri Ovunque –Foreigners Everywhere’ 60th Venice Biennial, ‘The Ocean in the Forest’ Wanås Konst Sculpture Park Sweden, ‘Traces of Ecstasy’ ICA VCU Richmond Virginia and Lagos Biennial (2024), ARoS Denmark and Guest Artist Space Lagos (2023), ‘~Resonant Frequencies’, Migros Museum, Zurich (2022). Upcoming exhibitions and presentations in 2025 include ‘Feel The Sound’ at Barbican and ‘MODUPE’, a new experimental documentary film supported by BFI Docs Society. They established the collectively run and QTIBPOC (queer, trans*, intersex, black and people of colour) led Black Obsidian Sound System (B.O.S.S.) in 2018. They were awarded the Paul Hamlyn bursary in 2021, the Kleinwort Hambros Emerging Artists Prize in 2019 and the Arts Foundation Award for Live Art sponsored by the Yoma Sasberg Estate in 2017.</p>
               <p><a className="nocturn-text" href="https://www.instagram.com/evan_ife/" target="_blank">@evan_ife</a></p>
