@@ -69,7 +69,7 @@ const Menu = ({ menuImage }) => {
               <p className="nocturn-text italic">“The Sound is the Shrine”</p>
 
               <p className="nocturn-text nocturn-text-author italic">Bianca Chu</p>
-             
+               <br/> 
             </div>
            </div>
 
