@@ -104,6 +104,40 @@ const Menu = ({ menuImage }) => {
                 </div>
                </div>
 
+                <div className="nocturn-wider-section">
+                 <div className="row">
+                    <div className="column">
+                      <video autoplay loop muted playsinline class="video-background ">
+                        <source src="/images/nocturn/nocturn-04/stillness.mp4" type="video/mp4">
+                      </video>                    
+                      </div>
+                    <div className="column">
+                      <video autoplay loop muted playsinline class="video-background ">
+                        <source src="/images/nocturn/nocturn-04/drum.mp4" type="video/mp4">
+                      </video>                    
+                      </div>
+                      <div className="column">
+                      <video autoplay loop muted playsinline class="video-background ">
+                        <source src="/images/nocturn/nocturn-04/pour.mp4" type="video/mp4">
+                      </video>                    
+                      </div>
+                   </div>
+                </div>
+
+               <div className="nocturn-wider-section">
+                 <div className="row">
+                    <div className="column">
+                       <img src="/images/nocturn/nocturn-04/stillness.gif" />
+                    </div>
+                      <div className="column">
+                         <img src="/images/nocturn/nocturn-04/drum.gif" />
+                    </div>
+                      <div className="column">
+                         <img src="/images/nocturn/nocturn-04/pour.gif" />
+                      </div>
+                   </div>
+                </div>
+
               <div className="nocturn-wider-section single">
                    <div className="row">
                     <div className="column">
