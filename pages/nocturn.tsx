@@ -35,7 +35,7 @@ const Menu = ({ menuImage }) => {
             {'.subscribe{width: 100%;margin: 0 auto;}'}
             {'.subscribe .bookings-iframe{width: 30%!important;height: 30% !important;display: block!important;place-items: center;margin: 0 auto;min-height: 30rem!important;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
-            {'.column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
+            {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
             {'.subscribe h2{font-family: Helvetica!important;color: #dddac3!important;font-size: 20px;margin-top: -20px;margin-bottom: -30px;text-align: center;line-height: 1.5;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
@@ -79,14 +79,25 @@ const Menu = ({ menuImage }) => {
                   </div>
                 </a>
               </div>
-              <div className="column">
-                <a href="https://www.little-portland.com/nocturn-03" target="_blank">
-                  <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn03.gif" />
-                  <div className="nocturn-text-wrapper"> 
-                    <p className="nocturn-text page-link">Learn more &#8594;</p>
-                  </div>
-                </a>
               </div>
+              
+              <div className="row">
+                 <div className="column">
+                   <a href="https://www.little-portland.com/nocturn-03" target="_blank">
+                     <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn03.gif" />
+                     <div className="nocturn-text-wrapper"> 
+                       <p className="nocturn-text page-link">Learn more &#8594;</p>
+                     </div>
+                   </a>
+                 </div>
+                 <div className="column">
+                   <a href="https://www.little-portland.com/nocturn-04" target="_blank">
+                     <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_04.jpg" />
+                     <div className="nocturn-text-wrapper"> 
+                       <p className="nocturn-text page-link">Learn more &#8594;</p>
+                     </div>
+                   </a>
+                 </div>
            </div>
          </div> 
 
