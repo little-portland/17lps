@@ -25,6 +25,7 @@ const Menu = ({ menuImage }) => {
             {'.video-section .row{ justify-content: center; align-items: center;}'}
             {'.single .column{flex: 80%;max-width: 80%;padding: 0 4px;}'}
             {'.video-section .column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
+            {'.audio{ margin-top: 30px;}'}
             {'video{ width: 100%!important; max-width: 100%;!important}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
@@ -181,10 +182,9 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-04/nocturn04_23.png" />
                   </div>
                </div>
-              <br/> 
               </div>
       
-                 <div className="nocturn-wider-section">
+                 <div className="nocturn-wider-section audio">
                    <div className="row">
                     <div className="column">
                       <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio02.mp3"></audio>
