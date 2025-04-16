@@ -72,7 +72,7 @@ const Menu = ({ menuImage }) => {
 
               <p className="nocturn-text italic">As matter and energy swirled in vast oceans of nothingness, the Sentience, in forming itself out of the formlessness, what emerged was in dyadic harmony, and the Calabash of Creation contained all in their belly and the Music of the Spheres was the Universe. And as countless times before, the Universe was made and re-made again.</p>
               
-              <p className="nocturn-text italic">“The Sound is the Shrine”*</p>
+              <p className="nocturn-text italic"><a className="nocturn-text" href="https://evanifekoya.com/artworks/63-modupe-2025/" target="_blank">“The Sound is the Shrine”*</a></p>
 
               <p className="nocturn-text nocturn-text-author italic">Bianca Chu</p>
                <br/> 
