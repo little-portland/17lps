@@ -20,6 +20,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
+            {'.single .column{flex: 80%;max-width: 80%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
@@ -78,6 +79,21 @@ const Menu = ({ menuImage }) => {
                     </div>
                     <div className="column">
                        <img src="/images/nocturn/nocturn-04/nocturn04_27.png" />
+                    </div>
+                 </div>
+                </div>
+
+              <div className="nocturn">
+               <div className="nocturn-text-wrapper top"> 
+                <br/> 
+                     <p className="nocturn-text italic caption">'MODUPE' film shoot BTS Photography by Puer Deorum </p>
+                </div>
+               </div>
+
+               <div className="nocturn-wider-section single">
+                   <div className="row">
+                    <div className="column">
+                       <img src="/images/nocturn/nocturn-04/nocturn04_26.png" />
                     </div>
                  </div>
                 </div>
