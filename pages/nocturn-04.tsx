@@ -178,8 +178,9 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-04/nocturn04_23.png" />
                   </div>
                </div>
+              <br/> 
               </div>
-                    <br/> 
+      
                  <div className="nocturn-wider-section">
                    <div className="row">
                     <div className="column">
