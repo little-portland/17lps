@@ -125,20 +125,6 @@ const Menu = ({ menuImage }) => {
                    </div>
                 </div>
 
-               <div className="nocturn-wider-section">
-                 <div className="row">
-                    <div className="column">
-                       <img src="/images/nocturn/nocturn-04/stillness.gif" />
-                    </div>
-                      <div className="column">
-                         <img src="/images/nocturn/nocturn-04/drum.gif" />
-                    </div>
-                      <div className="column">
-                         <img src="/images/nocturn/nocturn-04/pour.gif" />
-                      </div>
-                   </div>
-                </div>
-
               <div className="nocturn-wider-section single">
                    <div className="row">
                     <div className="column">
@@ -152,7 +138,6 @@ const Menu = ({ menuImage }) => {
                     <p className="nocturn-text italic caption">Evan Ifekoya, Divine Calabash Invocation, Site-Specific Sonic for Little Portland Street</p>
                 </div>
                </div>
-
       
             <div className="nocturn">
                 <div className="row">
