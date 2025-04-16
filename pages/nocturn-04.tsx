@@ -16,8 +16,8 @@ const Menu = ({ menuImage }) => {
         <style>
             {'html{overflow: auto!important;overflow-x: hidden!important;}'}
             {'body{background-color: #abd1e3!important;overflow: auto!important;overflow-x: initial!important;}'}
-            {'.nocturn{width: 50%;margin: 0 auto;}'}
-            {'.nocturn-wider-section{width: 80%;margin: 0 auto;}'}
+            {'.nocturn{width: 60%;margin: 0 auto;}'}
+            {'.nocturn-wider-section{width: 60%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.single .row{ justify-content: center; align-items: center;}'}
