@@ -104,7 +104,22 @@ const Menu = ({ menuImage }) => {
                 </div>
                </div>
 
-               <div className="nocturn">
+              <div className="nocturn-wider-section single">
+                   <div className="row">
+                    <div className="column">
+                      <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio03.mp3"></audio>
+                    </div>
+                 </div>
+                </div>
+
+              <div className="nocturn">
+               <div className="nocturn-text-wrapper top"> 
+                    <p className="nocturn-text italic caption">Evan Ifekoya, Divine Calabash Invocation, Site-Specific Sonic for Little Portland Street</p>
+                </div>
+               </div>
+
+      
+            <div className="nocturn">
                 <div className="row">
                   <div className="column">
                     <img src="/images/nocturn/nocturn-04/nocturn04_01.png" />
@@ -132,7 +147,6 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-04/nocturn04_13.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_14.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_15.png" />
-                    <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio03.mp3"></audio>
                     <img src="/images/nocturn/nocturn-04/nocturn04_16.png" />
                     <img src="/images/nocturn/nocturn-04/nocturn04_10.png" />
                     <a href="https://vimeo.com/1075730885/a55afb5ca2?share=copy" target="_blank">
