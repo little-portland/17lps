@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name focal-point-presents">Focal Point</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>01 May</h2>
+              <h2><span>THU</span>01 May</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>JACK LOVE & LUCY B</h3>
