@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>10 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>CHRIS COCO, SARAHTONING</h3>
-              <h3><span>STUDIO <b>//</b> </span>HOT TODDY, RALPH LAWSON</h3>
+              <h3><span>TENT <b>//</b> </span>CHRIS COCO, SARAHTONIN  [09PM - 04AM]</h3>
+              <h3><span>STUDIO <b>//</b> </span>LUTHER VINE, RALPH LAWSON, RHYTHMS OF PRESCOTT, SAM LUKE  [10PM - 5AM]</h3>
             </div>
         </div>
         <div class="book-wrapper">
