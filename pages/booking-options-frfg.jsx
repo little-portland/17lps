@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name balance">Roots</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>THU</span>26 Apr</h2>
+              <h2><span>SAT</span>26 Apr</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DER & NESTA, SEMOA</h3>
