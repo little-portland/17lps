@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>24 APR</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DEMI, MARCELINA</h3>
-              <h3><span>STUDIO <b>//</b> </span>AWKWARD MOMENTS, MAYA JANE COLES</h3>
+              <h3><span>TENT <b>//</b> </span>DEMI, Gregorio Soave</h3>
+              <h3><span>STUDIO <b>//</b> </span>AWKWARD MOMENTS, MARCELINA, MAYA JANE COLES</h3>
             </div>
         </div>
        <div class="book-wrapper">
