@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>08 MAY</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DENNY KEM</h3>
+              <h3><span>TENT <b>//</b> </span>David Agrella, DENNY KEM</h3>
               <h3><span>STUDIO <b>//</b> </span>AKUFEN, OHM HOURANI</h3>
             </div>
         </div>
