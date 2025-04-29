@@ -18,14 +18,14 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name focal-point-presents">FOCAL POINT</h1>
+        <h1 class="event-name openlab-presents">MUI MUI</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>THU</span>03 Apr</h2>
+              <h2><span>THU</span>15 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DAVID AGRELLA, James puentess</h3>
-              <h3><span>STUDIO <b>//</b> </span>Jord Kuning (live), SECRET GUEST, TIP TOP</h3>
+              <h3><span>TENT <b>//</b> </span>BREEZYWAV & TRIXIE</h3>
+              <h3><span>STUDIO <b>//</b> </span>ANNA WALL, DASHA DUH, E. ALEXANDER</h3>
             </div>
         </div>
         <div class="book-wrapper">
@@ -58,7 +58,7 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xbywvZbv" target="_blank">
+            <a href="https://sevn.ly/xueTgZ5e" target="_blank">
                 CLUB TICKETS ONLY
               </a>
             </Button>
