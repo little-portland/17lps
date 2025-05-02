@@ -129,8 +129,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             blurDataURL={"/images/override_eat_page.png"}
         />
         <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
-        <p className="override-intro">Override is our series of guest chef takeovers, presented by John Javier, where innovative menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark scene. </p> 
-        <h4>Override [03] feat. Zen Ong</h4>
+        <p className="override-intro">Override is our series of guest chef takeovers where innovative menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark scene. </p> 
+        <h4>Override [03</h4>
         <p className="menu-available"><span>Menu available through June.</span></p>
           <ul>
             <li className="info">£65pp</li>
@@ -138,8 +138,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             <li className="info">9pm start</li>
             <li className="info">Club Access Included</li>
           </ul>
-        <p>Zen Ong is the creator of INDA and AWAN, and the former head of YZY Food. He launched the INDA dinner series in 2019 and AWAN, an acclaimed vegan ice creamery, in 2021, where Steve Lacy premiered his album Gemini Rights. In 2023, he and our Executive Chef, John Javier, cooked for Ye in Florence during the Vultures sessions. Now, Zen brings MEJA to The Tent, an Indonesian shared tasting menu focused on communal dining.</p> 
-        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override-03" target="_blank">[EXPLORE ZEN]</a> <a href="https://www.little-portland.com/override-flyer" target="_blank">[FLYER]</a></p>
+        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a></p>
         </div>}
 
         {<div
@@ -151,10 +150,10 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             <li className="info">6-12 pax</li>
             <li className="info">8pm start</li>
           </ul>
-          <p>Our guests can experience the Override menu in Chef’s Studio. The current Override [03] is in collaboration with <strong>Zen Ong</strong>, the creator of Inda and Awan, and the former head of YZY Food. Zen brings MEJA to The Tent, an Indonesian tasting menu focused on communal dining.</p> 
+          <p>Our guests can experience the Override menu in Chef’s Studio.</p> 
           <p>Override [03] runs through June.</p> 
           <p>Please note, although we strive to cater for dietary restrictions, our kitchen space is very limited to accommodate every dietary requirement. Unfortunately we cannot guarantee changes outside our set menu. Please notify a member of staff before booking if you suffer from any allergies so we can try to meet your needs.</p> 
-          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override-03" target="_blank">[EXPLORE ZEN]</a></p>
+          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a></p>
         </div>}
 
       </div>}
