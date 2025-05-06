@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>LUTHER VINE, Trixie</h3>
-              <h3><span>STUDIO <b>//</b> </span>RADIOACTIVE MAN B2B STE ROBERTS, ALIEN COMMUNICATIONS B2B DOMENIC CAPPELLO</h3>
+              <h3><span>STUDIO <b>//</b> </span>ALIEN COMMUNICATIONS B2B DOMENIC CAPPELLO, RADIOACTIVE MAN B2B STE ROBERTS</h3>
             </div>
         </div>
        <div class="book-wrapper">
