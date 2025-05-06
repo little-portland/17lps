@@ -18,21 +18,21 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name openlab-presents">ALEGRIA</h1>
+        <h1 class="event-name disco-saturdays">In Good Company</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>12 Apr</h2>
+              <h2><span>SAT</span>24 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DAWIDU, Lana, MARIELLA</h3>
-              <h3><span>STUDIO <b>//</b> </span>JAMIE 3:26, Kenia</h3>
+              <h3><span>TENT <b>//</b> </span>DEMI</h3>
+              <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY & FRIENDS</h3>
             </div>
         </div>
         <div class="book-wrapper">
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-04-12&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-05-24&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
@@ -58,7 +58,7 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/x2C9fNUq" target="_blank">
+            <a href="https://sevn.ly/xn1ohPr4" target="_blank">
                 CLUB TICKETS ONLY
               </a>
             </Button>
