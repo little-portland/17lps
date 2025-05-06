@@ -539,6 +539,10 @@ html, body {
     font-size: 4.7rem;
 }
 
+#bookingOptions .disco3000 {
+    font-size: 8rem;
+}
+
 #bookingOptions .lick-lid {
     font-size: 5.9rem;
 }
