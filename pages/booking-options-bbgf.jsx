@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>10 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>CHRIS COCO, sarahtonin</h3>
+              <h3><span>TENT <b>//</b> </span>Chris Coco & Friends</h3>
               <h3><span>STUDIO <b>//</b> </span>LUTHER VINE, RALPH LAWSON, RHYTHMS OF PRESCOTT, SAM LUKE</h3>
             </div>
         </div>
