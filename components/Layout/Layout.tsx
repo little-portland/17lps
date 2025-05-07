@@ -131,7 +131,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
         <p className="override-intro">Override is our series of guest chef takeovers where innovative menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark scene. </p> 
         <h4>Override [03]</h4>
-        <p className="menu-available"><span>Menu available through April. </span></p>
+        <p className="menu-available"><span>Menu available through June. </span></p>
           <ul>
             <li className="info">£65pp</li>
             <li className="info">Set Menu Dinner</li>
@@ -151,7 +151,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             <li className="info">8pm start</li>
           </ul>
           <p>Our guests can experience the Override menu in Chef’s Studio.</p> 
-          <p>Override [03] runs through April.</p> 
+          <p>Override [03] runs through June.</p> 
           <p>Please note, although we strive to cater for dietary restrictions, our kitchen space is very limited to accommodate every dietary requirement. Unfortunately we cannot guarantee changes outside our set menu. Please notify a member of staff before booking if you suffer from any allergies so we can try to meet your needs.</p> 
           <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a></p>
         </div>}
