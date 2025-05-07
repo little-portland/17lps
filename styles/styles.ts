@@ -531,6 +531,10 @@ html, body {
     font-size: 2.5rem;
 }
 
+#bookingOptions .records {
+    font-size: 2.3rem;
+}
+
 #bookingOptions .focal-point-presents {
   font-size: 6.4rem;
 }
