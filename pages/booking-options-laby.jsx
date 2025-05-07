@@ -18,7 +18,7 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name override">BALEARIC</h1>
+        <h1 class="event-name records">Ten Years Of Monologues Records</h1>
         <div class="event-info">
             <div class="info date">
               <h2><span>SAT</span>14 Jun</h2>
