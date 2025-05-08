@@ -61,7 +61,7 @@ const Bookings = () => {
         <div className="bookings-body-text"> 
          <h1 className="bookings-heading-0">DINNER RESERVATIONS</h1>
           <ul>
-            <li>For all dinner reservations in the Tent, we have a specially designed set menu curated by John Javier and Zen Ong. Available until the end of June. </li>
+            <li>For all dinner reservations in the Tent, we have a specially designed set menu that is currently inspired by Indonesian cuisine focused around sharing food and eating with your hands. </li>
             <li>Please note, although we strive to cater for dietary restrictions, our kitchen space is very limited to accommodate every dietary requirement. Unfortunately we cannot guarantee changes outside our set menu. Please notify a member of staff before booking if you suffer from any allergies so we can try to meet your needs.
  </li>
             <li>Cancellations within 48 hours prior to your dinner reservation, group reduction size or no-shows will be subject to a £30 per person cancellation fee. </li>
