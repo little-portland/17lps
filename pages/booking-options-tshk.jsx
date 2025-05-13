@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>GILES SMITH, Soho</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
+              <h3><span>STUDIO <b>//</b> </span>Gregorio Soave B2B Tony Serban</h3>
             </div>
         </div>
         <div class="book-wrapper">
