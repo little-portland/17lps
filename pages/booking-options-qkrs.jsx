@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>BREEZYWAV & TRIXIE</h3>
-              <h3><span>STUDIO <b>//</b> </span>ANNA WALL, Dana Ruh, E. ALEXANDER</h3>
+              <h3><span>STUDIO <b>//</b> </span>ANNA WALL, Dana Ruh, <p>E. ALEXANDER</p></h3>
             </div>
         </div>
         <div class="book-wrapper">
