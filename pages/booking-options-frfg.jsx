@@ -14,25 +14,25 @@ const BookingOptions = () => {
   return (
     <>
       <Head>
-        <title>Bookings</title>
+        <title>Bookings </title>
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name balance">Roots</h1>
+        <h1 class="event-name">Logistic Records</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>SAT</span>26 Apr</h2>
+              <h2><span>THU</span>26 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DER & NESTA, SEMOA</h3>
-              <h3><span>STUDIO <b>//</b> </span>AGELESS, NATALIA ROTH, NESTA, TIBI DABO</h3>
+              <h3><span>TENT <b>//</b> </span>Gil</h3>
+              <h3><span>STUDIO <b>//</b> </span>ALEXX, BEN VEDREN, TOM ELLIS</h3>
             </div>
         </div>
-        <div class="book-wrapper">
+       <div class="book-wrapper">
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-04-26&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-06-26&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
@@ -58,8 +58,8 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xpzlNqZ9" target="_blank">
-                CLUB TICKETS ONLY
+              <a href="https://sevn.ly/x0tujPUM" target="_blank">
+                CLUB GUESTLIST ONLY
               </a>
             </Button>
         </div>
