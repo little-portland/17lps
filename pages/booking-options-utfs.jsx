@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DEMI, LEWIS CAROL</h3>
-              <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY & FRIENDS</h3>
+              <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY, JIVE TALK</h3>
             </div>
         </div>
         <div class="book-wrapper">
