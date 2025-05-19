@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>24 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DEMI, LEWIS CAROL</h3>
+              <h3><span>TENT <b>//</b> </span>DEMI, LEWIS CARROLL</h3>
               <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY, JIVE TALK</h3>
             </div>
         </div>
