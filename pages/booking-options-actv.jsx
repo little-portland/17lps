@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>JEME, MAYBE LAURA & REMI MAZET</h3>
-              <h3><span>STUDIO <b>//</b> </span>BANZAI, PITICU</h3>
+              <h3><span>STUDIO <b>//</b> </span>BANZAIXX, PITICU</h3>
             </div>
         </div>
        <div class="book-wrapper">
