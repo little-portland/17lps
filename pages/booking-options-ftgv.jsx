@@ -18,10 +18,10 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name friday-residents">FRIDAY RESIDENTS</h1>
+        <h1 class="event-name disco3000">Disco3000</h1>
         <div class="event-info">
            <div class="info date">
-              <h2><span>FRI</span>06 Jun</h2>
+              <h2><span>FRI</span>07 Jun</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>11AI, MOULIN</h3>
@@ -32,7 +32,7 @@ const BookingOptions = () => {
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-06-06&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-06-07&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
@@ -58,7 +58,7 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="https://sevn.ly/xc0quNJV" target="_blank">
+              <a href="https://sevn.ly/xNQld7kM" target="_blank">
                 CLUB GUESTLIST ONLY
               </a>
             </Button>
