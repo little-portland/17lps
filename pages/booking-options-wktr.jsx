@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>FRI</span>12 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Bushwacka & Oliver Moon</h3>
-              <h3><span>STUDIO <b>//</b> </span>HARRI PEPPER, PROFESSOR ROTH</h3>
+              <h3><span>TENT <b>//</b> </span>HARRI PEPPER, PROFESSOR ROTH</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bushwacka & Oliver Moon</h3>
             </div>
         </div>
         <div class="book-wrapper">
