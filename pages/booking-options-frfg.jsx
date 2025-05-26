@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>26 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Gil</h3>
+              <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO, Gil</h3>
               <h3><span>STUDIO <b>//</b> </span>ALEXX, BEN VEDREN, TOM ELLIS</h3>
             </div>
         </div>
