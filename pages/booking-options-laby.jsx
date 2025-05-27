@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>14 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DAISYBELLE</h3>
+              <h3><span>TENT <b>//</b> </span>DAISYBELLE, David Agrella</h3>
               <h3><span>STUDIO <b>//</b> </span>BEN GOMORI, GHOSTEN, X-PRESS 2</h3>
             </div>
         </div>
