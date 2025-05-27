@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>11AI, MOULIN</h3>
-              <h3><span>STUDIO <b>//</b> </span>MAXIMEB DB, DAVID TRIANA, RAKIM UNDER</h3>
+              <h3><span>STUDIO <b>//</b> </span>MAXIME DB, DAVID TRIANA, RAKIM UNDER</h3>
             </div>
         </div>
         <div class="book-wrapper">
