@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>20 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DEMI, MR SHIVER</h3>
+              <h3><span>TENT <b>//</b> </span>Jos, MR SHIVER</h3>
               <h3><span>STUDIO <b>//</b> </span>DANNY DAZE</h3>
             </div>
         </div>
