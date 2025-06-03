@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DENNY KEM, PASH</h3>
-              <h3><span>STUDIO <b>//</b> </span>ARTHUR BAKER</h3>
+              <h3><span>STUDIO <b>//</b> </span>FELIX DICKINSON, GREGORIO SOAVE</h3>
             </div>
         </div>
         <div class="book-wrapper">
