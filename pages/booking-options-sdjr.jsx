@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>FRI</span>27 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>MARCELINA, Soho</h3>
-              <h3><span>STUDIO <b>//</b> </span>ERIC DUNCAN</h3>
+              <h3><span>TENT <b>//</b> </span>Greg Sonata, Soho</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, ERIC DUNCAN</h3>
             </div>
         </div>
        <div class="book-wrapper">
