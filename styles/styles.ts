@@ -865,6 +865,11 @@ html, body {
   display: flex;
 }
 
+.schedule-box .details {
+    display: block !important;
+    max-width: 75px!important;
+}
+
 .new-button-wrapper .details span, .box .details span {
   font-size:  1rem;
   flex-grow: 1;
