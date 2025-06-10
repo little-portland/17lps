@@ -131,7 +131,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
         <p className="override-intro">Override is our series of guest chef takeovers where innovative menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark scene. </p> 
         <h4>Override [03]</h4>
-        <p className="menu-available"><span>Menu available through June. </span></p>
           <ul>
             <li className="info">£65pp</li>
             <li className="info">Set Menu Dinner</li>
