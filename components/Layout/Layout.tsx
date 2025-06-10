@@ -151,7 +151,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             <li className="info">8pm start</li>
           </ul>
           <p>Our guests can experience the Override menu in Chef’s Studio.</p> 
-          <p>Override [03] runs through June.</p> 
           <p>Please note, although we strive to cater for dietary restrictions, our kitchen space is very limited to accommodate every dietary requirement. Unfortunately we cannot guarantee changes outside our set menu. Please notify a member of staff before booking if you suffer from any allergies so we can try to meet your needs.</p> 
           <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a></p>
         </div>}
