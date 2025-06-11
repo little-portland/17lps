@@ -129,12 +129,11 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
             blurDataURL={"/images/override_eat_page.png"}
         />
         <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
-        <p className="override-intro">Override is our series of guest chef takeovers where innovative menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark scene. </p> 
-        <h4>Override [03]</h4>
+        <p className="override-intro">“Override” is our restaurant concept, with futurist menus setting the stage for a sensorial experience as dinner transitions seamlessly into our hypnotic after-dark scene.</p> 
           <ul>
-            <li className="info">£65pp</li>
-            <li className="info">Set Menu Dinner</li>
-            <li className="info">9pm start</li>
+            <li className="info">£65pp Set Dinner</li>
+            <li className="info">Futurist Asian Menu</li>
+            <li className="info">9pm Start</li>
             <li className="info">Club Access Included</li>
           </ul>
         <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a></p>
@@ -145,12 +144,12 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         <h2>CHEF’S STUDIO</h2>
         <p>Chef’s Studio is an intimate and futuristic space beneath The Tent – our table of choice for those in the know.</p> 
           <ul>
-            <li className="info">£65pp set menu</li>
-            <li className="info">6-12 pax</li>
+            <li className="info">£65pp Set Dinner</li>
+            <li className="info">Futurist Asian Menu</li>
+            <li className="info">6-12 PAX</li>
             <li className="info">8pm start</li>
           </ul>
           <p>Our guests can experience the Override menu in Chef’s Studio.</p> 
-          <p>Please note, although we strive to cater for dietary restrictions, our kitchen space is very limited to accommodate every dietary requirement. Unfortunately we cannot guarantee changes outside our set menu. Please notify a member of staff before booking if you suffer from any allergies so we can try to meet your needs.</p> 
           <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a></p>
         </div>}
 
