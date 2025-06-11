@@ -142,7 +142,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
         {<div
         className="box-3 box chef-studio"> 
         <h2>CHEF’S STUDIO</h2>
-        <p>Chef’s Studio is an intimate and futuristic space beneath The Tent – our table of choice for those in the know.</p> 
+        <p>Chef’s Studio is an intimate and futuristic space beneath The Tent – the table of choice for those in the know.</p> 
           <ul>
             <li className="info">£65pp Set Dinner</li>
             <li className="info">Futurist Asian Menu</li>
