@@ -1100,6 +1100,36 @@ html, body {
   background-color: #00ff00;
 }
 
+.thursday #bookingOptions .event-name {
+    color: #000cf7;
+}
+
+.thursday #bookingOptions .event-info .info {
+    color: rgb(0, 255, 0);
+    background-color: #000cf7;
+}
+
+.thursday .book-wrapper {
+    background: rgb(0, 255, 0);
+    border: 2px dotted #000cf7;
+}
+
+.thursday .override-heading h2 {
+    color: #000cf7;
+}
+
+.thursday .new-button-wrapper .events-button {
+    background: #f7005d;
+    color: #00ff00!important;
+}
+
+.thursday .new-button-wrapper .events-button .space,
+.thursday .new-button-wrapper .events-button .time,
+.thursday .new-button-wrapper .events-button .details span,
+.thursday .new-button-wrapper .ticketNew a {
+    color: #00ff00;
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
