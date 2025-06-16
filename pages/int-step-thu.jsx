@@ -10,6 +10,14 @@ import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
+  useEffect(() => {
+    document.body.classList.add("thursday");
+
+    // Optional cleanup to avoid stacking classes if navigating between pages
+    return () => {
+      document.body.classList.remove("thursday");
+    };
+  }, []);
 
   return (
     <>
@@ -17,7 +25,7 @@ const BookingOptions = () => {
         <title>Bookings </title>
       </Head>
 
-      <div id="bookingOptions" class="thursday">
+      <div id="bookingOptions">
         <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
