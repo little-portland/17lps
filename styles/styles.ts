@@ -1202,6 +1202,7 @@ html, body {
 
       .dinner-info {
         display: block!important;
+        margin-bottom: 15px;
       }
 
        .dinner-circle {
