@@ -1097,6 +1097,11 @@ html, body {
   display: none!important;
 }
 
+.dinner-bottom {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /* NEW INT STEP STYLES */
 
 /* Thursday */
