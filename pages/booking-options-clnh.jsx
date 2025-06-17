@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>03 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>JOS, OLI SILVA</h3>
+              <h3><span>TENT <b>//</b> </span>OLI SILVA, Paul Day</h3>
               <h3><span>STUDIO <b>//</b> </span>D'JULZ</h3>
             </div>
         </div>
