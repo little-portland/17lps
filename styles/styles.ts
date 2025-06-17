@@ -1097,6 +1097,11 @@ html, body {
   display: none!important;
 }
 
+.dinner-first {
+    font-weight: 500;
+    line-height: 1.3;
+}
+
 .dinner-bottom {
     text-align: center;
     margin-bottom: 20px;
