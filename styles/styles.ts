@@ -1092,6 +1092,11 @@ html, body {
     height: 40px!important;
 }
 
+/* Hide EXPLORE OVERRIDE btn */
+.button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
+  display: none;
+}
+
 /* NEW INT STEP STYLES */
 
 /* Thursday */
