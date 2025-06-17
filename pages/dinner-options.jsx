@@ -53,7 +53,7 @@ const BookingOptions = () => {
            </div>
          </div>
          <div className="dinner-bottom dinner-first">“Override” is our restaurant concept, with futurist menus setting the stage for a sensorial experience as dinner transitions seamlessly into our hypnotic after-dark scene.</div>
-         <div className="dinner-bottom"><span className="dinner-info">£65 Set Dinner</span>  <span className="circle">●</span>  <span className="dinner-info">Futurist Asian Menu</span></div>
+         <div className="dinner-bottom"><span className="dinner-info">£65 Set Dinner</span>  <span className="dinner-circle">●</span>  <span className="dinner-info">Futurist Asian Menu</span></div>
       </div>
     </>
   );
