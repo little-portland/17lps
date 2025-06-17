@@ -45,7 +45,7 @@ const BookingOptions = () => {
           </div>
           <div class="button-wrapper new-button-wrapper button-wrapper-bottom">
             <a class="menu-btn" href="https://www.little-portland.com/override-menu" target="_blank">
-              <span>[OVERRIDE MENU]</span>
+              <span>[Futurist Asian Menu]</span>
             </a>
             <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
                 <span>[explore override]</span>
@@ -53,7 +53,6 @@ const BookingOptions = () => {
            </div>
          </div>
          <div className="dinner-bottom dinner-first">“Override” is our restaurant concept, with futurist menus setting the stage for a sensorial experience as dinner transitions seamlessly into our hypnotic after-dark scene.</div>
-         <div className="dinner-bottom"><span className="dinner-info">£65 Set Dinner</span>  <span className="dinner-circle">●</span>  <span className="dinner-info">Futurist Asian Menu</span></div>
       </div>
     </>
   );
