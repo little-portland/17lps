@@ -1200,6 +1200,14 @@ html, body {
         padding: 10px 5px!important;
       }
 
+      .dinner-info {
+        display: block!important;
+      }
+
+       .dinner-circle {
+        display: none!important;
+      }
+
       .new-button-wrapper .details span {
         font-size: 1rem !important;
       }  
