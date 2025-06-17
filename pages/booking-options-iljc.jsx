@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>05 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>FREDERIKA, OLI SILVA</h3>
+              <h3><span>TENT <b>//</b> </span>Frederika, RHythms of prescott</h3>
               <h3><span>STUDIO <b>//</b> </span>LUKE HOWARD, LUKE SOLOMON, THE DUKE</h3>
             </div>
         </div>
