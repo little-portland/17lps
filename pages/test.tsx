@@ -101,7 +101,7 @@ export default function LayoutTestPage() {
               flex: 1,
               overflowY: "auto",
               padding: "2rem",
-              marginTop: "50%", // start content from middle
+              marginTop: "30px", // start content from middle
               color: "#fff",
             }}
           >
