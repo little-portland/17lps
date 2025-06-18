@@ -34,7 +34,7 @@ export default function LayoutTestPage() {
   return (
     <Layout
       main={
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
         </AnimatePresence>
       }
