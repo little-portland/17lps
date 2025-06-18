@@ -34,8 +34,6 @@ const mockHireItem = {
 
 export default function LayoutTestPage() {
   const { isLoaded, setLoaded } = useLoaded();
-
-  // Test-only DANCE modal state
   const [showDanceModal, setShowDanceModal] = useState(false);
 
   return (
@@ -47,11 +45,9 @@ export default function LayoutTestPage() {
               <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
             </AnimatePresence>
 
-            {/* 🔘 Button to trigger test modal */}
-            <div style={{ padding: "2rem", textAlign: "center" }}>
-              <button
-                onClick={() => setShowDanceModal(true)}
-                style={{
+            {/* 🟡 Test Button Overlay */}
+            <div
+              style={{
                 position: "fixed",
                 top: "2rem",
                 right: "2rem",
@@ -59,6 +55,16 @@ export default function LayoutTestPage() {
                 background: "#000",
                 padding: "0.75rem 1.25rem",
                 borderRadius: "8px",
+              }}
+            >
+              <button
+                onClick={() => setShowDanceModal(true)}
+                style={{
+                  color: "#fff",
+                  fontSize: "1rem",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
                 }}
               >
                 Open DANCE Modal (Test Only)
@@ -70,7 +76,7 @@ export default function LayoutTestPage() {
         hireItem={mockHireItem}
       />
 
-      {/* 🪩 Test-only DANCE Modal */}
+      {/* 🎬 DANCE Modal (Test Only) */}
       <Modal open={showDanceModal} close={() => setShowDanceModal(false)}>
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <Image
@@ -85,3 +91,4 @@ export default function LayoutTestPage() {
     </>
   );
 }
+
