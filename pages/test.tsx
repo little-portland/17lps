@@ -78,14 +78,47 @@ export default function LayoutTestPage() {
 
       {/* 🎬 DANCE Modal (Test Only) */}
       <Modal open={showDanceModal} close={() => setShowDanceModal(false)}>
-        <div style={{ textAlign: "center", padding: "1rem" }}>
-          <Image
-            src={dancePic}
-            alt="Dance"
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
-          <h2>Test DANCE Modal</h2>
-          <p>This is a standalone version of the DANCE modal for testing purposes.</p>
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            maxWidth: "800px",
+            height: "80vh",
+            margin: "0 auto",
+            backgroundColor: "#092834",
+            border: "20px solid #092834",
+            boxShadow: "inset 0px 2px 169px rgba(0, 0, 0, 1)", // inner shadow
+            backgroundImage: "url('/images/dance_bg_image.png')", // optional
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {/* Scrollable content starting from halfway down */}
+          <div
+            style={{
+              flex: 1,
+              overflowY: "auto",
+              padding: "2rem",
+              marginTop: "50%", // start content from middle
+              color: "#fff",
+            }}
+          >
+            <h2 style={{ marginBottom: "1rem" }}>Test DANCE Modal</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
+              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
+              sit amet ante.
+            </p>
+            <p>
+              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
+              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
+            </p>
+            {/* Add more paragraphs or elements here to test scroll */}
+          </div>
         </div>
       </Modal>
     </>
