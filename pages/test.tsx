@@ -52,13 +52,13 @@ export default function LayoutTestPage() {
               <button
                 onClick={() => setShowDanceModal(true)}
                 style={{
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  padding: "0.75rem 1.5rem",
-                  border: "none",
-                  borderRadius: "6px",
-                  cursor: "pointer",
-                  fontSize: "1rem",
+                position: "fixed",
+                top: "2rem",
+                right: "2rem",
+                zIndex: 9999,
+                background: "#000",
+                padding: "0.75rem 1.25rem",
+                borderRadius: "8px",
                 }}
               >
                 Open DANCE Modal (Test Only)
