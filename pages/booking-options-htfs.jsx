@@ -18,21 +18,21 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name">THURSDAY UNDERGROUND</h1>
+        <h1 class="event-name disco3000">Balearic</h1>
         <div class="event-info">
-            <div class="info date">
-              <h2><span>THU</span>05 Jun</h2>
+           <div class="info date">
+              <h2><span>SAT</span>19 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>SEAN OD, Semoa & alia indigo</h3>
-              <h3><span>STUDIO <b>//</b> </span>LAMACHE, CEM OZDEN</h3>
+              <h3><span>TENT <b>//</b> </span>Jaye Ward, MAYBE LAURA & REMI MAZET</h3>
+              <h3><span>STUDIO <b>//</b> </span>BALEARIC LONDON, Willie Graff</h3>
             </div>
         </div>
-       <div class="book-wrapper">
+        <div class="book-wrapper">
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-06-05&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-07-19&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
@@ -49,7 +49,7 @@ const BookingOptions = () => {
           </div>
           <div class="button-wrapper new-button-wrapper button-wrapper-bottom">
             <a class="menu-btn" href="https://www.little-portland.com/override-menu" target="_blank">
-              <span>[OVERRIDE MENU]</span>
+              <span>[Futurist Asian Menu]</span>
             </a>
             <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
                 <span>[explore override]</span>
@@ -58,7 +58,7 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="https://sevn.ly/xxNgitLf" target="_blank">
+              <a href="https://sevn.ly/xxmmcx0S" target="_blank">
                 CLUB GUESTLIST ONLY
               </a>
             </Button>
