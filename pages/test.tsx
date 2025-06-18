@@ -78,10 +78,9 @@ export default function LayoutTestPage() {
 
       {/* 🎬 DANCE Modal (Test Only) */}
       <Modal open={showDanceModal} close={() => setShowDanceModal(false)}>
-        <div
+        <div className="eat-note"
           style={{
             position: "relative",
-            width: "100%",
             maxWidth: "800px",
             height: "80vh",
             margin: "0 auto",
@@ -94,7 +93,6 @@ export default function LayoutTestPage() {
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
-            maxWidth: "80vw"
           }}
         >
           {/* Scrollable content starting from halfway down */}
