@@ -94,6 +94,7 @@ export default function LayoutTestPage() {
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
+            max-width: "80vw";
           }}
         >
           {/* Scrollable content starting from halfway down */}
@@ -108,6 +109,46 @@ export default function LayoutTestPage() {
           >
             <h2 style={{ marginBottom: "1rem" }}>Test DANCE Modal</h2>
             <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
+              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
+              sit amet ante.
+            </p>
+            <p>
+              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
+              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
+            </p>
+                        <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
+              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
+              sit amet ante.
+            </p>
+            <p>
+              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
+              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
+            </p>
+                        <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
+              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
+              sit amet ante.
+            </p>
+            <p>
+              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
+              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
+            </p>
+                        <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
+              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
+              sit amet ante.
+            </p>
+            <p>
+              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
+              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
+            </p>
+                        <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
               eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
               vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
