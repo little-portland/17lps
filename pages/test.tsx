@@ -94,7 +94,7 @@ export default function LayoutTestPage() {
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
-            max-width: "80vw";
+            max-width: "80vw",
           }}
         >
           {/* Scrollable content starting from halfway down */}
