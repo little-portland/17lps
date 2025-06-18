@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>28 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>alia indigo, Gerry Attoe</h3>
+              <h3><span>TENT <b>//</b> </span>alia indigo, Gerrardo</h3>
               <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY, SEB ZITO</h3>
             </div>
         </div>
