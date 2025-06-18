@@ -67,21 +67,21 @@ const Animation: React.FC<{
   };
 
   useEffect(() => {
-    // setLocked(true);
     if (!isLoaded && !canvasState) {
-      // lottieRef.current.play();
-      // lottieRef.current.playSegments([0, 625], true);
-      lottieRef.current.playSegments([0, 120], true);
-
-      lottieRef2 && lottieRef2.current.playSegments([0, 625], true);
-      // console.log(lottieRef2.current.getDuration(true));
-      wrapperRef.current.style.opacity = "1";
-    } else if (!isMobile) {
+      if (lottieRef.current && typeof lottieRef.current.playSegments === "function") {
+        lottieRef.current.playSegments([0, 120], true);
+      }
+  
+      if (lottieRef2.current && typeof lottieRef2.current.playSegments === "function") {
+        lottieRef2.current.playSegments([0, 625], true);
+      }
+  
+      if (wrapperRef.current) {
+        wrapperRef.current.style.opacity = "1";
+      }
+    } else if (!isMobile && wrapperRef.current) {
       wrapperRef.current.style.opacity = "0";
     }
-    // setLoaded(true);
-
-    () => {};
   }, [isLoaded, canvasState]);
 
   return (
