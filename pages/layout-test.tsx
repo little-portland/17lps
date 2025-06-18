@@ -29,6 +29,8 @@ const mockHireItem = {
 export default function LayoutTestPage() {
   const { isLoaded, setLoaded } = useLoaded();
 
+  console.log("layout-test page loaded");
+
   return (
     <Layout
       main={
