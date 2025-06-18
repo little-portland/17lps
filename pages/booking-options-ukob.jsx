@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>FEDERICO MARTON, Theo G</h3>
-              <h3><span>STUDIO <b>//</b> </span>DAYLOMAR</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, DAYLOMAR</h3>
             </div>
         </div>
         <div class="book-wrapper">
