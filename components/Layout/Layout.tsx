@@ -37,12 +37,6 @@ interface IProps {
   main: React.ReactNode;
   eatItem: eatDataType;
   hireItem: eatDataType;
-}
-
-interface IProps {
-  main: React.ReactNode;
-  eatItem: eatDataType;
-  hireItem: eatDataType;
   hideNav?: boolean; // Additional prop to hide nav on testing page
 }
 
