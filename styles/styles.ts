@@ -1210,7 +1210,7 @@ html, body {
 .thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
 .friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
 .saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
-  display: inline !important;
+  display: inline;
   margin: 60px;
 }
 
