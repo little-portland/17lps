@@ -78,7 +78,7 @@ export default function LayoutTestPage() {
 
       {/* 🎬 DANCE Modal (Test Only) */}
       <Modal open={showDanceModal} close={() => setShowDanceModal(false)}>
-        <div className="eat-note"
+        <div className="eat-note dance-popup"
           style={{
             backgroundColor: "#092834",
             border: "20px solid #092834",
