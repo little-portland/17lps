@@ -1290,7 +1290,7 @@ html, body {
 }
 
 .saturday .override-heading h2 {
-    color: #1dfffe;
+    color: #ccfe35;
     font-size: 36px;
 }
 
