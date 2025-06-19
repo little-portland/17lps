@@ -1148,6 +1148,10 @@ html, body {
     font-size: 36px;
 }
 
+.thursday .override-heading h2 span {
+  font-style: italic; 
+}
+
 .thursday .new-button-wrapper .events-button {
     background: #000000;
     color: #ffffff!important;
@@ -1225,6 +1229,10 @@ html, body {
     font-size: 36px;
 }
 
+.friday .override-heading h2 span {
+  font-style: italic; 
+}
+
 .friday .new-button-wrapper .events-button {
     background: #000000;
     color: #ffffff!important;
@@ -1300,6 +1308,10 @@ html, body {
 .saturday .override-heading h2 {
     color: #ccfe35;
     font-size: 36px;
+}
+
+.saturday .override-heading h2 span {
+  font-style: italic; 
 }
 
 .saturday .new-button-wrapper .events-button {
