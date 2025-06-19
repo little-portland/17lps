@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import Script from "next/script";
 
@@ -10,29 +10,14 @@ import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     document.body.classList.add("saturday");
 
-    // Simulate loading delay
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000); // adjust as needed
-
+    // Optional cleanup to avoid stacking classes if navigating between pages
     return () => {
-      clearTimeout(timer);
       document.body.classList.remove("saturday");
     };
   }, []);
-
-  if (loading) {
-    return (
-      <div className="preloader">
-        <div className="spinner"></div>
-      </div>
-    );
-  }
   return (
     <>
       <Head>
