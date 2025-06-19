@@ -1786,9 +1786,7 @@ html, body {
   body.friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
   body.saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
       display: inline-block !important;
-      margin: 0 !important;
-    }
- 
+      margin: 5px 0px 0px 0px !important;
   }
 
 ${reset}
