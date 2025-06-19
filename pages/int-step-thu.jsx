@@ -29,7 +29,7 @@ const BookingOptions = () => {
         <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>THU</span>05 Jun</h2>
+              <h2><span>THU</span>26 Jun</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>SEAN OD, sEmoa & alia indigo</h3>
