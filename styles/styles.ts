@@ -1145,6 +1145,27 @@ html, body {
     color: #00ff00;
 }
 
+/* DANCE MODAL STYLES */
+
+.dance-popup {
+   background-color: #092834;
+   border: 20px solid #092834;
+   box-shadow: inset 0px 2px 169px rgba(0, 0, 0, 1);
+   background-image: url('/images/dance_bg_image.png');
+   background-size: cover;
+   background-position: center;
+   color: #fff;
+}
+
+.dance-popup p {
+    font-size: 1.1rem;
+    font-weight: 100;
+    margin-bottom: 1rem;
+    line-height: 20px;
+    color: white!important;
+    text-transform: uppercase;
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
