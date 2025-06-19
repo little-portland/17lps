@@ -1163,11 +1163,19 @@ html, body {
 }
 
 .thursday .book-wrapper .button-wrapper-bottom a span {
-  color: rgb(0, 12, 247);
+  color: rgb(247, 0, 93)!important;
 }
 
 .thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
     display: inline !important;
+    margin: 60px;
+}
+
+.thursday .button-wrapper-bottom {
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center !important;
+    width: 100%;
 }
 
 /* DANCE MODAL STYLES */
