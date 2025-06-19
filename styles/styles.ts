@@ -1093,7 +1093,7 @@ html, body {
 }
 
 /* Hide EXPLORE OVERRIDE btn */
-.button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
+.button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2)  {
   display: none;
 }
 
