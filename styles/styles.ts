@@ -1177,6 +1177,20 @@ html, body {
     text-transform: uppercase;
 }
 
+.dance-popup {
+  min-height: 600px;
+}
+
+.dance-popup h3 {
+  color: #d5a7a7;
+  font-size: 1.3rem;
+}
+
+.dance-popup a {
+  color: #d5a7a7;
+  text-decoration: underline;
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
