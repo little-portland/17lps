@@ -1221,7 +1221,7 @@ html, body {
 }
 
 .friday .new-button-wrapper .events-button {
-    background: #105bbe;
+    background: #1423e6;
     color: #ffffff!important;
     border: none;
 }
@@ -1238,7 +1238,7 @@ html, body {
 }
 
 .friday .book-wrapper .button-wrapper-bottom a span {
-  color: #ffffff!important;
+  color: #1423e6!important;
 }
 
 .friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
