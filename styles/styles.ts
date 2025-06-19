@@ -1147,7 +1147,7 @@ html, body {
 }
 
 .thursday .new-button-wrapper .events-button {
-    background: #f7005d;
+    background: #000000;
     color: #ffffff!important;
     border: none;
 }
@@ -1164,7 +1164,7 @@ html, body {
 }
 
 .thursday .book-wrapper .button-wrapper-bottom a span {
-  color: rgb(247, 0, 93)!important;
+  color: #000000!important;
 }
 
 .thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
@@ -1221,7 +1221,7 @@ html, body {
 }
 
 .friday .new-button-wrapper .events-button {
-    background: #1423e6;
+    background: #000000;
     color: #ffffff!important;
     border: none;
 }
@@ -1238,7 +1238,7 @@ html, body {
 }
 
 .friday .book-wrapper .button-wrapper-bottom a span {
-  color: #1423e6!important;
+  color: #000000!important;
 }
 
 .friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
@@ -1295,7 +1295,7 @@ html, body {
 }
 
 .saturday .new-button-wrapper .events-button {
-    background: #1423e6;
+    background: #000000;
     color: #ffffff!important;
     border: none;
 }
@@ -1312,7 +1312,7 @@ html, body {
 }
 
 .saturday .book-wrapper .button-wrapper-bottom a span {
-  color: #1423e6!important;
+  color: #000000!important;
 }
 
 .saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
