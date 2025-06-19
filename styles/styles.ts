@@ -1199,8 +1199,13 @@ html, body {
 }
 
 .dance-popup a {
-  color: #d5a7a7;
-  text-decoration: underline;
+  color: #d5a7a7!important;
+  text-decoration: underline!important;
+}
+
+.dance-popup a:hover {
+  color: #d5a7a7!important;
+  text-decoration: none!important;
 }
 
 .dance-popup .category {
