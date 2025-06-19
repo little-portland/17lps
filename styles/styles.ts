@@ -1157,7 +1157,7 @@ html, body {
    color: rgb(255, 255, 255);
    background-repeat: no-repeat;
 }
-
+/*
 .dance-popup::after {
   content: "";
   position: absolute;
@@ -1166,6 +1166,7 @@ html, body {
   opacity: 0.08; /* Control noise visibility */
   pointer-events: none; 
 }
+*/
 
 .dance-popup h2 {
   margin-bottom: 15rem;
