@@ -1601,9 +1601,9 @@ html, body {
       min-height: 425px;
     }
 
-    .dance-popup h2 {
-      margin-bottom: 8rem;
-      font-size: 1rem;
+    .eat-note.dance-popup h2 {
+      margin-bottom: 8rem!important;
+      font-size: 1rem!important;
       color: #ffffff!important;
     }
 
