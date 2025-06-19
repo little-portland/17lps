@@ -1217,6 +1217,21 @@ html, body {
   text-transform: none; 
 }
 
+.dance-popup::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dance-popup::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.dance-popup::-webkit-scrollbar-thumb {
+  background-color: #24818d; /* dark red */
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
