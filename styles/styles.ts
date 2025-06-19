@@ -1604,7 +1604,26 @@ html, body {
     .override-box .footer-link {
       margin-bottom: 0!important;
     }
-       
+
+    /* Dance styles */
+
+    .dance-popup {
+      min-height: 425px;
+    }
+
+    .dance-popup h2 {
+      margin-bottom: 9rem;
+      font-size: 1rem;
+    }
+
+    .dance-popup h2 span {
+      font-size: .9rem;
+    }
+
+    .dance-popup p {
+      font-size: 1rem;
+    }
+ 
     }
 
 ${reset}
