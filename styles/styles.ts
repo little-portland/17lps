@@ -1199,7 +1199,7 @@ html, body {
 }
 
 .friday .book-wrapper {
-    background: rgb(0, 255, 0);
+    background: #fb0000;
     border: 2px dotted #1dfffe;
 }
 
@@ -1221,7 +1221,7 @@ html, body {
 }
 
 .friday .new-button-wrapper .events-button {
-    background: #f7005d;
+    background: #105bbe;
     color: #ffffff!important;
     border: none;
 }
