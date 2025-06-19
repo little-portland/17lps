@@ -1612,8 +1612,9 @@ html, body {
     }
 
     .dance-popup h2 {
-      margin-bottom: 9rem;
+      margin-bottom: 8rem;
       font-size: 1rem;
+      color: #ffffff!important;
     }
 
     .dance-popup h2 span {
