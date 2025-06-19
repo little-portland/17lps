@@ -80,19 +80,12 @@ export default function LayoutTestPage() {
       <Modal open={showDanceModal} close={() => setShowDanceModal(false)}>
         <div className="eat-note"
           style={{
-            position: "relative",
-            maxWidth: "800px",
-            height: "80vh",
-            margin: "0 auto",
             backgroundColor: "#092834",
             border: "20px solid #092834",
             boxShadow: "inset 0px 2px 169px rgba(0, 0, 0, 1)", // inner shadow
             backgroundImage: "url('/images/dance_bg_image.png')", // optional
             backgroundSize: "cover",
             backgroundPosition: "center",
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
           }}
         >
           {/* Scrollable content starting from halfway down */}
