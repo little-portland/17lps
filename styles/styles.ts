@@ -1169,9 +1169,9 @@ html, body {
 */
 
 .dance-popup h2 {
-  margin-bottom: 15rem;
-  font-size: 1.5rem;
-  color: #fff;
+  margin-bottom: 15rem!important;
+  font-size: 1.5rem!important;
+  color: #fff!important;
 }
 
 .dance-popup h2 span {
