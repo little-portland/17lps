@@ -1122,11 +1122,13 @@ html, body {
 .thursday #bookingOptions .event-info .info {
     color: rgb(0, 255, 0);
     background-color: #000cf7;
+    border-radius: 5px;
 }
 
 .thursday .book-wrapper {
     background: rgb(0, 255, 0);
     border: 2px dotted #000cf7;
+    border-radius: 5px;
 }
 
 .thursday .book-wrapper h3,
@@ -1150,6 +1152,7 @@ html, body {
     background: #000000;
     color: #ffffff!important;
     border: none;
+    border-radius: 5px;
 }
 
 .thursday .new-button-wrapper p {
@@ -1196,11 +1199,13 @@ html, body {
 .friday #bookingOptions .event-info .info {
     color: #fb0000;
     background-color: #1dfffe;
+    border-radius: 5px;
 }
 
 .friday .book-wrapper {
     background: #fb0000;
     border: 2px dotted #1dfffe;
+    border-radius: 5px;
 }
 
 .friday .book-wrapper h3,
@@ -1224,6 +1229,7 @@ html, body {
     background: #000000;
     color: #ffffff!important;
     border: none;
+    border-radius: 5px;
 }
 
 .friday .new-button-wrapper p {
@@ -1270,11 +1276,13 @@ html, body {
 .saturday #bookingOptions .event-info .info {
     color: #ff00e5;
     background-color: #ccfe35;
+    border-radius: 5px;
 }
 
 .saturday .book-wrapper {
     background: #ff00e5;
     border: 2px dotted #ccfe35;
+    border-radius: 5px;
 }
 
 .saturday .book-wrapper h3,
@@ -1298,6 +1306,7 @@ html, body {
     background: #000000;
     color: #ffffff!important;
     border: none;
+    border-radius: 5px;
 }
 
 .saturday .new-button-wrapper p {
