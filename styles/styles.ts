@@ -1183,6 +1183,80 @@ html, body {
     font-size: .9rem;
 }
 
+/* Friday */
+
+.friday {
+  background-color: #fb0000;
+}
+
+.friday #bookingOptions .event-name {
+    color: #000cf7;
+}
+
+.friday #bookingOptions .event-info .info {
+    color: rgb(0, 255, 0);
+    background-color: #000cf7;
+}
+
+.friday .book-wrapper {
+    background: rgb(0, 255, 0);
+    border: 2px dotted #000cf7;
+}
+
+.friday .book-wrapper h3,
+.friday h4 {
+    text-align: center;
+    margin: 15px 0;
+    color: rgb(0, 12, 247);
+}
+
+.friday h4 {
+    font-size: 1.8rem;
+    margin: 10px 0 -7px 0;
+}
+
+.friday .override-heading h2 {
+    color: #000cf7;
+    font-size: 36px;
+}
+
+.friday .new-button-wrapper .events-button {
+    background: #f7005d;
+    color: #ffffff!important;
+    border: none;
+}
+
+.friday .new-button-wrapper p {
+    color: #fff!important;
+}
+
+.friday .new-button-wrapper .events-button .space,
+.friday .new-button-wrapper .events-button .time,
+.friday .new-button-wrapper .events-button .details span,
+.friday .new-button-wrapper .ticketNew a {
+    color: #ffffff;
+}
+
+.friday .book-wrapper .button-wrapper-bottom a span {
+  color: rgb(247, 0, 93)!important;
+}
+
+.friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
+    display: inline !important;
+    margin: 60px;
+}
+
+.friday .button-wrapper-bottom {
+    margin-top: 10px;
+    display: inline-block !important;
+    text-align: center !important;
+    width: 100%;
+}
+
+.friday .btn-tagline {
+    font-size: .9rem;
+}
+
 /* DANCE MODAL STYLES */
 
 .dance-popup {
