@@ -1159,7 +1159,7 @@ html, body {
 }
 
 .dance-popup h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 15rem;
   font-size: 1.5rem;
   color: #fff;
 }
