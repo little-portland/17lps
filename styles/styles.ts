@@ -1602,7 +1602,7 @@ html, body {
     }
 
     .eat-note.dance-popup h2 {
-      margin-bottom: 8rem!important;
+      margin-bottom: 10rem!important;
       font-size: 1rem!important;
       color: #ffffff!important;
     }
