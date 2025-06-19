@@ -1727,6 +1727,14 @@ html, body {
       font-size: 26px;
     } 
 
+    .thursday .button-wrapper-bottom, .friday .button-wrapper-bottom, .saturday .button-wrapper-bottom {
+      margin-top: 0;
+    }
+
+    .thursday h4, .friday h4, .saturday h4 {
+      font-size: 1.4rem;
+    }
+
     .thursday .book-wrapper h3 span,
     .friday .book-wrapper h3 span,
     .saturday .book-wrapper h3 span {
@@ -1737,6 +1745,12 @@ html, body {
     .friday .book-wrapper h3 .dot,
     .saturday .book-wrapper h3 .dot {
       display: none;
+    }
+
+    .thursday .new-button-wrapper .ticketNew a,
+    .friday .new-button-wrapper .ticketNew a,
+    .saturday .new-button-wrapper .ticketNew a {
+      font-size: 1.2rem;
     }
  
   }
