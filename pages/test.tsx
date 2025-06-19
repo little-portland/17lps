@@ -90,16 +90,8 @@ export default function LayoutTestPage() {
           }}
         >
           {/* Scrollable content starting from halfway down */}
-          <div
-            style={{
-              flex: 1,
-              overflowY: "auto",
-              padding: "2rem",
-              marginTop: "30px", // start content from middle
-              color: "#fff",
-            }}
-          >
-            <h2 style={{ marginBottom: "1rem" }}>Open Thursday to Saturday <span style={{ display: "block", fontSize: "1rem" }}>FROM 10PM</span></h2>
+          <div>
+            <h2 style={{ marginBottom: "1rem",fontSize: "1.5rem", color: "#fff" }}>Open Thursday to Saturday <span style={{ display: "block", fontSize: "1rem" }}>FROM 10PM</span></h2>
             <p>Access to the club is for Friends of the Club only.</p> 
             <p>To apply, email us.</p>
             <p>Or you can access the club by booking a dinner table.</p>
