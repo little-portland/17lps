@@ -1194,7 +1194,7 @@ html, body {
 }
 
 .friday #bookingOptions .event-info .info {
-    color: rgb(0, 255, 0);
+    color: #fb0000;
     background-color: #1dfffe;
 }
 
