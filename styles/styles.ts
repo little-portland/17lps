@@ -1138,6 +1138,7 @@ html, body {
 
 .thursday h4 {
     font-size: 1.8rem;
+    margin: 10px 0 -7px 0;
 }
 
 .thursday .override-heading h2 {
