@@ -1722,8 +1722,24 @@ html, body {
     .dance-popup h3 {
       font-size: 1rem
     }
- 
+
+    .thursday .override-heading h2, .friday .override-heading h2, .saturday .override-heading h2 {
+      font-size: 26px;
+    } 
+
+    .thursday .book-wrapper h3 span,
+    .friday .book-wrapper h3 span,
+    .saturday .book-wrapper h3 span {
+      display: block;
     }
+
+    .thursday .book-wrapper h3 .dot,
+    .friday .book-wrapper h3 .dot,
+    .saturday .book-wrapper h3 .dot {
+      display: none;
+    }
+ 
+  }
 
 ${reset}
 
