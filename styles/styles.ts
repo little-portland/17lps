@@ -1177,6 +1177,10 @@ html, body {
     text-transform: uppercase;
 }
 
+.dance-popup p span {
+  font-weight: 600;
+}
+
 .dance-popup {
   min-height: 600px;
 }
@@ -1184,6 +1188,12 @@ html, body {
 .dance-popup h3 {
   color: #d5a7a7;
   font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.dance-popup h3 span {
+  font-weight: 100;
+  font-style: italic; 
 }
 
 .dance-popup a {
