@@ -100,15 +100,9 @@ export default function LayoutTestPage() {
             }}
           >
             <h2 style={{ marginBottom: "1rem" }}>Open Thursday to Saturday <span style={{ display: "block", fontSize: "1rem" }}>FROM 10PM</span></h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
-              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
-              sit amet ante.
-            </p>
-            <p>
-              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
-
+            <p>Access to the club is for Friends of the Club only.</p> 
+            <p>To apply, email us.</p>
+            <p>Or you can access the club by booking a dinner table.</p>
           </div>
         </div>
       </Modal>
