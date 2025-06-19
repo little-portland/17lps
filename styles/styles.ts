@@ -1166,6 +1166,10 @@ html, body {
   color: rgb(0, 12, 247);
 }
 
+.thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
+    display: inline !important;
+}
+
 /* DANCE MODAL STYLES */
 
 .dance-popup {
