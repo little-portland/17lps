@@ -1178,6 +1178,10 @@ html, body {
     width: 100%;
 }
 
+.thursday .btn-tagline {
+    font-size: .9rem;
+}
+
 /* DANCE MODAL STYLES */
 
 .dance-popup {
