@@ -1109,247 +1109,144 @@ html, body {
 
 /* NEW INT STEP STYLES */
 
-/* Thursday */
+/* Common Styles using CSS Variables */
+.thursday, .friday, .saturday {
+  --bg-color: initial;
+  --text-color: initial;
+  --accent-color: initial;
 
-.thursday {
-  background-color: #00ff00;
+  background-color: var(--bg-color);
 }
 
-.thursday #bookingOptions .event-name {
-    color: #000cf7;
+.thursday #bookingOptions .event-name,
+.friday #bookingOptions .event-name,
+.saturday #bookingOptions .event-name {
+  color: var(--accent-color);
 }
 
-.thursday #bookingOptions .event-info .info {
-    color: rgb(0, 255, 0);
-    background-color: #000cf7;
-    border-radius: 5px;
+.thursday #bookingOptions .event-info .info,
+.friday #bookingOptions .event-info .info,
+.saturday #bookingOptions .event-info .info {
+  color: var(--bg-color);
+  background-color: var(--accent-color);
+  border-radius: 5px;
 }
 
-.thursday .book-wrapper {
-    background: rgb(0, 255, 0);
-    border: 2px dotted #000cf7;
-    border-radius: 5px;
+.thursday .book-wrapper,
+.friday .book-wrapper,
+.saturday .book-wrapper {
+  background: var(--bg-color);
+  border: 2px dotted var(--accent-color);
+  border-radius: 5px;
 }
 
 .thursday .book-wrapper h3,
-.thursday h4 {
-    text-align: center;
-    margin: 15px 0;
-    color: rgb(0, 12, 247);
+.friday .book-wrapper h3,
+.saturday .book-wrapper h3,
+.thursday h4,
+.friday h4,
+.saturday h4 {
+  text-align: center;
+  margin: 15px 0;
+  color: var(--accent-color);
 }
 
-.thursday h4 {
-    font-size: 1.8rem;
-    margin: 10px 0 -7px 0;
+.thursday h4,
+.friday h4,
+.saturday h4 {
+  font-size: 1.8rem;
+  margin: 10px 0 -7px 0;
 }
 
-.thursday .override-heading h2 {
-    color: #000cf7;
-    font-size: 36px;
+.thursday .override-heading h2,
+.friday .override-heading h2,
+.saturday .override-heading h2 {
+  color: var(--accent-color);
+  font-size: 36px;
 }
 
-.thursday .override-heading h2 span {
-  font-style: italic; 
+.thursday .override-heading h2 span,
+.friday .override-heading h2 span,
+.saturday .override-heading h2 span {
+  font-style: italic;
 }
 
-.thursday .new-button-wrapper .events-button {
-    background: #000000;
-    color: #ffffff!important;
-    border: none;
-    border-radius: 5px;
+.thursday .new-button-wrapper .events-button,
+.friday .new-button-wrapper .events-button,
+.saturday .new-button-wrapper .events-button {
+  background: #000;
+  color: #fff !important;
+  border: none;
+  border-radius: 5px;
 }
 
-.thursday .new-button-wrapper p {
-    color: #fff!important;
+.thursday .new-button-wrapper p,
+.friday .new-button-wrapper p,
+.saturday .new-button-wrapper p {
+  color: #fff !important;
 }
 
 .thursday .new-button-wrapper .events-button .space,
+.friday .new-button-wrapper .events-button .space,
+.saturday .new-button-wrapper .events-button .space,
 .thursday .new-button-wrapper .events-button .time,
+.friday .new-button-wrapper .events-button .time,
+.saturday .new-button-wrapper .events-button .time,
 .thursday .new-button-wrapper .events-button .details span,
-.thursday .new-button-wrapper .ticketNew a {
-    color: #ffffff;
+.friday .new-button-wrapper .events-button .details span,
+.saturday .new-button-wrapper .events-button .details span,
+.thursday .new-button-wrapper .ticketNew a,
+.friday .new-button-wrapper .ticketNew a,
+.saturday .new-button-wrapper .ticketNew a {
+  color: #fff;
 }
 
-.thursday .book-wrapper .button-wrapper-bottom a span {
-  color: #000000!important;
+.thursday .book-wrapper .button-wrapper-bottom a span,
+.friday .book-wrapper .button-wrapper-bottom a span,
+.saturday .book-wrapper .button-wrapper-bottom a span {
+  color: #000 !important;
 }
 
-.thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
-    display: inline !important;
-    margin: 60px;
+.thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
+.friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
+.saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
+  display: inline !important;
+  margin: 60px;
 }
 
-.thursday .button-wrapper-bottom {
-    margin-top: 10px;
-    display: inline-block !important;
-    text-align: center !important;
-    width: 100%;
+.thursday .button-wrapper-bottom,
+.friday .button-wrapper-bottom,
+.saturday .button-wrapper-bottom {
+  margin-top: 10px;
+  display: inline-block !important;
+  text-align: center !important;
+  width: 100%;
 }
 
-.thursday .btn-tagline {
-    font-size: .9rem;
+.thursday .btn-tagline,
+.friday .btn-tagline,
+.saturday .btn-tagline {
+  font-size: 0.9rem;
 }
 
-/* Friday */
+/* Color Customization Per Day */
+
+.thursday {
+  --bg-color: #00ff00;
+  --accent-color: #000cf7;
+  --text-color: #000000;
+}
 
 .friday {
-  background-color: #fb0000;
+  --bg-color: #fb0000;
+  --accent-color: #1dfffe;
+  --text-color: #000000;
 }
-
-.friday #bookingOptions .event-name {
-    color: #1dfffe;
-}
-
-.friday #bookingOptions .event-info .info {
-    color: #fb0000;
-    background-color: #1dfffe;
-    border-radius: 5px;
-}
-
-.friday .book-wrapper {
-    background: #fb0000;
-    border: 2px dotted #1dfffe;
-    border-radius: 5px;
-}
-
-.friday .book-wrapper h3,
-.friday h4 {
-    text-align: center;
-    margin: 15px 0;
-    color: #1dfffe;
-}
-
-.friday h4 {
-    font-size: 1.8rem;
-    margin: 10px 0 -7px 0;
-}
-
-.friday .override-heading h2 {
-    color: #1dfffe;
-    font-size: 36px;
-}
-
-.friday .override-heading h2 span {
-  font-style: italic; 
-}
-
-.friday .new-button-wrapper .events-button {
-    background: #000000;
-    color: #ffffff!important;
-    border: none;
-    border-radius: 5px;
-}
-
-.friday .new-button-wrapper p {
-    color: #fff!important;
-}
-
-.friday .new-button-wrapper .events-button .space,
-.friday .new-button-wrapper .events-button .time,
-.friday .new-button-wrapper .events-button .details span,
-.friday .new-button-wrapper .ticketNew a {
-    color: #ffffff;
-}
-
-.friday .book-wrapper .button-wrapper-bottom a span {
-  color: #000000!important;
-}
-
-.friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
-    display: inline !important;
-    margin: 60px;
-}
-
-.friday .button-wrapper-bottom {
-    margin-top: 10px;
-    display: inline-block !important;
-    text-align: center !important;
-    width: 100%;
-}
-
-.friday .btn-tagline {
-    font-size: .9rem;
-}
-
-/* Saturday */
 
 .saturday {
-  background-color: #ff00e5;
-}
-
-.saturday #bookingOptions .event-name {
-    color: #ccfe35;
-}
-
-.saturday #bookingOptions .event-info .info {
-    color: #ff00e5;
-    background-color: #ccfe35;
-    border-radius: 5px;
-}
-
-.saturday .book-wrapper {
-    background: #ff00e5;
-    border: 2px dotted #ccfe35;
-    border-radius: 5px;
-}
-
-.saturday .book-wrapper h3,
-.saturday h4 {
-    text-align: center;
-    margin: 15px 0;
-    color: #ccfe35;
-}
-
-.saturday h4 {
-    font-size: 1.8rem;
-    margin: 10px 0 -7px 0;
-}
-
-.saturday .override-heading h2 {
-    color: #ccfe35;
-    font-size: 36px;
-}
-
-.saturday .override-heading h2 span {
-  font-style: italic; 
-}
-
-.saturday .new-button-wrapper .events-button {
-    background: #000000;
-    color: #ffffff!important;
-    border: none;
-    border-radius: 5px;
-}
-
-.saturday .new-button-wrapper p {
-    color: #fff!important;
-}
-
-.saturday .new-button-wrapper .events-button .space,
-.saturday .new-button-wrapper .events-button .time,
-.saturday .new-button-wrapper .events-button .details span,
-.saturday .new-button-wrapper .ticketNew a {
-    color: #ffffff;
-}
-
-.saturday .book-wrapper .button-wrapper-bottom a span {
-  color: #000000!important;
-}
-
-.saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
-    display: inline !important;
-    margin: 60px;
-}
-
-.saturday .button-wrapper-bottom {
-    margin-top: 10px;
-    display: inline-block !important;
-    text-align: center !important;
-    width: 100%;
-}
-
-.saturday .btn-tagline {
-    font-size: .9rem;
+  --bg-color: #ff00e5;
+  --accent-color: #ccfe35;
+  --text-color: #000000;
 }
 
 /* DANCE MODAL STYLES */
