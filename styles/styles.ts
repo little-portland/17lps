@@ -1264,24 +1264,24 @@ html, body {
 }
 
 .saturday #bookingOptions .event-name {
-    color: #1dfffe;
+    color: #ccfe35;
 }
 
 .saturday #bookingOptions .event-info .info {
     color: #ff00e5;
-    background-color: #1dfffe;
+    background-color: #ccfe35;
 }
 
 .saturday .book-wrapper {
     background: #ff00e5;
-    border: 2px dotted #1dfffe;
+    border: 2px dotted #ccfe35;
 }
 
 .saturday .book-wrapper h3,
 .saturday h4 {
     text-align: center;
     margin: 15px 0;
-    color: #1dfffe;
+    color: #ccfe35;
 }
 
 .saturday h4 {
