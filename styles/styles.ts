@@ -1135,14 +1135,19 @@ html, body {
 
 .thursday .new-button-wrapper .events-button {
     background: #f7005d;
-    color: #00ff00!important;
+    color: #ffffff!important;
+    border: none;
 }
 
 .thursday .new-button-wrapper .events-button .space,
 .thursday .new-button-wrapper .events-button .time,
 .thursday .new-button-wrapper .events-button .details span,
 .thursday .new-button-wrapper .ticketNew a {
-    color: #00ff00;
+    color: #ffffff;
+}
+
+.thursday .book-wrapper .button-wrapper-bottom a span {
+  color: rgb(0, 12, 247);
 }
 
 /* DANCE MODAL STYLES */
