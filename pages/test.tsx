@@ -67,7 +67,7 @@ export default function LayoutTestPage() {
                   cursor: "pointer",
                 }}
               >
-                Open DANCE Modal (Test Only)
+                Open DANCE popup
               </button>
             </div>
           </>
