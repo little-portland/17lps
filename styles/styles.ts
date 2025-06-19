@@ -1201,6 +1201,10 @@ html, body {
   text-decoration: underline;
 }
 
+.dance-popup .category {
+  margin-top: 3rem;
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
