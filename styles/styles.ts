@@ -1158,10 +1158,10 @@ html, body {
    background-repeat: no-repeat;
 }
 
-.dance-popup h2 {
-  margin-bottom: 15rem!important;
-  font-size: 1.5rem!important;
-  color: #fff!important;
+.eat-note.dance-popup h2 {
+  margin-bottom: 15rem !important;
+  font-size: 1.5rem !important;
+  color: #fff !important;
 }
 
 .dance-popup h2 span {
