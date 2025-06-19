@@ -1238,7 +1238,7 @@ html, body {
 }
 
 .friday .book-wrapper .button-wrapper-bottom a span {
-  color: rgb(247, 0, 93)!important;
+  color: #ffffff!important;
 }
 
 .friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
