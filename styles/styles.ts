@@ -1782,11 +1782,12 @@ html, body {
       font-size: 1.2rem;
     }
 
-    .thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2), 
-    .friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2), 
-    .saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
-    display: inline-block !important;
-}
+  .thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2), 
+  .friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2), 
+  .saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
+      margin: 0;
+      display: inline-block !important;
+  }
  
   }
 
