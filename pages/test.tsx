@@ -74,6 +74,7 @@ export default function LayoutTestPage() {
         }
         eatItem={mockEatItem}
         hireItem={mockHireItem}
+        hideNav={true} // Hide nav for testing purpuses
       />
 
       {/* 🎬 DANCE Modal (Test Only) */}
