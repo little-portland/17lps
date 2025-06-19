@@ -1190,6 +1190,7 @@ html, body {
   color: #d5a7a7;
   font-size: 1.3rem;
   font-weight: 600;
+  text-align: left;
 }
 
 .dance-popup h3 span {
@@ -1204,6 +1205,10 @@ html, body {
 
 .dance-popup .category {
   margin-top: 3rem;
+}
+
+.dance-popup .category p {
+  text-transform: none; 
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
