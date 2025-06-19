@@ -40,7 +40,7 @@ interface IProps {
   hideNav?: boolean; // Additional prop to hide nav on testing page
 }
 
-const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
+const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) => {
   //UI Handlers
   const {
     displayLineup,
