@@ -78,23 +78,14 @@ export default function LayoutTestPage() {
 
       {/* 🎬 DANCE Modal (Test Only) */}
       <Modal open={showDanceModal} close={() => setShowDanceModal(false)}>
-        <div className="eat-note dance-popup"
-          style={{
-            backgroundColor: "#092834",
-            border: "20px solid #092834",
-            boxShadow: "inset 0px 2px 169px rgba(0, 0, 0, 1)", // inner shadow
-            backgroundImage: "url('/images/dance_bg_image.png')", // optional
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            color: "#fff",
-          }}
-        >
-          {/* Scrollable content starting from halfway down */}
+        <div className="eat-note dance-popup">
           <div>
-            <h2 style={{ marginBottom: "1rem",fontSize: "1.5rem", color: "#fff" }}>Open Thursday to Saturday <span style={{ display: "block", fontSize: "1rem" }}>FROM 10PM</span></h2>
+            <h2>Open Thursday to Saturday <span>FROM 10PM</span></h2>
             <p>Access to the club is for Friends of the Club only.</p> 
             <p>To apply, email us.</p>
             <p>Or you can access the club by booking a dinner table.</p>
+            <h3>Thursday <span>is</span> Underground</h3>
+            <p><span>Thursday Underground</span> </p>
           </div>
         </div>
       </Modal>
