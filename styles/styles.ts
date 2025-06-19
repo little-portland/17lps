@@ -1131,6 +1131,7 @@ html, body {
 
 .thursday .override-heading h2 {
     color: #000cf7;
+    font-size: 36px;
 }
 
 .thursday .new-button-wrapper .events-button {
