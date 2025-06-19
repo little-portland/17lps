@@ -1257,6 +1257,80 @@ html, body {
     font-size: .9rem;
 }
 
+/* Saturday */
+
+.saturday {
+  background-color: #ff00e5;
+}
+
+.saturday #bookingOptions .event-name {
+    color: #1dfffe;
+}
+
+.saturday #bookingOptions .event-info .info {
+    color: #ff00e5;
+    background-color: #1dfffe;
+}
+
+.saturday .book-wrapper {
+    background: #ff00e5;
+    border: 2px dotted #1dfffe;
+}
+
+.saturday .book-wrapper h3,
+.saturday h4 {
+    text-align: center;
+    margin: 15px 0;
+    color: #1dfffe;
+}
+
+.saturday h4 {
+    font-size: 1.8rem;
+    margin: 10px 0 -7px 0;
+}
+
+.saturday .override-heading h2 {
+    color: #1dfffe;
+    font-size: 36px;
+}
+
+.saturday .new-button-wrapper .events-button {
+    background: #1423e6;
+    color: #ffffff!important;
+    border: none;
+}
+
+.saturday .new-button-wrapper p {
+    color: #fff!important;
+}
+
+.saturday .new-button-wrapper .events-button .space,
+.saturday .new-button-wrapper .events-button .time,
+.saturday .new-button-wrapper .events-button .details span,
+.saturday .new-button-wrapper .ticketNew a {
+    color: #ffffff;
+}
+
+.saturday .book-wrapper .button-wrapper-bottom a span {
+  color: #1423e6!important;
+}
+
+.saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
+    display: inline !important;
+    margin: 60px;
+}
+
+.saturday .button-wrapper-bottom {
+    margin-top: 10px;
+    display: inline-block !important;
+    text-align: center !important;
+    width: 100%;
+}
+
+.saturday .btn-tagline {
+    font-size: .9rem;
+}
+
 /* DANCE MODAL STYLES */
 
 .dance-popup {
