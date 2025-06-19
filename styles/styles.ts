@@ -1788,6 +1788,7 @@ html, body {
       display: inline-block !important;
       margin: 5px 0px 0px 0px !important;
   }
+}
 
 ${reset}
 
