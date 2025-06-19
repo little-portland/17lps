@@ -1152,9 +1152,10 @@ html, body {
    border: 20px solid #092834;
    box-shadow: inset 0px 2px 169px rgba(0, 0, 0, 1);
    background-image: url('/images/dance_bg_image.png');
-   background-size: cover;
-   background-position: center;
-   color: #fff;
+   background-size: contain;
+   background-position: top center;
+   color: rgb(255, 255, 255);
+   background-repeat: no-repeat;
 }
 
 .dance-popup h2 {
