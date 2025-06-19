@@ -45,7 +45,7 @@ const BookingOptions = () => {
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
-                <p>For the full Override Experience</p>
+                <p class="btn-tagline">For the full Override Experience</p>
                </a>
               </Button>
   
@@ -54,7 +54,7 @@ const BookingOptions = () => {
                 <span class="space">CHEF’S STUDIO</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
-                <p>Where the heads dine</p>
+                <p class="btn-tagline">Where the heads dine</p>
                </a>
               </Button>
           </div>
