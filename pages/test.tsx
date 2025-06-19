@@ -82,8 +82,8 @@ export default function LayoutTestPage() {
           <div>
             <h2>Open Thursday to Saturday <span>FROM 10PM</span></h2>
             <p>Access to the club is for Friends of the Club only.</p> 
-            <p>To apply, email us.</p>
-            <p>Or you can access the club by booking a dinner table.</p>
+            <p>To apply, <a href="mailto:yo@little-portland.com?subject=FOC%20Enquiry">email us</a>.</p>
+            <p>Or you can access the club by <a href="https://www.little-portland.com/bookings" target="_blank">booking</a> a dinner table.</p>
             <div className="category">
               <h3>Thursday <span>is</span> Underground</h3>
               <p><span>Thursday Underground</span> kicks off the weekend, showcasing cutting-edge electronic artists at the forefront of the underground scene, bringing together a community deeply rooted in its culture.</p>
