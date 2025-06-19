@@ -1157,6 +1157,17 @@ html, body {
    color: #fff;
 }
 
+.dance-popup h2 {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.dance-popup h2 span {
+  display: block;
+  font-size: 1rem;
+}
+
 .dance-popup p {
     font-size: 1.1rem;
     font-weight: 100;
