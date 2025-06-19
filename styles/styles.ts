@@ -1164,7 +1164,7 @@ html, body {
   inset: 0;
   background-image: url('/images/noise.png'); /* Transparent PNG noise */
   opacity: 0.08; /* Control noise visibility */
-  pointer-events: none;
+  pointer-events: none; 
 }
 
 .dance-popup h2 {
