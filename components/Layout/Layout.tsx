@@ -39,6 +39,13 @@ interface IProps {
   hireItem: eatDataType;
 }
 
+interface IProps {
+  main: React.ReactNode;
+  eatItem: eatDataType;
+  hireItem: eatDataType;
+  hideNav?: boolean; // Additional prop to hide nav on testing page
+}
+
 const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
   //UI Handlers
   const {
@@ -63,15 +70,15 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem }) => {
     <>
       {canvasState && !isLoaded && <Canvas removeSelf={setCanvasState} />}
 
-      {isMobile && isLoaded && displayMobileButtons ? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2, delay: 0.1 }}
-        >
-          <MobileButtons />
-        </motion.div>
-      ) : null}
+    {!hideNav && isMobile && isLoaded && displayMobileButtons ? (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.2, delay: 0.1 }}
+      >
+        <MobileButtons />
+      </motion.div>
+    ) : null}
 
       <MainStyle>{main}</MainStyle>
       <Modal open={displayLineup} close={closeLineup}>
