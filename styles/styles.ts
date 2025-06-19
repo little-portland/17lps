@@ -1157,16 +1157,6 @@ html, body {
    color: rgb(255, 255, 255);
    background-repeat: no-repeat;
 }
-/*
-.dance-popup::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('/images/noise.png'); /* Transparent PNG noise */
-  opacity: 0.08; /* Control noise visibility */
-  pointer-events: none; 
-}
-*/
 
 .dance-popup h2 {
   margin-bottom: 15rem!important;
