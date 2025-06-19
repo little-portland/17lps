@@ -86,6 +86,7 @@ export default function LayoutTestPage() {
             backgroundImage: "url('/images/dance_bg_image.png')", // optional
             backgroundSize: "cover",
             backgroundPosition: "center",
+            color: "#fff",
           }}
         >
           {/* Scrollable content starting from halfway down */}
@@ -98,7 +99,7 @@ export default function LayoutTestPage() {
               color: "#fff",
             }}
           >
-            <h2 style={{ marginBottom: "1rem" }}>Test DANCE Modal</h2>
+            <h2 style={{ marginBottom: "1rem" }}>Open Thursday to Saturday <span style={{ display: "block", fontSize: "1rem" }}>FROM 10PM</span></h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
               eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
@@ -107,49 +108,7 @@ export default function LayoutTestPage() {
             </p>
             <p>
               Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
-              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
-            </p>
-                        <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
-              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
-              sit amet ante.
-            </p>
-            <p>
-              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
-              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
-            </p>
-                        <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
-              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
-              sit amet ante.
-            </p>
-            <p>
-              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
-              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
-            </p>
-                        <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
-              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
-              sit amet ante.
-            </p>
-            <p>
-              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
-              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
-            </p>
-                        <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-              eget sapien eget sem feugiat imperdiet. Donec porttitor, velit ut
-              vehicula aliquet, orci erat dapibus erat, nec ullamcorper nisl risus
-              sit amet ante.
-            </p>
-            <p>
-              Curabitur nec justo lorem. Quisque eget tincidunt lectus. Duis sed
-              fermentum justo. Etiam ac nisl mattis, semper arcu at, dictum nunc.
-            </p>
-            {/* Add more paragraphs or elements here to test scroll */}
+
           </div>
         </div>
       </Modal>
