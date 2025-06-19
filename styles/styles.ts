@@ -1623,6 +1623,10 @@ html, body {
     .dance-popup p {
       font-size: 1rem;
     }
+
+    .dance-popup h3 {
+      font-size: 1rem
+    }
  
     }
 
