@@ -1173,7 +1173,7 @@ html, body {
 
 .thursday .button-wrapper-bottom {
     margin-top: 10px;
-    display: inline-block;
+    display: inline-block !important;
     text-align: center !important;
     width: 100%;
 }
