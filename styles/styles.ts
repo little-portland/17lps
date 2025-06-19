@@ -1129,6 +1129,17 @@ html, body {
     border: 2px dotted #000cf7;
 }
 
+.thursday .book-wrapper h3,
+.thursday h4 {
+    text-align: center;
+    margin: 15px 0;
+    color: rgb(0, 12, 247);
+}
+
+.thursday h4 {
+    font-size: 1.8rem;
+}
+
 .thursday .override-heading h2 {
     color: #000cf7;
     font-size: 36px;
@@ -1138,6 +1149,10 @@ html, body {
     background: #f7005d;
     color: #ffffff!important;
     border: none;
+}
+
+.thursday .new-button-wrapper p {
+    color: #fff!important;
 }
 
 .thursday .new-button-wrapper .events-button .space,
