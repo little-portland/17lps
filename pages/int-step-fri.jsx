@@ -29,7 +29,7 @@ const BookingOptions = () => {
         <h1 class="event-name friday-residents">FRIDAY RESIDENTS</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>THU</span>27 Jun</h2>
+              <h2><span>FRI</span>27 Jun</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>SEAN OD, sEmoa & alia indigo</h3>
