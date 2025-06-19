@@ -1622,7 +1622,7 @@ html, body {
     }
 
     .dance-popup p {
-      font-size: 1rem;
+     font-size: .9rem;
     }
 
     .dance-popup h3 {
