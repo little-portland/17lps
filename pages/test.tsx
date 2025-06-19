@@ -9,7 +9,7 @@ import Modal from "@components/UX/Modal";
 import Image from "next/image";
 import dancePic from "../public/images/Dance.jpeg";
 
-// ✅ Mock data based on your Layout props 
+// Mock data based on your Layout props 
 const mockEatItem = {
   image: {
     url: "/images/Eat.jpeg",
