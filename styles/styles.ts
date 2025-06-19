@@ -1190,24 +1190,24 @@ html, body {
 }
 
 .friday #bookingOptions .event-name {
-    color: #000cf7;
+    color: #1dfffe;
 }
 
 .friday #bookingOptions .event-info .info {
     color: rgb(0, 255, 0);
-    background-color: #000cf7;
+    background-color: #1dfffe;
 }
 
 .friday .book-wrapper {
     background: rgb(0, 255, 0);
-    border: 2px dotted #000cf7;
+    border: 2px dotted #1dfffe;
 }
 
 .friday .book-wrapper h3,
 .friday h4 {
     text-align: center;
     margin: 15px 0;
-    color: rgb(0, 12, 247);
+    color: #1dfffe;
 }
 
 .friday h4 {
@@ -1216,7 +1216,7 @@ html, body {
 }
 
 .friday .override-heading h2 {
-    color: #000cf7;
+    color: #1dfffe;
     font-size: 36px;
 }
 
