@@ -139,7 +139,7 @@ const Menu = ({ menuImage }) => {
          </div>
 
          <div className="nocturn override">
-           <img className="override-logo" src="/images/override/override_poster_Insta.png" alt="Override" width="100%" />
+           <img className="override-logo" src="/images/override/override_poster_Insta.png" alt="Override" width="100%" /> 
          </div>
       
          <div className="nocturn override">
