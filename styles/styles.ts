@@ -1186,7 +1186,6 @@ html, body {
 .saturday .new-button-wrapper .events-button:hover {
   background: #fff;
   color: #000 !important;
-  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.8);
 }
 
 .thursday .new-button-wrapper p,
@@ -1225,7 +1224,7 @@ html, body {
 .thursday .new-button-wrapper .ticketNew:hover a,
 .friday .new-button-wrapper .ticketNew:hover a,
 .saturday .new-button-wrapper .ticketNew:hover a {
-  color: #000;
+  color: #000 !important;
 }
 
 .thursday .book-wrapper .button-wrapper-bottom a span,
@@ -1238,7 +1237,6 @@ html, body {
 .friday .book-wrapper .button-wrapper-bottom a span:hover, 
 .saturday .book-wrapper .button-wrapper-bottom a span:hover {
   color: #fff !important;
-  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.8);
 }
 
 .thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
