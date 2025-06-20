@@ -39,9 +39,23 @@ const Menu = ({ menuImage }) => {
             .full-width {
               width: 100%;
             }
+            
+            .override-button {
+                font-size: 15px!important;
+                color: #ff0200!important;
+                border: 3px solid #ff0200!important;
+            }
+    
+            .override-button:hover {
+                color: #000000!important;
+                background-color: #ff0200!important;
+                border: 3px solid #ff0200!important;
+            }
+            
             .override-buttons-wrapper .column {
                 flex: 1;
             }`}
+          
             {`.nocturn h1{margin-top: 30px;}`}
             {`.nocturn{width: 50%;margin: 0 auto;}`}
             {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
@@ -102,6 +116,13 @@ const Menu = ({ menuImage }) => {
             flex: 100%;
             max-width: 100%;
         }
+
+        .image-column img {
+          margin-top: 8px;
+          vertical-align: middle;
+          width: 100%;
+          border: 2px solid #ff0200;
+      }
 
             }`}
         </style>
