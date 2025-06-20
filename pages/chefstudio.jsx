@@ -41,7 +41,6 @@ const Menu = ({ menuImage }) => {
             }
             
             .override-button {
-                font-size: 15px!important;
                 color: #ff0200!important;
                 border: 3px solid #ff0200!important;
             }
@@ -102,14 +101,6 @@ const Menu = ({ menuImage }) => {
 
         .override-button {
             font-size: 15px!important;
-            color: #ff0200!important;
-            border: 3px solid #ff0200!important;
-        }
-
-        .override-button:hover {
-            color: #000000!important;
-            background-color: #ff0200!important;
-            border: 3px solid #ff0200!important;
         }
 
         .image-column {
