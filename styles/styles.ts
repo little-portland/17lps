@@ -1178,6 +1178,15 @@ html, body {
   color: #fff !important;
   border: none;
   border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.thursday .new-button-wrapper .events-button:hover,
+.friday .new-button-wrapper .events-button:hover,
+.saturday .new-button-wrapper .events-button:hover {
+  background: #fff;
+  color: #000 !important;
+  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.8)
 }
 
 .thursday .new-button-wrapper p,
