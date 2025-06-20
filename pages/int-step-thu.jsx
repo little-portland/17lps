@@ -65,7 +65,7 @@ const BookingOptions = () => {
             <a class="menu-btn" href="https://www.little-portland.com/override-menu" target="_blank">
               <span>[Menu]</span>
             </a>
-            <a class="menu-btn" href="https://www.little-portland.com/chefs-studio" target="_blank">
+            <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
                 <span>[Explore Chef’s Studio]</span>
               </a>
            </div>
