@@ -68,7 +68,7 @@ const Menu = ({ menuImage }) => {
             {`.top{ font-size: 35px;}`}
             {`.bottom{ font-size: 25px;}`}
             {'.image-row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
-            {'.image-column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
+            {'.image-column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.image-column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {`audio{ margin-top: 8px!important;width:100%!important;}`}
             {`.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}`}
@@ -127,12 +127,10 @@ const Menu = ({ menuImage }) => {
               <div className="image-column">
                 <img src="/images/chefstudio/chefstudio01.jpg" />
                 <img src="/images/chefstudio/chefstudio02.jpg" />
-              </div>
-             <div className="image-column">
                 <img src="/images/chefstudio/chefstudio03.jpg" />
-                <img src="/images/chefstudio/chefstudio04.jpg" />
               </div>
              <div className="image-column">
+                <img src="/images/chefstudio/chefstudio04.jpg" />
                 <img src="/images/chefstudio/chefstudio05.jpg" />
                 <img src="/images/chefstudio/chefstudio06.jpg" />
               </div>
