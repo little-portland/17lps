@@ -110,13 +110,13 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn-wider-section override-logo">
            <div className="image-row">
               <div className="image-column">
-                <img src="/images/override/image15.jpg" />
-                <img src="/images/override/image17.jpg" />
                 <img src="/images/override/image19.jpg" />
+                <img src="/images/override/image17.jpg" />
+                <img src="/images/override/image15.jpg" />
                 <img src="/images/override/image26.jpg" />
               </div>
              <div className="image-column">
-                <img src="/images/override/image24.jpg" />
+                <img src="/images/override/image28.jpg" />
                 <img src="/images/override/image22.jpg" />
                 <img src="/images/override/image23.jpg" />
                 <img src="/images/override/image21.jpg" />
@@ -125,7 +125,7 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/override/image25.jpg" />
                 <img src="/images/override/image27.jpg" />
                 <img src="/images/override/image29.jpg" />
-                <img src="/images/override/image28.jpg" />
+                <img src="/images/override/image24.jpg" />
               </div>
            </div>
           </div>
