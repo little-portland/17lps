@@ -135,7 +135,7 @@ const Menu = ({ menuImage }) => {
          </div>
 
          <div className="nocturn override">
-           <img className="override-tent" src="/images/override/food-slider.gif" alt="Override" width="100%" />
+           <img className="override-logo" src="/images/override/food-slider.gif" alt="Override" width="100%" />
          </div>
       
          <div className="nocturn override">
