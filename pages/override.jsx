@@ -129,15 +129,21 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
           </div>
-      
+
          <div className="nocturn override">
            <img className="override-logo full-width" src="/images/override/bullet-points.png" />
+         </div>
+
+         <div className="nocturn override">
+           <img className="override-tent" src="/images/override/food-slider.gif" alt="Override" width="100%" />
+         </div>
+      
+         <div className="nocturn override">
            <img className="override-logo full-width" src="/images/override/override_flyer_heading.png" />
            <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
            <img className="override-logo full-width" src="/images/override/override_schedule.png" />
 
-           
-                 
+                           
          <div className="override-buttons-wrapper">
            <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5" class="override-button book-override">BOOK OVERRIDE</a>
            <div className="row">
