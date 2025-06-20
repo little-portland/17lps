@@ -103,24 +103,31 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override">
            <img className="override-logo" src="/images/override/override_new_page_top_new.png" alt="Override" width="100%" />
+           <img className="override-tent" src="/images/override/tent-laser.gif" alt="Override" width="100%" />
          </div>
 
          <div className="nocturn-wider-section override-logo">
            <div className="image-row">
               <div className="image-column">
-                <img src="/images/override/image04.jpg" />
-                <img src="/images/override/image02.jpg" />
-                <img src="/images/override/image05.jpg" />
+                <img src="/images/override/image15.jpg" />
+                <img src="/images/override/image16.jpg" />
+                <img src="/images/override/image17.jpg" />
+                <img src="/images/override/image18.jpeg" />
+                <img src="/images/override/image19.jpeg" />
               </div>
              <div className="image-column">
-                <img src="/images/override/image08.jpeg" />
-                <img src="/images/override/image09.jpeg" />
-                <img src="/images/override/image06.jpeg" />
+                <img src="/images/override/image20.jpeg" />
+                <img src="/images/override/image21.jpeg" />
+                <img src="/images/override/image22.jpg" />
+                <img src="/images/override/image23.jpg" />
+                <img src="/images/override/image24.jpg" />
               </div>
              <div className="image-column">
-               <img src="/images/override/image11.jpeg" />
-                <img src="/images/override/image07.jpg" />
-                <img src="/images/override/image12.jpg" />
+                <img src="/images/override/image25.jpeg" />
+                <img src="/images/override/image26.jpg" />
+                <img src="/images/override/image27.jpg" />
+                <img src="/images/override/image28.jpg" />
+                <img src="/images/override/image29.jpg" />
               </div>
            </div>
           </div>
