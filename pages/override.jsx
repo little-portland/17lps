@@ -124,8 +124,8 @@ const Menu = ({ menuImage }) => {
              <div className="image-column">
                 <img src="/images/override/image25.jpg" />
                 <img src="/images/override/image27.jpg" />
-                <img src="/images/override/image28.jpg" />
                 <img src="/images/override/image29.jpg" />
+                <img src="/images/override/image28.jpg" />
               </div>
            </div>
           </div>
