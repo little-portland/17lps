@@ -8,7 +8,7 @@ import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 //hooks
 import useFetchContent from "@utils/useFetchContent";
 
-const Menu = ({ menuImage }) => {
+const Menu = ({ menuImage }) => { 
   
   return (
     <>
