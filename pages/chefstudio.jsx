@@ -50,6 +50,10 @@ const Menu = ({ menuImage }) => {
                 background-color: #ff0200!important;
                 border: 3px solid #ff0200!important;
             }
+
+             .image-column img {
+                border: 2px solid #ff0200;
+            }
             
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -107,13 +111,6 @@ const Menu = ({ menuImage }) => {
             flex: 100%;
             max-width: 100%;
         }
-
-        .image-column img {
-          margin-top: 8px;
-          vertical-align: middle;
-          width: 100%;
-          border: 2px solid #ff0200;
-      }
 
             }`}
         </style>
