@@ -1210,6 +1210,24 @@ html, body {
   color: #fff;
 }
 
+.thursday .new-button-wrapper .events-button:hover .space,
+.friday .new-button-wrapper .events-button:hover .space,
+.saturday .new-button-wrapper .events-button:hover .space,
+.thursday .new-button-wrapper .events-button:hover .time,
+.friday .new-button-wrapper .events-button:hover .time,
+.saturday .new-button-wrapper .events-button:hover .time,
+.thursday .new-button-wrapper .events-button:hover .details span,
+.friday .new-button-wrapper .events-button:hover .details span,
+.saturday .new-button-wrapper .events-button:hover .details span,
+.thursday .new-button-wrapper .events-button:hover .btn-tagline,
+.friday .new-button-wrapper .events-button:hover .btn-tagline,
+.saturday .new-button-wrapper .events-button:hover .btn-tagline,
+.thursday .new-button-wrapper .ticketNew:hover a,
+.friday .new-button-wrapper .ticketNew:hover a,
+.saturday .new-button-wrapper .ticketNew:hover a {
+  color: #000;
+}
+
 .thursday .book-wrapper .button-wrapper-bottom a span,
 .friday .book-wrapper .button-wrapper-bottom a span,
 .saturday .book-wrapper .button-wrapper-bottom a span {
