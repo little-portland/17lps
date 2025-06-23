@@ -18,21 +18,21 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name openlab-presents">KISMET</h1>
+        <h1 class="event-name override">Moze</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>THU</span>29 May</h2>
+              <h2><span>THU</span>10 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>JEME, MAYBE LAURA & REMI MAZET</h3>
-              <h3><span>STUDIO <b>//</b> </span>BANZAIXX, PITICU</h3>
+              <h3><span>TENT <b>//</b> </span>ELLEINAD, OLDFIELD</h3>
+              <h3><span>STUDIO <b>//</b> </span>DPR, JARDINE, JOSH KEIT</h3>
             </div>
         </div>
        <div class="book-wrapper">
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-05-29&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-07-10&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
@@ -49,7 +49,7 @@ const BookingOptions = () => {
           </div>
           <div class="button-wrapper new-button-wrapper button-wrapper-bottom">
             <a class="menu-btn" href="https://www.little-portland.com/override-menu" target="_blank">
-              <span>[OVERRIDE MENU]</span>
+              <span>[Futurist Asian Menu]</span>
             </a>
             <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
                 <span>[explore override]</span>
@@ -58,8 +58,8 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-              <a href="https://sevn.ly/xRFbnlAM0" target="_blank">
-                CLUB GUESTLIST ONLY
+              <a href="https://sevn.ly/xiIa9tFG" target="_blank">
+                CLUB TICKETS ONLY
               </a>
             </Button>
         </div>
