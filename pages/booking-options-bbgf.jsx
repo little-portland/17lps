@@ -48,7 +48,7 @@ const BookingOptions = () => {
               </Button>
           </div>
           <div class="button-wrapper new-button-wrapper button-wrapper-bottom">
-            <a class="menu-btn" href="https://www.little-portland.com/override-menu" target="_blank">
+            <a class="menu-btn explore-override" href="https://www.little-portland.com/override" target="_blank">
               <span>[Futurist Asian Menu]</span>
 
           </a>
