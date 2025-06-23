@@ -21,7 +21,7 @@ const BookingOptions = () => {
         <h1 class="event-name lick-lid">Lick the Lid</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>THU</span>17 July</h2>
+              <h2><span>THU</span>17 Jul</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DMC, Giorja</h3>
