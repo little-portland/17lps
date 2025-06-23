@@ -1368,6 +1368,12 @@ html, body {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
+/* Hide explore Override button */
+
+.button-wrapper.new-button-wrapper.button-wrapper-bottom .explore-override {
+  display: none!important;
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
