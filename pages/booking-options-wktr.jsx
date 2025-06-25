@@ -14,25 +14,25 @@ const BookingOptions = () => {
   return (
     <>
       <Head>
-        <title>Bookings</title>
+        <title>Bookings </title>
       </Head>
 
       <div id="bookingOptions">
-        <h1 class="event-name openlab-presents">Logistic Records</h1>
+        <h1 class="event-name">Thursday Underground</h1>
         <div class="event-info">
             <div class="info date">
-              <h2><span>THU</span>17 Jul</h2>
+              <h2><span>THU</span>24 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Gaby D'Annunzio, Gil</h3>
-              <h3><span>STUDIO <b>//</b> </span>Alexx, Ben Vedren, Tom Ellis</h3>
+              <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO, SEMOA & ALIA INDIGO</h3>
+              <h3><span>STUDIO <b>//</b> </span>Cem, Praslea</h3>
             </div>
         </div>
-        <div class="book-wrapper">
+       <div class="book-wrapper">
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-06-26&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-07-24&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
@@ -50,8 +50,7 @@ const BookingOptions = () => {
           <div class="button-wrapper new-button-wrapper button-wrapper-bottom">
             <a class="menu-btn" href="https://www.little-portland.com/override-menu" target="_blank">
               <span>[Futurist Asian Menu]</span>
-
-          </a>
+            </a>
             <a class="menu-btn explore-override" href="https://www.little-portland.com/override" target="_blank">
                 <span>[explore override]</span>
               </a>
@@ -59,7 +58,7 @@ const BookingOptions = () => {
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/x0tujPUM" target="_blank">
+              <a href="https://sevn.ly/xvDOg4x0" target="_blank">
                 CLUB TICKETS ONLY
               </a>
             </Button>
