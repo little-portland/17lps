@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>NATHAN COLINET, Oli Silva</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI & ALTON MILLER</h3>
+              <h3><span>STUDIO <b>//</b> </span>ALTON MILLER, BAS IBELLINI</h3>
             </div>
         </div>
         <div class="book-wrapper">
