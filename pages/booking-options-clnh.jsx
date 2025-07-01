@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Paul Day, Thom Parris</h3>
-              <h3><span>STUDIO <b>//</b> </span>D'JULZ</h3>
+              <h3><span>STUDIO <b>//</b> </span>Denny Kem, D'JULZ</h3>
             </div>
         </div>
        <div class="book-wrapper">
