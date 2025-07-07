@@ -34,6 +34,7 @@ const BookingOptions = () => {
                </a>
               </Button>
           </div>
+
          <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=4" target="_blank">
@@ -43,8 +44,37 @@ const BookingOptions = () => {
                 <p class="btn-tagline">For the full Override Experience</p>
                </a>
               </Button>
+  
+              <Button classes="events-button ticket"  btnType="hollow">
+                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
+                <span class="space">CHEF’S STUDIO</span>
+                <p class="time">Includes Free Club Entry</p>
+                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
+                <p class="btn-tagline">Where the heads dine</p>
+               </a>
+              </Button>
+          </div>
+          
+         <div class="button-wrapper new-button-wrapper button-wrapper-bottom desktop-only">
+            <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
+              <span>[What is override]</span>
+            </a>
+            <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
+                <span>[What is Chef's Studio]</span>
+              </a>
+           </div>
+         
+         <div class="button-wrapper new-button-wrapper mobile-only">
+            <Button classes="events-button new-events-button"  btnType="hollow">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=4" target="_blank">
+                <span class="space">IN THE TENT</span>
+                <p class="time">Includes Free Club Entry</p>
+                <p class="details"><span>9PM</span></p>
+                <p class="btn-tagline">For the full Override Experience</p>
+               </a>
+              </Button>
 
-            <a class="menu-btn mobile-only" href="https://www.little-portland.com/override" target="_blank">
+            <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
               <span>[What is override]</span>
             </a>
   
@@ -57,20 +87,12 @@ const BookingOptions = () => {
                </a>
               </Button>
 
-             <a class="menu-btn mobile-only" href="https://www.little-portland.com/chefstudio" target="_blank">
+             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
                 <span>[What is Chef's Studio]</span>
             </a> 
            
           </div>
          
-          <div class="button-wrapper new-button-wrapper button-wrapper-bottom desktop-only">
-            <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
-              <span>[What is override]</span>
-            </a>
-            <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[What is Chef's Studio]</span>
-              </a>
-           </div>
          </div>
          <div className="dinner-bottom dinner-first">“Override” is our restaurant concept, with futurist menus setting the stage for a sensorial experience as dinner transitions seamlessly into our hypnotic after-dark scene.</div>
       </div>
