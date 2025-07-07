@@ -1898,7 +1898,8 @@ html, body {
       padding: 10px;
     }
 
-    .book-wrapper h3 {
+    .book-wrapper h3,
+    .dinner-booking h3 {
       text-align: center!important;
     }
 
@@ -1915,14 +1916,14 @@ html, body {
       margin-bottom: 10px;
     }
 
-    .book-wrapper h3 span,
+    .dinner-booking h3 span,
     .thursday .book-wrapper h3 span,
     .friday .book-wrapper h3 span,
     .saturday .book-wrapper h3 span {
       display: block;
     }
 
-    .book-wrapper h3 .dot, 
+    .dinner-booking h3 .dot, 
     .thursday .book-wrapper h3 .dot,
     .friday .book-wrapper h3 .dot,
     .saturday .book-wrapper h3 .dot {
