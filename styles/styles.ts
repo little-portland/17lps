@@ -1290,6 +1290,12 @@ html, body {
     font-size: 7.8rem!important;
 }
 
+.btn-tagline {
+    border: 1px solid;
+    border-radius: 5px;
+    padding-bottom: 1px !important;
+}
+
  .tags {
     border-radius: 5px;
     margin: .7rem;
