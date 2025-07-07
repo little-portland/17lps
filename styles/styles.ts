@@ -1315,14 +1315,17 @@ html, body {
 
   .thursday .tags h3 {
     color: var(--bg-color)!important;
+    padding: 5px;
   }
 
   .friday .tags h3 {
     color: var(--bg-color)!important;
+    padding: 5px;
   }
 
   .saturday .tags h3 {
     color: var(--bg-color)!important;
+    padding: 5px;
   }
 
   .thursday .book-wrapper, .friday .book-wrapper, .saturday .book-wrapper {
