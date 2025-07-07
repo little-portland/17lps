@@ -1206,12 +1206,13 @@ html, body {
   border: none;
   border-radius: 5px;
   transition: all 0.3s ease;
+  border: none!important;
 }
 
 .thursday .new-button-wrapper .events-button:hover,
 .friday .new-button-wrapper .events-button:hover,
 .saturday .new-button-wrapper .events-button:hover {
-  background: #fff;
+  background: #fff!important;
   color: #000 !important;
 }
 
