@@ -29,6 +29,13 @@ const BookingOptions = () => {
           <div class="tags"><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
+              <a href="https://www.little-portland.com/override-menu" target="_blank">
+                <span>View Menu</span>
+               </a>
+              </Button>
+          </div>
+         <div class="button-wrapper new-button-wrapper">
+            <Button classes="events-button new-events-button"  btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
@@ -43,13 +50,6 @@ const BookingOptions = () => {
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
                 <p class="btn-tagline">Where the heads dine</p>
-               </a>
-              </Button>
-          </div>
-          <div class="button-wrapper new-button-wrapper">
-            <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.little-portland.com/override-menu" target="_blank">
-                <span>View Menu</span>
                </a>
               </Button>
           </div>
