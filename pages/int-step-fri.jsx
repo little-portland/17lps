@@ -38,7 +38,8 @@ const BookingOptions = () => {
         </div>
        <div class="book-wrapper">
           <div class="override-heading"><h2>START WITH OUR <span>OVERRIDE</span> DINNER</h2></div>
-          <div><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
+          <div class="concept"><h4>“Override” is our restaurant concept</h4></div>
+          <div class="tags"><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button"  btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-06-05&default_time=21:00&default_party_size=4" target="_blank">
