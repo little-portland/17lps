@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Richard Marshall, TinTin</h3>
-              <h3><span>STUDIO <b>//</b> </span>Abby Nurock, Esa, Ivan Turanjanin</h3>
+              <h3><span>STUDIO <b>//</b> </span>Abby Nurock, Esa, </br>Ivan Turanjanin</h3>
             </div>
         </div>
         <div class="book-wrapper">
