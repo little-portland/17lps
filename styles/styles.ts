@@ -1478,7 +1478,7 @@ html, body {
 }
 
 .desktop-only {
-    display: block;
+    display: block!important;
  }
 
 /* Hide explore Override button */
@@ -1944,7 +1944,7 @@ html, body {
     }
 
   .desktop-only {
-       display: none;
+       display: none!important;
     }
 }
 
