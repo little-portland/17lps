@@ -986,6 +986,10 @@ html, body {
     color: rgb(230, 176, 194)!important;
 }
 
+.view-menu {
+  width: 97%;
+}
+
 .book-wrapper .ticket {
   margin: 0 10px 0 0;
 }
