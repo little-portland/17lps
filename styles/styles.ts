@@ -1907,16 +1907,6 @@ html, body {
       padding-bottom: 2px;
     }
 
-    .mobile-only {
-       visibility: visible;
-       margin: 0 0 10px;
-       display: inline-block !important;
-    }
-
-    .desktop-only {
-       visibility: hidden;
-    }
-
     button {
       margin-bottom: 10px;
     }
@@ -1947,6 +1937,16 @@ html, body {
       display: inline-block !important;
       margin: 5px 0px 0px 0px !important;
   }
+
+  .mobile-only {
+       visibility: visible;
+       margin: 0 0 10px;
+       display: block!important;
+    }
+
+  .desktop-only {
+       visibility: hidden;
+    }
 }
 
 ${reset}
