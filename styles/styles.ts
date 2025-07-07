@@ -972,6 +972,19 @@ html, body {
   margin: 0 0 0 10px;
 }
 
+.new-button-wrapper .events-button {
+    background: rgb(230, 176, 194);
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    color: rgb(92, 44, 124)!important;
+}
+
+.new-button-wrapper .events-button:hover {
+    background: rgb(92, 44, 124);
+    color: rgb(230, 176, 194)!important;
+}
+
 .book-wrapper .ticket {
   margin: 0 10px 0 0;
 }
