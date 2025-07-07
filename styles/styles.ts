@@ -972,7 +972,7 @@ html, body {
 }
 
 .dinner-booking .eat-heading {
-  margin-bottm: 20px;
+  margin-bottom: 20px;
 }
 
 .dinner-booking .book-wrapper {
