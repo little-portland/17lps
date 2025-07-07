@@ -24,7 +24,7 @@ const BookingOptions = () => {
               <h2>17 Little Portland Street, London</h2> 
             </div>
         </div>
-       <div class="book-wrapper">
+       <div class="book-wrapper dinner-options">
           <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
           <div class="tags"><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
           <div class="button-wrapper new-button-wrapper">
