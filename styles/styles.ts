@@ -1276,7 +1276,7 @@ html, body {
 }
 
 .saturday {
-  --bg-color: #ff00e5;
+  --bg-color: #ff00e5; 
   --accent-color: #ccfe35;
   --text-color: #000000;
 }
