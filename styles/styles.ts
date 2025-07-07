@@ -1877,12 +1877,14 @@ html, body {
       font-size: 1.4rem;
     }
 
+    .book-wrapper h3 span,
     .thursday .book-wrapper h3 span,
     .friday .book-wrapper h3 span,
     .saturday .book-wrapper h3 span {
       display: block;
     }
 
+    .book-wrapper h3 .dot, 
     .thursday .book-wrapper h3 .dot,
     .friday .book-wrapper h3 .dot,
     .saturday .book-wrapper h3 .dot {
