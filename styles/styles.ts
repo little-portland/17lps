@@ -982,7 +982,7 @@ html, body {
 }
 
 .new-button-wrapper .events-button:hover {
-    background: rgb(230, 176, 194)!important;
+    background: rgb(92, 44, 124)!important;
     color: rgb(230, 176, 194)!important;
 }
 
