@@ -1877,6 +1877,10 @@ html, body {
       font-size: 1.4rem;
     }
 
+    .book-wrapper h3 {
+      text-aling: center;
+    }
+
     .book-wrapper h3 span,
     .thursday .book-wrapper h3 span,
     .friday .book-wrapper h3 span,
