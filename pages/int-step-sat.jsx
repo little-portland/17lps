@@ -15,7 +15,7 @@ const BookingOptions = () => {
 
     // Optional cleanup to avoid stacking classes if navigating between pages
     return () => {
-      document.body.classList.remove("saturday");
+      document.body.classList.remove("saturday"); 
     };
   }, []);
   return (
