@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2>17 Little Portland Street</h2> 
             </div>
         </div>
-       <div class="book-wrapper dinner-options">
-          <div class="override-heading"><h2>BOOK OVERRIDE DINNER</h2></div>
+
+        <div class="book-wrapper dinner-options">
           <div class="tags"><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
           <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button view-menu"  btnType="hollow">
@@ -33,6 +33,10 @@ const BookingOptions = () => {
                 <span>View Menu</span>
                </a>
               </Button>
+          </div>
+                 
+       <div class="book-wrapper dinner-options">
+          <div class="override-heading"><h2>Choose Dinner Option</h2></div>
           </div>
 
          <div class="button-wrapper new-button-wrapper desktop-only">
