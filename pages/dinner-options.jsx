@@ -20,8 +20,8 @@ const BookingOptions = () => {
       <div id="bookingOptions">
           <div class="event-info">
             <div class="info artists eat-heading">
-              <h1>EAT AT</h1>
-              <h2>17 Little Portland Street, London</h2> 
+              <h1>BOOK DINNER</h1>
+              <h2>17 Little Portland Street</h2> 
             </div>
         </div>
        <div class="book-wrapper dinner-options">
