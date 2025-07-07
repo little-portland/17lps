@@ -25,7 +25,7 @@ const BookingOptions = () => {
         <title>Bookings </title>
       </Head>
 
-      <div id="bookingOptions">
+      <div id="bookingOptions"> 
         <h1 class="event-name friday-residents">RESIDENTS</h1>
         <div class="event-info">
             <div class="info date">
