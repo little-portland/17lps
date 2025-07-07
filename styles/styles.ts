@@ -1702,7 +1702,7 @@ html, body {
         }
         
         #bookingOptions .event-name {
-          font-size: 2.5rem;
+          font-size: 2.5rem!important;
         }
 
         #bookingOptions .override {
