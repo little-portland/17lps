@@ -1289,13 +1289,27 @@ html, body {
     font-size: 7.8rem;
 }
 
-  .tags {
-    color: var(--bg-color);
-    background-color: var(--accent-color);
+ .tags {
     border-radius: 5px;
     padding: .3rem;
     margin: .7rem;
-}
+  }
+
+  .thursday .tags {
+    color: var(--bg-color);
+    background-color: var(--accent-color);
+  }
+
+  .friday .tags {
+    color: var(--bg-color);
+    background-color: var(--accent-color);
+  }
+
+  .saturday .tags {
+    color: var(--bg-color);
+    background-color: var(--accent-color);
+  }
+  
 /* DANCE MODAL STYLES */
 
 .dance-popup {
