@@ -1231,6 +1231,7 @@ html, body {
 .friday .book-wrapper .button-wrapper-bottom a span,
 .saturday .book-wrapper .button-wrapper-bottom a span {
   color: #000 !important;
+  font-size: 1rem!important;
 }
 
 .thursday .book-wrapper .button-wrapper-bottom a span:hover, 
