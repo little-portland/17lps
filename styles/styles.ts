@@ -1288,6 +1288,14 @@ html, body {
 .friday event-name {
     font-size: 7.8rem;
 }
+
+  .tags {
+    color: var(--bg-color);
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    padding: .3rem;
+    margin: .7rem;
+}
 /* DANCE MODAL STYLES */
 
 .dance-popup {
