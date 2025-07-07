@@ -1322,6 +1322,7 @@ html, body {
 
    .tags h3 {
     margin: 5px 0px;
+    padding: 5px;
   }
 
   .tags {
