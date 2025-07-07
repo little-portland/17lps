@@ -1280,6 +1280,14 @@ html, body {
   --text-color: #000000;
 }
 
+/* Category font size */
+.thursday event-name {
+  font-size: 6.5rem;
+}
+
+.friday event-name {
+    font-size: 7.8rem;
+}
 /* DANCE MODAL STYLES */
 
 .dance-popup {
