@@ -1898,6 +1898,10 @@ html, body {
       padding: 10px;
     }
 
+    .eat-heading {
+      margin-bottom: 20px;
+    }
+
     .book-wrapper h3,
     .dinner-booking h3 {
       text-align: center!important;
