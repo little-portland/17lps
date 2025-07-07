@@ -979,6 +979,10 @@ html, body {
   margin-top 5px;
 }
 
+.dinner-booking .tags {
+  margin: 0 0 10px!important;
+}
+
 .new-button-wrapper .events-button {
     background: rgb(230, 176, 194);
     border: none;
