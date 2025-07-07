@@ -944,7 +944,7 @@ html, body {
     margin: 20px 0 10px;
     width: 100%;
     padding: 10px 5px 15px;
-    background: rgb(230, 176, 194);
+    background: rgb(232, 186, 201);
     border: 2px dotted rgb(92, 44, 124);
     border-radius: 10px;
 }
