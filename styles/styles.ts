@@ -1881,6 +1881,10 @@ html, body {
       text-aling: center;
     }
 
+    .view-menu span {
+      font-size: 1.3rem !important;
+    }
+
     .book-wrapper h3 span,
     .thursday .book-wrapper h3 span,
     .friday .book-wrapper h3 span,
