@@ -1474,7 +1474,7 @@ html, body {
 }
 
 .mobile-only {
-    display: none;
+    display: none!important;
 }
 
 .desktop-only {
