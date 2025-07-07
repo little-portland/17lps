@@ -1472,6 +1472,14 @@ html, body {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
+.mobile-only {
+    visibility: hidden;
+}
+
+.desktop-only {
+    visibility: visible;
+ }
+
 /* Hide explore Override button */
 
 .button-wrapper.new-button-wrapper.button-wrapper-bottom .explore-override {
@@ -1485,7 +1493,6 @@ html, body {
     max-width: 100%;
   }
 }
-
 
 /* Media Query for Mobile Devices */
   // For Iphone Pro 14 MAX and similar screen sizes  
@@ -1897,6 +1904,14 @@ html, body {
     .view-menu span {
       font-size: 1.3rem !important;
       padding-bottom: 2px;
+    }
+
+    .mobile-only {
+       visibility: visible;
+    }
+
+    .desktop-only {
+       visibility: hidden;
     }
 
     button {
