@@ -1474,11 +1474,11 @@ html, body {
 }
 
 .mobile-only {
-    visibility: hidden;
+    display: none;
 }
 
 .desktop-only {
-    visibility: visible;
+    display: block;
  }
 
 /* Hide explore Override button */
@@ -1939,13 +1939,12 @@ html, body {
   }
 
   .mobile-only {
-       visibility: visible;
        margin: 0 0 10px;
        display: block!important;
     }
 
   .desktop-only {
-       visibility: hidden;
+       display: none;
     }
 }
 
