@@ -983,6 +983,10 @@ html, body {
   margin: 0 0 10px!important;
 }
 
+.dinner-booking .view-menu {
+    width: 100% !important;
+}
+
 .new-button-wrapper .events-button {
     background: rgb(230, 176, 194);
     border: none;
