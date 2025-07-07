@@ -1899,6 +1899,10 @@ html, body {
       padding-bottom: 2px;
     }
 
+    button {
+      margin-bottom: 10px;
+    }
+
     .book-wrapper h3 span,
     .thursday .book-wrapper h3 span,
     .friday .book-wrapper h3 span,
