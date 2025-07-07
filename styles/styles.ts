@@ -1308,7 +1308,7 @@ html, body {
 }
 
 .btn-tagline {
-    font-size: 0.9rem;
+    font-size: 0.9rem!important;
     border: 1px solid;
     border-radius: 5px;
     padding-bottom: 1px !important;
