@@ -1291,22 +1291,25 @@ html, body {
 
  .tags {
     border-radius: 5px;
-    padding: .3rem;
     margin: .7rem;
   }
 
+   .tags h3 {
+    margin: 5px 0px;
+  }
+
   .thursday .tags {
-    color: var(--bg-color);
+    color: var(--bg-color)!important;
     background-color: var(--accent-color);
   }
 
   .friday .tags {
-    color: var(--bg-color);
+    color: var(--bg-color)!important;
     background-color: var(--accent-color);
   }
 
   .saturday .tags {
-    color: var(--bg-color);
+    color: var(--bg-color)!important;
     background-color: var(--accent-color);
   }
   
