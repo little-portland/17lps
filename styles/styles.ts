@@ -697,7 +697,7 @@ html, body {
  }
 
    #bookingOptions .eat-heading h2 {
-    font-size: 2rem;
+    font-size: 2.66rem;
     line-height: 3rem;
  }
 
