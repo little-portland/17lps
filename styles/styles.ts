@@ -676,7 +676,7 @@ html, body {
 
 #bookingOptions .date {
     font-size: 1.5rem;
-    width: 17.5%;
+    width: 17.5%; 
     display: flex;
     -webkit-box-align: center;
     align-items: center;
