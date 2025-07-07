@@ -987,9 +987,9 @@ html, body {
 }
 
 .view-menu {
-  width: 97%;
+  width: 97%!important;
   font-size: 1.8rem !important;
-  margin-bottom: 10px;
+  margin-bottom: 10px!important;
 }
 
 .book-wrapper .ticket {
