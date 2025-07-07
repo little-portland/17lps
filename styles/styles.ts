@@ -1753,7 +1753,7 @@ html, body {
 
         #bookingOptions button {
             font-size: 1rem!important;
-            margin-bottom: .3rem!important;
+            margin-bottom: .6rem!important;
        }
 
         #bookingOptions .focal-point-presents {
@@ -1886,7 +1886,7 @@ html, body {
     }
 
     .tags {
-      margin: 0;
+      margin: 0 0 15px 0;
       width: 100%!important;
     }
 
