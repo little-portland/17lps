@@ -35,7 +35,7 @@ const BookingOptions = () => {
               </Button>
           </div>
 
-         <div class="button-wrapper new-button-wrapper">
+         <div class="button-wrapper new-button-wrapper desktop-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
