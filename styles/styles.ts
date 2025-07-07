@@ -1324,6 +1324,10 @@ html, body {
   .saturday .tags h3 {
     color: var(--bg-color)!important;
   }
+
+  .thursday .book-wrapper, .friday .book-wrapper, .saturday .book-wrapper {
+    padding: 10px 5px 5px;
+  }
   
 /* DANCE MODAL STYLES */
 
