@@ -1478,7 +1478,7 @@ html, body {
 }
 
 .desktop-only {
-    display: block!important;
+    display: flex!important;
  }
 
 /* Hide explore Override button */
