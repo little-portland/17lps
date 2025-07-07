@@ -1282,11 +1282,11 @@ html, body {
 }
 
 /* Category font size */
-.thursday event-name {
+.thursday .event-name {
   font-size: 6.5rem!important;
 }
 
-.friday event-name {
+.friday .event-name {
     font-size: 7.8rem!important;
 }
 
