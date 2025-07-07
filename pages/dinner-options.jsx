@@ -34,6 +34,7 @@ const BookingOptions = () => {
                </a>
               </Button>
           </div>
+      </div>
                  
        <div class="book-wrapper dinner-options">
           <div class="override-heading"><h2>Choose Dinner Option</h2></div>
