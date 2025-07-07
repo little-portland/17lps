@@ -658,6 +658,7 @@ html, body {
     color: rgb(232, 186, 201);
     background-color: rgb(92, 44, 124);
     padding: 1rem;
+    border-radius: 10px;
  }
 
   .override-page .event-info {
@@ -853,6 +854,7 @@ html, body {
     padding: 15px;
     background: #e6b0c2;
     cursor: auto;
+    border-radius: 10px;
  }
 
  .new-button-wrapper a {
@@ -944,6 +946,7 @@ html, body {
     padding: 10px 5px 15px;
     background: rgb(230, 176, 194);
     border: 2px dotted rgb(92, 44, 124);
+    border-radius: 10px;
 }
 
 .book-wrapper .button-wrapper-bottom a {
