@@ -1114,7 +1114,6 @@ html, body {
   --bg-color: initial;
   --text-color: initial;
   --accent-color: initial;
-
   background-color: var(--bg-color);
 }
 
@@ -1265,7 +1264,7 @@ html, body {
 
 .thursday {
   --bg-color: #00ff00;
-  --accent-color: #000cf7;
+  --accent-color: #ea334f;
   --text-color: #000000;
 }
 
