@@ -1154,7 +1154,8 @@ html, body {
 .friday h4,
 .saturday h4 {
   font-size: 1.5rem;
-  margin: 10px 0px 12px 0px;
+  margin: 0px!important;
+  padding: 0px!important;
 }
 
 .thursday .override-heading h2,
