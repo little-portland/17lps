@@ -1312,6 +1312,18 @@ html, body {
     color: var(--bg-color)!important;
     background-color: var(--accent-color);
   }
+
+  .thursday .tags h3 {
+    color: var(--bg-color)!important;
+  }
+
+  .friday .tags h3 {
+    color: var(--bg-color)!important;
+  }
+
+  .saturday .tags h3 {
+    color: var(--bg-color)!important;
+  }
   
 /* DANCE MODAL STYLES */
 
