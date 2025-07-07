@@ -1598,6 +1598,11 @@ html, body {
         margin-bottom: 17px;
         padding: 10px 10px 15px
       }
+      
+      .dinner-options {
+        padding: 10px 10px 0px;
+      }
+      
       .book-wrapper .button-wrapper-bottom a {
         display: block!important;
       }
