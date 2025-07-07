@@ -1909,6 +1909,8 @@ html, body {
 
     .mobile-only {
        visibility: visible;
+       margin: 0 0 10px;
+       display: inline-block !important;
     }
 
     .desktop-only {
