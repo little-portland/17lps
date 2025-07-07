@@ -70,7 +70,6 @@ const BookingOptions = () => {
                 <span>[Explore Chef’s Studio]</span>
               </a>
            </div>
-            <div><h4>“Override” is our restaurant concept</h4></div>
          </div>
         <div class="button-wrapper new-button-wrapper">
             <Button classes="events-button ticketNew" btnType="hollow">
