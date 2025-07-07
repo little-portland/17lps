@@ -43,6 +43,10 @@ const BookingOptions = () => {
                 <p class="btn-tagline">For the full Override Experience</p>
                </a>
               </Button>
+
+            <a class="menu-btn mobile-only" href="https://www.little-portland.com/override" target="_blank">
+              <span>[What is override]</span>
+            </a>
   
               <Button classes="events-button ticket"  btnType="hollow">
                 <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
@@ -52,8 +56,19 @@ const BookingOptions = () => {
                 <p class="btn-tagline">Where the heads dine</p>
                </a>
               </Button>
+
+             <a class="menu-btn mobile-only" href="https://www.little-portland.com/chefstudio" target="_blank">
+                <span>[What is Chef's Studio]</span>
+            </a> 
+           
           </div>
-          <div class="button-wrapper new-button-wrapper button-wrapper-bottom">
+          <div class="button-wrapper new-button-wrapper button-wrapper-bottom mobile-only">
+            <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
+                <span>[What is Chef's Studio]</span>
+              </a>
+           </div>
+         
+          <div class="button-wrapper new-button-wrapper button-wrapper-bottom desktop-only">
             <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
               <span>[What is override]</span>
             </a>
