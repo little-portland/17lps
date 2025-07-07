@@ -986,6 +986,10 @@ html, body {
     color: rgb(230, 176, 194)!important;
 }
 
+.new-button-wrapper .events-button:hover span, .new-button-wrapper .events-button:hover p {
+    color: rgb(230, 176, 194)!important;
+}
+
 .view-menu {
   width: 97%!important;
   font-size: 1.8rem !important;
