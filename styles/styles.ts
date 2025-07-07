@@ -1002,6 +1002,7 @@ html, body {
 
 .view-menu span {
   font-size: 1.8rem !important;
+  padding-bottom: 2px;
 }
 
 .book-wrapper .ticket {
