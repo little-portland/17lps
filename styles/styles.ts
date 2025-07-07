@@ -1878,7 +1878,7 @@ html, body {
     }
 
     .book-wrapper h3 {
-      text-aling: center;
+      text-aling: center!important;
     }
 
     .view-menu span {
