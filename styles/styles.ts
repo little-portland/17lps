@@ -1877,8 +1877,21 @@ html, body {
       font-size: 1.4rem;
     }
 
+    .tags {
+      margin: 0;
+      width: 100%!important;
+    }
+
+    tags h3 {
+      padding: 10px;
+    }
+
     .book-wrapper h3 {
-      text-aling: center!important;
+      text-align: center!important;
+    }
+
+    .view-menu {
+        width: 100% !important;
     }
 
     .view-menu span {
