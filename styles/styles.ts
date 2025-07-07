@@ -1324,6 +1324,13 @@ html, body {
     margin: 5px 0px;
   }
 
+  .tags {
+    border-radius: 5px;
+    margin: .7rem;
+    color: rgb(232, 186, 201);
+    background-color: rgb(92, 44, 124);
+  }
+
   .thursday .tags {
     color: var(--bg-color)!important;
     background-color: var(--accent-color);
