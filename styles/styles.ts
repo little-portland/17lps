@@ -1943,6 +1943,13 @@ html, body {
        display: block!important;
     }
 
+     .mobile-only  .new-button-wrapper .menu-btn {
+        padding-top: 5px;
+        margin-bottom: 10px;
+        display: block !important;
+        text-align: center;
+    }
+
   .desktop-only {
        display: none!important;
     }
