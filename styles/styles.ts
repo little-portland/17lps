@@ -978,10 +978,11 @@ html, body {
     border-radius: 5px;
     transition: 0.3s;
     color: rgb(92, 44, 124)!important;
+    border: 2px solid rgb(92, 44, 124) !important;
 }
 
 .new-button-wrapper .events-button:hover {
-    background: rgb(92, 44, 124);
+    background: rgb(230, 176, 194)!important;
     color: rgb(230, 176, 194)!important;
 }
 
