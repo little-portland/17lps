@@ -1988,6 +1988,11 @@ html, body {
       font-weight: 100;
     }
 
+    .or {
+      font-style: italic;
+      margin: 20px 0;
+    }
+
     .tags {
       margin: 0 0 15px 0;
       width: 100%!important;
