@@ -1378,7 +1378,7 @@ html, body {
 
 .thursday {
   --bg-color: #00ff00;
-  --accent-color: #ea334f;
+  --accent-color: #ff009a;
   --text-color: #000000;
 }
 
