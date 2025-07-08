@@ -541,7 +541,7 @@ html, body {
 }
 
 #bookingOptions .disco-saturdays {
-    font-size: 4.7rem;
+    font-size: 4.7rem!important;
 }
 
 #bookingOptions .disco3000 {
