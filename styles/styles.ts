@@ -1291,12 +1291,6 @@ html, body {
   color: #000 !important;
 }
 
-.thursday .override-heading .time,
-.friday .override-heading .time,
-.saturday .override-heading .time {
-  color: var(--accent-color)!important;
-}
-
 .thursday .book-wrapper .button-wrapper-bottom a span,
 .friday .book-wrapper .button-wrapper-bottom a span,
 .saturday .book-wrapper .button-wrapper-bottom a span {
@@ -1982,6 +1976,12 @@ html, body {
     
     .thursday .book-wrapper, .friday .book-wrapper, .saturday .book-wrapper {
       padding: 10px 5px 0px;
+    }
+
+    .thursday .override-heading .time,
+    .friday .override-heading .time,
+    .saturday .override-heading .time {
+      color: var(--accent-color)!important;
     }
 
     .tags {
