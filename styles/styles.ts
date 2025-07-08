@@ -1956,6 +1956,13 @@ html, body {
       font-size: 1rem
     }
 
+    .thursday .cat span,
+    .friday .cat span,
+    .saturday .cat span {
+      display: block;
+      font-weight: 100!important;
+    }
+
     .thursday .override-heading h2, .friday .override-heading h2, .saturday .override-heading h2 {
       font-size: 26px;
     } 
