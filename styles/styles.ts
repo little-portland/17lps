@@ -1990,7 +1990,7 @@ html, body {
 
     .or {
         font-style: italic !important;
-        margin: 10px 0px -8px !important;
+        margin: 10px 0px -10px !important;
         text-align: center;
         color: var(--accent-color);
         font-size: 2rem;
