@@ -1563,11 +1563,18 @@ html, body {
     display: flex!important;
  }
 
-.thursday .category,
-.friday .category,
-.saturday .category, {
+.thursday .day-category,
+.friday .day-category,
+.saturday .day-category, {
   display: block!important;
 }
+
+.thursday .day-category span,
+.friday .day-category span,
+.saturday .day-category span, {
+  display: block!important;
+}
+
 
 /* Hide explore Override button */
 
