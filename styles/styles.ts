@@ -1372,6 +1372,10 @@ html, body {
     background-color: rgb(92, 44, 124);
   }
 
+  .concept {
+    display: none;
+  }
+
   .thursday .tags {
     color: var(--bg-color)!important;
     background-color: var(--accent-color);
