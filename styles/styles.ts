@@ -1327,6 +1327,18 @@ html, body {
     font-size: 1.2rem !important;
 }
 
+.thursday .view-menu a span,
+.friday .view-menu a span,
+.saturday .view-menu a span {
+  color: #ffffff;
+}
+
+.thursday .view-menu a:hover span,
+.friday .view-menu a:hover span,
+.saturday .view-menu a:hover span {
+  color: #000000;
+}
+
 .thursday .btn-tagline,
 .friday .btn-tagline,
 .saturday .btn-tagline {
