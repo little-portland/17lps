@@ -24,8 +24,8 @@ const BookingOptions = () => {
               <h2><span>FRI</span>25 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>LUTHER VINE</h3>
-              <h3><span>STUDIO <b>//</b> </span>Francesco Mami & Tom Trago</h3>
+              <h3><span>TENT <b>//</b> </span>Marc Jarvin, LUTHER VINE</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Tom Trago</h3>
             </div>
         </div>
         <div class="book-wrapper">
