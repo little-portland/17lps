@@ -36,7 +36,6 @@ const BookingOptions = () => {
               <h3><span>STUDIO <b>//</b> </span>LAMACHE, CEM OZDEN</h3>
             </div>
         </div>
-        
 
         <div className="book-wrapper">
           <div className="override-heading">
