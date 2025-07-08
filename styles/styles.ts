@@ -1340,6 +1340,9 @@ html, body {
     margin-bottom: 7px !important;
 }
 
+.thursday .view-menu a:hover,
+.friday .view-menu a:hover,
+.saturday .view-menu a:hover,
 .thursday .view-menu a:hover span,
 .friday .view-menu a:hover span,
 .saturday .view-menu a:hover span {
