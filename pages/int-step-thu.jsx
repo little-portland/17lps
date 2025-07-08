@@ -5,7 +5,7 @@ import Script from "next/script";
 //hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
 
-import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
+import CenterContainer from "@components/UX/CenterContainer/CenterContainer"; 
 import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
