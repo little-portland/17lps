@@ -1967,12 +1967,12 @@ html, body {
       font-size: 1.4rem;
     }
 
-    .thursday .button-wrapper-new a span,
-    .friday .button-wrapper-new a span,
-    .saturday .button-wrapper-new a span {
+    .thursday .new-button-wrapper a span,
+    .friday .new-button-wrapper a span,
+    .saturday .new-button-wrapper a span {
       color: #000!important;
     }
-
+    
     .thursday .book-wrapper, .friday .book-wrapper, .saturday .book-wrapper {
       padding: 10px 5px 0px;
     }
