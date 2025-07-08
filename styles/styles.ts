@@ -1981,7 +1981,11 @@ html, body {
     .thursday .override-heading .time,
     .friday .override-heading .time,
     .saturday .override-heading .time {
-      color: var(--accent-color)!important;
+      color: var(--accent-color);
+      text-align: center;
+      margin: 5px 0 -5px;
+      font-style: italic;
+      font-weight: 100;
     }
 
     .tags {
