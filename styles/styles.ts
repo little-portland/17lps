@@ -1177,6 +1177,7 @@ html, body {
 .thursday #bookingOptions,
 .friday #bookingOptions,
 .saturday #bookingOptions {
+  top: 0;
   margin-bottom: 30px;
 }
 
@@ -1561,6 +1562,12 @@ html, body {
 .desktop-only {
     display: flex!important;
  }
+
+.thursday .category,
+.friday .category,
+.saturday .category, {
+  display: block!important;
+}
 
 /* Hide explore Override button */
 
