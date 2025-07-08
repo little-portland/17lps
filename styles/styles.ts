@@ -1340,15 +1340,6 @@ html, body {
     margin-bottom: 7px !important;
 }
 
-.thursday .view-menu:hover,
-.friday .view-menu:hover,
-.saturday .view-menu:hover,
-.thursday .view-menu a:hover span,
-.friday .view-menu a:hover span,
-.saturday .view-menu a:hover span {
-  color: #000000!important;
-}
-
 .thursday .button-wrapper-new,
 .friday .button-wrapper-new,
 .saturday .button-wrapper-new {
@@ -1567,6 +1558,15 @@ html, body {
 
 .button-wrapper.new-button-wrapper.button-wrapper-bottom .explore-override {
   display: none!important;
+}
+
+.thursday .view-menu:hover,
+.friday .view-menu:hover,
+.saturday .view-menu:hover,
+.thursday .view-menu a:hover span,
+.friday .view-menu a:hover span,
+.saturday .view-menu a:hover span {
+  color: #000000!important;
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
