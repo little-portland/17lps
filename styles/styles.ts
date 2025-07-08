@@ -1333,6 +1333,12 @@ html, body {
   color: #ffffff;
 }
 
+.thursday .view-menu,
+.friday .view-menu,
+.saturday .view-menu {
+    margin-bottom: 7px !important;
+}
+
 .thursday .view-menu a:hover span,
 .friday .view-menu a:hover span,
 .saturday .view-menu a:hover span {
