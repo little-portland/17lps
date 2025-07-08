@@ -661,6 +661,10 @@ html, body {
     border-radius: 10px;
  }
 
+ .dinner-booking .event-info .info {
+   padding: .5rem 1rem 1rem;
+  }
+
   .override-page .event-info {
     margin-bottom: 0!important;
     display: block;
