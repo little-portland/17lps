@@ -43,12 +43,7 @@ const BookingOptions = () => {
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-          <div className="tags">
-            <h3>
           <div class="tags"><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
-
-            </h3>
-          </div>
 
           <div className="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button view-menu" btnType="hollow">
