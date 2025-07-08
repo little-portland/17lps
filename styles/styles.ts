@@ -1209,7 +1209,7 @@ html, body {
 .friday h4,
 .saturday h4 {
   text-align: center;
-  margin: 15px 0;
+  margin: 15px 0px -3px;
   color: var(--accent-color);
 }
 
