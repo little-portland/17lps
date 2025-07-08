@@ -1178,7 +1178,7 @@ html, body {
 .friday #bookingOptions,
 .saturday #bookingOptions {
   margin-bottom: 30px;
-  top: 2%;
+  top: 4%;
 }
 
 .thursday #bookingOptions .event-name,
@@ -1978,6 +1978,12 @@ html, body {
 
     .dance-popup h3 {
       font-size: 1rem
+    }
+
+    .thursday #bookingOptions,
+    .friday #bookingOptions,
+    .saturday #bookingOptions {
+      top: 2%;
     }
 
     .thursday .cat span,
