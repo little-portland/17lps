@@ -1996,15 +1996,6 @@ html, body {
         font-size: 2rem;
     }
 
-    .or::before,
-    .or::after {
-      content: '**************';        
-    }
-    
-    .or::before {
-      margin-right: .25em; 
-    }
-
     .tags {
       margin: 0 0 15px 0;
       width: 100%!important;
