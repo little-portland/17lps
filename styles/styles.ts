@@ -1328,6 +1328,14 @@ html, body {
     font-size: 1.2rem !important;
 }
 
+.thursday .day,
+.friday .day,
+.saturday .day {
+    font-size: 1.2rem !important;
+    text-decoration: undderline; 
+    font-style: italic; 
+}
+
 .thursday .view-menu a span,
 .friday .view-menu a span,
 .saturday .view-menu a span {
