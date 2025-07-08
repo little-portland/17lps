@@ -1973,6 +1973,10 @@ html, body {
       color: #000!important;
     }
 
+    .thursday .book-wrapper, .friday .book-wrapper, .saturday .book-wrapper {
+      padding: 10px 5px 0px;
+    }
+
     .tags {
       margin: 0 0 15px 0;
       width: 100%!important;
