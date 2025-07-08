@@ -1560,12 +1560,9 @@ html, body {
   display: none!important;
 }
 
-.thursday .view-menu:hover,
-.friday .view-menu:hover,
-.saturday .view-menu:hover,
-.thursday .view-menu a:hover span,
-.friday .view-menu a:hover span,
-.saturday .view-menu a:hover span {
+.thursday .new-button-wrapper .events-button:hover span,
+.friday .new-button-wrapper .events-button:hover span,
+.saturday .new-button-wrapper .events-button:hover span {
   color: #000000!important;
 }
 
