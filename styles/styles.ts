@@ -1339,6 +1339,28 @@ html, body {
   color: #000000!important;
 }
 
+.thursday .button-wrapper-new,
+.friday .button-wrapper-new,
+.saturday .button-wrapper-new {
+    display: flex
+    gap: 7px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.thursday .button-wrapper-new a span,
+.friday .button-wrapper-new a span,
+.saturday .button-wrapper-new a span {
+  color: #000!important;
+  font-size: 1.2rem !important;
+}
+
+.thursday .button-wrapper-new a:hover span,
+.friday .button-wrapper-new a:hover span,
+.saturday .button-wrapper-new a:hover span {
+  color: #fff!important;
+}
+
 .thursday .btn-tagline,
 .friday .btn-tagline,
 .saturday .btn-tagline {
