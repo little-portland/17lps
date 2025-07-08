@@ -985,6 +985,7 @@ html, body {
 
 .dinner-booking .tags {
   margin: 0 0 10px!important;
+  text-align: center;
 }
 
 .dinner-booking .view-menu {
