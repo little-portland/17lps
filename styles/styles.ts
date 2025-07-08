@@ -1901,6 +1901,19 @@ html, body {
           line-height: 1.7rem;
        }
 
+     .dinner-booking .event-info .info {
+        padding:0.5rem !important;
+      }
+
+      .dinner-booking .eat-heading h1 {
+          font-size: 2.1rem;
+       }
+
+       .dinner-booking .eat-heading h2 {
+          font-size: 1rem;
+          line-height: 1.7rem;
+       }
+
        .new-button-wrapper .menu-btn span {
         font-size: 1rem !important;
       }
