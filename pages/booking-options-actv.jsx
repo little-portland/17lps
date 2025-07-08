@@ -124,7 +124,7 @@ const BookingOptions = () => {
         </div>
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xiIa9tFG"" target="_blank">
+            <a href="https://sevn.ly/xiIa9tFG" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
