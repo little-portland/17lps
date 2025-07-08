@@ -1968,9 +1968,9 @@ html, body {
       font-size: 1.4rem;
     }
 
-    .thursday .new-button-wrapper a span,
-    .friday .new-button-wrapper a span,
-    .saturday .new-button-wrapper a span {
+    .thursday .mobile-only .menu-btn span,
+    .friday .mobile-only .menu-btn span,
+    .saturday .mobile-only .menu-btn span {
       color: #000!important;
     }
     
