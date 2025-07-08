@@ -1563,16 +1563,19 @@ html, body {
     display: flex!important;
  }
 
-.thursday .day-category,
-.friday .day-category,
-.saturday .day-category {
-  display: block!important;
-}
+@media only screen and (min-device-width: 1024px) { 
 
-.thursday .day-category span,
-.friday .day-category span,
-.saturday .day-category span {
-  display: block!important;
+  .thursday .day-category,
+  .friday .day-category,
+  .saturday .day-category {
+    display: block!important;
+  }
+  
+  .thursday .day-category span,
+  .friday .day-category span,
+  .saturday .day-category span {
+    display: block!important;
+  }
 }
 
 /* Hide explore Override button */
