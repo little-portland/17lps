@@ -45,11 +45,8 @@ const BookingOptions = () => {
           </div>
           <div className="tags">
             <h3>
-              <span>FUTURIST ASIAN MENU</span>
-              <span className="dot">●</span>
-              <span>SENSORIAL SETTING</span>
-              <span className="dot">●</span>
-              <span>DINNER MERGES INTO CLUB</span>
+          <div class="tags"><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
+
             </h3>
           </div>
 
