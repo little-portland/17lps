@@ -1316,7 +1316,7 @@ html, body {
 .thursday .btn-tagline,
 .friday .btn-tagline,
 .saturday .btn-tagline {
-  font-size: 0.9rem;
+  font-size: 0.9rem!important;
 }
 
 /* Color Customization Per Day */
