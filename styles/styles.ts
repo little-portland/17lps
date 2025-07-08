@@ -1407,7 +1407,7 @@ html, body {
 }
 
 .saturday .event-name {
-  font-size: font-size: 8rem!important;
+  font-size: 8rem!important;
 }
 
 .btn-tagline {
