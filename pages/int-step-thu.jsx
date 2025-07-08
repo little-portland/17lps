@@ -61,61 +61,62 @@ const BookingOptions = () => {
             </Button>
           </div>
 
-          <div className="button-wrapper new-button-wrapper desktop-only">
-            <Button classes="events-button new-events-button" btnType="hollow">
+         <div class="button-wrapper new-button-wrapper desktop-only">
+            <Button classes="events-button new-events-button"  btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-06-05&default_time=21:00&default_party_size=4" target="_blank">
-                <span className="space">IN THE TENT</span>
-                <span className="time">Includes Free Club Entry</span>
-                <span className="details"><span>9PM</span></span>
-                <span className="btn-tagline">For the full Override Experience</span>
-              </a>
-            </Button>
-
-            <Button classes="events-button ticket" btnType="hollow">
-              <a className="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span className="space">CHEF’S STUDIO</span>
-                <span className="time">Includes Free Club Entry</span>
-                <span className="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></span>
-                <span className="btn-tagline">Where the heads dine</span>
-              </a>
-            </Button>
+                <span class="space">IN THE TENT</span>
+                <p class="time">Includes Free Club Entry</p>
+                <p class="details"><span>9PM</span></p>
+                <p class="btn-tagline">For the full Override Experience</p>
+               </a>
+              </Button>
+  
+              <Button classes="events-button ticket"  btnType="hollow">
+                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
+                <span class="space">CHEF’S STUDIO</span>
+                <p class="time">Includes Free Club Entry</p>
+                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
+                <p class="btn-tagline">Where the heads dine</p>
+               </a>
+              </Button>
           </div>
-
-          <div className="button-wrapper new-button-wrapper button-wrapper-bottom desktop-only">
-            <a className="menu-btn" href="https://www.little-portland.com/override" target="_blank">
+          
+         <div class="button-wrapper new-button-wrapper button-wrapper-bottom desktop-only">
+            <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
               <span>[What is override?]</span>
             </a>
-            <a className="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-              <span>[What is Chef's Studio?]</span>
-            </a>
-          </div>
-
-          <div className="button-wrapper new-button-wrapper mobile-only">
-            <Button classes="events-button new-events-button" btnType="hollow">
+            <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
+                <span>[What is Chef's Studio?]</span>
+              </a>
+           </div>
+         
+         <div class="button-wrapper new-button-wrapper mobile-only">
+            <Button classes="events-button new-events-button"  btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=4" target="_blank">
-                <span className="space">IN THE TENT</span>
-                <span className="time">Includes Free Club Entry</span>
-                <span className="details"><span>9PM</span></span>
-                <span className="btn-tagline">For the full Override Experience</span>
-              </a>
-            </Button>
+                <span class="space">IN THE TENT</span>
+                <p class="time">Includes Free Club Entry</p>
+                <p class="details"><span>9PM</span></p>
+                <p class="btn-tagline">For the full Override Experience</p>
+               </a>
+              </Button>
 
-            <a className="menu-btn" href="https://www.little-portland.com/override" target="_blank">
+            <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
               <span>[What is override?]</span>
             </a>
+  
+              <Button classes="events-button ticket"  btnType="hollow">
+                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
+                <span class="space">CHEF’S STUDIO</span>
+                <p class="time">Includes Free Club Entry</p>
+                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
+                <p class="btn-tagline">Where the heads dine</p>
+               </a>
+              </Button>
 
-            <Button classes="events-button ticket" btnType="hollow">
-              <a className="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span className="space">CHEF’S STUDIO</span>
-                <span className="time">Includes Free Club Entry</span>
-                <span className="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></span>
-                <span className="btn-tagline">Where the heads dine</span>
-              </a>
-            </Button>
-
-            <a className="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-              <span>[What is Chef's Studio?]</span>
-            </a>
+             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
+                <span>[What is Chef's Studio?]</span>
+            </a> 
+           
           </div>
         </div>
 
