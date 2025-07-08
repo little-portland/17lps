@@ -1967,6 +1967,12 @@ html, body {
       font-size: 1.4rem;
     }
 
+    .thursday .button-wrapper-new a span,
+    .friday .button-wrapper-new a span,
+    .saturday .button-wrapper-new a span {
+      color: #000!important;
+    }
+
     .tags {
       margin: 0 0 15px 0;
       width: 100%!important;
