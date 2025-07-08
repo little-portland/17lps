@@ -1336,7 +1336,7 @@ html, body {
 .thursday .view-menu a:hover span,
 .friday .view-menu a:hover span,
 .saturday .view-menu a:hover span {
-  color: #000000;
+  color: #000000!important;
 }
 
 .thursday .btn-tagline,
