@@ -1178,6 +1178,7 @@ html, body {
 .friday #bookingOptions,
 .saturday #bookingOptions {
   margin-bottom: 30px;
+  top: 2%;
 }
 
 .thursday #bookingOptions .event-name,
