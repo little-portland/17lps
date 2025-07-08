@@ -1989,8 +1989,11 @@ html, body {
     }
 
     .or {
-      font-style: italic;
-      margin: 20px 0;
+        font-style: italic !important;
+        margin: 20px 0px 15px !important;
+        text-align: center;
+        color: var(--accent-color);
+        font-size: 2rem;
     }
 
     .tags {
