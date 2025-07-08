@@ -464,6 +464,7 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     text-transform: uppercase;
+    padding-bottom: 50px;
 }
 
 #override-page {
