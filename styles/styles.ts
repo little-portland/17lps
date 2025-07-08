@@ -1173,6 +1173,12 @@ html, body {
   background-color: var(--bg-color);
 }
 
+.thursday #bookingOptions,
+.friday #bookingOptions,
+.saturday #bookingOptions {
+  margin-bottom: 30px;
+}
+
 .thursday #bookingOptions .event-name,
 .friday #bookingOptions .event-name,
 .saturday #bookingOptions .event-name {
