@@ -25,7 +25,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO, SEMOA & ALIA INDIGO</h3>
-              <h3><span>STUDIO <b>//</b> </span>Cem, Praslea</h3>
+              <h3><span>STUDIO <b>//</b> </span>Cem Ozden, Praslea</h3>
             </div>
         </div>
        <div class="book-wrapper">
