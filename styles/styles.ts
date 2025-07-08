@@ -1801,12 +1801,11 @@ html, body {
       }
 
         #bookingOptions .eat-heading h1 {
-          font-size: 4.7rem;
-          line-height: 5rem;
+          font-size: 2.5rem;
        }
 
        #bookingOptions .eat-heading h2 {
-          font-size: 1rem;
+          font-size: 1.1rem;
           line-height: 1.7rem;
        }
 
