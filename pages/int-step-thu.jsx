@@ -37,7 +37,7 @@ const BookingOptions = () => {
             </div>
         </div>
        <div class="book-wrapper">
-          <div class="override-heading"><h2>START WITH OUR <span>OVERRIDE</span> DINNER</h2></div>
+          <div class="override-heading"><h2>START WITH DINNER</h2></div>
           <div class="concept"><h4>“Override” is our restaurant concept</h4></div>
           <div class="tags"><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
           <div class="button-wrapper new-button-wrapper">
