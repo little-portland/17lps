@@ -59,10 +59,10 @@ const BookingOptions = () => {
           
          <div class="button-wrapper new-button-wrapper button-wrapper-bottom desktop-only">
             <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
-              <span>[What is override]</span>
+              <span>[What is override?]</span>
             </a>
             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[What is Chef's Studio]</span>
+                <span>[What is Chef's Studio?]</span>
               </a>
            </div>
          
