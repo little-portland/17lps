@@ -460,7 +460,7 @@ html, body {
 #bookingOptions {
     position: absolute;
     width: 700px;
-    top: 12%;
+    top: 8%;
     left: 50%;
     transform: translateX(-50%);
     text-transform: uppercase;
