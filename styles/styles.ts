@@ -1294,7 +1294,7 @@ html, body {
 .thursday .override-heading .time,
 .friday .override-heading .time,
 .saturday .override-heading .time {
-  color: var(--accent-color);
+  color: var(--accent-color)!important;
 }
 
 .thursday .book-wrapper .button-wrapper-bottom a span,
