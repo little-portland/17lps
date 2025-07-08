@@ -663,7 +663,7 @@ html, body {
  }
 
  .dinner-booking .event-info .info {
-   padding: .5rem 1rem 1rem;
+   padding: .5rem 1rem 1rem!important;
   }
 
   .override-page .event-info {
@@ -2038,6 +2038,9 @@ html, body {
       display: none;
     }
 
+     .dinner-booking .event-info .info {
+       padding: 1rem!important;
+    }
     .thursday .new-button-wrapper .ticketNew a,
     .friday .new-button-wrapper .ticketNew a,
     .saturday .new-button-wrapper .ticketNew a {
