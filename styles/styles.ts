@@ -1310,13 +1310,21 @@ html, body {
   margin: 60px;
 }
 
-.thursday .button-wrapper-bottom,
+/*.thursday .button-wrapper-bottom,
 .friday .button-wrapper-bottom,
 .saturday .button-wrapper-bottom {
   margin-top: 10px;
   display: inline-block !important;
   text-align: center !important;
   width: 100%;
+}*/
+
+.thursday .button-wrapper-bottom a span,
+.friday .button-wrapper-bottom a span,
+.saturday .button-wrapper-bottom a span{
+    margin-top: 10px;
+    text-align: center !important;
+    font-size: 1.2rem !important;
 }
 
 .thursday .btn-tagline,
