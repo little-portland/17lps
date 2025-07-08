@@ -1562,15 +1562,15 @@ html, body {
     display: flex!important;
  }
 
- .thursday .day-category,
+.thursday .day-category,
 .friday .day-category,
-.saturday .day-category, {
+.saturday .day-category {
   display: block!important;
 }
 
 .thursday .day-category span,
 .friday .day-category span,
-.saturday .day-category span, {
+.saturday .day-category span {
   display: block!important;
 }
 
