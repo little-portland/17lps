@@ -1291,6 +1291,12 @@ html, body {
   color: #000 !important;
 }
 
+.thursday .override-heading .time,
+.friday .override-heading .time,
+.saturday .override-heading .time {
+  color: var(--accent-color);
+}
+
 .thursday .book-wrapper .button-wrapper-bottom a span,
 .friday .book-wrapper .button-wrapper-bottom a span,
 .saturday .book-wrapper .button-wrapper-bottom a span {
