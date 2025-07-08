@@ -1333,7 +1333,7 @@ html, body {
 .friday .day,
 .saturday .day {
     font-size: 1.2rem !important;
-    text-decoration: undderline; 
+    text-decoration: underline;
     font-style: italic; 
 }
 
