@@ -77,7 +77,7 @@ const BookingOptions = () => {
               </Button>
 
             <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
-              <span>[What is override]</span>
+              <span>[What is override?]</span>
             </a>
   
               <Button classes="events-button ticket"  btnType="hollow">
@@ -90,7 +90,7 @@ const BookingOptions = () => {
               </Button>
 
              <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[What is Chef's Studio]</span>
+                <span>[What is Chef's Studio?]</span>
             </a> 
            
           </div>
