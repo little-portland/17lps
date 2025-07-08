@@ -1218,7 +1218,7 @@ html, body {
 .friday .override-heading h2,
 .saturday .override-heading h2 {
   color: var(--accent-color);
-  font-size: 36px;
+  font-size: 4rem;
 }
 
 .thursday .override-heading h2 span,
