@@ -36,6 +36,16 @@ const BookingOptions = () => {
           </div>
         </div>
 
+        <div className="button-wrapper new-button-wrapper mobile-only">
+          <Button classes="events-button ticketNew" btnType="hollow">
+            <a href="" target="_blank">
+              CLUB ENTRY ONLY [10PM]
+            </a>
+          </Button>
+        </div>
+
+        <div className="or mobile-only"><h2>Or</h2></div>
+
         <div className="book-wrapper">
           <div className="override-heading">
             <h2>START WITH DINNER</h2>
@@ -110,8 +120,7 @@ const BookingOptions = () => {
            
           </div>
         </div>
-
-        <div className="button-wrapper new-button-wrapper">
+        <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="" target="_blank">
               CLUB ENTRY ONLY [10PM]
