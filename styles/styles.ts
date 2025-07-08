@@ -1406,6 +1406,10 @@ html, body {
     font-size: 7.8rem!important;
 }
 
+.saturday .event-name {
+  font-size: font-size: 8rem;
+}
+
 .btn-tagline {
     font-size: 0.9rem!important;
     border: 1px solid;
