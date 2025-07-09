@@ -2010,25 +2010,50 @@ html, body {
     /* Dance styles */
 
     .dance-popup {
-      min-height: 375px;
+      min-height: 500px;
     }
 
     .eat-note.dance-popup h2 {
+      padding: 5px 10px;
       margin-bottom: 10rem!important;
-      font-size: 1rem!important;
-      color: #ffffff!important;
+      font-size: .8rem !important;
+      color: #000000!important;
     }
+
+.dance-popup .open-time {
+    font-size: .7rem!important;
+    margin: .5rem auto 1rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    border: none !important;
+    padding: 0px !important;
+}
+
+  .dance-modal {
+    top: 100px;
+  }
 
     .dance-popup h2 span {
       font-size: .9rem;
     }
 
     .dance-popup p {
-     font-size: .9rem;
+        font-size: 0.4rem;
+        line-height: 2;
     }
 
     .dance-popup h3 {
-      font-size: 1rem
+      font-size: .7rem;
+      padding: 5px 10px;
+    }
+
+    .dance-popup .category {
+      margin-top: 1rem;
+    }
+
+    .cat-wrapper {
+      height: 200px;
     }
 
     .thursday #bookingOptions,
