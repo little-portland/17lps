@@ -1601,7 +1601,7 @@ html, body {
 
 .dance-popup::-webkit-scrollbar-thumb,
 .cat-scroll::-webkit-scrollbar-thumb {
-  background-color: #000000;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
