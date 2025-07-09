@@ -1481,6 +1481,18 @@ html, body {
    background-repeat: no-repeat;
 }
 
+.dance-popup::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, #000 0 8px, #fff 8px 16px) top / 100% 12px no-repeat,
+    repeating-linear-gradient(90deg, #000 0 8px, #fff 8px 16px) bottom / 100% 12px no-repeat,
+    repeating-linear-gradient(180deg, #000 0 8px, #fff 8px 16px) left / 12px 100% no-repeat,
+    repeating-linear-gradient(180deg, #000 0 8px, #fff 8px 16px) right / 12px 100% no-repeat;
+}
+
 .eat-note.dance-popup h2 {
     margin-top: 20px;
     display: block;
