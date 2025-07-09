@@ -90,11 +90,11 @@ export default function LayoutTestPage() {
               <p><span>Thursday Underground</span> kicks off the weekend, showcasing cutting-edge electronic artists at the forefront of the underground scene, bringing together a community deeply rooted in its culture.</p>
             </div>
             <div className="category fri">
-              <h3>Friday <span className="italic-word">is</span> <span className="group-item">Residents</span><</h3>
+              <h3>Friday <span className="italic-word">is</span> <span className="group-item">Residents</span></h3>
               <p><span>Friday Residents</span> bridges Underground and Disco3000, shaping the weekend’s rhythm and flow. Focused on club residents, it brings a sense of familiarity and community—the heartbeat of the weekend.</p>
             </div>
             <div className="category sat">
-              <h3>Saturday <span className="italic-word">is</span> <span className="group-item">Disco3000</span><</h3>
+              <h3>Saturday <span className="italic-word">is</span> <span className="group-item">Disco3000</span></h3>
               <p><span>Disco3000</span> captures the evolving spirit of the disco era. Embracing a soundscape that truly resonates with the soul, it delivers a timeless and uplifting journey—a cosmic finale to the weekend.</p>
             </div>
           </div>
