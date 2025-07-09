@@ -1480,6 +1480,7 @@ html, body {
    background-position: top center;
    background-repeat: no-repeat;
    border: 10px solid #fff;
+   overflow: unset;
 }
 
 .eat-note.dance-popup h2 {
@@ -1570,6 +1571,24 @@ html, body {
 
 .dance-popup .category p {
   text-transform: none; 
+}
+
+.cat-wrapper {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  padding: 30px;
+
+  /* FIX: set height to only show e.g. one item */
+  height: 150px; /* adjust based on how much you want visible */
+  overflow: hidden;
+}
+
+.cat-scroll {
+  height: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth; /* optional */
+  padding-right: 10px; /* prevent scrollbar overlap */
 }
 
 .dance-popup::-webkit-scrollbar {
