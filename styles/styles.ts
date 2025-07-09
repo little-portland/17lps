@@ -2036,7 +2036,7 @@ html, body {
   }
 
   .dance-popup {
-    background-position: center -75px!important;
+    background-position: center 50px!important;
     background-color: #000!important;
   }
 
