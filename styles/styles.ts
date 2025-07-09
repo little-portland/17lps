@@ -1500,6 +1500,8 @@ html, body {
     text-align: center;
     color: #fff;
     font-style: italic;
+    border: none!important;
+    padding: 0!important;
 }
 
 .dance-popup p {
