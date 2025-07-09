@@ -711,16 +711,16 @@ html, body {
    line-height: 1.9rem;
  }
 
-.eat-modal button svg {
+.eat-modal button svg, .dance-modal button svg {
   border: 3px solid #000!important;
   fill: #000!important;
 }
 
-.eat-modal button svg g {
+.eat-modal button svg g, .dance-modal button svg g {
   fill: #000 !important;
 }
 
-.eat-modal button svg {
+.eat-modal button svg, .dance-modal button svg {
   filter: brightness(0);
 }
 
@@ -1479,18 +1479,7 @@ html, body {
    background-size: cover;
    background-position: top center;
    background-repeat: no-repeat;
-}
-
-.dance-popup::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(90deg, #000 0 8px, #fff 8px 16px) top / 100% 12px no-repeat,
-    repeating-linear-gradient(90deg, #000 0 8px, #fff 8px 16px) bottom / 100% 12px no-repeat,
-    repeating-linear-gradient(180deg, #000 0 8px, #fff 8px 16px) left / 12px 100% no-repeat,
-    repeating-linear-gradient(180deg, #000 0 8px, #fff 8px 16px) right / 12px 100% no-repeat;
+   border: 10px solid #fff;
 }
 
 .eat-note.dance-popup h2 {
