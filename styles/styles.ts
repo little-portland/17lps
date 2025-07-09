@@ -1525,12 +1525,13 @@ html, body {
   font-size: 1.3rem;
   font-weight: 600;
   text-align: center;
-
-  margin: 20px 30px;
   padding: 10px 20px;
   border-radius: 50px;
-  margin-bottom: .8rem !important;
-  font-size: 1.5rem !important;
+  display: block;
+  border: 2px solid #ffffff;
+  width: fit-content;
+  margin: 20px auto;
+  text-align: center;
 }
 
 .dance-popup h3 span {
@@ -1546,6 +1547,22 @@ html, body {
 .dance-popup a:hover {
   color: #f972af!important;
   text-decoration: none!important;
+}
+
+.dance-popup .is {
+  font-style: italic;
+}
+
+.dance-popup .thu .group {
+  color: #00ff00;
+}
+
+.dance-popup .fri .group {
+  color: #fb0000;
+}
+
+.dance-popup .sat .group {
+  color: #ff00e5;
 }
 
 .dance-popup .category {
