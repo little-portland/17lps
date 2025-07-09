@@ -1549,19 +1549,19 @@ html, body {
   text-decoration: none!important;
 }
 
-.dance-popup .is {
+.dance-popup .italic-word {
   font-style: italic;
 }
 
-.dance-popup .thu .group {
+.dance-popup .thu .group-item {
   color: #00ff00;
 }
 
-.dance-popup .fri .group {
+.dance-popup .fri .group-item {
   color: #fb0000;
 }
 
-.dance-popup .sat .group {
+.dance-popup .sat .group-item {
   color: #ff00e5;
 }
 
