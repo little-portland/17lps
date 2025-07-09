@@ -1486,7 +1486,7 @@ html, body {
 }
 
 .eat-note.dance-popup h2 {
-  margin-bottom: 15rem !important;
+  margin-bottom: 2rem !important;
   font-size: 1.5rem !important;
   color: #fff !important;
 }
@@ -1504,6 +1504,7 @@ html, body {
     line-height: 20px;
     color: white!important;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .dance-popup p span {
