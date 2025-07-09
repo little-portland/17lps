@@ -1482,28 +1482,34 @@ html, body {
 }
 
 .eat-note.dance-popup h2 {
-    margin: 20px 30px;
+    margin-top: 20px;
+    display: block;
     padding: 10px 20px;
     border-radius: 50px;
-    margin-bottom: 2rem !important;
     font-size: 1.5rem !important;
     color: rgb(0, 0, 0) !important;
     background: rgb(255, 255, 255) !important;
+    width: fit-content;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .dance-popup .open-time {
-  font-size: 1rem;
-  margin-top: .5rem;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #fff;
+    font-style: italic;
 }
 
 .dance-popup p {
-    font-size: 1.1rem;
+    font-size: .9rem;
     font-weight: 100;
-    margin-bottom: 1rem;
+    margin-bottom: .6rem;
     line-height: 20px;
-    color: white!important;
     text-transform: uppercase;
     text-align: center;
+    color: white !important;
 }
 
 .dance-popup p span {
@@ -1515,10 +1521,16 @@ html, body {
 }
 
 .dance-popup h3 {
-  color: #d5a7a7;
+  color: #ffffff;
   font-size: 1.3rem;
   font-weight: 600;
-  text-align: left;
+  text-align: center;
+
+  margin: 20px 30px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-bottom: .8rem !important;
+  font-size: 1.5rem !important;
 }
 
 .dance-popup h3 span {
@@ -1527,12 +1539,12 @@ html, body {
 }
 
 .dance-popup a {
-  color: #d5a7a7!important;
+  color: #f972af!important;
   text-decoration: underline!important;
 }
 
 .dance-popup a:hover {
-  color: #d5a7a7!important;
+  color: #f972af!important;
   text-decoration: none!important;
 }
 
