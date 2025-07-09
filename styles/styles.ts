@@ -1574,14 +1574,12 @@ html, body {
 }
 
 .cat-wrapper {
-  position: absolute;
-  top: 55%;
-  left: 0;
-  padding: 30px;
-
-  /* FIX: set height to only show e.g. one item */
-  height: 150px; /* adjust based on how much you want visible */
-  overflow: hidden;
+    position: absolute;
+    top: 60%;
+    left: 0px;
+    padding: 30px;
+    height: 250px;
+    overflow: hidden;
 }
 
 .cat-scroll {
@@ -1591,16 +1589,19 @@ html, body {
   padding-right: 10px; /* prevent scrollbar overlap */
 }
 
-.dance-popup::-webkit-scrollbar {
+.dance-popup::-webkit-scrollbar,
+.cat-scroll::-webkit-scrollbar {
   width: 6px;
 }
 
-.dance-popup::-webkit-scrollbar-track {
+.dance-popup::-webkit-scrollbar-track,
+.cat-scroll::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 10px;
 }
 
-.dance-popup::-webkit-scrollbar-thumb {
+.dance-popup::-webkit-scrollbar-thumb,
+.cat-scroll::-webkit-scrollbar-thumb {
   background-color: #000000;
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
