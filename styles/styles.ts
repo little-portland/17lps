@@ -1475,13 +1475,9 @@ html, body {
 /* DANCE MODAL STYLES */
 
 .dance-popup {
-   background-color: #092834;
-   border: 20px solid #092834;
-   box-shadow: inset 0px 2px 169px rgba(0, 0, 0, 1);
    background-image: url('/images/dance_bg_image.png');
-   background-size: contain;
+   background-size: cover;
    background-position: top center;
-   color: rgb(255, 255, 255);
    background-repeat: no-repeat;
 }
 
@@ -1964,7 +1960,7 @@ html, body {
     /* Dance styles */
 
     .dance-popup {
-      min-height: 425px;
+      min-height: 375px;
     }
 
     .eat-note.dance-popup h2 {
