@@ -1484,7 +1484,10 @@ html, body {
 .eat-note.dance-popup h2 {
   margin-bottom: 2rem !important;
   font-size: 1.5rem !important;
-  color: #fff !important;
+  color: #000 !important;
+  background: #fff !important;
+  padding: 10px 20px;
+  border-radius: 50px;
 }
 
 .dance-popup h2 span {
