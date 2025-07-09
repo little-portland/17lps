@@ -81,7 +81,8 @@ export default function LayoutTestPage() {
       <Modal open={showDanceModal} close={() => setShowDanceModal(false)}>
         <div className="eat-note dance-popup">
           <div>
-            <h2>Open Thursday to Saturday <span>FROM 10PM</span></h2>
+            <h2>Open Thursday to Saturday</h2>
+            <h3 className="open-time">FROM 10PM</h3>
             <p>Access to the club is for Friends of the Club only.</p> 
             <p>To apply, <a href="mailto:yo@little-portland.com?subject=FOC%20Enquiry">email us</a>.</p>
             <p>Or you can access the club by <a href="https://www.little-portland.com/bookings" target="_blank">booking</a> a dinner table.</p>
