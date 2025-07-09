@@ -1481,6 +1481,7 @@ html, body {
    background-repeat: no-repeat;
    border: 10px solid #fff;
    overflow: unset;
+   background-color: #000!important;
 }
 
 .eat-note.dance-popup h2 {
@@ -2032,6 +2033,11 @@ html, body {
 
   .dance-modal {
     top: 50px!important;
+  }
+
+  .dance-popup {
+    background-position: center -75px!important;
+    background-color: #000!important;
   }
 
     .dance-popup h2 span {
