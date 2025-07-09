@@ -77,7 +77,6 @@ export default function LayoutTestPage() {
         hideNav={true} // Hide nav for testing purpuses
       />
 
-      {/* 🎬 DANCE Modal (Test Only) */}
       <Modal open={showDanceModal} close={() => setShowDanceModal(false)}>
         <div className="eat-note dance-popup">
           <div>
