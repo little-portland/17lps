@@ -1528,7 +1528,7 @@ html, body {
   padding: 10px 20px;
   border-radius: 50px;
   display: block;
-  border: 2px solid #ffffff;
+  border: 1px solid #ffffff;
   width: fit-content;
   margin: 20px auto;
   text-align: center;
