@@ -2031,7 +2031,7 @@ html, body {
 }
 
   .dance-modal {
-    top: 100px!important;
+    top: 50px!important;
   }
 
     .dance-popup h2 span {
