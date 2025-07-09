@@ -1482,16 +1482,16 @@ html, body {
 }
 
 .eat-note.dance-popup h2 {
-  margin-bottom: 2rem !important;
-  font-size: 1.5rem !important;
-  color: #000 !important;
-  background: #fff !important;
-  padding: 10px 20px;
-  border-radius: 50px;
+    margin: 20px 30px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-bottom: 2rem !important;
+    font-size: 1.5rem !important;
+    color: rgb(0, 0, 0) !important;
+    background: rgb(255, 255, 255) !important;
 }
 
-.dance-popup h2 span {
-  display: block;
+.dance-popup .open-time {
   font-size: 1rem;
   margin-top: .5rem;
 }
