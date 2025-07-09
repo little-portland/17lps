@@ -1484,7 +1484,6 @@ html, body {
 }
 
 .eat-note.dance-popup h2 {
-    margin-top: 20px;
     display: block;
     padding: 10px 20px;
     border-radius: 50px;
@@ -1492,7 +1491,7 @@ html, body {
     color: rgb(0, 0, 0) !important;
     background: rgb(255, 255, 255) !important;
     width: fit-content;
-    margin: 20px auto;
+    margin: 0 auto;
     text-align: center;
 }
 
