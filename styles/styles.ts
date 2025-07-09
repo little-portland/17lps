@@ -1517,7 +1517,7 @@ html, body {
 }
 
 .dance-popup {
-  min-height: 600px;
+  min-height: 650px;
 }
 
 .dance-popup h3 {
