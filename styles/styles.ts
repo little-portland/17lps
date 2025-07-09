@@ -1534,11 +1534,6 @@ html, body {
   text-align: center;
 }
 
-.dance-popup h3 span {
-  font-weight: 100;
-  font-style: italic; 
-}
-
 .dance-popup a {
   color: #f972af!important;
   text-decoration: underline!important;
@@ -1551,6 +1546,7 @@ html, body {
 
 .dance-popup .italic-word {
   font-style: italic;
+  font-weight: 100;
 }
 
 .dance-popup .thu .group-item {
