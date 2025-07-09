@@ -2015,7 +2015,7 @@ html, body {
 
     .eat-note.dance-popup h2 {
       padding: 5px 10px;
-      margin-bottom: 10rem!important;
+      margin-bottom: 1rem!important;
       font-size: .8rem !important;
       color: #000000!important;
     }
@@ -2031,7 +2031,7 @@ html, body {
 }
 
   .dance-modal {
-    top: 100px;
+    top: 100px!important;
   }
 
     .dance-popup h2 span {
@@ -2039,7 +2039,7 @@ html, body {
     }
 
     .dance-popup p {
-        font-size: 0.4rem;
+        font-size: 0.6rem;
         line-height: 2;
     }
 
