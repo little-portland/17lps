@@ -1487,7 +1487,85 @@ html, body {
    border: 10px solid #fff;
    overflow: unset;
    background-color: #000!important;
+
+   border-width: 5px;
+   border-style: dashed;
+   border-color: transparent; /* Important to prevent fallback solid border */
+
+   border-image: repeating-linear-gradient(
+    to right,
+    #fff 0,
+    #fff 10px,
+    transparent 10px,
+    transparent 15px
+   ) 100 repeat;
+
+   /* Apply same border-image to all 4 sides */
+   border-image-slice: 1;
+   border-image-repeat: round;
 }
+
+
+/* BORDER EFFECT */
+
+.dance-popup {
+  position: relative;
+}
+
+.dance-popup::before,
+.dance-popup::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background: repeating-linear-gradient(
+    to right,
+    white 0,
+    white 10px,
+    transparent 10px,
+    transparent 15px
+  );
+}
+
+.dance-popup::before {
+  top: 0;
+}
+
+.dance-popup::after {
+  bottom: 0;
+}
+
+.dance-popup::before,
+.dance-popup::after,
+.dance-popup::left,
+.dance-popup::right {
+  z-index: 1;
+}
+
+.dance-popup::left,
+.dance-popup::right {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    white 0,
+    white 10px,
+    transparent 10px,
+    transparent 15px
+  );
+}
+
+.dance-popup::left {
+  left: 0;
+}
+
+.dance-popup::right {
+  right: 0;
+}
+
+/* END OF BORDER EFFECT */
 
 .eat-note.dance-popup h2 {
     display: block;
