@@ -1480,18 +1480,16 @@ html, body {
 /* DANCE MODAL STYLES */
 
 .dance-popup {
-   background-image: url('/images/dance_bg_image.png');
-   background-size: cover;
-   background-position: top center;
-   background-repeat: no-repeat;
-   overflow: unset;
-  border-width: 10px;
-  border-style: solid;
-  border-color: transparent;
-  border-image-source: url('/images/checker-border.png'); /* tiny white square */
-  border-image-slice: 1;
-  border-image-width: 10px;
-  border-image-repeat: repeat;
+    background-image: url(/images/dance_bg_image.png);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    overflow: unset;
+    border-width: 7px;
+    border-style: solid;
+    border-color: white;
+    border-style: dashed;
+    background-color: #000;
 }
 
 .eat-note.dance-popup h2 {
