@@ -145,6 +145,11 @@ html, body {
   .eat-note {
     min-width: 550px;
   }
+  
+  .hire-modal .btn-wrapper-border {
+    margin-top: -40px;
+  }
+  
 }
 
 .eat-note h1 {
