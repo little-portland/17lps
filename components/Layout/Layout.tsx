@@ -160,6 +160,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         open={displayHire}
         close={closeHire}
         email={hireItem.eMail}
+        className="hire-modal"
         // phone={hireItem.phoneNumber}
       >
     {<div
