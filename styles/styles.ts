@@ -1486,11 +1486,11 @@ html, body {
    background-repeat: no-repeat;
    overflow: unset;
    background-color: #000!important;
-   border: 10px solid transparent;
-   border-image-source: url('/images/checker-border.png');
-   border-image-slice: 10;
-   border-image-repeat: repeat;
-   border-image-width: 10px;
+  border: 10px solid transparent;
+  border-image-source: url('/images/your-new-checker.png'); /* this one */
+  border-image-slice: 10; /* or adjust depending on the white square's size */
+  border-image-repeat: repeat;
+  border-image-width: 10px;
 }
 
 .eat-note.dance-popup h2 {
