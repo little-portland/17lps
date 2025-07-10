@@ -1482,7 +1482,7 @@ html, body {
 .dance-popup {
     background-image: url(/images/dance_bg_image.png);
     background-size: cover;
-    background-position: center top;
+    background-position: center 15px;
     background-repeat: no-repeat;
     overflow: unset;
     border-width: 7px;
