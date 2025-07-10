@@ -160,13 +160,18 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         open={displayHire}
         close={closeHire}
         email={hireItem.eMail}
-        phone={hireItem.phoneNumber}
+        // phone={hireItem.phoneNumber}
       >
     {<div
         className="eat-note"
       >       
          <h1>Private Hire</h1>
         <br/>
+        <Image 
+            src={"/images/hire-page-venue.jpg"}
+            blurDataURL={"/images/hire-page-venue.jpg"}
+        />
+        <br/> 
         <Image 
             src={"/images/hire-page-chef-tent.jpg"}
             blurDataURL={"/images/hire-page-chef-tent.jpg"}
