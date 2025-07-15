@@ -1512,9 +1512,29 @@ html, body {
     text-align: center!important;
 }
 
-.dance-title::before,
+/*.dance-title::before,
 .dance-title::after {
   content: '*';        
+}*/
+
+.dance-title::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('/images/club-logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  }
+
+.dance-title::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('/images/club-logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
     
 .dance-title::before {
