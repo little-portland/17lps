@@ -1502,6 +1502,21 @@ html, body {
     text-align: center!important;
 }
 
+    /* add asterisks around every <span> inside .tags > h3 */
+    .dance-title::before,
+    .dance-title::after {
+      content: '*';        
+    }
+    
+    /* (optional) small spacing so the asterisks don’t touch the text */
+    .dance-title::before {
+      margin-right: .25em; 
+    }
+    
+    .dance-title::after  {
+      margin-left:  .25em; 
+    }
+
 .eat-note.dance-popup h2 {
     display: block;
     padding: 10px 20px;
