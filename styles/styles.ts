@@ -1609,6 +1609,10 @@ html, body {
   margin-top: 3rem;
 }
 
+.dance-popup .thu {
+  margin-top: 0;
+}
+
 .dance-popup .category p {
   text-transform: none; 
 }
