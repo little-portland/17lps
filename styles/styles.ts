@@ -1612,10 +1612,6 @@ html, body {
   text-transform: none; 
 }
 
-.dance-popup .category.thu {
-  margin-top: 40%;
-}
-
 .cat-wrapper {
     position: absolute;
     top: 0;
