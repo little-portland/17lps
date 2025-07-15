@@ -89,6 +89,7 @@ export default function LayoutTestPage() {
               <p>Access to the club is for <strong>Friends of the Club only.</strong></p> 
               <p>To apply to become a <strong>Friend of the Club </strong>, <a href="mailto:yo@little-portland.com?subject=FOC%20Enquiry">email us</a>.</p>
               <p>Or you can access the club by <a href="https://www.little-portland.com/bookings" target="_blank">booking</a> a dinner table.</p>
+               <img src="/images/dance-popup-img.jpg" />
                   <div className="category thu">
                     <h3>Thursday <span className="italic-word">is</span> <span className="group-item">Underground</span></h3>
                     <p><span className="group-item">Thursday Underground</span> kicks off the weekend, showcasing cutting-edge electronic artists at the forefront of the underground scene, bringing together a community deeply rooted in its culture.</p>
