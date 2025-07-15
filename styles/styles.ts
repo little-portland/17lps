@@ -1617,7 +1617,7 @@ html, body {
     position: absolute;
     top: 0;
     left: 0px;
-    padding: 15px 15px 40px 25px;
+    padding: 25px 25px 50px 25px;
     height: 100%;
     overflow: hidden;
 }
