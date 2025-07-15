@@ -1485,11 +1485,9 @@ html, body {
     background-position: center 15px;
     background-repeat: no-repeat; */
     overflow: unset;
-    border: 10px solid #fff;
     background-color: #000!important;
-    border: 10px solid transparent;
-    padding: 15px;
-    border-image: url(/images/dance_bg_image.png) 30 round;
+    border: 20px solid transparent;
+    border-image: url(/images/dance_bg_image.png) 50 round;
 }
 
 .dance-popup strong {
@@ -1498,11 +1496,11 @@ html, body {
 }
 
 .dance-popup img {
-  width: 100%;
-  height: auto;
-  display: block;
-  max-width: 100%;
-  object-fit: contain;
+  width: 100%!important;
+  height: auto!important;
+  display: block!important;
+  max-width: 100%!important;
+  object-fit: contain!important;
 }
 
 .dance-title {
