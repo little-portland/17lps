@@ -1489,11 +1489,16 @@ html, body {
     background-color: #000!important;
 }
 
+.dance-popup strong {
+    font-weight: 600;
+    font-style: italic;
+}
+
 .dance-title {
     font-size: 2.5rem !important;
-    color: #fff;
-    margin: 20px auto; 
-    text-align: center;
+    color: #fff!important;
+    margin: 20px!important
+    text-align: center!important;
 }
 
 .eat-note.dance-popup h2 {
