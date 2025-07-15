@@ -81,10 +81,11 @@ export default function LayoutTestPage() {
       <Modal open={showDanceModal} close={() => setShowDanceModal(false)} className="dance-modal">
         <div className="eat-note dance-popup">
           <div>
+            <h1 className="dance-title">"THE CLUB"</h1>
             <h2>Open Thursday to Saturday</h2>
             <h3 className="open-time">FROM 10PM</h3>
-            <p>Access to the club is for Friends of the Club only.</p> 
-            <p>To apply, <a href="mailto:yo@little-portland.com?subject=FOC%20Enquiry">email us</a>.</p>
+            <p>Access to the club is for <strong>Friends of the Club only.</strong></p> 
+            <p>To apply to become a <strong>Friend of the Club </strong>, <a href="mailto:yo@little-portland.com?subject=FOC%20Enquiry">email us</a>.</p>
             <p>Or you can access the club by <a href="https://www.little-portland.com/bookings" target="_blank">booking</a> a dinner table.</p>
             <div className="cat-wrapper">
               <div class="cat-scroll">
