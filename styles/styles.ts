@@ -1497,25 +1497,23 @@ html, body {
 .dance-title {
     font-size: 2.5rem !important;
     color: #fff!important;
-    margin-top: 20px!important;
+    margin-top: 5px!important;
     margin-bottom: 20px!important;
     text-align: center!important;
 }
 
-    /* add asterisks around every <span> inside .tags > h3 */
-    .dance-title::before,
-    .dance-title::after {
-      content: '*';        
-    }
+.dance-title::before,
+.dance-title::after {
+  content: '*';        
+}
     
-    /* (optional) small spacing so the asterisks don’t touch the text */
-    .dance-title::before {
-      margin-right: .25em; 
-    }
+.dance-title::before {
+  margin-right: .25em; 
+}
     
-    .dance-title::after  {
-      margin-left:  .25em; 
-    }
+.dance-title::after  {
+  margin-left:  .25em; 
+}
 
 .eat-note.dance-popup h2 {
     display: block;
@@ -1606,20 +1604,24 @@ html, body {
   text-transform: none; 
 }
 
+.dance-popup .category.thu {
+  margin-top: 40%;
+}
+
 .cat-wrapper {
     position: absolute;
-    top: 60%;
+    top: 0;
     left: 0px;
-    padding: 30px;
-    height: 250px;
+    padding: 15px 15px 40px 25px;
+    height: 100%;
     overflow: hidden;
 }
 
 .cat-scroll {
-  height: 100%;
-  overflow-y: scroll;
-  scroll-behavior: smooth; /* optional */
-  padding-right: 10px; /* prevent scrollbar overlap */
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding-right: 5px;
 }
 
 .dance-popup::-webkit-scrollbar,
