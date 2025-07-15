@@ -1487,6 +1487,9 @@ html, body {
     overflow: unset;
     border: 10px solid #fff;
     background-color: #000!important;
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image: url(/images/dance_bg_image.png) 30 round;
 }
 
 .dance-popup strong {
