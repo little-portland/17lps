@@ -2056,6 +2056,7 @@ html, body {
 
     .dance-popup {
       min-height: 500px;
+      min-width: 300px;
     }
 
     .eat-note.dance-popup h2 {
@@ -2084,6 +2085,10 @@ html, body {
     background-color: #000!important;
   }
 
+  .dance-title {
+    font-size: 1.5rem!important;
+  }
+
     .dance-popup h2 span {
       font-size: .9rem;
     }
@@ -2100,10 +2105,6 @@ html, body {
 
     .dance-popup .category {
       margin-top: 1rem;
-    }
-
-    .cat-wrapper {
-      height: 200px;
     }
 
     .thursday #bookingOptions,
