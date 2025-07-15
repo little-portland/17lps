@@ -1480,10 +1480,10 @@ html, body {
 /* DANCE MODAL STYLES */
 
 .dance-popup {
-    background-image: url(/images/dance_bg_image.png);
+    /* background-image: url(/images/dance_bg_image.png);
     background-size: cover;
     background-position: center 15px;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     overflow: unset;
     border: 10px solid #fff;
     background-color: #000!important;
