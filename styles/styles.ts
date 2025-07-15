@@ -1497,7 +1497,8 @@ html, body {
 .dance-title {
     font-size: 2.5rem !important;
     color: #fff!important;
-    margin: 20px!important
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;
     text-align: center!important;
 }
 
