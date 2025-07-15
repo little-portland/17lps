@@ -24,9 +24,9 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category lick-lid">Lick the Lid<span className="day">Presents</span></h1>
+        <h1 className="event-name desktop-only day-category lick-lid">Lick the Lid <p>Likeminded</p><span className="day">Presents</span></h1>
         
-        <h1 className="event-name mobile-only cat">Lick the Lid<span className="cat-day">Presents</span></h1>
+        <h1 className="event-name mobile-only cat">Lick the Lid <p>Likeminded</p><span className="cat-day">Presents</span></h1>
 
         <div className="event-info">
             <div class="info date">
@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DMC, Giorja</h3>
-              <h3><span>STUDIO <b>//</b> </span>Daan Donk, Kate08, Vera</h3>
+              <h3><span>STUDIO <b>//</b> </span>Daan Donk, Kate08, Kyle Toole</h3>
             </div>
         </div>
 
