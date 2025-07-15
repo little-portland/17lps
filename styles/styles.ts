@@ -1512,12 +1512,12 @@ html, body {
     text-align: center!important;
 }
 
-/*.dance-title::before,
+.dance-title::before,
 .dance-title::after {
   content: '*';        
-}*/
+}
 
-.dance-title::before {
+/*.dance-title::before {
   content: "";
   display: inline-block;
   width: 20px;
@@ -1535,7 +1535,7 @@ html, body {
   background-image: url('/images/club-logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
-}
+}*/
     
 .dance-title::before {
   margin-right: .25em; 
