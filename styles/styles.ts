@@ -1486,6 +1486,7 @@ html, body {
     background-repeat: no-repeat;
     overflow: unset;
     border: 10px solid #fff;
+    background-color: #000!important;
 }
 
 .eat-note.dance-popup h2 {
