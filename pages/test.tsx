@@ -83,7 +83,7 @@ export default function LayoutTestPage() {
           <div>
           <div className="cat-wrapper">
             <div class="cat-scroll">
-              <h1 className="dance-title">"THE CLUB"</h1>
+              <h1 className="dance-title">THE CLUB</h1>
               <h2>Open Thursday to Saturday</h2>
               <h3 className="open-time">FROM 10PM</h3>
               <p>Access to the club is for <strong>Friends of the Club only.</strong></p> 
