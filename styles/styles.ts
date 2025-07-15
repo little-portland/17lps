@@ -1494,6 +1494,14 @@ html, body {
     font-style: italic;
 }
 
+.dance-popup img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+}
+
 .dance-title {
     font-size: 2.5rem !important;
     color: #fff!important;
