@@ -1501,6 +1501,7 @@ html, body {
   display: block!important;
   max-width: 100%!important;
   object-fit: contain!important;
+  margin: 20px 0 !important;
 }
 
 .dance-title {
