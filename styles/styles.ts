@@ -1489,6 +1489,13 @@ html, body {
     background-color: #000!important;
 }
 
+.dance-title {
+    font-size: 2.5rem !important;
+    color: #fff;
+    margin: 20px auto; 
+    text-align: center;
+}
+
 .eat-note.dance-popup h2 {
     display: block;
     padding: 10px 20px;
