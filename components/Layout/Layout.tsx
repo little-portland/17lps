@@ -75,7 +75,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
     ) : null}
 
       <MainStyle>{main}</MainStyle>
-      <Modal open={displayLineup} close={closeLineup}>
+      <Modal open={displayLineup} close={closeLineup} className="dance-modal">
         <div className="eat-note dance-popup">
           <div>
           <div className="cat-wrapper">
