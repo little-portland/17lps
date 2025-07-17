@@ -35,22 +35,34 @@ export default function ManualSlideshow() {
       style={{
         position: 'relative',
         width: '100%',
+        maxWidth: '100%',
         overflow: 'hidden',
         zIndex: 0,
       }}
     >
-      {/* Slides - in flow, not absolute */}
-      <div style={{ position: 'relative', width: '100%' }}>
+      {/* Fixed height container to avoid collapse */}
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          paddingBottom: '56.25%', // 16:9 aspect ratio (optional)
+        }}
+      >
         {images.map((src, index) => (
           <img
             key={index}
             src={src}
             alt={`Slide ${index + 1}`}
             style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
               width: '100%',
-              height: 'auto',
-              display: index === current ? 'block' : 'none',
+              height: '100%',
+              objectFit: 'cover',
+              opacity: current === index ? 1 : 0,
               transition: 'opacity 1s ease-in-out',
+              zIndex: current === index ? 2 : 1,
             }}
           />
         ))}
@@ -90,5 +102,5 @@ const arrowStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   cursor: 'pointer',
-  zIndex: 2,
+  zIndex: 3,
 };
