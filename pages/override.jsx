@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
+import ManualSlideshow from "@components/UX/ManualSlideshow"; // adjust path if different
 
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
@@ -108,9 +109,14 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/override/override_new_page_top_new.png" alt="Override" width="100%" />
            <img className="override-tent" src="/images/override/tent-laser.gif" alt="Override" width="100%" />
            <img className="override-quote override-space-top-bottom" src="/images/override/override_new_page_quote02.png" alt="Override" width="100%" />
+         </div>
 
-           <img className="override-quote override-space-bottom" src="/images/override/myth-slides.gif" alt="Override" width="100%" />
-           <img className="override-quote override-space-bottom" src="/images/override/slide07.png" alt="Override" width="100%" />
+          <div className="nocturn override override-space-bottom">
+            <ManualSlideshow />
+          </div>
+
+          <div className="nocturn override">
+            <img className="override-quote override-space-bottom" src="/images/override/slide07.png" alt="Override" width="100%" />
             <img className="override-quote override-space-top-bottom" src="/images/override/slide09.png" alt="Override" width="100%" />
             <img className="override-quote override-space-top-bottom" src="/images/override/bits-slides.gif" alt="Override" width="100%" />
             <img className="override-quote override-space-top-bottom" src="/images/override/slide10.png" alt="Override" width="100%" />
