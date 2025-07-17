@@ -39,19 +39,30 @@ export default function ManualSlideshow() {
         zIndex: 0,
       }}
     >
-      {/* Stack all slides with opacity transition */}
-      <div style={{ position: 'relative', width: '100%' }}>
+      {/* Layout placeholder to force height */}
+      <img
+        src={images[current]}
+        alt="Slide layout placeholder"
+        style={{
+          width: '100%',
+          height: 'auto',
+          visibility: 'hidden', // invisible but takes space
+        }}
+      />
+
+      {/* Absolutely positioned fading images */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
         {images.map((src, index) => (
           <img
             key={index}
             src={src}
             alt={`Slide ${index + 1}`}
             style={{
+              width: '100%',
+              height: 'auto',
               position: 'absolute',
               top: 0,
               left: 0,
-              width: '100%',
-              height: 'auto',
               opacity: current === index ? 1 : 0,
               transition: 'opacity 1s ease-in-out',
               zIndex: current === index ? 2 : 1,
