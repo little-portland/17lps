@@ -106,14 +106,9 @@ const Menu = ({ menuImage }) => {
            <img className="override-tent" src="/images/override/tent-laser.gif" alt="Override" width="100%" />
            <img className="override-quote" src="/images/override/override_new_page_quote02.png" alt="Override" width="100%" />
 
-           <img className="override-quote" src="/images/override/slide01.png" alt="Override" width="100%" />
-           <img className="override-quote" src="/images/override/slide02.gif" alt="Override" width="100%" />
-           <img className="override-quote" src="/images/override/slide03.png" alt="Override" width="100%" />
-           <img className="override-quote" src="/images/override/slide04.png" alt="Override" width="100%" />
-           <img className="override-quote" src="/images/override/slide05.png" alt="Override" width="100%" />
-           <img className="override-quote" src="/images/override/slide06.png" alt="Override" width="100%" />
+           <img className="override-quote" src="/images/override/myth-slides.gif" alt="Override" width="100%" />
            <img className="override-quote" src="/images/override/slide07.png" alt="Override" width="100%" />
-           <img className="override-quote" src="/images/override/slide08.png" alt="Override" width="100%" />
+            <img className="override-quote" src="/images/override/slide09.png" alt="Override" width="100%" />
          </div>
 
          <div className="nocturn-wider-section override-logo">
