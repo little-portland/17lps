@@ -35,10 +35,7 @@ export default function ManualSlideshow() {
       style={{
         position: 'relative',
         width: '100%',
-        maxWidth: '100%',
-        aspectRatio: '16 / 9',
         overflow: 'hidden',
-        margin: '0 auto',
         zIndex: 0,
       }}
     >
@@ -51,8 +48,7 @@ export default function ManualSlideshow() {
           className="slide-image"
           style={{
             width: '100%',
-            height: '100%',
-            objectFit: 'cover',
+            height: 'auto',
             position: 'absolute',
             top: 0,
             left: 0,
@@ -94,13 +90,13 @@ const arrowStyle = {
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
-  fontSize: '2.8rem',
+  fontSize: '2.5rem',
   color: '#fff',
-  backgroundColor: 'rgba(0,0,0,0.5)',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
   border: 'none',
   borderRadius: '50%',
-  width: '48px',
-  height: '48px',
+  width: '40px',
+  height: '40px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -108,4 +104,3 @@ const arrowStyle = {
   zIndex: 3,
   transition: 'background-color 0.3s ease',
 };
-
