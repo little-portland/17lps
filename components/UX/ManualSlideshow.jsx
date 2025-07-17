@@ -79,7 +79,7 @@ const arrowStyle = {
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
-  fontSize: '2.5rem',
+  fontSize: '1.5rem',
   color: '#fff',
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
   border: 'none',
