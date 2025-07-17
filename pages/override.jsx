@@ -159,14 +159,7 @@ const Menu = ({ menuImage }) => {
                            
          <div className="override-buttons-wrapper">
            <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5" class="override-button book-override">BOOK OVERRIDE</a>
-           <div className="row">
-              <div className="column">
-                   <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
-              </div>
-              <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
-              </div>
-           </div>
+           <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
           </div>
            
           <img src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
