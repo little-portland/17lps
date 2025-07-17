@@ -114,7 +114,7 @@ const Menu = ({ menuImage }) => {
            <img className="override-quote override-space-top-bottom" src="/images/override/override_new_page_quote02.png" alt="Override" width="100%" />
          </div>
 
-          <div className="nocturn override override-space-bottom" v style={{ position: 'relative', width: '100%', marginBottom: '40px' }}>
+          <div className="nocturn override override-space-bottom">
             <ManualSlideshow />
           </div>
 
