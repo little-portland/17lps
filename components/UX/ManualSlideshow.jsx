@@ -39,45 +39,34 @@ export default function ManualSlideshow() {
         zIndex: 0,
       }}
     >
-      {/* Slides */}
-      {images.map((src, index) => (
-        <img
-          key={index}
-          src={src}
-          alt={`Slide ${index + 1}`}
-          className="slide-image"
-          style={{
-            width: '100%',
-            height: 'auto',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            opacity: current === index ? 1 : 0,
-            transition: 'opacity 1s ease-in-out',
-            zIndex: current === index ? 2 : 1,
-          }}
-        />
-      ))}
+      {/* Slides - in flow, not absolute */}
+      <div style={{ position: 'relative', width: '100%' }}>
+        {images.map((src, index) => (
+          <img
+            key={index}
+            src={src}
+            alt={`Slide ${index + 1}`}
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: index === current ? 'block' : 'none',
+              transition: 'opacity 1s ease-in-out',
+            }}
+          />
+        ))}
+      </div>
 
-      {/* Left Arrow */}
+      {/* Arrows */}
       <button
         onClick={prevSlide}
-        style={{
-          ...arrowStyle,
-          left: '15px',
-        }}
+        style={{ ...arrowStyle, left: '10px' }}
         aria-label="Previous Slide"
       >
         ‹
       </button>
-
-      {/* Right Arrow */}
       <button
         onClick={nextSlide}
-        style={{
-          ...arrowStyle,
-          right: '15px',
-        }}
+        style={{ ...arrowStyle, right: '10px' }}
         aria-label="Next Slide"
       >
         ›
@@ -101,6 +90,5 @@ const arrowStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   cursor: 'pointer',
-  zIndex: 3,
-  transition: 'background-color 0.3s ease',
+  zIndex: 2,
 };
