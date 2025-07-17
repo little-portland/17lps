@@ -35,19 +35,12 @@ export default function ManualSlideshow() {
       style={{
         position: 'relative',
         width: '100%',
-        maxWidth: '100%',
         overflow: 'hidden',
         zIndex: 0,
       }}
     >
-      {/* Fixed height container to avoid collapse */}
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          paddingBottom: '56.25%', // 16:9 aspect ratio (optional)
-        }}
-      >
+      {/* Stack all slides with opacity transition */}
+      <div style={{ position: 'relative', width: '100%' }}>
         {images.map((src, index) => (
           <img
             key={index}
@@ -58,8 +51,7 @@ export default function ManualSlideshow() {
               top: 0,
               left: 0,
               width: '100%',
-              height: '100%',
-              objectFit: 'cover',
+              height: 'auto',
               opacity: current === index ? 1 : 0,
               transition: 'opacity 1s ease-in-out',
               zIndex: current === index ? 2 : 1,
@@ -68,7 +60,7 @@ export default function ManualSlideshow() {
         ))}
       </div>
 
-      {/* Arrows */}
+      {/* Navigation arrows */}
       <button
         onClick={prevSlide}
         style={{ ...arrowStyle, left: '10px' }}
