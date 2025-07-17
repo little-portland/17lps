@@ -111,7 +111,7 @@ const Menu = ({ menuImage }) => {
 
            <img className="override-quote override-space-bottom" src="/images/override/myth-slides.gif" alt="Override" width="100%" />
            <img className="override-quote override-space-bottom" src="/images/override/slide07.png" alt="Override" width="100%" />
-            <img className="override-quote override-space-bottom" src="/images/override/slide09.png" alt="Override" width="100%" />
+            <img className="override-quote override-space-top-bottom" src="/images/override/slide09.png" alt="Override" width="100%" />
             <img className="override-quote override-space-bottom" src="/images/override/slide10.png" alt="Override" width="100%" />
          </div>
 
