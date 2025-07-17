@@ -111,29 +111,6 @@ const Menu = ({ menuImage }) => {
             <img className="override-quote" src="/images/override/slide09.png" alt="Override" width="100%" />
          </div>
 
-         <div className="nocturn-wider-section override-logo">
-           <div className="image-row">
-              <div className="image-column">
-                <img src="/images/override/image19.jpg" />
-                <img src="/images/override/image17.jpg" />
-                <img src="/images/override/image15.jpg" />
-                <img src="/images/override/image26.jpg" />
-              </div>
-             <div className="image-column">
-                <img src="/images/override/image28.jpg" /> 
-                <img src="/images/override/image22.jpg" />
-                <img src="/images/override/image23.jpg" />
-                <img src="/images/override/image21.jpg" />
-              </div>
-             <div className="image-column">
-                <img src="/images/override/image25.jpg" />
-                <img src="/images/override/image27.jpg" />
-                <img src="/images/override/image29.jpg" />
-                <img src="/images/override/image24.jpg" />
-              </div>
-           </div>
-          </div>
-
          <div className="nocturn override">
            <img className="override-logo full-width" src="/images/override/bullet-points.png" />
          </div>
@@ -149,8 +126,6 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn override">
            <img className="override-logo full-width" src="/images/override/override_flyer_heading.png" />
            <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
-           <img className="override-logo full-width" src="/images/override/override_schedule.png" />
-
                            
          <div className="override-buttons-wrapper">
            <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5" class="override-button book-override">BOOK OVERRIDE</a>
