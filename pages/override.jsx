@@ -113,7 +113,7 @@ const Menu = ({ menuImage }) => {
            <img className="override-quote" src="/images/override/slide05.png" alt="Override" width="100%" />
            <img className="override-quote" src="/images/override/slide06.png" alt="Override" width="100%" />
            <img className="override-quote" src="/images/override/slide07.png" alt="Override" width="100%" />
-           <img className="override-quote" src="/images/override/slide08.png" alt="Override" width="100%" /
+           <img className="override-quote" src="/images/override/slide08.png" alt="Override" width="100%" />
          </div>
 
          <div className="nocturn-wider-section override-logo">
