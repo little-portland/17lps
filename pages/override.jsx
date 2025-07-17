@@ -114,12 +114,12 @@ const Menu = ({ menuImage }) => {
            <img className="override-quote override-space-top-bottom" src="/images/override/override_new_page_quote02.png" alt="Override" width="100%" />
          </div>
 
-          <div className="nocturn override override-space-bottom">
+          <div className="override-space-bottom">
             <ManualSlideshow />
           </div>
 
           <div className="nocturn override">
-            <img className="override-quote override-space-bottom" src="/images/override/slide07.png" alt="Override" width="100%" />
+            <img className="override-quote" src="/images/override/slide07.png" alt="Override" width="100%" />
             <img className="override-quote override-space-top-bottom" src="/images/override/slide09.png" alt="Override" width="100%" />
             <img className="override-quote override-space-top-bottom" src="/images/override/bits-slides.gif" alt="Override" width="100%" />
             <img className="override-quote override-space-top-bottom" src="/images/override/slide10.png" alt="Override" width="100%" />
