@@ -33,7 +33,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>24 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO, ALIA INDIGO & SEMOA</h3>
+              <h3><span>TENT <b>//</b> </span>ALIA INDIGO & SEMOA, GABY D'ANNUNZIO</h3>
               <h3><span>STUDIO <b>//</b> </span>Cem Ozden, Praslea</h3>
             </div>
         </div>
