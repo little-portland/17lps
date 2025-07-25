@@ -33,14 +33,14 @@ const BookingOptions = () => {
               <h2><span>THU</span>16 Aug</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>LUTHER VINE, OLI SILVA</h3>
+              <h3><span>TENT <b>//</b> </span>JOS, LUTHER VINE</h3>
               <h3><span>STUDIO <b>//</b> </span>JONNY ROCK B2B ROB MELLO</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="" target="_blank">
+            <a href="https://sevn.ly/xz6xcpbG" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
@@ -124,7 +124,7 @@ const BookingOptions = () => {
         </div>
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="" target="_blank">
+            <a href="https://sevn.ly/xz6xcpbG" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
