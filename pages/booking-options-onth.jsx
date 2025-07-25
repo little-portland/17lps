@@ -33,14 +33,14 @@ const BookingOptions = () => {
               <h2><span>FRI</span>15 Aug</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Harri Pepper, MAYBE LAURA & REMI MAZET</h3>
-              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini</h3>
+              <h3><span>TENT <b>//</b> </span>MARCELINA, MR SHIVER</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, GREG PAULUS (LIVE TRUMPET), ZEINA</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="" target="_blank">
+            <a href="https://sevn.ly/xZNyrmRb" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
@@ -124,7 +124,7 @@ const BookingOptions = () => {
         </div>
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="" target="_blank">
+            <a href="https://sevn.ly/xZNyrmRb" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
