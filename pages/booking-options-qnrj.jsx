@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>JOS, Theo G</h3>
-              <h3><span>STUDIO <b>//</b> </span>THOMAS MELCHIOR</h3>
+              <h3><span>STUDIO <b>//</b> </span>THOMAS MELCHIOR, Trixie</h3>
             </div>
         </div>
 
