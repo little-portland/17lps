@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>HARRI PEPPER, PATO</h3>
-              <h3><span>STUDIO <b>//</b> </span>JAY (Mathew wife), MATHEW JONSON</h3>
+              <h3><span>STUDIO <b>//</b> </span>JAY, MATHEW JONSON</h3>
             </div>
         </div>
 
