@@ -33,7 +33,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>22 Aug</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO, JOS</h3>
+              <h3><span>TENT <b>//</b> </span>CHEB MOHA & GABY D'ANNUNZIO & MABRUK, JOS</h3>
               <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Frankie Mami</h3>
             </div>
         </div>
