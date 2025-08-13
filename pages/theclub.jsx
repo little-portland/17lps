@@ -129,9 +129,14 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/chefstudio/chefstudio08.jpg" />
                 <img src="/images/chefstudio/chefstudio12.jpg" />
                 <img src="/images/chefstudio/chefstudio14.jpg" />
-
               </div>
              <div className="image-column">
+                <img src="/images/chefstudio/chefstudio10.jpg" />
+                <img src="/images/chefstudio/chefstudio11.jpg" />
+                <img src="/images/chefstudio/chefstudio09.jpg" />
+                <img src="/images/chefstudio/chefstudio13.jpg" />
+              </div>
+              <div className="image-column">
                 <img src="/images/chefstudio/chefstudio10.jpg" />
                 <img src="/images/chefstudio/chefstudio11.jpg" />
                 <img src="/images/chefstudio/chefstudio09.jpg" />
