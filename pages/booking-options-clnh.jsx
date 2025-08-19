@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>CHEB MOHA & GABY D'ANNUNZIO & MABRUK, JOS</h3>
-              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Francesco Mami</h3>
+              <h3><span>STUDIO <b>//</b> </span>Francesco Mami</h3>
             </div>
         </div>
 
