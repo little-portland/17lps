@@ -33,7 +33,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>30 Aug</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>GREG SONATA, SEMOA</h3>
+              <h3><span>TENT <b>//</b> </span>ALIA INDIGO, Trixie</h3>
               <h3><span>STUDIO <b>//</b> </span>ANDREA SABA B2B FRANCESCO MARIA <p>BABYBASS B2B TONY SERBAN</p></h3>
             </div>
         </div>
