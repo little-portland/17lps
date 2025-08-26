@@ -1693,6 +1693,10 @@ html, body {
   .saturday .day-category span {
     display: block!important;
   }
+
+  .letter-spacing {
+    word-spacing: -50px;
+  }
 }
 
 /* Hide explore Override button */
