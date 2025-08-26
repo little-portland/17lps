@@ -2261,6 +2261,10 @@ html, body {
       margin: 5px 0px 0px 0px !important;
   }
 
+  .letter-spacing {
+    word-spacing: -15px;
+  }
+
   .mobile-only {
        margin: 0 0 10px;
        display: block!important;
