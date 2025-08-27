@@ -52,7 +52,8 @@ const Menu = ({ menuImage }) => {
             }
 
              .image-column img {
-                border: 2px solid #ff0200;
+                border: 2px solid #aacc33;
+                border-radius: 20px;
             }
             
             .override-buttons-wrapper .column {
@@ -125,22 +126,16 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn-wider-section override-logo">
            <div className="image-row">
               <div className="image-column">
-                <img src="/images/chefstudio/chefstudio07.jpg" />
-                <img src="/images/chefstudio/chefstudio08.jpg" />
-                <img src="/images/chefstudio/chefstudio12.jpg" />
-                <img src="/images/chefstudio/chefstudio14.jpg" />
-              </div>
-             <div className="image-column">
-                <img src="/images/chefstudio/chefstudio10.jpg" />
-                <img src="/images/chefstudio/chefstudio11.jpg" />
-                <img src="/images/chefstudio/chefstudio09.jpg" />
-                <img src="/images/chefstudio/chefstudio13.jpg" />
+                <img src="/images/theclub/the_club01.jpg" />
+                <img src="/images/theclub/the_club02.jpg" />
+                <img src="/images/theclub/the_club03.jpg" />
+                <img src="/images/theclub/the_club04.jpg" />
               </div>
               <div className="image-column">
-                <img src="/images/chefstudio/chefstudio10.jpg" />
-                <img src="/images/chefstudio/chefstudio11.jpg" />
-                <img src="/images/chefstudio/chefstudio09.jpg" />
-                <img src="/images/chefstudio/chefstudio13.jpg" />
+                <img src="/images/theclub/the_club05.jpg" />
+                <img src="/images/theclub/the_club06.jpg" />
+                <img src="/images/theclub/the_club07.jpg" />
+                <img src="/images/theclub/the_club08.jpg" />
               </div>
            </div>
           </div>
