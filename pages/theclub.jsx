@@ -138,6 +138,25 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
           </div>
+
+         <div className="nocturn override">
+        <div className="eat-note dance-popup">
+          <div>
+                  <div className="category thu">
+                    <h3>Thursday <span className="italic-word">is</span> <span className="group-item">Underground</span></h3>
+                    <p><span className="group-item">Thursday Underground</span> kicks off the weekend, showcasing cutting-edge electronic artists at the forefront of the underground scene, bringing together a community deeply rooted in its culture.</p>
+                  </div>
+                  <div className="category fri">
+                    <h3>Friday <span className="italic-word">is</span> <span className="group-item">Residents</span></h3>
+                    <p><span className="group-item">Friday Residents</span> bridges Underground and Disco3000, shaping the weekend’s rhythm and flow. Focused on club residents, it brings a sense of familiarity and community. The heartbeat of the weekend.</p>
+                  </div>
+                  <div className="category sat">
+                    <h3>Saturday <span className="italic-word">is</span> <span className="group-item">Disco3000</span></h3>
+                    <p><span className="group-item">Disco3000</span> captures the evolving spirit of the disco era. Embracing a soundscape that truly resonates with the soul, it delivers a timeless and uplifting journey. A cosmic finale to the weekend.</p>
+                  </div>
+          </div>
+        </div>
+        </div>
       
          <div className="nocturn override">
            <img className="override-logo" src="/images/chefstudio/chefs-studio-page-bottom.png" alt="Chef's Studio" width="100%" />
