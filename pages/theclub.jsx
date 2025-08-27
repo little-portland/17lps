@@ -53,7 +53,6 @@ const Menu = ({ menuImage }) => {
 
              .image-column img {
                 border: 2px solid #aacc33;
-                border-radius: 20px;
             }
             
             .override-buttons-wrapper .column {
