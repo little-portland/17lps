@@ -162,7 +162,7 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/chefstudio/chefs-studio-page-bottom.png" alt="Chef's Studio" width="100%" />
            <div className="override-buttons-wrapper">
              <a href="mailto:friends@little-potland.com?subject=FOC%20Enquiry" class="override-button">BECOME A FRIEND OF THE CLUB</a>
-             <a target="_blank" href="https://www.little-portland.com/bookings" class="override-button">Book a table to enter</a>
+             <a target="_blank" href="https://www.little-portland.com/bookings" class="override-button">BOOK A TABLE TO ENTER</a>
             </div>
         </div>
          
