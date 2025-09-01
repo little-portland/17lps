@@ -115,7 +115,7 @@ const Menu = ({ menuImage }) => {
             }`}
         </style>
 
-        <title>17 Little Portland Street - Chef's Studio</title>
+        <title>17 Little Portland Street - The Tent</title>
       </Head>
       
          <div className="nocturn override">
