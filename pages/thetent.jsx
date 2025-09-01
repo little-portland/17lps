@@ -41,7 +41,7 @@ const Menu = ({ menuImage }) => {
             }
             
             .override-button {
-                color: #ff0200!important;
+                color: #ff0200!important; 
                 border: 3px solid #ff0200!important;
             }
     
