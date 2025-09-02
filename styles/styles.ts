@@ -1700,7 +1700,7 @@ html, body {
 
   .new-cat {
     font-size: 4.9rem !important;
-    word-spacing: -10px;
+    word-spacing: -10px!important;
   }
 
 }
