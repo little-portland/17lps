@@ -1699,8 +1699,8 @@ html, body {
   }
 
   .new-cat {
-    font-size: 4.9rem !important;
-    word-spacing: -10px!important;
+    font-size: 4.9rem!important;
+    word-spacing: -30px!important;
   }
 
 }
