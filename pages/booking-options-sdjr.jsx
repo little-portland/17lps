@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DENNY KEM, OLI SILVA</h3>
-              <h3><span>STUDIO <b>//</b> </span>RADIOACTIVE MAN</h3>
+              <h3><span>STUDIO <b>//</b> </span>RADIOACTIVE MAN, TANIA ATYABI</h3>
             </div>
         </div>
 
