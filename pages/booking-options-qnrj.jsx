@@ -33,8 +33,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>11 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Cosmo, Jonjo JurY, THEO G</h3>
-              <h3><span>STUDIO <b>//</b> </span>Awkward Moments, Farsight, ReeniE, Sarah Nimmo</h3>
+              <h3><span>TENT <b>//</b> </span>BOOMVISION (live), Cosmo, Jonjo Jury, Theo G</h3>
+              <h3><span>STUDIO <b>//</b> </span>Awkward Moments, Bekefi, Farsight, Maya Jane Coles, Sarah Nimmo (live), Sarra Wild</h3>
             </div>
         </div>
 
