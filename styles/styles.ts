@@ -1697,6 +1697,12 @@ html, body {
   .letter-spacing {
     word-spacing: -50px;
   }
+
+  .new-cat {
+    font-size: 4.9rem !important;
+    word-spacing: -10px;
+  }
+
 }
 
 /* Hide explore Override button */
