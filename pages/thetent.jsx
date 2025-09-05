@@ -91,7 +91,7 @@ const Menu = ({ menuImage }) => {
           }
 
         .override-buttons-wrapper {
-            margin: 25px 0;
+            margin: 30px 0 0 0!important;
         }
 
         .override-button {
