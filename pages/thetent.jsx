@@ -72,7 +72,8 @@ const Menu = ({ menuImage }) => {
             {`.spacing{ margin-top:30px!important;}`}
             {`.slideshow-wrapper{ max-width: 40%; margin: 0 auto;}`}
             {`.slideshow-wrapper{   object-fit: cover; height: 100%;}`}
-
+            {`.events-box{background: rgb(245, 118, 88);color: rgb(0, 0, 0);padding: 10px;}`}
+          
             {`.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}`}
             {`@media (max-width: 768px) { .override-buttons-wrapper {flex-direction: column;gap: 15px;}.slideshow-wrapper{ max-width: 100%;margin: 0 20px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}
               .explore-zen li a {
@@ -118,9 +119,14 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="nocturn override override-buttons-wrapper override-logo">
+            <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5" class="override-button book-override">BOOK DINNER IN THE TENT</a>
+            <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
+          </div>
+
+          <div className="events-box">
              <div className="override-logo">
-               <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5" class="override-button book-override">BOOK DINNER IN THE TENT</a>
-               <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
+              <h2>PRIVATE HIRE</h2>
+               <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">Enquiries</a>
             </div>
           </div>
 
