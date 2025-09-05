@@ -12,92 +12,100 @@ const images = [
 ];
 
 export default function CenterPeekCarousel({
-  interval = 3500,        // auto-advance delay
-  transitionMs = 600,     // slide transition
+  interval = 3500,
+  transitionMs = 600,
+  sideBorderPx = 10,
+  sideBorderColor = '#000',
 }) {
-  // Clone ends for seamless looping
   const real = images.length;
   const slides = [images[real - 1], ...images, images[0]];
 
-  // Sizing — "old size" for the middle slide (responsive, but never full width)
-  const [slideW, setSlideW] = useState(560); // target center slide width
-  const viewportRef = useRef(null);
+  const [viewportW, setViewportW] = useState(0);
+  const slideW = Math.max(1, Math.floor(viewportW / 2));
 
-  // position in `slides` (start at first real slide)
+  const viewportRef = useRef(null);
+  const trackRef = useRef(null);
+
   const [idx, setIdx] = useState(1);
   const idxRef = useRef(idx);
   idxRef.current = idx;
 
   const [paused, setPaused] = useState(false);
-  const trackRef = useRef(null);
+  const [allLoaded, setAllLoaded] = useState(false); // <- NEW
   const autoplayRef = useRef(null);
   const draggingRef = useRef(false);
   const startXRef = useRef(0);
   const startTxRef = useRef(0);
   const skipTransitionRef = useRef(false);
 
-  // ----- measure slide width responsively, but keep center slide "not huge"
+  // 1) Preload ALL images (prevents clone pop-in)
+  useEffect(() => {
+    let cancelled = false;
+    const preload = async () => {
+      const preloadOne = (src) =>
+        new Promise((res) => {
+          const img = new Image();
+          img.onload = img.onerror = () => res();
+          img.decoding = 'async';
+          img.src = src;
+        });
+      await Promise.all(images.map(preloadOne));
+      if (!cancelled) setAllLoaded(true);
+    };
+    preload();
+    return () => { cancelled = true; };
+  }, []);
+
+  // Measure & center (keeps mobile centered)
   useEffect(() => {
     const measure = () => {
-      const vw = Math.max(320, Math.min(1400, window.innerWidth));
-      // On mobile make it ~78vw; on desktop clamp to 520–640px range
-      const target =
+      const vw = Math.max(320, window.innerWidth || 0);
+      const desiredCenter =
         vw < 768 ? Math.round(vw * 0.78) : Math.round(Math.max(520, Math.min(640, vw * 0.42)));
-      setSlideW(target);
+      const viewport = Math.min(desiredCenter * 2, vw);
+      setViewportW(viewport);
     };
     measure();
     window.addEventListener('resize', measure);
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  // Helper: set translate on the track
   const setTranslate = (x, withTransition = true) => {
     const track = trackRef.current;
     if (!track) return;
     track.style.transition = withTransition ? `transform ${transitionMs}ms ease` : 'none';
-    track.style.transform = `translateX(${x}px)`;
+    // translate3d -> forces GPU compositing, avoids reflow flash
+    track.style.transform = `translate3d(${x}px,0,0)`;
   };
 
-  // Compute where the current slide should sit:
-  // viewport width = 2 * slideW  -> center slide should be centered:
-  // offset = centerPadding - idx * slideW, where centerPadding = (viewportW - slideW)/2 = slideW/2
   const currentOffset = () => (slideW / 2) - (idx * slideW);
 
-  // Apply index -> transform
   useEffect(() => {
     if (!slideW) return;
     setTranslate(currentOffset(), !skipTransitionRef.current);
-    if (skipTransitionRef.current) {
-      requestAnimationFrame(() => (skipTransitionRef.current = false));
-    }
+    if (skipTransitionRef.current) requestAnimationFrame(() => (skipTransitionRef.current = false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx, slideW]);
 
-  // Handle the clone resets to keep it seamless
   useEffect(() => {
     const onEnd = () => {
-      if (idxRef.current === 0) {
-        skipTransitionRef.current = true;
-        setIdx(real);
-      } else if (idxRef.current === real + 1) {
-        skipTransitionRef.current = true;
-        setIdx(1);
-      }
+      if (idxRef.current === 0) { skipTransitionRef.current = true; setIdx(real); }
+      else if (idxRef.current === real + 1) { skipTransitionRef.current = true; setIdx(1); }
     };
     const t = trackRef.current;
-    if (!t) return;
-    t.addEventListener('transitionend', onEnd);
-    return () => t.removeEventListener('transitionend', onEnd);
+    t?.addEventListener('transitionend', onEnd);
+    return () => t?.removeEventListener('transitionend', onEnd);
   }, [real]);
 
-  // Autoplay (move right -> images flow left)
+  // Start autoplay only after images preloaded (prevents hitting the clone before it’s cached)
   useEffect(() => {
+    if (!allLoaded) return;
     if (paused || draggingRef.current) return;
     autoplayRef.current = setTimeout(() => setIdx((p) => p + 1), interval);
     return () => clearTimeout(autoplayRef.current);
-  }, [idx, paused, interval]);
+  }, [idx, paused, interval, allLoaded]);
 
-  // Pointer drag (mouse + touch)
+  // pointer drag/swipe
   useEffect(() => {
     const vp = viewportRef.current;
     if (!vp) return;
@@ -147,7 +155,6 @@ export default function CenterPeekCarousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slideW]);
 
-  // Pause on hover (desktop)
   useEffect(() => {
     const vp = viewportRef.current;
     const onIn = () => setPaused(true);
@@ -160,75 +167,82 @@ export default function CenterPeekCarousel({
     };
   }, []);
 
-  const viewportW = slideW * 2;      // shows half of prev and half of next
-  const fadeW = Math.round(slideW * 0.5); // fade spans the side half
+  const fadeW = slideW;
 
-  const imgBase = {
+  const slideOuter = {
+    flex: '0 0 auto',
     width: `${slideW}px`,
-    height: 'auto',
-    display: 'block',
-    userSelect: 'none',
-    WebkitUserDrag: 'none',
+    boxSizing: 'border-box',
+    borderLeft: `10px solid ${sideBorderColor}`,
+    borderRight: `10px solid ${sideBorderColor}`,
+    willChange: 'transform', // slight perf hint
+  };
+
+  const imgProps = (i) => {
+    // Give the two clones and first real slide a higher fetch priority
+    const isCloneEdge = i === 0 || i === slides.length - 1 || i === 1;
+    return {
+      loading: 'eager',
+      decoding: 'async',
+      fetchPriority: isCloneEdge ? 'high' : 'auto',
+      draggable: false,
+      style: {
+        width: '100%',
+        height: 'auto',
+        display: 'block',
+        userSelect: 'none',
+        WebkitUserDrag: 'none',
+      },
+    };
   };
 
   return (
-    <div
-      style={{
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      {/* viewport with fixed width = 2*slideW, centered; never full page */}
+    <div style={{ width: '100%', margin: '0 auto' }}>
       <div
         ref={viewportRef}
         aria-roledescription="carousel"
         style={{
           position: 'relative',
-          width: `${viewportW}px`,
+          width: viewportW ? `${viewportW}px` : '100%',
           maxWidth: '100%',
+          margin: '0 auto',
           overflow: 'hidden',
-          background: '#000', // to match the fade to black
-          touchAction: 'pan-y', // allow vertical scroll while dragging horizontally
+          background: '#000',
+          touchAction: 'pan-y',
           cursor: 'grab',
         }}
       >
-        {/* track */}
         <div
           ref={trackRef}
           style={{
             display: 'flex',
             alignItems: 'center',
-            transform: `translateX(${(slideW / 2) - (idx * slideW)}px)`,
+            transform: `translate3d(${(slideW / 2) - (idx * slideW)}px,0,0)`,
+            willChange: 'transform',
           }}
         >
           {slides.map((src, i) => (
-            <div key={i} style={{ flex: '0 0 auto', width: `${slideW}px` }}>
-              <img src={src} alt={`slide-${i}`} style={imgBase} draggable={false} />
+            <div key={`${src}-${i}`} style={slideOuter}>
+              <img src={src} alt={`slide-${i}`} {...imgProps(i)} />
             </div>
           ))}
         </div>
 
-        {/* Left fade over the visible half of the previous slide */}
+        {/* fades over the visible halves */}
         <div
           style={{
             position: 'absolute',
-            left: 0,
-            top: 0,
-            bottom: 0,
+            left: 0, top: 0, bottom: 0,
             width: `${fadeW}px`,
             pointerEvents: 'none',
             background:
               'linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.1) 85%, rgba(0,0,0,0) 100%)',
           }}
         />
-        {/* Right fade over the visible half of the next slide */}
         <div
           style={{
             position: 'absolute',
-            right: 0,
-            top: 0,
-            bottom: 0,
+            right: 0, top: 0, bottom: 0,
             width: `${fadeW}px`,
             pointerEvents: 'none',
             background:
