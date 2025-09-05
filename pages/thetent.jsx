@@ -30,7 +30,7 @@ const Menu = ({ menuImage }) => {
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                margin: 30px;
+                margin: 60px auto!important;
             }
             .override-buttons-wrapper .row {
                 display: flex;
