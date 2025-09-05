@@ -69,7 +69,6 @@ const Menu = ({ menuImage }) => {
                 position: relative;
                 padding: 20px 0;
                 margin: 0 20px;
-                border-bottom: 2px dotted #000;
                 z-index: 1;
             }
             .events-box .content-divider {
