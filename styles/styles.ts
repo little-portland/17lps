@@ -338,6 +338,12 @@ html, body {
     color: #3DCFD6; 
 }
 
+.openlab-box .override-button:hover {
+    background-color: #000000;
+    border: 3px solid #3DCFD6;
+    color: #3DCFD6; 
+}
+
 .override-heading {
   margin: -5px 0 10px 0;
 }
