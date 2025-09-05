@@ -123,11 +123,9 @@ const Menu = ({ menuImage }) => {
             <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
           </div>
 
-          <div className="events-box">
-             <div className="override-logo">
+          <div className="events-box nocturn override override-buttons-wrapper override-logo">
               <h2>PRIVATE HIRE</h2>
                <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">Enquiries</a>
-            </div>
           </div>
 
           <div className="nocturn override override-logo">
