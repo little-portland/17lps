@@ -11,15 +11,18 @@ const images = [
   '/images/override/slide06.png',
 ];
 
-export default function ManualSlideshow() {
+export default function AutoSlideshow() {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const timeoutRef = useRef(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % images.length);
   const prevSlide = () =>
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
+  // Auto advance
   useEffect(() => {
     if (!paused) {
       timeoutRef.current = setTimeout(nextSlide, 4000);
@@ -27,11 +30,43 @@ export default function ManualSlideshow() {
     return () => clearTimeout(timeoutRef.current);
   }, [current, paused]);
 
+  // Handle swipe
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const distance = touchStartX.current - touchEndX.current;
+    if (distance > 50) nextSlide();
+    if (distance < -50) prevSlide();
+  };
+
+  // Handle mouse drag (desktop swipe)
+  const handleMouseDown = (e) => {
+    touchStartX.current = e.clientX;
+  };
+
+  const handleMouseUp = (e) => {
+    touchEndX.current = e.clientX;
+    const distance = touchStartX.current - touchEndX.current;
+    if (distance > 50) nextSlide();
+    if (distance < -50) prevSlide();
+  };
+
   return (
     <div
       className="slideshow-wrapper"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
       style={{
         position: 'relative',
         width: '100%',
@@ -39,71 +74,37 @@ export default function ManualSlideshow() {
         zIndex: 0,
       }}
     >
-      {/* Layout placeholder to force height */}
-      <img
-        src={images[current]}
-        alt="Slide layout placeholder"
+      <div
+        className="slides"
         style={{
-          width: '100%',
-          height: 'auto',
-          visibility: 'hidden', // invisible but takes space
+          display: 'flex',
+          transition: 'transform 0.6s ease-in-out',
+          transform: `translateX(calc(-${current * 100}% + ${current * 20}px))`, // offset for partial visibility
         }}
-      />
-
-      {/* Absolutely positioned fading images */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%' }}>
+      >
         {images.map((src, index) => (
-          <img
+          <div
             key={index}
-            src={src}
-            alt={`Slide ${index + 1}`}
             style={{
-              width: '100%',
-              height: 'auto',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              opacity: current === index ? 1 : 0,
-              transition: 'opacity 1s ease-in-out',
-              zIndex: current === index ? 2 : 1,
+              flex: '0 0 calc(100% - 40px)', // show part of prev/next
+              margin: '0 20px',
+              opacity: current === index ? 1 : 0.6,
+              transition: 'opacity 0.6s ease-in-out',
             }}
-          />
+          >
+            <img
+              src={src}
+              alt={`Slide ${index + 1}`}
+              style={{
+                width: '100%',
+                height: 'auto',
+                borderRadius: '16px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+              }}
+            />
+          </div>
         ))}
       </div>
-
-      {/* Navigation arrows */}
-      <button
-        onClick={prevSlide}
-        style={{ ...arrowStyle, left: '10px' }}
-        aria-label="Previous Slide"
-      >
-        ‹
-      </button>
-      <button
-        onClick={nextSlide}
-        style={{ ...arrowStyle, right: '10px' }}
-        aria-label="Next Slide"
-      >
-        ›
-      </button>
     </div>
   );
 }
-
-const arrowStyle = {
-  position: 'absolute',
-  top: '50%',
-  transform: 'translateY(-50%)',
-  fontSize: '1.5rem',
-  color: '#fff',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  border: 'none',
-  borderRadius: '50%',
-  width: '40px',
-  height: '40px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  cursor: 'pointer',
-  zIndex: 3,
-};
