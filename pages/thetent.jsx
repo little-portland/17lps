@@ -71,6 +71,12 @@ const Menu = ({ menuImage }) => {
                 margin: 0 20px;
                 z-index: 1;
             }
+            .events-box .content-btn {
+                position: relative;
+                padding: 0 0 20px 0;
+                margin: 0 20px;
+                z-index: 1;
+            }
             .events-box .content-divider {
                 border-bottom: 2px dotted #000;
             }
@@ -189,7 +195,7 @@ const Menu = ({ menuImage }) => {
                 <p>50 STANDING</p>
                 <p><small>LOCATED ON THE GROUND FLOOR</small></p>
               </div>
-              <div className="content">
+              <div className="content-btn">
                 <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">ENQUIRIES</a>
               </div>
           </div>
