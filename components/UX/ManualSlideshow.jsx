@@ -14,7 +14,7 @@ const images = [
 export default function CenterPeekCarousel({
   interval = 3500,
   transitionMs = 600,
-  sideBorderPx = 10,
+  sideBorderPx = 5,
   sideBorderColor = '#000',
 }) {
   const real = images.length;
