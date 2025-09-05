@@ -62,9 +62,22 @@ const Menu = ({ menuImage }) => {
               font-weight: 100!important;
             }
             .events-box .content {
-              padding: 20px 0;
-              margin: 0 20px;
-              border-bottom: 2px dotted #000;
+                position: relative;
+                padding: 20px 0;
+                margin: 0 20px;
+                border-bottom: 2px dotted #000;
+                z-index: 1;
+            }
+            .events-box .content::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                background-image: url('/images/override/slide09.png');
+                background-size: cover;
+                background-position: center;
+                opacity: 0.5;
+                z-index: -1;
             }
             .events-box .content:last-child {
               border: none;
