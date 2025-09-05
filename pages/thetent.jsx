@@ -98,8 +98,9 @@ const Menu = ({ menuImage }) => {
             }
 
             .openlab-box {
-              background-color: transparent;
+              background: transparent!important;
               border: 3px solid rgb(245, 118, 88); 
+              padding: 0!important; 
             }
         
            .openlab-box h2 {
@@ -113,6 +114,7 @@ const Menu = ({ menuImage }) => {
             .openlab-box p {
                 color: rgb(245, 118, 88); 
                 text-align: right!important;
+                font-weight: 400;
               }
       
             .override-buttons-wrapper .column {
