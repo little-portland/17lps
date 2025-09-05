@@ -40,6 +40,11 @@ const Menu = ({ menuImage }) => {
             .full-width {
               width: 100%;
             }
+           .event-box h2 {
+              margin-top: .5rem;
+              font-size: 3rem;
+              font-weight: 800;
+            }
             .override-buttons-wrapper .column {
                 flex: 1;
             }`}
@@ -91,8 +96,12 @@ const Menu = ({ menuImage }) => {
           }
 
         .override-buttons-wrapper {
-            margin: 25px 0!important;
+            margin: 25px auto!important;
         }
+
+        .event-box h2 {
+          font-size: 1.5rem;
+       }
 
         .override-button {
             font-size: 15px!important;
@@ -125,7 +134,18 @@ const Menu = ({ menuImage }) => {
 
           <div className="events-box nocturn override override-buttons-wrapper override-logo">
               <h2>PRIVATE HIRE</h2>
-               <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">ENQUIRIES</a>
+              <div className="content">
+                <h3>FULL VENUE</h3>
+                <p>150 STANDING</p>
+                <p><small>BOTH FLOORS</small></p>
+              </div>
+              <div className="content">
+                <h3>THE TENT</h3>
+                <p>36 SEATED</p>
+                <p>50 STANDING</p>
+                <p><small>LOCATED ON THE GROUND FLOOR</small></p>
+              </div>
+              <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">ENQUIRIES</a>
           </div>
 
           <div className="nocturn override override-logo">
