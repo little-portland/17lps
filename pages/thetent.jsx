@@ -42,7 +42,7 @@ const Menu = ({ menuImage }) => {
             }
            .events-box h2 {
               margin: 20px 0 0 20px;
-              font-size: 3rem;
+              font-size: 35px;
               font-weight: 800;
               text-align: center;
               padding: 10px;
@@ -52,7 +52,7 @@ const Menu = ({ menuImage }) => {
             }
             .events-box h3 {
               margin-top: .5rem;
-              font-size: 2.2rem;
+              font-size: 30px;
               font-weight: 800;
               margin-bottom: 1rem;
             }
