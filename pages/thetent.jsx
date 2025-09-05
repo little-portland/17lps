@@ -41,7 +41,7 @@ const Menu = ({ menuImage }) => {
               width: 100%;
             }
            .events-box h2 {
-              margin: 20px 0 0 20px;
+              margin: 20px 20px 0 20px;
               font-size: 35px;
               font-weight: 800;
               text-align: center;
@@ -149,10 +149,27 @@ const Menu = ({ menuImage }) => {
             margin: 25px auto!important;
         }
 
-        .events-box h2 {
-          font-size: 1.5rem;
-       }
+        .events-box {
+            padding: 10px;
+        }
 
+        .events-box h2 {
+          font-size: 15px;
+          margin: 10px 10px 0 10px;
+       }
+       
+       .events-box h3 {
+          font-size: 15px;
+      }
+
+      .events-box p, .events-box small {
+        font-size: 13px;
+    }
+
+    .events-box .content, .events-box .content-btn {
+        padding: 10px 0;
+        margin: 0 10px;
+    }
         .override-button {
             font-size: 15px!important;
         }
