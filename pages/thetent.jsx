@@ -131,28 +131,10 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="nocturn override override-logo">
-            <img className="override-quote" src="/images/override/slide07.png" alt="Override" width="100%" />
             <img className="override-quote override-space-top-bottom" src="/images/override/slide09.png" alt="Override" width="100%" />
-            <img className="override-quote override-space-top-bottom" src="/images/override/bits-slides.gif" alt="Override" width="100%" />
-            <img className="override-quote override-space-top-bottom" src="/images/override/slide10.png" alt="Override" width="100%" />
-         </div>
-
-         <div className="nocturn override">
-           <img className="override-logo full-width override-space-bottom" src="/images/override/bullet-points.png" />
-         </div>
-
-         <div className="nocturn override override-space-bottom">
-           <img className="override-logo" src="/images/override/food-slider.gif" alt="Override" width="100%" />
-         </div>
-
-         <div className="nocturn override override-space-bottom">
-           <img className="override-logo" src="/images/override/override_poster_Insta.png" alt="Override" width="100%" /> 
          </div>
       
          <div className="nocturn override">
-           <img className="override-logo full-width" src="/images/override/override_flyer_heading.png" />
-           <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
-           
           <img src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
         </div>
          
