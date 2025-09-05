@@ -170,6 +170,24 @@ const Menu = ({ menuImage }) => {
         padding: 10px 0;
         margin: 0 10px;
     }
+
+    .openlab-box {
+      background-color: none;
+      border: 3px solid rgb(245, 118, 88); 
+    }
+
+   .openlab-box h2 {
+      border-radius: 0;
+      margin: 0;
+      background-color: rgb(245, 118, 88); 
+      color: #000000;
+      text-align: left!important;
+    }
+
+    .openlab-box p {
+        color: rgb(245, 118, 88); 
+        text-align: right!important;
+      }
         .override-button {
             font-size: 15px!important;
         }
@@ -220,6 +238,16 @@ const Menu = ({ menuImage }) => {
           <div className="nocturn override override-logo">
             <img className="override-quote override-space-top-bottom" src="/images/override/slide09.png" alt="Override" width="100%" />
          </div>
+      
+          <div className="events-box openlab-box nocturn override override-logo">
+              <h2>TENT RADIO</h2>
+              <div className="content">
+                <p>Broadcasting from The Tent (at the End of the Universe), our monthly residency on OpenLab Radio.</p>
+              </div>
+              <div className="content-btn">
+                <a target="_blank" href="https://openlab.fm/radio/shows/the-tent-at-the-end-of-the-universe" class="override-button">EXPLORE NOW</a>
+              </div>
+          </div>
       
          <div className="nocturn override">
           <img src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
