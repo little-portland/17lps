@@ -30,7 +30,7 @@ const Menu = ({ menuImage }) => {
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                margin: 50px 0 60px 0;
+                margin: 30px!important;
             }
             .override-buttons-wrapper .row {
                 display: flex;
@@ -91,7 +91,7 @@ const Menu = ({ menuImage }) => {
           }
 
         .override-buttons-wrapper {
-            margin: 30px 0 0 0!important;
+            margin: 25px 0!important;
         }
 
         .override-button {
