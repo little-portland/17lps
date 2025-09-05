@@ -317,6 +317,26 @@ html, body {
     color: #000000; 
 }
 
+.events-box .override-button {
+    display: block; 
+    width: 100%; 
+    background-color: #3DCFD6;
+    color: #000000; 
+    border: 3px solid #3DCFD6;
+    padding: 15px 0;
+    font-weight: bold;
+    text-align: center; 
+    text-decoration: none;
+    font-size: 35px; 
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+
+.events-box .override-button:hover {
+    background-color: #000000;
+    color: #3DCFD6; 
+}
+
 .override-heading {
   margin: -5px 0 10px 0;
 }
