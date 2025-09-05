@@ -376,7 +376,7 @@ html, body {
 
 .schedule-box .schedule-container {
     display: grid;
-}
+} 
 
 .schedule-box .schedule-container .details small {
     margin-top: 10px;
