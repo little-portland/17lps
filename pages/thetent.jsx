@@ -172,7 +172,7 @@ const Menu = ({ menuImage }) => {
     }
 
     .openlab-box {
-      background-color: none;
+      background-color: transparent;
       border: 3px solid rgb(245, 118, 88); 
     }
 
