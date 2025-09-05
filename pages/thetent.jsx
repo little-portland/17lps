@@ -78,7 +78,7 @@ const Menu = ({ menuImage }) => {
                 z-index: 1;
             }
             .events-box .content-divider {
-                border-bottom: 2px dotted #000;
+                border-bottom: 1px solid #000;
             }
             /*
             .events-box .content::before {
