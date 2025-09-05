@@ -74,17 +74,19 @@ const Menu = ({ menuImage }) => {
             .events-box .content-divider {
                 border-bottom: 2px dotted #000;
             }
+            /*
             .events-box .content::before {
                 content: '';
                 position: absolute;
                 top: 0; left: 0;
-                width: 100%; height: 100%;
+                width: 100%; 
+                height: 100%;
                 background-image: url('/images/override/slide09.png');
                 background-size: cover;
                 background-position: center;
                 opacity: 0.5;
                 z-index: -1;
-            }
+            }*/
             .events-box .content:last-child {
               border: none;
             }
@@ -187,7 +189,9 @@ const Menu = ({ menuImage }) => {
                 <p>50 STANDING</p>
                 <p><small>LOCATED ON THE GROUND FLOOR</small></p>
               </div>
-              <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">ENQUIRIES</a>
+              <div className="content">
+                <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">ENQUIRIES</a>
+              </div>
           </div>
 
           <div className="nocturn override override-logo">
