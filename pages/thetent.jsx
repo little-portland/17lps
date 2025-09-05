@@ -41,9 +41,10 @@ const Menu = ({ menuImage }) => {
               width: 100%;
             }
            .events-box h2 {
-              margin-top: .5rem;
+              margin: 20px 0 0 20px;
               font-size: 3rem;
               font-weight: 800;
+              text-align: center;
             }
             .events-box h3 {
               margin-top: .5rem;
