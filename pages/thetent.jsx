@@ -44,7 +44,7 @@ const Menu = ({ menuImage }) => {
                 flex: 1;
             }`}
             {`.nocturn h1{margin-top: 30px;}`}
-            {`.nocturn{width: 50%;margin: 30px auto 0 auto;}`}
+            {`.nocturn{width: 50%;margin: 30px auto 0 auto;!important}`}
             {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
             {`.column{width: 50%}`}
             {`.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}`}
