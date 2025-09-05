@@ -59,11 +59,12 @@ const Menu = ({ menuImage }) => {
               font-weight: 100!important;
             }
             .events-box .content {
-              padding: 30px;
+              padding: 20px 0;
+              margin: 0 20px;
               border-bottom: 2px dotted #000;
             }
-            .events-box .content:last-child {
-              border: 0;
+            .events-box:last-child .content {
+              border: none;
             }
             .override-buttons-wrapper .column {
                 flex: 1;
