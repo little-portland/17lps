@@ -113,8 +113,13 @@ const Menu = ({ menuImage }) => {
            <img src="/images/thetent/the_tent_page_schedule.png" alt="The Tent" width="100%" />
          </div>
 
-          <div className="override-space-bottom">
+          <div className="override-space-bottom override-logo">
             <ManualSlideshow />
+          </div>
+
+          <div className="override-buttons-wrapper">
+           <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5" class="override-button book-override">BOOK DINNER IN THE TENT</a>
+           <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
           </div>
 
           <div className="nocturn override override-logo">
@@ -139,11 +144,6 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn override">
            <img className="override-logo full-width" src="/images/override/override_flyer_heading.png" />
            <img className="override-logo flyer" src="/images/override/17LPS_Flyer_Override_Zen_OngV2.jpg" />
-                           
-         <div className="override-buttons-wrapper">
-           <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5" class="override-button book-override">BOOK OVERRIDE</a>
-           <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
-          </div>
            
           <img src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
         </div>
