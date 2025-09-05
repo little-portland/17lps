@@ -63,7 +63,7 @@ const Menu = ({ menuImage }) => {
               margin: 0 20px;
               border-bottom: 2px dotted #000;
             }
-            .events-box:last-child .content {
+            .events-box .content:last-child {
               border: none;
             }
             .override-buttons-wrapper .column {
