@@ -125,7 +125,7 @@ const Menu = ({ menuImage }) => {
 
           <div className="events-box nocturn override override-buttons-wrapper override-logo">
               <h2>PRIVATE HIRE</h2>
-               <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">Enquiries</a>
+               <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">ENQUIRIES</a>
           </div>
 
           <div className="nocturn override override-logo">
