@@ -45,6 +45,10 @@ const Menu = ({ menuImage }) => {
               font-size: 3rem;
               font-weight: 800;
               text-align: center;
+              padding: 10px;
+              background: #000;
+              border-radius: 50px;
+              color: rgb(245, 118, 88);
             }
             .events-box h3 {
               margin-top: .5rem;
@@ -53,7 +57,7 @@ const Menu = ({ menuImage }) => {
               margin-bottom: 1rem;
             }
            .events-box p {
-              font-size: 1.2rem;
+              font-size: 1.5rem;
               font-weight: 800;
               margin-bottom: .5rem;
             }
@@ -67,6 +71,9 @@ const Menu = ({ menuImage }) => {
                 margin: 0 20px;
                 border-bottom: 2px dotted #000;
                 z-index: 1;
+            }
+            .events-box .content-divider {
+                border-bottom: 2px dotted #000;
             }
             .events-box .content::before {
                 content: '';
@@ -114,8 +121,7 @@ const Menu = ({ menuImage }) => {
             {`.spacing{ margin-top:30px!important;}`}
             {`.slideshow-wrapper{ max-width: 40%; margin: 0 auto;}`}
             {`.slideshow-wrapper{   object-fit: cover; height: 100%;}`}
-            {`.events-box{background: rgb(245, 118, 88);color: rgb(0, 0, 0);padding: 10px;font-family: Helvetica !important;}`}
-          
+            {`.events-box{background: rgb(245, 118, 88);color: rgb(0, 0, 0);padding: 10px;font-family: Helvetica !important;text-align: center;}`}
             {`.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}`}
             {`@media (max-width: 768px) { .override-buttons-wrapper {flex-direction: column;gap: 15px;}.slideshow-wrapper{ max-width: 100%;margin: 0 20px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}
               .explore-zen li a {
@@ -171,7 +177,7 @@ const Menu = ({ menuImage }) => {
 
           <div className="events-box nocturn override override-logo">
               <h2>PRIVATE HIRE</h2>
-              <div className="content">
+              <div className="content content-divider">
                 <h3>FULL VENUE</h3>
                 <p>150 STANDING</p>
                 <p><small>BOTH FLOORS</small></p>
