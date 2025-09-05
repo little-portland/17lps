@@ -40,29 +40,29 @@ const Menu = ({ menuImage }) => {
             .full-width {
               width: 100%;
             }
-           .event-box h2 {
+           .events-box h2 {
               margin-top: .5rem;
               font-size: 3rem;
               font-weight: 800;
             }
-            .event-box h3 {
+            .events-box h3 {
               margin-top: .5rem;
               font-size: 2rem;
               font-weight: 800;
             }
-           .event-box p {
+           .events-box p {
               font-size: 1rem;
               font-weight: 800;
             }
-           .event-box p small {
+           .events-box p small {
               font-size: 1rem;
               font-weight: 100!important;
             }
-            .event-box .content {
+            .events-box .content {
               padding: 30px;
               border-bottom: 2px dotted #000;
             }
-            .event-box .content:last-child {
+            .events-box .content:last-child {
               border: 0;
             }
             .override-buttons-wrapper .column {
@@ -119,7 +119,7 @@ const Menu = ({ menuImage }) => {
             margin: 25px auto!important;
         }
 
-        .event-box h2 {
+        .events-box h2 {
           font-size: 1.5rem;
        }
 
@@ -152,7 +152,7 @@ const Menu = ({ menuImage }) => {
             <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
           </div>
 
-          <div className="events-box nocturn override override-buttons-wrapper override-logo">
+          <div className="events-box nocturn override override-logo">
               <h2>PRIVATE HIRE</h2>
               <div className="content">
                 <h3>FULL VENUE</h3>
