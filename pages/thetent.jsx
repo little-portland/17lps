@@ -45,6 +45,26 @@ const Menu = ({ menuImage }) => {
               font-size: 3rem;
               font-weight: 800;
             }
+            .event-box h3 {
+              margin-top: .5rem;
+              font-size: 2rem;
+              font-weight: 800;
+            }
+           .event-box p {
+              font-size: 1rem;
+              font-weight: 800;
+            }
+           .event-box p small {
+              font-size: 1rem;
+              font-weight: 100!important;
+            }
+            .event-box .content {
+              padding: 30px;
+              border-bottom: 2px dotted #000;
+            }
+            .event-box .content:last-child {
+              border: 0;
+            }
             .override-buttons-wrapper .column {
                 flex: 1;
             }`}
