@@ -14,27 +14,21 @@ const images = [
 export default function CenterPeekCarousel({
   interval = 3500,
   transitionMs = 600,
-  sideBorderPx = 5,
+  sideBorderPx = 10,
   sideBorderColor = '#000',
 }) {
   const real = images.length;
   const slides = [images[real - 1], ...images, images[0]];
 
-  // --- viewport width and slide width ---
-  const getInitialViewport = () => {
-    if (typeof window === 'undefined') return 600; // SSR fallback
-    const vw = window.innerWidth;
-    const desiredCenter =
-      vw < 768 ? Math.round(vw * 0.78) : Math.round(Math.max(520, Math.min(640, vw * 0.42)));
-    return Math.min(desiredCenter * 2, vw);
-  };
-  const [viewportW, setViewportW] = useState(getInitialViewport);
+  // Viewport width drives slide width so we always show half of prev/next
+  const [viewportW, setViewportW] = useState(0);
   const slideW = Math.max(1, Math.floor(viewportW / 2));
 
   const viewportRef = useRef(null);
   const trackRef = useRef(null);
 
-  const [idx, setIdx] = useState(1); // index in slides; 1..real = real slides
+  // Index within `slides`; 1..real are real slides; 0 and real+1 are clones
+  const [idx, setIdx] = useState(1);
   const idxRef = useRef(idx);
   idxRef.current = idx;
 
@@ -48,7 +42,7 @@ export default function CenterPeekCarousel({
   const startTxRef = useRef(0);
   const skipTransitionRef = useRef(false);
 
-  // ---------- Preload originals so clones never pop ----------
+  // ---------- Preload originals so clones never pop in ----------
   useEffect(() => {
     let cancelled = false;
     const preload = async () => {
@@ -66,7 +60,7 @@ export default function CenterPeekCarousel({
     return () => { cancelled = true; };
   }, []);
 
-  // ---------- Measure & keep centered, also on tab focus/visibility ----------
+  // ---------- Measure & keep centered ----------
   useEffect(() => {
     const measure = () => {
       const vw = Math.max(320, window.innerWidth || 0);
@@ -77,15 +71,7 @@ export default function CenterPeekCarousel({
     };
     measure();
     window.addEventListener('resize', measure);
-    window.addEventListener('focus', measure);
-    window.addEventListener('visibilitychange', () => {
-      if (!document.hidden) measure();
-    });
-    return () => {
-      window.removeEventListener('resize', measure);
-      window.removeEventListener('focus', measure);
-      window.removeEventListener('visibilitychange', measure);
-    };
+    return () => window.removeEventListener('resize', measure);
   }, []);
 
   // ---------- Helpers ----------
@@ -103,23 +89,26 @@ export default function CenterPeekCarousel({
 
   const offsetForIndex = (i) => (slideW / 2) - (i * slideW);
 
+  // Normalize if we're on a clone: jump (no transition) to the real index with identical visual
   const normalizeIfClone = () => {
     let i = idxRef.current;
     if (i === 0) {
+      const target = real;
       skipTransitionRef.current = true;
-      setIdx(real);
-      setTranslate(offsetForIndex(real), false);
-      i = real;
+      setIdx(target);
+      setTranslate(offsetForIndex(target), false);
+      i = target;
     } else if (i === real + 1) {
+      const target = 1;
       skipTransitionRef.current = true;
-      setIdx(1);
-      setTranslate(offsetForIndex(1), false);
-      i = 1;
+      setIdx(target);
+      setTranslate(offsetForIndex(target), false);
+      i = target;
     }
     return i;
   };
 
-  // apply translate when idx/slideW changes
+  // Apply translate when idx/slideW changes
   useEffect(() => {
     if (!slideW) return;
     setTranslate(offsetForIndex(idx), !skipTransitionRef.current);
@@ -127,7 +116,7 @@ export default function CenterPeekCarousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx, slideW]);
 
-  // seamless loop + mark animation done
+  // Seamless loop + mark animation done
   useEffect(() => {
     const onEnd = () => {
       animatingRef.current = false;
@@ -139,7 +128,7 @@ export default function CenterPeekCarousel({
     return () => t?.removeEventListener('transitionend', onEnd);
   }, [real]);
 
-  // autoplay
+  // Autoplay (after preload)
   useEffect(() => {
     if (!allLoaded || paused || draggingRef.current) return;
     clearAutoplay();
@@ -150,23 +139,28 @@ export default function CenterPeekCarousel({
     return () => clearAutoplay();
   }, [idx, paused, interval, allLoaded]);
 
-  // ---------- Pointer drag/swipe ----------
+  // ---------- Pointer drag/swipe -> exactly ONE slide per gesture ----------
   useEffect(() => {
     const vp = viewportRef.current;
     if (!vp) return;
 
     const down = (e) => {
       if (e.pointerType === 'mouse' && e.button !== 0) return;
-      if (animatingRef.current) return;
+      if (animatingRef.current) return;       // block during slide animation
       draggingRef.current = true;
       clearAutoplay();
-      normalizeIfClone();
+
+      // If we’re on a clone (0 or real+1), silently normalize BEFORE we read offsets
+      const effective = normalizeIfClone();
+
       vp.setPointerCapture(e.pointerId);
       startXRef.current = e.clientX;
-      startTxRef.current = offsetForIndex(idxRef.current);
-      setTranslate(startTxRef.current, false);
+      startTxRef.current = offsetForIndex(effective);
+      setTranslate(startTxRef.current, false); // no transition while following finger
       setPaused(true);
       vp.style.cursor = 'grabbing';
+
+      // Prevent accidental text/image drag
       e.preventDefault?.();
     };
 
@@ -179,9 +173,9 @@ export default function CenterPeekCarousel({
     const finishGesture = (clientX) => {
       const dx = clientX - startXRef.current;
       const threshold = Math.min(120, Math.max(30, slideW * 0.15));
-      if (dx < -threshold) { animatingRef.current = true; setIdx((p) => p + 1); }
-      else if (dx > threshold) { animatingRef.current = true; setIdx((p) => p - 1); }
-      else { setTranslate(offsetForIndex(idxRef.current), true); }
+      if (dx < -threshold) { animatingRef.current = true; setIdx((p) => p + 1); }   // one step next
+      else if (dx > threshold) { animatingRef.current = true; setIdx((p) => p - 1); } // one step prev
+      else { setTranslate(offsetForIndex(idxRef.current), true); } // snap back (no move)
       setTimeout(() => setPaused(false), 200);
     };
 
@@ -200,22 +194,25 @@ export default function CenterPeekCarousel({
       setTimeout(() => setPaused(false), 200);
     };
 
+    // Some browsers won’t fire pointercancel if cursor leaves; cover that too
+    const leave = () => cancel();
+
     vp.addEventListener('pointerdown', down, { passive: false });
     vp.addEventListener('pointermove', move, { passive: true });
     vp.addEventListener('pointerup', up);
     vp.addEventListener('pointercancel', cancel);
-    vp.addEventListener('pointerleave', cancel);
+    vp.addEventListener('pointerleave', leave);
     return () => {
       vp.removeEventListener('pointerdown', down);
       vp.removeEventListener('pointermove', move);
       vp.removeEventListener('pointerup', up);
       vp.removeEventListener('pointercancel', cancel);
-      vp.removeEventListener('pointerleave', cancel);
+      vp.removeEventListener('pointerleave', leave);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slideW]);
 
-  // hover pause (desktop)
+  // Hover pause (desktop)
   useEffect(() => {
     const vp = viewportRef.current;
     const onIn = () => setPaused(true);
@@ -268,7 +265,7 @@ export default function CenterPeekCarousel({
           margin: '0 auto',
           overflow: 'hidden',
           background: '#000',
-          touchAction: 'pan-y',
+          touchAction: 'pan-y',    // vertical scroll allowed; we handle horizontal
           cursor: 'grab',
         }}
       >
