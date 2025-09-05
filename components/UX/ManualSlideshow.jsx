@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import type { MouseEvent, TouchEvent } from 'react';
 
 const images = [
   '/images/override/slide01.png',
@@ -63,7 +64,7 @@ export default function ManualSlideshow() {
     };
   }, [slideIndex]);
 
-  const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleStart = (e: MouseEvent | TouchEvent) => {
     e.preventDefault();
     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
     setStartX(clientX);
@@ -74,7 +75,7 @@ export default function ManualSlideshow() {
     clearTimeout(timeoutRef.current);
   };
 
-  const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleMove = (e: MouseEvent | TouchEvent) => {
     if (!isDragging) return;
     e.preventDefault();
     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
