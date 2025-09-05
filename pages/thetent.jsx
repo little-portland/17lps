@@ -49,10 +49,12 @@ const Menu = ({ menuImage }) => {
               margin-top: .5rem;
               font-size: 2.2rem;
               font-weight: 800;
+              margin-bottom: 1rem;
             }
            .events-box p {
               font-size: 1.2rem;
               font-weight: 800;
+              margin-bottom: .5rem;
             }
            .events-box p small {
               font-size: 1.5rem;
