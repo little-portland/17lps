@@ -96,6 +96,25 @@ const Menu = ({ menuImage }) => {
             .events-box .content:last-child {
               border: none;
             }
+
+            .openlab-box {
+              background-color: transparent;
+              border: 3px solid rgb(245, 118, 88); 
+            }
+        
+           .openlab-box h2 {
+              border-radius: 0;
+              margin: 0;
+              background-color: rgb(245, 118, 88); 
+              color: #000000;
+              text-align: left!important;
+            }
+        
+            .openlab-box p {
+                color: rgb(245, 118, 88); 
+                text-align: right!important;
+              }
+      
             .override-buttons-wrapper .column {
                 flex: 1;
             }`}
@@ -170,24 +189,6 @@ const Menu = ({ menuImage }) => {
         padding: 10px 0;
         margin: 0 10px;
     }
-
-    .openlab-box {
-      background-color: transparent;
-      border: 3px solid rgb(245, 118, 88); 
-    }
-
-   .openlab-box h2 {
-      border-radius: 0;
-      margin: 0;
-      background-color: rgb(245, 118, 88); 
-      color: #000000;
-      text-align: left!important;
-    }
-
-    .openlab-box p {
-        color: rgb(245, 118, 88); 
-        text-align: right!important;
-      }
         .override-button {
             font-size: 15px!important;
         }
