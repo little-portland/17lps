@@ -47,15 +47,15 @@ const Menu = ({ menuImage }) => {
             }
             .events-box h3 {
               margin-top: .5rem;
-              font-size: 2rem;
+              font-size: 2.2rem;
               font-weight: 800;
             }
            .events-box p {
-              font-size: 1rem;
+              font-size: 1.2rem;
               font-weight: 800;
             }
            .events-box p small {
-              font-size: 1rem;
+              font-size: 1.5rem;
               font-weight: 100!important;
             }
             .events-box .content {
