@@ -117,7 +117,7 @@ const Menu = ({ menuImage }) => {
             <ManualSlideshow />
           </div>
 
-          <div className="override-buttons-wrapper">
+          <div className="nocturn override override-buttons-wrapper">
            <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5" class="override-button book-override">BOOK DINNER IN THE TENT</a>
            <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
           </div>
