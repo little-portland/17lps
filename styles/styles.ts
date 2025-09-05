@@ -314,7 +314,7 @@ html, body {
 
 .override-button:hover {
     background-color: #3DCFD6;
-    border: 3px solid #000000;
+    border: 3px solid #000000!important;
     color: #000000; 
 }
 
