@@ -246,7 +246,7 @@ const Menu = ({ menuImage }) => {
                 <p>Broadcasting from The Tent (at the End of the Universe), our monthly residency on OpenLab Radio.</p>
               </div>
               <div className="content-btn">
-                <a target="_blank" href="https://openlab.fm/radio/shows/the-tent-at-the-end-of-the-universe" class="override-button">EXPLORE NOW</a>
+                <a target="_blank" href="https://openlab.fm/radio/shows/the-tent-at-the-end-of-the-universe" class="override-button">EXPLORE</a>
               </div>
           </div>
       
