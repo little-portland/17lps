@@ -58,6 +58,10 @@ const Menu = ({ menuImage }) => {
                 outline-offset: 0;
                 display: inline-block;
             }
+
+            .footer {
+                  margin-top: 10px;
+            }
             
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -166,7 +170,7 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
       
-         <div className="nocturn override">
+         <div className="nocturn override footer">
             <img src="/images/food/thetent_page_footer.png" alt="The Tent Food" width="100%" />
         </div>
          
