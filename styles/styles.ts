@@ -352,16 +352,16 @@ html, body {
 
 .food-content .override-button {
     font-family: "Oxanium", sans-serif;
-    font-weight: bold;
-    background-color: #e9e5d4;
-    color: #231f20; 
-    border: 3px solid #b9b9b8;
+    font-weight: 600;
+    background-color: rgb(233, 229, 212);
+    color: rgb(35, 31, 32) !important;
+    border: 2px solid rgb(185, 185, 184) !important;
 }
 
 .food-content .override-button:hover {
     background-color: #231f20!important;
-    color: #e9e5d4; 
-    border: 3px solid #231f20!important;
+    color: #e9e5d4!important; 
+    border: 2px solid #231f20!important;
 }
 
 .override-heading {
