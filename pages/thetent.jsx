@@ -251,6 +251,12 @@ const Menu = ({ menuImage }) => {
                 <a target="_blank" href="https://openlab.fm/radio/shows/the-tent-at-the-end-of-the-universe" class="override-button">EXPLORE</a>
               </div>
           </div>
+
+          <div className="events-box nocturn override override-logo">
+              <div className="content-btn">
+                <a target="_blank" href="https://www.instagram.com/thetentattheendoftheuniverse/" class="override-button">FOLLOW US ON INSTAGRAM</a>
+              </div>
+          </div>
       
          <div className="nocturn override">
           <img src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
