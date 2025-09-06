@@ -84,7 +84,7 @@ const Menu = ({ menuImage }) => {
             {`.preloader{ margin:30px 0 10px 0!important;}`}
             {`.spacing{ margin-top:30px!important;}`}
             {`.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}`}
-            {`@media (max-width: 768px) { .override-logo { margin-top: -10px;}.override-buttons-wrapper {flex-direction: column;gap: 15px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}
+            {`@media (max-width: 768px) {.override-buttons-wrapper {flex-direction: column;gap: 15px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}
               .explore-zen li a {
                 margin-right: 30px;
                 width: 150px;
@@ -118,7 +118,7 @@ const Menu = ({ menuImage }) => {
         <title>17 Little Portland Street - The Tent</title>
       </Head>
       
-         <div className="nocturn override">
+         <div className="nocturn override food-content">
            <img className="override-logo" src="/images/food/food_page_top.png" alt="The Tent Food" width="100%" />
            
            <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
@@ -128,6 +128,8 @@ const Menu = ({ menuImage }) => {
              <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
              <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
             </div>
+
+            <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
 
              <img src="/images/food/food_page_middle.png" alt="The Tent Food" width="100%" />
 
