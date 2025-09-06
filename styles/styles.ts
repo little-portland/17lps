@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.cdnfonts.com/css/helvetica-neue-55");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");  
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
 
 @font-face {
   font-family: "Space Mono";
@@ -349,6 +350,19 @@ html, body {
     border: 3px solid rgb(245, 118, 88)!important;
 }
 
+.food-content .override-button {
+    font-family: "Oxanium", sans-serif;
+    font-weight: bold;
+    background-color: #e9e5d4;
+    color: #231f20; 
+    border: 3px solid #b9b9b8;
+}
+
+.food-content .override-button:hover {
+    background-color: #231f20!important;
+    color: #e9e5d4; 
+    border: 3px solid #231f20!important;
+}
 
 .override-heading {
   margin: -5px 0 10px 0;
