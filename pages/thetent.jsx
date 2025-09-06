@@ -253,7 +253,7 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="events-box nocturn override override-logo">
-              <div className="content-btn">
+              <div className="content">
                 <a target="_blank" href="https://www.instagram.com/thetentattheendoftheuniverse/" class="override-button">FOLLOW US ON INSTAGRAM</a>
               </div>
           </div>
