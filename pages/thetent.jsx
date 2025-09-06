@@ -99,14 +99,14 @@ const Menu = ({ menuImage }) => {
 
             .openlab-box {
               background: transparent!important;
-              border: 3px solid rgb(245, 118, 88); 
+              border: 3px solid rgb(61, 207, 214); 
               padding: 0!important; 
             }
         
            .openlab-box h2 {
               border-radius: 0;
               margin: 0;
-              background-color: rgb(245, 118, 88); 
+              background-color: rgb(61, 207, 214); 
               color: #000000;
               text-align: left!important;
             }
