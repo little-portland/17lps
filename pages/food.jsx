@@ -60,7 +60,7 @@ const Menu = ({ menuImage }) => {
             }`}
           
             {`.nocturn h1{margin-top: 30px;}`}
-            {`.nocturn{width: 50%;margin: 0 auto;}`}
+            {`.nocturn{background-color: #e2e2df!important;width: 50%;margin: 0 auto;padding: 0 20px;}`}
             {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
             {`.column{width: 50%}`}
             {`.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}`}
