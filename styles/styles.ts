@@ -350,7 +350,7 @@ html, body {
     border: 3px solid rgb(245, 118, 88)!important;
 }
 
-.food-content .override-button {
+.food-content .override-button { 
     font-family: "Oxanium", sans-serif;
     font-weight: 600;
     background-color: rgb(233, 229, 212);
