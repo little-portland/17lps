@@ -60,7 +60,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .footer {
-                  margin-top: 10px;
+                  margin-top: 10px!important;
             }
             
             .override-buttons-wrapper .column {
