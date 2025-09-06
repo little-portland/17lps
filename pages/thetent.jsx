@@ -184,7 +184,7 @@ const Menu = ({ menuImage }) => {
       }
 
       .events-box p, .events-box small {
-        font-size: 13px;
+        font-size: 13px!important;
     }
 
     .events-box .content, .events-box .content-btn {
