@@ -122,6 +122,14 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/food/food_page_top.png" alt="The Tent Food" width="100%" />
          </div>
 
+          <div className="nocturn override">
+           <div className="override-buttons-wrapper">
+             <a href="mailto:eat@little-portland.com" class="override-button">BOOK</a>
+             <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
+             <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
+            </div>
+        </div>
+
          <div className="nocturn-wider-section override-logo">
            <div className="image-row">
               <div className="image-column">
