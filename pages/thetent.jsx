@@ -239,7 +239,7 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="nocturn override override-logo">
-            <img className="override-quote override-space-top-bottom" src="/images/override/slide09.png" alt="Override" width="100%" />
+            <img className="override-quote override-space-top-bottom" src="/images/override/slide09.png" alt="Override" width="100%" /> 
          </div>
       
           <div className="events-box openlab-box nocturn override override-logo">
