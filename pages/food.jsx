@@ -53,7 +53,10 @@ const Menu = ({ menuImage }) => {
             }
 
              .image-column img {
-                border: 2px solid #ff0200;
+                border: 5px solid #d9e2ea;
+                outline: 2px solid #221f20;
+                outline-offset: 0;
+                display: inline-block;
             }
             
             .override-buttons-wrapper .column {
