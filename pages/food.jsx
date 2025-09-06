@@ -150,17 +150,18 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn-wider-section override-logo">
            <div className="image-row">
               <div className="image-column">
-                <img src="/images/chefstudio/chefstudio07.jpg" />
-                <img src="/images/chefstudio/chefstudio08.jpg" />
-                <img src="/images/chefstudio/chefstudio12.jpg" />
-                <img src="/images/chefstudio/chefstudio14.jpg" />
-
+                <img src="/images/override/image20.jpg" />
+                <img src="/images/override/image21.jpg" />
+                <img src="/images/override/image22.jpg" />
+                <img src="/images/override/image23.jpg" />
+                <img src="/images/override/image28.jpg" />
               </div>
              <div className="image-column">
-                <img src="/images/chefstudio/chefstudio10.jpg" />
-                <img src="/images/chefstudio/chefstudio11.jpg" />
-                <img src="/images/chefstudio/chefstudio09.jpg" />
-                <img src="/images/chefstudio/chefstudio13.jpg" />
+                <img src="/images/override/image24.jpg" />
+                <img src="/images/override/image25.jpg" />
+                <img src="/images/override/image26.jpg" />
+                <img src="/images/override/image27.jpg" />
+                <img src="/images/override/override_poster_Insta.png" />
               </div>
            </div>
           </div>
