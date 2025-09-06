@@ -356,6 +356,7 @@ html, body {
     background-color: rgb(233, 229, 212);
     color: rgb(35, 31, 32) !important;
     border: 2px solid rgb(185, 185, 184) !important;
+    font-size: 30px;
 }
 
 .food-content .override-button:hover {
