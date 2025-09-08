@@ -153,6 +153,15 @@ const Menu = ({ menuImage }) => {
             font-size: 15px!important;
         }
 
+        .button-half-page {
+            width: 100%;
+            margin: 0;
+        }
+
+        .button-half-page .override-button {
+            font-size: 10px!important;
+        }
+
         .image-column {
             flex: 100%;
             max-width: 100%;
