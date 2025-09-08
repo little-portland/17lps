@@ -216,17 +216,12 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="nocturn override override-buttons-wrapper override-logo">
-            <a  target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5" class="override-button book-override">BOOK DINNER IN THE TENT</a>
+            <a  target="_blank" href="https://www.little-portland.com/bookings" class="override-button book-override">BOOK DINNER</a>
             <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
           </div>
 
           <div className="events-box nocturn override override-logo">
               <h2>PRIVATE HIRE</h2>
-              <div className="content content-divider">
-                <h3>FULL VENUE</h3>
-                <p>150 STANDING</p>
-                <p><small>BOTH FLOORS</small></p>
-              </div>
               <div className="content">
                 <h3>THE TENT</h3>
                 <p>36 SEATED</p>
