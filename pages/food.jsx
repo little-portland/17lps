@@ -81,6 +81,11 @@ const Menu = ({ menuImage }) => {
               display: block;
             }
 
+            .futurist-menu {
+              margin: 0 auto;
+              display: block;
+            }
+
              .image-column img {
                 border: 5px solid #d9e2ea;
                 outline: 2px solid #221f20;
@@ -162,8 +167,9 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn override food-content">
            <img className="override-logo" src="/images/food/food_page_top.png" alt="The Tent Food" width="100%" />
            <img src="/images/food/food_page_title.gif" alt="The Tent Food" width="100%" />
+           <img src="/images/food/food_page_middle.png" alt="The Tent Food" width="100%" />
            <img src="/images/food/food_page_line_anim.gif" alt="The Tent Food" width="100%" />
-           <img src="/images/food/food_page_food_futurist_menu.gif" alt="The Tent Food" width="100%" />
+           <img className="futurist-menu" src="/images/food/food_page_food_futurist_menu.gif" alt="The Tent Food" width="95%" />
            <img src="/images/food/food_page_futurist_dinner.png" alt="The Tent Food" width="100%" />
            <img src="/images/food/food_page_food_board.png" alt="The Tent Food" width="100%" />
            
