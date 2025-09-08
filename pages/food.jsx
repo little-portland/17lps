@@ -76,6 +76,11 @@ const Menu = ({ menuImage }) => {
                 border: 3px solid #ff0200!important;
             }
 
+            .dining-concept {
+              margin: -33px auto;
+              display: block;
+            }
+
              .image-column img {
                 border: 5px solid #d9e2ea;
                 outline: 2px solid #221f20;
@@ -135,6 +140,10 @@ const Menu = ({ menuImage }) => {
             margin: 25px 0;
         }
 
+         .dining-concept {
+            margin: -16px auto;
+          }
+
         .override-button {
             font-size: 15px!important;
         }
@@ -159,7 +168,7 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/food/food_page_food_board.png" alt="The Tent Food" width="100%" />
            
            <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
-           <img className="override-logo" src="/images/food/food_page_dining_concept.gif" alt="The Tent Food" width="100%" />
+           <img className="dining-concept" src="/images/food/food_page_dining_concept.gif" alt="The Tent Food" width="100%" />
            <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
            
            <img className="override-logo" src="/images/food/food_page_food_floorplan.png" alt="The Tent Food" width="100%" />
