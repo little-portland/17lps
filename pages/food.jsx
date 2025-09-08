@@ -94,7 +94,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .explore-btns {
-              margin: 50px 0;
+              margin: 25px 0;
             }
 
             .footer {
