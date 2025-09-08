@@ -100,7 +100,6 @@ const Menu = ({ menuImage }) => {
 
             .openlab-box {
               background: transparent!important;
-              border: 3px solid rgb(61, 207, 214); 
               padding: 0!important; 
             }
         
@@ -245,12 +244,9 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
           </div>
-      
-          <div className="events-box openlab-box nocturn override override-logo">
-              <h2>TENT RADIO</h2>
-              <div className="content">
-                <p>Broadcasting from The Tent (at the End of the Universe), our monthly residency on OpenLab Radio.</p>
-              </div>
+
+           <div className="events-box openlab-box nocturn override override-logo">
+           <img src="/images/thetent/the_tent_page_private_hire.jpg" alt="The Tent" width="100%" />
               <div className="content-btn">
                 <a target="_blank" href="https://openlab.fm/radio/shows/the-tent-at-the-end-of-the-universe" class="override-button">EXPLORE</a>
               </div>
