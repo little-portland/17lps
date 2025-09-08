@@ -129,7 +129,7 @@ const Menu = ({ menuImage }) => {
             {`.top{ font-size: 35px;}`}
             {`.bottom{ font-size: 25px;}`}
             {'.image-row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
-            {'.image-column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
+            {'.image-column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.image-column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {`audio{ margin-top: 8px!important;width:100%!important;}`}
             {`.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}`}
@@ -239,6 +239,7 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/thetent/the_tent02.jpg" />
                 <img src="/images/thetent/the_tent06.jpg" />
                 <img src="/images/thetent/the_tent07.jpg" />
+                <img src="/images/thetent/the_tent08.jpg" />
               </div>
            </div>
           </div>
