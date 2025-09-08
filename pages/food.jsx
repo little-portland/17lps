@@ -128,6 +128,7 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override food-content">
            <img className="override-logo" src="/images/food/food_page_top.png" alt="The Tent Food" width="100%" />
+           <img className="override-logo" src="/images/food/food_page_title.gif" alt="The Tent Food" width="100%" />
            <img className="override-logo" src="/images/food/food_page_line_anim.gif" alt="The Tent Food" width="100%" />
 
             <div className="override-buttons-wrapper">
