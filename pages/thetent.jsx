@@ -233,9 +233,22 @@ const Menu = ({ menuImage }) => {
               </div>
           </div>
 
-          <div className="nocturn override override-logo">
-            <img className="override-quote override-space-top-bottom" src="/images/override/slide09.png" alt="Override" width="100%" /> 
-         </div>
+          <div className="nocturn-wider-section override-logo">
+           <div className="image-row">
+              <div className="image-column">
+                <img src="/images/thetent/the_tent01.jpg" />
+                <img src="/images/override/slide09.png" />
+                <img src="/images/thetent/the_tent02.jpg" />
+                <img src="/images/thetent/the_tent03.jpg" />
+              </div>
+             <div className="image-column">
+                <img src="/images/thetent/the_tent04.jpg" />
+                <img src="/images/thetent/the_tent05.jpg" />
+                <img src="/images/thetent/the_tent06.jpg" />
+                <img src="/images/thetent/the_tent07.jpg" />
+              </div>
+           </div>
+          </div>
       
           <div className="events-box openlab-box nocturn override override-logo">
               <h2>TENT RADIO</h2>
