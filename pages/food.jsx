@@ -40,6 +40,11 @@ const Menu = ({ menuImage }) => {
             .full-width {
               width: 100%;
             }
+
+            .button-half-page {
+               width: 50%;
+               display: flex;
+            }
             
             .override-button {
                 color: #ff0200!important; 
@@ -130,18 +135,24 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/food/food_page_top.png" alt="The Tent Food" width="100%" />
            <img className="override-logo" src="/images/food/food_page_title.gif" alt="The Tent Food" width="100%" />
            <img className="override-logo" src="/images/food/food_page_line_anim.gif" alt="The Tent Food" width="100%" />
+           <img className="override-logo" src="/images/food/food_page_futurist_dinner.png" alt="The Tent Food" width="100%" />
+           <img className="override-logo" src="/images/food/food_page_food_board.png" alt="The Tent Food" width="100%" />
+           <img className="override-logo" src="/images/food/food_page_food_floorplan.png" alt="The Tent Food" width="100%" />
 
             <div className="override-buttons-wrapper">
-             <a target="_blank" href="https://www.little-portland.com/thetent" class="override-button">EXPLORE THE TENT</a>
-             <a target="_blank" href="https://www.little-portland.com/chefstudio" class="override-button">EXPLORE CHEF'S STUDIO</a>
+              <div className="button-half-page">
+                 <a target="_blank" href="https://www.little-portland.com/thetent" class="override-button">EXPLORE THE TENT</a>
+             </div>
+             <div className="button-half-page">
+                 <a target="_blank" href="https://www.little-portland.com/chefstudio" class="override-button">EXPLORE CHEF'S STUDIO</a>
+             </div>
             </div>
            
            <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
 
            <div className="override-buttons-wrapper">
-             <a href="https://www.little-portland.com/bookings" class="override-button">BOOK</a>
+             <a href="https://www.little-portland.com/bookings" class="override-button">BOOK DINNER</a>
              <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
-             <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
             </div>
 
             <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
