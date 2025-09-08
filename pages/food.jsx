@@ -197,6 +197,10 @@ const Menu = ({ menuImage }) => {
             </div>
 
             <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
+           
+            <img src="/images/food/food_page_ethos.gif" alt="The Tent Food" width="100%" />
+
+            <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
 
              <img src="/images/food/food_page_middle.png" alt="The Tent Food" width="100%" />
 
