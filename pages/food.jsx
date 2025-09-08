@@ -208,6 +208,7 @@ const Menu = ({ menuImage }) => {
           </div>
       
          <div className="nocturn override footer">
+            <img src="/images/food/food_page_meme.png" alt="The Tent Food" width="100%" />
             <img src="/images/food/thetent_page_footer.png" alt="The Tent Food" width="100%" />
         </div>
          
