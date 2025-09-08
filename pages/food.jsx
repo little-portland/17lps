@@ -219,7 +219,7 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/override/image20.jpg" />
                 <img src="/images/override/image19.jpg" />
                 <img src="/images/override/image23.jpg" />
-                <img src="/images/override/override_poster_Insta.png" />
+                <img src="/images/override/image40.jpg" />
               </div>
            </div>
           </div>
