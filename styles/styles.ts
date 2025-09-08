@@ -335,8 +335,8 @@ html, body {
 }
 
 .events-box .override-button:hover {
-    background-color: #000000;
-    color: #3DCFD6; 
+    background-color: #f47658;
+    color: #000000; 
 }
 
 .openlab-box .override-button {
