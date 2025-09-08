@@ -164,8 +164,8 @@ const Menu = ({ menuImage }) => {
            <img src="/images/food/food_page_title.gif" alt="The Tent Food" width="100%" />
            <img src="/images/food/food_page_line_anim.gif" alt="The Tent Food" width="100%" />
            <img src="/images/food/food_page_food_futurist_menu.gif" alt="The Tent Food" width="100%" />
-           <img className="override-logo" src="/images/food/food_page_futurist_dinner.png" alt="The Tent Food" width="100%" />
-           <img className="override-logo" src="/images/food/food_page_food_board.png" alt="The Tent Food" width="100%" />
+           <img src="/images/food/food_page_futurist_dinner.png" alt="The Tent Food" width="100%" />
+           <img src="/images/food/food_page_food_board.png" alt="The Tent Food" width="100%" />
            
            <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
            <img className="dining-concept" src="/images/food/food_page_dining_concept.gif" alt="The Tent Food" width="100%" />
