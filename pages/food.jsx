@@ -93,6 +93,10 @@ const Menu = ({ menuImage }) => {
                 display: inline-block;
             }
 
+            .explore-btns {
+              margin: 50px 0;
+            }
+
             .footer {
                   margin-top: 10px!important;
             }
@@ -189,7 +193,7 @@ const Menu = ({ menuImage }) => {
            
            <img className="override-logo" src="/images/food/food_page_food_floorplan.png" alt="The Tent Food" width="100%" />
 
-            <div className="override-buttons-wrapper">
+            <div className="override-buttons-wrapper explore-btns">
               <div className="button-half-page">
                  <a target="_blank" href="https://www.little-portland.com/thetent" class="override-button">EXPLORE THE TENT</a>
              </div>
