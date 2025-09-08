@@ -238,12 +238,12 @@ const Menu = ({ menuImage }) => {
               <div className="image-column">
                 <img src="/images/thetent/the_tent01.jpg" />
                 <img src="/images/override/slide09.png" />
-                <img src="/images/thetent/the_tent02.jpg" />
+                <img src="/images/thetent/the_tent05.jpg" />
                 <img src="/images/thetent/the_tent03.jpg" />
               </div>
              <div className="image-column">
                 <img src="/images/thetent/the_tent04.jpg" />
-                <img src="/images/thetent/the_tent05.jpg" />
+                <img src="/images/thetent/the_tent02.jpg" />
                 <img src="/images/thetent/the_tent06.jpg" />
                 <img src="/images/thetent/the_tent07.jpg" />
               </div>
