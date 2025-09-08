@@ -45,6 +45,25 @@ const Menu = ({ menuImage }) => {
                width: 50%;
                display: flex;
             }
+
+            .button-half-page .override-button {
+              font-size: 20px!important;
+            }
+
+            .override-buttons-wrapper {
+              display: flex;
+              justify-content: space-between; /* optional: adds space between */
+              align-items: stretch; /* makes both children the same height */
+            }
+            
+            .button-half-page {
+              flex: 1; /* each button takes up equal width */
+              display: flex;
+              justify-content: center; /* centers text horizontally */
+              align-items: center; /* centers text vertically */
+              margin: 5px; /* optional: spacing between buttons */
+              box-sizing: border-box;
+            }
             
             .override-button {
                 color: #ff0200!important; 
