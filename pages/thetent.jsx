@@ -207,7 +207,7 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override">
            <img className="override-logo" src="/images/thetent/the_tent_page_logo.png" alt="The Tent" width="100%" />
-           <img src="/images/thetent/rotating_tent.gif" alt="The Tent" width="100%" />
+           <img className="override-logo" src="/images/thetent/rotating_tent.gif" alt="The Tent" width="100%" />
            <img src="/images/thetent/the_tent_page_schedule.png" alt="The Tent" width="100%" />
          </div>
 
