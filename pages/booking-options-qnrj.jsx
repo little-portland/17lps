@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>BOOMVISION (live), Cosmo, Jonjo Jury, Theo G</h3>
-              <h3><span>STUDIO <b>//</b> </span>Awkward Moments, Bekefi, Farsight, Maya Jane Coles, Sarah Nimmo (live), Sarra Wild</h3>
+              <h3><span>STUDIO <b>//</b> </span>Awkward Moments, Bekefi, Farsight, Maya Jane Coles, Reenie, Sarah Nimmo (live), Sarra Wild</h3>
             </div>
         </div>
 
@@ -59,7 +59,7 @@ const BookingOptions = () => {
           <div class="tags"><h3><span>FUTURIST MENU</span></h3></div>
 
           <div className="button-wrapper new-button-wrapper">
-            <Button classes="events-button new-events-button view-menu" btnType="hollow">
+            <Button classes="events-button new-events-button view-menu" btnType="hollow"> 
               <a href="https://www.little-portland.com/override-menu" target="_blank">
                 <span>View Menu</span>
               </a>
