@@ -56,7 +56,7 @@ const BookingOptions = () => {
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-          <div class="tags"><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
+          <div class="tags"><h3><span>FUTURIST MENU</span></h3></div>
 
           <div className="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button view-menu" btnType="hollow">
@@ -71,8 +71,8 @@ const BookingOptions = () => {
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-09-20&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
-                <p class="details"><span>9PM</span></p>
-                <p class="btn-tagline">Full Override Experience</p>
+                <p class="details"><span>8:30PM</span></p>
+                <p class="btn-tagline">The Cosmic Experience</p>
                </a>
               </Button>
   
@@ -87,9 +87,6 @@ const BookingOptions = () => {
           </div>
           
          <div class="button-wrapper new-button-wrapper button-wrapper-new desktop-only">
-            <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
-              <span>[What is override?]</span>
-            </a>
             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
                 <span>[What is Chef's Studio?]</span>
               </a>
@@ -103,10 +100,6 @@ const BookingOptions = () => {
                 <p class="btn-tagline">Full Override Experience</p>
                </a>
               </Button>
-
-            <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
-              <span>[What is override?]</span>
-            </a>
   
               <Button classes="events-button ticket"  btnType="hollow">
                 <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
