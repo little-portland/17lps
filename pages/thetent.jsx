@@ -129,7 +129,7 @@ const Menu = ({ menuImage }) => {
             {`.bottom{ font-size: 25px;}`}
             {'.image-row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.image-column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
-            {'.image-column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
+            {'.image-column img{ margin-top: 8px;vertical-align: middle;width: 100%; border: 2px solid rgb(61, 207, 214);}'}
             {`audio{ margin-top: 8px!important;width:100%!important;}`}
             {`.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}`}
             {`.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}`}
