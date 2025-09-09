@@ -1755,6 +1755,13 @@ html, body {
 
 }
 
+.dinner-options .free-entry {
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
 /* Hide explore Override button */
 
 .button-wrapper.new-button-wrapper.button-wrapper-bottom .explore-override {
