@@ -14,7 +14,7 @@ const BookingOptions = () => {
   return (
     <>
       <Head>
-        <title>Bookings </title>  
+        <title>Dinner Options</title>  
       </Head>
 
       <div id="bookingOptions" class="dinner-booking">
