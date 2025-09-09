@@ -68,7 +68,6 @@ const Menu = ({ menuImage }) => {
             .events-box .content {
                 position: relative;
                 padding: 20px 0;
-                margin: 0 20px;
                 z-index: 1;
             }
 
@@ -170,10 +169,6 @@ const Menu = ({ menuImage }) => {
             margin: 25px auto!important;
         }
 
-        .events-box {
-            padding: 10px;
-        }
-
         .events-box h2 {
           font-size: 15px;
           margin: 10px 10px 0 10px;
@@ -189,11 +184,15 @@ const Menu = ({ menuImage }) => {
 
     .events-box .content, .events-box .content-btn {
         padding: 10px 0;
-        margin: 0 10px;
+        margin: 0;
     }
         .override-button {
             font-size: 15px!important;
         }
+
+   .events-box .overide-buton, .events-box .content-btn {
+      font-size: 12px!important;
+    }
 
         .image-column {
             flex: 100%;
@@ -246,7 +245,7 @@ const Menu = ({ menuImage }) => {
           </div>
 
            <div className="events-box openlab-box nocturn override override-logo">
-           <img src="/images/thetent/the_tent_page_private_hire.jpg" alt="The Tent" width="100%" />
+           <img src="/images/thetent/the_tent_page_radio.jpg" alt="The Tent" width="100%" />
               <div className="content-btn">
                 <a target="_blank" href="https://openlab.fm/radio/shows/the-tent-at-the-end-of-the-universe" class="override-button">EXPLORE</a>
               </div>
