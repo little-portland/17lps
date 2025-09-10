@@ -1,14 +1,16 @@
-/* Base: responsive + cross-fade */
-.image-link{
+/* components/HoverImageLink.module.css  */
+
+.imageLink {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 2048 / 594;   /* set a default; override per banner if different */
   overflow: hidden;
+  aspect-ratio: 2000 / 306;         /* default; override per banner */
 }
 
-.image-link::before,
-.image-link::after{
+/* cross-fade layers */
+.imageLink::before,
+.imageLink::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -18,28 +20,31 @@
   transition: opacity 250ms ease;
   pointer-events: none;
 }
+.imageLink::before { background-image: var(--img);       opacity: 1; }
+.imageLink::after  { background-image: var(--imgHover);  opacity: 0; }
+.imageLink:hover::after,
+.imageLink:focus-visible::after { opacity: 1; }
+.imageLink:hover::before,
+.imageLink:focus-visible::before { opacity: 0; }
 
-.image-link::before{ background-image: var(--img);        opacity: 1; }
-.image-link::after { background-image: var(--img-hover);  opacity: 0; }
-
-.image-link:hover::after,
-.image-link:focus-visible::after{ opacity: 1; }
-.image-link:hover::before,
-.image-link:focus-visible::before{ opacity: 0; }
-
-@media (prefers-reduced-motion: reduce){
-  .image-link::before, .image-link::after{ transition: none; }
-}
-
-/* Banner-specific URLs + ratios */
-.banner-private-hire{
+/* banner-specific urls + ratios */
+.bannerPrivateHire {
   --img: url('/images/thetent/the_tent_page_private_enquire.jpg');
-  --img-hover: url('/images/thetent/the_tent_page_private_enquire_hover.jpg');
-  aspect-ratio: 2048 / 594; /* update if your asset ratio differs */
+  --imgHover: url('/images/thetent/the_tent_page_private_enquire_hover.jpg');
+  aspect-ratio: 2000 / 306;
+}
+.bannerTentRadio {
+  --img: url('/images/thetent/the_tent_page_tent_radio.jpg');
+  --imgHover: url('/images/thetent/the_tent_page_tent_radio_hover.jpg');
+  aspect-ratio: 2000 / 306;
+}
+.bannerTentInsta {
+  --img: url('/images/thetent/the_tent_page_insta.jpg');
+  --imgHover: url('/images/thetent/the_tent_page_insta_hover.jpg');
+  aspect-ratio: 2000 / 187;
 }
 
-.banner-tent-radio{
-  --img: url('/images/thetent/tent_radio.jpg');
-  --img-hover: url('/images/thetent/tent_radio_hover.jpg');
-  aspect-ratio: 2048 / 594; /* set this banner’s own ratio */
+@media (prefers-reduced-motion: reduce) {
+  .imageLink::before,
+  .imageLink::after { transition: none; }
 }
