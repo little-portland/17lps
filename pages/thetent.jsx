@@ -98,14 +98,14 @@ const Menu = ({ menuImage }) => {
             }
 
             .image-link {
-              display: inline-block !important;
-              width: 100% !important;
-              height: 110px;
+              display: block;
+              width: 100%;
+              aspect-ratio: 2000 / 306;
               background-image: url(/images/thetent/the_tent_page_private_enquire.jpg);
-              background-size: 100% 100%;
+              background-size: cover;
               background-position: center;
-              margin-bottom: 20px;
-              border: none !important;
+              background-repeat: no-repeat;
+              border: none!important;
           }
           
           .image-link:hover {
@@ -228,7 +228,6 @@ const Menu = ({ menuImage }) => {
     }
 
     .image-link {
-        height: 60px;
         margin-bottom: 0;
     }
 
