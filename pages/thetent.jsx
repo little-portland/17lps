@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
+import bannerStyles from "@/components/HoverImageLink.module.css"; // adjust path if needed
 import ManualSlideshow from "@components/UX/ManualSlideshow"; // adjust path if different
 
 //Components
@@ -149,6 +150,10 @@ const Menu = ({ menuImage }) => {
                 text-align: right!important;
                 font-weight: 400;
               }
+
+              .insta-wrapper {
+                margin-top: 50px;
+              }
       
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -237,6 +242,11 @@ const Menu = ({ menuImage }) => {
             max-width: 100%;
         }
 
+               .insta-wrapper {
+                margin-top: 25px;
+              }
+      
+
             }`}
         </style>
 
@@ -259,13 +269,23 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="nocturn">
-            <a target="_blank" href="mailto:yo@little-portland.com" class="image-link"></a>
+            <a
+              target="_blank"
+              href="mailto:yo@little-portland.com"
+              className={`${bannerStyles.imageLink} ${bannerStyles.bannerPrivateHire}`}
+              aria-label="Private hire enquiries"
+            />
           </div>
-
-           <div className="nocturn">
-            <a target="_blank" href="https://www.little-portland.com/thetentradio" class="image-link tent-radio"></a>
+          
+          <div className="nocturn">
+            <a
+              target="_blank"
+              href="https://www.little-portland.com/thetentradio"
+              className={`${bannerStyles.imageLink} ${bannerStyles.bannerTentRadio}`}
+              aria-label="The Tent Radio"
+            />
           </div>
-
+          
           <div className="nocturn-wider-section">
            <div className="image-row override-logo">
               <div className="image-column">
@@ -283,8 +303,13 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
 
-          <div className="nocturn override-logo">
-            <a target="_blank" href="https://www.instagram.com/thetentattheendoftheuniverse/" class="image-link tent-insta"></a>
+           <div className="nocturn override-logo">
+            <a
+              target="_blank"
+              href="https://www.instagram.com/thetentattheendoftheuniverse/"
+              className={`${bannerStyles.imageLink} ${bannerStyles.bannerTentInsta}`}
+              aria-label="The Tent Instagram"
+            />
           </div>
       
          <div className="nocturn override">
