@@ -111,6 +111,14 @@ const Menu = ({ menuImage }) => {
             background-image: url('/images/thetent/the_tent_page_private_enquire_hover.jpg');
           }
 
+         .tent-radio {
+                background-image: url(/images/thetent/the_tent_page_tent_radio.jpg);
+          }
+
+         .tent-radio:hover {
+                background-image: url(/images/thetent/the_tent_page_tent_radio_hover.jpg);
+          }
+
             .openlab-box {
               background: transparent!important;
               padding: 0!important; 
@@ -241,8 +249,12 @@ const Menu = ({ menuImage }) => {
             <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
           </div>
 
-          <div className="events-box nocturn override override-logo">
-            <a target="_blank" href="mailto:yo@little-portland.com" class="override-button image-link"></a>
+          <div className="nocturn">
+            <a target="_blank" href="mailto:yo@little-portland.com" class="image-link"></a>
+          </div>
+
+           <div className="nocturn">
+            <a target="_blank" href="https://www.little-portland.com/thetentradio" class="image-link tent-radio"></a>
           </div>
 
           <div className="nocturn-wider-section override-logo">
@@ -260,13 +272,6 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/thetent/the_tent07.jpg" />
               </div>
            </div>
-          </div>
-
-           <div className="events-box openlab-box nocturn override override-logo">
-           <img src="/images/thetent/the_tent_page_radio.jpg" alt="The Tent" width="100%" />
-              <div className="content-btn">
-                <a target="_blank" href="https://openlab.fm/radio/shows/the-tent-at-the-end-of-the-universe" class="override-button">EXPLORE</a>
-              </div>
           </div>
 
           <div className="events-box nocturn override override-logo">
