@@ -56,11 +56,11 @@ const Menu = ({ menuImage }) => {
             }
 
             .poem {
-              margin: 10px auto 0 auto;
+              margin: 10px auto 10px auto!important
             }
 
             .bottom-grid {
-              margin-bottom: 30px;
+              margin-bottom: 30px!important;
             }
             
             .override-buttons-wrapper .column {
@@ -153,7 +153,7 @@ const Menu = ({ menuImage }) => {
            <img src="/images/chefstudio/chefs-studio-poem.png" alt="Chef's Studio" width="100%" />
          </div>
 
-         <div className="nocturn-wider-section override-logo">
+         <div className="nocturn-wider-section override-logo bottom-grid">
            <div className="image-row">
               <div className="image-column">
                 <img src="/images/chefstudio/chefstudio12.jpg" />
