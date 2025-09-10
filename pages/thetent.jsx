@@ -105,7 +105,9 @@ const Menu = ({ menuImage }) => {
               border: none;
             }
 
-        
+            .insta-margin {
+              margin-top: 50px!important;
+              }
 
             .openlab-box {
               background: transparent!important;
@@ -217,8 +219,8 @@ const Menu = ({ menuImage }) => {
             max-width: 100%;
         }
 
-               .insta-wrapper {
-                margin-top: 25px;
+            .insta-margin {
+              margin-top: 25px!important;
               }
       
 
@@ -282,7 +284,7 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
 
-        <div className="nocturn override-logo">
+        <div className="nocturn insta-margin">
           <HoverImageLink
             href="https://www.instagram.com/thetentattheendoftheuniverse/"
             img="/images/thetent/the_tent_page_insta.jpg"
