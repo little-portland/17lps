@@ -3,34 +3,48 @@ import styles from "./HoverImageLink.module.css";
 
 type Props = {
   href: string;
-  img: string;        // normal image (e.g. "/images/..jpg")
-  hoverImg: string;   // hover image  (e.g. "/images/..jpg")
-  aspect?: string;    // e.g. "2048 / 594"  (defaults below)
+  img: string;
+  hoverImg: string;
+  aspect?: string;
   ariaLabel?: string;
   className?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
 };
 
 export default function HoverImageLink({
   href,
   img,
   hoverImg,
-  aspect = "2048 / 594",     // set this to your banner’s ratio
+  aspect = "2048 / 594",
   ariaLabel,
-  className
+  className,
+  target,
 }: Props) {
+  const merged = `${styles.imageLink} ${className ?? ""}`;
+  const style: React.CSSProperties = {
+    ["--img" as any]: `url(${img})`,
+    ["--imgHover" as any]: `url(${hoverImg})`,
+    aspectRatio: aspect,
+  };
+
+  // external links (http/https/mailto/tel) → plain <a>
+  if (/^(https?:|mailto:|tel:)/.test(href)) {
+    return (
+      <a
+        href={href}
+        className={merged}
+        aria-label={ariaLabel}
+        style={style}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      />
+    );
+  }
+
+  // internal routes → Next <Link> + <a>
   return (
-    <Link
-      href={href}
-      className={`${styles.imageLink} ${className ?? ""}`}
-      aria-label={ariaLabel}
-      style={
-        {
-          // CSS custom props used by the CSS module
-          ["--img" as any]: `url(${img})`,
-          ["--img-hover" as any]: `url(${hoverImg})`,
-          aspectRatio: aspect
-        } as React.CSSProperties
-      }
-    />
+    <Link href={href} passHref>
+      <a className={merged} aria-label={ariaLabel} style={style} />
+    </Link>
   );
 }
