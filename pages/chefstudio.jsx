@@ -54,11 +54,11 @@ const Menu = ({ menuImage }) => {
              .image-column img {
                 border: 2px solid #ff0200;
             }
-
+            
             .poem {
-              margin: 10px auto 10px auto!important
+              18px auto 10px auto!important
             }
-
+            
             .bottom-grid {
               margin-bottom: 30px!important;
             }
@@ -110,6 +110,10 @@ const Menu = ({ menuImage }) => {
         .override-buttons-wrapper {
             margin: 25px 0;
         }
+
+        .poem {
+              margin: 10px auto 10px auto!important
+            }
 
         .override-button {
             font-size: 15px!important;
