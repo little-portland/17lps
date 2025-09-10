@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import bannerStyles from "@/components/HoverImageLink.module.css"; // adjust path if needed
+import HoverImageLink from "@components/HoverImageLink"; // adjust path if your structure differs
 import ManualSlideshow from "@components/UX/ManualSlideshow"; // adjust path if different
 
 //Components
@@ -15,6 +15,13 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
+        <link rel="preload" as="image" href="/images/thetent/the_tent_page_private_enquire.jpg" />
+        <link rel="preload" as="image" href="/images/thetent/the_tent_page_private_enquire_hover.jpg" />
+        <link rel="preload" as="image" href="/images/thetent/the_tent_page_tent_radio.jpg" />
+        <link rel="preload" as="image" href="/images/thetent/the_tent_page_tent_radio_hover.jpg" />
+        <link rel="preload" as="image" href="/images/thetent/the_tent_page_insta.jpg" />
+        <link rel="preload" as="image" href="/images/thetent/the_tent_page_insta_hover.jpg" />
+
         <style>
             {`html{overflow-x: hidden !important;}`}
             {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
@@ -269,20 +276,24 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="nocturn">
-            <a
-              target="_blank"
+            <HoverImageLink
               href="mailto:yo@little-portland.com"
-              className={`${bannerStyles.imageLink} ${bannerStyles.bannerPrivateHire}`}
-              aria-label="Private hire enquiries"
+              img="/images/thetent/the_tent_page_private_enquire.jpg"
+              hoverImg="/images/thetent/the_tent_page_private_enquire_hover.jpg"
+              aspect="2000 / 306"
+              ariaLabel="Private hire enquiries"
+              target="_blank"
             />
           </div>
           
           <div className="nocturn">
-            <a
-              target="_blank"
+            <HoverImageLink
               href="https://www.little-portland.com/thetentradio"
-              className={`${bannerStyles.imageLink} ${bannerStyles.bannerTentRadio}`}
-              aria-label="The Tent Radio"
+              img="/images/thetent/the_tent_page_tent_radio.jpg"
+              hoverImg="/images/thetent/the_tent_page_tent_radio_hover.jpg"
+              aspect="2000 / 306"
+              ariaLabel="The Tent Radio"
+              target="_blank"
             />
           </div>
           
@@ -303,14 +314,16 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
 
-           <div className="nocturn override-logo">
-            <a
-              target="_blank"
-              href="https://www.instagram.com/thetentattheendoftheuniverse/"
-              className={`${bannerStyles.imageLink} ${bannerStyles.bannerTentInsta}`}
-              aria-label="The Tent Instagram"
-            />
-          </div>
+        <div className="nocturn override-logo">
+          <HoverImageLink
+            href="https://www.instagram.com/thetentattheendoftheuniverse/"
+            img="/images/thetent/the_tent_page_insta.jpg"
+            hoverImg="/images/thetent/the_tent_page_insta_hover.jpg"
+            aspect="2000 / 187"
+            ariaLabel="Instagram"
+            target="_blank"
+          />
+        </div>
       
          <div className="nocturn override">
           <img src="/images/override/override_new_page_bottom.png" alt="Override" width="100%" />
