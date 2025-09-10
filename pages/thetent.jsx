@@ -98,14 +98,14 @@ const Menu = ({ menuImage }) => {
             }
 
             .image-link {
-                display: inline-block !important;
-                width: 100% !important;
-                height: 150px;
-                background-image: url(/images/thetent/the_tent_page_private_enquire.jpg);
-                background-size: cover;
-                background-position: center;
-                margin-bottom: 30px;
-                border: none!important;
+              display: inline-block !important;
+              width: 100% !important;
+              height: 110px;
+              background-image: url(/images/thetent/the_tent_page_private_enquire.jpg);
+              background-size: 100% 100%;
+              background-position: center;
+              margin-bottom: 20px;
+              border: none !important;
           }
           
           .image-link:hover {
@@ -219,10 +219,8 @@ const Menu = ({ menuImage }) => {
     }
 
     .image-link {
-        height: 75px;
-        background-size: 150%;
-        background-position: center;
-        margin-bottom: 15px;
+        height: 60px;
+        margin-bottom: 0;
     }
 
         .image-column {
