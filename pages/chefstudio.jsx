@@ -58,6 +58,10 @@ const Menu = ({ menuImage }) => {
             .poem {
               margin: 10px auto 0 auto;
             }
+
+            .bottom-grid {
+              margin-bottom: 30px;
+            }
             
             .override-buttons-wrapper .column {
                 flex: 1;
