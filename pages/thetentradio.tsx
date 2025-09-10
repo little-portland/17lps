@@ -119,14 +119,25 @@ export default function Playlist() {
     <>
       <Head>
         <title>17 Little Portland Street — Playlist</title>
-        <style>{`html{overflow-x:hidden}body{background:#000}`}</style>
+          <style>{`
+          html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000!important;
+            background-image: url('/images/stars-sky.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100%;
+          }
+        `}</style>
       </Head>
 
       <CenterContainer>
         <header className="hero">
           <div className="hero__glow" />
-          <h1>Playlist</h1>
-          <p>New episodes, bigger art, one-click play.</p>
+          <h1>The Tent Radio</h1>
+          <p>BALEARIC, WORLD, DOWNTEMPO, ELECTRONICA</p>
         </header>
 
         <section className="list" aria-label="Playlist">
@@ -216,8 +227,6 @@ export default function Playlist() {
       </div>
 
       <style jsx>{`
-
-        body{background-color: #000000!important;}
 
         :root {
           --card:#0f1117; --ink:#f6f7fb; --muted:#9aa3b2;
