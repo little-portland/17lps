@@ -105,10 +105,12 @@ const Menu = ({ menuImage }) => {
                 background-size: cover;
                 background-position: center;
                 margin-bottom: 30px;
+                border: none!important;
           }
           
           .image-link:hover {
             background-image: url('/images/thetent/the_tent_page_private_enquire_hover.jpg');
+            border: none!important;
           }
 
          .tent-radio {
