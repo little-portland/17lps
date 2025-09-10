@@ -216,6 +216,9 @@ export default function Playlist() {
       </div>
 
       <style jsx>{`
+
+        body{background-color: #000000!important;}
+
         :root {
           --card:#0f1117; --ink:#f6f7fb; --muted:#9aa3b2;
           --accent:#7c5cff; --accent2:#00ffd5; --ring:rgba(124,92,255,.35);
