@@ -124,6 +124,7 @@ const Menu = ({ menuImage }) => {
           
          .tent-insta {
                 background-image: url(/images/thetent/the_tent_page_insta.jpg);
+                aspect-ratio: 2000 / 187;
           }
 
          .tent-insta:hover {
