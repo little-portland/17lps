@@ -1,0 +1,32 @@
+.imageLink {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.imageLink::before,
+.imageLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+}
+
+.imageLink::before { background-image: var(--img);        opacity: 1; }
+.imageLink::after  { background-image: var(--img-hover);  opacity: 0; }
+
+.imageLink:hover::after,
+.imageLink:focus-visible::after { opacity: 1; }
+.imageLink:hover::before,
+.imageLink:focus-visible::before { opacity: 0; }
+
+/* Optional: respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .imageLink::before,
+  .imageLink::after { transition: none; }
+}
