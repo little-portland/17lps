@@ -105,39 +105,7 @@ const Menu = ({ menuImage }) => {
               border: none;
             }
 
-            .image-link {
-              display: block;
-              width: 100%;
-              aspect-ratio: 2000 / 306;
-              background-image: url(/images/thetent/the_tent_page_private_enquire.jpg);
-              background-size: cover;
-              background-position: center;
-              background-repeat: no-repeat;
-              border: none!important;
-          }
-          
-          .image-link:hover {
-            background-image: url('/images/thetent/the_tent_page_private_enquire_hover.jpg');
-            border: none!important;
-          }
-
-         .tent-radio {
-                background-image: url(/images/thetent/the_tent_page_tent_radio.jpg);
-          }
-
-         .tent-radio:hover {
-                background-image: url(/images/thetent/the_tent_page_tent_radio_hover.jpg);
-          }
-
-          
-         .tent-insta {
-                background-image: url(/images/thetent/the_tent_page_insta.jpg);
-                aspect-ratio: 2000 / 187;
-          }
-
-         .tent-insta:hover {
-                background-image: url(/images/thetent/the_tent_page_insta_hover.jpg);
-          }
+        
 
             .openlab-box {
               background: transparent!important;
