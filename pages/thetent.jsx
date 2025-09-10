@@ -283,7 +283,7 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
 
-          <div className="nocturn">
+          <div className="nocturn  override-logo">
             <a target="_blank" href="https://www.instagram.com/thetentattheendoftheuniverse/" class="image-link tent-insta"></a>
           </div>
       
