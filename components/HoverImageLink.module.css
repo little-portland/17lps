@@ -1,12 +1,14 @@
-.imageLink {
+/* Base: responsive + cross-fade */
+.image-link{
   position: relative;
   display: block;
   width: 100%;
+  aspect-ratio: 2048 / 594;   /* set a default; override per banner if different */
   overflow: hidden;
 }
 
-.imageLink::before,
-.imageLink::after {
+.image-link::before,
+.image-link::after{
   content: "";
   position: absolute;
   inset: 0;
@@ -17,16 +19,27 @@
   pointer-events: none;
 }
 
-.imageLink::before { background-image: var(--img);        opacity: 1; }
-.imageLink::after  { background-image: var(--img-hover);  opacity: 0; }
+.image-link::before{ background-image: var(--img);        opacity: 1; }
+.image-link::after { background-image: var(--img-hover);  opacity: 0; }
 
-.imageLink:hover::after,
-.imageLink:focus-visible::after { opacity: 1; }
-.imageLink:hover::before,
-.imageLink:focus-visible::before { opacity: 0; }
+.image-link:hover::after,
+.image-link:focus-visible::after{ opacity: 1; }
+.image-link:hover::before,
+.image-link:focus-visible::before{ opacity: 0; }
 
-/* Optional: respect reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  .imageLink::before,
-  .imageLink::after { transition: none; }
+@media (prefers-reduced-motion: reduce){
+  .image-link::before, .image-link::after{ transition: none; }
+}
+
+/* Banner-specific URLs + ratios */
+.banner-private-hire{
+  --img: url('/images/thetent/the_tent_page_private_enquire.jpg');
+  --img-hover: url('/images/thetent/the_tent_page_private_enquire_hover.jpg');
+  aspect-ratio: 2048 / 594; /* update if your asset ratio differs */
+}
+
+.banner-tent-radio{
+  --img: url('/images/thetent/tent_radio.jpg');
+  --img-hover: url('/images/thetent/tent_radio_hover.jpg');
+  aspect-ratio: 2048 / 594; /* set this banner’s own ratio */
 }
