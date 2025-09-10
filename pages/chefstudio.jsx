@@ -120,6 +120,11 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override">
            <img className="override-logo" src="/images/chefstudio/chefs-studio-page-top.png" alt="Chef's Studio" width="100%" />
+           <img className="override-logo" src="/images/chefstudio/chefs-studio-page-bottom.png" alt="Chef's Studio" width="100%" />
+           <div className="override-buttons-wrapper">
+             <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
+             <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
+            </div>
          </div>
 
          <div className="nocturn-wider-section override-logo">
@@ -127,26 +132,32 @@ const Menu = ({ menuImage }) => {
               <div className="image-column">
                 <img src="/images/chefstudio/chefstudio07.jpg" />
                 <img src="/images/chefstudio/chefstudio08.jpg" />
-                <img src="/images/chefstudio/chefstudio12.jpg" />
-                <img src="/images/chefstudio/chefstudio14.jpg" />
 
               </div>
              <div className="image-column">
                 <img src="/images/chefstudio/chefstudio10.jpg" />
                 <img src="/images/chefstudio/chefstudio11.jpg" />
+              </div>
+           </div>
+          </div>
+
+         <div className="nocturn override">
+           <img className="override-logo" src="/images/chefstudio/chefs-studio-poem.png" alt="Chef's Studio" width="100%" />
+         </div>
+
+         <div className="nocturn-wider-section override-logo">
+           <div className="image-row">
+              <div className="image-column">
+                <img src="/images/chefstudio/chefstudio12.jpg" />
+                <img src="/images/chefstudio/chefstudio14.jpg" />
+
+              </div>
+             <div className="image-column">
                 <img src="/images/chefstudio/chefstudio09.jpg" />
                 <img src="/images/chefstudio/chefstudio13.jpg" />
               </div>
            </div>
           </div>
-      
-         <div className="nocturn override">
-           <img className="override-logo" src="/images/chefstudio/chefs-studio-page-bottom.png" alt="Chef's Studio" width="100%" />
-           <div className="override-buttons-wrapper">
-             <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
-             <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
-            </div>
-        </div>
          
     </>
   );
