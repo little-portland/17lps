@@ -118,7 +118,7 @@ export default function Playlist() {
   return (
     <>
       <Head>
-        <title>17 Little Portland Street — Playlist</title>
+        <title>17 Little Portland Street — The Tent Radio</title>
           <style>{`
           html, body {
             margin: 0;
