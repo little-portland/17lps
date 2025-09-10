@@ -97,6 +97,19 @@ const Menu = ({ menuImage }) => {
               border: none;
             }
 
+            .image-link {
+            display: inline-block;
+            width: 100%;   /* set width */
+            height: 100%;  /* set height */
+            background-image: url('/images/thetent/the_tent_page_private_enquire.jpg');
+            background-size: cover;
+            background-position: center;
+          }
+          
+          .image-link:hover {
+            background-image: url('/images/thetent/the_tent_page_private_enquire_hover.jpg');
+          }
+
             .openlab-box {
               background: transparent!important;
               padding: 0!important; 
@@ -221,10 +234,7 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="events-box nocturn override override-logo">
-           <img src="/images/thetent/the_tent_page_private_hire.jpg" alt="The Tent" width="100%" />
-              <div className="content-btn">
-                <a target="_blank" href="mailto:yo@little-portland.com" class="override-button">ENQUIRIES</a>
-              </div>
+            <a target="_blank" href="mailto:yo@little-portland.com" class="override-button image-link"></a>
           </div>
 
           <div className="nocturn-wider-section override-logo">
