@@ -154,7 +154,7 @@ const Menu = ({ menuImage }) => {
                 flex: 1;
             }`}
             {`.nocturn h1{margin-top: 30px;}`}
-            {`.nocturn{width: 50%;margin: 30px auto 0 auto;!important}`}
+            {`.nocturn{width: 50%;margin: 20px auto 0 auto;!important}`}
             {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
             {`.column{width: 50%}`}
             {`.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}`}
@@ -266,8 +266,8 @@ const Menu = ({ menuImage }) => {
             <a target="_blank" href="https://www.little-portland.com/thetentradio" class="image-link tent-radio"></a>
           </div>
 
-          <div className="nocturn-wider-section override-logo">
-           <div className="image-row">
+          <div className="nocturn-wider-section">
+           <div className="image-row override-logo">
               <div className="image-column">
                 <img src="/images/thetent/the_tent01.jpg" />
                 <img src="/images/override/slide09.png" />
@@ -283,7 +283,7 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
 
-          <div className="nocturn  override-logo">
+          <div className="nocturn override-logo">
             <a target="_blank" href="https://www.instagram.com/thetentattheendoftheuniverse/" class="image-link tent-insta"></a>
           </div>
       
