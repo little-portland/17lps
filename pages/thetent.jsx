@@ -98,12 +98,13 @@ const Menu = ({ menuImage }) => {
             }
 
             .image-link {
-            display: inline-block;
-            width: 100%;   /* set width */
-            height: 100%;  /* set height */
-            background-image: url('/images/thetent/the_tent_page_private_enquire.jpg');
-            background-size: cover;
-            background-position: center;
+                display: inline-block !important;
+                width: 100% !important;
+                height: 150px;
+                background-image: url(/images/thetent/the_tent_page_private_enquire.jpg);
+                background-size: cover;
+                background-position: center;
+                margin-bottom: 30px;
           }
           
           .image-link:hover {
@@ -205,6 +206,13 @@ const Menu = ({ menuImage }) => {
 
    .events-box .overide-buton, .events-box .content-btn {
       font-size: 12px!important;
+    }
+
+    .image-link {
+        height: 75px;
+        background-size: 150%;
+        background-position: center;
+        margin-bottom: 15px;
     }
 
         .image-column {
