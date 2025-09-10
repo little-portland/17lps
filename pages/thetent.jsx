@@ -121,6 +121,15 @@ const Menu = ({ menuImage }) => {
                 background-image: url(/images/thetent/the_tent_page_tent_radio_hover.jpg);
           }
 
+          
+         .tent-insta {
+                background-image: url(/images/thetent/the_tent_page_insta.jpg);
+          }
+
+         .tent-insta:hover {
+                background-image: url(/images/thetent/the_tent_page_insta_hover.jpg);
+          }
+
             .openlab-box {
               background: transparent!important;
               padding: 0!important; 
@@ -274,10 +283,8 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
 
-          <div className="events-box nocturn override override-logo">
-              <div className="content">
-                <a target="_blank" href="https://www.instagram.com/thetentattheendoftheuniverse/" class="override-button">FOLLOW US ON INSTAGRAM</a>
-              </div>
+          <div className="nocturn">
+            <a target="_blank" href="https://www.instagram.com/thetentattheendoftheuniverse/" class="image-link tent-insta"></a>
           </div>
       
          <div className="nocturn override">
