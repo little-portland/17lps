@@ -220,18 +220,18 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn-wider-section override-logo">
            <div className="image-row">
               <div className="image-column">
-                <img src="/images/override/image27.jpg" />
-                <img src="/images/override/image25.jpg" />
-                <img src="/images/override/image26.jpg" />
-                <img src="/images/override/image22.jpg" />
-                <img src="/images/override/image24.jpg" />
+                <img src="/images/food/image1.jpg" />
+                <img src="/images/food/image3.jpg" />
+                <img src="/images/food/image5.jpg" />
+                <img src="/images/food/image7.jpg" />
+                <img src="/images/food/image9.jpg" />
               </div>
              <div className="image-column">
-                <img src="/images/override/image15.jpg" />
-                <img src="/images/override/image20.jpg" />
-                <img src="/images/override/image19.jpg" />
-                <img src="/images/override/image23.jpg" />
-                <img src="/images/override/image40.jpg" />
+                <img src="/images/food/image2.jpg" />
+                <img src="/images/food/image4.jpg" />
+                <img src="/images/food/image6.jpg" />
+                <img src="/images/food/image8.jpg" />
+                <img src="/images/food/image10.jpg" />
               </div>
            </div>
           </div>
