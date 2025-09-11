@@ -1436,6 +1436,15 @@ html, body {
   margin: 20px 10px;
 }
 
+.or {
+    display: block !important;
+    text-align: center;
+    color: var(--accent-color);
+    font-size: 2rem;
+    font-style: italic !important;
+    margin: 10px 0px 5px 0px !important;
+}
+
 /* Color Customization Per Day */
 
 .thursday {
