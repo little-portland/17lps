@@ -146,7 +146,7 @@ drawn to sensorial and hypnotic experiences that
             <li className="info">8:30pm Start</li>
             <li className="info">Club Access Included</li>
           </ul>
-        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/thetent" target="_blank">[MORE ABOUT THE TENT]</a></p>
+        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/thetent" target="_blank">[MORE ABOUT THE TENT]</a> <a href="https://www.little-portland.com/food" target="_blank">[MORE ABOUT OUR DINING CONCEPT]</a></p>
         </div>}
 
         {<div
