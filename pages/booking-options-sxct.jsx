@@ -62,7 +62,7 @@ const BookingOptions = () => {
 
           <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
             <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
-              <span>[More about our dinning concept]</span>
+              <span>[More about our dining concept]</span>
             </a>
            </div>
 
