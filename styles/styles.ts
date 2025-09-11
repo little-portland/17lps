@@ -1734,7 +1734,7 @@ html, body {
     display: flex!important;
  }
 
- .or {
+ .or-desktop {
     display: block !important;
     text-align: center;
     color: var(--accent-color);
