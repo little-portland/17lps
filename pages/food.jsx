@@ -179,7 +179,7 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override food-content">
            <img className="override-logo" src="/images/food/food_page_top.png" alt="The Tent Food" width="100%" />
-           <img src="/images/food/food_page_title.gif" alt="The Tent Food" width="100%" />
+           <img src="/images/food/food_page_title_anim.gif" alt="The Tent Food" width="100%" />
            <img src="/images/food/food_page_line_anim.gif" alt="The Tent Food" width="100%" />
             <img className="futurist-menu" src="/images/food/food_page_food_more_than_meal.gif" alt="The Tent Food" width="95%" />
            <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
