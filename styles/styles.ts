@@ -1775,6 +1775,10 @@ html, body {
     text-align: center;
 }
 
+.dining-con {
+  margin-bottom: 20px;
+}
+
 /* Hide explore Override button */
 
 .button-wrapper.new-button-wrapper.button-wrapper-bottom .explore-override {
