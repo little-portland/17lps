@@ -1436,15 +1436,6 @@ html, body {
   margin: 20px 10px;
 }
 
-.or {
-    display: block !important;
-    text-align: center;
-    color: var(--accent-color);
-    font-size: 2rem;
-    font-style: italic !important;
-    margin: 10px 0px 5px 0px !important;
-}
-
 /* Color Customization Per Day */
 
 .thursday {
@@ -1743,6 +1734,15 @@ html, body {
     display: flex!important;
  }
 
+ .or {
+    display: block !important;
+    text-align: center;
+    color: var(--accent-color);
+    font-size: 2rem;
+    font-style: italic !important;
+    margin: 10px 0px 5px 0px !important;
+}
+
 @media only screen and (min-device-width: 1024px) { 
 
   .thursday .day-category,
@@ -1776,7 +1776,7 @@ html, body {
 }
 
 .dining-con {
-  margin-bottom: 20px;
+  margin-bottom: 20px!important;
 }
 
 /* Hide explore Override button */
