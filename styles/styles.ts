@@ -2352,6 +2352,10 @@ html, body {
       margin: 5px 0px 0px 0px !important;
   }
 
+  .dining-con {
+    margin-bottom: 10px!important;
+  }
+
   .letter-spacing {
     word-spacing: -15px;
   }
