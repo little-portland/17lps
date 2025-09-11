@@ -58,6 +58,14 @@ const BookingOptions = () => {
           </div>
           <div class="tags"><h3><span>FUTURIST MENU</span></h3></div>
 
+         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-thu.svg" alt="The Tent Food" width="100%" /></div>
+
+          <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
+            <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
+              <span>[More about our dinning concept]</span>
+            </a>
+           </div>
+
           <div className="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button view-menu" btnType="hollow">
               <a href="https://www.little-portland.com/override-menu" target="_blank">
@@ -87,8 +95,11 @@ const BookingOptions = () => {
           </div>
           
          <div class="button-wrapper new-button-wrapper button-wrapper-new desktop-only">
+            <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
+              <span>[More about The Tent]</span>
+            </a>
             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[What is Chef's Studio?]</span>
+                <span>[More about Chef's Studio]</span>
               </a>
            </div>
          
@@ -100,6 +111,10 @@ const BookingOptions = () => {
                 <p class="btn-tagline">Full Override Experience</p>
                </a>
               </Button>
+
+               <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
+                <span>[More about The Tent]</span>
+              </a>
   
               <Button classes="events-button ticket"  btnType="hollow">
                 <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
@@ -110,11 +125,14 @@ const BookingOptions = () => {
               </Button>
 
              <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[What is Chef's Studio?]</span>
+                <span>[More about Chef's Studio]</span>
             </a> 
            
           </div>
         </div>
+
+        <div className="or desktop-only"><h2>Or</h2></div>
+
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/xWpogDov" target="_blank">
