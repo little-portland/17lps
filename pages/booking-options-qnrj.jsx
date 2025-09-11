@@ -60,6 +60,12 @@ const BookingOptions = () => {
 
           <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-thu.svg" alt="The Tent Food" width="100%" /></div>
 
+          <div class="button-wrapper new-button-wrapper button-wrapper-new">
+            <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
+              <span>[More about our dinning concept]</span>
+            </a>
+           </div>
+
           <div className="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button view-menu" btnType="hollow"> 
               <a href="https://www.little-portland.com/override-menu" target="_blank">
@@ -124,6 +130,9 @@ const BookingOptions = () => {
            
           </div>
         </div>
+        
+        <div className="or desktop-only"><h2>Or</h2></div>
+        
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/xUhMpB0C" target="_blank">
