@@ -115,7 +115,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         }}
         link2={{
           target: "/override-menu",
-          title: "override menu",
+          title: "menu",
         }}
         className="eat-modal"
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
@@ -123,40 +123,30 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
             {<div
         className="eat-note"
       >     
-        <h1>The Tent</h1>
-        <h2 className="header-tag">[At the end of the Universe]</h2> 
-        <h3 className="header-address">17 Little Portland Street</h3>
-        
-        {<div
-        className="box-1 box schedule-box open"> 
-        <h3>Open Thursdays to Saturdays</h3>
-        </div>}
-              
-        {<div
-        className="box-1 box schedule-box"> 
-        <h4>Nightly Schedule</h4>
-        <div className="schedule-container"> 
-          <p className="details"><span>Chef's Studio</span><small>20:00</small></p>
-          <p className="details"><span>Override Dinner</span><small>21:00</small></p>
-          <p className="details"><span>Club Opens</span><small>22:00</small></p> 
-        </div>
-        </div>}
+        <Image 
+            src={"/images/tent_eat_page.png"}
+            blurDataURL={"/images/tent_eat_page.png"}
+        />
 
         {<div
         className="box-1 box override-boxx"> 
-        <Image 
-            src={"/images/override_eat_page.png"}
-            blurDataURL={"/images/override_eat_page.png"}
-        />
-        <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
-        <p className="override-intro">“Override” is our restaurant concept, with futurist menus setting the stage for a sensorial experience as dinner transitions seamlessly into our hypnotic after-dark scene.</p> 
+        <h2>THE TENT</h2>
+        <p className="override-intro">Our menu is Futurist, reflecting a world where 
+food adapts to survival, mood, and culture in the face 
+of transhuman change and environmental uncertainty; 
+a vision of dining in futures both fragile and strange.</p> 
+
+<p className="override-intro">And yet even as the world drifts into shadow, 
+people are pulled toward deeper escapes, 
+drawn to sensorial and hypnotic experiences that
+ come to define the after-dark scenes of the future.  </p> 
           <ul>
             <li className="info">£65pp Set Dinner</li>
-            <li className="info">Futurist Asian Menu</li>
-            <li className="info">9pm Start</li>
+            <li className="info">Futurist Menu</li>
+            <li className="info">8:30pm Start</li>
             <li className="info">Club Access Included</li>
           </ul>
-        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override" target="_blank">[EXPLORE OVERRIDE]</a></p>
+        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/thetent" target="_blank">[MORE ABOUT THE TENT]</a></p>
         </div>}
 
         {<div
@@ -165,12 +155,12 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         <p>Chef’s Studio is an intimate and futuristic space beneath The Tent – the table of choice for those in the know.</p> 
           <ul>
             <li className="info">£65pp Set Dinner</li>
-            <li className="info">Futurist Asian Menu</li>
+            <li className="info">Futurist Menu</li>
             <li className="info">6-12 PAX</li>
             <li className="info">8pm start</li>
           </ul>
-          <p>Our guests can experience the Override menu in Chef’s Studio.</p> 
-          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/chefstudio" target="_blank">[EXPLORE CHEF'S STUDIO]</a></p>
+          <p>Our guests can experience our futurist menu in Chef’s Studio.</p> 
+          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/chefstudio" target="_blank">[MORE ABOUT CHEF'S STUDIO]</a></p>
         </div>}
 
       </div>}
