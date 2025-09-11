@@ -2243,6 +2243,14 @@ html, body {
       font-weight: 100;
     }
 
+    .thursday .button-wrapper-new a span,
+    .friday .button-wrapper-new a span,
+    .saturday .button-wrapper-new a span {
+      color: #000!important;
+      font-size: 1rem !important;
+    }
+
+
     .or {
         font-style: italic !important;
         margin: 10px 0px -10px !important;
