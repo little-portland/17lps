@@ -129,7 +129,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         />
 
         {<div
-        className="box-1 box override-boxx"> 
+        className="box-1 box chef-studio"> 
         <h2>THE TENT</h2>
         <p className="override-intro">Our menu is Futurist, reflecting a world where 
 food adapts to survival, mood, and culture in the face 
@@ -146,7 +146,11 @@ drawn to sensorial and hypnotic experiences that
             <li className="info">8:30pm Start</li>
             <li className="info">Club Access Included</li>
           </ul>
-        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/thetent" target="_blank">[MORE ABOUT THE TENT]</a> <a href="https://www.little-portland.com/food" target="_blank">[MORE ABOUT OUR DINING CONCEPT]</a></p>
+        <p className="links">
+          <a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> 
+          <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a>         <br/>
+          <a href="https://www.little-portland.com/thetent" target="_blank">[MORE ABOUT THE TENT]</a>         <br/>
+          <a href="https://www.little-portland.com/food" target="_blank">[MORE ABOUT OUR DINING CONCEPT]</a></p>
         </div>}
 
         {<div
@@ -160,7 +164,10 @@ drawn to sensorial and hypnotic experiences that
             <li className="info">8pm start</li>
           </ul>
           <p>Our guests can experience our futurist menu in Chef’s Studio.</p> 
-          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/chefstudio" target="_blank">[MORE ABOUT CHEF'S STUDIO]</a></p>
+          <p className="links">
+            <a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> 
+            <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a>   <br/>
+            <a href="https://www.little-portland.com/chefstudio" target="_blank">[MORE ABOUT CHEF'S STUDIO]</a></p>
         </div>}
 
       </div>}
