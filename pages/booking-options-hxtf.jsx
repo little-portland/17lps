@@ -48,7 +48,7 @@ const BookingOptions = () => {
 
         <div className="or mobile-only"><h2>Or</h2></div>
 
-        <div className="book-wrapper">
+       <div className="book-wrapper">
           <div className="override-heading">
             <h2>START WITH DINNER</h2>
             <p class="time mobile-only">Includes Free Club Entry</p>
@@ -56,7 +56,15 @@ const BookingOptions = () => {
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-          <div class="tags"><h3><span>FUTURIST ASIAN MENU</span> <span class="dot">●</span> <span>SENSORIAL SETTING</span> <span class="dot">●</span> <span>DINNER MERGES INTO CLUB</span></h3></div>
+          <div class="tags"><h3><span>FUTURIST MENU</span></h3></div>
+
+         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-sat.svg" alt="The Tent Food" width="100%" /></div>
+
+          <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
+            <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
+              <span>[More about our dinning concept]</span>
+            </a>
+           </div>
 
           <div className="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button view-menu" btnType="hollow">
@@ -72,7 +80,7 @@ const BookingOptions = () => {
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>9PM</span></p>
-                <p class="btn-tagline">Full Override Experience</p>
+                <p class="btn-tagline">The Cosmic Experience</p>
                </a>
               </Button>
   
@@ -87,11 +95,11 @@ const BookingOptions = () => {
           </div>
           
          <div class="button-wrapper new-button-wrapper button-wrapper-new desktop-only">
-            <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
-              <span>[What is override?]</span>
+            <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
+              <span>[More about The Tent]</span>
             </a>
             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[What is Chef's Studio?]</span>
+                <span>[More about Chef's Studio]</span>
               </a>
            </div>
          
@@ -104,8 +112,8 @@ const BookingOptions = () => {
                </a>
               </Button>
 
-            <a class="menu-btn" href="https://www.little-portland.com/override" target="_blank">
-              <span>[What is override?]</span>
+            <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
+              <span>[More about The Tent]</span>
             </a>
   
               <Button classes="events-button ticket"  btnType="hollow">
@@ -117,11 +125,13 @@ const BookingOptions = () => {
               </Button>
 
              <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[What is Chef's Studio?]</span>
+                <span>[More about Chef's Studio]</span>
             </a> 
            
           </div>
         </div>
+
+        <div className="or desktop-only"><h2>Or</h2></div>
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/xS6TxAgd" target="_blank">
