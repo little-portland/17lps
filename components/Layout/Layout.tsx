@@ -147,7 +147,7 @@ drawn to sensorial and hypnotic experiences that
             <li className="info">Club Access Included</li>
           </ul>
         <p className="links">
-          <a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> 
+          <a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <br/>
           <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a>         <br/>
           <a href="https://www.little-portland.com/thetent" target="_blank">[MORE ABOUT THE TENT]</a>         <br/>
           <a href="https://www.little-portland.com/food" target="_blank">[MORE ABOUT OUR DINING CONCEPT]</a></p>
@@ -165,7 +165,7 @@ drawn to sensorial and hypnotic experiences that
           </ul>
           <p>Our guests can experience our futurist menu in Chef’s Studio.</p> 
           <p className="links">
-            <a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> 
+            <a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <br/>
             <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a>   <br/>
             <a href="https://www.little-portland.com/chefstudio" target="_blank">[MORE ABOUT CHEF'S STUDIO]</a></p>
         </div>}
