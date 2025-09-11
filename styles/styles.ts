@@ -2204,8 +2204,11 @@ html, body {
     .thursday .cat span,
     .friday .cat span,
     .saturday .cat span {
-      display: block;
-      font-weight: 100!important;
+        display: block;
+        text-decoration: underline;
+        font-style: italic;
+        font-size: 1.3rem !important;
+        margin: 5px;
     }
 
     .thursday .override-heading h2, .friday .override-heading h2, .saturday .override-heading h2 {
