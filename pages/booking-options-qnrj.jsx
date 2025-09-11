@@ -131,7 +131,7 @@ const BookingOptions = () => {
           </div>
         </div>
         
-        <div className="or desktop-only"><h2>Or</h2></div>
+        <div className="or desktop-only or-desktop"><h2>Or</h2></div>
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
