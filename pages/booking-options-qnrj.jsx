@@ -60,7 +60,7 @@ const BookingOptions = () => {
 
           <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-thu.svg" alt="The Tent Food" width="100%" /></div>
 
-          <div class="button-wrapper new-button-wrapper button-wrapper-new">
+          <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
             <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
               <span>[More about our dinning concept]</span>
             </a>
