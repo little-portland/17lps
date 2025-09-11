@@ -1432,6 +1432,10 @@ html, body {
   font-size: 0.9rem!important;
 }
 
+.dinner-steps {
+  margin: 20px 10px;
+}
+
 /* Color Customization Per Day */
 
 .thursday {
