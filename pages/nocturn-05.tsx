@@ -192,7 +192,7 @@ const Menu = ({ menuImage }) => {
             <br/> 
               <p className="nocturn-text">
                   <a href="https://open.spotify.com/album/47WsQF1FFmDxMvWgK4bfTm?si=nb7BLOoARfu7wwh8OSSVAg" target="_blank" rel="noopener" class="spotify-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" className="spotify-icon" aria-hidden="true" focusable="false">
                     <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
                       c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
                       c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
@@ -206,7 +206,7 @@ const Menu = ({ menuImage }) => {
 
               <p className="nocturn-text">
                   <a href="https://open.spotify.com/album/5kxx3vFDFzPX231pFwDv0X?si=5FWzoDvuRDeKGlLVs1rstw" target="_blank" rel="noopener" class="spotify-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" className="spotify-icon" aria-hidden="true" focusable="false">
                     <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
                       c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
                       c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
@@ -220,7 +220,7 @@ const Menu = ({ menuImage }) => {
 
               <p className="nocturn-text">
                   <a href="https://open.spotify.com/album/6Z4iivw2zkHxxEpUnMXjOe?si=vvxXl-OMTC-muxJFNWOm9Q" target="_blank" rel="noopener" class="spotify-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" className="spotify-icon" aria-hidden="true" focusable="false">
                     <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
                       c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
                       c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
@@ -234,7 +234,7 @@ const Menu = ({ menuImage }) => {
 
               <p className="nocturn-text">
                   <a href="https://open.spotify.com/album/2XWp1GG0wp0QWUCTMgOUlD?si=MNsqYEYtSWWqfhxRGXi7WQ" target="_blank" rel="noopener" class="spotify-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" className="spotify-icon" aria-hidden="true" focusable="false">
                     <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
                       c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
                       c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
@@ -248,7 +248,7 @@ const Menu = ({ menuImage }) => {
            
               <p className="nocturn-text">
                   <a href="https://open.spotify.com/album/0Hlwv9mVeBx5hIO10u9L8I?si=Y3mbqt0IR3KD7DcjNnX_vg" target="_blank" rel="noopener" class="spotify-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" className="spotify-icon" aria-hidden="true" focusable="false">
                     <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
                       c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
                       c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
@@ -262,7 +262,7 @@ const Menu = ({ menuImage }) => {
 
               <p className="nocturn-text">
                   <a href="https://open.spotify.com/album/2s13QM1KJdtdZqh0hQqLSZ?si=C8yprN0UQCuqXUAhL6uYJQ" target="_blank" rel="noopener" class="spotify-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" className="spotify-icon" aria-hidden="true" focusable="false">
                     <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
                       c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
                       c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
@@ -276,7 +276,7 @@ const Menu = ({ menuImage }) => {
 
               <p className="nocturn-text">
                   <a href="https://open.spotify.com/album/6JAoKiSGoHiKmKvbeWvYRl?si=YEv39XcUQs-nxxEgXHxdbg" target="_blank" rel="noopener" class="spotify-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" className="spotify-icon" aria-hidden="true" focusable="false">
                     <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
                       c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
                       c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
