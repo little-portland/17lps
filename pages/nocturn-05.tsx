@@ -56,8 +56,8 @@ const Menu = ({ menuImage }) => {
       </Head>
       
          <div className="nocturn nocturn-header">
-           <img src="/images/nocturn/nocturn4-web-page-top.png" alt="Nocturn" width="100%" />
-           <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_04.jpg" /> 
+           <img src="/images/nocturn/nocturn-05/nocturn5-web-page-top.png" alt="Nocturn" width="100%" />
+           <img className="flyer" src="/images/nocturn/nocturn-05/17LPS_Nocturn_5_Richie_Culver.gif" /> 
            
            <div className="nocturn-text-wrapper top"> 
             <br/> 
