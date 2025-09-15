@@ -28,7 +28,7 @@ const Menu = ({ menuImage }) => {
             {'.video-section .column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
             {'.audio{ margin-top: 30px;}'}
             {'video{ width: 100%!important; max-width: 100%;!important}'}
-            {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
+            {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;border: 5px solid #000;outline: 2px solid #fff;outline-offset: 0;display: inline-block;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
             {'.bottom{ font-size: 25px;}'}
