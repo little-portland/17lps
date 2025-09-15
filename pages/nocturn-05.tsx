@@ -45,7 +45,7 @@ const Menu = ({ menuImage }) => {
             {'.question{ color: #000000!important;font-style:italic;}'}
             {'.italic{ font-style:italic!important;}'}
             {'.loading{ font-size: 50px;text-align: center;}'}
-            {'.flyer{ max-width: 100%!important;}'}
+            {'.flyer{     max-width: 100% !important;margin: 0 auto !important;display: block;}'}
             {'.preloader{ margin:30px 0 10px 0!important;}'}
             {'.spacing{ margin-top:30px!important;}'}
             {'.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}'}
