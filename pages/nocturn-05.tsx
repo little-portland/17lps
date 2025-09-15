@@ -80,7 +80,7 @@ const Menu = ({ menuImage }) => {
                 <div className="nocturn-wider-section video-section">
                  <div className="row">
                     <div className="column"> 
-                        <video autoPlay loop muted playsInline className="video-background">
+                        <video autoPlay loop playsInline controls className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_01.mp4" type="video/mp4"/> 
                       </video>
                       <p className="nocturn-text italic caption">I Trust Pain
@@ -91,7 +91,7 @@ const Menu = ({ menuImage }) => {
                   
                   <div className="row">
                     <div className="column"> 
-                        <video autoPlay loop muted playsInline className="video-background">
+                        <video autoPlay loop playsInline controls className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_02.mp4" type="video/mp4"/> 
                       </video>
                       <p className="nocturn-text italic caption">Underground Flower 
@@ -101,7 +101,7 @@ const Menu = ({ menuImage }) => {
 
                    <div className="row">
                     <div className="column">
-                        <video autoPlay loop muted playsInline className="video-background">
+                        <video autoPlay loop playsInline controls className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_03.mp4" type="video/mp4"/> 
                       </video>  
                       <p className="nocturn-text italic caption">C Side 
@@ -111,7 +111,7 @@ const Menu = ({ menuImage }) => {
 
                   <div className="row">
                     <div className="column"> 
-                        <video autoPlay loop muted playsInline className="video-background">
+                        <video autoPlay loop playsInline controls className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_04.mp4" type="video/mp4"/> 
                       </video>  
                       <p className="nocturn-text italic caption">Richie Culver ft Moor Mother 
