@@ -61,139 +61,82 @@ const Menu = ({ menuImage }) => {
            
            <div className="nocturn-text-wrapper top"> 
             <br/> 
-              <p className="nocturn-text italic">In the beginning, there was the primordial ooze. Dark, dense and silent in its potentiality. Then, in a moment of spontaneous generation, the spark of awareness flickered and a sound reverberated out of the void.</p>
+              <p className="nocturn-text italic">For Nocturn [05] feat. Richie Culver, Little Portland Street is re-imagined as an architecture of disclosure – a space where rawness and repetition, doubt and distortion, are not only textures of experience but conditions of being.</p>
 
-              <p className="nocturn-text italic">A rattle. A hiss. A U M… in the once impenetrable vacuum of silence.</p>
+              <p className="nocturn-text italic">Working across sound, text, video and painting, Richie Culver’s practice bridges the emotional pressure zones of techno, noise and visual art. In this Nocturn, the club is not sanctuary or spectacle–but a confessional zone, where unfiltered emotional states, (un)satisfactory attempts at catharsis, and vulnerability are given space to surface, loop and unravel.</p>
 
-              <p className="nocturn-text italic">And out of the formless form, a Sentience called out into the Universe and it was heard by all and by no one.</p>
+              <p className="nocturn-text italic">Merging the artists’ studio as a site of solitary creative expression and the nightclub as locus of collective resonance and shared rhythms, Culver peels back the layers of his own experiences and lived worlds–from trap houses to Berlin raves to fashion and “high art” contexts–making visible an emergent, complex and unapologetic terrain of intimacy and unease.</p>
 
-              <p className="nocturn-text italic">This sound, enshrined, echoing, rippling and vibrating across the tissue of space, set in motion an unfolding, the birthing and the ending of an Aeon.</p>
-
-              <p className="nocturn-text italic">Billions of years later in the blink of an eye, a ray of light radiated outward and the sound was seen for the first time by its Source. The formless form undulated and expanded, dust, matter and its shadow shook and danced with one another upon the Altar of the Universe to a Cosmic Beat that resonated over all — and all resonated with it. </p>
-
-              <p className="nocturn-text italic">As matter and energy swirled in vast oceans of nothingness, the Sentience, in forming itself out of the formlessness, what emerged was in dyadic harmony, and the Calabash of Creation contained all in their belly and the Music of the Spheres was the Universe. And as countless times before, the Universe was made and re-made again.</p>
-              
-              <p className="nocturn-text italic"><a className="nocturn-text" href="https://evanifekoya.com/artworks/63-modupe-2025/" target="_blank">“The Sound is the Shrine”*</a></p>
+              <p className="nocturn-text italic">Excavating in the liminality between the public and the private, high and low, fear and love, confession and concealment, Culver conveys the unresolved, constantly transforming realm of the personal. Nothing may be resolved, but something held and heard–suspended–like the hypnotic tension before the beat finally drops.</p>
 
               <p className="nocturn-text nocturn-text-author italic">Bianca Chu</p>
                <br/> 
             </div>
            </div>
 
-                <div className="nocturn-wider-section">
-                   <div className="row">
-                    <div className="column">
-                       <img src="/images/nocturn/nocturn-04/nocturn04_26.png" />
-                    </div>
-                    <div className="column">
-                       <img src="/images/nocturn/nocturn-04/nocturn04_27.png" />
-                    </div>
-                 </div>
-                </div>
-
-              <div className="nocturn">
-               <div className="nocturn-text-wrapper top"> 
-                     <p className="nocturn-text italic caption"><a className="nocturn-text" href="https://evanifekoya.com/artworks/63-modupe-2025/" target="_blank">'MODUPE'* film shoot BTS Photography by Puer Deorum</a></p>
-                </div>
-               </div>
-
-               <div className="nocturn-wider-section single">
-                   <div className="row">
-                    <div className="column">
-                       <img src="/images/nocturn/nocturn-04/nocturn04_28.png" />
-                    </div>
-                 </div>
-                </div>
-
-              <div className="nocturn">
-               <div className="nocturn-text-wrapper top"> 
-                    <p className="nocturn-text italic caption">Evan Ifekoya, ‘~ Resonant Frequencies’, 2022, exhibition view, Migros Museum, Zurich; Courtesy: the artist; Photograph: Stefan Altenburger </p>
-                </div>
-               </div>
-
                 <div className="nocturn-wider-section video-section">
                  <div className="row">
                     <div className="column">
                         <video autoPlay loop muted playsInline className="video-background">
-                        <source src="/images/nocturn/nocturn-04/stillness.mp4" type="video/mp4"/> 
+                        <source src="/images/nocturn/nocturn-05/video_01.mp4" type="video/mp4"/> 
                       </video>                    
                       </div>
                     <div className="column"> 
                         <video autoPlay loop muted playsInline className="video-background">
-                        <source src="/images/nocturn/nocturn-04/drum.mp4" type="video/mp4"/>
+                        <source src="/images/nocturn/nocturn-05/video_02.mp4" type="video/mp4"/> 
                       </video>                    
                       </div>
-                      <div className="column">
+                   </div>
+
+                  <div className="row">
+                    <div className="column">
                         <video autoPlay loop muted playsInline className="video-background">
-                        <source src="/images/nocturn/nocturn-04/pour.mp4" type="video/mp4"/>
+                        <source src="/images/nocturn/nocturn-05/video_03.mp4" type="video/mp4"/> 
+                      </video>                    
+                      </div>
+                    <div className="column"> 
+                        <video autoPlay loop muted playsInline className="video-background">
+                        <source src="/images/nocturn/nocturn-05/video_04.mp4" type="video/mp4"/> 
                       </video>                    
                       </div>
                    </div>
                   <br/> 
                 </div>
-
-              <div className="nocturn-wider-section single">
-                   <div className="row">
-                    <div className="column">
-                      <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio03.mp3"></audio>
-                    </div>
-                 </div>
-                </div>
-
-              <div className="nocturn">
-               <div className="nocturn-text-wrapper top"> 
-                    <p className="nocturn-text italic caption">Evan Ifekoya, Divine Calabash Invocation, Site-Specific Sonic for Little Portland Street</p>
-                </div>
-               </div>
       
             <div className="nocturn">
                 <div className="row">
                   <div className="column">
-                    <img src="/images/nocturn/nocturn-04/nocturn04_01.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_02.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_03.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_04.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_19.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_06.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_07.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_08.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_09.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_23.png" />
+                    <img src="/images/nocturn/nocturn-05/img_01.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_02.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_03.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_04.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_05.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_06.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_07.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_08.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_09.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_10.png" />
                   </div>
                   <div className="column">
-                    <img src="/images/nocturn/nocturn-04/nocturn04_11.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_12.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_13.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_14.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_15.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_16.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_10.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_18.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_05.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_20.png" />
-                    <img src="/images/nocturn/nocturn-04/nocturn04_17.png" />
+                    <img src="/images/nocturn/nocturn-05/img_11.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_12.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_13.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_14.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_15.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_16.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_17.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_18.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_19.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_20.jpg" />
                   </div>
                </div>
               </div>
-      
-                 <div className="nocturn-wider-section audio">
-                   <div className="row">
-                    <div className="column">
-                      <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio02.mp3"></audio>
-                      <p className="nocturn-text italic caption">Evan Ifekoya, Omi O, Site-Specific Sonic for the Tent at Little Portland Street’ featuring vocals by MODUPE ensemble: Eden Alero, Ayebainemi Ése, Evan Ifekoya</p>
-                    </div>
-                    <div className="column">
-                      <audio controls src="/images/nocturn/nocturn-04/nocturn04_audio04.mp3"></audio>
-                      <p className="nocturn-text italic caption">Alcyoni (Bianca Chu), The Veil/Jaya Yemoja Invocation, Site-Specific Sonic for the Tent at Little Portland Street </p>
-                    </div>
-                 </div>
-                </div>
               
            <div className="nocturn nocturn-header">
             <div className="nocturn-text-wrapper bottom"> 
-              <p className="nocturn-text">Evan Ifekoya is a Spirit led artist and dream architect exploring ancestry, belief and belonging through practices of self-archiving and blackness in abundance. Through their art, they hope to foster a deeper sense of connection and awareness, creating spaces where liberation and refuge are not just ideals but lived experiences. They have presented exhibitions, moving image and performances across UK, Europe and Internationally, most recently: ‘Stranieri Ovunque –Foreigners Everywhere’ 60th Venice Biennial, ‘The Ocean in the Forest’ Wanås Konst Sculpture Park Sweden, ‘Traces of Ecstasy’ ICA VCU Richmond Virginia and Lagos Biennial (2024), ARoS Denmark and Guest Artist Space Lagos (2023), ‘~Resonant Frequencies’, Migros Museum, Zurich (2022). Upcoming exhibitions and presentations in 2025 include ‘Feel The Sound’ at Barbican and ‘MODUPE’, a new experimental documentary film supported by BFI Docs Society. They established the collectively run and QTIBPOC (queer, trans*, intersex, black and people of colour) led Black Obsidian Sound System (B.O.S.S.) in 2018. They were awarded the Paul Hamlyn bursary in 2021, the Kleinwort Hambros Emerging Artists Prize in 2019 and the Arts Foundation Award for Live Art sponsored by the Yoma Sasberg Estate in 2017.</p>
-              <p><a className="nocturn-text" href="https://www.instagram.com/evan_ife/" target="_blank">@evan_ife</a></p>
-              <p><a className="nocturn-text" href="https://evanifekoya.com/" target="_blank">www.evanifekoya.com</a></p>
+              <p className="nocturn-text">Richie Culver (born Hull, UK) is a multidisciplinary artist working in painting, music, performance and photography. He completed his MA in Painting at Royal College of Art in 2023. Culver has exhibited nationally and internationally and lives and works in London.</p>
+              <p><a className="nocturn-text" href="https://www.instagram.com/richieculver/" target="_blank">@richieculver</a></p>
+              <p><a className="nocturn-text" href="https://www.quiethusband.com/" target="_blank">www.quiethusband.com</a></p>
               <br/> 
             </div>
          </div>      
