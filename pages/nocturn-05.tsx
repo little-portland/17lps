@@ -25,7 +25,7 @@ const Menu = ({ menuImage }) => {
             {'.single .row{ justify-content: center; align-items: center;}'}
             {'.video-section .row{ justify-content: center; align-items: center;}'}
             {'.single .column{flex: 80%;max-width: 80%;padding: 0 4px;}'}
-            {'.video-section .column{flex: 33%;max-width: 33%;padding: 0 4px;}'}
+            {'.video-section .column{flex: 60%;max-width: 60%;padding: 0 4px;}'}
             {'.audio{ margin-top: 30px;}'}
             {'video{ width: 100%!important; max-width: 100%;!important}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;border: 5px solid #000;outline: 2px solid #fff;outline-offset: 0;display: inline-block;}'}
@@ -78,8 +78,9 @@ const Menu = ({ menuImage }) => {
                  <div className="row">
                     <div className="column"> 
                         <video autoPlay loop muted playsInline className="video-background">
-                        <source src="/images/nocturn/nocturn-05/video_02.mp4" type="video/mp4"/> 
-                      </video>                    
+                        <source src="/images/nocturn/nocturn-05/video_01.mp4" type="video/mp4"/> 
+                      </video>
+                      <p className="nocturn-text italic caption">Caption goes here!</p>
                       </div>
                    </div>
                   
@@ -87,7 +88,8 @@ const Menu = ({ menuImage }) => {
                     <div className="column"> 
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_02.mp4" type="video/mp4"/> 
-                      </video>                    
+                      </video>
+                      <p className="nocturn-text italic caption">Caption goes here!</p>
                       </div>
                    </div>
 
@@ -95,7 +97,8 @@ const Menu = ({ menuImage }) => {
                     <div className="column">
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_03.mp4" type="video/mp4"/> 
-                      </video>                    
+                      </video>  
+                       <p className="nocturn-text italic caption">Caption goes here!</p>
                       </div>
                    </div>
 
@@ -103,7 +106,8 @@ const Menu = ({ menuImage }) => {
                     <div className="column"> 
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_04.mp4" type="video/mp4"/> 
-                      </video>                    
+                      </video>  
+                      <p className="nocturn-text italic caption">Caption goes here!</p>
                       </div>
                    </div>
                   <br/> 
