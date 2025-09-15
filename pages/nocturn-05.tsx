@@ -12,93 +12,92 @@ const Menu = ({ menuImage }) => {
   
   return (
     <>
-       <Head>
+      <Head>
+        <style>
+            {'html{overflow: auto!important;overflow-x: hidden!important;}'}
+            {'body{ background: url("/images/nocturn/nocturn-05/noise_bg.png") repeat #000 !important;background-color: #000000;overflow: auto!important;overflow-x: initial!important;background-repeat: repeat;background-size: 50px 50px;}'}
+            {'.nocturn{width: 60%;margin: 0 auto;}'}
+            {'.nocturn-header{width: 50%;margin: 0 auto;}'}
+            {'.nocturn-wider-section{width: 60%;margin: 0 auto;}'}
+            {'.video-section{width: 80%;margin: 0 auto 30px auto;}'}
+            {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
+            {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
+            {'.single .row{ justify-content: center; align-items: center;}'}
+            {'.video-section .row{ justify-content: center; align-items: center;}'}
+            {'.single .column{flex: 80%;max-width: 80%;padding: 0 4px;}'}
+            {'.video-section .column{flex: 60%;max-width: 60%;padding: 0 4px;}'}
+            {'.audio{ margin-top: 30px;}'}
+            {'video{ width: 100%!important; max-width: 100%;!important}'}
+            {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;border: 5px solid #000;outline: 2px solid #fff;outline-offset: 0;display: inline-block;}'}
+            {'.column a{ cursor:pointer!important;}'}
+            {'.top{ font-size: 30px;}'}
+            {'.bottom{ font-size: 25px;}'}
+            {'a:hover{ text-decoration: underline!important;}'}
+            {'.caption{ font-size: 20px!important;margin: 20px auto 30px auto!important;text-align: center!important;max-width: 90%!important;}'}
+            {'audio{ margin-top: 8px!important;width:100%!important;}'}
+            {'.nocturn-text-wrapper{ margin-top: 20px!important;padding: 0 30px;}'}
+            {'.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}'}
+            {'.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}'}
+            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
+            {'.nocturn-text{ padding-bottom: 20px;}'}
+            {'.nocturn-text-two{ padding-top: 20px;}'}
+            {'.nocturn-text-author{ padding-top: 20px;}'}
+            {'.question{ color: #000000!important;font-style:italic;}'}
+            {'.italic{ font-style:italic!important;}'}
+            {'.loading{ font-size: 50px;text-align: center;}'}
+            {'.flyer{     max-width: 100% !important;margin: 0 auto !important;display: block;}'}
+            {'.preloader{ margin:30px 0 10px 0!important;}'}
+            {'.spacing{ margin-top:30px!important;}'}
+            {'.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}'}
+            {'
+            :root {
+              --cta-bg: #a5a5a5;
+              --cta-fg: #1d1c1b;
+              --radius: 10px;
+            }
+        
+            /* Demo container – the button will stretch to this width */
+            .container {
+              width: min(900px, 92vw);
+              margin: 10vh auto;
+            }
+        
+            /* Button base */
+            .spotify-btn {
+              width: 100%;                 /* as wide as its container */
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              gap: 12px;
+              padding: 14px 20px;
+              background: var(--cta-bg);
+              color: var(--cta-fg);
+              border-radius: var(--radius);
+              text-decoration: none;
+              font: 700 16px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+              transition: filter .15s ease, transform .02s ease;
+            }
+        
+            .spotify-btn:hover { filter: brightness(0.95); }
+            .spotify-btn:active { transform: translateY(1px); }
+            .spotify-btn:focus-visible {
+              outline: 3px solid color-mix(in srgb, var(--cta-fg) 35%, white);
+              outline-offset: 2px;
+            }
+        
+            /* Icon scales with text; inherits button color */
+            .spotify-icon {
+              width: 1.4em;
+              height: 1.4em;
+              flex: 0 0 auto;
+              fill: currentColor; /* makes the icon #1d1c1b */
+            }
+          '}
+            {'@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.video-section .column{flex: 100%;max-width: 100%;padding: 0 4px;margin-bottom: 7px;}.caption{font-size: 15px!important;margin-top: 10px!important;}.audio .caption{margin-top: 30px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}.spotify-btn { padding: 12px 16px; font-size: 15px; }}'}
+        </style>
+
+
         <title>NOCTURN [05] feat. Richie Culver</title>
-
-        {/* Put ALL css in ONE node */}
-        <style jsx global>{`
-          html {
-            overflow: auto !important;
-            overflow-x: hidden !important;
-          }
-          body {
-            background: url("/images/nocturn/nocturn-05/noise_bg.png") repeat #000 !important;
-            background-color: #000000;
-            overflow: auto !important;
-            overflow-x: initial !important;
-            background-repeat: repeat;
-            background-size: 50px 50px;
-          }
-          .nocturn { width: 60%; margin: 0 auto; }
-          .nocturn-header { width: 50%; margin: 0 auto; }
-          .nocturn-wider-section { width: 60%; margin: 0 auto; }
-          .video-section { width: 80%; margin: 0 auto 30px auto; }
-          .row { display: flex; flex-wrap: wrap; padding: 0 4px; }
-          .column { flex: 50%; max-width: 50%; padding: 0 4px; }
-          .single .row,
-          .video-section .row { justify-content: center; align-items: center; }
-          .single .column { flex: 80%; max-width: 80%; }
-          .video-section .column { flex: 60%; max-width: 60%; }
-          .audio { margin-top: 30px; }
-          video { width: 100% !important; max-width: 100% !important; }
-          .column img {
-            margin-top: 8px; vertical-align: middle; width: 100%;
-            border: 5px solid #000; outline: 2px solid #fff; outline-offset: 0; display: inline-block;
-          }
-          .column a { cursor: pointer !important; }
-          .top { font-size: 30px; }
-          .bottom { font-size: 25px; }
-          a:hover { text-decoration: underline !important; }
-          .caption { font-size: 20px !important; margin: 20px auto 30px auto !important; text-align: center !important; max-width: 90% !important; }
-          audio { margin-top: 8px !important; width: 100% !important; }
-          .nocturn-text-wrapper { margin-top: 20px !important; padding: 0 30px; }
-          .nocturn-text-wrapper small { margin-left: 10px; font-size: 20px; }
-          .nocturn-text-wrapper img { max-width: 100%; margin-bottom: 40px !important; display: block; margin-left: auto; margin-right: auto; }
-          .nocturn-text { font-family: Helvetica !important; font-weight: bold !important; text-decoration: none !important; color: #ffffff !important; padding-bottom: 30px; line-height: 1.1; }
-          .nocturn-text { padding-bottom: 20px; }
-          .nocturn-text-two { padding-top: 20px; }
-          .nocturn-text-author { padding-top: 20px; }
-          .question { color: #000000 !important; font-style: italic; }
-          .italic { font-style: italic !important; }
-          .loading { font-size: 50px; text-align: center; }
-          .flyer { max-width: 100% !important; margin: 0 auto !important; display: block; }
-          .preloader { margin: 30px 0 10px 0 !important; }
-          .spacing { margin-top: 30px !important; }
-          .live { border-top: 5px solid #000; padding-top: 20px; border-bottom: 5px solid #000; margin-bottom: 40px; text-align: center; }
-
-          /* Spotify CTA */
-          :root { --cta-bg: #a5a5a5; --cta-fg: #1d1c1b; --radius: 10px; }
-          .container { width: min(900px, 92vw); margin: 10vh auto; }
-          .spotify-btn {
-            width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-            padding: 14px 20px; background: var(--cta-bg); color: var(--cta-fg);
-            border-radius: var(--radius); text-decoration: none;
-            font: 700 16px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            transition: filter .15s ease, transform .02s ease;
-          }
-          .spotify-btn:hover { filter: brightness(0.95); }
-          .spotify-btn:active { transform: translateY(1px); }
-          .spotify-btn:focus-visible { outline: 3px solid rgba(29, 28, 27, 0.35); outline-offset: 2px; }
-          .spotify-icon { width: 1.4em; height: 1.4em; flex: 0 0 auto; fill: currentColor; }
-
-          @media (max-width: 768px) {
-            .nocturn { margin-top: 30px; width: 90%; }
-            .spacing { margin-top: 15px !important; }
-            .video-section .column { flex: 100%; max-width: 100%; margin-bottom: 7px; }
-            .caption { font-size: 15px !important; margin-top: 10px !important; }
-            .audio .caption { margin-top: 30px !important; }
-            .preloader { margin: 15px 0 -15px 0 !important; }
-            .nocturn-text-two { padding-top: 10px; }
-            .nocturn-wider-section { width: 90%; }
-            .nocturn-text-wrapper { padding: 0 15px; }
-            .top p { font-size: 20px; }
-            .bottom p { font-size: 15px; }
-            .nocturn-text-wrapper small { font-size: 12px !important; margin-left: 5px !important; }
-            .row { padding: 0 !important; }
-            .column { flex: 50%; max-width: 50%; }
-            .spotify-btn { padding: 12px 16px; font-size: 15px; }
-          }
-        `}</style>
       </Head>
       
          <div className="nocturn nocturn-header">
