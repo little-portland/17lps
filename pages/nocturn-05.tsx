@@ -289,7 +289,6 @@ const Menu = ({ menuImage }) => {
               </p>
 
                <br/> 
-            </div>
            </div>
               
            <div className="nocturn nocturn-header">
