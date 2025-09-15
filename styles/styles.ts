@@ -1804,7 +1804,6 @@ html, body {
   width: 100%;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 12px;
   padding: 14px 20px;
   background: var(--spotify-cta-bg);
@@ -1816,7 +1815,7 @@ html, body {
 }
 
 .spotify-btn:hover {
-  filter: brightness(0.95);
+  filter: brightness(0.8);
 }
 
 .spotify-btn:active {
