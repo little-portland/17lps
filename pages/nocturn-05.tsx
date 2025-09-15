@@ -76,11 +76,14 @@ const Menu = ({ menuImage }) => {
 
                 <div className="nocturn-wider-section video-section">
                  <div className="row">
-                    <div className="column">
+                    <div className="column"> 
                         <video autoPlay loop muted playsInline className="video-background">
-                        <source src="/images/nocturn/nocturn-05/video_01.mp4" type="video/mp4"/> 
+                        <source src="/images/nocturn/nocturn-05/video_02.mp4" type="video/mp4"/> 
                       </video>                    
                       </div>
+                   </div>
+                  
+                  <div className="row">
                     <div className="column"> 
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_02.mp4" type="video/mp4"/> 
@@ -88,12 +91,15 @@ const Menu = ({ menuImage }) => {
                       </div>
                    </div>
 
-                  <div className="row">
+                   <div className="row">
                     <div className="column">
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_03.mp4" type="video/mp4"/> 
                       </video>                    
                       </div>
+                   </div>
+
+                  <div className="row">
                     <div className="column"> 
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_04.mp4" type="video/mp4"/> 
