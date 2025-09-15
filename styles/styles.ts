@@ -1402,6 +1402,7 @@ html, body {
 .friday .view-menu,
 .saturday .view-menu {
     margin-bottom: 7px !important;
+    padding: 5px!important;
 }
 
 .thursday .button-wrapper-new,
@@ -1417,7 +1418,7 @@ html, body {
 .friday .button-wrapper-new a span,
 .saturday .button-wrapper-new a span {
   color: #000!important;
-  font-size: 1.2rem !important;
+  font-size: .9rem !important;
 }
 
 .thursday .button-wrapper-new a:hover span,
@@ -1776,7 +1777,7 @@ html, body {
 }
 
 .dining-con {
-  margin-bottom: 20px!important;
+    margin: -5px 0 20px 0 !important;
 }
 
 /* Hide explore Override button */
