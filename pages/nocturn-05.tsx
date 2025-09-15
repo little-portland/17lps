@@ -15,7 +15,7 @@ const Menu = ({ menuImage }) => {
       <Head>
         <style>
             {'html{overflow: auto!important;overflow-x: hidden!important;}'}
-            {'body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;background-image: url("images/noise_bg.png");background-repeat: repeat;background-size: 50px 50px;}'}
+            {'body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;background-image: url("/images/nocturn/nocturn-05/noise_bg.png");background-repeat: repeat;background-size: 50px 50px;}'}
             {'.nocturn{width: 60%;margin: 0 auto;}'}
             {'.nocturn-header{width: 50%;margin: 0 auto;}'}
             {'.nocturn-wider-section{width: 60%;margin: 0 auto;}'}
@@ -38,7 +38,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text-wrapper{ margin-top: 20px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}'}
             {'.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}'}
-            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #121be3!important;padding-bottom: 30px;line-height: 1.1;}'}
+            {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.nocturn-text-two{ padding-top: 20px;}'}
             {'.nocturn-text-author{ padding-top: 20px;}'}
@@ -52,7 +52,7 @@ const Menu = ({ menuImage }) => {
             {'@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.video-section .column{flex: 100%;max-width: 100%;padding: 0 4px;margin-bottom: 7px;}.caption{font-size: 15px!important;margin-top: 10px!important;}.audio .caption{margin-top: 30px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
 
-        <title>NOCTURN [05]. feat. Richie Culver</title>
+        <title>NOCTURN [05] feat. Richie Culver</title>
       </Head>
       
          <div className="nocturn nocturn-header">
