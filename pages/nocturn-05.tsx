@@ -189,15 +189,104 @@ const Menu = ({ menuImage }) => {
 
          <div className="nocturn-text-wrapper"> 
             <br/> 
-              <p className="nocturn-text italic">For Nocturn [05] feat. Richie Culver, Little Portland Street is re-imagined as an architecture of disclosure – a space where rawness and repetition, doubt and distortion, are not only textures of experience but conditions of being.</p>
+              <p className="nocturn-text">
+                  <a href="https://open.spotify.com/album/47WsQF1FFmDxMvWgK4bfTm?si=nb7BLOoARfu7wwh8OSSVAg" target="_blank" rel="noopener" class="spotify-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                    <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
+                      c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
+                      c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
+                      c-3.4,1-7-0.9-8-4.3c-1-3.4,0.9-7,4.3-8c29.9-9,67.2-4.6,92.4,11.1C133.5,92.2,134.5,96.2,132.5,99.3z M133.9,75.5
+                      c-26.4-15.7-70.1-17.1-95.4-9.3c-4,1.2-8.2-1.1-9.4-5.1c-1.2-4,1.1-8.2,5.1-9.4c28.9-8.6,77.2-7,107.4,11.2c3.6,2.1,4.8,6.7,2.7,10.3
+                      C142.2,76.4,137.5,77.6,133.9,75.5z"/>
+                  </svg>
+                  QUIET HUSBAND - RELIGIOUS EQUIPMENT
+                </a>
+              </p>
 
-              <p className="nocturn-text italic">Working across sound, text, video and painting, Richie Culver’s practice bridges the emotional pressure zones of techno, noise and visual art. In this Nocturn, the club is not sanctuary or spectacle–but a confessional zone, where unfiltered emotional states, (un)satisfactory attempts at catharsis, and vulnerability are given space to surface, loop and unravel.</p>
+              <p className="nocturn-text">
+                  <a href="https://open.spotify.com/album/5kxx3vFDFzPX231pFwDv0X?si=5FWzoDvuRDeKGlLVs1rstw" target="_blank" rel="noopener" class="spotify-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                    <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
+                      c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
+                      c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
+                      c-3.4,1-7-0.9-8-4.3c-1-3.4,0.9-7,4.3-8c29.9-9,67.2-4.6,92.4,11.1C133.5,92.2,134.5,96.2,132.5,99.3z M133.9,75.5
+                      c-26.4-15.7-70.1-17.1-95.4-9.3c-4,1.2-8.2-1.1-9.4-5.1c-1.2-4,1.1-8.2,5.1-9.4c28.9-8.6,77.2-7,107.4,11.2c3.6,2.1,4.8,6.7,2.7,10.3
+                      C142.2,76.4,137.5,77.6,133.9,75.5z"/>
+                  </svg>
+                  Chase Money
+                </a>
+              </p>
 
-              <p className="nocturn-text italic">Merging the artists’ studio as a site of solitary creative expression and the nightclub as locus of collective resonance and shared rhythms, Culver peels back the layers of his own experiences and lived worlds–from trap houses to Berlin raves to fashion and “high art” contexts–making visible an emergent, complex and unapologetic terrain of intimacy and unease.</p>
+              <p className="nocturn-text">
+                  <a href="https://open.spotify.com/album/6Z4iivw2zkHxxEpUnMXjOe?si=vvxXl-OMTC-muxJFNWOm9Q" target="_blank" rel="noopener" class="spotify-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                    <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
+                      c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
+                      c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
+                      c-3.4,1-7-0.9-8-4.3c-1-3.4,0.9-7,4.3-8c29.9-9,67.2-4.6,92.4,11.1C133.5,92.2,134.5,96.2,132.5,99.3z M133.9,75.5
+                      c-26.4-15.7-70.1-17.1-95.4-9.3c-4,1.2-8.2-1.1-9.4-5.1c-1.2-4,1.1-8.2,5.1-9.4c28.9-8.6,77.2-7,107.4,11.2c3.6,2.1,4.8,6.7,2.7,10.3
+                      C142.2,76.4,137.5,77.6,133.9,75.5z"/>
+                  </svg>
+                  I Trust Pain
+                </a>
+              </p>
 
-              <p className="nocturn-text italic">Excavating in the liminality between the public and the private, high and low, fear and love, confession and concealment, Culver conveys the unresolved, constantly transforming realm of the personal. Nothing may be resolved, but something held and heard–suspended–like the hypnotic tension before the beat finally drops.</p>
+              <p className="nocturn-text">
+                  <a href="https://open.spotify.com/album/2XWp1GG0wp0QWUCTMgOUlD?si=MNsqYEYtSWWqfhxRGXi7WQ" target="_blank" rel="noopener" class="spotify-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                    <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
+                      c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
+                      c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
+                      c-3.4,1-7-0.9-8-4.3c-1-3.4,0.9-7,4.3-8c29.9-9,67.2-4.6,92.4,11.1C133.5,92.2,134.5,96.2,132.5,99.3z M133.9,75.5
+                      c-26.4-15.7-70.1-17.1-95.4-9.3c-4,1.2-8.2-1.1-9.4-5.1c-1.2-4,1.1-8.2,5.1-9.4c28.9-8.6,77.2-7,107.4,11.2c3.6,2.1,4.8,6.7,2.7,10.3
+                      C142.2,76.4,137.5,77.6,133.9,75.5z"/>
+                  </svg>
+                  I Was Born By The Sea
+                </a>
+              </p>
+           
+              <p className="nocturn-text">
+                  <a href="https://open.spotify.com/album/0Hlwv9mVeBx5hIO10u9L8I?si=Y3mbqt0IR3KD7DcjNnX_vg" target="_blank" rel="noopener" class="spotify-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                    <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
+                      c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
+                      c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
+                      c-3.4,1-7-0.9-8-4.3c-1-3.4,0.9-7,4.3-8c29.9-9,67.2-4.6,92.4,11.1C133.5,92.2,134.5,96.2,132.5,99.3z M133.9,75.5
+                      c-26.4-15.7-70.1-17.1-95.4-9.3c-4,1.2-8.2-1.1-9.4-5.1c-1.2-4,1.1-8.2,5.1-9.4c28.9-8.6,77.2-7,107.4,11.2c3.6,2.1,4.8,6.7,2.7,10.3
+                      C142.2,76.4,137.5,77.6,133.9,75.5z"/>
+                  </svg>
+                  I Was Born By The Sea (The Remixes)
+                </a>
+              </p>
 
-              <p className="nocturn-text nocturn-text-author italic">Bianca Chu</p>
+              <p className="nocturn-text">
+                  <a href="https://open.spotify.com/album/2s13QM1KJdtdZqh0hQqLSZ?si=C8yprN0UQCuqXUAhL6uYJQ" target="_blank" rel="noopener" class="spotify-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                    <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
+                      c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
+                      c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
+                      c-3.4,1-7-0.9-8-4.3c-1-3.4,0.9-7,4.3-8c29.9-9,67.2-4.6,92.4,11.1C133.5,92.2,134.5,96.2,132.5,99.3z M133.9,75.5
+                      c-26.4-15.7-70.1-17.1-95.4-9.3c-4,1.2-8.2-1.1-9.4-5.1c-1.2-4,1.1-8.2,5.1-9.4c28.9-8.6,77.2-7,107.4,11.2c3.6,2.1,4.8,6.7,2.7,10.3
+                      C142.2,76.4,137.5,77.6,133.9,75.5z"/>
+                  </svg>
+                  Scream If You Don't Exist
+                </a>
+              </p>
+
+              <p className="nocturn-text">
+                  <a href="https://open.spotify.com/album/6JAoKiSGoHiKmKvbeWvYRl?si=YEv39XcUQs-nxxEgXHxdbg" target="_blank" rel="noopener" class="spotify-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168" class="spotify-icon" aria-hidden="true" focusable="false">
+                    <path d="M84,0C37.7,0,0,37.7,0,84c0,46.3,37.7,84,84,84c46.3,0,84-37.7,84-84C168,37.7,130.3,0,84,0z M122.1,121.5
+                      c-1.5,2.4-4.6,3.2-7,1.7c-19.2-11.7-43.2-14.3-71.5-7.7c-2.8,0.6-5.5-1.1-6.2-3.9c-0.6-2.8,1.1-5.5,3.9-6.2
+                      c31.5-7.1,58.6-4.2,80,9c2.4,1.5,3.2,4.6,1.7,7z M132.5,99.3c-1.9,3.1-5.9,4.1-9,2.2c-22-13.5-55.4-17.4-81.4-9.4
+                      c-3.4,1-7-0.9-8-4.3c-1-3.4,0.9-7,4.3-8c29.9-9,67.2-4.6,92.4,11.1C133.5,92.2,134.5,96.2,132.5,99.3z M133.9,75.5
+                      c-26.4-15.7-70.1-17.1-95.4-9.3c-4,1.2-8.2-1.1-9.4-5.1c-1.2-4,1.1-8.2,5.1-9.4c28.9-8.6,77.2-7,107.4,11.2c3.6,2.1,4.8,6.7,2.7,10.3
+                      C142.2,76.4,137.5,77.6,133.9,75.5z"/>
+                  </svg>
+                  Hostile Environments
+                </a>
+              </p>
+
                <br/> 
             </div>
            </div>
