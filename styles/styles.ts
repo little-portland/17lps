@@ -2315,8 +2315,8 @@ html, body {
     }
 
     .view-menu span {
-      font-size: 1.3rem !important;
-      padding-bottom: 2px;
+      font-size: 1.2rem !important;
+      padding: 0!important;
     }
 
     button {
