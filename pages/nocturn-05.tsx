@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import "../styles/spotify-btn.css";
 
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
