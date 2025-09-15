@@ -1777,7 +1777,7 @@ html, body {
 }
 
 .dining-con {
-    margin: -5px 0 20px 0 !important;
+    margin: -5px 0 12px 0 !important;
 }
 
 /* Hide explore Override button */
@@ -2100,7 +2100,7 @@ html, body {
        }
 
        .new-button-wrapper .menu-btn span {
-        font-size: 1rem !important;
+        font-size: .8rem !important;
       }
 
     .new-button-wrapper .space {
@@ -2265,7 +2265,7 @@ html, body {
     .friday .button-wrapper-new a span,
     .saturday .button-wrapper-new a span {
       color: #000!important;
-      font-size: 1rem !important;
+      font-size: .8rem !important;
     }
 
 
