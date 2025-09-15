@@ -35,6 +35,7 @@ const Menu = ({ menuImage }) => {
             {'.spotify-btn-wrapper{ text-align: center; margin-top: 30px;margin-bottom: 30px;width: 30%;}'}
             {'a:hover{ text-decoration: underline!important;}'}
             {'.caption{ font-size: 20px!important;margin: 20px auto 30px auto!important;text-align: center!important;max-width: 90%!important;}'}
+             {'.caption small{ font-size: 14px!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 20px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}'}
@@ -82,7 +83,9 @@ const Menu = ({ menuImage }) => {
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_01.mp4" type="video/mp4"/> 
                       </video>
-                      <p className="nocturn-text italic caption">Caption goes here!</p>
+                      <p className="nocturn-text italic caption">I Trust Pain
+                        <small>Video by Richie Culver</small>
+                        <small>Edited by Josh Bridge</small></p>
                       </div>
                    </div>
                   
@@ -91,7 +94,8 @@ const Menu = ({ menuImage }) => {
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_02.mp4" type="video/mp4"/> 
                       </video>
-                      <p className="nocturn-text italic caption">Caption goes here!</p>
+                      <p className="nocturn-text italic caption">Underground Flower 
+                        <small>Video by Bruxism</small></p>
                       </div>
                    </div>
 
@@ -100,8 +104,9 @@ const Menu = ({ menuImage }) => {
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_03.mp4" type="video/mp4"/> 
                       </video>  
-                       <p className="nocturn-text italic caption">Caption goes here!</p>
-                      </div>
+                      <p className="nocturn-text italic caption">C Side 
+                        <small>Video by Richie Culver</small></p>                      
+                    </div>
                    </div>
 
                   <div className="row">
@@ -109,8 +114,9 @@ const Menu = ({ menuImage }) => {
                         <video autoPlay loop muted playsInline className="video-background">
                         <source src="/images/nocturn/nocturn-05/video_04.mp4" type="video/mp4"/> 
                       </video>  
-                      <p className="nocturn-text italic caption">Caption goes here!</p>
-                      </div>
+                      <p className="nocturn-text italic caption">Richie Culver ft Moor Mother 
+                        <small>Video by Josiane MH Pozi</small></p>                      
+                    </div>
                    </div>
                   <br/> 
                 </div>
