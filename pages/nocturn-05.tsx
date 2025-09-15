@@ -137,7 +137,7 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-05/img_17.jpg" />
                     <img src="/images/nocturn/nocturn-05/img_18.png" />
                     <img src="/images/nocturn/nocturn-05/img_19.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_20.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_20.png" />
                   </div>
                </div>
               </div>
