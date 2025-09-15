@@ -1440,7 +1440,7 @@ html, body {
 /* Color Customization Per Day */
 
 .thursday {
-  --bg-color: #88ff5b;
+  --bg-color: #00ff00;
   --accent-color: rgb(247 35 104);
   --text-color: #000000;
 }
