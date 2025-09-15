@@ -1792,6 +1792,56 @@ html, body {
   color: #000000!important;
 }
 
+/* Spotify btns */
+
+:root {
+  --spotify-cta-bg: #a5a5a5;
+  --spotify-cta-fg: #1d1c1b;
+  --spotify-radius: 10px;
+}
+
+.spotify-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--spotify-cta-bg);
+  color: var(--spotify-cta-fg);
+  border-radius: var(--spotify-radius);
+  text-decoration: none;
+  font: 700 16px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  transition: filter 0.15s ease, transform 0.02s ease;
+}
+
+.spotify-btn:hover {
+  filter: brightness(0.95);
+}
+
+.spotify-btn:active {
+  transform: translateY(1px);
+}
+
+.spotify-btn:focus-visible {
+  outline: 3px solid rgba(29, 28, 27, 0.35);
+  outline-offset: 2px;
+}
+
+.spotify-icon {
+  width: 1.4em;
+  height: 1.4em;
+  flex: 0 0 auto;
+  fill: currentColor; /* inherits the text color */
+}
+
+@media (max-width: 768px) {
+  .spotify-btn {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
