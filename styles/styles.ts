@@ -1434,7 +1434,7 @@ html, body {
 }
 
 .dinner-steps {
-  margin: 20px 10px;
+  margin: 0 10px 10px;
 }
 
 /* Color Customization Per Day */
