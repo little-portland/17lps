@@ -32,6 +32,7 @@ const Menu = ({ menuImage }) => {
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
             {'.bottom{ font-size: 25px;}'}
+            {'.spotify-btn-wrapper{ text-align: center; margin-top: 30px;margin-bottom: 30px;}'}
             {'a:hover{ text-decoration: underline!important;}'}
             {'.caption{ font-size: 20px!important;margin: 20px auto 30px auto!important;text-align: center!important;max-width: 90%!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
@@ -143,7 +144,7 @@ const Menu = ({ menuImage }) => {
                </div>
               </div>
 
-         <div className="nocturn-text-wrapper"> 
+         <div className="nocturn spotify-btn-wrapper"> 
             <br/> 
               <p className="nocturn-text">
                   <a href="https://open.spotify.com/album/47WsQF1FFmDxMvWgK4bfTm?si=nb7BLOoARfu7wwh8OSSVAg" target="_blank" rel="noopener" className="spotify-btn">
@@ -243,12 +244,10 @@ const Menu = ({ menuImage }) => {
                 </a>
               </p>
 
-               <br/> 
            </div>
               
            <div className="nocturn nocturn-header">
             <div className="nocturn-text-wrapper bottom">
-            <br/> 
               <p className="nocturn-text">Richie Culver (born Hull, UK) is a multidisciplinary artist working in painting, music, performance and photography. He completed his MA in Painting at Royal College of Art in 2023. Culver has exhibited nationally and internationally and lives and works in London.</p>
               <p><a className="nocturn-text" href="https://www.instagram.com/richieculver/" target="_blank">@richieculver</a></p>
               <p><a className="nocturn-text" href="https://www.quiethusband.com/" target="_blank">www.quiethusband.com</a></p>
