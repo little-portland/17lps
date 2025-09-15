@@ -49,22 +49,8 @@ const Menu = ({ menuImage }) => {
             {'.preloader{ margin:30px 0 10px 0!important;}'}
             {'.spacing{ margin-top:30px!important;}'}
             {'.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}'}
-            {'
-            :root {
-              --cta-bg: #a5a5a5;
-              --cta-fg: #1d1c1b;
-              --radius: 10px;
-            }
-        
-            /* Demo container – the button will stretch to this width */
-            .container {
-              width: min(900px, 92vw);
-              margin: 10vh auto;
-            }
-        
-            /* Button base */
-            .spotify-btn {
-              width: 100%;                 /* as wide as its container */
+            {'.spotify-btn {
+              width: 100%;              
               display: inline-flex;
               align-items: center;
               justify-content: center;
@@ -84,9 +70,8 @@ const Menu = ({ menuImage }) => {
               outline: 3px solid color-mix(in srgb, var(--cta-fg) 35%, white);
               outline-offset: 2px;
             }
-        
-            /* Icon scales with text; inherits button color */
-            .spotify-icon {
+            
+          .spotify-icon {
               width: 1.4em;
               height: 1.4em;
               flex: 0 0 auto;
