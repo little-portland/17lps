@@ -32,7 +32,7 @@ const Menu = ({ menuImage }) => {
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
             {'.bottom{ font-size: 25px;}'}
-            {'.spotify-btn-wrapper{ text-align: center; margin-top: 30px;margin-bottom: 30px;}'}
+            {'.spotify-btn-wrapper{ text-align: center; margin-top: 30px;margin-bottom: 30px;width: 30%;}'}
             {'a:hover{ text-decoration: underline!important;}'}
             {'.caption{ font-size: 20px!important;margin: 20px auto 30px auto!important;text-align: center!important;max-width: 90%!important;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
