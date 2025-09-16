@@ -138,7 +138,6 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-05/img_12.jpg" />
                     <img src="/images/nocturn/nocturn-05/img_13.jpg" />
                     <img src="/images/nocturn/nocturn-05/img_14.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_15.jpg" />
                   </div>
                   <div className="column">
                     <img src="/images/nocturn/nocturn-05/img_16.jpg" />
@@ -156,6 +155,7 @@ const Menu = ({ menuImage }) => {
                     <img src="/images/nocturn/nocturn-05/img_28.jpg" />
                     <img src="/images/nocturn/nocturn-05/img_29.jpg" />
                     <img src="/images/nocturn/nocturn-05/img_30.jpg" />
+                    <img src="/images/nocturn/nocturn-05/img_15.jpg" />
                   </div>
                </div>
               </div>
