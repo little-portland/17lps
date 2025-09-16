@@ -1405,14 +1405,16 @@ html, body {
 
 .thursday .view-menu,
 .friday .view-menu,
-.saturday .view-menu {
+.saturday .view-menu,
+.dinner-options .view-menu {
     margin-bottom: 7px !important;
     padding: 5px!important;
 }
 
 .thursday .button-wrapper-new,
 .friday .button-wrapper-new,
-.saturday .button-wrapper-new {
+.saturday .button-wrapper-new,
+.dinner-options .button-wrapper-new {
     display: flex
     gap: 7px;
     text-align: center;
@@ -1421,14 +1423,16 @@ html, body {
 
 .thursday .button-wrapper-new a span,
 .friday .button-wrapper-new a span,
-.saturday .button-wrapper-new a span {
+.saturday .button-wrapper-new a span,
+.dinner-options .button-wrapper-new a span {
   color: #000!important;
   font-size: .9rem !important;
 }
 
 .thursday .button-wrapper-new a:hover span,
 .friday .button-wrapper-new a:hover span,
-.saturday .button-wrapper-new a:hover span {
+.saturday .button-wrapper-new a:hover span,
+.dinner-options .button-wrapper-new a:hover span {
   color: #fff!important;
 }
 
@@ -1443,6 +1447,11 @@ html, body {
 }
 
 /* Color Customization Per Day */
+
+.dinner-options {
+  --bg-color: rgb(232, 186, 201);
+  --accent-color: rgb(92, 44, 124);
+}
 
 .thursday {
   --bg-color: #00ff00;
@@ -2307,7 +2316,8 @@ html, body {
 
     .thursday .override-heading .time,
     .friday .override-heading .time,
-    .saturday .override-heading .time {
+    .saturday .override-heading .time,
+    .dinner-options  .override-heading .time {
       color: var(--accent-color);
       text-align: center;
       margin: 5px 0 -5px;
