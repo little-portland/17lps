@@ -2336,16 +2336,16 @@ html, body {
       padding: 10px;
     }
 
-    /* add asterisks around every <span> inside .tags > h3 */
+    /* add asterisks around every <span> inside .tags > h3 
     .tags h3 span::before,
     .tags h3 span::after {
       content: '*';        
-    }
+    }*/
     
-    /* (optional) small spacing so the asterisks don’t touch the text */
+    /* (optional) small spacing so the asterisks don’t touch the text
     .tags h3 span::before {
       margin-right: .25em; 
-    }
+    }*/
     
     .tags h3 span::after  {
       margin-left:  .25em; 
