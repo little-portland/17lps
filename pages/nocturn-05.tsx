@@ -259,14 +259,18 @@ const Menu = ({ menuImage }) => {
                   Hostile Environments
                 </a>
               </p>
-
            </div>
+
+           <div className="nocturn-text-wrapper bottom">
+              <p className="nocturn-text">Images Courtesy Richie Culver</p>
+              <br/> 
+            </div>
               
            <div className="nocturn nocturn-header">
             <div className="nocturn-text-wrapper bottom">
               <p className="nocturn-text">Richie Culver (born Hull, UK) is a multidisciplinary artist working in painting, music, performance and photography. He completed his MA in Painting at Royal College of Art in 2023. Culver has exhibited nationally and internationally and lives and works in London.</p>
               <p><a className="nocturn-text" href="https://www.instagram.com/richieculver/" target="_blank">@richieculver</a></p>
-              <p><a className="nocturn-text" href="https://www.quiethusband.com/" target="_blank">www.quiethusband.com</a></p>
+              <p><a className="nocturn-text" href="https://www.richie-culver.com/" target="_blank">www.richie-culver.com</a></p>
               <br/> 
             </div>
          </div>      
