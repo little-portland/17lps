@@ -53,7 +53,7 @@ const BookingOptions = () => {
             <h2>START WITH DINNER</h2>
             <p class="time mobile-only">Includes Free Club Entry</p>
           </div>
-          <div class="tags mobile-only"><h3><span>DINING CONCEPT: FUTURIST</span></h3></div>
+          <div class="tags mobile-only"><h3><span>DINING CONCEPT: <span className="strongword">FUTURIST</span></span></h3></div>
 
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
