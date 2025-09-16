@@ -1049,9 +1049,9 @@ html, body {
   text-align: center;
 }
 
-.dinner-booking .view-menu {
+/*.dinner-booking .view-menu {
     width: 100% !important;
-}
+}*/
 
 .new-button-wrapper .events-button {
     background: rgb(230, 176, 194);
