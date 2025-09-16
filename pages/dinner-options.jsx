@@ -30,15 +30,6 @@ const BookingOptions = () => {
               <h2>17 Little Portland Street</h2> 
             </div>
         </div>
-
-          <div class="tags"><h3><span>FUTURIST MENU</span></h3></div> 
-          <div class="button-wrapper new-button-wrapper">
-            <Button classes="events-button new-events-button view-menu"  btnType="hollow">
-              <a href="https://www.little-portland.com/override-menu" target="_blank">
-                <span>View Menu</span>
-               </a>
-              </Button>
-          </div>
                  
         <div className="book-wrapper">
           <div className="override-heading">
