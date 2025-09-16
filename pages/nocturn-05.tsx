@@ -160,6 +160,12 @@ const Menu = ({ menuImage }) => {
                </div>
               </div>
 
+      
+           <div className="nocturn-text-wrapper bottom">
+              <p className="nocturn-text">Images Courtesy Richie Culver</p>
+              <br/> 
+            </div>
+
          <div className="nocturn spotify-btn-wrapper"> 
             <br/> 
               <p className="nocturn-text">
@@ -260,11 +266,6 @@ const Menu = ({ menuImage }) => {
                 </a>
               </p>
            </div>
-
-           <div className="nocturn-text-wrapper bottom">
-              <p className="nocturn-text">Images Courtesy Richie Culver</p>
-              <br/> 
-            </div>
               
            <div className="nocturn nocturn-header">
             <div className="nocturn-text-wrapper bottom">
