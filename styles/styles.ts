@@ -1429,11 +1429,19 @@ html, body {
   font-size: .9rem !important;
 }
 
+.dinner-options .button-wrapper-new a span {
+  color: rgb(92, 44, 124);!important;
+}
+
 .thursday .button-wrapper-new a:hover span,
 .friday .button-wrapper-new a:hover span,
 .saturday .button-wrapper-new a:hover span,
 .dinner-options .button-wrapper-new a:hover span {
   color: #fff!important;
+}
+
+.dinner-options .button-wrapper-new a:hover span {
+  color: #8954ac!important;
 }
 
 .thursday .btn-tagline,
