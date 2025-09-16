@@ -2340,6 +2340,9 @@ html, body {
       font-size: .8rem !important;
     }
 
+    .dinner-options .button-wrapper-new a span {
+      font-size: .8rem !important;
+      }
 
     .or {
         font-style: italic !important;
