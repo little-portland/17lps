@@ -1042,6 +1042,7 @@ html, body {
 
 .dinner-booking .book-wrapper {
   margin-top 5px;
+  padding-bottom: 5px;
 }
 
 .dinner-booking .tags {
