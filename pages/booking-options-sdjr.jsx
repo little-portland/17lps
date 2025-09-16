@@ -107,7 +107,7 @@ const BookingOptions = () => {
             <Button classes="events-button new-events-button"  btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-09-18&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
-                <p class="details"><span>9PM</span></p>
+                <p class="details"><span>8:30PM</span></p>
                 <p class="btn-tagline">The Cosmic Experience</p>
                </a>
               </Button>
