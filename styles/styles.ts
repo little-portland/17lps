@@ -2327,8 +2327,9 @@ html, body {
     }
 
     .tags {
-      margin: 0 0 15px 0;
-      width: 100%!important;
+        margin: 0px auto 15px !important;
+        width: 94% !important;
+        text-align: center;
     }
 
     tags h3 {
