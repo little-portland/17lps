@@ -46,9 +46,10 @@ const Menu = ({ menuImage }) => {
             {'.question{ color: #000000!important;font-style:italic;}'}
             {'.italic{ font-style:italic!important;}'}
             {'.loading{ font-size: 50px;text-align: center;}'}
-            {'.flyer{     max-width: 100% !important;margin: 0 auto !important;display: block;}'}
+            {'.flyer{ max-width: 100% !important;margin: 0 auto !important;display: block;}'}
             {'.preloader{ margin:30px 0 10px 0!important;}'}
             {'.spacing{ margin-top:30px!important;}'}
+            {'.courtesy{ text-align: center;}'}
             {'.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}'}
             {'.column img {margin-top: 8px;vertical-align: middle;width: 100%;display: inline-block;position: relative;border: 5px solid #000;outline: 2px solid #fff;outline-offset: 0;}'}            
             {'@media (max-width: 768px) { .nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.video-section .column{flex: 100%;max-width: 100%;padding: 0 4px;margin-bottom: 7px;}.caption{font-size: 15px!important;margin-top: 10px!important;}.audio .caption{margin-top: 30px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
@@ -161,8 +162,8 @@ const Menu = ({ menuImage }) => {
               </div>
 
       
-           <div className="nocturn-text-wrapper bottom">
-              <p className="nocturn-text">Images Courtesy Richie Culver</p>
+           <div className="nocturn">
+              <p className="nocturn-text courtesy">Images Courtesy Richie Culver</p>
               <br/> 
             </div>
 
