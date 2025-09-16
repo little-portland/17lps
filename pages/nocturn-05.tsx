@@ -124,30 +124,38 @@ const Menu = ({ menuImage }) => {
             <div className="nocturn">
                 <div className="row">
                   <div className="column">
-                    <div className="col">
-                      <img src="/images/nocturn/nocturn-05/img_01.jpg" />
-                    </div>
-                    <img src="/images/nocturn/nocturn-05/img_02.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_03.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_04.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_05.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_06.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_07.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_08.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_09.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_10.png" />
+                    <img src="/images/nocturn/nocturn-05/img_01.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_02.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_03.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_04.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_05.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_06.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_07.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_08.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_09.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_10.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_11.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_12.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_13.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_14.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_15.jpeg" />
                   </div>
                   <div className="column">
-                    <img src="/images/nocturn/nocturn-05/img_11.png" />
-                    <img src="/images/nocturn/nocturn-05/img_12.png" />
-                    <img src="/images/nocturn/nocturn-05/img_13.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_14.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_15.png" />
-                    <img src="/images/nocturn/nocturn-05/img_16.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_17.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_18.png" />
-                    <img src="/images/nocturn/nocturn-05/img_19.jpg" />
-                    <img src="/images/nocturn/nocturn-05/img_20.png" />
+                    <img src="/images/nocturn/nocturn-05/img_16.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_17.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_18.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_19.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_20.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_21.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_22.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_23.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_24.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_25.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_26.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_27.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_28.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_29.jpeg" />
+                    <img src="/images/nocturn/nocturn-05/img_30.jpeg" />
                   </div>
                </div>
               </div>
