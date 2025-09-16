@@ -907,6 +907,10 @@ html, body {
 
 /* NEW INTERMEDIARY STEP STYLES */
 
+.strongword {
+  font-weight: 900;
+}
+
  .new-button-wrapper .events-button {
     width: 50%;
     display: grid; 
