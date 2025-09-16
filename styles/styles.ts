@@ -908,7 +908,8 @@ html, body {
 /* NEW INTERMEDIARY STEP STYLES */
 
 .strongword {
-  font-weight: 900;
+  display: inline !important;
+  font-weight: 900 !important;
 }
 
  .new-button-wrapper .events-button {
@@ -2382,6 +2383,7 @@ html, body {
     .friday .book-wrapper h3 span,
     .saturday .book-wrapper h3 span {
       display: block;
+      font-weight: 500;
     }
 
     .dinner-booking h3 .dot, 
