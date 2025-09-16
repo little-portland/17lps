@@ -53,6 +53,8 @@ const BookingOptions = () => {
             <h2>START WITH DINNER</h2>
             <p class="time mobile-only">Includes Free Club Entry</p>
           </div>
+          <div class="tags mobile-only"><h3><span>DINING CONCEPT: FUTURIST</span></h3></div>
+
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
@@ -106,7 +108,7 @@ const BookingOptions = () => {
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-09-18&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="details"><span>9PM</span></p>
-                <p class="btn-tagline">Full Override Experience</p>
+                <p class="btn-tagline">The Cosmic Experience</p>
                </a>
               </Button>
 
