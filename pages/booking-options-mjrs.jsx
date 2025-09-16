@@ -53,11 +53,11 @@ const BookingOptions = () => {
             <h2>START WITH DINNER</h2>
             <p class="time mobile-only">Includes Free Club Entry</p>
           </div>
+          <div class="tags mobile-only"><h3><span>DINING CONCEPT: <span className="strongword">FUTURIST</span></span></h3></div>
+
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-          <div class="tags"><h3><span>FUTURIST MENU</span></h3></div>
-
          <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-fri.svg" alt="The Tent Food" width="100%" /></div>
 
           <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
@@ -107,14 +107,14 @@ const BookingOptions = () => {
             <Button classes="events-button new-events-button"  btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-09-19&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
-                <p class="details"><span>9PM</span></p>
-                <p class="btn-tagline">Full Override Experience</p>
+                <p class="details"><span>8:30PM</span></p>
+                <p class="btn-tagline">The Cosmic Experience</p>
                </a>
               </Button>
 
-            <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
-              <span>[More about The Tent]</span>
-            </a>
+               <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
+                <span>[More about The Tent]</span>
+              </a>
   
               <Button classes="events-button ticket"  btnType="hollow">
                 <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
@@ -132,7 +132,7 @@ const BookingOptions = () => {
         </div>
 
         <div className="or desktop-only or-desktop"><h2>Or</h2></div>
-
+        
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/xXDn82x1" target="_blank">
