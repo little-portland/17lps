@@ -1430,7 +1430,7 @@ html, body {
 }
 
 .dinner-options .button-wrapper-new a span {
-  color: rgb(92, 44, 124);!important;
+  color: rgb(92, 44, 124)!important;
 }
 
 .thursday .button-wrapper-new a:hover span,
@@ -1441,7 +1441,7 @@ html, body {
 }
 
 .dinner-options .button-wrapper-new a:hover span {
-  color: #8954ac!important;
+  color: #4d2369!important;
 }
 
 .thursday .btn-tagline,
