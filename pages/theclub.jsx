@@ -83,6 +83,23 @@ const Menu = ({ menuImage }) => {
               font-size: 1.5rem!important;
               line-height: 1.6rem !important;
           }
+
+          .intro {
+              border: none!important;
+              margin: 10px auto 35px auto !important
+              font-family: Helvetica !important;
+              font-weight: bold !important;
+          
+          }
+          
+          .intro p {
+              font-size: 1.5rem !important;
+              line-height: 1.6rem !important;
+              font-weight: 400 !important;
+              margin-bottom: 0.6rem !important;
+              text-align: center !important;
+              color: white !important;
+          }
             
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -138,6 +155,12 @@ const Menu = ({ menuImage }) => {
             line-height: 2!important;
         }
 
+        .intro p {
+              font-size: 0.6rem !important;
+              line-height: 2 !important;
+              margin-bottom: 0px !important;
+          }
+
         .override-buttons-wrapper {
             margin: 25px 0;
         }
@@ -161,10 +184,10 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/theclub/theclub-page-top.gif" alt="The Club" width="100%" />
          </div>
 
-         <div className="nocturn override">
-           <p className="override-text">Access to the club is for Friends of the Club only.</p>
-           <p className="override-text">To apply to become a Friend of the Club, <a className="link" href="mailto:friends@little-potland.com?subject=FOC Enquiry">email us</a>.</p>
-           <p className="override-text">Or you can access the club by <a className="link" target="_blank" href="https://www.little-portland.com/bookings" >booking</a> a dinner table.</p>
+         <div className="nocturn override intro">
+           <p>Access to the club is for Friends of the Club only.</p>
+           <p>To apply to become a Friend of the Club, <a className="link" href="mailto:friends@little-potland.com?subject=FOC Enquiry">email us</a>.</p>
+           <p>Or you can access the club by <a className="link" target="_blank" href="https://www.little-portland.com/bookings" >booking</a> a dinner table.</p>
          </div>
 
          <div className="nocturn-wider-section override-logo">
