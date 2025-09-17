@@ -2355,7 +2355,7 @@ html, body {
 
     .tags {
         margin: 0px auto 15px !important;
-        width: 94% !important;
+        width: 100% !important;
         text-align: center;
     }
 
