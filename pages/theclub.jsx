@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
+import HoverImageLink from "@components/HoverImageLink"; // adjust path if your structure differs
 
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
@@ -13,6 +14,10 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
+
+        <link rel="preload" as="image" href="/images/theclub/the_tent_page_private_hire.jpg" />
+        <link rel="preload" as="image" href="/images/theclub/the_tent_page_private_hire_hover.jpg" />
+        
         <style>
             {`html{overflow-x: hidden !important;}`}
             {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
@@ -230,6 +235,17 @@ const Menu = ({ menuImage }) => {
           </div>
         </div>
         </div>
+
+        <div className="nocturn">
+            <HoverImageLink
+              href="mailto:yo@little-portland.com"
+              img="/images/theclub/the_tent_page_private_hire.jpg"
+              hoverImg="/images/theclub/the_tent_page_private_hire_hover.jpg"
+              aspect="2000 / 306"
+              ariaLabel="Private hire enquiries"
+              target="_blank"
+            />
+          </div>
       
          <div className="nocturn override">
            <div className="override-buttons-wrapper">
