@@ -39,6 +39,17 @@ const Menu = ({ menuImage }) => {
             .full-width {
               width: 100%;
             }
+
+            .link {
+               color: #aacc33!important;
+                transition: all 0.3s ease-in-out; 
+                opacity: 1;
+            }
+
+            .link:hover {
+              color: #aacc33!important;
+              opacity: .7;
+            }
             
             .override-button {
                 color: #aacc33!important;
@@ -124,7 +135,7 @@ const Menu = ({ menuImage }) => {
 
         .dance-popup p {
             font-size: 0.6rem!important;
-            line-height: 2 !important;
+            line-height: 2!important;
         }
 
         .override-buttons-wrapper {
@@ -148,6 +159,12 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override">
            <img className="override-logo" src="/images/theclub/theclub-page-top.gif" alt="The Club" width="100%" />
+         </div>
+
+         <div className="nocturn override">
+           <p className="override-text">Access to the club is for Friends of the Club only.</p>
+           <p className="override-text">To apply to become a Friend of the Club, <a className="link" href="mailto:friends@little-potland.com?subject=FOC Enquiry">email us</a>.</p>
+           <p className="override-text">Or you can access the club by <a className="link" target="_blank" href="https://www.little-portland.com/bookings" >booking</a> a dinner table.</p>
          </div>
 
          <div className="nocturn-wider-section override-logo">
