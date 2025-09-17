@@ -157,7 +157,7 @@ const Menu = ({ menuImage }) => {
           </div>
 
          <div className="nocturn override">
-        <div className="eat-note dance-popup">
+        <div className="dance-popup">
           <div>
                   <div className="category thu">
                     <h3>Thursday <span className="italic-word">is</span> <span className="group-item">Underground</span></h3>
