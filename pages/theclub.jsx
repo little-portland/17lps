@@ -15,7 +15,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
 
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.png" />
+        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.png" /> 
         <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.png" />
         
         <style>
