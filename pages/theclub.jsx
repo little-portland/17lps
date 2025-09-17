@@ -108,7 +108,7 @@ const Menu = ({ menuImage }) => {
           }
 
           .hire {
-              margin: 50px auto 20px auto!important;
+              margin: 50px auto 50px auto!important;
           }
             
             .override-buttons-wrapper .column {
@@ -176,7 +176,7 @@ const Menu = ({ menuImage }) => {
           }
 
         .hire {
-              margin: 30px auto 20px auto!important;
+              margin: 30px auto 40px auto!important;
           }
 
         .override-buttons-wrapper {
