@@ -86,7 +86,7 @@ const Menu = ({ menuImage }) => {
 
           .intro {
               border: none!important;
-              margin: 10px auto 35px auto !important
+              margin: 10px auto 35px auto !important;
               font-family: Helvetica !important;
               font-weight: bold !important;
           
