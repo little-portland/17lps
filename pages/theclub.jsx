@@ -89,6 +89,7 @@ const Menu = ({ menuImage }) => {
               margin: 10px auto 35px auto !important;
               font-family: Helvetica !important;
               font-weight: bold !important;
+              text-transform: uppercase!important;
           
           }
           
