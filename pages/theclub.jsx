@@ -15,8 +15,8 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
 
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.jpg" />
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.jpg" />
+        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.png" />
+        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.png" />
         
         <style>
             {`html{overflow-x: hidden !important;}`}
@@ -247,8 +247,8 @@ const Menu = ({ menuImage }) => {
         <div className="nocturn hire">
             <HoverImageLink
               href="mailto:yo@little-portland.com"
-              img="/images/theclub/the_club_page_private_hire.jpg"
-              hoverImg="/images/theclub/the_club_page_private_hire_hover.jpg"
+              img="/images/theclub/the_club_page_private_hire.png"
+              hoverImg="/images/theclub/the_club_page_private_hire_hover.png"
               aspect="2000 / 306"
               ariaLabel="Private hire enquiries"
               target="_blank"
