@@ -155,6 +155,10 @@ const Menu = ({ menuImage }) => {
             line-height: 2!important;
         }
 
+        .intro {
+              margin-top: 0px !important;
+          }
+
         .intro p {
               font-size: 0.6rem !important;
               line-height: 2 !important;
