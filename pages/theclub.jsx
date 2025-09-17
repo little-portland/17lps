@@ -15,8 +15,8 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
 
-        <link rel="preload" as="image" href="/images/theclub/the_tent_page_private_hire.jpg" />
-        <link rel="preload" as="image" href="/images/theclub/the_tent_page_private_hire_hover.jpg" />
+        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.jpg" />
+        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.jpg" />
         
         <style>
             {`html{overflow-x: hidden !important;}`}
@@ -106,6 +106,10 @@ const Menu = ({ menuImage }) => {
               text-align: center !important;
               color: white !important;
           }
+
+          .hire {
+              margin: 50px auto 20px auto!important;
+          }
             
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -169,6 +173,10 @@ const Menu = ({ menuImage }) => {
               font-size: 0.6rem !important;
               line-height: 2 !important;
               margin-bottom: 0px !important;
+          }
+
+        .hire {
+              margin: 30px auto 20px auto!important;
           }
 
         .override-buttons-wrapper {
@@ -236,11 +244,11 @@ const Menu = ({ menuImage }) => {
         </div>
         </div>
 
-        <div className="nocturn">
+        <div className="nocturn hire">
             <HoverImageLink
               href="mailto:yo@little-portland.com"
-              img="/images/theclub/the_tent_page_private_hire.jpg"
-              hoverImg="/images/theclub/the_tent_page_private_hire_hover.jpg"
+              img="/images/theclub/the_club_page_private_hire.jpg"
+              hoverImg="/images/theclub/the_club_page_private_hire_hover.jpg"
               aspect="2000 / 306"
               ariaLabel="Private hire enquiries"
               target="_blank"
