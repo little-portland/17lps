@@ -29,7 +29,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'body{background-color: #ff9292!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;}'}
+            {'body{background-color:#0a186d!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;margin-bottom:30px;}'}
             {'.subscribe{width: 100%;margin: 0 auto;}'}
@@ -52,7 +52,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ padding-bottom: 20px;transition: all 0.5s;}'}
             {'.nocturn-text{ text-align: left!important;}'}
             {'.nocturn-wider-section a{text-decoration: none;#ffffff}'} 
-            {'.nocturn-wider-section a:hover .nocturn-text{color: #0a186d!important;}'}
+            {'.nocturn-wider-section a:hover .nocturn-text{color: #ff9292!important;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;margin:0 auto 15px auto;}.nocturn-wider-section .flyer:hover{filter: none!important;}.subscribe{width: 100%!important;}.subscribe h2{padding-left:20px;text-align:left;margin-bottom: -50px!important;}.subscribe .column{max-height: -webkit-fill-available;}.subscribe .bookings-iframe{width: 100%!important;max-height: -webkit-fill-available;}.subscribe .bookings-iframe iframe{height:550px;margin-top:0;}.nocturn-text-wrapper{padding: 0;margin-bottom: 20px!important;}.bottom .nocturn-text{padding-left: 20px;}.nocturn-wider-section{width: 90%;}.nocturn-wider-section p{ font-size: 15px;}.bottom{ margin-top: 75px!important;margin-bottom: -30px!important;text-align:left;}.bottom p{ font-size: 15px;}.row{padding: 0!important;text-align: center!important;}.column{ flex: 50%;max-width: 50%;}}'}
          </style>
          
