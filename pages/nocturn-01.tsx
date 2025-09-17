@@ -14,7 +14,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'body{background-color: #0a1870!important;}'}
+            {'body{background-color: #1b053b!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'@media (max-width: 768px) { .nocturn{width: 90%;}}'}
         </style>
