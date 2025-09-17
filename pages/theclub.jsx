@@ -56,7 +56,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .dance-popup {
-              border: none;
+              border: none!important;
               margin: 50px 0 25px 0;
               min-height: auto !important;
               font-family: Helvetica !important;
@@ -65,10 +65,11 @@ const Menu = ({ menuImage }) => {
 
           .dance-popup h3 {
               color: rgb(255, 255, 255);
+              font-size: 2rem!important;
           }
 
           .dance-popup p {
-              font-size: 1.5rem;
+              font-size: 1.5rem!important;
               line-height: 1.6rem !important;
           }
             
@@ -115,6 +116,16 @@ const Menu = ({ menuImage }) => {
           .column {
             width: 100%!important;
           }
+
+         .dance-popup h3 {
+            font-size: 0.7rem!important;
+            padding: 5px 10px!important;
+        }
+
+        .dance-popup p {
+            font-size: 0.6rem!important;
+            line-height: 2 !important;
+        }
 
         .override-buttons-wrapper {
             margin: 25px 0;
