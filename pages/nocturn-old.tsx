@@ -59,7 +59,7 @@ const Menu = ({ menuImage }) => {
         <title>Nocturn</title>
       </Head>
          <div className="nocturn">
-           <img src="/images/nocturn-main-web-page-header.png" alt="Nocturn" width="100%" />
+           <img src="/images/nocturn-main-web-page-headerV2.png" alt="Nocturn" width="100%" />
          </div>
            <div className="nocturn-wider-section">
            <div className="row">
