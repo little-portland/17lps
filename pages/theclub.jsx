@@ -73,7 +73,7 @@ const Menu = ({ menuImage }) => {
 
             .dance-popup {
               border: none!important;
-              margin: 50px 0 50px 0;
+              margin: 50px 0 25px 0;
               min-height: auto !important;
               font-family: Helvetica !important;
               font-weight: bold !important;
@@ -207,36 +207,8 @@ const Menu = ({ menuImage }) => {
            <p>To apply to become a Friend of the Club, <a className="link" href="mailto:friends@little-potland.com?subject=FOC Enquiry">email us</a>.</p>
            <p>Or you can access the club by <a className="link" target="_blank" href="https://www.little-portland.com/bookings" >booking</a> a dinner table.</p>
          </div>
-
-        <div className="nocturn hire">
-            <HoverImageLink
-              href="mailto:yo@little-portland.com"
-              img="/images/theclub/the_club_page_private_hire.png"
-              hoverImg="/images/theclub/the_club_page_private_hire_hover.png"
-              aspect="2000 / 306"
-              ariaLabel="Private hire enquiries"
-              target="_blank"
-            />
-          </div>
-
-         <div className="nocturn-wider-section override-logo">
-           <div className="image-row">
-              <div className="image-column">
-                <img src="/images/theclub/the_club01.jpg" />
-                <img src="/images/theclub/the_club02.jpg" />
-                <img src="/images/theclub/the_club03.jpg" />
-                <img src="/images/theclub/the_club04.jpg" />
-              </div>
-              <div className="image-column">
-                <img src="/images/theclub/the_club05.jpg" />
-                <img src="/images/theclub/the_club06.jpg" />
-                <img src="/images/theclub/the_club07.jpg" />
-                <img src="/images/theclub/the_club08.jpg" />
-              </div>
-           </div>
-          </div>
-
-         <div className="nocturn override">
+      
+      <div className="nocturn override">
         <div className="dance-popup">
           <div>
                   <div className="category thu">
@@ -268,6 +240,34 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
           </div>
         </div>
         </div>
+
+        <div className="nocturn hire">
+            <HoverImageLink
+              href="mailto:yo@little-portland.com"
+              img="/images/theclub/the_club_page_private_hire.png"
+              hoverImg="/images/theclub/the_club_page_private_hire_hover.png"
+              aspect="2000 / 306"
+              ariaLabel="Private hire enquiries"
+              target="_blank"
+            />
+          </div>
+
+         <div className="nocturn-wider-section override-logo">
+           <div className="image-row">
+              <div className="image-column">
+                <img src="/images/theclub/the_club01.jpg" />
+                <img src="/images/theclub/the_club02.jpg" />
+                <img src="/images/theclub/the_club03.jpg" />
+                <img src="/images/theclub/the_club04.jpg" />
+              </div>
+              <div className="image-column">
+                <img src="/images/theclub/the_club05.jpg" />
+                <img src="/images/theclub/the_club06.jpg" />
+                <img src="/images/theclub/the_club07.jpg" />
+                <img src="/images/theclub/the_club08.jpg" />
+              </div>
+           </div>
+          </div>
 
     </>
   );
