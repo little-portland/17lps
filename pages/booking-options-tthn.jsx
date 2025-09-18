@@ -24,40 +24,40 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category letter-spacing">In Good Company<span className="day">Presents</span></h1>
+        <h1 className="event-name desktop-only day-category disco-saturdays">Roots<span className="day">Presents</span></h1>
         
-        <h1 className="event-name mobile-only cat">In Good Company<span className="cat-day">Presents</span></h1>
+        <h1 className="event-name mobile-only cat">Roots<span className="cat-day">Presents</span></h1>
 
         <div className="event-info">
-            <div class="info date">
-              <h2><span>SAT</span>13 Sep</h2>
+           <div class="info date">
+              <h2><span>SAT</span>11 Oct</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>In Good Company </h3>
-              <h3><span>STUDIO <b>//</b> </span>In Good Company</h3>
+              <h3><span>TENT <b>//</b> </span>MARCELINA, MOULIN</h3>
+              <h3><span>STUDIO <b>//</b> </span>AGELESS, FERDINAND MONK, KIAN OK</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xIDsyCdq" target="_blank">
+            <a href="https://sevn.ly/xR2rGOIk" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
         </div>
 
-        <div className="or mobile-only"><h2>Or</h2></div>
+       <div className="or mobile-only"><h2>Or</h2></div>
 
         <div className="book-wrapper">
           <div className="override-heading">
             <h2>START WITH DINNER</h2>
             <p class="time mobile-only">Includes Free Club Entry</p>
           </div>
+          <div class="tags mobile-only"><h3><span>DINING CONCEPT: <span className="strongword">FUTURIST</span></span></h3></div>
+
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-          <div class="tags"><h3><span>FUTURIST MENU</span></h3></div>
-
          <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-sat.svg" alt="The Tent Food" width="100%" /></div>
 
           <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
@@ -76,10 +76,10 @@ const BookingOptions = () => {
 
          <div class="button-wrapper new-button-wrapper desktop-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-09-13&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-10-11&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
-                <p class="details"><span>9PM</span></p>
+                <p class="details"><span>8:30PM</span></p>
                 <p class="btn-tagline">The Cosmic Experience</p>
                </a>
               </Button>
@@ -105,16 +105,16 @@ const BookingOptions = () => {
          
          <div class="button-wrapper new-button-wrapper mobile-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-09-13&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-10-11&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
-                <p class="details"><span>9PM</span></p>
-                <p class="btn-tagline">Full Override Experience</p>
+                <p class="details"><span>8:30PM</span></p>
+                <p class="btn-tagline">The Cosmic Experience</p>
                </a>
               </Button>
 
-            <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
-              <span>[More about The Tent]</span>
-            </a>
+               <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
+                <span>[More about The Tent]</span>
+              </a>
   
               <Button classes="events-button ticket"  btnType="hollow">
                 <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
@@ -132,10 +132,10 @@ const BookingOptions = () => {
         </div>
 
         <div className="or desktop-only or-desktop"><h2>Or</h2></div>
-
+        
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xIDsyCdq" target="_blank">
+            <a href="https://sevn.ly/xR2rGOIk" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
