@@ -112,7 +112,7 @@ const Menu = ({ menuImage }) => {
           }
 
           .img-grid {
-            margin-bottom: 40px;
+            margin-bottom: 40px!important;
           }
             
             .override-buttons-wrapper .column {
