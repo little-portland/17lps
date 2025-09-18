@@ -110,6 +110,10 @@ const Menu = ({ menuImage }) => {
           .hire {
               margin: 50px auto 50px auto!important;
           }
+
+          .img-grid {
+            margin-bottom: 40px;
+          }
             
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -252,7 +256,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             />
           </div>
 
-         <div className="nocturn-wider-section override-logo">
+         <div className="nocturn-wider-section override-logo img-grid">
            <div className="image-row">
               <div className="image-column">
                 <img src="/images/theclub/the_club01.jpg" />
