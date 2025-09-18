@@ -208,6 +208,17 @@ const Menu = ({ menuImage }) => {
            <p>Or you can access the club by <a className="link" target="_blank" href="https://www.little-portland.com/bookings" >booking</a> a dinner table.</p>
          </div>
 
+        <div className="nocturn hire">
+            <HoverImageLink
+              href="mailto:yo@little-portland.com"
+              img="/images/theclub/the_club_page_private_hire.png"
+              hoverImg="/images/theclub/the_club_page_private_hire_hover.png"
+              aspect="2000 / 306"
+              ariaLabel="Private hire enquiries"
+              target="_blank"
+            />
+          </div>
+
          <div className="nocturn-wider-section override-logo">
            <div className="image-row">
               <div className="image-column">
@@ -230,30 +241,33 @@ const Menu = ({ menuImage }) => {
           <div>
                   <div className="category thu">
                     <h3>Thursday <span className="italic-word">is</span> <span className="group-item">Underground</span></h3>
-                    <p><span className="group-item">Thursday Underground</span> kicks off the weekend, showcasing cutting-edge electronic artists at the forefront of the underground scene, bringing together a community deeply rooted in its culture.</p>
+                    <p>Positioned as the weekly opener, <span className="group-item">Thursday Underground</span> sets the tone for the
+entire weekend. A platform for cutting-edge electronic sound that, at its most
+profound, transcends the boundaries of conventional music, <span className="group-item">Thursday Underground</span> is an ode to artists at the forefront of the underground electronic
+movement; a movement followed by a community deeply rooted in its culture.</p>
+<p>Each night has a metaphorical colour. Thursday is green.</p>
                   </div>
                   <div className="category fri">
                     <h3>Friday <span className="italic-word">is</span> <span className="group-item">Residents</span></h3>
-                    <p><span className="group-item">Friday Residents</span> bridges Underground and Disco3000, shaping the weekend’s rhythm and flow. Focused on club residents, it brings a sense of familiarity and community. The heartbeat of the weekend.</p>
+                    <p><span className="group-item">Friday Residents</span> stands as a bridge between two worlds. While influenced by both
+Thursday Underground and Saturday Disco3000, it projects its own vibe and
+crowd into each. With a focus on club residents in its programming, it maintains a
+sense of familiarity and community, making <span className="group-item">Friday Residents</span> the vibrant
+heartbeat of the weekend.</p>
+<p>Each night has a metaphorical colour. Friday is red.</p>
                   </div>
                   <div className="category sat">
                     <h3>Saturday <span className="italic-word">is</span> <span className="group-item">Disco3000</span></h3>
-                    <p><span className="group-item">Disco3000</span> captures the evolving spirit of the disco era. Embracing a soundscape that truly resonates with the soul, it delivers a timeless and uplifting journey. A cosmic finale to the weekend.</p>
+                    <p><span className="group-item">Disco3000</span> seeks to capture the spirit of the disco era for the space age. Guided
+by artists who’ve journeyed across the sonic spectrum time and again, it
+embraces a soundscape that truly resonates with the soul: diverse, timeless, and
+filled with uplifting and euphoric elements. These are the sounds of the musically
+enlightened. <span className="group-item">Disco3000</span> is how we draw the weekend to a close; a cosmic finale.</p>
+<p>Each night has a metaphorical colour. Saturday is blue.</p>
                   </div>
           </div>
         </div>
         </div>
-
-        <div className="nocturn hire">
-            <HoverImageLink
-              href="mailto:yo@little-portland.com"
-              img="/images/theclub/the_club_page_private_hire.png"
-              hoverImg="/images/theclub/the_club_page_private_hire_hover.png"
-              aspect="2000 / 306"
-              ariaLabel="Private hire enquiries"
-              target="_blank"
-            />
-          </div>
 
     </>
   );
