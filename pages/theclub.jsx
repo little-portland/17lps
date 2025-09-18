@@ -73,7 +73,7 @@ const Menu = ({ menuImage }) => {
 
             .dance-popup {
               border: none!important;
-              margin: 50px 0 25px 0;
+              margin: 50px 0 50px 0;
               min-height: auto !important;
               font-family: Helvetica !important;
               font-weight: bold !important;
