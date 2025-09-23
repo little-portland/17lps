@@ -206,6 +206,10 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/theclub/theclub-page-top.gif" alt="The Club" width="100%" />
          </div>
 
+        <div className="nocturn override">
+           <img className="override-logo" src="/images/thetent/rotating_tent.gif" alt="The Tent" width="100%" />
+         </div>
+
          <div className="nocturn override intro">
            <p>Access to the club is for Friends of the Club only.</p>
            <p>To apply to become a Friend of the Club, <a className="link" href="mailto:friends@little-potland.com?subject=FOC Enquiry">email us</a>.</p>
