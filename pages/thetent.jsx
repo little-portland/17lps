@@ -15,6 +15,7 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
+        <link rel="preload" as="image" href="/images/thetent/rotating_tent.gif" />
         <link rel="preload" as="image" href="/images/thetent/the_tent_page_private_enquire.jpg" />
         <link rel="preload" as="image" href="/images/thetent/the_tent_page_private_enquire_hover.jpg" />
         <link rel="preload" as="image" href="/images/thetent/the_tent_page_tent_radio.jpg" />
