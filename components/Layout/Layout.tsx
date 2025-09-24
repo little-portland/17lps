@@ -84,7 +84,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
               <h2>Open Thursday to Saturday</h2>
               <h3 className="open-time">FROM 10PM</h3>
               <p>Access to the club is for <strong>Friends of the Club</strong> only.</p> 
-              <p>To apply to become a <strong>Friend of the Club</strong>, <a href="mailto:friends@little-potland.com?subject=FOC%20Enquiry">email us</a>.</p>
+              <p>To apply to become a <strong>Friend of the Club</strong>, <a href="mailto:friends@little-portland.com?subject=FOC%20Enquiry">email us</a>.</p>
               <p>Or you can access the club by <a href="https://www.little-portland.com/bookings" target="_blank">booking</a> a dinner table.</p>
                <img src="/images/dance-popup-img.jpg" />
                   <div className="category thu">
