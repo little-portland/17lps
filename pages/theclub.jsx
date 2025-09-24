@@ -267,12 +267,14 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
                 <img src="/images/theclub/the_club02.jpg" />
                 <img src="/images/theclub/the_club03.jpg" />
                 <img src="/images/theclub/the_club04.jpg" />
+                <img src="/images/theclub/the_club05.jpg" />
               </div>
               <div className="image-column">
-                <img src="/images/theclub/the_club05.jpg" />
                 <img src="/images/theclub/the_club06.jpg" />
                 <img src="/images/theclub/the_club07.jpg" />
                 <img src="/images/theclub/the_club08.jpg" />
+                <img src="/images/theclub/the_club09.jpg" />
+                <img src="/images/theclub/the_club10.jpg" />
               </div>
            </div>
           </div>
