@@ -212,7 +212,7 @@ const Menu = ({ menuImage }) => {
 
          <div className="nocturn override intro">
            <p>Access to the club is for Friends of the Club only.</p>
-           <p>To apply to become a Friend of the Club, <a className="link" href="mailto:friends@little-potland.com?subject=FOC Enquiry">email us</a>.</p>
+           <p>To apply to become a Friend of the Club, <a className="link" href="mailto:friends@little-portland.com?subject=FOC Enquiry">email us</a>.</p>
            <p>Or you can access the club by <a className="link" target="_blank" href="https://www.little-portland.com/bookings" >booking</a> a dinner table.</p>
          </div>
       
