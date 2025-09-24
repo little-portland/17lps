@@ -62,6 +62,10 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
 
   return (
     <>
+     <Head>
+        <link rel="preload" as="image" href="/images/dance-popup-img.jpg" />
+    </Head>
+      
       {canvasState && !isLoaded && <Canvas removeSelf={setCanvasState} />}
 
     {!hideNav && isMobile && isLoaded && displayMobileButtons ? (
