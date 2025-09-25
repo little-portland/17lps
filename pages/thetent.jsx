@@ -22,6 +22,8 @@ const Menu = ({ menuImage }) => {
         <link rel="preload" as="image" href="/images/thetent/the_tent_page_tent_radio_hover.jpg" />
         <link rel="preload" as="image" href="/images/thetent/the_tent_page_insta.jpg" />
         <link rel="preload" as="image" href="/images/thetent/the_tent_page_insta_hover.jpg" />
+        <link rel="preload" as="image" href="/images/thetent/the_tent_page_news.jpg" />
+        <link rel="preload" as="image" href="/images/thetent/the_tent_page_news_hover.jpg" />
 
         <style>
             {`html{overflow-x: hidden !important;}`}
