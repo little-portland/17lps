@@ -17,6 +17,8 @@ const Menu = ({ menuImage }) => {
 
         <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.png" /> 
         <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.png" />
+        <link rel="preload" as="image" href="/images/theclub/the_club_page_friend.png" /> 
+        <link rel="preload" as="image" href="/images/theclub/the_club_page_friend_hover.png" />
         <link rel="preload" as="image" href="/images/theclub/rotating_club.gif" />
                 
         <style>
@@ -213,7 +215,20 @@ const Menu = ({ menuImage }) => {
 
          <div className="nocturn override intro">
            <p>Access to the club is for Friends of the Club only.</p>
-           <p>To apply to become a Friend of the Club, <a className="link" href="mailto:friends@little-portland.com?subject=FOC Enquiry">email us</a>.</p>
+         </div>
+
+          <div className="nocturn hire">
+            <HoverImageLink
+              href="mailto:friends@little-portland.com?subject=FOC Enquiry"
+              img="/images/theclub/the_club_page_friend.png"
+              hoverImg="/images/theclub/the_club_page_friend_hover.png"
+              aspect="2000 / 306"
+              ariaLabel="APPLY TO BECOME A FRIEND OF THE CLUB"
+              target="_blank"
+            />
+          </div>
+
+        <div className="nocturn override intro">
            <p>Or you can access the club by <a className="link" target="_blank" href="https://www.little-portland.com/bookings" >booking</a> a dinner table.</p>
          </div>
       
