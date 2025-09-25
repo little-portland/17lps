@@ -17,7 +17,8 @@ const Menu = ({ menuImage }) => {
 
         <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.png" /> 
         <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.png" />
-        
+        <link rel="preload" as="image" href="/images/theclub/rotating_club.gif" />
+                
         <style>
             {`html{overflow-x: hidden !important;}`}
             {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
