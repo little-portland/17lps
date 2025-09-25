@@ -331,17 +331,17 @@ const Menu = ({ menuImage }) => {
                     href="https://www.instagram.com/thetentattheendoftheuniverse/"
                     img="/images/thetent/the_tent_page_insta.jpg"
                     hoverImg="/images/thetent/the_tent_page_insta_hover.jpg"
-                    aspect="2000 / 187"
+                    aspect="1000 / 150"
                     ariaLabel="Instagram"
                     target="_blank"
                   />             
               </div>
              <div className="button-half-page">
                   <HoverImageLink
-                    href="https://www.instagram.com/thetentattheendoftheuniverse/"
+                    href="https://forms.airship.co.uk/forms/1364/the-tent-at-the-end-of-the-universe"
                     img="/images/thetent/the_tent_page_news.jpg"
                     hoverImg="/images/thetent/the_tent_page_news_hover.jpg"
-                    aspect="2000 / 187"
+                    aspect="1000 / 150"
                     ariaLabel="Newsletter"
                     target="_blank"
                   />               
