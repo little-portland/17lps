@@ -132,6 +132,34 @@ const Menu = ({ menuImage }) => {
               .insta-wrapper {
                 margin-top: 50px;
               }
+
+           .button-half-page {
+               width: 50%;
+               display: flex;
+            }
+
+            .button-half-page .override-button {
+              font-size: 20px!important;
+            }
+
+           .override-buttons-wrapper {
+              display: flex;
+              justify-content: space-between; /* optional: adds space between */
+              align-items: stretch; /* makes both children the same height */
+            }
+            
+            .button-half-page {
+              flex: 1; /* each button takes up equal width */
+              display: flex;
+              justify-content: center; /* centers text horizontally */
+              align-items: center; /* centers text vertically */
+              margin: 5px; /* optional: spacing between buttons */
+              box-sizing: border-box;
+            }
+
+            .explore-btns {
+              margin: 25px 0;
+            }
       
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -205,6 +233,15 @@ const Menu = ({ menuImage }) => {
     }
         .override-button {
             font-size: 15px!important;
+        }
+
+                .button-half-page {
+            width: 100%;
+            margin: 0;
+        }
+
+        .button-half-page .override-button {
+            font-size: 10px!important;
         }
 
    .events-box .overide-buton, .events-box .content-btn {
@@ -286,14 +323,28 @@ const Menu = ({ menuImage }) => {
           </div>
 
         <div className="nocturn insta-margin">
-          <HoverImageLink
-            href="https://www.instagram.com/thetentattheendoftheuniverse/"
-            img="/images/thetent/the_tent_page_insta.jpg"
-            hoverImg="/images/thetent/the_tent_page_insta_hover.jpg"
-            aspect="2000 / 187"
-            ariaLabel="Instagram"
-            target="_blank"
-          />
+           <div className="override-buttons-wrapper explore-btns">
+              <div className="button-half-page">
+                  <HoverImageLink
+                    href="https://www.instagram.com/thetentattheendoftheuniverse/"
+                    img="/images/thetent/the_tent_page_insta.jpg"
+                    hoverImg="/images/thetent/the_tent_page_insta_hover.jpg"
+                    aspect="2000 / 187"
+                    ariaLabel="Instagram"
+                    target="_blank"
+                  />             
+              </div>
+             <div className="button-half-page">
+                  <HoverImageLink
+                    href="https://www.instagram.com/thetentattheendoftheuniverse/"
+                    img="/images/thetent/the_tent_page_news.jpg"
+                    hoverImg="/images/thetent/the_tent_page_news_hover.jpg"
+                    aspect="2000 / 187"
+                    ariaLabel="Newsletter"
+                    target="_blank"
+                  />               
+             </div>
+            </div>
         </div>
       
          <div className="nocturn override">
