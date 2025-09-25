@@ -283,7 +283,7 @@ export default function Playlist() {
         .player__bar input[type="range"]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:white;box-shadow:0 4px 16px rgba(124,92,255,.7)}
         .player__controls{display:flex;gap:12px;align-items:center}
         .icon{background:transparent;border:1px solid rgba(255,255,255,.15);color:#fff;padding:8px 10px;border-radius:12px}
-        .play{background:linear-gradient(90deg, var(--accent), var(--accent2));color:#0a0a0f;border:0;padding:10px 18px;border-radius:14px;font-weight:800;letter-spacing:.2px}
+        .play{background:linear-gradient(90deg, var(--accent), var(--accent2));color:#ffffff!important;border:0;padding:10px 18px;border-radius:14px;font-weight:800;letter-spacing:.2px}
         .lineClamp{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
       `}</style>
     </>
