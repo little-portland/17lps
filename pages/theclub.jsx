@@ -241,7 +241,6 @@ const Menu = ({ menuImage }) => {
 entire weekend. A platform for cutting-edge electronic sound that, at its most
 profound, transcends the boundaries of conventional music, <span className="group-item">Thursday Underground</span> is an ode to artists at the forefront of the underground electronic
 movement; a movement followed by a community deeply rooted in its culture.</p>
-<p>Each night has a metaphorical colour. Thursday is green.</p>
                   </div>
                   <div className="category fri">
                     <h3>Friday <span className="italic-word">is</span> <span className="group-item">Residents</span></h3>
@@ -250,7 +249,6 @@ Thursday Underground and Saturday Disco3000, it projects its own vibe and
 crowd into each. With a focus on club residents in its programming, it maintains a
 sense of familiarity and community, making <span className="group-item">Friday Residents</span> the vibrant
 heartbeat of the weekend.</p>
-<p>Each night has a metaphorical colour. Friday is red.</p>
                   </div>
                   <div className="category sat">
                     <h3>Saturday <span className="italic-word">is</span> <span className="group-item">Disco3000</span></h3>
@@ -259,7 +257,6 @@ by artists who’ve journeyed across the sonic spectrum time and again, it
 embraces a soundscape that truly resonates with the soul: diverse, timeless, and
 filled with uplifting and euphoric elements. These are the sounds of the musically
 enlightened. <span className="group-item">Disco3000</span> is how we draw the weekend to a close; a cosmic finale.</p>
-<p>Each night has a metaphorical colour. Saturday is blue.</p>
                   </div>
           </div>
         </div>
