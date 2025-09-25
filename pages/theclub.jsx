@@ -178,6 +178,7 @@ const Menu = ({ menuImage }) => {
 
         .intro {
               margin-top: 0px !important;
+              margin-bottom: 10px !important;
           }
 
         .intro p {
