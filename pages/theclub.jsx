@@ -114,6 +114,10 @@ const Menu = ({ menuImage }) => {
               margin: 50px auto 50px auto!important;
           }
 
+        .friends {
+              margin: 25px auto 30px auto!important;
+          }
+
           .img-grid {
             margin-bottom: 40px!important;
           }
@@ -186,6 +190,10 @@ const Menu = ({ menuImage }) => {
               margin: 30px auto 40px auto!important;
           }
 
+        .friends {
+              margin: 10px auto 10px auto !important;
+          }
+
         .override-buttons-wrapper {
             margin: 25px 0;
         }
@@ -217,7 +225,7 @@ const Menu = ({ menuImage }) => {
            <p>Access to the club is for Friends of the Club only.</p>
          </div>
 
-          <div className="nocturn hire">
+          <div className="nocturn hire friends">
             <HoverImageLink
               href="mailto:friends@little-portland.com?subject=FOC Enquiry"
               img="/images/theclub/the_club_page_friend.png"
