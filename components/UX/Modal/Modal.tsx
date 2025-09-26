@@ -31,6 +31,10 @@ interface SidebarProps {
     target: string;
     title: string;
   };
+  link3?: {
+    target: string;
+    title: string;
+  };
   className?: string; 
 }
 
@@ -102,6 +106,17 @@ const Modal: FC<SidebarProps> = ({
                   height={25} 
                 />
                 </a>
+                </div>
+                  </FirstButtonWrapper>
+              )}
+             {link3 && (
+                <FirstButtonWrapper>
+                  <div className="sample-menu btn-wrapper" >
+                  <Link href={link3.target}>
+                    <a>
+                      <Button btnType="solid">{link3.title}</Button>
+                    </a>
+                  </Link>
                 </div>
                   </FirstButtonWrapper>
               )}
