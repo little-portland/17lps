@@ -185,14 +185,14 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             src={"/images/thetent/the_tent_page_logo.png"}
             blurDataURL={"/images/thetent/the_tent_page_logo.png"}
         />
-        <p className="override-intro">In a floating tent, lost in space, futurist menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark mode - a cosmic journey.</p> 
+        <p>In a floating tent, lost in space, futurist menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark mode - a cosmic journey.</p> 
           <ul>
             <li className="info">£65pp Set Dinner</li>
             <li className="info">Futurist Menu</li>
             <li className="info">8:30pm Start</li>
             <li className="info">Club Access Included</li>
           </ul>
-        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/thetent" target="_blank">[EXPLORE THE TENT]</a></p>
+        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a className="explore-link" href="https://www.little-portland.com/thetent" target="_blank">[EXPLORE THE TENT]</a></p>
         </div>}
 
         {<div
@@ -209,7 +209,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             <li className="info">8pm start</li>
           </ul>
           <p>Our guests can experience the Override menu in Chef’s Studio.</p> 
-          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/chefstudio" target="_blank">[EXPLORE CHEF'S STUDIO]</a></p>
+          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a className="explore-link" href="https://www.little-portland.com/chefstudio" target="_blank">[EXPLORE CHEF'S STUDIO]</a></p>
         </div>}
 
       </div>}
