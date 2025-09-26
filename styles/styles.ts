@@ -128,7 +128,7 @@ html, body {
 }
 
 .eat-section {
- font-family: Helvetica, Space Mono, sans-serif!important;
+ font-family: Helvetica, Space Mono, sans-serif!important; 
 }
 
 .eat-note {
