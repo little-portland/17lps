@@ -146,24 +146,19 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         className="eat-note"
       >     
         <h1>The Tent</h1>
-        <h3 className="header-address">17 Little Portland Street</h3><br/>
-        <h2 className="header-tag">MORE THAN A MEAL. STEP INTO THE VOID.</h2> 
-        
-        {<div
-        className="box-1 box schedule-box open"> 
-        <h3>Open Thursdays to Saturdays</h3>
-        </div>}
+        <h3 className="header-address">17 Little Portland Street</h3>
+        <h2 className="header-tag">MORE THAN A MEAL. STEP INTO THE VOID.</h2> <br/>
               
         {<div
-        className="box-1 box"> 
+        className="box"> 
             <Image 
               src={"/images/17LPS_Override_scheduleV4.png"}
               blurDataURL={"/images/17LPS_Override_scheduleV4.png"}
-            />
+            /><br/>
         </div>}
 
         {<div
-        className="box-1 box"> 
+        className="box"> 
             <a href="https://www.little-portland.com/food" target="_blank">
              <HoverImageLink
                     href="https://www.little-portland.com/food"
@@ -173,15 +168,15 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
                     ariaLabel="Dinner"
                     target="_blank"
                   />  
-            </a>
+            </a><br/>
         </div>}
 
         {<div
-        className="box-1 box"> 
+        className="box"> 
               <Image 
                 src={"/images/floorplan_eat_popup.png"}
                 blurDataURL={"/images/floorplan_eat_popup.png"}
-              />
+              /><br/>
         </div>}
 
         {<div
