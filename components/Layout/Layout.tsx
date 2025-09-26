@@ -167,7 +167,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         <div className="schedule-container"> 
           <p className="details"><span>Chef's Studio</span><small>20:00</small></p>
           <p className="details"><span>Dinner in The Tent</span><small>20:30</small></p>
-          <p className="details"><span>Club Opens</span><small>22:00</small></p> 
+          <p className="details club-open"><span>Club Opens</span><small>22:00</small></p> 
         </div>
         </div>}
 
