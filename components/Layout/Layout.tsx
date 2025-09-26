@@ -141,7 +141,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
           title: "reservations",
         }}
         link2={{
-          target: "/override-menu",
+          target: "/menu",
           title: "menu",
         }}
         className="eat-modal"
