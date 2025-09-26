@@ -155,11 +155,18 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         <h2 className="header-tag">MORE THAN A MEAL. STEP INTO THE VOID.</h2> <br/>
               
         {<div
-        className="box"> 
-            <Image 
-              src={"/images/17LPS_Override_scheduleV4.png"}
-              blurDataURL={"/images/17LPS_Override_scheduleV4.png"}
-            /><br/><br/>
+        className="box-1 box schedule-box open"> 
+        <h3>Open Thursdays to Saturdays</h3>
+        </div>}
+              
+        {<div
+        className="box-1 box schedule-box"> 
+        <h4>Nightly Schedule</h4>
+        <div className="schedule-container"> 
+          <p className="details"><span>Chef's Studio</span><small>20:00</small></p>
+          <p className="details"><span>Dinner in The Tent</span><small>20:30</small></p>
+          <p className="details"><span>Club Opens</span><small>22:00</small></p> 
+        </div>
         </div>}
 
         {<div
