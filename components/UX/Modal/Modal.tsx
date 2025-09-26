@@ -95,7 +95,6 @@ const Modal: FC<SidebarProps> = ({
                       <Button btnType="solid">{link2.title}</Button>
                     </a>
                   </Link>
-                  <a className="insta" href="https://forms.airship.co.uk/forms/1364/the-tent-at-the-end-of-the-universe" target="_blank">NEWSLETTER</a>
                   <a className="insta" href="https://www.instagram.com/thetentattheendoftheuniverse/" target="_blank">
                 <Image
                   src={"/images/instagram.svg"}
