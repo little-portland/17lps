@@ -2456,6 +2456,11 @@ html, body {
     word-spacing: -15px;
   }
 
+  .club-open  {
+    width: 70px;
+    text-align: center !important;
+}
+
   .mobile-only {
        margin: 0 0 10px;
        display: block!important;
