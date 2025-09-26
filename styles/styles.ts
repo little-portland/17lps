@@ -2027,7 +2027,8 @@ html, body {
         }
 
         .eat-note {
-          max-height: 325px;
+          max-height: 350px;
+          margin-bottom: 0!important;
         }
         
         .eat-note h1 {
