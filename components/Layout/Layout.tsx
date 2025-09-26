@@ -72,7 +72,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         <link rel="preload" as="image" href="/images/floorplan_eat_popup.png" />
     </Head>
     <style>
-     {`html{font-family: Helvetica !important;}`}
+     {`.eat-section { font-family: Helvetica, Space Mono, sans-serif!important;}`}
     </style>
       
       {canvasState && !isLoaded && <Canvas removeSelf={setCanvasState} />}
