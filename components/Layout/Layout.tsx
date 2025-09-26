@@ -184,8 +184,8 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             <a href="https://www.little-portland.com/food" target="_blank">
              <HoverImageLink
                     href="https://www.little-portland.com/food"
-                    img="/images/explore_concept.png"
-                    hoverImg="/images/explore_concept_hover.png"
+                    img="/images/explore_concept_hover.png"
+                    hoverImg="/images/explore_concept.png"
                     aspect="1000 / 80"
                     ariaLabel="Dinner"
                     target="_blank"
