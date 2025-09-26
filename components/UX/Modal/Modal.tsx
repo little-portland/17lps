@@ -46,6 +46,7 @@ const Modal: FC<SidebarProps> = ({
   phone,
   link,
   link2,
+  link3,
   className, 
 }) => {
   //Check Device
@@ -78,7 +79,7 @@ const Modal: FC<SidebarProps> = ({
               </div>
             </Middle>
 
-            <ButtonWrapper style={link && link2 && { flexWrap: "wrap" }}>
+            <ButtonWrapper style={link && link2 && link3 && { flexWrap: "wrap" }}>
               {link && (
                 <FirstButtonWrapper>
                  <div className="sample-menu btn-wrapper" >
