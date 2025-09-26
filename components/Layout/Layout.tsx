@@ -68,6 +68,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         <link rel="preload" as="image" href="/images/dance-popup-img.jpg" />
         <link rel="preload" as="image" href="/images/explore_concept.jpg" />
         <link rel="preload" as="image" href="/images/explore_concept_hover.jpg" />
+        <link rel="preload" as="image" href="/images/17LPS_Override_scheduleV4.png"" />
+        <link rel="preload" as="image" href="/images/floorplan_eat_popup.png" />
     </Head>
     <style>
      {`html{font-family: Helvetica !important;}`}
