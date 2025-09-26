@@ -2185,6 +2185,7 @@ html, body {
        .header-tag {
           font-size: .7rem !important;
           margin-top: -10px!important;
+          margin-bottom: 5px !important;
       }
 
        .new-button-wrapper .menu-btn span {
