@@ -437,6 +437,7 @@ html, body {
 
 .header-tag {
   margin-bottom: 1.5rem!important;
+  font-size: 1.2rem !important;
 }
 
 .eat-note p {
@@ -2175,6 +2176,11 @@ html, body {
           font-size: 1.1rem;
           line-height: 1.7rem;
        }
+
+       .header-tag {
+          font-size: .7rem !important;
+          margin-top: -10px!important;
+      }
 
        .new-button-wrapper .menu-btn span {
         font-size: .8rem !important;
