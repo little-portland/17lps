@@ -162,7 +162,7 @@ html, body {
 }
 
 .eat-modal .eat-note h1 {
-  color: #3DCFD6;
+  color: #F57658;
 }
 
 .eat-note h2 {
@@ -436,7 +436,7 @@ html, body {
 }
 
 .header-tag {
-  margin-bottom: .5rem!important;
+  margin-bottom: 1.5rem!important;
 }
 
 .eat-note p {
@@ -1978,6 +1978,11 @@ html, body {
       
       .dinner-options {
         padding: 10px 10px 0px;
+      }
+
+      .explore-link {
+        display: block;
+        margin-top: 5px;
       }
       
       .book-wrapper .button-wrapper-bottom a {
