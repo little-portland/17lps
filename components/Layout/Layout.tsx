@@ -89,7 +89,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
 
       <MainStyle>{main}</MainStyle>
       <Modal open={displayLineup} close={closeLineup} className="dance-modal">
-        <div className="eat-note dance-popup">
+        <div className="eat-note dance-popup eat-section">
           <div>
           <div className="cat-wrapper">
             <div className="cat-scroll">
@@ -227,7 +227,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         // phone={hireItem.phoneNumber}
       >
     {<div
-        className="eat-note"
+        className="eat-note eat-section"
       >       
          <h1>Private Hire</h1>
         <br/>
