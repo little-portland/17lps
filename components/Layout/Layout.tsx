@@ -69,6 +69,9 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         <link rel="preload" as="image" href="/images/explore_concept.jpg" />
         <link rel="preload" as="image" href="/images/explore_concept_hover.jpg" />
     </Head>
+    <style>
+     {`html{font-family: Helvetica !important;}`}
+    </style>
       
       {canvasState && !isLoaded && <Canvas removeSelf={setCanvasState} />}
 
