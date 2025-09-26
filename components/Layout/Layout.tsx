@@ -154,7 +154,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             <Image 
               src={"/images/17LPS_Override_scheduleV4.png"}
               blurDataURL={"/images/17LPS_Override_scheduleV4.png"}
-            /><br/>
+            /><br/><br/>
         </div>}
 
         {<div
