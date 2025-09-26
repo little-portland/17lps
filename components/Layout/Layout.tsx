@@ -122,7 +122,7 @@ heartbeat of the weekend.</p>
 by artists who’ve journeyed across the sonic spectrum time and again, it
 embraces a soundscape that truly resonates with the soul: diverse, timeless, and
 filled with uplifting and euphoric elements. These are the sounds of the musically
-enlightened. <span className="group-item">Disco3000</span> is how we draw the weekend to a close; a cosmic finale.</p>>
+enlightened. <span className="group-item">Disco3000</span> is how we draw the weekend to a close; a cosmic finale.</p>
                   </div>
               </div>
             </div>
