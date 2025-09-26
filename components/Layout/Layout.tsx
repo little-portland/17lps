@@ -215,7 +215,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             <li className="info">8:30pm Start</li>
             <li className="info">Club Access Included</li>
           </ul>
-        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a className="explore-link" href="https://www.little-portland.com/thetent" target="_blank">[EXPLORE THE TENT]</a></p>
+        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a> <a className="explore-link" href="https://www.little-portland.com/thetent" target="_blank">[EXPLORE THE TENT]</a></p>
         </div>}
 
         {<div
@@ -231,7 +231,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             <li className="info">6-12 PAX</li>
             <li className="info">8pm start</li>
           </ul>
-          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a className="explore-link" href="https://www.little-portland.com/chefstudio" target="_blank">[EXPLORE CHEF'S STUDIO]</a></p>
+          <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a> <a className="explore-link" href="https://www.little-portland.com/chefstudio" target="_blank">[EXPLORE CHEF'S STUDIO]</a></p>
         </div>}
 
       </div>}
