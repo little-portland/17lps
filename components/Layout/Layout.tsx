@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import HoverImageLink from "@components/HoverImageLink"; // adjust path if your structure differs
 import { motion } from "framer-motion";
 
 //Components
@@ -65,6 +66,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
     <>
      <Head>
         <link rel="preload" as="image" href="/images/dance-popup-img.jpg" />
+        <link rel="preload" as="image" href="/images/explore_concept.jpg" />
+        <link rel="preload" as="image" href="/images/explore_concept_hover.jpg" />
     </Head>
       
       {canvasState && !isLoaded && <Canvas removeSelf={setCanvasState} />}
@@ -134,7 +137,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         }}
         link2={{
           target: "/override-menu",
-          title: "override menu",
+          title: "menu",
         }}
         className="eat-modal"
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
@@ -143,8 +146,8 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         className="eat-note"
       >     
         <h1>The Tent</h1>
-        <h2 className="header-tag">[At the end of the Universe]</h2> 
-        <h3 className="header-address">17 Little Portland Street</h3>
+        <h3 className="header-address">17 Little Portland Street</h3><br/>
+        <h2 className="header-tag">MORE THAN A MEAL. STEP INTO THE VOID.</h2> 
         
         {<div
         className="box-1 box schedule-box open"> 
@@ -152,39 +155,61 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         </div>}
               
         {<div
-        className="box-1 box schedule-box"> 
-        <h4>Nightly Schedule</h4>
-        <div className="schedule-container"> 
-          <p className="details"><span>Chef's Studio</span><small>20:00</small></p>
-          <p className="details"><span>Override Dinner</span><small>21:00</small></p>
-          <p className="details"><span>Club Opens</span><small>22:00</small></p> 
-        </div>
+        className="box-1 box"> 
+            <Image 
+              src={"/images/17LPS_Override_scheduleV4.png"}
+              blurDataURL={"/images/17LPS_Override_scheduleV4.png"}
+            />
+        </div>}
+
+        {<div
+        className="box-1 box"> 
+            <a href="https://www.little-portland.com/food" target="_blank">
+             <HoverImageLink
+                    href="https://www.little-portland.com/food"
+                    img="/images/explore_concept.jpg"
+                    hoverImg="/images/explore_concept_hover.jpg"
+                    aspect="1000 / 80"
+                    ariaLabel="Dinner"
+                    target="_blank"
+                  />  
+            </a>
+        </div>}
+
+        {<div
+        className="box-1 box"> 
+              <Image 
+                src={"/images/floorplan_eat_popup.png"}
+                blurDataURL={"/images/floorplan_eat_popup.png"}
+              />
         </div>}
 
         {<div
         className="box-1 box override-boxx"> 
         <Image 
-            src={"/images/override_eat_page.png"}
-            blurDataURL={"/images/override_eat_page.png"}
+            src={"/images/thetent/the_tent_page_logo.png"}
+            blurDataURL={"/images/thetent/the_tent_page_logo.png"}
         />
-        <h2>MORE THAN A MEAL. STEP INTO THE VOID.</h2>
-        <p className="override-intro">“Override” is our restaurant concept, with futurist menus setting the stage for a sensorial experience as dinner transitions seamlessly into our hypnotic after-dark scene.</p> 
+        <p className="override-intro">In a floating tent, lost in space, futurist menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark mode - a cosmic journey.</p> 
           <ul>
             <li className="info">£65pp Set Dinner</li>
-            <li className="info">Futurist Asian Menu</li>
-            <li className="info">9pm Start</li>
+            <li className="info">Futurist Menu</li>
+            <li className="info">8:30pm Start</li>
             <li className="info">Club Access Included</li>
           </ul>
-        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/override" target="_blank">[EXPLORE OVERRIDE]</a></p>
+        <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a href="https://www.little-portland.com/thetent" target="_blank">[EXPLORE THE TENT]</a></p>
         </div>}
 
         {<div
         className="box-3 box chef-studio"> 
-        <h2>CHEF’S STUDIO</h2>
+        <Image 
+            src={"/images/cs_logo_eat_pop_up.png"}
+            blurDataURL={"/images/cs_logo_eat_pop_up.png"}
+        />
         <p>Chef’s Studio is an intimate and futuristic space beneath The Tent – the table of choice for those in the know.</p> 
           <ul>
             <li className="info">£65pp Set Dinner</li>
-            <li className="info">Futurist Asian Menu</li>
+            <li className="info">Futurist Menu</li>
             <li className="info">6-12 PAX</li>
             <li className="info">8pm start</li>
           </ul>
