@@ -70,6 +70,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         <link rel="preload" as="image" href="/images/explore_concept_hover.png" />
         <link rel="preload" as="image" href="/images/17LPS_Override_scheduleV4.png" />
         <link rel="preload" as="image" href="/images/floorplan_eat_popup.png" />
+        <link rel="preload" as="image" href="/images/The_Tent_transition_eat_popup.png" />
     </Head>
     <style>
      {`.eat-section { font-family: Helvetica, Space Mono, sans-serif!important;}`}
@@ -168,6 +169,15 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
           <p className="details"><span>Club Opens</span><small>22:00</small></p> 
         </div>
         </div>}
+
+        {<div
+        className="box"> 
+              <Image 
+                src={"/images/The_Tent_transition_eat_popup.png"}
+                blurDataURL={"/images/The_Tent_transition_eat_popup.png"}
+              /><br/>
+        </div>}           
+
 
         {<div
         className="box"> 
