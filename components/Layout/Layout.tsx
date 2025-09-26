@@ -66,8 +66,8 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
     <>
      <Head>
         <link rel="preload" as="image" href="/images/dance-popup-img.jpg" />
-        <link rel="preload" as="image" href="/images/explore_concept.jpg" />
-        <link rel="preload" as="image" href="/images/explore_concept_hover.jpg" />
+        <link rel="preload" as="image" href="/images/explore_concept.png" />
+        <link rel="preload" as="image" href="/images/explore_concept_hover.png" />
         <link rel="preload" as="image" href="/images/17LPS_Override_scheduleV4.png" />
         <link rel="preload" as="image" href="/images/floorplan_eat_popup.png" />
     </Head>
@@ -167,8 +167,8 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             <a href="https://www.little-portland.com/food" target="_blank">
              <HoverImageLink
                     href="https://www.little-portland.com/food"
-                    img="/images/explore_concept.jpg"
-                    hoverImg="/images/explore_concept_hover.jpg"
+                    img="/images/explore_concept.png"
+                    hoverImg="/images/explore_concept_hover.png"
                     aspect="1000 / 80"
                     ariaLabel="Dinner"
                     target="_blank"
@@ -213,7 +213,6 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             <li className="info">6-12 PAX</li>
             <li className="info">8pm start</li>
           </ul>
-          <p>Our guests can experience the Override menu in Chef’s Studio.</p> 
           <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/override-menu" target="_blank">[MENU]</a> <a className="explore-link" href="https://www.little-portland.com/chefstudio" target="_blank">[EXPLORE CHEF'S STUDIO]</a></p>
         </div>}
 
