@@ -64,6 +64,12 @@ const ButtonStyles = (btnType: BtnType) => css`
     font-size: .9rem;
   }
 
+  @media (max-width: 768px) {
+    button {
+       font-size: .9rem!important;
+    }
+  }
+
   ${mapTypeToStyle(btnType)}
 `
 
