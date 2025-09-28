@@ -61,7 +61,6 @@ const ButtonStyles = (btnType: BtnType) => css`
 
   @media (min-width: ${breakpoints.m}px) {
     overflow: hidden;
-    font-size: .9rem;
   }
 
   @media (max-width: 768px) {
