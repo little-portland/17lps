@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Layout from "@components/Layout/Layout";
+import Layout from "@components/Layout/Layout-old";
 import { AnimatePresence } from "framer-motion";
 import Animation from "@components/Animation";
 import { useLoaded } from "../store/context";
