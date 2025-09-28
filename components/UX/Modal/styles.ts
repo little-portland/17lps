@@ -109,6 +109,13 @@ export const ButtonWrapper = styled.div`
     margin: 0!important; 
     padding: 4px 0!important; 
 }
+
+@media (max-width: 768px) {
+    .double-btn button {
+        width: 140px!important;
+    }
+}
+
 `;
 
 export const FirstButtonWrapper = styled.div`
