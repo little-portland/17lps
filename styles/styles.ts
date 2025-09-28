@@ -1226,10 +1226,14 @@ html, body {
     margin-bottom: 20px;
 }
 
+.double-btn a {
+    display: inline-block!important; 
+}
+
 .double-btn button {
     width: 170px !important;
-    margin: 0;
-    padding: 4px 0;
+    margin: 0!important; 
+    padding: 4px 0!important; 
 }
 
 /* NEW INT STEP STYLES */
