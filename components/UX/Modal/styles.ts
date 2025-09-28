@@ -91,6 +91,16 @@ export const ButtonWrapper = styled.div`
       // min-width: 100px;
     }
   }
+
+  .double-btn a {
+    display: inline-block!important; 
+}
+
+.double-btn button {
+    width: 170px!important;
+    margin: 0!important; 
+    padding: 4px 0!important; 
+}
 `;
 
 export const FirstButtonWrapper = styled.div`
