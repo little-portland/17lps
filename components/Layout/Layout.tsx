@@ -72,9 +72,6 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         <link rel="preload" as="image" href="/images/floorplan_eat_popup.png" />
         <link rel="preload" as="image" href="/images/The_Tent_transition_eat_popup.png" />
     </Head>
-    <style>
-     {`.eat-section { font-family: Helvetica, Space Mono, sans-serif!important;}`}
-    </style>
       
       {canvasState && !isLoaded && <Canvas removeSelf={setCanvasState} />}
 
