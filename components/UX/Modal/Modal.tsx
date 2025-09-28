@@ -1,4 +1,42 @@
-// ...unchanged imports
+import { FC, useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
+import {
+  Middle,
+  BG,
+  Top,
+  Grid,
+  ButtonWrapper,
+  FirstButtonWrapper,
+} from "./styles";
+import Closer from "./components/CloseIcon";
+import Button from "../Button/Button";
+
+//hooks
+import useDeviceDetect from "@utils/useDeviceDetect";
+
+interface SidebarProps {
+  children: any;
+  open: boolean;
+  close: () => void;
+  email?: string;
+  phone?: string;
+  link?: {
+    target: string;
+    title: string;
+  };
+  link2?: {
+    target: string;
+    title: string;
+  };
+  link3?: {
+    target: string;
+    title: string;
+  };
+  className?: string; 
+}
 
 const Modal: FC<SidebarProps> = ({
   children,
