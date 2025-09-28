@@ -140,8 +140,12 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
           title: "menu",
         }}
         link3={{
+          target: "https://www.instagram.com/thetentattheendoftheuniverse/",
+          title: "Instagram",
+        }}
+        link4={{
           target: "https://forms.airship.co.uk/forms/1364/the-tent-at-the-end-of-the-universe",
-          title: "Newsletter",
+          title: "stay connected",
         }}
         className="eat-modal"
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
