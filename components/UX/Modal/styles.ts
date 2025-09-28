@@ -88,6 +88,7 @@ export const ButtonWrapper = styled.div`
 
     @media (max-width: ${breakpoints.m}px) {
       width: 100px;
+      font-size: .9rem!important;
       // min-width: 100px;
     }
   }
@@ -113,10 +114,12 @@ export const ButtonWrapper = styled.div`
 @media (max-width: 768px) {
     .double-btn button {
         width: 140px!important;
+        font-size: .9rem!important;
     }
 }
 
 `;
+
 
 export const FirstButtonWrapper = styled.div`
   height: fit-content;
