@@ -2023,7 +2023,7 @@ html, body {
         }
 
         .eat-note {
-          max-height: 350px;
+          max-height: 375px;
           margin-bottom: 0!important;
         }
         
