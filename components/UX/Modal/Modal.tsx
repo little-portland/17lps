@@ -14,7 +14,7 @@ import {
 import Closer from "./components/CloseIcon";
 import Button from "../Button/Button";
 
-// hooks
+//hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
 
 interface SidebarProps {
@@ -23,13 +23,22 @@ interface SidebarProps {
   close: () => void;
   email?: string;
   phone?: string;
-  link?: { target: string; title: string };
-  link2?: { target: string; title: string };
-  link3?: { target: string; title: string };
-  className?: string;
+  link?: {
+    target: string;
+    title: string;
+  };
+  link2?: {
+    target: string;
+    title: string;
+  };
+  link3?: {
+    target: string;
+    title: string;
+  };
+  className?: string; 
 }
 
-const Modal = ({
+const Modal: FC<SidebarProps> = ({
   children,
   open,
   close,
@@ -38,23 +47,28 @@ const Modal = ({
   link,
   link2,
   link3,
-  className,
-}: SidebarProps) => {
+  className, 
+}) => {
+  //Check Device
   const { isMobile } = useDeviceDetect();
   const [copied, setCopied] = useState(false);
+
+  const clickHandler = ({ target: { innerHTML } }) => {
+    console.log(`Clicked on "${innerHTML}"!`); // eslint-disable-line
+  };
 
   const closeHandler = () => {
     close();
     setCopied(false);
   };
-
+  
   const eatEmail = "eat@little-portland.com";
 
   return (
     <>
       {open && (
         <>
-          <Grid className={className}>
+          <Grid className={className}> 
             <div />
             <Middle>
               <div style={{ position: "relative" }}>
@@ -65,111 +79,86 @@ const Modal = ({
               </div>
             </Middle>
 
-            <ButtonWrapper>
-              {/* ---- FIRST TWO ROWS: 2 × 2 grid ---- */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-                  gap: "14px",
-                  width: "100%",
-                }}
-              >
-                {link && (
-                  <FirstButtonWrapper>
-                    <div className="sample-menu btn-wrapper">
-                      <Link href={link.target}>
-                        <a>
-                          <Button btnType="solid">{link.title}</Button>
-                        </a>
-                      </Link>
-                    </div>
-                  </FirstButtonWrapper>
-                )}
-
-                {link2 && (
-                  <FirstButtonWrapper>
-                    <div className="sample-menu btn-wrapper">
-                      <Link href={link2.target}>
-                        <a>
-                          <Button btnType="solid">{link2.title}</Button>
-                        </a>
-                      </Link>
-                    </div>
-                  </FirstButtonWrapper>
-                )}
-
-                {link3 && (
-                  <FirstButtonWrapper>
-                    <div className="sample-menu btn-wrapper">
-                      <Link href={link3.target}>
-                        <a>
-                          <Button btnType="solid">{link3.title}</Button>
-                        </a>
-                      </Link>
-                    </div>
-                  </FirstButtonWrapper>
-                )}
-
-                {/* Instagram as 4th button so it pairs with the 3rd */}
+            <ButtonWrapper style={link && link2 && link3 && { flexWrap: "wrap" }}>
+              {link && (
                 <FirstButtonWrapper>
-                  <div className="sample-menu btn-wrapper">
-                    <a
-                      className="insta"
-                      href="https://www.instagram.com/thetentattheendoftheuniverse/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Button btnType="solid">Inst</Button>
+                 <div className="sample-menu btn-wrapper" >
+                  <Link href={link.target}>
+                    <a>
+                      <Button btnType="solid">{link.title}</Button>
                     </a>
-                  </div>
+                  </Link>
+                 </div>
                 </FirstButtonWrapper>
-              </div>
+              )}              
 
-              {/* ---- BELOW: keep original full-width buttons ---- */}
-              {email && (
-                <div className="btn-wrapper-border">
-                  <a href={`mailto:${email}`}>
-                    <Button
-                      btnType={
-                        isMobile || email === eatEmail ? "hollow" : "solid"
-                      }
-                    >
-                      {isMobile ? "email" : email}
-                    </Button>
-                  </a>
+              {link2 && (
+                <FirstButtonWrapper>
+                  <div className="sample-menu btn-wrapper" >
+                  <Link href={link2.target}>
+                    <a>
+                      <Button btnType="solid">{link2.title}</Button>
+                    </a>
+                  </Link>
+                  <a className="insta" href="https://www.instagram.com/thetentattheendoftheuniverse/" target="_blank">
+                <Image
+                  src={"/images/instagram.svg"}
+                  width={25}
+                  height={25} 
+                />
+                </a>
                 </div>
+                  </FirstButtonWrapper>
               )}
-
+             {link3 && (
+                <FirstButtonWrapper>
+                  <div className="sample-menu btn-wrapper" >
+                  <Link href={link3.target}>
+                    <a>
+                      <Button btnType="solid">{link3.title}</Button>
+                    </a>
+                  </Link>
+                </div>
+                  </FirstButtonWrapper>
+              )}
+              {email && (
+              <div className="btn-wrapper-border" >
+                <a href={`mailto:${email}`}>
+                    <Button btnType={isMobile || email === eatEmail ? "hollow" : "solid"}>
+                    {isMobile ? "email" : email}
+                  </Button>
+                </a>
+               </div>
+              )}
               {phone &&
                 (isMobile ? (
-                  <div className="btn-wrapper-border">
-                    <a href={`tel:+${phone.replace(/\s/g, "")}`}>
-                      <Button btnType="hollow">call</Button>
-                    </a>
-                  </div>
+                  <div className="btn-wrapper-border" >
+                  <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+                    <Button btnType="hollow">call</Button>
+                  </a>
+                 </div>
                 ) : (
                   <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
-                    <div className="btn-wrapper-border">
-                      <Button btnType="hollow">{phone}</Button>
-                    </div>
+                    <div className="btn-wrapper-border" >
+                    <Button onClick={clickHandler} btnType="hollow">
+                      {phone}
+                    </Button>
+                  </div>
                   </CopyToClipboard>
                 ))}
             </ButtonWrapper>
-
             {copied ? (
               <span
                 style={{
                   textAlign: "center",
                   textTransform: "uppercase",
-                  fontWeight: 400,
+                  fontWeight: "400",
                 }}
               >
                 Number copied
               </span>
             ) : null}
           </Grid>
-
           <BG onClick={close}></BG>
         </>
       )}
