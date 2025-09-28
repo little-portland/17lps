@@ -97,7 +97,7 @@ export const ButtonWrapper = styled.div`
 }
 
 .double-btn .left-btn {
-  margin-left: 5px!important; 
+  margin-right: 5px!important; 
 }
 
 .double-btn .right-btn {
