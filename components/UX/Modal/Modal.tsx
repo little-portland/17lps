@@ -106,12 +106,12 @@ const Modal: FC<SidebarProps> = ({
                 <FirstButtonWrapper>
                  <div className="sample-menu btn-wrapper double-btn" >
                   <Link href={link3.target}>
-                    <a className="left-btn target="_blank" rel="noreferrer noopener"">
+                    <a className="left-btn target="_blank" rel="noreferrer noopener">
                       <Button btnType="solid">{link3.title}</Button>
                     </a>
                   </Link>
                   <Link href={link4.target}>
-                    <a className="right-btn target="_blank" rel="noreferrer noopener"">
+                    <a className="right-btn target="_blank" rel="noreferrer noopener">
                       <Button btnType="solid">{link4.title}</Button>
                     </a>
                   </Link>
