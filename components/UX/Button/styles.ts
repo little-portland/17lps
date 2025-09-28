@@ -47,7 +47,7 @@ const HollowStyles = css`
 const ButtonStyles = (btnType: BtnType) => css`
   font-family: inherit;
   font-weight: inherit;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding: 4px 32px;
   text-transform: uppercase;
   z-index: 999999;
