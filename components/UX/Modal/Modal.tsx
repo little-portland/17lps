@@ -14,7 +14,7 @@ import {
 import Closer from "./components/CloseIcon";
 import Button from "../Button/Button";
 
-//hooks
+// hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
 
 interface SidebarProps {
@@ -35,10 +35,10 @@ interface SidebarProps {
     target: string;
     title: string;
   };
-  className?: string; 
+  className?: string;
 }
 
-const Modal: FC<SidebarProps> = ({
+const Modal = ({
   children,
   open,
   close,
@@ -48,12 +48,20 @@ const Modal: FC<SidebarProps> = ({
   link2,
   link3,
   className,
-}) => {
+}: SidebarProps) => {
   const { isMobile } = useDeviceDetect();
   const [copied, setCopied] = useState(false);
-  const closeHandler = () => { close(); setCopied(false); };
+
+  const closeHandler = () => {
+    close();
+    setCopied(false);
+  };
 
   const eatEmail = "eat@little-portland.com";
+
+  // layout helpers
+  const HALF = { flex: "1 1 calc(50% - 14px)" }; // two per row
+  const FULL = { flex: "1 0 100%" }; // full-width row
 
   return (
     <>
@@ -63,86 +71,111 @@ const Modal: FC<SidebarProps> = ({
             <div />
             <Middle>
               <div style={{ position: "relative" }}>
-                <Top onClick={closeHandler}><Closer /></Top>
+                <Top onClick={closeHandler}>
+                  <Closer />
+                </Top>
                 <div style={{ maxWidth: "80vw" }}>{children}</div>
               </div>
             </Middle>
 
-            {/* Make the buttons area a 2-col grid */}
+            {/* Buttons area */}
             <ButtonWrapper
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gap: "12px",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "14px",
               }}
             >
+              {/* Row 1: two buttons (e.g., Reservations | Menu) */}
               {link && (
-                <FirstButtonWrapper>
+                <FirstButtonWrapper style={HALF}>
                   <div className="sample-menu btn-wrapper">
                     <Link href={link.target}>
-                      <a><Button btnType="solid">{link.title}</Button></a>
+                      <a>
+                        <Button btnType="solid">{link.title}</Button>
+                      </a>
                     </Link>
                   </div>
                 </FirstButtonWrapper>
               )}
 
               {link2 && (
-                <FirstButtonWrapper>
+                <FirstButtonWrapper style={HALF}>
                   <div className="sample-menu btn-wrapper">
                     <Link href={link2.target}>
-                      <a><Button btnType="solid">{link2.title}</Button></a>
+                      <a>
+                        <Button btnType="solid">{link2.title}</Button>
+                      </a>
                     </Link>
-                    <a
-                      className="insta"
-                      href="https://www.instagram.com/thetentattheendoftheuniverse/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Image src={"/images/instagram.svg"} width={25} height={25} />
-                    </a>
                   </div>
                 </FirstButtonWrapper>
               )}
 
-              {/* Make this one full width (spans both columns) */}
+              {/* Row 2: two buttons (e.g., News | Inst) */}
               {link3 && (
-                <FirstButtonWrapper style={{ gridColumn: "1 / -1" }}>
+                <FirstButtonWrapper style={HALF}>
                   <div className="sample-menu btn-wrapper">
                     <Link href={link3.target}>
-                      <a><Button btnType="solid">{link3.title}</Button></a>
+                      <a>
+                        <Button btnType="solid">{link3.title}</Button>
+                      </a>
                     </Link>
                   </div>
                 </FirstButtonWrapper>
               )}
 
-              {/* Full-width rows below */}
+              {/* Instagram as its own red button, next to link3 */}
+              <FirstButtonWrapper style={HALF}>
+                <div className="sample-menu btn-wrapper">
+                  <a
+                    href="https://www.instagram.com/thetentattheendoftheuniverse/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Button btnType="solid">Inst</Button>
+                  </a>
+                </div>
+              </FirstButtonWrapper>
+
+              {/* Below: full-width rows (newsletter if rendered elsewhere, email, phone, etc.) */}
               {email && (
-                <div className="btn-wrapper-border" style={{ gridColumn: "1 / -1" }}>
+                <div className="btn-wrapper-border" style={FULL}>
                   <a href={`mailto:${email}`}>
-                    <Button btnType={isMobile || email === eatEmail ? "hollow" : "solid"}>
+                    <Button
+                      btnType={
+                        isMobile || email === eatEmail ? "hollow" : "solid"
+                      }
+                    >
                       {isMobile ? "email" : email}
                     </Button>
                   </a>
                 </div>
               )}
 
-              {phone && (isMobile ? (
-                <div className="btn-wrapper-border" style={{ gridColumn: "1 / -1" }}>
-                  <a href={`tel:+${phone.replace(/\s/g, "")}`}>
-                    <Button btnType="hollow">call</Button>
-                  </a>
-                </div>
-              ) : (
-                <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
-                  <div className="btn-wrapper-border" style={{ gridColumn: "1 / -1" }}>
-                    <Button btnType="hollow">{phone}</Button>
+              {phone &&
+                (isMobile ? (
+                  <div className="btn-wrapper-border" style={FULL}>
+                    <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+                      <Button btnType="hollow">call</Button>
+                    </a>
                   </div>
-                </CopyToClipboard>
-              ))}
+                ) : (
+                  <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
+                    <div className="btn-wrapper-border" style={FULL}>
+                      <Button btnType="hollow">{phone}</Button>
+                    </div>
+                  </CopyToClipboard>
+                ))}
             </ButtonWrapper>
 
             {copied ? (
-              <span style={{ textAlign: "center", textTransform: "uppercase", fontWeight: 400 }}>
+              <span
+                style={{
+                  textAlign: "center",
+                  textTransform: "uppercase",
+                  fontWeight: 400,
+                }}
+              >
                 Number copied
               </span>
             ) : null}
