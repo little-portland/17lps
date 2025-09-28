@@ -1226,6 +1226,12 @@ html, body {
     margin-bottom: 20px;
 }
 
+.double-btn button {
+    width: 170px !important;
+    margin: 0;
+    padding: 4px 0;
+}
+
 /* NEW INT STEP STYLES */
 
 /* Common Styles using CSS Variables */
