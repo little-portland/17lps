@@ -96,6 +96,14 @@ export const ButtonWrapper = styled.div`
     display: inline-block!important; 
 }
 
+.double-btn .left-btn {
+  margin-left: 5px!important; 
+}
+
+.double-btn .right-btn {
+  margin-left: 5px!important; 
+}
+
 .double-btn button {
     width: 170px!important;
     margin: 0!important; 
@@ -114,7 +122,7 @@ export const FirstButtonWrapper = styled.div`
     width: 350px !important;
 
     @media (max-width: ${breakpoints.m}px) {
-      width: 290px !important;
+      width: 140px !important;
     }
   }
 
