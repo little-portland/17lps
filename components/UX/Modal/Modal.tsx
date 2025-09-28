@@ -23,18 +23,9 @@ interface SidebarProps {
   close: () => void;
   email?: string;
   phone?: string;
-  link?: {
-    target: string;
-    title: string;
-  };
-  link2?: {
-    target: string;
-    title: string;
-  };
-  link3?: {
-    target: string;
-    title: string;
-  };
+  link?: { target: string; title: string };
+  link2?: { target: string; title: string };
+  link3?: { target: string; title: string };
   className?: string;
 }
 
@@ -59,10 +50,6 @@ const Modal = ({
 
   const eatEmail = "eat@little-portland.com";
 
-  // layout helpers
-  const HALF = { flex: "1 1 calc(50% - 14px)" }; // two per row
-  const FULL = { flex: "1 0 100%" }; // full-width row
-
   return (
     <>
       {open && (
@@ -78,68 +65,70 @@ const Modal = ({
               </div>
             </Middle>
 
-            {/* Buttons area */}
-            <ButtonWrapper
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "14px",
-              }}
-            >
-              {/* Row 1: two buttons (e.g., Reservations | Menu) */}
-              {link && (
-                <FirstButtonWrapper style={HALF}>
+            <ButtonWrapper>
+              {/* ---- FIRST TWO ROWS: 2 × 2 grid ---- */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                  gap: "14px",
+                  width: "100%",
+                }}
+              >
+                {link && (
+                  <FirstButtonWrapper>
+                    <div className="sample-menu btn-wrapper">
+                      <Link href={link.target}>
+                        <a>
+                          <Button btnType="solid">{link.title}</Button>
+                        </a>
+                      </Link>
+                    </div>
+                  </FirstButtonWrapper>
+                )}
+
+                {link2 && (
+                  <FirstButtonWrapper>
+                    <div className="sample-menu btn-wrapper">
+                      <Link href={link2.target}>
+                        <a>
+                          <Button btnType="solid">{link2.title}</Button>
+                        </a>
+                      </Link>
+                    </div>
+                  </FirstButtonWrapper>
+                )}
+
+                {link3 && (
+                  <FirstButtonWrapper>
+                    <div className="sample-menu btn-wrapper">
+                      <Link href={link3.target}>
+                        <a>
+                          <Button btnType="solid">{link3.title}</Button>
+                        </a>
+                      </Link>
+                    </div>
+                  </FirstButtonWrapper>
+                )}
+
+                {/* Instagram as 4th button so it pairs with the 3rd */}
+                <FirstButtonWrapper>
                   <div className="sample-menu btn-wrapper">
-                    <Link href={link.target}>
-                      <a>
-                        <Button btnType="solid">{link.title}</Button>
-                      </a>
-                    </Link>
+                    <a
+                      className="insta"
+                      href="https://www.instagram.com/thetentattheendoftheuniverse/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Button btnType="solid">Inst</Button>
+                    </a>
                   </div>
                 </FirstButtonWrapper>
-              )}
+              </div>
 
-              {link2 && (
-                <FirstButtonWrapper style={HALF}>
-                  <div className="sample-menu btn-wrapper">
-                    <Link href={link2.target}>
-                      <a>
-                        <Button btnType="solid">{link2.title}</Button>
-                      </a>
-                    </Link>
-                  </div>
-                </FirstButtonWrapper>
-              )}
-
-              {/* Row 2: two buttons (e.g., News | Inst) */}
-              {link3 && (
-                <FirstButtonWrapper style={HALF}>
-                  <div className="sample-menu btn-wrapper">
-                    <Link href={link3.target}>
-                      <a>
-                        <Button btnType="solid">{link3.title}</Button>
-                      </a>
-                    </Link>
-                  </div>
-                </FirstButtonWrapper>
-              )}
-
-              {/* Instagram as its own red button, next to link3 */}
-              <FirstButtonWrapper style={HALF}>
-                <div className="sample-menu btn-wrapper">
-                  <a
-                    href="https://www.instagram.com/thetentattheendoftheuniverse/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Button btnType="solid">Inst</Button>
-                  </a>
-                </div>
-              </FirstButtonWrapper>
-
-              {/* Below: full-width rows (newsletter if rendered elsewhere, email, phone, etc.) */}
+              {/* ---- BELOW: keep original full-width buttons ---- */}
               {email && (
-                <div className="btn-wrapper-border" style={FULL}>
+                <div className="btn-wrapper-border">
                   <a href={`mailto:${email}`}>
                     <Button
                       btnType={
@@ -154,14 +143,14 @@ const Modal = ({
 
               {phone &&
                 (isMobile ? (
-                  <div className="btn-wrapper-border" style={FULL}>
+                  <div className="btn-wrapper-border">
                     <a href={`tel:+${phone.replace(/\s/g, "")}`}>
                       <Button btnType="hollow">call</Button>
                     </a>
                   </div>
                 ) : (
                   <CopyToClipboard text={phone} onCopy={() => setCopied(true)}>
-                    <div className="btn-wrapper-border" style={FULL}>
+                    <div className="btn-wrapper-border">
                       <Button btnType="hollow">{phone}</Button>
                     </div>
                   </CopyToClipboard>
@@ -180,6 +169,7 @@ const Modal = ({
               </span>
             ) : null}
           </Grid>
+
           <BG onClick={close}></BG>
         </>
       )}
