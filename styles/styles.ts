@@ -127,10 +127,6 @@ html, body {
   position: relative;
 }
 
-.eat-section {
- font-family: Helvetica, Space Mono, sans-serif!important; 
-}
-
 .eat-note {
   text-align: left;
   padding: 20px;
