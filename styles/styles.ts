@@ -934,7 +934,7 @@ html, body {
 
 .schedule-box .details {
     display: block !important;
-    max-width: 75px!important;
+    max-width: 90px!important;
 }
 
 .new-button-wrapper .details span, .box .details span {
