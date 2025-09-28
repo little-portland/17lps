@@ -35,6 +35,10 @@ interface SidebarProps {
     target: string;
     title: string;
   };
+    link4?: {
+    target: string;
+    title: string;
+  };
   className?: string; 
 }
 
@@ -47,6 +51,7 @@ const Modal: FC<SidebarProps> = ({
   link,
   link2,
   link3,
+  link4,
   className, 
 }) => {
   //Check Device
@@ -79,47 +84,39 @@ const Modal: FC<SidebarProps> = ({
               </div>
             </Middle>
 
-            <ButtonWrapper style={link && link2 && link3 && { flexWrap: "wrap" }}>
-              {link && (
+            <ButtonWrapper style={link && link2 && link3 && link4 && { flexWrap: "wrap" }}>
+              {(link && link2) && (
                 <FirstButtonWrapper>
-                 <div className="sample-menu btn-wrapper" >
+                 <div className="sample-menu btn-wrapper double-btn" >
                   <Link href={link.target}>
                     <a>
                       <Button btnType="solid">{link.title}</Button>
+                    </a>
+                  </Link>
+                  <Link href={link2.target}>
+                    <a>
+                      <Button btnType="solid">{link2.title}</Button>
                     </a>
                   </Link>
                  </div>
                 </FirstButtonWrapper>
               )}              
 
-              {link2 && (
+             {(link3 && link4) && (
                 <FirstButtonWrapper>
-                  <div className="sample-menu btn-wrapper" >
-                  <Link href={link2.target}>
-                    <a>
-                      <Button btnType="solid">{link2.title}</Button>
-                    </a>
-                  </Link>
-                  <a className="insta" href="https://www.instagram.com/thetentattheendoftheuniverse/" target="_blank">
-                <Image
-                  src={"/images/instagram.svg"}
-                  width={25}
-                  height={25} 
-                />
-                </a>
-                </div>
-                  </FirstButtonWrapper>
-              )}
-             {link3 && (
-                <FirstButtonWrapper>
-                  <div className="sample-menu btn-wrapper" >
+                 <div className="sample-menu btn-wrapper double-btn" >
                   <Link href={link3.target}>
                     <a>
                       <Button btnType="solid">{link3.title}</Button>
                     </a>
                   </Link>
-                </div>
-                  </FirstButtonWrapper>
+                  <Link href={link4.target}>
+                    <a>
+                      <Button btnType="solid">{link4.title}</Button>
+                    </a>
+                  </Link>
+                 </div>
+                </FirstButtonWrapper>
               )}
               {email && (
               <div className="btn-wrapper-border" >
