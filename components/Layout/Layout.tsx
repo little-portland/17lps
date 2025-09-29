@@ -154,12 +154,15 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         className="eat-note"
       >     
         <h1>DINING AT</h1>
-        <h3 className="header-address">17 Little Portland Street</h3>
-        
-        <Image 
+        <h3 className="header-address venue">17 Little Portland Street</h3>
+
+        {<div
+        className="void-text"> 
+        <Image
           src={"/images/step-into-void.png"}
           blurDataURL={"/images/step-into-void.png"}
         />
+        </div>}
                       
         {<div
         className="box-1 box schedule-box open"> 
