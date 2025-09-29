@@ -183,7 +183,6 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
 
         {<div
         className="box"> 
-            <a href="https://www.little-portland.com/food" target="_blank">
              <HoverImageLink
                     href="https://www.little-portland.com/food"
                     img="/images/explore_concept.png"
@@ -192,7 +191,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
                     ariaLabel="Dinner"
                     target="_blank"
                   />  
-            </a><br/>
+            <br/>
         </div>}
 
         {<div
