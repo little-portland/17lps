@@ -155,6 +155,12 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
       >     
         <h1>DINING AT</h1>
         <h3 className="header-address">17 Little Portland Street</h3>
+        
+        <Image 
+          src={"/images/step-into-void.png"}
+          blurDataURL={"/images/step-into-void.png"}
+        />
+        
         <h2 className="header-tag">MORE THAN A MEAL. STEP INTO THE VOID.</h2> <br/>
               
         {<div
