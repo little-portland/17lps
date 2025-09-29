@@ -194,7 +194,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         </div>}
 
         {<div
-        className="box-1 box override-boxx"> 
+        className="box-1 box override-boxx food-box> 
         <Image 
             src={"/images/the_tent_new_logo.png"}
             blurDataURL={"/images/the_new_page_logo.png"}
@@ -210,7 +210,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         </div>}
 
         {<div
-        className="box-3 box chef-studio"> 
+        className="box-3 box chef-studio food-box"> 
         <Image 
             src={"/images/cs_logo_eat_pop_up.png"}
             blurDataURL={"/images/cs_logo_eat_pop_up.png"}
