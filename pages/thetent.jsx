@@ -282,11 +282,6 @@ const Menu = ({ menuImage }) => {
 
           <div className="nocturn override override-buttons-wrapper override-logo">
             <a  target="_blank" href="https://www.little-portland.com/bookings" class="override-button book-override">BOOK DINNER</a>
-            <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
-          </div>
-      
-         <div className="override-buttons-wrapper">
-            <a  target="_blank" href="https://www.little-portland.com/bookings" class="override-button book-override">BOOK DINNER</a>
            <div className="row">
               <div className="column">
                     <a target="_blank" href="https://www.little-portland.com/menu" class="override-button">MENU</a>
