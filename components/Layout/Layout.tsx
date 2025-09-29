@@ -187,7 +187,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
                     href="https://www.little-portland.com/food"
                     img="/images/explore_concept.png"
                     hoverImg="/images/explore_concept_hover.png"
-                    aspect="1000 / 80"
+                    aspect="1000 / 78"
                     ariaLabel="Dinner"
                     target="_blank"
                   />  
