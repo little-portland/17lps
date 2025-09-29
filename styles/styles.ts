@@ -160,6 +160,10 @@ html, body {
     font-size: 1rem !important;
     line-height: 23px !important;
   }
+
+  .venue {
+    margin-bottom: .5rem!important;
+  }
   
 }
 
@@ -242,6 +246,10 @@ html, body {
 
 .eat-note .foot-note {
   margin-bottom: 0!important; 
+}
+
+.void-text {
+  margin-bottom: 1rem !important;
 }
 
 .box {
