@@ -152,13 +152,13 @@ html, body {
   }
 
   .food-box p {
-    font-size: 1rem;
+    font-size: 1rem !important;
     line-height: 1.2 !important;
   }
 
   .food-box ul li {
-    font-size: 1rem;
-    line-height: 23px;
+    font-size: 1rem !important;
+    line-height: 23px !important;
   }
   
 }
