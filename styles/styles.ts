@@ -250,6 +250,7 @@ html, body {
 
 .void-text {
   margin-bottom: 1.2rem !important;
+  padding: .5rem .5rem 0 .5rem;
 }
 
 .box {
