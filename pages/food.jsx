@@ -86,6 +86,10 @@ const Menu = ({ menuImage }) => {
               display: block;
             }
 
+            .line-anim {
+              margin-bottom: 1rem;
+            }
+
              .image-column img {
                 border: 5px solid #d9e2ea;
                 outline: 2px solid #221f20;
@@ -181,7 +185,7 @@ const Menu = ({ menuImage }) => {
            <img src="/images/food/food_page_top.png" alt="The Tent Food" width="100%" />
            <img src="/images/food/food_page_title_anim.gif" alt="The Tent Food" width="100%" />
            <img className="futurist-menu" src="/images/food/food_page_food_more_than_meal.gif" alt="The Tent Food" width="95%" />
-           <img src="/images/food/food_page_line_anim.gif" alt="The Tent Food" width="100%" />
+           <img className="line-anim" src="/images/food/food_page_line_anim.gif" alt="The Tent Food" width="100%" />
            <img className="futurist-menu" src="/images/food/food_page_food_futurist_menu.gif" alt="The Tent Food" width="95%" />
            <img src="/images/food/food_page_futurist_dinner.png" alt="The Tent Food" width="100%" />
            <img src="/images/food/food_page_food_board.png" alt="The Tent Food" width="100%" />
