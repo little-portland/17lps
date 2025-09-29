@@ -160,9 +160,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
           src={"/images/step-into-void.png"}
           blurDataURL={"/images/step-into-void.png"}
         />
-        
-        <h2 className="header-tag">MORE THAN A MEAL. STEP INTO THE VOID.</h2> <br/>
-              
+                      
         {<div
         className="box-1 box schedule-box open"> 
         <h3>Open Thursdays to Saturdays</h3>
