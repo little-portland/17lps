@@ -150,6 +150,16 @@ html, body {
   .hire-modal .btn-wrapper-border {
     margin-top: -40px;
   }
+
+  .food-box p {
+    font-size: 1rem;
+    line-height: 1.2 !important;
+  }
+
+  .food-box ul li {
+    font-size: 1rem;
+    line-height: 23px;
+  }
   
 }
 
