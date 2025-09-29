@@ -13,6 +13,13 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
+
+        <link rel="preload" as="image" href="/images/food/food_page_top.png" /> 
+        <link rel="preload" as="image" href="/images/food/food_page_title_anim.gif" />
+        <link rel="preload" as="image" href="/images/food/food_page_food_more_than_meal.gif" /> 
+        <link rel="preload" as="image" href="/images/food/food_page_line_anim.gif" />
+        <link rel="preload" as="image" href="/images/food/food_page_food_futurist_menu.gif" />
+        
         <style>
             {`html{overflow-x: hidden !important;}`}
             {`body{background-color: #d8e1e9!important;overflow: auto!important;overflow-x: initial!important;}`} 
