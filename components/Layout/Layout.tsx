@@ -68,6 +68,7 @@ const Layout: React.FC<IProps> = ({ main, eatItem, hireItem, hideNav = false }) 
         <link rel="preload" as="image" href="/images/dance-popup-img.jpg" />
         <link rel="preload" as="image" href="/images/explore_concept.png" />
         <link rel="preload" as="image" href="/images/explore_concept_hover.png" />
+        <link rel="preload" as="image" href="/images/step-into-void.png" />
         <link rel="preload" as="image" href="/images/17LPS_Override_scheduleV4.png" />
         <link rel="preload" as="image" href="/images/floorplan_eat_popup.png" />
         <link rel="preload" as="image" href="/images/The_Tent_transition_eat_popup.png" />
