@@ -63,12 +63,6 @@ const ButtonStyles = (btnType: BtnType) => css`
     overflow: hidden;
   }
 
-  @media (max-width: 768px) {
-    button {
-       font-size: .9rem!important;
-    }
-  }
-
   ${mapTypeToStyle(btnType)}
 `
 
