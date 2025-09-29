@@ -170,16 +170,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
           <p className="details"><span>Dinner in The Tent</span><small>20:30</small></p>
           <p className="details club-open"><span>Club Opens</span><small>22:00</small></p>  
         </div>
-        </div>}
-
-        {<div
-        className="box"> 
-              <Image 
-                src={"/images/The_Tent_transition_eat_popup.png"}
-                blurDataURL={"/images/The_Tent_transition_eat_popup.png"}
-              /><br/>
-        </div>}           
-
+        </div>}         
 
         {<div
         className="box"> 
@@ -205,8 +196,8 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         {<div
         className="box-1 box override-boxx"> 
         <Image 
-            src={"/images/thetent/the_tent_page_logo.png"}
-            blurDataURL={"/images/thetent/the_tent_page_logo.png"}
+            src={"/images/the_tent_new_logo.png"}
+            blurDataURL={"/images/the_new_page_logo.png"}
         />
         <p>In a floating tent, lost in space, futurist menus set the stage for a sensorial experience as dinner seamlessly transitions into our hypnotic after-dark mode - a cosmic journey.</p> 
           <ul>
