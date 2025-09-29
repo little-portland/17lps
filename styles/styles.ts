@@ -142,6 +142,10 @@ html, body {
   background-color: #000000;
 }
 
+.venue {
+    margin-bottom: .6rem!important;
+  }
+
 @media (min-width: 768px) {
   .eat-note {
     min-width: 550px;
@@ -159,10 +163,6 @@ html, body {
   .food-box ul li {
     font-size: 1rem !important;
     line-height: 23px !important;
-  }
-
-  .venue {
-    margin-bottom: .5rem!important;
   }
   
 }
@@ -249,7 +249,7 @@ html, body {
 }
 
 .void-text {
-  margin-bottom: 1rem !important;
+  margin-bottom: 1.2rem !important;
 }
 
 .box {
