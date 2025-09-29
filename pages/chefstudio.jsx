@@ -133,6 +133,22 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn override">
            <img className="override-logo" src="/images/chefstudio/chefs-studio-page-top.png" alt="Chef's Studio" width="100%" />
            <img src="/images/chefstudio/chefs-studio-page-bottom.png" alt="Chef's Studio" width="100%" />
+
+
+         <div className="override-buttons-wrapper">
+             <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
+           <div className="row">
+              <div className="column">
+                    <a target="_blank" href="https://www.little-portland.com/menu" class="override-button">MENU</a>
+              </div>
+              <div className="column">
+                    <a target="_blank" href="https://www.little-portland.com/food" class="override-button">DINING CONCEPT</a>
+              </div>
+           </div>
+          </div>
+
+
+           
            <div className="override-buttons-wrapper">
              <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
              <a target="_blank" href="https://www.little-portland.com/override-menu" class="override-button">MENU</a>
