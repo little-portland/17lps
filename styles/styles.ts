@@ -436,7 +436,7 @@ html, body {
 }
 
 .header-tag {
-  margin-bottom: 1.5rem!important;
+  margin-bottom: .2rem!important;
   font-size: 1.2rem !important;
 }
 
