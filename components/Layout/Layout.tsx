@@ -164,12 +164,12 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
               
         {<div
         className="box-1 box schedule-box"> 
-        <h4>Nightly Schedule</h4>
-        <div className="schedule-container"> 
-          <p className="details"><span>Chef's Studio</span><small>20:00</small></p>
-          <p className="details"><span>Dinner in The Tent</span><small>20:30</small></p>
-          <p className="details club-open"><span>Club Opens</span><small>22:00</small></p>  
-        </div>
+          <h4>Nightly Schedule</h4>
+          <div className="schedule-container"> 
+            <p className="details"><span>Chef's Studio</span><small>20:00</small></p>
+            <p className="details"><span>Dinner in The Tent</span><small>20:30</small></p>
+            <p className="details club-open"><span>Club Opens</span><small>22:00</small></p>  
+          </div>
         </div>}         
 
         {<div
@@ -194,7 +194,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         </div>}
 
         {<div
-        className="box-1 box override-boxx food-box> 
+        className="box-1 box override-boxx food-box"> 
         <Image 
             src={"/images/the_tent_new_logo.png"}
             blurDataURL={"/images/the_new_page_logo.png"}
