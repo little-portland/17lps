@@ -1599,7 +1599,7 @@ html, body {
   display: block!important;
   max-width: 100%!important;
   object-fit: contain!important;
-  margin: 20px 0px 40px 0 !important;
+  margin: 20px 0px!important;
 }
 
 .dance-title {
