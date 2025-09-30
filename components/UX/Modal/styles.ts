@@ -87,7 +87,7 @@ export const ButtonWrapper = styled.div`
     margin: 0 16px;
 
     @media (max-width: ${breakpoints.m}px) {
-      width: 100px;
+      width: 140px;
       font-size: .9rem!important;
       // min-width: 100px;
     }
@@ -115,6 +115,14 @@ export const ButtonWrapper = styled.div`
     .double-btn button {
         width: 140px!important;
         font-size: .9rem!important;
+    }
+
+    .left-btn {
+      margin-right: 5px!important; 
+    }
+
+    .right-btn {
+      margin-left: 5px!important; 
     }
 }
 
