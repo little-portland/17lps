@@ -1599,7 +1599,7 @@ html, body {
   display: block!important;
   max-width: 100%!important;
   object-fit: contain!important;
-  margin: 20px 0 !important;
+  margin: 20px 0px 40px 0 !important;
 }
 
 .dance-title {
@@ -2474,6 +2474,10 @@ html, body {
   .club-open  {
     width: 70px;
     text-align: center !important;
+}
+
+.cat-wrapper {
+    padding: 25px;
 }
 
   .mobile-only {
