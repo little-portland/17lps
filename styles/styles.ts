@@ -2042,8 +2042,8 @@ html, body {
         }
 
         .eat-note {
-          max-height: 375px;
-          margin-bottom: 0!important;
+          max-height: 400px;
+          margin-bottom: -20px !important;
         }
         
         .eat-note h1 {
