@@ -120,7 +120,7 @@ const Modal: FC<SidebarProps> = ({
               )}
               {email && (
               <div className="btn-wrapper-border" >
-                <a href={`mailto:${email}`}>
+                <a className="left-btn" href={`mailto:${email}`}>
                     <Button btnType={isMobile || email === eatEmail ? "hollow" : "solid"}>
                     {isMobile ? "email" : email}
                   </Button>
@@ -130,7 +130,7 @@ const Modal: FC<SidebarProps> = ({
               {phone &&
                 (isMobile ? (
                   <div className="btn-wrapper-border" >
-                  <a href={`tel:+${phone.replace(/\s/g, "")}`}>
+                  <a className="right-btn" href={`tel:+${phone.replace(/\s/g, "")}`}>
                     <Button btnType="hollow">call</Button>
                   </a>
                  </div>
