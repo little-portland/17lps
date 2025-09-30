@@ -124,6 +124,11 @@ export const ButtonWrapper = styled.div`
     .right-btn {
       margin-left: 5px!important; 
     }
+
+    .left-btn button, 
+    .right-btn button {
+      margin: 0!important; 
+    }
 }
 
 `;
