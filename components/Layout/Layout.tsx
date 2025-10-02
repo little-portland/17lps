@@ -228,7 +228,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             <li className="info">£65pp Set Dinner</li>
             <li className="info">Futurist Menu</li>
             <li className="info">6-12 PAX</li>
-            <li className="info">8pm start</li>
+            <li className="info">8pm Start</li>
           </ul>
           <p className="links"><a target="_blank" href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">[BOOK]</a> <a href="https://www.little-portland.com/menu" target="_blank">[MENU]</a> <a className="explore-link" href="https://www.little-portland.com/chefstudio" target="_blank">[EXPLORE CHEF'S STUDIO]</a></p>
         </div>}
