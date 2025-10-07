@@ -48,7 +48,7 @@ const BookingOptions = () => {
 
           <div className="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button view-menu" btnType="hollow">
-              <a href="https://www.little-portland.com/override-menu" target="_blank">
+              <a href="https://www.little-portland.com/menu" target="_blank">
                 <span>View Menu</span>
               </a>
             </Button>
