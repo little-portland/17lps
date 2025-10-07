@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>NATHAN COLINET, Tony Serban</h3>
-              <h3><span>STUDIO <b>//</b> </span>I JORDAN, LOCKHART, Richie Culver</h3>
+              <h3><span>STUDIO <b>//</b> </span>I. JORDAN, LOCKHART, Richie Culver</h3>
             </div>
         </div>
 
