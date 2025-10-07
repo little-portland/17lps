@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MAYBE LAURA, SON OF PAUL</h3>
-              <h3><span>STUDIO <b>//</b> </span>DER, MAXIME DB</h3>
+              <h3><span>STUDIO <b>//</b> </span>DER, MAXIME DB, TARDE LOCO</h3>
             </div>
         </div>
 
