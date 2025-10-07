@@ -30,7 +30,7 @@ const BookingOptions = () => {
 
         <div className="event-info">
             <div class="info date">
-              <h2><span>SAT</span>20 Sep</h2>
+              <h2><span>SAT</span>25 Sep</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MAYBE LAURA, SON OF PAUL</h3>
