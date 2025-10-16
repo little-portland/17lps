@@ -14,12 +14,14 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
-
+        
+        <link rel="preload" as="image" href="/images/studio/studio-page-top.gif" />
         <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.png" /> 
         <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.png" />
         <link rel="preload" as="image" href="/images/theclub/the_club_page_friend.png" /> 
         <link rel="preload" as="image" href="/images/theclub/the_club_page_friend_hover.png" />
         <link rel="preload" as="image" href="/images/theclub/rotating_club.gif" />
+        <link rel="preload" as="image" href="/images/cs_logo_eat_pop_up.png" />
                 
         <style>
             {`html{overflow-x: hidden !important;}`}
@@ -230,10 +232,8 @@ const Menu = ({ menuImage }) => {
           </div>
 
          <div className="nocturn override">
-        <Image 
-            src={"/images/cs_logo_eat_pop_up.png"}
-            blurDataURL={"/images/cs_logo_eat_pop_up.png"}
-        />
+
+        <img className="override-logo" src="/images/cs_logo_eat_pop_up.png" alt="Studio" width="100%" />
          <div className="override-buttons-wrapper">
              <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
            <div className="row">
