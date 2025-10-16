@@ -16,8 +16,8 @@ const Menu = ({ menuImage }) => {
       <Head>
         
         <link rel="preload" as="image" href="/images/studio/studio-page-top.gif" />
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.png" /> 
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.png" />
+        <link rel="preload" as="image" href="/images/studio/studio_private_hire.gif" /> 
+        <link rel="preload" as="image" href="/images/studio/studio_private_hire_hover.gif" />
         <link rel="preload" as="image" href="/images/theclub/the_club_page_friend.png" /> 
         <link rel="preload" as="image" href="/images/theclub/the_club_page_friend_hover.png" />
         <link rel="preload" as="image" href="/images/theclub/rotating_club.gif" />
@@ -221,15 +221,15 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override">
            <img className="override-logo" src="/images/studio/studio-page-top.gif" alt="Studio" width="100%" />
-           <img className="override-logo" src="/images/studio/top-tagline.gif" alt="Studio" width="100%" />
+           <img src="/images/studio/top-tagline.gif" alt="Studio" width="100%" />
          </div>
 
         <div className="nocturn hire">
             <HoverImageLink
               href="mailto:yo@little-portland.com"
-              img="/images/theclub/the_club_page_private_hire.png"
-              hoverImg="/images/theclub/the_club_page_private_hire_hover.png"
-              aspect="2000 / 306"
+              img="/images/studio/studio_private_hire.gif"
+              hoverImg="/images/studio/studio_private_hire_hover.gif"
+              aspect="1200 / 300
               ariaLabel="Private hire enquiries"
               target="_blank"
             />
