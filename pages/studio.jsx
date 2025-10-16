@@ -28,7 +28,7 @@ const Menu = ({ menuImage }) => {
             {`body{
                   overflow: auto!important;
                   overflow-x: initial!important;
-                  background: #585956;}`}
+                  background: #4e4c4e!important;}`}
             {`.override-logo{margin-top: 30px;}`}
             {`.override .explore-zen{margin-top: 30px!important;list-style: none;padding: 0;margin: 0;width:100%;}`}
             {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-repeat: no-repeat;background-position: center;padding: 20px; display: flex;justify-content: flex-end;align-items: center;}`}
@@ -70,9 +70,9 @@ const Menu = ({ menuImage }) => {
             }
     
             .override-button:hover {
-                color: #585956!important;
+                color: #4e4c4e!important;
                 background-color: #6bddd9!important;
-                border: 3px solid #585956!important;
+                border: 0!important;
             }
 
              .image-column img {
