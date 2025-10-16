@@ -25,7 +25,7 @@ const Menu = ({ menuImage }) => {
                 
         <style>
             {`html{overflow-x: hidden !important;}`}
-            {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
+            {`body{background-color: #737275!important;overflow: auto!important;overflow-x: initial!important;}`}
             {`.override-logo{margin-top: 30px;}`}
             {`.override .explore-zen{margin-top: 30px!important;list-style: none;padding: 0;margin: 0;width:100%;}`}
             {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-repeat: no-repeat;background-position: center;padding: 20px; display: flex;justify-content: flex-end;align-items: center;}`}
