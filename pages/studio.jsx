@@ -51,29 +51,29 @@ const Menu = ({ menuImage }) => {
             }
 
             .link {
-               color: #aacc33!important;
+               color: #6bddd9!important;
                 transition: all 0.3s ease-in-out; 
                 opacity: 1;
             }
 
             .link:hover {
-              color: #aacc33!important;
+              color: #6bddd9!important;
               opacity: .7;
             }
             
             .override-button {
-                color: #aacc33!important;
-                border: 3px solid #aacc33!important;
+                color: #6bddd9!important;
+                border: 3px solid #6bddd9!important;
             }
     
             .override-button:hover {
-                color: #000000!important;
-                background-color: #aacc33!important;
-                border: 3px solid #aacc33!important;
+                color: #727375!important;
+                background-color: #6bddd9!important;
+                border: 3px solid #727375!important;
             }
 
              .image-column img {
-                border: 2px solid #aacc33;
+                border: 2px solid #6bddd9;
             }
 
             .dance-popup {
