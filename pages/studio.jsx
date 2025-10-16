@@ -231,7 +231,7 @@ const Menu = ({ menuImage }) => {
               href="mailto:yo@little-portland.com"
               img="/images/studio/studio_private_hire.gif"
               hoverImg="/images/studio/studio_private_hire_hover.gif"
-              aspect="1200 / 300
+              aspect="1200 / 300"
               ariaLabel="Private hire enquiries"
               target="_blank"
             />
