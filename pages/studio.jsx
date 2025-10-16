@@ -74,9 +74,9 @@ const Menu = ({ menuImage }) => {
             }
     
             .override-button:hover {
-                color: #727375!important;
+                color: #585956!important;
                 background-color: #6bddd9!important;
-                border: 3px solid #727375!important;
+                border: 3px solid #585956!important;
             }
 
              .image-column img {
