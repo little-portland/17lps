@@ -61,12 +61,12 @@ const Menu = ({ menuImage }) => {
                 0%, 100% { 
                   box-shadow:
                     inset 0 0 3px 3px rgba(0, 255, 120, 0.8),
-                    3px 0 3px 3px rgba(1, 114, 250, 0.9);
+                    0 0 3px 3px rgba(1, 114, 250, 0.9);
                 }
                 50% {
                   box-shadow:
-                    inset 0 0 1px 1px rgba(0, 255, 120, 1),
-                    -3px 0 1px 1px rgba(1, 114, 250, 1);
+                    inset 0 0 5px 5px rgba(0, 255, 120, 1),
+                    3px 0 3px 3px rgba(1, 114, 250, 1);
                 }
               }
               
