@@ -66,18 +66,19 @@ const Menu = ({ menuImage }) => {
             }
             
             .override-button {
-                color: #6bddd9!important;
-                border: 3px solid #6bddd9!important;
+                color: #6adfe7!important;
+                border: 3px solid #6adfe7!important;
             }
     
             .override-button:hover {
                 color: #4e4c4e!important;
-                background-color: #6bddd9!important;
-                border: 0!important;
+                background-color: #6adfe7!important;
+                border: 3px solid #4e4c4e!important;
             }
 
              .image-column img {
-                border: 2px solid #6bddd9;
+                border: 3px solid #6bddd9;
+                padding: 3px;
             }
 
             .dance-popup {
