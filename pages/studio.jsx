@@ -257,6 +257,10 @@ const Menu = ({ menuImage }) => {
               margin-top: 0px;
             }
 
+        .override-logo {
+          margin-top: 30px;
+        }
+
          .dance-popup h3 {
             font-size: 0.7rem!important;
             padding: 5px 10px!important;
@@ -287,7 +291,7 @@ const Menu = ({ menuImage }) => {
           }
 
         .override-buttons-wrapper {
-            margin: 25px 0;
+            margin: 5px 0 15px 0;
         }
 
         .override-button {
