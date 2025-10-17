@@ -17,6 +17,7 @@ const Menu = ({ menuImage }) => {
         
         <link rel="preload" as="image" href="/images/studio/studio-page-top.gif" />
         <link rel="preload" as="image" href="/images/studio/logo.gif" /> 
+        <link rel="preload" as="image" href="/images/studio/night-schedule.gif" />
         <link rel="preload" as="image" href="/images/studio/studio_private_hire.gif" /> 
         <link rel="preload" as="image" href="/images/studio/studio_private_hire_hover.gif" />
         <link rel="preload" as="image" href="/images/theclub/the_club_page_friend.png" /> 
@@ -233,6 +234,7 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn override">
            <img className="override-logo" src="/images/studio/studio-page-top.gif" alt="Studio" width="100%" />
            <img src="/images/studio/top-tagline.gif" alt="Studio" width="100%" />
+           <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/logo.gif" alt="Studio" width="100%" />
          </div>
 
