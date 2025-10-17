@@ -289,21 +289,7 @@ const Menu = ({ menuImage }) => {
            <img src="/images/studio/top-tagline.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/logo.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
-         </div>
-
-        <div className="nocturn hire">
-            <HoverImageLink
-              href="mailto:yo@little-portland.com"
-              img="/images/studio/studio_private_hire.gif"
-              hoverImg="/images/studio/studio_private_hire_hover.gif"
-              aspect="1200 / 300"
-              ariaLabel="Private hire enquiries"
-              target="_blank"
-            />
-          </div>
-
-         <div className="nocturn override">
-           <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
+           <img src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
            <div className="override-buttons-wrapper">
              <a href="/images/studio/acoustic-test-report.pdf" class="override-button hollow-btn">View Acoustic Test Report</a>
           </div>
@@ -328,6 +314,18 @@ const Menu = ({ menuImage }) => {
         <div className="nocturn override">
            <img src="/images/studio/bottom-tagline.gif" alt="Studio" width="100%" />
          </div>
+
+         <div className="nocturn hire">
+            <HoverImageLink
+              href="mailto:yo@little-portland.com"
+              img="/images/studio/studio_private_hire.gif"
+              hoverImg="/images/studio/studio_private_hire_hover.gif"
+              aspect="1200 / 300"
+              ariaLabel="Private hire enquiries"
+              target="_blank"
+            />
+          </div>
+
 
          <div className="nocturn-wider-section override-logo img-grid">
            <div className="image-row override-logo">
