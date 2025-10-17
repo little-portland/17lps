@@ -73,7 +73,7 @@ const Menu = ({ menuImage }) => {
               .vhs-img {
                 animation: flicker-img 1.5s infinite ease-in-out;
                 border: none!important;
-                border-radius: 20px;
+                border-radius: 15px;
               }
 
             .link {
@@ -154,7 +154,7 @@ const Menu = ({ menuImage }) => {
 
              .image-column img {
                 border: 3px solid #6bddd9;
-                padding: 3px;
+                padding: 8px;
             }
 
             .dance-popup {
