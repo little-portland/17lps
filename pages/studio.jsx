@@ -136,13 +136,13 @@ const Menu = ({ menuImage }) => {
             @keyframes flicker {
               0%, 100% { 
                 box-shadow:
-                  inset 0 0 6px 2px rgba(0, 255, 120, 0.8),
-                  3px 0 5px 3px rgba(0, 144, 255, 0.9);
+                  inset 0 0 3px 3px rgba(0, 255, 120, 0.8),
+                  3px 0 3px 3px rgba(0, 144, 255, 0.9);
               }
               50% {
                 box-shadow:
-                  inset 0 0 6px 3px rgba(0, 255, 120, 1),
-                  -3px 0 8px 6px rgba(0, 144, 255, 1);
+                  inset 0 0 5px 5px rgba(0, 255, 120, 1),
+                  -3px 0 5px 5px rgba(0, 144, 255, 1);
               }
             }
             
