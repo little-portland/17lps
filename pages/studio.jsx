@@ -43,7 +43,7 @@ const Menu = ({ menuImage }) => {
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                margin: 50px 0 60px 0;
+                margin: 25px 0 60px 0;
             }
             .override-buttons-wrapper .row {
                 display: flex;
