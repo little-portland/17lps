@@ -45,7 +45,7 @@ const Menu = ({ menuImage }) => {
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                margin: 25px 0 60px 0;
+                margin: 15px 0 60px 0;
             }
             .override-buttons-wrapper .row {
                 display: flex;
@@ -298,7 +298,7 @@ const Menu = ({ menuImage }) => {
 
          <div className="nocturn override">
 
-        <img className="override-logo" src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
+        <img src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
          <div className="override-buttons-wrapper">
              <a href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK CHEF'S STUDIO</a>
            <div className="row">
