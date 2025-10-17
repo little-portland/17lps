@@ -60,11 +60,11 @@ const Menu = ({ menuImage }) => {
             @keyframes flicker-img {
                 0%, 100% { box-shadow:
                   inset 0 0 3px 3px rgba(0, 255, 120, 0.8),
-                  0 0 5px 3px rgba(0, 144, 255, 0.9);
+                  0 0 5px 3px rgba(1, 114, 250, 0.9);
                 }
                 50%      { box-shadow:
                   inset 0 0 3px 3px rgba(0, 255, 120, 1),
-                  0 0 5px 5px rgba(0, 144, 255, 1);
+                  0 0 5px 5px rgba(1, 114, 250, 1);
                   }
               }
               
@@ -112,7 +112,7 @@ const Menu = ({ menuImage }) => {
               color: #fff !important;
               transition: 0.3s ease-in-out;
               text-transform: uppercase;
-              text-shadow: -5px 0 5px rgba(0, 255, 120, 0.2), 5px 0 2px rgba(0, 144, 255, 0.6) !important;
+              text-shadow: -5px 0 5px rgba(0, 255, 120, 0.2), 5px 0 2px rgba(1, 144, 255, 1) !important;
               filter: blur(0.5px);
               
               /* 👇 VHS-style inner + outer glow */
@@ -124,25 +124,25 @@ const Menu = ({ menuImage }) => {
             .override-button:hover {
               box-shadow:
                 inset 0 0 10px 3px rgba(0, 255, 120, 0.9),
-                0 0 10px 6px rgba(0, 144, 255, 1);
+                0 0 10px 6px rgba(1, 114, 250, 1);
               text-shadow:
                 0 0 3px rgba(0, 255, 120, 0.8),
-                0 0 5px rgba(0, 144, 255, 0.9);
+                0 0 5px rgba(1, 114, 250, 0.9);
               transform: scale(1.02);
               border: 3px solid rgba(61, 207, 214, 1) !important;
-              text-shadow: 5px 0 5px rgba(0, 255, 120, 0.2), -5px 0 2px rgba(0, 144, 255, 0.3) !important;
+              text-shadow: 5px 0 5px rgba(0, 255, 120, 0.2), -5px 0 2px rgba(1, 114, 250, 0.3) !important;
             }
 
             @keyframes flicker {
               0%, 100% { 
                 box-shadow:
                   inset 0 0 3px 3px rgba(0, 255, 120, 0.8),
-                  3px 0 3px 3px rgba(0, 144, 255, 0.9);
+                  3px 0 3px 3px rgba(1, 114, 250, 0.9);
               }
               50% {
                 box-shadow:
                   inset 0 0 3px 3px rgba(0, 255, 120, 1),
-                  -3px 0 3px 3px rgba(0, 144, 255, 1);
+                  -3px 0 3px 3px rgba(1, 114, 250, 1);
               }
             }
             
