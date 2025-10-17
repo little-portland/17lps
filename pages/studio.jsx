@@ -112,7 +112,7 @@ const Menu = ({ menuImage }) => {
               color: #fff !important;
               transition: 0.3s ease-in-out;
               text-transform: uppercase;
-              text-shadow: -5px 0 5px rgba(0, 255, 120, 0.2), 5px 0 2px rgba(1, 144, 255, 1) !important;
+              text-shadow: -5px 0 5px rgba(0, 255, 120, 0.2), 5px 0 2px rgba(1, 103, 255, 1) !important;
               filter: blur(0.5px);
               
               /* 👇 VHS-style inner + outer glow */
@@ -130,7 +130,7 @@ const Menu = ({ menuImage }) => {
                 0 0 5px rgba(1, 114, 250, 0.9);
               transform: scale(1.02);
               border: 3px solid rgba(61, 207, 214, 1) !important;
-              text-shadow: 5px 0 5px rgba(0, 255, 120, 0.2), -5px 0 2px rgba(1, 114, 250, 0.3) !important;
+              text-shadow: 5px 0 5px rgba(0, 255, 120, 0.2), -5px 0 2px rgba(1, 103, 250, 0.3) !important;
             }
 
             @keyframes flicker {
