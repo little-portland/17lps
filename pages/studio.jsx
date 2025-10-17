@@ -312,7 +312,7 @@ const Menu = ({ menuImage }) => {
           </div>
          </div>
 
-        <div className="nocturn override">
+        <div className="nocturn-wider-section override">
            <img src="/images/studio/bottom-tagline.gif" alt="Studio" width="100%" />
          </div>
 
