@@ -65,12 +65,12 @@ const Menu = ({ menuImage }) => {
               opacity: .7;
             }
             
-            .override-button {
+            .hollow-btn {
                 color: #6adfe7!important;
                 border: 3px solid #6adfe7!important;
             }
     
-            .override-button:hover {
+            .hollow-btn:hover {
                 color: #4e4c4e!important;
                 background-color: #6adfe7!important;
                 border: 3px solid #4e4c4e!important;
@@ -242,13 +242,13 @@ const Menu = ({ menuImage }) => {
 
         <img className="override-logo" src="/images/cs_logo_eat_pop_up.png" alt="Studio" width="100%" />
          <div className="override-buttons-wrapper">
-             <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
+             <a href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK CHEF'S STUDIO</a>
            <div className="row">
               <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/menu" class="override-button">MENU</a>
+                    <a target="_blank" href="https://www.little-portland.com/menu" class="override-button hollow-btn">MENU</a>
               </div>
               <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/food" class="override-button">DINING CONCEPT</a>
+                    <a target="_blank" href="https://www.little-portland.com/food" class="override-button hollow-btn">DINING CONCEPT</a>
               </div>
            </div>
           </div>
