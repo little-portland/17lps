@@ -99,11 +99,12 @@ const Menu = ({ menuImage }) => {
               font-weight: bold;
               text-align: center;
               text-decoration: none;
-              font-size: 30px!important;
+              font-size: 25px!important;
               cursor: pointer;
               border-radius: 50px;
               color: #fff !important;
               transition: 0.3s ease-in-out;
+              text-transform: uppercase;
               
               /* 👇 VHS-style inner + outer glow */
               box-shadow:
@@ -289,7 +290,7 @@ const Menu = ({ menuImage }) => {
            <img src="/images/studio/top-tagline.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/logo.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
-           <img src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
+           <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
            <div className="override-buttons-wrapper">
              <a href="/images/studio/acoustic-test-report.pdf" class="override-button hollow-btn">View Acoustic Test Report</a>
           </div>
