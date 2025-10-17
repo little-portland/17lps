@@ -98,8 +98,10 @@ const Menu = ({ menuImage }) => {
               font-weight: bold;
               text-align: center;
               text-decoration: none;
-              font-size: 35px;
+              font-size: 30px;
               cursor: pointer;
+              border-radius: 50px;
+              color: #fff !important;
               transition: 0.3s ease-in-out;
               
               /* 👇 VHS-style inner + outer glow */
@@ -116,18 +118,19 @@ const Menu = ({ menuImage }) => {
                 0 0 6px rgba(0, 255, 120, 0.8),
                 0 0 10px rgba(0, 180, 255, 0.9);
               transform: scale(1.02);
+               border: 0!important;
             }
 
             @keyframes flicker {
               0%, 100% { 
                 box-shadow:
-                  inset 0 0 12px 2px rgba(0, 255, 120, 0.8),
-                  0 0 20px 6px rgba(0, 180, 255, 0.9);
+                  inset 0 0 6px 2px rgba(0, 255, 120, 0.8),
+                  0 0 10px 6px rgba(0, 180, 255, 0.9);
               }
               50% {
                 box-shadow:
-                  inset 0 0 16px 3px rgba(0, 255, 120, 1),
-                  0 0 28px 10px rgba(0, 180, 255, 1);
+                  inset 0 0 8px 3px rgba(0, 255, 120, 1),
+                  0 0 15px 10px rgba(0, 180, 255, 1);
               }
             }
             
