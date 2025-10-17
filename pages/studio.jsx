@@ -129,7 +129,7 @@ const Menu = ({ menuImage }) => {
                 0 0 3px rgba(0, 255, 120, 0.8),
                 0 0 5px rgba(0, 144, 255, 0.9);
               transform: scale(1.02);
-              border: 3px solid rgba(0, 255, 120, 1) !important;
+              border: 3px solid rgba(61, 207, 214, 1) !important;
               text-shadow: 5px 0 5px rgba(0, 255, 120, 0.2), -5px 0 2px rgba(0, 144, 255, 0.3) !important;
             }
 
@@ -141,8 +141,8 @@ const Menu = ({ menuImage }) => {
               }
               50% {
                 box-shadow:
-                  inset 0 0 5px 5px rgba(0, 255, 120, 1),
-                  -3px 0 5px 5px rgba(0, 144, 255, 1);
+                  inset 0 0 3px 3px rgba(0, 255, 120, 1),
+                  -3px 0 3px 3px rgba(0, 144, 255, 1);
               }
             }
             
