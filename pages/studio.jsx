@@ -56,12 +56,14 @@ const Menu = ({ menuImage }) => {
             }
 
             @keyframes flicker {
-                0%, 100% { filter: drop-shadow(0 0 8px rgba(0,100,255,0.9)) drop-shadow(0 0 4px rgba(0,255,120,0.7)); }
+                0%, 100% { filter: drop-shadow(0 0 8px rgba(0,100,255,0.9)) drop-shadow(0 0 10px rgba(0,255,120,0.7)); }
                 50%      { filter: drop-shadow(0 0 10px rgba(0,100,255,1)) drop-shadow(0 0 6px rgba(0,255,120,0.9)); }
               }
               
               .vhs-img {
                 animation: flicker 1.5s infinite ease-in-out;
+                border: 2px solid #6bddd9!important;
+                border-radius: 20px;
               }
 
             .link {
