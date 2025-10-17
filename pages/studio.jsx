@@ -54,6 +54,15 @@ const Menu = ({ menuImage }) => {
               width: 100%;
             }
 
+            @keyframes flicker {
+                0%, 100% { filter: drop-shadow(0 0 8px rgba(0,100,255,0.9)) drop-shadow(0 0 4px rgba(0,255,120,0.7)); }
+                50%      { filter: drop-shadow(0 0 10px rgba(0,100,255,1)) drop-shadow(0 0 6px rgba(0,255,120,0.9)); }
+              }
+              
+              .vhs-img {
+                animation: flicker 1.5s infinite ease-in-out;
+              }
+
             .link {
                color: #6bddd9!important;
                 transition: all 0.3s ease-in-out; 
@@ -261,18 +270,18 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn-wider-section override-logo img-grid">
            <div className="image-row">
               <div className="image-column">
-                <img src="/images/theclub/the_club01.jpg" />
-                <img src="/images/theclub/the_club02.jpg" />
-                <img src="/images/theclub/the_club03.jpg" />
-                <img src="/images/theclub/the_club04.jpg" />
-                <img src="/images/theclub/the_club05.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club01.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club02.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club03.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club04.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club05.jpg" />
               </div>
               <div className="image-column">
-                <img src="/images/theclub/the_club06.jpg" />
-                <img src="/images/theclub/the_club07.jpg" />
-                <img src="/images/theclub/the_club08.jpg" />
-                <img src="/images/theclub/the_club09.jpg" />
-                <img src="/images/theclub/the_club10.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club06.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club07.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club08.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club09.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club10.jpg" />
               </div>
            </div>
           </div>
