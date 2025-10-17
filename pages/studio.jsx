@@ -292,6 +292,7 @@ const Menu = ({ menuImage }) => {
 
         .override-buttons-wrapper {
             margin: 5px 0 15px 0;
+            padding: 0 8px;
         }
 
         .override-button {
