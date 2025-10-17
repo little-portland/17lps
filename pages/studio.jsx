@@ -98,7 +98,7 @@ const Menu = ({ menuImage }) => {
               font-weight: bold;
               text-align: center;
               text-decoration: none;
-              font-size: 30px;
+              font-size: 30px!important;
               cursor: pointer;
               border-radius: 50px;
               color: #fff !important;
@@ -322,7 +322,7 @@ const Menu = ({ menuImage }) => {
          </div>
 
          <div className="nocturn-wider-section override-logo img-grid">
-           <div className="image-row">
+           <div className="image-row override-logo">
               <div className="image-column">
                 <img className="vhs-img" src="/images/theclub/the_club01.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club02.jpg" />
