@@ -141,8 +141,8 @@ const Menu = ({ menuImage }) => {
               }
               50% {
                 box-shadow:
-                  inset 0 0 3px 3px rgba(0, 255, 120, 1),
-                  -3px 0 3px 3px rgba(1, 114, 250, 1);
+                  inset 0 0 1px 1px rgba(0, 255, 120, 1),
+                  -3px 0 1px 1px rgba(1, 114, 250, 1);
               }
             }
             
