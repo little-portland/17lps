@@ -289,10 +289,6 @@ const Menu = ({ menuImage }) => {
            <img src="/images/studio/top-tagline.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/logo.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
-           <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
-           <div className="override-buttons-wrapper">
-             <a href="/images/studio/acoustic-test-report.pdf" class="override-button hollow-btn">View Acoustic Test Report</a>
-          </div>
          </div>
 
         <div className="nocturn hire">
@@ -305,6 +301,13 @@ const Menu = ({ menuImage }) => {
               target="_blank"
             />
           </div>
+
+         <div className="nocturn override">
+           <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
+           <div className="override-buttons-wrapper">
+             <a href="/images/studio/acoustic-test-report.pdf" class="override-button hollow-btn">View Acoustic Test Report</a>
+          </div>
+         </div>
 
          <div className="nocturn override">
 
