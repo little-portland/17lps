@@ -23,6 +23,14 @@ export const GlobalStyle = createGlobalStyle`
   font-display: swap;
 } 
 
+@font-face {
+  font-family: "Antique Olive Nord D";
+  src: url("/fonts/AntiqueOliveNordD-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 html, body { 
   overflow-y: auto!important;
 }
@@ -31,6 +39,10 @@ html, body {
   box-sizing: border-box;
   margin: 0; 
   padding: 0;
+ }
+
+ .hollow-btn {
+     font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
  }
 
  //Bookings iframe specific styles
