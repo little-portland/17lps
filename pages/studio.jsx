@@ -107,6 +107,7 @@ const Menu = ({ menuImage }) => {
               transition: 0.3s ease-in-out;
               text-transform: uppercase;
               text-shadow: 0px 0 5px rgba(0, 255, 120, 0.2), 8px 0 2px rgba(7, 89, 172, 0.3) !important;
+              filter: blur(0.5px);
               
               /* 👇 VHS-style inner + outer glow */
               box-shadow:
