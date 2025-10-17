@@ -254,6 +254,10 @@ const Menu = ({ menuImage }) => {
           </div>
          </div>
 
+        <div className="nocturn override">
+           <img src="/images/studio/bottom-tagline.gif" alt="Studio" width="100%" />
+         </div>
+
          <div className="nocturn-wider-section override-logo img-grid">
            <div className="image-row">
               <div className="image-column">
