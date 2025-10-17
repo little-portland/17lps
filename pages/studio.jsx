@@ -298,7 +298,7 @@ const Menu = ({ menuImage }) => {
 
          <div className="nocturn override">
 
-        <img src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
+        <img className="override-logo" src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
          <div className="override-buttons-wrapper">
              <a href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK CHEF'S STUDIO</a>
            <div className="row">
