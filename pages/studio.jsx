@@ -58,8 +58,14 @@ const Menu = ({ menuImage }) => {
             }
 
             @keyframes flicker-img {
-                0%, 100% { filter: drop-shadow(-2px 0 5px rgba(0, 144, 255, 0.9)) drop-shadow(2px 0 5px rgba(0, 255, 120, 0.7)); }
-                50%      { filter: drop-shadow(0 -2px 8px rgba(0, 144, 255, 1)) drop-shadow(0 2px 8px rgba(0, 255, 120, 0.9)); }
+                0%, 100% { box-shadow:
+                  inset 0 0 6px 2px rgba(0, 255, 120, 0.8),
+                  3px 0 5px 3px rgba(0, 144, 255, 0.9);
+                }
+                50%      { box-shadow:
+                  inset 0 0 6px 3px rgba(0, 255, 120, 1),
+                  -3px 0 8px 6px rgba(0, 144, 255, 1) 
+                  }
               }
               
               .vhs-img {
@@ -131,12 +137,12 @@ const Menu = ({ menuImage }) => {
               0%, 100% { 
                 box-shadow:
                   inset 0 0 6px 2px rgba(0, 255, 120, 0.8),
-                  5px 0 5px 3px rgba(0, 144, 255, 0.9);
+                  3px 0 5px 3px rgba(0, 144, 255, 0.9);
               }
               50% {
                 box-shadow:
-                  inset 0 0 8px 3px rgba(0, 255, 120, 1),
-                  -5px 0 10px 6px rgba(0, 144, 255, 1);
+                  inset 0 0 6px 3px rgba(0, 255, 120, 1),
+                  -3px 0 8px 6px rgba(0, 144, 255, 1);
               }
             }
             
