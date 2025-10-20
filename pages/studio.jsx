@@ -107,7 +107,7 @@ const Menu = ({ menuImage }) => {
               width: 100%;
               background-color: transparent;
               color: #6adfe7; /* neon cyan text */
-              border: 3px solid rgba(0, 255, 120, 1) !important;
+              border: 3px solid rgba(101, 216, 233, 1) !important;
               padding: 15px 0;
               font-weight: bold;
               text-align: center;
