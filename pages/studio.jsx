@@ -15,7 +15,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         
-        <link rel="preload" as="image" href="/images/studio/studio-page-top.gif" />
+        <link rel="preload" as="image" href="/images/studio/studio-page-top.gif" /> 
         <link rel="preload" as="image" href="/images/studio/studio-rotating.gif" /> 
         <link rel="preload" as="image" href="/images/studio/logo.gif" /> 
         <link rel="preload" as="image" href="/images/studio/night-schedule.gif" />
