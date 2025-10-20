@@ -22,7 +22,7 @@ const Menu = ({ menuImage }) => {
         <link rel="preload" as="image" href="/images/studio/studio_private_hire.gif" /> 
         <link rel="preload" as="image" href="/images/studio/studio_private_hire_hover.gif" />
         <link rel="preload" as="image" href="/images/theclub/the_club_page_friend.png" /> 
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_friend_hover.png" />
+        <link rel="preload" as="image" href="/images/theclub/the_club_page_friend_hover.png" /> 
         <link rel="preload" as="image" href="/images/theclub/rotating_club.gif" />
         <link rel="preload" as="image" href="/images/studio/cs_studio.png" />
         <link rel="preload" as="image" href="/images/studio/acoustic.gif" />
