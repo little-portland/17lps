@@ -317,7 +317,7 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
            <div className="override-buttons-wrapper">
-             <a target="_blank" href="/images/studio/acoustic-test-report.pdf" class="override-button hollow-btn">Acoustic Test Report</a>
+             <a target="_blank" href="/docs/acoustic-test-report.pdf" class="override-button hollow-btn">Acoustic Test Report</a>
           </div>
          </div>
 
