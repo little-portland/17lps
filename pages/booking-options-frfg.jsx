@@ -25,9 +25,9 @@ const BookingOptions = () => {
 
       <div id="bookingOptions">
 
-        <h1 className="event-name desktop-only day-category"><span className="day">ALIEN COMMUNICATION</span> Presents</h1>
+        <h1 className="event-name desktop-only day-category"><span className="day">ALIEN COMMUNICATIONS</span> Presents</h1>
         
-        <h1 className="event-name mobile-only cat"><span className="cat-day">ALIEN COMMUNICATION</span> Presents</h1>
+        <h1 className="event-name mobile-only cat"><span className="cat-day">ALIEN COMMUNICATIONS</span> Presents</h1>
 
         <div className="event-info">
            <div class="info date">
@@ -35,7 +35,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DAN DERHAM, TEE TEE</h3>
-              <h3><span>STUDIO <b>//</b> </span>ALIEN COMMUNICATION</h3>
+              <h3><span>STUDIO <b>//</b> </span>ALIEN COMMUNICATIONS</h3>
             </div>
         </div>
 
