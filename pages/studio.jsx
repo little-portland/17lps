@@ -297,7 +297,7 @@ const Menu = ({ menuImage }) => {
           }
 
          .cs-logo {
-                margin-top: -10!important;
+                margin-top: -10px!important;
             }
 
         .hire {
