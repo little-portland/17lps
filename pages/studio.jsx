@@ -47,6 +47,7 @@ const Menu = ({ menuImage }) => {
                 align-items: center;
                 width: 100%;
                 margin: 15px 0 60px 0;
+                padding: 0 8px;
             }
             .override-buttons-wrapper .row {
                 display: flex;
