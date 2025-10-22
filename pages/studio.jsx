@@ -158,6 +158,7 @@ const Menu = ({ menuImage }) => {
 
             .cs-logo {
                 filter: blur(.7px);
+                margin-top: 0!important;
             }
 
              .image-column img {
@@ -285,6 +286,10 @@ const Menu = ({ menuImage }) => {
               line-height: 2 !important;
               margin-bottom: 0px !important;
           }
+
+         .cs-logo {
+                margin-top: -10!important;
+            }
 
         .hire {
               margin: 30px auto 40px auto!important;
