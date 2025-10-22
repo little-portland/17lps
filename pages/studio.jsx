@@ -386,6 +386,7 @@ const Menu = ({ menuImage }) => {
                 <img className="vhs-img" src="/images/theclub/the_club03.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club04.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club05.jpg" />
+                <img className="vhs-img" src="/images/studio/studio12.jpg" />
               </div>
               <div className="image-column">
                 <img className="vhs-img" src="/images/theclub/the_club06.jpg" />
@@ -393,6 +394,7 @@ const Menu = ({ menuImage }) => {
                 <img className="vhs-img" src="/images/theclub/the_club08.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club09.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club10.jpg" />
+                <img className="vhs-img" src="/images/studio/studio13.jpg" />
               </div>
            </div>
           </div>
