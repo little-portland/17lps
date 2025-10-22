@@ -156,6 +156,10 @@ const Menu = ({ menuImage }) => {
               animation: flicker 2s infinite ease-in-out;
             }
 
+            .cs-logo {
+                filter: blur(.7px);
+            }
+
              .image-column img {
                 border: 3px solid #6bddd9;
                 padding: 8px;
@@ -315,17 +319,36 @@ const Menu = ({ menuImage }) => {
            <img src="/images/studio/top-tagline.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/studio-rotating.gif" alt="The Club" width="100%" />
            <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
+           <img className="override-logo" src="/images/studio/logo.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
            <div className="override-buttons-wrapper">
              <a target="_blank" href="/docs/acoustic-test-report.pdf" class="override-button hollow-btn">Acoustic Test Report</a>
           </div>
          </div>
+      
+         <div className="nocturn hire">
+            <HoverImageLink
+              href="mailto:yo@little-portland.com"
+              img="/images/studio/studio_private_hire.gif"
+              hoverImg="/images/studio/studio_private_hire_hover.gif"
+              aspect="1200 / 300"
+              ariaLabel="Private hire enquiries"
+              target="_blank"
+            />
+          </div>
 
          <div className="nocturn override">
 
-        <img className="override-logo" src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
+        <img className="override-logo cs-logo" src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
          <div className="override-buttons-wrapper">
-             <a href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK CHEF'S STUDIO</a>
+             <div className="row">
+              <div className="column">
+                    <a target="_blank" href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK CHEF'S STUDIO</a>
+              </div>
+              <div className="column">
+                    <a target="_blank" href="https://www.little-portland.com/food" class="override-button hollow-btn">LEARN MORE</a>
+              </div>
+           </div>
            <div className="row">
               <div className="column">
                     <a target="_blank" href="https://www.little-portland.com/menu" class="override-button hollow-btn">MENU</a>
@@ -340,18 +363,6 @@ const Menu = ({ menuImage }) => {
         <div className="nocturn override">
            <img src="/images/studio/bottom-tagline.gif" alt="Studio" width="100%" />
          </div>
-
-         <div className="nocturn hire">
-            <HoverImageLink
-              href="mailto:yo@little-portland.com"
-              img="/images/studio/studio_private_hire.gif"
-              hoverImg="/images/studio/studio_private_hire_hover.gif"
-              aspect="1200 / 300"
-              ariaLabel="Private hire enquiries"
-              target="_blank"
-            />
-          </div>
-
 
          <div className="nocturn-wider-section override-logo img-grid">
            <div className="image-row override-logo">
