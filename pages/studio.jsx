@@ -360,7 +360,7 @@ const Menu = ({ menuImage }) => {
                     <a target="_blank" href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK CHEF'S STUDIO</a>
               </div>
               <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/food" class="override-button hollow-btn">LEARN MORE</a>
+                    <a target="_blank" href="https://www.little-portland.com/chefstudio" class="override-button hollow-btn">LEARN MORE</a>
               </div>
            </div>
            <div className="row">
