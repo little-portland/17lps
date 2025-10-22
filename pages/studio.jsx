@@ -214,6 +214,10 @@ const Menu = ({ menuImage }) => {
           .img-grid {
             margin-bottom: 40px!important;
           }
+
+          .bottom-tag {    
+            margin-bottom: 50px !important;
+          }
             
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -276,6 +280,10 @@ const Menu = ({ menuImage }) => {
             font-size: 0.6rem!important;
             line-height: 2!important;
         }
+
+       .bottom-tag {    
+            margin-bottom: -10px !important;
+          }
 
         .intro {
               margin-top: 0px !important;
@@ -366,7 +374,7 @@ const Menu = ({ menuImage }) => {
           </div>
          </div>
 
-        <div className="nocturn override">
+        <div className="nocturn override bottom-tag">
            <img src="/images/studio/bottom-tagline.gif" alt="Studio" width="100%" />
          </div>
 
