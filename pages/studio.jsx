@@ -113,7 +113,7 @@ const Menu = ({ menuImage }) => {
               font-weight: bold;
               text-align: center;
               text-decoration: none;
-              font-size: 20px!important;
+              font-size: 19px!important;
               cursor: pointer;
               border-radius: 50px;
               color: #fff !important;
