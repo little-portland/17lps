@@ -158,7 +158,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .cs-logo {
-                filter: blur(.7px);
+                filter: blur(.3px);
                 margin-top: 0!important;
             }
 
