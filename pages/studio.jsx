@@ -362,20 +362,13 @@ const Menu = ({ menuImage }) => {
 
         <img className="override-logo cs-logo" src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
          <div className="override-buttons-wrapper">
-             <div className="row">
-              <div className="column">
-                    <a target="_blank" href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK CHEF'S STUDIO</a>
-              </div>
-              <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/chefstudio" class="override-button hollow-btn">ABOUT CHEF'S STUDIO</a>
-              </div>
-           </div>
+            <a target="_blank" href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK CHEF'S STUDIO</a>
            <div className="row">
               <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/menu" class="override-button hollow-btn">MENU</a>
+                  <a target="_blank" href="https://www.little-portland.com/chefstudio" class="override-button hollow-btn">ABOUT CHEF'S STUDIO</a>
               </div>
               <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/food" class="override-button hollow-btn">DINING CONCEPT</a>
+                    <a target="_blank" href="https://www.little-portland.com/menu" class="override-button hollow-btn">MENU</a>
               </div>
            </div>
           </div>
