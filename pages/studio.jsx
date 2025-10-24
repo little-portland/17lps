@@ -208,6 +208,14 @@ const Menu = ({ menuImage }) => {
               margin-top: 50px !important;
           }
 
+         .studio-img-mb {
+              margin-bottom: 50px !important;
+          }
+
+          .studio-img-no-m {
+              margin: 0px !important;
+          }
+
           .hire {
               margin: 50px auto 50px auto!important;
           }
@@ -290,6 +298,10 @@ const Menu = ({ menuImage }) => {
             margin-bottom: -10px !important;
           }
 
+          .xs-m {
+            margin: 0!important;
+          }
+
         .intro {
               margin-top: 0px !important;
               margin-bottom: 10px !important;
@@ -354,7 +366,7 @@ const Menu = ({ menuImage }) => {
          </div>
 
           <div className="nocturn override">
-             <img className="studio-img" src="/images/studio/studio_angle01.jpg" alt="Studio" width="100%" />
+             <img className="studio-img-no-m" src="/images/studio/studio_angle01.jpg" alt="Studio" width="100%" />
          </div>
       
          <div className="nocturn hire">
@@ -370,7 +382,7 @@ const Menu = ({ menuImage }) => {
 
          <div className="nocturn override">
 
-        <img className="studio-img" src="/images/studio/studio_angle09.jpg" alt="Studio" width="100%" />
+        <img className="studio-img-mb" src="/images/studio/studio_angle09.jpg" alt="Studio" width="100%" />
 
         <img className="override-logo cs-logo" src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
          <div className="override-buttons-wrapper">
@@ -387,7 +399,7 @@ const Menu = ({ menuImage }) => {
          </div>
 
         <div className="nocturn override">
-            <img className="studio-img" src="/images/studio/studio_angle11.jpg" alt="Studio" width="100%" />
+            <img className="studio-img-mb xs-m" src="/images/studio/studio_angle11.jpg" alt="Studio" width="100%" />
          </div>
 
         <div className="nocturn override bottom-tag">
