@@ -334,6 +334,7 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/studio/studio-rotating.gif" alt="The Club" width="100%" />
            <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/logo.gif" alt="Studio" width="100%" />
+           <img className="override-logo" src="/images/studio/studio_angle07.jpg" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
            <div className="override-buttons-wrapper">
             <div className="row">
@@ -346,6 +347,8 @@ const Menu = ({ menuImage }) => {
            </div>
           </div>
          </div>
+
+         <img className="override-logo" src="/images/studio/studio_angle01.jpg" alt="Studio" width="100%" />
       
          <div className="nocturn hire">
             <HoverImageLink
@@ -359,6 +362,8 @@ const Menu = ({ menuImage }) => {
           </div>
 
          <div className="nocturn override">
+
+        <img className="override-logo" src="/images/studio/studio_angle09.jpg" alt="Studio" width="100%" />
 
         <img className="override-logo cs-logo" src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
          <div className="override-buttons-wrapper">
@@ -375,6 +380,10 @@ const Menu = ({ menuImage }) => {
          </div>
 
         <div className="nocturn override bottom-tag">
+            <img className="override-logo" src="/images/studio/studio_angle11.jpg" alt="Studio" width="100%" />
+         </div>
+
+        <div className="nocturn override bottom-tag">
            <img src="/images/studio/bottom-tagline.gif" alt="Studio" width="100%" />
          </div>
 
@@ -386,7 +395,6 @@ const Menu = ({ menuImage }) => {
                 <img className="vhs-img" src="/images/theclub/the_club03.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club04.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club05.jpg" />
-                <img className="vhs-img" src="/images/studio/studio12.jpg" />
               </div>
               <div className="image-column">
                 <img className="vhs-img" src="/images/theclub/the_club06.jpg" />
@@ -394,7 +402,6 @@ const Menu = ({ menuImage }) => {
                 <img className="vhs-img" src="/images/theclub/the_club08.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club09.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club10.jpg" />
-                <img className="vhs-img" src="/images/studio/studio13.jpg" />
               </div>
            </div>
           </div>
