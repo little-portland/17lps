@@ -349,10 +349,10 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override">
            <img className="header-logo" src="/images/studio/studio-page-top.gif" alt="Studio" width="100%" />
+           <img className="override-logo" src="/images/studio/logo.gif" alt="Studio" width="100%" />
            <img src="/images/studio/top-tagline.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/studio-rotating.gif" alt="The Club" width="100%" />
            <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
-           <img className="override-logo" src="/images/studio/logo.gif" alt="Studio" width="100%" />
            <img className="studio-img" src="/images/studio/studio_angle07.jpg" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
            <div className="override-buttons-wrapper">
