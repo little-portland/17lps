@@ -320,8 +320,21 @@ const Menu = ({ menuImage }) => {
             }
 
         .hire {
-              margin: 30px auto 40px auto!important;
+              margin: 30px auto 30px auto!important;
           }
+
+        .studio-twenty {
+          margin-top: 15px!important;
+          margin-bottom: -10px!important;
+        }
+
+     .studio-thirty-five {
+        margin-bottom: 35px !important;
+      }
+
+    .studio-minus-five {
+        margin-top: 5px !important;
+      }
 
         .friends {
               margin: 10px auto 10px auto !important;
@@ -353,7 +366,7 @@ const Menu = ({ menuImage }) => {
            <img src="/images/studio/top-tagline.gif" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/studio-rotating.gif" alt="The Club" width="100%" />
            <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
-           <img className="studio-img" src="/images/studio/studio_angle07.jpg" alt="Studio" width="100%" />
+           <img className="studio-img studio-twenty" src="/images/studio/studio_angle07.jpg" alt="Studio" width="100%" />
            <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
            <div className="override-buttons-wrapper">
             <div className="row">
@@ -384,7 +397,7 @@ const Menu = ({ menuImage }) => {
 
          <div className="nocturn override">
 
-        <img className="studio-img-mb" src="/images/studio/studio_angle09.jpg" alt="Studio" width="100%" />
+        <img className="studio-img-mb studio-thirty-five" src="/images/studio/studio_angle09.jpg" alt="Studio" width="100%" />
 
         <img className="override-logo cs-logo" src="/images/studio/cs_studio.png" alt="Studio" width="100%" />
          <div className="override-buttons-wrapper">
@@ -401,7 +414,7 @@ const Menu = ({ menuImage }) => {
          </div>
 
         <div className="nocturn override">
-            <img className="studio-img-mb xs-m" src="/images/studio/studio_angle11.jpg" alt="Studio" width="100%" />
+            <img className="studio-img-mb xs-m studio-minus-five" src="/images/studio/studio_angle11.jpg" alt="Studio" width="100%" />
          </div>
 
         <div className="nocturn override bottom-tag">
