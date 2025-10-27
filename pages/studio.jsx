@@ -152,6 +152,14 @@ const Menu = ({ menuImage }) => {
                   -3px 0 1px 1px rgba(1, 114, 250, 1);
               }
             }
+
+          .desktop {
+           display: block!important;
+          }
+
+          .mobile {
+           display: none!important;
+          }
             
             .override-button {
               animation: flicker 2s infinite ease-in-out;
@@ -274,6 +282,15 @@ const Menu = ({ menuImage }) => {
             .explore-zen li {
               background-size: 400px 20px;
           }
+
+          .desktop {
+           display: none!important;
+          }
+
+          .mobile {
+           display: block!important;
+          }
+          
           .column {
             width: 100%!important;
           }
@@ -367,7 +384,8 @@ const Menu = ({ menuImage }) => {
            <img className="override-logo" src="/images/studio/studio-rotating.gif" alt="The Club" width="100%" />
            <img className="override-logo" src="/images/studio/night-schedule.gif" alt="Studio" width="100%" />
            <img className="studio-img studio-twenty" src="/images/studio/studio_angle07.jpg" alt="Studio" width="100%" />
-           <img className="override-logo" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
+           <img className="override-logo desktop" src="/images/studio/acoustic.gif" alt="Studio" width="100%" />
+           <img className="override-logo mobile" src="/images/studio/acoustic-mobile.gif" alt="Studio" width="100%" />
            <div className="override-buttons-wrapper">
             <div className="row">
               <div className="column">
