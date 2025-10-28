@@ -442,18 +442,14 @@ const Menu = ({ menuImage }) => {
          <div className="nocturn-wider-section override-logo img-grid">
            <div className="image-row override-logo">
               <div className="image-column">
-                <img className="vhs-img" src="/images/theclub/the_club01.jpg" />
-                <img className="vhs-img" src="/images/theclub/the_club02.jpg" />
-                <img className="vhs-img" src="/images/theclub/the_club03.jpg" />
-                <img className="vhs-img" src="/images/theclub/the_club04.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club05.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club07.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club03.jpg" />
               </div>
               <div className="image-column">
-                <img className="vhs-img" src="/images/theclub/the_club06.jpg" />
-                <img className="vhs-img" src="/images/theclub/the_club07.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club04.jpg" />
                 <img className="vhs-img" src="/images/theclub/the_club08.jpg" />
-                <img className="vhs-img" src="/images/theclub/the_club09.jpg" />
-                <img className="vhs-img" src="/images/theclub/the_club10.jpg" />
+                <img className="vhs-img" src="/images/theclub/the_club06.jpg" />
               </div>
            </div>
           </div>
