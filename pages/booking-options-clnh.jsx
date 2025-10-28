@@ -33,7 +33,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>07 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>FEDERICO MARTON, RHYTHMS OF PRESCOTT</h3>
+              <h3><span>TENT <b>//</b> </span>FEDERICO MARTON, Theo G</h3>
               <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, ISAAC CARTER</h3>
             </div>
         </div>
