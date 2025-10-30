@@ -43,8 +43,14 @@ export default function HoverImageLink({
 
   // internal routes → Next <Link> + <a>
   return (
-    <Link href={href} passHref>
-      <a className={merged} aria-label={ariaLabel} style={style} />
+   <Link href={href} passHref>
+      <a
+        className={merged}
+        aria-label={ariaLabel}
+        style={style}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      />
     </Link>
   );
 }
