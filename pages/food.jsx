@@ -96,6 +96,10 @@ const Menu = ({ menuImage }) => {
               display: block;
             }
 
+            .food-content {
+              padding-bottom: 30px;
+            }
+
             .line-anim {
               margin-bottom: 1rem;
             }
@@ -113,6 +117,11 @@ const Menu = ({ menuImage }) => {
 
             .footer {
                   margin-top: 10px!important;
+            }
+
+            .concept-pack {
+              width: 88%;
+              margin: 0 auto;
             }
             
             .override-buttons-wrapper .column {
@@ -226,6 +235,7 @@ const Menu = ({ menuImage }) => {
              <img src="/images/food/food_page_middle.png" alt="The Tent Food" width="100%" />
 
             <HoverImageLink
+              className="concept-pack"
               href="/docs/dining-concept-pack.pdf"
               img="/images/food/concept-pack-btn.png"
               hoverImg="/images/food/concept-pack-btn-hover.png"
