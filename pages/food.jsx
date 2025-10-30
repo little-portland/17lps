@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
+import HoverImageLink from "@components/HoverImageLink"; // adjust path if your structure differs
 
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
@@ -19,6 +20,8 @@ const Menu = ({ menuImage }) => {
         <link rel="preload" as="image" href="/images/food/food_page_food_more_than_meal.gif" /> 
         <link rel="preload" as="image" href="/images/food/food_page_line_anim.gif" />
         <link rel="preload" as="image" href="/images/food/food_page_food_futurist_menu.gif" />
+        <link rel="preload" as="image" href="/images/food/concept-pack-btn.png" />
+        <link rel="preload" as="image" href="/images/food/concept-pack-btn-hover.png" />
         
         <style>
             {`html{overflow-x: hidden !important;}`}
@@ -221,6 +224,15 @@ const Menu = ({ menuImage }) => {
             <img src="/images/food/food_page_ethos.gif" alt="The Tent Food" width="100%" />
 
              <img src="/images/food/food_page_middle.png" alt="The Tent Food" width="100%" />
+
+            <HoverImageLink
+              href="/docs/dining-concept-pack.pdf"
+              img="/images/food/concept-pack-btn.png"
+              hoverImg="/images/food/concept-pack-btn-hover.png"
+              aspect="871 / 108"
+              ariaLabel="Dining Concept pack"
+              target="_blank"
+            />
 
          </div>
 
