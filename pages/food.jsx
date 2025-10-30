@@ -239,7 +239,7 @@ const Menu = ({ menuImage }) => {
               href="/docs/dining-concept-pack.pdf"
               img="/images/food/concept-pack-btn.png"
               hoverImg="/images/food/concept-pack-btn-hover.png"
-              aspect="871 / 162"
+              aspect="871 / 120"
               ariaLabel="Dining Concept pack"
               target="_blank"
             />
