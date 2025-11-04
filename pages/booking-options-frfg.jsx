@@ -10,10 +10,10 @@ import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
   useEffect(() => {
-    document.body.classList.add("friday");
+    document.body.classList.add("thursday");
 
     return () => {
-      document.body.classList.remove("friday");
+      document.body.classList.remove("thursday");
     };
   }, []);
 
