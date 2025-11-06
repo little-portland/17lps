@@ -270,6 +270,28 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override footer">
             <img src="/images/food/food_page_meme.png" alt="The Tent Food" width="100%" />
+            <img src="/images/food/explore-more.gif" alt="The Tent Food" width="100%" />
+           
+            <HoverImageLink
+              className="concept-pack"
+              href="/docs/dining-concept-pack.pdf"
+              img="/images/food/concept-pack-btn.png"
+              hoverImg="/images/food/concept-pack-btn-hover.png"
+              aspect="871 / 120"
+              ariaLabel="Dining Concept pack"
+              target="_blank"
+            />
+
+           <HoverImageLink
+              className="concept-pack"
+              href="/docs/dining-concept-pack.pdf"
+              img="/images/food/concept-pack-btn.png"
+              hoverImg="/images/food/concept-pack-btn-hover.png"
+              aspect="871 / 120"
+              ariaLabel="Dining Concept pack"
+              target="_blank"
+            />
+           
             <img src="/images/food/thetent_page_footer.png" alt="The Tent Food" width="100%" />
         </div>
          
