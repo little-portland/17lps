@@ -91,6 +91,10 @@ const Menu = ({ menuImage }) => {
               display: block;
             }
 
+            .explore {
+                margin-bottom: 5px;
+            }
+
             .futurist-menu {
               margin: 0 auto;
               display: block;
@@ -270,7 +274,7 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override footer">
             <img src="/images/food/food_page_meme.png" alt="The Tent Food" width="100%" />
-            <img src="/images/food/explore-more.gif" alt="The Tent Food" width="100%" />
+            <img className="explore" src="/images/food/explore-more.gif" alt="The Tent Food" width="100%" />
            
             <HoverImageLink
               className="concept-pack"
