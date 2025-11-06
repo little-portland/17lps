@@ -277,17 +277,17 @@ const Menu = ({ menuImage }) => {
               href="/docs/dining-concept-pack.pdf"
               img="/images/food/concept-pack-btn.png"
               hoverImg="/images/food/concept-pack-btn-hover.png"
-              aspect="871 / 120"
+              aspect="871 / 90"
               ariaLabel="Dining Concept pack"
               target="_blank"
             />
 
            <HoverImageLink
               className="concept-pack"
-              href="/docs/dining-concept-pack.pdf"
-              img="/images/food/concept-pack-btn.png"
-              hoverImg="/images/food/concept-pack-btn-hover.png"
-              aspect="871 / 120"
+              href="/docs/Bio_bricks_report.pdf"
+              img="/images/food/bio-bricks-btn.png"
+              hoverImg="/images/food/bio-bricks-btn-hover.png"
+              aspect="871 / 90"
               ariaLabel="Dining Concept pack"
               target="_blank"
             />
