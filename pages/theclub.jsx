@@ -282,6 +282,17 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             />
           </div>
 
+          <div className="nocturn override food-content">
+           <div className="override-buttons-wrapper explore-btns">
+              <div className="button-half-page">
+                 <a target="_blank" href="https://www.little-portland.com/thetent" class="override-button">EXPLORE THE TENT</a>
+             </div>
+             <div className="button-half-page">
+                 <a target="_blank" href="https://www.little-portland.com/studio" class="override-button">EXPLORE THE STUDIO</a>
+             </div>
+            </div>
+         </div>
+
          <div className="nocturn-wider-section override-logo img-grid">
            <div className="image-row">
               <div className="image-column">
