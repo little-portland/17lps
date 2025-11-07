@@ -21,6 +21,9 @@ const Menu = ({ menuImage }) => {
             src={"/images/sample-menu-new.png"}
             alt={menuImage.title}
             className={"image"}
+            width={1500}  
+            height={1012}
+            style={{ width: "100%", height: "auto" }}
             blurDataURL={"/images/sample-menu-new.png"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
