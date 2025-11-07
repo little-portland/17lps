@@ -122,7 +122,7 @@ const Menu = ({ menuImage }) => {
             margin-bottom: 40px!important;
           }
 
-          .food-content .override-button {
+          .reg-btns .override-button {
               font-family: Helvetica, sans-serif;
               font-weight: 900;
               background-color: #aacc33 !important;
@@ -134,11 +134,11 @@ const Menu = ({ menuImage }) => {
               padding: 10px 15px;
           }
 
-         .food-content .override-button:hover {
+         .reg-btns .override-button:hover {
               background-color: #ffffff!important;
           }
 
-          .food-content .button-half-page {
+          .reg-btns .button-half-page {
             width: 49%!important;
           }
             
@@ -228,7 +228,7 @@ const Menu = ({ menuImage }) => {
             max-width: 100%;
         }
 
-        .food-content .button-half-page {
+        .reg-btns .button-half-page {
             width: 98%!important;
           }
 
@@ -306,8 +306,8 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
             />
           </div>
 
-          <div className="nocturn override food-content">
-           <div className="override-buttons-wrapper explore-btns">
+          <div className="nocturn override reg-btns">
+           <div className="override-buttons-wrapper">
               <div className="button-half-page">
                  <a target="_blank" href="https://www.little-portland.com/thetent" class="override-button">EXPLORE THE TENT</a>
              </div>
