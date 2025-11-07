@@ -238,16 +238,6 @@ const Menu = ({ menuImage }) => {
 
              <img src="/images/food/food_page_middle.png" alt="The Tent Food" width="100%" />
 
-            <HoverImageLink
-              className="concept-pack"
-              href="/docs/dining-concept-pack.pdf"
-              img="/images/food/concept-pack-btn.png"
-              hoverImg="/images/food/concept-pack-btn-hover.png"
-              aspect="871 / 120"
-              ariaLabel="Dining Concept pack"
-              target="_blank"
-            />
-
          </div>
 
           <div className="nocturn override">
