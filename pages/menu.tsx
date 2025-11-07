@@ -21,11 +21,10 @@ const Menu = ({ menuImage }) => {
             src={"/images/sample-menu-new.png"}
             alt={menuImage.title}
             className={"image"}
-            width={menuImage.width} //automatically provided
-            height={menuImage.height} //automatically provided
             blurDataURL={"/images/sample-menu-new.png"} //automatically provided
             placeholder="blur" // Optional blur-up while loading
           />
+
         )}
       </CenterContainer>
     </>
