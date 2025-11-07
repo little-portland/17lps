@@ -121,6 +121,26 @@ const Menu = ({ menuImage }) => {
           .img-grid {
             margin-bottom: 40px!important;
           }
+
+          .food-content .override-button {
+              font-family: Helvetica, sans-serif;
+              font-weight: 900;
+              background-color: #aacc33 !important;
+              font-size: 30px;
+              color: #000 !important;
+              border: none;
+              font-size: 25px;
+              border-radius: 50px;
+              padding: 10px 15px;
+          }
+
+         .food-content .override-button:hover {
+              background-color: #ffffff!important;
+          }
+
+          .food-content .button-half-page {
+            width: 50%!important;
+          }
             
             .override-buttons-wrapper .column {
                 flex: 1;
