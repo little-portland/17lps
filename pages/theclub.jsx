@@ -126,9 +126,9 @@ const Menu = ({ menuImage }) => {
               font-family: Helvetica, sans-serif;
               font-weight: 900;
               background-color: #aacc33 !important;
-              font-size: 30px;
+              font-size: 25px;
               color: #000 !important;
-              border: none;
+              border: 0!important;
               font-size: 25px;
               border-radius: 50px;
               padding: 10px 15px;
@@ -139,7 +139,7 @@ const Menu = ({ menuImage }) => {
           }
 
           .food-content .button-half-page {
-            width: 50%!important;
+            width: 49%!important;
           }
             
             .override-buttons-wrapper .column {
@@ -227,6 +227,10 @@ const Menu = ({ menuImage }) => {
             flex: 100%;
             max-width: 100%;
         }
+
+        .food-content .button-half-page {
+            width: 98%!important;
+          }
 
             }`}
         </style>
