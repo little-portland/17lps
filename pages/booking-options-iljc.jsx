@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MARCELINA, NATHAN COLINET</h3>
-              <h3><span>STUDIO <b>//</b> </span>Anna Wall, MAYA JANE COLES, BECCA OGT, Rob Shields</h3>
+              <h3><span>STUDIO <b>//</b> </span>Anna Wall, BECCA OGT, MAYA JANE COLES, Rob Shields</h3>
             </div>
         </div>
 
