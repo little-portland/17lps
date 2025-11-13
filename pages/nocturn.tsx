@@ -109,6 +109,21 @@ const Menu = ({ menuImage }) => {
                      </div>
                    </a>
                  </div>
+                 <div className="column">
+                     <img className="flyer" src="/images/nocturn/Nocturn_afterhours_new.gif" />
+                   </a>
+                 </div>
+           </div>
+
+          <div className="row">
+                 <div className="column">
+                   <a href="https://sevn.ly/xn6MyA5b" target="_blank">
+                     <img className="flyer" src="/images/nocturn/17LPS_Nocturn_resonance_new.png" />
+                     <div className="nocturn-text-wrapper"> 
+                       <p className="nocturn-text page-link">Book Tickets &#8594;</p>
+                     </div>
+                   </a>
+                 </div>
            </div>
               
          </div> 
