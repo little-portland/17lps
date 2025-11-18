@@ -24,9 +24,9 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category"><span className="day">Nocturn</span> Live</h1>
+        <h1 className="event-name desktop-only day-category"><span className="day">Nocturn</span>Resonance</h1>
         
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Nocturn</span> Live</h1>
+        <h1 className="event-name mobile-only cat"><span className="cat-day">Nocturn</span> Resonance</h1>
 
         <div className="event-info">
             <div class="info date">
@@ -34,7 +34,9 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>OLI SILVA, Semoa</h3>
-              <h3><span>STUDIO <b>//</b> </span>HARRI PEPPER B2B LUKAS WIGFLEX</h3>
+              <h3><span>STUDIO <b>//</b> </span>NOCTURN RESONANCE x DOYENNE: 
+GUANYIN’S CAVE
+                <p>HARRI PEPPER B2B LUKAS WIGFLEX</p></h3>
             </div>
         </div>
 
