@@ -34,9 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>OLI SILVA, Semoa</h3>
-              <h3><span>STUDIO <b>//</b> </span>NOCTURN RESONANCE x DOYENNE: 
-GUANYIN’S CAVE
-                <p>HARRI PEPPER B2B LUKAS WIGFLEX</p></h3>
+              <h3><span>STUDIO <b>//</b> HARRI PEPPER B2B LUKAS WIGFLEX</h3>
             </div>
         </div>
 
