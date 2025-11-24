@@ -30,7 +30,7 @@ const BookingOptions = () => {
 
         <div className="event-info">
             <div class="info date">
-              <h2><span>THU</span>20 Nov</h2>
+              <h2><span>THU</span>18 DEC</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>CLUB SHERBET, PAUL DAY</h3>
