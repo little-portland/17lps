@@ -1898,8 +1898,6 @@ html, body {
 }
 
 .new-button-wrapper .noc-time {
-  font-style: italic;
-  font-size: 2rem!important;
   margin-top: 10px;
 }
 
@@ -2496,10 +2494,8 @@ html, body {
   }
 
   .new-button-wrapper .noc-time {
-    font-style: italic;
     margin-top: 0!important;
     margin-bottom: 10px;
-    font-size: 1.2rem !important;
   }
 
   .dining-con {
