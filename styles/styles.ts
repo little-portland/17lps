@@ -1895,7 +1895,7 @@ html, body {
   fill: currentColor; /* inherits the text color */
 }
 
-.noc-time {
+.new-button-wrapper .noc-time {
   font-style: italic;
   font-size: 2rem!important;
   margin-top: 10px;
@@ -2493,7 +2493,7 @@ html, body {
       margin: 5px 0px 0px 0px !important;
   }
 
-  .noc-time {
+  .new-button-wrapper .noc-time {
     font-style: italic;
     margin-top: 0!important;
     margin-bottom: 10px;
