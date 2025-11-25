@@ -24,9 +24,9 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category"><span className="day">Thursday</span> Underground</h1>
+        <h1 className="event-name desktop-only day-category"><span className="day">Nocturn</span> Ressonance</h1>
         
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Thursday</span> Underground</h1>
+        <h1 className="event-name mobile-only cat"><span className="cat-day">Nocturn</span> Ressonance</h1>
 
         <div className="event-info">
             <div class="info date">
@@ -36,6 +36,14 @@ const BookingOptions = () => {
               <h3><span>TENT <b>//</b> </span>Frederika, Semoa</h3>
               <h3><span>STUDIO <b>//</b> </span>HARRI PEPPER B2B LUKAS WIGFLEX</h3>
             </div>
+        </div>
+
+        <div className="button-wrapper new-button-wrapper mobile-only">
+          <Button classes="events-button ticketNew" btnType="hollow">
+            <a href="https://sevn.ly/xn6MyA5b" target="_blank">
+               NOCTURN TICKET <small>(includes free club entry)</small>
+            </a>
+          </Button>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
@@ -132,6 +140,14 @@ const BookingOptions = () => {
         </div>
 
         <div className="or desktop-only or-desktop"><h2>Or</h2></div>
+
+        <div className="button-wrapper new-button-wrapper desktop-only">
+          <Button classes="events-button ticketNew" btnType="hollow">
+            <a href="https://sevn.ly/xn6MyA5b" target="_blank">
+               NOCTURN TICKET <small>(includes free club entry)</small>
+            </a>
+          </Button>
+        </div>
 
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
