@@ -34,7 +34,7 @@ const BookingOptions = () => {
         <div className="book-wrapper">
           <div className="override-heading">
             <h2>CHOOSE DINNER OPTION</h2>
-            <p class="time mobile-only">Includes Free Club Entry</p>
+            <p class="time mobile-only">Includes Club Entry</p>
           </div>
           <div class="tags mobile-only"><h3><span>DINING CONCEPT: <span className="strongword">FUTURIST</span></span></h3></div>
 
@@ -58,7 +58,7 @@ const BookingOptions = () => {
             <Button classes="events-button new-events-button"  btnType="hollow">
               <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
-                <p class="time">Includes Free Club Entry</p>
+                <p class="time">Includes Club Entry</p>
                 <p class="details"><span>8:30PM</span></p>
                 <p class="btn-tagline">The Cosmic Experience</p>
                </a>
@@ -67,7 +67,7 @@ const BookingOptions = () => {
               <Button classes="events-button ticket"  btnType="hollow">
                 <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
                 <span class="space">CHEF’S STUDIO</span>
-                <p class="time">Includes Free Club Entry</p>
+                <p class="time">Includes Club Entry</p>
                 <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
                 <p class="btn-tagline">Where the heads dine</p>
                </a>
