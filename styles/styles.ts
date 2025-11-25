@@ -1518,6 +1518,11 @@ html, body {
     line-height: 25px;
 }
 
+.noc-time {
+  font-style: italic;
+  font-size: .8rem;
+}
+
 /* Category font size */
 .thursday .event-name {
   font-size: 6.5rem!important;
