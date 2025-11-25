@@ -1512,6 +1512,12 @@ html, body {
   --text-color: #000000;
 }
 
+.thursday .button-wrapper small {
+    font-size: 1rem;
+    display: block;
+    line-height: 25px;
+}
+
 /* Category font size */
 .thursday .event-name {
   font-size: 6.5rem!important;
