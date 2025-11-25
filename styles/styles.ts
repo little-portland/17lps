@@ -2403,6 +2403,12 @@ html, body {
         font-size: 2rem;
     }
 
+    .thursday .button-wrapper small {
+        font-size: .8rem;
+        line-height: 35px;
+        margin-top: -15px;
+    }
+
     .tags {
         margin: 0px auto 15px !important;
         width: 100% !important;
