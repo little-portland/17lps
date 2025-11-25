@@ -1516,6 +1516,8 @@ html, body {
     font-size: 1rem;
     display: block;
     line-height: 25px;
+    font-weight: 500;
+    font-style: italic;
 }
 
 /* Category font size */
