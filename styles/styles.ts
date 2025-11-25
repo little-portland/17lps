@@ -1518,11 +1518,6 @@ html, body {
     line-height: 25px;
 }
 
-.noc-time {
-  font-style: italic;
-  font-size: .8rem;
-}
-
 /* Category font size */
 .thursday .event-name {
   font-size: 6.5rem!important;
@@ -1898,6 +1893,12 @@ html, body {
   height: 1.4em;
   flex: 0 0 auto;
   fill: currentColor; /* inherits the text color */
+}
+
+.noc-time {
+  font-style: italic;
+  font-size: 2rem!important;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
@@ -2490,6 +2491,13 @@ html, body {
   body.saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
       display: inline-block !important;
       margin: 5px 0px 0px 0px !important;
+  }
+
+  .noc-time {
+    font-style: italic;
+    margin-top: 0!important;
+    margin-bottom: 10px;
+    font-size: 1.2rem !important;
   }
 
   .dining-con {
