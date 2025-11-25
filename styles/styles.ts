@@ -1899,6 +1899,7 @@ html, body {
 
 .new-button-wrapper .noc-time {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
@@ -2495,7 +2496,7 @@ html, body {
 
   .new-button-wrapper .noc-time {
     margin-top: -5px!important;
-    margin-bottom: 10px;
+    font-size: 1rem!important;
   }
 
   .dining-con {
