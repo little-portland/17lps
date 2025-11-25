@@ -41,7 +41,7 @@ const BookingOptions = () => {
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/xn6MyA5b" target="_blank">
-               NOCTURN TICKET <small>(includes free club entry)</small>
+               Nocturn Resonance X Doyenne <span className="noc-time">[19:30]</span> <small>(includes club entry)</small>
             </a>
           </Button>
         </div>
@@ -144,7 +144,7 @@ const BookingOptions = () => {
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/xn6MyA5b" target="_blank">
-               NOCTURN TICKET <small>(includes free club entry)</small>
+               Nocturn Resonance X Doyenne <span className="noc-time">[19:30]</span> <small>(includes club entry)</small>
             </a>
           </Button>
         </div>
