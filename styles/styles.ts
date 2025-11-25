@@ -2477,7 +2477,7 @@ html, body {
     .thursday .new-button-wrapper .ticketNew a,
     .friday .new-button-wrapper .ticketNew a,
     .saturday .new-button-wrapper .ticketNew a {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
 
   body.thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
