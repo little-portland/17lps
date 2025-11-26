@@ -110,7 +110,7 @@ const Menu = ({ menuImage }) => {
                    </a>
                  </div>
                  <div className="column">
-                     <img className="flyer" src="/images/nocturn/Nocturn_afterhours_new.gif" />
+                     <img className="flyer" src="/images/nocturn/Nocturn_afterhours_new_poster.gif" />
                  </div>
            </div>
 
