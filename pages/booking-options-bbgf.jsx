@@ -33,8 +33,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>06 Dec</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Harry Flowers, Steven Zika</h3>
-              <h3><span>STUDIO <b>//</b> </span>ALEX BRADLEY, PATO</h3>
+              <h3><span>TENT <b>//</b> </span>Harry Flowers, Steven Zika, Studio Batsumi </h3>
+              <h3><span>STUDIO <b>//</b> </span>Alex Bradley, HENRY, Pato </h3>
             </div>
         </div>
 
