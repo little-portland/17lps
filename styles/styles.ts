@@ -2419,7 +2419,7 @@ html, body {
         margin: 5px;
     }
 
-    .thursday .override-heading h2, .friday .override-heading h2, .saturday .override-heading h2 {
+    .thursday .override-heading h2, .friday .override-heading h2, .saturday .override-heading h2, .wednesday .override-heading h2 {
       font-size: 26px;
     } 
 
@@ -2433,7 +2433,8 @@ html, body {
 
     .thursday .mobile-only .menu-btn span,
     .friday .mobile-only .menu-btn span,
-    .saturday .mobile-only .menu-btn span {
+    .saturday .mobile-only .menu-btn span,
+    .wednesday .mobile-only .menu-btn span{
       color: #000!important;
     }
     
@@ -2444,6 +2445,7 @@ html, body {
     .thursday .override-heading .time,
     .friday .override-heading .time,
     .saturday .override-heading .time,
+    .wednesday .override-heading .time,
     .dinner-options  .override-heading .time {
       color: var(--accent-color);
       text-align: center;
