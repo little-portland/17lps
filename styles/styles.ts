@@ -2462,7 +2462,7 @@ html, body {
     }
 
     .wednesday #bookingOptions .artists h3:first-child {
-        margin-top: .7rem!important;
+        margin-top: .9rem!important;
         margin-bottom: 1rem!important;
     }
 
@@ -2551,7 +2551,8 @@ html, body {
     }
     .thursday .new-button-wrapper .ticketNew a,
     .friday .new-button-wrapper .ticketNew a,
-    .saturday .new-button-wrapper .ticketNew a {
+    .saturday .new-button-wrapper .ticketNew a,
+    .wednesday .new-button-wrapper .ticketNew a{
       font-size: 1rem;
     }
 
