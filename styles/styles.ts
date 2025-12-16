@@ -1259,6 +1259,11 @@ html, body {
 
 /* NEW INT STEP STYLES */
 
+.wednesday #bookingOptions .artists h3:first-child {
+    margin-top: 1.2rem;
+    margin-bottom: 0!important;
+}
+
 /* Common Styles using CSS Variables */
 .thursday, .friday, .saturday, .wednesday {
   --bg-color: initial;
@@ -2452,6 +2457,10 @@ html, body {
     .saturday .button-wrapper-new a span {
       color: #000!important;
       font-size: .8rem !important;
+    }
+
+    .wednesday #bookingOptions .artists h3:first-child {
+        margin-top: .7em;
     }
 
     .dinner-options .button-wrapper-new a span {
