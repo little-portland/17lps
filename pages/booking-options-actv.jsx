@@ -43,6 +43,15 @@ const BookingOptions = () => {
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
+
+          <a
+  href="https://sevn.ly/xPbxNJ1o"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="events-button ticketNew"
+>
+  CLUB ENTRY ONLY [10PM]
+</a>
         </div>
 
         <div className="or mobile-only"><h2>Or</h2></div>
