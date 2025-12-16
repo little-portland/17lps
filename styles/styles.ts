@@ -1406,7 +1406,7 @@ html, body {
 .wednesday .new-button-wrapper .events-button:hover .btn-tagline,
 .thursday .new-button-wrapper .ticketNew:hover a,
 .friday .new-button-wrapper .ticketNew:hover a,
-.saturday .new-button-wrapper .ticketNew:hover a
+.saturday .new-button-wrapper .ticketNew:hover a,
 .wednesday .new-button-wrapper .ticketNew:hover a {
   color: #000 !important;
 }
