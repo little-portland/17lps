@@ -1572,6 +1572,10 @@ html, body {
   font-size: 8rem!important;
 }
 
+.wednesday .event-name {
+  font-size: 8rem!important;
+}
+
 .btn-tagline {
     font-size: 0.9rem!important;
     border: 1px solid;
@@ -1615,6 +1619,11 @@ html, body {
     background-color: var(--accent-color);
   }
 
+  .wednesday .tags {
+    color: var(--bg-color)!important;
+    background-color: var(--accent-color);
+  }
+
   .thursday .tags h3 {
     color: var(--bg-color)!important;
     padding: 5px;
@@ -1630,7 +1639,12 @@ html, body {
     padding: 5px;
   }
 
-  .thursday .book-wrapper, .friday .book-wrapper, .saturday .book-wrapper {
+    .wednesday .tags h3 {
+    color: var(--bg-color)!important;
+    padding: 5px;
+  }
+
+  .thursday .book-wrapper, .friday .book-wrapper, .saturday .book-wrapper, .wednesday .book-wrapper {
     padding: 10px 5px 5px;
   }
   
@@ -1850,13 +1864,15 @@ html, body {
 
   .thursday .day-category,
   .friday .day-category,
-  .saturday .day-category {
+  .saturday .day-category,
+  .wednesday .day-category {
     display: block!important;
   }
   
   .thursday .day-category span,
   .friday .day-category span,
-  .saturday .day-category span {
+  .saturday .day-category span,
+  .wednesday .day-category span {
     display: block!important;
   }
 
@@ -1890,7 +1906,8 @@ html, body {
 
 .thursday .new-button-wrapper .events-button:hover span,
 .friday .new-button-wrapper .events-button:hover span,
-.saturday .new-button-wrapper .events-button:hover span {
+.saturday .new-button-wrapper .events-button:hover span,
+ .wednesday .new-button-wrapper .events-button:hover span {
   color: #000000!important;
 }
 
