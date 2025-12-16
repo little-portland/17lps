@@ -2460,7 +2460,8 @@ html, body {
     }
 
     .wednesday #bookingOptions .artists h3:first-child {
-        margin-top: .7em!important;
+        margin-top: .7rem!important;
+        margin-bottom: 1rem!important;
     }
 
     .dinner-options .button-wrapper-new a span {
