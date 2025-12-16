@@ -10,10 +10,10 @@ import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
   useEffect(() => {
-    document.body.classList.add("saturday");
+    document.body.classList.add("wednesday");
 
     return () => {
-      document.body.classList.remove("saturday");
+      document.body.classList.remove("wednesday");
     };
   }, []);
 
@@ -24,17 +24,16 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category disco-saturdays">Utopia<span className="day">Presents</span></h1>
+        <h1 className="event-name desktop-only day-category">NYE</h1>
         
-        <h1 className="event-name mobile-only cat">Utopia<span className="cat-day">Presents</span></h1>
+        <h1 className="event-name mobile-only cat">NYE</h1>
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>SAT</span>06 Dec</h2>
+              <h2><span>WED</span>31 Dec</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Harry Flowers, Steven Zika</h3>
-              <h3><span>STUDIO <b>//</b> </span>ALEX BRADLEY, PATO</h3>
+              <h3>Bas & Friends NYE Special</h3>
             </div>
         </div>
 
@@ -58,7 +57,7 @@ const BookingOptions = () => {
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-sat.svg" alt="The Tent Food" width="100%" /></div>
+         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-wed.svg" alt="The Tent Food" width="100%" /></div>
 
           <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
             <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
