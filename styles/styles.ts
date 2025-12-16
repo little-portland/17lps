@@ -1260,7 +1260,7 @@ html, body {
 /* NEW INT STEP STYLES */
 
 /* Common Styles using CSS Variables */
-.thursday, .friday, .saturday {
+.thursday, .friday, .saturday, .wednesday {
   --bg-color: initial;
   --text-color: initial;
   --accent-color: initial;
@@ -1269,20 +1269,23 @@ html, body {
 
 .thursday #bookingOptions,
 .friday #bookingOptions,
-.saturday #bookingOptions {
+.saturday #bookingOptions,
+.wednesday #bookingOptions{
   margin-bottom: 30px;
   top: 4%;
 }
 
 .thursday #bookingOptions .event-name,
 .friday #bookingOptions .event-name,
-.saturday #bookingOptions .event-name {
+.saturday #bookingOptions .event-name,
+.wednesday #bookingOptions .event-name{
   color: var(--accent-color);
 }
 
 .thursday #bookingOptions .event-info .info,
 .friday #bookingOptions .event-info .info,
-.saturday #bookingOptions .event-info .info {
+.saturday #bookingOptions .event-info .info,
+.wednesday #bookingOptions .event-info .info {
   color: var(--bg-color);
   background-color: var(--accent-color);
   border-radius: 5px;
@@ -1290,7 +1293,8 @@ html, body {
 
 .thursday .book-wrapper,
 .friday .book-wrapper,
-.saturday .book-wrapper {
+.saturday .book-wrapper,
+.wednesday .book-wrapper {
   background: var(--bg-color);
   border: 2px dotted var(--accent-color);
   border-radius: 5px;
@@ -1299,9 +1303,11 @@ html, body {
 .thursday .book-wrapper h3,
 .friday .book-wrapper h3,
 .saturday .book-wrapper h3,
+.wednesday .book-wrapper h3,
 .thursday h4,
 .friday h4,
-.saturday h4 {
+.saturday h4,
+.wednesday h4 {
   text-align: center;
   margin: 15px 0px -3px;
   color: var(--accent-color);
@@ -1309,7 +1315,8 @@ html, body {
 
 .thursday h4,
 .friday h4,
-.saturday h4 {
+.saturday h4,
+.wednesday h4{
   font-size: 1.5rem;
   margin: 0px!important;
   padding: 0px!important;
@@ -1317,20 +1324,23 @@ html, body {
 
 .thursday .override-heading h2,
 .friday .override-heading h2,
-.saturday .override-heading h2 {
+.saturday .override-heading h2,
+.wednesday .override-heading h2{
   color: var(--accent-color);
   font-size: 4rem;
 }
 
 .thursday .override-heading h2 span,
 .friday .override-heading h2 span,
-.saturday .override-heading h2 span {
+.saturday .override-heading h2 span,
+.wednesday .override-heading h2 span{
   font-style: italic;
 }
 
 .thursday .new-button-wrapper .events-button,
 .friday .new-button-wrapper .events-button,
-.saturday .new-button-wrapper .events-button {
+.saturday .new-button-wrapper .events-button,
+.wednesday .new-button-wrapper .events-button {
   background: #000;
   color: #fff !important;
   border: none;
@@ -1341,73 +1351,88 @@ html, body {
 
 .thursday .new-button-wrapper .events-button:hover,
 .friday .new-button-wrapper .events-button:hover,
-.saturday .new-button-wrapper .events-button:hover {
+.saturday .new-button-wrapper .events-button:hover,
+.wednesday .new-button-wrapper .events-button:hover {
   background: #fff!important;
   color: #000 !important;
 }
 
 .thursday .new-button-wrapper p,
 .friday .new-button-wrapper p,
-.saturday .new-button-wrapper p {
+.saturday .new-button-wrapper p,
+.wednesday .new-button-wrapper p {
   color: #fff !important;
 }
 
 .thursday .new-button-wrapper .events-button .space,
 .friday .new-button-wrapper .events-button .space,
 .saturday .new-button-wrapper .events-button .space,
+.wednesday .new-button-wrapper .events-button .space,
 .thursday .new-button-wrapper .events-button .time,
 .friday .new-button-wrapper .events-button .time,
 .saturday .new-button-wrapper .events-button .time,
+.wednesday .new-button-wrapper .events-button .time,
 .thursday .new-button-wrapper .events-button .details span,
 .friday .new-button-wrapper .events-button .details span,
 .saturday .new-button-wrapper .events-button .details span,
+.wednesday .new-button-wrapper .events-button .details span,
 .thursday .new-button-wrapper .ticketNew a,
 .friday .new-button-wrapper .ticketNew a,
-.saturday .new-button-wrapper .ticketNew a {
+.saturday .new-button-wrapper .ticketNew a,
+.wednesday .new-button-wrapper  .ticketNew a {
   color: #fff;
 }
 
 .thursday .new-button-wrapper .events-button:hover .space,
 .friday .new-button-wrapper .events-button:hover .space,
 .saturday .new-button-wrapper .events-button:hover .space,
+.wednesday .new-button-wrapper .events-button:hover .space,
 .thursday .new-button-wrapper .events-button:hover .time,
 .friday .new-button-wrapper .events-button:hover .time,
 .saturday .new-button-wrapper .events-button:hover .time,
+.wednesday .new-button-wrapper .events-button:hover .time,
 .thursday .new-button-wrapper .events-button:hover .details span,
 .friday .new-button-wrapper .events-button:hover .details span,
 .saturday .new-button-wrapper .events-button:hover .details span,
+.wednesday .new-button-wrapper .events-button:hover .details span,
 .thursday .new-button-wrapper .events-button:hover .btn-tagline,
 .friday .new-button-wrapper .events-button:hover .btn-tagline,
 .saturday .new-button-wrapper .events-button:hover .btn-tagline,
+.wednesday .new-button-wrapper .events-button:hover .btn-tagline,
 .thursday .new-button-wrapper .ticketNew:hover a,
 .friday .new-button-wrapper .ticketNew:hover a,
-.saturday .new-button-wrapper .ticketNew:hover a {
+.saturday .new-button-wrapper .ticketNew:hover a
+.wednesday .new-button-wrapper .ticketNew:hover a {
   color: #000 !important;
 }
 
 .thursday .book-wrapper .button-wrapper-bottom a span,
 .friday .book-wrapper .button-wrapper-bottom a span,
-.saturday .book-wrapper .button-wrapper-bottom a span {
+.saturday .book-wrapper .button-wrapper-bottom a span,
+.wednesday .book-wrapper .button-wrapper-bottom a span {
   color: #000 !important;
   font-size: 1rem!important;
 }
 
 .thursday .book-wrapper .button-wrapper-bottom a span:hover, 
 .friday .book-wrapper .button-wrapper-bottom a span:hover, 
-.saturday .book-wrapper .button-wrapper-bottom a span:hover {
+.saturday .book-wrapper .button-wrapper-bottom a span:hover,
+.wednesday .book-wrapper .button-wrapper-bottom a span:hover {
   color: #fff !important;
 }
 
 .thursday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
 .friday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
-.saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
+.saturday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2),
+.wednesday .button-wrapper.new-button-wrapper.button-wrapper-bottom a:nth-of-type(2) {
   display: inline;
   margin: 60px;
 }
 
 /*.thursday .button-wrapper-bottom,
 .friday .button-wrapper-bottom,
-.saturday .button-wrapper-bottom {
+.saturday .button-wrapper-bottom,
+.wednesday .button-wrapper-bottom {
   margin-top: 10px;
   display: inline-block !important;
   text-align: center !important;
@@ -1416,7 +1441,8 @@ html, body {
 
 .thursday .button-wrapper-bottom a span,
 .friday .button-wrapper-bottom a span,
-.saturday .button-wrapper-bottom a span{
+.saturday .button-wrapper-bottom a span,
+.wednesday .button-wrapper-bottom a span {
     margin-top: 10px;
     text-align: center !important;
     font-size: 1.2rem !important;
@@ -1424,7 +1450,8 @@ html, body {
 
 .thursday .day,
 .friday .day,
-.saturday .day {
+.saturday .day,
+.wednesday .day {
     font-size: 2rem !important;
     text-decoration: underline;
     font-style: italic; 
@@ -1432,13 +1459,15 @@ html, body {
 
 .thursday .view-menu a span,
 .friday .view-menu a span,
-.saturday .view-menu a span {
+.saturday .view-menu a span,
+.wednesday  .view-menu a span {
   color: #ffffff;
 }
 
 .thursday .view-menu,
 .friday .view-menu,
 .saturday .view-menu,
+.wednesday  .view-menu, 
 .dinner-options .view-menu {
     margin-bottom: 7px !important;
     padding: 5px!important;
@@ -1447,6 +1476,7 @@ html, body {
 .thursday .button-wrapper-new,
 .friday .button-wrapper-new,
 .saturday .button-wrapper-new,
+.wednesday .button-wrapper-new,
 .dinner-options .button-wrapper-new {
     display: flex
     gap: 7px;
@@ -1457,6 +1487,7 @@ html, body {
 .thursday .button-wrapper-new a span,
 .friday .button-wrapper-new a span,
 .saturday .button-wrapper-new a span,
+.wednesday .button-wrapper-new a span,
 .dinner-options .button-wrapper-new a span {
   color: #000!important;
   font-size: .9rem !important;
@@ -1469,6 +1500,7 @@ html, body {
 .thursday .button-wrapper-new a:hover span,
 .friday .button-wrapper-new a:hover span,
 .saturday .button-wrapper-new a:hover span,
+.wednesday .button-wrapper-new a:hover span,
 .dinner-options .button-wrapper-new a:hover span {
   color: #fff!important;
 }
@@ -1479,7 +1511,8 @@ html, body {
 
 .thursday .btn-tagline,
 .friday .btn-tagline,
-.saturday .btn-tagline {
+.saturday .btn-tagline,
+.wednesday .btn-tagline {
   font-size: 0.9rem!important;
 }
 
@@ -1509,6 +1542,12 @@ html, body {
 .saturday {
   --bg-color: #ff00e5; 
   --accent-color: #ccfe35;
+  --text-color: #000000;
+}
+
+.wednesday {
+  --bg-color: #7dfbfc;
+  --accent-color: rgb(250, 72, 130);
   --text-color: #000000;
 }
 
