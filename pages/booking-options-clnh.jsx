@@ -30,7 +30,7 @@ const BookingOptions = () => {
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>FRI</span>09 Dec</h2>
+              <h2><span>FRI</span>09 JAN</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Tim Lang, VALENTINA PAHOR</h3>
