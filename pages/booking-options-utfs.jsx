@@ -10,10 +10,10 @@ import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
   useEffect(() => {
-    document.body.classList.add("saturday");
+    document.body.classList.add("friday");
 
     return () => {
-      document.body.classList.remove("saturday");
+      document.body.classList.remove("friday");
     };
   }, []);
 
@@ -24,29 +24,28 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-
-        <h1 className="event-name desktop-only day-category disco-saturdays">Airfunk<span className="day">Presents</span></h1>
+        <h1 className="event-name desktop-only day-category"><span className="day">Friday</span> Residents</h1>
         
-        <h1 className="event-name mobile-only cat">Airfunk<span className="cat-day">Presents</span></h1>
+        <h1 className="event-name mobile-only cat"><span className="cat-day">Friday</span> Residents</h1>
 
         <div className="event-info">
-            <div class="info date">
-              <h2><span>SAT</span>25 Sep</h2>
+           <div class="info date">
+              <h2><span>FRI</span>30 JAN</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>MAYBE LAURA, SON OF PAUL</h3>
-              <h3><span>STUDIO <b>//</b> </span>DER, MAXIME DB, TARDE LOCO</h3>
+              <h3><span>TENT <b>//</b> </span>GIACOMO XL, MR SHIVER</h3>
+              <h3><span>STUDIO <b>//</b> </span>DJEBALI</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xHWMwyQw" target="_blank">
+            <a href="https://sevn.ly/xe4w1O7m" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
         </div>
-        
+
         <div className="or mobile-only"><h2>Or</h2></div>
 
         <div className="book-wrapper">
@@ -59,7 +58,7 @@ const BookingOptions = () => {
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-sat.svg" alt="The Tent Food" width="100%" /></div>
+         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-fri.svg" alt="The Tent Food" width="100%" /></div>
 
           <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
             <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
@@ -77,7 +76,7 @@ const BookingOptions = () => {
 
          <div class="button-wrapper new-button-wrapper desktop-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-10-25&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-01-30&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>8:30PM</span></p>
@@ -106,7 +105,7 @@ const BookingOptions = () => {
          
          <div class="button-wrapper new-button-wrapper mobile-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-10-25&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-01-30&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="details"><span>8:30PM</span></p>
                 <p class="btn-tagline">The Cosmic Experience</p>
@@ -133,10 +132,10 @@ const BookingOptions = () => {
         </div>
 
         <div className="or desktop-only or-desktop"><h2>Or</h2></div>
-
+        
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xHWMwyQw" target="_blank">
+            <a href="https://sevn.ly/xe4w1O7m" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
