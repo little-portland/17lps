@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Tim Lang, VALENTINA PAHOR</h3>
-              <h3><span>STUDIO <b>//</b> </span>TONY SERBAN</h3>
+              <h3><span>STUDIO <b>//</b> </span>David Jach, Tony Serban</h3>
             </div>
         </div>
 
