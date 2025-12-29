@@ -1261,8 +1261,8 @@ html, body {
 
 .wednesday #bookingOptions .artists h3:first-child {
     /*margin-top: 1.2rem;
-    margin-bottom: 0!important;*/
-    font-weight: bold;
+    margin-bottom: 0!important;
+    font-weight: bold;*/
 }
 
 /* Common Styles using CSS Variables */
