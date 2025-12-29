@@ -33,7 +33,8 @@ const BookingOptions = () => {
               <h2><span>WED</span>31 Dec</h2>
             </div>
             <div class="info artists">
-              <h3>Bas & Friends NYE Special</h3>
+              <h3><span>TENT <b>//</b> </span>Paul Day</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas & Friends NYE Special</h3>
             </div>
         </div>
 
