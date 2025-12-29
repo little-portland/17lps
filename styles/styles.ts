@@ -1260,8 +1260,8 @@ html, body {
 /* NEW INT STEP STYLES */
 
 .wednesday #bookingOptions .artists h3:first-child {
-    margin-top: 1.2rem;
-    margin-bottom: 0!important;
+    /*margin-top: 1.2rem;
+    margin-bottom: 0!important;*/
     font-weight: bold;
 }
 
@@ -2463,8 +2463,8 @@ html, body {
     }
 
     .wednesday #bookingOptions .artists h3:first-child {
-        margin-top: .9rem!important;
-        margin-bottom: 1rem!important;
+        /*margin-top: .9rem!important;
+        margin-bottom: 1rem!important;*/
     }
 
     .dinner-options .button-wrapper-new a span {
