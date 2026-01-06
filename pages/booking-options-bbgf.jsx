@@ -32,8 +32,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>10 JAN</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Li Causi</h3>
-              <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY, NEPOTEK</h3>
+              <h3><span>TENT <b>//</b> </span>Li Caussi, Natalie K Marsland</h3>
+              <h3><span>STUDIO <b>//</b> </span>Jacob Husley, Kane Solo, Napotek</h3>
             </div>
         </div>
 
