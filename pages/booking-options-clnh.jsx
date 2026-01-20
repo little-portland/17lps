@@ -30,7 +30,7 @@ const BookingOptions = () => {
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>FRI</span>06 JAN</h2>
+              <h2><span>FRI</span>06 FEB</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>NATALIA ESCOBA, SAM KARAM</h3>
