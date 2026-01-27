@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MAYBE LAURA, TONY SERBAN</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLIN, CARL CRAIG, Harri Pepper</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, CARL CRAIG, Harri Pepper</h3>
             </div>
         </div>
 
