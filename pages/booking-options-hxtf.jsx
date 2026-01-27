@@ -33,7 +33,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>FREDERIKA, Oli Silva</h3>
-              <h3><span>STUDIO <b>//</b> </span>DAVID TRIANA & KARIM UNDER, JONNY ROCK B2B ROB MELLO</h3>
+              <h3><span>STUDIO <b>//</b> </span>DAVID TRIANA B2B KARIM UNDER, JONNY ROCK B2B ROB MELLO</h3>
             </div>
         </div>
 
