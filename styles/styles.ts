@@ -44,7 +44,7 @@ html, body {
  //scene filter styles
 
  .scene-filter .sc-1ae2617-0,
- .sc-1ae2617-0 div {
+ .scene-filter .sc-1ae2617-0 div {
     filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
