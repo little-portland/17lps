@@ -84,7 +84,7 @@ export default function LayoutTestPage() {
         <div className="eat-note dance-popup">
           <div>
           <div className="cat-wrapper">
-            <div class="cat-scroll">
+            <div classname="cat-scroll">
               <h1 className="dance-title">THE CLUB</h1>
               <h2>Open Thursday to Saturday</h2>
               <h3 className="open-time">FROM 10PM</h3>
