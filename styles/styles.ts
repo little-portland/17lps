@@ -43,9 +43,16 @@ html, body {
 
  //scene filter styles
 
- .scene-filter .sc-1ae2617-0,
- .scene-filter .sc-1ae2617-0 div {
-    filter: grayscale(100%) contrast(300%) brightness(1);
+.scene-layout {
+  position: relative; /* positioning context */
+  width: 100%;
+  height: 100%;
+}
+
+.scene-filter {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
  .hollow-btn {
