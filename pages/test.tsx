@@ -42,7 +42,9 @@ export default function LayoutTestPage() {
         main={
           <>
             <AnimatePresence>
-              <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
+              <div className="scene-filter">
+                  <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
+              </div>
             </AnimatePresence>
 
             {/* 🟡 Test Button Overlay */}
