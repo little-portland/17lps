@@ -7,6 +7,7 @@ import useDeviceDetect from "@utils/useDeviceDetect";
 
 //final svg
 import FinalSvg from "../../finalSvg";
+import FinalSvgTest from "../../finalSvg.test";
 import { useUI } from "@components/UX/context";
 
 //Styles
@@ -33,7 +34,14 @@ import bullfrog6 from "public/overlays/BULLFROG_06.json";
 import bullfrog7 from "public/overlays/BULLFROG_07_with_divider.json";
 import bullfrog8 from "public/overlays/BULLFROG_08.json";
 
-const AnimationLayer = () => {
+type AnimationLayerProps = {
+  isTestPage?: boolean;
+};
+
+const AnimationLayer = ({ isTestPage }: AnimationLayerProps) => {
+
+  const SvgComponent = isTestPage ? FinalSvgTest : FinalSvg;
+
   //Refs
   const overlayRef = useRef<HTMLDivElement>();
   const plantLeftRef = useRef<any>();
@@ -319,11 +327,11 @@ const AnimationLayer = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2, delay: 0.1 }}
           >
-            <FinalSvg
-              openLineup={testHandler}
-              openMenu={openMenu}
-              openHire={openHire}
-            />
+              <SvgComponent
+                openLineup={testHandler}
+                openMenu={openMenu}
+                openHire={openHire}
+              />
             {/* <button onClick={testHandler}>HELLO</button> */}
           </motion.div>
         </>
