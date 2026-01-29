@@ -55,7 +55,10 @@ html, body {
   filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
-.scene-filter > div > div:last-child {
+.scene-filter svg g[data-id="eat"],
+.scene-filter svg g[data-id="hire"],
+.scene-filter svg g[data-id="events"],
+.scene-filter svg g[data-id="dance"]{
   display: none;
 }
 
