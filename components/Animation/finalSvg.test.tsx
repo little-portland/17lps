@@ -4352,7 +4352,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         id="dance"
         data-id="dance"
         style={{
-          cursor: "pointer",
+          cursor: "default",
           padding: "16px",
           opacity: 1,
           transform: "translateX(-20px) translateY(-15px)",
@@ -4372,7 +4372,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
       // Invisible Dance Box
       <g
         style={{
-          cursor: "pointer",
+          cursor: "default",
           padding: "16px",
           opacity: 0,
           transform: "translateX(-20px) translateY(-15px)",
@@ -4387,7 +4387,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         id="events"
         data-id="events"
         style={{
-          cursor: "pointer",
+          cursor: "default",
           padding: "16px",
           // scale: "200%",
           //visual fix:
@@ -4454,7 +4454,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
             id="eat"
             data-id="eat"
             style={{
-              cursor: "pointer",
+              cursor: "default",
               padding: "16px",
               // scale: "200%",
               opacity: 0,
@@ -4470,7 +4470,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         id="eat"
         data-id="eat"
         style={{
-          cursor: "pointer",
+          cursor: "default",
           opacity: 1,
         }}
       >
@@ -4486,7 +4486,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
     // Invisible Eat Box
     <g
       style={{
-        cursor: "pointer",
+        cursor: "default",
         padding: "16px",
         opacity: 0,
       }}
@@ -4500,7 +4500,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
       id="hire"
       data-id="hire"
       style={{
-        cursor: "pointer",
+        cursor: "default",
         padding: "16px",
         opacity: 1,
       }}
@@ -4519,7 +4519,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
     // Invisible Hire Box
     <g
       style={{
-        cursor: "pointer",
+        cursor: "default",
         padding: "16px",
         opacity: 0,
       }}
