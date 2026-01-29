@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import Layout from "@components/Layout/Layout-old";
 import { AnimatePresence } from "framer-motion";
 import Animation from "@components/Animation";
