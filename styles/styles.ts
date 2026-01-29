@@ -60,8 +60,9 @@ html, body {
 .scene-filter svg g[data-id="eat"],
 .scene-filter svg g[data-id="hire"],
 .scene-filter svg g[data-id="dance"] {
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0!important;
+  pointer-events: none!important;
+  display: none!important;
 }
 
  .hollow-btn {
