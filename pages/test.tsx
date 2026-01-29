@@ -37,6 +37,22 @@ export default function LayoutTestPage() {
   const { isLoaded, setLoaded } = useLoaded();
   const [showDanceModal, setShowDanceModal] = useState(false);
 
+  useEffect(() => {
+  // save previous body styles
+  const prevBg = document.body.style.backgroundColor;
+  const prevColor = document.body.style.color;
+
+  // apply white body for this page
+  document.body.style.backgroundColor = "#fff";
+  document.body.style.color = "#000";
+
+  // cleanup on unmount
+  return () => {
+    document.body.style.backgroundColor = prevBg;
+    document.body.style.color = prevColor;
+  };
+}, []);
+
   return (
     <>
       <Layout
