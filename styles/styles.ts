@@ -55,11 +55,12 @@ html, body {
   filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
-.scene-filter svg g[data-id="eat"],
-.scene-filter svg g[data-id="hire"],
-.scene-filter svg g[data-id="events"],
-.scene-filter svg g[data-id="dance"]{
-  display: none;
+.scene-filter svg g[data-id="dance"] > * ,
+.scene-filter svg g[data-id="eat"] > * ,
+.scene-filter svg g[data-id="hire"] > * ,
+.scene-filter svg g[data-id="events"] > * {
+  opacity: 0;
+  pointer-events: none;
 }
 
  .hollow-btn {
