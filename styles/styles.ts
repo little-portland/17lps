@@ -52,15 +52,13 @@ html, body {
 .scene-filter {
   width: 100%;
   height: 100%;
-}
-
-.scene-filter svg {
   filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
+/*
 .scene-filter div > div:last-child {
   display: none;
-}
+}*/
 
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
