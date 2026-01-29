@@ -55,7 +55,7 @@ html, body {
   filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
-.scene-filter svg g[style*="cursor: pointer"]:not([data-id]) {
+.scene-filter svg g:has(+ g[data-id]) {
   opacity: 0;
   pointer-events: none;
 }
