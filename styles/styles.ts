@@ -55,9 +55,14 @@ html, body {
   filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
-.scene-filter svg g:has(+ g[data-id]) {
+.scene-filter svg g:nth-last-of-type(-n+7) {
   opacity: 0;
   pointer-events: none;
+}
+
+.scene-filter svg g[data-id="events"] {
+  opacity: 1;
+  pointer-events: auto;
 }
 
  .hollow-btn {
