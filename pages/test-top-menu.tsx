@@ -42,8 +42,10 @@ export default function LayoutTestPage() {
         main={
           <>
             <AnimatePresence>
-              <div className="scene-filter">
+              <div className="scene-layout">
+                <div className="scene-filter">
                   <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
+                </div>
               </div>
             </AnimatePresence>
 
