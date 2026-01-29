@@ -46,32 +46,6 @@ export default function LayoutTestPage() {
                   <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
               </div>
             </AnimatePresence>
-
-            {/* 🟡 Test Button Overlay */}
-            <div
-              style={{
-                position: "fixed",
-                top: "2rem",
-                right: "2rem",
-                zIndex: 9999,
-                background: "#000",
-                padding: "0.75rem 1.25rem",
-                borderRadius: "8px",
-              }}
-            >
-              <button
-                onClick={() => setShowDanceModal(true)}
-                style={{
-                  color: "#fff",
-                  fontSize: "1rem",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                Open DANCE popup
-              </button>
-            </div>
           </>
         }
         eatItem={mockEatItem}
