@@ -41,6 +41,13 @@ html, body {
   padding: 0;
  }
 
+ //scene filter styles
+
+ .scene-filter .sc-1ae2617-0,
+ .sc-1ae2617-0 div {
+    filter: grayscale(100%) contrast(300%) brightness(1);
+}
+
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
  }
