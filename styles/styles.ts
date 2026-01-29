@@ -55,16 +55,14 @@ html, body {
   filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
-/* Keep EVENTS interactive 
+/* Keep EVENTS interactive */
 .scene-filter svg g[data-id="events"],
 .scene-filter svg g[data-id="eat"],
 .scene-filter svg g[data-id="hire"],
 .scene-filter svg g[data-id="dance"] {
-  opacity: 1!important;
+  opacity: 0;
   pointer-events: none;
-  fill: #ffffff!important;
-  cursor: default!important;
-}*/
+}
 
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
