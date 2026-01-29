@@ -22,10 +22,17 @@ import { useLoaded } from "store/context";
 //Styles
 import { SvgContainer } from "./styles";
 
-const Animation: React.FC<{
+type AnimationProps = {
   isLoaded: boolean;
   setLoaded: (value: boolean) => void;
-}> = ({ isLoaded, setLoaded }) => {
+  isTestPage?: boolean;
+};
+
+const Animation: React.FC<AnimationProps> = ({
+  isLoaded,
+  setLoaded,
+  isTestPage,
+}) => {
   //UI Handlers
   const { displayLineup, closeLineup, closeMenu } = useUI();
   const { canvasState, setCanvasState } = useLoaded();
@@ -131,7 +138,9 @@ const Animation: React.FC<{
           </>
         )}
       </SvgContainer>
-      {isLoaded && !isMobile && <AnimationLayer />}
+      {isLoaded && !isMobile && (
+        <AnimationLayer isTestPage={isTestPage} />
+      )}
     </>
   );
 };
