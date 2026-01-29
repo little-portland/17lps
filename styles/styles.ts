@@ -52,6 +52,9 @@ html, body {
 .scene-filter {
   width: 100%;
   height: 100%;
+}
+
+.scene-filter svg {
   filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
