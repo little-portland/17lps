@@ -93,29 +93,31 @@ export default function LayoutTestPage() {
                 height="500"
                 preserveAspectRatio="xMidYMid meet"
               
-                /* HARD HIDE to prevent flash */
                 style={{
-                  visibility: "hidden",
-                  transformBox: "fill-box",
-                  transformOrigin: "50% 100%",
+                  visibility: "hidden",        // prevents flash
+                  transformBox: "fill-box",    // REQUIRED for SVG
+                  transformOrigin: "50% 100%", // bottom-center grow
                 }}
               
                 initial={{
                   scaleY: 0,
+                  opacity: 0,
                   visibility: "hidden",
                 }}
               
                 animate={{
                   scaleY: 1,
+                  opacity: 1,
                   visibility: "visible",
                 }}
               
                 transition={{
                   duration: 0.9,
-                  ease: "easeOut",
-                  delay: 1.6, // after scene animation
+                  ease: [0.2, 0.8, 0.2, 1.05], // tiny overshoot
+                  delay: 1.6,                 // after scene finishes
                 }}
               />
+
 
             </svg>
             
