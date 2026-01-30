@@ -105,9 +105,9 @@ html, body {
 }
 
 .scene-menu {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 20;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,22 +117,23 @@ html, body {
 
 .scene-menu-nav {
   display: flex;
-  flex-direction: column; /* 👈 THIS is the key */
+  flex-direction: column; /* vertical */
   gap: 32px;
   text-align: center;
 }
 
-.scene-menu a {
+.scene-menu-nav a {
   font-size: 24px;
-  text-decoration: none;
   color: #000;
+  text-decoration: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.scene-menu a:hover {
+.scene-menu-nav a:hover {
   opacity: 0.5;
   transform: translateY(-2px);
 }
+
 
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
