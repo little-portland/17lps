@@ -3,31 +3,38 @@ import Layout from "@components/Layout/Layout-old";
 import { AnimatePresence, motion } from "framer-motion";
 import Animation from "@components/Animation";
 import { useLoaded } from "../store/context";
-import Modal from "@components/UX/Modal";
+
+// ------------------------------------------------------------------
+// Mock data REQUIRED by Layout (do not remove)
+// ------------------------------------------------------------------
 
 const mockEatItem = {
   image: {
-    url: "",
-    width: 0,
-    height: 0,
-    description: "",
+    url: "/images/placeholder.jpg",
+    width: 1,
+    height: 1,
+    description: "placeholder",
   },
-  eMail: "",
-  phoneNumber: "",
+  eMail: "test@test.com",
+  phoneNumber: "000000000",
 };
 
 const mockHireItem = {
   image: {
-    url: "",
-    width: 0,
-    height: 0,
-    description: "",
+    url: "/images/placeholder.jpg",
+    width: 1,
+    height: 1,
+    description: "placeholder",
   },
-  eMail: "",
-  phoneNumber: "",
+  eMail: "test@test.com",
+  phoneNumber: "000000000",
 };
 
-export default function TestPage() {
+// ------------------------------------------------------------------
+// PAGE
+// ------------------------------------------------------------------
+
+export default function TestPageClient() {
   const { isLoaded, setLoaded } = useLoaded();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -46,27 +53,25 @@ export default function TestPage() {
   }, []);
 
   return (
-      <Layout
-        hideNav
-        eatItem={mockEatItem}
-        hireItem={mockHireItem}
-        main={
-          <Scene
-            isLoaded={isLoaded}
-            setLoaded={setLoaded}
-            menuOpen={menuOpen}
-            setMenuOpen={setMenuOpen}
-          />
-        }
-      />
+    <Layout
+      hideNav
+      eatItem={mockEatItem}
+      hireItem={mockHireItem}
+      main={
+        <Scene
+          isLoaded={isLoaded}
+          setLoaded={setLoaded}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+        />
       }
     />
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* SCENE COMPONENT (all hooks live here safely)                         */
-/* ------------------------------------------------------------------ */
+// ------------------------------------------------------------------
+// SCENE COMPONENT (all interactive logic lives here)
+// ------------------------------------------------------------------
 
 function Scene({
   isLoaded,
@@ -109,37 +114,7 @@ function Scene({
             height={500}
             style={{
               transformBox: "fill-box",
-              transformOrigin: "50% 100%", // bottom-center of obelisk
+              transformOrigin: "50% 100%", // bottom-center
             }}
             initial={{ scaleY: 0, opacity: 0 }}
             animate={{ scaleY: 1, opacity: 1 }}
-            transition={{
-              delay: 1.6,
-              duration: 0.9,
-              ease: [0.2, 0.8, 0.2, 1.05],
-            }}
-          />
-        </svg>
-      </div>
-
-      {/* MENU OVERLAY */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="scene-menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setMenuOpen(false)}
-          >
-            <nav onClick={(e) => e.stopPropagation()}>
-              <a href="/events">Events</a>
-              <a href="/artists">Artists</a>
-              <a href="/about">About</a>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
