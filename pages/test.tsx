@@ -83,8 +83,8 @@ export default function LayoutTestPage() {
             >
               <image
                 href="/images/obelisk.png"
-                x="2590"
-                y="1020"
+                x="2420"
+                y="620"
                 width="175"
                 height="500"
                 preserveAspectRatio="xMidYMid meet"
