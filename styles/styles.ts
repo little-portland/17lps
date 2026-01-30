@@ -105,17 +105,24 @@ html, body {
   pointer-events: none;
 }*/
 
+.scene-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .scene-wrapper {
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
-.scene-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
+.scene-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .scene-menu {
