@@ -96,13 +96,6 @@ html, body {
   filter: grayscale(100%) contrast(300%);
 }
 
-/* TEST PAGE ONLY — force animation visible on mobile */
-.scene-filter,
-.scene-filter * {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
 /*
 .scene-overlay {
   position: absolute;
