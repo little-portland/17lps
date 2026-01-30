@@ -55,6 +55,11 @@ html, body {
   filter: grayscale(100%) contrast(300%) brightness(1);
 }
 
+.scene-overlay {
+  filter: none;
+}
+
+
 /* Keep EVENTS interactive */
 .scene-filter svg g[data-id="events"],
 .scene-filter svg g[data-id="eat"],
