@@ -13,8 +13,8 @@ import { useUI } from "@components/UX/context";
 //Styles
 import { OverlayHover } from "./styles";
 
-//import staticWeb from "public/Web_assets/Static_Web.json";
-//import staticMobile from "public/Web_assets/still.json";
+import staticWeb from "public/Web_assets/Static_Web.json";
+import staticMobile from "public/Web_assets/still.json";
 //hover animations
 import plantLeft from "public/overlays/leftplant.json";
 import plantMid from "public/overlays/middleplant.json";
@@ -167,6 +167,14 @@ const AnimationLayer = ({ isTestPage }: AnimationLayerProps) => {
     <OverlayHover>
       {!isMobile ? (
         <>
+          <Lottie
+            lottieRef={ref}
+            animationData={staticWeb}
+            loop={false}
+            autoplay={true}
+            // aria-aria-labelledby="use lottie animation"
+          />
+
           <Lottie
             lottieRef={moonRef}
             animationData={moon}
@@ -329,6 +337,13 @@ const AnimationLayer = ({ isTestPage }: AnimationLayerProps) => {
         </>
       ) : (
         <>
+          <Lottie
+            lottieRef={ref}
+            animationData={staticMobile}
+            loop={false}
+            autoplay={true}
+            // aria-aria-labelledby="use lottie animation"
+          />
         </>
       )}
     </OverlayHover>
