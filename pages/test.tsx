@@ -5,6 +5,8 @@ import { AnimatePresence } from "framer-motion";
 import Animation from "@components/Animation";
 import { useLoaded } from "../store/context";
 
+import { motion } from "framer-motion";
+
 // Import Modal and test content
 import Modal from "@components/UX/Modal";
 import Image from "next/image";
@@ -67,29 +69,44 @@ export default function LayoutTestPage() {
                 isTestPage={true}
               />
             </div>
-          
-            {/* UNFILTERED OVERLAY */}
+        
+
             <svg
-              className="scene-overlay"
+              xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 3840 2160"
-              width="100%"
-              height="100%"
+              className="scene-overlay"
               style={{
                 position: "absolute",
                 top: 0,
                 left: 0,
+                width: "100%",
+                height: "100%",
                 pointerEvents: "none",
               }}
             >
-              <image
+              <motion.image
                 href="/images/obelisk.png"
                 x="2420"
                 y="620"
                 width="175"
                 height="500"
                 preserveAspectRatio="xMidYMid meet"
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{
+                  duration: 0.9,
+                  ease: "easeOut",
+                  delay: 1.6, // 👈 wait until other animations finish
+                }}
+                style={{
+                  transformOrigin: "50% 100%", // bottom center
+                }}
               />
             </svg>
+
+
+
+            
           </AnimatePresence>
 
           </>
