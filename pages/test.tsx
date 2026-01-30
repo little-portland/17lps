@@ -91,7 +91,7 @@ export default function LayoutTestPage() {
                 height={500}
                 style={{
                     transformBox: "fill-box",      // 🔴 THIS IS THE KEY
-                    transformOrigin: "100% 50%",   // bottom-center of the obelisk
+                    transformOrigin: "50% 0%",   // bottom-center of the obelisk
                   }}
                 initial={{
                   scaleY: 0,
