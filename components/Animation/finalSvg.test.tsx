@@ -944,32 +944,44 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
           </g>
         </g>
       </g>
-		<g id="obelisk" transform="translate(2590 1020)">
 
+
+		<g
+  id="obelisk"
+  transform="translate(2590 1020)"
+  style={{ transformOrigin: "bottom center" }}
+>
+  {/* glow */}
   <defs>
-    <filter id="obeliskGlow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="10" result="blur"/>
+    <filter
+      id="obeliskGlow"
+      x="-60%"
+      y="-60%"
+      width="220%"
+      height="220%"
+    >
+      <feGaussianBlur stdDeviation="12" result="blur" />
       <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
   </defs>
 
-  <!-- FRONT FACE (wide, tall, angled bottom) -->
+  {/* FRONT FACE — wide, tall, angled bottom */}
   <path
     d="
-      M 0    0
-      L 96  -48
-      L 96  -480
-      L 0   -432
+      M 0   0
+      L 96 -48
+      L 96 -480
+      L 0  -432
       Z
     "
-    fill="#FF8A3D"
+    fill="#FF8A2B"
     filter="url(#obeliskGlow)"
   />
 
-  <!-- SIDE FACE (narrower, darker) -->
+  {/* SIDE FACE — narrower, darker */}
   <path
     d="
       M 96  -48
@@ -978,10 +990,10 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
       L 96  -480
       Z
     "
-    fill="#E0661A"
+    fill="#E06A1A"
   />
 
-  <!-- TOP FACE (angled, warm highlight) -->
+  {/* TOP FACE — warm highlight (NOT white) */}
   <path
     d="
       M 0   -432
@@ -990,10 +1002,10 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
       L 48  -384
       Z
     "
-    fill="#FFB45E"
+    fill="#FFC266"
   />
-
 </g>
+
 
 
       <g
