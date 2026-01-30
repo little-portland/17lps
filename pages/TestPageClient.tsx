@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "@components/Layout/Layout-old";
 import { AnimatePresence, motion } from "framer-motion";
-import Animation from "@components/Animation";
+import AnimationDesktopOnly from "@components/Animation/AnimationDesktopOnly";
 import { useLoaded } from "../store/context";
 import Canvas from "@components/Canvas";
 
@@ -101,7 +101,7 @@ function Scene({
       >
         {/* FILTERED SVG */}
         <div className="scene-filter">
-          <Animation
+          <AnimationDesktopOnly
             isLoaded={isLoaded}
             setLoaded={setLoaded}
             isTestPage
