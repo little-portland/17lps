@@ -71,12 +71,12 @@ html, body {
 }
 
 /* Home menu */
-
+/*
 .scene-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
-}
+}*/
 
 .scene-content {
   position: relative;
@@ -96,13 +96,28 @@ html, body {
   filter: grayscale(100%) contrast(300%);
 }
 
+/*
 .scene-overlay {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
+}*/
+
+.scene-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }
+
+.scene-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 
 .scene-menu {
   position: fixed;
