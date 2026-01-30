@@ -73,13 +73,6 @@ const Animation: React.FC<AnimationProps> = ({
     }
   };
 
-    // 🔴 TEMP: disable intro animation completely
-  useEffect(() => {
-    setLoaded(true);
-    setCanvasState(false);
-  }, []);
-
-
   useEffect(() => {
     if (!isLoaded && !canvasState) {
       if (lottieRef.current && typeof lottieRef.current.playSegments === "function") {
@@ -98,14 +91,58 @@ const Animation: React.FC<AnimationProps> = ({
     }
   }, [isLoaded, canvasState]);
 
-return (
-  <>
-    {isLoaded && !isMobile && (
-      <AnimationLayer isTestPage={isTestPage} />
-    )}
-  </>
-);
+  return (
+    <>
+      <SvgContainer ref={wrapperRef}>
+        {!canvasState && !isMobile ? (
+          <Lottie
+            lottieRef={lottieRef}
+            animationData={houseAnimation}
+            loop={false}
+            autoplay={false}
+            onComplete={() => onAnimationCompleteHandler()}
+            // onEnterFrame={onAnimationStartHandler}
+          />
+        ) : (
+          <>
+            <Lottie
+              lottieRef={lottieRef}
+              animationData={mobileMain}
+              loop={false}
+              autoplay={false}
+              onComplete={() => onAnimationCompleteHandler()}
+              // onComplete={() => console.log("complete")}
+              // onEnterFrame={onAnimationStartHandler}
+            />
+            <div ref={opacityMobileRef}>
+              <Lottie
+                lottieRef={lottieRef2}
+                animationData={mobileInit}
+                loop={false}
+                autoplay={false}
+                onComplete={() => onMobileAnimationCompleteHandler()}
+                // onEnterFrame={onAnimationStartHandler}
+              />
+            </div>
 
+            {showMobileLoop && (
+              <Lottie
+                lottieRef={lottieRef3}
+                animationData={mobileLoop}
+                loop={true}
+                autoplay={true}
+                // onComplete={() => onAnimationCompleteHandler()}
+                // onEnterFrame={onAnimationStartHandler}
+              />
+            )}
+          </>
+        )}
+      </SvgContainer>
+      {isLoaded && !isMobile && (
+        <AnimationLayer isTestPage={isTestPage} />
+      )}
+    </>
+  );
 };
 
 export default Animation;
