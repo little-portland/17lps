@@ -84,6 +84,7 @@ export default function LayoutTestPage() {
                 pointerEvents: "none",
               }}
             >
+
               <motion.image
                 href="/images/obelisk.png"
                 x="2420"
@@ -91,21 +92,32 @@ export default function LayoutTestPage() {
                 width="175"
                 height="500"
                 preserveAspectRatio="xMidYMid meet"
-                initial={{ scaleY: 0 }}
-                animate={{ scaleY: 1 }}
+              
+                /* HARD HIDE to prevent flash */
+                style={{
+                  visibility: "hidden",
+                  transformBox: "fill-box",
+                  transformOrigin: "50% 100%",
+                }}
+              
+                initial={{
+                  scaleY: 0,
+                  visibility: "hidden",
+                }}
+              
+                animate={{
+                  scaleY: 1,
+                  visibility: "visible",
+                }}
+              
                 transition={{
                   duration: 0.9,
                   ease: "easeOut",
-                  delay: 1.6, // 👈 wait until other animations finish
-                }}
-                style={{
-                  transformOrigin: "50% 100%", // bottom center
+                  delay: 1.6, // after scene animation
                 }}
               />
+
             </svg>
-
-
-
             
           </AnimatePresence>
 
