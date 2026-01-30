@@ -4561,7 +4561,6 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
 	   
 </div>
 );
-  );
 };
 
 export default FinalSvg;
