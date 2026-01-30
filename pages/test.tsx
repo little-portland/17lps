@@ -110,6 +110,47 @@ export default function LayoutTestPage() {
 
               </svg>
 
+            <svg
+  className="scene-overlay"
+  viewBox="0 0 3840 2160"
+  width="100%"
+  height="100%"
+  style={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    pointerEvents: "none",
+  }}
+>
+  <defs>
+    <clipPath id="obelisk-clip">
+      <motion.rect
+        x={2590}
+        y={1020 + 500}     // start at the BASE
+        width={175}
+        height={0}
+        initial={{ height: 0 }}
+        animate={{ height: 500, y: 1020 }}
+        transition={{
+          duration: 0.9,
+          delay: 1.6,
+          ease: [0.2, 0.8, 0.2, 1.05],
+        }}
+      />
+    </clipPath>
+  </defs>
+
+  <image
+    href="/images/obelisk.png"
+    x={2590}
+    y={1020}
+    width={175}
+    height={500}
+    clipPath="url(#obelisk-clip)"
+  />
+</svg>
+
+
             
           </AnimatePresence>
 
