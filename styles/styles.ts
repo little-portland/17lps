@@ -70,6 +70,45 @@ html, body {
   display: none!important;
 }
 
+.scene-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.scene-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: filter 0.4s ease;
+}
+
+.scene-content.blurred {
+  filter: blur(12px);
+}
+
+.scene-menu-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene-menu {
+  background: white;
+  padding: 32px 40px;
+  border-radius: 14px;
+  display: flex;
+  gap: 32px;
+  font-size: 24px;
+}
+
+
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
  }
