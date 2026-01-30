@@ -104,6 +104,7 @@ function Scene({
         <svg
           viewBox="0 0 3840 2160"
           className="scene-overlay"
+          preserveAspectRatio="xMidYMid meet"
           aria-hidden
         >
           <motion.image
