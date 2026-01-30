@@ -26,22 +26,6 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
       }}
     >
 
-		<defs>
-		  <filter
-		    id="obeliskGlow"
-		    x="-50%"
-		    y="-50%"
-		    width="200%"
-		    height="200%"
-		  >
-		    <feGaussianBlur stdDeviation="6" result="blur" />
-		    <feMerge>
-		      <feMergeNode in="blur" />
-		      <feMergeNode in="SourceGraphic" />
-		    </feMerge>
-		  </filter>
-		</defs>
-
       <g
         data-id="tv-left"
         style={{
@@ -960,30 +944,57 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
           </g>
         </g>
       </g>
-		
-			<g
-			  id="obelisk"
-			  transform="translate(2590 1020)"
-			  style={{ transformOrigin: "bottom center" }}
-			>
-			  {/* Front face */}
-			  <path
-			    d="M0 0 L36 -18 L36 -140 L0 -122 Z"
-			    fill="#E83E8C"
-			  />
-			
-			  {/* Side face */}
-			  <path
-			    d="M36 -18 L72 0 L72 -122 L36 -140 Z"
-			    fill="#B72C6F"
-			  />
-			
-			  {/* Top face */}
-			  <path
-			    d="M0 -122 L36 -140 L72 -122 L36 -104 Z"
-			    fill="#FFD1E6"
-			  />
-			</g>
+		<g id="obelisk" transform="translate(2590 1020)">
+
+  <defs>
+    <filter id="obeliskGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- FRONT FACE (wide, tall, angled bottom) -->
+  <path
+    d="
+      M 0    0
+      L 96  -48
+      L 96  -480
+      L 0   -432
+      Z
+    "
+    fill="#FF8A3D"
+    filter="url(#obeliskGlow)"
+  />
+
+  <!-- SIDE FACE (narrower, darker) -->
+  <path
+    d="
+      M 96  -48
+      L 144   0
+      L 144 -432
+      L 96  -480
+      Z
+    "
+    fill="#E0661A"
+  />
+
+  <!-- TOP FACE (angled, warm highlight) -->
+  <path
+    d="
+      M 0   -432
+      L 96  -480
+      L 144 -432
+      L 48  -384
+      Z
+    "
+    fill="#FFB45E"
+  />
+
+</g>
+
 
       <g
         data-id="speaker-bottom-mid-left"
