@@ -725,31 +725,31 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
           <g id="XMLID_19_">
 
 			  <g
-			  id="obelisk"
-			  transform="translate(-24 -36) scale(1)"
-			  style={{
-			    transformOrigin: "bottom center",
-			  }}
-			>
-			  {/* Front face */}
-			  <path
-			    d="M0 0 L36 -18 L36 -120 L0 -102 Z"
-			    fill="#E83E8C"
-			    filter="url(#obeliskGlow)"
-			  />
-			
-			  {/* Side face */}
-			  <path
-			    d="M36 -18 L72 0 L72 -102 L36 -120 Z"
-			    fill="#B72C6F"
-			  />
-			
-			  {/* Top face */}
-			  <path
-			    d="M0 -102 L36 -120 L72 -102 L36 -84 Z"
-			    fill="#FFD1E6"
-			  />
-			</g>
+				  id="obelisk"
+				  transform="translate(2590 1020)"
+				  style={{
+				    transformOrigin: "bottom center",
+				  }}
+				>
+				  {/* Front face */}
+				  <path
+				    d="M0 0 L36 -18 L36 -140 L0 -122 Z"
+				    fill="#E83E8C"
+				  />
+				
+				  {/* Side face */}
+				  <path
+				    d="M36 -18 L72 0 L72 -122 L36 -140 Z"
+				    fill="#B72C6F"
+				  />
+				
+				  {/* Top face */}
+				  <path
+				    d="M0 -122 L36 -140 L72 -122 L36 -104 Z"
+				    fill="#FFD1E6"
+				  />
+				</g>
+
 
             <g>
               <g>
