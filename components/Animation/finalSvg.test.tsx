@@ -13,7 +13,6 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
   const ref = useRef<any>();
 
   return (
-   <div className="scene-wrapper" style={{ position: "relative", width: "100%", height: "100%" }}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="3840"
@@ -4533,33 +4532,6 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
 
     </svg>
 
-	   <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="3840"
-  height="2160"
-  viewBox="0 0 3840 2160"
-  className="scene-overlay"
-  style={{
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    pointerEvents: "none",
-  }}
->
-  <image
-    href="/images/obelisk.png"
-    x="2590"
-    y="1020"
-    width="175"
-    height="500"
-    preserveAspectRatio="xMidYMid meet"
-  />
-</svg>
-
-	   
-</div>
 );
 };
 
