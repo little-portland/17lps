@@ -155,6 +155,12 @@ html, body {
   transform: translateY(-2px);
 }
 
+@media (max-width: 768px) {
+  .scene-content {
+    transform: scale(1.5);
+    left: 10px;
+  }
+}
 
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
