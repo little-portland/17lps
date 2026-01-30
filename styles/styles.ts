@@ -115,7 +115,7 @@ html, body {
   background: rgba(255, 255, 255, 0.6);
 }
 
-.scene-menu nav {
+.scene-menu-nav {
   display: flex;
   flex-direction: column; /* 👈 THIS is the key */
   gap: 32px;
