@@ -5,6 +5,10 @@ import Animation from "@components/Animation";
 import { useLoaded } from "../store/context";
 import Modal from "@components/UX/Modal";
 
+// ✅ mock handlers required by Layout
+const mockEatItem = () => {};
+const mockHireItem = () => {};
+
 export default function TestPage() {
   const { isLoaded, setLoaded } = useLoaded();
   const [menuOpen, setMenuOpen] = useState(false);
