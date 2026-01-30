@@ -118,7 +118,6 @@ html, body {
   height: 100vh;
 }
 
-
 .scene-menu {
   position: fixed;
   inset: 0;
@@ -133,12 +132,12 @@ html, body {
 .scene-menu-nav {
   display: flex;
   flex-direction: column; /* vertical */
-  gap: 32px;
+  gap: 20px;
   text-align: center;
 }
 
 .scene-menu-nav a {
-  font-size: 24px;
+  font-size: 20px;
   color: #000;
   text-decoration: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
