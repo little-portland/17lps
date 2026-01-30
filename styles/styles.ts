@@ -117,16 +117,22 @@ html, body {
 
 .scene-menu nav {
   display: flex;
+  flex-direction: column; /* 👈 THIS is the key */
   gap: 32px;
+  text-align: center;
 }
 
 .scene-menu a {
   font-size: 24px;
   text-decoration: none;
   color: #000;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-
+.scene-menu a:hover {
+  opacity: 0.5;
+  transform: translateY(-2px);
+}
 
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
