@@ -83,6 +83,8 @@ export default function LayoutTestPage() {
                   pointerEvents: "none",
                 }}
               >
+
+
               <motion.image
                 href="/images/obelisk.png"
                 x={2420}
@@ -90,22 +92,32 @@ export default function LayoutTestPage() {
                 width={175}
                 height={500}
                 style={{
-                    transformOrigin: "50% 0%",   // bottom-center of the obelisk
-                  }}
-                initial={{
-                  scaleY: 0,
-                  opacity: 0,
+                  transformBox: "fill-box",
+                  transformOrigin: "50% 0%",
                 }}
-                animate={{
-                  scaleY: 1,
-                  opacity: 1,
+                initial={{ scaleY: 0, opacity: 0 }}
+                animate={{ scaleY: 1, opacity: 1 }}
+                whileHover={{
+                  filter: [
+                    "hue-rotate(0deg)",
+                    "hue-rotate(60deg)",
+                    "hue-rotate(120deg)",
+                    "hue-rotate(180deg)",
+                    "hue-rotate(240deg)",
+                    "hue-rotate(300deg)",
+                    "hue-rotate(360deg)",
+                  ],
                 }}
                 transition={{
-                  duration: 0.9,
-                  delay: 3, // after everything else finishes
-                  ease: [0.2, 0.8, 0.2, 1.05],
+                  scaleY: { duration: 0.9, delay: 1.6 },
+                  filter: {
+                    duration: 2,
+                    ease: "linear",
+                    repeat: Infinity,
+                  },
                 }}
               />
+
 
               </svg>
             
