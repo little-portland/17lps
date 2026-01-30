@@ -3,6 +3,7 @@ import Layout from "@components/Layout/Layout-old";
 import { AnimatePresence, motion } from "framer-motion";
 import Animation from "@components/Animation";
 import { useLoaded } from "../store/context";
+import Canvas from "@components/Canvas";
 
 // ------------------------------------------------------------------
 // Mock data REQUIRED by Layout (do not remove)
@@ -35,7 +36,7 @@ const mockHireItem = {
 // ------------------------------------------------------------------
 
 export default function TestPageClient() {
-  const { isLoaded, setLoaded } = useLoaded();
+  const { canvasState, setCanvasState, isLoaded, setLoaded } = useLoaded();
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Force white background for test page
@@ -53,6 +54,12 @@ export default function TestPageClient() {
   }, []);
 
   return (
+    <>
+      {/* ✅ THIS is what mobile was missing */}
+      {canvasState && !isLoaded && (
+        <Canvas removeSelf={setCanvasState} />
+      )}
+      
     <Layout
       hideNav
       eatItem={mockEatItem}
