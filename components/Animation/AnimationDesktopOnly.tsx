@@ -138,9 +138,9 @@ const Animation: React.FC<AnimationProps> = ({
           </>
         )}
       </SvgContainer>
-      {isLoaded && !isMobile && !isTestPage && (
-        <AnimationLayer />
-      )}
+    {isLoaded && !isMobile && (
+      <AnimationLayer isTestPage={isTestPage} />
+    )}
     </>
   );
 };
