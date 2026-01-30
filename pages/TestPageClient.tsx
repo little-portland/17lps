@@ -145,6 +145,6 @@ function Scene({
           </motion.div>
         )}
       </AnimatePresence>
-    </div> {/* ← closes .scene-wrapper */}
+    </div> {/* closes .scene-wrapper */}
   );
 }
