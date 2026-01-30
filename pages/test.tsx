@@ -111,7 +111,7 @@ export default function LayoutTestPage() {
               transition={{
                 duration: 0.9,
                 ease: [0.2, 0.8, 0.2, 1.05],
-                delay: 1.6,
+                delay: 3,
               }}
             />
 
