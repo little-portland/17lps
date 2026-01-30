@@ -65,18 +65,6 @@ html, body {
   display: none!important;
 }
 
-/* Obelisk animation */
-#obelisk {
-  animation: obelisk-grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 0.6s;
-}
-
-@keyframes obelisk-grow {
-  to {
-    transform: scaleY(1);
-  }
-}
-
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
  }
