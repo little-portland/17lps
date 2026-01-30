@@ -126,35 +126,42 @@ function Scene({
         </svg>
       </div> {/* ← closes .scene-content */}
 
-      {/* MENU OVERLAY */}
+     {/* MENU OVERLAY */}
       <AnimatePresence>
         {menuOpen && (
+          <motion.div
+            className="scene-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMenuOpen(false)} // click outside closes
+          >
             <motion.div
-              className="scene-menu-nav"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 20, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()} // prevent close inside
             >
-              
-              <nav className="scene-menu-nav" onClick={(e) => e.stopPropagation()} >
-                  <a href="/events">The Space</a>
-                  <a href="/artists">Access</a>
-                  <a href="/food">Dining</a>
-                  <a href="/theclub">After Dark</a>
-                  <a href="/nocturn">Art [Nocturn]</a>
-                  <a href="/about">Private Hire</a>
-                  <a href="/events">Open Days</a>
-                  <a href="/artists">Club Projects</a>
-                  <a href="/about">The Network</a>
-                  <a href="/events">LPX Radio</a>
-                  <a href="/artists">Access</a>
-                  <a href="/about">Archives</a>
+              <nav className="scene-menu-nav">
+                <a href="/events">The Space</a>
+                <a href="/artists">Access</a>
+                <a href="/food">Dining</a>
+                <a href="/theclub">After Dark</a>
+                <a href="/nocturn">Art (Nocturn)</a>
+                <a href="/about">Private Hire</a>
+                <a href="/events">Open Days</a>
+                <a href="/artists">Club Projects</a>
+                <a href="/about">The Network</a>
+                <a href="/events">LPX Radio</a>
+                <a href="/artists">Access</a>
+                <a href="/about">Archives</a>
               </nav>
+            </motion.div>
           </motion.div>
-      
         )}
       </AnimatePresence>
+
       {/* closes .scene-wrapper */}
     </div>
   );
