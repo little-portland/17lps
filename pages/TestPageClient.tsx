@@ -5,15 +5,24 @@ import Animation from "@components/Animation";
 import { useLoaded } from "../store/context";
 import Modal from "@components/UX/Modal";
 
-// ✅ mock handlers required by Layout
 const mockEatItem = {
-  image: "",
+  image: {
+    url: "",
+    width: 0,
+    height: 0,
+    description: "",
+  },
   eMail: "",
   phoneNumber: "",
 };
 
 const mockHireItem = {
-  image: "",
+  image: {
+    url: "",
+    width: 0,
+    height: 0,
+    description: "",
+  },
   eMail: "",
   phoneNumber: "",
 };
