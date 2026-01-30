@@ -12,6 +12,8 @@ import Modal from "@components/UX/Modal";
 import Image from "next/image";
 import dancePic from "../public/images/Dance.jpeg";
 
+const [menuOpen, setMenuOpen] = useState(false);
+
 // Mock data based on your Layout props 
 const mockEatItem = {
   image: {
@@ -60,58 +62,73 @@ export default function LayoutTestPage() {
       <Layout
         main={
           <>
-          <AnimatePresence>
-            {/* FILTERED LAYER */}
-            <div className="scene-filter">
-              <Animation
-                isLoaded={isLoaded}
-                setLoaded={setLoaded}
-                isTestPage={true}
-              />
-            </div>
+<AnimatePresence>
+  <div className="scene-wrapper">
 
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 3840 2160"
-                className="scene-overlay"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  pointerEvents: "none",
-                }}
-              >
+    {/* CLICKABLE + BLURRABLE SCENE */}
+    <div
+      className={`scene-content ${sceneMenuOpen ? "blurred" : ""}`}
+      onClick={() => setSceneMenuOpen(true)}
+    >
+      {/* FILTERED SVG */}
+      <div className="scene-filter">
+        <Animation
+          isLoaded={isLoaded}
+          setLoaded={setLoaded}
+          isTestPage={true}
+        />
+      </div>
 
-              <motion.image
-                href="/images/obelisk.png"
-                x={2420}
-                y={620}
-                width={175}
-                height={500}
-                style={{
-                    transformOrigin: "50% 0%",   // bottom-center of the obelisk
-                  }}
-                initial={{
-                  scaleY: 0,
-                  opacity: 0,
-                }}
-                animate={{
-                  scaleY: 1,
-                  opacity: 1,
-                }}
-                transition={{
-                  duration: 0.9,
-                  delay: 3, // after everything else finishes
-                  ease: [0.2, 0.8, 0.2, 1.05],
-                }}
-              />
+      {/* OVERLAY SVG (obelisk stays here) */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 3840 2160"
+        className="scene-overlay"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          pointerEvents: "none",
+        }}
+      >
+        <motion.image
+          href="/images/obelisk.png"
+          x={2420}
+          y={620}
+          width={175}
+          height={500}
+          style={{
+            transformBox: "fill-box",
+            transformOrigin: "50% 100%", // bottom-center (correct)
+          }}
+          initial={{ scaleY: 0, opacity: 0 }}
+          animate={{ scaleY: 1, opacity: 1 }}
+          transition={{
+            delay: 1.6,
+            duration: 0.9,
+            ease: [0.2, 0.8, 0.2, 1.05],
+          }}
+        />
+      </svg>
+    </div>
 
+    {/* SCENE MENU OVERLAY */}
+    {sceneMenuOpen && (
+      <div
+        className="scene-menu-overlay"
+        onClick={() => setSceneMenuOpen(false)}
+      >
+        <div className="scene-menu">
+          <a href="/eat">Eat</a>
+          <a href="/dance">Dance</a>
+          <a href="/hire">Hire</a>
+        </div>
+      </div>
+    )}
+  </div>
+</AnimatePresence>
 
-              </svg>
-            
-          </AnimatePresence>
 
           </>
         }
