@@ -58,15 +58,40 @@ export default function LayoutTestPage() {
       <Layout
         main={
           <>
-            <AnimatePresence>
-              <div className="scene-filter">
-                  <Animation
-                    isLoaded={isLoaded}
-                    setLoaded={setLoaded}
-                    isTestPage={true}
-                  />
-              </div>
-            </AnimatePresence>
+          <AnimatePresence>
+            {/* FILTERED LAYER */}
+            <div className="scene-filter">
+              <Animation
+                isLoaded={isLoaded}
+                setLoaded={setLoaded}
+                isTestPage={true}
+              />
+            </div>
+          
+            {/* UNFILTERED OVERLAY */}
+            <svg
+              className="scene-overlay"
+              viewBox="0 0 3840 2160"
+              width="100%"
+              height="100%"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                pointerEvents: "none",
+              }}
+            >
+              <image
+                href="/images/obelisk.png"
+                x="2590"
+                y="1020"
+                width="175"
+                height="500"
+                preserveAspectRatio="xMidYMid meet"
+              />
+            </svg>
+          </AnimatePresence>
+
           </>
         }
         eatItem={mockEatItem}
