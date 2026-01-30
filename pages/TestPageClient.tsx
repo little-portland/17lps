@@ -144,18 +144,18 @@ function Scene({
               onClick={(e) => e.stopPropagation()} // prevent close inside
             >
               <nav className="scene-menu-nav">
-                <a href="/events">The Space</a>
-                <a href="/artists">Access</a>
-                <a href="/food">Dining</a>
-                <a href="/theclub">After Dark</a>
-                <a href="/nocturn">Art (Nocturn)</a>
-                <a href="/about">Private Hire</a>
-                <a href="/events">Open Days</a>
-                <a href="/artists">Club Projects</a>
-                <a href="/about">The Network</a>
-                <a href="/events">LPX Radio</a>
-                <a href="/artists">Access</a>
-                <a href="/about">Archives</a>
+                <a href="/events" target="_blank" rel="noopener noreferrer">The Space</a>
+                <a href="/access" target="_blank" rel="noopener noreferrer">Access</a>
+                <a href="/food" target="_blank" rel="noopener noreferrer">Dining</a>
+                <a href="/theclub" target="_blank" rel="noopener noreferrer">After Dark</a>
+                <a href="/nocturn" target="_blank" rel="noopener noreferrer">Art (Nocturn)</a>
+                <a href="/about" target="_blank" rel="noopener noreferrer">Private Hire</a>
+                <a href="/events" target="_blank" rel="noopener noreferrer">Open Days</a>
+                <a href="/artists" target="_blank" rel="noopener noreferrer">Club Projects</a>
+                <a href="/about" target="_blank" rel="noopener noreferrer">The Network</a>
+                <a href="/events" target="_blank" rel="noopener noreferrer">LPX Radio</a>
+                <a href="/artists" target="_blank" rel="noopener noreferrer">Access</a>
+                <a href="/about" target="_blank" rel="noopener noreferrer">Archives</a>
               </nav>
             </motion.div>
           </motion.div>
