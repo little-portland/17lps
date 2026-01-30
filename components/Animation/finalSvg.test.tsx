@@ -25,8 +25,15 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         transform: "translate3d(0px, 0px, 0px)",
       }}
     >
+
 		<defs>
-		  <filter id="obeliskGlow" x="-50%" y="-50%" width="200%" height="200%">
+		  <filter
+		    id="obeliskGlow"
+		    x="-50%"
+		    y="-50%"
+		    width="200%"
+		    height="200%"
+		  >
 		    <feGaussianBlur stdDeviation="6" result="blur" />
 		    <feMerge>
 		      <feMergeNode in="blur" />
@@ -35,34 +42,6 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
 		  </filter>
 		</defs>
 
-		<g
-		  id="obelisk"
-		  transform="translate(2400 1350) scale(1)"
-			style={{
-			  transformOrigin: "bottom center",
-			  transform: "scaleY(0)",
-			}}
-		>
-		  {/* Front face */}
-		  <path
-		    d="M0 0 L40 -20 L40 -220 L0 -200 Z"
-		    fill="#E83E8C"
-		    filter="url(#obeliskGlow)"
-		  />
-		
-		  {/* Side face */}
-		  <path
-		    d="M40 -20 L70 0 L70 -200 L40 -220 Z"
-		    fill="#B72C6F"
-		  />
-		
-		  {/* Top face */}
-		  <path
-		    d="M0 -200 L40 -220 L70 -200 L30 -180 Z"
-		    fill="#FFD1E6"
-		  />
-		</g>
-	
       <g
         data-id="tv-left"
         style={{
@@ -744,6 +723,34 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
       >
         <g id="LWPOLYLINE_3809_">
           <g id="XMLID_19_">
+
+			  <g
+			  id="obelisk"
+			  transform="translate(-24 -36) scale(1)"
+			  style={{
+			    transformOrigin: "bottom center",
+			  }}
+			>
+			  {/* Front face */}
+			  <path
+			    d="M0 0 L36 -18 L36 -120 L0 -102 Z"
+			    fill="#E83E8C"
+			    filter="url(#obeliskGlow)"
+			  />
+			
+			  {/* Side face */}
+			  <path
+			    d="M36 -18 L72 0 L72 -102 L36 -120 Z"
+			    fill="#B72C6F"
+			  />
+			
+			  {/* Top face */}
+			  <path
+			    d="M0 -102 L36 -120 L72 -102 L36 -84 Z"
+			    fill="#FFD1E6"
+			  />
+			</g>
+
             <g>
               <g>
                 <polygon points="2675.2,1038.6 2675.2,1082.6 2637.2,1104.5 2637.2,1060.6 					" />
