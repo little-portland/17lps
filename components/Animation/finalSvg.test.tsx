@@ -7,6 +7,31 @@ export interface SvgProps {
   openHire: () => void;
 }
 
+// Obelisk
+const Obelisk = () => (
+  <g id="obelisk">
+    {/* Front face */}
+    <path
+      d="M0 0 L30 -15 L30 -140 L0 -125 Z"
+      fill="#E83E8C"
+      filter="url(#obeliskGlow)"
+    />
+
+    {/* Side face */}
+    <path
+      d="M30 -15 L60 0 L60 -125 L30 -140 Z"
+      fill="#B72C6F"
+    />
+
+    {/* Top face */}
+    <path
+      d="M0 -125 L30 -140 L60 -125 L30 -110 Z"
+      fill="#FFD1E6"
+    />
+  </g>
+);
+
+
 //HOVER
 
 const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
@@ -25,6 +50,44 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         transform: "translate3d(0px, 0px, 0px)",
       }}
     >
+		<defs>
+		  <filter id="obeliskGlow" x="-50%" y="-50%" width="200%" height="200%">
+		    <feGaussianBlur stdDeviation="6" result="blur" />
+		    <feMerge>
+		      <feMergeNode in="blur" />
+		      <feMergeNode in="SourceGraphic" />
+		    </feMerge>
+		  </filter>
+		</defs>
+
+		<g
+		  id="obelisk"
+		  transform="translate(2400 1350) scale(1)"
+			style={{
+			  transformOrigin: "bottom center",
+			  transform: "scaleY(0)",
+			}}
+		>
+		  {/* Front face */}
+		  <path
+		    d="M0 0 L40 -20 L40 -220 L0 -200 Z"
+		    fill="#E83E8C"
+		    filter="url(#obeliskGlow)"
+		  />
+		
+		  {/* Side face */}
+		  <path
+		    d="M40 -20 L70 0 L70 -200 L40 -220 Z"
+		    fill="#B72C6F"
+		  />
+		
+		  {/* Top face */}
+		  <path
+		    d="M0 -200 L40 -220 L70 -200 L30 -180 Z"
+		    fill="#FFD1E6"
+		  />
+		</g>
+	
       <g
         data-id="tv-left"
         style={{
