@@ -114,7 +114,37 @@ function Scene({
             height={500}
             style={{
               transformBox: "fill-box",
-              transformOrigin: "50% 100%", // bottom-center
+              transformOrigin: "50% 100%",
             }}
             initial={{ scaleY: 0, opacity: 0 }}
             animate={{ scaleY: 1, opacity: 1 }}
+            transition={{
+              delay: 1.6,
+              duration: 0.9,
+              ease: [0.2, 0.8, 0.2, 1.05],
+            }}
+          />
+        </svg>
+      </div> {/* ← closes .scene-content */}
+
+      {/* MENU OVERLAY */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="scene-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMenuOpen(false)}
+          >
+            <nav onClick={(e) => e.stopPropagation()}>
+              <a href="/events">Events</a>
+              <a href="/artists">Artists</a>
+              <a href="/about">About</a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div> {/* ← closes .scene-wrapper */}
+  );
+}
