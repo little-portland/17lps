@@ -24,15 +24,19 @@ export default function TestPage() {
   }, []);
 
   return (
-    <Layout
-      hideNav
-      main={
-        <Scene
-          isLoaded={isLoaded}
-          setLoaded={setLoaded}
-          menuOpen={menuOpen}
-          setMenuOpen={setMenuOpen}
-        />
+      <Layout
+        hideNav
+        eatItem={mockEatItem}
+        hireItem={mockHireItem}
+        main={
+          <Scene
+            isLoaded={isLoaded}
+            setLoaded={setLoaded}
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
+          />
+        }
+      />
       }
     />
   );
