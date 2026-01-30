@@ -945,8 +945,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         </g>
       </g>
 
-
-		<g
+<g
   id="obelisk"
   transform="translate(2590 1020)"
   style={{ transformOrigin: "bottom center" }}
@@ -960,7 +959,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
       width="220%"
       height="220%"
     >
-      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feGaussianBlur stdDeviation="10" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
@@ -968,43 +967,44 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
     </filter>
   </defs>
 
-  {/* FRONT FACE — wide, tall, angled bottom */}
+  {/* FRONT FACE — matches red-square column proportions */}
   <path
     d="
-      M 0   0
-      L 96 -48
-      L 96 -480
-      L 0  -432
+      M 0    0
+      L 72  -36
+      L 72  -360
+      L 0   -324
       Z
     "
     fill="#FF8A2B"
     filter="url(#obeliskGlow)"
   />
 
-  {/* SIDE FACE — narrower, darker */}
+  {/* SIDE FACE — shallow depth, same angle */}
   <path
     d="
-      M 96  -48
-      L 144   0
-      L 144 -432
-      L 96  -480
+      M 72  -36
+      L 108   0
+      L 108 -324
+      L 72  -360
       Z
     "
     fill="#E06A1A"
   />
 
-  {/* TOP FACE — warm highlight (NOT white) */}
+  {/* TOP FACE — identical angle to bottom */}
   <path
     d="
-      M 0   -432
-      L 96  -480
-      L 144 -432
-      L 48  -384
+      M 0   -324
+      L 72  -360
+      L 108 -324
+      L 36  -288
       Z
     "
     fill="#FFC266"
   />
 </g>
+
 
 
 
