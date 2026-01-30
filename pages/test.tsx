@@ -1,172 +1,119 @@
 import React, { useState, useEffect } from "react";
 import Layout from "@components/Layout/Layout-old";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Animation from "@components/Animation";
 import { useLoaded } from "../store/context";
-
-import { motion } from "framer-motion";
-
-// Import Modal and test content
 import Modal from "@components/UX/Modal";
-import Image from "next/image";
-import dancePic from "../public/images/Dance.jpeg";
 
-const [menuOpen, setMenuOpen] = useState(false);
-
-// Mock data based on your Layout props 
-const mockEatItem = {
-  image: {
-    url: "/images/Eat.jpeg",
-    width: 800,
-    height: 600,
-    description: "Mock Eat Image",
-  },
-  eMail: "eat@example.com",
-  phoneNumber: "1234567890",
-};
-
-const mockHireItem = {
-  image: {
-    url: "/images/hire-page-collage.jpg",
-    width: 800,
-    height: 600,
-    description: "Mock Hire Image",
-  },
-  eMail: "hire@example.com",
-  phoneNumber: "0987654321",
-};
-
-export default function LayoutTestPage() {
+export default function TestPage() {
   const { isLoaded, setLoaded } = useLoaded();
-  const [showDanceModal, setShowDanceModal] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  // Force white background for test page
   useEffect(() => {
-  // save previous body styles
-  const prevBg = document.body.style.backgroundColor;
-  const prevColor = document.body.style.color;
+    const prevBg = document.body.style.backgroundColor;
+    const prevColor = document.body.style.color;
 
-  // apply white body for this page
-  document.body.style.backgroundColor = "#fff";
-  document.body.style.color = "#000";
+    document.body.style.backgroundColor = "#fff";
+    document.body.style.color = "#000";
 
-  // cleanup on unmount
-  return () => {
-    document.body.style.backgroundColor = prevBg;
-    document.body.style.color = prevColor;
-  };
-}, []);
+    return () => {
+      document.body.style.backgroundColor = prevBg;
+      document.body.style.color = prevColor;
+    };
+  }, []);
 
   return (
-    <>
-      <Layout
-        main={
-          <>
-<AnimatePresence>
-  <div className="scene-wrapper">
-
-    {/* CLICKABLE + BLURRABLE SCENE */}
-    <div
-      className={`scene-content ${sceneMenuOpen ? "blurred" : ""}`}
-      onClick={() => setSceneMenuOpen(true)}
-    >
-      {/* FILTERED SVG */}
-      <div className="scene-filter">
-        <Animation
+    <Layout
+      hideNav
+      main={
+        <Scene
           isLoaded={isLoaded}
           setLoaded={setLoaded}
-          isTestPage={true}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
         />
-      </div>
-
-      {/* OVERLAY SVG (obelisk stays here) */}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 3840 2160"
-        className="scene-overlay"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          pointerEvents: "none",
-        }}
-      >
-        <motion.image
-          href="/images/obelisk.png"
-          x={2420}
-          y={620}
-          width={175}
-          height={500}
-          style={{
-            transformBox: "fill-box",
-            transformOrigin: "50% 100%", // bottom-center (correct)
-          }}
-          initial={{ scaleY: 0, opacity: 0 }}
-          animate={{ scaleY: 1, opacity: 1 }}
-          transition={{
-            delay: 1.6,
-            duration: 0.9,
-            ease: [0.2, 0.8, 0.2, 1.05],
-          }}
-        />
-      </svg>
-    </div>
-
-    {/* SCENE MENU OVERLAY */}
-    {sceneMenuOpen && (
-      <div
-        className="scene-menu-overlay"
-        onClick={() => setSceneMenuOpen(false)}
-      >
-        <div className="scene-menu">
-          <a href="/eat">Eat</a>
-          <a href="/dance">Dance</a>
-          <a href="/hire">Hire</a>
-        </div>
-      </div>
-    )}
-  </div>
-</AnimatePresence>
-
-
-          </>
-        }
-        eatItem={mockEatItem}
-        hireItem={mockHireItem}
-        hideNav={true} // Hide nav for testing purpuses
-      />
-      
-
-      <Modal open={showDanceModal} close={() => setShowDanceModal(false)} className="dance-modal">
-        <div className="eat-note dance-popup">
-          <div>
-          <div className="cat-wrapper">
-            <div class="cat-scroll">
-              <h1 className="dance-title">THE CLUB</h1>
-              <h2>Open Thursday to Saturday</h2>
-              <h3 className="open-time">FROM 10PM</h3>
-              <p>Access to the club is for <strong>Friends of the Club</strong> only.</p> 
-              <p>To apply to become a <strong>Friend of the Club</strong>, <a href="mailto:yo@little-portland.com?subject=FOC%20Enquiry">email us</a>.</p>
-              <p>Or you can access the club by <a href="https://www.little-portland.com/bookings" target="_blank">booking</a> a dinner table.</p>
-               <img src="/images/dance-popup-img.jpg" />
-                  <div className="category thu">
-                    <h3>Thursday <span className="italic-word">is</span> <span className="group-item">Underground</span></h3>
-                    <p><span className="group-item">Thursday Underground</span> kicks off the weekend, showcasing cutting-edge electronic artists at the forefront of the underground scene, bringing together a community deeply rooted in its culture.</p>
-                  </div>
-                  <div className="category fri">
-                    <h3>Friday <span className="italic-word">is</span> <span className="group-item">Residents</span></h3>
-                    <p><span className="group-item">Friday Residents</span> bridges Underground and Disco3000, shaping the weekend’s rhythm and flow. Focused on club residents, it brings a sense of familiarity and community. The heartbeat of the weekend.</p>
-                  </div>
-                  <div className="category sat">
-                    <h3>Saturday <span className="italic-word">is</span> <span className="group-item">Disco3000</span></h3>
-                    <p><span className="group-item">Disco3000</span> captures the evolving spirit of the disco era. Embracing a soundscape that truly resonates with the soul, it delivers a timeless and uplifting journey. A cosmic finale to the weekend.</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
-    </>
+      }
+    />
   );
 }
 
+/* ------------------------------------------------------------------ */
+/* SCENE COMPONENT (all hooks live here safely)                         */
+/* ------------------------------------------------------------------ */
+
+function Scene({
+  isLoaded,
+  setLoaded,
+  menuOpen,
+  setMenuOpen,
+}: {
+  isLoaded: boolean;
+  setLoaded: (v: boolean) => void;
+  menuOpen: boolean;
+  setMenuOpen: (v: boolean) => void;
+}) {
+  return (
+    <div className="scene-wrapper">
+      {/* CLICKABLE SCENE */}
+      <div
+        className={`scene-content ${menuOpen ? "blurred" : ""}`}
+        onClick={() => setMenuOpen(true)}
+      >
+        {/* FILTERED SVG */}
+        <div className="scene-filter">
+          <Animation
+            isLoaded={isLoaded}
+            setLoaded={setLoaded}
+            isTestPage
+          />
+        </div>
+
+        {/* OVERLAY SVG */}
+        <svg
+          viewBox="0 0 3840 2160"
+          className="scene-overlay"
+          aria-hidden
+        >
+          <motion.image
+            href="/images/obelisk.png"
+            x={2420}
+            y={620}
+            width={175}
+            height={500}
+            style={{
+              transformBox: "fill-box",
+              transformOrigin: "50% 100%", // bottom-center of obelisk
+            }}
+            initial={{ scaleY: 0, opacity: 0 }}
+            animate={{ scaleY: 1, opacity: 1 }}
+            transition={{
+              delay: 1.6,
+              duration: 0.9,
+              ease: [0.2, 0.8, 0.2, 1.05],
+            }}
+          />
+        </svg>
+      </div>
+
+      {/* MENU OVERLAY */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="scene-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMenuOpen(false)}
+          >
+            <nav onClick={(e) => e.stopPropagation()}>
+              <a href="/events">Events</a>
+              <a href="/artists">Artists</a>
+              <a href="/about">About</a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
