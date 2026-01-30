@@ -70,6 +70,8 @@ html, body {
   display: none!important;
 }
 
+/* Home menu */
+
 .scene-wrapper {
   position: relative;
   width: 100%;
@@ -85,28 +87,45 @@ html, body {
 }
 
 .scene-content.blurred {
-  filter: blur(12px);
+  filter: blur(10px) brightness(0.85);
 }
 
-.scene-menu-overlay {
+.scene-filter {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%) contrast(300%);
+}
+
+.scene-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(6px);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.scene-menu {
+  position: absolute;
+  inset: 0;
   z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.6);
 }
 
-.scene-menu {
-  background: white;
-  padding: 32px 40px;
-  border-radius: 14px;
+.scene-menu nav {
   display: flex;
   gap: 32px;
-  font-size: 24px;
 }
+
+.scene-menu a {
+  font-size: 24px;
+  text-decoration: none;
+  color: #000;
+}
+
 
 
  .hollow-btn {
