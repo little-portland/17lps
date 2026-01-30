@@ -723,34 +723,6 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
       >
         <g id="LWPOLYLINE_3809_">
           <g id="XMLID_19_">
-
-			  <g
-				  id="obelisk"
-				  transform="translate(2590 1020)"
-				  style={{
-				    transformOrigin: "bottom center",
-				  }}
-				>
-				  {/* Front face */}
-				  <path
-				    d="M0 0 L36 -18 L36 -140 L0 -122 Z"
-				    fill="#E83E8C"
-				  />
-				
-				  {/* Side face */}
-				  <path
-				    d="M36 -18 L72 0 L72 -122 L36 -140 Z"
-				    fill="#B72C6F"
-				  />
-				
-				  {/* Top face */}
-				  <path
-				    d="M0 -122 L36 -140 L72 -122 L36 -104 Z"
-				    fill="#FFD1E6"
-				  />
-				</g>
-
-
             <g>
               <g>
                 <polygon points="2675.2,1038.6 2675.2,1082.6 2637.2,1104.5 2637.2,1060.6 					" />
@@ -988,6 +960,31 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
           </g>
         </g>
       </g>
+		
+			<g
+			  id="obelisk"
+			  transform="translate(2590 1020)"
+			  style={{ transformOrigin: "bottom center" }}
+			>
+			  {/* Front face */}
+			  <path
+			    d="M0 0 L36 -18 L36 -140 L0 -122 Z"
+			    fill="#E83E8C"
+			  />
+			
+			  {/* Side face */}
+			  <path
+			    d="M36 -18 L72 0 L72 -122 L36 -140 Z"
+			    fill="#B72C6F"
+			  />
+			
+			  {/* Top face */}
+			  <path
+			    d="M0 -122 L36 -140 L72 -122 L36 -104 Z"
+			    fill="#FFD1E6"
+			  />
+			</g>
+
       <g
         data-id="speaker-bottom-mid-left"
         style={{
