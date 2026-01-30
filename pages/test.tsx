@@ -69,55 +69,36 @@ export default function LayoutTestPage() {
                 isTestPage={true}
               />
             </div>
-        
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 3840 2160"
-              className="scene-overlay"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                pointerEvents: "none",
-              }}
-            >
-
-            <motion.image
-              href="/images/obelisk.png"
-              x="2420"
-              y="620"
-              width="175"
-              height="500"
-              preserveAspectRatio="xMidYMid meet"
+            <svg className="scene-overlay" viewBox="0 0 3840 2160">
+              <defs>
+                <clipPath id="obelisk-clip">
+                  <motion.rect
+                    x="2420"
+                    y="620"         // START at bottom of obelisk
+                    width="175"
+                    height="0"
+                    initial={{ height: 0 }}
+                    animate={{ height: 500 }}
+                    transition={{
+                      duration: 0.9,
+                      delay: 3,
+                      ease: [0.2, 0.8, 0.2, 1.05],
+                    }}
+                  />
+                </clipPath>
+              </defs>
             
-              style={{
-                transformBox: "fill-box",    // required for SVG scaling
-                transformOrigin: "50% 100%", // bottom-center (grow from floor)
-              }}
-            
-              initial={{
-                scaleY: 0,
-                opacity: 0,
-              }}
-            
-              animate={{
-                scaleY: 1,
-                opacity: 1,
-              }}
-            
-              transition={{
-                duration: 0.9,
-                ease: [0.2, 0.8, 0.2, 1.05],
-                delay: 3,
-              }}
-            />
-
-
-
+              <image
+                href="/images/obelisk.png"
+                x="2590"
+                y="1020"
+                width="175"
+                height="500"
+                clipPath="url(#obelisk-clip)"
+              />
             </svg>
+
             
           </AnimatePresence>
 
