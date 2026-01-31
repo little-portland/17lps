@@ -57,10 +57,9 @@ return (
   <>
     {/* ✅ THIS is what mobile was missing */}
 
-    {canvasState && (
-      <Canvas removeSelf={setCanvasState} hidden={isLoaded} />
+    {canvasState && !isLoaded && (
+      <Canvas removeSelf={setCanvasState} />
     )}
-
 
     <Layout
       hideNav
