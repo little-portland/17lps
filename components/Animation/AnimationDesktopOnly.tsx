@@ -84,7 +84,7 @@ const Animation: React.FC<AnimationProps> = ({
       }
   
       if (wrapperRef.current) {
-        wrapperRef.current.style.opacity = "1";
+        wrapperRef.current.style.opacity = "0";
       }
     } else if (!isMobile && wrapperRef.current) {
       wrapperRef.current.style.opacity = "0";
