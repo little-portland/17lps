@@ -11,6 +11,7 @@ interface CanvasProps {
 }
 
 const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
+	  return null;
   const mountRef = useRef<HTMLDivElement>(null);
 
   const { isMobile } = useDeviceDetect();
