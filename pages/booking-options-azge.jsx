@@ -24,8 +24,8 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category"><span className="day">Saturday</span> DISCO3000</h1>
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Saturday</span> DISCO3000</h1>
+        <h1 className="event-name desktop-only day-category disco-saturdays"><span className="day">AIR KARNAK</span> Presents</h1>        
+        <h1 className="event-name mobile-only cat"><span className="cat-day">AIR KARNAK</span> Presents</h1>
 
         <div className="event-info">
            <div class="info date">
