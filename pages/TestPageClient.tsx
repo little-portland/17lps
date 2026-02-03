@@ -10,7 +10,7 @@ import Canvas from "@components/Canvas";
 // ------------------------------------------------------------------
 
 const mockEatItem = {
-  image: {
+  image: { 
     url: "/images/placeholder.jpg",
     width: 1,
     height: 1,
