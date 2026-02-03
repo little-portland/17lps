@@ -164,7 +164,6 @@ function Scene({
                 <a href="/artists" target="_blank" rel="noopener noreferrer">Club Projects</a>
                 <a href="/about" target="_blank" rel="noopener noreferrer">The Network</a>
                 <a href="/events" target="_blank" rel="noopener noreferrer">LPX Radio</a>
-                <a href="/artists" target="_blank" rel="noopener noreferrer">Access</a>
                 <a href="/about" target="_blank" rel="noopener noreferrer">Archives</a>
               </nav>
             </motion.div>
