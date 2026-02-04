@@ -155,6 +155,12 @@ html, body {
   transform: translateY(-2px);
 }
 
+/* Disable last 4 menu items */
+.scene-menu-nav a:nth-last-child(-n+4) {
+  pointer-events: none;
+  opacity: 0.35;
+}
+
 @media (max-width: 768px) {
   .scene-content {
     transform: scale(1.5);
