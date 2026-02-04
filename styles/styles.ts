@@ -162,6 +162,14 @@ html, body {
   }
 }
 
+@media (hover: none) {
+  .scene-filter svg g {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
  }
