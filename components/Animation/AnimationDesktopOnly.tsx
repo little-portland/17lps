@@ -1,11 +1,13 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import AnimationLayer from "./components/AnimationLayer";
 
 import houseAnimation from "public/Web_assets/Initial_Web.json";
 
 import useDeviceDetect from "@utils/useDeviceDetect";
+import { useUI } from "@components/UX/context";
 import { useLoaded } from "store/context";
+
 import { SvgContainer } from "./styles";
 
 type AnimationProps = {
@@ -14,46 +16,61 @@ type AnimationProps = {
   isTestPage?: boolean;
 };
 
-const AnimationDesktopOnly: React.FC<AnimationProps> = ({
+const Animation: React.FC<AnimationProps> = ({
   isLoaded,
   setLoaded,
   isTestPage,
 }) => {
-  const lottieRef = useRef<any>(null);
+  const { displayLineup, closeLineup, closeMenu } = useUI();
+  const { canvasState, setCanvasState } = useLoaded();
+  const { isMobile } = useDeviceDetect(); // ✅ REAL device detection
+
+  const lottieRef = useRef<any>();
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const { isMobile } = useDeviceDetect();
-  const { canvasState, setCanvasState } = useLoaded();
-
-  useEffect(() => {
-    if (!isLoaded && !canvasState && lottieRef.current) {
-      lottieRef.current.playSegments([0, 120], true);
-    }
-  }, [isLoaded, canvasState]);
-
-  const handleComplete = () => {
+  const onAnimationCompleteHandler = () => {
     setLoaded(true);
     setCanvasState(false);
     sessionStorage.setItem("canvas", "true");
   };
 
+  useEffect(() => {
+    if (!wrapperRef.current) return;
+
+    // Show animation while loading
+    if (!isLoaded && !canvasState) {
+      wrapperRef.current.style.opacity = "1";
+
+      if (lottieRef.current?.playSegments) {
+        lottieRef.current.playSegments([0, 120], true);
+      }
+      return;
+    }
+
+    /**
+     * 🔑 CRITICAL FIX:
+     * - NEVER hide SVG on mobile
+     * - NEVER hide SVG on test page
+     */
+    if (!isMobile && !isTestPage) {
+      wrapperRef.current.style.opacity = "0";
+    } else {
+      wrapperRef.current.style.opacity = "1";
+    }
+  }, [isLoaded, canvasState, isMobile, isTestPage]);
+
   return (
     <>
-      <SvgContainer
-        ref={wrapperRef}
-        style={{
-          // IMPORTANT: no opacity changes on mobile
-          visibility: isLoaded ? "hidden" : "visible",
-          pointerEvents: isLoaded ? "none" : "auto",
-        }}
-      >
-        <Lottie
-          lottieRef={lottieRef}
-          animationData={houseAnimation}
-          loop={false}
-          autoplay={false}
-          onComplete={handleComplete}
-        />
+      <SvgContainer ref={wrapperRef}>
+        {!canvasState && (
+          <Lottie
+            lottieRef={lottieRef}
+            animationData={houseAnimation}
+            loop={false}
+            autoplay={false}
+            onComplete={onAnimationCompleteHandler}
+          />
+        )}
       </SvgContainer>
 
       {/* Hover / interactive layer */}
@@ -64,4 +81,4 @@ const AnimationDesktopOnly: React.FC<AnimationProps> = ({
   );
 };
 
-export default AnimationDesktopOnly;
+export default Animation;
