@@ -55,11 +55,7 @@ export default function TestPageClient() {
 
 return (
   <>
-    {/* ✅ THIS is what mobile was missing */}
 
-    {canvasState && !isLoaded && (
-      <Canvas removeSelf={setCanvasState} />
-    )}
 
     <Layout
       hideNav
