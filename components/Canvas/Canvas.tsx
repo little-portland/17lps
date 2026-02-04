@@ -8,19 +8,28 @@ const Canvas: React.FC<CanvasProps> = ({ removeSelf }) => {
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Delay removal by one animation frame
+    /**
+     * IMPORTANT:
+     * Delay removal by one animation frame.
+     * This keeps a real DOM node mounted long enough
+     * for mobile SVG animations to fully initialize.
+     */
     rafRef.current = requestAnimationFrame(() => {
       removeSelf(false);
     });
 
     return () => {
-      if (rafRef.current) {
+      if (rafRef.current !== null) {
         cancelAnimationFrame(rafRef.current);
       }
     };
   }, [removeSelf]);
 
-  // IMPORTANT: keep a real DOM node mounted for one frame
+  /**
+   * Keep a real DOM node mounted (but invisible).
+   * This prevents mobile browsers from dropping SVG nodes
+   * during initial layout / animation setup.
+   */
   return (
     <div
       style={{
