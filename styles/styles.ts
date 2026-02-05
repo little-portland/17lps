@@ -168,13 +168,13 @@ html, body {
 /* Main scene */
 .scene-content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
-/* Animation layer */
+/* Animation layer (hover SVGs live here) */
 .scene-filter {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -183,19 +183,13 @@ html, body {
   pointer-events: auto;
 }
 
-/* Overlay image layer */
+/* Overlay image layer (obelisk) */
 .scene-overlay {
-  pointer-events: none;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  pointer-events: none;
 }
 
-/* Click capture */
-.scene-click-capture {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
 
 
 /* Keep EVENTS interactive */
