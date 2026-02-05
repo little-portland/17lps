@@ -56,8 +56,6 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-
-  /* Space below nav (desktop only feel) */
   margin-top: 40px;
 }
 
@@ -73,34 +71,28 @@ html, body {
   transition: filter 0.4s ease;
 }
 
-/* Optional blur hook */
 .scene-content.blurred {
   filter: blur(10px) brightness(0.85);
 }
 
 /* =========================================================
-   FILTERED ANIMATION LAYER
+   FILTERED ANIMATION
 ========================================================= */
 
 .scene-filter {
   position: relative;
   width: 100%;
   height: 100%;
-
-  /* Visual treatment */
   filter: grayscale(100%) contrast(300%) brightness(0.8);
-
-  /* Allow hover inside SVG only */
   pointer-events: none;
 }
 
-/* Only SVG elements interactive */
 .scene-filter svg * {
   pointer-events: auto;
 }
 
 /* =========================================================
-   SVG OVERLAY (OBELISK, ETC.)
+   SVG OVERLAY
 ========================================================= */
 
 .scene-overlay {
@@ -109,13 +101,11 @@ html, body {
   width: 100%;
   height: 100%;
   z-index: 2;
-
-  /* Never block hover */
   pointer-events: none;
 }
 
 /* =========================================================
-   DISABLED SCENE HOTSPOTS
+   DISABLED HOTSPOTS
 ========================================================= */
 
 .scene-filter svg g[data-id="events"],
@@ -128,7 +118,7 @@ html, body {
 }
 
 /* =========================================================
-   TOP NAVIGATION
+   NAVIGATION
 ========================================================= */
 
 .scene-nav {
@@ -144,10 +134,8 @@ html, body {
 
   padding: 0 60px;
   z-index: 1000;
-
   background: transparent;
 
-  /* Fade in after scene load */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
@@ -159,7 +147,7 @@ html, body {
 }
 
 /* =========================================================
-   NAV LINK ZONES (BALANCED)
+   LINK ZONES
 ========================================================= */
 
 .scene-nav-left,
@@ -178,7 +166,7 @@ html, body {
 }
 
 /* =========================================================
-   NAV LINKS
+   LINKS
 ========================================================= */
 
 .scene-nav a {
@@ -195,6 +183,16 @@ html, body {
 }
 
 /* =========================================================
+   DISABLED NAV LINKS
+========================================================= */
+
+.scene-nav a.disabled,
+.scene-nav-mobile a.disabled {
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+/* =========================================================
    LOGO
 ========================================================= */
 
@@ -203,15 +201,14 @@ html, body {
   justify-self: center;
 }
 
-/* Logo image sizing */
 .scene-nav-logo img {
-  width: 50px;
-  height: auto;
+  height: 26px;
+  width: auto;
   display: block;
 }
 
 /* =========================================================
-   MOBILE BURGER (2 lines → X)
+   BURGER ICON
 ========================================================= */
 
 .scene-nav-burger {
@@ -222,11 +219,14 @@ html, body {
   border: none;
   cursor: pointer;
   padding: 0;
-  display: none; /* hidden on desktop */
-  z-index: 1100;
+  display: none;
+
+  /* IMPORTANT — above mobile menu */
+  z-index: 3000;
 }
 
 /* Lines */
+
 .scene-nav-burger span {
   position: absolute;
   left: 0;
@@ -236,17 +236,16 @@ html, body {
   transition: transform 0.35s ease, opacity 0.25s ease;
 }
 
-/* Top line */
 .scene-nav-burger span:nth-child(1) {
   top: 4px;
 }
 
-/* Bottom line */
 .scene-nav-burger span:nth-child(2) {
   bottom: 4px;
 }
 
 /* OPEN → X */
+
 .scene-nav-burger.open span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -256,7 +255,7 @@ html, body {
 }
 
 /* =========================================================
-   MOBILE NAV OVERLAY
+   MOBILE MENU
 ========================================================= */
 
 .scene-nav-mobile {
@@ -314,18 +313,13 @@ html, body {
     justify-self: end;
   }
 
-  /* Remove desktop spacing */
   .scene-wrapper {
     margin-top: 0;
-  }
-
-  .scene-nav-logo img {
-    width: 30px;
   }
 }
 
 /* =========================================================
-   OPTIONAL MOBILE SCENE SCALE
+   MOBILE SCENE SCALE
 ========================================================= */
 
 @media (max-width: 768px) {
@@ -334,6 +328,7 @@ html, body {
     left: 10px;
   }
 }
+
 
 
 
