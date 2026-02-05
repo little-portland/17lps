@@ -205,8 +205,8 @@ html, body {
 
 /* Logo image sizing */
 .scene-nav-logo img {
-  height: 26px;
-  width: auto;
+  width: 50px;
+  height: auto;
   display: block;
 }
 
@@ -317,6 +317,10 @@ html, body {
   /* Remove desktop spacing */
   .scene-wrapper {
     margin-top: 0;
+  }
+
+  .scene-nav-logo img {
+    width: 30px;
   }
 }
 
