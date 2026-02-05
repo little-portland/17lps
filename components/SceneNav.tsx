@@ -41,7 +41,7 @@ export default function SceneNav({
         {/* LEFT LINKS (desktop) */}
         <nav className="scene-nav-left">
           {links.slice(0, 5).map((l) => (
-            <a key={l.label} href={l.href}>
+            <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer">
               {l.label}
             </a>
           ))}
@@ -63,6 +63,7 @@ export default function SceneNav({
            <a
               key={l.label}
               href={l.href}
+              target="_blank" rel="noopener noreferrer"
               className={l.href === "#" ? "disabled" : ""}
             >
               {l.label}
@@ -94,6 +95,7 @@ export default function SceneNav({
               <a
                 key={l.label}
                 href={l.href}
+                target="_blank" rel="noopener noreferrer"
                 className={l.href === "#" ? "disabled" : ""}
               >
                 {l.label}
