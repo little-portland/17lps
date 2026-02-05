@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Layout from "@components/Layout/Layout-old";
 import { motion } from "framer-motion";
 import AnimationDesktopOnly from "@components/Animation/AnimationDesktopOnly";
 import { useLoaded } from "../store/context";
 import Canvas from "@components/Canvas";
+import SceneNav from "@components/SceneNav";
 
 // ------------------------------------------------------------------
 // Mock data REQUIRED by Layout (do not remove)
@@ -54,18 +55,26 @@ export default function TestPageClient() {
 
   return (
     <>
-      {/* Canvas preloader */}
+      {/* =====================================================
+          CANVAS PRELOADER
+      ===================================================== */}
       {canvasState && !isLoaded && (
         <Canvas removeSelf={setCanvasState} />
       )}
 
+      {/* =====================================================
+          LAYOUT
+      ===================================================== */}
       <Layout
         hideNav
         eatItem={mockEatItem}
         hireItem={mockHireItem}
         main={
           <>
-            <SceneNav />
+            {/* Top navigation (fades in after load) */}
+            <SceneNav isLoaded={isLoaded} />
+
+            {/* Scene */}
             <Scene
               isLoaded={isLoaded}
               setLoaded={setLoaded}
@@ -73,78 +82,6 @@ export default function TestPageClient() {
           </>
         }
       />
-    </>
-  );
-}
-
-// ------------------------------------------------------------------
-// TOP NAVIGATION
-// ------------------------------------------------------------------
-
-function SceneNav() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  return (
-    <>
-      <header className="scene-nav">
-
-        {/* Mobile burger */}
-        <button
-          className="scene-nav-burger"
-          onClick={() => setMobileOpen(true)}
-        >
-          ☰
-        </button>
-
-        {/* Left links (desktop) */}
-        <nav className="scene-nav-left">
-          <a href="/events">The Space</a>
-          <a href="/access">Access</a>
-          <a href="/food">Dining</a>
-          <a href="/theclub">After Dark</a>
-          <a href="/nocturn">Art (Nocturn)</a>
-        </nav>
-
-        {/* Logo */}
-        <div className="scene-nav-logo">
-          LOGO
-        </div>
-
-        {/* Right links (desktop) */}
-        <nav className="scene-nav-right">
-          <a href="/about">Private Hire</a>
-          <a href="/events">Open Days</a>
-          <a href="#">Club Projects</a>
-          <a href="#">The Network</a>
-          <a href="#">LPX Radio</a>
-          <a href="#">Archives</a>
-        </nav>
-      </header>
-
-      {/* Mobile menu overlay */}
-      {mobileOpen && (
-        <div
-          className="scene-nav-mobile"
-          onClick={() => setMobileOpen(false)}
-        >
-          <div
-            className="scene-nav-mobile-inner"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <a href="/events">The Space</a>
-            <a href="/access">Access</a>
-            <a href="/food">Dining</a>
-            <a href="/theclub">After Dark</a>
-            <a href="/nocturn">Art (Nocturn)</a>
-            <a href="/about">Private Hire</a>
-            <a href="/events">Open Days</a>
-            <a href="#">Club Projects</a>
-            <a href="#">The Network</a>
-            <a href="#">LPX Radio</a>
-            <a href="#">Archives</a>
-          </div>
-        </div>
-      )}
     </>
   );
 }
@@ -163,10 +100,12 @@ function Scene({
   return (
     <div className="scene-wrapper">
 
-      {/* SCENE CONTENT */}
+      {/* =====================================================
+          SCENE CONTENT
+      ===================================================== */}
       <div className="scene-content">
 
-        {/* Filtered animation */}
+        {/* Filtered animation layer */}
         <div className="scene-filter">
           <AnimationDesktopOnly
             isLoaded={isLoaded}
@@ -175,7 +114,9 @@ function Scene({
           />
         </div>
 
-        {/* OBELISK OVERLAY */}
+        {/* =====================================================
+            OBELISK OVERLAY
+        ===================================================== */}
         <svg
           viewBox="0 0 3840 2160"
           className="scene-overlay"
