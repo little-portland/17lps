@@ -59,17 +59,6 @@ html, body {
   filter: none;
 }
 
-
-/* Keep EVENTS interactive */
-.scene-filter svg g[data-id="events"],
-.scene-filter svg g[data-id="eat"],
-.scene-filter svg g[data-id="hire"],
-.scene-filter svg g[data-id="dance"] {
-  opacity: 0!important;
-  pointer-events: none!important;
-  display: none!important;
-}
-
 /* Home menu */
 /*
 .scene-wrapper {
@@ -209,6 +198,15 @@ html, body {
 }
 
 
+/* Keep EVENTS interactive */
+.scene-filter svg g[data-id="events"],
+.scene-filter svg g[data-id="eat"],
+.scene-filter svg g[data-id="hire"],
+.scene-filter svg g[data-id="dance"] {
+  opacity: 0!important;
+  pointer-events: none!important;
+  display: none!important;
+}
 
 
 
