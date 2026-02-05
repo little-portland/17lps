@@ -52,6 +52,8 @@ export default function SceneNav({
           <img
             src="/images/LPS-logo-bandw.png"
             alt="Logo"
+            width={250}
+            height={250}
           />
         </div>
 
