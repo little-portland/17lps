@@ -117,6 +117,13 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
+  z-index: 2;
+}
+
+.scene-click-capture {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .scene-menu {
@@ -147,17 +154,6 @@ html, body {
 .scene-menu-nav a:hover {
   opacity: 0.5;
   transform: translateY(-2px);
-}
-
-.scene-click-capture {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  cursor: pointer;
-
-  /* CRITICAL */
-  pointer-events: auto;
-  background: transparent;
 }
 
 /* Disable last 4 menu items */
