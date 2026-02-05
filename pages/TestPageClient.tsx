@@ -72,7 +72,7 @@ export default function TestPageClient() {
         main={
           <>
             {/* Top navigation (fades in after load) */}
-            <SceneNav isLoaded={isLoaded} />
+            <SceneNav visible={isLoaded} />
 
             {/* Scene */}
             <Scene
