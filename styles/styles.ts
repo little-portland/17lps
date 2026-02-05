@@ -56,6 +56,8 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+
+  /* Space below desktop nav */
   margin-top: 40px;
 }
 
@@ -83,7 +85,10 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
+
   filter: grayscale(100%) contrast(300%) brightness(0.8);
+
+  /* Allow SVG hover only */
   pointer-events: none;
 }
 
@@ -101,6 +106,8 @@ html, body {
   width: 100%;
   height: 100%;
   z-index: 2;
+
+  /* Never block hover */
   pointer-events: none;
 }
 
@@ -136,6 +143,7 @@ html, body {
   z-index: 3000;
   background: transparent;
 
+  /* Fade in after load */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
@@ -157,16 +165,16 @@ html, body {
   width: 100%;
 }
 
-/* Pull LEFT links toward logo */
+/* Pull toward logo evenly */
+
 .scene-nav-left {
   justify-content: flex-end;
-  padding-right: 32px; /* distance from logo */
+  padding-right: 32px;
 }
 
-/* Pull RIGHT links toward logo */
 .scene-nav-right {
   justify-content: flex-start;
-  padding-left: 32px; /* distance from logo */
+  padding-left: 32px;
 }
 
 /* =========================================================
@@ -178,6 +186,7 @@ html, body {
   color: #000;
   text-decoration: none;
   white-space: nowrap;
+
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
@@ -187,7 +196,7 @@ html, body {
 }
 
 /* =========================================================
-   DISABLED NAV LINKS
+   DISABLED LINKS (desktop + mobile)
 ========================================================= */
 
 .scene-nav a.disabled,
@@ -212,10 +221,12 @@ html, body {
 }
 
 /* =========================================================
-   BURGER ICON (2 lines → perfect X)
+   BURGER BUTTON
+   (Hidden on desktop — layout safe)
 ========================================================= */
 
 .scene-nav-burger {
+  display: none;              /* ← desktop isolation */
   position: relative;
   width: 34px;
   height: 24px;
@@ -223,49 +234,45 @@ html, body {
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 3100;
+  z-index: 3100;              /* above overlay */
 }
 
-/* Lines */
+/* Burger lines */
 
 .scene-nav-burger span {
   position: absolute;
-  left: 0;
-  top: 50%;                 /* center vertically */
+  left: 50%;
+  top: 50%;
   width: 100%;
   height: 3px;
   background: #000;
 
-  transform-origin: center; /* rotate from center */
+  transform-origin: center;
   transition: transform 0.35s ease, opacity 0.25s ease;
 }
 
-/* Top line (shift up) */
+/* Closed state */
 
 .scene-nav-burger span:nth-child(1) {
-  transform: translateY(-6px);
+  transform: translate(-50%, -6px);
 }
-
-/* Bottom line (shift down) */
 
 .scene-nav-burger span:nth-child(2) {
-  transform: translateY(6px);
+  transform: translate(-50%, 6px);
 }
 
-/* =========================================================
-   OPEN → PERFECT X
-========================================================= */
+/* Open → Perfect X */
 
 .scene-nav-burger.open span:nth-child(1) {
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .scene-nav-burger.open span:nth-child(2) {
-  transform: rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* =========================================================
-   MOBILE MENU
+   MOBILE MENU OVERLAY
 ========================================================= */
 
 .scene-nav-mobile {
@@ -290,6 +297,7 @@ html, body {
   font-size: 22px;
   text-decoration: none;
   color: #000;
+
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
@@ -307,7 +315,6 @@ html, body {
   .scene-nav {
     grid-template-columns: 1fr 1fr;
     padding: 0 20px;
-    z-index: 3000; /* above mobile overlay */
   }
 
   .scene-nav-left,
@@ -324,6 +331,7 @@ html, body {
     justify-self: end;
   }
 
+  /* Remove desktop spacing */
   .scene-wrapper {
     margin-top: 0;
   }
@@ -339,6 +347,7 @@ html, body {
     left: 10px;
   }
 }
+
 
 
 
