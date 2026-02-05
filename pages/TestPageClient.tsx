@@ -95,47 +95,51 @@ function Scene({
   setMenuOpen: (v: boolean) => void;
 }) {
   return (
-    <div className="scene-wrapper">
-      {/* CLICKABLE SCENE */}
-      <div
-        className={`scene-content ${menuOpen ? "blurred" : ""}`}
-        onClick={() => setMenuOpen(true)}
-      >
-        {/* FILTERED SVG */}
-        <div className="scene-filter">
-          <AnimationDesktopOnly
-            isLoaded={isLoaded}
-            setLoaded={setLoaded}
-            isTestPage
-          />
-        </div>
+   <div className="scene-wrapper">
 
-        {/* OVERLAY SVG */}
-        <svg
-          viewBox="0 0 3840 2160"
-          className="scene-overlay"
-          preserveAspectRatio="xMidYMid meet"
-          aria-hidden
-        >
-          <motion.image
-            href="/images/obelisk.png"
-            x={2420}
-            y={620}
-            width={175}
-            height={500}
-            style={{
-              transformOrigin: "50% 0%",
-            }}
-            initial={{ scaleY: 0, opacity: 0 }}
-            animate={{ scaleY: 1, opacity: 1 }}
-            transition={{
-              delay: 2.5,
-              duration: 0.9,
-              ease: [0.2, 0.8, 0.2, 1.05],
-            }}
-          />
-        </svg>
-      </div> {/* ← closes .scene-content */}
+  {/* SVG + animations */}
+  <div className={`scene-content ${menuOpen ? "blurred" : ""}`}>
+
+    <div className="scene-filter">
+      <AnimationDesktopOnly
+        isLoaded={isLoaded}
+        setLoaded={setLoaded}
+        isTestPage
+      />
+    </div>
+
+    <svg
+      viewBox="0 0 3840 2160"
+      className="scene-overlay"
+      preserveAspectRatio="xMidYMid meet"
+      aria-hidden
+    >
+      <motion.image
+        href="/images/obelisk.png"
+        x={2420}
+        y={620}
+        width={175}
+        height={500}
+        initial={{ scaleY: 0, opacity: 0 }}
+        animate={{ scaleY: 1, opacity: 1 }}
+        transition={{
+          delay: 2.5,
+          duration: 0.9,
+          ease: [0.2, 0.8, 0.2, 1.05],
+        }}
+      />
+    </svg>
+  </div>
+
+  {/* CLICK CAPTURE LAYER */}
+  {!menuOpen && (
+    <div
+      className="scene-click-capture"
+      onClick={() => setMenuOpen(true)}
+    />
+  )}
+
+</div>
 
      {/* MENU OVERLAY */}
       <AnimatePresence>
