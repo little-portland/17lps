@@ -157,12 +157,16 @@ html, body {
   width: 100%;
 }
 
+/* Pull LEFT links toward logo */
 .scene-nav-left {
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 32px; /* distance from logo */
 }
 
+/* Pull RIGHT links toward logo */
 .scene-nav-right {
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 32px; /* distance from logo */
 }
 
 /* =========================================================
@@ -202,7 +206,7 @@ html, body {
 }
 
 .scene-nav-logo img {
-  height: 26px;
+  height: 35px;
   width: auto;
   display: block;
 }
