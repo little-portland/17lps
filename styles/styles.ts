@@ -56,6 +56,9 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+
+  /* Space below nav */
+  margin-top: 40px;
 }
 
 /* =========================================================
@@ -67,11 +70,10 @@ html, body {
   width: 100%;
   height: 100%;
   z-index: 1;
-  cursor: pointer;
   transition: filter 0.4s ease;
 }
 
-/* Optional blur hook (not currently used) */
+/* Optional blur hook */
 .scene-content.blurred {
   filter: blur(10px) brightness(0.85);
 }
@@ -88,7 +90,7 @@ html, body {
   /* Visual treatment */
   filter: grayscale(100%) contrast(300%) brightness(0.8);
 
-  /* Do NOT block hover globally */
+  /* Allow hover events inside SVGs */
   pointer-events: none;
 }
 
@@ -140,46 +142,55 @@ html, body {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
 
-  padding: 0 40px;
+  padding: 0 60px;
   z-index: 1000;
 
   background: transparent;
 
-  /* Fade-in hook */
+  /* Fade-in after scene load */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
 }
 
-/* Visible after scene load */
+/* Visible state */
 .scene-nav.visible {
   opacity: 1;
   pointer-events: auto;
 }
 
 /* -------------------------
-   LEFT / RIGHT LINKS
+   LEFT / RIGHT LINK ZONES
+   (Balanced spacing)
 ------------------------- */
 
 .scene-nav-left,
 .scene-nav-right {
   display: flex;
-  gap: 24px;
+  gap: 28px;
+  width: 100%;
 }
 
+/* Center inside equal grid space */
+
 .scene-nav-left {
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .scene-nav-right {
-  justify-content: flex-start;
+  justify-content: center;
 }
+
+/* -------------------------
+   LINKS
+------------------------- */
 
 .scene-nav a {
   font-size: 14px;
   color: #000;
   text-decoration: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
 }
 
 .scene-nav a:hover {
@@ -193,6 +204,7 @@ html, body {
 
 .scene-nav-logo {
   text-align: center;
+  justify-self: center;
   font-weight: bold;
   letter-spacing: 2px;
 }
@@ -267,6 +279,11 @@ html, body {
   .scene-nav-logo {
     justify-self: end;
   }
+
+  /* Remove desktop spacing */
+  .scene-wrapper {
+    margin-top: 0;
+  }
 }
 
 /* =========================================================
@@ -279,6 +296,54 @@ html, body {
     left: 10px;
   }
 }
+
+/* =========================================================
+   BURGER ICON (2 lines → X)
+========================================================= */
+
+.scene-nav-burger {
+  position: relative;
+  width: 34px;
+  height: 24px;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Lines */
+.scene-nav-burger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #000;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+/* Top line */
+.scene-nav-burger span:nth-child(1) {
+  top: 4px;
+}
+
+/* Bottom line */
+.scene-nav-burger span:nth-child(2) {
+  bottom: 4px;
+}
+
+/* =========================================================
+   OPEN STATE → X
+========================================================= */
+
+.scene-nav-burger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.scene-nav-burger.open span:nth-child(2) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
 
 
 
