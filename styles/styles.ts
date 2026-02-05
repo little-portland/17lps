@@ -149,6 +149,17 @@ html, body {
   transform: translateY(-2px);
 }
 
+.scene-click-capture {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  cursor: pointer;
+
+  /* CRITICAL */
+  pointer-events: auto;
+  background: transparent;
+}
+
 /* Disable last 4 menu items */
 .scene-menu-nav a:nth-last-child(-n+4) {
   pointer-events: none;
