@@ -41,56 +41,12 @@ html, body {
   padding: 0;
  }
 
- //scene filter styles
+ /* =========================================================
+   SCENE LAYOUT
+========================================================= */
 
 .scene-layout {
-  position: relative; /* positioning context */
-  width: 100%;
-  height: 100%;
-}
-
-.scene-filter {
-  width: 100%;
-  height: 100%;
-  filter: grayscale(100%) contrast(300%) brightness(0.8);
-}
-
-.scene-overlay {
-  filter: none;
-}
-
-/* Home menu */
-/*
-.scene-wrapper {
   position: relative;
-  width: 100%;
-  height: 100%;
-}*/
-
-.scene-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  transition: filter 0.4s ease;
-}
-
-.scene-content.blurred {
-  filter: blur(10px) brightness(0.85);
-}
-
-/*
-.scene-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}*/
-
-.scene-overlay {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
 }
@@ -102,54 +58,210 @@ html, body {
   overflow: hidden;
 }
 
+/* =========================================================
+   SCENE CONTENT
+========================================================= */
+
 .scene-content {
   position: relative;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 1;
+  cursor: pointer;
+  transition: filter 0.4s ease;
 }
 
-.scene-click-capture {
+/* Blur when menu open (if ever reused) */
+.scene-content.blurred {
+  filter: blur(10px) brightness(0.85);
+}
+
+/* =========================================================
+   FILTERED ANIMATION LAYER
+========================================================= */
+
+.scene-filter {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  /* Your visual treatment */
+  filter: grayscale(100%) contrast(300%) brightness(0.8);
+
+  /* Allow hover events inside SVGs */
+  pointer-events: none;
+}
+
+/* Only SVG elements interactive */
+.scene-filter svg * {
+  pointer-events: auto;
+}
+
+/* =========================================================
+   SVG OVERLAY (obelisk etc.)
+========================================================= */
+
+.scene-overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+
+  /* Do NOT block hover */
+  pointer-events: none;
 }
 
-.scene-menu {
+/* =========================================================
+   DISABLED SCENE HOTSPOTS
+========================================================= */
+
+/* Keep EVENTS etc disabled */
+.scene-filter svg g[data-id="events"],
+.scene-filter svg g[data-id="eat"],
+.scene-filter svg g[data-id="hire"],
+.scene-filter svg g[data-id="dance"] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+
+/* =========================================================
+   DESKTOP + MOBILE NAVIGATION
+========================================================= */
+
+.scene-nav {
   position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.6);
+
+  padding: 0 40px;
+  z-index: 1000;
+
+  background: transparent;
 }
 
-.scene-menu-nav {
+/* -------------------------
+   LEFT / RIGHT LINKS
+------------------------- */
+
+.scene-nav-left,
+.scene-nav-right {
   display: flex;
-  flex-direction: column; /* vertical */
-  gap: 20px;
-  text-align: center;
+  gap: 24px;
 }
 
-.scene-menu-nav a {
-  font-size: 20px;
+.scene-nav-left {
+  justify-content: flex-end;
+}
+
+.scene-nav-right {
+  justify-content: flex-start;
+}
+
+.scene-nav a {
+  font-size: 14px;
   color: #000;
   text-decoration: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.scene-menu-nav a:hover {
+.scene-nav a:hover {
   opacity: 0.5;
   transform: translateY(-2px);
 }
 
-/* Disable last 4 menu items */
-.scene-menu-nav a:nth-last-child(-n+4) {
-  pointer-events: none;
-  opacity: 0.35;
+/* -------------------------
+   LOGO
+------------------------- */
+
+.scene-nav-logo {
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
+
+/* -------------------------
+   MOBILE BURGER
+------------------------- */
+
+.scene-nav-burger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* =========================================================
+   MOBILE NAV OVERLAY
+========================================================= */
+
+.scene-nav-mobile {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.96);
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene-nav-mobile-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+}
+
+.scene-nav-mobile a {
+  font-size: 22px;
+  text-decoration: none;
+  color: #000;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.scene-nav-mobile a:hover {
+  opacity: 0.5;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .scene-nav {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 20px;
+  }
+
+  .scene-nav-left,
+  .scene-nav-right {
+    display: none;
+  }
+
+  .scene-nav-burger {
+    display: block;
+    justify-self: start;
+  }
+
+  .scene-nav-logo {
+    justify-self: end;
+  }
+}
+
+/* =========================================================
+   OPTIONAL MOBILE SCENE SCALE
+========================================================= */
 
 @media (max-width: 768px) {
   .scene-content {
@@ -158,15 +270,6 @@ html, body {
   }
 }
 
-/* Keep EVENTS interactive */
-.scene-filter svg g[data-id="events"],
-.scene-filter svg g[data-id="eat"],
-.scene-filter svg g[data-id="hire"],
-.scene-filter svg g[data-id="dance"] {
-  opacity: 0!important;
-  pointer-events: none!important;
-  display: none!important;
-}
 
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
