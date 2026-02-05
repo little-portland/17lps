@@ -52,7 +52,7 @@ html, body {
 .scene-filter {
   width: 100%;
   height: 100%;
-  filter: grayscale(100%) contrast(300%) brightness(1);
+  filter: grayscale(100%) contrast(300%) brightness(0.8);
 }
 
 .scene-overlay {
@@ -88,12 +88,6 @@ html, body {
 
 .scene-content.blurred {
   filter: blur(10px) brightness(0.85);
-}
-
-.scene-filter {
-  width: 100%;
-  height: 100%;
-  filter: grayscale(100%) contrast(300%);
 }
 
 /*
