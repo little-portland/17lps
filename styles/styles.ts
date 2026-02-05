@@ -133,7 +133,7 @@ html, body {
   align-items: center;
 
   padding: 0 60px;
-  z-index: 1000;
+  z-index: 3000;
   background: transparent;
 
   opacity: 0;
@@ -212,7 +212,7 @@ html, body {
 }
 
 /* =========================================================
-   BURGER ICON
+   BURGER ICON (2 lines → perfect X)
 ========================================================= */
 
 .scene-nav-burger {
@@ -223,10 +223,7 @@ html, body {
   border: none;
   cursor: pointer;
   padding: 0;
-  display: none;
-
-  /* IMPORTANT — above mobile menu */
-  z-index: 3000;
+  z-index: 3100;
 }
 
 /* Lines */
@@ -234,28 +231,37 @@ html, body {
 .scene-nav-burger span {
   position: absolute;
   left: 0;
+  top: 50%;                 /* center vertically */
   width: 100%;
   height: 3px;
   background: #000;
+
+  transform-origin: center; /* rotate from center */
   transition: transform 0.35s ease, opacity 0.25s ease;
 }
 
+/* Top line (shift up) */
+
 .scene-nav-burger span:nth-child(1) {
-  top: 4px;
+  transform: translateY(-6px);
 }
+
+/* Bottom line (shift down) */
 
 .scene-nav-burger span:nth-child(2) {
-  bottom: 4px;
+  transform: translateY(6px);
 }
 
-/* OPEN → X */
+/* =========================================================
+   OPEN → PERFECT X
+========================================================= */
 
 .scene-nav-burger.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .scene-nav-burger.open span:nth-child(2) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 /* =========================================================
@@ -301,6 +307,7 @@ html, body {
   .scene-nav {
     grid-template-columns: 1fr 1fr;
     padding: 0 20px;
+    z-index: 3000; /* above mobile overlay */
   }
 
   .scene-nav-left,
