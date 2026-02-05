@@ -169,6 +169,49 @@ html, body {
   }
 }
 
+
+/* TEMMPORARY MENU CSS */
+
+.scene-wrapper {
+  position: relative;
+}
+
+/* Main scene */
+.scene-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Animation layer */
+.scene-filter {
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Only SVG elements interactive */
+.scene-filter svg * {
+  pointer-events: auto;
+}
+
+/* Overlay image layer */
+.scene-overlay {
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+
+/* Click capture */
+.scene-click-capture {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+
+
+
+
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
  }
