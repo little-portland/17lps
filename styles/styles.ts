@@ -41,7 +41,7 @@ html, body {
   padding: 0;
  }
 
- /* =========================================================
+/* =========================================================
    SCENE LAYOUT
 ========================================================= */
 
@@ -71,7 +71,7 @@ html, body {
   transition: filter 0.4s ease;
 }
 
-/* Blur when menu open (if ever reused) */
+/* Optional blur hook (not currently used) */
 .scene-content.blurred {
   filter: blur(10px) brightness(0.85);
 }
@@ -85,20 +85,20 @@ html, body {
   width: 100%;
   height: 100%;
 
-  /* Your visual treatment */
+  /* Visual treatment */
   filter: grayscale(100%) contrast(300%) brightness(0.8);
 
-  /* Allow hover events inside SVGs */
+  /* Do NOT block hover globally */
   pointer-events: none;
 }
 
-/* Only SVG elements interactive */
+/* Only SVG elements receive hover */
 .scene-filter svg * {
   pointer-events: auto;
 }
 
 /* =========================================================
-   SVG OVERLAY (obelisk etc.)
+   SVG OVERLAY (OBELISK, ETC.)
 ========================================================= */
 
 .scene-overlay {
@@ -108,7 +108,7 @@ html, body {
   height: 100%;
   z-index: 2;
 
-  /* Do NOT block hover */
+  /* Never block hover */
   pointer-events: none;
 }
 
@@ -116,7 +116,6 @@ html, body {
    DISABLED SCENE HOTSPOTS
 ========================================================= */
 
-/* Keep EVENTS etc disabled */
 .scene-filter svg g[data-id="events"],
 .scene-filter svg g[data-id="eat"],
 .scene-filter svg g[data-id="hire"],
@@ -127,7 +126,7 @@ html, body {
 }
 
 /* =========================================================
-   DESKTOP + MOBILE NAVIGATION
+   TOP NAVIGATION (DESKTOP + MOBILE)
 ========================================================= */
 
 .scene-nav {
@@ -145,6 +144,17 @@ html, body {
   z-index: 1000;
 
   background: transparent;
+
+  /* Fade-in hook */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+/* Visible after scene load */
+.scene-nav.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* -------------------------
@@ -178,7 +188,7 @@ html, body {
 }
 
 /* -------------------------
-   LOGO
+   LOGO (TRUE CENTER)
 ------------------------- */
 
 .scene-nav-logo {
@@ -269,6 +279,7 @@ html, body {
     left: 10px;
   }
 }
+
 
 
  .hollow-btn {
