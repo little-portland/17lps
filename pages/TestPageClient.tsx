@@ -116,10 +116,10 @@ function Scene({
     >
       <motion.image
         href="/images/obelisk.png"
-        x={2420}
-        y={620}
-        width={175}
-        height={500}
+        x={2445}
+        y={710}
+        width={140}
+        height={400}
         initial={{ scaleY: 0, opacity: 0 }}
         animate={{ scaleY: 1, opacity: 1 }}
         transition={{
