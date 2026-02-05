@@ -60,7 +60,11 @@ export default function SceneNav({
         {/* RIGHT LINKS (desktop) */}
         <nav className="scene-nav-right">
           {links.slice(5).map((l) => (
-            <a key={l.label} href={l.href}>
+           <a
+              key={l.label}
+              href={l.href}
+              className={l.href === "#" ? "disabled" : ""}
+            >
               {l.label}
             </a>
           ))}
@@ -86,11 +90,15 @@ export default function SceneNav({
               exit={{ y: 40, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {links.map((l) => (
-                <a key={l.label} href={l.href}>
-                  {l.label}
-                </a>
-              ))}
+            {links.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                className={l.href === "#" ? "disabled" : ""}
+              >
+                {l.label}
+              </a>
+            ))}
             </motion.div>
           </motion.div>
         )}
