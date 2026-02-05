@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "@components/Layout/Layout-old";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import AnimationDesktopOnly from "@components/Animation/AnimationDesktopOnly";
 import { useLoaded } from "../store/context";
 import Canvas from "@components/Canvas";
@@ -37,7 +37,6 @@ const mockHireItem = {
 
 export default function TestPageClient() {
   const { canvasState, setCanvasState, isLoaded, setLoaded } = useLoaded();
-  const [menuOpen, setMenuOpen] = useState(false);
 
   // Force white background for test page
   useEffect(() => {
@@ -65,14 +64,87 @@ export default function TestPageClient() {
         eatItem={mockEatItem}
         hireItem={mockHireItem}
         main={
-          <Scene
-            isLoaded={isLoaded}
-            setLoaded={setLoaded}
-            menuOpen={menuOpen}
-            setMenuOpen={setMenuOpen}
-          />
+          <>
+            <SceneNav />
+            <Scene
+              isLoaded={isLoaded}
+              setLoaded={setLoaded}
+            />
+          </>
         }
       />
+    </>
+  );
+}
+
+// ------------------------------------------------------------------
+// TOP NAVIGATION
+// ------------------------------------------------------------------
+
+function SceneNav() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <>
+      <header className="scene-nav">
+
+        {/* Mobile burger */}
+        <button
+          className="scene-nav-burger"
+          onClick={() => setMobileOpen(true)}
+        >
+          ☰
+        </button>
+
+        {/* Left links (desktop) */}
+        <nav className="scene-nav-left">
+          <a href="/events">The Space</a>
+          <a href="/access">Access</a>
+          <a href="/food">Dining</a>
+          <a href="/theclub">After Dark</a>
+          <a href="/nocturn">Art (Nocturn)</a>
+        </nav>
+
+        {/* Logo */}
+        <div className="scene-nav-logo">
+          LOGO
+        </div>
+
+        {/* Right links (desktop) */}
+        <nav className="scene-nav-right">
+          <a href="/about">Private Hire</a>
+          <a href="/events">Open Days</a>
+          <a href="#">Club Projects</a>
+          <a href="#">The Network</a>
+          <a href="#">LPX Radio</a>
+          <a href="#">Archives</a>
+        </nav>
+      </header>
+
+      {/* Mobile menu overlay */}
+      {mobileOpen && (
+        <div
+          className="scene-nav-mobile"
+          onClick={() => setMobileOpen(false)}
+        >
+          <div
+            className="scene-nav-mobile-inner"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <a href="/events">The Space</a>
+            <a href="/access">Access</a>
+            <a href="/food">Dining</a>
+            <a href="/theclub">After Dark</a>
+            <a href="/nocturn">Art (Nocturn)</a>
+            <a href="/about">Private Hire</a>
+            <a href="/events">Open Days</a>
+            <a href="#">Club Projects</a>
+            <a href="#">The Network</a>
+            <a href="#">LPX Radio</a>
+            <a href="#">Archives</a>
+          </div>
+        </div>
+      )}
     </>
   );
 }
@@ -84,20 +156,17 @@ export default function TestPageClient() {
 function Scene({
   isLoaded,
   setLoaded,
-  menuOpen,
-  setMenuOpen,
 }: {
   isLoaded: boolean;
   setLoaded: (v: boolean) => void;
-  menuOpen: boolean;
-  setMenuOpen: (v: boolean) => void;
 }) {
   return (
     <div className="scene-wrapper">
 
       {/* SCENE CONTENT */}
-      <div className={`scene-content ${menuOpen ? "blurred" : ""}`}>
+      <div className="scene-content">
 
+        {/* Filtered animation */}
         <div className="scene-filter">
           <AnimationDesktopOnly
             isLoaded={isLoaded}
@@ -128,53 +197,8 @@ function Scene({
             }}
           />
         </svg>
+
       </div>
-
-      {/* CLICK CAPTURE LAYER */}
-      {!menuOpen && (
-        <div
-          className="scene-click-capture"
-          onClick={() => setMenuOpen(true)}
-        />
-      )}
-
-      {/* MENU OVERLAY */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="scene-menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setMenuOpen(false)}
-          >
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 20, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <nav className="scene-menu-nav">
-                <a href="/events" target="_blank" rel="noopener noreferrer">The Space</a>
-                <a href="/access" target="_blank" rel="noopener noreferrer">Access</a>
-                <a href="/food" target="_blank" rel="noopener noreferrer">Dining</a>
-                <a href="/theclub" target="_blank" rel="noopener noreferrer">After Dark</a>
-                <a href="/nocturn" target="_blank" rel="noopener noreferrer">Art (Nocturn)</a>
-                <a href="/about" target="_blank" rel="noopener noreferrer">Private Hire</a>
-                <a href="/events" target="_blank" rel="noopener noreferrer">Open Days</a>
-
-                {/* Disabled links */}
-                <a className="disabled">Club Projects</a>
-                <a className="disabled">The Network</a>
-                <a className="disabled">LPX Radio</a>
-                <a className="disabled">Archives</a>
-              </nav>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
     </div>
   );
 }
