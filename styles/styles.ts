@@ -158,40 +158,6 @@ html, body {
   }
 }
 
-
-/* TEMMPORARY MENU CSS */
-
-.scene-wrapper {
-  position: relative;
-}
-
-/* Main scene */
-.scene-content {
-  position: relative;
-  z-index: 1;
-}
-
-/* Animation layer (hover SVGs live here) */
-.scene-filter {
-  position: relative;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Only SVG elements interactive */
-.scene-filter svg * {
-  pointer-events: auto;
-}
-
-/* Overlay image layer (obelisk) */
-.scene-overlay {
-  position: relative;
-  z-index: 3;
-  pointer-events: none;
-}
-
-
-
 /* Keep EVENTS interactive */
 .scene-filter svg g[data-id="events"],
 .scene-filter svg g[data-id="eat"],
@@ -201,8 +167,6 @@ html, body {
   pointer-events: none!important;
   display: none!important;
 }
-
-
 
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
