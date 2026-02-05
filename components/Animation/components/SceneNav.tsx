@@ -1,58 +1,93 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function SceneNav() {
+type Props = {
+  isLoaded: boolean; // controls fade-in after scene load
+};
+
+export default function SceneNav({ isLoaded }: Props) {
   const [open, setOpen] = useState(false);
 
   const links = [
-    "The Space",
-    "Access",
-    "Dining",
-    "After Dark",
-    "Art (Nocturn)",
-    "Private Hire",
-    "Open Days",
-    "Club Projects",
-    "The Network",
-    "LPX Radio",
-    "Archives",
+    { label: "The Space", href: "/events" },
+    { label: "Access", href: "/access" },
+    { label: "Dining", href: "/food" },
+    { label: "After Dark", href: "/theclub" },
+    { label: "Art (Nocturn)", href: "/nocturn" },
+    { label: "Private Hire", href: "/about" },
+    { label: "Open Days", href: "/events" },
+
+    // Disabled (last 4)
+    { label: "Club Projects", disabled: true },
+    { label: "The Network", disabled: true },
+    { label: "LPX Radio", disabled: true },
+    { label: "Archives", disabled: true },
   ];
 
   return (
     <>
-      {/* TOP BAR */}
-      <header className="scene-nav">
+      {/* =====================================================
+          TOP NAV BAR
+      ===================================================== */}
 
-        {/* Mobile menu button */}
+      <header className={`scene-nav ${isLoaded ? "visible" : ""}`}>
+
+        {/* MOBILE BURGER (top-left) */}
         <button
           className="scene-nav-burger"
           onClick={() => setOpen(true)}
+          aria-label="Open menu"
         >
           ☰
         </button>
 
-        {/* Left links (desktop) */}
+        {/* LEFT LINKS (desktop) */}
         <nav className="scene-nav-left">
-          {links.slice(0, 5).map((l) => (
-            <a key={l}>{l}</a>
+          {links.slice(0, 5).map((link) => (
+            <a
+              key={link.label}
+              href={link.href || "#"}
+              style={{
+                pointerEvents: link.disabled ? "none" : "auto",
+                opacity: link.disabled ? 0.35 : 1,
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label}
+            </a>
           ))}
         </nav>
 
-        {/* Logo */}
+        {/* LOGO (center desktop / right mobile) */}
         <div className="scene-nav-logo">
           LOGO
         </div>
 
-        {/* Right links (desktop) */}
+        {/* RIGHT LINKS (desktop) */}
         <nav className="scene-nav-right">
-          {links.slice(5).map((l) => (
-            <a key={l}>{l}</a>
+          {links.slice(5).map((link) => (
+            <a
+              key={link.label}
+              href={link.href || "#"}
+              style={{
+                pointerEvents: link.disabled ? "none" : "auto",
+                opacity: link.disabled ? 0.35 : 1,
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label}
+            </a>
           ))}
         </nav>
 
       </header>
 
-      {/* MOBILE OVERLAY MENU */}
+      {/* =====================================================
+          MOBILE MENU OVERLAY
+      ===================================================== */}
+
       <AnimatePresence>
         {open && (
           <motion.div
@@ -67,10 +102,22 @@ export default function SceneNav() {
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 40, opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
             >
-              {links.map((l) => (
-                <a key={l}>{l}</a>
+              {links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href || "#"}
+                  style={{
+                    pointerEvents: link.disabled ? "none" : "auto",
+                    opacity: link.disabled ? 0.35 : 1,
+                  }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.label}
+                </a>
               ))}
             </motion.div>
           </motion.div>
