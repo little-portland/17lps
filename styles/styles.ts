@@ -57,7 +57,7 @@ html, body {
   height: 100vh;
   overflow: hidden;
 
-  /* Space below nav */
+  /* Space below nav (desktop only feel) */
   margin-top: 40px;
 }
 
@@ -90,11 +90,11 @@ html, body {
   /* Visual treatment */
   filter: grayscale(100%) contrast(300%) brightness(0.8);
 
-  /* Allow hover events inside SVGs */
+  /* Allow hover inside SVG only */
   pointer-events: none;
 }
 
-/* Only SVG elements receive hover */
+/* Only SVG elements interactive */
 .scene-filter svg * {
   pointer-events: auto;
 }
@@ -128,7 +128,7 @@ html, body {
 }
 
 /* =========================================================
-   TOP NAVIGATION (DESKTOP + MOBILE)
+   TOP NAVIGATION
 ========================================================= */
 
 .scene-nav {
@@ -147,22 +147,20 @@ html, body {
 
   background: transparent;
 
-  /* Fade-in after scene load */
+  /* Fade in after scene load */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
 }
 
-/* Visible state */
 .scene-nav.visible {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* -------------------------
-   LEFT / RIGHT LINK ZONES
-   (Balanced spacing)
-------------------------- */
+/* =========================================================
+   NAV LINK ZONES (BALANCED)
+========================================================= */
 
 .scene-nav-left,
 .scene-nav-right {
@@ -170,8 +168,6 @@ html, body {
   gap: 28px;
   width: 100%;
 }
-
-/* Center inside equal grid space */
 
 .scene-nav-left {
   justify-content: center;
@@ -181,16 +177,16 @@ html, body {
   justify-content: center;
 }
 
-/* -------------------------
-   LINKS
-------------------------- */
+/* =========================================================
+   NAV LINKS
+========================================================= */
 
 .scene-nav a {
   font-size: 14px;
   color: #000;
   text-decoration: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
   white-space: nowrap;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .scene-nav a:hover {
@@ -198,27 +194,65 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* -------------------------
-   LOGO (TRUE CENTER)
-------------------------- */
+/* =========================================================
+   LOGO
+========================================================= */
 
 .scene-nav-logo {
   text-align: center;
   justify-self: center;
-  font-weight: bold;
-  letter-spacing: 2px;
 }
 
-/* -------------------------
-   MOBILE BURGER
-------------------------- */
+/* Logo image sizing */
+.scene-nav-logo img {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+
+/* =========================================================
+   MOBILE BURGER (2 lines → X)
+========================================================= */
 
 .scene-nav-burger {
-  display: none;
-  font-size: 24px;
+  position: relative;
+  width: 34px;
+  height: 24px;
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0;
+  display: none; /* hidden on desktop */
+  z-index: 1100;
+}
+
+/* Lines */
+.scene-nav-burger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #000;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+/* Top line */
+.scene-nav-burger span:nth-child(1) {
+  top: 4px;
+}
+
+/* Bottom line */
+.scene-nav-burger span:nth-child(2) {
+  bottom: 4px;
+}
+
+/* OPEN → X */
+.scene-nav-burger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.scene-nav-burger.open span:nth-child(2) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* =========================================================
@@ -297,52 +331,6 @@ html, body {
   }
 }
 
-/* =========================================================
-   BURGER ICON (2 lines → X)
-========================================================= */
-
-.scene-nav-burger {
-  position: relative;
-  width: 34px;
-  height: 24px;
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-/* Lines */
-.scene-nav-burger span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: #000;
-  transition: transform 0.35s ease, opacity 0.25s ease;
-}
-
-/* Top line */
-.scene-nav-burger span:nth-child(1) {
-  top: 4px;
-}
-
-/* Bottom line */
-.scene-nav-burger span:nth-child(2) {
-  bottom: 4px;
-}
-
-/* =========================================================
-   OPEN STATE → X
-========================================================= */
-
-.scene-nav-burger.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.scene-nav-burger.open span:nth-child(2) {
-  transform: translateY(-8px) rotate(-45deg);
-}
 
 
 
