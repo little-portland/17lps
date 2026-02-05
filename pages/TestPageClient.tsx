@@ -10,7 +10,7 @@ import Canvas from "@components/Canvas";
 // ------------------------------------------------------------------
 
 const mockEatItem = {
-  image: { 
+  image: {
     url: "/images/placeholder.jpg",
     width: 1,
     height: 1,
@@ -53,34 +53,32 @@ export default function TestPageClient() {
     };
   }, []);
 
-return (
-  <>
+  return (
+    <>
+      {/* Canvas preloader */}
+      {canvasState && !isLoaded && (
+        <Canvas removeSelf={setCanvasState} />
+      )}
 
-    {/* ✅ THIS is what mobile was missing */}
-
-    {canvasState && !isLoaded && (
-      <Canvas removeSelf={setCanvasState} />
-    )}
-    
-    <Layout
-      hideNav
-      eatItem={mockEatItem}
-      hireItem={mockHireItem}
-      main={
-        <Scene
-          isLoaded={isLoaded}
-          setLoaded={setLoaded}
-          menuOpen={menuOpen}
-          setMenuOpen={setMenuOpen}
-        />
-      }
-    />
-  </>
-);
+      <Layout
+        hideNav
+        eatItem={mockEatItem}
+        hireItem={mockHireItem}
+        main={
+          <Scene
+            isLoaded={isLoaded}
+            setLoaded={setLoaded}
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
+          />
+        }
+      />
+    </>
+  );
 }
 
 // ------------------------------------------------------------------
-// SCENE COMPONENT (all interactive logic lives here)
+// SCENE COMPONENT
 // ------------------------------------------------------------------
 
 function Scene({
@@ -95,53 +93,52 @@ function Scene({
   setMenuOpen: (v: boolean) => void;
 }) {
   return (
-   <div className="scene-wrapper">
+    <div className="scene-wrapper">
 
-  {/* SVG + animations */}
-  <div className={`scene-content ${menuOpen ? "blurred" : ""}`}>
+      {/* SCENE CONTENT */}
+      <div className={`scene-content ${menuOpen ? "blurred" : ""}`}>
 
-    <div className="scene-filter">
-      <AnimationDesktopOnly
-        isLoaded={isLoaded}
-        setLoaded={setLoaded}
-        isTestPage
-      />
-    </div>
+        <div className="scene-filter">
+          <AnimationDesktopOnly
+            isLoaded={isLoaded}
+            setLoaded={setLoaded}
+            isTestPage
+          />
+        </div>
 
-    <svg
-      viewBox="0 0 3840 2160"
-      className="scene-overlay"
-      preserveAspectRatio="xMidYMid meet"
-      aria-hidden
-    >
-      <motion.image
-        href="/images/obelisk.png"
-        x={2445}
-        y={710}
-        width={140}
-        height={400}
-        initial={{ scaleY: 0, opacity: 0 }}
-        animate={{ scaleY: 1, opacity: 1 }}
-        transition={{
-          delay: 2.5,
-          duration: 0.9,
-          ease: [0.2, 0.8, 0.2, 1.05],
-        }}
-      />
-    </svg>
-  </div>
+        {/* OBELISK OVERLAY */}
+        <svg
+          viewBox="0 0 3840 2160"
+          className="scene-overlay"
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden
+        >
+          <motion.image
+            href="/images/obelisk.png"
+            x={2445}
+            y={710}
+            width={140}
+            height={400}
+            initial={{ scaleY: 0, opacity: 0 }}
+            animate={{ scaleY: 1, opacity: 1 }}
+            transition={{
+              delay: 2.5,
+              duration: 0.9,
+              ease: [0.2, 0.8, 0.2, 1.05],
+            }}
+          />
+        </svg>
+      </div>
 
-  {/* CLICK CAPTURE LAYER */}
-  {!menuOpen && (
-    <div
-      className="scene-click-capture"
-      onClick={() => setMenuOpen(true)}
-    />
-  )}
+      {/* CLICK CAPTURE LAYER */}
+      {!menuOpen && (
+        <div
+          className="scene-click-capture"
+          onClick={() => setMenuOpen(true)}
+        />
+      )}
 
-</div>
-
-     {/* MENU OVERLAY */}
+      {/* MENU OVERLAY */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -149,14 +146,14 @@ function Scene({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setMenuOpen(false)} // click outside closes
+            onClick={() => setMenuOpen(false)}
           >
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 20, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()} // prevent close inside
+              onClick={(e) => e.stopPropagation()}
             >
               <nav className="scene-menu-nav">
                 <a href="/events" target="_blank" rel="noopener noreferrer">The Space</a>
@@ -166,17 +163,18 @@ function Scene({
                 <a href="/nocturn" target="_blank" rel="noopener noreferrer">Art (Nocturn)</a>
                 <a href="/about" target="_blank" rel="noopener noreferrer">Private Hire</a>
                 <a href="/events" target="_blank" rel="noopener noreferrer">Open Days</a>
-                <a href="/artists" target="_blank" rel="noopener noreferrer">Club Projects</a>
-                <a href="/about" target="_blank" rel="noopener noreferrer">The Network</a>
-                <a href="/events" target="_blank" rel="noopener noreferrer">LPX Radio</a>
-                <a href="/about" target="_blank" rel="noopener noreferrer">Archives</a>
+
+                {/* Disabled links */}
+                <a className="disabled">Club Projects</a>
+                <a className="disabled">The Network</a>
+                <a className="disabled">LPX Radio</a>
+                <a className="disabled">Archives</a>
               </nav>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* closes .scene-wrapper */}
     </div>
   );
 }
