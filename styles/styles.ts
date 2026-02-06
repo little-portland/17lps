@@ -93,14 +93,6 @@ html, body {
   pointer-events: auto;
 } 
 
-.scene-filter::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.2); /* brightness substitute */
-  pointer-events: none;
-}
-
 /* =========================================================
    SVG OVERLAY
 ========================================================= */
