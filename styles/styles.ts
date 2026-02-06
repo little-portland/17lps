@@ -100,11 +100,9 @@ html, body {
       invert(100%)
       grayscale(100%)
       contrast(300%)
-  
-      drop-shadow(0.5px 0 0 #fff)
-      drop-shadow(-0.5px 0 0 #fff)
-      drop-shadow(0 0.5px 0 #fff)
-      drop-shadow(0 -0.5px 0 #fff);
+
+      drop-shadow(1px 0 0 #000)
+      drop-shadow(-1px 0 0 #000);
   }
 }
 
