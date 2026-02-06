@@ -198,13 +198,13 @@ function Scene({
 
               // Continuous pulse
               scale: {
-                duration: 2.8,
+                duration: 4,
                 ease: "easeInOut",
                 repeat: Infinity,
               },
 
               filter: {
-                duration: 2.8,
+                duration: 4,
                 ease: "easeInOut",
                 repeat: Infinity,
               },
