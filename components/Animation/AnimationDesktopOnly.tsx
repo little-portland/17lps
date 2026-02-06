@@ -106,39 +106,65 @@ const AnimationDesktopOnly: React.FC<AnimationProps> = ({
         )}
 
         {/* =========================
-            MOBILE STACK
+            MOBILE STACK (SVG FILTER WRAPPED)
         ========================= */}
         {isMobile && (
-          <>
-            {/* Base mobile illustration */}
-            <Lottie
-              lottieRef={lottieRef}
-              animationData={mobileMain}
-              loop={false}
-              autoplay={false}
-            />
+          <svg
+            viewBox="0 0 3840 2160"
+            style={{ width: "100%", height: "100%" }}
+          >
+            <defs>
+              {/* Safari-safe grayscale filter */}
+              <filter id="bw">
+                <feColorMatrix
+                  type="saturate"
+                  values="0"
+                />
+              </filter>
+            </defs>
 
-            {/* Init animation overlay (unmounts after complete) */}
-            {!showMobileLoop && (
-              <Lottie
-                lottieRef={lottieRef2}
-                animationData={mobileInit}
-                loop={false}
-                autoplay={false}
-                onComplete={onMobileInitComplete}
-              />
-            )}
+            <g filter="url(#bw)">
+              <foreignObject
+                x="0"
+                y="0"
+                width="100%"
+                height="100%"
+              >
+                <div style={{ width: "100%", height: "100%" }}>
+                  
+                  {/* Base mobile illustration */}
+                  <Lottie
+                    lottieRef={lottieRef}
+                    animationData={mobileMain}
+                    loop={false}
+                    autoplay={false}
+                  />
 
-            {/* Loop layer */}
-            {showMobileLoop && (
-              <Lottie
-                lottieRef={lottieRef3}
-                animationData={mobileLoop}
-                loop
-                autoplay
-              />
-            )}
-          </>
+                  {/* Init animation overlay */}
+                  {!showMobileLoop && (
+                    <Lottie
+                      lottieRef={lottieRef2}
+                      animationData={mobileInit}
+                      loop={false}
+                      autoplay={false}
+                      onComplete={onMobileInitComplete}
+                    />
+                  )}
+
+                  {/* Loop layer */}
+                  {showMobileLoop && (
+                    <Lottie
+                      lottieRef={lottieRef3}
+                      animationData={mobileLoop}
+                      loop
+                      autoplay
+                    />
+                  )}
+
+                </div>
+              </foreignObject>
+            </g>
+          </svg>
         )}
       </SvgContainer>
 
