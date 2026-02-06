@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-// Libs
+//Libs
 import Lottie from "lottie-react";
 import { motion } from "framer-motion";
 
-// Animations
+//main animation
 import houseAnimation from "public/Web_assets/Initial_Web.json";
 import mobileMain from "public/Web_assets/Main_Mobile.json";
 import mobileInit from "public/Web_assets/Initial_animation_Mobile.json";
@@ -14,12 +14,12 @@ import AnimationLayer from "./components/AnimationLayer";
 
 import eatDance from "public/Web_assets/still.json";
 
-// Hooks
+//hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
 import { useUI } from "@components/UX/context";
 import { useLoaded } from "store/context";
 
-// Styles
+//Styles
 import { SvgContainer } from "./styles";
 
 type AnimationProps = {
@@ -33,122 +33,111 @@ const Animation: React.FC<AnimationProps> = ({
   setLoaded,
   isTestPage,
 }) => {
-  // UI
+  //UI Handlers
   const { displayLineup, closeLineup, closeMenu } = useUI();
   const { canvasState, setCanvasState } = useLoaded();
 
-  // Lottie refs
-  const lottieRef = useRef<any>(null);
-  const lottieRef2 = useRef<any>(null);
-  const lottieRef3 = useRef<any>(null);
+  //Animation Ref
+  const lottieRef = useRef<any>();
+  const lottieRef2 = useRef<any>();
+  const lottieRef3 = useRef<any>();
+  const lottieRefMobile = useRef<any>();
+  // const loopRef = useRef<any>();
+  const wrapperRef = useRef<HTMLDivElement>();
+  const opacityMobileRef = useRef<HTMLDivElement>();
 
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const opacityMobileRef = useRef<HTMLDivElement>(null);
-
-  // Device
+  //Check Device
   const { isMobile } = useDeviceDetect();
 
   const [showMobileLoop, setShowMobileLoop] = useState(false);
 
-  /**
-   * Desktop animation complete
-   */
   const onAnimationCompleteHandler = (): void => {
     setLoaded(true);
-    setCanvasState(false);
+    setCanvasState(false)
 
     sessionStorage.setItem("canvas", "true");
+
+    //sessionStorage.setItem("isLoaded", "true");
   };
 
-  /**
-   * Mobile animation complete
-   * IMPORTANT: never hide mobile layers via opacity
-   */
   const onMobileAnimationCompleteHandler = (): void => {
     setShowMobileLoop(true);
     setLoaded(true);
-    setCanvasState(false);
+    setCanvasState(false)
 
     sessionStorage.setItem("canvas", "true");
+    //sessionStorage.setItem("isLoaded", "true");
+
+    if (isMobile) {
+      opacityMobileRef.current.style.opacity = "0";
+    }
   };
 
-  /**
-   * Handle animation playback + visibility
-   * This replaces all imperative "hide forever" logic
-   */
   useEffect(() => {
-    if (!wrapperRef.current) return;
-
-    // ✅ MOBILE: always visible, no hover exit state
-    if (isMobile) {
-      wrapperRef.current.style.opacity = "1";
-
-      if (!isLoaded && !canvasState) {
-        lottieRef.current?.playSegments?.([0, 120], true);
-        lottieRef2.current?.playSegments?.([0, 625], true);
-      }
-
-      return;
-    }
-
-    // ✅ DESKTOP behaviour (unchanged)
     if (!isLoaded && !canvasState) {
-      lottieRef.current?.playSegments?.([0, 120], true);
-      lottieRef2.current?.playSegments?.([0, 625], true);
-      wrapperRef.current.style.opacity = "1";
-    } else {
+      if (lottieRef.current && typeof lottieRef.current.playSegments === "function") {
+        lottieRef.current.playSegments([0, 120], true);
+      }
+  
+      if (lottieRef2.current && typeof lottieRef2.current.playSegments === "function") {
+        lottieRef2.current.playSegments([0, 625], true);
+      }
+  
+      if (wrapperRef.current) {
+        wrapperRef.current.style.opacity = "1";
+      }
+    } else if (!isMobile && wrapperRef.current) {
       wrapperRef.current.style.opacity = "0";
     }
-  }, [isLoaded, canvasState, isMobile]);
+  }, [isLoaded, canvasState]);
 
   return (
     <>
       <SvgContainer ref={wrapperRef}>
-        {/* DESKTOP */}
         {!canvasState && !isMobile ? (
           <Lottie
             lottieRef={lottieRef}
             animationData={houseAnimation}
             loop={false}
             autoplay={false}
-            onComplete={onAnimationCompleteHandler}
+            onComplete={() => onAnimationCompleteHandler()}
+            // onEnterFrame={onAnimationStartHandler}
           />
         ) : (
           <>
-            {/* MOBILE MAIN */}
             <Lottie
               lottieRef={lottieRef}
               animationData={mobileMain}
               loop={false}
               autoplay={false}
-              onComplete={onAnimationCompleteHandler}
+              onComplete={() => onAnimationCompleteHandler()}
+              // onComplete={() => console.log("complete")}
+              // onEnterFrame={onAnimationStartHandler}
             />
-
-            {/* MOBILE INIT */}
             <div ref={opacityMobileRef}>
               <Lottie
                 lottieRef={lottieRef2}
                 animationData={mobileInit}
                 loop={false}
                 autoplay={false}
-                onComplete={onMobileAnimationCompleteHandler}
+                onComplete={() => onMobileAnimationCompleteHandler()}
+                // onEnterFrame={onAnimationStartHandler}
               />
             </div>
 
-            {/* MOBILE LOOP */}
             {showMobileLoop && (
               <Lottie
                 lottieRef={lottieRef3}
                 animationData={mobileLoop}
-                loop
-                autoplay
+                loop={true}
+                autoplay={true}
+                // onComplete={() => onAnimationCompleteHandler()}
+                // onEnterFrame={onAnimationStartHandler}
               />
             )}
           </>
         )}
       </SvgContainer>
-
-      {/* Desktop hover layer only */}
       {isLoaded && !isMobile && (
         <AnimationLayer isTestPage={isTestPage} />
       )}
