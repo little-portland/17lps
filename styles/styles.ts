@@ -81,7 +81,7 @@ html, body {
    FILTERED ANIMATION
 ========================================================= */
 
-.scene-filter {
+/*.scene-filter {
   position: relative;
   width: 100%;
   height: 100%;
@@ -94,7 +94,24 @@ html, body {
 
 .scene-filter svg * {
   pointer-events: auto;
+} */
+
+
+/* Apply filter directly to SVG instead of wrapper */
+
+.scene-filter svg {
+  filter: grayscale(100%) contrast(300%) brightness(0.8);
 }
+
+/* Keep wrapper clean */
+
+.scene-filter {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 
 /* =========================================================
    SVG OVERLAY
