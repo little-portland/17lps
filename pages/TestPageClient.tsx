@@ -153,12 +153,66 @@ function Scene({
             y={obelisk.y}
             width={obelisk.width}
             height={obelisk.height}
-            initial={{ scaleY: 0, opacity: 0 }}
-            animate={{ scaleY: 1, opacity: 1 }}
+
+            /* -------------------------------
+               ENTRY ANIMATION
+            -------------------------------- */
+            initial={{
+              scaleY: 0,
+              opacity: 0,
+            }}
+
+            /* -------------------------------
+               CONTINUOUS PULSE
+            -------------------------------- */
+            animate={{
+              scaleY: 1,
+              opacity: 1,
+
+              // Gentle breathing scale
+              scale: [1, 1.035, 1],
+
+              // Subtle brightness pulse
+              filter: [
+                "brightness(1)",
+                "brightness(1.15)",
+                "brightness(1)",
+              ],
+            }}
+
+            /* -------------------------------
+               TIMING
+            -------------------------------- */
             transition={{
               delay: 2.5,
-              duration: 0.9,
-              ease: [0.2, 0.8, 0.2, 1.05],
+
+              // Rise up intro
+              scaleY: {
+                duration: 0.9,
+                ease: [0.2, 0.8, 0.2, 1.05],
+              },
+
+              opacity: {
+                duration: 0.9,
+              },
+
+              // Continuous pulse
+              scale: {
+                duration: 2.8,
+                ease: "easeInOut",
+                repeat: Infinity,
+              },
+
+              filter: {
+                duration: 2.8,
+                ease: "easeInOut",
+                repeat: Infinity,
+              },
+            }}
+
+            /* Prevents bottom anchoring stretch */
+            style={{
+              transformOrigin: "center bottom",
             }}
           />
         </svg>
