@@ -108,7 +108,7 @@ html, body {
 ========================================================= */
 
 .scene-overlay {
-  position: relative;
+  position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -116,8 +116,7 @@ html, body {
 
   /* Never block hover */
   pointer-events: none;
-  transform: translateZ(0); /* force new layer */
-}
+  }
 
 /* =========================================================
    DISABLED HOTSPOTS
