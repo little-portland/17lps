@@ -85,7 +85,7 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
-  filter: grayscale(100%) contrast(300%) brightness(0.8);
+  filter: grayscale(100%) contrast(300%) brightness(80%)
   pointer-events: none;
 }
 
