@@ -93,7 +93,7 @@ html, body {
   pointer-events: auto;
 } 
 
-.scene-filter {
+.scene-filter svg {
   filter:
     invert(100%)
     grayscale(100%)
@@ -108,7 +108,6 @@ html, body {
     drop-shadow(-1px 1px 0 #000)
     drop-shadow(1px -1px 0 #000);
 }
-
 
 /* =========================================================
    SVG OVERLAY
