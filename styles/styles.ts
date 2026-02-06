@@ -109,22 +109,6 @@ html, body {
     drop-shadow(1px -1px 0 #000);
 }
 
-.scene-filter svg {
-  filter:
-    invert(100%)
-    grayscale(100%)
-    contrast(300%)
-
-    drop-shadow(1px 0 0 #000)
-    drop-shadow(-1px 0 0 #000)
-    drop-shadow(0 1px 0 #000)
-    drop-shadow(0 -1px 0 #000)
-    drop-shadow(1px 1px 0 #000)
-    drop-shadow(-1px -1px 0 #000)
-    drop-shadow(-1px 1px 0 #000)
-    drop-shadow(1px -1px 0 #000);
-}
-
 
 /* =========================================================
    SVG OVERLAY
