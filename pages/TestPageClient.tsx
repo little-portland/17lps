@@ -146,10 +146,10 @@ function Scene({
             {/* PULSE (separate loop layer) */}
             <motion.g
               animate={{
-                scale: [1, 1.1, 1],
+                scale: [1, 1.035, 1],
                 filter: [
                   "brightness(1)",
-                  "brightness(1.2)",
+                  "brightness(1.4)",
                   "brightness(1)",
                 ],
               }}
