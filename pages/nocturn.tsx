@@ -63,28 +63,23 @@ const Menu = ({ menuImage }) => {
          </div>
            <div className="nocturn-wider-section">
            <div className="row">
-              <div className="column">
-                <a href="https://www.little-portland.com/nocturn-01" target="_blank">
-                  <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_1.jpg" />
-                  <div className="nocturn-text-wrapper"> 
-                    <p className="nocturn-text page-link">Learn more &#8594;</p>
-                  </div>
-                </a>
-              </div>
-              <div className="column">
-                <a href="https://www.little-portland.com/nocturn-02" target="_blank">
-                  <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_2.jpg" />
-                  <div className="nocturn-text-wrapper"> 
-                    <p className="nocturn-text page-link">Learn more &#8594;</p>
-                  </div>
-                </a>
-              </div>
-              </div>
-              
-              <div className="row">
+               <div className="column">
+                   <a href="https://sevn.ly/xn6MyA5b" target="_blank">
+                     <img className="flyer" src="/images/nocturn/17LPS_Nocturn_resonance_new.png" />
+                     <div className="nocturn-text-wrapper"> 
+                       <p className="nocturn-text page-link">Book Tickets &#8594;</p>
+                     </div>
+                   </a>
+                 </div>
                  <div className="column">
-                   <a href="https://www.little-portland.com/nocturn-03" target="_blank">
-                     <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn03.gif" />
+                     <img className="flyer" src="/images/nocturn/Nocturn_afterhours_new_poster.gif" />
+                 </div>
+              </div>
+
+             <div className="row">
+               <div className="column">
+                   <a href="https://www.little-portland.com/nocturn-05" target="_blank">
+                     <img className="flyer" src="/images/nocturn/nocturn-05/17LPS_Nocturn_5_Richie_Culver.gif" />
                      <div className="nocturn-text-wrapper"> 
                        <p className="nocturn-text page-link">Learn more &#8594;</p>
                      </div>
@@ -98,32 +93,37 @@ const Menu = ({ menuImage }) => {
                      </div>
                    </a>
                  </div>
-           </div>
+             </div>
 
-          <div className="row">
+            <div className="row">
                  <div className="column">
-                   <a href="https://www.little-portland.com/nocturn-05" target="_blank">
-                     <img className="flyer" src="/images/nocturn/nocturn-05/17LPS_Nocturn_5_Richie_Culver.gif" />
+                   <a href="https://www.little-portland.com/nocturn-03" target="_blank">
+                     <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn03.gif" />
                      <div className="nocturn-text-wrapper"> 
                        <p className="nocturn-text page-link">Learn more &#8594;</p>
                      </div>
                    </a>
                  </div>
                  <div className="column">
-                     <img className="flyer" src="/images/nocturn/Nocturn_afterhours_new_poster.gif" />
-                 </div>
-           </div>
-
-          <div className="row">
-                 <div className="column">
-                   <a href="https://sevn.ly/xn6MyA5b" target="_blank">
-                     <img className="flyer" src="/images/nocturn/17LPS_Nocturn_resonance_new.png" />
+                   <a href="https://www.little-portland.com/nocturn-02" target="_blank">
+                     <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_2.jpg" />
                      <div className="nocturn-text-wrapper"> 
-                       <p className="nocturn-text page-link">Book Tickets &#8594;</p>
+                       <p className="nocturn-text page-link">Learn more &#8594;</p>
                      </div>
                    </a>
                  </div>
-           </div>
+              </div>
+
+             <div className="row">
+              <div className="column">
+                <a href="https://www.little-portland.com/nocturn-01" target="_blank">
+                  <img className="flyer" src="/images/nocturn/17LPS_Flyer_Nocturn_1.jpg" />
+                  <div className="nocturn-text-wrapper"> 
+                    <p className="nocturn-text page-link">Learn more &#8594;</p>
+                  </div>
+                </a>
+              </div>
+             </div>
               
          </div> 
 
