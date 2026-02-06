@@ -40,6 +40,9 @@ const mockHireItem = {
 export default function TestPageClient() {
   const { canvasState, setCanvasState, isLoaded, setLoaded } = useLoaded();
 
+  // ✅ Device detect MUST live at component top level
+  const { isMobile } = useDeviceDetect();
+
   // Force white background for test page
   useEffect(() => {
     const prevBg = document.body.style.backgroundColor;
@@ -48,7 +51,8 @@ export default function TestPageClient() {
     document.body.style.backgroundColor = "#fff";
     document.body.style.color = "#000";
 
-    return () => {
+    return indicating cleanup:
+    () => {
       document.body.style.backgroundColor = prevBg;
       document.body.style.color = prevColor;
     };
@@ -72,8 +76,12 @@ export default function TestPageClient() {
         hireItem={mockHireItem}
         main={
           <>
-            {/* Top navigation (fades in after load) */}
-            <SceneNav visible={isLoaded} />
+            {/* =================================================
+                TOP NAV
+                Mobile = instant
+                Desktop = after animation
+            ================================================= */}
+            <SceneNav visible={isMobile ? true : isLoaded} />
 
             {/* Scene */}
             <Scene
