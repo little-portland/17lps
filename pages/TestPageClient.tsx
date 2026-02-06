@@ -39,11 +39,8 @@ const mockHireItem = {
 
 export default function TestPageClient() {
   const { canvasState, setCanvasState, isLoaded, setLoaded } = useLoaded();
-
-  // ✅ Device detect MUST live at component top level
   const { isMobile } = useDeviceDetect();
 
-  // Force white background for test page
   useEffect(() => {
     const prevBg = document.body.style.backgroundColor;
     const prevColor = document.body.style.color;
@@ -59,30 +56,18 @@ export default function TestPageClient() {
 
   return (
     <>
-      {/* =====================================================
-          CANVAS PRELOADER
-      ===================================================== */}
       {canvasState && !isLoaded && (
         <Canvas removeSelf={setCanvasState} />
       )}
 
-      {/* =====================================================
-          LAYOUT
-      ===================================================== */}
       <Layout
         hideNav
         eatItem={mockEatItem}
         hireItem={mockHireItem}
         main={
           <>
-            {/* =================================================
-                TOP NAV
-                Mobile = instant
-                Desktop = after animation
-            ================================================= */}
             <SceneNav visible={isMobile ? true : isLoaded} />
 
-            {/* Scene */}
             <Scene
               isLoaded={isLoaded}
               setLoaded={setLoaded}
@@ -95,7 +80,7 @@ export default function TestPageClient() {
 }
 
 // ------------------------------------------------------------------
-// SCENE COMPONENT
+// SCENE
 // ------------------------------------------------------------------
 
 function Scene({
@@ -107,23 +92,9 @@ function Scene({
 }) {
   const { isMobile } = useDeviceDetect();
 
-  /**
-   * Obelisk layout values
-   * Desktop vs Mobile
-   */
   const obelisk = isMobile
-    ? {
-        x: 2690,
-        y: 270,
-        width: 228,
-        height: 650,
-      }
-    : {
-        x: 2445,
-        y: 710,
-        width: 140,
-        height: 400,
-      };
+    ? { x: 2690, y: 270, width: 228, height: 650 }
+    : { x: 2445, y: 710, width: 140, height: 400 };
 
   return (
     <div className="scene-wrapper">
@@ -154,63 +125,57 @@ function Scene({
             width={obelisk.width}
             height={obelisk.height}
 
-            /* -------------------------------
-               ENTRY ANIMATION
-            -------------------------------- */
+            /* ----------------------------------
+               ENTRY STATE
+            ---------------------------------- */
             initial={{
               scaleY: 0,
               opacity: 0,
             }}
 
-            /* -------------------------------
-               CONTINUOUS PULSE
-            -------------------------------- */
+            /* ----------------------------------
+               SEQUENCED ANIMATION
+            ---------------------------------- */
             animate={{
               scaleY: 1,
               opacity: 1,
+            }}
 
-              // Gentle breathing scale
-              scale: [1, 1.2, 1],
+            transition={{
+              delay: 2.5,
+              duration: 0.9,
+              ease: [0.2, 0.8, 0.2, 1.05],
+            }}
 
-              // Subtle brightness pulse
+            /* ----------------------------------
+               PULSE (separate loop)
+            ---------------------------------- */
+            whileInView={{
+              scale: [1, 1.1, 1],
               filter: [
                 "brightness(1)",
-                "brightness(1.8)",
+                "brightness(1.25)",
                 "brightness(1)",
               ],
             }}
 
-            /* -------------------------------
-               TIMING
-            -------------------------------- */
+            viewport={{ once: false }}
+
             transition={{
-              delay: 2.5,
-
-              // Rise up intro
-              scaleY: {
-                duration: 0.9,
-                ease: [0.2, 0.8, 0.2, 1.05],
-              },
-
-              opacity: {
-                duration: 0.9,
-              },
-
-              // Continuous pulse
               scale: {
-                duration: 4,
+                duration: 3.8,
                 ease: "easeInOut",
                 repeat: Infinity,
+                delay: 3.4, // starts AFTER grow
               },
-
               filter: {
-                duration: 4,
+                duration: 3.8,
                 ease: "easeInOut",
                 repeat: Infinity,
+                delay: 3.4,
               },
             }}
 
-            /* Prevents bottom anchoring stretch */
             style={{
               transformOrigin: "center bottom",
             }}
