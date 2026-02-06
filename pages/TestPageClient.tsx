@@ -51,8 +51,7 @@ export default function TestPageClient() {
     document.body.style.backgroundColor = "#fff";
     document.body.style.color = "#000";
 
-    return indicating cleanup:
-    () => {
+    return () => {
       document.body.style.backgroundColor = prevBg;
       document.body.style.color = prevColor;
     };
