@@ -5,6 +5,7 @@ import AnimationDesktopOnly from "@components/Animation/AnimationDesktopOnly";
 import { useLoaded } from "../store/context";
 import Canvas from "@components/Canvas";
 import SceneNav from "@components/SceneNav";
+import useDeviceDetect from "@utils/useDeviceDetect";
 
 // ------------------------------------------------------------------
 // Mock data REQUIRED by Layout (do not remove)
@@ -97,15 +98,31 @@ function Scene({
   isLoaded: boolean;
   setLoaded: (v: boolean) => void;
 }) {
+  const { isMobile } = useDeviceDetect();
+
+  /**
+   * Obelisk layout values
+   * Desktop vs Mobile
+   */
+  const obelisk = isMobile
+    ? {
+        x: 2690,
+        y: 270,
+        width: 228,
+        height: 650,
+      }
+    : {
+        x: 2445,
+        y: 710,
+        width: 140,
+        height: 400,
+      };
+
   return (
     <div className="scene-wrapper">
-
-      {/* =====================================================
-          SCENE CONTENT
-      ===================================================== */}
       <div className="scene-content">
 
-        {/* Filtered animation layer */}
+        {/* Filtered animation */}
         <div className="scene-filter">
           <AnimationDesktopOnly
             isLoaded={isLoaded}
@@ -114,9 +131,9 @@ function Scene({
           />
         </div>
 
-        {/* =====================================================
+        {/* =========================================
             OBELISK OVERLAY
-        ===================================================== */}
+        ========================================= */}
         <svg
           viewBox="0 0 3840 2160"
           className="scene-overlay"
@@ -125,10 +142,10 @@ function Scene({
         >
           <motion.image
             href="/images/obelisk.png"
-            x={2445}
-            y={710}
-            width={140}
-            height={400}
+            x={obelisk.x}
+            y={obelisk.y}
+            width={obelisk.width}
+            height={obelisk.height}
             initial={{ scaleY: 0, opacity: 0 }}
             animate={{ scaleY: 1, opacity: 1 }}
             transition={{
