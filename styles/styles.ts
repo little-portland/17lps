@@ -101,10 +101,10 @@ html, body {
       grayscale(100%)
       contrast(300%)
 
-    drop-shadow(1px 0 0 rgba(0,0,0,0.5))
-    drop-shadow(-1px 0 0 rgba(0,0,0,0.5))
-    drop-shadow(0 1px 0 rgba(0,0,0,0.5))
-    drop-shadow(0 -1px 0 rgba(0,0,0,0.5));
+    drop-shadow(1px 0 0 #000)
+    drop-shadow(-1px 0 0 #000)
+    drop-shadow(0 1px 0 #000)
+    drop-shadow(0 -1px 0 #000);
   }
 }
 
