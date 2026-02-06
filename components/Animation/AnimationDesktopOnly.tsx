@@ -59,6 +59,11 @@ const AnimationDesktopOnly: React.FC<AnimationProps> = ({
     sessionStorage.setItem("canvas", "true");
   };
 
+    if (isMobile) {
+      opacityMobileRef.current.style.opacity = "0";
+    }
+  };
+
   // --------------------------------------------------
   // PLAYBACK CONTROL
   // --------------------------------------------------
