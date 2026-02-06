@@ -94,6 +94,12 @@ html, body {
   pointer-events: auto;
 } 
 
+.scene-filter svg {
+  filter:
+    drop-shadow(0 0 1px rgba(0,0,0,0.6))
+    drop-shadow(0 0 2px rgba(0,0,0,0.4));
+}
+
 /* =========================================================
    SVG OVERLAY
 ========================================================= */
