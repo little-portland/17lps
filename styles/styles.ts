@@ -93,15 +93,32 @@ html, body {
   pointer-events: auto;
 } 
 
-.scene-filter svg {
-  filter:
-    invert(100%)
-    grayscale(100%)
-    contrast(300%)
-
-    drop-shadow(1px 0 0 #000)
-    drop-shadow(-1px 0 0 #000);
+/* Mobile only */
+@media (max-width: 767px) {
+    .scene-filter svg {
+    filter:
+      invert(100%)
+      grayscale(100%)
+      contrast(300%)
+  
+      drop-shadow(1px 0 0 #000)
+      drop-shadow(-1px 0 0 #000);
+  }
 }
+
+/* Desktop only */
+@media (min-width: 1024px) {
+    .scene-filter {
+    filter:
+      invert(100%)
+      grayscale(100%)
+      contrast(300%)
+  
+      drop-shadow(1px 0 0 #000)
+      drop-shadow(-1px 0 0 #000);
+  }
+}
+
 
 /* =========================================================
    SVG OVERLAY
