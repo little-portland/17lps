@@ -85,7 +85,6 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
-  filter: invert(100%) grayscale(100%) contrast(300%) drop-shadow(1px 0 0 #000) drop-shadow(-1px 0 0 #000) drop-shadow(0 1px 0 #000) drop-shadow(0 -1px 0 #000);
   /*filter: grayscale(100%) contrast(300%) brightness(80%);*/
   pointer-events: none;
 }
@@ -93,6 +92,39 @@ html, body {
 .scene-filter svg * {
   pointer-events: auto;
 } 
+
+.scene-filter {
+  filter:
+    invert(100%)
+    grayscale(100%)
+    contrast(300%)
+
+    drop-shadow(1px 0 0 #000)
+    drop-shadow(-1px 0 0 #000)
+    drop-shadow(0 1px 0 #000)
+    drop-shadow(0 -1px 0 #000)
+    drop-shadow(1px 1px 0 #000)
+    drop-shadow(-1px -1px 0 #000)
+    drop-shadow(-1px 1px 0 #000)
+    drop-shadow(1px -1px 0 #000);
+}
+
+.scene-filter svg {
+  filter:
+    invert(100%)
+    grayscale(100%)
+    contrast(300%)
+
+    drop-shadow(1px 0 0 #000)
+    drop-shadow(-1px 0 0 #000)
+    drop-shadow(0 1px 0 #000)
+    drop-shadow(0 -1px 0 #000)
+    drop-shadow(1px 1px 0 #000)
+    drop-shadow(-1px -1px 0 #000)
+    drop-shadow(-1px 1px 0 #000)
+    drop-shadow(1px -1px 0 #000);
+}
+
 
 /* =========================================================
    SVG OVERLAY
