@@ -30,7 +30,10 @@ const Animation: React.FC<AnimationProps> = ({
   setLoaded,
   isTestPage,
 }) => {
+  // Context
   const { canvasState, setCanvasState } = useLoaded();
+
+  // Device
   const { isMobile } = useDeviceDetect();
 
   // Lottie refs
@@ -38,24 +41,24 @@ const Animation: React.FC<AnimationProps> = ({
   const lottieRef2 = useRef<any>(null);
   const lottieRef3 = useRef<any>(null);
 
+  // Wrapper ref
   const wrapperRef = useRef<HTMLDivElement>(null);
 
+  // Mobile loop toggle
   const [showMobileLoop, setShowMobileLoop] = useState(false);
 
-  /* =========================================================
-     DESKTOP COMPLETE
-  ========================================================= */
-
+  /**
+   * DESKTOP animation complete
+   */
   const onDesktopComplete = () => {
     setLoaded(true);
     setCanvasState(false);
     sessionStorage.setItem("canvas", "true");
   };
 
-  /* =========================================================
-     MOBILE COMPLETE
-  ========================================================= */
-
+  /**
+   * MOBILE init animation complete
+   */
   const onMobileInitComplete = () => {
     setShowMobileLoop(true);
     setLoaded(true);
@@ -63,17 +66,17 @@ const Animation: React.FC<AnimationProps> = ({
     sessionStorage.setItem("canvas", "true");
   };
 
-  /* =========================================================
-     PLAYBACK + VISIBILITY CONTROL
-  ========================================================= */
-
+  /**
+   * Playback + visibility controller
+   * FIX: Mobile wrapper always visible
+   */
   useEffect(() => {
     if (!wrapperRef.current) return;
 
-    /* ---------------- MOBILE ---------------- */
-
+    // =========================
+    // MOBILE
+    // =========================
     if (isMobile) {
-      // Mobile should ALWAYS remain visible
       wrapperRef.current.style.opacity = "1";
 
       if (!isLoaded && !canvasState) {
@@ -84,29 +87,24 @@ const Animation: React.FC<AnimationProps> = ({
       return;
     }
 
-    /* ---------------- DESKTOP ---------------- */
-
+    // =========================
+    // DESKTOP
+    // =========================
     if (!isLoaded && !canvasState) {
       wrapperRef.current.style.opacity = "1";
-
       lottieRef.current?.playSegments?.([0, 120], true);
     } else {
-      // Fade desktop animation away after load
       wrapperRef.current.style.opacity = "0";
     }
   }, [isLoaded, canvasState, isMobile]);
 
-  /* =========================================================
-     RENDER
-  ========================================================= */
-
   return (
     <>
       <SvgContainer ref={wrapperRef}>
-        {/* =====================================================
+        {/* =========================
             DESKTOP ANIMATION
-        ===================================================== */}
-        {!canvasState && !isMobile ? (
+        ========================= */}
+        {!isMobile ? (
           <Lottie
             lottieRef={lottieRef}
             animationData={houseAnimation}
@@ -115,37 +113,43 @@ const Animation: React.FC<AnimationProps> = ({
             onComplete={onDesktopComplete}
           />
         ) : (
-          /* =====================================================
-             MOBILE ANIMATIONS (STACKED)
-          ===================================================== */
-          <div style={{ position: "relative" }}>
-            
+          /* =========================
+             MOBILE ANIMATIONS
+          ========================= */
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              height: "100%",
+            }}
+          >
             {/* MAIN MOBILE SVG */}
             <Lottie
               lottieRef={lottieRef}
               animationData={mobileMain}
               loop={false}
               autoplay={false}
-              onComplete={onDesktopComplete}
             />
 
             {/* INIT OVERLAY */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-              }}
-            >
-              <Lottie
-                lottieRef={lottieRef2}
-                animationData={mobileInit}
-                loop={false}
-                autoplay={false}
-                onComplete={onMobileInitComplete}
-              />
-            </div>
+            {!showMobileLoop && (
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                }}
+              >
+                <Lottie
+                  lottieRef={lottieRef2}
+                  animationData={mobileInit}
+                  loop={false}
+                  autoplay={false}
+                  onComplete={onMobileInitComplete}
+                />
+              </div>
+            )}
 
-            {/* LOOP OVERLAY */}
+            {/* LOOP LAYER */}
             {showMobileLoop && (
               <div
                 style={{
@@ -161,14 +165,13 @@ const Animation: React.FC<AnimationProps> = ({
                 />
               </div>
             )}
-
           </div>
         )}
       </SvgContainer>
 
-      {/* =====================================================
-          DESKTOP HOVER LAYER ONLY
-      ===================================================== */}
+      {/* =========================
+          DESKTOP HOVER LAYER
+      ========================= */}
       {isLoaded && !isMobile && (
         <AnimationLayer isTestPage={isTestPage} />
       )}
