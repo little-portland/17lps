@@ -170,12 +170,12 @@ function Scene({
               opacity: 1,
 
               // Gentle breathing scale
-              scale: [1, 1.5, 1],
+              scale: [1, 1.2, 1],
 
               // Subtle brightness pulse
               filter: [
                 "brightness(1)",
-                "brightness(2)",
+                "brightness(1.8)",
                 "brightness(1)",
               ],
             }}
