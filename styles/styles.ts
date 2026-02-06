@@ -100,13 +100,7 @@ html, body {
     contrast(300%)
 
     drop-shadow(1px 0 0 #000)
-    drop-shadow(-1px 0 0 #000)
-    drop-shadow(0 1px 0 #000)
-    drop-shadow(0 -1px 0 #000)
-    drop-shadow(1px 1px 0 #000)
-    drop-shadow(-1px -1px 0 #000)
-    drop-shadow(-1px 1px 0 #000)
-    drop-shadow(1px -1px 0 #000);
+    drop-shadow(-1px 0 0 #000);
 }
 
 /* =========================================================
