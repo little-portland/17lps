@@ -107,16 +107,17 @@ html, body {
    SVG OVERLAY
 ========================================================= */
 
-.scene-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
 
-  /* Never block hover */
-  pointer-events: none;
+.scene-filter {
+  position: relative;
+  z-index: 1;
 }
+
+.scene-overlay {
+  position: relative;
+  z-index: 2;
+}
+
 
 /* =========================================================
    DISABLED HOTSPOTS
