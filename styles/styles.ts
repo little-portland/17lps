@@ -88,7 +88,6 @@ html, body {
 
   filter: grayscale(100%) contrast(300%) brightness(0.8);
 
-  /* Allow SVG hover only */
   pointer-events: none;
 }
 
