@@ -52,14 +52,16 @@ const AnimationDesktopOnly: React.FC<AnimationProps> = ({
   // --------------------------------------------------
   // MOBILE INIT COMPLETE
   // --------------------------------------------------
+
   const onMobileInitComplete = () => {
     setShowMobileLoop(true);
     setLoaded(true);
     setCanvasState(false);
+  
     sessionStorage.setItem("canvas", "true");
-  };
-
-    if (isMobile) {
+  
+    // ✅ SAFE placement
+    if (isMobile && opacityMobileRef.current) {
       opacityMobileRef.current.style.opacity = "0";
     }
   };
