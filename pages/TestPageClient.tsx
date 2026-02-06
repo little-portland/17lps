@@ -39,8 +39,6 @@ const mockHireItem = {
 
 export default function TestPageClient() {
   const { canvasState, setCanvasState, isLoaded, setLoaded } = useLoaded();
-
-  // ✅ Device detect MUST live at component top level
   const { isMobile } = useDeviceDetect();
 
   // Force white background for test page
@@ -59,27 +57,19 @@ export default function TestPageClient() {
 
   return (
     <>
-      {/* =====================================================
-          CANVAS PRELOADER
-      ===================================================== */}
+      {/* CANVAS PRELOADER */}
       {canvasState && !isLoaded && (
         <Canvas removeSelf={setCanvasState} />
       )}
 
-      {/* =====================================================
-          LAYOUT
-      ===================================================== */}
+      {/* LAYOUT */}
       <Layout
         hideNav
         eatItem={mockEatItem}
         hireItem={mockHireItem}
         main={
           <>
-            {/* =================================================
-                TOP NAV
-                Mobile = instant
-                Desktop = after animation
-            ================================================= */}
+            {/* NAV */}
             <SceneNav visible={isMobile ? true : isLoaded} />
 
             {/* Scene */}
@@ -95,7 +85,7 @@ export default function TestPageClient() {
 }
 
 // ------------------------------------------------------------------
-// SCENE COMPONENT
+// SCENE
 // ------------------------------------------------------------------
 
 function Scene({
@@ -107,29 +97,15 @@ function Scene({
 }) {
   const { isMobile } = useDeviceDetect();
 
-  /**
-   * Obelisk layout values
-   * Desktop vs Mobile
-   */
   const obelisk = isMobile
-    ? {
-        x: 2690,
-        y: 270,
-        width: 228,
-        height: 650,
-      }
-    : {
-        x: 2445,
-        y: 710,
-        width: 140,
-        height: 400,
-      };
+    ? { x: 2690, y: 270, width: 228, height: 650 }
+    : { x: 2445, y: 710, width: 140, height: 400 };
 
   return (
     <div className="scene-wrapper">
       <div className="scene-content">
 
-        {/* Filtered animation */}
+        {/* FILTERED SCENE */}
         <div className="scene-filter">
           <AnimationDesktopOnly
             isLoaded={isLoaded}
@@ -138,9 +114,7 @@ function Scene({
           />
         </div>
 
-        {/* =========================================
-            OBELISK OVERLAY
-        ========================================= */}
+        {/* OBELISK OVERLAY */}
         <svg
           viewBox="0 0 3840 2160"
           className="scene-overlay"
@@ -148,63 +122,52 @@ function Scene({
           aria-hidden
         >
           <motion.g
-            /* -----------------------------
-               ENTRY (grow into view)
-            ----------------------------- */
+            /* ENTRY */
             initial={{
               scaleY: 0,
               opacity: 0,
             }}
+
             animate={{
               scaleY: 1,
               opacity: 1,
             }}
+
             transition={{
               delay: 2.5,
               duration: 0.9,
               ease: [0.2, 0.8, 0.2, 1.05],
             }}
 
-            /* -----------------------------
-               CONTINUOUS PULSE
-            ----------------------------- */
-            whileInView={{
-              scale: [1, 1.1, 1],
-              filter: [
-                "brightness(1)",
-                "brightness(1.2)",
-                "brightness(1)",
-              ],
-            }}
-
-            viewport={{ once: false }}
-
-            transition={{
-              scale: {
-                duration: 2.8,
-                ease: "easeInOut",
-                repeat: Infinity,
-                delay: 3.4,
-              },
-              filter: {
-                duration: 2.8,
-                ease: "easeInOut",
-                repeat: Infinity,
-                delay: 3.4,
-              },
-            }}
-
             style={{
               transformOrigin: "center bottom",
             }}
           >
-            <image
-              href="/images/obelisk.png"
-              x={obelisk.x}
-              y={obelisk.y}
-              width={obelisk.width}
-              height={obelisk.height}
-            />
+            {/* PULSE (separate loop layer) */}
+            <motion.g
+              animate={{
+                scale: [1, 1.1, 1],
+                filter: [
+                  "brightness(1)",
+                  "brightness(1.2)",
+                  "brightness(1)",
+                ],
+              }}
+              transition={{
+                duration: 2.8,
+                ease: "easeInOut",
+                repeat: Infinity,
+                delay: 3.4, // starts after grow animation
+              }}
+            >
+              <image
+                href="/images/obelisk.png"
+                x={obelisk.x}
+                y={obelisk.y}
+                width={obelisk.width}
+                height={obelisk.height}
+              />
+            </motion.g>
           </motion.g>
         </svg>
 
