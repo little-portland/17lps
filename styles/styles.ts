@@ -85,7 +85,7 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
-  filter: grayscale(100%) contrast(300%);
+  filter: invert(100%) grayscale(100%) contrast(300%);
   /*filter: grayscale(100%) contrast(300%) brightness(80%);*/
   pointer-events: none;
 }
@@ -96,8 +96,10 @@ html, body {
 
 .scene-filter svg {
   filter:
-    drop-shadow(0 0 1px rgba(0,0,0,0.6))
-    drop-shadow(0 0 2px rgba(0,0,0,0.4));
+    drop-shadow(1px 0 0 #000)
+    drop-shadow(-1px 0 0 #000)
+    drop-shadow(0 1px 0 #000)
+    drop-shadow(0 -1px 0 #000);
 }
 
 /* =========================================================
