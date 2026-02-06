@@ -39,8 +39,11 @@ const mockHireItem = {
 
 export default function TestPageClient() {
   const { canvasState, setCanvasState, isLoaded, setLoaded } = useLoaded();
+
+  // ✅ Device detect MUST live at component top level
   const { isMobile } = useDeviceDetect();
 
+  // Force white background for test page
   useEffect(() => {
     const prevBg = document.body.style.backgroundColor;
     const prevColor = document.body.style.color;
@@ -56,18 +59,30 @@ export default function TestPageClient() {
 
   return (
     <>
+      {/* =====================================================
+          CANVAS PRELOADER
+      ===================================================== */}
       {canvasState && !isLoaded && (
         <Canvas removeSelf={setCanvasState} />
       )}
 
+      {/* =====================================================
+          LAYOUT
+      ===================================================== */}
       <Layout
         hideNav
         eatItem={mockEatItem}
         hireItem={mockHireItem}
         main={
           <>
+            {/* =================================================
+                TOP NAV
+                Mobile = instant
+                Desktop = after animation
+            ================================================= */}
             <SceneNav visible={isMobile ? true : isLoaded} />
 
+            {/* Scene */}
             <Scene
               isLoaded={isLoaded}
               setLoaded={setLoaded}
@@ -80,7 +95,7 @@ export default function TestPageClient() {
 }
 
 // ------------------------------------------------------------------
-// SCENE
+// SCENE COMPONENT
 // ------------------------------------------------------------------
 
 function Scene({
@@ -92,9 +107,23 @@ function Scene({
 }) {
   const { isMobile } = useDeviceDetect();
 
+  /**
+   * Obelisk layout values
+   * Desktop vs Mobile
+   */
   const obelisk = isMobile
-    ? { x: 2690, y: 270, width: 228, height: 650 }
-    : { x: 2445, y: 710, width: 140, height: 400 };
+    ? {
+        x: 2690,
+        y: 270,
+        width: 228,
+        height: 650,
+      }
+    : {
+        x: 2445,
+        y: 710,
+        width: 140,
+        height: 400,
+      };
 
   return (
     <div className="scene-wrapper">
@@ -118,43 +147,32 @@ function Scene({
           preserveAspectRatio="xMidYMid meet"
           aria-hidden
         >
-          <motion.image
-            href="/images/obelisk.png"
-            x={obelisk.x}
-            y={obelisk.y}
-            width={obelisk.width}
-            height={obelisk.height}
-
-            /* ----------------------------------
-               ENTRY STATE
-            ---------------------------------- */
+          <motion.g
+            /* -----------------------------
+               ENTRY (grow into view)
+            ----------------------------- */
             initial={{
               scaleY: 0,
               opacity: 0,
             }}
-
-            /* ----------------------------------
-               SEQUENCED ANIMATION
-            ---------------------------------- */
             animate={{
               scaleY: 1,
               opacity: 1,
             }}
-
             transition={{
               delay: 2.5,
               duration: 0.9,
               ease: [0.2, 0.8, 0.2, 1.05],
             }}
 
-            /* ----------------------------------
-               PULSE (separate loop)
-            ---------------------------------- */
+            /* -----------------------------
+               CONTINUOUS PULSE
+            ----------------------------- */
             whileInView={{
               scale: [1, 1.1, 1],
               filter: [
                 "brightness(1)",
-                "brightness(1.25)",
+                "brightness(1.2)",
                 "brightness(1)",
               ],
             }}
@@ -163,13 +181,13 @@ function Scene({
 
             transition={{
               scale: {
-                duration: 3.8,
+                duration: 2.8,
                 ease: "easeInOut",
                 repeat: Infinity,
-                delay: 3.4, // starts AFTER grow
+                delay: 3.4,
               },
               filter: {
-                duration: 3.8,
+                duration: 2.8,
                 ease: "easeInOut",
                 repeat: Infinity,
                 delay: 3.4,
@@ -179,7 +197,15 @@ function Scene({
             style={{
               transformOrigin: "center bottom",
             }}
-          />
+          >
+            <image
+              href="/images/obelisk.png"
+              x={obelisk.x}
+              y={obelisk.y}
+              width={obelisk.width}
+              height={obelisk.height}
+            />
+          </motion.g>
         </svg>
 
       </div>
