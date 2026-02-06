@@ -104,7 +104,7 @@ html, body {
     drop-shadow(0.5px 0 0 #000)
     drop-shadow(-0.5px 0 0 #000)
     drop-shadow(0 0.5px 0 #000)
-    drop-shadow(0 -0.5px 0 #000)
+    drop-shadow(0 -0.5px 0 #000);
   }
 }
 
@@ -119,7 +119,7 @@ html, body {
     drop-shadow(0.5px 0 0 #000)
     drop-shadow(-0.5px 0 0 #000)
     drop-shadow(0 0.5px 0 #000)
-    drop-shadow(0 -0.5px 0 #000)
+    drop-shadow(0 -0.5px 0 #000);
   }
 }
 
