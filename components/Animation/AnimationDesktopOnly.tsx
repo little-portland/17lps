@@ -52,18 +52,11 @@ const AnimationDesktopOnly: React.FC<AnimationProps> = ({
   // --------------------------------------------------
   // MOBILE INIT COMPLETE
   // --------------------------------------------------
-
   const onMobileInitComplete = () => {
     setShowMobileLoop(true);
     setLoaded(true);
     setCanvasState(false);
-  
     sessionStorage.setItem("canvas", "true");
-  
-    // ✅ SAFE placement
-    if (isMobile && opacityMobileRef.current) {
-      opacityMobileRef.current.style.opacity = "0";
-    }
   };
 
   // --------------------------------------------------
@@ -125,14 +118,16 @@ const AnimationDesktopOnly: React.FC<AnimationProps> = ({
               autoplay={false}
             />
 
-            {/* Init animation overlay */}
-            <Lottie
-              lottieRef={lottieRef2}
-              animationData={mobileInit}
-              loop={false}
-              autoplay={false}
-              onComplete={onMobileInitComplete}
-            />
+            {/* Init animation overlay (unmounts after complete) */}
+            {!showMobileLoop && (
+              <Lottie
+                lottieRef={lottieRef2}
+                animationData={mobileInit}
+                loop={false}
+                autoplay={false}
+                onComplete={onMobileInitComplete}
+              />
+            )}
 
             {/* Loop layer */}
             {showMobileLoop && (
