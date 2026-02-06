@@ -101,7 +101,7 @@ html, body {
       grayscale(100%)
       contrast(300%)
 
-    drop-shadow(0 0 #000)
+    drop-shadow(0 0 0 #000)
     drop-shadow(0 0 0 #000)
     drop-shadow(0 0 0 #000)
     drop-shadow(0 0 0 #000);
