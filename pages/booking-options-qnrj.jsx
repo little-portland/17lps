@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DAN DERHAN, ROBERTA CUTOLO</h3>
-              <h3><span>STUDIO <b>//</b> </span>Ohm hourani</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, Ohm hourani</h3>
             </div>
         </div>
 
