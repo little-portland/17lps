@@ -33,7 +33,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Meg paine, robert outch, Sarah Wreath</h3>
-              <h3><span>STUDIO <b>//</b> </span>ALEX BRADLEY</h3>
+              <h3><span>STUDIO <b>//</b> </span>ALEX BRADLEY, OLI BEDIA</h3>
             </div>
         </div>
 
