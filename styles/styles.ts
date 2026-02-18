@@ -374,7 +374,13 @@ html, body {
   }
 } */
 
+/* =========================================================
+   KLAVIYO FORM STYLES
+=========================================================
 
+.klaviyo-form {
+    margin: 50px 0 50px;
+}
 
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
