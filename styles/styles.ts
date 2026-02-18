@@ -378,7 +378,7 @@ html, body {
    KLAVIYO FORM STYLES
 =========================================================
 
-.klaviyo-form.klaviyo-form.klaviyo-form {
+.klaviyo-form-RNQ78y {
     margin: 50px 0 50px!important;
 }
 
