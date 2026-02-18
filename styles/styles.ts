@@ -378,8 +378,8 @@ html, body {
    KLAVIYO FORM STYLES
 =========================================================
 
-.klaviyo-form {
-    margin: 50px 0 50px;
+.klaviyo-form.klaviyo-form.klaviyo-form {
+    margin: 50px 0 50px!important;
 }
 
  .hollow-btn {
