@@ -132,6 +132,13 @@ const Menu = ({ menuImage }) => {
            <div className="row">
               <div className="column">
                <div className="klaviyo-form-RNQ78y"></div>
+               
+               <Script id="klaviyo-embed" strategy="afterInteractive">
+                 {`
+                   window._klOnsite = window._klOnsite || [];
+                   window._klOnsite.push(['embedForm', 'RNQ78y']);
+                 `}
+               </Script>
                 <div className="nocturn-text-wrapper bottom"> 
                    <p><a className="nocturn-text" href="mailto:bianca@little-portland.com">bianca@little-portland.com</a></p>
                    <p><a className="nocturn-text" href="https://bianca-chu.com/" target="_blank">www.bianca-chu.com</a></p>
