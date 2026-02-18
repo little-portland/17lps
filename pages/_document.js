@@ -50,9 +50,8 @@ export default class MyDocument extends Document {
                     {/* Klaviyo onsite tracking */}
                     <script
                       async
-                      src="https://static.klaviyo.com/onsite/js/VgZgKn/klaviyo.js"
+                      src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VgZgKn"
                     ></script>
-
                 </Head>
                 <body>
                     <Main />
