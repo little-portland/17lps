@@ -145,7 +145,7 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
           </div>
-          <div class="klaviyo-form-RNQ78y"></div>
+          <div className="klaviyo-form-RNQ78y"></div>
     </>
   );
 };
