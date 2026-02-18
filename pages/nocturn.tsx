@@ -145,7 +145,7 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
           </div>
-        <Script src="https://forms.airship.co.uk/assets/js/embed.js"></Script>
+          <div class="klaviyo-form-RNQ78y"></div>
     </>
   );
 };
