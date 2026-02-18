@@ -38,15 +38,14 @@ const Menu = ({ menuImage }) => {
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
-            {'.subscribe h2{font-family: Helvetica!important;color: #ffffff!important;font-size: 20px;margin-top: -20px;margin-bottom: -30px;text-align: center;line-height: 1.5;}'}
+            {'.subscribe h2{font-family: Helvetica!important;color: #ffffff!important;font-size: 20px;margin-top: -20px;margin-bottom: 30px;text-align: center;line-height: 1.5;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top p{ font-size: 18px;}'}
             {'.bottom p{ font-size: 18px;}'}
             {'.bottom p{ margin-bottom: 15px;}'}
             {'.form-container{ background-color:transparent!important;}'}
-            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding:0;text-align: center;margin-bottom: 50px;}'}
-            {'.bottom{ margin-top: -20px!important;}'}
+            {'.nocturn-text-wrapper{ margin-top: 30px!important;padding:0;text-align: center!important;margin-bottom: 50px;}'}
             {'.nocturn-wider-section .flyer{transition: all 0.5s;}'}
             {'.nocturn-wider-section .flyer:hover{filter: invert(75%);}'}
             {'.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}'}
