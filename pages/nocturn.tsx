@@ -38,7 +38,7 @@ const Menu = ({ menuImage }) => {
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
-            {'.subscribe h2{font-family: Helvetica!important;color: #ffffff!important;font-size: 20px;margin-top: -20px;margin-bottom: 30px;text-align: center;line-height: 1.5;}'}
+            {'.subscribe h2{font-family: Helvetica!important;color: #ffffff!important;font-size: 20px;margin-top: -20px;margin-bottom: 10px;text-align: center;line-height: 1.5;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top p{ font-size: 18px;}'}
@@ -53,7 +53,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text{ text-align: left!important;}'}
             {'.nocturn-wider-section a{text-decoration: none;#ffffff}'} 
             {'.nocturn-wider-section a:hover .nocturn-text{color: #ff9292!important;}'}
-            {'@media (max-width: 768px) { .nocturn{width: 90%;margin:0 auto 15px auto;}.nocturn-wider-section .flyer:hover{filter: none!important;}.subscribe{width: 100%!important;}.subscribe h2{padding-left:20px;margin-top: 20px!important;margin-bottom: 10px!important;}.subscribe .column{max-height: -webkit-fill-available;}.subscribe .bookings-iframe{width: 100%!important;max-height: -webkit-fill-available;}.subscribe .bookings-iframe iframe{height:550px;margin-top:0;}.nocturn-text-wrapper{padding: 0;margin-bottom: 0px!important;}.bottom .nocturn-text{padding-left: 20px;}.nocturn-wider-section{width: 90%;}.nocturn-wider-section p{ font-size: 15px;}.bottom{ margin-top: 75px!important;margin-bottom: -30px!important;text-align:left;}.bottom p{ font-size: 15px;}.row{padding: 0!important;text-align: center!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{width: 90%;margin:0 auto 15px auto;}.nocturn-wider-section .flyer:hover{filter: none!important;}.subscribe{width: 100%!important;}.subscribe h2{margin-top: 20px!important;margin-bottom: 10px!important;}.subscribe .column{max-height: -webkit-fill-available;}.subscribe .bookings-iframe{width: 100%!important;max-height: -webkit-fill-available;}.subscribe .bookings-iframe iframe{height:550px;margin-top:0;}.nocturn-text-wrapper{padding: 0;margin-bottom: 0px!important;}.bottom .nocturn-text{padding-left: 20px;}.nocturn-wider-section{width: 90%;}.nocturn-wider-section p{ font-size: 15px;}.bottom{ margin-top: 75px!important;margin-bottom: -30px!important;text-align:left;}.bottom p{ font-size: 15px;}.row{padding: 0!important;text-align: center!important;}.column{ flex: 50%;max-width: 50%;}}'}
          </style>
          
         <title>Nocturn</title>
