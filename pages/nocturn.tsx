@@ -130,14 +130,7 @@ const Menu = ({ menuImage }) => {
           <div className="nocturn-wider-section subscribe">
            <div className="row">
               <div className="column">
-                 <h2>Sign up to receive updates for forthcoming projects and events</h2>
-                 <IFrameContainerStyle className="bookings-iframe"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          '<iframe src="https://forms.airship.co.uk/forms/1364/nocturn" scrolling="no" style="border:0px none;" width="100%" height="100%"> </iframe>',
-                      }}
-                      style={style}
-                    />
+                <div className="klaviyo-form-RNQ78y"></div>
                 <div className="nocturn-text-wrapper bottom"> 
                    <p><a className="nocturn-text" href="mailto:bianca@little-portland.com">bianca@little-portland.com</a></p>
                    <p><a className="nocturn-text" href="https://bianca-chu.com/" target="_blank">www.bianca-chu.com</a></p>
@@ -145,7 +138,6 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
           </div>
-          <div className="klaviyo-form-RNQ78y"></div>
     </>
   );
 };
