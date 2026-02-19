@@ -147,8 +147,10 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         link4={{
           title: "Stay connected",
           onClick: () => {
-            window._klOnsite = window._klOnsite || [];
-            window._klOnsite.push(['openForm', 'TQjH7u']); // your form ID
+            if (typeof window !== "undefined") {
+              (window as any)._klOnsite = (window as any)._klOnsite || [];
+              (window as any)._klOnsite.push(['openForm', 'TQjH7u']);
+            }
           },
         }}
         className="eat-modal"
