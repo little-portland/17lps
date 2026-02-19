@@ -36,8 +36,9 @@ interface SidebarProps {
     title: string;
   };
     link4?: {
-    target: string;
+    target?: string;
     title: string;
+    onClick?: () => void;
   };
   className?: string; 
 }
@@ -110,11 +111,24 @@ const Modal: FC<SidebarProps> = ({
                       <Button btnType="solid">{link3.title}</Button>
                     </a>
                   </Link>
-                  <Link href={link4.target}>
-                    <a className="right-btn" target="_blank" rel="noreferrer noopener">
+                  {link4.onClick ? (
+                    <button
+                      className="right-btn"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        link4.onClick?.();
+                      }}
+                      style={{ all: "unset", cursor: "pointer" }}
+                    >
                       <Button btnType="solid">{link4.title}</Button>
-                    </a>
-                  </Link>
+                    </button>
+                  ) : (
+                    <Link href={link4.target || "#"}>
+                      <a className="right-btn" target="_blank" rel="noreferrer noopener">
+                        <Button btnType="solid">{link4.title}</Button>
+                      </a>
+                    </Link>
+                  )}
                  </div>
                 </FirstButtonWrapper>
               )}
