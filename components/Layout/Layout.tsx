@@ -145,8 +145,11 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
           title: "Instagram",
         }}
         link4={{
-          target: "https://forms.airship.co.uk/forms/1364/the-tent-at-the-end-of-the-universe",
-          title: "stay connected",
+          title: "Stay connected",
+          onClick: () => {
+            window._klOnsite = window._klOnsite || [];
+            window._klOnsite.push(['openForm', 'TQjH7u']); // your form ID
+          },
         }}
         className="eat-modal"
         // phoneNr={`tel:+${testNr.replace(/\s/g, "")}`}
