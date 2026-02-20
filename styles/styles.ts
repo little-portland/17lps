@@ -382,7 +382,7 @@ html, body {
     margin: 50px 0 50px!important;
 }
 
-.eat-modal .sample-button button button {
+.eat-modal .sc-9b4a0baf-0 {
   padding: 0!important;
 }
 
