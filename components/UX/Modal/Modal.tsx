@@ -124,7 +124,7 @@ const Modal: FC<SidebarProps> = ({
                     </button>
                   ) : (
                     <Link href={link4.target || "#"}>
-                      <a className="right-btn newsletter-btn" target="_blank" rel="noreferrer noopener">
+                      <a className="right-btn" target="_blank" rel="noreferrer noopener">
                         <Button btnType="solid">{link4.title}</Button>
                       </a>
                     </Link>
