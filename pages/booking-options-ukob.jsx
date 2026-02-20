@@ -33,8 +33,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>14 Mar</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Natalie Marsland, Roberta Cutolo</h3>
-              <h3><span>STUDIO <b>//</b> </span>FORMANKIND, MR DORIS, TIGERBALM</h3>
+              <h3><span>TENT <b>//</b> </span>ForMankind, Roberta Cutolo, Natalie Marsland</h3>
+              <h3><span>STUDIO <b>//</b> </span>Faze Action, Mr Doris, Tigerbalm</h3>
             </div>
         </div>
 
