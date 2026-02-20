@@ -39,7 +39,6 @@ interface SidebarProps {
     target?: string;
     title: string;
     onClick?: () => void;
-    className?: string;
   };
   className?: string; 
 }
