@@ -386,6 +386,10 @@ html, body {
   padding: 0!important;
 }
 
+.newsletter-btn {
+  padding: 0!important;
+}
+
  .hollow-btn {
      font-family: "Antique Olive Nord D", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif!important;
  }
