@@ -146,6 +146,7 @@ enlightened. <span className="group-item">Disco3000</span> is how we draw the we
         }}
         link4={{
           title: "Stay connected",
+          className: "newsletter-btn",
           onClick: () => {
             if (typeof window !== "undefined") {
               (window as any)._klOnsite = (window as any)._klOnsite || [];
