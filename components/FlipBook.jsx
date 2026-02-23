@@ -9,7 +9,6 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
 
   const bookRef = useRef();
@@ -21,7 +20,6 @@ export default function FlipBook() {
   // ---------- Viewport detection ----------
   useEffect(() => {
     const update = () => {
-      setIsMobile(window.innerWidth < 768);
       setViewport({
         width: window.innerWidth,
         height: window.innerHeight,
@@ -48,10 +46,9 @@ export default function FlipBook() {
   const vw = viewport.width;
   const vh = viewport.height;
 
-  // Scale based on BOTH width and height
+  // Desktop spread scaling enforced on ALL devices
   const scaleByHeight = (vh * 0.9) / baseHeight;
-  const scaleByWidth = (vw * (isMobile ? 0.95 : 0.9)) /
-    (isMobile ? baseWidth : baseWidth * 2);
+  const scaleByWidth = (vw * 0.9) / (baseWidth * 2);
 
   const scale = Math.min(scaleByHeight, scaleByWidth);
 
@@ -81,9 +78,7 @@ export default function FlipBook() {
           lineHeight: 1.2,
         }}
       >
-        {isMobile
-          ? "Tap page edge or swipe to flip"
-          : "Click or drag page corner to flip"}
+        Tap, swipe, or drag page corner to flip
       </p>
 
       {/* Stage */}
@@ -106,22 +101,21 @@ export default function FlipBook() {
             height={pageHeight}
             size="fixed"
             minWidth={pageWidth}
-            maxWidth={isMobile ? pageWidth : pageWidth * 2}
+            maxWidth={pageWidth * 2}
             minHeight={pageHeight}
             maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
             showCover={false}
-            useMouseEvents={!isMobile}
-            usePortrait={isMobile}
+            useMouseEvents={true}          // ✅ FORCE ON
+            usePortrait={false}            // ✅ FORCE DESKTOP MODE
             startPage={0}
-            clickEventForward={!isMobile}
+            clickEventForward={false}      // ✅ Prevent canvas capture
             swipeDistance={30}
             showPageCorners={true}
             maxShadowOpacity={0.3}
-               style={{
+            style={{
               margin: "0 auto",
-              touchAction: "none", // ✅ CRITICAL
             }}
           >
             {Array.from(
