@@ -9,26 +9,14 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
-  const [bookSize, setBookSize] = useState({
-    width: 450,
-    height: 630,
-  });
+  const [spreadWidth, setSpreadWidth] = useState(900);
 
-  // Responsive spread sizing
   useEffect(() => {
     function resize() {
       const maxSpread = 1000;
-      const padding = 40;
-      const screenWidth = window.innerWidth - padding;
-
-      // Two-page spread
-      const pageWidth = Math.min(screenWidth / 2, 450);
-      const pageHeight = pageWidth * 1.4;
-
-      setBookSize({
-        width: pageWidth,
-        height: pageHeight,
-      });
+      const padding = 60;
+      const width = Math.min(window.innerWidth - padding, maxSpread);
+      setSpreadWidth(width);
     }
 
     resize();
@@ -40,6 +28,9 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
+  const pageWidth = spreadWidth / 2;
+  const pageHeight = pageWidth * 1.4;
+
   return (
     <div
       style={{
@@ -50,7 +41,7 @@ export default function FlipBook() {
         padding: "40px 0",
       }}
     >
-      {/* Flip hint */}
+      {/* Hint */}
       <div
         style={{
           marginBottom: 20,
@@ -67,27 +58,31 @@ export default function FlipBook() {
         onLoadSuccess={onLoadSuccess}
       >
         <HTMLFlipBook
-          width={bookSize.width}
-          height={bookSize.height}
+          width={spreadWidth}
+          height={pageHeight}
           showCover={true}
-          drawShadow={true}          // restore flip realism
-          maxShadowOpacity={0.5}     // soften shadow
-          flippingTime={900}
-          useMouseEvents={true}
+          usePortrait={false}      // FORCE spread mode
+          drawShadow={true}
+          maxShadowOpacity={0.4}
+          size="fixed"
           mobileScrollSupport={true}
         >
           {Array.from(new Array(numPages || 0), (_, index) => (
             <div
               key={index}
               style={{
-                backgroundColor: "#fff", // prevents transparency bleed
                 width: "100%",
                 height: "100%",
+                backgroundColor: "#f5f2ea", // paper colour
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                boxShadow: "inset 0 0 2px rgba(0,0,0,0.2)",
               }}
             >
               <Page
                 pageNumber={index + 1}
-                width={bookSize.width}
+                width={pageWidth}
                 renderAnnotationLayer={false}
                 renderTextLayer={false}
               />
