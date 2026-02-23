@@ -28,28 +28,42 @@ export default function FlipBook() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // ---------- LOCK BODY SCROLL ----------
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   // ---------- Original PDF ratio ----------
   const baseWidth = 1080;
   const baseHeight = 1325;
 
-  // ---------- Responsive scaling ----------
-  const scale = isMobile ? 0.95 : 0.55; 
-  // Desktop ≈ double your previous size
-  // Mobile fills screen nicely
+  // ---------- Fit to viewport height ----------
+  const vh = typeof window !== "undefined"
+    ? window.innerHeight
+    : 1000;
+
+  const scale = Math.min(
+    (vh * 0.85) / baseHeight,
+    isMobile ? 1 : 0.9
+  );
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
-  // ---------- Center logic ----------
+  // ---------- Cover detection ----------
   const isCover =
-    currentPage === 0 || currentPage === numPages - 1;
+    currentPage === 0 ||
+    currentPage === numPages - 1;
 
   return (
     <div
       style={{
         width: "100%",
         height: "100vh",
-        overflow: "hidden", // 🚫 no vertical scroll
+        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -59,7 +73,7 @@ export default function FlipBook() {
       {/* Instruction */}
       <p
         style={{
-          marginBottom: "20px",
+          marginBottom: "16px",
           fontFamily: "monospace",
           fontSize: "14px",
           opacity: 0.7,
@@ -68,12 +82,16 @@ export default function FlipBook() {
         Click or drag page corner to flip →
       </p>
 
-      {/* ---------- Book wrapper (for centering animation) ---------- */}
+      {/* ---------- Centering Stage ---------- */}
       <div
         style={{
           width: "100%",
+          height: pageHeight,
           display: "flex",
-          justifyContent: isCover ? "center" : "center",
+          alignItems: "center",
+          justifyContent: isCover
+            ? "center"
+            : "center",
           transition: "all 0.6s ease",
         }}
       >
@@ -89,7 +107,7 @@ export default function FlipBook() {
             minWidth={pageWidth}
             maxWidth={pageWidth * 2}
             minHeight={pageHeight}
-            maxHeight={pageHeight * 2}
+            maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
             showCover={true}
@@ -101,22 +119,21 @@ export default function FlipBook() {
             swipeDistance={30}
             showPageCorners={true}
             maxShadowOpacity={0.3}
+            onFlip={(e) => setCurrentPage(e.data)}
             style={{
               margin: "0 auto",
             }}
-            onFlip={(e) => setCurrentPage(e.data)}
           >
             {Array.from(new Array(numPages || 0), (_, index) => (
               <div
                 key={index}
-                className="page-wrapper"
                 style={{
                   backgroundColor: "#ffffff",
+                  width: "100%",
+                  height: "100%",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "100%",
-                  height: "100%",
                 }}
               >
                 <Page
