@@ -112,11 +112,10 @@ export default function FlipBook() {
             drawShadow={true}
             flippingTime={800}
             showCover={false}
-            mobileScrollSupport={false}
             useMouseEvents={!isMobile}
             usePortrait={isMobile}
             startPage={0}
-            clickEventForward={true}
+            clickEventForward={!isMobile}
             swipeDistance={30}
             showPageCorners={true}
             maxShadowOpacity={0.3}
