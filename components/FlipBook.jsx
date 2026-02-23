@@ -74,7 +74,7 @@ export default function FlipBook() {
           textTransform: "uppercase",
         }}
       >
-        Click or drag page corner to flip →
+        Click or drag page corner to flip
       </p>
 
       {/* Stage */}
