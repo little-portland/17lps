@@ -9,14 +9,26 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
-  const [spreadWidth, setSpreadWidth] = useState(900);
+  const [pageWidth, setPageWidth] = useState(400);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     function resize() {
-      const maxSpread = 1000;
-      const padding = 60;
-      const width = Math.min(window.innerWidth - padding, maxSpread);
-      setSpreadWidth(width);
+      const mobileBreakpoint = 768;
+      const mobile = window.innerWidth < mobileBreakpoint;
+
+      setIsMobile(mobile);
+
+      const padding = 40;
+
+      if (mobile) {
+        // Single page takes most of screen
+        setPageWidth(window.innerWidth - padding);
+      } else {
+        // Spread mode (2 pages)
+        const spreadWidth = window.innerWidth - 100;
+        setPageWidth(spreadWidth / 2);
+      }
     }
 
     resize();
@@ -28,20 +40,20 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
-  const pageWidth = spreadWidth / 2;
   const pageHeight = pageWidth * 1.4;
 
   return (
     <div
       style={{
         width: "100%",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
         padding: "40px 0",
       }}
     >
-      {/* Hint */}
       <div
         style={{
           marginBottom: 20,
@@ -58,14 +70,16 @@ export default function FlipBook() {
         onLoadSuccess={onLoadSuccess}
       >
         <HTMLFlipBook
-          width={spreadWidth}
+          width={pageWidth}
           height={pageHeight}
+          size="fixed"
           showCover={true}
-          usePortrait={false}      // FORCE spread mode
+          usePortrait={isMobile}   // 🔥 THIS is the key
+          autoSize={true}
           drawShadow={true}
           maxShadowOpacity={0.4}
-          size="fixed"
           mobileScrollSupport={true}
+          style={{ margin: "0 auto" }}
         >
           {Array.from(new Array(numPages || 0), (_, index) => (
             <div
@@ -73,18 +87,17 @@ export default function FlipBook() {
               style={{
                 width: "100%",
                 height: "100%",
-                backgroundColor: "#f5f2ea", // paper colour
+                backgroundColor: "#f5f2ea",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                boxShadow: "inset 0 0 2px rgba(0,0,0,0.2)",
               }}
             >
               <Page
                 pageNumber={index + 1}
                 width={pageWidth}
-                renderAnnotationLayer={false}
                 renderTextLayer={false}
+                renderAnnotationLayer={false}
               />
             </div>
           ))}
