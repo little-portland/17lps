@@ -4,13 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { Document, Page, pdfjs } from "react-pdf";
 
+// ---------- PDF Worker ----------
 pdfjs.GlobalWorkerOptions.workerSrc =
   `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [viewport, setViewport] = useState({
+    width: 0,
+    height: 0,
+  });
 
   const bookRef = useRef();
 
@@ -48,15 +52,18 @@ export default function FlipBook() {
   const vw = viewport.width;
   const vh = viewport.height;
 
-  // ---------- MOBILE: scale by width (avoid cropping) ----------
-  const mobileScale = (vw * 0.92) / baseWidth;
-
-  // ---------- DESKTOP: scale by height ----------
-  const desktopScale = (vh * 0.9) / baseHeight;
+  // ---------- Spread scaling logic ----------
+  // Keep flip engine in spread mode ALWAYS
+  const spreadWidth = baseWidth * 2;
 
   const scale = isMobile
-    ? mobileScale
-    : desktopScale;
+    // Mobile → fit ONE page visually
+    ? (vw * 0.92) / baseWidth
+    // Desktop → fit spread normally
+    : Math.min(
+        (vh * 0.9) / baseHeight,
+        (vw * 0.9) / spreadWidth
+      );
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
@@ -73,7 +80,7 @@ export default function FlipBook() {
         justifyContent: "center",
       }}
     >
-      {/* ---------- Instructions ---------- */}
+      {/* ---------- Instruction ---------- */}
       <p
         style={{
           marginBottom: "16px",
@@ -86,8 +93,8 @@ export default function FlipBook() {
         }}
       >
         {isMobile
-          ? "Tap page edge or swipe to flip"
-          : "Click or drag page corner to flip"}
+          ? "Tap page edge or swipe to flip →"
+          : "Click or drag page corner to flip →"}
       </p>
 
       {/* ---------- Stage ---------- */}
@@ -108,25 +115,23 @@ export default function FlipBook() {
             ref={bookRef}
             width={pageWidth}
             height={pageHeight}
-            size={isMobile ? "stretch" : "fixed"}
+            size="fixed"
             minWidth={pageWidth}
-            maxWidth={isMobile ? pageWidth : pageWidth * 2}
+            maxWidth={pageWidth * 2}
             minHeight={pageHeight}
             maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
             showCover={false}
-            usePortrait={isMobile}
-            useMouseEvents={!isMobile}
-            mobileScrollSupport={false}
-            clickEventForward={true}
+            usePortrait={false}        // ✅ Keep spread engine
+            useMouseEvents={true}
+            clickEventForward={false}
             swipeDistance={30}
+            mobileScrollSupport={false}
             showPageCorners={true}
             maxShadowOpacity={0.3}
-            startPage={0}
             style={{
               margin: "0 auto",
-              touchAction: "none", // required for mobile flipping
             }}
           >
             {Array.from(
