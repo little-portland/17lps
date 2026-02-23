@@ -103,27 +103,31 @@ export default function FlipBook() {
         file="/docs/explore-menu.pdf"
         onLoadSuccess={onLoadSuccess}
       >
-        <HTMLFlipBook
-          ref={bookRef}
-          width={pageWidth}
-          height={pageHeight}
-          size="fixed"
-          minWidth={pageWidth}
-          maxWidth={pageWidth * 2}   // ← unchanged desktop width
-          minHeight={pageHeight}
-          maxHeight={pageHeight}
-          drawShadow={true}
-          flippingTime={800}
-          useMouseEvents={true}
-          showCover={false}
-          startPage={0}
-          clickEventForward={true}
-          swipeDistance={0}
-          usePortrait={isMobile}     // ← single page mobile
-          mobileScrollSupport={false}
-          showPageCorners={true}
-          style={{ margin: "0 auto" }}
-        >
+      <HTMLFlipBook
+        ref={bookRef}
+        width={pageWidth}
+        height={pageHeight}
+        size="fixed"
+        minWidth={pageWidth}
+        maxWidth={pageWidth * 2}
+        minHeight={pageHeight}
+        maxHeight={pageHeight}
+        drawShadow={true}
+        flippingTime={800}
+        showCover={false}
+        startPage={0}
+      
+        /* -------- Interaction fixes -------- */
+        usePortrait={isMobile}
+        useMouseEvents={true}          // ← enables tap flip
+        clickEventForward={true}       // ← forwards tap as click
+        swipeDistance={0}              // ← disables slide animation
+        mobileScrollSupport={false}    // ← prevents gesture conflict
+        showPageCorners={true}
+      
+        style={{ margin: "0 auto" }}
+      >
+
           {Array.from(new Array(numPages || 0), (_, index) => (
             <div
               key={index}
