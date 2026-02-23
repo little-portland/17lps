@@ -120,7 +120,10 @@ export default function FlipBook() {
             swipeDistance={30}
             showPageCorners={true}
             maxShadowOpacity={0.3}
-            style={{ margin: "0 auto" }}
+               style={{
+              margin: "0 auto",
+              touchAction: "none", // ✅ CRITICAL
+            }}
           >
             {Array.from(
               new Array(numPages || 0),
