@@ -10,6 +10,7 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   const bookRef = useRef();
 
@@ -20,10 +21,11 @@ export default function FlipBook() {
   // ---------- Viewport detection ----------
   useEffect(() => {
     const update = () => {
-      setViewport({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      setViewport({ width, height });
+      setIsMobile(width < 768);
     };
 
     update();
@@ -46,9 +48,12 @@ export default function FlipBook() {
   const vw = viewport.width;
   const vh = viewport.height;
 
-  // Desktop spread scaling enforced on ALL devices
+  // Desktop spread = 2 pages
+  // Mobile portrait = 1 page
+  const spreadWidth = isMobile ? baseWidth : baseWidth * 2;
+
   const scaleByHeight = (vh * 0.9) / baseHeight;
-  const scaleByWidth = (vw * 0.9) / (baseWidth * 2);
+  const scaleByWidth = (vw * 0.9) / spreadWidth;
 
   const scale = Math.min(scaleByHeight, scaleByWidth);
 
@@ -78,7 +83,9 @@ export default function FlipBook() {
           lineHeight: 1.2,
         }}
       >
-        Tap, swipe, or drag page corner to flip
+        {isMobile
+          ? "Tap page edge or swipe to flip"
+          : "Click or drag page corner to flip"}
       </p>
 
       {/* Stage */}
@@ -101,16 +108,16 @@ export default function FlipBook() {
             height={pageHeight}
             size="fixed"
             minWidth={pageWidth}
-            maxWidth={pageWidth * 2}
+            maxWidth={isMobile ? pageWidth : pageWidth * 2}
             minHeight={pageHeight}
             maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
             showCover={false}
-            useMouseEvents={true}          // ✅ FORCE ON
-            usePortrait={false}            // ✅ FORCE DESKTOP MODE
+            useMouseEvents={true}
+            usePortrait={isMobile}   // ✅ 1 page mobile
             startPage={0}
-            clickEventForward={false}      // ✅ Prevent canvas capture
+            clickEventForward={false}
             swipeDistance={30}
             showPageCorners={true}
             maxShadowOpacity={0.3}
