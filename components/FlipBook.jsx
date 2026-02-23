@@ -95,8 +95,8 @@ export default function FlipBook() {
         }}
       >
         {isMobile
-          ? "Tap page edge or swipe to flip →"
-          : "Click or drag page corner to flip →"}
+          ? "Tap page edge or swipe to flip"
+          : "Click or drag page corner to flip"}
       </p>
 
       {/* ---------- Stage ---------- */}
