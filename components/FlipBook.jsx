@@ -1,19 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { PageFlip } from "page-flip";
+import HTMLFlipBook from "react-pageflip";
 import { Document, Page, pdfjs } from "react-pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc =
   `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 export default function FlipBook() {
-  const containerRef = useRef(null);
-  const flipRef = useRef(null);
-
   const [numPages, setNumPages] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  const bookRef = useRef(null);
 
   function onLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -42,13 +41,14 @@ export default function FlipBook() {
     };
   }, []);
 
-  // ---------- PDF base size ----------
+  // ---------- Base PDF dimensions ----------
   const baseWidth = 1080;
   const baseHeight = 1325;
 
   const vw = viewport.width;
   const vh = viewport.height;
 
+  // Desktop = spread (2 pages), Mobile = single page
   const spreadWidth = isMobile ? baseWidth : baseWidth * 2;
 
   const scale = Math.min(
@@ -59,31 +59,26 @@ export default function FlipBook() {
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
-  // ---------- Init PageFlip ----------
-  useEffect(() => {
-    if (!containerRef.current || !numPages) return;
+  // ---------- Symmetric curl navigation ----------
+  const flipNext = () => {
+    const flip = bookRef.current?.pageFlip();
+    if (!flip) return;
 
-    if (flipRef.current) {
-      flipRef.current.destroy();
+    const current = flip.getCurrentPageIndex();
+    if (current < numPages - 1) {
+      flip.flip(current + 1);
     }
+  };
 
-    flipRef.current = new PageFlip(containerRef.current, {
-      width: pageWidth,
-      height: pageHeight,
-      size: "fixed",
-      maxShadowOpacity: 0.3,
-      showCover: false,
-      mobileScrollSupport: false,
-      usePortrait: isMobile,
-      clickEventForward: true,
-      useMouseEvents: true,
-      swipeDistance: 30,
-    });
+  const flipPrev = () => {
+    const flip = bookRef.current?.pageFlip();
+    if (!flip) return;
 
-    const pages = containerRef.current.querySelectorAll(".page");
-    flipRef.current.loadFromHTML(pages);
-
-  }, [numPages, pageWidth, pageHeight, isMobile]);
+    const current = flip.getCurrentPageIndex();
+    if (current > 0) {
+      flip.flip(current - 1);
+    }
+  };
 
   return (
     <div
@@ -97,7 +92,7 @@ export default function FlipBook() {
         overflow: "hidden",
       }}
     >
-      {/* Instructions */}
+      {/* Instruction */}
       <p
         style={{
           marginBottom: 16,
@@ -110,43 +105,90 @@ export default function FlipBook() {
         }}
       >
         {isMobile
-          ? "Tap page edge or swipe to flip →"
+          ? "Tap page edge to flip →"
           : "Click or drag page corner to flip →"}
       </p>
 
-      {/* Book container */}
       <div
-        ref={containerRef}
         style={{
+          position: "relative",
           width: isMobile ? pageWidth : pageWidth * 2,
           height: pageHeight,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
+        {/* Mobile Tap Zones */}
+        {isMobile && (
+          <>
+            <div
+              onClick={flipPrev}
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: "30%",
+                height: "100%",
+                zIndex: 10,
+              }}
+            />
+            <div
+              onClick={flipNext}
+              style={{
+                position: "absolute",
+                right: 0,
+                top: 0,
+                width: "30%",
+                height: "100%",
+                zIndex: 10,
+              }}
+            />
+          </>
+        )}
+
         <Document
           file="/docs/explore-menu.pdf"
           onLoadSuccess={onLoadSuccess}
         >
-          {Array.from(new Array(numPages || 0), (_, index) => (
-            <div
-              key={index}
-              className="page"
-              style={{
-                width: pageWidth,
-                height: pageHeight,
-                background: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Page
-                pageNumber={index + 1}
-                width={pageWidth}
-                renderAnnotationLayer={false}
-                renderTextLayer={false}
-              />
-            </div>
-          ))}
+          <HTMLFlipBook
+            ref={bookRef}
+            width={pageWidth}
+            height={pageHeight}
+            size="fixed"
+            minWidth={pageWidth}
+            maxWidth={isMobile ? pageWidth : pageWidth * 2}
+            minHeight={pageHeight}
+            maxHeight={pageHeight}
+            drawShadow={true}
+            flippingTime={800}
+            showCover={false}
+            usePortrait={isMobile}
+            mobileScrollSupport={false}
+            showPageCorners={!isMobile}
+            style={{ margin: "0 auto" }}
+          >
+            {Array.from(new Array(numPages || 0), (_, index) => (
+              <div
+                key={index}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "#ffffff",
+                }}
+              >
+                <Page
+                  pageNumber={index + 1}
+                  width={pageWidth}
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                />
+              </div>
+            ))}
+          </HTMLFlipBook>
         </Document>
       </div>
     </div>
