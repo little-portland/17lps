@@ -9,19 +9,17 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
 
-  const bookRef = useRef(null);
+  const bookRef = useRef();
 
   function onLoadSuccess({ numPages }) {
     setNumPages(numPages);
   }
 
-  // Detect viewport
+  // ---------- Viewport ----------
   useEffect(() => {
     const update = () => {
-      setIsMobile(window.innerWidth < 768);
       setViewport({
         width: window.innerWidth,
         height: window.innerHeight,
@@ -33,7 +31,7 @@ export default function FlipBook() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Lock scroll
+  // ---------- Lock scroll ----------
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -41,28 +39,18 @@ export default function FlipBook() {
     };
   }, []);
 
-  // PDF base ratio
+  // ---------- Base PDF size ----------
   const baseWidth = 1080;
   const baseHeight = 1325;
 
   const vw = viewport.width;
   const vh = viewport.height;
 
-  let scale;
+  // SAME scaling logic for all devices
+  const scaleByHeight = (vh * 0.9) / baseHeight;
+  const scaleByWidth = (vw * 0.9) / (baseWidth * 2);
 
-  if (isMobile) {
-    // Fit ONE page
-    scale = Math.min(
-      (vw * 0.95) / baseWidth,
-      (vh * 0.9) / baseHeight
-    );
-  } else {
-    // Fit SPREAD
-    scale = Math.min(
-      (vw * 0.9) / (baseWidth * 2),
-      (vh * 0.9) / baseHeight
-    );
-  }
+  const scale = Math.min(scaleByHeight, scaleByWidth);
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
@@ -70,93 +58,82 @@ export default function FlipBook() {
   return (
     <div
       style={{
-        width: "100%",
-        height: "100vh",
+        position: "fixed",
+        inset: 0,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        background: "#cfa3b2",
         overflow: "hidden",
       }}
     >
       {/* Instruction */}
       <p
         style={{
-          marginBottom: isMobile ? 10 : 16,
+          marginBottom: "16px",
           fontFamily: "monospace",
-          fontSize: isMobile ? 14 : 20,
+          fontSize: vw < 768 ? "14px" : "20px",
           opacity: 0.7,
           textTransform: "uppercase",
           textAlign: "center",
           lineHeight: 1.2,
         }}
       >
-        {isMobile
-          ? "Tap page edge or swipe to flip →"
-          : "Click or drag page corner to flip →"}
+        Click or drag page corner to flip
       </p>
 
-      {/* Stage = EXACT BOOK WIDTH */}
-      <div
-        style={{
-          width: isMobile ? pageWidth : pageWidth * 2,
-          height: pageHeight,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+      {/* Book stage */}
+      <Document
+        file="/docs/explore-menu.pdf"
+        onLoadSuccess={onLoadSuccess}
       >
-        <Document
-          file="/docs/explore-menu.pdf"
-          onLoadSuccess={onLoadSuccess}
+        <HTMLFlipBook
+          ref={bookRef}
+          width={pageWidth}
+          height={pageHeight}
+          size="fixed"
+          minWidth={pageWidth}
+          maxWidth={pageWidth * 2}
+          minHeight={pageHeight}
+          maxHeight={pageHeight}
+          drawShadow={true}
+          flippingTime={800}
+          useMouseEvents={true}
+          showCover={false}
+          startPage={0}
+          clickEventForward={true}
+          swipeDistance={0}          // ❌ Disable swipe physics
+          usePortrait={false}        // ❌ Disable mobile portrait
+          mobileScrollSupport={false}
+          showPageCorners={true}
+          style={{
+            margin: "0 auto",
+          }}
         >
-          <HTMLFlipBook
-            ref={bookRef}
-            width={pageWidth}
-            height={pageHeight}
-            size="fixed"
-            minWidth={pageWidth}
-            maxWidth={pageWidth}
-            minHeight={pageHeight}
-            maxHeight={pageHeight}
-            drawShadow={true}
-            flippingTime={800}
-            usePortrait={isMobile}
-            useMouseEvents={true}
-            mobileScrollSupport={false}
-            swipeDistance={30}
-            clickEventForward={true}
-            showPageCorners={true}
-            showCover={false}
-            maxShadowOpacity={0.3}
-            style={{
-              margin: "0 auto",
-              touchAction: "none",
-            }}
-          >
-            {Array.from(new Array(numPages || 0), (_, index) => (
-              <div
-                key={index}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  background: "#fff",
-                }}
-              >
-                <Page
-                  pageNumber={index + 1}
-                  width={pageWidth}   // ✅ ONLY width
-                  renderAnnotationLayer={false}
-                  renderTextLayer={false}
-                />
-              </div>
-            ))}
-          </HTMLFlipBook>
-        </Document>
-      </div>
+          {Array.from(new Array(numPages || 0), (_, index) => (
+            <div
+              key={index}
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "#fff",
+              }}
+            >
+              <Page
+                pageNumber={index + 1}
+                width={pageWidth}
+                scale={1}
+                renderAnnotationLayer={false}
+                renderTextLayer={false}
+              />
+            </div>
+          ))}
+        </HTMLFlipBook>
+      </Document>
     </div>
   );
 }
