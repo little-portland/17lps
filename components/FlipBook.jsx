@@ -9,8 +9,8 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
-  const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
 
   const bookRef = useRef();
 
@@ -21,11 +21,11 @@ export default function FlipBook() {
   // ---------- Viewport detection ----------
   useEffect(() => {
     const update = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-
-      setViewport({ width, height });
-      setIsMobile(width < 768);
+      setIsMobile(window.innerWidth < 768);
+      setViewport({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
 
     update();
@@ -48,14 +48,15 @@ export default function FlipBook() {
   const vw = viewport.width;
   const vh = viewport.height;
 
-  // Desktop spread = 2 pages
-  // Mobile portrait = 1 page
-  const spreadWidth = isMobile ? baseWidth : baseWidth * 2;
+  // ---------- MOBILE: scale by width (avoid cropping) ----------
+  const mobileScale = (vw * 0.92) / baseWidth;
 
-  const scaleByHeight = (vh * 0.9) / baseHeight;
-  const scaleByWidth = (vw * 0.9) / spreadWidth;
+  // ---------- DESKTOP: scale by height ----------
+  const desktopScale = (vh * 0.9) / baseHeight;
 
-  const scale = Math.min(scaleByHeight, scaleByWidth);
+  const scale = isMobile
+    ? mobileScale
+    : desktopScale;
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
@@ -64,6 +65,7 @@ export default function FlipBook() {
     <div
       style={{
         width: "100%",
+        height: "100vh",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
@@ -71,7 +73,7 @@ export default function FlipBook() {
         justifyContent: "center",
       }}
     >
-      {/* Instruction */}
+      {/* ---------- Instructions ---------- */}
       <p
         style={{
           marginBottom: "16px",
@@ -88,7 +90,7 @@ export default function FlipBook() {
           : "Click or drag page corner to flip"}
       </p>
 
-      {/* Stage */}
+      {/* ---------- Stage ---------- */}
       <div
         style={{
           width: "100%",
@@ -106,7 +108,7 @@ export default function FlipBook() {
             ref={bookRef}
             width={pageWidth}
             height={pageHeight}
-            size="fixed"
+            size={isMobile ? "stretch" : "fixed"}
             minWidth={pageWidth}
             maxWidth={isMobile ? pageWidth : pageWidth * 2}
             minHeight={pageHeight}
@@ -114,15 +116,17 @@ export default function FlipBook() {
             drawShadow={true}
             flippingTime={800}
             showCover={false}
-            useMouseEvents={true}
-            usePortrait={isMobile}   // ✅ 1 page mobile
-            startPage={0}
-            clickEventForward={false}
+            usePortrait={isMobile}
+            useMouseEvents={!isMobile}
+            mobileScrollSupport={false}
+            clickEventForward={true}
             swipeDistance={30}
             showPageCorners={true}
             maxShadowOpacity={0.3}
+            startPage={0}
             style={{
               margin: "0 auto",
+              touchAction: "none", // required for mobile flipping
             }}
           >
             {Array.from(
