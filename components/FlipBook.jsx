@@ -18,14 +18,13 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
-  // ---------- Viewport detection ----------
   useEffect(() => {
     const update = () => {
-      setIsMobile(window.innerWidth < 768);
-      setViewport({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      setIsMobile(w < 768);
+      setViewport({ width: w, height: h });
     };
 
     update();
@@ -33,113 +32,98 @@ export default function FlipBook() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // ---------- Lock body scroll ----------
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
+    return () => (document.body.style.overflow = "auto");
   }, []);
 
-  // ---------- Force mobile flip physics fix ----------
-  useEffect(() => {
-    if (!bookRef.current) return;
-
-    const flip = bookRef.current.pageFlip();
-    if (!flip) return;
-
-    if (isMobile) {
-      flip.setting.swipeDistance = 10;
-      flip.setting.minSwipeDistance = 10;
-      flip.setting.useMouseEvents = true;
-    }
-  }, [isMobile]);
-
-  // ---------- Original PDF ratio ----------
   const baseWidth = 1080;
   const baseHeight = 1325;
 
   const vw = viewport.width;
   const vh = viewport.height;
 
-  // Desktop = 2 pages | Mobile = 1 page
   const spreadWidth = isMobile ? baseWidth : baseWidth * 2;
 
-  const scaleByHeight = (vh * 0.9) / baseHeight;
-  const scaleByWidth = (vw * 0.95) / spreadWidth;
-
-  const scale = Math.min(scaleByHeight, scaleByWidth);
+  const scale = Math.min(
+    (vh * 0.92) / baseHeight,
+    (vw * 0.95) / spreadWidth
+  );
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
+  const flipNext = () => {
+    const flip = bookRef.current?.pageFlip();
+    if (!flip) return;
+    flip.flipNext("top");
+  };
+
+  const flipPrev = () => {
+    const flip = bookRef.current?.pageFlip();
+    if (!flip) return;
+    flip.flipPrev("top"); // forces curl mode
+  };
+
   return (
     <div
       style={{
-        width: "100%",
-        overflow: "hidden",
+        position: "fixed",
+        inset: 0,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        overflow: "hidden",
       }}
     >
-      {/* Instruction */}
       <p
         style={{
-          marginBottom: "16px",
+          marginBottom: 16,
           fontFamily: "monospace",
-          fontSize: isMobile ? "14px" : "20px",
+          fontSize: isMobile ? 14 : 20,
           opacity: 0.7,
           textTransform: "uppercase",
           textAlign: "center",
-          lineHeight: 1.2,
         }}
       >
         {isMobile
-          ? "Tap page edge or swipe to flip"
-          : "Click or drag page corner to flip"}
+          ? "Tap page edge or swipe to flip →"
+          : "Click or drag page corner to flip →"}
       </p>
 
-      {/* Stage */}
       <div
         style={{
-          width: "100%",
+          position: "relative",
+          width: isMobile ? pageWidth : pageWidth * 2,
           height: pageHeight,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          position: "relative",
         }}
       >
-        {/* Mobile tap zones */}
         {isMobile && (
           <>
             <div
-              onClick={() =>
-                bookRef.current.pageFlip().flipPrev()
-              }
+              onClick={flipPrev}
               style={{
                 position: "absolute",
                 left: 0,
                 top: 0,
-                width: "20%",
+                width: "25%",
                 height: "100%",
-                zIndex: 10,
+                zIndex: 20,
               }}
             />
-
             <div
-              onClick={() =>
-                bookRef.current.pageFlip().flipNext()
-              }
+              onClick={flipNext}
               style={{
                 position: "absolute",
                 right: 0,
                 top: 0,
-                width: "20%",
+                width: "25%",
                 height: "100%",
-                zIndex: 10,
+                zIndex: 20,
               }}
             />
           </>
@@ -155,49 +139,36 @@ export default function FlipBook() {
             height={pageHeight}
             size="fixed"
             minWidth={pageWidth}
-            maxWidth={isMobile ? pageWidth : pageWidth * 2}
+            maxWidth={pageWidth}
             minHeight={pageHeight}
             maxHeight={pageHeight}
-            drawShadow={true}
-            maxShadowOpacity={0.3}
+            drawShadow
             flippingTime={800}
-            showCover={false}
             usePortrait={isMobile}
-            useMouseEvents={!isMobile}
-            mobileScrollSupport={true}
-            clickEventForward={!isMobile}
-            swipeDistance={30}
-            showPageCorners={true}
-            startPage={0}
-            style={{
-              margin: "0 auto",
-              touchAction: "none",
-            }}
+            showPageCorners
+            showCover={false}
+            mobileScrollSupport={false}
+            style={{ margin: "0 auto" }}
           >
-            {Array.from(
-              new Array(numPages || 0),
-              (_, index) => (
-                <div
-                  key={index}
-                  style={{
-                    backgroundColor: "#ffffff",
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Page
-                    pageNumber={index + 1}
-                    width={pageWidth}
-                    height={pageHeight}
-                    renderAnnotationLayer={false}
-                    renderTextLayer={false}
-                  />
-                </div>
-              )
-            )}
+            {Array.from(new Array(numPages || 0), (_, index) => (
+              <div
+                key={index}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Page
+                  pageNumber={index + 1}
+                  width={pageWidth}
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                />
+              </div>
+            ))}
           </HTMLFlipBook>
         </Document>
       </div>
