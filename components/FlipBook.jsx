@@ -48,22 +48,26 @@ export default function FlipBook() {
   const vw = viewport.width;
   const vh = viewport.height;
 
-  // ---------- Scaling ----------
-  const scaleByHeight = (vh * 0.9) / baseHeight;
+  // Desktop scaling (unchanged)
+  const desktopScaleByHeight = (vh * 0.9) / baseHeight;
+  const desktopScaleByWidth = (vw * 0.9) / (baseWidth * 2);
+  const desktopScale = Math.min(
+    desktopScaleByHeight,
+    desktopScaleByWidth
+  );
 
-  const scaleByWidth = isMobile
-    ? (vw * 0.95) / baseWidth       // 1 page mobile
-    : (vw * 0.9) / (baseWidth * 2); // 2 pages desktop
+  // Mobile scaling (single page fit)
+  const mobileScaleByHeight = (vh * 0.9) / baseHeight;
+  const mobileScaleByWidth = (vw * 0.95) / baseWidth;
+  const mobileScale = Math.min(
+    mobileScaleByHeight,
+    mobileScaleByWidth
+  );
 
-  const scale = Math.min(scaleByHeight, scaleByWidth);
+  const scale = isMobile ? mobileScale : desktopScale;
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
-
-  // Book width depends on mode
-  const bookWidth = isMobile
-    ? pageWidth
-    : pageWidth * 2;
 
   return (
     <div
@@ -101,11 +105,11 @@ export default function FlipBook() {
       >
         <HTMLFlipBook
           ref={bookRef}
-          width={bookWidth}
+          width={pageWidth}
           height={pageHeight}
           size="fixed"
-          minWidth={bookWidth}
-          maxWidth={bookWidth}
+          minWidth={pageWidth}
+          maxWidth={pageWidth * 2}   // ← unchanged desktop width
           minHeight={pageHeight}
           maxHeight={pageHeight}
           drawShadow={true}
@@ -115,12 +119,10 @@ export default function FlipBook() {
           startPage={0}
           clickEventForward={true}
           swipeDistance={0}
-          usePortrait={false}
+          usePortrait={isMobile}     // ← single page mobile
           mobileScrollSupport={false}
           showPageCorners={true}
-          style={{
-            margin: "0 auto",
-          }}
+          style={{ margin: "0 auto" }}
         >
           {Array.from(new Array(numPages || 0), (_, index) => (
             <div
