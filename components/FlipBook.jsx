@@ -10,6 +10,7 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   const bookRef = useRef();
 
@@ -20,10 +21,11 @@ export default function FlipBook() {
   // ---------- Viewport ----------
   useEffect(() => {
     const update = () => {
-      setViewport({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      setViewport({ width: w, height: h });
+      setIsMobile(w < 768);
     };
 
     update();
@@ -46,14 +48,22 @@ export default function FlipBook() {
   const vw = viewport.width;
   const vh = viewport.height;
 
-  // SAME scaling logic for all devices
+  // ---------- Scaling ----------
   const scaleByHeight = (vh * 0.9) / baseHeight;
-  const scaleByWidth = (vw * 0.9) / (baseWidth * 2);
+
+  const scaleByWidth = isMobile
+    ? (vw * 0.95) / baseWidth       // 1 page mobile
+    : (vw * 0.9) / (baseWidth * 2); // 2 pages desktop
 
   const scale = Math.min(scaleByHeight, scaleByWidth);
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
+
+  // Book width depends on mode
+  const bookWidth = isMobile
+    ? pageWidth
+    : pageWidth * 2;
 
   return (
     <div
@@ -73,28 +83,29 @@ export default function FlipBook() {
         style={{
           marginBottom: "16px",
           fontFamily: "monospace",
-          fontSize: vw < 768 ? "14px" : "20px",
+          fontSize: isMobile ? "14px" : "20px",
           opacity: 0.7,
           textTransform: "uppercase",
           textAlign: "center",
           lineHeight: 1.2,
         }}
       >
-        Click or drag page corner to flip
+        {isMobile
+          ? "Tap page edge to flip"
+          : "Click or drag page corner to flip"}
       </p>
 
-      {/* Book stage */}
       <Document
         file="/docs/explore-menu.pdf"
         onLoadSuccess={onLoadSuccess}
       >
         <HTMLFlipBook
           ref={bookRef}
-          width={pageWidth}
+          width={bookWidth}
           height={pageHeight}
           size="fixed"
-          minWidth={pageWidth}
-          maxWidth={pageWidth * 2}
+          minWidth={bookWidth}
+          maxWidth={bookWidth}
           minHeight={pageHeight}
           maxHeight={pageHeight}
           drawShadow={true}
@@ -103,8 +114,8 @@ export default function FlipBook() {
           showCover={false}
           startPage={0}
           clickEventForward={true}
-          swipeDistance={0}          // ❌ Disable swipe physics
-          usePortrait={false}        // ❌ Disable mobile portrait
+          swipeDistance={0}
+          usePortrait={false}
           mobileScrollSupport={false}
           showPageCorners={true}
           style={{
