@@ -27,8 +27,8 @@ export default function FlipBook() {
   }, []);
 
   // ---------- BASE SIZE ----------
-  const baseWidth = 400;
-  const baseHeight = 600;
+  const baseWidth = 800;
+  const baseHeight = 1200;
 
   // 15% larger (as requested)
   const pageWidth = baseWidth * 1.15;
