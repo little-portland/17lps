@@ -17,7 +17,7 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
-  // Detect screen size
+  // ---------- Screen detection ----------
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -28,55 +28,52 @@ export default function FlipBook() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // 🚫 LOCK ALL PAGE SCROLLING (vertical + horizontal)
+  // ---------- LOCK BODY SCROLL ----------
   useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
-
     return () => {
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
+      document.body.style.overflow = "auto";
     };
   }, []);
 
-  // ---------- YOUR ORIGINAL SIZE (UNCHANGED) ----------
-  const baseWidth = 400;
-  const baseHeight = 600;
+  // ---------- Original PDF ratio ----------
+  const baseWidth = 1080;
+  const baseHeight = 1325;
 
-  const pageWidth = baseWidth * 1.15;
-  const pageHeight = baseHeight * 1.15;
+  // ---------- Fit to viewport height ----------
+  const vh = typeof window !== "undefined"
+    ? window.innerHeight
+    : 1000;
 
-  // ---------- COVER / LAST PAGE CENTERING ----------
-  const getBookTransform = () => {
-    if (isMobile) return "translateX(0)";
+  const scale = Math.min(
+    (vh * 0.85) / baseHeight,
+    isMobile ? 1 : 0.9
+  );
 
-    if (currentPage === 0) {
-      return "translateX(25%)"; // center first page
-    }
+  const pageWidth = baseWidth * scale;
+  const pageHeight = baseHeight * scale;
 
-    if (numPages && currentPage === numPages - 1) {
-      return "translateX(-25%)"; // center last page
-    }
-
-    return "translateX(0)";
-  };
+  // ---------- Cover detection ----------
+  const isCover =
+    currentPage === 0 ||
+    currentPage === numPages - 1;
 
   return (
     <div
       style={{
         width: "100%",
-        height: "100vh",            // fill viewport
+        height: "100vh",
+        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        overflow: "hidden",        // prevent scroll
       }}
     >
-      {/* Instruction text */}
+      {/* Instruction */}
       <p
         style={{
-          marginBottom: "20px",
+          marginBottom: "16px",
           fontFamily: "monospace",
           fontSize: "14px",
           opacity: 0.7,
@@ -85,74 +82,72 @@ export default function FlipBook() {
         Click or drag page corner to flip →
       </p>
 
-      <Document
-        file="/docs/explore-menu.pdf"
-        onLoadSuccess={onLoadSuccess}
+      {/* ---------- Centering Stage ---------- */}
+      <div
+        style={{
+          width: "100%",
+          height: pageHeight,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: isCover
+            ? "center"
+            : "center",
+          transition: "all 0.6s ease",
+        }}
       >
-        {/* CENTERING WRAPPER */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-            overflow: "hidden",
-          }}
+        <Document
+          file="/docs/explore-menu.pdf"
+          onLoadSuccess={onLoadSuccess}
         >
-          {/* HORIZONTAL SHIFT CONTAINER */}
-          <div
+          <HTMLFlipBook
+            ref={bookRef}
+            width={pageWidth}
+            height={pageHeight}
+            size="fixed"
+            minWidth={pageWidth}
+            maxWidth={pageWidth * 2}
+            minHeight={pageHeight}
+            maxHeight={pageHeight}
+            drawShadow={true}
+            flippingTime={800}
+            showCover={true}
+            mobileScrollSupport={true}
+            useMouseEvents={!isMobile}
+            usePortrait={isMobile}
+            startPage={0}
+            clickEventForward={true}
+            swipeDistance={30}
+            showPageCorners={true}
+            maxShadowOpacity={0.3}
+            onFlip={(e) => setCurrentPage(e.data)}
             style={{
-              transition: "transform 0.6s ease",
-              transform: getBookTransform(),
+              margin: "0 auto",
             }}
           >
-            <HTMLFlipBook
-              ref={bookRef}
-              width={pageWidth}
-              height={pageHeight}
-              size="stretch"
-              minWidth={280}
-              maxWidth={1200}
-              minHeight={420}
-              maxHeight={1600}
-              maxShadowOpacity={0.3}
-              showCover={true}
-              mobileScrollSupport={true}
-              useMouseEvents={!isMobile}
-              drawShadow={true}
-              flippingTime={800}
-              startPage={0}
-              usePortrait={isMobile}
-              startZIndex={0}
-              autoSize={true}
-              clickEventForward={true}
-              swipeDistance={30}
-              showPageCorners={true}
-
-              // 🧭 TRACK PAGE FOR CENTERING
-              onFlip={(e) => setCurrentPage(e.data)}
-            >
-              {Array.from(new Array(numPages || 0), (_, index) => (
-                <div
-                  key={index}
-                  style={{
-                    backgroundColor: "#ffffff",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Page
-                    pageNumber={index + 1}
-                    width={pageWidth}
-                    renderAnnotationLayer={false}
-                    renderTextLayer={false}
-                  />
-                </div>
-              ))}
-            </HTMLFlipBook>
-          </div>
-        </div>
-      </Document>
+            {Array.from(new Array(numPages || 0), (_, index) => (
+              <div
+                key={index}
+                style={{
+                  backgroundColor: "#ffffff",
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Page
+                  pageNumber={index + 1}
+                  width={pageWidth}
+                  height={pageHeight}
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                />
+              </div>
+            ))}
+          </HTMLFlipBook>
+        </Document>
+      </div>
     </div>
   );
 }
