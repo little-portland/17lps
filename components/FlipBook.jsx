@@ -9,10 +9,10 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
-  const bookRef = useRef();
+  const bookRef = useRef(null);
 
   function onLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -24,8 +24,8 @@ export default function FlipBook() {
       const w = window.innerWidth;
       const h = window.innerHeight;
 
-      setIsMobile(w < 768);
       setViewport({ width: w, height: h });
+      setIsMobile(w < 768);
     };
 
     update();
@@ -36,15 +36,19 @@ export default function FlipBook() {
   // ---------- Lock scroll ----------
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => (document.body.style.overflow = "auto");
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, []);
 
+  // ---------- Base PDF dimensions ----------
   const baseWidth = 1080;
   const baseHeight = 1325;
 
   const vw = viewport.width;
   const vh = viewport.height;
 
+  // Desktop = spread (2 pages), Mobile = single page
   const spreadWidth = isMobile ? baseWidth : baseWidth * 2;
 
   const scale = Math.min(
@@ -55,15 +59,25 @@ export default function FlipBook() {
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
-  // ---------- Slide navigation ----------
+  // ---------- Symmetric curl navigation ----------
   const flipNext = () => {
     const flip = bookRef.current?.pageFlip();
-    if (flip) flip.flipNext();
+    if (!flip) return;
+
+    const current = flip.getCurrentPageIndex();
+    if (current < numPages - 1) {
+      flip.flip(current + 1);
+    }
   };
 
   const flipPrev = () => {
     const flip = bookRef.current?.pageFlip();
-    if (flip) flip.flipPrev();
+    if (!flip) return;
+
+    const current = flip.getCurrentPageIndex();
+    if (current > 0) {
+      flip.flip(current - 1);
+    }
   };
 
   return (
@@ -78,6 +92,7 @@ export default function FlipBook() {
         overflow: "hidden",
       }}
     >
+      {/* Instruction */}
       <p
         style={{
           marginBottom: 16,
@@ -86,11 +101,12 @@ export default function FlipBook() {
           opacity: 0.7,
           textTransform: "uppercase",
           textAlign: "center",
+          lineHeight: 1.2,
         }}
       >
         {isMobile
-          ? "Tap page edge to navigate"
-          : "Click or drag page corner to flip"}
+          ? "Tap page edge to flip →"
+          : "Click or drag page corner to flip →"}
       </p>
 
       <div
@@ -103,7 +119,7 @@ export default function FlipBook() {
           justifyContent: "center",
         }}
       >
-        {/* Mobile tap zones */}
+        {/* Mobile Tap Zones */}
         {isMobile && (
           <>
             <div
@@ -141,15 +157,14 @@ export default function FlipBook() {
             height={pageHeight}
             size="fixed"
             minWidth={pageWidth}
-            maxWidth={pageWidth}
+            maxWidth={isMobile ? pageWidth : pageWidth * 2}
             minHeight={pageHeight}
             maxHeight={pageHeight}
-            drawShadow
-            flippingTime={600}
-            usePortrait={isMobile}
+            drawShadow={true}
+            flippingTime={800}
             showCover={false}
+            usePortrait={isMobile}
             mobileScrollSupport={false}
-            swipeDistance={0}   // disable gesture curl
             showPageCorners={!isMobile}
             style={{ margin: "0 auto" }}
           >
@@ -162,6 +177,7 @@ export default function FlipBook() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  background: "#ffffff",
                 }}
               >
                 <Page
