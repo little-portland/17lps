@@ -9,7 +9,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
 
   const bookRef = useRef();
 
@@ -78,7 +77,7 @@ export default function FlipBook() {
         Click or drag page corner to flip →
       </p>
 
-      {/* ---------- Center Stage ---------- */}
+      {/* Stage */}
       <div
         style={{
           width: "100%",
@@ -86,7 +85,6 @@ export default function FlipBook() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          transition: "all 0.6s ease",
         }}
       >
         <Document
@@ -104,10 +102,7 @@ export default function FlipBook() {
             maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
-
-            {/* ✅ ALWAYS 2-PAGE SPREAD */}
             showCover={false}
-
             mobileScrollSupport={true}
             useMouseEvents={!isMobile}
             usePortrait={isMobile}
@@ -116,7 +111,6 @@ export default function FlipBook() {
             swipeDistance={30}
             showPageCorners={true}
             maxShadowOpacity={0.3}
-            onFlip={(e) => setCurrentPage(e.data)}
             style={{
               margin: "0 auto",
             }}
