@@ -232,7 +232,7 @@ const Menu = ({ menuImage }) => {
 
            <div className="override-buttons-wrapper">
              <a href="https://www.little-portland.com/dinner-options" class="override-button">BOOK DINNER</a>
-             <a target="_blank" href="https://www.little-portland.com/explore-menu" class="override-button">Explore Menu</a>
+             <a target="_blank" href="https://www.little-portland.com/explore-menu" class="override-button">EXPLORE MENU</a>
             </div>           
             <img src="/images/food/food_page_ethos.gif" alt="The Tent Food" width="100%" />
 
