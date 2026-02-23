@@ -18,6 +18,7 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
+  // ---------- Viewport ----------
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
@@ -32,6 +33,7 @@ export default function FlipBook() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
+  // ---------- Lock scroll ----------
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => (document.body.style.overflow = "auto");
@@ -53,16 +55,15 @@ export default function FlipBook() {
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
+  // ---------- Slide navigation ----------
   const flipNext = () => {
     const flip = bookRef.current?.pageFlip();
-    if (!flip) return;
-    flip.flipNext("top");
+    if (flip) flip.flipNext();
   };
 
   const flipPrev = () => {
     const flip = bookRef.current?.pageFlip();
-    if (!flip) return;
-    flip.flipPrev("top"); // forces curl mode
+    if (flip) flip.flipPrev();
   };
 
   return (
@@ -88,8 +89,8 @@ export default function FlipBook() {
         }}
       >
         {isMobile
-          ? "Tap page edge or swipe to flip →"
-          : "Click or drag page corner to flip →"}
+          ? "Tap page edge to navigate"
+          : "Click or drag page corner to flip"}
       </p>
 
       <div
@@ -102,6 +103,7 @@ export default function FlipBook() {
           justifyContent: "center",
         }}
       >
+        {/* Mobile tap zones */}
         {isMobile && (
           <>
             <div
@@ -110,9 +112,9 @@ export default function FlipBook() {
                 position: "absolute",
                 left: 0,
                 top: 0,
-                width: "25%",
+                width: "30%",
                 height: "100%",
-                zIndex: 20,
+                zIndex: 10,
               }}
             />
             <div
@@ -121,9 +123,9 @@ export default function FlipBook() {
                 position: "absolute",
                 right: 0,
                 top: 0,
-                width: "25%",
+                width: "30%",
                 height: "100%",
-                zIndex: 20,
+                zIndex: 10,
               }}
             />
           </>
@@ -143,11 +145,12 @@ export default function FlipBook() {
             minHeight={pageHeight}
             maxHeight={pageHeight}
             drawShadow
-            flippingTime={800}
+            flippingTime={600}
             usePortrait={isMobile}
-            showPageCorners
             showCover={false}
             mobileScrollSupport={false}
+            swipeDistance={0}   // disable gesture curl
+            showPageCorners={!isMobile}
             style={{ margin: "0 auto" }}
           >
             {Array.from(new Array(numPages || 0), (_, index) => (
