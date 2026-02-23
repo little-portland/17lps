@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { Document, Page, pdfjs } from "react-pdf";
 
@@ -14,15 +14,14 @@ export default function FlipBook() {
     height: 630,
   });
 
-  const bookRef = useRef();
-
-  // Responsive sizing
+  // Responsive spread sizing
   useEffect(() => {
     function resize() {
-      const maxWidth = 900;
+      const maxSpread = 1000;
       const padding = 40;
       const screenWidth = window.innerWidth - padding;
 
+      // Two-page spread
       const pageWidth = Math.min(screenWidth / 2, 450);
       const pageHeight = pageWidth * 1.4;
 
@@ -41,15 +40,6 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
-  // Navigation
-  const nextPage = () => {
-    bookRef.current.pageFlip().flipNext();
-  };
-
-  const prevPage = () => {
-    bookRef.current.pageFlip().flipPrev();
-  };
-
   return (
     <div
       style={{
@@ -57,33 +47,40 @@ export default function FlipBook() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: 20,
+        padding: "40px 0",
       }}
     >
       {/* Flip hint */}
-      <div style={{ color: "#666", fontSize: 14 }}>
+      <div
+        style={{
+          marginBottom: 20,
+          fontSize: 14,
+          color: "#444",
+          letterSpacing: 1,
+        }}
+      >
         Click or drag page corner to flip →
       </div>
 
-      {/* Book */}
       <Document
         file="/docs/explore-menu.pdf"
         onLoadSuccess={onLoadSuccess}
       >
         <HTMLFlipBook
-          ref={bookRef}
           width={bookSize.width}
           height={bookSize.height}
           showCover={true}
-          drawShadow={false}
-          flippingTime={800}
+          drawShadow={true}          // restore flip realism
+          maxShadowOpacity={0.5}     // soften shadow
+          flippingTime={900}
           useMouseEvents={true}
+          mobileScrollSupport={true}
         >
           {Array.from(new Array(numPages || 0), (_, index) => (
             <div
               key={index}
               style={{
-                backgroundColor: "#fff",
+                backgroundColor: "#fff", // prevents transparency bleed
                 width: "100%",
                 height: "100%",
               }}
@@ -98,21 +95,6 @@ export default function FlipBook() {
           ))}
         </HTMLFlipBook>
       </Document>
-
-      {/* Controls */}
-      <div
-        style={{
-          display: "flex",
-          gap: 20,
-          alignItems: "center",
-        }}
-      >
-        <button onClick={prevPage}>← Prev</button>
-        <span>
-          {numPages ? `1 / ${numPages}` : "Loading…"}
-        </span>
-        <button onClick={nextPage}>Next →</button>
-      </div>
     </div>
   );
 }
