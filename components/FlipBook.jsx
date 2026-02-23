@@ -72,7 +72,6 @@ export default function FlipBook() {
     <div
       style={{
         width: "100%",
-        height: "100vh",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
