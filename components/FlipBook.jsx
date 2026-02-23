@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { Document, Page, pdfjs } from "react-pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc =
+  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
 
   const bookRef = useRef();
 
@@ -16,18 +18,22 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
-  // ---------- Screen detection ----------
+  // ---------- Viewport detection ----------
   useEffect(() => {
-    const handleResize = () => {
+    const update = () => {
       setIsMobile(window.innerWidth < 768);
+      setViewport({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
-  // ---------- LOCK BODY SCROLL ----------
+  // ---------- Lock body scroll ----------
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -38,28 +44,19 @@ export default function FlipBook() {
   // ---------- Original PDF ratio ----------
   const baseWidth = 1080;
   const baseHeight = 1325;
-  const ratio = baseHeight / baseWidth;
 
-  // ---------- Viewport ----------
-  const vw =
-    typeof window !== "undefined" ? window.innerWidth : 1200;
-  const vh =
-    typeof window !== "undefined" ? window.innerHeight : 900;
+  const vw = viewport.width;
+  const vh = viewport.height;
 
-  // ---------- Scaling ----------
-  let pageWidth;
-  let pageHeight;
+  // Scale based on BOTH width and height
+  const scaleByHeight = (vh * 0.9) / baseHeight;
+  const scaleByWidth = (vw * (isMobile ? 0.95 : 0.9)) /
+    (isMobile ? baseWidth : baseWidth * 2);
 
-  if (isMobile) {
-    // Fit WIDTH on mobile (prevents cropping)
-    pageWidth = vw * 0.9;
-    pageHeight = pageWidth * ratio;
-  } else {
-    // Fit HEIGHT on desktop
-    const scale = (vh * 0.85) / baseHeight;
-    pageWidth = baseWidth * scale;
-    pageHeight = baseHeight * scale;
-  }
+  const scale = Math.min(scaleByHeight, scaleByWidth);
+
+  const pageWidth = baseWidth * scale;
+  const pageHeight = baseHeight * scale;
 
   return (
     <div
@@ -70,15 +67,14 @@ export default function FlipBook() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "#cfa3b1",
       }}
     >
-      {/* ---------- Instruction ---------- */}
+      {/* Instruction */}
       <p
         style={{
           marginBottom: "16px",
           fontFamily: "monospace",
-          fontSize: "18px",
+          fontSize: "20px",
           opacity: 0.7,
           textTransform: "uppercase",
           textAlign: "center",
@@ -90,7 +86,7 @@ export default function FlipBook() {
           : "Click or drag page corner to flip"}
       </p>
 
-      {/* ---------- Stage ---------- */}
+      {/* Stage */}
       <div
         style={{
           width: "100%",
@@ -98,7 +94,6 @@ export default function FlipBook() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          overflow: "hidden",
         }}
       >
         <Document
@@ -111,40 +106,46 @@ export default function FlipBook() {
             height={pageHeight}
             size="fixed"
             minWidth={pageWidth}
-            maxWidth={pageWidth * 2}
+            maxWidth={isMobile ? pageWidth : pageWidth * 2}
             minHeight={pageHeight}
             maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
-            usePortrait={isMobile}          // ✅ Single page mobile
-            useMouseEvents={!isMobile}      // ✅ Touch safe
-            mobileScrollSupport={true}     // ✅ Swipe enabled
-            clickEventForward={true}       // ✅ Tap flip
-            swipeDistance={30}
-            showPageCorners={!isMobile}    // Hide on mobile
+            showCover={false}
+            mobileScrollSupport={false}
+            useMouseEvents={!isMobile}
+            usePortrait={isMobile}
             startPage={0}
+            clickEventForward={true}
+            swipeDistance={30}
+            showPageCorners={true}
+            maxShadowOpacity={0.3}
             style={{ margin: "0 auto" }}
           >
-            {Array.from(new Array(numPages || 0), (_, index) => (
-              <div
-                key={index}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  background: "#fff",
-                }}
-              >
-                <Page
-                  pageNumber={index + 1}
-                  width={pageWidth}
-                  renderAnnotationLayer={false}
-                  renderTextLayer={false}
-                />
-              </div>
-            ))}
+            {Array.from(
+              new Array(numPages || 0),
+              (_, index) => (
+                <div
+                  key={index}
+                  style={{
+                    backgroundColor: "#ffffff",
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Page
+                    pageNumber={index + 1}
+                    width={pageWidth}
+                    height={pageHeight}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                  />
+                </div>
+              )
+            )}
           </HTMLFlipBook>
         </Document>
       </div>
