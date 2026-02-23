@@ -87,7 +87,7 @@ export default function FlipBook() {
         style={{
           marginBottom: "16px",
           fontFamily: "monospace",
-          fontSize: "20px",
+          fontSize: isMobile ? "14px" : "20px",   // 👈 mobile smaller
           opacity: 0.7,
           textTransform: "uppercase",
           textAlign: "center",
