@@ -57,7 +57,6 @@ export default function FlipBook() {
     <div
       style={{
         width: "100%",
-        height: "100vh",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
@@ -70,8 +69,9 @@ export default function FlipBook() {
         style={{
           marginBottom: "16px",
           fontFamily: "monospace",
-          fontSize: "14px",
+          fontSize: "20px",
           opacity: 0.7,
+          textTransform: "uppercase",
         }}
       >
         Click or drag page corner to flip →
