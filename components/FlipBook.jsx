@@ -18,7 +18,7 @@ export default function FlipBook() {
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <Document file="/docs/ebook.pdf" onLoadSuccess={onLoadSuccess}>
+      <Document file="/docs/explore-menu.pdf" onLoadSuccess={onLoadSuccess}>
         <HTMLFlipBook
           width={400}
           height={600}
