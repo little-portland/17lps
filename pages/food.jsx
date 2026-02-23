@@ -231,7 +231,7 @@ const Menu = ({ menuImage }) => {
            <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
 
            <div className="override-buttons-wrapper">
-             <a href="https://www.little-portland.com/bookings" class="override-button">BOOK DINNER</a>
+             <a href="https://www.little-portland.com/dinner-options" class="override-button">BOOK DINNER</a>
              <a target="_blank" href="https://www.little-portland.com/menu" class="override-button">MENU</a>
             </div>           
             <img src="/images/food/food_page_ethos.gif" alt="The Tent Food" width="100%" />
@@ -283,6 +283,16 @@ const Menu = ({ menuImage }) => {
               hoverImg="/images/food/bio-bricks-btn-hover.png"
               aspect="871 / 90"
               ariaLabel="Dining Concept pack"
+              target="_blank"
+            />
+
+           <HoverImageLink
+              className="concept-pack"
+              href="/docs/2025-on-futurist-eating.pdf"
+              img="/images/food/futurist-cuisine-btn.png"
+              hoverImg="/images/food/futurist-cuisine-btn-hover.png"
+              aspect="871 / 90"
+              ariaLabel="On Futurist Cuisine"
               target="_blank"
             />
            
