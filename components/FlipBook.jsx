@@ -69,18 +69,21 @@ justifyContent: "center",
 }}
 >
 {/* Instruction */}
-<p
-style={{
-marginBottom: "16px",
-fontFamily: "monospace",
-fontSize: "20px",
-opacity: 0.7,
-textTransform: "uppercase",
-textAlign: "center",
-lineHeight: 1.2,
-}}
+  <p
+  style={{
+    marginBottom: "16px",
+    fontFamily: "monospace",
+    fontSize: "20px",
+    opacity: 0.7,
+    textTransform: "uppercase",
+    textAlign: "center",
+    lineHeight: 1.2,
+  }}
 >
-Click or drag page corner to flip → </p>
+  {isMobile
+    ? "Tap page edge to flip →"
+    : "Click or drag page corner to flip →"}
+</p>
 
 ```
   {/* Stage */}
