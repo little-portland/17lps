@@ -41,9 +41,10 @@ export default function FlipBook() {
   const baseHeight = 1325;
 
   // ---------- Fit to viewport height ----------
-  const vh = typeof window !== "undefined"
-    ? window.innerHeight
-    : 1000;
+  const vh =
+    typeof window !== "undefined"
+      ? window.innerHeight
+      : 1000;
 
   const scale = Math.min(
     (vh * 0.85) / baseHeight,
@@ -52,11 +53,6 @@ export default function FlipBook() {
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
-
-  // ---------- Cover detection ----------
-  const isCover =
-    currentPage === 0 ||
-    currentPage === numPages - 1;
 
   return (
     <div
@@ -82,16 +78,14 @@ export default function FlipBook() {
         Click or drag page corner to flip →
       </p>
 
-      {/* ---------- Centering Stage ---------- */}
+      {/* ---------- Center Stage ---------- */}
       <div
         style={{
           width: "100%",
           height: pageHeight,
           display: "flex",
           alignItems: "center",
-          justifyContent: isCover
-            ? "center"
-            : "center",
+          justifyContent: "center",
           transition: "all 0.6s ease",
         }}
       >
@@ -110,7 +104,10 @@ export default function FlipBook() {
             maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
-            showCover={true}
+
+            {/* ✅ ALWAYS 2-PAGE SPREAD */}
+            showCover={false}
+
             mobileScrollSupport={true}
             useMouseEvents={!isMobile}
             usePortrait={isMobile}
@@ -124,27 +121,30 @@ export default function FlipBook() {
               margin: "0 auto",
             }}
           >
-            {Array.from(new Array(numPages || 0), (_, index) => (
-              <div
-                key={index}
-                style={{
-                  backgroundColor: "#ffffff",
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Page
-                  pageNumber={index + 1}
-                  width={pageWidth}
-                  height={pageHeight}
-                  renderAnnotationLayer={false}
-                  renderTextLayer={false}
-                />
-              </div>
-            ))}
+            {Array.from(
+              new Array(numPages || 0),
+              (_, index) => (
+                <div
+                  key={index}
+                  style={{
+                    backgroundColor: "#ffffff",
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Page
+                    pageNumber={index + 1}
+                    width={pageWidth}
+                    height={pageHeight}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                  />
+                </div>
+              )
+            )}
           </HTMLFlipBook>
         </Document>
       </div>
