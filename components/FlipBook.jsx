@@ -10,7 +10,6 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [viewport, setViewport] = useState({ width: 0, height: 0 });
 
   const bookRef = useRef();
 
@@ -18,22 +17,18 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
-  // ---------- Viewport detection ----------
+  // ---------- Screen detection ----------
   useEffect(() => {
-    const update = () => {
+    const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
-      setViewport({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
     };
 
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // ---------- Lock body scroll ----------
+  // ---------- LOCK BODY SCROLL ----------
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -45,15 +40,22 @@ export default function FlipBook() {
   const baseWidth = 1080;
   const baseHeight = 1325;
 
-  const vw = viewport.width;
-  const vh = viewport.height;
+  // ---------- Fit to viewport ----------
+  const vh =
+    typeof window !== "undefined"
+      ? window.innerHeight
+      : 1000;
 
-  // Scale based on BOTH width and height
-  const scaleByHeight = (vh * 0.9) / baseHeight;
-  const scaleByWidth = (vw * (isMobile ? 0.95 : 0.9)) /
-    (isMobile ? baseWidth : baseWidth * 2);
+  const vw =
+    typeof window !== "undefined"
+      ? window.innerWidth
+      : 1000;
 
-  const scale = Math.min(scaleByHeight, scaleByWidth);
+  const scale = Math.min(
+    (vh * 0.85) / baseHeight,
+    (vw * (isMobile ? 0.95 : 0.9)) /
+      (isMobile ? baseWidth : baseWidth * 2)
+  );
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
@@ -86,7 +88,7 @@ export default function FlipBook() {
           : "Click or drag page corner to flip"}
       </p>
 
-      {/* Stage */}
+      {/* ---------- Stage ---------- */}
       <div
         style={{
           width: "100%",
@@ -106,20 +108,18 @@ export default function FlipBook() {
             height={pageHeight}
             size="fixed"
             minWidth={pageWidth}
-            maxWidth={isMobile ? pageWidth : pageWidth * 2}
+            maxWidth={pageWidth * 2}
             minHeight={pageHeight}
             maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
-            showCover={false}
-            mobileScrollSupport={false}
-            useMouseEvents={!isMobile}
-            usePortrait={isMobile}
-            startPage={0}
-            clickEventForward={true}
+            usePortrait={isMobile}          // 1 page mobile
+            useMouseEvents={!isMobile}      // disable mouse on touch
+            mobileScrollSupport={true}     // allow swipe
+            clickEventForward={true}       // allow tap flip
             swipeDistance={30}
-            showPageCorners={true}
-            maxShadowOpacity={0.3}
+            showPageCorners={true}         // show hint on mobile too
+            startPage={0}
             style={{ margin: "0 auto" }}
           >
             {Array.from(
@@ -128,12 +128,16 @@ export default function FlipBook() {
                 <div
                   key={index}
                   style={{
-                    backgroundColor: "#ffffff",
                     width: "100%",
                     height: "100%",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    background: "#fff",
+
+                    // ✅ MOBILE FLIP FIX
+                    // Allows touch gestures to reach pageflip
+                    pointerEvents: "none",
                   }}
                 >
                   <Page
