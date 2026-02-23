@@ -18,7 +18,7 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
-  // Viewport detection
+  // Detect viewport
   useEffect(() => {
     const update = () => {
       setIsMobile(window.innerWidth < 768);
@@ -33,7 +33,7 @@ export default function FlipBook() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Lock body scroll
+  // Lock scroll
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -41,6 +41,7 @@ export default function FlipBook() {
     };
   }, []);
 
+  // PDF base ratio
   const baseWidth = 1080;
   const baseHeight = 1325;
 
@@ -50,13 +51,13 @@ export default function FlipBook() {
   let scale;
 
   if (isMobile) {
-    // Fit one page perfectly on mobile
+    // Fit ONE page
     scale = Math.min(
       (vw * 0.95) / baseWidth,
       (vh * 0.9) / baseHeight
     );
   } else {
-    // Fit spread on desktop
+    // Fit SPREAD
     scale = Math.min(
       (vw * 0.9) / (baseWidth * 2),
       (vh * 0.9) / baseHeight
@@ -70,19 +71,20 @@ export default function FlipBook() {
     <div
       style={{
         width: "100%",
-        overflow: "hidden",
+        height: "100vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        overflow: "hidden",
       }}
     >
       {/* Instruction */}
       <p
         style={{
-          marginBottom: isMobile ? "10px" : "16px",
+          marginBottom: isMobile ? 10 : 16,
           fontFamily: "monospace",
-          fontSize: isMobile ? "14px" : "20px",
+          fontSize: isMobile ? 14 : 20,
           opacity: 0.7,
           textTransform: "uppercase",
           textAlign: "center",
@@ -94,56 +96,67 @@ export default function FlipBook() {
           : "Click or drag page corner to flip →"}
       </p>
 
-      <Document
-        file="/docs/explore-menu.pdf"
-        onLoadSuccess={onLoadSuccess}
+      {/* Stage = EXACT BOOK WIDTH */}
+      <div
+        style={{
+          width: isMobile ? pageWidth : pageWidth * 2,
+          height: pageHeight,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
-        <HTMLFlipBook
-          ref={bookRef}
-          width={pageWidth}
-          height={pageHeight}
-          size="fixed"
-          minWidth={pageWidth}
-          maxWidth={pageWidth}
-          minHeight={pageHeight}
-          maxHeight={pageHeight}
-          drawShadow={true}
-          flippingTime={800}
-          usePortrait={isMobile}          // 🔥 Correct way
-          useMouseEvents={true}
-          mobileScrollSupport={false}
-          swipeDistance={30}
-          clickEventForward={true}        // 🔥 Enables tap
-          showPageCorners={true}
-          showCover={false}
-          maxShadowOpacity={0.3}
-          style={{
-            margin: "0 auto",
-            touchAction: "none",
-          }}
+        <Document
+          file="/docs/explore-menu.pdf"
+          onLoadSuccess={onLoadSuccess}
         >
-          {Array.from(new Array(numPages || 0), (_, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: "#ffffff",
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Page
-                pageNumber={index + 1}
-                width={pageWidth}
-                renderAnnotationLayer={false}
-                renderTextLayer={false}
-              />
-            </div>
-          ))}
-        </HTMLFlipBook>
-      </Document>
+          <HTMLFlipBook
+            ref={bookRef}
+            width={pageWidth}
+            height={pageHeight}
+            size="fixed"
+            minWidth={pageWidth}
+            maxWidth={pageWidth}
+            minHeight={pageHeight}
+            maxHeight={pageHeight}
+            drawShadow={true}
+            flippingTime={800}
+            usePortrait={isMobile}
+            useMouseEvents={true}
+            mobileScrollSupport={false}
+            swipeDistance={30}
+            clickEventForward={true}
+            showPageCorners={true}
+            showCover={false}
+            maxShadowOpacity={0.3}
+            style={{
+              margin: "0 auto",
+              touchAction: "none",
+            }}
+          >
+            {Array.from(new Array(numPages || 0), (_, index) => (
+              <div
+                key={index}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background: "#fff",
+                }}
+              >
+                <Page
+                  pageNumber={index + 1}
+                  width={pageWidth}   // ✅ ONLY width
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                />
+              </div>
+            ))}
+          </HTMLFlipBook>
+        </Document>
+      </div>
     </div>
   );
 }
