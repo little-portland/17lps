@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { Document, Page, pdfjs } from "react-pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc =
+  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
 
   const bookRef = useRef();
 
@@ -17,18 +18,22 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
-  // ---------- Screen detection ----------
+  // ---------- Viewport detection ----------
   useEffect(() => {
-    const handleResize = () => {
+    const update = () => {
       setIsMobile(window.innerWidth < 768);
+      setViewport({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
-  // ---------- LOCK BODY SCROLL ----------
+  // ---------- Lock body scroll ----------
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -40,16 +45,15 @@ export default function FlipBook() {
   const baseWidth = 1080;
   const baseHeight = 1325;
 
-  // ---------- Fit to viewport height ----------
-  const vh =
-    typeof window !== "undefined"
-      ? window.innerHeight
-      : 1000;
+  const vw = viewport.width;
+  const vh = viewport.height;
 
-  const scale = Math.min(
-    (vh * 0.85) / baseHeight,
-    isMobile ? 1 : 0.9
-  );
+  // Scale based on BOTH width and height
+  const scaleByHeight = (vh * 0.9) / baseHeight;
+  const scaleByWidth = (vw * (isMobile ? 0.95 : 0.9)) /
+    (isMobile ? baseWidth : baseWidth * 2);
+
+  const scale = Math.min(scaleByHeight, scaleByWidth);
 
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
@@ -65,7 +69,7 @@ export default function FlipBook() {
         justifyContent: "center",
       }}
     >
-      {/* ---------- Instruction ---------- */}
+      {/* Instruction */}
       <p
         style={{
           marginBottom: "16px",
@@ -78,11 +82,11 @@ export default function FlipBook() {
         }}
       >
         {isMobile
-          ? "Tap page edge to flip →"
-          : "Click or drag page corner to flip →"}
+          ? "Tap page edge or swipe to flip"
+          : "Click or drag page corner to flip"}
       </p>
 
-      {/* ---------- Stage ---------- */}
+      {/* Stage */}
       <div
         style={{
           width: "100%",
@@ -102,24 +106,21 @@ export default function FlipBook() {
             height={pageHeight}
             size="fixed"
             minWidth={pageWidth}
-            maxWidth={pageWidth * 2}
+            maxWidth={isMobile ? pageWidth : pageWidth * 2}
             minHeight={pageHeight}
             maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
-            showCover={false}   // ALWAYS 2 pages on desktop
+            showCover={false}
             mobileScrollSupport={true}
             useMouseEvents={!isMobile}
-            usePortrait={isMobile} // 1 page mobile / 2 desktop
+            usePortrait={isMobile}
             startPage={0}
             clickEventForward={true}
             swipeDistance={30}
             showPageCorners={true}
             maxShadowOpacity={0.3}
-            onFlip={(e) => setCurrentPage(e.data)}
-            style={{
-              margin: "0 auto",
-            }}
+            style={{ margin: "0 auto" }}
           >
             {Array.from(
               new Array(numPages || 0),
