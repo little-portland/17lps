@@ -1,11 +1,6 @@
 'use client';
 
-import {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const images = [
   '/images/food/slide01.png',
@@ -20,7 +15,6 @@ export default function FoodSlideshow() {
   const real = images.length;
   const slides = [images[real - 1], ...images, images[0]];
 
-  const containerRef = useRef(null);
   const trackRef = useRef(null);
 
   const [index, setIndex] = useState(1);
@@ -29,8 +23,7 @@ export default function FoodSlideshow() {
 
   const isDragging = useRef(false);
   const startX = useRef(0);
-  const currentTranslate = useRef(0);
-  const prevTranslate = useRef(0);
+  const startIndex = useRef(1);
 
   useEffect(() => {
     indexRef.current = index;
@@ -45,10 +38,7 @@ export default function FoodSlideshow() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const getWidth = () =>
-    containerRef.current?.offsetWidth || 0;
-
-  const setPosition = (value, animate = true) => {
+  const setPosition = (i, animate = true) => {
     const track = trackRef.current;
     if (!track) return;
 
@@ -56,49 +46,35 @@ export default function FoodSlideshow() {
       ? 'transform 400ms ease'
       : 'none';
 
-    track.style.transform = `translateX(${value}px)`;
+    track.style.transform = `translateX(-${i * 100}%)`;
   };
 
-  const goToSlide = (i, animate = true) => {
-    const width = getWidth();
-    const value = -i * width;
-
-    prevTranslate.current = value;
-    setPosition(value, animate);
-  };
-
-  // 🔥 FIX: Position BEFORE first paint
-  useLayoutEffect(() => {
-    const width = getWidth();
-    if (!width) return;
-
-    const track = trackRef.current;
-    if (!track) return;
-
-    track.style.transition = 'none';
-    track.style.transform = `translateX(${-width}px)`;
-    prevTranslate.current = -width;
+  // Initial correct positioning (NO WIDTH MEASUREMENTS)
+  useEffect(() => {
+    setPosition(1, false);
   }, []);
 
-  // Normal snapping movement
+  // Slide changes
   useEffect(() => {
-    goToSlide(index);
+    setPosition(index);
   }, [index]);
 
-  // Infinite loop correction
+  // Infinite correction
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     const handleEnd = () => {
       if (indexRef.current === 0) {
+        track.style.transition = 'none';
         setIndex(real);
-        goToSlide(real, false);
+        track.style.transform = `translateX(-${real * 100}%)`;
       }
 
       if (indexRef.current === real + 1) {
+        track.style.transition = 'none';
         setIndex(1);
-        goToSlide(1, false);
+        track.style.transform = `translateX(-100%)`;
       }
     };
 
@@ -107,46 +83,47 @@ export default function FoodSlideshow() {
       track.removeEventListener('transitionend', handleEnd);
   }, [real]);
 
-  // Drag snapping (UNCHANGED)
+  // Clean snapping drag (percentage-based, not pixels)
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const track = trackRef.current;
+    if (!track) return;
+
+    const container = track.parentElement;
 
     const pointerDown = (e) => {
       isDragging.current = true;
-      container.style.cursor = 'grabbing';
       startX.current = e.clientX;
-      container.setPointerCapture(e.pointerId);
+      startIndex.current = indexRef.current;
+      track.style.transition = 'none';
+      container.style.cursor = 'grabbing';
     };
 
     const pointerMove = (e) => {
       if (!isDragging.current) return;
 
       const dx = e.clientX - startX.current;
-      currentTranslate.current =
-        prevTranslate.current + dx;
+      const percent = dx / container.offsetWidth;
 
-      setPosition(currentTranslate.current, false);
+      track.style.transform = `translateX(-${
+        (startIndex.current - percent) * 100
+      }%)`;
     };
 
-    const pointerUp = () => {
+    const pointerUp = (e) => {
       if (!isDragging.current) return;
 
       isDragging.current = false;
       container.style.cursor = 'grab';
 
-      const movedBy =
-        currentTranslate.current -
-        prevTranslate.current;
+      const dx = e.clientX - startX.current;
+      const threshold = container.offsetWidth * 0.15;
 
-      const width = getWidth();
-
-      if (movedBy < -width * 0.2) {
+      if (dx < -threshold) {
         setIndex((prev) => prev + 1);
-      } else if (movedBy > width * 0.2) {
+      } else if (dx > threshold) {
         setIndex((prev) => prev - 1);
       } else {
-        goToSlide(indexRef.current);
+        setPosition(startIndex.current);
       }
     };
 
@@ -165,7 +142,6 @@ export default function FoodSlideshow() {
 
   return (
     <div
-      ref={containerRef}
       style={{
         width: '100%',
         maxWidth: isMobile ? '90%' : '50%',
