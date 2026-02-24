@@ -32,6 +32,7 @@ export default function FoodSlideshow() {
     indexRef.current = index;
   }, [index]);
 
+  // Detect mobile
   useEffect(() => {
     const handleResize = () =>
       setIsMobile(window.innerWidth < 768);
@@ -41,7 +42,8 @@ export default function FoodSlideshow() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const getWidth = () => containerRef.current.offsetWidth;
+  const getWidth = () =>
+    containerRef.current?.offsetWidth || 0;
 
   const setPosition = (value, animate = true) => {
     const track = trackRef.current;
@@ -54,7 +56,6 @@ export default function FoodSlideshow() {
     track.style.transform = `translateX(${value}px)`;
   };
 
-  // Move to slide
   const goToSlide = (i, animate = true) => {
     const width = getWidth();
     const value = -i * width;
@@ -63,11 +64,29 @@ export default function FoodSlideshow() {
     setPosition(value, animate);
   };
 
+  // Normal slide movement
   useEffect(() => {
-    goToSlide(index);
-  }, [index]);
+    if (!isMobile) {
+      goToSlide(index);
+    }
+  }, [index, isMobile]);
 
-  // Infinite correction
+  // 🔥 Mobile-only initial positioning fix
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const width = getWidth();
+    if (!width) return;
+
+    const track = trackRef.current;
+    if (!track) return;
+
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${-width}px)`;
+    prevTranslate.current = -width;
+  }, [isMobile]);
+
+  // Infinite loop correction
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -89,7 +108,7 @@ export default function FoodSlideshow() {
       track.removeEventListener('transitionend', handleEnd);
   }, [real]);
 
-  // Drag logic with snapping
+  // Drag snapping
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -105,23 +124,24 @@ export default function FoodSlideshow() {
       if (!isDragging.current) return;
 
       const dx = e.clientX - startX.current;
-      currentTranslate.current = prevTranslate.current + dx;
+      currentTranslate.current =
+        prevTranslate.current + dx;
 
       setPosition(currentTranslate.current, false);
     };
 
-    const pointerUp = (e) => {
+    const pointerUp = () => {
       if (!isDragging.current) return;
 
       isDragging.current = false;
       container.style.cursor = 'grab';
 
       const movedBy =
-        currentTranslate.current - prevTranslate.current;
+        currentTranslate.current -
+        prevTranslate.current;
 
       const width = getWidth();
 
-      // If moved more than 20% of slide width → change slide
       if (movedBy < -width * 0.2) {
         setIndex((prev) => prev + 1);
       } else if (movedBy > width * 0.2) {
@@ -137,10 +157,22 @@ export default function FoodSlideshow() {
     container.addEventListener('pointerleave', pointerUp);
 
     return () => {
-      container.removeEventListener('pointerdown', pointerDown);
-      container.removeEventListener('pointermove', pointerMove);
-      container.removeEventListener('pointerup', pointerUp);
-      container.removeEventListener('pointerleave', pointerUp);
+      container.removeEventListener(
+        'pointerdown',
+        pointerDown
+      );
+      container.removeEventListener(
+        'pointermove',
+        pointerMove
+      );
+      container.removeEventListener(
+        'pointerup',
+        pointerUp
+      );
+      container.removeEventListener(
+        'pointerleave',
+        pointerUp
+      );
     };
   }, []);
 
@@ -157,6 +189,7 @@ export default function FoodSlideshow() {
         touchAction: 'pan-y',
       }}
     >
+      {/* Track */}
       <div
         ref={trackRef}
         style={{
@@ -195,8 +228,8 @@ export default function FoodSlideshow() {
           <div
             key={i}
             style={{
-              width: index === i + 1 ? 8 : 8,
-              height: index === i + 1 ? 8 : 8,
+              width: index === i + 1 ? 12 : 8,
+              height: index === i + 1 ? 12 : 8,
               borderRadius: '50%',
               background:
                 index === i + 1
