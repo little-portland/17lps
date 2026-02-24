@@ -1,6 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 const images = [
   '/images/food/slide01.png',
@@ -20,7 +25,6 @@ export default function FoodSlideshow() {
 
   const [index, setIndex] = useState(1);
   const indexRef = useRef(1);
-
   const [isMobile, setIsMobile] = useState(false);
 
   const isDragging = useRef(false);
@@ -32,7 +36,6 @@ export default function FoodSlideshow() {
     indexRef.current = index;
   }, [index]);
 
-  // Detect mobile
   useEffect(() => {
     const handleResize = () =>
       setIsMobile(window.innerWidth < 768);
@@ -64,17 +67,8 @@ export default function FoodSlideshow() {
     setPosition(value, animate);
   };
 
-  // Normal slide movement
-  useEffect(() => {
-    if (!isMobile) {
-      goToSlide(index);
-    }
-  }, [index, isMobile]);
-
-  // 🔥 Mobile-only initial positioning fix
-  useEffect(() => {
-    if (!isMobile) return;
-
+  // 🔥 FIX: Position BEFORE first paint
+  useLayoutEffect(() => {
     const width = getWidth();
     if (!width) return;
 
@@ -84,7 +78,12 @@ export default function FoodSlideshow() {
     track.style.transition = 'none';
     track.style.transform = `translateX(${-width}px)`;
     prevTranslate.current = -width;
-  }, [isMobile]);
+  }, []);
+
+  // Normal snapping movement
+  useEffect(() => {
+    goToSlide(index);
+  }, [index]);
 
   // Infinite loop correction
   useEffect(() => {
@@ -108,7 +107,7 @@ export default function FoodSlideshow() {
       track.removeEventListener('transitionend', handleEnd);
   }, [real]);
 
-  // Drag snapping
+  // Drag snapping (UNCHANGED)
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -157,22 +156,10 @@ export default function FoodSlideshow() {
     container.addEventListener('pointerleave', pointerUp);
 
     return () => {
-      container.removeEventListener(
-        'pointerdown',
-        pointerDown
-      );
-      container.removeEventListener(
-        'pointermove',
-        pointerMove
-      );
-      container.removeEventListener(
-        'pointerup',
-        pointerUp
-      );
-      container.removeEventListener(
-        'pointerleave',
-        pointerUp
-      );
+      container.removeEventListener('pointerdown', pointerDown);
+      container.removeEventListener('pointermove', pointerMove);
+      container.removeEventListener('pointerup', pointerUp);
+      container.removeEventListener('pointerleave', pointerUp);
     };
   }, []);
 
@@ -189,7 +176,6 @@ export default function FoodSlideshow() {
         touchAction: 'pan-y',
       }}
     >
-      {/* Track */}
       <div
         ref={trackRef}
         style={{
