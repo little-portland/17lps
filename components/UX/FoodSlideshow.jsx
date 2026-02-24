@@ -14,7 +14,7 @@ const images = [
 export default function CenterPeekCarousel({
   transitionMs = 600,
   sideBorderPx = 5,
-  sideBorderColor = '#000',
+  sideBorderColor = '#dae1e9',
 }) {
   const real = images.length;
   const slides = [images[real - 1], ...images, images[0]];
@@ -214,7 +214,7 @@ export default function CenterPeekCarousel({
           maxWidth: '100%',
           margin: '0 auto',
           overflow: 'hidden',
-          background: '#000',
+          background: '#dae1e9',
           touchAction: 'pan-y',
           cursor: 'grab',
         }}
