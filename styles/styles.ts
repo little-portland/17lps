@@ -1919,6 +1919,10 @@ html, body {
   font-size: 6.5rem!important;
 }
 
+.thursday .smaller-title {
+  font-size: 4.7rem !important;
+}
+
 .friday .event-name {
     font-size: 7.8rem!important;
 }
