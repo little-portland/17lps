@@ -15,122 +15,138 @@ export default function FoodSlideshow() {
   const real = images.length;
   const slides = [images[real - 1], ...images, images[0]];
 
+  const containerRef = useRef(null);
   const trackRef = useRef(null);
-  const viewportRef = useRef(null);
 
-  const [idx, setIdx] = useState(1);
-  const idxRef = useRef(1);
+  const [index, setIndex] = useState(1);
+  const indexRef = useRef(1);
+
   const [isMobile, setIsMobile] = useState(false);
 
-  const dragging = useRef(false);
+  const isDragging = useRef(false);
   const startX = useRef(0);
-  const startTranslate = useRef(0);
+  const currentTranslate = useRef(0);
+  const prevTranslate = useRef(0);
 
   useEffect(() => {
-    idxRef.current = idx;
-  }, [idx]);
+    indexRef.current = index;
+  }, [index]);
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = () =>
       setIsMobile(window.innerWidth < 768);
-    };
+
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const setTranslate = (value, animate = true) => {
+  const getWidth = () => containerRef.current.offsetWidth;
+
+  const setPosition = (value, animate = true) => {
     const track = trackRef.current;
     if (!track) return;
 
     track.style.transition = animate
-      ? 'transform 600ms ease'
+      ? 'transform 400ms ease'
       : 'none';
 
-    track.style.transform = `translateX(${value}%)`;
+    track.style.transform = `translateX(${value}px)`;
   };
 
-  // Apply slide position
-  useEffect(() => {
-    setTranslate(-idx * 100);
-  }, [idx]);
+  // Move to slide
+  const goToSlide = (i, animate = true) => {
+    const width = getWidth();
+    const value = -i * width;
 
-  // Infinite loop correction
+    prevTranslate.current = value;
+    setPosition(value, animate);
+  };
+
+  useEffect(() => {
+    goToSlide(index);
+  }, [index]);
+
+  // Infinite correction
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     const handleEnd = () => {
-      if (idxRef.current === 0) {
-        track.style.transition = 'none';
-        setIdx(real);
-        track.style.transform = `translateX(${-real * 100}%)`;
+      if (indexRef.current === 0) {
+        setIndex(real);
+        goToSlide(real, false);
       }
 
-      if (idxRef.current === real + 1) {
-        track.style.transition = 'none';
-        setIdx(1);
-        track.style.transform = `translateX(-100%)`;
+      if (indexRef.current === real + 1) {
+        setIndex(1);
+        goToSlide(1, false);
       }
     };
 
     track.addEventListener('transitionend', handleEnd);
-    return () => track.removeEventListener('transitionend', handleEnd);
+    return () =>
+      track.removeEventListener('transitionend', handleEnd);
   }, [real]);
 
-  // Drag support
+  // Drag logic with snapping
   useEffect(() => {
-    const vp = viewportRef.current;
-    if (!vp) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const down = (e) => {
-      dragging.current = true;
-      vp.style.cursor = 'grabbing';
+    const pointerDown = (e) => {
+      isDragging.current = true;
+      container.style.cursor = 'grabbing';
       startX.current = e.clientX;
-      startTranslate.current = -idxRef.current * 100;
-      setTranslate(startTranslate.current, false);
+      container.setPointerCapture(e.pointerId);
     };
 
-    const move = (e) => {
-      if (!dragging.current) return;
+    const pointerMove = (e) => {
+      if (!isDragging.current) return;
+
       const dx = e.clientX - startX.current;
-      const percentMove = (dx / vp.offsetWidth) * 100;
-      setTranslate(startTranslate.current + percentMove, false);
+      currentTranslate.current = prevTranslate.current + dx;
+
+      setPosition(currentTranslate.current, false);
     };
 
-    const up = (e) => {
-      if (!dragging.current) return;
-      dragging.current = false;
-      vp.style.cursor = 'grab';
+    const pointerUp = (e) => {
+      if (!isDragging.current) return;
 
-      const dx = e.clientX - startX.current;
-      const threshold = vp.offsetWidth * 0.15;
+      isDragging.current = false;
+      container.style.cursor = 'grab';
 
-      if (dx < -threshold) {
-        setIdx((p) => p + 1);
-      } else if (dx > threshold) {
-        setIdx((p) => p - 1);
+      const movedBy =
+        currentTranslate.current - prevTranslate.current;
+
+      const width = getWidth();
+
+      // If moved more than 20% of slide width → change slide
+      if (movedBy < -width * 0.2) {
+        setIndex((prev) => prev + 1);
+      } else if (movedBy > width * 0.2) {
+        setIndex((prev) => prev - 1);
       } else {
-        setTranslate(-idxRef.current * 100);
+        goToSlide(indexRef.current);
       }
     };
 
-    vp.addEventListener('pointerdown', down);
-    vp.addEventListener('pointermove', move);
-    vp.addEventListener('pointerup', up);
-    vp.addEventListener('pointerleave', up);
+    container.addEventListener('pointerdown', pointerDown);
+    container.addEventListener('pointermove', pointerMove);
+    container.addEventListener('pointerup', pointerUp);
+    container.addEventListener('pointerleave', pointerUp);
 
     return () => {
-      vp.removeEventListener('pointerdown', down);
-      vp.removeEventListener('pointermove', move);
-      vp.removeEventListener('pointerup', up);
-      vp.removeEventListener('pointerleave', up);
+      container.removeEventListener('pointerdown', pointerDown);
+      container.removeEventListener('pointermove', pointerMove);
+      container.removeEventListener('pointerup', pointerUp);
+      container.removeEventListener('pointerleave', pointerUp);
     };
   }, []);
 
   return (
     <div
-      ref={viewportRef}
+      ref={containerRef}
       style={{
         width: '100%',
         maxWidth: isMobile ? '90%' : '50%',
@@ -138,6 +154,7 @@ export default function FoodSlideshow() {
         overflow: 'hidden',
         position: 'relative',
         cursor: 'grab',
+        touchAction: 'pan-y',
       }}
     >
       <div
@@ -154,13 +171,15 @@ export default function FoodSlideshow() {
               style={{
                 width: '100%',
                 display: 'block',
+                userSelect: 'none',
+                WebkitUserDrag: 'none',
               }}
             />
           </div>
         ))}
       </div>
 
-      {/* Vertical Dots */}
+      {/* Vertical dots */}
       <div
         style={{
           position: 'absolute',
@@ -176,11 +195,11 @@ export default function FoodSlideshow() {
           <div
             key={i}
             style={{
-              width: idx === i + 1 ? 12 : 8,
-              height: idx === i + 1 ? 12 : 8,
+              width: index === i + 1 ? 8 : 8,
+              height: index === i + 1 ? 8 : 8,
               borderRadius: '50%',
               background:
-                idx === i + 1
+                index === i + 1
                   ? '#000'
                   : 'rgba(0,0,0,0.3)',
               transition: 'all 0.3s ease',
