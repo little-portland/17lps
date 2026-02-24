@@ -247,25 +247,6 @@ const Menu = ({ menuImage }) => {
         <div className="override-space-bottom override-logo">
             <FoodSlideshow />
           </div>
-
-         <div className="nocturn-wider-section override-logo">
-           <div className="image-row">
-              <div className="image-column">
-                <img src="/images/food/image1.jpg" />
-                <img src="/images/food/image3.jpg" />
-                <img src="/images/food/image5.jpg" />
-                <img src="/images/food/image7.jpg" />
-                <img src="/images/food/image9.jpg" />
-              </div>
-             <div className="image-column">
-                <img src="/images/food/image2.jpg" />
-                <img src="/images/food/image4.jpg" />
-                <img src="/images/food/image6.jpg" />
-                <img src="/images/food/image8.jpg" />
-                <img src="/images/food/image10.jpg" />
-              </div>
-           </div>
-          </div>
       
          <div className="nocturn override footer">
             <img src="/images/food/food_page_meme.png" alt="The Tent Food" width="100%" />
