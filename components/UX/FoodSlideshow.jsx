@@ -244,7 +244,7 @@ export default function CenterPeekCarousel({
             width: `${fadeW}px`,
             pointerEvents: 'none',
             background:
-              'linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.1) 85%, rgba(0,0,0,0) 100%)',
+              'linear-gradient(90deg, rgba(218,225,233,0.95) 0%, rgba(218,225,233,0.75) 35%, rgba(218,225,233,0.1) 85%, rgba(218,225,233,0) 100%)',
           }}
         />
         <div
@@ -256,7 +256,7 @@ export default function CenterPeekCarousel({
             width: `${fadeW}px`,
             pointerEvents: 'none',
             background:
-              'linear-gradient(-90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.1) 85%, rgba(0,0,0,0) 100%)',
+              'linear-gradient(-90deg, rgba(218,225,233,0.95) 0%, rgba(218,225,233,0.75) 35%, rgba(218,225,233,0.1) 85%, rgba(218,225,233,0) 100%)',
           }}
         />
       </div>
