@@ -153,6 +153,7 @@ export default function FoodSlideshow() {
     overflow: 'hidden',
     position: 'relative',
     touchAction: 'pan-y',
+    cursor: 'grab', // 👈 ADD THIS
   };
 
   return (
