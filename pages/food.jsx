@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import HoverImageLink from "@components/HoverImageLink"; // adjust path if your structure differs
+import FoodSlideshow from "@components/UX/FoodSlideshow"; // adjust path if different
 
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
@@ -242,6 +243,10 @@ const Menu = ({ menuImage }) => {
 
           <div className="nocturn override">
         </div>
+
+        <div className="override-space-bottom override-logo">
+            <FoodSlideshow />
+          </div>
 
          <div className="nocturn-wider-section override-logo">
            <div className="image-row">
