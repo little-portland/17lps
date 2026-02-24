@@ -11,27 +11,31 @@ const images = [
   '/images/food/slide06.png',
 ];
 
-export default function ResponsiveInfiniteCarousel({
-  transitionMs = 600,
-}) {
+export default function FoodSlideshow({ transitionMs = 600 }) {
   const real = images.length;
+
+  // Clone first + last for seamless loop
   const slides = [images[real - 1], ...images, images[0]];
 
   const viewportRef = useRef(null);
   const trackRef = useRef(null);
 
   const [idx, setIdx] = useState(1);
-  const idxRef = useRef(idx);
-  idxRef.current = idx;
+  const idxRef = useRef(1);
 
   const [slideW, setSlideW] = useState(0);
 
   const dragging = useRef(false);
   const startX = useRef(0);
   const startTx = useRef(0);
-  const isAnimating = useRef(false);
+  const animating = useRef(false);
 
-  // ---------- Responsive width ----------
+  // Keep ref synced
+  useEffect(() => {
+    idxRef.current = idx;
+  }, [idx]);
+
+  // ---------- Measure width ----------
   useEffect(() => {
     const measure = () => {
       if (!viewportRef.current) return;
@@ -43,7 +47,7 @@ export default function ResponsiveInfiniteCarousel({
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  // ---------- Translate helpers ----------
+  // ---------- Helpers ----------
   const offset = (i) => -i * slideW;
 
   const setTranslate = (x, animate = true) => {
@@ -63,13 +67,13 @@ export default function ResponsiveInfiniteCarousel({
     setTranslate(offset(idx));
   }, [idx, slideW]);
 
-  // ---------- Seamless infinite loop ----------
+  // ---------- Seamless loop reset ----------
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     const handleEnd = () => {
-      isAnimating.current = false;
+      animating.current = false;
 
       if (idxRef.current === 0) {
         track.style.transition = 'none';
@@ -94,7 +98,7 @@ export default function ResponsiveInfiniteCarousel({
     if (!vp) return;
 
     const down = (e) => {
-      if (isAnimating.current) return;
+      if (animating.current) return;
 
       dragging.current = true;
       vp.setPointerCapture(e.pointerId);
@@ -119,10 +123,10 @@ export default function ResponsiveInfiniteCarousel({
       const threshold = slideW * 0.15;
 
       if (dx < -threshold) {
-        isAnimating.current = true;
+        animating.current = true;
         setIdx((p) => p + 1);
       } else if (dx > threshold) {
-        isAnimating.current = true;
+        animating.current = true;
         setIdx((p) => p - 1);
       } else {
         setTranslate(offset(idxRef.current), true);
@@ -132,26 +136,33 @@ export default function ResponsiveInfiniteCarousel({
     vp.addEventListener('pointerdown', down);
     vp.addEventListener('pointermove', move);
     vp.addEventListener('pointerup', up);
+    vp.addEventListener('pointerleave', up);
 
     return () => {
       vp.removeEventListener('pointerdown', down);
       vp.removeEventListener('pointermove', move);
       vp.removeEventListener('pointerup', up);
+      vp.removeEventListener('pointerleave', up);
     };
   }, [slideW]);
 
+  // ---------- Responsive wrapper style ----------
+  const wrapperStyle = {
+    width: '100%',
+    maxWidth: '50%',
+    margin: '0 auto 30px auto',
+    overflow: 'hidden',
+    touchAction: 'pan-y',
+    position: 'relative',
+  };
+
+  // Mobile override
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    wrapperStyle.maxWidth = '100%';
+  }
+
   return (
-    <div
-      ref={viewportRef}
-      style={{
-        width: '100%',
-        maxWidth: '50%',
-        margin: '0 auto 30px auto',
-        overflow: 'hidden',
-        touchAction: 'pan-y',
-        position: 'relative',
-      }}
-    >
+    <div ref={viewportRef} style={wrapperStyle}>
       {/* Track */}
       <div
         ref={trackRef}
@@ -196,4 +207,13 @@ export default function ResponsiveInfiniteCarousel({
             style={{
               width: 8,
               height: 8,
-              borderRad
+              borderRadius: '50%',
+              background:
+                idx === i + 1 ? '#000' : 'rgba(0,0,0,0.3)',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
