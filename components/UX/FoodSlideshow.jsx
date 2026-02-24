@@ -228,8 +228,8 @@ export default function FoodSlideshow() {
           <div
             key={i}
             style={{
-              width: index === i + 1 ? 12 : 8,
-              height: index === i + 1 ? 12 : 8,
+              width: index === i + 1 ? 8 : 8,
+              height: index === i + 1 ? 8 : 8,
               borderRadius: '50%',
               background:
                 index === i + 1
