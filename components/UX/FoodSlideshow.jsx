@@ -13,8 +13,6 @@ const images = [
 
 export default function FoodSlideshow() {
   const real = images.length;
-
-  // Clone slides for infinite loop
   const slides = [images[real - 1], ...images, images[0]];
 
   const viewportRef = useRef(null);
@@ -22,24 +20,25 @@ export default function FoodSlideshow() {
 
   const [idx, setIdx] = useState(1);
   const idxRef = useRef(1);
-
   const [slideW, setSlideW] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const dragging = useRef(false);
   const startX = useRef(0);
   const startTx = useRef(0);
   const animating = useRef(false);
 
-  // Keep index ref synced
+  // Sync index ref
   useEffect(() => {
     idxRef.current = idx;
   }, [idx]);
 
-  // Measure width
+  // Detect mobile + measure width
   useEffect(() => {
     const measure = () => {
       if (!viewportRef.current) return;
       setSlideW(viewportRef.current.offsetWidth);
+      setIsMobile(window.innerWidth < 768);
     };
 
     measure();
@@ -47,7 +46,6 @@ export default function FoodSlideshow() {
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  // Offset helper (NO TypeScript)
   const offset = (i) => -i * slideW;
 
   const setTranslate = (x, animate = true) => {
@@ -61,13 +59,13 @@ export default function FoodSlideshow() {
     track.style.transform = `translate3d(${x}px,0,0)`;
   };
 
-  // Apply movement
+  // Apply transform when index changes
   useEffect(() => {
     if (!slideW) return;
     setTranslate(offset(idx));
   }, [idx, slideW]);
 
-  // Infinite reset
+  // Infinite loop correction
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -93,7 +91,7 @@ export default function FoodSlideshow() {
       track.removeEventListener('transitionend', handleEnd);
   }, [real, slideW]);
 
-  // Drag / Swipe
+  // Drag / swipe
   useEffect(() => {
     const vp = viewportRef.current;
     if (!vp) return;
@@ -147,19 +145,19 @@ export default function FoodSlideshow() {
     };
   }, [slideW]);
 
+  // Responsive wrapper
+  const wrapperStyle = {
+    width: '100%',
+    maxWidth: isMobile ? '90%' : '50%',
+    margin: '0 auto 30px auto',
+    overflow: 'hidden',
+    position: 'relative',
+    touchAction: 'pan-y',
+  };
+
   return (
-    <div
-      ref={viewportRef}
-      style={{
-        width: '100%',
-        maxWidth: '50%',
-        margin: '0 auto 30px auto',
-        overflow: 'hidden',
-        position: 'relative',
-        touchAction: 'pan-y',
-      }}
-    >
-      {/* Slides track */}
+    <div ref={viewportRef} style={wrapperStyle}>
+      {/* Track */}
       <div
         ref={trackRef}
         style={{
@@ -167,10 +165,7 @@ export default function FoodSlideshow() {
         }}
       >
         {slides.map((src, i) => (
-          <div
-            key={`${src}-${i}`}
-            style={{ flex: '0 0 100%' }}
-          >
+          <div key={`${src}-${i}`} style={{ flex: '0 0 100%' }}>
             <img
               src={src}
               alt=""
@@ -185,27 +180,30 @@ export default function FoodSlideshow() {
         ))}
       </div>
 
-      {/* Dots indicator */}
+      {/* Vertical Dots */}
       <div
         style={{
           position: 'absolute',
           right: 12,
-          bottom: 12,
+          top: '50%',
+          transform: 'translateY(-50%)',
           display: 'flex',
-          gap: 6,
+          flexDirection: 'column',
+          gap: 8,
         }}
       >
         {images.map((_, i) => (
           <div
             key={i}
             style={{
-              width: 8,
-              height: 8,
+              width: idx === i + 1 ? 12 : 8,
+              height: idx === i + 1 ? 12 : 8,
               borderRadius: '50%',
               background:
                 idx === i + 1
                   ? '#000'
                   : 'rgba(0,0,0,0.3)',
+              transition: 'all 0.3s ease',
             }}
           />
         ))}
