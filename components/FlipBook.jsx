@@ -1,196 +1,199 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import HTMLFlipBook from "react-pageflip";
-import { Document, Page, pdfjs } from "react-pdf";
+import { useEffect, useRef, useState } from 'react';
 
-pdfjs.GlobalWorkerOptions.workerSrc =
-  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+const images = [
+  '/images/food/slide01.png',
+  '/images/food/slide02.png',
+  '/images/food/slide03.png',
+  '/images/food/slide04.png',
+  '/images/food/slide05.png',
+  '/images/food/slide06.png',
+];
 
-export default function FlipBook() {
-  const [numPages, setNumPages] = useState(null);
-  const [viewport, setViewport] = useState({ width: 0, height: 0 });
-  const [isMobile, setIsMobile] = useState(false);
+export default function ResponsiveInfiniteCarousel({
+  transitionMs = 600,
+}) {
+  const real = images.length;
+  const slides = [images[real - 1], ...images, images[0]];
 
-  const bookRef = useRef(null);
+  const viewportRef = useRef(null);
+  const trackRef = useRef(null);
 
-  function onLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
+  const [idx, setIdx] = useState(1);
+  const idxRef = useRef(idx);
+  idxRef.current = idx;
 
-  // ---------- Viewport ----------
+  const [slideW, setSlideW] = useState(0);
+
+  const dragging = useRef(false);
+  const startX = useRef(0);
+  const startTx = useRef(0);
+  const isAnimating = useRef(false);
+
+  // ---------- Responsive width ----------
   useEffect(() => {
-    const update = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-
-      setViewport({ width: w, height: h });
-      setIsMobile(w < 768);
+    const measure = () => {
+      if (!viewportRef.current) return;
+      setSlideW(viewportRef.current.offsetWidth);
     };
 
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
   }, []);
 
-  // ---------- Lock scroll ----------
+  // ---------- Translate helpers ----------
+  const offset = (i) => -i * slideW;
+
+  const setTranslate = (x, animate = true) => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    track.style.transition = animate
+      ? `transform ${transitionMs}ms ease`
+      : 'none';
+
+    track.style.transform = `translate3d(${x}px,0,0)`;
+  };
+
+  // Apply movement
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    if (!slideW) return;
+    setTranslate(offset(idx));
+  }, [idx, slideW]);
+
+  // ---------- Seamless infinite loop ----------
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const handleEnd = () => {
+      isAnimating.current = false;
+
+      if (idxRef.current === 0) {
+        track.style.transition = 'none';
+        setIdx(real);
+        track.style.transform = `translate3d(${offset(real)}px,0,0)`;
+      }
+
+      if (idxRef.current === real + 1) {
+        track.style.transition = 'none';
+        setIdx(1);
+        track.style.transform = `translate3d(${offset(1)}px,0,0)`;
+      }
+    };
+
+    track.addEventListener('transitionend', handleEnd);
+    return () => track.removeEventListener('transitionend', handleEnd);
+  }, [real, slideW]);
+
+  // ---------- Drag / Swipe ----------
+  useEffect(() => {
+    const vp = viewportRef.current;
+    if (!vp) return;
+
+    const down = (e) => {
+      if (isAnimating.current) return;
+
+      dragging.current = true;
+      vp.setPointerCapture(e.pointerId);
+
+      startX.current = e.clientX;
+      startTx.current = offset(idxRef.current);
+
+      setTranslate(startTx.current, false);
+    };
+
+    const move = (e) => {
+      if (!dragging.current) return;
+      const dx = e.clientX - startX.current;
+      setTranslate(startTx.current + dx, false);
+    };
+
+    const up = (e) => {
+      if (!dragging.current) return;
+      dragging.current = false;
+
+      const dx = e.clientX - startX.current;
+      const threshold = slideW * 0.15;
+
+      if (dx < -threshold) {
+        isAnimating.current = true;
+        setIdx((p) => p + 1);
+      } else if (dx > threshold) {
+        isAnimating.current = true;
+        setIdx((p) => p - 1);
+      } else {
+        setTranslate(offset(idxRef.current), true);
+      }
+    };
+
+    vp.addEventListener('pointerdown', down);
+    vp.addEventListener('pointermove', move);
+    vp.addEventListener('pointerup', up);
+
     return () => {
-      document.body.style.overflow = "auto";
+      vp.removeEventListener('pointerdown', down);
+      vp.removeEventListener('pointermove', move);
+      vp.removeEventListener('pointerup', up);
     };
-  }, []);
-
-  // ---------- Base PDF dimensions ----------
-  const baseWidth = 1080;
-  const baseHeight = 1325;
-
-  const vw = viewport.width;
-  const vh = viewport.height;
-
-  // Desktop = spread (2 pages), Mobile = single page
-  const spreadWidth = isMobile ? baseWidth : baseWidth * 2;
-
-  const scale = Math.min(
-    (vh * 0.92) / baseHeight,
-    (vw * 0.95) / spreadWidth
-  );
-
-  const pageWidth = baseWidth * scale;
-  const pageHeight = baseHeight * scale;
-
-  // ---------- Symmetric curl navigation ----------
-  const flipNext = () => {
-    const flip = bookRef.current?.pageFlip();
-    if (!flip) return;
-
-    const current = flip.getCurrentPageIndex();
-    if (current < numPages - 1) {
-      flip.flip(current + 1);
-    }
-  };
-
-  const flipPrev = () => {
-    const flip = bookRef.current?.pageFlip();
-    if (!flip) return;
-
-    const current = flip.getCurrentPageIndex();
-    if (current > 0) {
-      flip.flip(current - 1);
-    }
-  };
+  }, [slideW]);
 
   return (
     <div
+      ref={viewportRef}
       style={{
-        position: "fixed",
-        inset: 0,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden",
+        width: '100%',
+        maxWidth: '50%',
+        margin: '0 auto 30px auto',
+        overflow: 'hidden',
+        touchAction: 'pan-y',
+        position: 'relative',
       }}
     >
-      {/* Instruction */}
-      <p
+      {/* Track */}
+      <div
+        ref={trackRef}
         style={{
-          marginBottom: 16,
-          fontFamily: "monospace",
-          fontSize: isMobile ? 14 : 20,
-          opacity: 0.7,
-          textTransform: "uppercase",
-          textAlign: "center",
-          lineHeight: 1.2,
+          display: 'flex',
         }}
       >
-        {isMobile
-          ? "Tap page edge to flip"
-          : "Click or drag page corner to flip"}
-      </p>
+        {slides.map((src, i) => (
+          <div
+            key={`${src}-${i}`}
+            style={{
+              flex: '0 0 100%',
+            }}
+          >
+            <img
+              src={src}
+              alt=""
+              style={{
+                width: '100%',
+                display: 'block',
+                userSelect: 'none',
+                WebkitUserDrag: 'none',
+              }}
+            />
+          </div>
+        ))}
+      </div>
 
+      {/* Dots indicator */}
       <div
         style={{
-          position: "relative",
-          width: isMobile ? pageWidth : pageWidth * 2,
-          height: pageHeight,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          position: 'absolute',
+          right: 12,
+          bottom: 12,
+          display: 'flex',
+          gap: 6,
         }}
       >
-        {/* Mobile Tap Zones */}
-        {isMobile && (
-          <>
-            <div
-              onClick={flipPrev}
-              style={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                width: "30%",
-                height: "100%",
-                zIndex: 10,
-              }}
-            />
-            <div
-              onClick={flipNext}
-              style={{
-                position: "absolute",
-                right: 0,
-                top: 0,
-                width: "30%",
-                height: "100%",
-                zIndex: 10,
-              }}
-            />
-          </>
-        )}
-
-        <Document
-          file="/docs/explore-menu.pdf"
-          onLoadSuccess={onLoadSuccess}
-        >
-          <HTMLFlipBook
-            ref={bookRef}
-            width={pageWidth}
-            height={pageHeight}
-            size="fixed"
-            minWidth={pageWidth}
-            maxWidth={isMobile ? pageWidth : pageWidth * 2}
-            minHeight={pageHeight}
-            maxHeight={pageHeight}
-            drawShadow={true}
-            flippingTime={800}
-            showCover={false}
-            usePortrait={isMobile}
-            mobileScrollSupport={false}
-            showPageCorners={!isMobile}
-            style={{ margin: "0 auto" }}
-          >
-            {Array.from(new Array(numPages || 0), (_, index) => (
-              <div
-                key={index}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "#ffffff",
-                }}
-              >
-                <Page
-                  pageNumber={index + 1}
-                  width={pageWidth}
-                  renderAnnotationLayer={false}
-                  renderTextLayer={false}
-                />
-              </div>
-            ))}
-          </HTMLFlipBook>
-        </Document>
-      </div>
-    </div>
-  );
-}
+        {images.map((_, i) => (
+          <div
+            key={i}
+            style={{
+              width: 8,
+              height: 8,
+              borderRad
