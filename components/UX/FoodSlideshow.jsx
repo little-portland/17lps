@@ -11,31 +11,31 @@ const images = [
   '/images/food/slide06.png',
 ];
 
-export default function FullWidthCarousel({
+export default function ResponsiveInfiniteCarousel({
   transitionMs = 600,
 }) {
   const real = images.length;
   const slides = [images[real - 1], ...images, images[0]];
 
-  const viewportRef = useRef(null);
-  const trackRef = useRef(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  const [viewportW, setViewportW] = useState(0);
   const [idx, setIdx] = useState(1);
-
   const idxRef = useRef(idx);
   idxRef.current = idx;
 
-  const draggingRef = useRef(false);
-  const animatingRef = useRef(false);
-  const startXRef = useRef(0);
-  const startTxRef = useRef(0);
-  const skipTransitionRef = useRef(false);
+  const [slideW, setSlideW] = useState(0);
 
-  // ---------- Measure Full Width ----------
+  const dragging = useRef(false);
+  const startX = useRef(0);
+  const startTx = useRef(0);
+  const isAnimating = useRef(false);
+
+  // ---------- Responsive width ----------
   useEffect(() => {
     const measure = () => {
-      setViewportW(window.innerWidth);
+      if (!viewportRef.current) return;
+      setSlideW(viewportRef.current.offsetWidth);
     };
 
     measure();
@@ -43,104 +43,89 @@ export default function FullWidthCarousel({
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  const slideW = viewportW;
+  // ---------- Translate ----------
+  const offset = (i: number) => -i * slideW;
 
-  // ---------- Helpers ----------
-  const setTranslate = (x, withTransition = true) => {
+  const setTranslate = (x: number, animate = true) => {
     const track = trackRef.current;
     if (!track) return;
-    track.style.transition = withTransition
+
+    track.style.transition = animate
       ? `transform ${transitionMs}ms ease`
       : 'none';
+
     track.style.transform = `translate3d(${x}px,0,0)`;
   };
 
-  const offsetForIndex = (i) => -i * slideW;
-
-  const normalizeIfClone = () => {
-    let i = idxRef.current;
-
-    if (i === 0) {
-      skipTransitionRef.current = true;
-      setIdx(real);
-      setTranslate(offsetForIndex(real), false);
-      i = real;
-    } else if (i === real + 1) {
-      skipTransitionRef.current = true;
-      setIdx(1);
-      setTranslate(offsetForIndex(1), false);
-      i = 1;
-    }
-
-    return i;
-  };
-
-  // Apply translate on index change
+  // ---------- Apply movement ----------
   useEffect(() => {
     if (!slideW) return;
-
-    setTranslate(offsetForIndex(idx), !skipTransitionRef.current);
-
-    if (skipTransitionRef.current) {
-      requestAnimationFrame(() => (skipTransitionRef.current = false));
-    }
+    setTranslate(offset(idx));
   }, [idx, slideW]);
 
-  // Seamless looping
+  // ---------- Seamless Loop Fix ----------
   useEffect(() => {
-    const onEnd = () => {
-      animatingRef.current = false;
-      normalizeIfClone();
+    const track = trackRef.current;
+    if (!track) return;
+
+    const handleEnd = () => {
+      isAnimating.current = false;
+
+      if (idxRef.current === 0) {
+        track.style.transition = 'none';
+        setIdx(real);
+        track.style.transform = `translate3d(${offset(real)}px,0,0)`;
+      }
+
+      if (idxRef.current === real + 1) {
+        track.style.transition = 'none';
+        setIdx(1);
+        track.style.transform = `translate3d(${offset(1)}px,0,0)`;
+      }
     };
 
-    const t = trackRef.current;
-    t?.addEventListener('transitionend', onEnd);
-    return () => t?.removeEventListener('transitionend', onEnd);
-  }, [real]);
+    track.addEventListener('transitionend', handleEnd);
+    return () => track.removeEventListener('transitionend', handleEnd);
+  }, [real, slideW]);
 
-  // ---------- Swipe ----------
+  // ---------- Drag ----------
   useEffect(() => {
     const vp = viewportRef.current;
     if (!vp) return;
 
-    const down = (e) => {
-      if (e.pointerType === 'mouse' && e.button !== 0) return;
-      if (animatingRef.current) return;
+    const down = (e: PointerEvent) => {
+      if (isAnimating.current) return;
 
-      draggingRef.current = true;
-      normalizeIfClone();
-
+      dragging.current = true;
       vp.setPointerCapture(e.pointerId);
-      startXRef.current = e.clientX;
-      startTxRef.current = offsetForIndex(idxRef.current);
 
-      setTranslate(startTxRef.current, false);
-      e.preventDefault?.();
+      startX.current = e.clientX;
+      startTx.current = offset(idxRef.current);
+
+      setTranslate(startTx.current, false);
     };
 
-    const move = (e) => {
-      if (!draggingRef.current) return;
-      const dx = e.clientX - startXRef.current;
-      setTranslate(startTxRef.current + dx, false);
+    const move = (e: PointerEvent) => {
+      if (!dragging.current) return;
+      const dx = e.clientX - startX.current;
+      setTranslate(startTx.current + dx, false);
     };
 
-    const up = (e) => {
-      if (!draggingRef.current) return;
+    const up = (e: PointerEvent) => {
+      if (!dragging.current) return;
+      dragging.current = false;
 
-      draggingRef.current = false;
-      vp.releasePointerCapture(e.pointerId);
-
-      const dx = e.clientX - startXRef.current;
+      const dx = e.clientX - startX.current;
       const threshold = slideW * 0.15;
 
       if (dx < -threshold) {
-        animatingRef.current = true;
+        isAnimating.current = true;
         setIdx((p) => p + 1);
       } else if (dx > threshold) {
-        animatingRef.current = true;
+        isAnimating.current = true;
         setIdx((p) => p - 1);
       } else {
-        setTranslate(offsetForIndex(idxRef.current), true);
+        setTranslate(offset(idxRef.current), true);
       }
     };
 
@@ -155,39 +140,66 @@ export default function FullWidthCarousel({
     };
   }, [slideW]);
 
-  const slideOuter = {
-    flex: '0 0 100%',
-    width: '100%',
-  };
-
-  const imgStyle = {
-    width: '100%',
-    height: 'auto',
-    display: 'block',
-    userSelect: 'none',
-    WebkitUserDrag: 'none',
-  };
-
   return (
     <div
       ref={viewportRef}
       style={{
         width: '100%',
+        maxWidth: '50%',
+        margin: '0 auto 30px auto',
         overflow: 'hidden',
         touchAction: 'pan-y',
+        position: 'relative',
       }}
     >
       <div
         ref={trackRef}
         style={{
           display: 'flex',
-          transform: `translate3d(${offsetForIndex(idx)}px,0,0)`,
         }}
       >
         {slides.map((src, i) => (
-          <div key={`${src}-${i}`} style={slideOuter}>
-            <img src={src} alt={`slide-${i}`} style={imgStyle} />
+          <div
+            key={`${src}-${i}`}
+            style={{
+              flex: '0 0 100%',
+            }}
+          >
+            <img
+              src={src}
+              style={{
+                width: '100%',
+                display: 'block',
+                userSelect: 'none',
+                WebkitUserDrag: 'none',
+              }}
+            />
           </div>
+        ))}
+      </div>
+
+      {/* Subtle edge indicators */}
+      <div
+        style={{
+          position: 'absolute',
+          right: 10,
+          bottom: 10,
+          display: 'flex',
+          gap: 6,
+        }}
+      >
+        {images.map((_, i) => (
+          <div
+            key={i}
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: '50%',
+              background:
+                idxRef.current === i + 1 ? '#000' : 'rgba(0,0,0,0.3)',
+              transition: 'opacity 0.3s',
+            }}
+          />
         ))}
       </div>
     </div>
