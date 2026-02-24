@@ -15,40 +15,31 @@ export default function FoodSlideshow() {
   const real = images.length;
   const slides = [images[real - 1], ...images, images[0]];
 
-  const viewportRef = useRef(null);
   const trackRef = useRef(null);
+  const viewportRef = useRef(null);
 
   const [idx, setIdx] = useState(1);
   const idxRef = useRef(1);
-  const [slideW, setSlideW] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   const dragging = useRef(false);
   const startX = useRef(0);
-  const startTx = useRef(0);
-  const animating = useRef(false);
+  const startTranslate = useRef(0);
 
-  // Sync index ref
   useEffect(() => {
     idxRef.current = idx;
   }, [idx]);
 
-  // Detect mobile + measure width
   useEffect(() => {
-    const measure = () => {
-      if (!viewportRef.current) return;
-      setSlideW(viewportRef.current.offsetWidth);
+    const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
-    measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const offset = (i) => -i * slideW;
-
-  const setTranslate = (x, animate = true) => {
+  const setTranslate = (value, animate = true) => {
     const track = trackRef.current;
     if (!track) return;
 
@@ -56,14 +47,13 @@ export default function FoodSlideshow() {
       ? 'transform 600ms ease'
       : 'none';
 
-    track.style.transform = `translate3d(${x}px,0,0)`;
+    track.style.transform = `translateX(${value}%)`;
   };
 
-  // Apply transform when index changes
+  // Apply slide position
   useEffect(() => {
-    if (!slideW) return;
-    setTranslate(offset(idx));
-  }, [idx, slideW]);
+    setTranslate(-idx * 100);
+  }, [idx]);
 
   // Infinite loop correction
   useEffect(() => {
@@ -71,64 +61,57 @@ export default function FoodSlideshow() {
     if (!track) return;
 
     const handleEnd = () => {
-      animating.current = false;
-
       if (idxRef.current === 0) {
         track.style.transition = 'none';
         setIdx(real);
-        track.style.transform = `translate3d(${offset(real)}px,0,0)`;
+        track.style.transform = `translateX(${-real * 100}%)`;
       }
 
       if (idxRef.current === real + 1) {
         track.style.transition = 'none';
         setIdx(1);
-        track.style.transform = `translate3d(${offset(1)}px,0,0)`;
+        track.style.transform = `translateX(-100%)`;
       }
     };
 
     track.addEventListener('transitionend', handleEnd);
-    return () =>
-      track.removeEventListener('transitionend', handleEnd);
-  }, [real, slideW]);
+    return () => track.removeEventListener('transitionend', handleEnd);
+  }, [real]);
 
-  // Drag / swipe
+  // Drag support
   useEffect(() => {
     const vp = viewportRef.current;
     if (!vp) return;
 
     const down = (e) => {
-      if (animating.current) return;
-
       dragging.current = true;
-      vp.setPointerCapture(e.pointerId);
-
+      vp.style.cursor = 'grabbing';
       startX.current = e.clientX;
-      startTx.current = offset(idxRef.current);
-
-      setTranslate(startTx.current, false);
+      startTranslate.current = -idxRef.current * 100;
+      setTranslate(startTranslate.current, false);
     };
 
     const move = (e) => {
       if (!dragging.current) return;
       const dx = e.clientX - startX.current;
-      setTranslate(startTx.current + dx, false);
+      const percentMove = (dx / vp.offsetWidth) * 100;
+      setTranslate(startTranslate.current + percentMove, false);
     };
 
     const up = (e) => {
       if (!dragging.current) return;
       dragging.current = false;
+      vp.style.cursor = 'grab';
 
       const dx = e.clientX - startX.current;
-      const threshold = slideW * 0.15;
+      const threshold = vp.offsetWidth * 0.15;
 
       if (dx < -threshold) {
-        animating.current = true;
         setIdx((p) => p + 1);
       } else if (dx > threshold) {
-        animating.current = true;
         setIdx((p) => p - 1);
       } else {
-        setTranslate(offset(idxRef.current), true);
+        setTranslate(-idxRef.current * 100);
       }
     };
 
@@ -143,22 +126,20 @@ export default function FoodSlideshow() {
       vp.removeEventListener('pointerup', up);
       vp.removeEventListener('pointerleave', up);
     };
-  }, [slideW]);
-
-  // Responsive wrapper
-  const wrapperStyle = {
-    width: '100%',
-    maxWidth: isMobile ? '90%' : '50%',
-    margin: '0 auto 30px auto',
-    overflow: 'hidden',
-    position: 'relative',
-    touchAction: 'pan-y',
-    cursor: 'grab', // 👈 ADD THIS
-  };
+  }, []);
 
   return (
-    <div ref={viewportRef} style={wrapperStyle}>
-      {/* Track */}
+    <div
+      ref={viewportRef}
+      style={{
+        width: '100%',
+        maxWidth: isMobile ? '90%' : '50%',
+        margin: '0 auto 30px auto',
+        overflow: 'hidden',
+        position: 'relative',
+        cursor: 'grab',
+      }}
+    >
       <div
         ref={trackRef}
         style={{
@@ -166,15 +147,13 @@ export default function FoodSlideshow() {
         }}
       >
         {slides.map((src, i) => (
-          <div key={`${src}-${i}`} style={{ flex: '0 0 100%' }}>
+          <div key={i} style={{ flex: '0 0 100%' }}>
             <img
               src={src}
               alt=""
               style={{
                 width: '100%',
                 display: 'block',
-                userSelect: 'none',
-                WebkitUserDrag: 'none',
               }}
             />
           </div>
@@ -197,8 +176,8 @@ export default function FoodSlideshow() {
           <div
             key={i}
             style={{
-              width: idx === i + 1 ? 8 : 8,
-              height: idx === i + 1 ? 8 : 8,
+              width: idx === i + 1 ? 12 : 8,
+              height: idx === i + 1 ? 12 : 8,
               borderRadius: '50%',
               background:
                 idx === i + 1
