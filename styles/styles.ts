@@ -1895,7 +1895,7 @@ html, body {
 }
 
 .saturday {
-  --bg-color: #2d35b5; 
+  --bg-color: #6a76db; 
   --accent-color: #ccfe35;
   --text-color: #000000; 
 }
@@ -2149,7 +2149,7 @@ html, body {
 }
 
 .dance-popup .sat .group-item {
-  color: #2d35b5;
+  color: #6a76db;
 }
 
 .dance-popup .category {
