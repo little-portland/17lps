@@ -23,6 +23,7 @@ const Menu = ({ menuImage }) => {
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
             {'.bottom{ font-size: 25px;}'}
+            {'.featured{padding: 0 4px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
@@ -69,7 +70,7 @@ const Menu = ({ menuImage }) => {
               <p>What binds dissolves. What dissolves binds.</p>
             </div>
 
-            <img src="/images/nocturn/nocturn-06/featured.png" alt="Nocturn" width="100%" />
+            <img className="featured" src="/images/nocturn/nocturn-06/featured.png" alt="Nocturn" width="100%" />
 
            <div className="row">
               <div className="column">
