@@ -69,6 +69,8 @@ const Menu = ({ menuImage }) => {
               <p>What binds dissolves. What dissolves binds.</p>
             </div>
 
+            <img src="/images/nocturn/nocturn-06/featured.png" alt="Nocturn" width="100%" />
+
            <div className="row">
               <div className="column">
                 <img src="/images/nocturn/nocturn-06/image01.png" />
