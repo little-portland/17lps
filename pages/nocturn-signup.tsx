@@ -30,7 +30,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'body{background-color:#0a186d!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;}'}
+            {'body{background-color:#0a186d!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;margin: 0;height: 100%;overflow: hidden;}'}
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;margin-bottom:30px;}'}
             {'.subscribe{width: 100%;margin: 0;min-height: 100vh;display: flex;align-items: center;justify-content: center;}'}
