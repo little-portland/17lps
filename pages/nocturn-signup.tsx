@@ -33,12 +33,12 @@ const Menu = ({ menuImage }) => {
             {'body{background-color:#0a186d!important;overflow:hidden!important;-webkit-overflow-scrolling:touch!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto 30px auto;}'}
             {'.nocturn-wider-section{width: 80%;margin: 0 auto;margin-bottom:30px;}'}
-            {'.subscribe{width: 100%;margin: 0 auto;}'}
+            {'.subscribe{width: 100%;margin: 0;min-height: 100vh;display: flex;align-items: center;justify-content: center;}'}
             {'.subscribe .bookings-iframe{width: 30%!important;height: 30% !important;display: block!important;place-items: center;margin: 0 auto;min-height: 30rem!important;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
-            {'.subscribe h2{font-family: Helvetica!important;color: #ffffff!important;font-size: 20px;margin-top: -20px;margin-bottom: 10px;text-align: center;line-height: 1.5;}'}
+            {'.subscribe h2{font-family: Helvetica!important;color: #ffffff!important;font-size: 20px;margin-bottom: 10px;text-align: center;line-height: 1.5;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top p{ font-size: 18px;}'}
