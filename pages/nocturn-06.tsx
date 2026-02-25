@@ -21,22 +21,22 @@ const Menu = ({ menuImage }) => {
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
-            {'.top{ font-size: 35px;}'}
+            {'.top{ font-size: 30px;}'}
             {'.bottom{ font-size: 25px;}'}
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
-            {'.nocturn-text-wrapper h3{ font-family: Helvetica!important;font-size: 45px;font-weight: bold!important;text-transform:uppercase!important;color: #ac07c6!important;padding-bottom: 15px;line-height: 1.1;}'}
+            {'.nocturn-text-wrapper h3{ font-family: Helvetica!important;font-size: 35px;font-weight: bold!important;font-style: italic;text-transform:uppercase!important;color: #ac07c6!important;padding-bottom: 15px;line-height: 1.1;}'}
             {'.nocturn-text-wrapper p{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #121be3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
-            {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.nocturn-text-wrapper h3{font-size: 25px;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
         </style>
         <title>Nocturn 06 - Sammy Lee</title>
       </Head>
       
          <div className="nocturn">
-           <img src="/images/nocturn-06/header.png" alt="Nocturn" width="100%" />
-           <img src="/images/nocturn-06/flyer.png" alt="Nocturn" width="100%" />
+           <img src="/images/nocturn/nocturn-06/header.png" alt="Nocturn" width="100%" />
+           <img src="/images/nocturn/nocturn-06/flyer.png" alt="Nocturn" width="100%" />
 
            <div className="nocturn-text-wrapper top">
              <h3>PROLOGUE</h3>
