@@ -44,7 +44,7 @@ const Menu = ({ menuImage }) => {
               <h3>THRESHOLD</h3> 
               <p><strong>Interior.</strong> An outer gate swings open into an empty inner chamber and a face greets you. You step inward. A velvety darkness envelops your body. Low frequencies purr from multiple directions, rising through the floor, vibrating from behind a black curtain. Other faces hover, half-hidden. A silent question hangs in the air: 
               What adventure will unfold tonight?</p>
-              </p>STUDIO</h3> 
+              <h3>STUDIO</h3> 
               <p>Your body registers first. Not quite arousal but close.</p>
               <h3>ENCOUNTER</h3>
               <p>[You enter the bathroom. A figure stands beside a cubicle. Or perhaps it is your own reflection.]</p>
