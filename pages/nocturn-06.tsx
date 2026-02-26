@@ -33,6 +33,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text-wrapper strong{font-weight: bold !important;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.featured{padding: 0 4px;}.nocturn-text-wrapper h3{font-size: 25px;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
+            {'::-webkit-scrollbar-thumb:window-inactive {background: rgb(102, 0, 3, 0.6)!important;}'}
         </style>
         <title>Nocturn 06 - Sammy Lee</title>
       </Head>
