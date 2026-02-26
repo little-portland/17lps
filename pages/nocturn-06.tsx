@@ -15,7 +15,7 @@ const Menu = ({ menuImage }) => {
       <Head>
         <style>
             {'html{overflow: auto!important;overflow-x: hidden!important;}'}
-            {'body{background-color: #B94B18!important;background-image: url("/images/nocturn/nocturn-06/bg.png")!important;background-position: top center!important;background-repeat: repeat-y!important;background-size: 700px!important;overflow: auto!important;overflow-x: initial!important;}'}
+            {'body{background-color: #B94B18!important;background-image: url("/images/nocturn/nocturn-06/bg.png")!important;background-position: top center!important;background-repeat: repeat-y!important;background-size: 500px!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
