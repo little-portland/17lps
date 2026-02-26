@@ -33,7 +33,9 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text-wrapper strong{font-weight: bold !important;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.featured{padding: 0 4px;}.nocturn-text-wrapper h3{font-size: 25px;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
-            {'::-webkit-scrollbar-thumb:window-inactive {background: rgba(102, 0, 3, 0.6)!important;}'}
+            {'::-webkit-scrollbar {width: 10px;}'}
+            {'::-webkit-scrollbar-thumb {background: rgba(102, 0, 3, 0.8);border-radius: 6px;}'}
+            {'::-webkit-scrollbar-thumb:window-inactive {background: rgba(102, 0, 3, 0.4);}'}
         </style>
         <title>Nocturn 06 - Sammy Lee</title>
       </Head>
