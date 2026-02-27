@@ -114,6 +114,7 @@ const Menu = ({ menuImage }) => {
               background-color: #b94b18;
               overflow-x: hidden;
               position: relative;
+              z-index: 0;
             }
           
             body::before {
@@ -124,18 +125,18 @@ const Menu = ({ menuImage }) => {
               width: 200%;
               height: 100%;
               pointer-events: none;
-              z-index: 0;
+              z-index: -1;
           
               background: linear-gradient(
                 90deg,
                 #b94b18 0%,
-                #b94b18 25%,
-                #c95522 35%,
-                #da6731 42%,
+                #b94b18 35%,
+                #c95522 42%,
+                #da6731 47%,
                 #ed7b41 50%,
-                #da6731 58%,
-                #c95522 65%,
-                #b94b18 75%,
+                #da6731 53%,
+                #c95522 58%,
+                #b94b18 65%,
                 #b94b18 100%
               );
           
