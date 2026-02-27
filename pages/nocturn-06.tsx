@@ -107,7 +107,34 @@ const Menu = ({ menuImage }) => {
               <p><a className="nocturn-text" href="https://linktr.ee/sammyleestudio" target="_blank">www.linktr.ee/sammyleestudio</a></p>
             </div>
            
-         </div>      
+         </div>   
+
+      <style jsx global>{`
+        body {
+          background-color: #b94b18;
+          background-image: linear-gradient(
+            90deg,
+            #b94b18 0%,
+            #b94b18 35%,
+            #c95522 42%,
+            #da6731 47%,
+            #ed7b41 50%,
+            #da6731 53%,
+            #c95522 58%,
+            #b94b18 65%,
+            #b94b18 100%
+          );
+          background-size: 200% 100%;
+          animation: lightBandMove 10s ease-in-out infinite;
+        }
+      
+        @keyframes lightBandMove {
+          0% { background-position: 35% 0; }
+          50% { background-position: 65% 0; }
+          100% { background-position: 35% 0; }
+        }
+      `}</style>
+      
     </>
   );
 };
