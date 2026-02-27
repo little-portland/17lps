@@ -109,32 +109,46 @@ const Menu = ({ menuImage }) => {
            
          </div>   
 
-      <style jsx global>{`
-        body {
-          background-color: #b94b18;
-          background-image: linear-gradient(
-            90deg,
-            #b94b18 0%,
-            #b94b18 35%,
-            #c95522 42%,
-            #da6731 47%,
-            #ed7b41 50%,
-            #da6731 53%,
-            #c95522 58%,
-            #b94b18 65%,
-            #b94b18 100%
-          );
-          background-size: 200% 100%;
-          animation: lightBandMove 10s ease-in-out infinite;
-        }
-      
-        @keyframes lightBandMove {
-          0% { background-position: 25% 0; }
-          50% { background-position: 75% 0; }
-          100% { background-position: 25% 0; }
-        }
-
-      `}</style>
+          <style jsx global>{`
+            body {
+              background-color: #b94b18;
+              overflow-x: hidden;
+              position: relative;
+            }
+          
+            body::before {
+              content: "";
+              position: fixed;
+              top: 0;
+              left: -50%;
+              width: 200%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 0;
+          
+              background: linear-gradient(
+                90deg,
+                #b94b18 0%,
+                #b94b18 25%,
+                #c95522 35%,
+                #da6731 42%,
+                #ed7b41 50%,
+                #da6731 58%,
+                #c95522 65%,
+                #b94b18 75%,
+                #b94b18 100%
+              );
+          
+              animation: gradientMove 10s ease-in-out infinite;
+              will-change: transform;
+            }
+          
+            @keyframes gradientMove {
+              0%   { transform: translateX(-15%); }
+              50%  { transform: translateX(15%); }
+              100% { transform: translateX(-15%); }
+            }
+          `}</style>
       
     </>
   );
