@@ -127,22 +127,22 @@ const Menu = ({ menuImage }) => {
               pointer-events: none;
               z-index: -1;
           
-              background: linear-gradient(
-                90deg,
-                #b94b18 0%,
-                #b94b18 35%,
-              
-                #c95522 42%,
-                #da6731 46%,
-                #f08a4d 48%,
-                #ff9a5c 50%,
-                #f08a4d 52%,
-                #da6731 54%,
-                #c95522 58%,
-              
-                #b94b18 65%,
-                #b94b18 100%
-              );
+            background: linear-gradient(
+              90deg,
+              #b94b18 0%,
+              #b94b18 38%,
+            
+              #c95522 43%,
+              #da6731 47%,
+              #f08a4d 49%,
+              #ff9a5c 50%,
+              #f08a4d 51%,
+              #da6731 53%,
+              #c95522 57%,
+            
+              #b94b18 62%,
+              #b94b18 100%
+            );
           
               animation: gradientMove 10s ease-in-out infinite;
               will-change: transform;
