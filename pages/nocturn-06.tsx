@@ -129,9 +129,9 @@ const Menu = ({ menuImage }) => {
         }
       
         @keyframes lightBandMove {
-          0% { background-position: 35% 0; }
-          50% { background-position: 65% 0; }
-          100% { background-position: 35% 0; }
+          0% { background-position: 25% 0; }
+          50% { background-position: 75% 0; }
+          100% { background-position: 25% 0; }
         }
       `}</style>
       
