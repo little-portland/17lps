@@ -151,9 +151,9 @@ const Menu = ({ menuImage }) => {
         
         /* MOBILE (current behaviour) */
         @keyframes gradientMoveMobile {
-          0%   { transform: translateX(-15%); }
-          50%  { transform: translateX(15%); }
-          100% { transform: translateX(-15%); }
+          0%   { transform: translateX(-10%); }
+          50%  { transform: translateX(10%); }
+          100% { transform: translateX(-10%); }
         }
         
         
@@ -165,9 +165,9 @@ const Menu = ({ menuImage }) => {
           }
         
           @keyframes gradientMoveDesktop {
-            0%   { transform: translateX(-6%); }
-            50%  { transform: translateX(6%); }
-            100% { transform: translateX(-6%); }
+            0%   { transform: translateX(-10%); }
+            50%  { transform: translateX(10%); }
+            100% { transform: translateX(-10%); }
           }
         
         }
