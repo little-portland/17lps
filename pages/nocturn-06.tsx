@@ -16,7 +16,7 @@ const Menu = ({ menuImage }) => {
         <style>
             {'html, body { height: 100%; margin: 0; padding: 0; }'}
             {'html { overflow-x: hidden; }'}
-            {'body { overflow-x: hidden; -webkit-overflow-scrolling: touch; }'}
+            {'body { overflow-x: hidden; -webkit-overflow-scrolling: touch; overscroll-behavior-y: auto; }'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
@@ -110,51 +110,69 @@ const Menu = ({ menuImage }) => {
            
          </div>   
 
-          <style jsx global>{`
-            body {
-              background-color: #b94b18;
-              overflow-x: hidden;
-              position: relative;
-              z-index: 0;
-            }
-          
-            body::before {
-              content: "";
-              position: fixed;
-              top: 0;
-              left: -50%;
-              width: 200%;
-              height: 100%;
-              pointer-events: none;
-              z-index: -1;
-          
-            background: linear-gradient(
-              90deg,
-              #b94b18 0%,
-              #b94b18 38%,
-            
-              #c95522 43%,
-              #d76e3d 47%,
-              #ed8344 49%,
-              #ff9a5c 50%,
-              #ed8344 51%,
-              #d76e3d 53%,
-              #c95522 57%,
-            
-              #b94b18 62%,
-              #b94b18 100%
-            );
-          
-              animation: gradientMove 10s ease-in-out infinite;
-              will-change: transform;
-            }
-          
-            @keyframes gradientMove {
-              0%   { transform: translateX(-15%); }
-              50%  { transform: translateX(15%); }
-              100% { transform: translateX(-15%); }
-            }
-          `}</style>
+         <style jsx global>{`
+        
+        body {
+          background-color: #b94b18;
+          overflow-x: hidden;
+          position: relative;
+          z-index: 0;
+        }
+        
+        body::before {
+          content: "";
+          position: fixed;
+          top: 0;
+          left: -50%;
+          width: 200%;
+          height: 100%;
+          pointer-events: none;
+          z-index: -1;
+        
+          background: linear-gradient(
+            90deg,
+            #b94b18 0%,
+            #b94b18 38%,
+            #c95522 43%,
+            #d76e3d 47%,
+            #ed8344 49%,
+            #ff9a5c 50%,
+            #ed8344 51%,
+            #d76e3d 53%,
+            #c95522 57%,
+            #b94b18 62%,
+            #b94b18 100%
+          );
+        
+          animation: gradientMoveMobile 10s ease-in-out infinite;
+          will-change: transform;
+        }
+        
+        
+        /* MOBILE (current behaviour) */
+        @keyframes gradientMoveMobile {
+          0%   { transform: translateX(-15%); }
+          50%  { transform: translateX(15%); }
+          100% { transform: translateX(-15%); }
+        }
+        
+        
+        /* DESKTOP – reduced movement */
+        @media (min-width: 1024px) {
+        
+          body::before {
+            animation: gradientMoveDesktop 12s ease-in-out infinite;
+          }
+        
+          @keyframes gradientMoveDesktop {
+            0%   { transform: translateX(-6%); }
+            50%  { transform: translateX(6%); }
+            100% { transform: translateX(-6%); }
+          }
+        
+        }
+        
+        `}</style>
       
     </>
   );
