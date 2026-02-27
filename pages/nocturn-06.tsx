@@ -151,9 +151,9 @@ const Menu = ({ menuImage }) => {
         
         /* MOBILE (current behaviour) */
         @keyframes gradientMoveMobile {
-          0%   { transform: translateX(-10%); }
-          50%  { transform: translateX(10%); }
-          100% { transform: translateX(-10%); }
+          0%   { transform: translateX(-20%); }
+          50%  { transform: translateX(20%); }
+          100% { transform: translateX(-20%); }
         }
         
         
