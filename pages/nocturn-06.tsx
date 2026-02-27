@@ -14,8 +14,9 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'html{overflow: auto!important;overflow-x: hidden!important;}'}
-            {'body{background-repeat: repeat-y!important;background-size: 500px!important;overflow: auto!important;overflow-x: initial!important;}'}
+            {'html, body { height: 100%; margin: 0; padding: 0; }'}
+            {'html { overflow-x: hidden; }'}
+            {'body { overflow-x: hidden; -webkit-overflow-scrolling: touch; }'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
