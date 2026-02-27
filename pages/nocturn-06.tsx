@@ -15,8 +15,7 @@ const Menu = ({ menuImage }) => {
       <Head>
         <style>
             {'html{overflow: auto!important;overflow-x: hidden!important;}'}
-            {'@keyframes copperShift {0%   { background-position: 0% 0; }50%  { background-position: 100% 0; }100% { background-position: 0% 0; }}'}
-            {'body{background-image:linear-gradient(90deg,#4a1605,#ffb97a,#4a1605),repeating-linear-gradient(0deg,rgba(255,255,255,0.03) 0px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);background-size: 200% 100%, 100% 4px;animation: copperShift 12s ease-in-out infinite;overflow: auto!important;overflow-x: initial!important;}'}
+            {'body{background-color: #B94B18!important;background-image: url("/images/nocturn/nocturn-06/bg.png")!important;background-position: top center!important;background-repeat: repeat-y!important;background-size: 500px!important;overflow: auto!important;overflow-x: initial!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
