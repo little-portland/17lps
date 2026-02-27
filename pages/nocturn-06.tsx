@@ -130,16 +130,18 @@ const Menu = ({ menuImage }) => {
               background: linear-gradient(
                 90deg,
                 #b94b18 0%,
-                #b94b18 40%,
-                
-                #cf5f2a 46%,
-                #e8743c 49%,
+                #b94b18 35%,
+              
+                #c95522 42%,
+                #da6731 46%,
+                #f08a4d 48%,
                 #ff9a5c 50%,
-                #e8743c 51%,
-                #cf5f2a 54%,
-                
-                #b94b18 60%,
-                 #b94b18 100%
+                #f08a4d 52%,
+                #da6731 54%,
+                #c95522 58%,
+              
+                #b94b18 65%,
+                #b94b18 100%
               );
           
               animation: gradientMove 10s ease-in-out infinite;
