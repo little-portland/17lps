@@ -133,6 +133,35 @@ const Menu = ({ menuImage }) => {
           50% { background-position: 75% 0; }
           100% { background-position: 25% 0; }
         }
+
+        body::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          pointer-events: none;
+          z-index: 2;
+        
+          background: linear-gradient(
+            90deg,
+            rgba(255,255,255,0) 30%,
+            rgba(255,255,255,0.15) 45%,
+            rgba(255,255,255,0.25) 50%,
+            rgba(255,255,255,0.15) 55%,
+            rgba(255,255,255,0) 70%
+          );
+        
+          background-size: 200% 100%;
+          animation: shineMove 10s ease-in-out infinite;
+        
+          mix-blend-mode: soft-light;
+        }
+
+        @keyframes shineMove {
+          0%   { background-position: 20% 0; }
+          50%  { background-position: 80% 0; }
+          100% { background-position: 20% 0; }
+        }
+
       `}</style>
       
     </>
