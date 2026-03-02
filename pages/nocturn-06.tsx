@@ -103,12 +103,13 @@ const Menu = ({ menuImage }) => {
                 ref={contentRef}
                 style={{ maxHeight: height }}
                 className={`collapsible ${showFullText ? "open" : ""}`}
+                 
               >
             <div className="inner-content bottom">
               <p>
-                EROS, my sweetbitter…<br>
-                The surfaces of contact you conjure…<br>
-                Eros, our life-blood, what song do you sing?<br>
+                EROS, my sweetbitter…</br>
+                The surfaces of contact you conjure…</br>
+                Eros, our life-blood, what song do you sing?</br>
                 </p>
                  
                  <p>In the sticky, impenetrable blackness of night, you rise, I listen for the same beat that drums in my body, the same rhythm that shakes the cosmos…
