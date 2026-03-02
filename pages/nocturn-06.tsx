@@ -338,6 +338,7 @@ const Menu = ({ menuImage }) => {
               </p>
                </div>
               </div>
+              <hr className="custom-hr" />
             </div>
 
            <div className="row">
@@ -470,6 +471,13 @@ const Menu = ({ menuImage }) => {
           .read-more-btn {
             font-size: 16px;
           }
+        }
+
+        .custom-hr {
+          border: none;
+          height: 2px;
+          background-color: #660003;
+          margin: 40px 0;
         }
         
         `}</style>
