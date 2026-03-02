@@ -328,9 +328,9 @@ const Menu = ({ menuImage }) => {
                 We were never together and always forever.
                 Now, what song do we sing?
                  
-                <3 <3 <3
+                &lt;3 &lt;3 &lt;3
                  
-                <3 <3 <3
+                &lt;3 &lt;3 &lt;3
                  
                 The song sings itself to wake and lulls itself to sleep. And in between all the singing and sleeping and waking, there the gold dust settles and unsettles forever: messy, beautiful, insufferable ecstasy. And we dance and dance and dance and dance and dance…
               </p>
