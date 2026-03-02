@@ -338,7 +338,6 @@ const Menu = ({ menuImage }) => {
               </p>
                </div>
               </div>
-              <hr className="custom-hr" />
             </div>
 
            <div className="row">
