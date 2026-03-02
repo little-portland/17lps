@@ -46,7 +46,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text-wrapper strong{font-weight: bold !important;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.main-text{ text-align: center;}'}
-            {'.footer-text{ color: #660003!important;}'}
+            {'.footer-text p{ color: #660003!important;}'}
             {'.mb{ margin-bottom: 30px;}'}
             {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.featured{padding: 0 4px;margin-bottom: -2px;}.gallery-text{font-size: 14px;}.nocturn-text-wrapper h3{font-size: 25px;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
             {'::-webkit-scrollbar {width: 10px;!important}'}
