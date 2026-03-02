@@ -120,6 +120,85 @@ const Bookings = () => {
   `,
         }}
       /> */}
+      
+         <style jsx global>{`
+        
+        //Bookings iframe specific styles
+         .bookings-container {
+          position: absolute;
+          padding: 5rem;
+         }
+        
+        .bookings-iframe {
+          margin-top: -2rem!important;
+        }
+        
+        .bookings-body-text {
+          text-align: left;
+          padding: 5px 20px;
+          border: 2px solid rgb(92, 44, 124);
+          margin-bottom: 1.5rem;
+          max-width: 80%;
+        }
+        
+        .bookings-body-text a {
+          cursor: pointer;
+        }
+        
+        .bookings-body-text a, .bookings-body-text a:hover, .bookings-body-text a:focus {
+          color: rgb(92, 44, 124);
+        }
+        
+        .booking-heading {
+          font-size: 20px;
+          margin-bottom: 20px;
+          max-width: 50%;
+          text-align: center;
+          line-height: 2rem;
+          text-transform: uppercase;
+        }
+        
+        .booking-heading a, .booking-heading a:hover, .booking-heading a:focus {
+          color: rgb(92, 44, 124);
+        }
+        
+        .bookings-body-text h1 {
+          margin-bottom: 1rem;
+        }
+        
+        .bookings-heading-0, .bookings-heading-1, .bookings-heading-2 {
+          font-family: "Space Mono" !important;
+          font-weight: 900;
+          font-style: normal;
+          font-size: 1.1rem;
+          text-transform: uppercase;
+        }
+        
+        .bookings-heading-0 {
+          margin-top: 1rem;
+        }
+        
+        .bookings-heading-1 {
+          margin-top: 2rem;
+        }
+        
+        .bookings-heading-2 {
+          margin-top: 2rem;
+        }
+        
+        .bookings-body-text ul {
+          list-style-type:square;
+          margin: 10px;
+        }
+        
+        .bookings-body-text ul li {
+          font-size: .8rem;
+          font-weight: 600;
+          margin-bottom: 10px;
+          line-height: 15px;
+        }
+        
+        `}</style>
     </>
   );
 };
