@@ -40,11 +40,13 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
             {'.nocturn-text-wrapper h3{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(171, 209, 227, 0.6);font-size: 35px;font-weight: bold!important;text-transform:uppercase!important;color: #660003!important;padding-bottom: 15px;line-height: 1.1;}'}
             {'.nocturn-text-wrapper p{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}
-            {'.gallery-text p{margin-top: 10px; text-align: center;}'}
-            {'.gallery-text{ font-family: Helvetica!important;font-size: 20px;font-style: italic;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}  
+            {'.gallery-text p{margin-top: 15px;margin-bottom: 35px; text-align: center;}'}
+            {'.gallery-text{ font-family: Helvetica!important;font-size: 25px;font-style: italic;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}  
             {'.nocturn-text-wrapper a{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text-wrapper strong{font-weight: bold !important;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
+            {'.main-text{ text-align: center;}'}
+            {'.footer-text{ color: #660003!important;}'}
             {'.mb{ margin-bottom: 30px;}'}
             {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.featured{padding: 0 4px;margin-bottom: -2px;}.gallery-text{font-size: 14px;}.nocturn-text-wrapper h3{font-size: 25px;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
             {'::-webkit-scrollbar {width: 10px;!important}'}
@@ -92,7 +94,7 @@ const Menu = ({ menuImage }) => {
 
             <img className="featured" src="/images/nocturn/nocturn-06/featured.png" alt="Nocturn" width="100%" />
 
-            <div className="nocturn-text-wrapper top">
+            <div className="nocturn-text-wrapper top main-text">
              <h3>“EROS, AN EXQUISITE CORPUS”</h3>
              <p>In an exercise of collaboration, spontaneity and relinquishing control over singular authorship, Sammy and Bianca participated in a textual “exquisite corpse” on Eros.</p>
              <button
@@ -384,7 +386,7 @@ const Menu = ({ menuImage }) => {
               </div>
            </div>
            
-            <div className="nocturn-text-wrapper bottom"> 
+            <div className="nocturn-text-wrapper bottom footer-text"> 
               <p className="nocturn-text">Sammy Lee (b. Vancouver, Canada) is a London-based artist working across drawing, sculpture, moving image, and immersive media. Informed by her background in architecture, she approaches the future as a site of memory, weaving lived experience and ancestral lineage through affect, ritual, and embodied practice.</p>
               <p><a className="nocturn-text" href="https://sammyleestudio.com/" target="_blank">www.sammyleestudio.com</a></p>
             </div>
@@ -479,8 +481,11 @@ const Menu = ({ menuImage }) => {
           color: #660003 !important;
           font-weight: 600;
           text-transform: uppercase;
-          text-decoration: underline;
           margin-bottom: 30px;
+          text-align: center !important;
+          border: 3px solid #660003 !important;
+          width: 100%;
+          padding: 15px !important;
         }
 
         .read-more-btn:hover {
