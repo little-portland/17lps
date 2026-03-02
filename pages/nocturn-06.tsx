@@ -380,18 +380,6 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn-06/image10.png" />
                 <p className="nocturn-text">The Ocean had another dream to show Eros.</p>
                 
-                <img src="/images/nocturn/nocturn-06/image02.png" />
-                <img src="/images/nocturn/nocturn-06/golden.gif" />
-                <img src="/images/nocturn/nocturn-06/image03.png" />
-                <img src="/images/nocturn/nocturn-06/image04.png" />
-                <img src="/images/nocturn/nocturn-06/image05.png" />
-                <img src="/images/nocturn/nocturn-06/image01.png" />
-                <img src="/images/nocturn/nocturn-06/image09.png" />
-                <img src="/images/nocturn/nocturn-06/image10.png" />
-                <img src="/images/nocturn/nocturn-06/image11.png" />
-                <img src="/images/nocturn/nocturn-06/image12.png" />
-                <img src="/images/nocturn/nocturn-06/image13.png" />
-                <img src="/images/nocturn/nocturn-06/image15.png" />
               </div>
            </div>
            
