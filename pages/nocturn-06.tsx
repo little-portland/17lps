@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
-import React, { useState, useRef, useEffect } from "react";
 
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
