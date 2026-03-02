@@ -490,6 +490,7 @@ const Menu = ({ menuImage }) => {
           border: 3px solid #660003 !important;
           width: auto;
           padding: 15px 30px !important;
+          text-shadow: 1px 1px 1px rgba(171, 209, 227, 0.6);
         }
 
         .read-more-btn:hover {
