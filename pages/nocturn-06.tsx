@@ -24,8 +24,9 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
+            {'html, body { height: 100%; margin: 0; padding: 0; }'}
             {'html{overflow: auto!important;overflow-x: hidden!important;}'}
-            {'body{overflow: auto!important;overflow-x: initial!important;}'}
+            {'body{overflow: auto!important;overflow-x: initial!important;}'} 
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
