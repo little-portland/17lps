@@ -29,7 +29,7 @@ const Menu = ({ menuImage }) => {
             {'body { overflow-x: hidden; -webkit-overflow-scrolling: touch; overscroll-behavior-y: auto; }'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
-            {'.column{flex: 50%;max-width: 50%;padding: 0 4px;}'}
+            {'.column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top{ font-size: 30px;}'}
@@ -352,8 +352,6 @@ const Menu = ({ menuImage }) => {
                 <img src="/images/nocturn/nocturn-06/image05.png" />
                 <img src="/images/nocturn/nocturn-06/image06.png" />
                 <img src="/images/nocturn/nocturn-06/image07.png" />
-              </div>
-              <div className="column">
                 <img src="/images/nocturn/nocturn-06/image08.png" />
                 <img src="/images/nocturn/nocturn-06/image09.png" />
                 <img src="/images/nocturn/nocturn-06/image10.png" />
