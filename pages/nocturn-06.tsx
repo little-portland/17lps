@@ -343,6 +343,8 @@ const Menu = ({ menuImage }) => {
 
            <div className="row">
               <div className="column">
+                <img src="/images/nocturn/nocturn-06/golden.gif" />
+                <p><i>As I approach, I notice a crack in the shell of the Egg and curiosity draws me in.</i></p>
                 <img src="/images/nocturn/nocturn-06/image01.png" />
                 <img src="/images/nocturn/nocturn-06/image02.png" />
                 <img src="/images/nocturn/nocturn-06/golden.gif" />
