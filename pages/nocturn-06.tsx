@@ -432,7 +432,7 @@ const Menu = ({ menuImage }) => {
         
         }
 
-             .collapsible {
+       .collapsible {
           overflow: hidden;
           transition: max-height 0.7s ease, opacity 0.5s ease;
           opacity: 0;
@@ -455,6 +455,11 @@ const Menu = ({ menuImage }) => {
           font-size: 18px;
           padding: 10px 0;
           transition: opacity 0.3s ease;
+          color: #660003 !important;
+          font-weight: 600;
+          text-transform: uppercase;
+          text-decoration: underline;
+          margin-bottom: 30px;
         }
 
         .read-more-btn:hover {
