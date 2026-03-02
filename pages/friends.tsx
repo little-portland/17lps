@@ -94,8 +94,7 @@ const Bookings = () => {
         </div>
 
       </CenterContainer>
-    </>
-    <style jsx global>{`
+          <style jsx global>{`
         
         //Bookings iframe specific styles
          .bookings-container {
@@ -173,6 +172,7 @@ const Bookings = () => {
         }
         
         `}</style>
+    </>
   );
 };
 
