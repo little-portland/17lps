@@ -341,7 +341,7 @@ const Menu = ({ menuImage }) => {
             </div>
 
            <div className="row">
-              <div className="column">
+              <div className="column nocturn-text bottom">
                 <img src="/images/nocturn/nocturn-06/golden.gif" />
                 <p><i>As I approach, I notice a crack in the shell of the Egg and curiosity draws me in.</i></p>
                 <img src="/images/nocturn/nocturn-06/image01.png" />
