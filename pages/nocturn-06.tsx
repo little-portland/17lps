@@ -45,6 +45,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text-wrapper a{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text-wrapper strong{font-weight: bold !important;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
+            {'.mb{ margin-bottom: 30px;}'}
             {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.featured{padding: 0 4px;margin-bottom: -2px;}.gallery-text{font-size: 14px;}.nocturn-text-wrapper h3{font-size: 25px;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
             {'::-webkit-scrollbar {width: 10px;!important}'}
             {'::-webkit-scrollbar-thumb {background: rgba(102, 0, 3, 0.8)!important;border-radius: 6px!important;}'}
@@ -86,7 +87,7 @@ const Menu = ({ menuImage }) => {
               <p>Other bodies approach and retreat. </p>
               <p>Touching. Not Touching.</p> 
               <p>What binds dissolves. What dissolves binds.</p>
-              <p><strong>Bianca Chu</strong></p>
+              <p className="mb"><strong>Bianca Chu</strong></p>
             </div>
 
             <img className="featured" src="/images/nocturn/nocturn-06/featured.png" alt="Nocturn" width="100%" />
