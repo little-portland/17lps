@@ -40,6 +40,7 @@ const Menu = ({ menuImage }) => {
             {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
             {'.nocturn-text-wrapper h3{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(171, 209, 227, 0.6);font-size: 35px;font-weight: bold!important;text-transform:uppercase!important;color: #660003!important;padding-bottom: 15px;line-height: 1.1;}'}
             {'.nocturn-text-wrapper p{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}
+            {'.gallery-text{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text-wrapper a{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}
             {'.nocturn-text-wrapper strong{font-weight: bold !important;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
@@ -341,7 +342,7 @@ const Menu = ({ menuImage }) => {
             </div>
 
            <div className="row">
-              <div className="column nocturn-text-wrapper bottom">
+              <div className="column gallery-text bottom">
                 <img src="/images/nocturn/nocturn-06/golden.gif" />
                 <p className="nocturn-text">As I approach, I notice a crack in the shell of the Egg and curiosity draws me in.</p>
                 <img src="/images/nocturn/nocturn-06/image01.png" />
