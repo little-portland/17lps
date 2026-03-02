@@ -346,21 +346,51 @@ const Menu = ({ menuImage }) => {
               <div className="column gallery-text bottom">
                 <img src="/images/nocturn/nocturn-06/golden.gif" />
                 <p className="nocturn-text">As I approach, I notice a crack in the shell of the Egg and curiosity draws me in.</p>
+
+                <img src="/images/nocturn/nocturn-06/image14.png" />
+                <p className="nocturn-text">Boundary surfaces are the birthplaces of living things.<br />
+                There we find Eros, in the forces of difference between our cells.</p>
+
+                <img src="/images/nocturn/nocturn-06/image15.png" />
+                <p className="nocturn-text">I long to return to the source, but what is our source? From where does this vital energy flow?</p>
+
+                <img src="/images/nocturn/nocturn-06/image07.png" />
+                <img src="/images/nocturn/nocturn-06/image08.png" />
+                <p className="nocturn-text">I dream of a giant golden egg at the moment of its hatching. The yolk pours outwards into a vast ocean of light, rippling with swirling geometric patterns. It is not a visible light, but one that is felt in the heart like the heat from the rising sun after a frozen, eternal night.</p>
+                <p className="nocturn-text">And inside that dream of golden yolk and creamy milk, I dream another dream. My hands become my feet and my feet are in the air, suspended by thickly woven threads upon threads of copper wire that bend and curve like the sinews of my own flesh. Inverted, I look down and I sense the underworld reflected in my own eyes. I close them and I begin to see…</p>
+
+                <img src="/images/nocturn/nocturn-06/image06.png" />
+                <p className="nocturn-text">The Ocean had always known Eros. After all, they went way back to the Creation time. A fluid, porous body of time faintly held in her consciousness. In one version of the story she remembers giving birth to Eros, holding that tempestuous egg in her patient, all-encompassing embrace. In another version it was Eros giving birth to her, pouring out from a broken shell between earth and sky. Either way, their destinies were conjoined. She was not surprised when Eros returned home, seeking the gates to the Underworld.</p>
+
+                <img src="/images/nocturn/nocturn-06/image13.png" />
+                <p className="nocturn-text">The Chorus sings: Show me the true form of desire.</p>
+                <p className="nocturn-text">Entering into reverie my thoughts and vision become alchemised into the state of music. Hot, sweaty and pressurised. Held in a centrifugal field, unspooling into fine threads of copper wire. The drum beats along the spine to a 8/6 polyrhythm. A crackling, sizzling pervades my skull like the popping of microscopic bubbles.</p>
+               
+                <img src="/images/nocturn/nocturn-06/image12.png" />
+                <p className="nocturn-text">What is this world? Where do I begin and end? What power seeps inside?</p>
+                <p className="nocturn-text">What power dies outside?</p> 
+
                 <img src="/images/nocturn/nocturn-06/image01.png" />
+                <p className="nocturn-text">A third formation rises between us,<br />
+                a whirling life-form of its own,<br />
+                curling, rolling, folding,<br />
+                carving a hollow space,<br />
+                a receptacle in waiting.</p>
+
+                <img src="/images/nocturn/nocturn-06/image10.png" />
+                <p className="nocturn-text">The Ocean had another dream to show Eros.</p>
+                
                 <img src="/images/nocturn/nocturn-06/image02.png" />
                 <img src="/images/nocturn/nocturn-06/golden.gif" />
                 <img src="/images/nocturn/nocturn-06/image03.png" />
                 <img src="/images/nocturn/nocturn-06/image04.png" />
                 <img src="/images/nocturn/nocturn-06/image05.png" />
-                <img src="/images/nocturn/nocturn-06/image06.png" />
-                <img src="/images/nocturn/nocturn-06/image07.png" />
-                <img src="/images/nocturn/nocturn-06/image08.png" />
+                <img src="/images/nocturn/nocturn-06/image01.png" />
                 <img src="/images/nocturn/nocturn-06/image09.png" />
                 <img src="/images/nocturn/nocturn-06/image10.png" />
                 <img src="/images/nocturn/nocturn-06/image11.png" />
                 <img src="/images/nocturn/nocturn-06/image12.png" />
                 <img src="/images/nocturn/nocturn-06/image13.png" />
-                <img src="/images/nocturn/nocturn-06/image14.png" />
                 <img src="/images/nocturn/nocturn-06/image15.png" />
               </div>
            </div>
