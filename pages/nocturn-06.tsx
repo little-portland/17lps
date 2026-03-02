@@ -476,7 +476,7 @@ const Menu = ({ menuImage }) => {
           font-family: Helvetica;
           color: #abd1e3;
           cursor: pointer;
-          font-size: 18px;
+          font-size: 22px;
           padding: 10px 0;
           transition: opacity 0.3s ease;
           color: #660003 !important;
@@ -485,8 +485,8 @@ const Menu = ({ menuImage }) => {
           margin-bottom: 30px;
           text-align: center !important;
           border: 3px solid #660003 !important;
-          width: 100%;
-          padding: 15px !important;
+          width: auto;
+          padding: 15px 30px !important;
         }
 
         .read-more-btn:hover {
@@ -496,6 +496,8 @@ const Menu = ({ menuImage }) => {
         @media (max-width: 768px) {
           .read-more-btn {
             font-size: 16px;
+            width: 100%;
+            padding: 15px!important;
           }
         }
 
