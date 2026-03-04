@@ -24,7 +24,7 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'body{ background: url("background-color: #b94b18;}'}
+            {'body{background-color: #b94b18;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
