@@ -99,12 +99,9 @@ const Menu = ({ menuImage }) => {
                 {showFullText ? "Hide full text" : "Read the full text"}
               </button>
     
-              <div
-                ref={contentRef}
-                style={{ maxHeight: height }}
-                className={`collapsible ${showFullText ? "open" : ""}`}
-                 
-              >
+            <div
+              className={`collapsible ${showFullText ? "open" : ""}`}
+            >
             <div className="inner-content bottom">
               <p>
                 EROS, my sweetbitter…<br />
