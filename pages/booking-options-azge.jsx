@@ -33,7 +33,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Anomalous_DJ, MAYBE LAURA & REMI MAZET</h3>
-              <h3><span>STUDIO <b>//</b> </span>Ben Gomori, ND Beaumecker</h3>
+              <h3><span>STUDIO <b>//</b> </span>Ben Gomori, ND_BAUMKECKER</h3>
             </div>
         </div>
 
