@@ -400,12 +400,6 @@ const Menu = ({ menuImage }) => {
 
          <style jsx global>{`
         
-        body {
-          background-color: #b94b18;
-          overflow-x: hidden;
-          position: relative;
-          z-index: 0;
-        }
         
         body::before {
           content: "";
@@ -413,7 +407,7 @@ const Menu = ({ menuImage }) => {
           top: 0;
           left: -50%;
           width: 200%;
-          height: 100vh;
+          height: 100%;
           pointer-events: none;
           z-index: -1;
         
