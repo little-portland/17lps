@@ -413,7 +413,7 @@ const Menu = ({ menuImage }) => {
           top: 0;
           left: -50%;
           width: 200%;
-          height: 100%;
+          height: 100vh;
           pointer-events: none;
           z-index: -1;
         
