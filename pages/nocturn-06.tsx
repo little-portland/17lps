@@ -438,9 +438,9 @@ const Menu = ({ menuImage }) => {
           }
         
         @keyframes gradientMoveDesktop {
-        0%   { background-position: 20% 50%; }
-        50%  { background-position: 50% 50%; }
-        100% { background-position: 80% 50%; }
+          0%   { background-position: 25% 50%; }
+          50%  { background-position: 75% 50%; }
+          100% { background-position: 25% 50%; }
         }
         
         }
