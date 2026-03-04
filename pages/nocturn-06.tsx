@@ -422,6 +422,16 @@ const Menu = ({ menuImage }) => {
 
         /* DESKTOP – reduced movement */
         @media (min-width: 1024px) {
+
+          html { 
+            overflow: auto!important;
+            overflow-x: hidden!important;
+          }
+          
+          body { 
+            overflow: auto!important;
+            overflow-x: initial!important;
+          }
         
           body {
             animation: gradientMoveDesktop 8s ease-in-out infinite;
