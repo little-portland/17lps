@@ -400,15 +400,7 @@ const Menu = ({ menuImage }) => {
          <style jsx global>{`
         
         
-        body::before {
-          content: "";
-          position: fixed;
-          top: 0;
-          left: -50%;
-          width: 200%;
-          height: 100%;
-          pointer-events: none;
-          z-index: -1;
+
         
           background: linear-gradient(
             90deg,
