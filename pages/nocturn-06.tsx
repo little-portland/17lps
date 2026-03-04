@@ -400,26 +400,6 @@ const Menu = ({ menuImage }) => {
          <style jsx global>{`
         
         
-
-        
-          background: linear-gradient(
-            90deg,
-            #b94b18 0%,
-            #b94b18 38%,
-            #c95522 43%,
-            #d76e3d 47%,
-            #ed8344 49%,
-            #ff9a5c 50%,
-            #ed8344 51%,
-            #d76e3d 53%,
-            #c95522 57%,
-            #b94b18 62%,
-            #b94b18 100%
-          );
-        
-          animation: gradientMoveMobile 10s ease-in-out infinite;
-          will-change: transform;
-        }
         
         
         /* MOBILE (current behaviour) */
