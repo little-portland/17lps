@@ -99,7 +99,8 @@ const Menu = ({ menuImage }) => {
                 {showFullText ? "Hide full text" : "Read the full text"}
               </button>
     
-            <div className={`collapsible ${showFullText ? "open" : ""}`}>
+          <div className={`collapsible ${showFullText ? "open" : ""}`}>
+  
             <div className="inner-content bottom">
               <p>
                 EROS, my sweetbitter…<br />
@@ -435,19 +436,17 @@ const Menu = ({ menuImage }) => {
         }
 
         .collapsible {
-          display: none;
+          max-height: 0;
+          overflow: hidden;
+          opacity: 0;
+          transition: max-height 0.6s ease, opacity 0.4s ease;
         }
         
         .collapsible.open {
-          display: block;
-          animation: fadeIn 0.4s ease;
+          max-height: 4000px; /* large enough to fit your text */
+          opacity: 1;
         }
         
-        @keyframes fadeIn {
-          from { opacity:0 }
-          to { opacity:1 }
-        }
-
         .inner-content {
           padding-top: 20px;
         }
