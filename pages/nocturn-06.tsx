@@ -420,9 +420,9 @@ const Menu = ({ menuImage }) => {
         
         /* MOBILE (current behaviour) */
         @keyframes gradientMoveMobile {
-          0%   { transform: translateX(-20%); }
-          50%  { transform: translateX(20%); }
-          100% { transform: translateX(-20%); }
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
         
         
@@ -433,11 +433,11 @@ const Menu = ({ menuImage }) => {
             animation: gradientMoveDesktop 12s ease-in-out infinite;
           }
         
-          @keyframes gradientMoveDesktop {
-            0%   { transform: translateX(-10%); }
-            50%  { transform: translateX(10%); }
-            100% { transform: translateX(-10%); }
-          }
+        @keyframes gradientMoveDesktop {
+          0%   { background-position: 40% 50%; }
+          50%  { background-position: 60% 50%; }
+          100% { background-position: 40% 50%; }
+        }
         
         }
 
