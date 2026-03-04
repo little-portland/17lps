@@ -37,11 +37,7 @@ const Menu = ({ menuImage }) => {
             {'audio{ margin-top: 8px!important;width:100%!important;}'}
             {'.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}'}
             {'.nocturn-text-wrapper img{ max-width: 25%;margin-bottom: 30px!important;}'}
-            {'.nocturn-text-wrapper h3{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(171, 209, 227, 0.6);font-size: 35px;font-weight: bold!important;text-transform:uppercase!important;color: #660003!important;padding-bottom: 15px;line-height: 1.1;}'}
-            {'.nocturn-text-wrapper p{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}
-            {'.gallery-text p{margin-top: 15px;margin-bottom: 25px; text-align: center;padding-bottom:0!important}'}
-            {'.gallery-text{ font-family: Helvetica!important;font-size: 25px;font-style: italic; color: #660003!important;text-shadow: 1px 1px 1px rgba(171, 209, 227, 0.6);font-weight: 400;text-decoration: none!important;padding-bottom: 0px!important;line-height: 1.1;}'}  
-            {'.nocturn-text-wrapper a{ font-family: Helvetica!important;text-shadow: 1px 1px 1px rgba(102, 0, 3, 0.6);font-weight: 400;text-decoration: none!important;color: #abd1e3!important;padding-bottom: 30px;line-height: 1.1;}'}
+
             {'.nocturn-text-wrapper strong{font-weight: bold !important;}'}
             {'.nocturn-text{ padding-bottom: 20px;}'}
             {'.main-text{ text-align: center;}'}
@@ -396,6 +392,116 @@ const Menu = ({ menuImage }) => {
             </div>
            
          </div>   
+
+               <style jsx global>{`
+        
+          body::before {
+          content: "";
+          position: fixed;
+          top: 0;
+          left: -50%;
+          width: 200%;
+          height: 100%;
+          pointer-events: none;
+          z-index: -1;
+        
+          background: linear-gradient(
+            90deg,
+            #b94b18 0%,
+            #b94b18 38%,
+            #c95522 43%,
+            #d76e3d 47%,
+            #ed8344 49%,
+            #ff9a5c 50%,
+            #ed8344 51%,
+            #d76e3d 53%,
+            #c95522 57%,
+            #b94b18 62%,
+            #b94b18 100%
+          );
+        
+          animation: gradientMoveMobile 10s ease-in-out infinite;
+          will-change: transform;
+        }
+        
+        
+        /* MOBILE (current behaviour) */
+        @keyframes gradientMoveMobile {
+          0%   { transform: translateX(-20%); }
+          50%  { transform: translateX(20%); }
+          100% { transform: translateX(-20%); }
+        }
+        
+        
+        /* DESKTOP – reduced movement */
+        @media (min-width: 1024px) {
+        
+          body::before {
+            animation: gradientMoveDesktop 12s ease-in-out infinite;
+          }
+        
+          @keyframes gradientMoveDesktop {
+            0%   { transform: translateX(-10%); }
+            50%  { transform: translateX(10%); }
+            100% { transform: translateX(-10%); }
+          }
+        
+        }
+
+       .collapsible {
+          overflow: hidden;
+          transition: max-height 0.7s ease, opacity 0.5s ease;
+          opacity: 0;
+        }
+
+        .collapsible.open {
+          opacity: 1;
+        }
+
+        .inner-content {
+          padding-top: 20px;
+        }
+
+        .read-more-btn {
+          background: none;
+          border: none;
+          font-family: Helvetica;
+          color: #abd1e3;
+          cursor: pointer;
+          font-size: 22px;
+          padding: 10px 0;
+          transition: opacity 0.3s ease;
+          color: #660003 !important;
+          font-weight: 600;
+          text-transform: uppercase;
+          margin-bottom: 30px;
+          text-align: center !important;
+          border: 3px solid #660003 !important;
+          width: auto;
+          padding: 15px 30px !important;
+          text-shadow: 1px 1px 1px rgba(171, 209, 227, 0.6);
+        }
+
+        .read-more-btn:hover {
+          opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+          .read-more-btn {
+            font-size: 16px;
+            width: 100%;
+            padding: 15px!important;
+          }
+        }
+
+        .custom-hr {
+          border: none;
+          height: 2px;
+          background-color: #660003;
+          margin: 40px 0;
+        }
+        
+        `}</style>
 
       
     </>
