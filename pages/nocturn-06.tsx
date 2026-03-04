@@ -434,17 +434,15 @@ const Menu = ({ menuImage }) => {
         
         }
 
-.collapsible {
-          opacity: 0;
-          pointer-events: none;
+        .collapsible {
+          display: none;
         }
-
+        
         .collapsible.open {
-          opacity: 1;
-          pointer-events: auto;
+          display: block;
           animation: fadeIn 0.4s ease;
         }
-
+        
         @keyframes fadeIn {
           from { opacity:0 }
           to { opacity:1 }
