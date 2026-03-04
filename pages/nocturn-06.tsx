@@ -434,13 +434,13 @@ const Menu = ({ menuImage }) => {
           }
         
           body {
-            animation: gradientMoveDesktop 8s ease-in-out infinite;
+            animation: gradientMoveDesktop 10s ease-in-out infinite;
           }
         
         @keyframes gradientMoveDesktop {
-          0%   { background-position: 10% 50%; }
-          50%  { background-position: 100% 50%; }
-          100% { background-position: 10% 50%; }
+          0%   { background-position: 45% 50%; }
+          50%  { background-position: 55% 50%; }
+          100% { background-position: 45% 50%; }
         }
         
         }
