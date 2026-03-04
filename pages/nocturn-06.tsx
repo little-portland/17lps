@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -11,14 +11,6 @@ import useFetchContent from "@utils/useFetchContent";
 const Menu = ({ menuImage }) => {
   
   const [showFullText, setShowFullText] = useState(false);
-  const [height, setHeight] = useState("0px");
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setHeight(showFullText ? `${contentRef.current.scrollHeight}px` : "0px");
-    }
-  }, [showFullText]);
   
   return (
     <>
@@ -402,24 +394,12 @@ const Menu = ({ menuImage }) => {
 
          <style jsx global>{`
 
-           body {
-              overflow-x: hidden;
-              overflow-y: auto;
-              -webkit-overflow-scrolling: touch;
-            }
-                  
-          body::before {
-          content: "";
-          position: fixed;
-          top: 0;
-          left: -50%;
-          width: 200%;
-          height: 100%;
-          pointer-events: none;
-          z-index: -1;
-          transform: translateZ(0);
-
-          will-change: transform;   /* ADD THIS */
+        html, body {
+          overflow-x: hidden;
+        }
+        
+        body {
+          -webkit-overflow-scrolling: touch;
         
           background: linear-gradient(
             90deg,
@@ -436,8 +416,8 @@ const Menu = ({ menuImage }) => {
             #b94b18 100%
           );
         
+          background-size: 200% 100%;
           animation: gradientMoveMobile 10s ease-in-out infinite;
-          will-change: transform;
         }
         
         
@@ -451,18 +431,8 @@ const Menu = ({ menuImage }) => {
         
         /* DESKTOP – reduced movement */
         @media (min-width: 1024px) {
-
-          html { 
-            overflow: auto!important;
-            overflow-x: hidden!important;
-          }
-          
-          body { 
-            overflow: auto!important;
-            overflow-x: initial!important;
-          }
         
-          body::before {
+          body {
             animation: gradientMoveDesktop 12s ease-in-out infinite;
           }
         
@@ -474,14 +444,20 @@ const Menu = ({ menuImage }) => {
         
         }
 
-       .collapsible {
-          overflow: hidden;
-          transition: max-height 0.7s ease, opacity 0.5s ease;
+.collapsible {
           opacity: 0;
+          pointer-events: none;
         }
 
         .collapsible.open {
           opacity: 1;
+          pointer-events: auto;
+          animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+          from { opacity:0 }
+          to { opacity:1 }
         }
 
         .inner-content {
