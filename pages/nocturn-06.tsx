@@ -99,9 +99,7 @@ const Menu = ({ menuImage }) => {
                 {showFullText ? "Hide full text" : "Read the full text"}
               </button>
     
-            <div
-              className={`collapsible ${showFullText ? "open" : ""}`}
-            >
+            <div className={`collapsible ${showFullText ? "open" : ""}`}>
             <div className="inner-content bottom">
               <p>
                 EROS, my sweetbitter…<br />
@@ -393,13 +391,9 @@ const Menu = ({ menuImage }) => {
 
           html, body {
             overflow-x: hidden;
-            overscroll-behavior-y: contain;
           }
           
           body {
-            min-height: 100vh;
-            -webkit-overflow-scrolling: touch;
-          
             background: linear-gradient(
               90deg,
               #b94b18 0%,
@@ -420,9 +414,9 @@ const Menu = ({ menuImage }) => {
           }
           
           @keyframes gradientMoveMobile {
-            0%   { background-position: 40% 50%; }
-            50%  { background-position: 60% 50%; }
-            100% { background-position: 40% 50%; }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
           }
 
         /* DESKTOP – reduced movement */
