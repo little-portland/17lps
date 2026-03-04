@@ -391,41 +391,40 @@ const Menu = ({ menuImage }) => {
 
          <style jsx global>{`
 
-        html, body {
-          overflow-x: hidden;
-        }
-        
-        body {
-          -webkit-overflow-scrolling: touch;
-        
-          background: linear-gradient(
-            90deg,
-            #b94b18 0%,
-            #b94b18 38%,
-            #c95522 43%,
-            #d76e3d 47%,
-            #ed8344 49%,
-            #ff9a5c 50%,
-            #ed8344 51%,
-            #d76e3d 53%,
-            #c95522 57%,
-            #b94b18 62%,
-            #b94b18 100%
-          );
-        
-          background-size: 200% 100%;
-          animation: gradientMoveMobile 10s ease-in-out infinite;
-        }
-        
-        
-        /* MOBILE (current behaviour) */
-        @keyframes gradientMoveMobile {
-          0%   { background-position: 0% 50%; }
-          50%  { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        
-        
+          html, body {
+            overflow-x: hidden;
+            overscroll-behavior-y: contain;
+          }
+          
+          body {
+            min-height: 100vh;
+            -webkit-overflow-scrolling: touch;
+          
+            background: linear-gradient(
+              90deg,
+              #b94b18 0%,
+              #b94b18 38%,
+              #c95522 43%,
+              #d76e3d 47%,
+              #ed8344 49%,
+              #ff9a5c 50%,
+              #ed8344 51%,
+              #d76e3d 53%,
+              #c95522 57%,
+              #b94b18 62%,
+              #b94b18 100%
+            );
+          
+            background-size: 200% 100%;
+            animation: gradientMoveMobile 10s ease-in-out infinite;
+          }
+          
+          @keyframes gradientMoveMobile {
+            0%   { background-position: 40% 50%; }
+            50%  { background-position: 60% 50%; }
+            100% { background-position: 40% 50%; }
+          }
+
         /* DESKTOP – reduced movement */
         @media (min-width: 1024px) {
         
