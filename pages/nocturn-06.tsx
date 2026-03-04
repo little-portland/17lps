@@ -25,7 +25,6 @@ const Menu = ({ menuImage }) => {
       <Head>
         <style>
 
-
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
@@ -401,8 +400,14 @@ const Menu = ({ menuImage }) => {
            
          </div>   
 
-               <style jsx global>{`
-        
+         <style jsx global>{`
+
+           body {
+              overflow-x: hidden;
+              overflow-y: auto;
+              -webkit-overflow-scrolling: touch;
+            }
+                  
           body::before {
           content: "";
           position: fixed;
@@ -412,6 +417,9 @@ const Menu = ({ menuImage }) => {
           height: 100%;
           pointer-events: none;
           z-index: -1;
+          transform: translateZ(0);
+
+          will-change: transform;   /* ADD THIS */
         
           background: linear-gradient(
             90deg,
