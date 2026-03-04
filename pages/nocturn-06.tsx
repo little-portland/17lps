@@ -423,13 +423,13 @@ const Menu = ({ menuImage }) => {
         @media (min-width: 1024px) {
         
           body {
-            animation: gradientMoveDesktop 12s ease-in-out infinite;
+            animation: gradientMoveDesktop 8s ease-in-out infinite;
           }
         
         @keyframes gradientMoveDesktop {
-          0%   { background-position: 40% 50%; }
+          0%   { background-position: 10% 50%; }
           50%  { background-position: 60% 50%; }
-          100% { background-position: 40% 50%; }
+          100% { background-position: 10% 50%; }
         }
         
         }
