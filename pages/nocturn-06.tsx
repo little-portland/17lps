@@ -453,7 +453,7 @@ const Menu = ({ menuImage }) => {
         }
         
         .collapsible.open {
-          max-height: 4000px; /* large enough to fit your text */
+          max-height: 30000px; /* large enough to fit your text */
           opacity: 1;
         }
         
