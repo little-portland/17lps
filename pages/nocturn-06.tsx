@@ -394,7 +394,7 @@ const Menu = ({ menuImage }) => {
             overflow-x: hidden;
           }
           
-          body {
+          html {
             background: linear-gradient(
               90deg,
               #b94b18 0%,
