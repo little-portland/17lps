@@ -1300,7 +1300,7 @@ html, body {
  .new-button-wrapper .events-button {
     width: 50%;
     display: grid; 
-    padding: 15px;
+    padding: 15px!important;
     background: #e6b0c2;
     cursor: auto;
     border-radius: 10px;
