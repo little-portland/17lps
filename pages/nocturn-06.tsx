@@ -42,7 +42,6 @@ const Menu = ({ menuImage }) => {
             {'.footer-text p a{ color: #660003!important;text-shadow: 1px 1px 1px rgba(171, 209, 227, 0.6);}'}
             {'.mb{ margin-bottom: 30px;}'}
 
-
             {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.featured{padding: 0 4px;margin-bottom: -2px;}.gallery-text{font-size: 14px;}.nocturn-text-wrapper h3{font-size: 25px;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
             {'::-webkit-scrollbar {width: 10px;!important}'}
             {'::-webkit-scrollbar-thumb {background: rgba(102, 0, 3, 0.8)!important;border-radius: 6px!important;}'}
