@@ -16,7 +16,6 @@ const Menu = ({ menuImage }) => {
     <>
       <Head>
         <style>
-            {'body{background-color: #b94b18!important;}'}
             {'.nocturn{width: 50%;margin: 0 auto;}'}
             {'.row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
             {'.column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
@@ -43,7 +42,7 @@ const Menu = ({ menuImage }) => {
             {'.mb{ margin-bottom: 30px;}'}
 
             {'@media (max-width: 768px) { .nocturn{margin-top: 30px;width: 90%;}.featured{padding: 0 4px;margin-bottom: -2px;}.gallery-text{font-size: 14px;}.nocturn-text-wrapper h3{font-size: 25px;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.row{padding: 0!important;}.column{ flex: 50%;max-width: 50%;}}'}
-            {'::-webkit-scrollbar {width: 10px;!important}'}
+            {'::-webkit-scrollbar {width: 10px!important;}'}
             {'::-webkit-scrollbar-thumb {background: rgba(102, 0, 3, 0.8)!important;border-radius: 6px!important;}'}
             {'::-webkit-scrollbar-thumb:window-inactive {background: rgba(102, 0, 3, 0.4)!important;}'}
         </style>
@@ -386,14 +385,15 @@ const Menu = ({ menuImage }) => {
             </div>
            
          </div>   
-
+      
          <style jsx global>{`
 
           html, body {
             overflow-x: hidden;
           }
           
-          html {
+          body {
+            background-color: #b94b18;
             background: linear-gradient(
               90deg,
               #b94b18 0%,
@@ -430,9 +430,6 @@ const Menu = ({ menuImage }) => {
           body { 
             overflow: auto!important;
             overflow-x: initial!important;
-          }
-        
-          body {
             animation: gradientMoveDesktop 8s ease-in-out infinite;
           }
         
