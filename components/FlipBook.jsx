@@ -11,7 +11,7 @@ export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
-  const [enteredBook, setEnteredBook] = useState(false);
+  const [hasOpened, setHasOpened] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
 
   const bookRef = useRef(null);
@@ -60,12 +60,12 @@ export default function FlipBook() {
   const interiorPages = Math.max((numPages || 0) - 1, 0);
 
   const handleOpenCover = () => {
-    if (isOpening) return;
+    if (isOpening || hasOpened) return;
 
     setIsOpening(true);
 
     setTimeout(() => {
-      setEnteredBook(true);
+      setHasOpened(true);
       setIsOpening(false);
     }, 900);
   };
@@ -118,158 +118,162 @@ export default function FlipBook() {
             lineHeight: 1.2,
           }}
         >
-          {!enteredBook
+          {!hasOpened
             ? (isMobile ? "Tap to open" : "Click to open")
             : (isMobile ? "Tap to flip the page" : "Click to flip the page")}
         </p>
 
-        {!enteredBook ? (
-          <div
+        <div
+          style={{
+            position: "relative",
+            width: isMobile ? pageWidth : pageWidth * 2,
+            height: pageHeight,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {isMobile && hasOpened && (
+            <>
+              <div
+                onClick={flipPrev}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  width: "30%",
+                  height: "100%",
+                  zIndex: 10,
+                }}
+              />
+              <div
+                onClick={flipNext}
+                style={{
+                  position: "absolute",
+                  right: 0,
+                  top: 0,
+                  width: "30%",
+                  height: "100%",
+                  zIndex: 10,
+                }}
+              />
+            </>
+          )}
+
+          <HTMLFlipBook
+            ref={bookRef}
+            width={pageWidth}
+            height={pageHeight}
+            size="fixed"
+            minWidth={pageWidth}
+            maxWidth={isMobile ? pageWidth : pageWidth * 2}
+            minHeight={pageHeight}
+            maxHeight={pageHeight}
+            drawShadow={true}
+            flippingTime={800}
+            showCover={false}
+            usePortrait={isMobile}
+            mobileScrollSupport={false}
+            showPageCorners={!isMobile && hasOpened}
+            startPage={0}
             style={{
-              perspective: "2000px",
-              width: pageWidth,
-              height: pageHeight,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              margin: "0 auto",
+              visibility: numPages ? "visible" : "hidden",
             }}
           >
-            <button
-              onClick={handleOpenCover}
-              disabled={isOpening}
+            {Array.from({ length: interiorPages }, (_, index) => {
+              const pdfPageNumber = index + 2;
+
+              return (
+                <div
+                  key={pdfPageNumber}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: "#ffffff",
+                  }}
+                >
+                  <Page
+                    pageNumber={pdfPageNumber}
+                    width={pageWidth}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                  />
+                </div>
+              );
+            })}
+          </HTMLFlipBook>
+
+          {!hasOpened && (
+            <div
               style={{
-                all: "unset",
-                cursor: isOpening ? "default" : "pointer",
-                width: pageWidth,
-                height: pageHeight,
-                display: "block",
-                transformOrigin: "left center",
-                transformStyle: "preserve-3d",
-                animation: isOpening
-                  ? "openCover 900ms ease-in-out forwards"
-                  : "none",
-                boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
-                background: "#fff",
+                position: "absolute",
+                inset: 0,
+                zIndex: 20,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: isMobile ? "center" : "flex-start",
+                pointerEvents: isOpening ? "none" : "auto",
+                perspective: "2000px",
               }}
-              aria-label="Open book"
             >
-              <div
+              <button
+                onClick={handleOpenCover}
+                aria-label="Open book"
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  backfaceVisibility: "hidden",
+                  all: "unset",
+                  cursor: isOpening ? "default" : "pointer",
+                  width: pageWidth,
+                  height: pageHeight,
+                  display: "block",
+                  transformOrigin: "left center",
+                  transformStyle: "preserve-3d",
+                  animation: isOpening
+                    ? "openCover 900ms ease-in-out forwards"
+                    : "none",
+                  boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
                   background: "#fff",
                 }}
               >
-                <Page
-                  pageNumber={1}
-                  width={pageWidth}
-                  renderAnnotationLayer={false}
-                  renderTextLayer={false}
-                />
-              </div>
-            </button>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    backfaceVisibility: "hidden",
+                    background: "#fff",
+                  }}
+                >
+                  <Page
+                    pageNumber={1}
+                    width={pageWidth}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                  />
+                </div>
+              </button>
+            </div>
+          )}
 
-            <style jsx>{`
-              @keyframes openCover {
-                0% {
-                  transform: rotateY(0deg) scale(1);
-                  opacity: 1;
-                }
-                40% {
-                  transform: rotateY(-25deg) scale(1.01);
-                  opacity: 1;
-                }
-                100% {
-                  transform: rotateY(-120deg) translateX(-40px);
-                  opacity: 0;
-                }
+          <style jsx>{`
+            @keyframes openCover {
+              0% {
+                transform: rotateY(0deg);
+                opacity: 1;
               }
-            `}</style>
-          </div>
-        ) : (
-          <div
-            style={{
-              position: "relative",
-              width: isMobile ? pageWidth : pageWidth * 2,
-              height: pageHeight,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {isMobile && (
-              <>
-                <div
-                  onClick={flipPrev}
-                  style={{
-                    position: "absolute",
-                    left: 0,
-                    top: 0,
-                    width: "30%",
-                    height: "100%",
-                    zIndex: 10,
-                  }}
-                />
-                <div
-                  onClick={flipNext}
-                  style={{
-                    position: "absolute",
-                    right: 0,
-                    top: 0,
-                    width: "30%",
-                    height: "100%",
-                    zIndex: 10,
-                  }}
-                />
-              </>
-            )}
-
-            <HTMLFlipBook
-              ref={bookRef}
-              width={pageWidth}
-              height={pageHeight}
-              size="fixed"
-              minWidth={pageWidth}
-              maxWidth={isMobile ? pageWidth : pageWidth * 2}
-              minHeight={pageHeight}
-              maxHeight={pageHeight}
-              drawShadow={true}
-              flippingTime={800}
-              showCover={false}
-              usePortrait={isMobile}
-              mobileScrollSupport={false}
-              showPageCorners={!isMobile}
-              startPage={0}
-              style={{ margin: "0 auto" }}
-            >
-              {Array.from({ length: interiorPages }, (_, index) => {
-                const pdfPageNumber = index + 2;
-
-                return (
-                  <div
-                    key={pdfPageNumber}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "#ffffff",
-                    }}
-                  >
-                    <Page
-                      pageNumber={pdfPageNumber}
-                      width={pageWidth}
-                      renderAnnotationLayer={false}
-                      renderTextLayer={false}
-                    />
-                  </div>
-                );
-              })}
-            </HTMLFlipBook>
-          </div>
-        )}
+              40% {
+                transform: rotateY(-25deg);
+                opacity: 1;
+              }
+              100% {
+                transform: rotateY(-120deg) translateX(-40px);
+                opacity: 0;
+              }
+            }
+          `}</style>
+        </div>
       </div>
     </Document>
   );
