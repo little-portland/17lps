@@ -15,7 +15,7 @@ export default function FoodSlideshow() {
   const real = images.length;
   const slides = [images[real - 1], ...images, images[0]];
 
-  const trackRef = useRef(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
 
   const [index, setIndex] = useState(1);
   const indexRef = useRef(1);
@@ -25,31 +25,46 @@ export default function FoodSlideshow() {
   const startX = useRef(0);
   const startIndex = useRef(1);
 
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const AUTOPLAY_MS = 2500;
+
   useEffect(() => {
     indexRef.current = index;
   }, [index]);
 
   useEffect(() => {
-    const handleResize = () =>
-      setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
 
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const setPosition = (i, animate = true) => {
+  const setPosition = (i: number, animate = true) => {
     const track = trackRef.current;
     if (!track) return;
 
-    track.style.transition = animate
-      ? 'transform 400ms ease'
-      : 'none';
-
+    track.style.transition = animate ? 'transform 400ms ease' : 'none';
     track.style.transform = `translateX(-${i * 100}%)`;
   };
 
-  // Initial correct positioning (NO WIDTH MEASUREMENTS)
+  const stopAutoplay = () => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+
+    autoplayRef.current = setInterval(() => {
+      if (isDragging.current) return;
+      setIndex((prev) => prev + 1);
+    }, AUTOPLAY_MS);
+  };
+
+  // Initial correct positioning
   useEffect(() => {
     setPosition(1, false);
   }, []);
@@ -74,31 +89,56 @@ export default function FoodSlideshow() {
       if (indexRef.current === real + 1) {
         track.style.transition = 'none';
         setIndex(1);
-        track.style.transform = `translateX(-100%)`;
+        track.style.transform = 'translateX(-100%)';
       }
     };
 
     track.addEventListener('transitionend', handleEnd);
-    return () =>
-      track.removeEventListener('transitionend', handleEnd);
+    return () => track.removeEventListener('transitionend', handleEnd);
   }, [real]);
 
-  // Clean snapping drag (percentage-based, not pixels)
+  // Autoplay
+  useEffect(() => {
+    startAutoplay();
+
+    return () => {
+      stopAutoplay();
+    };
+  }, []);
+
+  // Pause on tab hidden, resume when visible
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () =>
+      document.removeEventListener('visibilitychange', handleVisibility);
+  }, []);
+
+  // Drag
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    const container = track.parentElement;
+    const container = track.parentElement as HTMLDivElement | null;
+    if (!container) return;
 
-    const pointerDown = (e) => {
+    const pointerDown = (e: PointerEvent) => {
       isDragging.current = true;
       startX.current = e.clientX;
       startIndex.current = indexRef.current;
       track.style.transition = 'none';
       container.style.cursor = 'grabbing';
+      stopAutoplay();
     };
 
-    const pointerMove = (e) => {
+    const pointerMove = (e: PointerEvent) => {
       if (!isDragging.current) return;
 
       const dx = e.clientX - startX.current;
@@ -109,7 +149,7 @@ export default function FoodSlideshow() {
       }%)`;
     };
 
-    const pointerUp = (e) => {
+    const pointerUp = (e: PointerEvent) => {
       if (!isDragging.current) return;
 
       isDragging.current = false;
@@ -125,6 +165,8 @@ export default function FoodSlideshow() {
       } else {
         setPosition(startIndex.current);
       }
+
+      startAutoplay();
     };
 
     container.addEventListener('pointerdown', pointerDown);
@@ -174,7 +216,6 @@ export default function FoodSlideshow() {
         ))}
       </div>
 
-      {/* Vertical dots */}
       <div
         style={{
           position: 'absolute',
@@ -186,21 +227,23 @@ export default function FoodSlideshow() {
           gap: 8,
         }}
       >
-        {images.map((_, i) => (
-          <div
-            key={i}
-            style={{
-              width: index === i + 1 ? 8 : 8,
-              height: index === i + 1 ? 8 : 8,
-              borderRadius: '50%',
-              background:
-                index === i + 1
-                  ? '#000'
-                  : 'rgba(0,0,0,0.3)',
-              transition: 'all 0.3s ease',
-            }}
-          />
-        ))}
+        {images.map((_, i) => {
+          const activeDot =
+            index === i + 1 || (index === real + 1 && i === 0);
+
+          return (
+            <div
+              key={i}
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                background: activeDot ? '#000' : 'rgba(0,0,0,0.3)',
+                transition: 'all 0.3s ease',
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   );
