@@ -70,6 +70,30 @@ export default function FlipBook() {
   // Page 1 is standalone cover. Book starts from PDF page 2.
   const interiorPages = Math.max((numPages || 0) - 1, 0);
 
+  const containerDisplayWidth =
+    !showBook && !hasOpened ? pageWidth : (isMobile ? pageWidth : pageWidth * 2);
+
+  const centeredLoader = (width, height, label = "Loading…") => (
+    <div
+      style={{
+        width,
+        height,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        background: "#fff",
+        color: "rgba(0,0,0,0.55)",
+        fontFamily: "monospace",
+        fontSize: isMobile ? 12 : 16,
+        textTransform: "uppercase",
+        letterSpacing: "0.08em",
+      }}
+    >
+      {label}
+    </div>
+  );
+
   const handleOpenCover = () => {
     if (isOpening || hasOpened || !numPages) return;
 
@@ -111,6 +135,9 @@ export default function FlipBook() {
     <Document
       file="/docs/explore-menu.pdf"
       onLoadSuccess={onLoadSuccess}
+      loading={centeredLoader(containerDisplayWidth, pageHeight, "Loading PDF")}
+      error={centeredLoader(containerDisplayWidth, pageHeight, "Failed to load PDF")}
+      noData={centeredLoader(containerDisplayWidth, pageHeight, "No PDF")}
     >
       <div
         style={{
@@ -121,7 +148,7 @@ export default function FlipBook() {
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
-          background: "rgb(232, 186, 201)",
+          background: "#fff",
         }}
       >
         <p
@@ -144,9 +171,7 @@ export default function FlipBook() {
         <div
           style={{
             position: "relative",
-            width: !showBook && !hasOpened
-              ? pageWidth
-              : (isMobile ? pageWidth : pageWidth * 2),
+            width: containerDisplayWidth,
             height: pageHeight,
             display: "flex",
             alignItems: "center",
@@ -232,6 +257,8 @@ export default function FlipBook() {
                       width={pageWidth}
                       renderAnnotationLayer={false}
                       renderTextLayer={false}
+                      loading={centeredLoader(pageWidth, pageHeight, "Loading page")}
+                      error={centeredLoader(pageWidth, pageHeight, "Failed to load page")}
                     />
                   </div>
                 );
@@ -285,6 +312,8 @@ export default function FlipBook() {
                     width={pageWidth}
                     renderAnnotationLayer={false}
                     renderTextLayer={false}
+                    loading={centeredLoader(pageWidth, pageHeight, "Loading page")}
+                    error={centeredLoader(pageWidth, pageHeight, "Failed to load page")}
                   />
                 </div>
 
