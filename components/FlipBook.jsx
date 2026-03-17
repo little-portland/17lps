@@ -12,6 +12,7 @@ export default function FlipBook() {
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
   const [enteredBook, setEnteredBook] = useState(false);
+  const [isOpening, setIsOpening] = useState(false);
 
   const bookRef = useRef(null);
 
@@ -56,7 +57,18 @@ export default function FlipBook() {
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
-  const interiorPages = Math.max((numPages || 0) - 1, 0); // skip PDF page 1
+  const interiorPages = Math.max((numPages || 0) - 1, 0);
+
+  const handleOpenCover = () => {
+    if (isOpening) return;
+
+    setIsOpening(true);
+
+    setTimeout(() => {
+      setEnteredBook(true);
+      setIsOpening(false);
+    }, 900);
+  };
 
   const flipNext = () => {
     const flip = bookRef.current?.pageFlip();
@@ -112,28 +124,69 @@ export default function FlipBook() {
         </p>
 
         {!enteredBook ? (
-          <button
-            onClick={() => setEnteredBook(true)}
+          <div
             style={{
-              all: "unset",
-              cursor: "pointer",
+              perspective: "2000px",
               width: pageWidth,
               height: pageHeight,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "#fff",
-              boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
             }}
-            aria-label="Open book"
           >
-            <Page
-              pageNumber={1}
-              width={pageWidth}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-            />
-          </button>
+            <button
+              onClick={handleOpenCover}
+              disabled={isOpening}
+              style={{
+                all: "unset",
+                cursor: isOpening ? "default" : "pointer",
+                width: pageWidth,
+                height: pageHeight,
+                display: "block",
+                transformOrigin: "left center",
+                transformStyle: "preserve-3d",
+                animation: isOpening
+                  ? "openCover 900ms ease-in-out forwards"
+                  : "none",
+                boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
+                background: "#fff",
+              }}
+              aria-label="Open book"
+            >
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  backfaceVisibility: "hidden",
+                  background: "#fff",
+                }}
+              >
+                <Page
+                  pageNumber={1}
+                  width={pageWidth}
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                />
+              </div>
+            </button>
+
+            <style jsx>{`
+              @keyframes openCover {
+                0% {
+                  transform: rotateY(0deg) scale(1);
+                  opacity: 1;
+                }
+                40% {
+                  transform: rotateY(-25deg) scale(1.01);
+                  opacity: 1;
+                }
+                100% {
+                  transform: rotateY(-120deg) translateX(-40px);
+                  opacity: 0;
+                }
+              }
+            `}</style>
+          </div>
         ) : (
           <div
             style={{
@@ -191,7 +244,7 @@ export default function FlipBook() {
               style={{ margin: "0 auto" }}
             >
               {Array.from({ length: interiorPages }, (_, index) => {
-                const pdfPageNumber = index + 2; // start flipbook at PDF page 2
+                const pdfPageNumber = index + 2;
 
                 return (
                   <div
