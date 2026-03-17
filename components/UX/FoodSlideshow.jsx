@@ -15,7 +15,7 @@ export default function FoodSlideshow() {
   const real = images.length;
   const slides = [images[real - 1], ...images, images[0]];
 
-  const trackRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef(null);
 
   const [index, setIndex] = useState(1);
   const indexRef = useRef(1);
@@ -25,7 +25,7 @@ export default function FoodSlideshow() {
   const startX = useRef(0);
   const startIndex = useRef(1);
 
-  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const autoplayRef = useRef(null);
   const AUTOPLAY_MS = 2500;
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function FoodSlideshow() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const setPosition = (i: number, animate = true) => {
+  const setPosition = (i, animate = true) => {
     const track = trackRef.current;
     if (!track) return;
 
@@ -64,17 +64,14 @@ export default function FoodSlideshow() {
     }, AUTOPLAY_MS);
   };
 
-  // Initial correct positioning
   useEffect(() => {
     setPosition(1, false);
   }, []);
 
-  // Slide changes
   useEffect(() => {
     setPosition(index);
   }, [index]);
 
-  // Infinite correction
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -97,16 +94,11 @@ export default function FoodSlideshow() {
     return () => track.removeEventListener('transitionend', handleEnd);
   }, [real]);
 
-  // Autoplay
   useEffect(() => {
     startAutoplay();
-
-    return () => {
-      stopAutoplay();
-    };
+    return () => stopAutoplay();
   }, []);
 
-  // Pause on tab hidden, resume when visible
   useEffect(() => {
     const handleVisibility = () => {
       if (document.hidden) {
@@ -121,15 +113,14 @@ export default function FoodSlideshow() {
       document.removeEventListener('visibilitychange', handleVisibility);
   }, []);
 
-  // Drag
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    const container = track.parentElement as HTMLDivElement | null;
+    const container = track.parentElement;
     if (!container) return;
 
-    const pointerDown = (e: PointerEvent) => {
+    const pointerDown = (e) => {
       isDragging.current = true;
       startX.current = e.clientX;
       startIndex.current = indexRef.current;
@@ -138,7 +129,7 @@ export default function FoodSlideshow() {
       stopAutoplay();
     };
 
-    const pointerMove = (e: PointerEvent) => {
+    const pointerMove = (e) => {
       if (!isDragging.current) return;
 
       const dx = e.clientX - startX.current;
@@ -149,7 +140,7 @@ export default function FoodSlideshow() {
       }%)`;
     };
 
-    const pointerUp = (e: PointerEvent) => {
+    const pointerUp = (e) => {
       if (!isDragging.current) return;
 
       isDragging.current = false;
