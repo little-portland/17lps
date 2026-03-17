@@ -130,7 +130,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .night-sch {
-                margin: 0;
+                margin: 25px 0 15px 0;
             }
             
             .override-buttons-wrapper .column {
@@ -200,7 +200,7 @@ const Menu = ({ menuImage }) => {
 
         
         .night-sch {
-            margin: 0 0 5px 0;
+            margin: 0;
         }
 
         .image-column {
