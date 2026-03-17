@@ -198,6 +198,11 @@ const Menu = ({ menuImage }) => {
             font-size: 10px!important;
         }
 
+        
+        .night-sch {
+            margin: 7px 0 5px 0;
+        }
+
         .image-column {
             flex: 100%;
             max-width: 100%;
