@@ -33,8 +33,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>02 APR</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>TIM LANG, ZEYNEP ERBAY</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
+              <h3><span>TENT <b>//</b> </span>Theo G, Trixie</h3>
+              <h3><span>STUDIO <b>//</b> </span>Gene on Earth, Josh Tweak</h3>
             </div>
         </div>
 
