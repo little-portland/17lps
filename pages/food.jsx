@@ -200,7 +200,7 @@ const Menu = ({ menuImage }) => {
 
         
         .night-sch {
-            margin: 7px 0 5px 0;
+            margin: 0 0 5px 0;
         }
 
         .image-column {
