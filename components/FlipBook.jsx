@@ -18,7 +18,6 @@ export default function FlipBook() {
     setNumPages(numPages);
   }
 
-  // ---------- Viewport ----------
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
@@ -33,7 +32,6 @@ export default function FlipBook() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // ---------- Lock scroll ----------
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -41,14 +39,12 @@ export default function FlipBook() {
     };
   }, []);
 
-  // ---------- Base PDF dimensions ----------
   const baseWidth = 1080;
   const baseHeight = 1325;
 
   const vw = viewport.width;
   const vh = viewport.height;
 
-  // Desktop = spread (2 pages), Mobile = single page
   const spreadWidth = isMobile ? baseWidth : baseWidth * 2;
 
   const scale = Math.min(
@@ -59,7 +55,6 @@ export default function FlipBook() {
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
-  // ---------- Symmetric curl navigation ----------
   const flipNext = () => {
     const flip = bookRef.current?.pageFlip();
     if (!flip) return;
@@ -92,7 +87,6 @@ export default function FlipBook() {
         overflow: "hidden",
       }}
     >
-      {/* Instruction */}
       <p
         style={{
           marginBottom: 16,
@@ -104,9 +98,7 @@ export default function FlipBook() {
           lineHeight: 1.2,
         }}
       >
-        {isMobile
-          ? "Tap to flip the page"
-          : "Click to flip the page"}
+        {isMobile ? "Tap to flip the page" : "Click to flip the page"}
       </p>
 
       <div
@@ -119,7 +111,6 @@ export default function FlipBook() {
           justifyContent: "center",
         }}
       >
-        {/* Mobile Tap Zones */}
         {isMobile && (
           <>
             <div
@@ -162,7 +153,7 @@ export default function FlipBook() {
             maxHeight={pageHeight}
             drawShadow={true}
             flippingTime={800}
-            showCover={false}
+            showCover={!isMobile}
             usePortrait={isMobile}
             mobileScrollSupport={false}
             showPageCorners={!isMobile}
