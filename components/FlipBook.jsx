@@ -67,8 +67,7 @@ export default function FlipBook() {
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
-  // Page 1 is used as standalone front cover.
-  // Flipbook starts from PDF page 2.
+  // Page 1 is standalone cover. Book starts from PDF page 2.
   const interiorPages = Math.max((numPages || 0) - 1, 0);
 
   const handleOpenCover = () => {
@@ -79,15 +78,13 @@ export default function FlipBook() {
       flip.turnToPage(0);
     }
 
-    // Reveal the spread immediately so the cover animation
-    // feels like it is opening onto real pages underneath.
     setShowBook(true);
     setIsOpening(true);
 
     schedule(() => {
       setHasOpened(true);
       setIsOpening(false);
-    }, 900);
+    }, 550);
   };
 
   const flipNext = () => {
@@ -154,7 +151,7 @@ export default function FlipBook() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            transition: "width 320ms cubic-bezier(0.22, 0.7, 0.2, 1)",
+            transition: "width 240ms ease",
             overflow: "hidden",
           }}
         >
@@ -185,56 +182,62 @@ export default function FlipBook() {
             </>
           )}
 
-          <HTMLFlipBook
-            ref={bookRef}
-            width={pageWidth}
-            height={pageHeight}
-            size="fixed"
-            minWidth={pageWidth}
-            maxWidth={isMobile ? pageWidth : pageWidth * 2}
-            minHeight={pageHeight}
-            maxHeight={pageHeight}
-            drawShadow={true}
-            flippingTime={800}
-            showCover={false}
-            usePortrait={isMobile}
-            mobileScrollSupport={false}
-            showPageCorners={!isMobile && hasOpened}
-            startPage={0}
+          <div
             style={{
-              margin: "0 auto",
-              visibility: numPages ? "visible" : "hidden",
               opacity: showBook || hasOpened ? 1 : 0,
-              transition: "opacity 260ms ease-out",
-              pointerEvents: hasOpened ? "auto" : "none",
+              transform: showBook || hasOpened ? "scale(1)" : "scale(0.985)",
+              transition: "opacity 320ms ease, transform 320ms ease",
               willChange: "opacity, transform",
             }}
           >
-            {Array.from({ length: interiorPages }, (_, index) => {
-              const pdfPageNumber = index + 2;
+            <HTMLFlipBook
+              ref={bookRef}
+              width={pageWidth}
+              height={pageHeight}
+              size="fixed"
+              minWidth={pageWidth}
+              maxWidth={isMobile ? pageWidth : pageWidth * 2}
+              minHeight={pageHeight}
+              maxHeight={pageHeight}
+              drawShadow={true}
+              flippingTime={800}
+              showCover={false}
+              usePortrait={isMobile}
+              mobileScrollSupport={false}
+              showPageCorners={!isMobile && hasOpened}
+              startPage={0}
+              style={{
+                margin: "0 auto",
+                visibility: numPages ? "visible" : "hidden",
+                pointerEvents: hasOpened ? "auto" : "none",
+              }}
+            >
+              {Array.from({ length: interiorPages }, (_, index) => {
+                const pdfPageNumber = index + 2;
 
-              return (
-                <div
-                  key={pdfPageNumber}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: "#ffffff",
-                  }}
-                >
-                  <Page
-                    pageNumber={pdfPageNumber}
-                    width={pageWidth}
-                    renderAnnotationLayer={false}
-                    renderTextLayer={false}
-                  />
-                </div>
-              );
-            })}
-          </HTMLFlipBook>
+                return (
+                  <div
+                    key={pdfPageNumber}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "#ffffff",
+                    }}
+                  >
+                    <Page
+                      pageNumber={pdfPageNumber}
+                      width={pageWidth}
+                      renderAnnotationLayer={false}
+                      renderTextLayer={false}
+                    />
+                  </div>
+                );
+              })}
+            </HTMLFlipBook>
+          </div>
 
           {!hasOpened && (
             <div
@@ -246,8 +249,7 @@ export default function FlipBook() {
                 alignItems: "center",
                 justifyContent: "center",
                 pointerEvents: isOpening ? "none" : "auto",
-                perspective: "2000px",
-                background: "#fff",
+                background: "transparent",
               }}
             >
               <button
@@ -260,23 +262,22 @@ export default function FlipBook() {
                   height: pageHeight,
                   display: "block",
                   position: "relative",
-                  transformOrigin: "left center",
-                  transformStyle: "preserve-3d",
-                  animation: isOpening
-                    ? "openCover 900ms cubic-bezier(0.22, 0.7, 0.2, 1) forwards"
-                    : "none",
-                  boxShadow: "0 16px 36px rgba(0,0,0,0.16)",
                   background: "#fff",
-                  willChange: "transform, opacity",
+                  boxShadow: "0 16px 36px rgba(0,0,0,0.14)",
+                  opacity: isOpening ? 0 : 1,
+                  transform: isOpening ? "scale(1.04)" : "scale(1)",
+                  filter: isOpening ? "blur(6px)" : "blur(0px)",
+                  transition:
+                    "opacity 320ms ease, transform 320ms ease, filter 320ms ease",
+                  willChange: "opacity, transform, filter",
                 }}
               >
                 <div
                   style={{
                     width: "100%",
                     height: "100%",
-                    backfaceVisibility: "hidden",
-                    background: "#fff",
                     overflow: "hidden",
+                    background: "#fff",
                   }}
                 >
                   <Page
@@ -293,47 +294,12 @@ export default function FlipBook() {
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                      "linear-gradient(110deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04) 35%, rgba(0,0,0,0.10) 100%)",
-                  }}
-                />
-
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    bottom: 0,
-                    right: 0,
-                    width: 10,
-                    pointerEvents: "none",
-                    background:
-                      "linear-gradient(to left, rgba(0,0,0,0.14), rgba(255,255,255,0.14))",
-                    opacity: 0.9,
+                      "linear-gradient(110deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03) 40%, rgba(0,0,0,0.06) 100%)",
                   }}
                 />
               </button>
             </div>
           )}
-
-          <style jsx>{`
-            @keyframes openCover {
-              0% {
-                transform: perspective(2000px) rotateY(0deg) translateX(0);
-                opacity: 1;
-              }
-              35% {
-                transform: perspective(2000px) rotateY(-22deg) translateX(0);
-                opacity: 1;
-              }
-              70% {
-                transform: perspective(2000px) rotateY(-72deg) translateX(-8px);
-                opacity: 0.98;
-              }
-              100% {
-                transform: perspective(2000px) rotateY(-108deg) translateX(-12px);
-                opacity: 0.92;
-              }
-            }
-          `}</style>
         </div>
       </div>
     </Document>
