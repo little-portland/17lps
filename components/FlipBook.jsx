@@ -121,7 +121,7 @@ export default function FlipBook() {
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
-          background: "#fff",
+          background: "rgb(232, 186, 201)",
         }}
       >
         <p
