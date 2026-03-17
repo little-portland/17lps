@@ -11,8 +11,10 @@ export default function FlipBook() {
   const [numPages, setNumPages] = useState(null);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
+
   const [hasOpened, setHasOpened] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
+  const [showBook, setShowBook] = useState(false);
 
   const bookRef = useRef(null);
 
@@ -63,6 +65,10 @@ export default function FlipBook() {
     if (isOpening || hasOpened) return;
 
     setIsOpening(true);
+
+    setTimeout(() => {
+      setShowBook(true);
+    }, 180);
 
     setTimeout(() => {
       setHasOpened(true);
@@ -126,11 +132,15 @@ export default function FlipBook() {
         <div
           style={{
             position: "relative",
-            width: isMobile ? pageWidth : pageWidth * 2,
+            width: !showBook && !hasOpened
+              ? pageWidth
+              : (isMobile ? pageWidth : pageWidth * 2),
             height: pageHeight,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            transition: "width 220ms ease",
+            overflow: "hidden",
           }}
         >
           {isMobile && hasOpened && (
@@ -179,6 +189,9 @@ export default function FlipBook() {
             style={{
               margin: "0 auto",
               visibility: numPages ? "visible" : "hidden",
+              opacity: showBook || hasOpened ? 1 : 0,
+              transition: "opacity 120ms linear",
+              pointerEvents: hasOpened ? "auto" : "none",
             }}
           >
             {Array.from({ length: interiorPages }, (_, index) => {
@@ -215,9 +228,10 @@ export default function FlipBook() {
                 zIndex: 20,
                 display: "flex",
                 alignItems: "center",
-                justifyContent: isMobile ? "center" : "flex-start",
+                justifyContent: "center",
                 pointerEvents: isOpening ? "none" : "auto",
                 perspective: "2000px",
+                background: "#fff",
               }}
             >
               <button
