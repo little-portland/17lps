@@ -2316,6 +2316,10 @@ html, body {
   fill: currentColor; /* inherits the text color */
 }
 
+.letter-spacing {
+    letter-spacing: -5px;
+}
+
 .new-button-wrapper .noc-time {
   margin-top: 10px;
   margin-bottom: 10px;
