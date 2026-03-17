@@ -9,6 +9,7 @@ const images = [
   '/images/food/slide04.png',
   '/images/food/slide05.png',
   '/images/food/slide06.png',
+  '/images/food/slide07.png',
 ];
 
 export default function FoodSlideshow() {
