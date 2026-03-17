@@ -128,6 +128,10 @@ const Menu = ({ menuImage }) => {
               width: 88%;
               margin: 0 auto;
             }
+
+            .night-sch {
+                margin: 25px 0 15px 0;
+            }
             
             .override-buttons-wrapper .column {
                 flex: 1;
@@ -229,7 +233,7 @@ const Menu = ({ menuImage }) => {
              </div>
             </div>
            
-           <img src="/images/food/night-schedule.gif" alt="The Tent Food" width="100%" />
+           <img className="night-sch" src="/images/food/night-schedule.gif" alt="The Tent Food" width="100%" />
 
            <div className="override-buttons-wrapper">
              <a href="https://www.little-portland.com/dinner-options" class="override-button">BOOK DINNER</a>
