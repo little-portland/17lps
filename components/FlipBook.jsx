@@ -17,6 +17,7 @@ export default function FlipBook() {
   const [showBook, setShowBook] = useState(false);
 
   const bookRef = useRef(null);
+  const timersRef = useRef([]);
 
   function onLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -40,8 +41,15 @@ export default function FlipBook() {
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "auto";
+      timersRef.current.forEach(clearTimeout);
     };
   }, []);
+
+  const schedule = (fn, delay) => {
+    const id = window.setTimeout(fn, delay);
+    timersRef.current.push(id);
+    return id;
+  };
 
   const baseWidth = 1080;
   const baseHeight = 1325;
@@ -59,18 +67,25 @@ export default function FlipBook() {
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
+  // page 1 is used as standalone front cover
+  // flipbook starts from page 2
   const interiorPages = Math.max((numPages || 0) - 1, 0);
 
   const handleOpenCover = () => {
-    if (isOpening || hasOpened) return;
+    if (isOpening || hasOpened || !numPages) return;
+
+    const flip = bookRef.current?.pageFlip();
+    if (flip) {
+      flip.turnToPage(0);
+    }
 
     setIsOpening(true);
 
-    setTimeout(() => {
+    schedule(() => {
       setShowBook(true);
-    }, 180);
+    }, 160);
 
-    setTimeout(() => {
+    schedule(() => {
       setHasOpened(true);
       setIsOpening(false);
     }, 900);
@@ -122,6 +137,7 @@ export default function FlipBook() {
             textTransform: "uppercase",
             textAlign: "center",
             lineHeight: 1.2,
+            minHeight: isMobile ? 18 : 24,
           }}
         >
           {!hasOpened
@@ -190,7 +206,7 @@ export default function FlipBook() {
               margin: "0 auto",
               visibility: numPages ? "visible" : "hidden",
               opacity: showBook || hasOpened ? 1 : 0,
-              transition: "opacity 120ms linear",
+              transition: "opacity 180ms linear",
               pointerEvents: hasOpened ? "auto" : "none",
             }}
           >
