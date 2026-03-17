@@ -229,7 +229,7 @@ const Menu = ({ menuImage }) => {
              </div>
             </div>
            
-           <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
+           <img src="/images/food/night-schedule.gif" alt="The Tent Food" width="100%" />
 
            <div className="override-buttons-wrapper">
              <a href="https://www.little-portland.com/dinner-options" class="override-button">BOOK DINNER</a>
