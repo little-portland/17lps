@@ -1,9 +1,15 @@
 import dynamic from "next/dynamic";
 
-const FlipBook = dynamic(() => import("../components/FlipMenu"), {
-  ssr: false,
-});
+// Disable SSR (flipbook needs browser)
+const FlipBook = dynamic(
+  () => import("../components/FlipBook"),
+  { ssr: false }
+);
 
-export default function ExploreMenuPage() {
-  return <FlipBook />;
+export default function EbookPage() {
+  return (
+    <div style={{ padding: 40 }}>
+      <FlipBook />
+    </div>
+  );
 }
