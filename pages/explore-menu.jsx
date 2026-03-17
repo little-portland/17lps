@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const FlipBook = dynamic(() => import("../components/FlipBook"), {
+const FlipBook = dynamic(() => import("../components/FlipMenu"), {
   ssr: false,
 });
 
