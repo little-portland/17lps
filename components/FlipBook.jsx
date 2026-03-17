@@ -67,8 +67,8 @@ export default function FlipBook() {
   const pageWidth = baseWidth * scale;
   const pageHeight = baseHeight * scale;
 
-  // page 1 is used as standalone front cover
-  // flipbook starts from page 2
+  // Page 1 is used as standalone front cover.
+  // Flipbook starts from PDF page 2.
   const interiorPages = Math.max((numPages || 0) - 1, 0);
 
   const handleOpenCover = () => {
@@ -79,11 +79,10 @@ export default function FlipBook() {
       flip.turnToPage(0);
     }
 
+    // Reveal the spread immediately so the cover animation
+    // feels like it is opening onto real pages underneath.
+    setShowBook(true);
     setIsOpening(true);
-
-    schedule(() => {
-      setShowBook(true);
-    }, 160);
 
     schedule(() => {
       setHasOpened(true);
@@ -155,7 +154,7 @@ export default function FlipBook() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            transition: "width 220ms ease",
+            transition: "width 320ms cubic-bezier(0.22, 0.7, 0.2, 1)",
             overflow: "hidden",
           }}
         >
@@ -206,8 +205,9 @@ export default function FlipBook() {
               margin: "0 auto",
               visibility: numPages ? "visible" : "hidden",
               opacity: showBook || hasOpened ? 1 : 0,
-              transition: "opacity 180ms linear",
+              transition: "opacity 260ms ease-out",
               pointerEvents: hasOpened ? "auto" : "none",
+              willChange: "opacity, transform",
             }}
           >
             {Array.from({ length: interiorPages }, (_, index) => {
@@ -259,13 +259,15 @@ export default function FlipBook() {
                   width: pageWidth,
                   height: pageHeight,
                   display: "block",
+                  position: "relative",
                   transformOrigin: "left center",
                   transformStyle: "preserve-3d",
                   animation: isOpening
-                    ? "openCover 900ms ease-in-out forwards"
+                    ? "openCover 900ms cubic-bezier(0.22, 0.7, 0.2, 1) forwards"
                     : "none",
-                  boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
+                  boxShadow: "0 16px 36px rgba(0,0,0,0.16)",
                   background: "#fff",
+                  willChange: "transform, opacity",
                 }}
               >
                 <div
@@ -274,6 +276,7 @@ export default function FlipBook() {
                     height: "100%",
                     backfaceVisibility: "hidden",
                     background: "#fff",
+                    overflow: "hidden",
                   }}
                 >
                   <Page
@@ -283,6 +286,30 @@ export default function FlipBook() {
                     renderTextLayer={false}
                   />
                 </div>
+
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none",
+                    background:
+                      "linear-gradient(110deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04) 35%, rgba(0,0,0,0.10) 100%)",
+                  }}
+                />
+
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    right: 0,
+                    width: 10,
+                    pointerEvents: "none",
+                    background:
+                      "linear-gradient(to left, rgba(0,0,0,0.14), rgba(255,255,255,0.14))",
+                    opacity: 0.9,
+                  }}
+                />
               </button>
             </div>
           )}
@@ -290,16 +317,20 @@ export default function FlipBook() {
           <style jsx>{`
             @keyframes openCover {
               0% {
-                transform: rotateY(0deg);
+                transform: perspective(2000px) rotateY(0deg) translateX(0);
                 opacity: 1;
               }
-              40% {
-                transform: rotateY(-25deg);
+              35% {
+                transform: perspective(2000px) rotateY(-22deg) translateX(0);
                 opacity: 1;
+              }
+              70% {
+                transform: perspective(2000px) rotateY(-72deg) translateX(-8px);
+                opacity: 0.98;
               }
               100% {
-                transform: rotateY(-120deg) translateX(-40px);
-                opacity: 0;
+                transform: perspective(2000px) rotateY(-108deg) translateX(-12px);
+                opacity: 0.92;
               }
             }
           `}</style>
