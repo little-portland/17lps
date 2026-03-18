@@ -7,6 +7,7 @@ import { useEffect } from "react";
 //Components
 import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
 import { IFrameContainerStyle } from "@components/UX/CenterContainer/styles";
+import PlaylistSection from "@components/PlaylistSection/PlaylistSection";
 
 //hooks
 import useDeviceDetect from "@utils/useDeviceDetect"; 
@@ -132,7 +133,42 @@ const Menu = ({ menuImage }) => {
                 </a>
               </div>
              </div>
-              
+         </div> 
+
+         <div className="nocturn-wider-section subscribe">
+            <div className="row">
+                 <div className="column">
+                    <PlaylistSection
+                       title="Nocturn Playlist"
+                       tracks={[
+                         {
+                           id: 1,
+                           title: "Nocturn – Resonance x Doyenne 27 Nov 2025",
+                           thumbnail: "/images/nocturn/playlist/playlist-thumb.png",
+                           audioSrc: "/audio/nocturn/resonance.mp3",
+                           duration: "29:02",
+                           downloadHref: "#",
+                         },
+                         {
+                           id: 2,
+                           title: "Nocturn 06 Sonics –  Eros Downstairs (Stereo)",
+                           thumbnail: "/images/nocturn/playlist/playlist-thumb.png",
+                           audioSrc: "/audio/nocturn/eros-downstairs.mp3",
+                           duration: "10:17",
+                           downloadHref: "#",
+                         },
+                         {
+                           id: 3,
+                           title: "Nocturn 06 Sonics –  Eros Upstairs (Stereo)",
+                           thumbnail: "/images/nocturn/playlist/playlist-thumb.png",
+                           audioSrc: "/audio/nocturn/eros-upstairs.mp3",
+                           duration: "13:56",
+                           downloadHref: "#",
+                         },
+                       ]}
+                     />
+                 </div>
+             </div>
          </div> 
 
           <div className="nocturn-wider-section subscribe">
