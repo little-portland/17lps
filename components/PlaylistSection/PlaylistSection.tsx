@@ -224,7 +224,7 @@ const PlaylistSection = ({
         .playlist-header h2 {
           margin: 0;
           font-family: Helvetica, Arial, sans-serif;
-          font-size: 20px;
+          font-size: 28px;
           font-weight: 700;
           letter-spacing: 0.02em;
         }
