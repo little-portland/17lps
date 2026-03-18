@@ -5,7 +5,7 @@ type Track = {
   title: string;
   thumbnail: string;
   audioSrc: string;
-  duration: string;
+  duration?: string;
   downloadHref: string;
 };
 
@@ -14,55 +14,107 @@ type PlaylistSectionProps = {
   tracks: Track[];
 };
 
+type ProgressState = {
+  currentTime: number;
+  duration: number;
+};
+
+const formatTime = (time: number) => {
+  if (!Number.isFinite(time)) return "00:00";
+
+  const mins = Math.floor(time / 60);
+  const secs = Math.floor(time % 60);
+
+  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+};
+
 const PlaylistSection = ({
   title = "Listen",
   tracks,
 }: PlaylistSectionProps) => {
   const [activeTrackId, setActiveTrackId] = useState<string | number | null>(null);
+  const [progressMap, setProgressMap] = useState<Record<string | number, ProgressState>>({});
+
   const audioRefs = useRef<Record<string | number, HTMLAudioElement | null>>({});
 
-  const handleToggle = (trackId: string | number) => {
+  const updateProgress = (trackId: string | number) => {
+    const audio = audioRefs.current[trackId];
+    if (!audio) return;
+
+    setProgressMap((prev) => ({
+      ...prev,
+      [trackId]: {
+        currentTime: audio.currentTime || 0,
+        duration: audio.duration || 0,
+      },
+    }));
+  };
+
+  const handleToggle = async (trackId: string | number) => {
     const currentAudio = audioRefs.current[trackId];
     if (!currentAudio) return;
 
-    const isCurrentTrackActive = activeTrackId === trackId;
+    const isCurrentTrackActive = activeTrackId === trackId && !currentAudio.paused;
 
     Object.entries(audioRefs.current).forEach(([id, audio]) => {
       if (!audio) return;
       if (String(id) !== String(trackId)) {
         audio.pause();
-        audio.currentTime = 0;
       }
     });
 
     if (isCurrentTrackActive) {
       currentAudio.pause();
       setActiveTrackId(null);
-    } else {
-      currentAudio.play();
+      return;
+    }
+
+    try {
+      await currentAudio.play();
       setActiveTrackId(trackId);
+    } catch (error) {
+      console.error("Audio playback failed:", error);
     }
   };
 
-  useEffect(() => {
-    const refs = audioRefs.current;
+  const handleSeek = (trackId: string | number, value: number) => {
+    const audio = audioRefs.current[trackId];
+    if (!audio) return;
 
-    Object.entries(refs).forEach(([id, audio]) => {
+    audio.currentTime = value;
+    updateProgress(trackId);
+  };
+
+  useEffect(() => {
+    const cleanups: Array<() => void> = [];
+
+    Object.entries(audioRefs.current).forEach(([id, audio]) => {
       if (!audio) return;
 
+      const trackId = id;
+
+      const onTimeUpdate = () => updateProgress(trackId);
+      const onLoadedMetadata = () => updateProgress(trackId);
       const onEnded = () => {
-        if (String(activeTrackId) === String(id)) {
-          setActiveTrackId(null);
-        }
+        setActiveTrackId((prev) => (String(prev) === String(trackId) ? null : prev));
+        updateProgress(trackId);
       };
 
+      audio.addEventListener("timeupdate", onTimeUpdate);
+      audio.addEventListener("loadedmetadata", onLoadedMetadata);
       audio.addEventListener("ended", onEnded);
 
-      return () => {
+      cleanups.push(() => {
+        audio.removeEventListener("timeupdate", onTimeUpdate);
+        audio.removeEventListener("loadedmetadata", onLoadedMetadata);
         audio.removeEventListener("ended", onEnded);
-      };
+      });
     });
-  }, [activeTrackId]);
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup());
+    };
+  }, [tracks]);
 
   return (
     <section className="playlist-section">
@@ -72,12 +124,16 @@ const PlaylistSection = ({
 
       <div className="playlist-grid">
         {tracks.map((track) => {
+          const audioState = progressMap[track.id] || { currentTime: 0, duration: 0 };
           const isPlaying = activeTrackId === track.id;
+          const max = audioState.duration || 0;
+          const progressPercent = max > 0 ? (audioState.currentTime / max) * 100 : 0;
 
           return (
             <article className="playlist-card" key={track.id}>
               <div className="thumb-wrap">
                 <img src={track.thumbnail} alt={track.title} className="thumb" />
+
                 <button
                   className={`play-button ${isPlaying ? "playing" : ""}`}
                   onClick={() => handleToggle(track.id)}
@@ -95,37 +151,58 @@ const PlaylistSection = ({
                 </button>
               </div>
 
-              <div className="track-info">
-                <div className="track-main">
-                  <h3>{track.title}</h3>
+              <div className="track-content">
+                <div className="top-row">
+                  <div className="track-main">
+                    <h3>{track.title}</h3>
 
-                  <div className="meta-row">
-                    <div className={`wave ${isPlaying ? "active" : ""}`} aria-hidden="true">
-                      <span />
-                      <span />
-                      <span />
-                      <span />
+                    <div className="meta-row">
+                      <div className={`wave ${isPlaying ? "active" : ""}`} aria-hidden="true">
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                      </div>
+
+                      <span className="duration">
+                        {formatTime(audioState.currentTime)} /{" "}
+                        {audioState.duration ? formatTime(audioState.duration) : track.duration || "00:00"}
+                      </span>
                     </div>
-
-                    <span className="duration">{track.duration}</span>
                   </div>
+
+                  <a
+                    href={track.downloadHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="download-link"
+                  >
+                    Download
+                  </a>
                 </div>
 
-                <a
-                  href={track.downloadHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="download-link"
-                >
-                  Download
-                </a>
+                <div className="progress-wrap">
+                  <input
+                    type="range"
+                    min={0}
+                    max={max || 0}
+                    step={0.1}
+                    value={audioState.currentTime}
+                    onChange={(e) => handleSeek(track.id, Number(e.target.value))}
+                    className="progress-bar"
+                    aria-label={`Seek ${track.title}`}
+                    style={{
+                      background: `linear-gradient(to right, #ff9292 0%, #ff9292 ${progressPercent}%, rgba(255,255,255,0.22) ${progressPercent}%, rgba(255,255,255,0.22) 100%)`,
+                    }}
+                  />
+                </div>
               </div>
 
               <audio
                 ref={(el) => {
                   audioRefs.current[track.id] = el;
                 }}
-                preload="none"
+                preload="metadata"
                 src={track.audioSrc}
               />
             </article>
@@ -167,8 +244,7 @@ const PlaylistSection = ({
           background: rgba(255, 255, 255, 0.06);
           backdrop-filter: blur(10px);
           border-radius: 18px;
-          transition: transform 0.25s ease, border-color 0.25s ease,
-            background 0.25s ease;
+          transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
         }
 
         .playlist-card:hover {
@@ -237,9 +313,15 @@ const PlaylistSection = ({
           display: block;
         }
 
-        .track-info {
+        .track-content {
           min-width: 0;
           flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .top-row {
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -264,6 +346,7 @@ const PlaylistSection = ({
           display: flex;
           align-items: center;
           gap: 10px;
+          flex-wrap: wrap;
         }
 
         .duration {
@@ -285,6 +368,62 @@ const PlaylistSection = ({
         .download-link:hover {
           color: #ff9292;
           border-color: #ff9292;
+        }
+
+        .progress-wrap {
+          width: 100%;
+        }
+
+        .progress-bar {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 100%;
+          height: 6px;
+          border-radius: 999px;
+          outline: none;
+          cursor: pointer;
+          transition: background 0.2s ease;
+        }
+
+        .progress-bar::-webkit-slider-runnable-track {
+          height: 6px;
+          border-radius: 999px;
+          background: transparent;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #ff9292;
+          border: none;
+          margin-top: -4px;
+          cursor: pointer;
+          box-shadow: 0 0 0 3px rgba(255, 146, 146, 0.15);
+        }
+
+        .progress-bar::-moz-range-track {
+          height: 6px;
+          border-radius: 999px;
+          background: transparent;
+        }
+
+        .progress-bar::-moz-range-progress {
+          height: 6px;
+          border-radius: 999px;
+          background: #ff9292;
+        }
+
+        .progress-bar::-moz-range-thumb {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #ff9292;
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 0 0 3px rgba(255, 146, 146, 0.15);
         }
 
         .wave {
@@ -356,7 +495,7 @@ const PlaylistSection = ({
             height: 82px;
           }
 
-          .track-info {
+          .top-row {
             flex-direction: column;
             align-items: flex-start;
           }
@@ -367,7 +506,6 @@ const PlaylistSection = ({
           }
 
           .download-link {
-            margin-top: 2px;
             font-size: 13px;
           }
         }
