@@ -41,6 +41,10 @@ const Menu = ({ menuImage }) => {
             {'.subscribe .column{flex: 100%;max-width: 100%;padding: 0 4px;}'}
             {'.subscribe h2{font-family: Helvetica!important;color: #ffffff!important;font-size: 20px;margin-top: -20px;margin-bottom: 10px;text-align: center;line-height: 1.5;}'}
             {'.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
+            {'.playlist { width: 80%;margin: 0 auto;margin-top: -50px;margin-bottom: 100px;}'}
+            {'.playlist .column { flex: 100%;max-width: 100%;}'}
+            {'.playlist .column img{ margin-top: 0px;}'}
+            {'.playlist h2 { text-align: center;}'}
             {'.column a{ cursor:pointer!important;}'}
             {'.top p{ font-size: 18px;}'}
             {'.bottom p{ font-size: 18px;}'}
@@ -135,7 +139,7 @@ const Menu = ({ menuImage }) => {
              </div>
          </div> 
 
-         <div className="nocturn-wider-section subscribe">
+         <div className="nocturn-wider-section playlist">
             <div className="row">
                  <div className="column">
                     <PlaylistSection
