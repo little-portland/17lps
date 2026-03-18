@@ -143,7 +143,7 @@ const Menu = ({ menuImage }) => {
             <div className="row">
                  <div className="column">
                     <PlaylistSection
-                       title="Nocturn Playlist"
+                       title="Sonic Archive"
                        tracks={[
                          {
                            id: 1,
