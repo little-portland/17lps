@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Theo G, Valentina Pahor</h3>
-              <h3><span>STUDIO <b>//</b> </span>DR BANANA, GENE ON EARTH</h3>
+              <h3><span>STUDIO <b>//</b> </span>GENE ON EARTH & FRIENDS</h3>
             </div>
         </div>
 
