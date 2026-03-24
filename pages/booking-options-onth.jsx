@@ -33,7 +33,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>09 APR</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>FARRANT & FEEBEE, LI CAUSI</h3>
+              <h3><span>TENT <b>//</b> </span>FARRANT & FEEBEE, LI CAUSI, Paul Day</h3>
               <h3><span>STUDIO <b>//</b> </span>CONNOR MIKAMI, Raef, RevstreeT</h3>
             </div>
         </div>
