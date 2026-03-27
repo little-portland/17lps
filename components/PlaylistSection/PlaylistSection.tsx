@@ -232,6 +232,7 @@ const PlaylistSection = ({
           display: grid;
           grid-template-columns: 1fr;
           gap: 16px;
+          margin-top: 60px;
         }
 
         .playlist-card {
