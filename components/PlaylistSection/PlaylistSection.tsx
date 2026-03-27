@@ -119,7 +119,6 @@ const PlaylistSection = ({
   return (
     <section className="playlist-section">
       <div className="playlist-header">
-        <h2>{title}</h2>
       </div>
 
       <div className="playlist-grid">
