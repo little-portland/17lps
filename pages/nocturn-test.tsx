@@ -60,6 +60,7 @@ const Menu = ({ menuImage }) => {
             .nocturn-text{ text-align: left!important;}
             .nocturn-wider-section a{text-decoration: none;#ffffff}
             .nocturn-wider-section a:hover .nocturn-text{color: #ff9292!important;}
+            .flyers {margin-bottom: 80px;}
 
             /* Tabs */
             .nocturn-tabs-wrapper{
