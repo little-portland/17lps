@@ -68,30 +68,34 @@ const Menu = ({ menuImage }) => {
             }
             .nocturn-tabs{
               display: flex;
-              justify-content: center;
-              align-items: center;
-              gap: 32px;
+              justify-content: space-between;
+              align-items: stretch;
+              margin: 0 10px;
               border-bottom: 1px solid rgba(255,255,255,0.2);
             }
             .nocturn-tab{
               appearance: none;
               background: transparent;
               border: none;
-              color: rgba(255,255,255,0.7);
+              color: rgba(255,255,255,0.72);
               font-family: Helvetica, Arial, sans-serif;
-              font-size: 18px;
+              font-size: 22px;
               font-weight: bold;
               cursor: pointer;
-              padding: 0 0 14px 0;
+              padding: 0 12px 16px 12px;
               margin: 0;
               position: relative;
-              transition: color 0.3s ease;
+              transition: color 0.3s ease, transform 0.25s ease, opacity 0.25s ease;
+              width: 50%;
+              text-align: center;
             }
             .nocturn-tab:hover{
               color: #ffffff;
+              transform: translateY(-1px);
             }
             .nocturn-tab.active{
               color: #ffffff;
+              animation: tabFadeIn 0.35s ease;
             }
             .nocturn-tab.active::after{
               content: "";
@@ -101,10 +105,43 @@ const Menu = ({ menuImage }) => {
               width: 100%;
               height: 2px;
               background: #ff9292;
+              animation: tabUnderline 0.3s ease;
             }
 
             .tab-panel{
               width: 100%;
+              animation: tabContentFade 0.35s ease;
+            }
+
+            @keyframes tabUnderline {
+              from {
+                transform: scaleX(0.4);
+                opacity: 0.4;
+              }
+              to {
+                transform: scaleX(1);
+                opacity: 1;
+              }
+            }
+
+            @keyframes tabContentFade {
+              from {
+                opacity: 0;
+                transform: translateY(8px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes tabFadeIn {
+              from {
+                opacity: 0.7;
+              }
+              to {
+                opacity: 1;
+              }
             }
 
             @media (max-width: 768px) {
@@ -132,11 +169,11 @@ const Menu = ({ menuImage }) => {
                 margin: 0 auto 20px auto;
               }
               .nocturn-tabs{
-                gap: 20px;
+                margin: 0 5px;
               }
               .nocturn-tab{
-                font-size: 16px;
-                padding-bottom: 12px;
+                font-size: 18px;
+                padding: 0 8px 14px 8px;
               }
             }
           `}
@@ -157,7 +194,7 @@ const Menu = ({ menuImage }) => {
             className={`nocturn-tab ${activeTab === "flyers" ? "active" : ""}`}
             onClick={() => setActiveTab("flyers")}
           >
-            Flyers
+            Nocturn Events
           </button>
 
           <button
@@ -165,7 +202,7 @@ const Menu = ({ menuImage }) => {
             className={`nocturn-tab ${activeTab === "playlist" ? "active" : ""}`}
             onClick={() => setActiveTab("playlist")}
           >
-            Playlist
+            Sonic Archive
           </button>
         </div>
       </div>
