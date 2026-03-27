@@ -248,7 +248,6 @@ const PlaylistSection = ({
         }
 
         .playlist-card:hover {
-          transform: translateY(-2px);
           border-color: rgba(255, 255, 255, 0.26);
           background: rgba(255, 255, 255, 0.09);
         }
