@@ -96,19 +96,17 @@ function Scene({
     : { x: 2445, y: 710, width: 140, height: 400 };
 
   const realDay = new Date().getDay();
-  const debugDay: number | null = null; // set to 4, 5, 6 to test
+  const debugDay: number | null = null; // set to 4, 5, 6 etc. for testing
   const day = debugDay ?? realDay;
 
-  const gradientId =
+  const obeliskHref =
     day === 4
-      ? "obelisk-gradient-green"
+      ? "/images/obelisk-green.png"
       : day === 5
-        ? "obelisk-gradient-red"
+        ? "/images/obelisk-red.png"
         : day === 6
-          ? "obelisk-gradient-purple"
-          : "obelisk-gradient-grey";
-
-  const maskId = isMobile ? "obelisk-mask-mobile" : "obelisk-mask-desktop";
+          ? "/images/obelisk-purple.png"
+          : "/images/obelisk-grey.png";
 
   return (
     <div className="scene-wrapper">
@@ -127,75 +125,6 @@ function Scene({
           preserveAspectRatio="xMidYMid meet"
           aria-hidden
         >
-          <defs>
-            <mask
-              id={maskId}
-              maskUnits="userSpaceOnUse"
-              x={obelisk.x}
-              y={obelisk.y}
-              width={obelisk.width}
-              height={obelisk.height}
-              style={{ maskType: "alpha" }}
-            >
-              <image
-                href="/images/obelisk.png"
-                x={obelisk.x}
-                y={obelisk.y}
-                width={obelisk.width}
-                height={obelisk.height}
-                preserveAspectRatio="none"
-              />
-            </mask>
-
-            <linearGradient
-              id="obelisk-gradient-green"
-              x1="0%"
-              y1="0%"
-              x2="0%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#00ff00" />
-              <stop offset="50%" stopColor="#7dff7d" />
-              <stop offset="100%" stopColor="#00ff00" />
-            </linearGradient>
-
-            <linearGradient
-              id="obelisk-gradient-red"
-              x1="0%"
-              y1="0%"
-              x2="0%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#fb0000" />
-              <stop offset="50%" stopColor="#ff7a7a" />
-              <stop offset="100%" stopColor="#fb0000" />
-            </linearGradient>
-
-            <linearGradient
-              id="obelisk-gradient-purple"
-              x1="0%"
-              y1="0%"
-              x2="0%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#6a76db" />
-              <stop offset="50%" stopColor="#b1bbff" />
-              <stop offset="100%" stopColor="#6a76db" />
-            </linearGradient>
-
-            <linearGradient
-              id="obelisk-gradient-grey"
-              x1="0%"
-              y1="0%"
-              x2="0%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#808080" />
-              <stop offset="50%" stopColor="#cfcfcf" />
-              <stop offset="100%" stopColor="#808080" />
-            </linearGradient>
-          </defs>
-
           <motion.g
             initial={{
               scaleY: 0,
@@ -225,13 +154,12 @@ function Scene({
                 delay: 3.4,
               }}
             >
-              <rect
+              <image
+                href={obeliskHref}
                 x={obelisk.x}
                 y={obelisk.y}
                 width={obelisk.width}
                 height={obelisk.height}
-                fill={`url(#${gradientId})`}
-                mask={`url(#${maskId})`}
               />
             </motion.g>
           </motion.g>
