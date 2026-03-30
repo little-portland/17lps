@@ -67,7 +67,10 @@ export default function TestPageClient() {
         main={
           <>
             <SceneNav visible={isMobile ? true : isLoaded} />
-            <Scene isLoaded={isLoaded} setLoaded={setLoaded} />
+            <Scene
+              isLoaded={isLoaded}
+              setLoaded={setLoaded}
+            />
           </>
         }
       />
@@ -93,17 +96,19 @@ function Scene({
     : { x: 2445, y: 710, width: 140, height: 400 };
 
   const realDay = new Date().getDay();
-  const testDay = 4; // change to 4, 5, 6, etc.
-  const day = testDay;
+  const debugDay: number | null = null; // set to 4, 5, 6 to test
+  const day = debugDay ?? realDay;
 
-  const filterId =
+  const gradientId =
     day === 4
-      ? "obelisk-green"
+      ? "obelisk-gradient-green"
       : day === 5
-        ? "obelisk-red"
+        ? "obelisk-gradient-red"
         : day === 6
-          ? "obelisk-purple"
-          : "obelisk-grey";
+          ? "obelisk-gradient-purple"
+          : "obelisk-gradient-grey";
+
+  const maskId = isMobile ? "obelisk-mask-mobile" : "obelisk-mask-desktop";
 
   return (
     <div className="scene-wrapper">
@@ -123,63 +128,72 @@ function Scene({
           aria-hidden
         >
           <defs>
-            {/* 
-              These filters preserve the PNG's internal shading.
-              They convert the source image to luminance, then map that
-              brightness into the target color.
-            */}
-
-            {/* Thursday: #00ff00 */}
-            <filter id="obelisk-green" colorInterpolationFilters="sRGB">
-              <feColorMatrix
-                type="matrix"
-                values="
-                  0 0 0 0 0
-                  0.2126 0.7152 0.0722 0 0
-                  0 0 0 0 0
-                  0 0 0 1 0
-                "
+            <mask
+              id={maskId}
+              maskUnits="userSpaceOnUse"
+              x={obelisk.x}
+              y={obelisk.y}
+              width={obelisk.width}
+              height={obelisk.height}
+              style={{ maskType: "alpha" }}
+            >
+              <image
+                href="/images/obelisk.png"
+                x={obelisk.x}
+                y={obelisk.y}
+                width={obelisk.width}
+                height={obelisk.height}
+                preserveAspectRatio="none"
               />
-            </filter>
+            </mask>
 
-            {/* Friday: #fb0000 */}
-            <filter id="obelisk-red" colorInterpolationFilters="sRGB">
-              <feColorMatrix
-                type="matrix"
-                values="
-                  0.2084 0.7009 0.0709 0 0
-                  0 0 0 0 0
-                  0 0 0 0 0
-                  0 0 0 1 0
-                "
-              />
-            </filter>
+            <linearGradient
+              id="obelisk-gradient-green"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#00ff00" />
+              <stop offset="50%" stopColor="#7dff7d" />
+              <stop offset="100%" stopColor="#00ff00" />
+            </linearGradient>
 
-            {/* Saturday: #6a76db */}
-            <filter id="obelisk-purple" colorInterpolationFilters="sRGB">
-              <feColorMatrix
-                type="matrix"
-                values="
-                  0.0884 0.2976 0.0300 0 0
-                  0.0984 0.3916 0.0398 0 0
-                  0.1836 0.6510 0.0658 0 0
-                  0 0 0 1 0
-                "
-              />
-            </filter>
+            <linearGradient
+              id="obelisk-gradient-red"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#fb0000" />
+              <stop offset="50%" stopColor="#ff7a7a" />
+              <stop offset="100%" stopColor="#fb0000" />
+            </linearGradient>
 
-            {/* All other days: grey */}
-            <filter id="obelisk-grey" colorInterpolationFilters="sRGB">
-              <feColorMatrix
-                type="matrix"
-                values="
-                  0.1063 0.3576 0.0361 0 0
-                  0.1063 0.3576 0.0361 0 0
-                  0.1063 0.3576 0.0361 0 0
-                  0 0 0 1 0
-                "
-              />
-            </filter>
+            <linearGradient
+              id="obelisk-gradient-purple"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#6a76db" />
+              <stop offset="50%" stopColor="#b1bbff" />
+              <stop offset="100%" stopColor="#6a76db" />
+            </linearGradient>
+
+            <linearGradient
+              id="obelisk-gradient-grey"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#808080" />
+              <stop offset="50%" stopColor="#cfcfcf" />
+              <stop offset="100%" stopColor="#808080" />
+            </linearGradient>
           </defs>
 
           <motion.g
@@ -203,7 +217,6 @@ function Scene({
             <motion.g
               animate={{
                 scale: [1, 1.035, 1],
-                opacity: [1, 0.96, 1],
               }}
               transition={{
                 duration: 2.8,
@@ -212,13 +225,13 @@ function Scene({
                 delay: 3.4,
               }}
             >
-              <image
-                href="/images/obelisk.png"
+              <rect
                 x={obelisk.x}
                 y={obelisk.y}
                 width={obelisk.width}
                 height={obelisk.height}
-                filter={`url(#${filterId})`}
+                fill={`url(#${gradientId})`}
+                mask={`url(#${maskId})`}
               />
             </motion.g>
           </motion.g>
