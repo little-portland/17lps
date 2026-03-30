@@ -41,7 +41,6 @@ export default function TestPageClient() {
   const { canvasState, setCanvasState, isLoaded, setLoaded } = useLoaded();
   const { isMobile } = useDeviceDetect();
 
-  // Force white background for test page
   useEffect(() => {
     const prevBg = document.body.style.backgroundColor;
     const prevColor = document.body.style.color;
@@ -57,26 +56,18 @@ export default function TestPageClient() {
 
   return (
     <>
-      {/* CANVAS PRELOADER */}
       {canvasState && !isLoaded && (
         <Canvas removeSelf={setCanvasState} />
       )}
 
-      {/* LAYOUT */}
       <Layout
         hideNav
         eatItem={mockEatItem}
         hireItem={mockHireItem}
         main={
           <>
-            {/* NAV */}
             <SceneNav visible={isMobile ? true : isLoaded} />
-
-            {/* Scene */}
-            <Scene
-              isLoaded={isLoaded}
-              setLoaded={setLoaded}
-            />
+            <Scene isLoaded={isLoaded} setLoaded={setLoaded} />
           </>
         }
       />
@@ -101,11 +92,22 @@ function Scene({
     ? { x: 2690, y: 270, width: 228, height: 650 }
     : { x: 2445, y: 710, width: 140, height: 400 };
 
+  const day = new Date().getDay();
+
+  const obeliskColor =
+    day === 4
+      ? "#00ff00" // Thursday
+      : day === 5
+        ? "#fb0000" // Friday
+        : day === 6
+          ? "#6a76db" // Saturday
+          : "#808080"; // All other days = grey
+
+  const maskId = isMobile ? "obelisk-mask-mobile" : "obelisk-mask-desktop";
+
   return (
     <div className="scene-wrapper">
       <div className="scene-content">
-
-        {/* FILTERED SCENE */}
         <div className="scene-filter">
           <AnimationDesktopOnly
             isLoaded={isLoaded}
@@ -114,36 +116,51 @@ function Scene({
           />
         </div>
 
-        {/* OBELISK OVERLAY */}
         <svg
           viewBox="0 0 3840 2160"
           className="scene-overlay"
           preserveAspectRatio="xMidYMid meet"
           aria-hidden
         >
+          <defs>
+            <mask
+              id={maskId}
+              maskUnits="userSpaceOnUse"
+              x={obelisk.x}
+              y={obelisk.y}
+              width={obelisk.width}
+              height={obelisk.height}
+              style={{ maskType: "alpha" }}
+            >
+              <image
+                href="/images/obelisk.png"
+                x={obelisk.x}
+                y={obelisk.y}
+                width={obelisk.width}
+                height={obelisk.height}
+                preserveAspectRatio="none"
+              />
+            </mask>
+          </defs>
+
           <motion.g
-            /* ENTRY */
             initial={{
               scaleY: 0,
               opacity: 0,
             }}
-
             animate={{
               scaleY: 1,
               opacity: 1,
             }}
-
             transition={{
               delay: 2.5,
               duration: 0.9,
               ease: [0.2, 0.8, 0.2, 1.05],
             }}
-
             style={{
               transformOrigin: "center bottom",
             }}
           >
-            {/* PULSE (separate loop layer) */}
             <motion.g
               animate={{
                 scale: [1, 1.035, 1],
@@ -157,20 +174,20 @@ function Scene({
                 duration: 2.8,
                 ease: "easeInOut",
                 repeat: Infinity,
-                delay: 3.4, // starts after grow animation
+                delay: 3.4,
               }}
             >
-              <image
-                href="/images/obelisk.png"
+              <rect
                 x={obelisk.x}
                 y={obelisk.y}
                 width={obelisk.width}
                 height={obelisk.height}
+                fill={obeliskColor}
+                mask={`url(#${maskId})`}
               />
             </motion.g>
           </motion.g>
         </svg>
-
       </div>
     </div>
   );
