@@ -96,16 +96,14 @@ function Scene({
   const testDay = 4; // change to 4, 5, 6, etc.
   const day = testDay;
 
-  const obeliskColor =
+  const filterId =
     day === 4
-      ? "#00ff00" // Thursday
+      ? "obelisk-green"
       : day === 5
-        ? "#fb0000" // Friday
+        ? "obelisk-red"
         : day === 6
-          ? "#6a76db" // Saturday
-          : "#808080"; // All other days = grey
-
-  const maskId = isMobile ? "obelisk-mask-mobile" : "obelisk-mask-desktop";
+          ? "obelisk-purple"
+          : "obelisk-grey";
 
   return (
     <div className="scene-wrapper">
@@ -125,24 +123,63 @@ function Scene({
           aria-hidden
         >
           <defs>
-            <mask
-              id={maskId}
-              maskUnits="userSpaceOnUse"
-              x={obelisk.x}
-              y={obelisk.y}
-              width={obelisk.width}
-              height={obelisk.height}
-              style={{ maskType: "alpha" }}
-            >
-              <image
-                href="/images/obelisk.png"
-                x={obelisk.x}
-                y={obelisk.y}
-                width={obelisk.width}
-                height={obelisk.height}
-                preserveAspectRatio="none"
+            {/* 
+              These filters preserve the PNG's internal shading.
+              They convert the source image to luminance, then map that
+              brightness into the target color.
+            */}
+
+            {/* Thursday: #00ff00 */}
+            <filter id="obelisk-green" colorInterpolationFilters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="
+                  0 0 0 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0 0 0 0 0
+                  0 0 0 1 0
+                "
               />
-            </mask>
+            </filter>
+
+            {/* Friday: #fb0000 */}
+            <filter id="obelisk-red" colorInterpolationFilters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="
+                  0.2084 0.7009 0.0709 0 0
+                  0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 1 0
+                "
+              />
+            </filter>
+
+            {/* Saturday: #6a76db */}
+            <filter id="obelisk-purple" colorInterpolationFilters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="
+                  0.0884 0.2976 0.0300 0 0
+                  0.0984 0.3916 0.0398 0 0
+                  0.1836 0.6510 0.0658 0 0
+                  0 0 0 1 0
+                "
+              />
+            </filter>
+
+            {/* All other days: grey */}
+            <filter id="obelisk-grey" colorInterpolationFilters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="
+                  0.1063 0.3576 0.0361 0 0
+                  0.1063 0.3576 0.0361 0 0
+                  0.1063 0.3576 0.0361 0 0
+                  0 0 0 1 0
+                "
+              />
+            </filter>
           </defs>
 
           <motion.g
@@ -166,11 +203,7 @@ function Scene({
             <motion.g
               animate={{
                 scale: [1, 1.035, 1],
-                filter: [
-                  "brightness(1)",
-                  "brightness(1.4)",
-                  "brightness(1)",
-                ],
+                opacity: [1, 0.96, 1],
               }}
               transition={{
                 duration: 2.8,
@@ -179,13 +212,13 @@ function Scene({
                 delay: 3.4,
               }}
             >
-              <rect
+              <image
+                href="/images/obelisk.png"
                 x={obelisk.x}
                 y={obelisk.y}
                 width={obelisk.width}
                 height={obelisk.height}
-                fill={obeliskColor}
-                mask={`url(#${maskId})`}
+                filter={`url(#${filterId})`}
               />
             </motion.g>
           </motion.g>
