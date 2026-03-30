@@ -92,7 +92,9 @@ function Scene({
     ? { x: 2690, y: 270, width: 228, height: 650 }
     : { x: 2445, y: 710, width: 140, height: 400 };
 
-  const day = new Date().getDay();
+  const realDay = new Date().getDay();
+  const testDay = 4; // change to 4, 5, 6, etc.
+  const day = testDay;
 
   const obeliskColor =
     day === 4
