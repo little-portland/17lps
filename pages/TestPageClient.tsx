@@ -45,7 +45,7 @@ export default function TestPageClient() {
     const prevBg = document.body.style.backgroundColor;
     const prevColor = document.body.style.color;
 
-    document.body.style.backgroundColor = "#fff";
+    document.body.style.backgroundColor = "rgba(0, 0, 0, .05)";
     document.body.style.color = "#000";
 
     return () => {
