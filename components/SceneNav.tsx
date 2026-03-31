@@ -14,8 +14,6 @@ export default function SceneNav({
     { label: "Dining", href: "/food" },
     { label: "After Dark", href: "/theclub" },
     { label: "Nocturn", href: "/nocturn" },
-    { label: "Private Hire", href: "/about" },
-    { label: "Club Projects", href: "#" },
     { label: "The Network", href: "#" },
     { label: "LPX Radio", href: "#" },
     { label: "Archives", href: "#" },
@@ -40,7 +38,7 @@ export default function SceneNav({
 
         {/* LEFT LINKS (desktop) */}
         <nav className="scene-nav-left">
-          {links.slice(0, 5).map((l) => (
+          {links.slice(0, 4).map((l) => (
             <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer">
               {l.label}
             </a>
@@ -59,7 +57,7 @@ export default function SceneNav({
 
         {/* RIGHT LINKS (desktop) */}
         <nav className="scene-nav-right">
-          {links.slice(5).map((l) => (
+          {links.slice(4).map((l) => (
            <a
               key={l.label}
               href={l.href}
