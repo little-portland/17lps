@@ -57,8 +57,8 @@ html, body {
   height: 100vh;
   overflow: hidden;
 
-  /* Space below desktop nav */
-  margin-top: 40px;
+  /* Space below desktop nav 
+  margin-top: 40px; */
 }
 
 /* =========================================================
