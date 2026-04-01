@@ -271,11 +271,9 @@ const Menu = ({ menuImage }) => {
             }
 
             .friend-link-wrap a:hover {
-              background: #000;
+              background: #ffab00;
               border: 1px solid #39ff14;
-              color: #39ff14 !important;
-              box-shadow: inset 0 0 0 1px #39ff14, 0 0 18px rgba(57,255,20,0.14);
-              transform: translateY(-1px);
+              color: #000 !important;
             }
 
             .poster-footer {
