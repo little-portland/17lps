@@ -202,9 +202,8 @@ const Menu = ({ menuImage }) => {
               width: 100%;
               min-height: 64px;
               padding: 18px 20px;
-              border: 2px solid #39ff14;
-              background: #000;
-              color: #ffab00 !important;
+              background: #39ff14;
+              color: #000 !important;
               font-family: "Courier New", monospace;
               font-size: 20px;
               font-weight: 700;
@@ -216,8 +215,9 @@ const Menu = ({ menuImage }) => {
             }
 
             .friend-link-wrap a:hover {
-              background: #39ff14;
-              color: #000 !important;
+              background: #000;
+              border: 2px solid #39ff14;
+              color: #39ff14 !important;
               box-shadow: inset 0 0 0 1px #39ff14;
             }
 
