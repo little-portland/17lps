@@ -205,7 +205,7 @@ const Menu = ({ menuImage }) => {
               min-height: 100%;
               position: relative;
               background:
-                linear-gradient(to bottom, rgba(57,255,20,0.08), rgba(57,255,20,0.08)),
+                linear-gradient(to bottom, rgba(57,255,20,0.12), rgba(57,255,20,0.12)),
                 #050505;
               width: 100%;
               overflow: hidden;
