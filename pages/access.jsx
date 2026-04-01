@@ -222,7 +222,7 @@ const Menu = ({ menuImage }) => {
               padding: 20px;
               min-height: 100%;
               position: relative;
-              background: #050505;
+              background: rgba(57, 255, 20, 0.12);
               width: 100%;
               overflow: hidden;
             }
