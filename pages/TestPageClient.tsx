@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "@components/Layout/Layout-old";
 import { motion } from "framer-motion";
 import AnimationDesktopOnly from "@components/Animation/AnimationDesktopOnly";
@@ -40,12 +40,13 @@ const mockHireItem = {
 export default function TestPageClient() {
   const { canvasState, setCanvasState, isLoaded, setLoaded } = useLoaded();
   const { isMobile } = useDeviceDetect();
+  const [bookHovered, setBookHovered] = useState(false);
 
   useEffect(() => {
     const prevBg = document.body.style.backgroundColor;
     const prevColor = document.body.style.color;
 
-    document.body.style.backgroundColor = "#fff";
+    document.body.style.backgroundColor = "rgba(0,0,0,.1)";
     document.body.style.color = "#000";
 
     return () => {
@@ -75,42 +76,49 @@ export default function TestPageClient() {
         }
       />
 
-    <motion.a
-      href="/dinner-options"
-      initial={{ opacity: 0, y: 24, x: "-50%" }}
-      animate={{
-        opacity: isMobile ? 1 : isLoaded ? 1 : 0,
-        y: isMobile ? 0 : isLoaded ? 0 : 24,
-        x: "-50%",
-      }}
-      transition={{
-        duration: 0.6,
-        ease: [0.2, 0.8, 0.2, 1],
-      }}
-      style={{
-        position: "fixed",
-        left: "50%",
-        bottom: "24px",
-        zIndex: 9999,
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minWidth: "20%",
-        height: "35px",
-        padding: "0 20px",
-        background: "#000",
-        color: "#fff",
-        textDecoration: "none",
-        textTransform: "uppercase",
-        border: "1px solid #000",
-        fontSize: "16px",
-        fontWeight: 600,
-        lineHeight: 1,
-        cursor: "pointer",
-      }}
-    >
-      Book
-    </motion.a>
+      <motion.a
+        href="/book"
+        initial={{ opacity: 0, y: 24, x: "-50%" }}
+        animate={{
+          opacity: isMobile ? 1 : isLoaded ? 1 : 0,
+          y: isMobile ? 0 : isLoaded ? 0 : 24,
+          x: "-50%",
+        }}
+        transition={{
+          duration: 0.6,
+          ease: [0.2, 0.8, 0.2, 1],
+        }}
+        onMouseEnter={() => setBookHovered(true)}
+        onMouseLeave={() => setBookHovered(false)}
+        style={{
+          position: "fixed",
+          left: "50%",
+          bottom: "24px",
+          zIndex: 9999,
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minWidth: "20%",
+          height: "35px",
+          padding: "0 20px",
+          background: bookHovered ? "rgba(0,0,0,.1)" : "#000",
+          color: bookHovered ? "#000" : "#fff",
+          textDecoration: "none",
+          textTransform: "uppercase",
+          border: "1px solid #000",
+          fontSize: "16px",
+          fontWeight: 600,
+          lineHeight: 1,
+          cursor: "pointer",
+          transition:
+            "background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease",
+          boxShadow: bookHovered
+            ? "0 6px 18px rgba(0,0,0,0.08)"
+            : "0 2px 8px rgba(0,0,0,0.06)",
+        }}
+      >
+        Book
+      </motion.a>
     </>
   );
 }
@@ -133,7 +141,7 @@ function Scene({
     : { x: 2445, y: 710, width: 140, height: 400 };
 
   const realDay = new Date().getDay();
-  const debugDay: number | null = null; // set to 4, 5, 6 etc. for testing
+  const debugDay: number | null = null;
   const day = debugDay ?? realDay;
 
   const obeliskHref =
