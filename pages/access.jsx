@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
 
 // hooks
 import useFetchContent from "@utils/useFetchContent";
@@ -71,6 +72,7 @@ const Menu = ({ menuImage }) => {
 
             .poster-title {
               color: #ffab00;
+              text-transform: lowercase;
               font-family: "Courier New", monospace;
               font-size: 30px;
               line-height: 1;
@@ -112,7 +114,7 @@ const Menu = ({ menuImage }) => {
               color: #ffab00;
               font-family: "Courier New", monospace;
               text-transform: lowercase;
-              font-size: clamp(36px, 7vw, 74px);
+              font-size: clamp(36px, 7vw, 54px);
               line-height: 0.95;
               letter-spacing: 0.08em;
               margin: 0;
@@ -126,11 +128,30 @@ const Menu = ({ menuImage }) => {
               line-height: 1.8;
               letter-spacing: 0.06em;
               text-transform: lowercase;
-              max-width: 28ch;
             }
 
             .hero-copy .green {
               color: #39ff14;
+            }
+
+            .hero-image-wrap {
+              width: 100%;
+              margin: 4px 0 8px;
+              border: 2px solid #39ff14;
+              background: #000;
+              padding: 10px;
+            }
+
+            .hero-image-inner {
+              position: relative;
+              width: 100%;
+              aspect-ratio: 16 / 9;
+              overflow: hidden;
+              background: #030303;
+            }
+
+            .hero-image {
+              object-fit: cover;
             }
 
             .hero-panel {
@@ -182,7 +203,7 @@ const Menu = ({ menuImage }) => {
               width: 100%;
               min-height: 64px;
               padding: 18px 20px;
-              border: 2px solid #a20903;
+              border: 2px solid #39ff14;
               background: #000;
               color: #ffab00 !important;
               font-family: "Courier New", monospace;
@@ -196,7 +217,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .friend-link-wrap a:hover {
-              background: #a20903;
+              background: #39ff14;
               color: #000 !important;
               box-shadow: inset 0 0 0 1px #39ff14;
             }
@@ -306,7 +327,7 @@ const Menu = ({ menuImage }) => {
           `}
         </style>
 
-        <title>17 Little Portland Street - Friends of the Club</title>
+        <title>17 Little Portland Street - Friend of the Club</title>
       </Head>
 
       <div className="page-shell">
@@ -317,7 +338,7 @@ const Menu = ({ menuImage }) => {
               <span />
               <span />
             </div>
-            <div className="poster-title">Friend of the Club</div>
+            <div className="poster-title">friend of the club</div>
           </div>
 
           <div className="poster-inner">
@@ -331,7 +352,21 @@ const Menu = ({ menuImage }) => {
                 </div>
 
                 <div className="hero-copy">
-                  entry to the club is reserved for <span className="green">friends of the club</span>. submit your enquiry to begin the process.
+                  entry to the club is reserved for <span className="green">friends of the club</span>.                 
+                  <br />
+                  submit your enquiry to begin the process.
+                </div>
+              </div>
+
+              <div className="hero-image-wrap">
+                <div className="hero-image-inner">
+                  <Image
+                    src="/images/foc/foc-page-img1.png"
+                    alt="Friends of the Club artwork"
+                    fill
+                    className="hero-image"
+                    priority
+                  />
                 </div>
               </div>
 
@@ -339,7 +374,9 @@ const Menu = ({ menuImage }) => {
                 <div className="panel-label">status: accepting enquiries</div>
 
                 <div className="panel-copy">
-                  membership requests are handled via direct contact. use the transmission panel below.
+                  membership requests are handled via direct contact.
+                  <br />
+                  use the transmission panel below.
                 </div>
 
                 <div className="friend-link-wrap">
