@@ -96,7 +96,7 @@ export default function TestPageClient() {
         alignItems: "center",
         justifyContent: "center",
         minWidth: "20%",
-        height: "48px",
+        height: "35px",
         padding: "0 20px",
         background: "#000",
         color: "#fff",
