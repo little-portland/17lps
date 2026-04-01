@@ -55,12 +55,12 @@ const Menu = ({ menuImage }) => {
               }
             }
 
-            @keyframes buttonHoverSweep {
-              0% {
-                transform: translateX(-130%);
+            @keyframes buttonTypeReveal {
+              from {
+                width: 0;
               }
-              100% {
-                transform: translateX(130%);
+              to {
+                width: 100%;
               }
             }
 
@@ -150,6 +150,12 @@ const Menu = ({ menuImage }) => {
               line-height: 1;
               letter-spacing: 0.08em;
               font-weight: 700;
+            }
+
+            .poster-title::after {
+              content: " ▋";
+              color: #39ff14;
+              animation: cursorBlink 1.1s steps(1, end) infinite;
             }
 
             .poster-inner {
@@ -304,20 +310,24 @@ const Menu = ({ menuImage }) => {
               box-shadow: 0 0 0 rgba(57,255,20,0);
             }
 
-            .friend-link-wrap a::after {
-              content: "";
+            .button-label {
+              position: relative;
+              display: inline-block;
+              width: 100%;
+              text-align: center;
+              color: #000;
+            }
+
+            .button-label::after {
+              content: attr(data-text);
               position: absolute;
-              top: 0;
-              bottom: 0;
-              width: 24%;
-              background: linear-gradient(
-                90deg,
-                rgba(255,255,255,0) 0%,
-                rgba(255,255,255,0.22) 50%,
-                rgba(255,255,255,0) 100%
-              );
-              transform: translateX(-130%);
-              opacity: 0;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 0;
+              overflow: hidden;
+              white-space: nowrap;
+              color: #000;
               pointer-events: none;
             }
 
@@ -328,9 +338,12 @@ const Menu = ({ menuImage }) => {
               box-shadow: 0 0 18px rgba(255,171,0,0.16);
             }
 
-            .friend-link-wrap a:hover::after {
-              opacity: 1;
-              animation: buttonHoverSweep 0.7s ease-out 1;
+            .friend-link-wrap a:hover .button-label {
+              color: transparent;
+            }
+
+            .friend-link-wrap a:hover .button-label::after {
+              animation: buttonTypeReveal 0.8s steps(34, end) 1;
             }
 
             .poster-footer {
@@ -420,8 +433,16 @@ const Menu = ({ menuImage }) => {
               .poster-title::after,
               .hero-image-wrap::after,
               .hero-panel::before,
-              .friend-link-wrap a::after {
+              .friend-link-wrap a:hover .button-label::after {
                 animation: none !important;
+              }
+
+              .friend-link-wrap a:hover .button-label {
+                color: #000 !important;
+              }
+
+              .friend-link-wrap a:hover .button-label::after {
+                width: 0 !important;
               }
             }
 
@@ -537,7 +558,12 @@ const Menu = ({ menuImage }) => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    apply to become a friend of the club
+                    <span
+                      className="button-label"
+                      data-text="apply to become a friend of the club"
+                    >
+                      apply to become a friend of the club
+                    </span>
                   </a>
                 </div>
               </div>
