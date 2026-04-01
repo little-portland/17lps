@@ -45,7 +45,7 @@ export default function TestPageClient() {
     const prevBg = document.body.style.backgroundColor;
     const prevColor = document.body.style.color;
 
-    document.body.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+    document.body.style.backgroundColor = "#fff";
     document.body.style.color = "#000";
 
     return () => {
@@ -75,8 +75,17 @@ export default function TestPageClient() {
         }
       />
 
-      <a
-        href="https://www.little-portland.com/dinner-options"
+      <motion.a
+        href="/book"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{
+          opacity: isMobile ? 1 : isLoaded ? 1 : 0,
+          y: isMobile ? 0 : isLoaded ? 0 : 24,
+        }}
+        transition={{
+          duration: 0.6,
+          ease: [0.2, 0.8, 0.2, 1],
+        }}
         style={{
           position: "fixed",
           left: "50%",
@@ -86,8 +95,8 @@ export default function TestPageClient() {
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
-          minWidth: "20%",
-          height: "48px",
+          minWidth: "140px",
+          height: "20%",
           padding: "0 20px",
           background: "#000",
           color: "#fff",
@@ -101,7 +110,7 @@ export default function TestPageClient() {
         }}
       >
         Book
-      </a>
+      </motion.a>
     </>
   );
 }
