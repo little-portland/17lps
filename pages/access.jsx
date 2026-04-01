@@ -71,7 +71,6 @@ const Menu = ({ menuImage }) => {
 
             .poster-title {
               color: #ffab00;
-              text-transform: lowercase;
               font-family: "Courier New", monospace;
               font-size: 30px;
               line-height: 1;
@@ -191,7 +190,7 @@ const Menu = ({ menuImage }) => {
               width: 100%;
               min-height: 64px;
               padding: 18px 20px;
-              border: 2px solid #39ff14;
+              border: 2px solid #a20903;
               background: #000;
               color: #ffab00 !important;
               font-family: "Courier New", monospace;
@@ -205,7 +204,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .friend-link-wrap a:hover {
-              background: #39ff14;
+              background: #a20903;
               color: #000 !important;
               box-shadow: inset 0 0 0 1px #39ff14;
             }
@@ -286,7 +285,7 @@ const Menu = ({ menuImage }) => {
               }
 
               .hero-heading {
-                font-size: 40px;
+                font-size: 30px;
               }
 
               .hero-copy,
@@ -335,18 +334,12 @@ const Menu = ({ menuImage }) => {
                 <div>
                   <div className="hero-kicker">17 little portland street</div>
                   <h1 className="hero-heading">
-                    access
-                    <br />
-                    protocol
+                    access protocol
                   </h1>
                 </div>
 
                 <div className="hero-copy">
-                  entry to the club is reserved for{" "}
-                  <span className="green">friends of the club</span>.
-                  <br />
-                  <br />
-                  submit your enquiry to begin the process.
+                  entry to the club is reserved for <span className="green">friends of the club</span>. submit your enquiry to begin the process.
                 </div>
               </div>
 
@@ -354,11 +347,7 @@ const Menu = ({ menuImage }) => {
                 <div className="panel-label">status: accepting enquiries</div>
 
                 <div className="panel-copy">
-                  membership requests are handled
-                  <br />
-                  via direct contact.
-                  <br />
-                  use the transmission panel below.
+                  membership requests are handled via direct contact. use the transmission panel below.
                 </div>
 
                 <div className="friend-link-wrap">
