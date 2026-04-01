@@ -101,7 +101,7 @@ export default function TestPageClient() {
           minWidth: "20%",
           height: "35px",
           padding: "0 20px",
-          background: bookHovered ? "rgba(0,0,0,.1)" : "#000",
+          background: bookHovered ? "#fff" : "#000",
           color: bookHovered ? "#000" : "#fff",
           textDecoration: "none",
           textTransform: "uppercase",
