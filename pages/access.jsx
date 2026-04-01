@@ -31,128 +31,19 @@ const Menu = ({ menuImage }) => {
               text-decoration: none;
             }
 
-            @keyframes terminalFlicker {
-              0%, 100% { opacity: 1; }
-              8% { opacity: 0.985; }
-              10% { opacity: 0.95; }
-              12% { opacity: 0.99; }
-              28% { opacity: 0.985; }
-              30% { opacity: 0.96; }
-              32% { opacity: 0.99; }
-              58% { opacity: 0.985; }
-              60% { opacity: 0.955; }
-              62% { opacity: 0.99; }
-              78% { opacity: 0.98; }
-              80% { opacity: 0.945; }
-              82% { opacity: 0.99; }
-            }
-
-            @keyframes scanlineDriftY {
-              0% { transform: translateY(-120%); }
-              100% { transform: translateY(120%); }
-            }
-
-            @keyframes scanlineDriftX {
-              0% { transform: translateX(-120%); }
-              100% { transform: translateX(120%); }
-            }
-
-            @keyframes borderPulse {
-              0%, 100% {
-                box-shadow:
-                  0 0 0 1px rgba(57,255,20,0.15),
-                  0 0 24px rgba(57,255,20,0.08),
-                  inset 0 0 0 rgba(57,255,20,0);
-              }
-              50% {
-                box-shadow:
-                  0 0 0 1px rgba(57,255,20,0.28),
-                  0 0 42px rgba(57,255,20,0.14),
-                  inset 0 0 24px rgba(57,255,20,0.03);
-              }
-            }
-
-            @keyframes textGlow {
-              0%, 100% {
-                text-shadow:
-                  0 0 0 rgba(255,171,0,0),
-                  0 0 0 rgba(57,255,20,0);
-              }
-              50% {
-                text-shadow:
-                  0 0 10px rgba(255,171,0,0.22),
-                  0 0 18px rgba(255,171,0,0.08);
-              }
-            }
-
-            @keyframes greenGlow {
-              0%, 100% {
-                text-shadow: 0 0 0 rgba(57,255,20,0);
-              }
-              50% {
-                text-shadow: 0 0 12px rgba(57,255,20,0.28);
-              }
-            }
-
             @keyframes cursorBlink {
               0%, 45% { opacity: 1; }
               46%, 100% { opacity: 0; }
             }
 
-            @keyframes signalPulse1 {
-              0%, 100% { transform: scaleY(0.72); opacity: 0.55; }
-              50% { transform: scaleY(1.12); opacity: 1; }
+            @keyframes scanlineTopToBottom {
+              0% { transform: translateY(-140%); }
+              100% { transform: translateY(140%); }
             }
 
-            @keyframes signalPulse2 {
-              0%, 100% { transform: scaleY(0.88); opacity: 0.65; }
-              40% { transform: scaleY(1.25); opacity: 1; }
-              70% { transform: scaleY(0.7); opacity: 0.6; }
-            }
-
-            @keyframes signalPulse3 {
-              0%, 100% { transform: scaleY(0.68); opacity: 0.55; }
-              35% { transform: scaleY(1.32); opacity: 1; }
-              75% { transform: scaleY(0.82); opacity: 0.7; }
-            }
-
-            @keyframes buttonHum {
-              0%, 100% {
-                box-shadow:
-                  0 0 0 rgba(57,255,20,0),
-                  inset 0 0 0 rgba(57,255,20,0);
-              }
-              50% {
-                box-shadow:
-                  0 0 26px rgba(57,255,20,0.22),
-                  inset 0 0 12px rgba(255,255,255,0.05);
-              }
-            }
-
-            @keyframes buttonSweep {
-              0% { transform: translateX(-130%); }
-              100% { transform: translateX(130%); }
-            }
-
-            @keyframes panelSweep {
+            @keyframes imageSweep {
               0% { transform: translateX(-120%); }
               100% { transform: translateX(120%); }
-            }
-
-            @keyframes typeReveal {
-              from { width: 0; }
-              to { width: 100%; }
-            }
-
-            @keyframes textAppear {
-              0% {
-                opacity: 0;
-                transform: translateY(4px);
-              }
-              100% {
-                opacity: 1;
-                transform: translateY(0);
-              }
             }
 
             .page-shell {
@@ -170,7 +61,6 @@ const Menu = ({ menuImage }) => {
               position: relative;
               overflow: hidden;
               box-shadow: 0 0 0 1px rgba(57,255,20,0.15), 0 0 24px rgba(57,255,20,0.08);
-              animation: borderPulse 4.2s ease-in-out infinite, terminalFlicker 5.5s linear infinite;
             }
 
             .nocturn.override::before {
@@ -181,12 +71,12 @@ const Menu = ({ menuImage }) => {
               background:
                 repeating-linear-gradient(
                   to bottom,
-                  rgba(255,255,255,0.024) 0px,
-                  rgba(255,255,255,0.024) 1px,
+                  rgba(255,255,255,0.02) 0px,
+                  rgba(255,255,255,0.02) 1px,
                   transparent 1px,
                   transparent 3px
                 );
-              opacity: 0.12;
+              opacity: 0.08;
               z-index: 2;
             }
 
@@ -200,14 +90,14 @@ const Menu = ({ menuImage }) => {
               background: linear-gradient(
                 to bottom,
                 rgba(57,255,20,0) 0%,
-                rgba(57,255,20,0.04) 35%,
-                rgba(57,255,20,0.14) 50%,
-                rgba(57,255,20,0.04) 65%,
+                rgba(57,255,20,0.03) 35%,
+                rgba(57,255,20,0.12) 50%,
+                rgba(57,255,20,0.03) 65%,
                 rgba(57,255,20,0) 100%
               );
               mix-blend-mode: screen;
               z-index: 3;
-              animation: scanlineDriftY 7s linear infinite;
+              animation: scanlineTopToBottom 8s linear infinite;
             }
 
             .poster-topbar {
@@ -233,15 +123,6 @@ const Menu = ({ menuImage }) => {
               border-radius: 50%;
               background: #ffab00;
               display: inline-block;
-              animation: textGlow 2.8s ease-in-out infinite;
-            }
-
-            .poster-dots span:nth-child(2) {
-              animation-delay: 0.25s;
-            }
-
-            .poster-dots span:nth-child(3) {
-              animation-delay: 0.5s;
             }
 
             .poster-title {
@@ -251,14 +132,12 @@ const Menu = ({ menuImage }) => {
               line-height: 1;
               letter-spacing: 0.08em;
               font-weight: 700;
-              animation: textGlow 3.2s ease-in-out infinite;
             }
 
             .poster-title::after {
-              content: "_";
-              margin-left: 0.18em;
-              color: #39ff14;
-              animation: cursorBlink 1s steps(1, end) infinite;
+              content: " ▋";
+              color: #ffab00;
+              animation: cursorBlink 1.1s steps(1, end) infinite;
             }
 
             .poster-inner {
@@ -290,7 +169,6 @@ const Menu = ({ menuImage }) => {
               letter-spacing: 0.18em;
               margin-bottom: 8px;
               font-weight: 700;
-              animation: greenGlow 3.4s ease-in-out infinite;
             }
 
             .hero-heading {
@@ -308,20 +186,6 @@ const Menu = ({ menuImage }) => {
               display: inline-block;
               position: relative;
               white-space: nowrap;
-              overflow: hidden;
-              width: 0;
-              animation:
-                typeReveal 1.6s steps(15, end) 0.35s forwards,
-                textGlow 3s ease-in-out 2s infinite;
-            }
-
-            .hero-heading-line::after {
-              content: "_";
-              position: absolute;
-              right: 0;
-              top: 0;
-              color: #39ff14;
-              animation: cursorBlink 0.9s steps(1, end) infinite;
             }
 
             .hero-copy {
@@ -335,21 +199,10 @@ const Menu = ({ menuImage }) => {
 
             .hero-copy-line {
               display: block;
-              opacity: 0;
-              animation: textAppear 0.8s ease forwards;
-            }
-
-            .hero-copy-line.line-1 {
-              animation-delay: 1.6s;
-            }
-
-            .hero-copy-line.line-2 {
-              animation-delay: 2.05s;
             }
 
             .hero-copy .green {
               color: #39ff14;
-              animation: greenGlow 2.8s ease-in-out 2.2s infinite;
             }
 
             .hero-panel {
@@ -364,37 +217,6 @@ const Menu = ({ menuImage }) => {
               overflow: hidden;
             }
 
-            .hero-panel::before {
-              content: "";
-              position: absolute;
-              inset: 0;
-              pointer-events: none;
-              background: linear-gradient(
-                180deg,
-                rgba(57,255,20,0.01) 0%,
-                rgba(57,255,20,0.08) 50%,
-                rgba(57,255,20,0.01) 100%
-              );
-              animation: terminalFlicker 4.5s linear infinite;
-            }
-
-            .hero-panel::after {
-              content: "";
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              width: 30%;
-              pointer-events: none;
-              background: linear-gradient(
-                90deg,
-                rgba(57,255,20,0) 0%,
-                rgba(57,255,20,0.08) 50%,
-                rgba(57,255,20,0) 100%
-              );
-              animation: panelSweep 5.8s linear infinite;
-              opacity: 0.55;
-            }
-
             .panel-label {
               color: #39ff14;
               font-family: "Courier New", monospace;
@@ -405,7 +227,6 @@ const Menu = ({ menuImage }) => {
               position: relative;
               z-index: 1;
               font-weight: 700;
-              animation: greenGlow 2.6s ease-in-out infinite;
             }
 
             .panel-label::after {
@@ -453,24 +274,6 @@ const Menu = ({ menuImage }) => {
               text-align: center;
               position: relative;
               overflow: hidden;
-              animation: buttonHum 2.6s ease-in-out infinite;
-            }
-
-            .friend-link-wrap a::after {
-              content: "";
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              width: 22%;
-              background: linear-gradient(
-                90deg,
-                rgba(255,255,255,0) 0%,
-                rgba(255,255,255,0.18) 50%,
-                rgba(255,255,255,0) 100%
-              );
-              transform: translateX(-130%);
-              animation: buttonSweep 3.4s linear infinite;
-              pointer-events: none;
             }
 
             .friend-link-wrap a:hover {
@@ -502,7 +305,6 @@ const Menu = ({ menuImage }) => {
 
             .footer-accent {
               color: #39ff14;
-              animation: greenGlow 3s ease-in-out infinite;
             }
 
             .hero-image-wrap {
@@ -546,7 +348,7 @@ const Menu = ({ menuImage }) => {
                 rgba(57,255,20,0) 100%
               );
               transform: translateX(-120%);
-              animation: scanlineDriftX 4.8s linear infinite;
+              animation: imageSweep 4.8s linear infinite;
               z-index: 2;
             }
 
@@ -564,74 +366,12 @@ const Menu = ({ menuImage }) => {
               height: auto;
             }
 
-            .signal-bars {
-              display: flex;
-              gap: 8px;
-              align-items: end;
-              height: 44px;
-            }
-
-            .signal-bars span {
-              display: block;
-              width: 10px;
-              background: #c40000;
-              transform-origin: bottom;
-            }
-
-            .signal-bars span:nth-child(1) {
-              height: 16px;
-              animation: signalPulse1 1.4s ease-in-out infinite;
-            }
-
-            .signal-bars span:nth-child(2) {
-              height: 22px;
-              animation: signalPulse2 1.15s ease-in-out infinite;
-            }
-
-            .signal-bars span:nth-child(3) {
-              height: 28px;
-              animation: signalPulse3 1.35s ease-in-out infinite;
-            }
-
-            .signal-bars span:nth-child(4) {
-              height: 34px;
-              animation: signalPulse2 1s ease-in-out infinite;
-            }
-
-            .signal-bars span:nth-child(5) {
-              height: 40px;
-              animation: signalPulse1 1.25s ease-in-out infinite;
-            }
-
             @media (prefers-reduced-motion: reduce) {
-              .nocturn.override,
               .nocturn.override::after,
-              .poster-dots span,
-              .poster-title,
               .poster-title::after,
-              .hero-kicker,
-              .hero-heading-line,
-              .hero-heading-line::after,
-              .hero-copy-line,
-              .hero-panel::before,
-              .hero-panel::after,
-              .panel-label,
               .panel-label::after,
-              .friend-link-wrap a,
-              .friend-link-wrap a::after,
-              .hero-image-wrap::after,
-              .footer-accent,
-              .signal-bars span {
+              .hero-image-wrap::after {
                 animation: none !important;
-              }
-
-              .hero-heading-line {
-                width: 100% !important;
-              }
-
-              .hero-copy-line {
-                opacity: 1 !important;
-                transform: none !important;
               }
             }
 
