@@ -72,7 +72,6 @@ const Menu = ({ menuImage }) => {
 
             .poster-title {
               color: #ffab00;
-              text-transform: lowercase;
               font-family: "Courier New", monospace;
               font-size: 30px;
               line-height: 1;
@@ -356,19 +355,6 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="hero-image-wrap">
-                <div className="hero-image-inner">
-                  <Image
-                    src="/images/foc/foc-page-img1.png"
-                    alt="Friends of the Club artwork"
-                    width={2000}
-                    height={353}
-                    className="hero-image"
-                    priority
-                  />
-                </div>
-              </div>
-
               <div className="hero-panel">
                 <div className="panel-label">status: accepting enquiries</div>
 
@@ -392,20 +378,17 @@ const Menu = ({ menuImage }) => {
             </div>
 
             <div className="poster-footer">
-              <div className="footer-meta">
-                saturday / late
-                <br />
-                issue 459
-                <br />
-                <span className="footer-accent">friends@little-portland.com</span>
-              </div>
-
-              <div className="signal-bars" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
+              <div className="hero-image-wrap">
+                <div className="hero-image-inner">
+                  <Image
+                    src="/images/foc/foc-page-img1.png"
+                    alt="Friends of the Club artwork"
+                    width={2000}
+                    height={353}
+                    className="hero-image"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>
