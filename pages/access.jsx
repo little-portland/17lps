@@ -144,14 +144,6 @@ const Menu = ({ menuImage }) => {
               width: 100%;
             }
 
-            .hero-panel::before {
-              content: "";
-              position: absolute;
-              inset: 10px;
-              border: 1px solid rgba(57,255,20,0.28);
-              pointer-events: none;
-            }
-
             .panel-label {
               color: #39ff14;
               font-family: "Courier New", monospace;
