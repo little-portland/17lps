@@ -333,7 +333,7 @@ const Menu = ({ menuImage }) => {
               position: absolute;
               top: 0;
               bottom: 0;
-              width: 28%;
+              width: 100%;
               pointer-events: none;
               background: linear-gradient(
                 90deg,
