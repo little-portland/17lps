@@ -1,262 +1,367 @@
 import React from "react";
 import Head from "next/head";
-import Image from "next/image";
-import HoverImageLink from "@components/HoverImageLink"; // adjust path if your structure differs
+import HoverImageLink from "@components/HoverImageLink";
 
-//Components
-import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
-
-//hooks
+// hooks
 import useFetchContent from "@utils/useFetchContent";
 
-const Menu = ({ menuImage }) => { 
-  
+const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/theclub/the_club_page_friend.png"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/theclub/the_club_page_friend_hover.png"
+        />
 
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.png" /> 
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.png" />
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_friend.png" /> 
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_friend_hover.png" />
-        <link rel="preload" as="image" href="/images/theclub/rotating_club.gif" />
-                
         <style>
-            {`html{overflow-x: hidden !important;}`}
-            {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
-            {`.override-logo{margin-top: 30px;}`}
-            {`.override .explore-zen{margin-top: 30px!important;list-style: none;padding: 0;margin: 0;width:100%;}`}
-            {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-repeat: no-repeat;background-position: center;padding: 20px; display: flex;justify-content: flex-end;align-items: center;}`}
-            {`.explore-zen li a {margin-right: 50px;display: inline-block;width: 300px;height: 65px;background-image: url('/images/override/explore_zen_bg.png'); padding: 15px;}`}
-            {`.override-buttons-wrapper {
-                font-family: Helvetica !important;
-                font-weight: bold !important;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                margin: 50px 0 60px 0;
+          {`
+            html {
+              overflow-x: hidden !important;
+              background: #000 !important;
             }
-            .override-buttons-wrapper .row {
-                display: flex;
-                gap: 10px;
-                width: 100%;
+
+            body {
+              background: #000 !important;
+              overflow-x: hidden !important;
+              color: #ffab00;
             }
-            .full-width {
+
+            * {
+              box-sizing: border-box;
+            }
+
+            .page-shell {
+              min-height: 100vh;
+              background: #000;
+              padding: 32px 18px;
+            }
+
+            .nocturn.override {
+              width: min(100%, 980px);
+              margin: 0 auto;
+              border: 3px solid #39ff14;
+              padding: 0;
+              background: #000;
+              position: relative;
+              box-shadow: 0 0 0 1px rgba(57,255,20,0.15), 0 0 24px rgba(57,255,20,0.08);
+            }
+
+            .poster-topbar {
+              display: flex;
+              align-items: center;
+              gap: 14px;
+              padding: 10px 16px;
+              border-bottom: 3px solid #39ff14;
+              min-height: 54px;
+            }
+
+            .poster-dots {
+              display: flex;
+              gap: 10px;
+              flex-shrink: 0;
+            }
+
+            .poster-dots span {
+              width: 16px;
+              height: 16px;
+              border-radius: 50%;
+              background: #ffab00;
+              display: inline-block;
+            }
+
+            .poster-title {
+              color: #ffab00;
+              text-transform: lowercase;
+              font-family: "Courier New", monospace;
+              font-size: 30px;
+              line-height: 1;
+              letter-spacing: 0.08em;
+              font-weight: 700;
+            }
+
+            .poster-inner {
+              padding: 56px 54px 64px;
+              position: relative;
+            }
+
+            .hero-grid {
+              display: grid;
+              grid-template-columns: 1.05fr 0.95fr;
+              gap: 42px;
+              align-items: start;
+            }
+
+            .hero-left {
+              display: flex;
+              flex-direction: column;
+              gap: 26px;
+            }
+
+            .hero-kicker {
+              color: #39ff14;
+              font-family: "Courier New", monospace;
+              text-transform: uppercase;
+              font-size: 13px;
+              letter-spacing: 0.18em;
+              margin-bottom: 8px;
+            }
+
+            .hero-heading {
+              color: #ffab00;
+              font-family: "Courier New", monospace;
+              text-transform: lowercase;
+              font-size: clamp(36px, 7vw, 74px);
+              line-height: 0.95;
+              letter-spacing: 0.08em;
+              margin: 0;
+              font-weight: 700;
+            }
+
+            .hero-copy {
+              color: #ffab00;
+              font-family: "Courier New", monospace;
+              font-size: 18px;
+              line-height: 1.8;
+              letter-spacing: 0.06em;
+              text-transform: lowercase;
+              max-width: 28ch;
+            }
+
+            .hero-copy .green {
+              color: #39ff14;
+            }
+
+            .hero-panel {
+              border: 2px solid #39ff14;
+              padding: 20px;
+              min-height: 100%;
+              position: relative;
+              background:
+                linear-gradient(to bottom, rgba(57,255,20,0.06), rgba(57,255,20,0.01)),
+                #050505;
+            }
+
+            .hero-panel::before {
+              content: "";
+              position: absolute;
+              inset: 10px;
+              border: 1px solid rgba(57,255,20,0.28);
+              pointer-events: none;
+            }
+
+            .panel-label {
+              color: #39ff14;
+              font-family: "Courier New", monospace;
+              text-transform: lowercase;
+              font-size: 14px;
+              letter-spacing: 0.12em;
+              margin-bottom: 18px;
+            }
+
+            .panel-copy {
+              color: #ffab00;
+              font-family: "Courier New", monospace;
+              text-transform: lowercase;
+              font-size: 16px;
+              line-height: 1.8;
+              letter-spacing: 0.04em;
+              margin-bottom: 26px;
+            }
+
+            .friend-link-wrap {
+              margin-top: 10px;
+            }
+
+            .friend-link-wrap a,
+            .friend-link-wrap > div {
+              display: block;
               width: 100%;
             }
 
-            .link {
-               color: #aacc33!important;
-                transition: all 0.3s ease-in-out; 
-                opacity: 1;
+            .friend-link-wrap img {
+              display: block;
+              width: 100%;
+              height: auto;
+              border: 2px solid #ffab00;
+              background: #000;
             }
 
-            .link:hover {
-              color: #aacc33!important;
-              opacity: .7;
-            }
-            
-            .override-button {
-                color: #aacc33!important;
-                border: 3px solid #aacc33!important;
-            }
-    
-            .override-button:hover {
-                color: #000000!important;
-                background-color: #aacc33!important;
-                border: 3px solid #aacc33!important;
+            .poster-footer {
+              margin-top: 44px;
+              padding-top: 24px;
+              border-top: 2px solid rgba(57,255,20,0.45);
+              display: grid;
+              grid-template-columns: 1fr auto;
+              gap: 20px;
+              align-items: end;
             }
 
-             .image-column img {
-                border: 2px solid #aacc33;
+            .footer-meta {
+              font-family: "Courier New", monospace;
+              color: #ffab00;
+              text-transform: lowercase;
+              font-size: 14px;
+              line-height: 1.9;
+              letter-spacing: 0.08em;
             }
 
-            .dance-popup {
-              border: none!important;
-              margin: 50px 0 25px 0;
-              min-height: auto !important;
-              font-family: Helvetica !important;
-              font-weight: bold !important;
-          }
-
-          .dance-popup h3 {
-              color: rgb(255, 255, 255);
-              font-size: 2rem!important;
-          }
-
-          .dance-popup p {
-              font-size: 1.5rem!important;
-              line-height: 1.6rem !important;
-          }
-
-          .intro {
-              border: none!important;
-              margin: 10px auto 35px auto !important;
-              font-family: Helvetica !important;
-              font-weight: bold !important;
-              text-transform: uppercase!important;
-          
-          }
-          
-          .intro p {
-              font-size: 1.5rem !important;
-              line-height: 1.6rem !important;
-              font-weight: 400 !important;
-              margin-bottom: 0.6rem !important;
-              text-align: center !important;
-              color: white !important;
-          }
-
-          .hire {
-              margin: 50px auto 50px auto!important;
-          }
-
-        .friends {
-              margin: 25px auto 30px auto!important;
-          }
-
-          .img-grid {
-            margin-bottom: 40px!important;
-          }
-
-          .reg-btns .override-button {
-              font-family: Helvetica, sans-serif;
-              font-weight: 900;
-              background-color: #aacc33 !important;
-              font-size: 25px;
-              color: #000 !important;
-              border: 0!important;
-              font-size: 25px;
-              border-radius: 50px;
-              padding: 10px 15px;
-          }
-
-         .reg-btns .override-button:hover {
-              background-color: #ffffff!important;
-          }
-
-          .reg-btns .button-half-page {
-            width: 49%!important;
-          }
-            
-            .override-buttons-wrapper .column {
-                flex: 1;
-            }`}
-          
-            {`.nocturn h1{margin-top: 30px;}`}
-            {`.nocturn{width: 50%;margin: 0 auto;}`}
-            {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
-            {`.column{width: 33%}`}
-            {`.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}`}
-            {`.column a{ cursor:pointer!important;}`}
-            {`.top{ font-size: 35px;}`}
-            {`.bottom{ font-size: 25px;}`}
-            {'.image-row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
-            {'.image-column{flex: 33%;max-width: 50%;padding: 0 4px;}'}
-            {'.image-column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
-            {`audio{ margin-top: 8px!important;width:100%!important;}`}
-            {`.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}`}
-            {`.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}`}
-            {`.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}`}
-            {`.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}`}
-            {`.nocturn-text{ padding-bottom: 20px;}`}
-            {`.nocturn-text-two{ padding-top: 20px;}`}
-            {`.question{ color: #000000!important;font-style:italic;}`}
-            {`.italic{ font-style:italic!important;}`}
-            {`.loading{ font-size: 50px;text-align: center;}`}
-            {`.flyer{ max-width: 100%!important;}`}
-            {`.preloader{ margin:30px 0 10px 0!important;}`}
-            {`.spacing{ margin-top:30px!important;}`}
-            {`.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}`}
-            {`@media (max-width: 768px) { .override-logo { margin-top: -10px;}.override-buttons-wrapper {flex-direction: column;gap: 15px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}
-              .explore-zen li a {
-                margin-right: 30px;
-                width: 150px;
-                height: 32px;
-                background-size: 150px 32px;
-                background-repeat: no-repeat;
+            .footer-accent {
+              color: #39ff14;
             }
-            .explore-zen li {
-              background-size: 400px 20px;
-          }
-          .column {
-            width: 100%!important;
-          }
 
-         .dance-popup h3 {
-            font-size: 0.7rem!important;
-            padding: 5px 10px!important;
-        }
+            .signal-bars {
+              display: flex;
+              gap: 8px;
+              align-items: end;
+              height: 44px;
+            }
 
-        .dance-popup p {
-            font-size: 0.6rem!important;
-            line-height: 2!important;
-        }
+            .signal-bars span {
+              display: block;
+              width: 10px;
+              background: #c40000;
+            }
 
-        .intro {
-              margin-top: 0px !important;
-              margin-bottom: 10px !important;
-          }
+            .signal-bars span:nth-child(1) { height: 16px; }
+            .signal-bars span:nth-child(2) { height: 22px; }
+            .signal-bars span:nth-child(3) { height: 28px; }
+            .signal-bars span:nth-child(4) { height: 34px; }
+            .signal-bars span:nth-child(5) { height: 40px; }
 
-        .intro p {
-              font-size: 0.6rem !important;
-              line-height: 2 !important;
-              margin-bottom: 0px !important;
-          }
+            @media (max-width: 768px) {
+              .page-shell {
+                padding: 14px;
+              }
 
-        .hire {
-              margin: 30px auto 40px auto!important;
-          }
+              .nocturn.override {
+                width: 100%;
+              }
 
-        .friends {
-              margin: 10px auto 10px auto !important;
-          }
+              .poster-topbar {
+                padding: 10px 12px;
+                min-height: 46px;
+              }
 
-        .override-buttons-wrapper {
-            margin: 25px 0;
-        }
+              .poster-dots span {
+                width: 12px;
+                height: 12px;
+              }
 
-        .override-button {
-            font-size: 15px!important;
-        }
+              .poster-title {
+                font-size: 19px;
+              }
 
-        .image-column {
-            flex: 100%;
-            max-width: 100%;
-        }
+              .poster-inner {
+                padding: 28px 18px 32px;
+              }
 
-        .reg-btns .button-half-page {
-            width: 98%!important;
-          }
+              .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+              }
 
-            }`}
+              .hero-heading {
+                font-size: 40px;
+              }
+
+              .hero-copy,
+              .panel-copy {
+                font-size: 14px;
+                line-height: 1.7;
+              }
+
+              .poster-footer {
+                grid-template-columns: 1fr;
+                gap: 12px;
+              }
+            }
+          `}
         </style>
 
-        <title>17 Little Portland Street - Friend of the Club</title>
+        <title>17 Little Portland Street - Friends of the Club</title>
       </Head>
-      
-         <div className="nocturn override">
-           <img className="override-logo" src="/images/theclub/theclub-page-top.gif" alt="The Club" width="100%" />
-         </div>
 
-         <div className="nocturn override intro">
-           <p>Access to the club is for Friends of the Club only.</p>
-         </div>
-
-          <div className="nocturn hire friends">
-            <HoverImageLink
-              href="mailto:friends@little-portland.com?subject=FOC Enquiry"
-              img="/images/theclub/the_club_page_friend.png"
-              hoverImg="/images/theclub/the_club_page_friend_hover.png"
-              aspect="2000 / 306"
-              ariaLabel="APPLY TO BECOME A FRIEND OF THE CLUB"
-              target="_blank"
-            />
+      <div className="page-shell">
+        <div className="nocturn override">
+          <div className="poster-topbar">
+            <div className="poster-dots" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="poster-title">friends of the club</div>
           </div>
 
+          <div className="poster-inner">
+            <div className="hero-grid">
+              <div className="hero-left">
+                <div>
+                  <div className="hero-kicker">17 little portland street</div>
+                  <h1 className="hero-heading">
+                    access
+                    <br />
+                    protocol
+                  </h1>
+                </div>
+
+                <div className="hero-copy">
+                  entry to the club is reserved for{" "}
+                  <span className="green">friends of the club</span>.
+                  <br />
+                  <br />
+                  submit your enquiry to begin the process.
+                </div>
+              </div>
+
+              <div className="hero-panel">
+                <div className="panel-label">status: accepting enquiries</div>
+
+                <div className="panel-copy">
+                  membership requests are handled via direct contact.
+                  <br />
+                  use the transmission panel below.
+                </div>
+
+                <div className="friend-link-wrap">
+                  <HoverImageLink
+                    href="mailto:friends@little-portland.com?subject=FOC Enquiry"
+                    img="/images/theclub/the_club_page_friend.png"
+                    hoverImg="/images/theclub/the_club_page_friend_hover.png"
+                    aspect="2000 / 306"
+                    ariaLabel="apply to become a friend of the club"
+                    target="_blank"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="poster-footer">
+              <div className="footer-meta">
+                saturday / late
+                <br />
+                issue 459
+                <br />
+                <span className="footer-accent">friends@little-portland.com</span>
+              </div>
+
+              <div className="signal-bars" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
@@ -266,26 +371,26 @@ export default Menu;
 export async function getStaticProps() {
   const menuData = await useFetchContent(`
     {
-        menuCollection{
-            items {
-              menuImage {
-                title
-                description
-                url
-                width
-                height
-              }
-            }
+      menuCollection {
+        items {
+          menuImage {
+            title
+            description
+            url
+            width
+            height
           }
+        }
+      }
     }
   `);
 
-  const menuImage = menuData.menuCollection.items[0].menuImage;
+  const menuImage = menuData?.menuCollection?.items?.[0]?.menuImage || null;
 
   return {
     props: {
       menuImage,
-    }, // will be passed to the page component as props
-    revalidate: 30, // In seconds
+    },
+    revalidate: 30,
   };
 }
