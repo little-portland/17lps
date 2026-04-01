@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import HoverImageLink from "@components/HoverImageLink";
 
 // hooks
 import useFetchContent from "@utils/useFetchContent";
@@ -9,17 +8,6 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
-        <link
-          rel="preload"
-          as="image"
-          href="/images/theclub/the_club_page_friend.png"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="/images/theclub/the_club_page_friend_hover.png"
-        />
-
         <style>
           {`
             html {
@@ -31,10 +19,15 @@ const Menu = ({ menuImage }) => {
               background: #000 !important;
               overflow-x: hidden !important;
               color: #ffab00;
+              margin: 0;
             }
 
             * {
               box-sizing: border-box;
+            }
+
+            a {
+              text-decoration: none;
             }
 
             .page-shell {
@@ -93,15 +86,17 @@ const Menu = ({ menuImage }) => {
 
             .hero-grid {
               display: grid;
-              grid-template-columns: 1.05fr 0.95fr;
-              gap: 42px;
+              grid-template-columns: 1fr;
+              gap: 28px;
               align-items: start;
+              width: 100%;
             }
 
             .hero-left {
               display: flex;
               flex-direction: column;
               gap: 26px;
+              width: 100%;
             }
 
             .hero-kicker {
@@ -111,6 +106,7 @@ const Menu = ({ menuImage }) => {
               font-size: 13px;
               letter-spacing: 0.18em;
               margin-bottom: 8px;
+              font-weight: 700;
             }
 
             .hero-heading {
@@ -146,6 +142,7 @@ const Menu = ({ menuImage }) => {
               background:
                 linear-gradient(to bottom, rgba(57,255,20,0.06), rgba(57,255,20,0.01)),
                 #050505;
+              width: 100%;
             }
 
             .hero-panel::before {
@@ -163,6 +160,9 @@ const Menu = ({ menuImage }) => {
               font-size: 14px;
               letter-spacing: 0.12em;
               margin-bottom: 18px;
+              position: relative;
+              z-index: 1;
+              font-weight: 700;
             }
 
             .panel-copy {
@@ -173,24 +173,41 @@ const Menu = ({ menuImage }) => {
               line-height: 1.8;
               letter-spacing: 0.04em;
               margin-bottom: 26px;
+              position: relative;
+              z-index: 1;
             }
 
             .friend-link-wrap {
               margin-top: 10px;
+              width: 100%;
+              position: relative;
+              z-index: 1;
             }
 
-            .friend-link-wrap a,
-            .friend-link-wrap > div {
-              display: block;
+            .friend-link-wrap a {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
               width: 100%;
-            }
-
-            .friend-link-wrap img {
-              display: block;
-              width: 100%;
-              height: auto;
-              border: 2px solid #ffab00;
+              min-height: 64px;
+              padding: 18px 20px;
+              border: 2px solid #39ff14;
               background: #000;
+              color: #ffab00 !important;
+              font-family: "Courier New", monospace;
+              font-size: 20px;
+              font-weight: 700;
+              text-transform: lowercase;
+              letter-spacing: 0.08em;
+              text-decoration: none !important;
+              transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+              text-align: center;
+            }
+
+            .friend-link-wrap a:hover {
+              background: #39ff14;
+              color: #000 !important;
+              box-shadow: inset 0 0 0 1px #39ff14;
             }
 
             .poster-footer {
@@ -210,6 +227,7 @@ const Menu = ({ menuImage }) => {
               font-size: 14px;
               line-height: 1.9;
               letter-spacing: 0.08em;
+              font-weight: 700;
             }
 
             .footer-accent {
@@ -264,7 +282,7 @@ const Menu = ({ menuImage }) => {
 
               .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 28px;
+                gap: 24px;
               }
 
               .hero-heading {
@@ -275,6 +293,18 @@ const Menu = ({ menuImage }) => {
               .panel-copy {
                 font-size: 14px;
                 line-height: 1.7;
+              }
+
+              .hero-kicker,
+              .panel-label,
+              .footer-meta {
+                font-size: 12px;
+              }
+
+              .friend-link-wrap a {
+                min-height: 54px;
+                font-size: 15px;
+                padding: 14px 16px;
               }
 
               .poster-footer {
@@ -324,20 +354,22 @@ const Menu = ({ menuImage }) => {
                 <div className="panel-label">status: accepting enquiries</div>
 
                 <div className="panel-copy">
-                  membership requests are handled via direct contact.
+                  membership requests are handled
+                  <br />
+                  via direct contact.
                   <br />
                   use the transmission panel below.
                 </div>
 
                 <div className="friend-link-wrap">
-                  <HoverImageLink
+                  <a
                     href="mailto:friends@little-portland.com?subject=FOC Enquiry"
-                    img="/images/theclub/the_club_page_friend.png"
-                    hoverImg="/images/theclub/the_club_page_friend_hover.png"
-                    aspect="2000 / 306"
-                    ariaLabel="apply to become a friend of the club"
+                    aria-label="apply to become a friend of the club"
                     target="_blank"
-                  />
+                    rel="noreferrer"
+                  >
+                    apply to become a friend of the club
+                  </a>
                 </div>
               </div>
             </div>
