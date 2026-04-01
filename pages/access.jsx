@@ -40,7 +40,7 @@ const Menu = ({ menuImage }) => {
             .nocturn.override {
               width: min(100%, 980px);
               margin: 0 auto;
-              border: 3px solid #39ff14;
+              border: 2px solid #39ff14;
               padding: 0;
               background: #000;
               position: relative;
@@ -52,7 +52,7 @@ const Menu = ({ menuImage }) => {
               align-items: center;
               gap: 14px;
               padding: 10px 16px;
-              border-bottom: 3px solid #39ff14;
+              border-bottom: 2px solid #39ff14;
               min-height: 54px;
             }
 
