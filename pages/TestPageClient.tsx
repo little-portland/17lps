@@ -77,7 +77,7 @@ export default function TestPageClient() {
       />
 
       <motion.a
-        href="/book"
+        href="/dinner-options"
         initial={{ opacity: 0, y: 24, x: "-50%" }}
         animate={{
           opacity: isMobile ? 1 : isLoaded ? 1 : 0,
