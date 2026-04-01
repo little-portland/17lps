@@ -75,42 +75,42 @@ export default function TestPageClient() {
         }
       />
 
-      <motion.a
-        href="/book"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{
-          opacity: isMobile ? 1 : isLoaded ? 1 : 0,
-          y: isMobile ? 0 : isLoaded ? 0 : 24,
-        }}
-        transition={{
-          duration: 0.6,
-          ease: [0.2, 0.8, 0.2, 1],
-        }}
-        style={{
-          position: "fixed",
-          left: "50%",
-          bottom: "24px",
-          transform: "translateX(-50%)",
-          zIndex: 9999,
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minWidth: "20%",
-          height: "48px",
-          padding: "0 20px",
-          background: "#000",
-          color: "#fff",
-          textDecoration: "none",
-          textTransform: "uppercase",
-          border: "1px solid #000",
-          fontSize: "16px",
-          fontWeight: 600,
-          lineHeight: 1,
-          cursor: "pointer",
-        }}
-      >
-        Book
-      </motion.a>
+    <motion.a
+      href="/book"
+      initial={{ opacity: 0, y: 24, x: "-50%" }}
+      animate={{
+        opacity: isMobile ? 1 : isLoaded ? 1 : 0,
+        y: isMobile ? 0 : isLoaded ? 0 : 24,
+        x: "-50%",
+      }}
+      transition={{
+        duration: 0.6,
+        ease: [0.2, 0.8, 0.2, 1],
+      }}
+      style={{
+        position: "fixed",
+        left: "50%",
+        bottom: "24px",
+        zIndex: 9999,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minWidth: "20%",
+        height: "48px",
+        padding: "0 20px",
+        background: "#000",
+        color: "#fff",
+        textDecoration: "none",
+        textTransform: "uppercase",
+        border: "1px solid #000",
+        fontSize: "16px",
+        fontWeight: 600,
+        lineHeight: 1,
+        cursor: "pointer",
+      }}
+    >
+      Book
+    </motion.a>
     </>
   );
 }
