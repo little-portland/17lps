@@ -55,6 +55,15 @@ const Menu = ({ menuImage }) => {
               }
             }
 
+            @keyframes buttonHoverSweep {
+              0% {
+                transform: translateX(-130%);
+              }
+              100% {
+                transform: translateX(130%);
+              }
+            }
+
             .page-shell {
               min-height: 100vh;
               background: #000;
@@ -141,12 +150,6 @@ const Menu = ({ menuImage }) => {
               line-height: 1;
               letter-spacing: 0.08em;
               font-weight: 700;
-            }
-
-            .poster-title::after {
-              content: " ▋";
-              color: #39ff14;
-              animation: cursorBlink 1.1s steps(1, end) infinite;
             }
 
             .poster-inner {
@@ -290,15 +293,44 @@ const Menu = ({ menuImage }) => {
               text-transform: lowercase;
               letter-spacing: 0.08em;
               text-decoration: none !important;
-              transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+              transition:
+                background 0.22s ease,
+                color 0.22s ease,
+                box-shadow 0.22s ease,
+                transform 0.22s ease;
               text-align: center;
               position: relative;
               overflow: hidden;
+              box-shadow: 0 0 0 rgba(57,255,20,0);
+            }
+
+            .friend-link-wrap a::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              width: 24%;
+              background: linear-gradient(
+                90deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.22) 50%,
+                rgba(255,255,255,0) 100%
+              );
+              transform: translateX(-130%);
+              opacity: 0;
+              pointer-events: none;
             }
 
             .friend-link-wrap a:hover {
               background: #ffab00;
               color: #000 !important;
+              transform: translateY(-1px);
+              box-shadow: 0 0 18px rgba(255,171,0,0.16);
+            }
+
+            .friend-link-wrap a:hover::after {
+              opacity: 1;
+              animation: buttonHoverSweep 0.7s ease-out 1;
             }
 
             .poster-footer {
@@ -387,7 +419,8 @@ const Menu = ({ menuImage }) => {
               .panel-label::after,
               .poster-title::after,
               .hero-image-wrap::after,
-              .hero-panel::before {
+              .hero-panel::before,
+              .friend-link-wrap a::after {
                 animation: none !important;
               }
             }
