@@ -152,12 +152,6 @@ const Menu = ({ menuImage }) => {
               font-weight: 700;
             }
 
-            .poster-title::after {
-              content: " ▋";
-              color: #39ff14;
-              animation: cursorBlink 1.1s steps(1, end) infinite;
-            }
-
             .poster-inner {
               padding: 56px 54px 64px;
               position: relative;
