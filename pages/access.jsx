@@ -272,7 +272,6 @@ const Menu = ({ menuImage }) => {
 
             .friend-link-wrap a:hover {
               background: #ffab00;
-              border: 1px solid #39ff14;
               color: #000 !important;
             }
 
