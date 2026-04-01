@@ -45,7 +45,7 @@ export default function TestPageClient() {
     const prevBg = document.body.style.backgroundColor;
     const prevColor = document.body.style.color;
 
-    document.body.style.backgroundColor = "rgba(0, 0, 0, .1)";
+    document.body.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
     document.body.style.color = "#000";
 
     return () => {
@@ -74,6 +74,34 @@ export default function TestPageClient() {
           </>
         }
       />
+
+      <a
+        href="https://www.little-portland.com/dinner-options"
+        style={{
+          position: "fixed",
+          left: "50%",
+          bottom: "24px",
+          transform: "translateX(-50%)",
+          zIndex: 9999,
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minWidth: "140px",
+          height: "48px",
+          padding: "0 20px",
+          background: "#000",
+          color: "#fff",
+          textDecoration: "none",
+          border: "1px solid #000",
+          borderRadius: "9999px",
+          fontSize: "16px",
+          fontWeight: 600,
+          lineHeight: 1,
+          cursor: "pointer",
+        }}
+      >
+        Book
+      </a>
     </>
   );
 }
