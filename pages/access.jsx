@@ -310,27 +310,6 @@ const Menu = ({ menuImage }) => {
               box-shadow: 0 0 0 rgba(57,255,20,0);
             }
 
-            .button-label {
-              position: relative;
-              display: inline-block;
-              width: 100%;
-              text-align: center;
-              color: #000;
-            }
-
-            .button-label::after {
-              content: attr(data-text);
-              position: absolute;
-              left: 0;
-              top: 50%;
-              transform: translateY(-50%);
-              width: 0;
-              overflow: hidden;
-              white-space: nowrap;
-              color: #000;
-              pointer-events: none;
-            }
-
             .friend-link-wrap a:hover {
               background: #ffab00;
               color: #000 !important;
@@ -338,12 +317,39 @@ const Menu = ({ menuImage }) => {
               box-shadow: 0 0 18px rgba(255,171,0,0.16);
             }
 
-            .friend-link-wrap a:hover .button-label {
-              color: transparent;
+            .button-text-wrap {
+              position: relative;
+              display: inline-grid;
+              place-items: center;
+              width: 100%;
             }
 
-            .friend-link-wrap a:hover .button-label::after {
-              animation: buttonTypeReveal 0.8s steps(34, end) 1;
+            .button-label-static,
+            .button-label-typed {
+              grid-area: 1 / 1;
+              white-space: nowrap;
+              text-align: center;
+              color: #000;
+            }
+
+            .button-label-static {
+              opacity: 1;
+            }
+
+            .button-label-typed {
+              overflow: hidden;
+              width: 0;
+              opacity: 0;
+              pointer-events: none;
+            }
+
+            .friend-link-wrap a:hover .button-label-static {
+              opacity: 0;
+            }
+
+            .friend-link-wrap a:hover .button-label-typed {
+              opacity: 1;
+              animation: buttonTypeReveal 0.8s steps(36, end) 1 forwards;
             }
 
             .poster-footer {
@@ -433,16 +439,17 @@ const Menu = ({ menuImage }) => {
               .poster-title::after,
               .hero-image-wrap::after,
               .hero-panel::before,
-              .friend-link-wrap a:hover .button-label::after {
+              .friend-link-wrap a:hover .button-label-typed {
                 animation: none !important;
               }
 
-              .friend-link-wrap a:hover .button-label {
-                color: #000 !important;
+              .friend-link-wrap a:hover .button-label-static {
+                opacity: 0;
               }
 
-              .friend-link-wrap a:hover .button-label::after {
-                width: 0 !important;
+              .friend-link-wrap a:hover .button-label-typed {
+                width: 100% !important;
+                opacity: 1 !important;
               }
             }
 
@@ -498,6 +505,11 @@ const Menu = ({ menuImage }) => {
                 min-height: 54px;
                 font-size: 15px;
                 padding: 14px 16px;
+              }
+
+              .button-label-static,
+              .button-label-typed {
+                white-space: normal;
               }
 
               .poster-footer {
@@ -558,11 +570,13 @@ const Menu = ({ menuImage }) => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <span
-                      className="button-label"
-                      data-text="apply to become a friend of the club"
-                    >
-                      apply to become a friend of the club
+                    <span className="button-text-wrap">
+                      <span className="button-label-static">
+                        apply to become a friend of the club
+                      </span>
+                      <span className="button-label-typed">
+                        apply to become a friend of the club
+                      </span>
                     </span>
                   </a>
                 </div>
