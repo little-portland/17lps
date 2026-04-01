@@ -31,6 +31,59 @@ const Menu = ({ menuImage }) => {
               text-decoration: none;
             }
 
+            @keyframes terminalFlicker {
+              0%, 100% { opacity: 1; }
+              48% { opacity: 0.985; }
+              50% { opacity: 0.965; }
+              52% { opacity: 0.99; }
+            }
+
+            @keyframes scanlineDrift {
+              0% { transform: translateY(-100%); }
+              100% { transform: translateY(100%); }
+            }
+
+            @keyframes borderPulse {
+              0%, 100% {
+                box-shadow:
+                  0 0 0 1px rgba(57,255,20,0.15),
+                  0 0 24px rgba(57,255,20,0.08);
+              }
+              50% {
+                box-shadow:
+                  0 0 0 1px rgba(57,255,20,0.25),
+                  0 0 36px rgba(57,255,20,0.12);
+              }
+            }
+
+            @keyframes textGlow {
+              0%, 100% {
+                text-shadow: 0 0 0 rgba(255,171,0,0);
+              }
+              50% {
+                text-shadow: 0 0 10px rgba(255,171,0,0.18);
+              }
+            }
+
+            @keyframes cursorBlink {
+              0%, 45% { opacity: 1; }
+              46%, 100% { opacity: 0; }
+            }
+
+            @keyframes signalPulse {
+              0%, 100% { opacity: 0.7; transform: scaleY(1); }
+              50% { opacity: 1; transform: scaleY(1.08); }
+            }
+
+            @keyframes buttonHum {
+              0%, 100% {
+                box-shadow: 0 0 0 rgba(57,255,20,0);
+              }
+              50% {
+                box-shadow: 0 0 18px rgba(57,255,20,0.18);
+              }
+            }
+
             .page-shell {
               min-height: 100vh;
               background: #000;
@@ -44,7 +97,46 @@ const Menu = ({ menuImage }) => {
               padding: 0;
               background: #000;
               position: relative;
+              overflow: hidden;
               box-shadow: 0 0 0 1px rgba(57,255,20,0.15), 0 0 24px rgba(57,255,20,0.08);
+              animation: borderPulse 5.5s ease-in-out infinite, terminalFlicker 7s linear infinite;
+            }
+
+            .nocturn.override::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              pointer-events: none;
+              background:
+                repeating-linear-gradient(
+                  to bottom,
+                  rgba(255,255,255,0.02) 0px,
+                  rgba(255,255,255,0.02) 1px,
+                  transparent 1px,
+                  transparent 3px
+                );
+              opacity: 0.08;
+              z-index: 2;
+            }
+
+            .nocturn.override::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 0;
+              height: 120px;
+              pointer-events: none;
+              background: linear-gradient(
+                to bottom,
+                rgba(57,255,20,0) 0%,
+                rgba(57,255,20,0.05) 45%,
+                rgba(57,255,20,0.12) 50%,
+                rgba(57,255,20,0.05) 55%,
+                rgba(57,255,20,0) 100%
+              );
+              mix-blend-mode: screen;
+              z-index: 3;
+              animation: scanlineDrift 9s linear infinite;
             }
 
             .poster-topbar {
@@ -54,6 +146,8 @@ const Menu = ({ menuImage }) => {
               padding: 10px 16px;
               border-bottom: 2px solid #39ff14;
               min-height: 54px;
+              position: relative;
+              z-index: 4;
             }
 
             .poster-dots {
@@ -68,6 +162,15 @@ const Menu = ({ menuImage }) => {
               border-radius: 50%;
               background: #ffab00;
               display: inline-block;
+              animation: textGlow 4s ease-in-out infinite;
+            }
+
+            .poster-dots span:nth-child(2) {
+              animation-delay: 0.35s;
+            }
+
+            .poster-dots span:nth-child(3) {
+              animation-delay: 0.7s;
             }
 
             .poster-title {
@@ -77,11 +180,20 @@ const Menu = ({ menuImage }) => {
               line-height: 1;
               letter-spacing: 0.08em;
               font-weight: 700;
+              animation: textGlow 4.5s ease-in-out infinite;
+            }
+
+            .poster-title::after {
+              content: "_";
+              margin-left: 0.18em;
+              color: #39ff14;
+              animation: cursorBlink 1s steps(1, end) infinite;
             }
 
             .poster-inner {
               padding: 56px 54px 64px;
               position: relative;
+              z-index: 4;
             }
 
             .hero-grid {
@@ -107,6 +219,7 @@ const Menu = ({ menuImage }) => {
               letter-spacing: 0.18em;
               margin-bottom: 8px;
               font-weight: 700;
+              animation: textGlow 6s ease-in-out infinite;
             }
 
             .hero-heading {
@@ -118,6 +231,7 @@ const Menu = ({ menuImage }) => {
               letter-spacing: 0.08em;
               margin: 0;
               font-weight: 700;
+              animation: textGlow 5.5s ease-in-out infinite;
             }
 
             .hero-copy {
@@ -131,6 +245,7 @@ const Menu = ({ menuImage }) => {
 
             .hero-copy .green {
               color: #39ff14;
+              text-shadow: 0 0 8px rgba(57,255,20,0.18);
             }
 
             .hero-image-wrap {
@@ -139,6 +254,24 @@ const Menu = ({ menuImage }) => {
               border: 2px solid #39ff14;
               background: #000;
               padding: 10px;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .hero-image-wrap::after {
+              content: "";
+              position: absolute;
+              inset: 0;
+              pointer-events: none;
+              background: linear-gradient(
+                90deg,
+                rgba(57,255,20,0) 0%,
+                rgba(57,255,20,0.08) 50%,
+                rgba(57,255,20,0) 100%
+              );
+              transform: translateX(-100%);
+              animation: scanlineDrift 12s linear infinite;
+              opacity: 0.35;
             }
 
             .hero-image-inner {
@@ -162,6 +295,21 @@ const Menu = ({ menuImage }) => {
                 linear-gradient(to bottom, rgba(57,255,20,0.08), rgba(57,255,20,0.08)),
                 #050505;
               width: 100%;
+              overflow: hidden;
+            }
+
+            .hero-panel::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              pointer-events: none;
+              background: linear-gradient(
+                180deg,
+                rgba(57,255,20,0.02) 0%,
+                rgba(57,255,20,0.06) 45%,
+                rgba(57,255,20,0.02) 100%
+              );
+              animation: terminalFlicker 6s linear infinite;
             }
 
             .panel-label {
@@ -174,6 +322,13 @@ const Menu = ({ menuImage }) => {
               position: relative;
               z-index: 1;
               font-weight: 700;
+              animation: textGlow 5s ease-in-out infinite;
+            }
+
+            .panel-label::after {
+              content: " ▋";
+              color: #39ff14;
+              animation: cursorBlink 1.15s steps(1, end) infinite;
             }
 
             .panel-copy {
@@ -210,15 +365,17 @@ const Menu = ({ menuImage }) => {
               text-transform: lowercase;
               letter-spacing: 0.08em;
               text-decoration: none !important;
-              transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+              transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
               text-align: center;
+              animation: buttonHum 3.8s ease-in-out infinite;
             }
 
             .friend-link-wrap a:hover {
               background: #000;
               border: 1px solid #39ff14;
               color: #39ff14 !important;
-              box-shadow: inset 0 0 0 1px #39ff14;
+              box-shadow: inset 0 0 0 1px #39ff14, 0 0 18px rgba(57,255,20,0.14);
+              transform: translateY(-1px);
             }
 
             .poster-footer {
@@ -226,6 +383,8 @@ const Menu = ({ menuImage }) => {
               display: grid;
               grid-template-columns: 1fr auto;
               align-items: end;
+              gap: 20px;
+              position: relative;
             }
 
             .footer-meta {
@@ -240,6 +399,7 @@ const Menu = ({ menuImage }) => {
 
             .footer-accent {
               color: #39ff14;
+              text-shadow: 0 0 8px rgba(57,255,20,0.18);
             }
 
             .signal-bars {
@@ -253,13 +413,33 @@ const Menu = ({ menuImage }) => {
               display: block;
               width: 10px;
               background: #c40000;
+              transform-origin: bottom;
+              animation: signalPulse 1.8s ease-in-out infinite;
             }
 
-            .signal-bars span:nth-child(1) { height: 16px; }
-            .signal-bars span:nth-child(2) { height: 22px; }
-            .signal-bars span:nth-child(3) { height: 28px; }
-            .signal-bars span:nth-child(4) { height: 34px; }
-            .signal-bars span:nth-child(5) { height: 40px; }
+            .signal-bars span:nth-child(1) { height: 16px; animation-delay: 0s; }
+            .signal-bars span:nth-child(2) { height: 22px; animation-delay: 0.12s; }
+            .signal-bars span:nth-child(3) { height: 28px; animation-delay: 0.24s; }
+            .signal-bars span:nth-child(4) { height: 34px; animation-delay: 0.36s; }
+            .signal-bars span:nth-child(5) { height: 40px; animation-delay: 0.48s; }
+
+            @media (prefers-reduced-motion: reduce) {
+              .nocturn.override,
+              .nocturn.override::after,
+              .poster-dots span,
+              .poster-title,
+              .poster-title::after,
+              .hero-kicker,
+              .hero-heading,
+              .hero-image-wrap::after,
+              .hero-panel::before,
+              .panel-label,
+              .panel-label::after,
+              .friend-link-wrap a,
+              .signal-bars span {
+                animation: none !important;
+              }
+            }
 
             @media (max-width: 768px) {
               .page-shell {
