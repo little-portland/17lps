@@ -143,15 +143,15 @@ const Menu = ({ menuImage }) => {
             }
 
             .hero-image-inner {
-              position: relative;
               width: 100%;
-              aspect-ratio: 16 / 9;
-              overflow: hidden;
               background: #030303;
+              line-height: 0;
             }
 
             .hero-image {
-              object-fit: cover;
+              display: block;
+              width: 100%;
+              height: auto;
             }
 
             .hero-panel {
@@ -160,7 +160,7 @@ const Menu = ({ menuImage }) => {
               min-height: 100%;
               position: relative;
               background:
-                linear-gradient(to bottom, rgba(57,255,20,0.06), rgba(57,255,20,0.01)),
+                linear-gradient(to bottom, rgba(57,255,20,0.08), rgba(57,255,20,0.08)),
                 #050505;
               width: 100%;
             }
@@ -346,13 +346,11 @@ const Menu = ({ menuImage }) => {
               <div className="hero-left">
                 <div>
                   <div className="hero-kicker">17 little portland street</div>
-                  <h1 className="hero-heading">
-                    access protocol
-                  </h1>
+                  <h1 className="hero-heading">access protocol</h1>
                 </div>
 
                 <div className="hero-copy">
-                  entry to the club is reserved for <span className="green">friends of the club</span>.                 
+                  entry to the club is reserved for <span className="green">friends of the club</span>.
                   <br />
                   submit your enquiry to begin the process.
                 </div>
@@ -363,7 +361,8 @@ const Menu = ({ menuImage }) => {
                   <Image
                     src="/images/foc/foc-page-img1.png"
                     alt="Friends of the Club artwork"
-                    fill
+                    width={2000}
+                    height={353}
                     className="hero-image"
                     priority
                   />
