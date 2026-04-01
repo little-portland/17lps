@@ -136,8 +136,8 @@ const Menu = ({ menuImage }) => {
             }
 
             .poster-dots span {
-              width: 16px;
-              height: 16px;
+              width: 10px;
+              height: 10px;
               border-radius: 50%;
               background: #ffab00;
               display: inline-block;
@@ -146,7 +146,7 @@ const Menu = ({ menuImage }) => {
             .poster-title {
               color: #ffab00;
               font-family: "Courier New", monospace;
-              font-size: 30px;
+              font-size: 22px;
               line-height: 1;
               letter-spacing: 0.08em;
               font-weight: 700;
@@ -462,12 +462,12 @@ const Menu = ({ menuImage }) => {
               }
 
               .poster-dots span {
-                width: 12px;
-                height: 12px;
+                width: 8px;
+                height: 8px;
               }
 
               .poster-title {
-                font-size: 19px;
+                font-size: 15px;
               }
 
               .poster-inner {
