@@ -85,7 +85,7 @@ const Menu = ({ menuImage }) => {
               position: absolute;
               left: 0;
               right: 0;
-              height: 140px;
+              height: 100%;
               pointer-events: none;
               background: linear-gradient(
                 to bottom,
@@ -132,12 +132,6 @@ const Menu = ({ menuImage }) => {
               line-height: 1;
               letter-spacing: 0.08em;
               font-weight: 700;
-            }
-
-            .poster-title::after {
-              content: " ▋";
-              color: #ffab00;
-              animation: cursorBlink 1.1s steps(1, end) infinite;
             }
 
             .poster-inner {
