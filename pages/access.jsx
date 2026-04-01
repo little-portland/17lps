@@ -46,6 +46,15 @@ const Menu = ({ menuImage }) => {
               100% { transform: translateX(120%); }
             }
 
+            @keyframes panelAmbientPulse {
+              0%, 100% {
+                opacity: 0.18;
+              }
+              50% {
+                opacity: 0.32;
+              }
+            }
+
             .page-shell {
               min-height: 100vh;
               background: #000;
@@ -134,6 +143,12 @@ const Menu = ({ menuImage }) => {
               font-weight: 700;
             }
 
+            .poster-title::after {
+              content: " ▋";
+              color: #39ff14;
+              animation: cursorBlink 1.1s steps(1, end) infinite;
+            }
+
             .poster-inner {
               padding: 56px 54px 64px;
               position: relative;
@@ -204,11 +219,22 @@ const Menu = ({ menuImage }) => {
               padding: 20px;
               min-height: 100%;
               position: relative;
-              background:
-                linear-gradient(to bottom, rgba(57,255,20,0.12), rgba(57,255,20,0.12)),
-                #050505;
+              background: #050505;
               width: 100%;
               overflow: hidden;
+            }
+
+            .hero-panel::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              pointer-events: none;
+              background:
+                radial-gradient(circle at 20% 30%, rgba(57,255,20,0.12), transparent 42%),
+                radial-gradient(circle at 80% 70%, rgba(57,255,20,0.10), transparent 45%),
+                linear-gradient(to bottom, rgba(57,255,20,0.08), rgba(57,255,20,0.12));
+              animation: panelAmbientPulse 4.8s ease-in-out infinite;
+              z-index: 0;
             }
 
             .panel-label {
@@ -280,7 +306,6 @@ const Menu = ({ menuImage }) => {
               display: grid;
               grid-template-columns: 1fr auto;
               align-items: end;
-              gap: 20px;
               position: relative;
             }
 
@@ -359,9 +384,10 @@ const Menu = ({ menuImage }) => {
 
             @media (prefers-reduced-motion: reduce) {
               .nocturn.override::after,
-              .poster-title::after,
               .panel-label::after,
-              .hero-image-wrap::after {
+              .poster-title::after,
+              .hero-image-wrap::after,
+              .hero-panel::before {
                 animation: none !important;
               }
             }
