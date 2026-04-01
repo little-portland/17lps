@@ -223,11 +223,11 @@ const Menu = ({ menuImage }) => {
 
             .poster-footer {
               margin-top: 44px;
-              padding-top: 24px;
-              border-top: 2px solid rgba(57,255,20,0.45);
+              padding-top: 40px;
+              border-top: 2px solid rgba(57, 255, 20, 0.45);
               display: grid;
               grid-template-columns: 1fr auto;
-              gap: 20px;
+              /* gap: 20px; */
               align-items: end;
             }
 
