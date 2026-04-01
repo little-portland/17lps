@@ -139,12 +139,20 @@ const Menu = ({ menuImage }) => {
               100% { transform: translateX(120%); }
             }
 
-            @keyframes microJitter {
-              0%, 100% { transform: translate(0, 0); }
-              20% { transform: translate(0.25px, -0.2px); }
-              40% { transform: translate(-0.25px, 0.15px); }
-              60% { transform: translate(0.15px, 0.2px); }
-              80% { transform: translate(-0.15px, -0.15px); }
+            @keyframes typeReveal {
+              from { width: 0; }
+              to { width: 100%; }
+            }
+
+            @keyframes textAppear {
+              0% {
+                opacity: 0;
+                transform: translateY(4px);
+              }
+              100% {
+                opacity: 1;
+                transform: translateY(0);
+              }
             }
 
             .page-shell {
@@ -243,7 +251,7 @@ const Menu = ({ menuImage }) => {
               line-height: 1;
               letter-spacing: 0.08em;
               font-weight: 700;
-              animation: textGlow 3.2s ease-in-out infinite, microJitter 0.22s steps(1, end) infinite;
+              animation: textGlow 3.2s ease-in-out infinite;
             }
 
             .poster-title::after {
@@ -294,7 +302,26 @@ const Menu = ({ menuImage }) => {
               letter-spacing: 0.08em;
               margin: 0;
               font-weight: 700;
-              animation: textGlow 3s ease-in-out infinite, microJitter 0.28s steps(1, end) infinite;
+            }
+
+            .hero-heading-line {
+              display: inline-block;
+              position: relative;
+              white-space: nowrap;
+              overflow: hidden;
+              width: 0;
+              animation:
+                typeReveal 1.6s steps(15, end) 0.35s forwards,
+                textGlow 3s ease-in-out 2s infinite;
+            }
+
+            .hero-heading-line::after {
+              content: "_";
+              position: absolute;
+              right: 0;
+              top: 0;
+              color: #39ff14;
+              animation: cursorBlink 0.9s steps(1, end) infinite;
             }
 
             .hero-copy {
@@ -306,9 +333,23 @@ const Menu = ({ menuImage }) => {
               text-transform: lowercase;
             }
 
+            .hero-copy-line {
+              display: block;
+              opacity: 0;
+              animation: textAppear 0.8s ease forwards;
+            }
+
+            .hero-copy-line.line-1 {
+              animation-delay: 1.6s;
+            }
+
+            .hero-copy-line.line-2 {
+              animation-delay: 2.05s;
+            }
+
             .hero-copy .green {
               color: #39ff14;
-              animation: greenGlow 2.8s ease-in-out infinite;
+              animation: greenGlow 2.8s ease-in-out 2.2s infinite;
             }
 
             .hero-panel {
@@ -569,7 +610,9 @@ const Menu = ({ menuImage }) => {
               .poster-title,
               .poster-title::after,
               .hero-kicker,
-              .hero-heading,
+              .hero-heading-line,
+              .hero-heading-line::after,
+              .hero-copy-line,
               .hero-panel::before,
               .hero-panel::after,
               .panel-label,
@@ -580,6 +623,15 @@ const Menu = ({ menuImage }) => {
               .footer-accent,
               .signal-bars span {
                 animation: none !important;
+              }
+
+              .hero-heading-line {
+                width: 100% !important;
+              }
+
+              .hero-copy-line {
+                opacity: 1 !important;
+                transform: none !important;
               }
             }
 
@@ -664,13 +716,18 @@ const Menu = ({ menuImage }) => {
               <div className="hero-left">
                 <div>
                   <div className="hero-kicker">17 little portland street</div>
-                  <h1 className="hero-heading">access protocol</h1>
+                  <h1 className="hero-heading">
+                    <span className="hero-heading-line">access protocol</span>
+                  </h1>
                 </div>
 
                 <div className="hero-copy">
-                  entry to the club is reserved for <span className="green">friends of the club</span>.
-                  <br />
-                  submit your enquiry to begin the process.
+                  <span className="hero-copy-line line-1">
+                    entry to the club is reserved for <span className="green">friends of the club</span>.
+                  </span>
+                  <span className="hero-copy-line line-2">
+                    submit your enquiry to begin the process.
+                  </span>
                 </div>
               </div>
 
