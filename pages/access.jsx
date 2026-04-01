@@ -326,7 +326,7 @@ const Menu = ({ menuImage }) => {
               <span />
               <span />
             </div>
-            <div className="poster-title">friends of the club</div>
+            <div className="poster-title">Friend of the Club</div>
           </div>
 
           <div className="poster-inner">
