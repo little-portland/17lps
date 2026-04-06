@@ -247,7 +247,7 @@ const DinningPage = () => {
           .top-lines {
             position: relative;
             width: 100%;
-            height: 18px;
+            height: 20px;
             margin: 0 auto 18px;
           }
 
@@ -255,13 +255,63 @@ const DinningPage = () => {
           .top-lines::after {
             content: "";
             position: absolute;
-            left: 0;
-            right: 0;
+            left: 18px;
+            right: 18px;
             border-top: 2px solid var(--line);
           }
 
-          .top-lines::before { top: 4px; }
-          .top-lines::after { top: 11px; }
+          .top-lines::before { top: 3px; }
+          .top-lines::after { top: 15px; }
+
+          .top-lines span {
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            top: 9px;
+            height: 2px;
+            background: repeating-linear-gradient(
+              to right,
+              var(--line) 0 14px,
+              transparent 14px 24px,
+              var(--line) 24px 38px,
+              transparent 38px 52px
+            );
+            opacity: 0.95;
+          }
+
+          .top-lines i,
+          .top-lines b,
+          .top-lines em,
+          .top-lines strong {
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+          }
+
+          .top-lines i {
+            left: 0;
+            border-right: 16px solid var(--line);
+          }
+
+          .top-lines b {
+            left: 0;
+            top: 12px;
+            border-right: 16px solid var(--line);
+          }
+
+          .top-lines em {
+            right: 0;
+            border-left: 16px solid var(--line);
+          }
+
+          .top-lines strong {
+            right: 0;
+            top: 12px;
+            border-left: 16px solid var(--line);
+          }
 
           .tagline {
             width: 100%;
@@ -775,7 +825,7 @@ const DinningPage = () => {
               <div className="title-wrap">
                 <div className="header-title">Dining At</div>
                 <div className="header-subtitle">17 Little Portland Street</div>
-                <div className="top-lines" aria-hidden="true" />
+                <div className="top-lines" aria-hidden="true"><i /><b /><span /><em /><strong /></div>
                 <div className="header-tagline-wrap">
                   <div className="tagline">More Than a Meal. Step Into The Void</div>
                 </div>
