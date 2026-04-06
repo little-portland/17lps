@@ -117,9 +117,10 @@ const DinningPage = () => {
             right: 0;
             height: 22%;
             pointer-events: none;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.06), rgba(255,255,255,0));
+            background: transparent;
             opacity: 0.1;
             animation: scanSweep 8s linear infinite;
+            border-radius: 10px;
           }
 
           .header-bar {
@@ -187,7 +188,8 @@ const DinningPage = () => {
             min-height: 260px;
             border: 2px solid var(--line);
             overflow: hidden;
-            background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
+            background: transparent;
+            border-radius: 10px;
           }
 
           .tunnel-box::before {
@@ -219,8 +221,8 @@ const DinningPage = () => {
             position: absolute;
             left: 28px;
             right: 28px;
-            bottom: 26px;
-            z-index: 2;
+            top: 26px;
+            z-index: 3;
             display: grid;
             gap: 14px;
           }
@@ -376,8 +378,8 @@ const DinningPage = () => {
             position: relative;
             z-index: 1;
             display: grid;
-            grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
-            gap: 22px;
+            grid-template-columns: 1fr;
+            gap: 18px;
             padding: 18px;
           }
 
@@ -399,6 +401,10 @@ const DinningPage = () => {
           .image-placeholder-path {
             display: block;
             margin-top: 10px;
+          }
+
+          .concept-copy-wrap {
+            order: 1;
           }
 
           .concept-kicker {
@@ -585,10 +591,6 @@ const DinningPage = () => {
               border-bottom: none;
             }
 
-            .concept-card-inner {
-              grid-template-columns: 1fr;
-            }
-
             .footer-strip {
               grid-template-columns: 1fr 1fr;
             }
@@ -631,15 +633,14 @@ const DinningPage = () => {
             .floating-panel {
               left: 14px;
               right: 14px;
-              bottom: 16px;
+              top: 14px;
             }
           }
 
           @media (prefers-reduced-motion: reduce) {
             .page::before,
             .frame::after,
-            .tunnel-box::before,
-            .cta-link {
+            .tunnel-box::before {
               animation: none !important;
             }
           }
@@ -704,7 +705,7 @@ const DinningPage = () => {
                       </div>
                     </div>
 
-                    <div>
+                    <div className="concept-copy-wrap">
                       <div className="concept-kicker">Dining concept</div>
                       <h2 className="concept-title">The Tent</h2>
                       <div className="concept-subtitle">at the End of the Universe</div>
@@ -740,7 +741,7 @@ const DinningPage = () => {
                       </div>
                     </div>
 
-                    <div>
+                    <div className="concept-copy-wrap">
                       <div className="concept-kicker">Dining concept</div>
                       <h2 className="concept-title">Chef&apos;s Studio</h2>
                       <div className="concept-subtitle">Where the Heads Dine</div>
