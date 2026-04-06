@@ -263,26 +263,24 @@ const DinningPage = () => {
           .top-lines::after {
             content: "";
             position: absolute;
-            left: 18px;
-            right: 18px;
+            left: 22px;
+            right: 22px;
             border-top: 2px solid var(--line);
           }
 
-          .top-lines::before { top: 3px; }
-          .top-lines::after { top: 15px; }
+          .top-lines::before { top: 4px; }
+          .top-lines::after { top: 11px; }
 
           .top-lines span {
             position: absolute;
-            left: 18px;
-            right: 18px;
-            top: 9px;
+            left: 24px;
+            right: 24px;
+            top: 8px;
             height: 2px;
             background: repeating-linear-gradient(
               to right,
-              var(--line) 0 14px,
-              transparent 14px 24px,
-              var(--line) 24px 38px,
-              transparent 38px 52px
+              var(--line) 0 22px,
+              transparent 22px 34px
             );
             opacity: 0.95;
           }
@@ -292,7 +290,6 @@ const DinningPage = () => {
           .top-lines em,
           .top-lines strong {
             position: absolute;
-            top: 0;
             width: 0;
             height: 0;
             border-top: 10px solid transparent;
@@ -301,24 +298,26 @@ const DinningPage = () => {
 
           .top-lines i {
             left: 0;
-            border-right: 16px solid var(--line);
+            top: -2px;
+            border-right: 18px solid var(--line);
           }
 
           .top-lines b {
-            left: 0;
-            top: 12px;
-            border-right: 16px solid var(--line);
+            left: 8px;
+            top: -2px;
+            border-right: 18px solid var(--line);
           }
 
           .top-lines em {
             right: 0;
-            border-left: 16px solid var(--line);
+            top: -2px;
+            border-left: 18px solid var(--line);
           }
 
           .top-lines strong {
-            right: 0;
-            top: 12px;
-            border-left: 16px solid var(--line);
+            right: 8px;
+            top: -2px;
+            border-left: 18px solid var(--line);
           }
 
           .tagline {
