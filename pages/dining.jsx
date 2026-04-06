@@ -352,42 +352,21 @@ const DinningPage = () => {
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 0.01em;
-            line-height: 0.88;
-            font-size: clamp(46px, 4.8vw, 88px);
+            line-height: 0.92;
+            font-size: clamp(42px, 4.2vw, 74px);
             text-shadow:
-              0 1px 0 rgba(255,255,255,0.16),
+              0 1px 0 rgba(255,255,255,0.18),
               -2px 3px 0 rgba(255,255,255,0.1),
-              -5px 7px 0 rgba(255,255,255,0.08),
-              -9px 12px 0 rgba(255,255,255,0.04),
-              0 0 20px rgba(255,255,255,0.05);
-            transform: perspective(1300px) rotateX(20deg) skewX(-14deg);
+              0 0 14px rgba(255,255,255,0.06);
+            transform: skewX(-12deg);
             display: inline-block;
-            animation: glowTagline 4.2s ease-in-out infinite;
             position: relative;
             white-space: nowrap;
           }
 
-          .tagline::after {
-            content: "";
-            position: absolute;
-            top: -10%;
-            bottom: -10%;
-            width: 16%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
-            animation: shimmerBand 4.8s ease-in-out infinite;
-            pointer-events: none;
-            mix-blend-mode: screen;
-          }
-
+          .tagline::after,
           .tagline::before {
-            content: attr(data-echo);
-            position: absolute;
-            left: -12px;
-            top: 11px;
-            color: rgba(255,255,255,0.14);
-            z-index: -1;
-            letter-spacing: 0.01em;
-            filter: blur(0.3px);
+            display: none;
           }
 
           .header-tagline-wrap {
@@ -542,7 +521,10 @@ const DinningPage = () => {
           .cta-link {
             position: relative;
             z-index: 1;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
             text-align: center;
             padding: 18px 20px;
             color: var(--text);
@@ -558,27 +540,20 @@ const DinningPage = () => {
 
           .cta-link::before {
             content: "";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 16px;
-            height: 2px;
-            background: var(--text);
-            transform: translate(calc(-50% - 290px), -50%);
-            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
+            width: 28px;
+            height: 14px;
+            flex: 0 0 auto;
+            display: inline-block;
+            background:
+              linear-gradient(var(--text), var(--text)) left 0 top 2px / 16px 2px no-repeat,
+              linear-gradient(var(--text), var(--text)) left 0 center / 16px 2px no-repeat,
+              linear-gradient(var(--text), var(--text)) left 0 bottom 2px / 16px 2px no-repeat,
+              linear-gradient(45deg, transparent 50%, var(--text) 51%) right 4px top 50% / 10px 10px no-repeat,
+              linear-gradient(-45deg, transparent 50%, var(--text) 51%) right 0 top 50% / 10px 10px no-repeat;
           }
 
           .cta-link::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(calc(-50% - 272px), -50%);
-            width: 0;
-            height: 0;
-            border-top: 7px solid transparent;
-            border-bottom: 7px solid transparent;
-            border-left: 9px solid var(--text);
+            display: none;
           }
 
           .cta-link:hover {
@@ -740,37 +715,33 @@ const DinningPage = () => {
             line-height: 1;
             letter-spacing: 0.05em;
             position: relative;
-            padding: 14px 18px 14px 46px;
+            padding: 14px 18px 14px 18px;
             font-weight: 800;
             border: 1px solid var(--line);
             border-radius: 999px;
             background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
             transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
           }
 
           .link-row a::before {
             content: "";
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            width: 14px;
-            height: 2px;
-            background: var(--text);
-            transform: translateY(-50%);
-            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
+            width: 24px;
+            height: 14px;
+            flex: 0 0 auto;
+            display: inline-block;
+            background:
+              linear-gradient(var(--text), var(--text)) left 0 top 2px / 14px 2px no-repeat,
+              linear-gradient(var(--text), var(--text)) left 0 center / 14px 2px no-repeat,
+              linear-gradient(var(--text), var(--text)) left 0 bottom 2px / 14px 2px no-repeat,
+              linear-gradient(45deg, transparent 50%, var(--text) 51%) right 4px top 50% / 9px 9px no-repeat,
+              linear-gradient(-45deg, transparent 50%, var(--text) 51%) right 0 top 50% / 9px 9px no-repeat;
           }
 
           .link-row a::after {
-            content: "";
-            position: absolute;
-            left: 28px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-            border-left: 8px solid var(--text);
+            display: none;
           }
 
           .link-row a:hover {
@@ -914,7 +885,7 @@ const DinningPage = () => {
                 <div className="header-subtitle">17 Little Portland Street</div>
                 <div className="top-lines" aria-hidden="true"><span /></div>
                 <div className="header-tagline-wrap">
-                  <div className="tagline" data-echo="More Than a Meal. Step Into The Void">More Than a Meal. Step Into The Void</div>
+                  <div className="tagline">More Than a Meal. Step Into The Void</div>
                 </div>
               </div>
             </div>
