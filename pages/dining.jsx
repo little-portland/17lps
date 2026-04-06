@@ -479,9 +479,10 @@ const DinningPage = () => {
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.24em;
-            font-size: 18px;
-            color: var(--muted);
-            margin-bottom: 14px;
+            font-size: 22px;
+            color: var(--text);
+            margin-bottom: 18px;
+            padding: 4px 0 6px;
           }
 
           .schedule-grid {
@@ -523,7 +524,7 @@ const DinningPage = () => {
             z-index: 1;
             display: block;
             text-align: center;
-            padding: 18px 20px 18px 58px;
+            padding: 18px 20px;
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
@@ -531,34 +532,41 @@ const DinningPage = () => {
             line-height: 0.92;
             letter-spacing: 0.04em;
             font-weight: 800;
+            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
+            transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
           }
 
           .cta-link::before {
             content: "";
             position: absolute;
-            left: 22px;
+            left: 50%;
             top: 50%;
-            width: 18px;
-            height: 2px;
+            width: 22px;
+            height: 3px;
             background: var(--text);
-            transform: translateY(-50%);
-            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
+            transform: translate(calc(-50% - 520px), -50%);
+            box-shadow: 0 -5px 0 rgba(255,255,255,0.18), 0 5px 0 rgba(255,255,255,0.18);
           }
 
           .cta-link::after {
             content: "";
             position: absolute;
-            left: 36px;
+            left: 50%;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translate(calc(-50% - 503px), -50%);
             width: 0;
             height: 0;
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-            border-left: 8px solid var(--text);
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 10px solid var(--text);
           }
 
-          .cta-link:hover { background: rgba(255,255,255,0.04); }
+          .cta-link:hover {
+            color: var(--text);
+            background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
+            box-shadow: 0 0 18px rgba(255,255,255,0.08);
+            transform: translateY(-1px);
+          }
 
           .venue-card-inner {
             min-height: 220px;
@@ -842,6 +850,12 @@ const DinningPage = () => {
             .header-bar { padding-left: 14px; padding-right: 14px; }
             .floating-panel { margin: 0 14px 18px; }
             .tunnel-box { height: 220px; }
+            .cta-link::before {
+              transform: translate(calc(-50% - 150px), -50%);
+            }
+            .cta-link::after {
+              transform: translate(calc(-50% - 133px), -50%);
+            }
           }
 
           @media (prefers-reduced-motion: reduce) {
