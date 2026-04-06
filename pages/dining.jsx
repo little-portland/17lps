@@ -17,12 +17,12 @@ const DinningPage = () => {
             --line-soft: rgba(255, 255, 255, 0.18);
             --text: #f2f2ef;
             --muted: rgba(242, 242, 239, 0.72);
-            --display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            --tech: "Trebuchet MS", "Arial Black", Arial, sans-serif;
-            --future: "Orbitron", "Eurostile", "Bank Gothic", "Arial Black", sans-serif;
+            --display: "Orbitron", "Eurostile", "Bank Gothic", "Arial Black", sans-serif;
+            --body: "Space Mono", "IBM Plex Mono", monospace;
+            --italic-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
           }
 
-          @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Mono:wght@400;700&display=swap');
 
           html {
             background: var(--bg) !important;
@@ -34,7 +34,7 @@ const DinningPage = () => {
             background: var(--bg) !important;
             color: var(--text);
             overflow-x: hidden !important;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: var(--body);
           }
 
           * { box-sizing: border-box; }
@@ -71,8 +71,8 @@ const DinningPage = () => {
 
           @keyframes textGlitch {
             0%, 100% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
-            18% { transform: translate3d(0.6px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.12); }
-            19% { transform: translate3d(-0.6px,0,0); text-shadow: 1px 0 0 rgba(255,255,255,0.12); }
+            18% { transform: translate3d(0.8px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.12); }
+            19% { transform: translate3d(-0.8px,0,0); text-shadow: 1px 0 0 rgba(255,255,255,0.12); }
             20% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
             72% { transform: translate3d(0.4px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.08); }
             73% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
@@ -85,20 +85,22 @@ const DinningPage = () => {
 
           @keyframes glowTagline {
             0%, 100% {
-              transform: perspective(900px) rotateX(14deg) translateY(0);
+              transform: perspective(1100px) rotateX(18deg) skewX(-8deg) translateY(0);
               text-shadow:
-                0 1px 0 rgba(255,255,255,0.2),
-                -3px 4px 0 rgba(255,255,255,0.1),
-                -7px 9px 0 rgba(255,255,255,0.05),
+                0 1px 0 rgba(255,255,255,0.22),
+                -3px 4px 0 rgba(255,255,255,0.14),
+                -7px 9px 0 rgba(255,255,255,0.07),
+                -11px 14px 0 rgba(255,255,255,0.04),
                 0 0 18px rgba(255,255,255,0.08);
             }
             50% {
-              transform: perspective(900px) rotateX(14deg) translateY(-2px);
+              transform: perspective(1100px) rotateX(18deg) skewX(-8deg) translateY(-2px);
               text-shadow:
-                0 1px 0 rgba(255,255,255,0.24),
-                -4px 5px 0 rgba(255,255,255,0.12),
-                -9px 12px 0 rgba(255,255,255,0.06),
-                0 0 26px rgba(255,255,255,0.16);
+                0 1px 0 rgba(255,255,255,0.26),
+                -4px 5px 0 rgba(255,255,255,0.16),
+                -9px 12px 0 rgba(255,255,255,0.08),
+                -13px 17px 0 rgba(255,255,255,0.05),
+                0 0 30px rgba(255,255,255,0.16);
             }
           }
 
@@ -108,6 +110,14 @@ const DinningPage = () => {
             50% { opacity: 0.18; }
             80% { opacity: 0.08; }
             100% { transform: translateX(120%); opacity: 0; }
+          }
+
+          @keyframes boxGlitch {
+            0%, 100% { transform: translateX(0); }
+            96% { transform: translateX(0); }
+            97% { transform: translateX(1px); }
+            98% { transform: translateX(-1px); }
+            99% { transform: translateX(0); }
           }
 
           .page {
@@ -131,20 +141,20 @@ const DinningPage = () => {
           }
 
           .page::before {
-            opacity: 0.32;
+            opacity: 0.34;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
             mix-blend-mode: screen;
-            animation: grainShift 0.22s steps(2, end) infinite;
+            animation: grainShift 0.18s steps(2, end) infinite;
           }
 
           .page::after {
             background:
-              repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 24px),
-              repeating-linear-gradient(90deg, transparent 0 12px, rgba(255,255,255,0.015) 12px 14px, transparent 14px 34px),
+              repeating-linear-gradient(90deg, rgba(255,255,255,0.026) 0 2px, transparent 2px 24px),
+              repeating-linear-gradient(90deg, transparent 0 12px, rgba(255,255,255,0.018) 12px 14px, transparent 14px 34px),
               linear-gradient(to bottom, rgba(255,255,255,0.04), transparent 18%, transparent 82%, rgba(255,255,255,0.035)),
               radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 40%);
-            opacity: 0.26;
-            animation: ambientBars 7s linear infinite;
+            opacity: 0.3;
+            animation: ambientBars 6s linear infinite;
           }
 
           .screen-glitch {
@@ -157,7 +167,7 @@ const DinningPage = () => {
               linear-gradient(0deg, transparent 0 56%, rgba(255,255,255,0.06) 56% 58%, transparent 58% 100%),
               linear-gradient(180deg, transparent 0 28%, rgba(255,255,255,0.03) 28% 30%, transparent 30% 100%);
             mix-blend-mode: screen;
-            animation: screenGlitch 6s steps(1, end) infinite;
+            animation: screenGlitch 5.5s steps(1, end) infinite;
           }
 
           .shell {
@@ -200,14 +210,14 @@ const DinningPage = () => {
             grid-template-columns: 1fr;
             align-items: center;
             gap: 12px;
-            padding: 26px 22px 10px;
+            padding: 26px 22px 18px;
             position: relative;
             z-index: 2;
             text-align: center;
           }
 
           .title-wrap {
-            width: min(980px, 100%);
+            width: min(1180px, 100%);
             margin: 0 auto;
           }
 
@@ -224,12 +234,12 @@ const DinningPage = () => {
 
           .header-subtitle {
             width: 100%;
-            margin: 0 auto;
+            margin: 12px auto 12px;
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            font-size: clamp(18px, 1.8vw, 26px);
+            font-size: clamp(24px, 3vw, 58px);
             line-height: 1;
             font-weight: 700;
           }
@@ -238,7 +248,7 @@ const DinningPage = () => {
             position: relative;
             width: 100%;
             height: 18px;
-            margin: 0 auto;
+            margin: 0 auto 18px;
           }
 
           .top-lines::before,
@@ -255,19 +265,22 @@ const DinningPage = () => {
 
           .tagline {
             width: 100%;
-            margin: 8px auto 0;
+            margin: 0 auto;
             color: var(--text);
-            font-family: var(--display);
+            font-family: var(--italic-display);
+            font-style: italic;
+            font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 0.01em;
             line-height: 0.92;
-            font-size: clamp(26px, 2.7vw, 44px);
+            font-size: clamp(40px, 4.2vw, 76px);
             text-shadow:
-              0 1px 0 rgba(255,255,255,0.18),
-              -3px 4px 0 rgba(255,255,255,0.1),
-              -7px 9px 0 rgba(255,255,255,0.05),
+              0 1px 0 rgba(255,255,255,0.22),
+              -3px 4px 0 rgba(255,255,255,0.14),
+              -7px 9px 0 rgba(255,255,255,0.07),
+              -11px 14px 0 rgba(255,255,255,0.04),
               0 0 18px rgba(255,255,255,0.08);
-            transform: perspective(900px) rotateX(14deg);
+            transform: perspective(1100px) rotateX(18deg) skewX(-8deg);
             display: inline-block;
             animation: glowTagline 4.2s ease-in-out infinite;
             position: relative;
@@ -347,18 +360,19 @@ const DinningPage = () => {
             z-index: 1;
           }
 
-          .info-card,
+          .schedule-wrap,
           .cta-card,
           .venue-card,
           .content-wrap {
             position: relative;
             background: transparent;
-            border: 1px solid var(--line);
+            border: 2px solid var(--line);
             border-radius: 10px;
             overflow: hidden;
+            animation: boxGlitch 8s steps(1, end) infinite;
           }
 
-          .info-card::before,
+          .schedule-wrap::before,
           .cta-card::before,
           .venue-card::before,
           .content-wrap::before {
@@ -370,31 +384,47 @@ const DinningPage = () => {
             opacity: 0.08;
           }
 
-          .info-card {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0;
-            align-items: stretch;
+          .schedule-header {
+            position: relative;
+            z-index: 1;
+            padding: 16px 18px 0;
+            text-align: center;
           }
 
-          .info-card > div {
+          .schedule-open {
+            font-family: var(--future);
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            font-size: clamp(18px, 2vw, 28px);
+            color: var(--text);
+            margin-bottom: 8px;
+          }
+
+          .schedule-label-top {
+            font-family: var(--body);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 14px;
+          }
+
+          .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+
+          .schedule-item {
             position: relative;
             z-index: 1;
             padding: 18px 16px 16px;
-            border-right: 1px solid var(--line-soft);
+            border-top: 2px solid var(--line);
+            border-right: 2px solid var(--line);
           }
 
-          .info-card > div:last-child { border-right: none; }
-
-          .mini-label {
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            font-size: 12px;
-            font-weight: 800;
-            margin-bottom: 14px;
-            font-family: var(--tech);
-          }
+          .schedule-item:last-child { border-right: none; }
 
           .card-title {
             color: var(--text);
@@ -465,7 +495,7 @@ const DinningPage = () => {
             letter-spacing: 0.12em;
             font-size: 12px;
             font-weight: 800;
-            font-family: var(--tech);
+            font-family: var(--body);
           }
 
           .venue-copy {
@@ -481,7 +511,12 @@ const DinningPage = () => {
             text-transform: uppercase;
             letter-spacing: 0.12em;
             font-weight: 800;
-            font-family: var(--tech);
+            font-family: var(--body);
+          }
+
+          .concept-stack {
+            display: grid;
+            gap: 18px;
           }
 
           .concept-block {
@@ -491,7 +526,7 @@ const DinningPage = () => {
 
           .image-placeholder {
             min-height: 220px;
-            border: 1px solid var(--line-soft);
+            border: 2px solid var(--line);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -499,6 +534,7 @@ const DinningPage = () => {
             text-align: center;
             padding: 18px;
             background: transparent;
+            animation: boxGlitch 10s steps(1, end) infinite;
           }
 
           .image-placeholder-title { font-size: clamp(28px, 3vw, 44px); }
@@ -511,7 +547,7 @@ const DinningPage = () => {
             font-size: 12px;
             font-weight: 800;
             margin-bottom: 10px;
-            font-family: var(--tech);
+            font-family: var(--body);
           }
 
           .concept-title {
@@ -527,7 +563,8 @@ const DinningPage = () => {
             font-size: clamp(18px, 1.6vw, 24px);
             line-height: 1.34;
             font-weight: 700;
-            max-width: 36ch;
+            max-width: none;
+            width: 100%;
           }
 
           .feature-list {
@@ -594,7 +631,7 @@ const DinningPage = () => {
             display: grid;
             grid-template-columns: 90px 1fr 200px 80px;
             gap: 0;
-            border-top: 1px solid var(--line);
+            border-top: 2px solid var(--line);
             margin-top: 18px;
             position: relative;
             z-index: 1;
@@ -602,7 +639,7 @@ const DinningPage = () => {
 
           .footer-cell {
             min-height: 80px;
-            border-right: 1px solid var(--line);
+            border-right: 2px solid var(--line);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -653,7 +690,7 @@ const DinningPage = () => {
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-weight: 800;
-            font-family: var(--tech);
+            font-family: var(--body);
           }
 
           .barcode {
@@ -691,12 +728,12 @@ const DinningPage = () => {
           }
 
           @media (max-width: 900px) {
-            .info-card { grid-template-columns: 1fr; }
-            .info-card > div {
+            .schedule-grid { grid-template-columns: 1fr; }
+            .schedule-item {
               border-right: none;
-              border-bottom: 1px solid var(--line-soft);
+              border-bottom: 2px solid var(--line);
             }
-            .info-card > div:last-child { border-bottom: none; }
+            .schedule-item:last-child { border-bottom: none; }
             .footer-strip { grid-template-columns: 1fr 1fr; }
           }
 
@@ -720,7 +757,10 @@ const DinningPage = () => {
             .header-title,
             .page::after,
             .tagline,
-            .tagline::after {
+            .tagline::after,
+            .schedule-wrap,
+            .content-wrap,
+            .image-placeholder {
               animation: none !important;
             }
           }
@@ -737,7 +777,7 @@ const DinningPage = () => {
                 <div className="header-subtitle">17 Little Portland Street</div>
                 <div className="top-lines" aria-hidden="true" />
                 <div className="header-tagline-wrap">
-                  <div className="tagline">More than a meal. Step into the void</div>
+                  <div className="tagline">More Than a Meal. Step Into The Void</div>
                 </div>
               </div>
             </div>
@@ -747,21 +787,24 @@ const DinningPage = () => {
             </div>
 
             <div className="floating-panel">
-              <div className="info-card">
-                <div>
-                  <div className="mini-label">Nightly schedule</div>
-                  <div className="card-title">Chef&apos;s Studio</div>
-                  <div className="card-time">20:00</div>
+              <div className="schedule-wrap">
+                <div className="schedule-header">
+                  <div className="schedule-open">Open Thursdays to Saturdays</div>
+                  <div className="schedule-label-top">Nightly Schedule</div>
                 </div>
-                <div>
-                  <div className="mini-label">Nightly schedule</div>
-                  <div className="card-title">Dinner in The Tent</div>
-                  <div className="card-time">20:30</div>
-                </div>
-                <div>
-                  <div className="mini-label">Nightly schedule</div>
-                  <div className="card-title">Club Opens</div>
-                  <div className="card-time">22:00</div>
+                <div className="schedule-grid">
+                  <div className="schedule-item">
+                    <div className="card-title">Chef&apos;s Studio</div>
+                    <div className="card-time">20:00</div>
+                  </div>
+                  <div className="schedule-item">
+                    <div className="card-title">Dinner in The Tent</div>
+                    <div className="card-time">20:30</div>
+                  </div>
+                  <div className="schedule-item">
+                    <div className="card-title">Club Opens</div>
+                    <div className="card-time">22:00</div>
+                  </div>
                 </div>
               </div>
 
