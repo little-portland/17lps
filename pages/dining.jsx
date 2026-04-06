@@ -13,13 +13,14 @@ const DinningPage = () => {
         <style>{`
           :root {
             --bg: #0a0a0a;
-            --panel: rgba(12, 12, 12, 0.94);
-            --panel-soft: rgba(18, 18, 18, 0.9);
+            --panel: rgba(12, 12, 12, 0);
             --line: rgba(255, 255, 255, 0.9);
             --line-soft: rgba(255, 255, 255, 0.24);
             --text: #f3f3f0;
             --muted: rgba(243, 243, 240, 0.7);
             --shadow: rgba(0, 0, 0, 0.45);
+            --display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            --tech: "Trebuchet MS", "Arial Black", Arial, sans-serif;
           }
 
           html {
@@ -40,9 +41,10 @@ const DinningPage = () => {
 
           @keyframes grainShift {
             0% { transform: translate(0, 0); }
-            25% { transform: translate(-0.4%, 0.3%); }
-            50% { transform: translate(0.3%, -0.35%); }
-            75% { transform: translate(0.35%, 0.25%); }
+            20% { transform: translate(-0.35%, 0.25%); }
+            40% { transform: translate(0.25%, -0.3%); }
+            60% { transform: translate(0.3%, 0.2%); }
+            80% { transform: translate(-0.2%, -0.15%); }
             100% { transform: translate(0, 0); }
           }
 
@@ -53,36 +55,26 @@ const DinningPage = () => {
 
           @keyframes scanSweep {
             0% { transform: translateY(-130%); opacity: 0; }
-            15% { opacity: 0.14; }
-            50% { opacity: 0.22; }
-            85% { opacity: 0.14; }
+            12% { opacity: 0.08; }
+            50% { opacity: 0.14; }
+            88% { opacity: 0.08; }
             100% { transform: translateY(130%); opacity: 0; }
           }
 
-          @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            8% { opacity: 0.96; }
-            9% { opacity: 0.82; }
-            10% { opacity: 1; }
-            48% { opacity: 0.98; }
-            49% { opacity: 0.86; }
-            50% { opacity: 1; }
+          @keyframes screenGlitch {
+            0%, 92%, 100% { opacity: 0; transform: translateX(0); }
+            93% { opacity: 0.08; transform: translateX(-2px); }
+            94% { opacity: 0.02; transform: translateX(1px); }
+            95% { opacity: 0.06; transform: translateX(0); }
           }
 
           @keyframes textGlitch {
             0%, 100% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
-            20% { transform: translate3d(0.5px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.12); }
-            21% { transform: translate3d(-0.5px,0,0); text-shadow: 1px 0 0 rgba(255,255,255,0.12); }
-            22% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
-            70% { transform: translate3d(0.4px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.1); }
-            71% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
-          }
-
-          @keyframes borderGlitch {
-            0%, 100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
-            48% { box-shadow: 0 0 0 rgba(255,255,255,0); }
-            49% { box-shadow: 1px 0 0 rgba(255,255,255,0.18), -1px 0 0 rgba(255,255,255,0.12); }
-            50% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+            18% { transform: translate3d(0.5px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.12); }
+            19% { transform: translate3d(-0.5px,0,0); text-shadow: 1px 0 0 rgba(255,255,255,0.12); }
+            20% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
+            72% { transform: translate3d(0.3px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.08); }
+            73% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
           }
 
           .page {
@@ -90,9 +82,7 @@ const DinningPage = () => {
             position: relative;
             overflow: hidden;
             padding: 28px 16px 42px;
-            background:
-              radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 30%),
-              linear-gradient(180deg, #111 0%, #080808 100%);
+            background: radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 30%), linear-gradient(180deg, #111 0%, #080808 100%);
           }
 
           .page::before,
@@ -105,7 +95,7 @@ const DinningPage = () => {
           }
 
           .page::before {
-            opacity: 0.18;
+            opacity: 0.2;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
             mix-blend-mode: screen;
             animation: grainShift 0.45s steps(2, end) infinite;
@@ -116,20 +106,31 @@ const DinningPage = () => {
             opacity: 0.35;
           }
 
+          .screen-glitch {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            background:
+              linear-gradient(90deg, transparent 0 20%, rgba(255,255,255,0.06) 20% 21%, transparent 21% 100%),
+              linear-gradient(0deg, transparent 0 58%, rgba(255,255,255,0.04) 58% 60%, transparent 60% 100%);
+            mix-blend-mode: screen;
+            animation: screenGlitch 9s steps(1, end) infinite;
+          }
+
           .shell {
             width: min(1160px, 100%);
             margin: 0 auto;
             position: relative;
-            z-index: 1;
+            z-index: 2;
           }
 
           .frame {
             position: relative;
             border: 2px solid var(--line);
-            background: rgba(10, 10, 10, 0.72);
+            background: rgba(10, 10, 10, 0.42);
             overflow: hidden;
             box-shadow: 0 22px 70px var(--shadow);
-            animation: flicker 9s linear infinite;
           }
 
           .frame::before {
@@ -137,7 +138,7 @@ const DinningPage = () => {
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background: linear-gradient(180deg, rgba(255,255,255,0.035), transparent 20%, transparent 80%, rgba(255,255,255,0.02));
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 20%, transparent 80%, rgba(255,255,255,0.02));
           }
 
           .frame::after {
@@ -154,62 +155,73 @@ const DinningPage = () => {
 
           .header-bar {
             display: grid;
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: 1fr;
             align-items: center;
-            gap: 18px;
-            padding: 18px 22px 10px;
+            gap: 14px;
+            padding: 22px 22px 10px;
             position: relative;
             z-index: 2;
+            text-align: center;
           }
 
-          .header-label,
-          .footer-tag {
+          .header-title {
+            font-family: var(--display);
             text-transform: uppercase;
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            letter-spacing: 0.08em;
-            line-height: 1;
+            letter-spacing: 0.02em;
+            line-height: 0.88;
+            font-size: clamp(66px, 10vw, 150px);
             color: var(--text);
+            animation: textGlitch 7s steps(1, end) infinite;
           }
 
-          .header-label {
-            font-size: clamp(18px, 1.7vw, 28px);
-            white-space: nowrap;
+          .header-subtitle {
+            color: var(--text);
+            font-family: var(--tech);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: clamp(18px, 1.8vw, 26px);
+            line-height: 1;
+            font-weight: 800;
           }
 
-          .header-line {
-            height: 0;
-            border-top: 4px double var(--line);
+          .top-arrow {
             position: relative;
+            width: min(920px, 100%);
+            height: 28px;
+            margin: 0 auto;
           }
 
-          .header-line::after {
+          .top-arrow::before,
+          .top-arrow::after {
             content: "";
             position: absolute;
-            right: -2px;
-            top: -7px;
+            left: 0;
+            right: 18px;
+            border-top: 4px solid var(--line);
+          }
+
+          .top-arrow::before { top: 8px; }
+          .top-arrow::after { top: 15px; }
+
+          .top-arrow span {
+            position: absolute;
+            right: 0;
+            top: 4px;
             width: 0;
             height: 0;
-            border-top: 7px solid transparent;
-            border-bottom: 7px solid transparent;
-            border-left: 14px solid var(--line);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 20px solid var(--line);
           }
 
           .hero {
             position: relative;
             z-index: 1;
-            padding: 6px 22px 22px;
+            padding: 0 22px 22px;
           }
 
           .hero-title {
-            margin: 0;
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            line-height: 0.88;
-            font-size: clamp(64px, 10vw, 146px);
-            color: var(--text);
-            animation: textGlitch 7s steps(1, end) infinite;
-            will-change: transform, text-shadow;
+            display: none;
           }
 
           .tunnel-box {
@@ -218,6 +230,7 @@ const DinningPage = () => {
             height: min(46vw, 470px);
             min-height: 260px;
             border: 2px solid var(--line);
+            border-radius: 10px;
             overflow: hidden;
             background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
           }
@@ -260,8 +273,9 @@ const DinningPage = () => {
           .venue-card,
           .concept-card {
             position: relative;
-            background: var(--panel-soft);
+            background: transparent;
             border: 1px solid var(--line);
+            border-radius: 10px;
             overflow: hidden;
           }
 
@@ -274,7 +288,7 @@ const DinningPage = () => {
             inset: 0;
             pointer-events: none;
             background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 4px);
-            opacity: 0.1;
+            opacity: 0.08;
           }
 
           .info-card {
@@ -291,9 +305,7 @@ const DinningPage = () => {
             border-right: 1px solid var(--line-soft);
           }
 
-          .info-card > div:last-child {
-            border-right: none;
-          }
+          .info-card > div:last-child { border-right: none; }
 
           .mini-label {
             color: var(--muted);
@@ -302,11 +314,12 @@ const DinningPage = () => {
             font-size: 12px;
             font-weight: 800;
             margin-bottom: 14px;
+            font-family: var(--tech);
           }
 
           .card-title {
             color: var(--text);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-family: var(--display);
             font-size: clamp(22px, 2vw, 34px);
             line-height: 0.95;
             text-transform: uppercase;
@@ -315,14 +328,10 @@ const DinningPage = () => {
 
           .card-time {
             color: var(--text);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-family: var(--display);
             font-size: clamp(36px, 3vw, 52px);
             line-height: 0.9;
             text-transform: uppercase;
-          }
-
-          .cta-card {
-            z-index: 1;
           }
 
           .cta-link {
@@ -332,17 +341,14 @@ const DinningPage = () => {
             text-align: center;
             padding: 18px 20px;
             color: var(--text);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-family: var(--display);
             text-transform: uppercase;
             font-size: clamp(24px, 2.4vw, 38px);
             line-height: 0.92;
             letter-spacing: 0.03em;
-            animation: borderGlitch 8s steps(1, end) infinite;
           }
 
-          .cta-link:hover {
-            background: rgba(255,255,255,0.04);
-          }
+          .cta-link:hover { background: rgba(255,255,255,0.04); }
 
           .content-stack {
             padding: 0 22px 22px;
@@ -368,15 +374,13 @@ const DinningPage = () => {
           .concept-title,
           .image-placeholder-title {
             color: var(--text);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-family: var(--display);
             text-transform: uppercase;
             line-height: 0.92;
             letter-spacing: 0.03em;
           }
 
-          .venue-title {
-            font-size: clamp(34px, 4vw, 58px);
-          }
+          .venue-title { font-size: clamp(34px, 4vw, 58px); }
 
           .venue-copy,
           .image-placeholder-path,
@@ -386,6 +390,7 @@ const DinningPage = () => {
             letter-spacing: 0.12em;
             font-size: 12px;
             font-weight: 800;
+            font-family: var(--tech);
           }
 
           .venue-copy {
@@ -401,6 +406,7 @@ const DinningPage = () => {
             text-transform: uppercase;
             letter-spacing: 0.12em;
             font-weight: 800;
+            font-family: var(--tech);
           }
 
           .concept-card-inner {
@@ -415,26 +421,19 @@ const DinningPage = () => {
           .image-placeholder {
             min-height: 220px;
             border: 1px solid var(--line-soft);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 18px;
-            background: rgba(255,255,255,0.02);
+            background: transparent;
           }
 
-          .image-placeholder-title {
-            font-size: clamp(28px, 3vw, 44px);
-          }
+          .image-placeholder-title { font-size: clamp(28px, 3vw, 44px); }
+          .image-placeholder-path { display: block; margin-top: 10px; }
 
-          .image-placeholder-path {
-            display: block;
-            margin-top: 10px;
-          }
-
-          .concept-copy-wrap {
-            order: 1;
-          }
+          .concept-copy-wrap { order: 1; }
 
           .concept-kicker {
             color: var(--muted);
@@ -443,6 +442,7 @@ const DinningPage = () => {
             font-size: 12px;
             font-weight: 800;
             margin-bottom: 10px;
+            font-family: var(--tech);
           }
 
           .concept-title {
@@ -450,9 +450,7 @@ const DinningPage = () => {
             font-size: clamp(34px, 4.2vw, 68px);
           }
 
-          .concept-subtitle {
-            margin-top: 8px;
-          }
+          .concept-subtitle { margin-top: 8px; }
 
           .concept-copy {
             margin: 18px 0 18px;
@@ -473,16 +471,14 @@ const DinningPage = () => {
 
           .feature-list li {
             color: var(--text);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-family: var(--display);
             text-transform: uppercase;
             font-size: clamp(22px, 2vw, 30px);
             line-height: 0.95;
             letter-spacing: 0.03em;
           }
 
-          .feature-list li::before {
-            content: "◦ ";
-          }
+          .feature-list li::before { content: "◦ "; }
 
           .link-row {
             display: flex;
@@ -492,16 +488,14 @@ const DinningPage = () => {
 
           .link-row a {
             color: var(--text);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-family: var(--display);
             text-transform: uppercase;
             font-size: clamp(20px, 1.8vw, 26px);
             line-height: 0.95;
             letter-spacing: 0.03em;
           }
 
-          .link-row a:hover {
-            color: var(--muted);
-          }
+          .link-row a:hover { color: var(--muted); }
 
           .footer-strip {
             display: grid;
@@ -522,17 +516,14 @@ const DinningPage = () => {
             padding: 10px;
             position: relative;
             overflow: hidden;
+            background: transparent;
           }
 
-          .footer-cell:last-child {
-            border-right: none;
-          }
+          .footer-cell:last-child { border-right: none; }
 
           .globe,
           .globe::before,
-          .globe::after {
-            border-radius: 50%;
-          }
+          .globe::after { border-radius: 50%; }
 
           .globe {
             width: 48px;
@@ -569,6 +560,7 @@ const DinningPage = () => {
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-weight: 800;
+            font-family: var(--tech);
           }
 
           .barcode {
@@ -595,82 +587,48 @@ const DinningPage = () => {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-family: var(--display);
             font-size: 30px;
             line-height: 1;
           }
 
           @media (max-width: 980px) {
-            .footer-strip {
-              grid-template-columns: 80px 1fr 160px 72px;
-            }
+            .footer-strip { grid-template-columns: 80px 1fr 160px 72px; }
           }
 
           @media (max-width: 900px) {
-            .info-card {
-              grid-template-columns: 1fr;
-            }
-
+            .info-card { grid-template-columns: 1fr; }
             .info-card > div {
               border-right: none;
               border-bottom: 1px solid var(--line-soft);
             }
-
-            .info-card > div:last-child {
-              border-bottom: none;
-            }
-
-            .footer-strip {
-              grid-template-columns: 1fr 1fr;
-            }
+            .info-card > div:last-child { border-bottom: none; }
+            .footer-strip { grid-template-columns: 1fr 1fr; }
           }
 
           @media (max-width: 640px) {
-            .page {
-              padding: 14px 8px 22px;
-            }
-
+            .page { padding: 14px 8px 22px; }
             .header-bar,
             .hero,
             .tunnel-box,
-            .content-stack {
-              margin-left: 0;
-              margin-right: 0;
-            }
-
-            .header-bar {
-              grid-template-columns: 1fr;
-              gap: 8px;
-            }
-
-            .header-line {
-              display: none;
-            }
-
+            .content-stack { margin-left: 0; margin-right: 0; }
+            .header-bar { gap: 10px; }
             .hero,
-            .content-stack {
-              padding-left: 14px;
-              padding-right: 14px;
-            }
-
+            .content-stack { padding-left: 14px; padding-right: 14px; }
             .tunnel-box {
               margin-left: 14px;
               margin-right: 14px;
               height: 220px;
             }
-
-            .floating-panel {
-              margin: 0 14px 18px;
-            }
+            .floating-panel { margin: 0 14px 18px; }
           }
 
           @media (prefers-reduced-motion: reduce) {
             .page::before,
             .frame::after,
             .tunnel-box::before,
-            .frame,
-            .hero-title,
-            .cta-link {
+            .screen-glitch,
+            .header-title {
               animation: none !important;
             }
           }
@@ -678,34 +636,33 @@ const DinningPage = () => {
       </Head>
 
       <main className="page">
+        <div className="screen-glitch" aria-hidden="true" />
         <div className="shell">
           <section className="frame">
             <div className="header-bar">
-              <div className="header-label">Dining Interface</div>
-              <div className="header-line" aria-hidden="true" />
-              <div className="header-label">17 Little Portland Street</div>
+              <div className="header-title">Dining At</div>
+              <div className="top-arrow" aria-hidden="true"><span /></div>
+              <div className="header-subtitle">17 Little Portland Street</div>
             </div>
 
             <div className="hero">
-              <h1 className="hero-title">Dining Noir</h1>
+              <div className="tunnel-box" aria-hidden="true" />
             </div>
-
-            <div className="tunnel-box" aria-hidden="true" />
 
             <div className="floating-panel">
               <div className="info-card">
                 <div>
-                  <div className="mini-label">Primary Access</div>
+                  <div className="mini-label">Nightly schedule</div>
                   <div className="card-title">Chef&apos;s Studio</div>
                   <div className="card-time">20:00</div>
                 </div>
                 <div>
-                  <div className="mini-label">Primary Access</div>
+                  <div className="mini-label">Nightly schedule</div>
                   <div className="card-title">Dinner in The Tent</div>
                   <div className="card-time">20:30</div>
                 </div>
                 <div>
-                  <div className="mini-label">Primary Access</div>
+                  <div className="mini-label">Nightly schedule</div>
                   <div className="card-title">Club Opens</div>
                   <div className="card-time">22:00</div>
                 </div>
