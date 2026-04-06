@@ -12,14 +12,14 @@ const DinningPage = () => {
         />
         <style>{`
           :root {
-            --paper: #f1eee4;
-            --paper-shadow: #e6e0d2;
-            --ink: #1a130f;
-            --pink: #ff3f97;
-            --blue: #3848b9;
-            --blue-dark: #263493;
-            --muted: rgba(26, 19, 15, 0.68);
-            --rule: rgba(26, 19, 15, 0.18);
+            --paper: #f2efe6;
+            --paper-shadow: #e5dece;
+            --ink: #17110d;
+            --pink: #ff4aa2;
+            --pink-deep: #f23893;
+            --blue: #3948b8;
+            --blue-deep: #25358f;
+            --muted: rgba(23, 17, 13, 0.52);
           }
 
           html {
@@ -46,15 +46,28 @@ const DinningPage = () => {
 
           @keyframes grainShift {
             0% { transform: translate(0, 0); }
-            25% { transform: translate(-0.4%, 0.3%); }
-            50% { transform: translate(0.3%, -0.4%); }
-            75% { transform: translate(0.4%, 0.2%); }
+            25% { transform: translate(-0.5%, 0.4%); }
+            50% { transform: translate(0.4%, -0.4%); }
+            75% { transform: translate(0.3%, 0.5%); }
             100% { transform: translate(0, 0); }
+          }
+
+          @keyframes glitchDrift {
+            0%, 100% { transform: translateX(0); opacity: 0.08; }
+            20% { transform: translateX(-2px); opacity: 0.12; }
+            40% { transform: translateX(1px); opacity: 0.05; }
+            60% { transform: translateX(-1px); opacity: 0.1; }
+            80% { transform: translateX(2px); opacity: 0.06; }
+          }
+
+          @keyframes pulseBadge {
+            0%, 100% { transform: translateY(-50%); }
+            50% { transform: translateY(calc(-50% - 2px)); }
           }
 
           .dining-page {
             min-height: 100vh;
-            padding: 28px 14px 36px;
+            padding: 26px 14px 36px;
             position: relative;
             background: var(--paper);
           }
@@ -70,19 +83,21 @@ const DinningPage = () => {
 
           .dining-page::before {
             opacity: 0.2;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.35' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
             mix-blend-mode: multiply;
-            animation: grainShift 0.45s steps(2, end) infinite;
+            animation: grainShift 0.42s steps(2, end) infinite;
           }
 
           .dining-page::after {
             background:
-              radial-gradient(circle at 18% 22%, rgba(0,0,0,0.05) 0 1px, transparent 2px),
-              radial-gradient(circle at 74% 15%, rgba(0,0,0,0.04) 0 1px, transparent 2px),
-              radial-gradient(circle at 68% 62%, rgba(0,0,0,0.035) 0 1px, transparent 2px),
-              radial-gradient(circle at 34% 78%, rgba(0,0,0,0.03) 0 1px, transparent 2px);
-            background-size: 260px 260px, 320px 320px, 280px 280px, 340px 340px;
-            opacity: 0.28;
+              linear-gradient(90deg, transparent 0%, rgba(255,74,162,0.08) 20%, transparent 40%, rgba(57,72,184,0.06) 58%, transparent 78%, rgba(255,74,162,0.08) 100%),
+              radial-gradient(circle at 18% 22%, rgba(0,0,0,0.04) 0 1px, transparent 2px),
+              radial-gradient(circle at 74% 15%, rgba(0,0,0,0.035) 0 1px, transparent 2px),
+              radial-gradient(circle at 68% 62%, rgba(0,0,0,0.03) 0 1px, transparent 2px),
+              radial-gradient(circle at 34% 78%, rgba(0,0,0,0.025) 0 1px, transparent 2px);
+            background-size: 100% 100%, 260px 260px, 320px 320px, 280px 280px, 340px 340px;
+            opacity: 0.42;
+            animation: glitchDrift 6s steps(2, end) infinite;
           }
 
           .shell {
@@ -105,9 +120,9 @@ const DinningPage = () => {
             inset: 0;
             pointer-events: none;
             background:
-              radial-gradient(circle at 50% 42%, rgba(56,72,185,0.06), transparent 22%),
-              radial-gradient(circle at 50% 76%, rgba(255,63,151,0.06), transparent 18%);
-            opacity: 0.9;
+              radial-gradient(circle at 50% 35%, rgba(57,72,184,0.06), transparent 18%),
+              radial-gradient(circle at 50% 72%, rgba(255,74,162,0.08), transparent 22%);
+            opacity: 0.8;
           }
 
           .content {
@@ -115,128 +130,76 @@ const DinningPage = () => {
             z-index: 1;
           }
 
-          .kicker-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--ink);
-            font-size: clamp(18px, 1.8vw, 28px);
-            line-height: 1;
-          }
-
           .hero {
             text-align: center;
             margin-bottom: 34px;
+            position: relative;
+          }
+
+          .hero::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 46%;
+            width: min(56vw, 520px);
+            aspect-ratio: 1 / 1;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background:
+              radial-gradient(circle, rgba(57,72,184,0.15) 0 22%, rgba(57,72,184,0.08) 22% 46%, transparent 46% 100%),
+              repeating-conic-gradient(from 0deg, rgba(57,72,184,0.9) 0deg 8deg, transparent 8deg 16deg);
+            opacity: 0.95;
+            z-index: 0;
+          }
+
+          .hero-inner {
+            position: relative;
+            z-index: 1;
+            padding: 4px 0 10px;
           }
 
           .hero-title,
           .section-title,
-          .burst-word,
-          .schedule-time {
-            margin: 0;
+          .schedule-head,
+          .schedule-subhead,
+          .schedule-time,
+          .placeholder-title,
+          .card-image-placeholder-title,
+          .bullet-list li,
+          .card-links a,
+          .explore-link,
+          .card-copy {
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
-            line-height: 0.9;
-            letter-spacing: 0.03em;
           }
 
           .hero-title {
+            margin: 0;
             color: var(--pink);
-            font-size: clamp(64px, 12vw, 156px);
+            font-size: clamp(60px, 12vw, 152px);
+            letter-spacing: 0.02em;
+            line-height: 0.9;
           }
 
           .hero-address {
-            margin-top: 16px;
-            color: var(--blue-dark);
+            margin-top: 14px;
+            color: var(--blue);
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: clamp(18px, 2.6vw, 36px);
+            letter-spacing: 0.06em;
+            font-size: clamp(18px, 2.6vw, 34px);
             line-height: 1;
-          }
-
-          .radial-row {
-            display: grid;
-            grid-template-columns: minmax(90px, 120px) 1fr minmax(90px, 120px);
-            align-items: center;
-            gap: 14px;
-            margin: 36px 0 38px;
-          }
-
-          .radial-side {
-            color: var(--ink);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            font-size: clamp(16px, 2vw, 30px);
-            line-height: 0.94;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-            justify-self: center;
-          }
-
-          .radial-side.left {
-            transform: rotate(-78deg);
-          }
-
-          .radial-side.right {
-            transform: rotate(78deg);
-          }
-
-          .radial-burst {
-            width: min(100%, 430px);
-            aspect-ratio: 1 / 1;
-            margin: 0 auto;
-            border-radius: 50%;
-            background:
-              radial-gradient(circle, var(--pink) 0 8%, transparent 8% 100%),
-              repeating-conic-gradient(
-                from 0deg,
-                var(--blue) 0deg 8deg,
-                transparent 8deg 16deg
-              );
-            position: relative;
-          }
-
-          .radial-burst::before {
-            content: "";
-            position: absolute;
-            inset: 18%;
-            border-radius: 50%;
-            background:
-              repeating-conic-gradient(
-                from 0deg,
-                transparent 0deg 8deg,
-                var(--blue) 8deg 16deg
-              );
-          }
-
-          .radial-burst::after {
-            content: "";
-            position: absolute;
-            inset: 39%;
-            border-radius: 50%;
-            background:
-              repeating-conic-gradient(
-                from 0deg,
-                var(--blue) 0deg 8deg,
-                transparent 8deg 16deg
-              );
           }
 
           .tagline {
             text-align: center;
-            margin: 0 0 18px;
+            margin: 22px 0 24px;
             color: var(--pink);
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
-            font-size: clamp(20px, 3vw, 34px);
-            line-height: 0.95;
-            letter-spacing: 0.06em;
+            font-size: clamp(22px, 3.4vw, 46px);
+            line-height: 0.94;
+            letter-spacing: 0.02em;
           }
 
           .schedule-section,
@@ -248,35 +211,41 @@ const DinningPage = () => {
 
           .box {
             position: relative;
-            background: rgba(255,255,255,0.22);
-            border: 1px solid rgba(0,0,0,0.14);
+            background: rgba(255,255,255,0.26);
+            border: 1px solid rgba(23,17,13,0.1);
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18);
+          }
+
+          .box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(90deg, rgba(255,74,162,0.03), transparent 34%, rgba(57,72,184,0.03) 66%, transparent);
+            mix-blend-mode: multiply;
           }
 
           .schedule-box {
             padding: 20px 18px 18px;
+            background: rgba(255,255,255,0.14);
           }
 
           .schedule-head {
             text-align: center;
             color: var(--ink);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-size: clamp(26px, 3vw, 42px);
-            line-height: 1;
-            margin-bottom: 12px;
+            letter-spacing: 0.02em;
+            font-size: clamp(32px, 4vw, 68px);
+            line-height: 0.92;
+            margin-bottom: 10px;
           }
 
           .schedule-subhead {
             text-align: center;
             color: var(--pink);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: clamp(16px, 1.8vw, 24px);
-            line-height: 1;
-            margin-bottom: 18px;
+            letter-spacing: 0.02em;
+            font-size: clamp(18px, 2vw, 28px);
+            line-height: 0.92;
+            margin-bottom: 16px;
           }
 
           .schedule-grid {
@@ -288,48 +257,81 @@ const DinningPage = () => {
 
           .schedule-item {
             text-align: center;
-            padding: 6px;
+            padding: 8px 6px;
           }
 
           .schedule-title {
             color: var(--ink);
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            font-size: clamp(20px, 2.2vw, 34px);
-            line-height: 0.98;
-            min-height: 2.1em;
+            font-size: clamp(22px, 2.4vw, 40px);
+            line-height: 0.94;
+            min-height: 2em;
+            text-transform: none;
           }
 
           .schedule-time {
-            color: var(--blue-dark);
-            font-size: clamp(38px, 4vw, 62px);
-            margin-top: 12px;
+            color: var(--blue);
+            font-size: clamp(46px, 5vw, 82px);
+            margin-top: 14px;
+            letter-spacing: 0.01em;
+            line-height: 0.92;
+          }
+
+          .explore-wrap {
+            position: relative;
+          }
+
+          .explore-wrap::before,
+          .explore-wrap::after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--pink);
+            top: 50%;
+            transform: translateY(-50%);
+            animation: pulseBadge 2.6s ease-in-out infinite;
+          }
+
+          .explore-wrap::before {
+            left: -22px;
+          }
+
+          .explore-wrap::after {
+            right: -22px;
           }
 
           .explore-link {
             display: block;
-            padding: 16px 18px;
+            padding: 18px 18px 20px;
             text-align: center;
-            color: var(--blue-dark);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-size: clamp(20px, 2.4vw, 34px);
-            line-height: 1;
+            color: var(--paper);
+            background: linear-gradient(90deg, var(--blue-deep), var(--blue), var(--pink-deep));
+            border: 2px solid rgba(23,17,13,0.08);
+            box-shadow: 0 6px 0 rgba(23,17,13,0.08);
+            letter-spacing: 0.02em;
+            font-size: clamp(24px, 2.8vw, 42px);
+            line-height: 0.92;
+          }
+
+          .explore-link:hover {
+            filter: brightness(1.02);
+            transform: translateY(-1px);
           }
 
           .placeholder-panel {
-            padding: 30px 18px;
+            padding: 34px 20px;
             text-align: center;
+            background: rgba(255,255,255,0.2);
           }
 
           .placeholder-title,
           .card-image-placeholder-title {
             color: var(--pink);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            text-transform: uppercase;
-            font-size: clamp(30px, 4vw, 54px);
-            line-height: 0.95;
-            letter-spacing: 0.03em;
+            font-size: clamp(34px, 4.8vw, 72px);
+            letter-spacing: 0.02em;
+            line-height: 0.92;
           }
 
           .placeholder-copy,
@@ -339,7 +341,7 @@ const DinningPage = () => {
             color: var(--muted);
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.04em;
           }
 
           .placeholder-copy {
@@ -357,58 +359,60 @@ const DinningPage = () => {
 
           .concept-stack {
             display: grid;
-            gap: 20px;
+            gap: 22px;
           }
 
           .concept-card {
             padding: 18px;
+            background: rgba(255,255,255,0.2);
           }
 
           .card-image-placeholder {
-            min-height: 150px;
+            min-height: 170px;
             display: grid;
             place-items: center;
             text-align: center;
             padding: 16px;
             margin-bottom: 18px;
-            border: 1px solid rgba(0,0,0,0.14);
-            background: rgba(255,255,255,0.16);
+            border: 1px solid rgba(23,17,13,0.14);
+            background: rgba(255,255,255,0.14);
           }
 
           .section-title {
-            color: var(--ink);
-            font-size: clamp(28px, 4vw, 60px);
+            color: var(--blue);
+            font-size: clamp(32px, 4.2vw, 68px);
+            letter-spacing: 0.01em;
+            line-height: 0.92;
+            margin: 0;
           }
 
           .card-subtitle {
-            margin-top: 6px;
-            font-size: clamp(14px, 1.6vw, 20px);
+            margin-top: 8px;
+            font-size: clamp(18px, 1.9vw, 26px);
             line-height: 1.05;
           }
 
           .card-copy {
-            margin: 18px 0 18px;
+            margin: 20px 0 20px;
             color: var(--ink);
-            font-size: clamp(17px, 1.8vw, 24px);
-            line-height: 1.38;
-            max-width: 40ch;
-            font-weight: 700;
+            font-size: clamp(22px, 2.2vw, 36px);
+            line-height: 1.06;
+            max-width: 30ch;
+            letter-spacing: 0.01em;
           }
 
           .bullet-list {
             list-style: none;
-            margin: 0 0 16px;
+            margin: 0 0 18px;
             padding: 0;
           }
 
           .bullet-list li {
             margin-bottom: 10px;
-            color: var(--blue-dark);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            font-size: clamp(20px, 2vw, 30px);
-            line-height: 1;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
+            color: var(--blue);
+            font-size: clamp(24px, 2.2vw, 36px);
+            letter-spacing: 0.01em;
+            line-height: 0.92;
           }
 
           .bullet-list li::before {
@@ -424,17 +428,13 @@ const DinningPage = () => {
 
           .card-links a {
             color: var(--pink);
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            font-size: clamp(18px, 1.8vw, 24px);
-            line-height: 1;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
+            font-size: clamp(22px, 2vw, 30px);
+            line-height: 0.92;
+            letter-spacing: 0.01em;
           }
 
-          .divider {
-            height: 1px;
-            background: var(--rule);
-            margin: 20px 0;
+          .card-links a:hover {
+            color: var(--blue);
           }
 
           @media (max-width: 760px) {
@@ -442,24 +442,25 @@ const DinningPage = () => {
               padding: 18px 10px 28px;
             }
 
-            .radial-row {
-              grid-template-columns: 1fr;
-              gap: 18px;
-            }
-
-            .radial-side {
-              transform: none !important;
-              white-space: normal;
-              text-align: center;
+            .hero::before {
+              width: min(78vw, 420px);
             }
 
             .schedule-grid {
               grid-template-columns: 1fr;
             }
+
+            .explore-wrap::before,
+            .explore-wrap::after {
+              display: none;
+            }
           }
 
           @media (prefers-reduced-motion: reduce) {
-            .dining-page::before {
+            .dining-page::before,
+            .dining-page::after,
+            .explore-wrap::before,
+            .explore-wrap::after {
               animation: none !important;
             }
           }
