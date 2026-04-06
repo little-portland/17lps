@@ -74,29 +74,20 @@ const DinningPage = () => {
             100% { background-position: 36px 0, -22px 0, 0 0, 0 0; }
           }
 
-          @keyframes signalRun {
+          @keyframes dividerDrift {
             0% {
-              transform: translateX(-5%);
-              opacity: 0.72;
-              filter: brightness(0.95);
+              transform: translateX(-60%);
+              opacity: 0.4;
             }
             50% {
-              transform: translateX(5%);
+              transform: translateX(220%);
               opacity: 1;
-              filter: brightness(1.08);
             }
             100% {
-              transform: translateX(-5%);
-              opacity: 0.72;
-              filter: brightness(0.95);
+              transform: translateX(-60%);
+              opacity: 0.4;
             }
           }
-
-          @keyframes orbitSweep {
-            0% {
-              transform: translateX(-18%) scaleX(0.92);
-              opacity: 0.45;
-            }
             50% {
               transform: translateX(18%) scaleX(1.02);
               opacity: 0.9;
@@ -297,8 +288,8 @@ const DinningPage = () => {
           .top-lines {
             position: relative;
             width: 100%;
-            height: 28px;
-            margin: 2px auto 20px;
+            height: 18px;
+            margin: 4px auto 20px;
             overflow: hidden;
           }
 
@@ -306,34 +297,35 @@ const DinningPage = () => {
           .top-lines::after {
             content: "";
             position: absolute;
-            left: 8%;
-            right: 8%;
+            left: 10%;
+            right: 10%;
             border-radius: 999px;
           }
 
           .top-lines::before {
-            top: 8px;
+            top: 6px;
             height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 8%, rgba(255,255,255,0.9) 20%, rgba(255,255,255,0.9) 80%, rgba(255,255,255,0.18) 92%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.32) 10%, rgba(255,255,255,0.9) 24%, rgba(255,255,255,0.9) 76%, rgba(255,255,255,0.32) 90%, transparent 100%);
+            opacity: 0.95;
           }
 
           .top-lines::after {
-            top: 15px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 6%, rgba(255,255,255,0.98) 18%, rgba(255,255,255,0.98) 82%, rgba(255,255,255,0.25) 94%, transparent 100%);
-            box-shadow: 0 0 18px rgba(255,255,255,0.08);
-            animation: orbitSweep 4.6s ease-in-out infinite;
+            top: 11px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 8%, rgba(255,255,255,0.58) 24%, rgba(255,255,255,0.58) 76%, rgba(255,255,255,0.12) 92%, transparent 100%);
+            opacity: 0.85;
           }
 
           .top-lines span {
             position: absolute;
-            left: 14%;
-            right: 14%;
-            top: 11px;
-            height: 1px;
-            background: repeating-linear-gradient(90deg, rgba(255,255,255,0.92) 0 14px, transparent 14px 34px);
-            opacity: 0.88;
-            animation: signalRun 4.2s linear infinite;
+            left: 24%;
+            width: 18%;
+            top: 8px;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.95), transparent);
+            box-shadow: 0 0 12px rgba(255,255,255,0.08);
+            animation: dividerDrift 5s ease-in-out infinite;
           }
 
           .top-lines i,
