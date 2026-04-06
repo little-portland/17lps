@@ -12,28 +12,27 @@ const DinningPage = () => {
         />
         <style>{`
           :root {
-            --bg: #060104;
-            --bg-deep: #020001;
-            --red: #ff234f;
-            --red-hot: #ff3f68;
-            --red-dim: rgba(255, 35, 79, 0.72);
-            --red-soft: rgba(255, 35, 79, 0.18);
-            --ink: #0a0507;
-            --text: #ffd8de;
-            --text-dim: rgba(255, 216, 222, 0.72);
+            --paper: #f1eee4;
+            --paper-shadow: #e6e0d2;
+            --ink: #1a130f;
+            --pink: #ff3f97;
+            --blue: #3848b9;
+            --blue-dark: #263493;
+            --muted: rgba(26, 19, 15, 0.68);
+            --rule: rgba(26, 19, 15, 0.18);
           }
 
           html {
-            background: var(--bg) !important;
+            background: var(--paper) !important;
             overflow-x: hidden !important;
           }
 
           body {
             margin: 0;
-            background: var(--bg) !important;
-            color: var(--text);
+            background: var(--paper) !important;
+            color: var(--ink);
             overflow-x: hidden !important;
-            font-family: "Lucida Console", "Courier New", monospace;
+            font-family: Arial, Helvetica, sans-serif;
           }
 
           * {
@@ -45,22 +44,19 @@ const DinningPage = () => {
             text-decoration: none;
           }
 
-          @keyframes grainMove {
+          @keyframes grainShift {
             0% { transform: translate(0, 0); }
-            25% { transform: translate(-0.5%, 0.4%); }
-            50% { transform: translate(0.4%, -0.5%); }
-            75% { transform: translate(0.5%, 0.3%); }
+            25% { transform: translate(-0.4%, 0.3%); }
+            50% { transform: translate(0.3%, -0.4%); }
+            75% { transform: translate(0.4%, 0.2%); }
             100% { transform: translate(0, 0); }
           }
 
           .dining-page {
             min-height: 100vh;
-            padding: 18px 12px;
+            padding: 28px 14px 36px;
             position: relative;
-            background:
-              radial-gradient(circle at 50% 50%, rgba(255, 35, 79, 0.12), transparent 22%),
-              linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
-            overflow: hidden;
+            background: var(--paper);
           }
 
           .dining-page::before,
@@ -73,24 +69,24 @@ const DinningPage = () => {
           }
 
           .dining-page::before {
-            opacity: 0.26;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-            mix-blend-mode: screen;
-            animation: grainMove 0.45s steps(2, end) infinite;
+            opacity: 0.2;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            mix-blend-mode: multiply;
+            animation: grainShift 0.45s steps(2, end) infinite;
           }
 
           .dining-page::after {
             background:
-              radial-gradient(circle at 14% 20%, rgba(255,255,255,0.22) 0 1px, transparent 2px),
-              radial-gradient(circle at 74% 15%, rgba(255,255,255,0.18) 0 1px, transparent 2px),
-              radial-gradient(circle at 68% 62%, rgba(255,255,255,0.14) 0 1px, transparent 2px),
-              radial-gradient(circle at 34% 78%, rgba(255,255,255,0.12) 0 1px, transparent 2px);
-            background-size: 280px 280px, 340px 340px, 260px 260px, 300px 300px;
-            opacity: 0.18;
+              radial-gradient(circle at 18% 22%, rgba(0,0,0,0.05) 0 1px, transparent 2px),
+              radial-gradient(circle at 74% 15%, rgba(0,0,0,0.04) 0 1px, transparent 2px),
+              radial-gradient(circle at 68% 62%, rgba(0,0,0,0.035) 0 1px, transparent 2px),
+              radial-gradient(circle at 34% 78%, rgba(0,0,0,0.03) 0 1px, transparent 2px);
+            background-size: 260px 260px, 320px 320px, 280px 280px, 340px 340px;
+            opacity: 0.28;
           }
 
           .shell {
-            width: min(760px, 100%);
+            width: min(980px, 100%);
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -98,58 +94,19 @@ const DinningPage = () => {
 
           .poster {
             position: relative;
-            padding: 14px;
-            background: transparent;
             overflow: hidden;
+            background: transparent;
+            padding: 0;
           }
 
-          .warp-grid {
-            position: fixed;
+          .poster::before {
+            content: "";
+            position: absolute;
             inset: 0;
             pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-          }
-
-          .warp-grid::before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 54%;
-            width: 160%;
-            height: 140%;
-            transform: translate(-50%, -50%);
             background:
-              repeating-linear-gradient(
-                to right,
-                transparent 0,
-                transparent 28px,
-                rgba(255, 35, 79, 0.72) 28px,
-                rgba(255, 35, 79, 0.72) 30px,
-                transparent 30px,
-                transparent 58px
-              ),
-              repeating-linear-gradient(
-                to bottom,
-                transparent 0,
-                transparent 24px,
-                rgba(255, 35, 79, 0.72) 24px,
-                rgba(255, 35, 79, 0.72) 26px,
-                transparent 26px,
-                transparent 50px
-              );
-            border-radius: 44% 56% 58% 42% / 34% 34% 66% 66%;
-            opacity: 0.56;
-            filter: blur(0.2px);
-          }
-
-          .warp-grid::after {
-            content: "";
-            position: absolute;
-            inset: 10% 12%;
-            background:
-              radial-gradient(circle at 50% 50%, rgba(255, 40, 75, 0.28), rgba(255, 10, 30, 0.16) 26%, rgba(255, 10, 45, 0.05) 40%, transparent 58%);
-            filter: blur(24px);
+              radial-gradient(circle at 50% 42%, rgba(56,72,185,0.06), transparent 22%),
+              radial-gradient(circle at 50% 76%, rgba(255,63,151,0.06), transparent 18%);
             opacity: 0.9;
           }
 
@@ -158,290 +115,346 @@ const DinningPage = () => {
             z-index: 1;
           }
 
-          .box {
-            position: relative;
-            background: rgba(3, 0, 2, 0.18);
-            border: 2px solid var(--red-dim);
-            box-shadow:
-              inset 0 0 0 1px rgba(255,255,255,0.02),
-              0 0 18px rgba(255, 35, 79, 0.08);
-            backdrop-filter: blur(1px);
-          }
-
-          .box::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: repeating-linear-gradient(
-              to bottom,
-              rgba(255,255,255,0.014) 0px,
-              rgba(255,255,255,0.014) 1px,
-              transparent 1px,
-              transparent 4px
-            );
-            opacity: 0.08;
+          .kicker-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink);
+            font-size: clamp(18px, 1.8vw, 28px);
+            line-height: 1;
           }
 
           .hero {
             text-align: center;
-            padding: 10px 14px 14px;
-            margin-bottom: 12px;
+            margin-bottom: 34px;
+          }
+
+          .hero-title,
+          .section-title,
+          .burst-word,
+          .schedule-time {
+            margin: 0;
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            text-transform: uppercase;
+            line-height: 0.9;
+            letter-spacing: 0.03em;
           }
 
           .hero-title {
-            margin: 0;
-            color: var(--red-hot);
-            font-size: clamp(34px, 8vw, 70px);
-            line-height: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 700;
-            text-shadow: 0 0 16px rgba(255, 63, 104, 0.18);
+            color: var(--pink);
+            font-size: clamp(64px, 12vw, 156px);
           }
 
           .hero-address {
-            margin-top: 10px;
-            color: var(--text);
-            font-size: clamp(13px, 2vw, 18px);
-            line-height: 1;
+            margin-top: 16px;
+            color: var(--blue-dark);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-weight: 700;
+            font-size: clamp(18px, 2.6vw, 36px);
+            line-height: 1;
           }
 
-          .hero-tagline {
-            margin: 16px auto 0;
-            max-width: 620px;
-            color: var(--red-hot);
-            font-size: clamp(16px, 3.2vw, 28px);
-            line-height: 0.95;
+          .radial-row {
+            display: grid;
+            grid-template-columns: minmax(90px, 120px) 1fr minmax(90px, 120px);
+            align-items: center;
+            gap: 14px;
+            margin: 36px 0 38px;
+          }
+
+          .radial-side {
+            color: var(--ink);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-size: clamp(16px, 2vw, 30px);
+            line-height: 0.94;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-style: italic;
-            text-shadow:
-              0 1px 0 rgba(255,180,190,0.22),
-              0 2px 0 rgba(110,20,34,0.9),
-              -4px 6px 0 rgba(18,5,10,0.45);
-            transform: perspective(900px) rotateX(14deg);
-            display: inline-block;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            justify-self: center;
           }
 
-          .schedule-section {
-            margin-bottom: 10px;
+          .radial-side.left {
+            transform: rotate(-78deg);
+          }
+
+          .radial-side.right {
+            transform: rotate(78deg);
+          }
+
+          .radial-burst {
+            width: min(100%, 430px);
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+            border-radius: 50%;
+            background:
+              radial-gradient(circle, var(--pink) 0 8%, transparent 8% 100%),
+              repeating-conic-gradient(
+                from 0deg,
+                var(--blue) 0deg 8deg,
+                transparent 8deg 16deg
+              );
+            position: relative;
+          }
+
+          .radial-burst::before {
+            content: "";
+            position: absolute;
+            inset: 18%;
+            border-radius: 50%;
+            background:
+              repeating-conic-gradient(
+                from 0deg,
+                transparent 0deg 8deg,
+                var(--blue) 8deg 16deg
+              );
+          }
+
+          .radial-burst::after {
+            content: "";
+            position: absolute;
+            inset: 39%;
+            border-radius: 50%;
+            background:
+              repeating-conic-gradient(
+                from 0deg,
+                var(--blue) 0deg 8deg,
+                transparent 8deg 16deg
+              );
+          }
+
+          .tagline {
+            text-align: center;
+            margin: 0 0 18px;
+            color: var(--pink);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            text-transform: uppercase;
+            font-size: clamp(20px, 3vw, 34px);
+            line-height: 0.95;
+            letter-spacing: 0.06em;
+          }
+
+          .schedule-section,
+          .explore-wrap,
+          .placeholder-panel,
+          .concept-card {
+            margin-bottom: 18px;
+          }
+
+          .box {
+            position: relative;
+            background: rgba(255,255,255,0.22);
+            border: 1px solid rgba(0,0,0,0.14);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18);
           }
 
           .schedule-box {
-            color: var(--text);
+            padding: 20px 18px 18px;
           }
 
           .schedule-head {
             text-align: center;
+            color: var(--ink);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: clamp(16px, 2.6vw, 24px);
+            letter-spacing: 0.06em;
+            font-size: clamp(26px, 3vw, 42px);
             line-height: 1;
-            font-weight: 700;
-            padding: 12px 10px;
-            border-bottom: 2px solid var(--red-dim);
+            margin-bottom: 12px;
           }
 
           .schedule-subhead {
             text-align: center;
-            color: var(--red-hot);
+            color: var(--pink);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-size: clamp(14px, 1.8vw, 18px);
+            font-size: clamp(16px, 1.8vw, 24px);
             line-height: 1;
-            font-weight: 700;
-            padding: 12px 10px 4px;
+            margin-bottom: 18px;
           }
 
           .schedule-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            padding: 4px 8px 12px;
+            gap: 12px;
+            align-items: end;
           }
 
           .schedule-item {
             text-align: center;
-            padding: 8px;
+            padding: 6px;
           }
 
           .schedule-title {
-            min-height: 2.2em;
-            font-size: clamp(14px, 2vw, 22px);
-            line-height: 1.04;
-            font-weight: 700;
+            color: var(--ink);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-size: clamp(20px, 2.2vw, 34px);
+            line-height: 0.98;
+            min-height: 2.1em;
           }
 
           .schedule-time {
+            color: var(--blue-dark);
+            font-size: clamp(38px, 4vw, 62px);
             margin-top: 12px;
-            font-size: clamp(24px, 4vw, 38px);
-            line-height: 1;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            color: var(--red-hot);
-          }
-
-          .explore-wrap {
-            margin-bottom: 10px;
           }
 
           .explore-link {
             display: block;
-            padding: 10px 14px;
-            color: var(--red-hot);
-            font-size: clamp(15px, 2vw, 22px);
-            line-height: 1;
-            font-weight: 700;
+            padding: 16px 18px;
+            text-align: center;
+            color: var(--blue-dark);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
+            font-size: clamp(20px, 2.4vw, 34px);
+            line-height: 1;
           }
 
           .placeholder-panel {
-            min-height: 220px;
-            display: grid;
-            place-items: center;
+            padding: 30px 18px;
             text-align: center;
-            padding: 18px;
-            margin-bottom: 12px;
           }
 
           .placeholder-title,
-          .card-title {
-            color: var(--red-hot);
-            font-size: clamp(18px, 3vw, 28px);
-            line-height: 1;
-            font-weight: 700;
-            letter-spacing: 0.02em;
+          .card-image-placeholder-title {
+            color: var(--pink);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            text-transform: uppercase;
+            font-size: clamp(30px, 4vw, 54px);
+            line-height: 0.95;
+            letter-spacing: 0.03em;
           }
 
           .placeholder-copy,
           .placeholder-path,
-          .card-subtitle,
-          .card-image-placeholder-path {
-            color: var(--text-dim);
+          .card-image-placeholder-path,
+          .card-subtitle {
+            color: var(--muted);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 700;
+            letter-spacing: 0.06em;
           }
 
           .placeholder-copy {
-            margin-top: 8px;
-            font-size: clamp(12px, 1.5vw, 15px);
+            margin-top: 12px;
+            font-size: clamp(14px, 1.5vw, 20px);
             line-height: 1.2;
           }
 
           .placeholder-path,
           .card-image-placeholder-path {
             display: block;
-            margin-top: 8px;
-            font-size: 10px;
+            margin-top: 10px;
+            font-size: 11px;
           }
 
           .concept-stack {
             display: grid;
-            gap: 12px;
+            gap: 20px;
           }
 
           .concept-card {
-            padding: 8px;
+            padding: 18px;
           }
 
           .card-image-placeholder {
-            min-height: 100px;
+            min-height: 150px;
             display: grid;
             place-items: center;
             text-align: center;
-            padding: 12px;
-            margin-bottom: 10px;
-            border: 2px solid var(--red-dim);
-            background: rgba(0,0,0,0.14);
+            padding: 16px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(0,0,0,0.14);
+            background: rgba(255,255,255,0.16);
           }
 
-          .card-image-placeholder-title {
-            color: var(--red-hot);
-            font-size: clamp(20px, 4vw, 34px);
-            line-height: 0.95;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            font-weight: 700;
-          }
-
-          .card-title {
-            margin: 0;
+          .section-title {
+            color: var(--ink);
+            font-size: clamp(28px, 4vw, 60px);
           }
 
           .card-subtitle {
             margin-top: 6px;
-            font-size: clamp(11px, 1.4vw, 14px);
+            font-size: clamp(14px, 1.6vw, 20px);
             line-height: 1.05;
           }
 
           .card-copy {
-            margin: 12px 0 12px;
-            color: var(--text);
-            font-size: clamp(12px, 1.55vw, 16px);
-            line-height: 1.34;
-            max-width: 42ch;
+            margin: 18px 0 18px;
+            color: var(--ink);
+            font-size: clamp(17px, 1.8vw, 24px);
+            line-height: 1.38;
+            max-width: 40ch;
             font-weight: 700;
           }
 
           .bullet-list {
             list-style: none;
-            margin: 0 0 10px;
+            margin: 0 0 16px;
             padding: 0;
           }
 
           .bullet-list li {
-            margin-bottom: 8px;
-            color: var(--red-hot);
-            font-size: clamp(12px, 1.8vw, 18px);
+            margin-bottom: 10px;
+            color: var(--blue-dark);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-size: clamp(20px, 2vw, 30px);
             line-height: 1;
-            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
           }
 
           .bullet-list li::before {
-            content: "◦ ";
+            content: "○ ";
+            color: var(--pink);
           }
 
           .card-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
           }
 
           .card-links a {
-            color: var(--red-hot);
-            font-size: clamp(12px, 1.7vw, 17px);
+            color: var(--pink);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-size: clamp(18px, 1.8vw, 24px);
             line-height: 1;
-            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.04em;
           }
 
-          .card-links a:hover,
-          .explore-link:hover {
-            opacity: 0.84;
+          .divider {
+            height: 1px;
+            background: var(--rule);
+            margin: 20px 0;
           }
 
-          @media (max-width: 720px) {
+          @media (max-width: 760px) {
             .dining-page {
-              padding: 0;
+              padding: 18px 10px 28px;
             }
 
-            .poster {
-              padding: 12px 10px 16px;
+            .radial-row {
+              grid-template-columns: 1fr;
+              gap: 18px;
+            }
+
+            .radial-side {
+              transform: none !important;
+              white-space: normal;
+              text-align: center;
             }
 
             .schedule-grid {
               grid-template-columns: 1fr;
-            }
-
-            .placeholder-panel {
-              min-height: 170px;
             }
           }
 
@@ -456,17 +469,27 @@ const DinningPage = () => {
       <main className="dining-page">
         <div className="shell">
           <section className="poster">
-            <div className="warp-grid" aria-hidden="true" />
-
             <div className="content">
-              <div className="hero box">
-                <h1 className="hero-title">Dining At</h1>
-                <div className="hero-address">17 Little Portland Street</div>
-                <div className="hero-tagline">More than a meal. Step into the void</div>
+              <div className="kicker-row">
+                <div>Issue 94</div>
+                <div>LPX//Underground</div>
               </div>
 
-              <div className="schedule-section">
-                <div className="schedule-box box">
+              <div className="hero">
+                <h1 className="hero-title">Dining At</h1>
+                <div className="hero-address">17 Little Portland Street</div>
+              </div>
+
+              <div className="radial-row">
+                <div className="radial-side left">Thursday 20:00</div>
+                <div className="radial-burst" aria-hidden="true" />
+                <div className="radial-side right">Saturday 22:00</div>
+              </div>
+
+              <div className="tagline">More than a meal. Step into the void</div>
+
+              <div className="schedule-section box">
+                <div className="schedule-box">
                   <div className="schedule-head">Open Thursdays to Saturdays</div>
                   <div className="schedule-subhead">Nightly Schedule</div>
 
@@ -495,8 +518,8 @@ const DinningPage = () => {
                 </div>
               </div>
 
-              <div className="explore-wrap">
-                <a className="explore-link box" href="#concepts">&gt; Explore our futurist dining concept</a>
+              <div className="explore-wrap box">
+                <a className="explore-link" href="#concepts">Explore our futurist dining concept</a>
               </div>
 
               <div className="placeholder-panel box" aria-label="Venue map placeholder">
@@ -516,7 +539,7 @@ const DinningPage = () => {
                     </div>
                   </div>
 
-                  <h2 className="card-title">The Tent</h2>
+                  <h2 className="section-title">The Tent</h2>
                   <div className="card-subtitle">at the End of the Universe</div>
 
                   <p className="card-copy">
@@ -547,7 +570,7 @@ const DinningPage = () => {
                     </div>
                   </div>
 
-                  <h2 className="card-title">Chef&apos;s Studio</h2>
+                  <h2 className="section-title">Chef&apos;s Studio</h2>
                   <div className="card-subtitle">Where the Heads Dine</div>
 
                   <p className="card-copy">
