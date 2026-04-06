@@ -118,7 +118,6 @@ const DinningPage = () => {
 
           @keyframes glowTagline {
             0%, 100% {
-              transform: perspective(1100px) rotateX(18deg) skewX(-8deg) translateY(0);
               text-shadow:
                 0 1px 0 rgba(255,255,255,0.22),
                 -3px 4px 0 rgba(255,255,255,0.14),
@@ -126,6 +125,26 @@ const DinningPage = () => {
                 -11px 14px 0 rgba(255,255,255,0.04),
                 0 0 18px rgba(255,255,255,0.08);
             }
+            50% {
+              text-shadow:
+                0 1px 0 rgba(255,255,255,0.26),
+                -4px 5px 0 rgba(255,255,255,0.16),
+                -9px 12px 0 rgba(255,255,255,0.08),
+                -13px 17px 0 rgba(255,255,255,0.05),
+                0 0 30px rgba(255,255,255,0.16);
+            }
+          }
+
+          @keyframes crawlFloat {
+            0%, 100% {
+              transform: perspective(900px) rotateX(58deg) scaleY(1.18) translateY(0);
+              filter: brightness(1);
+            }
+            50% {
+              transform: perspective(900px) rotateX(58deg) scaleY(1.18) translateY(-4px);
+              filter: brightness(1.06);
+            }
+          }
             50% {
               transform: perspective(1100px) rotateX(18deg) skewX(-8deg) translateY(-2px);
               text-shadow:
@@ -343,17 +362,18 @@ const DinningPage = () => {
             font-style: italic;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 0.01em;
-            line-height: 0.92;
-            font-size: clamp(42px, 4.2vw, 74px);
+            letter-spacing: 0.02em;
+            line-height: 0.9;
+            font-size: clamp(42px, 4.4vw, 82px);
             text-shadow:
-              0 1px 0 rgba(255,255,255,0.18),
-              -2px 3px 0 rgba(255,255,255,0.1),
-              0 0 14px rgba(255,255,255,0.06);
-            transform: skewX(-12deg);
+              0 1px 0 rgba(255,255,255,0.16),
+              0 0 14px rgba(255,255,255,0.05);
+            transform: perspective(900px) rotateX(58deg) scaleY(1.18);
+            transform-origin: center top;
             display: inline-block;
             position: relative;
             white-space: nowrap;
+            animation: crawlFloat 5.2s ease-in-out infinite;
           }
 
           .tagline::after,
