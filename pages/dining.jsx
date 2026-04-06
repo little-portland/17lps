@@ -12,18 +12,17 @@ const DinningPage = () => {
         />
         <style>{`
           :root {
-            --bg: #070312;
-            --panel: rgba(7, 4, 18, 0.76);
-            --panel-strong: rgba(4, 2, 12, 0.88);
-            --ink: #ffeaf6;
-            --pink: #ff198b;
-            --pink-soft: rgba(255, 25, 139, 0.28);
-            --pink-glow: rgba(255, 25, 139, 0.6);
-            --blue: #4e8cff;
-            --blue-soft: rgba(78, 140, 255, 0.3);
+            --bg: #0a0207;
+            --bg-deep: #050104;
+            --red: #ff215d;
+            --red-hot: #ff3b70;
+            --red-dark: #c90d3f;
+            --ink: #050505;
+            --paper: #ffd8e3;
             --cyan: #45d8f1;
             --coral: #ff8c73;
-            --line: rgba(255, 65, 170, 0.24);
+            --line: rgba(255, 35, 93, 0.65);
+            --line-soft: rgba(255, 35, 93, 0.24);
           }
 
           html {
@@ -34,7 +33,7 @@ const DinningPage = () => {
           body {
             margin: 0;
             background: var(--bg) !important;
-            color: var(--ink);
+            color: var(--paper);
             overflow-x: hidden !important;
             font-family: "Lucida Console", "Courier New", monospace;
           }
@@ -50,56 +49,51 @@ const DinningPage = () => {
 
           @keyframes grainMove {
             0% { transform: translate(0, 0); }
-            25% { transform: translate(-0.6%, 0.4%); }
+            25% { transform: translate(-0.5%, 0.4%); }
             50% { transform: translate(0.4%, -0.5%); }
-            75% { transform: translate(0.5%, 0.4%); }
+            75% { transform: translate(0.5%, 0.3%); }
             100% { transform: translate(0, 0); }
-          }
-
-          @keyframes pulseCore {
-            0%, 100% { opacity: 0.82; }
-            50% { opacity: 1; }
           }
 
           .dining-page {
             min-height: 100vh;
-            padding: 12px;
+            padding: 18px 12px;
             position: relative;
             background:
-              radial-gradient(circle at 50% 18%, rgba(255, 29, 115, 0.18), transparent 22%),
-              radial-gradient(circle at 50% 84%, rgba(255, 29, 115, 0.16), transparent 20%),
-              linear-gradient(180deg, #090313 0%, #06020f 100%);
+              radial-gradient(circle at 50% 12%, rgba(255, 35, 93, 0.12), transparent 18%),
+              radial-gradient(circle at 50% 85%, rgba(255, 35, 93, 0.1), transparent 18%),
+              linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+            overflow: hidden;
           }
 
           .dining-page::before,
           .dining-page::after {
             content: "";
             position: fixed;
-            inset: -10%;
+            inset: -8%;
             pointer-events: none;
             z-index: 0;
           }
 
           .dining-page::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.15' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-            opacity: 0.22;
+            opacity: 0.24;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
             mix-blend-mode: screen;
-            animation: grainMove 0.42s steps(2, end) infinite;
+            animation: grainMove 0.45s steps(2, end) infinite;
           }
 
           .dining-page::after {
             background:
-              radial-gradient(circle at 18% 24%, rgba(255,255,255,0.5) 0 1px, transparent 2px),
-              radial-gradient(circle at 74% 18%, rgba(255,255,255,0.44) 0 1px, transparent 2px),
-              radial-gradient(circle at 62% 68%, rgba(255,255,255,0.42) 0 1px, transparent 2px),
-              radial-gradient(circle at 34% 78%, rgba(255,255,255,0.35) 0 1px, transparent 2px),
-              radial-gradient(circle at 82% 52%, rgba(255,255,255,0.3) 0 1px, transparent 2px);
-            background-size: 240px 240px, 300px 300px, 260px 260px, 340px 340px, 280px 280px;
-            opacity: 0.35;
+              radial-gradient(circle at 14% 20%, rgba(255,255,255,0.42) 0 1px, transparent 2px),
+              radial-gradient(circle at 74% 15%, rgba(255,255,255,0.35) 0 1px, transparent 2px),
+              radial-gradient(circle at 68% 62%, rgba(255,255,255,0.28) 0 1px, transparent 2px),
+              radial-gradient(circle at 34% 78%, rgba(255,255,255,0.22) 0 1px, transparent 2px);
+            background-size: 280px 280px, 340px 340px, 260px 260px, 300px 300px;
+            opacity: 0.24;
           }
 
           .shell {
-            width: min(980px, 100%);
+            width: min(760px, 100%);
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -107,76 +101,64 @@ const DinningPage = () => {
 
           .poster {
             position: relative;
-            overflow: hidden;
-            padding: 18px 14px 24px;
+            padding: 14px;
             background:
-              radial-gradient(circle at 50% 12%, rgba(255, 25, 139, 0.22), transparent 16%),
-              radial-gradient(circle at 50% 88%, rgba(255, 25, 139, 0.18), transparent 14%),
-              linear-gradient(180deg, rgba(18, 10, 34, 0.9), rgba(5, 2, 12, 0.98));
-            border: 2px solid rgba(255,255,255,0.06);
+              linear-gradient(180deg, rgba(19, 4, 9, 0.92), rgba(6, 1, 5, 0.98));
+            border: 1px solid rgba(255,255,255,0.04);
             box-shadow:
-              inset 0 0 0 1px rgba(255,255,255,0.03),
-              0 0 30px rgba(255, 25, 139, 0.08);
+              inset 0 0 0 1px rgba(255,255,255,0.02),
+              0 0 40px rgba(255, 35, 93, 0.08);
+            overflow: hidden;
           }
 
-          .space-grid {
+          .warp-grid {
             position: absolute;
             inset: 0;
             pointer-events: none;
             overflow: hidden;
           }
 
-          .space-grid::before,
-          .space-grid::after {
+          .warp-grid::before {
             content: "";
             position: absolute;
-            inset: -14% -8%;
-            border-radius: 50%;
-          }
-
-          .space-grid::before {
+            left: 50%;
+            top: 56%;
+            width: 160%;
+            height: 140%;
+            transform: translate(-50%, -50%);
             background:
               repeating-linear-gradient(
                 to right,
                 transparent 0,
-                transparent 46px,
-                rgba(255, 40, 170, 0.55) 46px,
-                rgba(255, 40, 170, 0.55) 49px,
-                transparent 49px,
-                transparent 94px
+                transparent 28px,
+                rgba(255, 35, 93, 0.72) 28px,
+                rgba(255, 35, 93, 0.72) 30px,
+                transparent 30px,
+                transparent 58px
               ),
               repeating-linear-gradient(
                 to bottom,
                 transparent 0,
-                transparent 42px,
-                rgba(116, 150, 255, 0.55) 42px,
-                rgba(116, 150, 255, 0.55) 45px,
-                transparent 45px,
-                transparent 90px
+                transparent 24px,
+                rgba(255, 35, 93, 0.72) 24px,
+                rgba(255, 35, 93, 0.72) 26px,
+                transparent 26px,
+                transparent 50px
               );
-            transform: perspective(900px) rotateX(74deg) scale(1.85) translateY(-8%);
-            opacity: 0.62;
-            filter: drop-shadow(0 0 8px rgba(255, 40, 170, 0.2));
+            border-radius: 44% 56% 58% 42% / 34% 34% 66% 66%;
+            filter: perspective(900px);
+            opacity: 0.58;
+            box-shadow: inset 0 0 80px rgba(255, 10, 60, 0.1);
           }
 
-          .space-grid::after {
-            background: radial-gradient(circle at 50% 50%, rgba(255, 20, 130, 0.12), transparent 48%);
-          }
-
-          .core-glow {
+          .warp-grid::after {
+            content: "";
             position: absolute;
-            left: 50%;
-            top: 20%;
-            width: min(46vw, 420px);
-            aspect-ratio: 1 / 1;
-            transform: translateX(-50%);
-            border-radius: 50%;
+            inset: 8% 10%;
             background:
-              radial-gradient(circle at 50% 45%, rgba(255, 189, 224, 0.75), rgba(255, 81, 167, 0.7) 22%, rgba(255, 25, 139, 0.96) 54%, rgba(255, 25, 139, 0.22) 74%, transparent 78%);
-            filter: blur(2px);
-            opacity: 0.96;
-            animation: pulseCore 4.8s ease-in-out infinite;
-            pointer-events: none;
+              radial-gradient(circle at 50% 48%, rgba(255, 50, 95, 0.6), rgba(255, 15, 55, 0.35) 24%, rgba(255, 10, 45, 0.12) 38%, transparent 54%);
+            filter: blur(18px);
+            opacity: 0.88;
           }
 
           .content {
@@ -184,39 +166,63 @@ const DinningPage = () => {
             z-index: 1;
           }
 
+          .box {
+            position: relative;
+            background: rgba(4, 1, 7, 0.82);
+            border: 2px solid rgba(255, 35, 93, 0.78);
+            box-shadow:
+              inset 0 0 0 1px rgba(255,255,255,0.03),
+              0 0 18px rgba(255, 35, 93, 0.08);
+          }
+
+          .box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+              to bottom,
+              rgba(255,255,255,0.016) 0px,
+              rgba(255,255,255,0.016) 1px,
+              transparent 1px,
+              transparent 4px
+            );
+            opacity: 0.1;
+          }
+
           .hero {
             text-align: center;
-            padding: 8px 0 22px;
+            padding: 10px 14px 14px;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, rgba(18, 7, 28, 0.82), rgba(7, 3, 15, 0.9));
           }
 
           .hero-title {
             margin: 0;
             color: var(--coral);
-            font-size: clamp(42px, 7vw, 86px);
+            font-size: clamp(34px, 8vw, 70px);
             line-height: 0.9;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-weight: 700;
-            text-shadow:
-              0 0 8px rgba(255, 140, 115, 0.18),
-              0 0 18px rgba(255, 80, 90, 0.12);
+            text-shadow: 0 0 16px rgba(255, 140, 115, 0.15);
           }
 
           .hero-address {
-            margin-top: 12px;
+            margin-top: 10px;
             color: var(--cyan);
-            font-size: clamp(15px, 1.9vw, 24px);
+            font-size: clamp(13px, 2vw, 18px);
             line-height: 1;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             font-weight: 700;
           }
 
           .hero-tagline {
-            margin: 20px auto 0;
-            max-width: 820px;
+            margin: 16px auto 0;
+            max-width: 620px;
             color: #c76b5d;
-            font-size: clamp(20px, 3vw, 36px);
+            font-size: clamp(16px, 3.2vw, 28px);
             line-height: 0.95;
             text-transform: uppercase;
             letter-spacing: 0.06em;
@@ -224,43 +230,19 @@ const DinningPage = () => {
             text-shadow:
               0 1px 0 rgba(255,190,170,0.35),
               0 2px 0 rgba(126,58,50,0.9),
-              -5px 7px 0 rgba(18,5,10,0.45);
+              -4px 6px 0 rgba(18,5,10,0.45);
             transform: perspective(900px) rotateX(14deg);
             display: inline-block;
           }
 
-          .section-shell {
-            position: relative;
-            background: var(--panel-strong);
-            border: 2px solid rgba(69, 216, 241, 0.92);
-            box-shadow:
-              inset 0 0 0 1px rgba(69, 216, 241, 0.1),
-              0 0 14px rgba(69, 216, 241, 0.06);
-          }
-
-          .section-shell::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: repeating-linear-gradient(
-              to bottom,
-              rgba(255,255,255,0.018) 0px,
-              rgba(255,255,255,0.018) 1px,
-              transparent 1px,
-              transparent 4px
-            );
-            opacity: 0.1;
-          }
-
           .schedule-section {
-            margin-top: 8px;
+            margin-bottom: 10px;
           }
 
           .schedule-box {
-            background: rgba(69, 216, 241, 0.9);
+            background: rgba(69, 216, 241, 0.92);
             color: #000;
-            border-color: rgba(0,0,0,0.95);
+            border-color: rgba(0,0,0,0.96);
             box-shadow: none;
           }
 
@@ -268,10 +250,10 @@ const DinningPage = () => {
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-size: clamp(18px, 2.4vw, 30px);
+            font-size: clamp(16px, 2.6vw, 24px);
             line-height: 1;
             font-weight: 700;
-            padding: 14px 12px;
+            padding: 12px 10px;
             border-bottom: 2px solid rgba(0,0,0,0.95);
           }
 
@@ -280,17 +262,17 @@ const DinningPage = () => {
             color: var(--coral);
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-size: clamp(16px, 1.8vw, 24px);
+            font-size: clamp(14px, 1.8vw, 18px);
             line-height: 1;
             font-weight: 700;
-            padding: 14px 12px 6px;
+            padding: 12px 10px 4px;
           }
 
           .schedule-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
-            padding: 6px 8px 14px;
+            padding: 4px 8px 12px;
           }
 
           .schedule-item {
@@ -300,116 +282,100 @@ const DinningPage = () => {
 
           .schedule-title {
             min-height: 2.2em;
-            font-size: clamp(18px, 2vw, 28px);
-            line-height: 1.02;
+            font-size: clamp(14px, 2vw, 22px);
+            line-height: 1.04;
             font-weight: 700;
           }
 
           .schedule-time {
-            margin-top: 14px;
-            font-size: clamp(28px, 3vw, 44px);
+            margin-top: 12px;
+            font-size: clamp(24px, 4vw, 38px);
             line-height: 1;
             font-weight: 700;
             letter-spacing: 0.06em;
           }
 
           .explore-wrap {
-            padding: 12px 0 16px;
+            margin-bottom: 10px;
           }
 
           .explore-link {
             display: block;
-            padding: 13px 18px;
+            padding: 10px 14px;
             color: var(--cyan);
-            font-size: clamp(18px, 2vw, 28px);
+            font-size: clamp(15px, 2vw, 22px);
             line-height: 1;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            border-color: rgba(69, 216, 241, 0.92);
-          }
-
-          .map-zone {
-            padding: 0 0 18px;
+            letter-spacing: 0.05em;
           }
 
           .placeholder-panel {
-            min-height: 440px;
+            min-height: 220px;
             display: grid;
             place-items: center;
             text-align: center;
-            padding: 24px;
-            border-color: rgba(69, 216, 241, 0.92);
+            padding: 18px;
+            margin-bottom: 12px;
           }
 
           .placeholder-title,
           .card-title {
             color: var(--coral);
-            text-transform: none;
-            letter-spacing: 0.02em;
-            font-size: clamp(26px, 3vw, 42px);
+            font-size: clamp(18px, 3vw, 28px);
             line-height: 1;
             font-weight: 700;
+            letter-spacing: 0.02em;
           }
 
           .placeholder-copy,
           .placeholder-path,
           .card-subtitle {
-            color: rgba(255, 224, 232, 0.78);
+            color: rgba(255, 224, 232, 0.72);
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.05em;
             font-weight: 700;
           }
 
           .placeholder-copy {
-            margin-top: 12px;
-            font-size: clamp(15px, 1.6vw, 21px);
+            margin-top: 8px;
+            font-size: clamp(12px, 1.5vw, 15px);
             line-height: 1.2;
           }
 
-          .placeholder-path {
+          .placeholder-path,
+          .card-image-placeholder-path {
             display: block;
-            margin-top: 10px;
-            font-size: 12px;
+            margin-top: 8px;
+            font-size: 10px;
           }
 
           .concept-stack {
             display: grid;
-            gap: 18px;
+            gap: 12px;
           }
 
           .concept-card {
-            padding: 14px 14px 16px;
-            border-color: rgba(69, 216, 241, 0.92);
+            padding: 8px;
           }
 
           .card-image-placeholder {
-            min-height: 210px;
+            min-height: 100px;
             display: grid;
             place-items: center;
             text-align: center;
-            padding: 18px;
-            margin-bottom: 18px;
+            padding: 12px;
+            margin-bottom: 10px;
             border: 2px solid rgba(69, 216, 241, 0.92);
-            background: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.25);
           }
 
           .card-image-placeholder-title {
             color: var(--coral);
-            font-size: clamp(28px, 4.5vw, 64px);
-            line-height: 0.92;
+            font-size: clamp(20px, 4vw, 34px);
+            line-height: 0.95;
             text-transform: uppercase;
             letter-spacing: 0.02em;
-            font-weight: 700;
-          }
-
-          .card-image-placeholder-path {
-            display: block;
-            margin-top: 10px;
-            color: rgba(255, 224, 232, 0.62);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
             font-weight: 700;
           }
 
@@ -418,30 +384,30 @@ const DinningPage = () => {
           }
 
           .card-subtitle {
-            margin-top: 8px;
-            font-size: clamp(15px, 1.5vw, 21px);
+            margin-top: 6px;
+            font-size: clamp(11px, 1.4vw, 14px);
             line-height: 1.05;
           }
 
           .card-copy {
-            margin: 18px 0 18px;
+            margin: 12px 0 12px;
             color: var(--coral);
-            font-size: clamp(16px, 1.45vw, 22px);
-            line-height: 1.35;
-            max-width: 40ch;
+            font-size: clamp(12px, 1.55vw, 16px);
+            line-height: 1.34;
+            max-width: 42ch;
             font-weight: 700;
           }
 
           .bullet-list {
             list-style: none;
-            margin: 0 0 18px;
+            margin: 0 0 10px;
             padding: 0;
           }
 
           .bullet-list li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--cyan);
-            font-size: clamp(18px, 1.8vw, 28px);
+            font-size: clamp(12px, 1.8vw, 18px);
             line-height: 1;
             font-weight: 700;
           }
@@ -453,12 +419,12 @@ const DinningPage = () => {
           .card-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 14px;
+            gap: 10px;
           }
 
           .card-links a {
             color: var(--cyan);
-            font-size: clamp(18px, 1.8vw, 24px);
+            font-size: clamp(12px, 1.7vw, 17px);
             line-height: 1;
             font-weight: 700;
             text-transform: uppercase;
@@ -472,16 +438,11 @@ const DinningPage = () => {
 
           @media (max-width: 720px) {
             .dining-page {
-              padding: 4px;
+              padding: 0;
             }
 
             .poster {
-              padding: 14px 10px 18px;
-            }
-
-            .core-glow {
-              width: min(76vw, 340px);
-              top: 18%;
+              padding: 12px 10px 16px;
             }
 
             .schedule-grid {
@@ -489,17 +450,12 @@ const DinningPage = () => {
             }
 
             .placeholder-panel {
-              min-height: 300px;
-            }
-
-            .card-image-placeholder {
-              min-height: 150px;
+              min-height: 170px;
             }
           }
 
           @media (prefers-reduced-motion: reduce) {
-            .dining-page::before,
-            .core-glow {
+            .dining-page::before {
               animation: none !important;
             }
           }
@@ -509,18 +465,17 @@ const DinningPage = () => {
       <main className="dining-page">
         <div className="shell">
           <section className="poster">
-            <div className="space-grid" aria-hidden="true" />
-            <div className="core-glow" aria-hidden="true" />
+            <div className="warp-grid" aria-hidden="true" />
 
             <div className="content">
-              <div className="hero">
+              <div className="hero box">
                 <h1 className="hero-title">Dining At</h1>
                 <div className="hero-address">17 Little Portland Street</div>
                 <div className="hero-tagline">More than a meal. Step into the void</div>
               </div>
 
               <div className="schedule-section">
-                <div className="schedule-box section-shell">
+                <div className="schedule-box box">
                   <div className="schedule-head">Open Thursdays to Saturdays</div>
                   <div className="schedule-subhead">Nightly Schedule</div>
 
@@ -550,21 +505,19 @@ const DinningPage = () => {
               </div>
 
               <div className="explore-wrap">
-                <a className="explore-link section-shell" href="#concepts">&gt; Explore our futurist dining concept</a>
+                <a className="explore-link box" href="#concepts">&gt; Explore our futurist dining concept</a>
               </div>
 
-              <div className="map-zone">
-                <div className="placeholder-panel section-shell" aria-label="Venue map placeholder">
-                  <div>
-                    <div className="placeholder-title">Venue Map Placeholder</div>
-                    <div className="placeholder-copy">Add your PNG later and swap this block for an image</div>
-                    <div className="placeholder-path">Suggested path: /images/dinning-map.png</div>
-                  </div>
+              <div className="placeholder-panel box" aria-label="Venue map placeholder">
+                <div>
+                  <div className="placeholder-title">Venue Map Placeholder</div>
+                  <div className="placeholder-copy">Add your PNG later and swap this block for an image</div>
+                  <div className="placeholder-path">Suggested path: /images/dinning-map.png</div>
                 </div>
               </div>
 
               <div className="concept-stack" id="concepts">
-                <article className="concept-card section-shell">
+                <article className="concept-card box">
                   <div className="card-image-placeholder">
                     <div>
                       <div className="card-image-placeholder-title">The Tent Image Placeholder</div>
@@ -595,7 +548,7 @@ const DinningPage = () => {
                   </div>
                 </article>
 
-                <article className="concept-card section-shell">
+                <article className="concept-card box">
                   <div className="card-image-placeholder">
                     <div>
                       <div className="card-image-placeholder-title">Chef&apos;s Studio Image Placeholder</div>
