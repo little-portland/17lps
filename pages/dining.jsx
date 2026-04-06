@@ -552,20 +552,28 @@ const DinningPage = () => {
 
           .cta-link::before {
             content: "";
-            width: 28px;
-            height: 14px;
-            flex: 0 0 auto;
-            display: inline-block;
-            background:
-              linear-gradient(var(--text), var(--text)) left 0 top 2px / 16px 2px no-repeat,
-              linear-gradient(var(--text), var(--text)) left 0 center / 16px 2px no-repeat,
-              linear-gradient(var(--text), var(--text)) left 0 bottom 2px / 16px 2px no-repeat,
-              linear-gradient(45deg, transparent 50%, var(--text) 51%) right 4px top 50% / 10px 10px no-repeat,
-              linear-gradient(-45deg, transparent 50%, var(--text) 51%) right 0 top 50% / 10px 10px no-repeat;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 18px;
+            height: 2px;
+            background: var(--text);
+            transform: translate(calc(-50% - 290px), -50%);
+            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
           }
 
           .cta-link::after {
-            display: none;
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(calc(-50% - 272px), -50%);
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 9px solid var(--text);
+            display: block;
           }
 
           .cta-link:hover {
@@ -740,20 +748,28 @@ const DinningPage = () => {
 
           .link-row a::before {
             content: "";
-            width: 24px;
-            height: 14px;
-            flex: 0 0 auto;
-            display: inline-block;
-            background:
-              linear-gradient(var(--text), var(--text)) left 0 top 2px / 14px 2px no-repeat,
-              linear-gradient(var(--text), var(--text)) left 0 center / 14px 2px no-repeat,
-              linear-gradient(var(--text), var(--text)) left 0 bottom 2px / 14px 2px no-repeat,
-              linear-gradient(45deg, transparent 50%, var(--text) 51%) right 4px top 50% / 9px 9px no-repeat,
-              linear-gradient(-45deg, transparent 50%, var(--text) 51%) right 0 top 50% / 9px 9px no-repeat;
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            width: 14px;
+            height: 2px;
+            background: var(--text);
+            transform: translateY(-50%);
+            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
           }
 
           .link-row a::after {
-            display: none;
+            content: "";
+            position: absolute;
+            left: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 8px solid var(--text);
+            display: block;
           }
 
           .link-row a:hover {
