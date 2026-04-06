@@ -608,7 +608,7 @@ const DinningPage = () => {
                 </p>
 
                 <ul className="bullet-list">
-                  <li>£65pp Set Dinner</li>
+                  <li>£65pp Set Dinner</li> 
                   <li>Futurist Menu</li>
                   <li>6-12 PAX</li>
                   <li>8pm Start</li>
