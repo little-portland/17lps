@@ -732,20 +732,11 @@ const DinningPage = () => {
             box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
           }
 
+          
+
           .link-row a::after {
             content: "";
-            position: absolute;
-            left: 28px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-            border-left: 8px solid var(--text);
           }
-
-          
 
           .link-row a:hover {
             color: var(--text);
@@ -756,7 +747,7 @@ const DinningPage = () => {
 
           .footer-strip {
             display: grid;
-            grid-template-columns: 90px 1fr 200px 80px;
+            grid-template-columns: 140px 1fr 140px;
             gap: 0;
             border-top: 2px solid var(--line);
             margin-top: 18px;
@@ -765,7 +756,7 @@ const DinningPage = () => {
           }
 
           .footer-cell {
-            min-height: 80px;
+            min-height: 92px;
             border-right: 2px solid var(--line);
             display: flex;
             align-items: center;
@@ -778,80 +769,57 @@ const DinningPage = () => {
 
           .footer-cell:last-child { border-right: none; }
 
-          .globe,
-          .globe::before,
-          .globe::after { border-radius: 50%; }
-
-          .globe {
-            width: 48px;
-            height: 48px;
-            border: 2px solid var(--line);
+          .footer-mark {
+            width: 74px;
+            height: 74px;
             position: relative;
+            border-radius: 50%;
+            border: 5px solid var(--text);
           }
 
-          .globe::before,
-          .globe::after {
+          .footer-mark::before,
+          .footer-mark::after {
             content: "";
             position: absolute;
-            inset: 8px;
-            border: 1px solid var(--line);
-          }
-
-          .globe::after {
-            inset: 0;
-            border-radius: 0;
-            border: none;
-            border-top: 2px solid var(--line);
-            border-bottom: 2px solid var(--line);
-            top: 50%;
-            transform: translateY(-50%);
-            height: 18px;
-          }
-
-          .footer-copy {
-            text-align: left;
-            justify-content: flex-start;
-            font-size: 13px;
-            line-height: 1.35;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 800;
-            font-family: var(--body);
-          }
-
-          .barcode {
-            width: 100%;
-            height: 42px;
-            background: repeating-linear-gradient(
-              to right,
-              var(--text) 0 2px,
-              transparent 2px 4px,
-              var(--text) 4px 5px,
-              transparent 5px 8px,
-              var(--text) 8px 11px,
-              transparent 11px 13px,
-              var(--text) 13px 14px,
-              transparent 14px 18px
-            );
-          }
-
-          .badge {
-            width: 52px;
-            height: 52px;
-            border: 2px solid var(--line);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--future);
-            font-size: 30px;
-            line-height: 1;
-            font-weight: 800;
+          }
+
+          .footer-mark::before {
+            inset: 11px;
+            border: 5px solid var(--text);
+          }
+
+          .footer-mark::after {
+            width: 10px;
+            height: 10px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--text);
+          }
+
+          .footer-lines {
+            width: 100%;
+            height: 44px;
+            background:
+              linear-gradient(to bottom,
+                var(--text) 0 2px,
+                transparent 2px 7px,
+                var(--text) 7px 11px,
+                transparent 11px 16px,
+                var(--text) 16px 18px,
+                transparent 18px 24px,
+                var(--text) 24px 29px,
+                transparent 29px 34px,
+                var(--text) 34px 36px,
+                transparent 36px 41px,
+                var(--text) 41px 44px
+              );
+            opacity: 0.92;
           }
 
           @media (max-width: 980px) {
-            .footer-strip { grid-template-columns: 80px 1fr 160px 72px; }
+            .footer-strip { grid-template-columns: 110px 1fr 110px; }
           }
 
           @media (max-width: 900px) {
@@ -861,7 +829,7 @@ const DinningPage = () => {
               border-bottom: 2px solid var(--line);
             }
             .schedule-item:last-child { border-bottom: none; }
-            .footer-strip { grid-template-columns: 1fr 1fr; }
+            .footer-strip { grid-template-columns: 100px 1fr 100px; }
           }
 
           @media (max-width: 640px) {
@@ -1025,10 +993,9 @@ const DinningPage = () => {
               </div>
 
               <div className="footer-strip">
-                <div className="footer-cell"><div className="globe" aria-hidden="true" /></div>
-                <div className="footer-cell footer-copy">17 Little Portland Street · Dining access sequence · Retrofuturist service environment</div>
-                <div className="footer-cell"><div className="barcode" aria-hidden="true" /></div>
-                <div className="footer-cell"><div className="badge">R</div></div>
+                <div className="footer-cell"><div className="footer-mark" aria-hidden="true" /></div>
+                <div className="footer-cell"><div className="footer-lines" aria-hidden="true" /></div>
+                <div className="footer-cell"><div className="footer-mark" aria-hidden="true" /></div>
               </div>
             </div>
           </section>
