@@ -47,13 +47,42 @@ const DinningPage = () => {
           }
 
           @keyframes tunnelPulse {
-            0%, 100% { opacity: 0.9; }
-            50% { opacity: 1; }
+            0%, 100% { opacity: 0.88; filter: brightness(1); }
+            50% { opacity: 1; filter: brightness(1.08); }
           }
 
           @keyframes scanSweep {
-            0% { transform: translateY(-130%); }
-            100% { transform: translateY(130%); }
+            0% { transform: translateY(-130%); opacity: 0; }
+            15% { opacity: 0.14; }
+            50% { opacity: 0.22; }
+            85% { opacity: 0.14; }
+            100% { transform: translateY(130%); opacity: 0; }
+          }
+
+          @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            8% { opacity: 0.96; }
+            9% { opacity: 0.82; }
+            10% { opacity: 1; }
+            48% { opacity: 0.98; }
+            49% { opacity: 0.86; }
+            50% { opacity: 1; }
+          }
+
+          @keyframes textGlitch {
+            0%, 100% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
+            20% { transform: translate3d(0.5px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.12); }
+            21% { transform: translate3d(-0.5px,0,0); text-shadow: 1px 0 0 rgba(255,255,255,0.12); }
+            22% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
+            70% { transform: translate3d(0.4px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.1); }
+            71% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
+          }
+
+          @keyframes borderGlitch {
+            0%, 100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+            48% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+            49% { box-shadow: 1px 0 0 rgba(255,255,255,0.18), -1px 0 0 rgba(255,255,255,0.12); }
+            50% { box-shadow: 0 0 0 rgba(255,255,255,0); }
           }
 
           .page {
@@ -100,6 +129,7 @@ const DinningPage = () => {
             background: rgba(10, 10, 10, 0.72);
             overflow: hidden;
             box-shadow: 0 22px 70px var(--shadow);
+            animation: flicker 9s linear infinite;
           }
 
           .frame::before {
@@ -117,10 +147,9 @@ const DinningPage = () => {
             right: 0;
             height: 22%;
             pointer-events: none;
-            background: transparent;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.06), rgba(255,255,255,0));
             opacity: 0.1;
             animation: scanSweep 8s linear infinite;
-            border-radius: 10px;
           }
 
           .header-bar {
@@ -179,6 +208,8 @@ const DinningPage = () => {
             line-height: 0.88;
             font-size: clamp(64px, 10vw, 146px);
             color: var(--text);
+            animation: textGlitch 7s steps(1, end) infinite;
+            will-change: transform, text-shadow;
           }
 
           .tunnel-box {
@@ -188,8 +219,7 @@ const DinningPage = () => {
             min-height: 260px;
             border: 2px solid var(--line);
             overflow: hidden;
-            background: transparent;
-            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
           }
 
           .tunnel-box::before {
@@ -218,13 +248,11 @@ const DinningPage = () => {
           }
 
           .floating-panel {
-            position: absolute;
-            left: 28px;
-            right: 28px;
-            top: 26px;
-            z-index: 3;
+            position: relative;
+            z-index: 2;
             display: grid;
             gap: 14px;
+            margin: 0 22px 22px;
           }
 
           .info-card,
@@ -309,6 +337,7 @@ const DinningPage = () => {
             font-size: clamp(24px, 2.4vw, 38px);
             line-height: 0.92;
             letter-spacing: 0.03em;
+            animation: borderGlitch 8s steps(1, end) infinite;
           }
 
           .cta-link:hover {
@@ -631,16 +660,17 @@ const DinningPage = () => {
             }
 
             .floating-panel {
-              left: 14px;
-              right: 14px;
-              top: 14px;
+              margin: 0 14px 18px;
             }
           }
 
           @media (prefers-reduced-motion: reduce) {
             .page::before,
             .frame::after,
-            .tunnel-box::before {
+            .tunnel-box::before,
+            .frame,
+            .hero-title,
+            .cta-link {
               animation: none !important;
             }
           }
