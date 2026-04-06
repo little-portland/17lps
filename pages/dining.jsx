@@ -198,11 +198,19 @@ const DinningPage = () => {
             position: absolute;
             left: 0;
             right: 0;
-            height: 22%;
+            top: -25%;
+            height: 50%;
             pointer-events: none;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0));
-            opacity: 0.1;
-            animation: scanSweep 7s linear infinite;
+            background: linear-gradient(
+              to bottom,
+              rgba(255,255,255,0) 0%,
+              rgba(255,255,255,0.03) 18%,
+              rgba(255,255,255,0.16) 50%,
+              rgba(255,255,255,0.03) 82%,
+              rgba(255,255,255,0) 100%
+            );
+            opacity: 0.28;
+            animation: scanSweep 5.5s linear infinite;
           }
 
           .header-bar {
@@ -456,7 +464,7 @@ const DinningPage = () => {
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.24em;
-            font-size: 12px;
+            font-size: 18px;
             color: var(--muted);
             margin-bottom: 14px;
           }
@@ -620,9 +628,9 @@ const DinningPage = () => {
           .feature-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 18px;
+            margin: 0 0 22px;
             display: grid;
-            gap: 10px;
+            gap: 12px;
           }
 
           .feature-list li {
@@ -633,49 +641,68 @@ const DinningPage = () => {
             line-height: 0.95;
             letter-spacing: 0.03em;
             position: relative;
-            padding-left: 34px;
+            padding: 10px 14px 10px 48px;
             font-weight: 800;
+            border: 1px solid var(--line-soft);
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+            overflow: hidden;
           }
 
           .feature-list li::before {
-            content: "◦";
+            content: "";
             position: absolute;
-            left: 0;
-            top: 0.02em;
-            font-size: 1.1em;
+            left: 16px;
+            top: 50%;
+            width: 14px;
+            height: 14px;
+            transform: translateY(-50%);
+            border: 2px solid var(--text);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
           }
 
           .link-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 14px;
           }
 
           .link-row a {
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
-            font-size: clamp(20px, 1.8vw, 26px);
-            line-height: 0.95;
-            letter-spacing: 0.03em;
+            font-size: clamp(18px, 1.7vw, 24px);
+            line-height: 1;
+            letter-spacing: 0.05em;
             position: relative;
-            padding: 0 10px 0 24px;
+            padding: 14px 18px 14px 42px;
             font-weight: 800;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
+            transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
           }
 
           .link-row a::before {
-            content: "[";
+            content: ">";
             position: absolute;
-            left: 0;
-            top: 0;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.95em;
           }
 
           .link-row a::after {
-            content: "]";
-            margin-left: 3px;
+            content: "";
           }
 
-          .link-row a:hover { color: var(--muted); }
+          .link-row a:hover {
+            color: var(--text);
+            background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
+            box-shadow: 0 0 18px rgba(255,255,255,0.08);
+            transform: translateY(-1px);
+          }
 
           .footer-strip {
             display: grid;
