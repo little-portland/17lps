@@ -12,17 +12,13 @@ const DinningPage = () => {
         />
         <style>{`
           :root {
-            --bg: #07070b;
-            --bg-2: #0d0b14;
-            --panel: rgba(10, 10, 16, 0.76);
-            --panel-strong: rgba(12, 12, 20, 0.9);
-            --text: #f6efe6;
-            --muted: rgba(246, 239, 230, 0.72);
-            --cyan: #57e3f3;
-            --magenta: #ff4fa3;
-            --violet: #7f61ff;
-            --gold: #ffbf66;
-            --line: rgba(87, 227, 243, 0.22);
+            --bg: #0a0a0a;
+            --panel: rgba(12, 12, 12, 0.94);
+            --panel-soft: rgba(18, 18, 18, 0.9);
+            --line: rgba(255, 255, 255, 0.9);
+            --line-soft: rgba(255, 255, 255, 0.24);
+            --text: #f3f3f0;
+            --muted: rgba(243, 243, 240, 0.7);
             --shadow: rgba(0, 0, 0, 0.45);
           }
 
@@ -33,445 +29,403 @@ const DinningPage = () => {
 
           body {
             margin: 0;
-            background: radial-gradient(circle at top, #151122 0%, var(--bg) 42%) !important;
+            background: var(--bg) !important;
             color: var(--text);
             overflow-x: hidden !important;
-            font-family: Inter, Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
           }
 
-          * {
-            box-sizing: border-box;
-          }
-
-          a {
-            color: inherit;
-            text-decoration: none;
-          }
+          * { box-sizing: border-box; }
+          a { color: inherit; text-decoration: none; }
 
           @keyframes grainShift {
             0% { transform: translate(0, 0); }
-            25% { transform: translate(-0.5%, 0.4%); }
-            50% { transform: translate(0.35%, -0.35%); }
-            75% { transform: translate(0.45%, 0.25%); }
+            25% { transform: translate(-0.4%, 0.3%); }
+            50% { transform: translate(0.3%, -0.35%); }
+            75% { transform: translate(0.35%, 0.25%); }
             100% { transform: translate(0, 0); }
           }
 
-          @keyframes drift {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-          }
-
-          @keyframes glowPulse {
-            0%, 100% { opacity: 0.72; }
+          @keyframes tunnelPulse {
+            0%, 100% { opacity: 0.9; }
             50% { opacity: 1; }
           }
 
-          @keyframes scanLine {
-            0% { transform: translateY(-120%); }
-            100% { transform: translateY(120%); }
-          }
-
-          @keyframes buttonGlow {
-            0%, 100% { box-shadow: 0 0 0 rgba(87,227,243,0), 0 0 24px rgba(255,79,163,0.18); }
-            50% { box-shadow: 0 0 14px rgba(87,227,243,0.35), 0 0 32px rgba(255,79,163,0.28); }
+          @keyframes scanSweep {
+            0% { transform: translateY(-130%); }
+            100% { transform: translateY(130%); }
           }
 
           .page {
             min-height: 100vh;
             position: relative;
             overflow: hidden;
-            padding: 32px 16px 44px;
+            padding: 28px 16px 42px;
             background:
-              radial-gradient(circle at 20% 15%, rgba(127,97,255,0.16), transparent 24%),
-              radial-gradient(circle at 80% 20%, rgba(255,79,163,0.12), transparent 22%),
-              radial-gradient(circle at 50% 85%, rgba(87,227,243,0.08), transparent 28%),
-              linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+              radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 30%),
+              linear-gradient(180deg, #111 0%, #080808 100%);
           }
 
           .page::before,
           .page::after {
             content: "";
             position: fixed;
-            inset: -10%;
+            inset: -8%;
             pointer-events: none;
             z-index: 0;
           }
 
           .page::before {
             opacity: 0.18;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
             mix-blend-mode: screen;
             animation: grainShift 0.45s steps(2, end) infinite;
           }
 
           .page::after {
-            background:
-              radial-gradient(circle at 18% 24%, rgba(255,255,255,0.6) 0 1px, transparent 2px),
-              radial-gradient(circle at 72% 16%, rgba(255,255,255,0.45) 0 1px, transparent 2px),
-              radial-gradient(circle at 64% 62%, rgba(255,255,255,0.4) 0 1px, transparent 2px),
-              radial-gradient(circle at 32% 76%, rgba(255,255,255,0.3) 0 1px, transparent 2px);
-            background-size: 260px 260px, 320px 320px, 280px 280px, 340px 340px;
-            opacity: 0.22;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 18%, transparent 82%, rgba(255,255,255,0.02));
+            opacity: 0.35;
           }
 
           .shell {
-            width: min(1100px, 100%);
+            width: min(1160px, 100%);
             margin: 0 auto;
             position: relative;
             z-index: 1;
           }
 
-          .hero {
+          .frame {
             position: relative;
-            min-height: 420px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: linear-gradient(180deg, rgba(15,14,25,0.92), rgba(9,9,16,0.86));
+            border: 2px solid var(--line);
+            background: rgba(10, 10, 10, 0.72);
             overflow: hidden;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.34);
-            margin-bottom: 24px;
+            box-shadow: 0 22px 70px var(--shadow);
           }
 
-          .hero::before {
+          .frame::before {
             content: "";
             position: absolute;
             inset: 0;
-            background:
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 56px 56px;
-            opacity: 0.22;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(255,255,255,0.035), transparent 20%, transparent 80%, rgba(255,255,255,0.02));
           }
 
-          .hero::after {
+          .frame::after {
             content: "";
             position: absolute;
             left: 0;
             right: 0;
-            height: 32%;
+            height: 22%;
             pointer-events: none;
-            background: linear-gradient(to bottom, rgba(87,227,243,0), rgba(87,227,243,0.1), rgba(255,79,163,0));
-            opacity: 0.22;
-            animation: scanLine 7s linear infinite;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.06), rgba(255,255,255,0));
+            opacity: 0.1;
+            animation: scanSweep 8s linear infinite;
           }
 
-          .sun {
+          .header-bar {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 22px 10px;
+            position: relative;
+            z-index: 2;
+          }
+
+          .header-label,
+          .footer-tag {
+            text-transform: uppercase;
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            letter-spacing: 0.08em;
+            line-height: 1;
+            color: var(--text);
+          }
+
+          .header-label {
+            font-size: clamp(18px, 1.7vw, 28px);
+            white-space: nowrap;
+          }
+
+          .header-line {
+            height: 0;
+            border-top: 4px double var(--line);
+            position: relative;
+          }
+
+          .header-line::after {
+            content: "";
             position: absolute;
-            right: 6%;
-            top: 48px;
-            width: min(42vw, 360px);
-            aspect-ratio: 1 / 1;
-            border-radius: 50%;
-            background:
-              radial-gradient(circle at 50% 45%, #ffd8a4 0%, #ffbf66 18%, #ff7ba7 52%, #ff4fa3 75%, rgba(255,79,163,0) 78%);
-            filter: blur(0.5px);
-            opacity: 0.92;
-            animation: glowPulse 5s ease-in-out infinite, drift 9s ease-in-out infinite;
+            right: -2px;
+            top: -7px;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 14px solid var(--line);
           }
 
-          .sun-rings {
-            position: absolute;
-            right: 3%;
-            top: 22px;
-            width: min(50vw, 430px);
-            aspect-ratio: 1 / 1;
-            border-radius: 50%;
-            border: 1px solid rgba(87,227,243,0.24);
-            box-shadow: 0 0 0 32px rgba(87,227,243,0.06), 0 0 0 64px rgba(127,97,255,0.04);
-            opacity: 0.65;
-            animation: drift 10s ease-in-out infinite;
-          }
-
-          .hero-inner {
+          .hero {
             position: relative;
             z-index: 1;
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
-            min-height: 420px;
+            padding: 6px 22px 22px;
           }
 
-          .hero-copy {
-            padding: 42px 38px 34px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 18px;
-          }
-
-          .eyebrow {
-            color: var(--cyan);
-            font-size: 14px;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            font-weight: 700;
-          }
-
-          .title {
+          .hero-title {
             margin: 0;
-            font-size: clamp(48px, 9vw, 110px);
-            line-height: 0.9;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            font-weight: 900;
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            line-height: 0.88;
+            font-size: clamp(64px, 10vw, 146px);
             color: var(--text);
-            text-shadow: 0 0 18px rgba(87,227,243,0.12);
           }
 
-          .title .accent {
-            color: var(--magenta);
-          }
-
-          .subtitle {
-            color: var(--gold);
-            font-size: clamp(22px, 3vw, 38px);
-            line-height: 0.94;
-            text-transform: uppercase;
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            letter-spacing: 0.04em;
-            max-width: 11ch;
-          }
-
-          .hero-meta {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-          }
-
-          .pill {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 14px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.04);
-            color: var(--muted);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 700;
-          }
-
-          .schedule {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-            margin-bottom: 22px;
-          }
-
-          .schedule-card,
-          .cta-panel,
-          .placeholder,
-          .concept-card {
-            border: 1px solid rgba(255,255,255,0.08);
-            background: var(--panel);
+          .tunnel-box {
             position: relative;
+            margin: 0 22px 22px;
+            height: min(46vw, 470px);
+            min-height: 260px;
+            border: 2px solid var(--line);
             overflow: hidden;
-            box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+            background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
           }
 
-          .schedule-card::before,
-          .cta-panel::before,
-          .placeholder::before,
+          .tunnel-box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+              repeating-linear-gradient(to right, transparent 0, transparent 3.8%, var(--line) 3.8%, var(--line) 4%, transparent 4%, transparent 7.8%),
+              repeating-linear-gradient(to bottom, transparent 0, transparent 4.8%, var(--line) 4.8%, var(--line) 5%, transparent 5%, transparent 9.8%);
+            transform: perspective(1100px) rotateX(69deg) scale(2.15) translateY(-3%);
+            transform-origin: center center;
+            opacity: 0.92;
+            animation: tunnelPulse 4.5s ease-in-out infinite;
+          }
+
+          .tunnel-box::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 10%;
+            height: 13%;
+            transform: translate(-50%, -50%);
+            background: var(--text);
+            box-shadow: 0 0 24px rgba(255,255,255,0.34);
+          }
+
+          .floating-panel {
+            position: absolute;
+            left: 28px;
+            right: 28px;
+            bottom: 26px;
+            z-index: 2;
+            display: grid;
+            gap: 14px;
+          }
+
+          .info-card,
+          .cta-card,
+          .venue-card,
+          .concept-card {
+            position: relative;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
+            overflow: hidden;
+          }
+
+          .info-card::before,
+          .cta-card::before,
+          .venue-card::before,
           .concept-card::before {
             content: "";
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background: linear-gradient(135deg, rgba(87,227,243,0.08), transparent 42%, rgba(255,79,163,0.08));
-            opacity: 0.75;
+            background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 4px);
+            opacity: 0.1;
           }
 
-          .schedule-card-inner {
+          .info-card {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0;
+            align-items: stretch;
+          }
+
+          .info-card > div {
             position: relative;
             z-index: 1;
-            padding: 22px 20px 18px;
-            min-height: 220px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            padding: 18px 16px 16px;
+            border-right: 1px solid var(--line-soft);
           }
 
-          .schedule-kicker {
-            color: var(--magenta);
-            font-size: 14px;
+          .info-card > div:last-child {
+            border-right: none;
+          }
+
+          .mini-label {
+            color: var(--muted);
             text-transform: uppercase;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.16em;
+            font-size: 12px;
             font-weight: 800;
+            margin-bottom: 14px;
           }
 
-          .schedule-label {
+          .card-title {
             color: var(--text);
-            font-size: clamp(26px, 2.7vw, 42px);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-size: clamp(22px, 2vw, 34px);
             line-height: 0.95;
             text-transform: uppercase;
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            margin-bottom: 12px;
           }
 
-          .schedule-time {
-            color: var(--cyan);
-            font-size: clamp(44px, 4.2vw, 70px);
+          .card-time {
+            color: var(--text);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-size: clamp(36px, 3vw, 52px);
             line-height: 0.9;
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.03em;
           }
 
-          .cta-panel {
-            margin-bottom: 22px;
-            position: relative;
+          .cta-card {
+            z-index: 1;
           }
 
           .cta-link {
             position: relative;
             z-index: 1;
             display: block;
-            padding: 22px 26px;
-            background: linear-gradient(90deg, rgba(127,97,255,0.94), rgba(255,79,163,0.94));
-            color: #fff;
             text-align: center;
-            font-size: clamp(24px, 2.7vw, 42px);
-            line-height: 0.92;
+            padding: 18px 20px;
+            color: var(--text);
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
+            font-size: clamp(24px, 2.4vw, 38px);
+            line-height: 0.92;
             letter-spacing: 0.03em;
-            animation: buttonGlow 3.8s ease-in-out infinite;
           }
 
           .cta-link:hover {
-            filter: brightness(1.04);
-            transform: translateY(-1px);
+            background: rgba(255,255,255,0.04);
           }
 
-          .placeholder {
-            margin-bottom: 22px;
-          }
-
-          .placeholder-inner {
+          .content-stack {
+            padding: 0 22px 22px;
+            display: grid;
+            gap: 18px;
             position: relative;
             z-index: 1;
-            min-height: 260px;
+          }
+
+          .venue-card-inner {
+            min-height: 220px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 28px 20px;
+            padding: 26px 20px;
+            position: relative;
+            z-index: 1;
           }
 
-          .placeholder-title {
-            color: var(--magenta);
-            font-size: clamp(34px, 4vw, 58px);
-            line-height: 0.92;
+          .venue-title,
+          .concept-title,
+          .image-placeholder-title {
+            color: var(--text);
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.02em;
+            line-height: 0.92;
+            letter-spacing: 0.03em;
           }
 
-          .placeholder-copy {
-            margin-top: 10px;
+          .venue-title {
+            font-size: clamp(34px, 4vw, 58px);
+          }
+
+          .venue-copy,
+          .image-placeholder-path,
+          .concept-subtitle {
             color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 12px;
+            font-weight: 800;
+          }
+
+          .venue-copy {
+            margin-top: 12px;
             font-size: 14px;
             line-height: 1.35;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 700;
           }
 
-          .placeholder-path {
+          .venue-path {
             margin-top: 10px;
-            color: rgba(246,239,230,0.5);
+            color: rgba(243,243,240,0.48);
             font-size: 11px;
-            line-height: 1.2;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            font-weight: 700;
-          }
-
-          .concept-stack {
-            display: grid;
-            gap: 22px;
+            font-weight: 800;
           }
 
           .concept-card-inner {
             position: relative;
             z-index: 1;
-            padding: 20px;
             display: grid;
             grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
-            gap: 24px;
-            align-items: start;
+            gap: 22px;
+            padding: 18px;
           }
 
           .image-placeholder {
             min-height: 220px;
-            border: 1px solid rgba(87,227,243,0.24);
-            background:
-              radial-gradient(circle at 30% 20%, rgba(255,79,163,0.16), transparent 30%),
-              radial-gradient(circle at 70% 80%, rgba(87,227,243,0.14), transparent 36%),
-              rgba(255,255,255,0.03);
+            border: 1px solid var(--line-soft);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 18px;
+            background: rgba(255,255,255,0.02);
           }
 
           .image-placeholder-title {
-            color: var(--gold);
-            font-size: clamp(26px, 3vw, 40px);
-            line-height: 0.94;
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
+            font-size: clamp(28px, 3vw, 44px);
           }
 
           .image-placeholder-path {
             display: block;
             margin-top: 10px;
-            color: rgba(246,239,230,0.54);
-            font-size: 11px;
-            line-height: 1.2;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 700;
           }
 
           .concept-kicker {
-            color: var(--cyan);
-            font-size: 14px;
-            line-height: 1;
+            color: var(--muted);
             text-transform: uppercase;
             letter-spacing: 0.18em;
+            font-size: 12px;
             font-weight: 800;
             margin-bottom: 10px;
           }
 
           .concept-title {
             margin: 0;
-            color: var(--text);
-            font-size: clamp(34px, 4.6vw, 72px);
-            line-height: 0.9;
-            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
+            font-size: clamp(34px, 4.2vw, 68px);
           }
 
           .concept-subtitle {
             margin-top: 8px;
-            color: var(--gold);
-            font-size: clamp(14px, 1.5vw, 20px);
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            font-weight: 800;
           }
 
           .concept-copy {
             margin: 18px 0 18px;
-            color: var(--muted);
-            font-size: clamp(18px, 1.75vw, 24px);
-            line-height: 1.35;
+            color: var(--text);
+            font-size: clamp(18px, 1.6vw, 24px);
+            line-height: 1.34;
             font-weight: 700;
-            max-width: 34ch;
+            max-width: 36ch;
           }
 
           .feature-list {
@@ -483,17 +437,16 @@ const DinningPage = () => {
           }
 
           .feature-list li {
-            color: var(--cyan);
-            font-size: clamp(18px, 1.9vw, 28px);
-            line-height: 1;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
+            color: var(--text);
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            text-transform: uppercase;
+            font-size: clamp(22px, 2vw, 30px);
+            line-height: 0.95;
+            letter-spacing: 0.03em;
           }
 
           .feature-list li::before {
             content: "◦ ";
-            color: var(--magenta);
           }
 
           .link-row {
@@ -503,64 +456,189 @@ const DinningPage = () => {
           }
 
           .link-row a {
-            color: var(--magenta);
-            font-size: clamp(18px, 1.85vw, 26px);
-            line-height: 1;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
+            color: var(--text);
             font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            text-transform: uppercase;
+            font-size: clamp(20px, 1.8vw, 26px);
+            line-height: 0.95;
+            letter-spacing: 0.03em;
           }
 
           .link-row a:hover {
-            color: var(--gold);
+            color: var(--muted);
+          }
+
+          .footer-strip {
+            display: grid;
+            grid-template-columns: 90px 1fr 200px 80px;
+            gap: 0;
+            border-top: 1px solid var(--line);
+            margin-top: 18px;
+            position: relative;
+            z-index: 1;
+          }
+
+          .footer-cell {
+            min-height: 80px;
+            border-right: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .footer-cell:last-child {
+            border-right: none;
+          }
+
+          .globe,
+          .globe::before,
+          .globe::after {
+            border-radius: 50%;
+          }
+
+          .globe {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--line);
+            position: relative;
+          }
+
+          .globe::before,
+          .globe::after {
+            content: "";
+            position: absolute;
+            inset: 8px;
+            border: 1px solid var(--line);
+          }
+
+          .globe::after {
+            inset: 0;
+            border-radius: 0;
+            border: none;
+            border-top: 2px solid var(--line);
+            border-bottom: 2px solid var(--line);
+            top: 50%;
+            transform: translateY(-50%);
+            height: 18px;
+          }
+
+          .footer-copy {
+            text-align: left;
+            justify-content: flex-start;
+            font-size: 13px;
+            line-height: 1.35;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 800;
+          }
+
+          .barcode {
+            width: 100%;
+            height: 42px;
+            background: repeating-linear-gradient(
+              to right,
+              var(--text) 0 2px,
+              transparent 2px 4px,
+              var(--text) 4px 5px,
+              transparent 5px 8px,
+              var(--text) 8px 11px,
+              transparent 11px 13px,
+              var(--text) 13px 14px,
+              transparent 14px 18px
+            );
+          }
+
+          .badge {
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--line);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-size: 30px;
+            line-height: 1;
+          }
+
+          @media (max-width: 980px) {
+            .footer-strip {
+              grid-template-columns: 80px 1fr 160px 72px;
+            }
           }
 
           @media (max-width: 900px) {
-            .hero-inner {
+            .info-card {
               grid-template-columns: 1fr;
-              min-height: auto;
             }
 
-            .sun,
-            .sun-rings {
-              position: relative;
-              right: auto;
-              top: auto;
-              margin: 12px auto 22px;
-              width: min(72vw, 360px);
+            .info-card > div {
+              border-right: none;
+              border-bottom: 1px solid var(--line-soft);
             }
 
-            .schedule {
-              grid-template-columns: 1fr;
+            .info-card > div:last-child {
+              border-bottom: none;
             }
 
             .concept-card-inner {
               grid-template-columns: 1fr;
+            }
+
+            .footer-strip {
+              grid-template-columns: 1fr 1fr;
             }
           }
 
           @media (max-width: 640px) {
             .page {
-              padding: 14px 10px 28px;
+              padding: 14px 8px 22px;
             }
 
-            .hero-copy {
-              padding: 28px 18px 22px;
+            .header-bar,
+            .hero,
+            .tunnel-box,
+            .content-stack {
+              margin-left: 0;
+              margin-right: 0;
             }
 
-            .schedule-card-inner,
-            .placeholder-inner,
-            .concept-card-inner {
-              padding-left: 16px;
-              padding-right: 16px;
+            .header-bar {
+              grid-template-columns: 1fr;
+              gap: 8px;
+            }
+
+            .header-line {
+              display: none;
+            }
+
+            .hero,
+            .content-stack {
+              padding-left: 14px;
+              padding-right: 14px;
+            }
+
+            .tunnel-box {
+              margin-left: 14px;
+              margin-right: 14px;
+              height: 220px;
+            }
+
+            .floating-panel {
+              left: 14px;
+              right: 14px;
+              bottom: 16px;
             }
           }
 
           @media (prefers-reduced-motion: reduce) {
             .page::before,
-            .hero::after,
-            .sun,
-            .sun-rings,
+            .frame::after,
+            .tunnel-box::before,
             .cta-link {
               animation: none !important;
             }
@@ -570,139 +648,132 @@ const DinningPage = () => {
 
       <main className="page">
         <div className="shell">
-          <section className="hero">
-            <div className="sun-rings" aria-hidden="true" />
-            <div className="hero-inner">
-              <div className="hero-copy">
-                <div className="eyebrow">17 Little Portland Street</div>
-                <h1 className="title">
-                  <span className="accent">Dining</span> At
-                </h1>
-                <div className="subtitle">More than a meal. Step into the void.</div>
-                <div className="hero-meta">
-                  <div className="pill">Open Thursdays to Saturdays</div>
-                  <div className="pill">Nightly schedule from 20:00</div>
-                </div>
-              </div>
-              <div className="sun" aria-hidden="true" />
+          <section className="frame">
+            <div className="header-bar">
+              <div className="header-label">Dining Interface</div>
+              <div className="header-line" aria-hidden="true" />
+              <div className="header-label">17 Little Portland Street</div>
             </div>
-          </section>
 
-          <section className="schedule">
-            <article className="schedule-card">
-              <div className="schedule-card-inner">
-                <div>
-                  <div className="schedule-kicker">Nightly schedule</div>
-                  <div className="schedule-label">Chef&apos;s Studio</div>
-                </div>
-                <div className="schedule-time">20:00</div>
-              </div>
-            </article>
-
-            <article className="schedule-card">
-              <div className="schedule-card-inner">
-                <div>
-                  <div className="schedule-kicker">Nightly schedule</div>
-                  <div className="schedule-label">Dinner in The Tent</div>
-                </div>
-                <div className="schedule-time">20:30</div>
-              </div>
-            </article>
-
-            <article className="schedule-card">
-              <div className="schedule-card-inner">
-                <div>
-                  <div className="schedule-kicker">Nightly schedule</div>
-                  <div className="schedule-label">Club Opens</div>
-                </div>
-                <div className="schedule-time">22:00</div>
-              </div>
-            </article>
-          </section>
-
-          <section className="cta-panel">
-            <a className="cta-link" href="#concepts">Explore our futurist dining concept</a>
-          </section>
-
-          <section className="placeholder" aria-label="Venue map placeholder">
-            <div className="placeholder-inner">
-              <div className="placeholder-title">Venue Map Placeholder</div>
-              <div className="placeholder-copy">Add your PNG later and swap this block for an image</div>
-              <div className="placeholder-path">Suggested path: /images/dinning-map.png</div>
+            <div className="hero">
+              <h1 className="hero-title">Dining Noir</h1>
             </div>
-          </section>
 
-          <section className="concept-stack" id="concepts">
-            <article className="concept-card">
-              <div className="concept-card-inner">
-                <div className="image-placeholder">
-                  <div>
-                    <div className="image-placeholder-title">The Tent Image Placeholder</div>
-                    <span className="image-placeholder-path">Suggested path: /images/the-tent.png</span>
-                  </div>
-                </div>
+            <div className="tunnel-box" aria-hidden="true" />
 
+            <div className="floating-panel">
+              <div className="info-card">
                 <div>
-                  <div className="concept-kicker">Dining concept</div>
-                  <h2 className="concept-title">The Tent</h2>
-                  <div className="concept-subtitle">at the End of the Universe</div>
-
-                  <p className="concept-copy">
-                    In a floating tent, lost in space, futurist menus set the stage for a sensorial
-                    experience as dinner seamlessly transitions into our hypnotic after-dark mode - a
-                    cosmic journey.
-                  </p>
-
-                  <ul className="feature-list">
-                    <li>£65pp Set Dinner</li>
-                    <li>Futurist Menu</li>
-                    <li>8:30pm Start</li>
-                    <li>Club Access Included</li>
-                  </ul>
-
-                  <div className="link-row">
-                    <a href="#">[Book]</a>
-                    <a href="#">[Menu]</a>
-                    <a href="#">[Explore The Tent]</a>
-                  </div>
+                  <div className="mini-label">Primary Access</div>
+                  <div className="card-title">Chef&apos;s Studio</div>
+                  <div className="card-time">20:00</div>
+                </div>
+                <div>
+                  <div className="mini-label">Primary Access</div>
+                  <div className="card-title">Dinner in The Tent</div>
+                  <div className="card-time">20:30</div>
+                </div>
+                <div>
+                  <div className="mini-label">Primary Access</div>
+                  <div className="card-title">Club Opens</div>
+                  <div className="card-time">22:00</div>
                 </div>
               </div>
-            </article>
 
-            <article className="concept-card">
-              <div className="concept-card-inner">
-                <div className="image-placeholder">
-                  <div>
-                    <div className="image-placeholder-title">Chef&apos;s Studio Image Placeholder</div>
-                    <span className="image-placeholder-path">Suggested path: /images/chefs-studio.png</span>
-                  </div>
-                </div>
+              <div className="cta-card">
+                <a className="cta-link" href="#concepts">Explore our futurist dining concept</a>
+              </div>
+            </div>
 
-                <div>
-                  <div className="concept-kicker">Dining concept</div>
-                  <h2 className="concept-title">Chef&apos;s Studio</h2>
-                  <div className="concept-subtitle">Where the Heads Dine</div>
-
-                  <p className="concept-copy">
-                    Chef&apos;s Studio is an intimate and futuristic space beneath The Tent - the table of
-                    choice for those in the know.
-                  </p>
-
-                  <ul className="feature-list">
-                    <li>£65pp Set Dinner</li>
-                    <li>Futurist Menu</li>
-                    <li>6-12 PAX</li>
-                    <li>8pm Start</li>
-                  </ul>
-
-                  <div className="link-row">
-                    <a href="#">[Book]</a>
-                    <a href="#">[Menu]</a>
-                    <a href="#">[Explore Chef&apos;s Studio]</a>
-                  </div>
+            <div className="content-stack">
+              <div className="venue-card">
+                <div className="venue-card-inner">
+                  <div className="venue-title">Venue Map Placeholder</div>
+                  <div className="venue-copy">Add your PNG later and swap this block for an image</div>
+                  <div className="venue-path">Suggested path: /images/dinning-map.png</div>
                 </div>
               </div>
-            </article>
+
+              <div className="concept-stack" id="concepts">
+                <article className="concept-card">
+                  <div className="concept-card-inner">
+                    <div className="image-placeholder">
+                      <div>
+                        <div className="image-placeholder-title">The Tent Image Placeholder</div>
+                        <span className="image-placeholder-path">Suggested path: /images/the-tent.png</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="concept-kicker">Dining concept</div>
+                      <h2 className="concept-title">The Tent</h2>
+                      <div className="concept-subtitle">at the End of the Universe</div>
+
+                      <p className="concept-copy">
+                        In a floating tent, lost in space, futurist menus set the stage for a sensorial
+                        experience as dinner seamlessly transitions into our hypnotic after-dark mode - a
+                        cosmic journey.
+                      </p>
+
+                      <ul className="feature-list">
+                        <li>£65pp Set Dinner</li>
+                        <li>Futurist Menu</li>
+                        <li>8:30pm Start</li>
+                        <li>Club Access Included</li>
+                      </ul>
+
+                      <div className="link-row">
+                        <a href="#">[Book]</a>
+                        <a href="#">[Menu]</a>
+                        <a href="#">[Explore The Tent]</a>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article className="concept-card">
+                  <div className="concept-card-inner">
+                    <div className="image-placeholder">
+                      <div>
+                        <div className="image-placeholder-title">Chef&apos;s Studio Image Placeholder</div>
+                        <span className="image-placeholder-path">Suggested path: /images/chefs-studio.png</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="concept-kicker">Dining concept</div>
+                      <h2 className="concept-title">Chef&apos;s Studio</h2>
+                      <div className="concept-subtitle">Where the Heads Dine</div>
+
+                      <p className="concept-copy">
+                        Chef&apos;s Studio is an intimate and futuristic space beneath The Tent - the table of
+                        choice for those in the know.
+                      </p>
+
+                      <ul className="feature-list">
+                        <li>£65pp Set Dinner</li>
+                        <li>Futurist Menu</li>
+                        <li>6-12 PAX</li>
+                        <li>8pm Start</li>
+                      </ul>
+
+                      <div className="link-row">
+                        <a href="#">[Book]</a>
+                        <a href="#">[Menu]</a>
+                        <a href="#">[Explore Chef&apos;s Studio]</a>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div className="footer-strip">
+                <div className="footer-cell"><div className="globe" aria-hidden="true" /></div>
+                <div className="footer-cell footer-copy">17 Little Portland Street · Dining access sequence · Retrofuturist service environment</div>
+                <div className="footer-cell"><div className="barcode" aria-hidden="true" /></div>
+                <div className="footer-cell"><div className="badge">R</div></div>
+              </div>
+            </div>
           </section>
         </div>
       </main>
