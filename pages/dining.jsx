@@ -69,13 +69,19 @@ const DinningPage = () => {
             91% { opacity: 0.08; transform: translateX(0); }
           }
 
-          @keyframes textGlitch {
-            0%, 100% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
-            18% { transform: translate3d(0.8px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.12); }
-            19% { transform: translate3d(-0.8px,0,0); text-shadow: 1px 0 0 rgba(255,255,255,0.12); }
-            20% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
-            72% { transform: translate3d(0.4px,0,0); text-shadow: -1px 0 0 rgba(255,255,255,0.08); }
-            73% { transform: translate3d(0,0,0); text-shadow: 0 0 0 rgba(255,255,255,0); }
+          @keyframes ambientBars {
+            0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+            100% { background-position: 36px 0, -22px 0, 0 0, 0 0; }
+          }
+
+          @keyframes floatPulse {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+          }
+
+          @keyframes lineGlow {
+            0%, 100% { opacity: 0.9; box-shadow: 0 0 0 rgba(255,255,255,0); }
+            50% { opacity: 1; box-shadow: 0 0 18px rgba(255,255,255,0.08); }
           }
 
           @keyframes ambientBars {
@@ -237,7 +243,7 @@ const DinningPage = () => {
             font-size: clamp(66px, 10vw, 150px);
             font-weight: 900;
             color: var(--text);
-            animation: textGlitch 7s steps(1, end) infinite;
+            animation: floatPulse 6s ease-in-out infinite;
           }
 
           .header-subtitle {
@@ -255,7 +261,7 @@ const DinningPage = () => {
           .top-lines {
             position: relative;
             width: 100%;
-            height: 20px;
+            height: 18px;
             margin: 0 auto 18px;
           }
 
@@ -263,37 +269,47 @@ const DinningPage = () => {
           .top-lines::after {
             content: "";
             position: absolute;
-            left: 22px;
-            right: 22px;
+            left: 18px;
+            right: 18px;
             border-top: 2px solid var(--line);
           }
 
           .top-lines::before { top: 4px; }
-          .top-lines::after { top: 11px; }
+          .top-lines::after { top: 12px; }
 
           .top-lines span {
             position: absolute;
-            left: 24px;
-            right: 24px;
+            left: 18px;
+            right: 18px;
             top: 8px;
-            height: 2px;
-            background: repeating-linear-gradient(
-              to right,
-              var(--line) 0 22px,
-              transparent 22px 34px
-            );
+            height: 4px;
+            background: var(--line);
             opacity: 0.95;
           }
 
           .top-lines i,
-          .top-lines b,
-          .top-lines em,
-          .top-lines strong {
+          .top-lines em {
             position: absolute;
+            top: 0;
             width: 0;
             height: 0;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+          }
+
+          .top-lines i {
+            left: 0;
+            border-right: 18px solid var(--line);
+          }
+
+          .top-lines em {
+            right: 0;
+            border-left: 18px solid var(--line);
+          }
+
+          .top-lines b,
+          .top-lines strong {
+            display: none;
           }
 
           .top-lines i {
@@ -426,7 +442,7 @@ const DinningPage = () => {
             border: 2px solid var(--line);
             border-radius: 10px;
             overflow: hidden;
-            animation: boxGlitch 8s steps(1, end) infinite;
+            animation: lineGlow 7s ease-in-out infinite;
           }
 
           .schedule-wrap::before,
@@ -507,7 +523,7 @@ const DinningPage = () => {
             z-index: 1;
             display: block;
             text-align: center;
-            padding: 18px 20px;
+            padding: 18px 20px 18px 58px;
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
@@ -515,6 +531,31 @@ const DinningPage = () => {
             line-height: 0.92;
             letter-spacing: 0.04em;
             font-weight: 800;
+          }
+
+          .cta-link::before {
+            content: "";
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            width: 18px;
+            height: 2px;
+            background: var(--text);
+            transform: translateY(-50%);
+            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
+          }
+
+          .cta-link::after {
+            content: "";
+            position: absolute;
+            left: 36px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 8px solid var(--text);
           }
 
           .cta-link:hover { background: rgba(255,255,255,0.04); }
@@ -591,7 +632,7 @@ const DinningPage = () => {
             text-align: center;
             padding: 18px;
             background: transparent;
-            animation: boxGlitch 10s steps(1, end) infinite;
+            animation: lineGlow 9s ease-in-out infinite;
           }
 
           .image-placeholder-title { font-size: clamp(28px, 3vw, 44px); }
@@ -627,9 +668,9 @@ const DinningPage = () => {
           .feature-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 22px;
+            margin: 0 0 18px;
             display: grid;
-            gap: 12px;
+            gap: 8px;
           }
 
           .feature-list li {
@@ -640,18 +681,14 @@ const DinningPage = () => {
             line-height: 0.95;
             letter-spacing: 0.03em;
             position: relative;
-            padding: 10px 14px 10px 48px;
+            padding-left: 34px;
             font-weight: 800;
-            border: 1px solid var(--line-soft);
-            border-radius: 999px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
-            overflow: hidden;
           }
 
           .feature-list li::before {
             content: "";
             position: absolute;
-            left: 16px;
+            left: 4px;
             top: 50%;
             width: 14px;
             height: 14px;
@@ -675,7 +712,7 @@ const DinningPage = () => {
             line-height: 1;
             letter-spacing: 0.05em;
             position: relative;
-            padding: 14px 18px 14px 42px;
+            padding: 14px 18px 14px 46px;
             font-weight: 800;
             border: 1px solid var(--line);
             border-radius: 999px;
@@ -684,17 +721,31 @@ const DinningPage = () => {
           }
 
           .link-row a::before {
-            content: ">";
+            content: "";
             position: absolute;
             left: 16px;
             top: 50%;
+            width: 16px;
+            height: 2px;
+            background: var(--text);
             transform: translateY(-50%);
-            font-size: 0.95em;
+            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
           }
 
           .link-row a::after {
             content: "";
+            position: absolute;
+            left: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 8px solid var(--text);
           }
+
+          
 
           .link-row a:hover {
             color: var(--text);
@@ -836,9 +887,11 @@ const DinningPage = () => {
             .tagline::after,
             .schedule-wrap,
             .content-wrap,
-            .image-placeholder {
+            .image-placeholder,
+            .cta-link {
               animation: none !important;
             }
+          }
           }
         `}</style>
       </Head>
