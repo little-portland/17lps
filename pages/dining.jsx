@@ -12,14 +12,18 @@ const DinningPage = () => {
         />
         <style>{`
           :root {
-            --bg: #070707;
-            --panel: #0a0a0a;
-            --ink: #ffe9ef;
-            --pink: #ff2c86;
-            --hot: #ff3e63;
-            --deep: #cc173f;
-            --soft: rgba(255, 96, 150, 0.2);
-            --line: rgba(255, 90, 140, 0.24);
+            --bg: #070312;
+            --panel: rgba(7, 4, 18, 0.76);
+            --panel-strong: rgba(4, 2, 12, 0.88);
+            --ink: #ffeaf6;
+            --pink: #ff198b;
+            --pink-soft: rgba(255, 25, 139, 0.28);
+            --pink-glow: rgba(255, 25, 139, 0.6);
+            --blue: #4e8cff;
+            --blue-soft: rgba(78, 140, 255, 0.3);
+            --cyan: #45d8f1;
+            --coral: #ff8c73;
+            --line: rgba(255, 65, 170, 0.24);
           }
 
           html {
@@ -46,25 +50,25 @@ const DinningPage = () => {
 
           @keyframes grainMove {
             0% { transform: translate(0, 0); }
-            25% { transform: translate(-0.7%, 0.5%); }
-            50% { transform: translate(0.5%, -0.6%); }
-            75% { transform: translate(0.6%, 0.4%); }
+            25% { transform: translate(-0.6%, 0.4%); }
+            50% { transform: translate(0.4%, -0.5%); }
+            75% { transform: translate(0.5%, 0.4%); }
             100% { transform: translate(0, 0); }
           }
 
-          @keyframes pulseGlow {
-            0%, 100% { opacity: 0.72; }
+          @keyframes pulseCore {
+            0%, 100% { opacity: 0.82; }
             50% { opacity: 1; }
           }
 
           .dining-page {
             min-height: 100vh;
-            padding: 18px;
-            background:
-              radial-gradient(circle at 50% 18%, rgba(255, 48, 112, 0.18), transparent 24%),
-              radial-gradient(circle at 50% 80%, rgba(255, 38, 116, 0.16), transparent 22%),
-              var(--bg);
+            padding: 12px;
             position: relative;
+            background:
+              radial-gradient(circle at 50% 18%, rgba(255, 29, 115, 0.18), transparent 22%),
+              radial-gradient(circle at 50% 84%, rgba(255, 29, 115, 0.16), transparent 20%),
+              linear-gradient(180deg, #090313 0%, #06020f 100%);
           }
 
           .dining-page::before,
@@ -77,24 +81,25 @@ const DinningPage = () => {
           }
 
           .dining-page::before {
-            opacity: 0.24;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.15' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.22;
             mix-blend-mode: screen;
-            animation: grainMove 0.4s steps(2, end) infinite;
+            animation: grainMove 0.42s steps(2, end) infinite;
           }
 
           .dining-page::after {
             background:
-              radial-gradient(circle at 22% 30%, rgba(255, 74, 120, 0.22) 0 1px, transparent 2px),
-              radial-gradient(circle at 72% 25%, rgba(255, 74, 120, 0.18) 0 1px, transparent 2px),
-              radial-gradient(circle at 64% 62%, rgba(255, 74, 120, 0.18) 0 1px, transparent 2px),
-              radial-gradient(circle at 36% 72%, rgba(255, 74, 120, 0.16) 0 1px, transparent 2px);
-            background-size: 220px 220px, 260px 260px, 240px 240px, 280px 280px;
-            opacity: 0.55;
+              radial-gradient(circle at 18% 24%, rgba(255,255,255,0.5) 0 1px, transparent 2px),
+              radial-gradient(circle at 74% 18%, rgba(255,255,255,0.44) 0 1px, transparent 2px),
+              radial-gradient(circle at 62% 68%, rgba(255,255,255,0.42) 0 1px, transparent 2px),
+              radial-gradient(circle at 34% 78%, rgba(255,255,255,0.35) 0 1px, transparent 2px),
+              radial-gradient(circle at 82% 52%, rgba(255,255,255,0.3) 0 1px, transparent 2px);
+            background-size: 240px 240px, 300px 300px, 260px 260px, 340px 340px, 280px 280px;
+            opacity: 0.35;
           }
 
           .shell {
-            width: min(1080px, 100%);
+            width: min(980px, 100%);
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -103,71 +108,75 @@ const DinningPage = () => {
           .poster {
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
-            padding: 18px 18px 26px;
+            padding: 18px 14px 24px;
             background:
-              radial-gradient(circle at 50% 30%, rgba(255, 30, 92, 0.2), transparent 34%),
-              radial-gradient(circle at 50% 74%, rgba(255, 25, 90, 0.22), transparent 28%),
-              linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(255,255,255,0)),
-              var(--panel);
-          }
-
-          .poster::before {
-            content: "";
-            position: absolute;
-            left: 8%;
-            right: 8%;
-            top: 5%;
-            height: 30%;
-            border-radius: 50%;
-            border: 14px solid rgba(255, 45, 134, 0.95);
+              radial-gradient(circle at 50% 12%, rgba(255, 25, 139, 0.22), transparent 16%),
+              radial-gradient(circle at 50% 88%, rgba(255, 25, 139, 0.18), transparent 14%),
+              linear-gradient(180deg, rgba(18, 10, 34, 0.9), rgba(5, 2, 12, 0.98));
+            border: 2px solid rgba(255,255,255,0.06);
             box-shadow:
-              0 0 18px rgba(255, 45, 134, 0.92),
-              0 0 44px rgba(255, 45, 134, 0.8),
-              0 0 90px rgba(255, 45, 134, 0.48);
-            opacity: 0.95;
-            pointer-events: none;
-            filter: blur(1px);
+              inset 0 0 0 1px rgba(255,255,255,0.03),
+              0 0 30px rgba(255, 25, 139, 0.08);
           }
 
-          .poster::after {
-            content: "";
-            position: absolute;
-            left: 10%;
-            right: 10%;
-            bottom: 1%;
-            height: 14%;
-            border-radius: 50%;
-            border: 12px solid rgba(255, 52, 148, 0.95);
-            box-shadow:
-              0 0 18px rgba(255, 45, 134, 0.92),
-              0 0 44px rgba(255, 45, 134, 0.8),
-              0 0 90px rgba(255, 45, 134, 0.48);
-            opacity: 0.95;
-            pointer-events: none;
-            filter: blur(1px);
-          }
-
-          .beam {
-            position: absolute;
-            left: 16%;
-            right: 16%;
-            top: 10%;
-            bottom: 8%;
-            background:
-              radial-gradient(circle at 50% 50%, rgba(255, 46, 80, 0.55), rgba(255, 24, 68, 0.4) 45%, rgba(255, 14, 42, 0.12) 76%, transparent 100%);
-            filter: blur(10px);
-            opacity: 0.88;
-            pointer-events: none;
-          }
-
-          .beam::before {
-            content: "";
+          .space-grid {
             position: absolute;
             inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+          }
+
+          .space-grid::before,
+          .space-grid::after {
+            content: "";
+            position: absolute;
+            inset: -14% -8%;
+            border-radius: 50%;
+          }
+
+          .space-grid::before {
             background:
-              linear-gradient(to bottom, rgba(255, 80, 110, 0.08), rgba(255, 0, 0, 0.22), rgba(255, 50, 110, 0.08));
-            mix-blend-mode: screen;
+              repeating-linear-gradient(
+                to right,
+                transparent 0,
+                transparent 46px,
+                rgba(255, 40, 170, 0.55) 46px,
+                rgba(255, 40, 170, 0.55) 49px,
+                transparent 49px,
+                transparent 94px
+              ),
+              repeating-linear-gradient(
+                to bottom,
+                transparent 0,
+                transparent 42px,
+                rgba(116, 150, 255, 0.55) 42px,
+                rgba(116, 150, 255, 0.55) 45px,
+                transparent 45px,
+                transparent 90px
+              );
+            transform: perspective(900px) rotateX(74deg) scale(1.85) translateY(-8%);
+            opacity: 0.62;
+            filter: drop-shadow(0 0 8px rgba(255, 40, 170, 0.2));
+          }
+
+          .space-grid::after {
+            background: radial-gradient(circle at 50% 50%, rgba(255, 20, 130, 0.12), transparent 48%);
+          }
+
+          .core-glow {
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            width: min(46vw, 420px);
+            aspect-ratio: 1 / 1;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            background:
+              radial-gradient(circle at 50% 45%, rgba(255, 189, 224, 0.75), rgba(255, 81, 167, 0.7) 22%, rgba(255, 25, 139, 0.96) 54%, rgba(255, 25, 139, 0.22) 74%, transparent 78%);
+            filter: blur(2px);
+            opacity: 0.96;
+            animation: pulseCore 4.8s ease-in-out infinite;
+            pointer-events: none;
           }
 
           .content {
@@ -175,109 +184,58 @@ const DinningPage = () => {
             z-index: 1;
           }
 
-          .header-meta {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 16px;
-          }
-
-          .issue-tag,
-          .card-links a,
-          .pink-chip {
-            background: var(--pink);
-            color: #14050a;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 700;
-          }
-
-          .issue-tag {
-            padding: 10px 16px 11px;
-            font-size: clamp(15px, 1.4vw, 24px);
-            line-height: 1;
-          }
-
-          .dots,
-          .footer-dots {
-            display: flex;
-            gap: 52px;
-          }
-
-          .dots {
-            margin: 0 0 30px;
-          }
-
-          .footer-dots {
-            margin-top: 28px;
-          }
-
-          .dots span,
-          .footer-dots span {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--pink);
-            box-shadow: 0 0 8px rgba(255, 45, 134, 0.8);
-            display: block;
-          }
-
           .hero {
             text-align: center;
-            padding: 4px 0 20px;
-          }
-
-          .hero-title,
-          .card-title,
-          .schedule-head,
-          .schedule-subhead,
-          .placeholder-title,
-          .card-image-placeholder-title {
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+            padding: 8px 0 22px;
           }
 
           .hero-title {
             margin: 0;
-            font-size: clamp(40px, 8vw, 92px);
+            color: var(--coral);
+            font-size: clamp(42px, 7vw, 86px);
             line-height: 0.9;
-            color: #fff4f7;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
             text-shadow:
-              0 0 6px rgba(255,255,255,0.4),
-              0 0 18px rgba(255, 72, 124, 0.28);
+              0 0 8px rgba(255, 140, 115, 0.18),
+              0 0 18px rgba(255, 80, 90, 0.12);
           }
 
           .hero-address {
-            margin-top: 14px;
-            color: rgba(255, 215, 226, 0.9);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-size: clamp(16px, 2vw, 28px);
+            margin-top: 12px;
+            color: var(--cyan);
+            font-size: clamp(15px, 1.9vw, 24px);
             line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             font-weight: 700;
-            text-shadow: 0 0 12px rgba(255, 60, 130, 0.18);
           }
 
           .hero-tagline {
-            margin: 28px auto 0;
-            max-width: 920px;
-            color: #fff2f6;
+            margin: 20px auto 0;
+            max-width: 820px;
+            color: #c76b5d;
+            font-size: clamp(20px, 3vw, 36px);
+            line-height: 0.95;
             text-transform: uppercase;
-            letter-spacing: 0.07em;
-            font-size: clamp(20px, 3vw, 42px);
-            line-height: 1.02;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 40, 120, 0.18);
+            letter-spacing: 0.06em;
+            font-style: italic;
+            text-shadow:
+              0 1px 0 rgba(255,190,170,0.35),
+              0 2px 0 rgba(126,58,50,0.9),
+              -5px 7px 0 rgba(18,5,10,0.45);
+            transform: perspective(900px) rotateX(14deg);
+            display: inline-block;
           }
 
           .section-shell {
             position: relative;
-            border: 1px solid var(--line);
-            background: rgba(10, 8, 10, 0.48);
-            backdrop-filter: blur(1px);
+            background: var(--panel-strong);
+            border: 2px solid rgba(69, 216, 241, 0.92);
             box-shadow:
-              inset 0 0 0 1px rgba(255, 100, 145, 0.06),
-              0 0 24px rgba(255, 60, 125, 0.06);
+              inset 0 0 0 1px rgba(69, 216, 241, 0.1),
+              0 0 14px rgba(69, 216, 241, 0.06);
           }
 
           .section-shell::before {
@@ -287,288 +245,243 @@ const DinningPage = () => {
             pointer-events: none;
             background: repeating-linear-gradient(
               to bottom,
-              rgba(255,255,255,0.02) 0px,
-              rgba(255,255,255,0.02) 1px,
+              rgba(255,255,255,0.018) 0px,
+              rgba(255,255,255,0.018) 1px,
               transparent 1px,
               transparent 4px
             );
-            opacity: 0.12;
+            opacity: 0.1;
           }
 
           .schedule-section {
-            margin-top: 10px;
+            margin-top: 8px;
           }
 
           .schedule-box {
-            padding: 20px 20px 22px;
+            background: rgba(69, 216, 241, 0.9);
+            color: #000;
+            border-color: rgba(0,0,0,0.95);
+            box-shadow: none;
           }
 
           .schedule-head {
             text-align: center;
-            font-size: clamp(22px, 2.8vw, 38px);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: clamp(18px, 2.4vw, 30px);
             line-height: 1;
-            color: #fff1f5;
-            padding-bottom: 16px;
-            border-bottom: 1px solid rgba(255, 90, 145, 0.3);
-            text-shadow: 0 0 14px rgba(255, 55, 120, 0.2);
+            font-weight: 700;
+            padding: 14px 12px;
+            border-bottom: 2px solid rgba(0,0,0,0.95);
           }
 
           .schedule-subhead {
             text-align: center;
-            font-size: clamp(19px, 2.2vw, 28px);
+            color: var(--coral);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: clamp(16px, 1.8vw, 24px);
             line-height: 1;
-            color: rgba(255, 204, 221, 0.96);
-            padding: 18px 0 10px;
+            font-weight: 700;
+            padding: 14px 12px 6px;
           }
 
           .schedule-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
-            padding-top: 10px;
+            padding: 6px 8px 14px;
           }
 
           .schedule-item {
             text-align: center;
-            padding: 14px 10px 6px;
+            padding: 8px;
           }
 
           .schedule-title {
             min-height: 2.2em;
-            font-size: clamp(18px, 2vw, 32px);
+            font-size: clamp(18px, 2vw, 28px);
             line-height: 1.02;
             font-weight: 700;
-            color: #fff2f7;
           }
 
           .schedule-time {
-            margin-top: 18px;
-            letter-spacing: 0.08em;
-            font-size: clamp(30px, 3.5vw, 54px);
+            margin-top: 14px;
+            font-size: clamp(28px, 3vw, 44px);
             line-height: 1;
             font-weight: 700;
-            color: var(--pink);
-            text-shadow:
-              0 0 10px rgba(255, 44, 134, 0.65),
-              0 0 24px rgba(255, 44, 134, 0.3);
+            letter-spacing: 0.06em;
           }
 
           .explore-wrap {
-            padding: 18px 0 18px;
+            padding: 12px 0 16px;
           }
 
           .explore-link {
             display: block;
-            background: linear-gradient(to right, rgba(255, 44, 134, 0.96), rgba(255, 72, 120, 0.96));
-            color: #14050a;
-            padding: 20px 26px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: clamp(20px, 2.4vw, 34px);
+            padding: 13px 18px;
+            color: var(--cyan);
+            font-size: clamp(18px, 2vw, 28px);
             line-height: 1;
             font-weight: 700;
-            box-shadow:
-              0 0 12px rgba(255, 44, 134, 0.4),
-              0 0 26px rgba(255, 44, 134, 0.18);
-          }
-
-          .explore-link:hover {
-            filter: brightness(1.04);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            border-color: rgba(69, 216, 241, 0.92);
           }
 
           .map-zone {
-            padding: 8px 0 28px;
-          }
-
-          .placeholder-panel,
-          .concept-card {
-            position: relative;
-            overflow: hidden;
+            padding: 0 0 18px;
           }
 
           .placeholder-panel {
-            min-height: 520px;
+            min-height: 440px;
             display: grid;
             place-items: center;
             text-align: center;
             padding: 24px;
+            border-color: rgba(69, 216, 241, 0.92);
           }
 
           .placeholder-title,
-          .card-image-placeholder-title,
           .card-title {
-            color: #fff5f7;
-            text-shadow:
-              0 0 8px rgba(255,255,255,0.14),
-              0 0 16px rgba(255, 64, 120, 0.18);
+            color: var(--coral);
+            text-transform: none;
+            letter-spacing: 0.02em;
+            font-size: clamp(26px, 3vw, 42px);
+            line-height: 1;
+            font-weight: 700;
           }
 
-          .placeholder-title,
-          .card-image-placeholder-title {
-            font-size: clamp(26px, 3.1vw, 48px);
-            line-height: 1;
+          .placeholder-copy,
+          .placeholder-path,
+          .card-subtitle {
+            color: rgba(255, 224, 232, 0.78);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
           }
 
           .placeholder-copy {
             margin-top: 12px;
-            color: rgba(255, 216, 226, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-size: clamp(16px, 1.7vw, 24px);
+            font-size: clamp(15px, 1.6vw, 21px);
             line-height: 1.2;
-            font-weight: 700;
           }
 
-          .placeholder-path,
-          .card-image-placeholder-path,
-          .card-subtitle {
-            color: rgba(255, 197, 214, 0.66);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 12px;
-            line-height: 1.2;
-            font-weight: 700;
-          }
-
-          .placeholder-path,
-          .card-image-placeholder-path {
+          .placeholder-path {
             display: block;
-            margin-top: 12px;
+            margin-top: 10px;
+            font-size: 12px;
           }
 
           .concept-stack {
             display: grid;
-            gap: 24px;
+            gap: 18px;
           }
 
           .concept-card {
-            padding: 22px;
+            padding: 14px 14px 16px;
+            border-color: rgba(69, 216, 241, 0.92);
           }
 
           .card-image-placeholder {
-            min-height: 240px;
+            min-height: 210px;
             display: grid;
             place-items: center;
             text-align: center;
             padding: 18px;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 18px;
+            border: 2px solid rgba(69, 216, 241, 0.92);
+            background: rgba(0,0,0,0.2);
+          }
+
+          .card-image-placeholder-title {
+            color: var(--coral);
+            font-size: clamp(28px, 4.5vw, 64px);
+            line-height: 0.92;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            font-weight: 700;
+          }
+
+          .card-image-placeholder-path {
+            display: block;
+            margin-top: 10px;
+            color: rgba(255, 224, 232, 0.62);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
           }
 
           .card-title {
-            position: relative;
-            z-index: 1;
             margin: 0;
-            font-size: clamp(30px, 3.3vw, 48px);
-            line-height: 0.95;
           }
 
           .card-subtitle {
-            position: relative;
-            z-index: 1;
-            margin-top: 10px;
-            font-size: clamp(17px, 1.7vw, 24px);
+            margin-top: 8px;
+            font-size: clamp(15px, 1.5vw, 21px);
             line-height: 1.05;
           }
 
           .card-copy {
-            position: relative;
-            z-index: 1;
-            margin: 22px 0 22px;
-            color: #ffe7ee;
-            font-size: clamp(18px, 1.65vw, 24px);
-            line-height: 1.42;
+            margin: 18px 0 18px;
+            color: var(--coral);
+            font-size: clamp(16px, 1.45vw, 22px);
+            line-height: 1.35;
             max-width: 40ch;
             font-weight: 700;
-            text-shadow: 0 0 12px rgba(255, 60, 120, 0.08);
           }
 
           .bullet-list {
-            position: relative;
-            z-index: 1;
             list-style: none;
-            margin: 0 0 22px;
+            margin: 0 0 18px;
             padding: 0;
           }
 
           .bullet-list li {
-            margin-bottom: 12px;
-            color: #fff4f8;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: clamp(22px, 2.1vw, 34px);
+            margin-bottom: 10px;
+            color: var(--cyan);
+            font-size: clamp(18px, 1.8vw, 28px);
             line-height: 1;
             font-weight: 700;
           }
 
           .bullet-list li::before {
-            content: "○ ";
-            color: var(--pink);
-            text-shadow: 0 0 8px rgba(255, 44, 134, 0.65);
+            content: "◦ ";
           }
 
           .card-links {
-            position: relative;
-            z-index: 1;
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
           }
 
           .card-links a {
-            padding: 10px 14px 11px;
+            color: var(--cyan);
             font-size: clamp(18px, 1.8vw, 24px);
             line-height: 1;
-            box-shadow: 0 0 12px rgba(255, 44, 134, 0.24);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
           }
 
-          .card-links a:hover {
-            filter: brightness(1.04);
-          }
-
-          .side-rail {
-            position: absolute;
-            left: 0;
-            bottom: 26px;
-            transform: rotate(-90deg) translateX(-100%);
-            transform-origin: bottom left;
-            z-index: 1;
-          }
-
-          .side-rail .pink-chip,
-          .footer-chip {
-            padding: 10px 14px 11px;
-            font-size: clamp(14px, 1.2vw, 20px);
-            line-height: 1;
-          }
-
-          .footer-chip {
-            position: relative;
-            z-index: 1;
-            margin-top: 22px;
-            margin-left: auto;
-            width: fit-content;
+          .card-links a:hover,
+          .explore-link:hover {
+            opacity: 0.84;
           }
 
           @media (max-width: 720px) {
             .dining-page {
-              padding: 10px;
+              padding: 4px;
             }
 
             .poster {
-              padding: 14px 14px 22px;
+              padding: 14px 10px 18px;
             }
 
-            .dots,
-            .footer-dots {
-              gap: 34px;
-            }
-
-            .dots span,
-            .footer-dots span {
-              width: 14px;
-              height: 14px;
+            .core-glow {
+              width: min(76vw, 340px);
+              top: 18%;
             }
 
             .schedule-grid {
@@ -576,24 +489,17 @@ const DinningPage = () => {
             }
 
             .placeholder-panel {
-              min-height: 320px;
+              min-height: 300px;
             }
 
             .card-image-placeholder {
-              min-height: 160px;
-            }
-
-            .side-rail {
-              position: static;
-              transform: none;
-              margin-top: 22px;
+              min-height: 150px;
             }
           }
 
           @media (prefers-reduced-motion: reduce) {
             .dining-page::before,
-            .poster::before,
-            .poster::after {
+            .core-glow {
               animation: none !important;
             }
           }
@@ -603,19 +509,10 @@ const DinningPage = () => {
       <main className="dining-page">
         <div className="shell">
           <section className="poster">
-            <div className="beam" aria-hidden="true" />
+            <div className="space-grid" aria-hidden="true" />
+            <div className="core-glow" aria-hidden="true" />
 
             <div className="content">
-              <div className="header-meta">
-                <div className="issue-tag">Issue 71</div>
-              </div>
-
-              <div className="dots" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </div>
-
               <div className="hero">
                 <h1 className="hero-title">Dining At</h1>
                 <div className="hero-address">17 Little Portland Street</div>
@@ -653,7 +550,7 @@ const DinningPage = () => {
               </div>
 
               <div className="explore-wrap">
-                <a className="explore-link" href="#concepts">&gt; Explore our futurist dining concept</a>
+                <a className="explore-link section-shell" href="#concepts">&gt; Explore our futurist dining concept</a>
               </div>
 
               <div className="map-zone">
@@ -668,7 +565,7 @@ const DinningPage = () => {
 
               <div className="concept-stack" id="concepts">
                 <article className="concept-card section-shell">
-                  <div className="card-image-placeholder section-shell">
+                  <div className="card-image-placeholder">
                     <div>
                       <div className="card-image-placeholder-title">The Tent Image Placeholder</div>
                       <span className="card-image-placeholder-path">Suggested path: /images/the-tent.png</span>
@@ -699,7 +596,7 @@ const DinningPage = () => {
                 </article>
 
                 <article className="concept-card section-shell">
-                  <div className="card-image-placeholder section-shell">
+                  <div className="card-image-placeholder">
                     <div>
                       <div className="card-image-placeholder-title">Chef&apos;s Studio Image Placeholder</div>
                       <span className="card-image-placeholder-path">Suggested path: /images/chefs-studio.png</span>
@@ -727,17 +624,6 @@ const DinningPage = () => {
                     <a href="#">[Explore Chef&apos;s Studio]</a>
                   </div>
                 </article>
-              </div>
-
-              <div className="footer-dots" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </div>
-
-              <div className="footer-chip pink-chip">LPX//Underground</div>
-              <div className="side-rail">
-                <div className="pink-chip">yo@little-portland.com</div>
               </div>
             </div>
           </section>
