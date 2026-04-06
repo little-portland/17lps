@@ -12,17 +12,15 @@ const DinningPage = () => {
         />
         <style>{`
           :root {
-            --bg: #0a0207;
-            --bg-deep: #050104;
-            --red: #ff215d;
-            --red-hot: #ff3b70;
-            --red-dark: #c90d3f;
-            --ink: #050505;
-            --paper: #ffd8e3;
-            --cyan: #45d8f1;
-            --coral: #ff8c73;
-            --line: rgba(255, 35, 93, 0.65);
-            --line-soft: rgba(255, 35, 93, 0.24);
+            --bg: #060104;
+            --bg-deep: #020001;
+            --red: #ff234f;
+            --red-hot: #ff3f68;
+            --red-dim: rgba(255, 35, 79, 0.72);
+            --red-soft: rgba(255, 35, 79, 0.18);
+            --ink: #0a0507;
+            --text: #ffd8de;
+            --text-dim: rgba(255, 216, 222, 0.72);
           }
 
           html {
@@ -33,7 +31,7 @@ const DinningPage = () => {
           body {
             margin: 0;
             background: var(--bg) !important;
-            color: var(--paper);
+            color: var(--text);
             overflow-x: hidden !important;
             font-family: "Lucida Console", "Courier New", monospace;
           }
@@ -60,8 +58,7 @@ const DinningPage = () => {
             padding: 18px 12px;
             position: relative;
             background:
-              radial-gradient(circle at 50% 12%, rgba(255, 35, 93, 0.12), transparent 18%),
-              radial-gradient(circle at 50% 85%, rgba(255, 35, 93, 0.1), transparent 18%),
+              radial-gradient(circle at 50% 50%, rgba(255, 35, 79, 0.12), transparent 22%),
               linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
             overflow: hidden;
           }
@@ -76,7 +73,7 @@ const DinningPage = () => {
           }
 
           .dining-page::before {
-            opacity: 0.24;
+            opacity: 0.26;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
             mix-blend-mode: screen;
             animation: grainMove 0.45s steps(2, end) infinite;
@@ -84,12 +81,12 @@ const DinningPage = () => {
 
           .dining-page::after {
             background:
-              radial-gradient(circle at 14% 20%, rgba(255,255,255,0.42) 0 1px, transparent 2px),
-              radial-gradient(circle at 74% 15%, rgba(255,255,255,0.35) 0 1px, transparent 2px),
-              radial-gradient(circle at 68% 62%, rgba(255,255,255,0.28) 0 1px, transparent 2px),
-              radial-gradient(circle at 34% 78%, rgba(255,255,255,0.22) 0 1px, transparent 2px);
+              radial-gradient(circle at 14% 20%, rgba(255,255,255,0.22) 0 1px, transparent 2px),
+              radial-gradient(circle at 74% 15%, rgba(255,255,255,0.18) 0 1px, transparent 2px),
+              radial-gradient(circle at 68% 62%, rgba(255,255,255,0.14) 0 1px, transparent 2px),
+              radial-gradient(circle at 34% 78%, rgba(255,255,255,0.12) 0 1px, transparent 2px);
             background-size: 280px 280px, 340px 340px, 260px 260px, 300px 300px;
-            opacity: 0.24;
+            opacity: 0.18;
           }
 
           .shell {
@@ -102,27 +99,23 @@ const DinningPage = () => {
           .poster {
             position: relative;
             padding: 14px;
-            background:
-              linear-gradient(180deg, rgba(19, 4, 9, 0.92), rgba(6, 1, 5, 0.98));
-            border: 1px solid rgba(255,255,255,0.04);
-            box-shadow:
-              inset 0 0 0 1px rgba(255,255,255,0.02),
-              0 0 40px rgba(255, 35, 93, 0.08);
+            background: transparent;
             overflow: hidden;
           }
 
           .warp-grid {
-            position: absolute;
+            position: fixed;
             inset: 0;
             pointer-events: none;
             overflow: hidden;
+            z-index: 0;
           }
 
           .warp-grid::before {
             content: "";
             position: absolute;
             left: 50%;
-            top: 56%;
+            top: 54%;
             width: 160%;
             height: 140%;
             transform: translate(-50%, -50%);
@@ -131,8 +124,8 @@ const DinningPage = () => {
                 to right,
                 transparent 0,
                 transparent 28px,
-                rgba(255, 35, 93, 0.72) 28px,
-                rgba(255, 35, 93, 0.72) 30px,
+                rgba(255, 35, 79, 0.72) 28px,
+                rgba(255, 35, 79, 0.72) 30px,
                 transparent 30px,
                 transparent 58px
               ),
@@ -140,25 +133,24 @@ const DinningPage = () => {
                 to bottom,
                 transparent 0,
                 transparent 24px,
-                rgba(255, 35, 93, 0.72) 24px,
-                rgba(255, 35, 93, 0.72) 26px,
+                rgba(255, 35, 79, 0.72) 24px,
+                rgba(255, 35, 79, 0.72) 26px,
                 transparent 26px,
                 transparent 50px
               );
             border-radius: 44% 56% 58% 42% / 34% 34% 66% 66%;
-            filter: perspective(900px);
-            opacity: 0.58;
-            box-shadow: inset 0 0 80px rgba(255, 10, 60, 0.1);
+            opacity: 0.56;
+            filter: blur(0.2px);
           }
 
           .warp-grid::after {
             content: "";
             position: absolute;
-            inset: 8% 10%;
+            inset: 10% 12%;
             background:
-              radial-gradient(circle at 50% 48%, rgba(255, 50, 95, 0.6), rgba(255, 15, 55, 0.35) 24%, rgba(255, 10, 45, 0.12) 38%, transparent 54%);
-            filter: blur(18px);
-            opacity: 0.88;
+              radial-gradient(circle at 50% 50%, rgba(255, 40, 75, 0.28), rgba(255, 10, 30, 0.16) 26%, rgba(255, 10, 45, 0.05) 40%, transparent 58%);
+            filter: blur(24px);
+            opacity: 0.9;
           }
 
           .content {
@@ -168,11 +160,12 @@ const DinningPage = () => {
 
           .box {
             position: relative;
-            background: rgba(4, 1, 7, 0.82);
-            border: 2px solid rgba(255, 35, 93, 0.78);
+            background: rgba(3, 0, 2, 0.18);
+            border: 2px solid var(--red-dim);
             box-shadow:
-              inset 0 0 0 1px rgba(255,255,255,0.03),
-              0 0 18px rgba(255, 35, 93, 0.08);
+              inset 0 0 0 1px rgba(255,255,255,0.02),
+              0 0 18px rgba(255, 35, 79, 0.08);
+            backdrop-filter: blur(1px);
           }
 
           .box::before {
@@ -182,35 +175,34 @@ const DinningPage = () => {
             pointer-events: none;
             background: repeating-linear-gradient(
               to bottom,
-              rgba(255,255,255,0.016) 0px,
-              rgba(255,255,255,0.016) 1px,
+              rgba(255,255,255,0.014) 0px,
+              rgba(255,255,255,0.014) 1px,
               transparent 1px,
               transparent 4px
             );
-            opacity: 0.1;
+            opacity: 0.08;
           }
 
           .hero {
             text-align: center;
             padding: 10px 14px 14px;
             margin-bottom: 12px;
-            background: linear-gradient(180deg, rgba(18, 7, 28, 0.82), rgba(7, 3, 15, 0.9));
           }
 
           .hero-title {
             margin: 0;
-            color: var(--coral);
+            color: var(--red-hot);
             font-size: clamp(34px, 8vw, 70px);
             line-height: 0.9;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-weight: 700;
-            text-shadow: 0 0 16px rgba(255, 140, 115, 0.15);
+            text-shadow: 0 0 16px rgba(255, 63, 104, 0.18);
           }
 
           .hero-address {
             margin-top: 10px;
-            color: var(--cyan);
+            color: var(--text);
             font-size: clamp(13px, 2vw, 18px);
             line-height: 1;
             text-transform: uppercase;
@@ -221,15 +213,15 @@ const DinningPage = () => {
           .hero-tagline {
             margin: 16px auto 0;
             max-width: 620px;
-            color: #c76b5d;
+            color: var(--red-hot);
             font-size: clamp(16px, 3.2vw, 28px);
             line-height: 0.95;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             font-style: italic;
             text-shadow:
-              0 1px 0 rgba(255,190,170,0.35),
-              0 2px 0 rgba(126,58,50,0.9),
+              0 1px 0 rgba(255,180,190,0.22),
+              0 2px 0 rgba(110,20,34,0.9),
               -4px 6px 0 rgba(18,5,10,0.45);
             transform: perspective(900px) rotateX(14deg);
             display: inline-block;
@@ -240,10 +232,7 @@ const DinningPage = () => {
           }
 
           .schedule-box {
-            background: rgba(69, 216, 241, 0.92);
-            color: #000;
-            border-color: rgba(0,0,0,0.96);
-            box-shadow: none;
+            color: var(--text);
           }
 
           .schedule-head {
@@ -254,12 +243,12 @@ const DinningPage = () => {
             line-height: 1;
             font-weight: 700;
             padding: 12px 10px;
-            border-bottom: 2px solid rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--red-dim);
           }
 
           .schedule-subhead {
             text-align: center;
-            color: var(--coral);
+            color: var(--red-hot);
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-size: clamp(14px, 1.8vw, 18px);
@@ -293,6 +282,7 @@ const DinningPage = () => {
             line-height: 1;
             font-weight: 700;
             letter-spacing: 0.06em;
+            color: var(--red-hot);
           }
 
           .explore-wrap {
@@ -302,7 +292,7 @@ const DinningPage = () => {
           .explore-link {
             display: block;
             padding: 10px 14px;
-            color: var(--cyan);
+            color: var(--red-hot);
             font-size: clamp(15px, 2vw, 22px);
             line-height: 1;
             font-weight: 700;
@@ -321,7 +311,7 @@ const DinningPage = () => {
 
           .placeholder-title,
           .card-title {
-            color: var(--coral);
+            color: var(--red-hot);
             font-size: clamp(18px, 3vw, 28px);
             line-height: 1;
             font-weight: 700;
@@ -330,8 +320,9 @@ const DinningPage = () => {
 
           .placeholder-copy,
           .placeholder-path,
-          .card-subtitle {
-            color: rgba(255, 224, 232, 0.72);
+          .card-subtitle,
+          .card-image-placeholder-path {
+            color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 0.05em;
             font-weight: 700;
@@ -366,12 +357,12 @@ const DinningPage = () => {
             text-align: center;
             padding: 12px;
             margin-bottom: 10px;
-            border: 2px solid rgba(69, 216, 241, 0.92);
-            background: rgba(0,0,0,0.25);
+            border: 2px solid var(--red-dim);
+            background: rgba(0,0,0,0.14);
           }
 
           .card-image-placeholder-title {
-            color: var(--coral);
+            color: var(--red-hot);
             font-size: clamp(20px, 4vw, 34px);
             line-height: 0.95;
             text-transform: uppercase;
@@ -391,7 +382,7 @@ const DinningPage = () => {
 
           .card-copy {
             margin: 12px 0 12px;
-            color: var(--coral);
+            color: var(--text);
             font-size: clamp(12px, 1.55vw, 16px);
             line-height: 1.34;
             max-width: 42ch;
@@ -406,7 +397,7 @@ const DinningPage = () => {
 
           .bullet-list li {
             margin-bottom: 8px;
-            color: var(--cyan);
+            color: var(--red-hot);
             font-size: clamp(12px, 1.8vw, 18px);
             line-height: 1;
             font-weight: 700;
@@ -423,7 +414,7 @@ const DinningPage = () => {
           }
 
           .card-links a {
-            color: var(--cyan);
+            color: var(--red-hot);
             font-size: clamp(12px, 1.7vw, 17px);
             line-height: 1;
             font-weight: 700;
