@@ -137,9 +137,14 @@ const DinningPage = () => {
 
           @keyframes crawlFloat {
             0%, 100% {
-              transform: perspective(900px) rotateX(58deg) scaleY(1.18) translateY(0);
+              transform: perspective(1100px) rotateX(52deg) scaleX(0.96) scaleY(1.08) translateY(0);
               filter: brightness(1);
             }
+            50% {
+              transform: perspective(1100px) rotateX(52deg) scaleX(0.96) scaleY(1.08) translateY(-2px);
+              filter: brightness(1.04);
+            }
+          }
             50% {
               transform: perspective(900px) rotateX(58deg) scaleY(1.18) translateY(-4px);
               filter: brightness(1.06);
@@ -355,20 +360,21 @@ const DinningPage = () => {
           }
 
           .tagline {
-            width: 100%;
+            width: auto;
+            max-width: 100%;
             margin: 0 auto;
             color: var(--text);
             font-family: var(--italic-display);
             font-style: italic;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 0.02em;
-            line-height: 0.9;
-            font-size: clamp(42px, 4.4vw, 82px);
+            letter-spacing: 0.01em;
+            line-height: 0.92;
+            font-size: clamp(40px, 4vw, 72px);
             text-shadow:
               0 1px 0 rgba(255,255,255,0.16),
               0 0 14px rgba(255,255,255,0.05);
-            transform: perspective(900px) rotateX(58deg) scaleY(1.18);
+            transform: perspective(1100px) rotateX(52deg) scaleX(0.96) scaleY(1.08);
             transform-origin: center top;
             display: inline-block;
             position: relative;
@@ -383,7 +389,8 @@ const DinningPage = () => {
 
           .header-tagline-wrap {
             text-align: center;
-            overflow: hidden;
+            overflow: visible;
+            padding: 8px 2.5% 10px;
           }
 
           .hero {
@@ -864,6 +871,18 @@ const DinningPage = () => {
             }
             .schedule-item:last-child { border-bottom: none; }
             .footer-strip { grid-template-columns: 100px 1fr 100px; }
+          }
+
+          @media (max-width: 900px) {
+            .header-tagline-wrap {
+              padding-left: 4%;
+              padding-right: 4%;
+            }
+            .tagline {
+              white-space: normal;
+              font-size: clamp(28px, 5.6vw, 52px);
+              line-height: 0.98;
+            }
           }
 
           @media (max-width: 640px) {
