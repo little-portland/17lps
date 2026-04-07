@@ -119,14 +119,16 @@ const DinningPage = () => {
           @keyframes glowTagline {
             0%, 100% {
               text-shadow:
-                -2px 0 0 rgba(255, 40, 40, 0.68),
-                2px 0 0 rgba(0, 255, 255, 0.68),
-                0 0 10px rgba(255,255,255,0.08);
+              0 0 0 rgba(255,255,255,0),
+              -2px 0 0 rgba(255, 40, 40, 0.52),
+              2px 0 0 rgba(0, 255, 255, 0.52),
+              0 0 10px rgba(255,255,255,0.08);
             }
             50% {
               text-shadow:
-                -2px 0 0 rgba(255, 40, 40, 0.78),
-                2px 0 0 rgba(0, 255, 255, 0.78),
+                0 0 0 rgba(255,255,255,0),
+                -2px 0 0 rgba(255, 40, 40, 0.58),
+                2px 0 0 rgba(0, 255, 255, 0.58),
                 0 0 16px rgba(255,255,255,0.12);
             }
           }
@@ -135,39 +137,44 @@ const DinningPage = () => {
             0%, 86%, 100% {
               transform: skewX(-10deg) translate3d(0,0,0);
               text-shadow:
-                -2px 0 0 rgba(255, 40, 40, 0.68),
-                2px 0 0 rgba(0, 255, 255, 0.68),
+                0 0 0 rgba(255,255,255,0),
+                -2px 0 0 rgba(255, 40, 40, 0.52),
+                2px 0 0 rgba(0, 255, 255, 0.52),
                 0 0 10px rgba(255,255,255,0.08);
               filter: brightness(1);
             }
             87% {
               transform: skewX(-10deg) translate3d(-2px, 0, 0);
               text-shadow:
-                -5px 0 0 rgba(255, 40, 40, 0.9),
-                5px 0 0 rgba(0, 255, 255, 0.9),
+                0 0 0 rgba(255,255,255,0),
+                -5px 0 0 rgba(255, 40, 40, 0.68),
+                5px 0 0 rgba(0, 255, 255, 0.68),
                 0 0 14px rgba(255,255,255,0.12);
               filter: brightness(1.08);
             }
             89% {
               transform: skewX(-10deg) translate3d(2px, -1px, 0);
               text-shadow:
-                -7px 0 0 rgba(255, 40, 40, 0.98),
-                7px 0 0 rgba(0, 255, 255, 0.98),
+                0 0 0 rgba(255,255,255,0),
+                -7px 0 0 rgba(255, 40, 40, 0.72),
+                7px 0 0 rgba(0, 255, 255, 0.72),
                 0 0 18px rgba(255,255,255,0.16);
               filter: brightness(1.14);
             }
             91% {
               transform: skewX(-10deg) translate3d(-1px, 1px, 0);
               text-shadow:
-                -4px 0 0 rgba(255, 40, 40, 0.82),
-                4px 0 0 rgba(0, 255, 255, 0.82),
+                0 0 0 rgba(255,255,255,0),
+                -4px 0 0 rgba(255, 40, 40, 0.6),
+                4px 0 0 rgba(0, 255, 255, 0.6),
                 0 0 12px rgba(255,255,255,0.11);
             }
             93% {
               transform: skewX(-10deg) translate3d(1px, 0, 0);
               text-shadow:
-                -3px 0 0 rgba(255, 40, 40, 0.74),
-                3px 0 0 rgba(0, 255, 255, 0.74),
+                0 0 0 rgba(255,255,255,0),
+                -3px 0 0 rgba(255, 40, 40, 0.56),
+                3px 0 0 rgba(0, 255, 255, 0.56),
                 0 0 10px rgba(255,255,255,0.09);
             }
           }
@@ -423,9 +430,10 @@ const DinningPage = () => {
             line-height: 0.92;
             font-size: clamp(40px, 4vw, 72px);
             text-shadow:
-              -2px 0 0 rgba(255, 40, 40, 0.68),
-              2px 0 0 rgba(0, 255, 255, 0.68),
-              0 0 10px rgba(255,255,255,0.08);
+                0 0 0 rgba(255,255,255,0),
+                -2px 0 0 rgba(255, 40, 40, 0.52),
+                2px 0 0 rgba(0, 255, 255, 0.52),
+                0 0 10px rgba(255,255,255,0.08);
             transform: skewX(-10deg);
             transform-origin: center center;
             display: inline-block;
