@@ -498,7 +498,6 @@ const DinningPage = () => {
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 26px 20px;
             position: relative;
             z-index: 1;
           }
