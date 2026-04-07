@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import Script from "next/script";
-
-//hooks
-import useDeviceDetect from "@utils/useDeviceDetect";
-
-import CenterContainer from "@components/UX/CenterContainer/CenterContainer"; 
 import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
@@ -24,131 +18,247 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category disco-saturdays"><span className="day">Special</span> Event</h1>        
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Special</span> Event</h1> 
+        <h1 className="event-name desktop-only day-category disco-saturdays">
+          <span className="day">Special</span> Event
+        </h1>
+
+        <h1 className="event-name mobile-only cat">
+          <span className="cat-day">Special</span> Event
+        </h1>
 
         <div className="event-info">
-           <div class="info date">
-              <h2><span>Tue</span>07 Apr</h2>
-            </div>
-            <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>SOLID WALL</h3>
-              <h3><span>STUDIO <b>//</b> </span>HAAi, Charles Green</h3>
-            </div>
+          <div className="info date">
+            <h2>
+              <span>Tue</span>07 Apr
+            </h2>
+          </div>
+
+          <div className="info artists">
+            <h3>
+              <span>
+                TENT <b>//</b>{" "}
+              </span>
+              SOLID WALL
+            </h3>
+            <h3>
+              <span>
+                STUDIO <b>//</b>{" "}
+              </span>
+              HAAi, Charles Green
+            </h3>
+          </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xkO33jGI" target="_blank">
+            <a
+              href="https://sevn.ly/xkO33jGI"
+              target="_blank"
+              rel="noreferrer"
+            >
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
         </div>
 
-        <div className="or mobile-only"><h2>Or</h2></div>
+        <div className="or mobile-only">
+          <h2>Or</h2>
+        </div>
 
         <div className="book-wrapper">
           <div className="override-heading">
             <h2>START WITH DINNER</h2>
-            <p class="time mobile-only">Includes Club Entry</p>
+            <p className="time mobile-only">Includes Club Entry</p>
           </div>
-          <div class="tags mobile-only"><h3><span>DINING CONCEPT: <span className="strongword">FUTURIST</span></span></h3></div>
+
+          <div className="tags mobile-only">
+            <h3>
+              <span>
+                DINING CONCEPT:{" "}
+                <span className="strongword">FUTURIST</span>
+              </span>
+            </h3>
+          </div>
 
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-tue.svg" alt="The Tent Food" width="100%" /></div>
 
-          <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
-            <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
+          <div className="dinner-steps desktop-only">
+            <img
+              src="/images/dinner-steps-transition-tue.svg"
+              alt="The Tent Food"
+              width="100%"
+            />
+          </div>
+
+          <div className="button-wrapper new-button-wrapper button-wrapper-new dining-con">
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/food"
+              target="_blank"
+              rel="noreferrer"
+            >
               <span>[More about our dining concept]</span>
             </a>
-           </div>
+          </div>
 
           <div className="button-wrapper new-button-wrapper">
             <Button classes="events-button new-events-button view-menu" btnType="hollow">
-              <a href="https://www.little-portland.com/menu" target="_blank">
+              <a
+                href="https://www.little-portland.com/menu"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span>View Menu</span>
               </a>
             </Button>
           </div>
 
-         <div class="button-wrapper new-button-wrapper desktop-only">
-            <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-07&default_time=21:00&default_party_size=4" target="_blank">
-                <span class="space">IN THE TENT</span>
-                <p class="time">Includes Club Entry</p>
-                <p class="details"><span>8:30PM</span></p>
-                <p class="btn-tagline">The Cosmic Experience</p>
-               </a>
-              </Button>
-  
-              <Button classes="events-button ticket"  btnType="hollow">
-                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span class="space">CHEF’S STUDIO</span>
-                <p class="time">Includes Club Entry</p>
-                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
-                <p class="btn-tagline">Where the heads dine</p>
-               </a>
-              </Button>
+          <div className="button-wrapper new-button-wrapper desktop-only">
+            <Button classes="events-button new-events-button" btnType="hollow">
+              <a
+                href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-07&default_time=21:00&default_party_size=4"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="space">IN THE TENT</span>
+                <p className="time">Includes Club Entry</p>
+                <p className="details">
+                  <span>8:30PM</span>
+                </p>
+                <p className="btn-tagline">The Cosmic Experience</p>
+              </a>
+            </Button>
+
+            <Button classes="events-button ticket" btnType="hollow">
+              <a
+                className="book-link"
+                href="mailto:eat@little-portland.com?subject=Chef’s Studio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="space">CHEF’S STUDIO</span>
+                <p className="time">Includes Club Entry</p>
+                <p className="details chef-studio-details">
+                  <span>6-12 PAX</span>
+                  <span>8PM</span>
+                </p>
+                <p className="btn-tagline">Where the heads dine</p>
+              </a>
+            </Button>
           </div>
-          
-         <div class="button-wrapper new-button-wrapper button-wrapper-new desktop-only">
-            <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
+
+          <div className="button-wrapper new-button-wrapper button-wrapper-new desktop-only">
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/thetent"
+              target="_blank"
+              rel="noreferrer"
+            >
               <span>[More about The Tent]</span>
             </a>
-            <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[More about Chef's Studio]</span>
-              </a>
-           </div>
-         
-         <div class="button-wrapper new-button-wrapper mobile-only">
-            <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-07&default_time=21:00&default_party_size=4" target="_blank">
-                <span class="space">IN THE TENT</span>
-                <p class="details"><span>8:30PM</span></p>
-                <p class="btn-tagline">The Cosmic Experience</p>
-               </a>
-              </Button>
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/chefstudio"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>[More about Chef&apos;s Studio]</span>
+            </a>
+          </div>
 
-               <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
-                <span>[More about The Tent]</span>
+          <div className="button-wrapper new-button-wrapper mobile-only">
+            <Button classes="events-button new-events-button" btnType="hollow">
+              <a
+                href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-07&default_time=21:00&default_party_size=4"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="space">IN THE TENT</span>
+                <p className="details">
+                  <span>8:30PM</span>
+                </p>
+                <p className="btn-tagline">The Cosmic Experience</p>
               </a>
-  
-              <Button classes="events-button ticket"  btnType="hollow">
-                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span class="space">CHEF’S STUDIO</span>
-                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
-                <p class="btn-tagline">Where the heads dine</p>
-               </a>
-              </Button>
+            </Button>
 
-             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[More about Chef's Studio]</span>
-            </a> 
-           
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/thetent"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>[More about The Tent]</span>
+            </a>
+
+            <Button classes="events-button ticket" btnType="hollow">
+              <a
+                className="book-link"
+                href="mailto:eat@little-portland.com?subject=Chef’s Studio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="space">CHEF’S STUDIO</span>
+                <p className="details chef-studio-details">
+                  <span>6-12 PAX</span>
+                  <span>8PM</span>
+                </p>
+                <p className="btn-tagline">Where the heads dine</p>
+              </a>
+            </Button>
+
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/chefstudio"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>[More about Chef&apos;s Studio]</span>
+            </a>
           </div>
         </div>
 
-        <div className="or desktop-only or-desktop"><h2>Or</h2></div>
-        
+        <div className="or desktop-only or-desktop">
+          <h2>Or</h2>
+        </div>
+
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xkO33jGI" target="_blank">
+            <a
+              href="https://sevn.ly/xkO33jGI"
+              target="_blank"
+              rel="noreferrer"
+            >
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
         </div>
       </div>
 
-        <style jsx>{`
-              .saturday {
-                  --bg-color: #f9ff00!important;
-                  --accent-color: #fe35d3!important;
-                  --text-color: #000000!important;
-              }
-          `}</style>
-      
+      <style jsx global>{`
+        body.saturday {
+          --bg-color: #f9ff00 !important;
+          --accent-color: #fe35d3 !important;
+          --text-color: #000000 !important;
+          background: var(--bg-color) !important;
+          color: var(--text-color) !important;
+        }
+
+        body.saturday #bookingOptions {
+          color: var(--text-color);
+        }
+
+        body.saturday a,
+        body.saturday h1,
+        body.saturday h2,
+        body.saturday h3,
+        body.saturday h4,
+        body.saturday p,
+        body.saturday span {
+          color: inherit;
+        }
+      `}</style>
     </>
   );
 };
