@@ -24,22 +24,22 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category disco-saturdays"><span className="day">MONOLOGUES</span> Presents</h1>        
-        <h1 className="event-name mobile-only cat"><span className="cat-day">MONOLOGUES</span> Presents</h1>
+        <h1 className="event-name desktop-only day-category disco-saturdays"><span className="day">Special</span> Event</h1>        
+        <h1 className="event-name mobile-only cat"><span className="cat-day">Special</span> Event</h1> 
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>SAT</span>04 Apr</h2>
+              <h2><span>Tue</span>07 Apr</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Anomalous_DJ, MAYBE LAURA & REMI MAZET</h3>
-              <h3><span>STUDIO <b>//</b> </span>Ben Gomori, ND_BAUMKECKER</h3>
+              <h3><span>TENT <b>//</b> </span>SOLID WALL</h3>
+              <h3><span>STUDIO <b>//</b> </span>HAAi, Charles Green</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xU37SQeO" target="_blank">
+            <a href="https://sevn.ly/xkO33jGI" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
@@ -57,7 +57,7 @@ const BookingOptions = () => {
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-sat.svg" alt="The Tent Food" width="100%" /></div>
+         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-tue.svg" alt="The Tent Food" width="100%" /></div>
 
           <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
             <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
@@ -75,7 +75,7 @@ const BookingOptions = () => {
 
          <div class="button-wrapper new-button-wrapper desktop-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-04&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-07&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Club Entry</p>
                 <p class="details"><span>8:30PM</span></p>
@@ -104,7 +104,7 @@ const BookingOptions = () => {
          
          <div class="button-wrapper new-button-wrapper mobile-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-04&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-07&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="details"><span>8:30PM</span></p>
                 <p class="btn-tagline">The Cosmic Experience</p>
@@ -134,12 +134,21 @@ const BookingOptions = () => {
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xU37SQeO" target="_blank">
+            <a href="https://sevn.ly/xkO33jGI" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
         </div>
       </div>
+
+        <style jsx>{`
+              .saturday {
+                  --bg-color: #f9ff00;
+                  --accent-color: #fe35d3;
+                  --text-color: #000000;
+              }
+          `}</style>
+      
     </>
   );
 };
