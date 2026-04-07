@@ -74,12 +74,7 @@ const DinningPage = () => {
             100% { background-position: 36px 0, -22px 0, 0 0, 0 0; }
           }
 
-          @keyframes dividerDrift {
-            0% {
-              transform: translateX(-60%);
-              opacity: 0.4;
-            }
-            50% {
+          % {
               transform: translateX(220%);
               opacity: 1;
             }
@@ -119,30 +114,8 @@ const DinningPage = () => {
           @keyframes glowTagline {
             0%, 100% {
               text-shadow:
-                -2px 0 0 rgba(210,210,210,0.58),
-                2px 0 0 rgba(120,120,120,0.48),
-                0 0 10px rgba(255,255,255,0.08);
-            }
-            50% {
-              text-shadow:
-                -2px 0 0 rgba(225,225,225,0.64),
-                2px 0 0 rgba(95,95,95,0.54),
-                0 0 16px rgba(255,255,255,0.12);
-            }
-          }
-
-          @keyframes glitchTagline {
-            0%, 86%, 100% {
-              transform: skewX(-10deg) translate3d(0,0,0);
-              text-shadow:
-                -2px 0 0 rgba(210,210,210,0.58),
-                2px 0 0 rgba(120,120,120,0.48),
-                0 0 10px rgba(255,255,255,0.08);
-              filter: brightness(1);
-            }
-            87% {
-              transform: skewX(-10deg) translate3d(-2px, 0, 0);
-              text-shadow:
+                0 1px 0 rgba(255,255,255,0.18),
+    t-shadow:
                 -5px 0 0 rgba(228,228,228,0.66),
                 5px 0 0 rgba(92,92,92,0.56),
                 0 0 14px rgba(255,255,255,0.12);
@@ -417,8 +390,8 @@ const DinningPage = () => {
           .top-lines {
             position: relative;
             width: 100%;
-            height: 18px;
-            margin: 4px auto 20px;
+            height: 20px;
+            margin: 4px auto 18px;
             overflow: hidden;
           }
 
@@ -428,33 +401,23 @@ const DinningPage = () => {
             position: absolute;
             left: 10%;
             right: 10%;
-            border-radius: 999px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.22) 10%, rgba(255,255,255,0.85) 24%, rgba(255,255,255,0.85) 76%, rgba(255,255,255,0.22) 90%, transparent 100%);
           }
 
-          .top-lines::before {
-            top: 6px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.32) 10%, rgba(255,255,255,0.9) 24%, rgba(255,255,255,0.9) 76%, rgba(255,255,255,0.32) 90%, transparent 100%);
-            opacity: 0.95;
-          }
-
-          .top-lines::after {
-            top: 11px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 8%, rgba(255,255,255,0.58) 24%, rgba(255,255,255,0.58) 76%, rgba(255,255,255,0.12) 92%, transparent 100%);
-            opacity: 0.85;
-          }
+          .top-lines::before { top: 7px; opacity: 0.95; }
+          .top-lines::after { top: 12px; opacity: 0.45; }
 
           .top-lines span {
             position: absolute;
-            left: 24%;
-            width: 18%;
-            top: 8px;
+            left: 14%;
+            right: 14%;
+            top: 9px;
             height: 2px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.95), transparent);
-            box-shadow: 0 0 12px rgba(255,255,255,0.08);
-            animation: dividerDrift 5s ease-in-out infinite;
+            background: repeating-linear-gradient(90deg, rgba(255,255,255,0.95) 0 10px, transparent 10px 18px);
+            opacity: 0.9;
+            box-shadow: 0 0 10px rgba(255,255,255,0.06);
+            animation: dividerBlink 1.8s steps(2, end) infinite;
           }
 
           .top-lines i,
@@ -468,29 +431,7 @@ const DinningPage = () => {
             width: auto;
             max-width: 100%;
             margin: 0 auto;
-            color: var(--text);
-            font-family: var(--italic-display);
-            font-style: italic;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.01em;
-            line-height: 0.92;
-            font-size: clamp(40px, 4vw, 72px);
-            text-shadow:
-              -2px 0 0 rgba(210,210,210,0.58),
-              2px 0 0 rgba(120,120,120,0.48),
-              0 0 10px rgba(255,255,255,0.08);
-            transform: skewX(-10deg);
-            transform-origin: center center;
-            display: inline-block;
-            position: relative;
-            white-space: nowrap;
-            animation: glitchTagline 4.2s steps(1, end) infinite;
-          }
-
-          .tagline::after,
-          .tagline::before {
-            display: none;
+       lay: none;
           }
 
           .header-tagline-wrap {
@@ -543,10 +484,7 @@ const DinningPage = () => {
 
           .floating-panel {
             position: relative;
-            z-index: 2;
-            display: grid;
-            gap: 14px;
-            margin: 0 22px 22px;
+   argin: 0 22px 22px;
           }
 
           .content-stack {
@@ -667,23 +605,30 @@ const DinningPage = () => {
           .cta-link::before {
             content: "";
             position: absolute;
-            left: 50%;
+            left: 22px;
             top: 50%;
             width: 18px;
             height: 2px;
             background: var(--text);
-            transform: translate(calc(-50% - 290px), -50%);
+            transform: translateY(-50%);
+            box-shad.cta-link::before {
+            content: "";
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            width: 18px;
+            height: 2px;
+            background: var(--text);
+            transform: translateY(-50%);
             box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
             pointer-events: none;
             flex: none;
-          }
-
-          .cta-link::after {
+          }tom: 7px sol.cta-link::after {
             content: "";
             position: absolute;
-            left: 50%;
+            left: 40px;
             top: 50%;
-            transform: translate(calc(-50% - 272px), -50%);
+            transform: translateY(-50%);
             width: 0;
             height: 0;
             border-top: 7px solid transparent;
@@ -692,28 +637,12 @@ const DinningPage = () => {
             display: block;
             pointer-events: none;
             flex: none;
-          }
-
-          .cta-link:hover {
+          }y: flex;
+   .cta-link:hover {
             color: var(--text);
             background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
             box-shadow: 0 0 18px rgba(255,255,255,0.08);
-            transform: translateY(-1px);
-          }
-
-          .venue-card-inner {
-            min-height: 220px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 26px 20px;
-            position: relative;
-            z-index: 1;
-          }
-
-          .venue-title,
+          }tle,
           .concept-title,
           .image-placeholder-title {
             color: var(--text);
@@ -891,27 +820,18 @@ const DinningPage = () => {
           }
 
           .link-row a:hover {
-            color: var(--text);
             background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
             box-shadow: 0 0 18px rgba(255,255,255,0.08);
-            transform: translateY(-1px);
           }
 
           .footer-strip {
             display: grid;
             grid-template-columns: 140px 1fr 140px;
             gap: 0;
-            border-top: 2px solid var(--line);
-            margin-top: 18px;
-            position: relative;
-            z-index: 1;
-          }
-
-          .footer-cell {
-            min-height: 92px;
-            border-right: 2px solid var(--line);
-            display: flex;
-            align-items: center;
+            border-top: 2px solid var.link-row a:hover {
+            background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
+            box-shadow: 0 0 18px rgba(255,255,255,0.08);
+          }-items: center;
             justify-content: center;
             padding: 10px;
             position: relative;
@@ -975,25 +895,16 @@ const DinningPage = () => {
           }
 
           @media (max-width: 900px) {
-            .schedule-grid { grid-template-columns: 1fr; }
-            .schedule-item {
-              border-right: none;
-              border-bottom: 2px solid var(--line);
-            }
-            .schedule-item:last-child { border-bottom: none; }
-            .footer-strip { grid-template-columns: 100px 1fr 100px; }
-          }
-
-          @media (max-width: 900px) {
             .header-tagline-wrap {
               padding-left: 4%;
               padding-right: 4%;
             }
             .tagline {
               white-space: normal;
-              font-size: clamp(28px, 5.6vw, 52px);
-              line-height: 0.98;
+              font-size: clamp(26px, 5.2vw, 46px);
+              line-height: 0.94;
             }
+          }
           }
 
           @media (max-width: 640px) {
@@ -1044,21 +955,7 @@ const DinningPage = () => {
             </div>
 
             <div className="hero">
-              <div className="tunnel-box" aria-hidden="true" />
-            </div>
-
-            <div className="floating-panel">
-              <div className="schedule-wrap">
-                <div className="schedule-header">
-                  <div className="schedule-open">Open Thursdays to Saturdays</div>
-                  <div className="schedule-label-top">Nightly Schedule</div>
-                </div>
-                <div className="schedule-grid">
-                  <div className="schedule-item">
-                    <div className="card-title">Chef&apos;s Studio</div>
-                    <div className="card-time">20:00</div>
-                  </div>
-                  <div className="schedule-item">
+              <div className="hedule-item">
                     <div className="card-title">Dinner in The Tent</div>
                     <div className="card-time">20:30</div>
                   </div>
