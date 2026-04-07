@@ -366,11 +366,20 @@ const DinningPage = () => {
             z-index: 1;
           }
 
-          .schedule-wrap,
-          .cta-card {
-            margin-top: -2px;
+          .floating-panel {
+            padding: 0 22px 0;
+            display: grid;
+            gap: 0;
+            position: relative;
+            z-index: 1;
           }
 
+          .schedule-wrap,
+          .cta-card {
+            margin: 0;
+          }
+
+          .schedule-wrap,
           .cta-card,
           .venue-card,
           .content-wrap {
@@ -397,18 +406,18 @@ const DinningPage = () => {
           .schedule-header {
             position: relative;
             z-index: 1;
-            padding: 20px 18px 10px;
+            padding: 26px 22px 16px;
             text-align: center;
           }
 
           .schedule-open {
             font-family: var(--future);
             text-transform: uppercase;
-            font-weight: 800;
+            font-weight: 700;
             letter-spacing: 0.12em;
             font-size: clamp(18px, 2vw, 28px);
             color: var(--text);
-            margin-bottom: 8px;
+            margin: 0 0 14px;
           }
 
           .schedule-label-top {
@@ -416,9 +425,9 @@ const DinningPage = () => {
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.18em;
-            font-size: 22px;
+            font-size: 26px;
             color: var(--text);
-            margin-bottom: 14px;
+            margin: 0 0 20px;
             padding: 6px 14px 8px;
             display: inline-block;
           }
@@ -547,9 +556,62 @@ const DinningPage = () => {
             background: transparent;
             box-shadow: 0 0 0 2px rgba(255,255,255,0.04);
           }
-          .link-row a::before { content: ""; position: absolute; left: 16px; top: 50%; width: 14px; height: 2px; background: var(--text); transform: translateY(-50%); box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18); }
-          .link-row a::after { content: ""; position: absolute; left: 28px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 8px solid var(--text); }
-          .link-row a:hover { background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03)); box-shadow: 0 0 18px rgba(255,255,255,0.08); }
+          .link-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 10px;
+          }
+
+          .link-row a {
+            color: var(--text);
+            font-family: var(--future);
+            text-transform: uppercase;
+            font-size: clamp(18px, 1.7vw, 24px);
+            line-height: 1;
+            letter-spacing: 0.05em;
+            position: relative;
+            padding: 14px 18px 14px 46px;
+            font-weight: 700;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
+            transition: background 0.18s ease, box-shadow 0.18s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+          }
+
+          .link-row a::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            width: 14px;
+            height: 2px;
+            background: var(--text);
+            transform: translateY(-50%);
+            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
+          }
+
+          .link-row a::after {
+            content: "";
+            position: absolute;
+            left: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 8px solid var(--text);
+          }
+
+          .link-row a:hover {
+            background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
+            box-shadow: 0 0 18px rgba(255,255,255,0.08);
+          }
 
           .footer-strip { display: grid; grid-template-columns: 140px 1fr 140px; gap: 0; border-top: 2px solid var(--line); margin-top: 18px; position: relative; z-index: 1; }
           .footer-cell { min-height: 92px; border-right: 2px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 10px; position: relative; overflow: hidden; background: transparent; }
