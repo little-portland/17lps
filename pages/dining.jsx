@@ -306,7 +306,7 @@ const DinningPage = () => {
             text-transform: uppercase;
             letter-spacing: 0.02em;
             line-height: 0.82;
-            font-size: clamp(36px, 4vw, 68px);
+            font-size: clamp(36px, 4vw, 58px);
             text-shadow:
               -2px 0 0 rgba(210,210,210,0.55),
               2px 0 0 rgba(120,120,120,0.45),
