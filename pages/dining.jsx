@@ -456,7 +456,7 @@ const DinningPage = () => {
             line-height: 0.92;
             letter-spacing: 0.04em;
             font-weight: 800;
-            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
+            background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
             transition: background 0.18s ease, box-shadow 0.18s ease;
           }
 
@@ -779,9 +779,18 @@ const DinningPage = () => {
             <div className="content-stack">
               <div className="venue-card">
                 <div className="venue-card-inner">
-                  <div className="venue-title">Venue Map Placeholder</div>
-                  <div className="venue-copy">Add your PNG later and swap this block for an image</div>
-                  <div className="venue-path">Suggested path: /images/dinning-map.png</div>
+                    <Image
+                      src="/images/floorplan-dining-page.png"
+                      alt="Chef's Studio"
+                      width={1600}
+                      height={615}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        display: "block",
+                        objectFit: "contain",
+                      }}
+                    />
                 </div>
               </div>
 
