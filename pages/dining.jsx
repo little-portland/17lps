@@ -684,6 +684,27 @@ const DinningPage = () => {
             }
           }
 
+          /* stack alignment fixes */
+          .schedule-wrap {
+            margin: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+
+          .cta-card {
+            margin: -2px 0 0 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+
+          .venue-card {
+            margin: -2px 0 0 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+          }
+
           @media (prefers-reduced-motion: reduce) {
             .page::before,
             .frame::after,
