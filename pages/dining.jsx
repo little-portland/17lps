@@ -787,12 +787,6 @@ const DinningPage = () => {
 
               <div className="concept-stack" id="concepts">
                 <article className="concept-block">
-                  <div className="image-placeholder">
-                    <div>
-                      <div className="image-placeholder-title">The Tent Image Placeholder</div>
-                      <span className="image-placeholder-path">Suggested path: /images/the-tent.png</span>
-                    </div>
-                  </div>
 
                   <div className="content-wrap concept-copy-wrap">
                     <div style={{ padding: '18px' }}>
