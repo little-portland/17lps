@@ -661,6 +661,29 @@ const DinningPage = () => {
             .cta-link { font-size: 20px; padding-left: 64px; }
           }
 
+          /* spacing overrides */
+          .content-stack {
+            gap: 0;
+          }
+
+          .schedule-wrap {
+            margin: 0 0 -2px 0;
+          }
+
+          .cta-card {
+            margin: 0 0 -2px 0;
+          }
+
+          .venue-card {
+            margin: 0;
+          }
+
+          @media (max-width: 640px) {
+            .content-stack {
+              gap: 0;
+            }
+          }
+
           @media (prefers-reduced-motion: reduce) {
             .page::before,
             .frame::after,
