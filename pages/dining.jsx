@@ -540,12 +540,9 @@ const DinningPage = () => {
           .cta-link {
             position: relative;
             z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
+            display: block;
             text-align: center;
-            padding: 18px 20px;
+            padding: 18px 20px 18px 20px;
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
@@ -567,6 +564,7 @@ const DinningPage = () => {
             background: var(--text);
             transform: translate(calc(-50% - 290px), -50%);
             box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
+            pointer-events: none;
           }
 
           .cta-link::after {
@@ -581,6 +579,7 @@ const DinningPage = () => {
             border-bottom: 7px solid transparent;
             border-left: 9px solid var(--text);
             display: block;
+            pointer-events: none;
           }
 
           .cta-link:hover {
@@ -742,15 +741,13 @@ const DinningPage = () => {
             line-height: 1;
             letter-spacing: 0.05em;
             position: relative;
-            padding: 14px 18px 14px 18px;
+            padding: 14px 18px 14px 46px;
             font-weight: 800;
             border: 1px solid var(--line);
             border-radius: 999px;
             background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
             transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
+            display: inline-block;
           }
 
           .link-row a::before {
@@ -763,6 +760,7 @@ const DinningPage = () => {
             background: var(--text);
             transform: translateY(-50%);
             box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
+            pointer-events: none;
           }
 
           .link-row a::after {
@@ -777,6 +775,7 @@ const DinningPage = () => {
             border-bottom: 6px solid transparent;
             border-left: 8px solid var(--text);
             display: block;
+            pointer-events: none;
           }
 
           .link-row a:hover {
