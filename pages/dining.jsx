@@ -74,7 +74,11 @@ const DinningPage = () => {
             100% { background-position: 36px 0, -22px 0, 0 0, 0 0; }
           }
 
-          % {
+          @keyframes dividerBlink {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 0.95; }
+          }
+            50% {
               transform: translateX(220%);
               opacity: 1;
             }
@@ -115,7 +119,30 @@ const DinningPage = () => {
             0%, 100% {
               text-shadow:
                 0 1px 0 rgba(255,255,255,0.18),
-    t-shadow:
+                -2px 2px 0 rgba(190,190,190,0.18),
+                0 0 8px rgba(255,255,255,0.05);
+            }
+            50% {
+              text-shadow:
+                0 1px 0 rgba(255,255,255,0.22),
+                -3px 3px 0 rgba(175,175,175,0.22),
+                0 0 12px rgba(255,255,255,0.08);
+            }
+          }
+
+          @keyframes crawlFloat {
+            0%, 100% {
+              transform: perspective(900px) rotateX(62deg) scaleY(1.18) translateY(0);
+              filter: brightness(1);
+            }
+            50% {
+              transform: perspective(900px) rotateX(62deg) scaleY(1.18) translateY(-2px);
+              filter: brightness(1.04);
+            }
+          }
+            87% {
+              transform: skewX(-10deg) translate3d(-2px, 0, 0);
+              text-shadow:
                 -5px 0 0 rgba(228,228,228,0.66),
                 5px 0 0 rgba(92,92,92,0.56),
                 0 0 14px rgba(255,255,255,0.12);
@@ -431,7 +458,29 @@ const DinningPage = () => {
             width: auto;
             max-width: 100%;
             margin: 0 auto;
-       lay: none;
+            color: var(--text);
+            font-family: var(--italic-display);
+            font-style: italic;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            line-height: 0.82;
+            font-size: clamp(36px, 4vw, 68px);
+            text-shadow:
+              0 1px 0 rgba(255,255,255,0.18),
+              -2px 2px 0 rgba(190,190,190,0.18),
+              0 0 8px rgba(255,255,255,0.05);
+            transform: perspective(900px) rotateX(62deg) scaleY(1.18);
+            transform-origin: center top;
+            display: inline-block;
+            position: relative;
+            white-space: nowrap;
+            animation: crawlFloat 4.8s ease-in-out infinite;
+          }
+
+          .tagline::after,
+          .tagline::before {
+            display: none;
           }
 
           .header-tagline-wrap {
@@ -484,7 +533,10 @@ const DinningPage = () => {
 
           .floating-panel {
             position: relative;
-   argin: 0 22px 22px;
+            z-index: 2;
+            display: grid;
+            gap: 14px;
+            margin: 0 22px 22px;
           }
 
           .content-stack {
@@ -611,19 +663,12 @@ const DinningPage = () => {
             height: 2px;
             background: var(--text);
             transform: translateY(-50%);
-            box-shad.cta-link::before {
-            content: "";
-            position: absolute;
-            left: 22px;
-            top: 50%;
-            width: 18px;
-            height: 2px;
-            background: var(--text);
-            transform: translateY(-50%);
             box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
             pointer-events: none;
             flex: none;
-          }tom: 7px sol.cta-link::after {
+          }
+
+          .cta-link::after {
             content: "";
             position: absolute;
             left: 40px;
@@ -637,12 +682,27 @@ const DinningPage = () => {
             display: block;
             pointer-events: none;
             flex: none;
-          }y: flex;
-   .cta-link:hover {
+          }
+
+          .cta-link:hover {
             color: var(--text);
             background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
             box-shadow: 0 0 18px rgba(255,255,255,0.08);
-          }tle,
+          }
+
+          .venue-card-inner {
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 26px 20px;
+            position: relative;
+            z-index: 1;
+          }
+
+          .venue-title,
           .concept-title,
           .image-placeholder-title {
             color: var(--text);
@@ -828,10 +888,17 @@ const DinningPage = () => {
             display: grid;
             grid-template-columns: 140px 1fr 140px;
             gap: 0;
-            border-top: 2px solid var.link-row a:hover {
-            background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
-            box-shadow: 0 0 18px rgba(255,255,255,0.08);
-          }-items: center;
+            border-top: 2px solid var(--line);
+            margin-top: 18px;
+            position: relative;
+            z-index: 1;
+          }
+
+          .footer-cell {
+            min-height: 92px;
+            border-right: 2px solid var(--line);
+            display: flex;
+            align-items: center;
             justify-content: center;
             padding: 10px;
             position: relative;
@@ -955,7 +1022,21 @@ const DinningPage = () => {
             </div>
 
             <div className="hero">
-              <div className="hedule-item">
+              <div className="tunnel-box" aria-hidden="true" />
+            </div>
+
+            <div className="floating-panel">
+              <div className="schedule-wrap">
+                <div className="schedule-header">
+                  <div className="schedule-open">Open Thursdays to Saturdays</div>
+                  <div className="schedule-label-top">Nightly Schedule</div>
+                </div>
+                <div className="schedule-grid">
+                  <div className="schedule-item">
+                    <div className="card-title">Chef&apos;s Studio</div>
+                    <div className="card-time">20:00</div>
+                  </div>
+                  <div className="schedule-item">
                     <div className="card-title">Dinner in The Tent</div>
                     <div className="card-time">20:30</div>
                   </div>
