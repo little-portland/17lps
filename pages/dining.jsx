@@ -20,6 +20,7 @@ const DinningPage = () => {
             --display: "Orbitron", "Eurostile", "Bank Gothic", "Arial Black", sans-serif;
             --body: "Space Mono", "IBM Plex Mono", monospace;
             --italic-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            --future: "Orbitron", "Eurostile", "Bank Gothic", sans-serif;
           }
 
           @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Mono:wght@400;700&display=swap');
@@ -75,29 +76,8 @@ const DinningPage = () => {
           }
 
           @keyframes dividerBlink {
-            0%, 100% { opacity: 0.35; }
+            0%, 100% { opacity: 0.42; }
             50% { opacity: 0.95; }
-          }
-            50% {
-              transform: translateX(220%);
-              opacity: 1;
-            }
-            100% {
-              transform: translateX(-60%);
-              opacity: 0.4;
-            }
-          }
-            50% {
-              transform: translateX(18%) scaleX(1.02);
-              opacity: 0.9;
-            }
-            100% {
-              transform: translateX(-18%) scaleX(0.92);
-              opacity: 0.45;
-            }
-          }
-            50% { transform: translateX(6%); opacity: 1; }
-            100% { transform: translateX(-6%); opacity: 0.68; }
           }
 
           @keyframes floatPulse {
@@ -110,176 +90,48 @@ const DinningPage = () => {
             50% { opacity: 1; box-shadow: 0 0 18px rgba(255,255,255,0.08); }
           }
 
-          @keyframes ambientBars {
-            0% { background-position: 0 0, 0 0, 0 0, 0 0; }
-            100% { background-position: 36px 0, -22px 0, 0 0, 0 0; }
-          }
-
-          @keyframes glowTagline {
-            0%, 100% {
-              text-shadow:
-                0 1px 0 rgba(255,255,255,0.18),
-                -2px 2px 0 rgba(190,190,190,0.18),
-                0 0 8px rgba(255,255,255,0.05);
-            }
-            50% {
-              text-shadow:
-                0 1px 0 rgba(255,255,255,0.22),
-                -3px 3px 0 rgba(175,175,175,0.22),
-                0 0 12px rgba(255,255,255,0.08);
-            }
-          }
-
           @keyframes crawlFloat {
             0%, 100% {
-              transform: perspective(900px) rotateX(62deg) scaleY(1.18) translateY(0);
+              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translateY(0);
               filter: brightness(1);
             }
             50% {
-              transform: perspective(900px) rotateX(62deg) scaleY(1.18) translateY(-2px);
+              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translateY(-1px);
               filter: brightness(1.04);
             }
           }
-            87% {
-              transform: skewX(-10deg) translate3d(-2px, 0, 0);
+
+          @keyframes glitchTagline {
+            0%, 84%, 100% {
+              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translate3d(0,0,0);
+              text-shadow:
+                -2px 0 0 rgba(210,210,210,0.55),
+                2px 0 0 rgba(120,120,120,0.45),
+                0 0 10px rgba(255,255,255,0.08);
+              filter: brightness(1);
+            }
+            85% {
+              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translate3d(-2px, 0, 0);
               text-shadow:
                 -5px 0 0 rgba(228,228,228,0.66),
                 5px 0 0 rgba(92,92,92,0.56),
                 0 0 14px rgba(255,255,255,0.12);
-              filter: brightness(1.08);
             }
-            89% {
-              transform: skewX(-10deg) translate3d(2px, -1px, 0);
+            88% {
+              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translate3d(2px, -1px, 0);
               text-shadow:
                 -7px 0 0 rgba(238,238,238,0.72),
                 7px 0 0 rgba(78,78,78,0.62),
                 0 0 18px rgba(255,255,255,0.16);
-              filter: brightness(1.14);
+              filter: brightness(1.12);
             }
             91% {
-              transform: skewX(-10deg) translate3d(-1px, 1px, 0);
+              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translate3d(-1px, 1px, 0);
               text-shadow:
                 -4px 0 0 rgba(220,220,220,0.6),
                 4px 0 0 rgba(105,105,105,0.52),
                 0 0 12px rgba(255,255,255,0.11);
             }
-            93% {
-              transform: skewX(-10deg) translate3d(1px, 0, 0);
-              text-shadow:
-                -3px 0 0 rgba(214,214,214,0.56),
-                3px 0 0 rgba(112,112,112,0.5),
-                0 0 10px rgba(255,255,255,0.09);
-            }
-          }
-            50% {
-              text-shadow:
-                0 0 0 rgba(255,255,255,0),
-                -2px 0 0 rgba(255, 40, 40, 0.58),
-                2px 0 0 rgba(0, 255, 255, 0.58),
-                0 0 16px rgba(255,255,255,0.12);
-            }
-          }
-
-          @keyframes glitchTagline {
-            0%, 86%, 100% {
-              transform: skewX(-10deg) translate3d(0,0,0);
-              text-shadow:
-                0 0 0 rgba(255,255,255,0),
-                -2px 0 0 rgba(255, 40, 40, 0.52),
-                2px 0 0 rgba(0, 255, 255, 0.52),
-                0 0 10px rgba(255,255,255,0.08);
-              filter: brightness(1);
-            }
-            87% {
-              transform: skewX(-10deg) translate3d(-2px, 0, 0);
-              text-shadow:
-                0 0 0 rgba(255,255,255,0),
-                -5px 0 0 rgba(255, 40, 40, 0.68),
-                5px 0 0 rgba(0, 255, 255, 0.68),
-                0 0 14px rgba(255,255,255,0.12);
-              filter: brightness(1.08);
-            }
-            89% {
-              transform: skewX(-10deg) translate3d(2px, -1px, 0);
-              text-shadow:
-                0 0 0 rgba(255,255,255,0),
-                -7px 0 0 rgba(255, 40, 40, 0.72),
-                7px 0 0 rgba(0, 255, 255, 0.72),
-                0 0 18px rgba(255,255,255,0.16);
-              filter: brightness(1.14);
-            }
-            91% {
-              transform: skewX(-10deg) translate3d(-1px, 1px, 0);
-              text-shadow:
-                0 0 0 rgba(255,255,255,0),
-                -4px 0 0 rgba(255, 40, 40, 0.6),
-                4px 0 0 rgba(0, 255, 255, 0.6),
-                0 0 12px rgba(255,255,255,0.11);
-            }
-            93% {
-              transform: skewX(-10deg) translate3d(1px, 0, 0);
-              text-shadow:
-                0 0 0 rgba(255,255,255,0),
-                -3px 0 0 rgba(255, 40, 40, 0.56),
-                3px 0 0 rgba(0, 255, 255, 0.56),
-                0 0 10px rgba(255,255,255,0.09);
-            }
-          }
-            50% {
-              text-shadow:
-                0 1px 0 rgba(255,255,255,0.26),
-                -4px 5px 0 rgba(255,255,255,0.16),
-                -9px 12px 0 rgba(255,255,255,0.08),
-                -13px 17px 0 rgba(255,255,255,0.05),
-                0 0 30px rgba(255,255,255,0.16);
-            }
-          }
-
-          @keyframes crawlFloat {
-            0%, 100% {
-              transform: skewX(-10deg) translateY(0);
-              filter: brightness(1);
-            }
-            50% {
-              transform: skewX(-10deg) translateY(-2px);
-              filter: brightness(1.05);
-            }
-          }
-            50% {
-              transform: perspective(1100px) rotateX(52deg) scaleX(0.96) scaleY(1.08) translateY(-2px);
-              filter: brightness(1.04);
-            }
-          }
-            50% {
-              transform: perspective(900px) rotateX(58deg) scaleY(1.18) translateY(-4px);
-              filter: brightness(1.06);
-            }
-          }
-            50% {
-              transform: perspective(1100px) rotateX(18deg) skewX(-8deg) translateY(-2px);
-              text-shadow:
-                0 1px 0 rgba(255,255,255,0.26),
-                -4px 5px 0 rgba(255,255,255,0.16),
-                -9px 12px 0 rgba(255,255,255,0.08),
-                -13px 17px 0 rgba(255,255,255,0.05),
-                0 0 30px rgba(255,255,255,0.16);
-            }
-          }
-
-          @keyframes shimmerBand {
-            0% { transform: translateX(-120%); opacity: 0; }
-            20% { opacity: 0.08; }
-            50% { opacity: 0.18; }
-            80% { opacity: 0.08; }
-            100% { transform: translateX(120%); opacity: 0; }
-          }
-
-          @keyframes boxGlitch {
-            0%, 100% { transform: translateX(0); }
-            96% { transform: translateX(0); }
-            97% { transform: translateX(1px); }
-            98% { transform: translateX(-1px); }
-            99% { transform: translateX(0); }
           }
 
           .page {
@@ -417,41 +269,49 @@ const DinningPage = () => {
           .top-lines {
             position: relative;
             width: 100%;
-            height: 20px;
-            margin: 4px auto 18px;
-            overflow: hidden;
+            height: 18px;
+            margin: 6px auto 18px;
           }
 
-          .top-lines::before,
+          .top-lines::before {
+            content: "";
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            top: 8px;
+            height: 1px;
+            background: rgba(255,255,255,0.86);
+            box-shadow: 0 0 10px rgba(255,255,255,0.06);
+          }
+
           .top-lines::after {
             content: "";
             position: absolute;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.22) 10%, rgba(255,255,255,0.85) 24%, rgba(255,255,255,0.85) 76%, rgba(255,255,255,0.22) 90%, transparent 100%);
+            left: 8%;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border: 1px solid rgba(255,255,255,0.92);
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: calc(84% + 8px) 0 0 -1px transparent;
           }
-
-          .top-lines::before { top: 7px; opacity: 0.95; }
-          .top-lines::after { top: 12px; opacity: 0.45; }
 
           .top-lines span {
             position: absolute;
-            left: 14%;
-            right: 14%;
-            top: 9px;
-            height: 2px;
-            background: repeating-linear-gradient(90deg, rgba(255,255,255,0.95) 0 10px, transparent 10px 18px);
-            opacity: 0.9;
-            box-shadow: 0 0 10px rgba(255,255,255,0.06);
-            animation: dividerBlink 1.8s steps(2, end) infinite;
+            right: 8%;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border: 1px solid rgba(255,255,255,0.92);
+            border-radius: 50%;
+            background: transparent;
           }
 
-          .top-lines i,
-          .top-lines b,
-          .top-lines em,
-          .top-lines strong {
-            display: none;
+          .header-tagline-wrap {
+            text-align: center;
+            overflow: visible;
+            padding: 8px 2.5% 18px;
           }
 
           .tagline {
@@ -467,26 +327,20 @@ const DinningPage = () => {
             line-height: 0.82;
             font-size: clamp(36px, 4vw, 68px);
             text-shadow:
-              0 1px 0 rgba(255,255,255,0.18),
-              -2px 2px 0 rgba(190,190,190,0.18),
-              0 0 8px rgba(255,255,255,0.05);
-            transform: perspective(900px) rotateX(62deg) scaleY(1.18);
+              -2px 0 0 rgba(210,210,210,0.55),
+              2px 0 0 rgba(120,120,120,0.45),
+              0 0 10px rgba(255,255,255,0.08);
+            transform: perspective(900px) rotateX(50deg) scaleY(2.18);
             transform-origin: center top;
             display: inline-block;
             position: relative;
             white-space: nowrap;
-            animation: crawlFloat 4.8s ease-in-out infinite;
+            animation: glitchTagline 4.2s steps(1, end) infinite;
           }
 
           .tagline::after,
           .tagline::before {
             display: none;
-          }
-
-          .header-tagline-wrap {
-            text-align: center;
-            overflow: visible;
-            padding: 8px 2.5% 10px;
           }
 
           .hero {
@@ -592,11 +446,12 @@ const DinningPage = () => {
             font-family: var(--body);
             text-transform: uppercase;
             font-weight: 700;
-            letter-spacing: 0.24em;
+            letter-spacing: 0.18em;
             font-size: 22px;
             color: var(--text);
             margin-bottom: 18px;
-            padding: 4px 0 6px;
+            padding: 6px 14px 8px;
+            display: inline-block;
           }
 
           .schedule-grid {
@@ -651,7 +506,7 @@ const DinningPage = () => {
             letter-spacing: 0.04em;
             font-weight: 800;
             background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
-            transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+            transition: background 0.18s ease, box-shadow 0.18s ease;
           }
 
           .cta-link::before {
@@ -665,7 +520,6 @@ const DinningPage = () => {
             transform: translateY(-50%);
             box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
             pointer-events: none;
-            flex: none;
           }
 
           .cta-link::after {
@@ -681,7 +535,6 @@ const DinningPage = () => {
             border-left: 9px solid var(--text);
             display: block;
             pointer-events: none;
-            flex: none;
           }
 
           .cta-link:hover {
@@ -847,7 +700,7 @@ const DinningPage = () => {
             border: 1px solid var(--line);
             border-radius: 999px;
             background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
-            transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+            transition: background 0.18s ease, box-shadow 0.18s ease;
             display: inline-block;
           }
 
@@ -913,7 +766,7 @@ const DinningPage = () => {
             height: 74px;
             position: relative;
             border-radius: 50%;
-            border: 3px solid var(--text);
+            border: 2px solid var(--text);
           }
 
           .footer-mark::before,
@@ -924,8 +777,8 @@ const DinningPage = () => {
           }
 
           .footer-mark::before {
-            inset: 15px;
-            border: 3px solid var(--text);
+            inset: 14px;
+            border: 2px solid var(--text);
           }
 
           .footer-mark::after {
@@ -942,17 +795,17 @@ const DinningPage = () => {
             height: 44px;
             background:
               linear-gradient(to bottom,
-                var(--text) 0 2px,
-                transparent 2px 7px,
-                var(--text) 7px 11px,
-                transparent 11px 16px,
-                var(--text) 16px 18px,
-                transparent 18px 24px,
-                var(--text) 24px 29px,
-                transparent 29px 34px,
-                var(--text) 34px 36px,
-                transparent 36px 41px,
-                var(--text) 41px 44px
+                var(--text) 0 1px,
+                transparent 1px 6px,
+                var(--text) 6px 9px,
+                transparent 9px 15px,
+                var(--text) 15px 16px,
+                transparent 16px 22px,
+                var(--text) 22px 26px,
+                transparent 26px 32px,
+                var(--text) 32px 33px,
+                transparent 33px 39px,
+                var(--text) 39px 42px
               );
             opacity: 0.92;
           }
@@ -968,10 +821,9 @@ const DinningPage = () => {
             }
             .tagline {
               white-space: normal;
-              font-size: clamp(26px, 5.2vw, 46px);
-              line-height: 0.94;
+              font-size: clamp(24px, 5vw, 42px);
+              line-height: 0.92;
             }
-          }
           }
 
           @media (max-width: 640px) {
@@ -984,7 +836,13 @@ const DinningPage = () => {
             .header-bar { padding-left: 14px; padding-right: 14px; }
             .floating-panel { margin: 0 14px 18px; }
             .tunnel-box { height: 220px; }
-            
+            .schedule-grid { grid-template-columns: 1fr; }
+            .schedule-item { border-right: none; }
+            .cta-link {
+              font-size: 20px;
+              padding-left: 56px;
+              padding-right: 16px;
+            }
           }
 
           @media (prefers-reduced-motion: reduce) {
@@ -995,7 +853,6 @@ const DinningPage = () => {
             .header-title,
             .page::after,
             .tagline,
-            .tagline::after,
             .schedule-wrap,
             .content-wrap,
             .image-placeholder,
@@ -1003,116 +860,7 @@ const DinningPage = () => {
               animation: none !important;
             }
           }
-        `}</style>
-      </Head>
-
-      <main className="page">
-        <div className="screen-glitch" aria-hidden="true" />
-        <div className="shell">
-          <section className="frame">
-            <div className="header-bar">
-              <div className="title-wrap">
-                <div className="header-title">Dining At</div>
-                <div className="header-subtitle">17 Little Portland Street</div>
-                <div className="top-lines" aria-hidden="true"><span /></div>
-                <div className="header-tagline-wrap">
-                  <div className="tagline">More Than a Meal. Step Into The Void</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hero">
-              <div className="tunnel-box" aria-hidden="true" />
-            </div>
-
-            <div className="floating-panel">
-              <div className="schedule-wrap">
-                <div className="schedule-header">
-                  <div className="schedule-open">Open Thursdays to Saturdays</div>
-                  <div className="schedule-label-top">Nightly Schedule</div>
-                </div>
-                <div className="schedule-grid">
-                  <div className="schedule-item">
-                    <div className="card-title">Chef&apos;s Studio</div>
-                    <div className="card-time">20:00</div>
-                  </div>
-                  <div className="schedule-item">
-                    <div className="card-title">Dinner in The Tent</div>
-                    <div className="card-time">20:30</div>
-                  </div>
-                  <div className="schedule-item">
-                    <div className="card-title">Club Opens</div>
-                    <div className="card-time">22:00</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="cta-card">
-                <a className="cta-link" href="#concepts">Explore our futurist dining concept</a>
-              </div>
-            </div>
-
-            <div className="content-stack">
-              <div className="venue-card">
-                <div className="venue-card-inner">
-                  <div className="venue-title">Venue Map Placeholder</div>
-                  <div className="venue-copy">Add your PNG later and swap this block for an image</div>
-                  <div className="venue-path">Suggested path: /images/dinning-map.png</div>
-                </div>
-              </div>
-
-              <div className="concept-stack" id="concepts">
-                <article className="concept-block">
-                  <div className="image-placeholder">
-                    <div>
-                      <div className="image-placeholder-title">The Tent Image Placeholder</div>
-                      <span className="image-placeholder-path">Suggested path: /images/the-tent.png</span>
-                    </div>
-                  </div>
-
-                  <div className="content-wrap concept-copy-wrap">
-                    <div style={{ padding: '18px' }}>
-                      <div className="concept-kicker">Dining concept</div>
-                      <h2 className="concept-title">The Tent</h2>
-                      <div className="concept-subtitle">at the End of the Universe</div>
-
-                      <p className="concept-copy">
-                        In a floating tent, lost in space, futurist menus set the stage for a sensorial
-                        experience as dinner seamlessly transitions into our hypnotic after-dark mode - a
-                        cosmic journey.
-                      </p>
-
-                      <ul className="feature-list">
-                        <li>£65pp Set Dinner</li>
-                        <li>Futurist Menu</li>
-                        <li>8:30pm Start</li>
-                        <li>Club Access Included</li>
-                      </ul>
-
-                      <div className="link-row">
-                        <a href="#">Book</a>
-                        <a href="#">Menu</a>
-                        <a href="#">Explore The Tent</a>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="concept-block">
-                  <div className="image-placeholder">
-                    <div>
-                      <div className="image-placeholder-title">Chef&apos;s Studio Image Placeholder</div>
-                      <span className="image-placeholder-path">Suggested path: /images/chefs-studio.png</span>
-                    </div>
-                  </div>
-
-                  <div className="content-wrap concept-copy-wrap">
-                    <div style={{ padding: '18px' }}>
-                      <div className="concept-kicker">Dining concept</div>
-                      <h2 className="concept-title">Chef&apos;s Studio</h2>
-                      <div className="concept-subtitle">Where the Heads Dine</div>
-
-                      <p className="concept-copy">
+        `}</style>="concept-copy">
                         Chef&apos;s Studio is an intimate and futuristic space beneath The Tent - the table of
                         choice for those in the know.
                       </p>
