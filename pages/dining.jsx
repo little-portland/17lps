@@ -685,24 +685,28 @@ const DinningPage = () => {
           }
 
           /* stack alignment fixes */
-          .schedule-wrap {
+          .content-stack {
+            gap: 16px;
+          }
+
+          .concept-stack {
+            display: grid;
+            gap: 16px;
+          }
+
+          .schedule-wrap,
+          .cta-card,
+          .venue-card,
+          .content-wrap {
             margin: 0;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
+            border-radius: 10px;
           }
 
-          .cta-card {
-            margin: -2px 0 0 0;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-          }
-
-          .venue-card {
-            margin: -2px 0 0 0;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
+          @media (max-width: 640px) {
+            .content-stack,
+            .concept-stack {
+              gap: 14px;
+            }
           }
 
           @media (prefers-reduced-motion: reduce) {
