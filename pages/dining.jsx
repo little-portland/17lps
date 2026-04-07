@@ -228,7 +228,7 @@ const DinningPage = () => {
             text-transform: uppercase;
             letter-spacing: 0.02em;
             line-height: 0.88;
-            font-size: clamp(66px, 10vw, 150px);
+            font-size: clamp(56px, 10vw, 150px);
             font-weight: 900;
             color: var(--text);
             animation: floatPulse 6s ease-in-out infinite;
@@ -241,7 +241,7 @@ const DinningPage = () => {
             font-family: var(--future);
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            font-size: clamp(24px, 3vw, 58px);
+            font-size: clamp(14px, 3vw, 58px);
             line-height: 1;
             font-weight: 700;
           }
@@ -440,7 +440,7 @@ const DinningPage = () => {
           .schedule-item:last-child { border-right: none; }
 
           .card-title { color: var(--text); font-family: var(--future); font-size: clamp(22px, 2vw, 34px); line-height: 0.95; text-transform: uppercase; margin-bottom: 12px; font-weight: 800; }
-          .card-time { color: var(--text); font-family: var(--future); font-size: clamp(36px, 3vw, 52px); line-height: 0.9; text-transform: uppercase; font-weight: 900; }
+          .card-time { color: var(--text); font-family: var(--future); font-size: clamp(26px, 3vw, 52px); line-height: 0.9; text-transform: uppercase; font-weight: 900; }
 
           .cta-link {
             position: relative;
@@ -569,7 +569,7 @@ const DinningPage = () => {
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
-            font-size: clamp(18px, 1.7vw, 24px);
+            font-size: clamp(15px, 1.7vw, 24px);
             line-height: 1;
             letter-spacing: 0.05em;
             position: relative;
@@ -655,7 +655,7 @@ const DinningPage = () => {
 
           @media (max-width: 900px) {
             .header-tagline-wrap { padding-left: 4%; padding-right: 4%; }
-            .tagline { white-space: normal; font-size: clamp(24px, 5vw, 42px); line-height: 0.92; }
+            .tagline { white-space: normal; font-size: clamp(14px, 5vw, 18px); line-height: 0.92; }
           }
 
           @media (max-width: 640px) {
@@ -666,7 +666,9 @@ const DinningPage = () => {
             .tunnel-box { height: 220px; }
             .schedule-grid { grid-template-columns: 1fr; }
             .schedule-item { border-right: none; }
-            .cta-link { font-size: 20px; padding-left: 64px; }
+            .cta-link { font-size: 15px; padding-left: 64px; text-align: left; }    
+            .schedule-label-top {font-size: 24px;}
+            .header-tagline-wrap {padding: 0;}
           }
 
           /* spacing overrides */
