@@ -371,7 +371,6 @@ const DinningPage = () => {
           .floating-panel {
             padding: 0 22px 0;
             display: grid;
-            gap: 16px;
             position: relative;
             z-index: 1;
           }
@@ -420,7 +419,7 @@ const DinningPage = () => {
             letter-spacing: 0.12em;
             font-size: clamp(18px, 2vw, 28px);
             color: var(--text);
-            margin: 0 0 14px;
+            margin: 0;
           }
 
           .schedule-label-top {
