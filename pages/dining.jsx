@@ -748,10 +748,6 @@ const DinningPage = () => {
               </div>
             </div>
 
-            <div className="hero">
-              <div className="tunnel-box" aria-hidden="true" />
-            </div>
-
             <div className="floating-panel">
               <div className="schedule-wrap">
                 <div className="schedule-header">
