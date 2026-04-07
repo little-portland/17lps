@@ -621,7 +621,7 @@ const DinningPage = () => {
               box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 6px inset!important;
           }
 
-          .footer-strip { display: grid; grid-template-columns: 140px 1fr 140px; gap: 0; border-top: 2px solid var(--line); margin-top: 18px; position: relative; z-index: 1; }
+          .footer-strip { display: grid; grid-template-columns: 140px 1fr 140px; gap: 0; border: 2px solid var(--line); margin-top: 18px; position: relative; z-index: 1; border-radius: 10px;}
           .footer-cell { min-height: 92px; border-right: 2px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 10px; position: relative; overflow: hidden; background: transparent; }
           .footer-cell:last-child { border-right: none; }
           .footer-mark { width: 74px; height: 74px; position: relative; border-radius: 50%; border: 2px solid var(--text); }
@@ -631,7 +631,7 @@ const DinningPage = () => {
           .footer-mark::after { width: 10px; height: 10px; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--text); }
           .footer-lines {
             width: 100%;
-            height: 44px;
+            height: 80px;
             background:
               linear-gradient(to bottom,
                 var(--text) 0 1px,
