@@ -620,24 +620,24 @@ const DinningPage = () => {
 
           .cta-link::before {
             content: "";
-            position: relative;
-            left: auto;
-            top: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
             width: 18px;
             height: 2px;
             background: var(--text);
-            transform: none;
+            transform: translate(calc(-50% - 290px), -50%);
             box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
             pointer-events: none;
-            flex: 0 0 auto;
+            flex: none;
           }
 
           .cta-link::after {
             content: "";
-            position: relative;
-            left: auto;
-            top: auto;
-            transform: translateX(-12px);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(calc(-50% - 272px), -50%);
             width: 0;
             height: 0;
             border-top: 7px solid transparent;
@@ -645,7 +645,7 @@ const DinningPage = () => {
             border-left: 9px solid var(--text);
             display: block;
             pointer-events: none;
-            flex: 0 0 auto;
+            flex: none;
           }
 
           .cta-link:hover {
