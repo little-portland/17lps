@@ -258,7 +258,7 @@ const DinningPage = () => {
             left: 8%;
             right: 8%;
             top: 8px;
-            height: 1px;
+            height: 2px;
             background: rgba(255,255,255,0.86);
             box-shadow: 0 0 10px rgba(255,255,255,0.06);
           }
@@ -273,6 +273,7 @@ const DinningPage = () => {
             border: 1px solid rgba(255,255,255,0.92);
             border-radius: 50%;
             background: rgba(255,255,255,0.92);
+            display: none;
           }
 
           .top-lines span {
@@ -284,6 +285,7 @@ const DinningPage = () => {
             border: 1px solid rgba(255,255,255,0.92);
             border-radius: 50%;
             background: rgba(255,255,255,0.92);
+            display: none;
           }
 
           .header-tagline-wrap {
@@ -295,7 +297,7 @@ const DinningPage = () => {
           .tagline {
             width: auto;
             max-width: 100%;
-            margin: 0 auto;
+            margin: 0 auto 10px;
             color: var(--text);
             font-family: var(--italic-display);
             font-style: italic;
@@ -369,7 +371,7 @@ const DinningPage = () => {
           .floating-panel {
             padding: 0 22px 0;
             display: grid;
-            gap: 0;
+            gap: 16px;
             position: relative;
             z-index: 1;
           }
@@ -377,6 +379,7 @@ const DinningPage = () => {
           .schedule-wrap,
           .cta-card {
             margin: 0;
+            margin-bottom: 16px !important;
           }
 
           .schedule-wrap,
@@ -425,9 +428,9 @@ const DinningPage = () => {
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.18em;
-            font-size: 26px;
+            font-size: 44px;
             color: var(--text);
-            margin: 0 0 20px;
+            margin: 0;
             padding: 6px 14px 8px;
             display: inline-block;
           }
@@ -554,7 +557,7 @@ const DinningPage = () => {
             border: 2px solid var(--text);
             border-radius: 50%;
             background: transparent;
-            box-shadow: 0 0 0 2px rgba(255,255,255,0.04);
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
           }
           .link-row {
             display: flex;
@@ -613,13 +616,19 @@ const DinningPage = () => {
             box-shadow: 0 0 18px rgba(255,255,255,0.08);
           }
 
+          ::-webkit-scrollbar-thumb {
+              border-radius: 10px!important;
+              background: white!important;
+              box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 6px inset!important;
+          }
+
           .footer-strip { display: grid; grid-template-columns: 140px 1fr 140px; gap: 0; border-top: 2px solid var(--line); margin-top: 18px; position: relative; z-index: 1; }
           .footer-cell { min-height: 92px; border-right: 2px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 10px; position: relative; overflow: hidden; background: transparent; }
           .footer-cell:last-child { border-right: none; }
           .footer-mark { width: 74px; height: 74px; position: relative; border-radius: 50%; border: 2px solid var(--text); }
           .footer-mark::before,
           .footer-mark::after { content: ""; position: absolute; border-radius: 50%; }
-          .footer-mark::before { inset: 14px; border: 2px solid var(--text); }
+          .footer-mark::before { inset: 8px; border: 2px solid var(--text); }
           .footer-mark::after { width: 10px; height: 10px; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--text); }
           .footer-lines {
             width: 100%;
