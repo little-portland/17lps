@@ -137,9 +137,14 @@ const DinningPage = () => {
 
           @keyframes crawlFloat {
             0%, 100% {
-              transform: perspective(1100px) rotateX(52deg) scaleX(0.96) scaleY(1.08) translateY(0);
+              transform: skewX(-10deg) translateY(0);
               filter: brightness(1);
             }
+            50% {
+              transform: skewX(-10deg) translateY(-2px);
+              filter: brightness(1.05);
+            }
+          }
             50% {
               transform: perspective(1100px) rotateX(52deg) scaleX(0.96) scaleY(1.08) translateY(-2px);
               filter: brightness(1.04);
@@ -363,7 +368,9 @@ const DinningPage = () => {
             width: auto;
             max-width: 100%;
             margin: 0 auto;
-            color: var(--text);
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(242, 242, 239, 0.96);
+            text-stroke: 2px rgba(242, 242, 239, 0.96);
             font-family: var(--italic-display);
             font-style: italic;
             font-weight: 900;
@@ -372,10 +379,11 @@ const DinningPage = () => {
             line-height: 0.92;
             font-size: clamp(40px, 4vw, 72px);
             text-shadow:
-              0 1px 0 rgba(255,255,255,0.16),
-              0 0 14px rgba(255,255,255,0.05);
-            transform: perspective(1100px) rotateX(52deg) scaleX(0.96) scaleY(1.08);
-            transform-origin: center top;
+              2px 2px 0 rgba(255,255,255,0.12),
+              5px 5px 0 rgba(255,255,255,0.08),
+              8px 8px 0 rgba(255,255,255,0.04);
+            transform: skewX(-10deg);
+            transform-origin: center center;
             display: inline-block;
             position: relative;
             white-space: nowrap;
