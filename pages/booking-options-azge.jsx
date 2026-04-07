@@ -143,9 +143,9 @@ const BookingOptions = () => {
 
         <style jsx>{`
               .saturday {
-                  --bg-color: #f9ff00;
-                  --accent-color: #fe35d3;
-                  --text-color: #000000;
+                  --bg-color: #f9ff00!important;
+                  --accent-color: #fe35d3!important;
+                  --text-color: #000000!important;
               }
           `}</style>
       
