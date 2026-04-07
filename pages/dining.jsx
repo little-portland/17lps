@@ -796,9 +796,18 @@ const DinningPage = () => {
 
                   <div className="content-wrap concept-copy-wrap">
                     <div style={{ padding: '18px' }}>
-                      <div className="concept-kicker">Dining concept</div>
-                      <h2 className="concept-title">The Tent</h2>
-                      <div className="concept-subtitle">at the End of the Universe</div>
+                    <Image
+                      src="/images/tent-page-banner.png"
+                      alt="The Tent"
+                      width={1600}
+                      height={805}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        display: "block",
+                        objectFit: "contain",
+                      }}
+                    />
 
                       <p className="concept-copy">
                         In a floating tent, lost in space, futurist menus set the stage for a sensorial
