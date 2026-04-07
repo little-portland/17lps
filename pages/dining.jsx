@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
 
 const DinningPage = () => {
   return (
@@ -822,18 +823,15 @@ const DinningPage = () => {
                 </article>
 
                 <article className="concept-block">
-                  <div className="image-placeholder">
-                    <div>
-                      <div className="image-placeholder-title">Chef&apos;s Studio Image Placeholder</div>
-                      <span className="image-placeholder-path">Suggested path: /images/chefs-studio.png</span>
-                    </div>
-                  </div>
 
                   <div className="content-wrap concept-copy-wrap">
                     <div style={{ padding: '18px' }}>
-                      <div className="concept-kicker">Dining concept</div>
-                      <h2 className="concept-title">Chef&apos;s Studio</h2>
-                      <div className="concept-subtitle">Where the Heads Dine</div>
+                      <Image
+                        src="/images/chefs-studio-page.png"
+                        alt="Chef's Studio"
+                        className="concept-image"
+                        priority={false}
+                      />
 
                       <p className="concept-copy">
                         Chef&apos;s Studio is an intimate and futuristic space beneath The Tent - the table of
