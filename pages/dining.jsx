@@ -298,7 +298,7 @@ const DinningPage = () => {
           .tagline {
             width: auto;
             max-width: 100%;
-            margin: 0 auto 10px;
+            margin: 0 auto 20px;
             color: var(--text);
             font-family: var(--italic-display);
             font-style: italic;
@@ -826,12 +826,18 @@ const DinningPage = () => {
 
                   <div className="content-wrap concept-copy-wrap">
                     <div style={{ padding: '18px' }}>
-                      <Image
-                        src="/images/chefs-studio-page.png"
-                        alt="Chef's Studio"
-                        className="concept-image"
-                        priority={false}
-                      />
+                    <Image
+                      src="/images/chefs-studio-page.png"
+                      alt="Chef's Studio"
+                      width={1600}
+                      height={805}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        display: "block",
+                        objectFit: "contain",
+                      }}
+                    />
 
                       <p className="concept-copy">
                         Chef&apos;s Studio is an intimate and futuristic space beneath The Tent - the table of
