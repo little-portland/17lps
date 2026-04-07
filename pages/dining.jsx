@@ -783,7 +783,7 @@ const DinningPage = () => {
                       src="/images/floorplan-dining-page.png"
                       alt="Chef's Studio"
                       width={1600}
-                      height={615}
+                      height={909}
                       style={{
                         width: "100%",
                         height: "auto",
