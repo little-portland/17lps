@@ -15,10 +15,10 @@ const DinningPage = () => {
             --display: "Orbitron", "Eurostile", "Bank Gothic", "Arial Black", sans-serif;
             --body: "Space Mono", "IBM Plex Mono", monospace;
             --italic-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-            --future: "Orbitron", "Eurostile", "Bank Gothic", sans-serif;
+            --future: "Space Mono", "IBM Plex Mono", monospace;
           }
 
-          @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Mono:wght@400;700&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
           html {
             background: var(--bg) !important;
@@ -267,23 +267,23 @@ const DinningPage = () => {
             content: "";
             position: absolute;
             left: 8%;
-            top: 4px;
-            width: 8px;
-            height: 8px;
+            top: 1px;
+            width: 16px;
+            height: 16px;
             border: 1px solid rgba(255,255,255,0.92);
             border-radius: 50%;
-            background: transparent;
+            background: rgba(255,255,255,0.92);
           }
 
           .top-lines span {
             position: absolute;
             right: 8%;
-            top: 4px;
-            width: 8px;
-            height: 8px;
+            top: 1px;
+            width: 16px;
+            height: 16px;
             border: 1px solid rgba(255,255,255,0.92);
             border-radius: 50%;
-            background: transparent;
+            background: rgba(255,255,255,0.92);
           }
 
           .header-tagline-wrap {
@@ -361,12 +361,16 @@ const DinningPage = () => {
           .content-stack {
             padding: 0 22px 22px;
             display: grid;
-            gap: 18px;
+            gap: 14px;
             position: relative;
             z-index: 1;
           }
 
           .schedule-wrap,
+          .cta-card {
+            margin-top: -2px;
+          }
+
           .cta-card,
           .venue-card,
           .content-wrap {
@@ -393,7 +397,7 @@ const DinningPage = () => {
           .schedule-header {
             position: relative;
             z-index: 1;
-            padding: 16px 18px 0;
+            padding: 20px 18px 10px;
             text-align: center;
           }
 
@@ -414,7 +418,7 @@ const DinningPage = () => {
             letter-spacing: 0.18em;
             font-size: 22px;
             color: var(--text);
-            margin-bottom: 18px;
+            margin-bottom: 14px;
             padding: 6px 14px 8px;
             display: inline-block;
           }
@@ -432,7 +436,7 @@ const DinningPage = () => {
             display: block;
             width: 100%;
             text-align: center;
-            padding: 18px 20px 18px 76px;
+            padding: 22px 20px 22px 76px;
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
@@ -530,24 +534,18 @@ const DinningPage = () => {
 
           .feature-list { list-style: none; padding: 0; margin: 0 0 18px; display: grid; gap: 8px; }
           .feature-list li { color: var(--text); font-family: var(--body); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.34; position: relative; padding-left: 34px; font-weight: 700; }
-          .feature-list li::before { content: ""; position: absolute; left: 5px; top: 50%; width: 11px; height: 11px; transform: translateY(-50%); border: 2px solid var(--text); border-radius: 50%; box-shadow: 0 0 0 2px rgba(255,255,255,0.04); }
-
-          .link-row { display: flex; flex-wrap: wrap; gap: 14px; }
-          .link-row a {
-            color: var(--text);
-            font-family: var(--future);
-            text-transform: uppercase;
-            font-size: clamp(18px, 1.7vw, 24px);
-            line-height: 1;
-            letter-spacing: 0.05em;
-            position: relative;
-            padding: 14px 18px 14px 46px;
-            font-weight: 800;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
-            transition: background 0.18s ease, box-shadow 0.18s ease;
-            display: inline-block;
+          .feature-list li::before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            width: 11px;
+            height: 11px;
+            transform: translateY(-50%);
+            border: 2px solid var(--text);
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.04);
           }
           .link-row a::before { content: ""; position: absolute; left: 16px; top: 50%; width: 14px; height: 2px; background: var(--text); transform: translateY(-50%); box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18); }
           .link-row a::after { content: ""; position: absolute; left: 28px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 8px solid var(--text); }
