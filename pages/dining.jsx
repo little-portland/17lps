@@ -793,8 +793,8 @@ const DinningPage = () => {
                     <Image
                       src="/images/tent-page-banner.png"
                       alt="The Tent"
-                      width={1600}
-                      height={805}
+                      width={1072}
+                      height={437}
                       style={{
                         width: "100%",
                         height: "auto",
