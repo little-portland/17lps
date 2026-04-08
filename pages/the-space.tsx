@@ -158,30 +158,30 @@ export default function VenuePage() {
                 {AREAS.map((area) => {
                   const isActive = area.id === active.id;
                   return (
-                    <Link
-                      key={area.id}
-                      href={area.href}
-                      onMouseEnter={() => setActiveArea(area.id)}
-                      className={[
-                        'group relative overflow-hidden rounded-[1.5rem] border p-4 transition duration-300',
-                        isActive
-                          ? 'border-cyan-300/30 bg-white/10'
-                          : 'border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.08]',
-                      ].join(' ')}
-                    >
-                      <div
+                    <Link key={area.id} href={area.href} passHref>
+                      <a
+                        onMouseEnter={() => setActiveArea(area.id)}
                         className={[
-                          'absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-90',
-                          area.accent,
+                          'group relative block overflow-hidden rounded-[1.5rem] border p-4 transition duration-300',
+                          isActive
+                            ? 'border-cyan-300/30 bg-white/10'
+                            : 'border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.08]',
                         ].join(' ')}
-                      />
-                      <div className="text-[10px] uppercase tracking-[0.26em] text-slate-400">Access node</div>
-                      <div className="mt-2 text-lg font-medium text-white">{area.title}</div>
-                      <p className="mt-2 text-sm leading-6 text-slate-300">{area.subtitle}</p>
-                      <div className="mt-4 inline-flex items-center gap-2 text-sm text-cyan-200 transition group-hover:translate-x-1">
-                        Enter zone
-                        <span aria-hidden>→</span>
-                      </div>
+                      >
+                        <div
+                          className={[
+                            'absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-90',
+                            area.accent,
+                          ].join(' ')}
+                        />
+                        <div className="text-[10px] uppercase tracking-[0.26em] text-slate-400">Access node</div>
+                        <div className="mt-2 text-lg font-medium text-white">{area.title}</div>
+                        <p className="mt-2 text-sm leading-6 text-slate-300">{area.subtitle}</p>
+                        <div className="mt-4 inline-flex items-center gap-2 text-sm text-cyan-200 transition group-hover:translate-x-1">
+                          Enter zone
+                          <span aria-hidden>→</span>
+                        </div>
+                      </a>
                     </Link>
                   );
                 })}
@@ -221,12 +221,13 @@ export default function VenuePage() {
                             <div className="truncate text-sm font-medium text-white">{area.title}</div>
                             <div className="truncate text-xs text-slate-400">Open destination page</div>
                           </div>
-                          <Link
-                            href={area.href}
-                            className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-cyan-200 hover:bg-white/5"
-                            onClick={(event) => event.stopPropagation()}
-                          >
-                            Open
+                          <Link href={area.href} passHref>
+                            <a
+                              className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-cyan-200 hover:bg-white/5"
+                              onClick={(event) => event.stopPropagation()}
+                            >
+                              Open
+                            </a>
                           </Link>
                         </button>
                       );
@@ -297,34 +298,35 @@ function HotspotBubble({
   onHover: () => void;
 }) {
   return (
-    <Link
-      href={area.href}
-      onMouseEnter={onHover}
-      onFocus={onHover}
-      className="group relative block -translate-x-1/2"
-      aria-label={`Open ${area.title}`}
-    >
-      <div className="absolute left-1/2 top-full h-10 w-px -translate-x-1/2 bg-gradient-to-b from-cyan-300/70 to-transparent" />
-      <div className="absolute left-1/2 top-[calc(100%+2.25rem)] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-300/80 shadow-[0_0_18px_rgba(103,232,249,0.8)]" />
-
-      <div
-        className={[
-          'relative rounded-full border px-3 py-2 backdrop-blur-xl transition duration-300 sm:px-4',
-          isActive
-            ? `border-white/20 bg-white/12 ${area.glow} scale-100`
-            : 'border-white/10 bg-black/25 scale-95 hover:scale-100 hover:border-white/20 hover:bg-white/10',
-        ].join(' ')}
+    <Link href={area.href} passHref>
+      <a
+        onMouseEnter={onHover}
+        onFocus={onHover}
+        className="group relative block -translate-x-1/2"
+        aria-label={`Open ${area.title}`}
       >
-        <div className="flex items-center gap-2">
-          <span className={[
-            'h-2.5 w-2.5 rounded-full bg-gradient-to-r',
-            area.accent,
-          ].join(' ')} />
-          <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.22em] text-white sm:text-xs">
-            {area.title}
-          </span>
+        <div className="absolute left-1/2 top-full h-10 w-px -translate-x-1/2 bg-gradient-to-b from-cyan-300/70 to-transparent" />
+        <div className="absolute left-1/2 top-[calc(100%+2.25rem)] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-300/80 shadow-[0_0_18px_rgba(103,232,249,0.8)]" />
+
+        <div
+          className={[
+            'relative rounded-full border px-3 py-2 backdrop-blur-xl transition duration-300 sm:px-4',
+            isActive
+              ? `border-white/20 bg-white/12 ${area.glow} scale-100`
+              : 'border-white/10 bg-black/25 scale-95 hover:scale-100 hover:border-white/20 hover:bg-white/10',
+          ].join(' ')}
+        >
+          <div className="flex items-center gap-2">
+            <span className={[
+              'h-2.5 w-2.5 rounded-full bg-gradient-to-r',
+              area.accent,
+            ].join(' ')} />
+            <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.22em] text-white sm:text-xs">
+              {area.title}
+            </span>
+          </div>
         </div>
-      </div>
+      </a>
     </Link>
   );
 }
