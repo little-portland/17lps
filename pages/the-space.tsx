@@ -134,9 +134,9 @@ export default function TheSpacePage() {
           <div className="scanlines" aria-hidden="true" />
 
           <div className="hud-title-wrap" aria-hidden="true">
-            <div className="hud-title-kicker" />
+            <div className="hud-title-kicker hud-title-kicker-left" />
             <h1 className="hud-title">THE SPACE</h1>
-            <div className="hud-title-kicker" />
+            <div className="hud-title-kicker hud-title-kicker-right" />
           </div>
 
           <div className="venue-wrap layer" aria-hidden="true">
@@ -195,9 +195,9 @@ export default function TheSpacePage() {
               const isActive = activeArea === area.id;
               const helperText = isTouchMode
                 ? isActive
-                  ? 'Tap to explore ↗'
+                  ? 'Tap to explore →'
                   : 'Tap to preview'
-                : 'Explore ↗';
+                : 'Explore →';
 
               return (
                 <a
@@ -415,13 +415,25 @@ export default function TheSpacePage() {
           .hud-title-kicker {
             width: 68px;
             height: 1px;
+            box-shadow: 0 0 10px rgba(255, 90, 229, 0.16);
+          }
+
+          .hud-title-kicker-left {
             background: linear-gradient(
               90deg,
-              rgba(255, 60, 226, 0) 0%,
-              rgba(255, 60, 226, 0.8) 40%,
-              rgba(179, 238, 255, 0.8) 100%
+              rgba(255, 90, 229, 0) 0%,
+              rgba(208, 86, 255, 0.82) 55%,
+              rgba(255, 245, 255, 0.86) 100%
             );
-            box-shadow: 0 0 10px rgba(255, 60, 226, 0.18);
+          }
+
+          .hud-title-kicker-right {
+            background: linear-gradient(
+              90deg,
+              rgba(255, 245, 255, 0.86) 0%,
+              rgba(208, 86, 255, 0.82) 45%,
+              rgba(255, 90, 229, 0) 100%
+            );
           }
 
           .venue-wrap {
@@ -773,7 +785,7 @@ export default function TheSpacePage() {
             }
 
             .hud-title-wrap {
-              top: 10%;
+              top: calc(10% + 20px);
               gap: 10px;
             }
 
@@ -787,7 +799,7 @@ export default function TheSpacePage() {
             }
 
             .venue-image {
-              top: 20%;
+              top: calc(20% - 20px);
               left: 9.4%;
               width: 80.5%;
             }
