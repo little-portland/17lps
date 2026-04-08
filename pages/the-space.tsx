@@ -391,7 +391,7 @@ export default function TheSpacePage() {
               transform: translateY(0px);
             }
             50% {
-              transform: translateY(-18px);
+              transform: translateY(-8px);
             }
           }
 
