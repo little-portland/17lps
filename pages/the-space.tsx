@@ -17,44 +17,46 @@ type AreaConfig = {
   title: string;
   href: string;
   desktop: HotspotLayout;
-  mobile?: HotspotLayout;
+  mobile: HotspotLayout;
 };
 
 const ASSETS = {
   bg: '/images/the-space/the-space-page-bg.jpg',
   frame: '/images/the-space/the-space-page-hud-frame.png',
+  frameMobile: '/images/the-space/the-space-page-hud-frame-mobile.png',
   venue: '/images/the-space/the-space-page-venue.png',
 };
 
+// Update hrefs if your real routes differ.
 const AREAS: AreaConfig[] = [
   {
     id: 'tent',
     title: 'THE TENT',
-    href: '/tent',
+    href: '/thetent',
     desktop: {
       button: { x: '38.2%', y: '18.4%' },
       lineStart: { x: '46.0%', y: '18.6%' },
       lineEnd: { x: '52.6%', y: '31.8%' },
     },
     mobile: {
-      button: { x: '36.5%', y: '19.0%' },
-      lineStart: { x: '44.8%', y: '19.2%' },
-      lineEnd: { x: '52.2%', y: '32.4%' },
+      button: { x: '50.0%', y: '14.5%' },
+      lineStart: { x: '50.0%', y: '18.2%' },
+      lineEnd: { x: '52.0%', y: '32.5%' },
     },
   },
   {
     id: 'chefs-studio',
     title: "CHEF'S STUDIO",
-    href: '/chefs-studio',
+    href: '/chefstudio',
     desktop: {
       button: { x: '30.6%', y: '80.4%' },
       lineStart: { x: '39.8%', y: '80.0%' },
       lineEnd: { x: '35.7%', y: '72.0%' },
     },
     mobile: {
-      button: { x: '29.8%', y: '82.6%' },
-      lineStart: { x: '39.8%', y: '82.1%' },
-      lineEnd: { x: '35.9%', y: '73.7%' },
+      button: { x: '27.5%', y: '76.0%' },
+      lineStart: { x: '36.8%', y: '74.6%' },
+      lineEnd: { x: '38.6%', y: '66.2%' },
     },
   },
   {
@@ -67,9 +69,9 @@ const AREAS: AreaConfig[] = [
       lineEnd: { x: '61.6%', y: '67.8%' },
     },
     mobile: {
-      button: { x: '75.8%', y: '78.0%' },
-      lineStart: { x: '67.5%', y: '77.5%' },
-      lineEnd: { x: '61.8%', y: '69.2%' },
+      button: { x: '72.5%', y: '76.0%' },
+      lineStart: { x: '63.4%', y: '74.8%' },
+      lineEnd: { x: '61.2%', y: '66.0%' },
     },
   },
 ];
@@ -107,13 +109,15 @@ export default function TheSpacePage() {
         <div className="page-glow page-glow-c" aria-hidden="true" />
 
         <section className="scene-shell" aria-label="Interactive venue map">
-          <img
-            src={ASSETS.frame}
-            alt=""
-            aria-hidden="true"
-            className="layer frame-image"
-            draggable={false}
-          />
+          <picture className="layer frame-picture" aria-hidden="true">
+            <source media="(max-width: 900px)" srcSet={ASSETS.frameMobile} />
+            <img
+              src={ASSETS.frame}
+              alt=""
+              className="frame-image"
+              draggable={false}
+            />
+          </picture>
 
           <img
             src={ASSETS.venue}
@@ -130,7 +134,7 @@ export default function TheSpacePage() {
 
           {AREAS.map((area) => (
             <div key={`${area.id}-mobile`} className="hotspot-group hotspot-mobile">
-              <Hotspot area={area} layout={area.mobile || area.desktop} />
+              <Hotspot area={area} layout={area.mobile} />
             </div>
           ))}
         </section>
@@ -252,8 +256,8 @@ export default function TheSpacePage() {
 
           .scene-shell {
             position: relative;
-            width: min(86vw, calc((100vh - 48px) * 1.5), 1240px);
-            aspect-ratio: 1500 / 1000;
+            width: min(86vw, calc((100vh - 48px) * 1.5004), 1240px);
+            aspect-ratio: 2048 / 1365;
             overflow: visible;
           }
 
@@ -265,9 +269,16 @@ export default function TheSpacePage() {
             user-select: none;
           }
 
-          .frame-image {
+          .frame-picture {
             z-index: 3;
+            pointer-events: none;
+          }
+
+          .frame-image {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
+            display: block;
             pointer-events: none;
           }
 
@@ -342,13 +353,14 @@ export default function TheSpacePage() {
             }
 
             .scene-shell {
-              width: min(96vw, calc((100vh - 20px) * 1.5));
+              width: min(92vw, calc(100vh - 24px));
+              aspect-ratio: 1340 / 2048;
             }
 
             .venue-image {
-              top: 22.8%;
-              left: 9.6%;
-              width: 80.5%;
+              top: 31.0%;
+              left: 11.2%;
+              width: 77.6%;
             }
 
             .hotspot-desktop {
@@ -574,13 +586,13 @@ function Hotspot({
 
         @media (max-width: 900px) {
           .hotspot-button {
-            min-width: 128px;
-            padding: 8px 12px;
+            min-width: 142px;
+            padding: 9px 12px;
             border-width: 1.3px;
           }
 
           .button-label {
-            font-size: clamp(10px, 2.2vw, 13px);
+            font-size: clamp(10px, 2vw, 13px);
             letter-spacing: 0.07em;
           }
 
