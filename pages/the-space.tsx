@@ -267,7 +267,7 @@ function AreaHotspot({
     >
       <div className="hidden lg:block" style={area.position.desktop} />
       <div className="lg:hidden" />
-      <HotspotBubble area={area} isActive={isActive} onHover={onHover} mobile />
+      <HotspotBubble area={area} isActive={isActive} onHover={onHover} />
       <style jsx>{`
         div.absolute {
           top: ${area.position.mobile.top ?? 'auto'};
