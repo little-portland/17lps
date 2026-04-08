@@ -205,9 +205,9 @@ export default function TheSpacePage() {
           .page-bg-overlay {
             background:
               radial-gradient(circle at 50% 10%, rgba(181, 74, 255, 0.14), transparent 24%),
-              radial-gradient(circle at 20% 24%, rgba(217, 58, 255, 0.10), transparent 18%),
-              radial-gradient(circle at 80% 72%, rgba(140, 34, 232, 0.10), transparent 20%),
-              linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.30) 100%);
+              radial-gradient(circle at 20% 24%, rgba(217, 58, 255, 0.1), transparent 18%),
+              radial-gradient(circle at 80% 72%, rgba(140, 34, 232, 0.1), transparent 20%),
+              linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.3) 100%);
           }
 
           .twinkle {
@@ -234,7 +234,7 @@ export default function TheSpacePage() {
             background-image:
               radial-gradient(circle at 14% 82%, rgba(255, 242, 255, 0.94) 0 1.2px, transparent 2.4px),
               radial-gradient(circle at 29% 15%, rgba(233, 182, 255, 0.84) 0 1px, transparent 2.2px),
-              radial-gradient(circle at 44% 48%, rgba(243, 198, 255, 0.90) 0 1.1px, transparent 2.3px),
+              radial-gradient(circle at 44% 48%, rgba(243, 198, 255, 0.9) 0 1.1px, transparent 2.3px),
               radial-gradient(circle at 58% 18%, rgba(255, 235, 255, 0.94) 0 1.1px, transparent 2.3px),
               radial-gradient(circle at 73% 78%, rgba(230, 172, 255, 0.88) 0 1px, transparent 2.2px),
               radial-gradient(circle at 86% 36%, rgba(223, 162, 255, 0.84) 0 1px, transparent 2.2px);
@@ -360,18 +360,18 @@ export default function TheSpacePage() {
 
           .venue-glitch-a {
             filter:
-              drop-shadow(0 0 10px rgba(255, 0, 190, 0.3))
-              hue-rotate(-12deg)
-              saturate(1.2);
-            animation: venueGlitchA 13s steps(1, end) infinite;
+              drop-shadow(0 0 12px rgba(255, 0, 190, 0.38))
+              hue-rotate(-18deg)
+              saturate(1.35);
+            animation: venueGlitchA 9s steps(1, end) infinite;
           }
 
           .venue-glitch-b {
             filter:
-              drop-shadow(0 0 10px rgba(120, 220, 255, 0.2))
-              hue-rotate(20deg)
-              saturate(1.1);
-            animation: venueGlitchB 13s steps(1, end) infinite;
+              drop-shadow(0 0 12px rgba(120, 220, 255, 0.28))
+              hue-rotate(24deg)
+              saturate(1.2);
+            animation: venueGlitchB 9s steps(1, end) infinite;
           }
 
           .hotspot-group {
@@ -397,28 +397,44 @@ export default function TheSpacePage() {
 
           @keyframes venueGlitchA {
             0%,
-            84%,
+            72%,
             100% {
               opacity: 0;
               transform: translate3d(0, 0, 0);
               clip-path: inset(0 0 0 0);
             }
-            85% {
-              opacity: 0.18;
-              transform: translate3d(-5px, 0, 0);
-              clip-path: inset(6% 0 74% 0);
+
+            73% {
+              opacity: 0.24;
+              transform: translate3d(-10px, -3px, 0);
+              clip-path: inset(0% 0 82% 0);
             }
-            86% {
+
+            74% {
+              opacity: 0.3;
+              transform: translate3d(12px, 4px, 0);
+              clip-path: inset(16% 0 58% 0);
+            }
+
+            75% {
               opacity: 0.22;
-              transform: translate3d(6px, -2px, 0);
-              clip-path: inset(38% 0 36% 0);
+              transform: translate3d(-8px, -6px, 0);
+              clip-path: inset(34% 0 34% 0);
             }
-            87% {
-              opacity: 0.14;
-              transform: translate3d(-3px, 1px, 0);
-              clip-path: inset(70% 0 10% 0);
+
+            76% {
+              opacity: 0.28;
+              transform: translate3d(9px, 7px, 0);
+              clip-path: inset(52% 0 16% 0);
             }
-            88% {
+
+            77% {
+              opacity: 0.18;
+              transform: translate3d(-6px, -4px, 0);
+              clip-path: inset(74% 0 3% 0);
+            }
+
+            78% {
               opacity: 0;
               transform: translate3d(0, 0, 0);
               clip-path: inset(0 0 0 0);
@@ -427,28 +443,44 @@ export default function TheSpacePage() {
 
           @keyframes venueGlitchB {
             0%,
-            84%,
+            72%,
             100% {
               opacity: 0;
               transform: translate3d(0, 0, 0);
               clip-path: inset(0 0 0 0);
             }
-            85.3% {
-              opacity: 0.12;
-              transform: translate3d(4px, 0, 0);
-              clip-path: inset(18% 0 58% 0);
-            }
-            86.2% {
+
+            73.2% {
               opacity: 0.16;
-              transform: translate3d(-6px, 2px, 0);
-              clip-path: inset(52% 0 20% 0);
+              transform: translate3d(8px, 5px, 0);
+              clip-path: inset(8% 0 72% 0);
             }
-            87.1% {
-              opacity: 0.1;
-              transform: translate3d(2px, -1px, 0);
-              clip-path: inset(78% 0 4% 0);
+
+            74.1% {
+              opacity: 0.22;
+              transform: translate3d(-12px, -3px, 0);
+              clip-path: inset(24% 0 46% 0);
             }
-            88% {
+
+            75.2% {
+              opacity: 0.18;
+              transform: translate3d(7px, -8px, 0);
+              clip-path: inset(44% 0 24% 0);
+            }
+
+            76.1% {
+              opacity: 0.24;
+              transform: translate3d(-9px, 6px, 0);
+              clip-path: inset(63% 0 9% 0);
+            }
+
+            77.2% {
+              opacity: 0.12;
+              transform: translate3d(4px, -2px, 0);
+              clip-path: inset(82% 0 0% 0);
+            }
+
+            78% {
               opacity: 0;
               transform: translate3d(0, 0, 0);
               clip-path: inset(0 0 0 0);
@@ -456,32 +488,62 @@ export default function TheSpacePage() {
           }
 
           @keyframes twinkleA {
-            0%, 100% { opacity: 0.18; }
-            25% { opacity: 0.34; }
-            50% { opacity: 0.54; }
-            75% { opacity: 0.28; }
+            0%,
+            100% {
+              opacity: 0.18;
+            }
+            25% {
+              opacity: 0.34;
+            }
+            50% {
+              opacity: 0.54;
+            }
+            75% {
+              opacity: 0.28;
+            }
           }
 
           @keyframes twinkleB {
-            0%, 100% { opacity: 0.12; }
-            20% { opacity: 0.30; }
-            45% { opacity: 0.20; }
-            70% { opacity: 0.46; }
+            0%,
+            100% {
+              opacity: 0.12;
+            }
+            20% {
+              opacity: 0.3;
+            }
+            45% {
+              opacity: 0.2;
+            }
+            70% {
+              opacity: 0.46;
+            }
           }
 
           @keyframes driftA {
-            from { transform: translate3d(0, 0, 0); }
-            to { transform: translate3d(20px, 6px, 0); }
+            from {
+              transform: translate3d(0, 0, 0);
+            }
+            to {
+              transform: translate3d(20px, 6px, 0);
+            }
           }
 
           @keyframes driftB {
-            from { transform: translate3d(0, 0, 0); }
-            to { transform: translate3d(-18px, 12px, 0); }
+            from {
+              transform: translate3d(0, 0, 0);
+            }
+            to {
+              transform: translate3d(-18px, 12px, 0);
+            }
           }
 
           @keyframes driftC {
-            from { transform: translate3d(-50%, 0, 0); }
-            to { transform: translate3d(calc(-50% + 18px), -10px, 0); }
+            from {
+              transform: translate3d(-50%, 0, 0);
+            }
+            to {
+              transform: translate3d(calc(-50% + 18px), -10px, 0);
+            }
           }
 
           @media (max-width: 900px) {
@@ -604,7 +666,7 @@ function Hotspot({
           padding: 12px 20px;
           border-radius: 999px;
           border: 1.6px solid rgba(255, 30, 210, 0.96);
-          background: rgba(8, 0, 16, 0.10);
+          background: rgba(8, 0, 16, 0.1);
           box-shadow:
             0 0 0 1px rgba(255, 116, 231, 0.14) inset,
             0 0 14px rgba(255, 0, 180, 0.14);
@@ -689,7 +751,7 @@ function Hotspot({
           height: 18px;
           border-radius: 999px;
           border: 2px solid rgba(255, 40, 214, 0.88);
-          box-shadow: 0 0 18px rgba(255, 40, 214, 0.20);
+          box-shadow: 0 0 18px rgba(255, 40, 214, 0.2);
           animation: pulseRing 1.8s ease-out infinite;
         }
 
