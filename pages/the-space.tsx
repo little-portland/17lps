@@ -27,7 +27,7 @@ const ASSETS = {
   venue: '/images/the-space/the-space-page-venue.png',
 };
 
-// Update hrefs if your routes differ.
+// Update these if your routes differ.
 const AREAS: AreaConfig[] = [
   {
     id: 'tent',
@@ -122,14 +122,27 @@ export default function TheSpacePage() {
           </picture>
 
           <div className="scanlines" aria-hidden="true" />
-          <div className="screen-sweep" aria-hidden="true" />
 
-          <img
-            src={ASSETS.venue}
-            alt="Venue layout showing The Tent, Chef's Studio and The Studio"
-            className="layer venue-image"
-            draggable={false}
-          />
+          <div className="venue-wrap layer" aria-hidden="true">
+            <img
+              src={ASSETS.venue}
+              alt="Venue layout showing The Tent, Chef's Studio and The Studio"
+              className="venue-image venue-base"
+              draggable={false}
+            />
+            <img
+              src={ASSETS.venue}
+              alt=""
+              className="venue-image venue-glitch venue-glitch-a"
+              draggable={false}
+            />
+            <img
+              src={ASSETS.venue}
+              alt=""
+              className="venue-image venue-glitch venue-glitch-b"
+              draggable={false}
+            />
+          </div>
 
           {AREAS.map((area) => (
             <div key={`${area.id}-desktop`} className="hotspot-group hotspot-desktop">
@@ -313,38 +326,14 @@ export default function TheSpacePage() {
             mix-blend-mode: screen;
           }
 
-          .screen-sweep {
-            position: absolute;
-            inset: 0;
-            z-index: 4;
+          .venue-wrap {
+            z-index: 2;
             pointer-events: none;
-            overflow: hidden;
-            border-radius: inherit;
-          }
-
-          .screen-sweep::before {
-            content: '';
-            position: absolute;
-            top: -12%;
-            bottom: -12%;
-            width: 16%;
-            left: -24%;
-            background: linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0) 0%,
-              rgba(255, 190, 255, 0.03) 30%,
-              rgba(255, 255, 255, 0.10) 50%,
-              rgba(167, 245, 255, 0.05) 70%,
-              rgba(255, 255, 255, 0) 100%
-            );
-            filter: blur(10px);
-            transform: skewX(-18deg);
-            opacity: 0;
-            animation: hudSweep 9s ease-in-out infinite;
+            animation: venueFloat 4.2s ease-in-out infinite;
           }
 
           .venue-image {
-            z-index: 2;
+            position: absolute;
             inset: auto;
             top: 24.6%;
             left: 12.4%;
@@ -352,10 +341,37 @@ export default function TheSpacePage() {
             height: auto;
             object-fit: contain;
             pointer-events: none;
+            user-select: none;
+          }
+
+          .venue-base {
+            z-index: 2;
             filter:
               drop-shadow(0 12px 26px rgba(255, 0, 212, 0.12))
               drop-shadow(0 32px 62px rgba(93, 0, 130, 0.18));
-            animation: venueFloat 4.2s ease-in-out infinite;
+          }
+
+          .venue-glitch {
+            z-index: 3;
+            opacity: 0;
+            mix-blend-mode: screen;
+            pointer-events: none;
+          }
+
+          .venue-glitch-a {
+            filter:
+              drop-shadow(0 0 10px rgba(255, 0, 190, 0.3))
+              hue-rotate(-12deg)
+              saturate(1.2);
+            animation: venueGlitchA 13s steps(1, end) infinite;
+          }
+
+          .venue-glitch-b {
+            filter:
+              drop-shadow(0 0 10px rgba(120, 220, 255, 0.2))
+              hue-rotate(20deg)
+              saturate(1.1);
+            animation: venueGlitchB 13s steps(1, end) infinite;
           }
 
           .hotspot-group {
@@ -376,6 +392,66 @@ export default function TheSpacePage() {
             }
             50% {
               transform: translateY(-18px);
+            }
+          }
+
+          @keyframes venueGlitchA {
+            0%,
+            84%,
+            100% {
+              opacity: 0;
+              transform: translate3d(0, 0, 0);
+              clip-path: inset(0 0 0 0);
+            }
+            85% {
+              opacity: 0.18;
+              transform: translate3d(-5px, 0, 0);
+              clip-path: inset(6% 0 74% 0);
+            }
+            86% {
+              opacity: 0.22;
+              transform: translate3d(6px, -2px, 0);
+              clip-path: inset(38% 0 36% 0);
+            }
+            87% {
+              opacity: 0.14;
+              transform: translate3d(-3px, 1px, 0);
+              clip-path: inset(70% 0 10% 0);
+            }
+            88% {
+              opacity: 0;
+              transform: translate3d(0, 0, 0);
+              clip-path: inset(0 0 0 0);
+            }
+          }
+
+          @keyframes venueGlitchB {
+            0%,
+            84%,
+            100% {
+              opacity: 0;
+              transform: translate3d(0, 0, 0);
+              clip-path: inset(0 0 0 0);
+            }
+            85.3% {
+              opacity: 0.12;
+              transform: translate3d(4px, 0, 0);
+              clip-path: inset(18% 0 58% 0);
+            }
+            86.2% {
+              opacity: 0.16;
+              transform: translate3d(-6px, 2px, 0);
+              clip-path: inset(52% 0 20% 0);
+            }
+            87.1% {
+              opacity: 0.1;
+              transform: translate3d(2px, -1px, 0);
+              clip-path: inset(78% 0 4% 0);
+            }
+            88% {
+              opacity: 0;
+              transform: translate3d(0, 0, 0);
+              clip-path: inset(0 0 0 0);
             }
           }
 
@@ -406,27 +482,6 @@ export default function TheSpacePage() {
           @keyframes driftC {
             from { transform: translate3d(-50%, 0, 0); }
             to { transform: translate3d(calc(-50% + 18px), -10px, 0); }
-          }
-
-          @keyframes hudSweep {
-            0% {
-              left: -28%;
-              opacity: 0;
-            }
-            6% {
-              opacity: 0.14;
-            }
-            14% {
-              opacity: 0.22;
-            }
-            22% {
-              left: 112%;
-              opacity: 0;
-            }
-            100% {
-              left: 112%;
-              opacity: 0;
-            }
           }
 
           @media (max-width: 900px) {
@@ -559,7 +614,6 @@ function Hotspot({
           pointer-events: auto;
           z-index: 20;
           transition:
-            transform 0.2s ease,
             box-shadow 0.2s ease,
             border-color 0.2s ease,
             background 0.2s ease;
@@ -588,7 +642,7 @@ function Hotspot({
 
         .hotspot-button:hover,
         .hotspot-button:focus-visible {
-          transform: translate(-50%, -50%) translateY(-2px);
+          transform: translate(-50%, -50%);
           border-color: rgba(255, 142, 243, 1);
           background: rgba(14, 0, 24, 0.16);
           box-shadow:
@@ -609,14 +663,24 @@ function Hotspot({
           height: 14px;
           border-radius: 999px;
           background: #ff28d6;
-          box-shadow: 0 0 16px rgba(255, 40, 214, 0.9);
-          animation: dotBlink 1.35s ease-in-out infinite;
+          box-shadow:
+            0 0 0 3px rgba(255, 40, 214, 0.16),
+            0 0 14px rgba(255, 40, 214, 0.55);
+          animation: dotGlow 1.35s ease-in-out infinite;
+        }
+
+        .hotspot-dot::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          background: #ff28d6;
         }
 
         .hotspot-dot-end {
           box-shadow:
-            0 0 0 4px rgba(255, 40, 214, 0.12),
-            0 0 18px rgba(255, 40, 214, 0.98);
+            0 0 0 4px rgba(255, 40, 214, 0.18),
+            0 0 18px rgba(255, 40, 214, 0.75);
           animation-delay: 0.25s;
         }
 
@@ -639,15 +703,19 @@ function Hotspot({
           }
         }
 
-        @keyframes dotBlink {
+        @keyframes dotGlow {
           0%,
           100% {
-            opacity: 0.42;
-            transform: translate(-50%, -50%) scale(0.92);
+            transform: translate(-50%, -50%) scale(0.94);
+            box-shadow:
+              0 0 0 3px rgba(255, 40, 214, 0.12),
+              0 0 12px rgba(255, 40, 214, 0.45);
           }
           50% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.12);
+            transform: translate(-50%, -50%) scale(1.08);
+            box-shadow:
+              0 0 0 5px rgba(255, 40, 214, 0.18),
+              0 0 20px rgba(255, 40, 214, 0.78);
           }
         }
 
