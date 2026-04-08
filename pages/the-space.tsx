@@ -27,7 +27,7 @@ const ASSETS = {
   venue: '/images/the-space/the-space-page-venue.png',
 };
 
-// Update these if your routes differ.
+// Update hrefs if your routes differ.
 const AREAS: AreaConfig[] = [
   {
     id: 'tent',
@@ -122,6 +122,7 @@ export default function TheSpacePage() {
           </picture>
 
           <div className="scanlines" aria-hidden="true" />
+          <div className="screen-sweep" aria-hidden="true" />
 
           <img
             src={ASSETS.venue}
@@ -312,12 +313,42 @@ export default function TheSpacePage() {
             mix-blend-mode: screen;
           }
 
+          .screen-sweep {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: inherit;
+          }
+
+          .screen-sweep::before {
+            content: '';
+            position: absolute;
+            top: -12%;
+            bottom: -12%;
+            width: 16%;
+            left: -24%;
+            background: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0) 0%,
+              rgba(255, 190, 255, 0.03) 30%,
+              rgba(255, 255, 255, 0.10) 50%,
+              rgba(167, 245, 255, 0.05) 70%,
+              rgba(255, 255, 255, 0) 100%
+            );
+            filter: blur(10px);
+            transform: skewX(-18deg);
+            opacity: 0;
+            animation: hudSweep 9s ease-in-out infinite;
+          }
+
           .venue-image {
             z-index: 2;
             inset: auto;
-            top: 17.6%;
-            left: 9.9%;
-            width: 79.6%;
+            top: 24.6%;
+            left: 12.4%;
+            width: 75.6%;
             height: auto;
             object-fit: contain;
             pointer-events: none;
@@ -377,6 +408,27 @@ export default function TheSpacePage() {
             to { transform: translate3d(calc(-50% + 18px), -10px, 0); }
           }
 
+          @keyframes hudSweep {
+            0% {
+              left: -28%;
+              opacity: 0;
+            }
+            6% {
+              opacity: 0.14;
+            }
+            14% {
+              opacity: 0.22;
+            }
+            22% {
+              left: 112%;
+              opacity: 0;
+            }
+            100% {
+              left: 112%;
+              opacity: 0;
+            }
+          }
+
           @media (max-width: 900px) {
             .page {
               padding: 10px;
@@ -388,9 +440,9 @@ export default function TheSpacePage() {
             }
 
             .venue-image {
-              top: 24.6%;
-              left: 4.8%;
-              width: 90.5%;
+              top: 40.6%;
+              left: 9.4%;
+              width: 80.5%;
             }
 
             .hotspot-desktop {
