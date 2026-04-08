@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Venue = {
   id: string;
@@ -31,7 +31,7 @@ const VENUES: Venue[] = [
     image: `${IMAGE_BASE}/the-tent-placeholder.jpg`,
     alt: 'The Tent private hire image.',
     objectPosition: '50% 50%',
-    infoLines: ['36 Seated', '50 Standing', 'Located on the Ground Floor'],
+    infoLines: ['36 Seated / 50 Standing', 'Located on the Ground Floor'],
   },
   {
     id: 'the-studio',
@@ -55,7 +55,6 @@ const clamp = (value: number, min: number, max: number) => Math.min(Math.max(val
 
 export default function PrivateHirePage() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const titleArcId = useMemo(() => 'private-hire-top-arc', []);
 
   useEffect(() => {
     const updateActiveIndex = () => {
@@ -88,7 +87,7 @@ export default function PrivateHirePage() {
         <title>Private Hire</title>
         <meta
           name="description"
-          content="Poster-inspired private hire page with snap scrolling, curved titles, and a circular venue image reveal."
+          content="Poster-inspired private hire page with snap scrolling, straight titles, and a circular venue image reveal."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -130,17 +129,8 @@ export default function PrivateHirePage() {
           </button>
 
           <section className="posterFrame" aria-live="polite">
-            <div className="posterArc posterArc--top" aria-hidden="true">
-              <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
-                <defs>
-                  <path id={titleArcId} d="M 70 500 A 430 430 0 0 1 930 500" />
-                </defs>
-                <text>
-                  <textPath href={`#${titleArcId}`} startOffset="50%" textAnchor="middle">
-                    PRIVATE HIRE
-                  </textPath>
-                </text>
-              </svg>
+            <div className="posterTitleWrap">
+              <div className="posterTitlePill">PRIVATE HIRE</div>
             </div>
 
             <div className="orbCluster">
@@ -167,26 +157,13 @@ export default function PrivateHirePage() {
               <img src={ORB_OVERLAY} alt="" aria-hidden="true" className="orbOverlay orbOverlay--main" />
             </div>
 
-            <div className="posterArc posterArc--bottom">
+            <div className="posterAreaTitle">
               {VENUES.map((venue, index) => {
                 const isActive = index === activeIndex;
                 return (
-                  <svg
-                    key={venue.id}
-                    viewBox="0 0 1000 1000"
-                    preserveAspectRatio="none"
-                    className={`venueArc ${isActive ? 'is-active' : ''}`}
-                    aria-hidden={!isActive}
-                  >
-                    <defs>
-                      <path id={`venue-arc-${venue.id}`} d="M 78 500 A 422 422 0 0 0 922 500" />
-                    </defs>
-                    <text>
-                      <textPath href={`#venue-arc-${venue.id}`} startOffset="50%" textAnchor="middle">
-                        {venue.title}
-                      </textPath>
-                    </text>
-                  </svg>
+                  <div key={venue.id} className={`posterAreaTitle__item ${isActive ? 'is-active' : ''}`}>
+                    {venue.title}
+                  </div>
                 );
               })}
             </div>
@@ -341,9 +318,9 @@ export default function PrivateHirePage() {
           top: 16px;
           max-width: calc(50vw - 26px);
           padding: 10px 14px 9px;
-          border: 1px solid rgba(52, 129, 89, 0.34);
-          background: rgba(5, 10, 8, 0.46);
-          box-shadow: 0 0 16px rgba(52, 129, 89, 0.08);
+          border: 1px solid rgba(52, 129, 89, 0.42);
+          background: rgba(0, 0, 0, 0.72);
+          box-shadow: 0 0 16px rgba(52, 129, 89, 0.12);
           color: ${ACCENT};
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -374,10 +351,10 @@ export default function PrivateHirePage() {
           gap: 11px;
           padding: 14px 16px;
           border-radius: 999px;
-          border: 1px solid rgba(52, 129, 89, 0.34);
-          background: rgba(5, 10, 8, 0.62);
+          border: 1px solid rgba(52, 129, 89, 0.42);
+          background: rgba(0, 0, 0, 0.74);
           color: ${ACCENT};
-          box-shadow: 0 0 16px rgba(52, 129, 89, 0.1);
+          box-shadow: 0 0 16px rgba(52, 129, 89, 0.14);
           letter-spacing: 0.16em;
           text-transform: uppercase;
           font-size: 0.82rem;
@@ -391,8 +368,8 @@ export default function PrivateHirePage() {
         .posterNav:hover,
         .posterNav:focus-visible {
           transform: translateY(calc(-50% - 2px));
-          border-color: rgba(52, 129, 89, 0.5);
-          background: rgba(6, 12, 9, 0.78);
+          border-color: rgba(52, 129, 89, 0.56);
+          background: rgba(0, 0, 0, 0.84);
         }
 
         .posterNav:disabled {
@@ -403,8 +380,8 @@ export default function PrivateHirePage() {
         .posterNav:disabled:hover,
         .posterNav:disabled:focus-visible {
           transform: translateY(-50%);
-          border-color: rgba(52, 129, 89, 0.34);
-          background: rgba(5, 10, 8, 0.62);
+          border-color: rgba(52, 129, 89, 0.42);
+          background: rgba(0, 0, 0, 0.74);
         }
 
         .posterNav--prev {
@@ -423,7 +400,6 @@ export default function PrivateHirePage() {
         .posterFrame {
           --core-size: min(44vw, 560px);
           --orb-shell-size: calc(var(--core-size) + clamp(120px, 12vw, 170px));
-          --arc-size: calc(var(--core-size) + clamp(116px, 10vw, 140px));
           position: absolute;
           inset: 0;
           z-index: 6;
@@ -431,6 +407,41 @@ export default function PrivateHirePage() {
           place-items: center;
           padding: clamp(88px, 11vh, 118px) 88px clamp(72px, 10vh, 100px);
           pointer-events: none;
+        }
+
+        .posterTitleWrap {
+          position: absolute;
+          left: 50%;
+          top: calc(50% - (var(--core-size) / 2) - 42px);
+          transform: translateX(-50%);
+          z-index: 9;
+          width: min(90vw, 760px);
+          display: flex;
+          justify-content: center;
+        }
+
+        .posterTitlePill {
+          min-height: 58px;
+          padding: 0 28px;
+          border-radius: 999px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(52, 129, 89, 0.42);
+          background: rgba(0, 0, 0, 0.74);
+          color: ${ACCENT};
+          box-shadow:
+            0 0 18px rgba(52, 129, 89, 0.14),
+            inset 0 0 18px rgba(52, 129, 89, 0.08);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
+          font-size: 3.8rem;
+          font-weight: 900;
+          text-shadow:
+            0 0 10px rgba(52, 129, 89, 0.12),
+            0 0 24px rgba(52, 129, 89, 0.08);
+          animation: titlePulse 4.8s ease-in-out infinite;
         }
 
         .orbCluster {
@@ -525,73 +536,55 @@ export default function PrivateHirePage() {
           filter: blur(18px);
           transform: scale(1.08);
           mix-blend-mode: screen;
+          animation: orbPulse 5.4s ease-in-out infinite;
         }
 
         .orbOverlay--main {
           opacity: 1;
           mix-blend-mode: screen;
+          animation: orbPulseSoft 5.4s ease-in-out infinite;
         }
 
-        .posterArc {
+        .posterAreaTitle {
           position: absolute;
           left: 50%;
-          top: 50%;
-          width: var(--arc-size);
-          aspect-ratio: 1 / 1;
-          transform: translate(-50%, -50%);
+          top: calc(50% + (var(--core-size) / 2) + 26px);
+          width: min(820px, calc(100vw - 100px));
+          min-height: 72px;
+          transform: translateX(-50%);
+          z-index: 8;
           pointer-events: none;
         }
 
-        .posterArc svg {
-          width: 100%;
-          height: 100%;
-          overflow: visible;
-        }
-
-        .posterArc--top {
-          z-index: 8;
-        }
-
-        .posterArc--top text {
-          fill: #f2efe6;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 92px;
-          font-weight: 900;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-        }
-
-        .posterArc--bottom {
-          z-index: 8;
-        }
-
-        .venueArc {
+        .posterAreaTitle__item {
           position: absolute;
           inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           opacity: 0;
           transform: translateY(10px) scale(0.98);
           transition: opacity 320ms ease, transform 320ms ease;
+          color: ${ACCENT};
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
+          font-size: 3.6rem;
+          font-weight: 900;
+          text-shadow:
+            0 0 10px rgba(52, 129, 89, 0.22),
+            0 0 26px rgba(52, 129, 89, 0.12);
         }
 
-        .venueArc.is-active {
+        .posterAreaTitle__item.is-active {
           opacity: 1;
           transform: translateY(0) scale(1);
-        }
-
-        .posterArc--bottom text {
-          fill: ${ACCENT};
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 58px;
-          font-weight: 900;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          filter: drop-shadow(0 0 9px rgba(52, 129, 89, 0.42));
         }
 
         .posterInfo {
           position: absolute;
           left: 50%;
-          top: calc(50% + (var(--core-size) / 2) + 42px);
+          top: calc(50% + (var(--core-size) / 2) + 88px);
           width: min(760px, calc(100vw - 120px));
           min-height: 110px;
           transform: translateX(-50%);
@@ -653,21 +646,50 @@ export default function PrivateHirePage() {
           }
         }
 
+        @keyframes orbPulseSoft {
+          0%,
+          100% {
+            transform: scale(1);
+            opacity: 0.96;
+          }
+          50% {
+            transform: scale(1.012);
+            opacity: 1;
+          }
+        }
+
+        @keyframes titlePulse {
+          0%,
+          100% {
+            box-shadow:
+              0 0 18px rgba(52, 129, 89, 0.14),
+              inset 0 0 18px rgba(52, 129, 89, 0.08);
+          }
+          50% {
+            box-shadow:
+              0 0 24px rgba(52, 129, 89, 0.22),
+              inset 0 0 24px rgba(52, 129, 89, 0.12);
+          }
+        }
+
         @media (max-width: 1180px) {
           .posterFrame {
             --core-size: min(54vw, 520px);
             --orb-shell-size: calc(var(--core-size) + 120px);
-            --arc-size: calc(var(--core-size) + 104px);
             padding-left: 72px;
             padding-right: 72px;
           }
 
-          .posterArc--top text {
-            font-size: 82px;
+          .posterTitleWrap {
+            top: calc(50% - (var(--core-size) / 2) - 38px);
           }
 
-          .posterArc--bottom text {
-            font-size: 52px;
+          .posterTitlePill {
+            font-size: 3.2rem;
+          }
+
+          .posterAreaTitle__item {
+            font-size: 3rem;
           }
         }
 
@@ -681,7 +703,7 @@ export default function PrivateHirePage() {
             max-width: 44vw;
             padding: 0;
             border: 0;
-            background: transparent;
+            background: rgba(0, 0, 0, 0.72);
             box-shadow: none;
             font-size: 0.62rem;
             letter-spacing: 0.1em;
@@ -690,20 +712,31 @@ export default function PrivateHirePage() {
           .posterFrame {
             --core-size: min(76vw, 430px);
             --orb-shell-size: calc(var(--core-size) + 96px);
-            --arc-size: calc(var(--core-size) + 82px);
             padding: 84px 24px 118px;
           }
 
-          .posterArc--top text {
-            font-size: 72px;
+          .posterTitleWrap {
+            top: calc(50% - (var(--core-size) / 2) - 30px);
+            width: min(94vw, 700px);
           }
 
-          .posterArc--bottom text {
-            font-size: 46px;
+          .posterTitlePill {
+            min-height: 50px;
+            padding: 0 22px;
+            font-size: 2.7rem;
+          }
+
+          .posterAreaTitle {
+            top: calc(50% + (var(--core-size) / 2) + 22px);
+            width: min(94vw, 700px);
+          }
+
+          .posterAreaTitle__item {
+            font-size: 2.55rem;
           }
 
           .posterInfo {
-            top: calc(50% + (var(--core-size) / 2) + 30px);
+            top: calc(50% + (var(--core-size) / 2) + 72px);
             width: min(92vw, 560px);
           }
 
@@ -740,6 +773,7 @@ export default function PrivateHirePage() {
             max-width: 42vw;
             font-size: 0.54rem;
             letter-spacing: 0.08em;
+            padding: 6px 8px;
           }
 
           .posterLabel--left {
@@ -756,20 +790,34 @@ export default function PrivateHirePage() {
           .posterFrame {
             --core-size: min(82vw, 350px);
             --orb-shell-size: calc(var(--core-size) + 82px);
-            --arc-size: calc(var(--core-size) + 68px);
             padding: 74px 18px 110px;
           }
 
-          .posterArc--top text {
-            font-size: 66px;
+          .posterTitleWrap {
+            top: calc(50% - (var(--core-size) / 2) - 24px);
+            width: calc(100vw - 28px);
           }
 
-          .posterArc--bottom text {
-            font-size: 38px;
+          .posterTitlePill {
+            min-height: 44px;
+            padding: 0 16px;
+            font-size: 2rem;
+            letter-spacing: 0.06em;
+          }
+
+          .posterAreaTitle {
+            top: calc(50% + (var(--core-size) / 2) + 18px);
+            width: calc(100vw - 28px);
+            min-height: 54px;
+          }
+
+          .posterAreaTitle__item {
+            font-size: 1.9rem;
+            letter-spacing: 0.05em;
           }
 
           .posterInfo {
-            top: calc(50% + (var(--core-size) / 2) + 22px);
+            top: calc(50% + (var(--core-size) / 2) + 62px);
             width: calc(100vw - 28px);
           }
 
@@ -796,12 +844,15 @@ export default function PrivateHirePage() {
           }
 
           .posterGrid,
-          .orbBloomBack {
+          .orbBloomBack,
+          .orbOverlay--bloom,
+          .orbOverlay--main,
+          .posterTitlePill {
             animation: none;
           }
 
           .orbPhoto,
-          .venueArc,
+          .posterAreaTitle__item,
           .posterInfo__block,
           .posterNav {
             transition: none;
