@@ -385,11 +385,16 @@ export default function PrivateHirePage() {
 
         .retroOuterGlow {
           position: absolute;
-          inset: -18%;
+          inset: -11%;
           border-radius: 999px;
           background:
-            radial-gradient(circle, color-mix(in srgb, var(--accent) 76%, white) 0%, color-mix(in srgb, var(--accent) 64%, transparent) 24%, rgba(70, 244, 209, 0.12) 42%, transparent 74%);
-          filter: blur(28px);
+            radial-gradient(circle,
+              rgba(63, 226, 217, 0.62) 0%,
+              rgba(45, 215, 205, 0.48) 38%,
+              rgba(26, 197, 185, 0.26) 56%,
+              rgba(14, 178, 167, 0.12) 70%,
+              rgba(14, 178, 167, 0) 82%);
+          filter: blur(22px);
           opacity: 1;
           animation: haloBreath 4.6s ease-in-out infinite;
         }
@@ -397,15 +402,19 @@ export default function PrivateHirePage() {
         .retroCircleShell {
           position: absolute;
           inset: 0;
-          padding: clamp(20px, 2.2vw, 30px);
+          padding: clamp(18px, 2vw, 24px);
           border-radius: 999px;
           background:
-            radial-gradient(circle at 50% 46%, color-mix(in srgb, var(--accent) 98%, white) 0%, color-mix(in srgb, var(--accent) 92%, black) 46%, rgba(6, 28, 27, 0.98) 72%, rgba(3, 7, 8, 0.98) 100%);
+            radial-gradient(circle at 50% 50%,
+              rgba(74, 232, 224, 0.18) 0%,
+              rgba(47, 212, 202, 0.2) 48%,
+              rgba(22, 171, 161, 0.92) 72%,
+              rgba(16, 139, 132, 0.98) 100%);
           box-shadow:
-            0 0 46px color-mix(in srgb, var(--accent) 48%, transparent),
-            0 0 120px color-mix(in srgb, var(--accent) 22%, transparent),
-            inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-            inset 0 0 80px rgba(0, 0, 0, 0.18);
+            0 0 38px rgba(52, 223, 214, 0.34),
+            0 0 88px rgba(35, 208, 197, 0.22),
+            inset 0 0 22px rgba(121, 255, 244, 0.18),
+            inset 0 -10px 30px rgba(0, 0, 0, 0.14);
           animation: ringBreath 5.3s ease-in-out infinite;
         }
 
@@ -416,7 +425,10 @@ export default function PrivateHirePage() {
           border-radius: 999px;
           overflow: hidden;
           background: rgba(8, 18, 18, 0.96);
-          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+          box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+            inset 0 0 38px rgba(88, 255, 240, 0.12),
+            inset 0 10px 46px rgba(109, 255, 244, 0.08);
         }
 
         .retroCircleImage {
@@ -440,9 +452,11 @@ export default function PrivateHirePage() {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 54%),
-            linear-gradient(180deg, rgba(4, 8, 9, 0.05), rgba(4, 8, 9, 0.24));
+            radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.2), transparent 24%),
+            radial-gradient(circle at 50% 50%, rgba(69, 241, 227, 0.08), transparent 58%),
+            linear-gradient(180deg, rgba(108, 255, 243, 0.1), transparent 18%, transparent 66%, rgba(0, 0, 0, 0.2) 100%);
           mix-blend-mode: screen;
+          pointer-events: none;
         }
 
         .retroArc {
@@ -492,12 +506,13 @@ export default function PrivateHirePage() {
         }
 
         .retroArc--bottom text {
-          fill: var(--accent, #46f4d1);
+          fill: #41f1df;
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
           font-size: 60px;
           font-weight: 900;
           letter-spacing: 0.08em;
           text-transform: uppercase;
+          filter: drop-shadow(0 0 10px rgba(65, 241, 223, 0.32));
         }
 
         .retroInfo {
@@ -526,13 +541,16 @@ export default function PrivateHirePage() {
 
         .retroInfo__line {
           margin: 0;
-          color: #f3efe7;
+          color: #f4f0e8;
           text-transform: uppercase;
           letter-spacing: 0.13em;
           line-height: 1.48;
           font-size: clamp(1rem, 1.45vw, 1.22rem);
           font-weight: 700;
           text-wrap: balance;
+          text-shadow:
+            0 0 8px rgba(255, 255, 255, 0.08),
+            0 0 20px rgba(76, 230, 220, 0.12);
         }
 
         .retroInfo__line + .retroInfo__line {
@@ -597,9 +615,14 @@ export default function PrivateHirePage() {
         @keyframes haloBreath {
           0%,
           100% {
-            transform: scale(0.98);
-            opacity: 0.94;
+            transform: scale(0.985);
+            opacity: 0.9;
           }
+          50% {
+            transform: scale(1.02);
+            opacity: 1;
+          }
+        }
           50% {
             transform: scale(1.035);
             opacity: 1;
@@ -611,11 +634,20 @@ export default function PrivateHirePage() {
           100% {
             transform: scale(1);
             box-shadow:
-              0 0 46px color-mix(in srgb, var(--accent) 48%, transparent),
-              0 0 120px color-mix(in srgb, var(--accent) 22%, transparent),
-              inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-              inset 0 0 80px rgba(0, 0, 0, 0.18);
+              0 0 38px rgba(52, 223, 214, 0.34),
+              0 0 88px rgba(35, 208, 197, 0.22),
+              inset 0 0 22px rgba(121, 255, 244, 0.18),
+              inset 0 -10px 30px rgba(0, 0, 0, 0.14);
           }
+          50% {
+            transform: scale(1.008);
+            box-shadow:
+              0 0 48px rgba(52, 223, 214, 0.42),
+              0 0 120px rgba(35, 208, 197, 0.28),
+              inset 0 0 28px rgba(121, 255, 244, 0.24),
+              inset 0 -10px 34px rgba(0, 0, 0, 0.12);
+          }
+        }
           50% {
             transform: scale(1.012);
             box-shadow:
