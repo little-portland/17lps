@@ -135,7 +135,7 @@ export default function PrivateHirePage() {
             <div className="retroArc retroArc--top" aria-hidden="true">
               <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
                 <defs>
-                  <path id={titleArcId} d="M 170 500 A 330 330 0 0 1 830 500" />
+                  <path id={titleArcId} d="M 65 500 A 435 435 0 0 1 935 500" />
                 </defs>
                 <text>
                   <textPath href={`#${titleArcId}`} startOffset="50%" textAnchor="middle">
@@ -178,7 +178,7 @@ export default function PrivateHirePage() {
                     aria-hidden={!isActive}
                   >
                     <defs>
-                      <path id={`venue-arc-${venue.id}`} d="M 200 500 A 300 300 0 0 0 800 500" />
+                      <path id={`venue-arc-${venue.id}`} d="M 80 500 A 420 420 0 0 0 920 500" />
                     </defs>
                     <text>
                       <textPath href={`#venue-arc-${venue.id}`} startOffset="50%" textAnchor="middle">
@@ -366,7 +366,7 @@ export default function PrivateHirePage() {
 
         .retroPoster {
           --circleSize: min(48vw, 620px);
-          --arcSize: calc(var(--circleSize) + clamp(140px, 16vw, 220px));
+          --arcSize: calc(var(--circleSize) + clamp(72px, 8vw, 96px));
           position: absolute;
           inset: 0;
           z-index: 6;
@@ -468,7 +468,7 @@ export default function PrivateHirePage() {
         .retroArc--top text {
           fill: #f3efe7;
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 78px;
+          font-size: 90px;
           font-weight: 900;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -494,7 +494,7 @@ export default function PrivateHirePage() {
         .retroArc--bottom text {
           fill: var(--accent, #46f4d1);
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 56px;
+          font-size: 60px;
           font-weight: 900;
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -503,7 +503,7 @@ export default function PrivateHirePage() {
         .retroInfo {
           position: absolute;
           left: 50%;
-          top: calc(50% + (var(--circleSize) / 2) + clamp(20px, 3vw, 34px));
+          top: calc(50% + (var(--circleSize) / 2) + clamp(10px, 1.6vw, 18px));
           width: min(760px, calc(100vw - 120px));
           min-height: 120px;
           transform: translateX(-50%);
@@ -639,17 +639,17 @@ export default function PrivateHirePage() {
         @media (max-width: 1180px) {
           .retroPoster {
             --circleSize: min(58vw, 560px);
-            --arcSize: calc(var(--circleSize) + 180px);
+            --arcSize: calc(var(--circleSize) + 84px);
             padding-left: 72px;
             padding-right: 72px;
           }
 
           .retroArc--top text {
-            font-size: 68px;
+            font-size: 80px;
           }
 
           .retroArc--bottom text {
-            font-size: 48px;
+            font-size: 54px;
           }
         }
 
@@ -671,20 +671,20 @@ export default function PrivateHirePage() {
 
           .retroPoster {
             --circleSize: min(78vw, 450px);
-            --arcSize: calc(var(--circleSize) + 130px);
+            --arcSize: calc(var(--circleSize) + 72px);
             padding: 84px 26px 120px;
           }
 
           .retroArc--top text {
-            font-size: 52px;
+            font-size: 64px;
           }
 
           .retroArc--bottom text {
-            font-size: 42px;
+            font-size: 46px;
           }
 
           .retroInfo {
-            top: calc(50% + (var(--circleSize) / 2) + 20px);
+            top: calc(50% + (var(--circleSize) / 2) + 14px);
             width: min(92vw, 560px);
           }
 
@@ -738,20 +738,20 @@ export default function PrivateHirePage() {
 
           .retroPoster {
             --circleSize: min(84vw, 360px);
-            --arcSize: calc(var(--circleSize) + 104px);
+            --arcSize: calc(var(--circleSize) + 64px);
             padding: 76px 18px 108px;
           }
 
           .retroArc--top text {
-            font-size: 44px;
+            font-size: 58px;
           }
 
           .retroArc--bottom text {
-            font-size: 34px;
+            font-size: 40px;
           }
 
           .retroInfo {
-            top: calc(50% + (var(--circleSize) / 2) + 12px);
+            top: calc(50% + (var(--circleSize) / 2) + 10px);
             width: calc(100vw - 28px);
           }
 
