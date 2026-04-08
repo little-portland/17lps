@@ -28,7 +28,7 @@ const VENUES: Venue[] = [
   {
     id: 'the-tent',
     title: 'THE TENT',
-    image: `${IMAGE_BASE}/the-tent-placeholder.jpg`,
+    image: `${IMAGE_BASE}/the-tent-placeholder.png`,
     alt: 'The Tent private hire image.',
     objectPosition: '50% 50%',
     infoLines: ['36 Seated / 50 Standing', 'Located on the Ground Floor'],
