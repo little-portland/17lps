@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type Venue = {
   id: string;
@@ -57,31 +57,29 @@ const VENUES: Venue[] = [
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 
 export default function PrivateHirePage() {
-  const slideCount = VENUES.length;
+  const trackRef = useRef<HTMLDivElement | null>(null);
   const [floatIndex, setFloatIndex] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
+  const slideCount = VENUES.length;
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted || typeof window === 'undefined') return;
-
     let frame = 0;
 
-    const update = () => {
-      const scrollRange = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-      const progress = clamp(window.scrollY / scrollRange, 0, 1);
+    const updateProgress = () => {
+      const track = trackRef.current;
+      if (!track) return;
+
+      const rect = track.getBoundingClientRect();
+      const scrollable = Math.max(track.offsetHeight - window.innerHeight, 1);
+      const progress = clamp(-rect.top / scrollable, 0, 1);
       setFloatIndex(progress * (slideCount - 1));
     };
 
     const onScroll = () => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(update);
+      frame = requestAnimationFrame(updateProgress);
     };
 
-    update();
+    updateProgress();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
 
@@ -90,22 +88,24 @@ export default function PrivateHirePage() {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-  }, [isMounted, slideCount]);
+  }, [slideCount]);
 
   const goToSlide = useCallback(
     (index: number) => {
-      if (typeof window === 'undefined') return;
+      const track = trackRef.current;
+      if (!track) return;
+
       const clampedIndex = clamp(index, 0, slideCount - 1);
-      const scrollRange = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-      const target = slideCount === 1 ? 0 : (clampedIndex / (slideCount - 1)) * scrollRange;
-      window.scrollTo({ top: target, behavior: 'smooth' });
+      const trackTop = window.scrollY + track.getBoundingClientRect().top;
+      const scrollable = Math.max(track.offsetHeight - window.innerHeight, 1);
+      const targetTop = trackTop + (clampedIndex / Math.max(slideCount - 1, 1)) * scrollable;
+
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
     },
     [slideCount]
   );
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowDown' || event.key === 'PageDown') {
         event.preventDefault();
@@ -124,38 +124,19 @@ export default function PrivateHirePage() {
 
   const activeIndex = clamp(Math.round(floatIndex), 0, slideCount - 1);
   const activeVenue = VENUES[activeIndex];
-  const spacerHeight = `${slideCount * 100}vh`;
 
-  const skyTransform = useMemo(() => {
-    const y = floatIndex * -1.3;
-    return `translate3d(0, ${y}%, 0) scale(1.06)`;
-  }, [floatIndex]);
+  const getLayerStyle = (index: number, offset = 24, scaleAmount = 0.08, fadeAmount = 1.45) => {
+    const delta = index - floatIndex;
+    const distance = Math.abs(delta);
+    const opacity = Math.max(0, 1 - distance * fadeAmount);
+    const translateY = delta * offset;
+    const scale = 1 - Math.min(distance, 1) * scaleAmount;
 
-  const gridTransform = useMemo(() => {
-    const y = floatIndex * -2.2;
-    const x = Math.sin(floatIndex * 0.9) * 1.2;
-    const scale = 1.02 + floatIndex * 0.012;
-    return `translate3d(${x}%, ${y}%, 0) scale(${scale})`;
-  }, [floatIndex]);
-
-  const getLayerStyle = useCallback(
-    (index: number, options?: { offset?: number; scale?: number; fade?: number }) => {
-      const offset = options?.offset ?? 26;
-      const scaleAmount = options?.scale ?? 0.08;
-      const fadeAmount = options?.fade ?? 1.45;
-      const delta = index - floatIndex;
-      const distance = Math.abs(delta);
-      const opacity = Math.max(0, 1 - distance * fadeAmount);
-      const translateY = delta * offset;
-      const scale = 1 - Math.min(distance, 1) * scaleAmount;
-
-      return {
-        opacity,
-        transform: `translate3d(-50%, ${translateY}px, 0) scale(${scale})`,
-      };
-    },
-    [floatIndex]
-  );
+    return {
+      opacity,
+      transform: `translate3d(-50%, ${translateY}px, 0) scale(${scale})`,
+    };
+  };
 
   return (
     <>
@@ -163,15 +144,15 @@ export default function PrivateHirePage() {
         <title>Private Hire</title>
         <meta
           name="description"
-          content="Poster-inspired private hire page with a fixed immersive stage, curved typography, circular venue image mask, and scroll-driven venue updates."
+          content="Poster-inspired private hire page with a fixed immersive stage, circular venue image mask, and scroll-driven state changes."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main id="top" className="retroPage">
+      <main className="retroPage">
         <div className="retroStage">
-          <div className="retroSky" style={{ backgroundImage: `url(${STAR_BG})`, transform: skyTransform }} />
-          <img src={GRID_BG} alt="" aria-hidden="true" className="retroGrid" style={{ transform: gridTransform }} />
+          <div className="retroSky" style={{ backgroundImage: `url(${STAR_BG})` }} />
+          <img src={GRID_BG} alt="" aria-hidden="true" className="retroGrid" />
           <div className="retroVignette" />
           <div className="retroNoise" />
 
@@ -204,25 +185,21 @@ export default function PrivateHirePage() {
             <span className="retroNav__arrow">↓</span>
           </button>
 
-          <div className="retroCounter" aria-live="polite">
-            {String(activeIndex + 1).padStart(2, '0')} OF {String(slideCount).padStart(2, '0')}
-          </div>
-
-          <div className="retroCenterpiece">
-            <div className="retroTopArc" aria-hidden="true">
-              <svg viewBox="0 0 1200 460" preserveAspectRatio="none">
+          <div className="retroCenterpiece" style={{ ['--accent' as string]: activeVenue.accent }}>
+            <div className="retroArcStage retroArcStage--top" aria-hidden="true">
+              <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
                 <defs>
-                  <path id="retroTopArcPath" d="M 205 355 Q 600 112 995 355" />
+                  <path id="retroTopPerfectArc" d="M 180 500 A 320 320 0 0 1 820 500" />
                 </defs>
                 <text>
-                  <textPath href="#retroTopArcPath" startOffset="50%" textAnchor="middle">
+                  <textPath href="#retroTopPerfectArc" startOffset="50%" textAnchor="middle">
                     PRIVATE HIRE
                   </textPath>
                 </text>
               </svg>
             </div>
 
-            <div className="retroCircleCluster" style={{ ['--accent' as string]: activeVenue.accent }}>
+            <div className="retroCircleCluster">
               <div className="retroOuterGlow" />
               <div className="retroCircleShell">
                 <div className="retroCircleMask">
@@ -233,7 +210,7 @@ export default function PrivateHirePage() {
                       alt={venue.alt}
                       className="retroCircleImage"
                       style={{
-                        ...getLayerStyle(index, { offset: 34, scale: 0.18, fade: 1.25 }),
+                        ...getLayerStyle(index, 34, 0.16, 1.24),
                         objectPosition: venue.objectPosition || '50% 50%',
                       }}
                     />
@@ -243,20 +220,20 @@ export default function PrivateHirePage() {
               </div>
             </div>
 
-            <div className="retroBottomArc" aria-live="polite">
+            <div className="retroArcStage retroArcStage--bottom" aria-live="polite">
               {VENUES.map((venue, index) => (
                 <svg
-                  key={`${venue.id}-title`}
-                  viewBox="0 0 1200 360"
+                  key={venue.id}
+                  viewBox="0 0 1000 1000"
                   preserveAspectRatio="none"
-                  className="retroBottomArc__svg"
-                  style={getLayerStyle(index, { offset: 22, scale: 0.08, fade: 1.42 })}
+                  className="retroVenueArc"
+                  style={getLayerStyle(index, 22, 0.08, 1.42)}
                 >
                   <defs>
-                    <path id={`retroBottomArcPath-${venue.id}`} d="M 165 88 Q 600 290 1035 88" />
+                    <path id={`retroBottomPerfectArc-${venue.id}`} d="M 180 500 A 320 320 0 0 0 820 500" />
                   </defs>
                   <text>
-                    <textPath href={`#retroBottomArcPath-${venue.id}`} startOffset="50%" textAnchor="middle">
+                    <textPath href={`#retroBottomPerfectArc-${venue.id}`} startOffset="50%" textAnchor="middle">
                       {venue.title}
                     </textPath>
                   </text>
@@ -266,11 +243,7 @@ export default function PrivateHirePage() {
 
             <div className="retroInfo" aria-live="polite">
               {VENUES.map((venue, index) => (
-                <div
-                  key={`${venue.id}-info`}
-                  className="retroInfo__block"
-                  style={getLayerStyle(index, { offset: 16, scale: 0.04, fade: 1.5 })}
-                >
+                <div key={venue.id} className="retroInfo__block" style={getLayerStyle(index, 16, 0.03, 1.5)}>
                   {venue.infoLines.map((line) => (
                     <p key={`${venue.id}-${line}`} className="retroInfo__line">
                       {line}
@@ -282,7 +255,7 @@ export default function PrivateHirePage() {
           </div>
         </div>
 
-        <div className="retroScrollSpacer" style={{ height: spacerHeight }} aria-hidden="true" />
+        <div ref={trackRef} className="retroScrollTrack" style={{ height: `${slideCount * 100}vh` }} aria-hidden="true" />
       </main>
 
       <style jsx global>{`
@@ -342,7 +315,7 @@ export default function PrivateHirePage() {
           background: #020406;
         }
 
-        .retroScrollSpacer {
+        .retroScrollTrack {
           position: relative;
           z-index: 0;
         }
@@ -370,13 +343,13 @@ export default function PrivateHirePage() {
           mix-blend-mode: screen;
           opacity: 0.74;
           filter: drop-shadow(0 0 22px rgba(70, 244, 209, 0.14));
-          animation: gridFloat 11s ease-in-out infinite;
+          animation: gridPulse 9s ease-in-out infinite;
         }
 
         .retroVignette {
           background:
             radial-gradient(circle at center, transparent 38%, rgba(2, 4, 6, 0.14) 58%, rgba(2, 4, 6, 0.72) 100%),
-            linear-gradient(180deg, rgba(2, 4, 6, 0.2), rgba(2, 4, 6, 0.48));
+            linear-gradient(180deg, rgba(2, 4, 6, 0.18), rgba(2, 4, 6, 0.46));
         }
 
         .retroNoise {
@@ -388,13 +361,12 @@ export default function PrivateHirePage() {
             radial-gradient(circle at 28% 80%, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.4px);
           background-size: 320px 320px, 380px 380px, 340px 340px, 400px 400px;
           mix-blend-mode: screen;
-          pointer-events: none;
         }
 
         .retroHud {
           position: absolute;
           inset: 0;
-          z-index: 7;
+          z-index: 10;
           pointer-events: none;
         }
 
@@ -425,34 +397,10 @@ export default function PrivateHirePage() {
         .retroCenterpiece {
           position: absolute;
           inset: 0;
-          z-index: 5;
+          z-index: 6;
           display: grid;
           place-items: center;
-          padding: 5.5vh 0 6vh;
           pointer-events: none;
-        }
-
-        .retroTopArc {
-          position: absolute;
-          top: 2.6vh;
-          left: 50%;
-          width: min(1200px, 90vw);
-          transform: translateX(-50%);
-          filter: drop-shadow(0 0 18px rgba(70, 244, 209, 0.1));
-        }
-
-        .retroTopArc svg {
-          width: 100%;
-          height: auto;
-        }
-
-        .retroTopArc text {
-          fill: #f3efe7;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 96px;
-          font-weight: 900;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
         }
 
         .retroCircleCluster {
@@ -461,8 +409,54 @@ export default function PrivateHirePage() {
           aspect-ratio: 1 / 1;
           display: grid;
           place-items: center;
-          z-index: 6;
+          z-index: 7;
+        }
+
+        .retroArcStage {
+          position: absolute;
+          left: 50%;
+          width: min(74vw, 980px);
+          aspect-ratio: 1 / 1;
+          transform: translateX(-50%);
           pointer-events: none;
+        }
+
+        .retroArcStage svg {
+          width: 100%;
+          height: 100%;
+        }
+
+        .retroArcStage--top {
+          top: max(3vh, calc(50% - min(22vw, 300px) - min(24vw, 270px)));
+        }
+
+        .retroArcStage--top text {
+          fill: #f3efe7;
+          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
+          font-size: 92px;
+          font-weight: 900;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+
+        .retroArcStage--bottom {
+          top: calc(50% - min(22vw, 300px) + min(6vw, 70px));
+        }
+
+        .retroVenueArc {
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform-origin: center;
+        }
+
+        .retroArcStage--bottom text {
+          fill: var(--accent, #46f4d1);
+          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
+          font-size: 82px;
+          font-weight: 900;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
         }
 
         .retroOuterGlow {
@@ -470,7 +464,7 @@ export default function PrivateHirePage() {
           inset: -18%;
           border-radius: 999px;
           background:
-            radial-gradient(circle, color-mix(in srgb, var(--accent) 72%, white) 0%, color-mix(in srgb, var(--accent) 65%, transparent) 24%, rgba(70, 244, 209, 0.1) 42%, transparent 74%);
+            radial-gradient(circle, color-mix(in srgb, var(--accent) 76%, white) 0%, color-mix(in srgb, var(--accent) 64%, transparent) 24%, rgba(70, 244, 209, 0.12) 42%, transparent 74%);
           filter: blur(28px);
           opacity: 1;
           animation: haloBreath 4.6s ease-in-out infinite;
@@ -522,38 +516,10 @@ export default function PrivateHirePage() {
           mix-blend-mode: screen;
         }
 
-        .retroBottomArc {
-          position: absolute;
-          left: 50%;
-          top: calc(50% + min(27vw, 320px));
-          width: min(1080px, 92vw);
-          height: clamp(110px, 14vw, 170px);
-          transform: translateX(-50%);
-          pointer-events: none;
-        }
-
-        .retroBottomArc__svg {
-          position: absolute;
-          left: 50%;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          transform-origin: center;
-        }
-
-        .retroBottomArc__svg text {
-          fill: var(--accent, #46f4d1);
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 84px;
-          font-weight: 900;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-        }
-
         .retroInfo {
           position: absolute;
           left: 50%;
-          top: calc(50% + min(31vw, 380px));
+          top: calc(50% + min(24vw, 300px) + min(9vw, 100px));
           width: min(880px, 88vw);
           min-height: 150px;
           transform: translateX(-50%);
@@ -587,7 +553,7 @@ export default function PrivateHirePage() {
         .retroNav {
           position: absolute;
           top: 50%;
-          z-index: 8;
+          z-index: 12;
           display: inline-flex;
           align-items: center;
           gap: 11px;
@@ -608,6 +574,7 @@ export default function PrivateHirePage() {
             transform 180ms ease,
             border-color 180ms ease,
             background 180ms ease;
+          pointer-events: auto;
         }
 
         .retroNav:hover,
@@ -642,20 +609,6 @@ export default function PrivateHirePage() {
           line-height: 1;
         }
 
-        .retroCounter {
-          position: absolute;
-          right: 24px;
-          bottom: 26px;
-          z-index: 8;
-          color: #46f4d1;
-          font-size: 0.94rem;
-          font-weight: 700;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          text-shadow: 0 0 14px rgba(70, 244, 209, 0.18);
-          pointer-events: none;
-        }
-
         @keyframes haloBreath {
           0%,
           100% {
@@ -688,35 +641,31 @@ export default function PrivateHirePage() {
           }
         }
 
-        @keyframes gridFloat {
+        @keyframes gridPulse {
           0%,
           100% {
             opacity: 0.72;
           }
           50% {
-            opacity: 0.84;
+            opacity: 0.82;
           }
         }
 
         @media (max-width: 1180px) {
-          .retroTopArc {
-            width: 94vw;
+          .retroArcStage {
+            width: min(90vw, 980px);
           }
 
-          .retroTopArc text {
-            font-size: 84px;
+          .retroArcStage--top text {
+            font-size: 82px;
+          }
+
+          .retroArcStage--bottom text {
+            font-size: 70px;
           }
 
           .retroCircleCluster {
             width: min(54vw, 560px);
-          }
-
-          .retroBottomArc {
-            width: min(1000px, 94vw);
-          }
-
-          .retroBottomArc__svg text {
-            font-size: 72px;
           }
         }
 
@@ -728,31 +677,32 @@ export default function PrivateHirePage() {
             letter-spacing: 0.11em;
           }
 
-          .retroTopArc {
-            top: 4vh;
+          .retroArcStage {
             width: 100vw;
           }
 
-          .retroTopArc text {
-            font-size: 58px;
-            letter-spacing: 0.06em;
+          .retroArcStage--top {
+            top: max(5vh, calc(50% - min(31vw, 230px) - min(30vw, 220px)));
+          }
+
+          .retroArcStage--top text {
+            font-size: 56px;
+          }
+
+          .retroArcStage--bottom {
+            top: calc(50% - min(31vw, 230px) + min(8vw, 58px));
+          }
+
+          .retroArcStage--bottom text {
+            font-size: 48px;
           }
 
           .retroCircleCluster {
             width: min(74vw, 460px);
           }
 
-          .retroBottomArc {
-            top: calc(50% + min(37vw, 290px));
-            height: 122px;
-          }
-
-          .retroBottomArc__svg text {
-            font-size: 52px;
-          }
-
           .retroInfo {
-            top: calc(50% + min(42vw, 340px));
+            top: calc(50% + min(36vw, 260px) + min(11vw, 86px));
             width: min(92vw, 620px);
             min-height: 120px;
           }
@@ -784,23 +734,15 @@ export default function PrivateHirePage() {
           .retroNav--next {
             right: 12px;
           }
-
-          .retroCounter {
-            right: 50%;
-            bottom: 76px;
-            transform: translateX(50%);
-            font-size: 0.82rem;
-          }
         }
 
         @media (max-width: 560px) {
-          .retroTopArc {
-            top: 5vh;
+          .retroArcStage--top text {
+            font-size: 40px;
           }
 
-          .retroTopArc text {
-            font-size: 42px;
-            letter-spacing: 0.05em;
+          .retroArcStage--bottom text {
+            font-size: 32px;
           }
 
           .retroCircleCluster {
@@ -811,18 +753,8 @@ export default function PrivateHirePage() {
             inset: -20%;
           }
 
-          .retroBottomArc {
-            top: calc(50% + min(39vw, 240px));
-            height: 92px;
-          }
-
-          .retroBottomArc__svg text {
-            font-size: 34px;
-            letter-spacing: 0.05em;
-          }
-
           .retroInfo {
-            top: calc(50% + min(47vw, 285px));
+            top: calc(50% + min(41vw, 220px) + min(16vw, 78px));
             width: calc(100vw - 34px);
           }
 
@@ -838,11 +770,6 @@ export default function PrivateHirePage() {
 
           .retroNav__text {
             display: none;
-          }
-
-          .retroCounter {
-            bottom: 72px;
-            font-size: 0.74rem;
           }
         }
 
