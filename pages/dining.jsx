@@ -439,7 +439,7 @@ const DinningPage = () => {
           .schedule-item { position: relative; z-index: 1; padding: 18px 16px 16px; border-top: 2px solid var(--line); border-right: 2px solid var(--line); }
           .schedule-item:last-child { border-right: none; }
 
-          .card-title { color: var(--text); font-family: var(--future); font-size: clamp(22px, 2vw, 34px); line-height: 0.95; text-transform: uppercase; margin-bottom: 12px; font-weight: 800; }
+          .card-title { color: var(--text); font-family: var(--future); font-size: clamp(22px, 1vw, 34px); line-height: 0.95; text-transform: uppercase; margin-bottom: 12px; font-weight: 800; }
           .card-time { color: var(--text); font-family: var(--future); font-size: clamp(26px, 3vw, 52px); line-height: 0.9; text-transform: uppercase; font-weight: 900; }
 
           .cta-link {
