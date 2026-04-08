@@ -223,7 +223,10 @@ export default function TheSpacePage() {
           #__next {
             margin: 0;
             padding: 0;
-            min-height: 100%;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            overscroll-behavior: none;
             background: #000;
           }
 
@@ -235,7 +238,8 @@ export default function TheSpacePage() {
         <style jsx>{`
           .page {
             position: relative;
-            min-height: 100vh;
+            height: 100dvh;
+            min-height: 100dvh;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -337,7 +341,7 @@ export default function TheSpacePage() {
 
           .scene-shell {
             position: relative;
-            width: min(86vw, calc((100vh - 48px) * 1.5004), 1240px);
+            width: min(86vw, calc((100dvh - 48px) * 1.5004), 1240px);
             aspect-ratio: 2048 / 1365;
             overflow: visible;
           }
@@ -535,7 +539,7 @@ export default function TheSpacePage() {
             position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             min-height: 88px;
             padding: 16px 18px 14px;
             border-radius: 18px;
@@ -570,15 +574,15 @@ export default function TheSpacePage() {
             font-size: clamp(12px, 1vw, 17px);
             font-weight: 600;
             letter-spacing: 0.08em;
-            line-height: 1.15;
+            line-height: 1.1;
             color: #fff6ff;
           }
 
           .zone-card-meta {
-            margin-top: 10px;
+            margin-top: 6px;
             font-family: 'Orbitron', sans-serif;
             font-size: 10px;
-            line-height: 1.1;
+            line-height: 1.05;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: rgba(255, 196, 247, 0.72);
@@ -776,11 +780,23 @@ export default function TheSpacePage() {
 
           @media (max-width: 900px) {
             .page {
-              padding: 10px;
+              height: 100dvh;
+              min-height: 100dvh;
+              padding:
+                max(10px, env(safe-area-inset-top))
+                10px
+                max(10px, env(safe-area-inset-bottom))
+                10px;
+              overflow: hidden;
             }
 
             .scene-shell {
-              width: min(92vw, calc(100vh - 24px));
+              width: min(
+                92vw,
+                calc(
+                  100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 20px
+                )
+              );
               aspect-ratio: 1340 / 2048;
             }
 
@@ -799,7 +815,7 @@ export default function TheSpacePage() {
             }
 
             .venue-image {
-              top: calc(20% - 20px);
+              top: calc(20% + 8px);
               left: 9.4%;
               width: 80.5%;
             }
@@ -807,14 +823,14 @@ export default function TheSpacePage() {
             .zone-controls {
               left: 9%;
               right: 9%;
-              bottom: calc(9% + 25px);
+              bottom: calc(8% + 10px);
               grid-template-columns: 1fr;
               gap: 10px;
             }
 
             .zone-card {
-              min-height: 72px;
-              padding: 14px 14px 12px;
+              min-height: 68px;
+              padding: 13px 14px 11px;
               border-radius: 16px;
             }
 
@@ -828,7 +844,7 @@ export default function TheSpacePage() {
             }
 
             .zone-card-meta {
-              margin-top: 8px;
+              margin-top: 4px;
               font-size: 9px;
             }
           }
