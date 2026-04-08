@@ -36,7 +36,7 @@ const AREAS: AreaConfig[] = [
     desktop: {
       button: { x: '39.2%', y: '18.5%' },
       lineStart: { x: '46.7%', y: '18.7%' },
-      lineEnd: { x: '53.4%', y: '31.9%' },
+      lineEnd: { x: '49%', y: '25%' },
     },
     mobile: {
       button: { x: '50.0%', y: '14.8%' },
@@ -66,7 +66,7 @@ const AREAS: AreaConfig[] = [
     desktop: {
       button: { x: '77.2%', y: '74.8%' },
       lineStart: { x: '68.3%', y: '74.5%' },
-      lineEnd: { x: '61.8%', y: '67.6%' },
+      lineEnd: { x: '64%', y: '70%' },
     },
     mobile: {
       button: { x: '72.7%', y: '75.9%' },
