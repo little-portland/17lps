@@ -55,10 +55,15 @@ const clamp = (value: number, min: number, max: number) => Math.min(Math.max(val
 
 export default function PrivateHirePage() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const titleArcId = useMemo(() => 'private-hire-top-arc', []);
 
   useEffect(() => {
     const updateActiveIndex = () => {
-      const nextIndex = clamp(Math.round(window.scrollY / Math.max(window.innerHeight, 1)), 0, VENUES.length - 1);
+      const nextIndex = clamp(
+        Math.round(window.scrollY / Math.max(window.innerHeight, 1)),
+        0,
+        VENUES.length - 1
+      );
       setActiveIndex(nextIndex);
     };
 
@@ -76,9 +81,6 @@ export default function PrivateHirePage() {
     const nextIndex = clamp(index, 0, VENUES.length - 1);
     window.scrollTo({ top: nextIndex * window.innerHeight, behavior: 'smooth' });
   };
-
-  const titleArcId = useMemo(() => 'private-hire-top-arc', []);
-  const activeVenue = VENUES[activeIndex];
 
   return (
     <>
@@ -131,7 +133,7 @@ export default function PrivateHirePage() {
             <div className="posterArc posterArc--top" aria-hidden="true">
               <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
                 <defs>
-                  <path id={titleArcId} d="M 78 500 A 422 422 0 0 1 922 500" />
+                  <path id={titleArcId} d="M 70 500 A 430 430 0 0 1 930 500" />
                 </defs>
                 <text>
                   <textPath href={`#${titleArcId}`} startOffset="50%" textAnchor="middle">
@@ -142,6 +144,9 @@ export default function PrivateHirePage() {
             </div>
 
             <div className="orbCluster">
+              <div className="orbBloomBack" />
+              <img src={ORB_OVERLAY} alt="" aria-hidden="true" className="orbOverlay orbOverlay--bloom" />
+
               <div className="orbPhotoMask">
                 {VENUES.map((venue, index) => {
                   const isActive = index === activeIndex;
@@ -159,7 +164,7 @@ export default function PrivateHirePage() {
                 <div className="orbInnerGlow" />
               </div>
 
-              <img src={ORB_OVERLAY} alt="" aria-hidden="true" className="orbOverlay" />
+              <img src={ORB_OVERLAY} alt="" aria-hidden="true" className="orbOverlay orbOverlay--main" />
             </div>
 
             <div className="posterArc posterArc--bottom">
@@ -174,7 +179,7 @@ export default function PrivateHirePage() {
                     aria-hidden={!isActive}
                   >
                     <defs>
-                      <path id={`venue-arc-${venue.id}`} d="M 86 500 A 414 414 0 0 0 914 500" />
+                      <path id={`venue-arc-${venue.id}`} d="M 78 500 A 422 422 0 0 0 922 500" />
                     </defs>
                     <text>
                       <textPath href={`#venue-arc-${venue.id}`} startOffset="50%" textAnchor="middle">
@@ -417,8 +422,8 @@ export default function PrivateHirePage() {
 
         .posterFrame {
           --core-size: min(44vw, 560px);
-          --orb-size: calc(var(--core-size) + clamp(84px, 8vw, 104px));
-          --arc-size: calc(var(--orb-size) + clamp(48px, 5vw, 64px));
+          --orb-shell-size: calc(var(--core-size) + clamp(120px, 12vw, 170px));
+          --arc-size: calc(var(--core-size) + clamp(116px, 10vw, 140px));
           position: absolute;
           inset: 0;
           z-index: 6;
@@ -430,21 +435,43 @@ export default function PrivateHirePage() {
 
         .orbCluster {
           position: relative;
-          width: var(--orb-size);
+          width: var(--orb-shell-size);
           aspect-ratio: 1 / 1;
           z-index: 7;
         }
 
+        .orbBloomBack {
+          position: absolute;
+          inset: 8%;
+          border-radius: 999px;
+          background:
+            radial-gradient(circle,
+              rgba(95, 212, 156, 0.22) 0%,
+              rgba(63, 180, 121, 0.34) 34%,
+              rgba(52, 129, 89, 0.28) 52%,
+              rgba(52, 129, 89, 0.12) 68%,
+              rgba(52, 129, 89, 0) 84%);
+          filter: blur(34px);
+          transform: scale(1.08);
+          opacity: 1;
+          animation: orbPulse 5.4s ease-in-out infinite;
+          pointer-events: none;
+        }
+
         .orbPhotoMask {
           position: absolute;
-          inset: 8.5%;
+          left: 50%;
+          top: 50%;
+          width: var(--core-size);
+          height: var(--core-size);
+          transform: translate(-50%, -50%);
           border-radius: 999px;
           overflow: hidden;
           background: #0a1310;
           box-shadow:
             inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-            inset 0 0 52px rgba(52, 129, 89, 0.2),
-            inset 0 0 120px rgba(52, 129, 89, 0.14);
+            inset 0 0 60px rgba(52, 129, 89, 0.24),
+            inset 0 0 130px rgba(52, 129, 89, 0.18);
         }
 
         .orbPhoto {
@@ -468,18 +495,19 @@ export default function PrivateHirePage() {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(circle at 50% 50%, rgba(52, 129, 89, 0.08), rgba(52, 129, 89, 0.18) 62%, rgba(52, 129, 89, 0.3) 100%),
-            linear-gradient(180deg, rgba(117, 216, 171, 0.06), transparent 22%, transparent 70%, rgba(0, 0, 0, 0.18) 100%);
+            radial-gradient(circle at 50% 50%, rgba(52, 129, 89, 0.06), rgba(52, 129, 89, 0.1) 54%, rgba(52, 129, 89, 0.22) 78%, rgba(52, 129, 89, 0.38) 100%),
+            linear-gradient(180deg, rgba(125, 225, 180, 0.1), transparent 18%, transparent 68%, rgba(0, 0, 0, 0.2) 100%);
           mix-blend-mode: screen;
         }
 
         .orbInnerGlow {
           position: absolute;
           inset: 0;
-          box-shadow:
-            inset 0 0 36px rgba(63, 178, 126, 0.18),
-            inset 0 0 84px rgba(52, 129, 89, 0.1);
           border-radius: 999px;
+          box-shadow:
+            inset 0 0 52px rgba(126, 228, 183, 0.2),
+            inset 0 0 140px rgba(52, 129, 89, 0.2),
+            inset 0 0 220px rgba(52, 129, 89, 0.1);
           pointer-events: none;
         }
 
@@ -490,6 +518,16 @@ export default function PrivateHirePage() {
           height: 100%;
           object-fit: contain;
           pointer-events: none;
+        }
+
+        .orbOverlay--bloom {
+          opacity: 0.95;
+          filter: blur(18px);
+          transform: scale(1.08);
+          mix-blend-mode: screen;
+        }
+
+        .orbOverlay--main {
           opacity: 1;
           mix-blend-mode: screen;
         }
@@ -547,13 +585,13 @@ export default function PrivateHirePage() {
           font-weight: 900;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          filter: drop-shadow(0 0 8px rgba(52, 129, 89, 0.35));
+          filter: drop-shadow(0 0 9px rgba(52, 129, 89, 0.42));
         }
 
         .posterInfo {
           position: absolute;
           left: 50%;
-          top: calc(50% + (var(--orb-size) / 2) + 6px);
+          top: calc(50% + (var(--core-size) / 2) + 42px);
           width: min(760px, calc(100vw - 120px));
           min-height: 110px;
           transform: translateX(-50%);
@@ -585,8 +623,8 @@ export default function PrivateHirePage() {
           text-wrap: balance;
           text-shadow:
             0 0 8px rgba(255, 255, 255, 0.08),
-            0 0 14px rgba(52, 129, 89, 0.18),
-            0 0 28px rgba(52, 129, 89, 0.12);
+            0 0 18px rgba(52, 129, 89, 0.28),
+            0 0 32px rgba(52, 129, 89, 0.18);
         }
 
         .posterInfo__line + .posterInfo__line {
@@ -603,11 +641,23 @@ export default function PrivateHirePage() {
           }
         }
 
+        @keyframes orbPulse {
+          0%,
+          100% {
+            transform: scale(1.08);
+            opacity: 0.92;
+          }
+          50% {
+            transform: scale(1.12);
+            opacity: 1;
+          }
+        }
+
         @media (max-width: 1180px) {
           .posterFrame {
             --core-size: min(54vw, 520px);
-            --orb-size: calc(var(--core-size) + 90px);
-            --arc-size: calc(var(--orb-size) + 52px);
+            --orb-shell-size: calc(var(--core-size) + 120px);
+            --arc-size: calc(var(--core-size) + 104px);
             padding-left: 72px;
             padding-right: 72px;
           }
@@ -639,8 +689,8 @@ export default function PrivateHirePage() {
 
           .posterFrame {
             --core-size: min(76vw, 430px);
-            --orb-size: calc(var(--core-size) + 76px);
-            --arc-size: calc(var(--orb-size) + 46px);
+            --orb-shell-size: calc(var(--core-size) + 96px);
+            --arc-size: calc(var(--core-size) + 82px);
             padding: 84px 24px 118px;
           }
 
@@ -653,7 +703,7 @@ export default function PrivateHirePage() {
           }
 
           .posterInfo {
-            top: calc(50% + (var(--orb-size) / 2) + 2px);
+            top: calc(50% + (var(--core-size) / 2) + 30px);
             width: min(92vw, 560px);
           }
 
@@ -705,8 +755,8 @@ export default function PrivateHirePage() {
 
           .posterFrame {
             --core-size: min(82vw, 350px);
-            --orb-size: calc(var(--core-size) + 58px);
-            --arc-size: calc(var(--orb-size) + 36px);
+            --orb-shell-size: calc(var(--core-size) + 82px);
+            --arc-size: calc(var(--core-size) + 68px);
             padding: 74px 18px 110px;
           }
 
@@ -719,7 +769,7 @@ export default function PrivateHirePage() {
           }
 
           .posterInfo {
-            top: calc(50% + (var(--orb-size) / 2) - 2px);
+            top: calc(50% + (var(--core-size) / 2) + 22px);
             width: calc(100vw - 28px);
           }
 
@@ -745,7 +795,8 @@ export default function PrivateHirePage() {
             scroll-snap-type: none;
           }
 
-          .posterGrid {
+          .posterGrid,
+          .orbBloomBack {
             animation: none;
           }
 
