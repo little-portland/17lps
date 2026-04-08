@@ -565,9 +565,7 @@ export default function PrivateHirePage() {
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
           font-size: 2.2rem;
           font-weight: 900;
-          text-shadow:
-            0 0 10px rgba(52, 129, 89, 0.26),
-            0 0 26px rgba(52, 129, 89, 0.12);
+          text-shadow: 0 0 8px rgba(52, 129, 89, .5), 0 0 18px rgba(52, 129, 89, .3), 0 0 34px rgba(52, 129, 89, .5);
         }
 
         .posterAreaTitle__item.is-active {
