@@ -28,7 +28,7 @@ const VENUES: Venue[] = [
   {
     id: 'the-tent',
     title: 'THE TENT',
-    image: `${IMAGE_BASE}/the-tent-placeholder.png`,
+    image: `${IMAGE_BASE}/the-tent-placeholder.jpg`,
     alt: 'The Tent private hire image.',
     objectPosition: '50% 50%',
     infoLines: ['36 Seated / 50 Standing', 'Located on the Ground Floor'],
@@ -483,7 +483,7 @@ export default function PrivateHirePage() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          filter: grayscale(100%) contrast(1.08) brightness(0.9);
+          filter: contrast(1.02) brightness(0.96);
           opacity: 0;
           transform: scale(1.04);
           transition: opacity 360ms ease, transform 360ms ease;
