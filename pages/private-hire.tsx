@@ -333,6 +333,7 @@ export default function PrivateHirePage() {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          text-shadow: 0 0 8px rgba(52, 129, 89, .5), 0 0 18px rgba(52, 129, 89, .3), 0 0 34px rgba(52, 129, 89, .5);
         }
 
         .posterLabel--left {
@@ -365,6 +366,7 @@ export default function PrivateHirePage() {
           transform: translateY(-50%);
           transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease, background 180ms ease;
           pointer-events: auto;
+          text-shadow: 0 0 8px rgba(52, 129, 89, .5), 0 0 18px rgba(52, 129, 89, .3), 0 0 34px rgba(52, 129, 89, .5);
         }
 
         .posterNav:hover,
