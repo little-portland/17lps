@@ -1,175 +1,192 @@
 import Head from 'next/head';
-import { useEffect, useMemo, useRef, useState } from 'react';
-
-type Stat = {
-  label: string;
-  value: number;
-  suffix?: string;
-};
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type Venue = {
   id: string;
-  index: string;
   title: string;
-  eyebrow: string;
-  floor: string;
-  kicker: string;
-  strap: string;
   image: string;
   alt: string;
-  summary: string;
+  floor: string;
+  kicker: string;
   description: string;
+  stats: string[];
+  objectPosition?: string;
   accent: string;
-  stats: Stat[];
 };
 
-/**
- * Update these filenames if your final files use different names.
- * They are expected to live in /public/images/private-hire/
- */
 const IMAGE_BASE = '/images/private-hire';
+const STAR_BG = `${IMAGE_BASE}/night-starry-sky-dark.jpg`;
+const GRID_BG = `${IMAGE_BASE}/buldge-grid.svg`;
 
 const VENUES: Venue[] = [
   {
     id: 'full-venue',
-    index: '01',
     title: 'Full Venue',
-    eyebrow: 'Private Hire',
-    floor: 'Both floors',
-    kicker: 'Cinematic takeover',
-    strap: 'Launches / parties / screenings / full building takeover',
-    image: `${IMAGE_BASE}/full-venue.jpg`,
+    image: `${IMAGE_BASE}/full-venue-placeholder.jpg`,
     alt: 'Full venue private hire image.',
-    summary: 'The full-building moment. Big energy, sharp visuals, and enough drama to make the venue feel like an event before the event starts.',
+    floor: 'Both floors',
+    kicker: 'Full building takeover',
     description:
-      'Designed as the main reveal, this chapter sells the venue as an experience rather than a list of rooms. Use it for brand launches, private parties, screenings, music-led nights, and full-scale takeovers.',
-    accent: '#b7fff1',
-    stats: [
-      { label: 'Standing', value: 150 },
-      { label: 'Floors', value: 2 },
-    ],
+      'A full-scale takeover for launches, private parties, screenings, and music-led nights. The broadest canvas, with the strongest sense of occasion.',
+    stats: ['150 standing', '2 floors'],
+    objectPosition: '50% 52%',
+    accent: '#4af6d4',
   },
   {
     id: 'the-tent',
-    index: '02',
     title: 'The Tent',
-    eyebrow: 'Ground floor',
-    floor: 'Ground floor',
-    kicker: 'Atmospheric arrival',
-    strap: 'Soft light / seated dinners / drinks receptions / warm welcome',
-    image: `${IMAGE_BASE}/the-tent.jpg`,
+    image: `${IMAGE_BASE}/the-tent-placeholder.jpg`,
     alt: 'The Tent private hire image.',
-    summary: 'A softer, more intimate chapter that feels warm, glowy, and slightly theatrical.',
+    floor: 'Ground floor',
+    kicker: 'Atmospheric arrival space',
     description:
-      'This section is deliberately mood-forward. It works beautifully for seated dinners, smaller receptions, and events that want a more immersive arrival space before opening out into the rest of the venue.',
-    accent: '#ffe3b5',
-    stats: [
-      { label: 'Seated', value: 36 },
-      { label: 'Standing', value: 50 },
-    ],
+      'A warmer, more intimate setting for dinners, drinks receptions, and events that want a softer first impression before opening out into the wider venue.',
+    stats: ['36 seated', '50 standing'],
+    objectPosition: '50% 52%',
+    accent: '#7ff6d8',
   },
   {
     id: 'the-studio',
-    index: '03',
     title: 'The Studio',
-    eyebrow: 'Lower ground',
-    floor: 'Lower ground floor',
-    kicker: 'Sound-led energy',
-    strap: 'Club nights / talks / showcases / sharper visual identity',
-    image: `${IMAGE_BASE}/the-studio.jpg`,
+    image: `${IMAGE_BASE}/the-studio-placeholder.jpg`,
     alt: 'The Studio private hire image.',
-    summary: 'Stripped back, focused, and stronger on contrast — this is the chapter with more edge.',
+    floor: 'Lower ground floor',
+    kicker: 'Sound-led late-night energy',
     description:
-      'The Studio is framed as the performance-minded space: clean lines, harder typography, and a more confident energy. Ideal for late-night formats, talks, showcases, listening events, or a more club-like setup.',
-    accent: '#d5c9ff',
-    stats: [{ label: 'Standing', value: 100 }],
+      'Sharper and more stripped-back, with a stronger club and performance identity. Best for showcases, talks, DJ-led events, or a more focused takeover.',
+    stats: ['100 standing'],
+    objectPosition: '50% 44%',
+    accent: '#35f3cd',
   },
   {
     id: 'chefs-studio',
-    index: '04',
     title: "Chef's Studio",
-    eyebrow: 'Private dining',
-    floor: 'Lower ground floor',
-    kicker: 'Intimate finish',
-    strap: 'Hosted dinners / tastings / boardroom-style private dining',
-    image: `${IMAGE_BASE}/chefs-studio.jpg`,
+    image: `${IMAGE_BASE}/chefs-studio-placeholder.jpg`,
     alt: "Chef's Studio private hire image.",
-    summary: 'The quietest and most exclusive chapter — smaller scale, but with the strongest feeling of privacy.',
+    floor: 'Lower ground floor',
+    kicker: 'Private dining and tastings',
     description:
-      'Use this as the closing note of the page. It shifts the tone from spectacle to intimacy, positioning the venue as somewhere that can also host dinners, tastings, and smaller invitation-only moments.',
-    accent: '#ffd5e4',
-    stats: [{ label: 'Seated', value: 12 }],
+      'A quieter, more exclusive room for hosted dinners, tastings, and smaller invitation-only gatherings with a stronger sense of privacy.',
+    stats: ['12 seated'],
+    objectPosition: '50% 50%',
+    accent: '#59f7da',
   },
 ];
 
-function useActiveSection(ids: string[]) {
-  const [activeId, setActiveId] = useState(ids[0]);
+const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
+export default function PrivateHirePage() {
+  const sceneRef = useRef<HTMLElement | null>(null);
+  const [floatIndex, setFloatIndex] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  const slideCount = VENUES.length;
+  const sceneHeight = `${slideCount * 100 + 40}svh`;
+  const activeIndex = clamp(Math.round(floatIndex), 0, slideCount - 1);
+  const activeVenue = VENUES[activeIndex];
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || typeof window === 'undefined') return;
+
+    let frame = 0;
+
+    const updateProgress = () => {
+      const scene = sceneRef.current;
+      if (!scene) return;
+
+      const rect = scene.getBoundingClientRect();
+      const totalScrollable = Math.max(rect.height - window.innerHeight, 1);
+      const rawProgress = clamp(-rect.top / totalScrollable, 0, 1);
+      const nextFloat = rawProgress * (slideCount - 1);
+      setFloatIndex(nextFloat);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [isMounted, slideCount]);
+
+  const goToSlide = useCallback(
+    (index: number) => {
+      if (typeof window === 'undefined') return;
+      const scene = sceneRef.current;
+      if (!scene) return;
+
+      const clampedIndex = clamp(index, 0, slideCount - 1);
+      const rect = scene.getBoundingClientRect();
+      const sceneTop = window.scrollY + rect.top;
+      const totalScrollable = Math.max(scene.offsetHeight - window.innerHeight, 1);
+      const target = sceneTop + (clampedIndex / (slideCount - 1)) * totalScrollable;
+
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    },
+    [slideCount]
+  );
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const elements = ids
-      .map((id) => document.getElementById(id))
-      .filter((element): element is HTMLElement => Boolean(element));
-
-    if (!elements.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visible[0]?.target?.id) {
-          setActiveId(visible[0].target.id);
-        }
-      },
-      {
-        threshold: [0.2, 0.35, 0.5, 0.7],
-        rootMargin: '-15% 0px -25% 0px',
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowDown' || event.key === 'PageDown') {
+        event.preventDefault();
+        goToSlide(activeIndex + 1);
       }
-    );
 
-    elements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
-  }, [ids]);
-
-  return activeId;
-}
-
-function CountUp({ value, active }: { value: number; active: boolean }) {
-  const [displayValue, setDisplayValue] = useState(0);
-  const frame = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (!active) return;
-
-    const duration = 900;
-    const startedAt = performance.now();
-
-    const tick = (time: number) => {
-      const progress = Math.min((time - startedAt) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplayValue(Math.round(value * eased));
-
-      if (progress < 1) {
-        frame.current = requestAnimationFrame(tick);
+      if (event.key === 'ArrowUp' || event.key === 'PageUp') {
+        event.preventDefault();
+        goToSlide(activeIndex - 1);
       }
     };
 
-    frame.current = requestAnimationFrame(tick);
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [activeIndex, goToSlide]);
 
-    return () => {
-      if (frame.current) cancelAnimationFrame(frame.current);
-    };
-  }, [value, active]);
+  const getLayerStyle = useCallback(
+    (index: number, options?: { offset?: number; scale?: number; fade?: number }) => {
+      const offset = options?.offset ?? 28;
+      const scaleAmount = options?.scale ?? 0.12;
+      const fadeAmount = options?.fade ?? 1.35;
+      const delta = index - floatIndex;
+      const distance = Math.abs(delta);
+      const opacity = Math.max(0, 1 - distance * fadeAmount);
+      const translateY = delta * offset;
+      const scale = 1 - Math.min(distance, 1) * scaleAmount;
 
-  return <>{displayValue}</>;
-}
+      return {
+        opacity,
+        transform: `translate3d(0, ${translateY}px, 0) scale(${scale})`,
+      };
+    },
+    [floatIndex]
+  );
 
-export default function PrivateHirePage() {
-  const ids = useMemo(() => VENUES.map((venue) => venue.id), []);
-  const activeId = useActiveSection(ids);
+  const gridTransform = useMemo(() => {
+    const y = floatIndex * -1.8;
+    const scale = 1 + floatIndex * 0.02;
+    return `translate3d(0, ${y}%, 0) scale(${scale})`;
+  }, [floatIndex]);
+
+  const skyTransform = useMemo(() => {
+    const y = floatIndex * -0.9;
+    const scale = 1.05 + floatIndex * 0.01;
+    return `translate3d(0, ${y}%, 0) scale(${scale})`;
+  }, [floatIndex]);
 
   return (
     <>
@@ -177,160 +194,172 @@ export default function PrivateHirePage() {
         <title>Private Hire</title>
         <meta
           name="description"
-          content="A cinematic, editorial private hire page with immersive venue sections and mobile-first layouts."
+          content="Poster-inspired private hire page with a bulged grid, circular image mask, curved typography, and scroll-driven venue transitions."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main className="phPage">
-        <section className="phHero">
-          <div className="phHero__ambient phHero__ambient--left" />
-          <div className="phHero__ambient phHero__ambient--right" />
-          <div className="phHero__grid" />
+      <main id="top" className="posterPage">
+        <section ref={sceneRef} className="posterScene" style={{ height: sceneHeight }}>
+          <div className="posterSticky">
+            <div className="posterSky" style={{ backgroundImage: `url(${STAR_BG})`, transform: skyTransform }} />
+            <img src={GRID_BG} alt="" aria-hidden="true" className="posterGrid" style={{ transform: gridTransform }} />
+            <div className="posterGlowCloud posterGlowCloud--left" />
+            <div className="posterGlowCloud posterGlowCloud--right" />
+            <div className="posterNoise" />
+            <div className="posterVignette" />
 
-          <div className="phShell phHero__inner">
-            <div className="phHero__copy">
-              <p className="phOverline">Venue hire / immersive microsite concept</p>
-              <h1 className="phHero__title">
-                Private
-                <span>Hire</span>
-              </h1>
-              <p className="phHero__body">
-                A more cinematic direction: oversized editorial type, immersive chapter reveals, and a
-                premium venue-story layout that feels designed for nightlife, launches, dinners, and
-                special events — not just a brochure page.
-              </p>
+            <div className="posterHud">
+              <div className="posterLabel posterLabel--topLeft">17 LITTLE PORTLAND STREET</div>
+              <div className="posterLabel posterLabel--topRight">
+                {String(activeIndex + 1).padStart(2, '0')} / {String(slideCount).padStart(2, '0')}
+              </div>
+              <div className="posterLabel posterLabel--bottomLeft">PRIVATE EVENTS / SCROLL TO EXPLORE</div>
+              <div className="posterLabel posterLabel--bottomRight">LPX / PRIVATE HIRE</div>
+            </div>
 
-              <div className="phHero__actions">
-                <a href="#full-venue" className="phButton phButton--solid">
-                  Explore the spaces
-                </a>
-                <a href="#enquire" className="phButton phButton--ghost">
-                  Start an enquiry
-                </a>
+            <div className="posterTopArc" aria-hidden="true">
+              <svg viewBox="0 0 1200 320" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="posterTitleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#f7f4ef" />
+                    <stop offset="58%" stopColor="#f7f4ef" />
+                    <stop offset="100%" stopColor="#53f7d5" />
+                  </linearGradient>
+                  <path id="topArcPath" d="M 130 220 Q 600 75 1070 220" />
+                </defs>
+                <text>
+                  <textPath href="#topArcPath" startOffset="50%" textAnchor="middle">
+                    PRIVATE HIRE
+                  </textPath>
+                </text>
+              </svg>
+            </div>
+
+            <button
+              type="button"
+              className="posterNav posterNav--prev"
+              onClick={() => goToSlide(activeIndex - 1)}
+              disabled={activeIndex === 0}
+              aria-label="Previous venue"
+            >
+              <span className="posterNav__arrow">↑</span>
+              <span className="posterNav__label">Prev</span>
+            </button>
+
+            <button
+              type="button"
+              className="posterNav posterNav--next"
+              onClick={() => goToSlide(activeIndex + 1)}
+              disabled={activeIndex === slideCount - 1}
+              aria-label="Next venue"
+            >
+              <span className="posterNav__label">Next</span>
+              <span className="posterNav__arrow">↓</span>
+            </button>
+
+            <div className="posterCenter">
+              <div className="posterCircleWrap">
+                <div
+                  className="posterCircleHalo"
+                  style={{
+                    background: `radial-gradient(circle, ${activeVenue.accent}77 0%, ${activeVenue.accent}22 38%, transparent 70%)`,
+                    boxShadow: `0 0 80px ${activeVenue.accent}66, 0 0 180px ${activeVenue.accent}33`,
+                  }}
+                />
+                <div className="posterCircleRing" style={{ borderColor: `${activeVenue.accent}66` }} />
+                <div className="posterCircleMask">
+                  {VENUES.map((venue, index) => (
+                    <img
+                      key={venue.id}
+                      src={venue.image}
+                      alt={venue.alt}
+                      className="posterCircleImage"
+                      style={{
+                        ...getLayerStyle(index, { offset: 34, scale: 0.16, fade: 1.28 }),
+                        objectPosition: venue.objectPosition || '50% 50%',
+                      }}
+                    />
+                  ))}
+                  <div className="posterCircleShade" />
+                </div>
               </div>
             </div>
 
-            <nav className="phRail" aria-label="Venue chapters">
-              {VENUES.map((venue) => {
-                const isActive = activeId === venue.id;
-                return (
-                  <a
-                    key={venue.id}
-                    href={`#${venue.id}`}
-                    className={`phRail__item ${isActive ? 'is-active' : ''}`}
+            <div className="posterBottomBlock">
+              <div className="posterMiniInfo" aria-live="polite">
+                {VENUES.map((venue, index) => (
+                  <div
+                    key={`${venue.id}-meta`}
+                    className="posterMiniInfo__item"
+                    style={getLayerStyle(index, { offset: 16, scale: 0.06, fade: 1.5 })}
                   >
-                    <span className="phRail__index">{venue.index}</span>
-                    <span className="phRail__labelWrap">
-                      <span className="phRail__label">{venue.title}</span>
-                      <span className="phRail__meta">{venue.floor}</span>
-                    </span>
-                  </a>
+                    <span>{venue.kicker}</span>
+                    <span className="posterMiniInfo__dot" />
+                    <span>{venue.floor}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="posterBottomArc" aria-live="polite">
+                {VENUES.map((venue, index) => (
+                  <svg
+                    key={`${venue.id}-arc`}
+                    viewBox="0 0 1200 250"
+                    preserveAspectRatio="none"
+                    className="posterBottomArc__svg"
+                    style={getLayerStyle(index, { offset: 24, scale: 0.08, fade: 1.38 })}
+                  >
+                    <defs>
+                      <path id={`bottomArcPath-${venue.id}`} d="M 165 185 Q 600 16 1035 185" />
+                    </defs>
+                    <text>
+                      <textPath href={`#bottomArcPath-${venue.id}`} startOffset="50%" textAnchor="middle">
+                        {venue.title.toUpperCase()}
+                      </textPath>
+                    </text>
+                  </svg>
+                ))}
+              </div>
+
+              <div className="posterStatsPill" aria-live="polite">
+                {VENUES.map((venue, index) => (
+                  <div
+                    key={`${venue.id}-pill`}
+                    className="posterStatsPill__item"
+                    style={getLayerStyle(index, { offset: 18, scale: 0.08, fade: 1.45 })}
+                  >
+                    {venue.stats.join(' • ')}
+                  </div>
+                ))}
+              </div>
+
+              <div className="posterDescription" aria-live="polite">
+                {VENUES.map((venue, index) => (
+                  <p
+                    key={`${venue.id}-description`}
+                    className="posterDescription__item"
+                    style={getLayerStyle(index, { offset: 12, scale: 0.03, fade: 1.55 })}
+                  >
+                    {venue.description}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="posterProgress" aria-label="Venue progress">
+              {VENUES.map((venue, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <button
+                    key={venue.id}
+                    type="button"
+                    className={`posterProgress__dot ${isActive ? 'is-active' : ''}`}
+                    onClick={() => goToSlide(index)}
+                    aria-label={`Go to ${venue.title}`}
+                  />
                 );
               })}
-            </nav>
-          </div>
-        </section>
-
-        <section className="phIntroBand">
-          <div className="phShell phIntroBand__inner">
-            <p>
-              Built to feel like a guided venue experience. Each space becomes a chapter with its own mood,
-              scale, and pace while the whole page stays clean, mobile-friendly, and easy to update.
-            </p>
-          </div>
-        </section>
-
-        {VENUES.map((venue, index) => {
-          const isActive = activeId === venue.id;
-          const reverse = index % 2 === 1;
-
-          return (
-            <section
-              key={venue.id}
-              id={venue.id}
-              className={`phChapter ${reverse ? 'phChapter--reverse' : ''} ${isActive ? 'is-active' : ''}`}
-            >
-              <div className="phChapter__sticky">
-                <div className="phChapter__backdrop">
-                  <img src={venue.image} alt={venue.alt} className="phChapter__backdropImage" />
-                  <div className="phChapter__backdropWash" />
-                  <div className="phChapter__backdropGrid" />
-                </div>
-
-                <div className="phShell phChapter__shell">
-                  <div className="phChapter__frame">
-                    <div className="phChapter__mediaCol">
-                      <div className="phChapter__mediaCard">
-                        <img src={venue.image} alt={venue.alt} className="phChapter__mediaImage" />
-                        <div className="phChapter__mediaShade" />
-                        <div className="phChapter__strap">{venue.strap}</div>
-                      </div>
-                    </div>
-
-                    <div className="phChapter__contentCol">
-                      <div className="phChapter__contentCard">
-                        <div className="phChapter__topline">
-                          <p className="phOverline">
-                            {venue.index} / {venue.kicker}
-                          </p>
-                          <p className="phOverline">{venue.floor}</p>
-                        </div>
-
-                        <div className="phChapter__titleBlock">
-                          <span className="phChapter__eyebrow" style={{ borderColor: `${venue.accent}44`, color: venue.accent }}>
-                            {venue.eyebrow}
-                          </span>
-                          <h2 className="phChapter__title">{venue.title}</h2>
-                          <p className="phChapter__summary">{venue.summary}</p>
-                        </div>
-
-                        <div className="phChapter__stats">
-                          {venue.stats.map((stat) => (
-                            <div className="phStat" key={`${venue.id}-${stat.label}`}>
-                              <div className="phStat__value" style={{ color: venue.accent }}>
-                                <CountUp value={stat.value} active={isActive} />
-                                {stat.suffix ? <span>{stat.suffix}</span> : null}
-                              </div>
-                              <div className="phStat__label">{stat.label}</div>
-                            </div>
-                          ))}
-                        </div>
-
-                        <p className="phChapter__description">{venue.description}</p>
-
-                        <div className="phChapter__footer">
-                          <div className="phChapter__line" style={{ background: venue.accent }} />
-                          <span className="phChapter__footerText">{venue.strap}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          );
-        })}
-
-        <section id="enquire" className="phCta">
-          <div className="phShell">
-            <div className="phCta__card">
-              <div className="phCta__glow" />
-              <p className="phOverline">Next step</p>
-              <h2>Turn this into a polished venue enquiry page with your final copy and live CTA.</h2>
-              <p>
-                The layout now supports real imagery, stronger pacing, and a more premium venue-story feel.
-                If your filenames differ, just update the paths at the top of the file.
-              </p>
-
-              <div className="phCta__actions">
-                <a href="mailto:hello@example.com" className="phButton phButton--solid">
-                  Enquire now
-                </a>
-                <a href="#top" className="phButton phButton--ghost">
-                  Back to top
-                </a>
-              </div>
             </div>
           </div>
         </section>
@@ -343,685 +372,682 @@ export default function PrivateHirePage() {
 
         body {
           margin: 0;
-          background: #05070b;
-          color: #f4f0ea;
+          background: #040507;
+          color: #f7f4ef;
           font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          overflow-x: hidden;
         }
 
         * {
           box-sizing: border-box;
         }
 
-        a {
+        a,
+        button {
           color: inherit;
-          text-decoration: none;
+          font: inherit;
         }
 
-        img {
+        img,
+        svg {
           display: block;
-          max-width: 100%;
+        }
+
+        button {
+          background: none;
+          border: 0;
+          padding: 0;
+          cursor: pointer;
         }
 
         #__next {
           min-height: 100vh;
         }
 
-        .phPage {
+        .posterPage {
+          min-height: 100vh;
+          background: radial-gradient(circle at top, rgba(74, 246, 212, 0.05), transparent 28%), #040507;
+        }
+
+        .posterScene {
           position: relative;
-          background:
-            radial-gradient(circle at 10% 10%, rgba(132, 255, 236, 0.12), transparent 28%),
-            radial-gradient(circle at 90% 12%, rgba(255, 207, 163, 0.07), transparent 30%),
-            linear-gradient(180deg, #070a10 0%, #05070b 100%);
-          overflow-x: clip;
         }
 
-        .phShell {
-          width: min(1360px, calc(100% - 40px));
-          margin: 0 auto;
-        }
-
-        .phOverline {
-          margin: 0;
-          font-size: 0.72rem;
-          line-height: 1.2;
-          text-transform: uppercase;
-          letter-spacing: 0.24em;
-          opacity: 0.76;
-        }
-
-        .phButton {
-          min-height: 50px;
-          padding: 0 20px;
-          border-radius: 999px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          transition:
-            transform 180ms ease,
-            border-color 180ms ease,
-            background 180ms ease;
-          backdrop-filter: blur(12px);
-        }
-
-        .phButton:hover,
-        .phButton:focus-visible {
-          transform: translateY(-2px);
-        }
-
-        .phButton--solid {
-          background: #b7fff1;
-          border-color: #b7fff1;
-          color: #071016;
-          font-weight: 700;
-        }
-
-        .phButton--ghost {
-          background: rgba(255, 255, 255, 0.05);
-        }
-
-        .phHero {
-          position: relative;
-          min-height: 100svh;
-          display: flex;
-          align-items: center;
-          padding: 28px 0;
-        }
-
-        .phHero__grid,
-        .phChapter__backdropGrid {
-          position: absolute;
-          inset: 0;
-          background-image:
-            linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-          background-size: 46px 46px;
-          pointer-events: none;
-        }
-
-        .phHero__ambient {
-          position: absolute;
-          width: 48vw;
-          height: 48vw;
-          filter: blur(70px);
-          border-radius: 999px;
-          opacity: 0.18;
-          pointer-events: none;
-        }
-
-        .phHero__ambient--left {
-          left: -14vw;
-          top: 8vh;
-          background: #74ffe6;
-        }
-
-        .phHero__ambient--right {
-          right: -18vw;
-          top: 15vh;
-          background: #ffb974;
-        }
-
-        .phHero__inner {
-          position: relative;
-          z-index: 1;
-          display: grid;
-          grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-          gap: 56px;
-          align-items: center;
-        }
-
-        .phHero__copy {
-          max-width: 760px;
-        }
-
-        .phHero__title {
-          margin: 16px 0 20px;
-          font-size: clamp(4rem, 14vw, 10rem);
-          line-height: 0.88;
-          letter-spacing: -0.08em;
-          text-transform: uppercase;
-        }
-
-        .phHero__title span {
-          display: block;
-          color: #b7fff1;
-          text-shadow: 0 0 34px rgba(183, 255, 241, 0.14);
-        }
-
-        .phHero__body {
-          margin: 0;
-          max-width: 54ch;
-          font-size: clamp(1rem, 1.7vw, 1.18rem);
-          line-height: 1.75;
-          color: rgba(244, 240, 234, 0.82);
-        }
-
-        .phHero__actions {
-          margin-top: 28px;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 12px;
-        }
-
-        .phRail {
-          display: grid;
-          gap: 12px;
-        }
-
-        .phRail__item {
-          display: grid;
-          grid-template-columns: 42px 1fr;
-          gap: 16px;
-          align-items: center;
-          padding: 14px 18px;
-          border-radius: 22px;
-          background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          transition:
-            border-color 180ms ease,
-            transform 180ms ease,
-            background 180ms ease;
-          backdrop-filter: blur(12px);
-        }
-
-        .phRail__item:hover,
-        .phRail__item:focus-visible,
-        .phRail__item.is-active {
-          transform: translateY(-2px);
-          border-color: rgba(183, 255, 241, 0.28);
-          background: linear-gradient(90deg, rgba(183, 255, 241, 0.12), rgba(255, 255, 255, 0.04));
-        }
-
-        .phRail__index {
-          font-size: 0.78rem;
-          letter-spacing: 0.24em;
-          opacity: 0.72;
-        }
-
-        .phRail__labelWrap {
-          display: grid;
-          gap: 4px;
-        }
-
-        .phRail__label {
-          font-size: 1.02rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-        }
-
-        .phRail__meta {
-          font-size: 0.82rem;
-          color: rgba(244, 240, 234, 0.62);
-        }
-
-        .phIntroBand {
-          position: relative;
-          padding: 0 0 36px;
-        }
-
-        .phIntroBand__inner {
-          padding: 18px 0 0;
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .phIntroBand__inner p {
-          margin: 0;
-          max-width: 64ch;
-          font-size: 1rem;
-          line-height: 1.8;
-          color: rgba(244, 240, 234, 0.76);
-        }
-
-        .phChapter {
-          position: relative;
-          min-height: 170svh;
-          scroll-margin-top: 24px;
-        }
-
-        .phChapter__sticky {
+        .posterSticky {
           position: sticky;
           top: 0;
           min-height: 100svh;
-          display: flex;
-          align-items: center;
+          overflow: clip;
+          background: #040507;
         }
 
-        .phChapter__backdrop {
+        .posterSky,
+        .posterGrid,
+        .posterNoise,
+        .posterVignette,
+        .posterGlowCloud {
           position: absolute;
           inset: 0;
-          overflow: hidden;
-        }
-
-        .phChapter__backdropImage {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(100%) brightness(0.28) contrast(1.05) blur(12px);
-          transform: scale(1.1);
-          transition:
-            transform 700ms ease,
-            filter 700ms ease;
-        }
-
-        .phChapter__backdropWash {
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(circle at 50% 35%, rgba(183, 255, 241, 0.08), transparent 32%),
-            linear-gradient(180deg, rgba(5, 7, 11, 0.34) 0%, rgba(5, 7, 11, 0.86) 100%),
-            linear-gradient(90deg, rgba(5, 7, 11, 0.84) 0%, rgba(5, 7, 11, 0.45) 48%, rgba(5, 7, 11, 0.78) 100%);
-        }
-
-        .phChapter__shell {
-          position: relative;
-          z-index: 1;
-          width: 100%;
-        }
-
-        .phChapter__frame {
-          display: grid;
-          grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
-          gap: 28px;
-          align-items: stretch;
-          min-height: 78svh;
-        }
-
-        .phChapter--reverse .phChapter__frame {
-          grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
-        }
-
-        .phChapter--reverse .phChapter__mediaCol {
-          order: 2;
-        }
-
-        .phChapter--reverse .phChapter__contentCol {
-          order: 1;
-        }
-
-        .phChapter__mediaCard,
-        .phChapter__contentCard {
-          position: relative;
-          height: 100%;
-          border-radius: 32px;
-          overflow: hidden;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
-          box-shadow: 0 24px 120px rgba(0, 0, 0, 0.28);
-          backdrop-filter: blur(16px);
-        }
-
-        .phChapter__mediaCard {
-          min-height: 74svh;
-        }
-
-        .phChapter__mediaImage {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(100%) contrast(1.04) brightness(0.78);
-          transform: scale(1.06);
-          transition: transform 700ms ease;
-        }
-
-        .phChapter__mediaShade {
-          position: absolute;
-          inset: 0;
-          background:
-            linear-gradient(180deg, rgba(5, 7, 11, 0.12) 0%, rgba(5, 7, 11, 0.22) 34%, rgba(5, 7, 11, 0.72) 100%),
-            linear-gradient(90deg, rgba(5, 7, 11, 0.52) 0%, rgba(5, 7, 11, 0.1) 55%, rgba(5, 7, 11, 0.26) 100%);
-        }
-
-        .phChapter__strap {
-          position: absolute;
-          left: 18px;
-          right: 18px;
-          bottom: 18px;
-          padding: 14px 16px;
-          border-radius: 18px;
-          background: rgba(9, 12, 18, 0.7);
-          border: 1px solid rgba(255, 255, 255, 0.09);
-          font-size: 0.72rem;
-          line-height: 1.5;
-          text-transform: uppercase;
-          letter-spacing: 0.18em;
-        }
-
-        .phChapter__contentCard {
-          padding: clamp(24px, 3vw, 34px);
-          display: grid;
-          gap: 26px;
-          align-content: center;
-        }
-
-        .phChapter__topline {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 18px;
-          padding-bottom: 18px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .phChapter__titleBlock {
-          display: grid;
-          gap: 16px;
-        }
-
-        .phChapter__eyebrow {
-          width: fit-content;
-          padding: 9px 12px;
-          border-radius: 999px;
-          border: 1px solid rgba(255, 255, 255, 0.14);
-          background: rgba(255, 255, 255, 0.03);
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 0.16em;
-        }
-
-        .phChapter__title {
-          margin: 0;
-          font-size: clamp(2.6rem, 7vw, 6.1rem);
-          line-height: 0.94;
-          letter-spacing: -0.07em;
-          text-transform: uppercase;
-          text-wrap: balance;
-        }
-
-        .phChapter__summary {
-          margin: 0;
-          max-width: 36ch;
-          font-size: clamp(1rem, 1.55vw, 1.15rem);
-          line-height: 1.75;
-          color: rgba(244, 240, 234, 0.84);
-        }
-
-        .phChapter__stats {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 12px;
-        }
-
-        .phStat {
-          min-width: 158px;
-          padding: 16px 16px 14px;
-          border-radius: 22px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background: rgba(255, 255, 255, 0.04);
-        }
-
-        .phStat__value {
-          display: flex;
-          align-items: baseline;
-          gap: 5px;
-          font-size: clamp(2rem, 4vw, 3rem);
-          line-height: 1;
-          letter-spacing: -0.06em;
-          font-weight: 700;
-        }
-
-        .phStat__label {
-          margin-top: 10px;
-          font-size: 0.72rem;
-          text-transform: uppercase;
-          letter-spacing: 0.2em;
-          color: rgba(244, 240, 234, 0.68);
-        }
-
-        .phChapter__description {
-          margin: 0;
-          max-width: 54ch;
-          font-size: 1rem;
-          line-height: 1.8;
-          color: rgba(244, 240, 234, 0.8);
-        }
-
-        .phChapter__footer {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
-
-        .phChapter__line {
-          width: 86px;
-          height: 6px;
-          border-radius: 999px;
-          box-shadow: 0 0 34px rgba(255, 255, 255, 0.08);
-        }
-
-        .phChapter__footerText {
-          font-size: 0.75rem;
-          line-height: 1.5;
-          text-transform: uppercase;
-          letter-spacing: 0.16em;
-          color: rgba(244, 240, 234, 0.68);
-        }
-
-        .phChapter.is-active .phChapter__backdropImage {
-          transform: scale(1.03);
-          filter: grayscale(100%) brightness(0.34) contrast(1.08) blur(8px);
-        }
-
-        .phChapter.is-active .phChapter__mediaImage {
-          transform: scale(1.01);
-        }
-
-        .phCta {
-          position: relative;
-          padding: 0 0 44px;
-        }
-
-        .phCta__card {
-          position: relative;
-          overflow: hidden;
-          padding: clamp(26px, 4vw, 46px);
-          border-radius: 34px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
-            rgba(255, 255, 255, 0.03);
-          box-shadow: 0 24px 120px rgba(0, 0, 0, 0.24);
-        }
-
-        .phCta__glow {
-          position: absolute;
-          right: -140px;
-          top: -110px;
-          width: 340px;
-          height: 340px;
-          border-radius: 999px;
-          background: rgba(183, 255, 241, 0.16);
-          filter: blur(70px);
           pointer-events: none;
         }
 
-        .phCta__card h2 {
-          position: relative;
-          margin: 14px 0 14px;
-          max-width: 14ch;
-          font-size: clamp(2.2rem, 6vw, 4.6rem);
-          line-height: 0.96;
-          letter-spacing: -0.07em;
-          text-wrap: balance;
+        .posterSky {
+          background-size: cover;
+          background-position: center;
+          opacity: 0.9;
+          filter: saturate(0.88) brightness(0.54);
         }
 
-        .phCta__card p:last-of-type {
-          position: relative;
-          margin: 0;
-          max-width: 60ch;
-          font-size: 1rem;
-          line-height: 1.8;
-          color: rgba(244, 240, 234, 0.82);
+        .posterGrid {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.82;
+          mix-blend-mode: screen;
+          filter: drop-shadow(0 0 22px rgba(66, 246, 210, 0.18));
+          animation: gridPulse 9s ease-in-out infinite;
         }
 
-        .phCta__actions {
-          margin-top: 26px;
+        .posterGlowCloud {
+          border-radius: 999px;
+          filter: blur(120px);
+          opacity: 0.18;
+        }
+
+        .posterGlowCloud--left {
+          inset: auto auto -18vh -18vw;
+          width: 48vw;
+          height: 48vw;
+          background: #3cf3cb;
+        }
+
+        .posterGlowCloud--right {
+          inset: 8vh -18vw auto auto;
+          width: 46vw;
+          height: 46vw;
+          background: #ffbf59;
+          opacity: 0.09;
+        }
+
+        .posterNoise {
+          opacity: 0.12;
+          background-image:
+            radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.5px),
+            radial-gradient(circle at 72% 18%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1.5px),
+            radial-gradient(circle at 82% 74%, rgba(255, 255, 255, 0.6) 0 1px, transparent 1.5px),
+            radial-gradient(circle at 36% 80%, rgba(255, 255, 255, 0.55) 0 1px, transparent 1.5px),
+            radial-gradient(circle at 58% 58%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.5px);
+          background-size: 280px 280px, 360px 360px, 340px 340px, 420px 420px, 300px 300px;
+          mix-blend-mode: screen;
+        }
+
+        .posterVignette {
+          background:
+            radial-gradient(circle at center, transparent 34%, rgba(4, 5, 7, 0.22) 60%, rgba(4, 5, 7, 0.7) 100%),
+            linear-gradient(180deg, rgba(4, 5, 7, 0.25) 0%, rgba(4, 5, 7, 0.55) 100%);
+        }
+
+        .posterHud {
+          position: absolute;
+          inset: 0;
+          z-index: 4;
+          pointer-events: none;
+        }
+
+        .posterLabel {
+          position: absolute;
+          padding: 10px 14px;
+          border: 1px solid rgba(46, 247, 210, 0.26);
+          background: rgba(3, 9, 10, 0.72);
+          box-shadow: 0 0 32px rgba(46, 247, 210, 0.08);
+          color: #27efd2;
+          font-size: 0.86rem;
+          line-height: 1;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+
+        .posterLabel--topLeft {
+          top: 16px;
+          left: 16px;
+        }
+
+        .posterLabel--topRight {
+          top: 16px;
+          right: 16px;
+        }
+
+        .posterLabel--bottomLeft {
+          left: 16px;
+          bottom: 16px;
+        }
+
+        .posterLabel--bottomRight {
+          right: 16px;
+          bottom: 16px;
+        }
+
+        .posterTopArc {
+          position: absolute;
+          top: 1.6vh;
+          left: 50%;
+          z-index: 3;
+          width: min(1100px, 88vw);
+          transform: translateX(-50%);
+          filter: drop-shadow(0 0 18px rgba(84, 247, 214, 0.08));
+          pointer-events: none;
+        }
+
+        .posterTopArc svg {
+          width: 100%;
+          height: auto;
+        }
+
+        .posterTopArc text {
+          fill: url(#posterTitleGradient);
+          font-size: 90px;
+          font-weight: 900;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        .posterCenter {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          display: grid;
+          place-items: center;
+          padding: 17vh 0 25vh;
+        }
+
+        .posterCircleWrap {
+          position: relative;
+          width: min(46vw, 560px);
+          aspect-ratio: 1 / 1;
+          display: grid;
+          place-items: center;
+        }
+
+        .posterCircleHalo,
+        .posterCircleRing,
+        .posterCircleMask {
+          position: absolute;
+          inset: 0;
+          border-radius: 999px;
+        }
+
+        .posterCircleHalo {
+          inset: -7%;
+          animation: haloPulse 4.8s ease-in-out infinite;
+        }
+
+        .posterCircleRing {
+          border: 1px solid rgba(74, 246, 212, 0.45);
+          box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+            0 0 44px rgba(74, 246, 212, 0.18);
+          animation: ringRotate 18s linear infinite;
+        }
+
+        .posterCircleMask {
+          overflow: hidden;
+          background: rgba(7, 16, 14, 0.84);
+          box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+            0 12px 80px rgba(0, 0, 0, 0.45);
+        }
+
+        .posterCircleImage {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(100%) contrast(1.04) brightness(0.86);
+          transition:
+            opacity 420ms ease,
+            transform 420ms ease;
+          will-change: opacity, transform;
+        }
+
+        .posterCircleShade {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(circle at center, rgba(255, 255, 255, 0.06), transparent 52%),
+            linear-gradient(180deg, rgba(3, 8, 9, 0.06), rgba(3, 8, 9, 0.26));
+          mix-blend-mode: screen;
+        }
+
+        .posterBottomBlock {
+          position: absolute;
+          left: 50%;
+          bottom: 8.2vh;
+          z-index: 3;
+          width: min(1120px, calc(100vw - 180px));
+          transform: translateX(-50%);
+          pointer-events: none;
+        }
+
+        .posterMiniInfo,
+        .posterStatsPill,
+        .posterDescription {
+          position: relative;
+          min-height: 40px;
+        }
+
+        .posterMiniInfo__item,
+        .posterStatsPill__item,
+        .posterDescription__item,
+        .posterBottomArc__svg {
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform-origin: center;
+        }
+
+        .posterMiniInfo__item {
           display: flex;
-          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
           gap: 12px;
+          width: max-content;
+          transform: translateX(-50%);
+          text-transform: uppercase;
+          letter-spacing: 0.18em;
+          font-size: 0.86rem;
+          font-weight: 700;
+          color: rgba(244, 243, 238, 0.82);
         }
 
-        @media (max-width: 1120px) {
-          .phHero__inner,
-          .phChapter__frame,
-          .phChapter--reverse .phChapter__frame {
-            grid-template-columns: 1fr;
-          }
+        .posterMiniInfo__dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 999px;
+          background: #36f2cc;
+          box-shadow: 0 0 16px rgba(54, 242, 204, 0.85);
+        }
 
-          .phRail {
-            grid-template-columns: 1fr 1fr;
-          }
+        .posterBottomArc {
+          position: relative;
+          height: clamp(140px, 17vw, 200px);
+          margin-top: -6px;
+        }
 
-          .phChapter {
-            min-height: 160svh;
-          }
+        .posterBottomArc__svg {
+          width: min(980px, 92vw);
+          height: 100%;
+          transform: translateX(-50%);
+          filter: drop-shadow(0 0 22px rgba(54, 242, 204, 0.16));
+        }
 
-          .phChapter__mediaCol,
-          .phChapter__contentCol,
-          .phChapter--reverse .phChapter__mediaCol,
-          .phChapter--reverse .phChapter__contentCol {
-            order: unset;
-          }
+        .posterBottomArc__svg text {
+          fill: #39f2ce;
+          font-size: 84px;
+          font-weight: 900;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
 
-          .phChapter__mediaCard {
-            min-height: 38svh;
+        .posterStatsPill {
+          margin-top: -8px;
+          min-height: 56px;
+        }
+
+        .posterStatsPill__item {
+          width: max-content;
+          transform: translateX(-50%);
+          padding: 14px 28px 13px;
+          border-radius: 999px;
+          border: 1px solid rgba(67, 245, 210, 0.3);
+          background: rgba(11, 21, 21, 0.72);
+          box-shadow: 0 0 42px rgba(67, 245, 210, 0.16);
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+          font-size: clamp(1rem, 2vw, 1.35rem);
+          font-weight: 800;
+          color: #77f9de;
+          white-space: nowrap;
+        }
+
+        .posterDescription {
+          margin-top: 18px;
+          min-height: 68px;
+        }
+
+        .posterDescription__item {
+          width: min(760px, 100%);
+          margin: 0;
+          transform: translateX(-50%);
+          text-align: center;
+          font-size: 1rem;
+          line-height: 1.72;
+          color: rgba(244, 243, 238, 0.78);
+        }
+
+        .posterNav {
+          position: absolute;
+          top: 50%;
+          z-index: 5;
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          padding: 14px 16px;
+          border-radius: 999px;
+          border: 1px solid rgba(67, 245, 210, 0.24);
+          background: rgba(6, 11, 12, 0.74);
+          color: #7bf9df;
+          text-transform: uppercase;
+          letter-spacing: 0.18em;
+          font-size: 0.8rem;
+          font-weight: 800;
+          box-shadow: 0 0 28px rgba(67, 245, 210, 0.08);
+          backdrop-filter: blur(12px);
+          transform: translateY(-50%);
+          transition:
+            opacity 180ms ease,
+            transform 180ms ease,
+            border-color 180ms ease,
+            background 180ms ease;
+        }
+
+        .posterNav:hover,
+        .posterNav:focus-visible {
+          transform: translateY(calc(-50% - 2px));
+          border-color: rgba(67, 245, 210, 0.48);
+          background: rgba(8, 16, 17, 0.84);
+        }
+
+        .posterNav:disabled {
+          opacity: 0.28;
+          cursor: not-allowed;
+        }
+
+        .posterNav:disabled:hover,
+        .posterNav:disabled:focus-visible {
+          transform: translateY(-50%);
+          background: rgba(6, 11, 12, 0.74);
+          border-color: rgba(67, 245, 210, 0.24);
+        }
+
+        .posterNav--prev {
+          left: 18px;
+        }
+
+        .posterNav--next {
+          right: 18px;
+        }
+
+        .posterNav__arrow {
+          font-size: 1rem;
+          line-height: 1;
+        }
+
+        .posterProgress {
+          position: absolute;
+          right: 24px;
+          bottom: 84px;
+          z-index: 5;
+          display: grid;
+          gap: 10px;
+        }
+
+        .posterProgress__dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 0 18px rgba(67, 245, 210, 0.06);
+          transition:
+            transform 180ms ease,
+            background 180ms ease,
+            border-color 180ms ease,
+            box-shadow 180ms ease;
+        }
+
+        .posterProgress__dot:hover,
+        .posterProgress__dot:focus-visible,
+        .posterProgress__dot.is-active {
+          transform: scale(1.16);
+          background: #43f5d2;
+          border-color: #43f5d2;
+          box-shadow: 0 0 20px rgba(67, 245, 210, 0.42);
+        }
+
+        @keyframes haloPulse {
+          0%,
+          100% {
+            transform: scale(0.98);
+            opacity: 0.72;
+          }
+          50% {
+            transform: scale(1.03);
+            opacity: 1;
           }
         }
 
-        @media (max-width: 760px) {
-          .phShell {
-            width: min(100% - 28px, 1360px);
+        @keyframes ringRotate {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes gridPulse {
+          0%,
+          100% {
+            opacity: 0.76;
+          }
+          50% {
+            opacity: 0.9;
+          }
+        }
+
+        @media (max-width: 1100px) {
+          .posterTopArc {
+            width: min(1000px, 92vw);
           }
 
-          .phHero {
-            min-height: auto;
-            padding: 92px 0 32px;
+          .posterTopArc text {
+            font-size: 80px;
           }
 
-          .phHero__inner {
-            gap: 30px;
+          .posterCircleWrap {
+            width: min(58vw, 500px);
           }
 
-          .phHero__title {
-            font-size: clamp(3.4rem, 22vw, 5.6rem);
+          .posterBottomBlock {
+            width: min(960px, calc(100vw - 120px));
           }
 
-          .phHero__actions,
-          .phCta__actions {
-            flex-direction: column;
+          .posterBottomArc__svg text {
+            font-size: 72px;
+          }
+        }
+
+        @media (max-width: 820px) {
+          .posterLabel {
+            font-size: 0.7rem;
+            padding: 9px 11px;
           }
 
-          .phButton {
+          .posterLabel--bottomLeft,
+          .posterLabel--bottomRight {
+            bottom: 14px;
+          }
+
+          .posterTopArc {
+            top: 3.5vh;
+            width: 96vw;
+          }
+
+          .posterTopArc text {
+            font-size: 56px;
+            letter-spacing: 0.12em;
+          }
+
+          .posterCenter {
+            padding: 18vh 0 30vh;
+          }
+
+          .posterCircleWrap {
+            width: min(76vw, 430px);
+          }
+
+          .posterBottomBlock {
+            width: calc(100vw - 32px);
+            bottom: 12vh;
+          }
+
+          .posterMiniInfo__item {
+            font-size: 0.72rem;
+            gap: 8px;
+            text-align: center;
+          }
+
+          .posterBottomArc {
+            height: 116px;
+          }
+
+          .posterBottomArc__svg {
             width: 100%;
           }
 
-          .phRail {
-            grid-template-columns: 1fr;
+          .posterBottomArc__svg text {
+            font-size: 54px;
+            letter-spacing: 0.06em;
           }
 
-          .phIntroBand {
-            padding-bottom: 24px;
+          .posterStatsPill {
+            min-height: 50px;
           }
 
-          .phChapter {
-            min-height: auto;
-            padding-bottom: 26px;
+          .posterStatsPill__item {
+            max-width: min(92vw, 560px);
+            padding: 13px 18px 12px;
+            font-size: 0.95rem;
+            white-space: normal;
+            text-align: center;
           }
 
-          .phChapter__sticky {
-            position: relative;
-            min-height: auto;
-            display: block;
+          .posterDescription__item {
+            width: min(92vw, 620px);
+            font-size: 0.92rem;
+            line-height: 1.62;
           }
 
-          .phChapter__backdrop {
-            display: none;
+          .posterNav {
+            top: auto;
+            bottom: 82px;
+            transform: none;
+            padding: 12px 14px;
+            font-size: 0.72rem;
           }
 
-          .phChapter__frame {
-            min-height: auto;
-            gap: 16px;
+          .posterNav:hover,
+          .posterNav:focus-visible,
+          .posterNav:disabled:hover,
+          .posterNav:disabled:focus-visible {
+            transform: none;
           }
 
-          .phChapter__mediaCard,
-          .phChapter__contentCard,
-          .phCta__card {
-            border-radius: 24px;
+          .posterNav--prev {
+            left: 14px;
           }
 
-          .phChapter__mediaCard {
-            min-height: 48svh;
+          .posterNav--next {
+            right: 14px;
           }
 
-          .phChapter__contentCard {
-            padding: 22px 18px;
-            gap: 20px;
-          }
-
-          .phChapter__topline {
-            align-items: flex-start;
-            flex-direction: column;
-            padding-bottom: 16px;
-          }
-
-          .phChapter__title {
-            font-size: clamp(2.4rem, 14vw, 3.8rem);
-          }
-
-          .phChapter__summary,
-          .phChapter__description,
-          .phIntroBand__inner p,
-          .phHero__body,
-          .phCta__card p:last-of-type {
-            font-size: 0.98rem;
-          }
-
-          .phChapter__stats {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-
-          .phStat {
-            min-width: 0;
-          }
-
-          .phCta {
-            padding-bottom: 28px;
-          }
-
-          .phCta__card h2 {
-            max-width: none;
+          .posterProgress {
+            right: 50%;
+            bottom: 22px;
+            transform: translateX(50%);
+            grid-auto-flow: column;
           }
         }
 
-        @media (max-width: 480px) {
-          .phOverline {
-            letter-spacing: 0.18em;
+        @media (max-width: 560px) {
+          .posterLabel--bottomLeft,
+          .posterLabel--bottomRight {
+            display: none;
           }
 
-          .phHero {
-            padding-top: 82px;
+          .posterLabel--topLeft,
+          .posterLabel--topRight {
+            top: 10px;
           }
 
-          .phChapter__mediaCard {
-            min-height: 42svh;
+          .posterTopArc {
+            top: 4.5vh;
+            width: 100vw;
           }
 
-          .phChapter__stats {
-            grid-template-columns: 1fr;
-          }
-
-          .phRail__item {
-            padding: 13px 14px;
-            grid-template-columns: 34px 1fr;
-          }
-
-          .phChapter__strap,
-          .phChapter__footerText {
+          .posterTopArc text {
+            font-size: 42px;
             letter-spacing: 0.14em;
+          }
+
+          .posterCenter {
+            padding: 18vh 0 34vh;
+          }
+
+          .posterCircleWrap {
+            width: min(84vw, 360px);
+          }
+
+          .posterCircleHalo {
+            inset: -10%;
+          }
+
+          .posterMiniInfo__item {
+            width: calc(100vw - 48px);
+            flex-wrap: wrap;
+            gap: 6px 10px;
+          }
+
+          .posterBottomArc {
+            margin-top: 2px;
+            height: 96px;
+          }
+
+          .posterBottomArc__svg text {
+            font-size: 38px;
+            letter-spacing: 0.05em;
+          }
+
+          .posterStatsPill {
+            margin-top: 2px;
+          }
+
+          .posterStatsPill__item {
+            max-width: calc(100vw - 42px);
+            font-size: 0.84rem;
+            letter-spacing: 0.11em;
+          }
+
+          .posterDescription {
+            margin-top: 14px;
+          }
+
+          .posterDescription__item {
+            width: calc(100vw - 34px);
+            font-size: 0.86rem;
+          }
+
+          .posterNav {
+            bottom: 64px;
+            gap: 8px;
+            padding: 11px 13px;
+            font-size: 0.68rem;
+          }
+
+          .posterNav__arrow {
+            font-size: 0.9rem;
           }
         }
 
@@ -1030,10 +1056,15 @@ export default function PrivateHirePage() {
             scroll-behavior: auto;
           }
 
-          .phButton,
-          .phRail__item,
-          .phChapter__backdropImage,
-          .phChapter__mediaImage {
+          .posterGrid,
+          .posterCircleHalo,
+          .posterCircleRing {
+            animation: none;
+          }
+
+          .posterCircleImage,
+          .posterProgress__dot,
+          .posterNav {
             transition: none;
           }
         }
