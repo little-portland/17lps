@@ -20,7 +20,7 @@ const VENUES: Venue[] = [
   {
     id: 'full-venue',
     title: 'FULL VENUE',
-    image: `${IMAGE_BASE}/full-venue-placeholder.jpg`,
+    image: `${IMAGE_BASE}/full-venue-placeholder.png`,
     alt: 'Full venue private hire image.',
     objectPosition: '50% 52%',
     infoLines: ['150 Standing', 'Both Floors'],
@@ -36,7 +36,7 @@ const VENUES: Venue[] = [
   {
     id: 'the-studio',
     title: 'THE STUDIO',
-    image: `${IMAGE_BASE}/the-studio-placeholder.jpg`,
+    image: `${IMAGE_BASE}/the-studio-placeholder.png`,
     alt: 'The Studio private hire image.',
     objectPosition: '50% 42%',
     infoLines: ['100 Standing', 'Located on the lower ground floor'],
@@ -44,7 +44,7 @@ const VENUES: Venue[] = [
   {
     id: 'chefs-studio',
     title: "CHEF'S STUDIO",
-    image: `${IMAGE_BASE}/chefs-studio-placeholder.jpg`,
+    image: `${IMAGE_BASE}/chefs-studio-placeholder.png`,
     alt: "Chef's Studio private hire image.",
     objectPosition: '50% 50%',
     infoLines: ['Private Dining | 12 Seated', 'Located on the lower ground floor'],
