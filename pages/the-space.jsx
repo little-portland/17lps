@@ -1,372 +1,354 @@
-import React from "react";
-import Head from "next/head";
-import Image from "next/image";
-import HoverImageLink from "@components/HoverImageLink"; // adjust path if your structure differs
+import Head from 'next/head';
+import Link from 'next/link';
+import { useEffect, useMemo, useState } from 'react';
 
-//Components
-import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
+/**
+ * Drop this file into /pages, for example as pages/venue.tsx
+ *
+ * Then place your 3D PNG somewhere public, for example:
+ *   /public/images/venue-3d.png
+ *
+ * Update VENUE_IMAGE if needed.
+ */
 
-//hooks
-import useFetchContent from "@utils/useFetchContent";
+const VENUE_IMAGE = '/images/venue-3d.png';
 
-const Menu = ({ menuImage }) => { 
-  
+const AREAS = [
+  {
+    id: 'tent',
+    title: 'The Tent',
+    href: '/tent',
+    subtitle: 'Lounge energy under a luminous canopy.',
+    accent: 'from-fuchsia-400/80 via-pink-400/60 to-cyan-300/80',
+    glow: 'shadow-[0_0_35px_rgba(232,121,249,0.35)]',
+    position: {
+      desktop: { top: '15%', left: '21%' },
+      mobile: { top: '6%', left: '50%' },
+    },
+  },
+  {
+    id: 'chefs-studio',
+    title: "The Chef's Studio",
+    href: '/chefs-studio',
+    subtitle: 'Interactive culinary moments in mission control.',
+    accent: 'from-emerald-300/80 via-teal-300/65 to-cyan-200/80',
+    glow: 'shadow-[0_0_35px_rgba(94,234,212,0.30)]',
+    position: {
+      desktop: { bottom: '14%', left: '40%' },
+      mobile: { bottom: '19%', left: '16%' },
+    },
+  },
+  {
+    id: 'studio',
+    title: 'The Studio',
+    href: '/studio',
+    subtitle: 'Broadcast-grade atmosphere with cosmic drama.',
+    accent: 'from-sky-300/80 via-cyan-300/60 to-violet-400/80',
+    glow: 'shadow-[0_0_35px_rgba(125,211,252,0.30)]',
+    position: {
+      desktop: { bottom: '12%', right: '8%' },
+      mobile: { bottom: '7%', right: '6%' },
+    },
+  },
+] as const;
+
+type Area = (typeof AREAS)[number];
+
+export default function VenuePage() {
+  const [activeArea, setActiveArea] = useState<string>(AREAS[0].id);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const active = useMemo(
+    () => AREAS.find((area) => area.id === activeArea) ?? AREAS[0],
+    [activeArea]
+  );
+
   return (
     <>
       <Head>
-
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire.png" /> 
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_private_hire_hover.png" />
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_friend.png" /> 
-        <link rel="preload" as="image" href="/images/theclub/the_club_page_friend_hover.png" />
-        <link rel="preload" as="image" href="/images/theclub/rotating_club.gif" />
-                
-        <style>
-            {`html{overflow-x: hidden !important;}`}
-            {`body{background-color: #000000!important;overflow: auto!important;overflow-x: initial!important;}`}
-            {`.override-logo{margin-top: 30px;}`}
-            {`.override .explore-zen{margin-top: 30px!important;list-style: none;padding: 0;margin: 0;width:100%;}`}
-            {`.explore-zen li {width: 100%;background-image: url('/images/override/explore_zen_line_bg.png');background-repeat: no-repeat;background-position: center;padding: 20px; display: flex;justify-content: flex-end;align-items: center;}`}
-            {`.explore-zen li a {margin-right: 50px;display: inline-block;width: 300px;height: 65px;background-image: url('/images/override/explore_zen_bg.png'); padding: 15px;}`}
-            {`.override-buttons-wrapper {
-                font-family: Helvetica !important;
-                font-weight: bold !important;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                margin: 50px 0 60px 0;
-            }
-            .override-buttons-wrapper .row {
-                display: flex;
-                gap: 10px;
-                width: 100%;
-            }
-            .full-width {
-              width: 100%;
-            }
-
-            .link {
-               color: #aacc33!important;
-                transition: all 0.3s ease-in-out; 
-                opacity: 1;
-            }
-
-            .link:hover {
-              color: #aacc33!important;
-              opacity: .7;
-            }
-            
-            .override-button {
-                color: #aacc33!important;
-                border: 3px solid #aacc33!important;
-            }
-    
-            .override-button:hover {
-                color: #000000!important;
-                background-color: #aacc33!important;
-                border: 3px solid #aacc33!important;
-            }
-
-             .image-column img {
-                border: 2px solid #aacc33;
-            }
-
-            .dance-popup {
-              border: none!important;
-              margin: 50px 0 25px 0;
-              min-height: auto !important;
-              font-family: Helvetica !important;
-              font-weight: bold !important;
-          }
-
-          .dance-popup h3 {
-              color: rgb(255, 255, 255);
-              font-size: 2rem!important;
-          }
-
-          .dance-popup p {
-              font-size: 1.5rem!important;
-              line-height: 1.6rem !important;
-          }
-
-          .intro {
-              border: none!important;
-              margin: 10px auto 35px auto !important;
-              font-family: Helvetica !important;
-              font-weight: bold !important;
-              text-transform: uppercase!important;
-          
-          }
-          
-          .intro p {
-              font-size: 1.5rem !important;
-              line-height: 1.6rem !important;
-              font-weight: 400 !important;
-              margin-bottom: 0.6rem !important;
-              text-align: center !important;
-              color: white !important;
-          }
-
-          .hire {
-              margin: 50px auto 50px auto!important;
-          }
-
-        .friends {
-              margin: 25px auto 30px auto!important;
-          }
-
-          .img-grid {
-            margin-bottom: 40px!important;
-          }
-
-          .reg-btns .override-button {
-              font-family: Helvetica, sans-serif;
-              font-weight: 900;
-              background-color: #aacc33 !important;
-              font-size: 25px;
-              color: #000 !important;
-              border: 0!important;
-              font-size: 25px;
-              border-radius: 50px;
-              padding: 10px 15px;
-          }
-
-         .reg-btns .override-button:hover {
-              background-color: #ffffff!important;
-          }
-
-          .reg-btns .button-half-page {
-            width: 49%!important;
-          }
-            
-            .override-buttons-wrapper .column {
-                flex: 1;
-            }`}
-          
-            {`.nocturn h1{margin-top: 30px;}`}
-            {`.nocturn{width: 50%;margin: 0 auto;}`}
-            {`.nocturn-wider-section{width: 80%;margin: 0 auto;}`}
-            {`.column{width: 33%}`}
-            {`.column img{ margin-top: 8px;vertical-align: middle;width: 100%;}`}
-            {`.column a{ cursor:pointer!important;}`}
-            {`.top{ font-size: 35px;}`}
-            {`.bottom{ font-size: 25px;}`}
-            {'.image-row{ display: flex;flex-wrap: wrap;padding: 0 4px;}'}
-            {'.image-column{flex: 33%;max-width: 50%;padding: 0 4px;}'}
-            {'.image-column img{ margin-top: 8px;vertical-align: middle;width: 100%;}'}
-            {`audio{ margin-top: 8px!important;width:100%!important;}`}
-            {`.nocturn-text-wrapper{ margin-top: 30px!important;padding: 0 30px;}`}
-            {`.nocturn-text-wrapper small{ margin-left: 10px;font-size: 20px;}`}
-            {`.nocturn-text-wrapper img{ max-width: 100%;margin-bottom: 40px!important;display: block;margin-left: auto;margin-right: auto;}`}
-            {`.nocturn-text{ font-family: Helvetica!important;font-weight: bold!important;text-decoration: none!important;color: #ffffff!important;padding-bottom: 30px;line-height: 1.1;}`}
-            {`.nocturn-text{ padding-bottom: 20px;}`}
-            {`.nocturn-text-two{ padding-top: 20px;}`}
-            {`.question{ color: #000000!important;font-style:italic;}`}
-            {`.italic{ font-style:italic!important;}`}
-            {`.loading{ font-size: 50px;text-align: center;}`}
-            {`.flyer{ max-width: 100%!important;}`}
-            {`.preloader{ margin:30px 0 10px 0!important;}`}
-            {`.spacing{ margin-top:30px!important;}`}
-            {`.live{ border-top: 5px solid #000;padding-top: 20px;border-bottom: 5px solid #000;margin-bottom: 40px;text-align: center;}`}
-            {`@media (max-width: 768px) { .override-logo { margin-top: -10px;}.override-buttons-wrapper {flex-direction: column;gap: 15px;}.override-buttons-wrapper .row {flex-direction: column;gap: 15px;}.nocturn{margin-top:30px;width: 90%;}.spacing{ margin-top:15px!important;}.preloader{ margin:15px 0 -15px 0!important;}.nocturn-text-two{ padding-top: 10px;}.nocturn-wider-section{width: 90%;}.nocturn-text-wrapper{padding: 0 15px;}.top p{ font-size: 20px;}.bottom p{ font-size: 15px;}.nocturn-text-wrapper small{ font-size: 12px!important;margin-left: 5px!important;}
-              .explore-zen li a {
-                margin-right: 30px;
-                width: 150px;
-                height: 32px;
-                background-size: 150px 32px;
-                background-repeat: no-repeat;
-            }
-            .explore-zen li {
-              background-size: 400px 20px;
-          }
-          .column {
-            width: 100%!important;
-          }
-
-         .dance-popup h3 {
-            font-size: 0.7rem!important;
-            padding: 5px 10px!important;
-        }
-
-        .dance-popup p {
-            font-size: 0.6rem!important;
-            line-height: 2!important;
-        }
-
-        .intro {
-              margin-top: 0px !important;
-              margin-bottom: 10px !important;
-          }
-
-        .intro p {
-              font-size: 0.6rem !important;
-              line-height: 2 !important;
-              margin-bottom: 0px !important;
-          }
-
-        .hire {
-              margin: 30px auto 40px auto!important;
-          }
-
-        .friends {
-              margin: 10px auto 10px auto !important;
-          }
-
-        .override-buttons-wrapper {
-            margin: 25px 0;
-        }
-
-        .override-button {
-            font-size: 15px!important;
-        }
-
-        .image-column {
-            flex: 100%;
-            max-width: 100%;
-        }
-
-        .reg-btns .button-half-page {
-            width: 98%!important;
-          }
-
-            }`}
-        </style>
-
-        <title>17 Little Portland Street - The Club</title>
+        <title>Venue Portal</title>
+        <meta
+          name="description"
+          content="Explore the venue across The Tent, The Chef's Studio, and The Studio."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      
-         <div className="nocturn override">
-           <img className="override-logo" src="/images/theclub/theclub-page-top.gif" alt="The Club" width="100%" />
-         </div>
 
-        <div className="nocturn override">
-           <img src="/images/theclub/rotating_club.gif" alt="The Tent" width="100%" />
-         </div>
+      <main className="relative min-h-screen overflow-hidden bg-[#02040a] text-white">
+        <SceneBackground />
 
-         <div className="nocturn override intro">
-           <p>Access to the club is for Friends of the Club only.</p>
-         </div>
-
-          <div className="nocturn hire friends">
-            <HoverImageLink
-              href="mailto:friends@little-portland.com?subject=FOC Enquiry"
-              img="/images/theclub/the_club_page_friend.png"
-              hoverImg="/images/theclub/the_club_page_friend_hover.png"
-              aspect="2000 / 306"
-              ariaLabel="APPLY TO BECOME A FRIEND OF THE CLUB"
-              target="_blank"
-            />
-          </div>
-
-        <div className="nocturn override intro">
-           <p>Or you can access the club by <a className="link" target="_blank" href="https://www.little-portland.com/bookings" >booking</a> a dinner table.</p>
-         </div>
-      
-      <div className="nocturn override">
-        <div className="dance-popup">
-          <div>
-                  <div className="category thu">
-                    <h3>Thursday <span className="italic-word">is</span> <span className="group-item">Underground</span></h3>
-                    <p>Positioned as the weekly opener, <span className="group-item">Thursday Underground</span> sets the tone for the
-entire weekend. A platform for cutting-edge electronic sound that, at its most
-profound, transcends the boundaries of conventional music, <span className="group-item">Thursday Underground</span> is an ode to artists at the forefront of the underground electronic
-movement; a movement followed by a community deeply rooted in its culture.</p>
-                  </div>
-                  <div className="category fri">
-                    <h3>Friday <span className="italic-word">is</span> <span className="group-item">Residents</span></h3>
-                    <p><span className="group-item">Friday Residents</span> stands as a bridge between two worlds. While influenced by both
-Thursday Underground and Saturday Disco3000, it projects its own vibe and
-crowd into each. With a focus on club residents in its programming, it maintains a
-sense of familiarity and community, making <span className="group-item">Friday Residents</span> the vibrant
-heartbeat of the weekend.</p>
-                  </div>
-                  <div className="category sat">
-                    <h3>Saturday <span className="italic-word">is</span> <span className="group-item">Disco3000</span></h3>
-                    <p><span className="group-item">Disco3000</span> seeks to capture the spirit of the disco era for the space age. Guided
-by artists who’ve journeyed across the sonic spectrum time and again, it
-embraces a soundscape that truly resonates with the soul: diverse, timeless, and
-filled with uplifting and euphoric elements. These are the sounds of the musically
-enlightened. <span className="group-item">Disco3000</span> is how we draw the weekend to a close; a cosmic finale.</p>
-                  </div>
-          </div>
-        </div>
-        </div>
-
-        <div className="nocturn hire">
-            <HoverImageLink
-              href="mailto:yo@little-portland.com"
-              img="/images/theclub/the_club_page_private_hire.png"
-              hoverImg="/images/theclub/the_club_page_private_hire_hover.png"
-              aspect="2000 / 306"
-              ariaLabel="Private hire enquiries"
-              target="_blank"
-            />
-          </div>
-
-          <div className="nocturn override reg-btns">
-           <div className="override-buttons-wrapper">
-              <div className="button-half-page">
-                 <a target="_blank" href="https://www.little-portland.com/thetent" class="override-button">EXPLORE THE TENT</a>
-             </div>
-             <div className="button-half-page">
-                 <a target="_blank" href="https://www.little-portland.com/studio" class="override-button">EXPLORE THE STUDIO</a>
-             </div>
+        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 pb-10 pt-6 sm:px-6 lg:px-8 lg:pb-14 lg:pt-8">
+          <header className="mb-6 flex flex-col gap-4 lg:mb-8 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.28em] text-cyan-200 backdrop-blur-md sm:text-xs">
+                <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.8)]" />
+                Venue Navigation Portal
+              </div>
+              <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Retro-futurist venue map
+              </h1>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-slate-300 sm:text-base">
+                Drift through the space station and jump directly into each experience zone.
+                Tap the floating beacons on the venue or use the control cards below.
+              </p>
             </div>
-         </div>
 
-         <div className="nocturn-wider-section override-logo img-grid">
-           <div className="image-row">
-              <div className="image-column">
-                <img src="/images/theclub/the_club01.jpg" />
-                <img src="/images/theclub/the_club02.jpg" />
-                <img src="/images/theclub/the_club03.jpg" />
-                <img src="/images/theclub/the_club04.jpg" />
-                <img src="/images/theclub/the_club05.jpg" />
-                <img src="/images/theclub/the_club11.jpg" />
-              </div>
-              <div className="image-column">
-                <img src="/images/theclub/the_club06.jpg" />
-                <img src="/images/theclub/the_club07.jpg" />
-                <img src="/images/theclub/the_club08.jpg" />
-                <img src="/images/theclub/the_club09.jpg" />
-                <img src="/images/theclub/the_club10.jpg" />
-                <img src="/images/theclub/the_club12.gif" />
-              </div>
-           </div>
-          </div>
+            <div className="grid grid-cols-3 gap-2 rounded-[1.75rem] border border-white/10 bg-white/5 p-2 backdrop-blur-xl">
+              {AREAS.map((area) => {
+                const isActive = area.id === active.id;
+                return (
+                  <button
+                    key={area.id}
+                    type="button"
+                    onMouseEnter={() => setActiveArea(area.id)}
+                    onFocus={() => setActiveArea(area.id)}
+                    onClick={() => setActiveArea(area.id)}
+                    className={[
+                      'rounded-2xl border px-3 py-2 text-left transition duration-300',
+                      isActive
+                        ? 'border-cyan-300/40 bg-cyan-300/10 text-white'
+                        : 'border-white/5 bg-white/0 text-slate-300 hover:border-white/10 hover:bg-white/5 hover:text-white',
+                    ].join(' ')}
+                  >
+                    <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">Zone</div>
+                    <div className="mt-1 text-xs font-medium sm:text-sm">{area.title}</div>
+                  </button>
+                );
+              })}
+            </div>
+          </header>
 
+          <section className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.4fr)_360px] xl:grid-cols-[minmax(0,1.5fr)_400px]">
+            <div className="relative order-2 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-3 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl lg:order-1 lg:p-5">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(45,212,191,0.18),transparent_28%),radial-gradient(circle_at_20%_20%,rgba(96,165,250,0.14),transparent_24%),radial-gradient(circle_at_80%_18%,rgba(244,114,182,0.14),transparent_24%)]" />
+              <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent" />
+
+              <div className="relative aspect-[16/11] w-full rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_50%_50%,rgba(13,148,136,0.22),rgba(0,0,0,0.18)_34%,rgba(0,0,0,0.5)_68%,rgba(0,0,0,0.95)_100%)] p-2 sm:p-4">
+                <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[1.35rem]">
+                  <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:46px_46px]" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,rgba(0,0,0,0.55)_75%,rgba(0,0,0,0.9)_100%)]" />
+                </div>
+
+                <div className="relative flex h-full items-center justify-center overflow-hidden rounded-[1.25rem]">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(20,184,166,0.18),transparent_26%)] blur-2xl" />
+
+                  <img
+                    src={VENUE_IMAGE}
+                    alt="3D venue map with highlighted spaces"
+                    className={[
+                      'relative z-10 h-auto w-full max-w-[1200px] object-contain transition duration-700',
+                      mounted ? 'scale-100 opacity-100' : 'scale-[0.98] opacity-0',
+                    ].join(' ')}
+                  />
+
+                  {AREAS.map((area) => (
+                    <AreaHotspot
+                      key={area.id}
+                      area={area}
+                      isActive={active.id === area.id}
+                      onHover={() => setActiveArea(area.id)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                {AREAS.map((area) => {
+                  const isActive = area.id === active.id;
+                  return (
+                    <Link
+                      key={area.id}
+                      href={area.href}
+                      onMouseEnter={() => setActiveArea(area.id)}
+                      className={[
+                        'group relative overflow-hidden rounded-[1.5rem] border p-4 transition duration-300',
+                        isActive
+                          ? 'border-cyan-300/30 bg-white/10'
+                          : 'border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.08]',
+                      ].join(' ')}
+                    >
+                      <div
+                        className={[
+                          'absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-90',
+                          area.accent,
+                        ].join(' ')}
+                      />
+                      <div className="text-[10px] uppercase tracking-[0.26em] text-slate-400">Access node</div>
+                      <div className="mt-2 text-lg font-medium text-white">{area.title}</div>
+                      <p className="mt-2 text-sm leading-6 text-slate-300">{area.subtitle}</p>
+                      <div className="mt-4 inline-flex items-center gap-2 text-sm text-cyan-200 transition group-hover:translate-x-1">
+                        Enter zone
+                        <span aria-hidden>→</span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            <aside className="order-1 flex flex-col gap-4 lg:order-2">
+              <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl">
+                <div className="text-[10px] uppercase tracking-[0.28em] text-cyan-200">Now selected</div>
+                <h2 className="mt-3 text-2xl font-semibold text-white">{active.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-slate-300">{active.subtitle}</p>
+
+                <div className="mt-5 rounded-[1.5rem] border border-white/10 bg-black/20 p-4">
+                  <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.22em] text-slate-400">
+                    <span>Jump sequence</span>
+                    <span>01</span>
+                  </div>
+                  <div className="space-y-3">
+                    {AREAS.map((area, index) => {
+                      const selected = area.id === active.id;
+                      return (
+                        <button
+                          key={area.id}
+                          type="button"
+                          onClick={() => setActiveArea(area.id)}
+                          className={[
+                            'flex w-full items-center gap-3 rounded-2xl border px-3 py-3 text-left transition',
+                            selected
+                              ? 'border-cyan-300/30 bg-cyan-300/10'
+                              : 'border-white/5 bg-white/0 hover:border-white/10 hover:bg-white/5',
+                          ].join(' ')}
+                        >
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xs text-slate-300">
+                            0{index + 1}
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="truncate text-sm font-medium text-white">{area.title}</div>
+                            <div className="truncate text-xs text-slate-400">Open destination page</div>
+                          </div>
+                          <Link
+                            href={area.href}
+                            className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-cyan-200 hover:bg-white/5"
+                            onClick={(event) => event.stopPropagation()}
+                          >
+                            Open
+                          </Link>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3">
+                <DataTile label="Zones" value="03" />
+                <DataTile label="Mode" value="Live" />
+                <DataTile label="Theme" value="Neo" />
+              </div>
+            </aside>
+          </section>
+        </div>
+      </main>
     </>
   );
-};
+}
 
-export default Menu;
-
-export async function getStaticProps() {
-  const menuData = await useFetchContent(`
-    {
-        menuCollection{
-            items {
-              menuImage {
-                title
-                description
-                url
-                width
-                height
-              }
-            }
+function AreaHotspot({
+  area,
+  isActive,
+  onHover,
+}: {
+  area: Area;
+  isActive: boolean;
+  onHover: () => void;
+}) {
+  return (
+    <div
+      className="absolute z-20"
+      style={{
+        ...area.position.mobile,
+      }}
+    >
+      <div className="hidden lg:block" style={area.position.desktop} />
+      <div className="lg:hidden" />
+      <HotspotBubble area={area} isActive={isActive} onHover={onHover} mobile />
+      <style jsx>{`
+        div.absolute {
+          top: ${area.position.mobile.top ?? 'auto'};
+          left: ${area.position.mobile.left ?? 'auto'};
+          right: ${area.position.mobile.right ?? 'auto'};
+          bottom: ${area.position.mobile.bottom ?? 'auto'};
+        }
+        @media (min-width: 1024px) {
+          div.absolute {
+            top: ${area.position.desktop.top ?? 'auto'};
+            left: ${area.position.desktop.left ?? 'auto'};
+            right: ${area.position.desktop.right ?? 'auto'};
+            bottom: ${area.position.desktop.bottom ?? 'auto'};
           }
-    }
-  `);
+        }
+      `}</style>
+    </div>
+  );
+}
 
-  const menuImage = menuData.menuCollection.items[0].menuImage;
+function HotspotBubble({
+  area,
+  isActive,
+  onHover,
+}: {
+  area: Area;
+  isActive: boolean;
+  onHover: () => void;
+  mobile?: boolean;
+}) {
+  return (
+    <Link
+      href={area.href}
+      onMouseEnter={onHover}
+      onFocus={onHover}
+      className="group relative block -translate-x-1/2"
+      aria-label={`Open ${area.title}`}
+    >
+      <div className="absolute left-1/2 top-full h-10 w-px -translate-x-1/2 bg-gradient-to-b from-cyan-300/70 to-transparent" />
+      <div className="absolute left-1/2 top-[calc(100%+2.25rem)] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-300/80 shadow-[0_0_18px_rgba(103,232,249,0.8)]" />
 
-  return {
-    props: {
-      menuImage,
-    }, // will be passed to the page component as props
-    revalidate: 30, // In seconds
-  };
+      <div
+        className={[
+          'relative rounded-full border px-3 py-2 backdrop-blur-xl transition duration-300 sm:px-4',
+          isActive
+            ? `border-white/20 bg-white/12 ${area.glow} scale-100`
+            : 'border-white/10 bg-black/25 scale-95 hover:scale-100 hover:border-white/20 hover:bg-white/10',
+        ].join(' ')}
+      >
+        <div className="flex items-center gap-2">
+          <span className={[
+            'h-2.5 w-2.5 rounded-full bg-gradient-to-r',
+            area.accent,
+          ].join(' ')} />
+          <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.22em] text-white sm:text-xs">
+            {area.title}
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function DataTile({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-4 text-center backdrop-blur-xl">
+      <div className="text-[10px] uppercase tracking-[0.24em] text-slate-400">{label}</div>
+      <div className="mt-2 text-lg font-semibold text-white">{value}</div>
+    </div>
+  );
+}
+
+function SceneBackground() {
+  return (
+    <>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(20,184,166,0.18),transparent_26%),radial-gradient(circle_at_20%_20%,rgba(168,85,247,0.12),transparent_24%),radial-gradient(circle_at_80%_18%,rgba(56,189,248,0.10),transparent_24%),linear-gradient(180deg,#03050a_0%,#02040a_45%,#010308_100%)]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.18] [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:32px_32px]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-cyan-300/10 to-transparent blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-24 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-300/12 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-cyan-950/20 to-transparent" />
+    </>
+  );
 }
