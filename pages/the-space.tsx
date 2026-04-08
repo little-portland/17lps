@@ -26,21 +26,20 @@ const ASSETS = {
   venue: '/images/the-space/the-space-page-venue.png',
 };
 
-// Update these if your real routes are different.
 const AREAS: AreaConfig[] = [
   {
     id: 'tent',
     title: 'THE TENT',
     href: '/tent',
     desktop: {
-      button: { x: '37.8%', y: '18.2%' },
-      lineStart: { x: '45.4%', y: '18.4%' },
-      lineEnd: { x: '52.0%', y: '31.2%' },
+      button: { x: '38.2%', y: '18.4%' },
+      lineStart: { x: '46.0%', y: '18.6%' },
+      lineEnd: { x: '52.6%', y: '31.8%' },
     },
     mobile: {
-      button: { x: '36.0%', y: '19.2%' },
-      lineStart: { x: '44.2%', y: '19.4%' },
-      lineEnd: { x: '51.6%', y: '32.0%' },
+      button: { x: '36.5%', y: '19.0%' },
+      lineStart: { x: '44.8%', y: '19.2%' },
+      lineEnd: { x: '52.2%', y: '32.4%' },
     },
   },
   {
@@ -48,14 +47,14 @@ const AREAS: AreaConfig[] = [
     title: "CHEF'S STUDIO",
     href: '/chefs-studio',
     desktop: {
-      button: { x: '30.6%', y: '80.2%' },
-      lineStart: { x: '39.4%', y: '80.0%' },
-      lineEnd: { x: '35.6%', y: '72.8%' },
+      button: { x: '30.6%', y: '80.4%' },
+      lineStart: { x: '39.8%', y: '80.0%' },
+      lineEnd: { x: '35.7%', y: '72.0%' },
     },
     mobile: {
       button: { x: '29.8%', y: '82.6%' },
-      lineStart: { x: '39.6%', y: '82.3%' },
-      lineEnd: { x: '35.8%', y: '74.4%' },
+      lineStart: { x: '39.8%', y: '82.1%' },
+      lineEnd: { x: '35.9%', y: '73.7%' },
     },
   },
   {
@@ -63,14 +62,14 @@ const AREAS: AreaConfig[] = [
     title: 'THE STUDIO',
     href: '/studio',
     desktop: {
-      button: { x: '76.7%', y: '74.8%' },
-      lineStart: { x: '67.8%', y: '74.5%' },
-      lineEnd: { x: '61.4%', y: '68.5%' },
+      button: { x: '76.8%', y: '74.8%' },
+      lineStart: { x: '67.9%', y: '74.5%' },
+      lineEnd: { x: '61.6%', y: '67.8%' },
     },
     mobile: {
       button: { x: '75.8%', y: '78.0%' },
-      lineStart: { x: '67.4%', y: '77.6%' },
-      lineEnd: { x: '61.5%', y: '70.0%' },
+      lineStart: { x: '67.5%', y: '77.5%' },
+      lineEnd: { x: '61.8%', y: '69.2%' },
     },
   },
 ];
@@ -101,6 +100,8 @@ export default function TheSpacePage() {
       <main className="page">
         <div className="page-bg" aria-hidden="true" />
         <div className="page-bg-overlay" aria-hidden="true" />
+        <div className="twinkle twinkle-a" aria-hidden="true" />
+        <div className="twinkle twinkle-b" aria-hidden="true" />
         <div className="page-glow page-glow-a" aria-hidden="true" />
         <div className="page-glow page-glow-b" aria-hidden="true" />
         <div className="page-glow page-glow-c" aria-hidden="true" />
@@ -163,7 +164,8 @@ export default function TheSpacePage() {
 
           .page-bg,
           .page-bg-overlay,
-          .page-glow {
+          .page-glow,
+          .twinkle {
             position: absolute;
             inset: 0;
             pointer-events: none;
@@ -174,16 +176,44 @@ export default function TheSpacePage() {
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
-            opacity: 0.35;
+            opacity: 0.65;
             transform: scale(1.03);
           }
 
           .page-bg-overlay {
             background:
-              radial-gradient(circle at 50% 12%, rgba(181, 74, 255, 0.10), transparent 24%),
+              radial-gradient(circle at 50% 10%, rgba(181, 74, 255, 0.12), transparent 24%),
               radial-gradient(circle at 20% 24%, rgba(217, 58, 255, 0.08), transparent 18%),
               radial-gradient(circle at 80% 72%, rgba(140, 34, 232, 0.08), transparent 20%),
-              linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.52) 100%);
+              linear-gradient(180deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.34) 100%);
+          }
+
+          .twinkle {
+            mix-blend-mode: screen;
+            opacity: 0.42;
+          }
+
+          .twinkle-a {
+            background-image:
+              radial-gradient(circle at 10% 18%, rgba(255,255,255,0.95) 0 1px, transparent 2px),
+              radial-gradient(circle at 22% 64%, rgba(255,255,255,0.75) 0 1.2px, transparent 2px),
+              radial-gradient(circle at 39% 28%, rgba(255,255,255,0.8) 0 1px, transparent 2px),
+              radial-gradient(circle at 51% 72%, rgba(255,255,255,0.95) 0 1.1px, transparent 2px),
+              radial-gradient(circle at 68% 22%, rgba(255,255,255,0.8) 0 1px, transparent 2px),
+              radial-gradient(circle at 79% 61%, rgba(255,255,255,0.85) 0 1.2px, transparent 2px),
+              radial-gradient(circle at 92% 18%, rgba(255,255,255,0.8) 0 1px, transparent 2px);
+            animation: twinkleA 6s ease-in-out infinite;
+          }
+
+          .twinkle-b {
+            background-image:
+              radial-gradient(circle at 14% 82%, rgba(255,255,255,0.95) 0 1.2px, transparent 2px),
+              radial-gradient(circle at 29% 15%, rgba(255,255,255,0.75) 0 1px, transparent 2px),
+              radial-gradient(circle at 44% 48%, rgba(255,255,255,0.85) 0 1.1px, transparent 2px),
+              radial-gradient(circle at 58% 18%, rgba(255,255,255,0.9) 0 1.1px, transparent 2px),
+              radial-gradient(circle at 73% 78%, rgba(255,255,255,0.9) 0 1px, transparent 2px),
+              radial-gradient(circle at 86% 36%, rgba(255,255,255,0.8) 0 1px, transparent 2px);
+            animation: twinkleB 8s ease-in-out infinite;
           }
 
           .page-glow {
@@ -244,22 +274,23 @@ export default function TheSpacePage() {
           .venue-image {
             z-index: 2;
             inset: auto;
-            top: 24.8%;
-            left: 15.6%;
-            width: 69.4%;
+            top: 21.8%;
+            left: 13.9%;
+            width: 72.8%;
             height: auto;
             object-fit: contain;
             pointer-events: none;
             filter:
-              drop-shadow(0 10px 24px rgba(255, 0, 212, 0.10))
-              drop-shadow(0 28px 54px rgba(93, 0, 130, 0.16));
-            animation: venueFloat 4.6s ease-in-out infinite;
+              drop-shadow(0 12px 26px rgba(255, 0, 212, 0.12))
+              drop-shadow(0 32px 62px rgba(93, 0, 130, 0.18));
+            animation: venueFloat 4.2s ease-in-out infinite;
           }
 
           .hotspot-group {
             position: absolute;
             inset: 0;
             z-index: 5;
+            pointer-events: none;
           }
 
           .hotspot-mobile {
@@ -272,35 +303,37 @@ export default function TheSpacePage() {
               transform: translateY(0px);
             }
             50% {
-              transform: translateY(-10px);
+              transform: translateY(-14px);
             }
+          }
+
+          @keyframes twinkleA {
+            0%, 100% { opacity: 0.18; }
+            25% { opacity: 0.34; }
+            50% { opacity: 0.54; }
+            75% { opacity: 0.28; }
+          }
+
+          @keyframes twinkleB {
+            0%, 100% { opacity: 0.12; }
+            20% { opacity: 0.3; }
+            45% { opacity: 0.2; }
+            70% { opacity: 0.46; }
           }
 
           @keyframes driftA {
-            from {
-              transform: translate3d(0, 0, 0);
-            }
-            to {
-              transform: translate3d(20px, 6px, 0);
-            }
+            from { transform: translate3d(0, 0, 0); }
+            to { transform: translate3d(20px, 6px, 0); }
           }
 
           @keyframes driftB {
-            from {
-              transform: translate3d(0, 0, 0);
-            }
-            to {
-              transform: translate3d(-18px, 12px, 0);
-            }
+            from { transform: translate3d(0, 0, 0); }
+            to { transform: translate3d(-18px, 12px, 0); }
           }
 
           @keyframes driftC {
-            from {
-              transform: translate3d(-50%, 0, 0);
-            }
-            to {
-              transform: translate3d(calc(-50% + 18px), -10px, 0);
-            }
+            from { transform: translate3d(-50%, 0, 0); }
+            to { transform: translate3d(calc(-50% + 18px), -10px, 0); }
           }
 
           @media (max-width: 900px) {
@@ -313,9 +346,9 @@ export default function TheSpacePage() {
             }
 
             .venue-image {
-              top: 25.6%;
-              left: 10.8%;
-              width: 78.8%;
+              top: 22.8%;
+              left: 9.6%;
+              width: 80.5%;
             }
 
             .hotspot-desktop {
@@ -422,14 +455,15 @@ function Hotspot({
           padding: 12px 20px;
           border-radius: 999px;
           border: 1.6px solid rgba(255, 30, 210, 0.96);
-          background: rgba(8, 0, 16, 0.16);
+          background: rgba(8, 0, 16, 0.10);
           box-shadow:
-            0 0 0 1px rgba(255, 116, 231, 0.16) inset,
-            0 0 14px rgba(255, 0, 180, 0.16);
+            0 0 0 1px rgba(255, 116, 231, 0.14) inset,
+            0 0 14px rgba(255, 0, 180, 0.14);
           backdrop-filter: blur(2px);
           color: #fff6ff;
           text-decoration: none;
           pointer-events: auto;
+          z-index: 20;
           transition:
             transform 0.2s ease,
             box-shadow 0.2s ease,
@@ -462,7 +496,7 @@ function Hotspot({
         .hotspot-button:focus-visible {
           transform: translate(-50%, -50%) translateY(-2px);
           border-color: rgba(255, 142, 243, 1);
-          background: rgba(14, 0, 24, 0.22);
+          background: rgba(14, 0, 24, 0.16);
           box-shadow:
             0 0 0 1px rgba(255, 116, 231, 0.22) inset,
             0 0 22px rgba(255, 0, 180, 0.24);
