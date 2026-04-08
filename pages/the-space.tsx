@@ -258,33 +258,19 @@ function AreaHotspot({
   isActive: boolean;
   onHover: () => void;
 }) {
+  const mobilePosition = area.position.mobile as React.CSSProperties;
+  const desktopPosition = area.position.desktop as React.CSSProperties;
+
   return (
-    <div
-      className="absolute z-20"
-      style={{
-        ...area.position.mobile,
-      }}
-    >
-      <div className="hidden lg:block" style={area.position.desktop} />
-      <div className="lg:hidden" />
-      <HotspotBubble area={area} isActive={isActive} onHover={onHover} />
-      <style jsx>{`
-        div.absolute {
-          top: ${area.position.mobile.top ?? 'auto'};
-          left: ${area.position.mobile.left ?? 'auto'};
-          right: ${area.position.mobile.right ?? 'auto'};
-          bottom: ${area.position.mobile.bottom ?? 'auto'};
-        }
-        @media (min-width: 1024px) {
-          div.absolute {
-            top: ${area.position.desktop.top ?? 'auto'};
-            left: ${area.position.desktop.left ?? 'auto'};
-            right: ${area.position.desktop.right ?? 'auto'};
-            bottom: ${area.position.desktop.bottom ?? 'auto'};
-          }
-        }
-      `}</style>
-    </div>
+    <>
+      <div className="absolute z-20 lg:hidden" style={mobilePosition}>
+        <HotspotBubble area={area} isActive={isActive} onHover={onHover} />
+      </div>
+
+      <div className="absolute z-20 hidden lg:block" style={desktopPosition}>
+        <HotspotBubble area={area} isActive={isActive} onHover={onHover} />
+      </div>
+    </>
   );
 }
 
