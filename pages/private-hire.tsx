@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type Venue = {
   id: string;
@@ -58,7 +58,6 @@ const clamp = (value: number, min: number, max: number) => Math.min(Math.max(val
 
 export default function PrivateHirePage() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const markerRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   const activeVenue = VENUES[activeIndex];
 
@@ -80,9 +79,7 @@ export default function PrivateHirePage() {
 
   const goToSlide = (index: number) => {
     const nextIndex = clamp(index, 0, VENUES.length - 1);
-    const node = markerRefs.current[nextIndex];
-    if (!node) return;
-    node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollTo({ top: nextIndex * window.innerHeight, behavior: 'smooth' });
   };
 
   const titleArcId = useMemo(() => `private-hire-top-arc-${VENUES.length}`, []);
@@ -211,14 +208,8 @@ export default function PrivateHirePage() {
         </div>
 
         <div className="retroScrollTrack" aria-hidden="true">
-          {VENUES.map((venue, index) => (
-            <div
-              key={venue.id}
-              ref={(node) => {
-                markerRefs.current[index] = node;
-              }}
-              className="retroScrollMarker"
-            />
+          {VENUES.map((venue) => (
+            <div key={venue.id} className="retroScrollMarker" />
           ))}
         </div>
       </main>
@@ -355,7 +346,7 @@ export default function PrivateHirePage() {
           color: #46f4d1;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          font-size: 0.9rem;
+          font-size: 0.78rem;
           line-height: 1;
           font-weight: 700;
           pointer-events: auto;
@@ -374,6 +365,8 @@ export default function PrivateHirePage() {
         }
 
         .retroPoster {
+          --circleSize: min(48vw, 620px);
+          --arcSize: calc(var(--circleSize) + clamp(140px, 16vw, 220px));
           position: absolute;
           inset: 0;
           z-index: 6;
@@ -385,7 +378,7 @@ export default function PrivateHirePage() {
 
         .retroCircleCluster {
           position: relative;
-          width: min(48vw, 620px);
+          width: var(--circleSize);
           aspect-ratio: 1 / 1;
           z-index: 7;
         }
@@ -455,9 +448,11 @@ export default function PrivateHirePage() {
         .retroArc {
           position: absolute;
           left: 50%;
-          width: min(80vw, 1020px);
+          top: 50%;
+          width: var(--arcSize);
           aspect-ratio: 1 / 1;
-          transform: translateX(-50%);
+          transform: translate(-50%, -50%);
+          pointer-events: none;
           pointer-events: none;
         }
 
@@ -467,20 +462,20 @@ export default function PrivateHirePage() {
         }
 
         .retroArc--top {
-          top: calc(50% - min(26vw, 330px) - min(14vw, 160px));
+          z-index: 8;
         }
 
         .retroArc--top text {
           fill: #f3efe7;
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 88px;
+          font-size: 78px;
           font-weight: 900;
           letter-spacing: 0.06em;
           text-transform: uppercase;
         }
 
         .retroArc--bottom {
-          top: calc(50% - min(26vw, 330px) + min(7vw, 84px));
+          z-index: 8;
         }
 
         .retroVenueArc {
@@ -499,7 +494,7 @@ export default function PrivateHirePage() {
         .retroArc--bottom text {
           fill: var(--accent, #46f4d1);
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 78px;
+          font-size: 56px;
           font-weight: 900;
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -508,7 +503,7 @@ export default function PrivateHirePage() {
         .retroInfo {
           position: absolute;
           left: 50%;
-          top: calc(50% + min(27vw, 340px) + min(6vw, 70px));
+          top: calc(50% + (var(--circleSize) / 2) + clamp(20px, 3vw, 34px));
           width: min(760px, calc(100vw - 120px));
           min-height: 120px;
           transform: translateX(-50%);
@@ -643,24 +638,18 @@ export default function PrivateHirePage() {
 
         @media (max-width: 1180px) {
           .retroPoster {
+            --circleSize: min(58vw, 560px);
+            --arcSize: calc(var(--circleSize) + 180px);
             padding-left: 72px;
             padding-right: 72px;
           }
 
-          .retroCircleCluster {
-            width: min(58vw, 560px);
-          }
-
-          .retroArc {
-            width: min(90vw, 980px);
-          }
-
           .retroArc--top text {
-            font-size: 78px;
+            font-size: 68px;
           }
 
           .retroArc--bottom text {
-            font-size: 68px;
+            font-size: 48px;
           }
         }
 
@@ -670,43 +659,32 @@ export default function PrivateHirePage() {
           }
 
           .retroLabel {
-            top: 12px;
-            max-width: calc(50vw - 18px);
-            padding: 10px 12px 9px;
-            font-size: 0.72rem;
-            letter-spacing: 0.11em;
+            top: 14px;
+            max-width: 44vw;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            box-shadow: none;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
           }
 
           .retroPoster {
+            --circleSize: min(78vw, 450px);
+            --arcSize: calc(var(--circleSize) + 130px);
             padding: 84px 26px 120px;
           }
 
-          .retroCircleCluster {
-            width: min(80vw, 450px);
-          }
-
-          .retroArc {
-            width: min(100vw, 760px);
-          }
-
-          .retroArc--top {
-            top: calc(50% - min(38vw, 250px) - 92px);
-          }
-
           .retroArc--top text {
-            font-size: 54px;
-          }
-
-          .retroArc--bottom {
-            top: calc(50% - min(38vw, 250px) + 74px);
+            font-size: 52px;
           }
 
           .retroArc--bottom text {
-            font-size: 44px;
+            font-size: 42px;
           }
 
           .retroInfo {
-            top: calc(50% + min(38vw, 250px) + 64px);
+            top: calc(50% + (var(--circleSize) / 2) + 20px);
             width: min(92vw, 560px);
           }
 
@@ -740,56 +718,40 @@ export default function PrivateHirePage() {
 
         @media (max-width: 560px) {
           .retroLabel {
-            max-width: calc(100vw - 24px);
-            font-size: 0.62rem;
+            max-width: 42vw;
+            font-size: 0.54rem;
             letter-spacing: 0.08em;
           }
 
           .retroLabel--left {
             left: 12px;
-            right: 12px;
-            max-width: none;
+            right: auto;
             top: 10px;
           }
 
           .retroLabel--right {
-            left: 12px;
             right: 12px;
-            top: 44px;
-            max-width: none;
-            text-align: left;
+            left: auto;
+            top: 10px;
+            text-align: right;
           }
 
           .retroPoster {
-            padding: 92px 18px 112px;
-          }
-
-          .retroCircleCluster {
-            width: min(84vw, 360px);
-          }
-
-          .retroArc {
-            width: min(100vw, 520px);
-          }
-
-          .retroArc--top {
-            top: calc(50% - min(42vw, 190px) - 76px);
+            --circleSize: min(84vw, 360px);
+            --arcSize: calc(var(--circleSize) + 104px);
+            padding: 76px 18px 108px;
           }
 
           .retroArc--top text {
-            font-size: 36px;
-          }
-
-          .retroArc--bottom {
-            top: calc(50% - min(42vw, 190px) + 56px);
+            font-size: 44px;
           }
 
           .retroArc--bottom text {
-            font-size: 30px;
+            font-size: 34px;
           }
 
           .retroInfo {
-            top: calc(50% + min(42vw, 190px) + 52px);
+            top: calc(50% + (var(--circleSize) / 2) + 12px);
             width: calc(100vw - 28px);
           }
 
