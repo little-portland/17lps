@@ -432,8 +432,8 @@ export default function PrivateHirePage() {
           font-weight: 900;
           text-shadow:
             0 0 10px rgba(255, 255, 255, 0.18),
-            0 0 24px rgba(255, 255, 255, 0.1),
-            0 0 40px rgba(255, 255, 255, 0.05);
+            0 0 24px rgba(255, 255, 255, 0.2),
+            0 0 40px rgba(255, 255, 255, 0.5);
         }
 
         .orbCluster {
@@ -609,9 +609,9 @@ export default function PrivateHirePage() {
           font-weight: 700;
           text-wrap: balance;
           text-shadow:
-            0 0 8px rgba(255, 255, 255, 0.14),
-            0 0 18px rgba(52, 129, 89, 0.32),
-            0 0 34px rgba(52, 129, 89, 0.22);
+            0 0 8px rgba(255, 255, 255, 0.5),
+            0 0 18px rgba(52, 129, 89, 0.3),
+            0 0 34px rgba(52, 129, 89, 0.5);
         }
 
         .posterInfo__line--secondary {
