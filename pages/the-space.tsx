@@ -26,51 +26,51 @@ const ASSETS = {
   venue: '/images/the-space/the-space-page-venue.png',
 };
 
-// Change ONLY these hrefs if your real page routes are different.
+// Update these if your real routes are different.
 const AREAS: AreaConfig[] = [
   {
     id: 'tent',
-    title: 'The Tent',
+    title: 'THE TENT',
     href: '/tent',
     desktop: {
-      button: { x: '37.5%', y: '18.0%' },
-      lineStart: { x: '45.0%', y: '18.0%' },
-      lineEnd: { x: '51.5%', y: '31.0%' },
+      button: { x: '37.8%', y: '18.2%' },
+      lineStart: { x: '45.4%', y: '18.4%' },
+      lineEnd: { x: '52.0%', y: '31.2%' },
     },
     mobile: {
-      button: { x: '36.0%', y: '18.0%' },
-      lineStart: { x: '45.0%', y: '18.0%' },
-      lineEnd: { x: '52.0%', y: '31.2%' },
+      button: { x: '36.0%', y: '19.2%' },
+      lineStart: { x: '44.2%', y: '19.4%' },
+      lineEnd: { x: '51.6%', y: '32.0%' },
     },
   },
   {
     id: 'chefs-studio',
-    title: "Chef's Studio",
+    title: "CHEF'S STUDIO",
     href: '/chefs-studio',
     desktop: {
-      button: { x: '29.0%', y: '80.5%' },
-      lineStart: { x: '40.5%', y: '80.5%' },
-      lineEnd: { x: '36.5%', y: '73.0%' },
+      button: { x: '30.6%', y: '80.2%' },
+      lineStart: { x: '39.4%', y: '80.0%' },
+      lineEnd: { x: '35.6%', y: '72.8%' },
     },
     mobile: {
-      button: { x: '28.0%', y: '82.5%' },
-      lineStart: { x: '40.0%', y: '82.5%' },
-      lineEnd: { x: '36.5%', y: '74.0%' },
+      button: { x: '29.8%', y: '82.6%' },
+      lineStart: { x: '39.6%', y: '82.3%' },
+      lineEnd: { x: '35.8%', y: '74.4%' },
     },
   },
   {
     id: 'studio',
-    title: 'The Studio',
+    title: 'THE STUDIO',
     href: '/studio',
     desktop: {
-      button: { x: '76.0%', y: '75.0%' },
-      lineStart: { x: '68.0%', y: '75.0%' },
-      lineEnd: { x: '61.8%', y: '69.0%' },
+      button: { x: '76.7%', y: '74.8%' },
+      lineStart: { x: '67.8%', y: '74.5%' },
+      lineEnd: { x: '61.4%', y: '68.5%' },
     },
     mobile: {
-      button: { x: '75.5%', y: '78.0%' },
-      lineStart: { x: '67.5%', y: '78.0%' },
-      lineEnd: { x: '61.8%', y: '70.0%' },
+      button: { x: '75.8%', y: '78.0%' },
+      lineStart: { x: '67.4%', y: '77.6%' },
+      lineEnd: { x: '61.5%', y: '70.0%' },
     },
   },
 ];
@@ -89,32 +89,23 @@ export default function TheSpacePage() {
           content="Interactive retro-futurist venue map."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
       <main className="page">
-        <div className="page-glow page-glow-a" />
-        <div className="page-glow page-glow-b" />
-        <div className="page-glow page-glow-c" />
+        <div className="page-bg" aria-hidden="true" />
+        <div className="page-bg-overlay" aria-hidden="true" />
+        <div className="page-glow page-glow-a" aria-hidden="true" />
+        <div className="page-glow page-glow-b" aria-hidden="true" />
+        <div className="page-glow page-glow-c" aria-hidden="true" />
 
         <section className="scene-shell" aria-label="Interactive venue map">
-          <img
-            src={ASSETS.bg}
-            alt=""
-            aria-hidden="true"
-            className="layer bg-image"
-            draggable={false}
-          />
-
-          <div className="layer ambient-light ambient-light-a" aria-hidden="true" />
-          <div className="layer ambient-light ambient-light-b" aria-hidden="true" />
-
-          <img
-            src={ASSETS.venue}
-            alt="Venue layout showing The Tent, Chef's Studio and The Studio"
-            className="layer venue-image"
-            draggable={false}
-          />
-
           <img
             src={ASSETS.frame}
             alt=""
@@ -123,7 +114,12 @@ export default function TheSpacePage() {
             draggable={false}
           />
 
-          <div className="layer vignette" aria-hidden="true" />
+          <img
+            src={ASSETS.venue}
+            alt="Venue layout showing The Tent, Chef's Studio and The Studio"
+            className="layer venue-image"
+            draggable={false}
+          />
 
           {AREAS.map((area) => (
             <div key={`${area.id}-desktop`} className="hotspot-group hotspot-desktop">
@@ -145,7 +141,7 @@ export default function TheSpacePage() {
             margin: 0;
             padding: 0;
             min-height: 100%;
-            background: #04010a;
+            background: #000;
           }
 
           * {
@@ -161,56 +157,74 @@ export default function TheSpacePage() {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 24px;
+            padding: 20px;
+            background: #000;
+          }
+
+          .page-bg,
+          .page-bg-overlay,
+          .page-glow {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+          }
+
+          .page-bg {
+            background-image: url('${ASSETS.bg}');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.35;
+            transform: scale(1.03);
+          }
+
+          .page-bg-overlay {
             background:
-              radial-gradient(circle at 50% 10%, rgba(162, 62, 255, 0.18), transparent 26%),
-              radial-gradient(circle at 18% 28%, rgba(204, 61, 255, 0.10), transparent 18%),
-              radial-gradient(circle at 80% 70%, rgba(135, 38, 222, 0.12), transparent 20%),
-              linear-gradient(180deg, #070311 0%, #04010a 100%);
+              radial-gradient(circle at 50% 12%, rgba(181, 74, 255, 0.10), transparent 24%),
+              radial-gradient(circle at 20% 24%, rgba(217, 58, 255, 0.08), transparent 18%),
+              radial-gradient(circle at 80% 72%, rgba(140, 34, 232, 0.08), transparent 20%),
+              linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.52) 100%);
           }
 
           .page-glow {
-            position: absolute;
-            pointer-events: none;
             border-radius: 999px;
             filter: blur(90px);
-            opacity: 0.6;
+            opacity: 0.55;
           }
 
           .page-glow-a {
             width: 380px;
             height: 380px;
-            top: 2%;
-            left: -5%;
-            background: radial-gradient(circle, rgba(210, 88, 255, 0.28), transparent 70%);
-            animation: driftA 10s ease-in-out infinite alternate;
+            top: -4%;
+            left: -4%;
+            background: radial-gradient(circle, rgba(208, 88, 255, 0.22), transparent 72%);
+            animation: driftA 9s ease-in-out infinite alternate;
           }
 
           .page-glow-b {
             width: 420px;
             height: 420px;
-            top: -6%;
+            top: -8%;
             right: 8%;
-            background: radial-gradient(circle, rgba(120, 40, 220, 0.22), transparent 72%);
-            animation: driftB 12s ease-in-out infinite alternate;
+            background: radial-gradient(circle, rgba(122, 40, 220, 0.16), transparent 72%);
+            animation: driftB 11s ease-in-out infinite alternate;
           }
 
           .page-glow-c {
             width: 460px;
             height: 460px;
-            bottom: -10%;
+            bottom: -16%;
             left: 50%;
             transform: translateX(-50%);
-            background: radial-gradient(circle, rgba(110, 24, 180, 0.20), transparent 72%);
-            animation: driftC 14s ease-in-out infinite alternate;
+            background: radial-gradient(circle, rgba(116, 24, 180, 0.16), transparent 72%);
+            animation: driftC 13s ease-in-out infinite alternate;
           }
 
           .scene-shell {
             position: relative;
-            width: min(96vw, 1500px);
+            width: min(86vw, calc((100vh - 48px) * 1.5), 1240px);
             aspect-ratio: 1500 / 1000;
-            overflow: hidden;
-            border-radius: 34px;
+            overflow: visible;
           }
 
           .layer {
@@ -218,62 +232,34 @@ export default function TheSpacePage() {
             inset: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
             user-select: none;
           }
 
-          .bg-image,
           .frame-image {
-            object-fit: cover;
-          }
-
-          .bg-image {
-            z-index: 1;
-          }
-
-          .ambient-light {
-            z-index: 2;
-            mix-blend-mode: screen;
-            opacity: 0.5;
-          }
-
-          .ambient-light-a {
-            background: radial-gradient(circle at 52% 55%, rgba(255, 0, 212, 0.14), transparent 20%);
-            animation: pulseGlow 4.5s ease-in-out infinite;
-          }
-
-          .ambient-light-b {
-            background: radial-gradient(circle at 55% 54%, rgba(255, 255, 255, 0.05), transparent 26%);
-            animation: pulseGlow 6s ease-in-out infinite;
+            z-index: 3;
+            object-fit: contain;
+            pointer-events: none;
           }
 
           .venue-image {
-            z-index: 3;
+            z-index: 2;
             inset: auto;
-            top: 22.0%;
-            left: 12.2%;
-            width: 76%;
+            top: 24.8%;
+            left: 15.6%;
+            width: 69.4%;
             height: auto;
             object-fit: contain;
+            pointer-events: none;
             filter:
-              drop-shadow(0 12px 30px rgba(255, 0, 212, 0.12))
-              drop-shadow(0 24px 60px rgba(76, 0, 120, 0.18));
-            animation: venueFloat 5.5s ease-in-out infinite;
-          }
-
-          .frame-image {
-            z-index: 4;
-          }
-
-          .vignette {
-            z-index: 5;
-            box-shadow: inset 0 0 160px rgba(0, 0, 0, 0.18);
+              drop-shadow(0 10px 24px rgba(255, 0, 212, 0.10))
+              drop-shadow(0 28px 54px rgba(93, 0, 130, 0.16));
+            animation: venueFloat 4.6s ease-in-out infinite;
           }
 
           .hotspot-group {
             position: absolute;
             inset: 0;
-            z-index: 10;
+            z-index: 5;
           }
 
           .hotspot-mobile {
@@ -286,17 +272,7 @@ export default function TheSpacePage() {
               transform: translateY(0px);
             }
             50% {
-              transform: translateY(-4px);
-            }
-          }
-
-          @keyframes pulseGlow {
-            0%,
-            100% {
-              opacity: 0.36;
-            }
-            50% {
-              opacity: 0.62;
+              transform: translateY(-10px);
             }
           }
 
@@ -305,7 +281,7 @@ export default function TheSpacePage() {
               transform: translate3d(0, 0, 0);
             }
             to {
-              transform: translate3d(24px, 8px, 0);
+              transform: translate3d(20px, 6px, 0);
             }
           }
 
@@ -314,7 +290,7 @@ export default function TheSpacePage() {
               transform: translate3d(0, 0, 0);
             }
             to {
-              transform: translate3d(-20px, 12px, 0);
+              transform: translate3d(-18px, 12px, 0);
             }
           }
 
@@ -329,18 +305,17 @@ export default function TheSpacePage() {
 
           @media (max-width: 900px) {
             .page {
-              padding: 12px;
+              padding: 10px;
             }
 
             .scene-shell {
-              width: min(100vw - 16px, 1500px);
-              border-radius: 24px;
+              width: min(96vw, calc((100vh - 20px) * 1.5));
             }
 
             .venue-image {
-              top: 22.6%;
-              left: 6%;
-              width: 88%;
+              top: 25.6%;
+              left: 10.8%;
+              width: 78.8%;
             }
 
             .hotspot-desktop {
@@ -382,17 +357,17 @@ function Hotspot({
           y1={y1}
           x2={x2}
           y2={y2}
-          className={`connector-line connector-line-${area.id}`}
+          className="connector-line"
         />
       </svg>
 
       <span
-        className={`hotspot-dot hotspot-dot-start hotspot-dot-${area.id}`}
+        className="hotspot-dot hotspot-dot-start"
         style={{ left: layout.lineStart.x, top: layout.lineStart.y }}
         aria-hidden="true"
       />
       <span
-        className={`hotspot-dot hotspot-dot-end hotspot-dot-${area.id}`}
+        className="hotspot-dot hotspot-dot-end"
         style={{ left: layout.lineEnd.x, top: layout.lineEnd.y }}
         aria-hidden="true"
       />
@@ -404,7 +379,7 @@ function Hotspot({
 
       <Link href={area.href} passHref>
         <a
-          className={`hotspot-button hotspot-button-${area.id}`}
+          className="hotspot-button"
           style={{ left: layout.button.x, top: layout.button.y }}
           aria-label={`Open ${area.title}`}
         >
@@ -432,8 +407,8 @@ function Hotspot({
           fill: none;
           stroke-width: 0.18;
           stroke-linecap: round;
-          stroke: #ff18d9;
-          filter: drop-shadow(0 0 6px rgba(255, 24, 217, 0.8));
+          stroke: rgba(255, 35, 214, 0.98);
+          filter: drop-shadow(0 0 7px rgba(255, 35, 214, 0.72));
           animation: connectorBlink 1.8s ease-in-out infinite;
         }
 
@@ -443,29 +418,23 @@ function Hotspot({
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          min-width: 180px;
-          padding: 12px 22px;
+          min-width: 178px;
+          padding: 12px 20px;
           border-radius: 999px;
-          border: 2px solid rgba(255, 42, 214, 0.88);
-          background: linear-gradient(
-            180deg,
-            rgba(45, 8, 54, 0.72) 0%,
-            rgba(24, 2, 28, 0.76) 100%
-          );
+          border: 1.6px solid rgba(255, 30, 210, 0.96);
+          background: rgba(8, 0, 16, 0.16);
           box-shadow:
-            0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-            0 0 24px rgba(255, 0, 191, 0.14);
-          color: #fff3ff;
+            0 0 0 1px rgba(255, 116, 231, 0.16) inset,
+            0 0 14px rgba(255, 0, 180, 0.16);
+          backdrop-filter: blur(2px);
+          color: #fff6ff;
           text-decoration: none;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          font-weight: 700;
           pointer-events: auto;
-          backdrop-filter: blur(6px);
           transition:
             transform 0.2s ease,
             box-shadow 0.2s ease,
-            border-color 0.2s ease;
+            border-color 0.2s ease,
+            background 0.2s ease;
           touch-action: manipulation;
         }
 
@@ -474,25 +443,29 @@ function Hotspot({
           position: absolute;
           inset: 4px;
           border-radius: inherit;
-          border: 1px solid rgba(255, 180, 245, 0.18);
+          border: 1px solid rgba(255, 180, 244, 0.22);
           pointer-events: none;
         }
 
         .button-label {
           position: relative;
           z-index: 1;
-          font-size: clamp(12px, 1.15vw, 20px);
+          font-family: 'Orbitron', sans-serif;
+          font-size: clamp(12px, 1vw, 18px);
+          font-weight: 600;
           line-height: 1;
+          letter-spacing: 0.08em;
           white-space: nowrap;
         }
 
         .hotspot-button:hover,
         .hotspot-button:focus-visible {
           transform: translate(-50%, -50%) translateY(-2px);
-          border-color: rgba(255, 146, 243, 0.96);
+          border-color: rgba(255, 142, 243, 1);
+          background: rgba(14, 0, 24, 0.22);
           box-shadow:
-            0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-            0 0 32px rgba(255, 0, 204, 0.22);
+            0 0 0 1px rgba(255, 116, 231, 0.22) inset,
+            0 0 22px rgba(255, 0, 180, 0.24);
           outline: none;
         }
 
@@ -507,16 +480,15 @@ function Hotspot({
           width: 14px;
           height: 14px;
           border-radius: 999px;
-          background: #ff1fd8;
-          box-shadow: 0 0 14px rgba(255, 31, 216, 0.9);
+          background: #ff28d6;
+          box-shadow: 0 0 16px rgba(255, 40, 214, 0.9);
           animation: dotBlink 1.35s ease-in-out infinite;
         }
 
         .hotspot-dot-end {
-          background: #ff1fd8;
           box-shadow:
-            0 0 0 4px rgba(255, 31, 216, 0.12),
-            0 0 18px rgba(255, 31, 216, 0.96);
+            0 0 0 4px rgba(255, 40, 214, 0.12),
+            0 0 18px rgba(255, 40, 214, 0.98);
           animation-delay: 0.25s;
         }
 
@@ -524,15 +496,15 @@ function Hotspot({
           width: 18px;
           height: 18px;
           border-radius: 999px;
-          border: 2px solid rgba(255, 31, 216, 0.88);
-          box-shadow: 0 0 18px rgba(255, 31, 216, 0.24);
+          border: 2px solid rgba(255, 40, 214, 0.88);
+          box-shadow: 0 0 18px rgba(255, 40, 214, 0.20);
           animation: pulseRing 1.8s ease-out infinite;
         }
 
         @keyframes connectorBlink {
           0%,
           100% {
-            stroke-opacity: 0.52;
+            stroke-opacity: 0.55;
           }
           50% {
             stroke-opacity: 1;
@@ -568,14 +540,14 @@ function Hotspot({
 
         @media (max-width: 900px) {
           .hotspot-button {
-            min-width: 132px;
-            padding: 9px 14px;
-            border-width: 1.5px;
+            min-width: 128px;
+            padding: 8px 12px;
+            border-width: 1.3px;
           }
 
           .button-label {
-            font-size: clamp(10px, 2.4vw, 14px);
-            letter-spacing: 0.03em;
+            font-size: clamp(10px, 2.2vw, 13px);
+            letter-spacing: 0.07em;
           }
 
           .hotspot-dot {
