@@ -8,12 +8,13 @@ type Venue = {
   alt: string;
   objectPosition?: string;
   infoLines: string[];
-  accent: string;
 };
 
 const IMAGE_BASE = '/images/private-hire';
 const STAR_BG = `${IMAGE_BASE}/night-starry-sky-dark.jpg`;
 const GRID_BG = `${IMAGE_BASE}/buldge-grid.svg`;
+const ORB_OVERLAY = `${IMAGE_BASE}/circle-orb-overlay.png`;
+const ACCENT = '#348159';
 
 const VENUES: Venue[] = [
   {
@@ -23,7 +24,6 @@ const VENUES: Venue[] = [
     alt: 'Full venue private hire image.',
     objectPosition: '50% 52%',
     infoLines: ['150 Standing', 'Both Floors'],
-    accent: '#46f4d1',
   },
   {
     id: 'the-tent',
@@ -32,7 +32,6 @@ const VENUES: Venue[] = [
     alt: 'The Tent private hire image.',
     objectPosition: '50% 50%',
     infoLines: ['36 Seated', '50 Standing', 'Located on the Ground Floor'],
-    accent: '#59f6d8',
   },
   {
     id: 'the-studio',
@@ -41,7 +40,6 @@ const VENUES: Venue[] = [
     alt: 'The Studio private hire image.',
     objectPosition: '50% 42%',
     infoLines: ['100 Standing', 'Located on the lower ground floor'],
-    accent: '#3af2cb',
   },
   {
     id: 'chefs-studio',
@@ -50,7 +48,6 @@ const VENUES: Venue[] = [
     alt: "Chef's Studio private hire image.",
     objectPosition: '50% 50%',
     infoLines: ['Private Dining | 12 Seated', 'Located on the lower ground floor'],
-    accent: '#67f7dd',
   },
 ];
 
@@ -58,8 +55,6 @@ const clamp = (value: number, min: number, max: number) => Math.min(Math.max(val
 
 export default function PrivateHirePage() {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const activeVenue = VENUES[activeIndex];
 
   useEffect(() => {
     const updateActiveIndex = () => {
@@ -82,7 +77,8 @@ export default function PrivateHirePage() {
     window.scrollTo({ top: nextIndex * window.innerHeight, behavior: 'smooth' });
   };
 
-  const titleArcId = useMemo(() => `private-hire-top-arc-${VENUES.length}`, []);
+  const titleArcId = useMemo(() => 'private-hire-top-arc', []);
+  const activeVenue = VENUES[activeIndex];
 
   return (
     <>
@@ -95,47 +91,47 @@ export default function PrivateHirePage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main className="retroPage">
-        <div className="retroStage" style={{ ['--accent' as string]: activeVenue.accent }}>
-          <div className="retroSky" style={{ backgroundImage: `url(${STAR_BG})` }} />
-          <img src={GRID_BG} alt="" aria-hidden="true" className="retroGrid" />
-          <div className="retroVignette" />
-          <div className="retroNoise" />
+      <main className="posterPage">
+        <div className="posterStage">
+          <div className="posterSky" style={{ backgroundImage: `url(${STAR_BG})` }} />
+          <img src={GRID_BG} alt="" aria-hidden="true" className="posterGrid" />
+          <div className="posterVignette" />
+          <div className="posterNoise" />
 
-          <div className="retroHud">
-            <div className="retroLabel retroLabel--left">17 LITTLE PORTLAND STREET</div>
-            <a href="mailto:yo@little-portland.com" className="retroLabel retroLabel--right">
+          <div className="posterHud">
+            <div className="posterLabel posterLabel--left">17 LITTLE PORTLAND STREET</div>
+            <a href="mailto:yo@little-portland.com" className="posterLabel posterLabel--right">
               yo@little-portland.com
             </a>
           </div>
 
           <button
             type="button"
-            className="retroNav retroNav--prev"
+            className="posterNav posterNav--prev"
             onClick={() => goToSlide(activeIndex - 1)}
             disabled={activeIndex === 0}
             aria-label="Previous venue"
           >
-            <span className="retroNav__arrow">↑</span>
-            <span className="retroNav__text">Prev</span>
+            <span className="posterNav__arrow">↑</span>
+            <span className="posterNav__text">Prev</span>
           </button>
 
           <button
             type="button"
-            className="retroNav retroNav--next"
+            className="posterNav posterNav--next"
             onClick={() => goToSlide(activeIndex + 1)}
             disabled={activeIndex === VENUES.length - 1}
             aria-label="Next venue"
           >
-            <span className="retroNav__text">Next</span>
-            <span className="retroNav__arrow">↓</span>
+            <span className="posterNav__text">Next</span>
+            <span className="posterNav__arrow">↓</span>
           </button>
 
-          <section className="retroPoster" aria-live="polite">
-            <div className="retroArc retroArc--top" aria-hidden="true">
+          <section className="posterFrame" aria-live="polite">
+            <div className="posterArc posterArc--top" aria-hidden="true">
               <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
                 <defs>
-                  <path id={titleArcId} d="M 65 500 A 435 435 0 0 1 935 500" />
+                  <path id={titleArcId} d="M 78 500 A 422 422 0 0 1 922 500" />
                 </defs>
                 <text>
                   <textPath href={`#${titleArcId}`} startOffset="50%" textAnchor="middle">
@@ -145,28 +141,28 @@ export default function PrivateHirePage() {
               </svg>
             </div>
 
-            <div className="retroCircleCluster">
-              <div className="retroOuterGlow" />
-              <div className="retroCircleShell">
-                <div className="retroCircleMask">
-                  {VENUES.map((venue, index) => {
-                    const isActive = index === activeIndex;
-                    return (
-                      <img
-                        key={venue.id}
-                        src={venue.image}
-                        alt={venue.alt}
-                        className={`retroCircleImage ${isActive ? 'is-active' : ''}`}
-                        style={{ objectPosition: venue.objectPosition || '50% 50%' }}
-                      />
-                    );
-                  })}
-                  <div className="retroCircleShade" />
-                </div>
+            <div className="orbCluster">
+              <div className="orbPhotoMask">
+                {VENUES.map((venue, index) => {
+                  const isActive = index === activeIndex;
+                  return (
+                    <img
+                      key={venue.id}
+                      src={venue.image}
+                      alt={venue.alt}
+                      className={`orbPhoto ${isActive ? 'is-active' : ''}`}
+                      style={{ objectPosition: venue.objectPosition || '50% 50%' }}
+                    />
+                  );
+                })}
+                <div className="orbInnerTint" />
+                <div className="orbInnerGlow" />
               </div>
+
+              <img src={ORB_OVERLAY} alt="" aria-hidden="true" className="orbOverlay" />
             </div>
 
-            <div className="retroArc retroArc--bottom">
+            <div className="posterArc posterArc--bottom">
               {VENUES.map((venue, index) => {
                 const isActive = index === activeIndex;
                 return (
@@ -174,11 +170,11 @@ export default function PrivateHirePage() {
                     key={venue.id}
                     viewBox="0 0 1000 1000"
                     preserveAspectRatio="none"
-                    className={`retroVenueArc ${isActive ? 'is-active' : ''}`}
+                    className={`venueArc ${isActive ? 'is-active' : ''}`}
                     aria-hidden={!isActive}
                   >
                     <defs>
-                      <path id={`venue-arc-${venue.id}`} d="M 80 500 A 420 420 0 0 0 920 500" />
+                      <path id={`venue-arc-${venue.id}`} d="M 86 500 A 414 414 0 0 0 914 500" />
                     </defs>
                     <text>
                       <textPath href={`#venue-arc-${venue.id}`} startOffset="50%" textAnchor="middle">
@@ -190,13 +186,13 @@ export default function PrivateHirePage() {
               })}
             </div>
 
-            <div className="retroInfo">
+            <div className="posterInfo">
               {VENUES.map((venue, index) => {
                 const isActive = index === activeIndex;
                 return (
-                  <div key={venue.id} className={`retroInfo__block ${isActive ? 'is-active' : ''}`}>
+                  <div key={venue.id} className={`posterInfo__block ${isActive ? 'is-active' : ''}`}>
                     {venue.infoLines.map((line) => (
-                      <p key={`${venue.id}-${line}`} className="retroInfo__line">
+                      <p key={`${venue.id}-${line}`} className="posterInfo__line">
                         {line}
                       </p>
                     ))}
@@ -207,9 +203,9 @@ export default function PrivateHirePage() {
           </section>
         </div>
 
-        <div className="retroScrollTrack" aria-hidden="true">
+        <div className="posterScrollTrack" aria-hidden="true">
           {VENUES.map((venue) => (
-            <div key={venue.id} className="retroScrollMarker" />
+            <div key={venue.id} className="posterScrollMarker" />
           ))}
         </div>
       </main>
@@ -224,8 +220,8 @@ export default function PrivateHirePage() {
 
         body {
           margin: 0;
-          background: #020406;
-          color: #f3efe7;
+          background: #040707;
+          color: #f1eee7;
           overflow-x: hidden;
           font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         }
@@ -260,64 +256,64 @@ export default function PrivateHirePage() {
           min-height: 100vh;
         }
 
-        .retroPage {
+        .posterPage {
           min-height: 100vh;
-          background: #020406;
+          background: #040707;
         }
 
-        .retroStage {
+        .posterStage {
           position: fixed;
           inset: 0;
           overflow: clip;
-          background: #020406;
+          background: #040707;
           z-index: 2;
         }
 
-        .retroScrollTrack {
+        .posterScrollTrack {
           position: relative;
           z-index: 0;
           pointer-events: none;
         }
 
-        .retroScrollMarker {
+        .posterScrollMarker {
           height: 100vh;
           scroll-snap-align: start;
           scroll-snap-stop: always;
         }
 
-        .retroSky,
-        .retroGrid,
-        .retroVignette,
-        .retroNoise {
+        .posterSky,
+        .posterGrid,
+        .posterVignette,
+        .posterNoise {
           position: absolute;
           inset: 0;
           pointer-events: none;
         }
 
-        .retroSky {
+        .posterSky {
           background-size: cover;
           background-position: center;
-          filter: saturate(0.92) brightness(0.56);
+          filter: saturate(0.92) brightness(0.54);
           opacity: 0.96;
         }
 
-        .retroGrid {
+        .posterGrid {
           width: 100%;
           height: 100%;
           object-fit: cover;
           mix-blend-mode: screen;
-          opacity: 0.74;
-          filter: drop-shadow(0 0 22px rgba(70, 244, 209, 0.14));
-          animation: gridPulse 9s ease-in-out infinite;
+          opacity: 0.78;
+          filter: drop-shadow(0 0 18px rgba(52, 129, 89, 0.18));
+          animation: gridPulse 8s ease-in-out infinite;
         }
 
-        .retroVignette {
+        .posterVignette {
           background:
-            radial-gradient(circle at center, transparent 38%, rgba(2, 4, 6, 0.14) 58%, rgba(2, 4, 6, 0.72) 100%),
-            linear-gradient(180deg, rgba(2, 4, 6, 0.18), rgba(2, 4, 6, 0.46));
+            radial-gradient(circle at center, transparent 34%, rgba(4, 7, 7, 0.12) 58%, rgba(4, 7, 7, 0.74) 100%),
+            linear-gradient(180deg, rgba(4, 7, 7, 0.12), rgba(4, 7, 7, 0.44));
         }
 
-        .retroNoise {
+        .posterNoise {
           opacity: 0.08;
           background-image:
             radial-gradient(circle at 8% 16%, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.4px),
@@ -328,25 +324,25 @@ export default function PrivateHirePage() {
           mix-blend-mode: screen;
         }
 
-        .retroHud {
+        .posterHud {
           position: absolute;
           inset: 0;
           z-index: 12;
           pointer-events: none;
         }
 
-        .retroLabel {
+        .posterLabel {
           position: absolute;
           top: 16px;
           max-width: calc(50vw - 26px);
-          padding: 11px 16px 10px;
-          border: 1px solid rgba(70, 244, 209, 0.26);
-          background: rgba(4, 12, 14, 0.68);
-          box-shadow: 0 0 28px rgba(70, 244, 209, 0.08);
-          color: #46f4d1;
+          padding: 10px 14px 9px;
+          border: 1px solid rgba(52, 129, 89, 0.34);
+          background: rgba(5, 10, 8, 0.46);
+          box-shadow: 0 0 16px rgba(52, 129, 89, 0.08);
+          color: ${ACCENT};
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          font-size: 0.78rem;
+          font-size: 0.76rem;
           line-height: 1;
           font-weight: 700;
           pointer-events: auto;
@@ -355,18 +351,74 @@ export default function PrivateHirePage() {
           text-overflow: ellipsis;
         }
 
-        .retroLabel--left {
+        .posterLabel--left {
           left: 16px;
         }
 
-        .retroLabel--right {
+        .posterLabel--right {
           right: 16px;
           text-align: right;
         }
 
-        .retroPoster {
-          --circleSize: min(48vw, 620px);
-          --arcSize: calc(var(--circleSize) + clamp(72px, 8vw, 96px));
+        .posterNav {
+          position: absolute;
+          top: 50%;
+          z-index: 14;
+          display: inline-flex;
+          align-items: center;
+          gap: 11px;
+          padding: 14px 16px;
+          border-radius: 999px;
+          border: 1px solid rgba(52, 129, 89, 0.34);
+          background: rgba(5, 10, 8, 0.62);
+          color: ${ACCENT};
+          box-shadow: 0 0 16px rgba(52, 129, 89, 0.1);
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          font-size: 0.82rem;
+          font-weight: 700;
+          backdrop-filter: blur(10px);
+          transform: translateY(-50%);
+          transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease, background 180ms ease;
+          pointer-events: auto;
+        }
+
+        .posterNav:hover,
+        .posterNav:focus-visible {
+          transform: translateY(calc(-50% - 2px));
+          border-color: rgba(52, 129, 89, 0.5);
+          background: rgba(6, 12, 9, 0.78);
+        }
+
+        .posterNav:disabled {
+          opacity: 0.22;
+          cursor: not-allowed;
+        }
+
+        .posterNav:disabled:hover,
+        .posterNav:disabled:focus-visible {
+          transform: translateY(-50%);
+          border-color: rgba(52, 129, 89, 0.34);
+          background: rgba(5, 10, 8, 0.62);
+        }
+
+        .posterNav--prev {
+          left: 20px;
+        }
+
+        .posterNav--next {
+          right: 20px;
+        }
+
+        .posterNav__arrow {
+          font-size: 0.96rem;
+          line-height: 1;
+        }
+
+        .posterFrame {
+          --core-size: min(44vw, 560px);
+          --orb-size: calc(var(--core-size) + clamp(84px, 8vw, 104px));
+          --arc-size: calc(var(--orb-size) + clamp(48px, 5vw, 64px));
           position: absolute;
           inset: 0;
           z-index: 6;
@@ -376,62 +428,26 @@ export default function PrivateHirePage() {
           pointer-events: none;
         }
 
-        .retroCircleCluster {
+        .orbCluster {
           position: relative;
-          width: var(--circleSize);
+          width: var(--orb-size);
           aspect-ratio: 1 / 1;
           z-index: 7;
         }
 
-        .retroOuterGlow {
+        .orbPhotoMask {
           position: absolute;
-          inset: -11%;
-          border-radius: 999px;
-          background:
-            radial-gradient(circle,
-              rgba(63, 226, 217, 0.62) 0%,
-              rgba(45, 215, 205, 0.48) 38%,
-              rgba(26, 197, 185, 0.26) 56%,
-              rgba(14, 178, 167, 0.12) 70%,
-              rgba(14, 178, 167, 0) 82%);
-          filter: blur(22px);
-          opacity: 1;
-          animation: haloBreath 4.6s ease-in-out infinite;
-        }
-
-        .retroCircleShell {
-          position: absolute;
-          inset: 0;
-          padding: clamp(18px, 2vw, 24px);
-          border-radius: 999px;
-          background:
-            radial-gradient(circle at 50% 50%,
-              rgba(74, 232, 224, 0.18) 0%,
-              rgba(47, 212, 202, 0.2) 48%,
-              rgba(22, 171, 161, 0.92) 72%,
-              rgba(16, 139, 132, 0.98) 100%);
-          box-shadow:
-            0 0 38px rgba(52, 223, 214, 0.34),
-            0 0 88px rgba(35, 208, 197, 0.22),
-            inset 0 0 22px rgba(121, 255, 244, 0.18),
-            inset 0 -10px 30px rgba(0, 0, 0, 0.14);
-          animation: ringBreath 5.3s ease-in-out infinite;
-        }
-
-        .retroCircleMask {
-          position: relative;
-          width: 100%;
-          height: 100%;
+          inset: 8.5%;
           border-radius: 999px;
           overflow: hidden;
-          background: rgba(8, 18, 18, 0.96);
+          background: #0a1310;
           box-shadow:
             inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-            inset 0 0 38px rgba(88, 255, 240, 0.12),
-            inset 0 10px 46px rgba(109, 255, 244, 0.08);
+            inset 0 0 52px rgba(52, 129, 89, 0.2),
+            inset 0 0 120px rgba(52, 129, 89, 0.14);
         }
 
-        .retroCircleImage {
+        .orbPhoto {
           position: absolute;
           inset: 0;
           width: 100%;
@@ -443,56 +459,75 @@ export default function PrivateHirePage() {
           transition: opacity 360ms ease, transform 360ms ease;
         }
 
-        .retroCircleImage.is-active {
+        .orbPhoto.is-active {
           opacity: 1;
           transform: scale(1);
         }
 
-        .retroCircleShade {
+        .orbInnerTint {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.2), transparent 24%),
-            radial-gradient(circle at 50% 50%, rgba(69, 241, 227, 0.08), transparent 58%),
-            linear-gradient(180deg, rgba(108, 255, 243, 0.1), transparent 18%, transparent 66%, rgba(0, 0, 0, 0.2) 100%);
+            radial-gradient(circle at 50% 50%, rgba(52, 129, 89, 0.08), rgba(52, 129, 89, 0.18) 62%, rgba(52, 129, 89, 0.3) 100%),
+            linear-gradient(180deg, rgba(117, 216, 171, 0.06), transparent 22%, transparent 70%, rgba(0, 0, 0, 0.18) 100%);
           mix-blend-mode: screen;
+        }
+
+        .orbInnerGlow {
+          position: absolute;
+          inset: 0;
+          box-shadow:
+            inset 0 0 36px rgba(63, 178, 126, 0.18),
+            inset 0 0 84px rgba(52, 129, 89, 0.1);
+          border-radius: 999px;
           pointer-events: none;
         }
 
-        .retroArc {
+        .orbOverlay {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          pointer-events: none;
+          opacity: 1;
+          mix-blend-mode: screen;
+        }
+
+        .posterArc {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: var(--arcSize);
+          width: var(--arc-size);
           aspect-ratio: 1 / 1;
           transform: translate(-50%, -50%);
           pointer-events: none;
-          pointer-events: none;
         }
 
-        .retroArc svg {
+        .posterArc svg {
           width: 100%;
           height: 100%;
+          overflow: visible;
         }
 
-        .retroArc--top {
+        .posterArc--top {
           z-index: 8;
         }
 
-        .retroArc--top text {
-          fill: #f3efe7;
+        .posterArc--top text {
+          fill: #f2efe6;
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 90px;
+          font-size: 92px;
           font-weight: 900;
           letter-spacing: 0.06em;
           text-transform: uppercase;
         }
 
-        .retroArc--bottom {
+        .posterArc--bottom {
           z-index: 8;
         }
 
-        .retroVenueArc {
+        .venueArc {
           position: absolute;
           inset: 0;
           opacity: 0;
@@ -500,32 +535,32 @@ export default function PrivateHirePage() {
           transition: opacity 320ms ease, transform 320ms ease;
         }
 
-        .retroVenueArc.is-active {
+        .venueArc.is-active {
           opacity: 1;
           transform: translateY(0) scale(1);
         }
 
-        .retroArc--bottom text {
-          fill: #41f1df;
+        .posterArc--bottom text {
+          fill: ${ACCENT};
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 60px;
+          font-size: 58px;
           font-weight: 900;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          filter: drop-shadow(0 0 10px rgba(65, 241, 223, 0.32));
+          filter: drop-shadow(0 0 8px rgba(52, 129, 89, 0.35));
         }
 
-        .retroInfo {
+        .posterInfo {
           position: absolute;
           left: 50%;
-          top: calc(50% + (var(--circleSize) / 2) + clamp(10px, 1.6vw, 18px));
+          top: calc(50% + (var(--orb-size) / 2) + 6px);
           width: min(760px, calc(100vw - 120px));
-          min-height: 120px;
+          min-height: 110px;
           transform: translateX(-50%);
           pointer-events: none;
         }
 
-        .retroInfo__block {
+        .posterInfo__block {
           position: absolute;
           inset: 0;
           opacity: 0;
@@ -534,154 +569,55 @@ export default function PrivateHirePage() {
           text-align: center;
         }
 
-        .retroInfo__block.is-active {
+        .posterInfo__block.is-active {
           opacity: 1;
           transform: translateY(0) scale(1);
         }
 
-        .retroInfo__line {
+        .posterInfo__line {
           margin: 0;
           color: #f4f0e8;
           text-transform: uppercase;
           letter-spacing: 0.13em;
           line-height: 1.48;
-          font-size: clamp(1rem, 1.45vw, 1.22rem);
+          font-size: clamp(1rem, 1.45vw, 1.18rem);
           font-weight: 700;
           text-wrap: balance;
           text-shadow:
             0 0 8px rgba(255, 255, 255, 0.08),
-            0 0 20px rgba(76, 230, 220, 0.12);
+            0 0 14px rgba(52, 129, 89, 0.18),
+            0 0 28px rgba(52, 129, 89, 0.12);
         }
 
-        .retroInfo__line + .retroInfo__line {
+        .posterInfo__line + .posterInfo__line {
           margin-top: 4px;
-        }
-
-        .retroNav {
-          position: absolute;
-          top: 50%;
-          z-index: 14;
-          display: inline-flex;
-          align-items: center;
-          gap: 11px;
-          padding: 14px 16px;
-          border-radius: 999px;
-          border: 1px solid rgba(70, 244, 209, 0.24);
-          background: rgba(5, 11, 13, 0.78);
-          color: #46f4d1;
-          box-shadow: 0 0 24px rgba(70, 244, 209, 0.08);
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          font-size: 0.84rem;
-          font-weight: 700;
-          backdrop-filter: blur(12px);
-          transform: translateY(-50%);
-          transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease, background 180ms ease;
-          pointer-events: auto;
-        }
-
-        .retroNav:hover,
-        .retroNav:focus-visible {
-          transform: translateY(calc(-50% - 2px));
-          border-color: rgba(70, 244, 209, 0.45);
-          background: rgba(7, 15, 17, 0.88);
-        }
-
-        .retroNav:disabled {
-          opacity: 0.22;
-          cursor: not-allowed;
-        }
-
-        .retroNav:disabled:hover,
-        .retroNav:disabled:focus-visible {
-          transform: translateY(-50%);
-          border-color: rgba(70, 244, 209, 0.24);
-          background: rgba(5, 11, 13, 0.78);
-        }
-
-        .retroNav--prev {
-          left: 20px;
-        }
-
-        .retroNav--next {
-          right: 20px;
-        }
-
-        .retroNav__arrow {
-          font-size: 0.98rem;
-          line-height: 1;
-        }
-
-        @keyframes haloBreath {
-          0%,
-          100% {
-            transform: scale(0.985);
-            opacity: 0.9;
-          }
-          50% {
-            transform: scale(1.02);
-            opacity: 1;
-          }
-        }
-          50% {
-            transform: scale(1.035);
-            opacity: 1;
-          }
-        }
-
-        @keyframes ringBreath {
-          0%,
-          100% {
-            transform: scale(1);
-            box-shadow:
-              0 0 38px rgba(52, 223, 214, 0.34),
-              0 0 88px rgba(35, 208, 197, 0.22),
-              inset 0 0 22px rgba(121, 255, 244, 0.18),
-              inset 0 -10px 30px rgba(0, 0, 0, 0.14);
-          }
-          50% {
-            transform: scale(1.008);
-            box-shadow:
-              0 0 48px rgba(52, 223, 214, 0.42),
-              0 0 120px rgba(35, 208, 197, 0.28),
-              inset 0 0 28px rgba(121, 255, 244, 0.24),
-              inset 0 -10px 34px rgba(0, 0, 0, 0.12);
-          }
-        }
-          50% {
-            transform: scale(1.012);
-            box-shadow:
-              0 0 68px color-mix(in srgb, var(--accent) 68%, transparent),
-              0 0 156px color-mix(in srgb, var(--accent) 28%, transparent),
-              inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-              inset 0 0 90px rgba(0, 0, 0, 0.14);
-          }
         }
 
         @keyframes gridPulse {
           0%,
           100% {
-            opacity: 0.72;
+            opacity: 0.75;
           }
           50% {
-            opacity: 0.82;
+            opacity: 0.84;
           }
         }
 
         @media (max-width: 1180px) {
-          .retroPoster {
-            --circleSize: min(58vw, 560px);
-            --arcSize: calc(var(--circleSize) + 84px);
+          .posterFrame {
+            --core-size: min(54vw, 520px);
+            --orb-size: calc(var(--core-size) + 90px);
+            --arc-size: calc(var(--orb-size) + 52px);
             padding-left: 72px;
             padding-right: 72px;
           }
 
-          .retroArc--top text {
-            font-size: 80px;
+          .posterArc--top text {
+            font-size: 82px;
           }
 
-          .retroArc--bottom text {
-            font-size: 54px;
+          .posterArc--bottom text {
+            font-size: 52px;
           }
         }
 
@@ -690,7 +626,7 @@ export default function PrivateHirePage() {
             scroll-snap-type: y proximity;
           }
 
-          .retroLabel {
+          .posterLabel {
             top: 14px;
             max-width: 44vw;
             padding: 0;
@@ -701,104 +637,104 @@ export default function PrivateHirePage() {
             letter-spacing: 0.1em;
           }
 
-          .retroPoster {
-            --circleSize: min(78vw, 450px);
-            --arcSize: calc(var(--circleSize) + 72px);
-            padding: 84px 26px 120px;
+          .posterFrame {
+            --core-size: min(76vw, 430px);
+            --orb-size: calc(var(--core-size) + 76px);
+            --arc-size: calc(var(--orb-size) + 46px);
+            padding: 84px 24px 118px;
           }
 
-          .retroArc--top text {
-            font-size: 64px;
+          .posterArc--top text {
+            font-size: 72px;
           }
 
-          .retroArc--bottom text {
+          .posterArc--bottom text {
             font-size: 46px;
           }
 
-          .retroInfo {
-            top: calc(50% + (var(--circleSize) / 2) + 14px);
+          .posterInfo {
+            top: calc(50% + (var(--orb-size) / 2) + 2px);
             width: min(92vw, 560px);
           }
 
-          .retroInfo__line {
-            font-size: 0.96rem;
+          .posterInfo__line {
+            font-size: 0.94rem;
             line-height: 1.42;
           }
 
-          .retroNav {
+          .posterNav {
             top: auto;
             bottom: 18px;
             transform: none;
             padding: 13px 14px;
           }
 
-          .retroNav:hover,
-          .retroNav:focus-visible,
-          .retroNav:disabled:hover,
-          .retroNav:disabled:focus-visible {
+          .posterNav:hover,
+          .posterNav:focus-visible,
+          .posterNav:disabled:hover,
+          .posterNav:disabled:focus-visible {
             transform: none;
           }
 
-          .retroNav--prev {
+          .posterNav--prev {
             left: 16px;
           }
 
-          .retroNav--next {
+          .posterNav--next {
             right: 16px;
           }
         }
 
         @media (max-width: 560px) {
-          .retroLabel {
+          .posterLabel {
             max-width: 42vw;
             font-size: 0.54rem;
             letter-spacing: 0.08em;
           }
 
-          .retroLabel--left {
+          .posterLabel--left {
             left: 12px;
-            right: auto;
             top: 10px;
           }
 
-          .retroLabel--right {
+          .posterLabel--right {
             right: 12px;
-            left: auto;
             top: 10px;
             text-align: right;
           }
 
-          .retroPoster {
-            --circleSize: min(84vw, 360px);
-            --arcSize: calc(var(--circleSize) + 64px);
-            padding: 76px 18px 108px;
+          .posterFrame {
+            --core-size: min(82vw, 350px);
+            --orb-size: calc(var(--core-size) + 58px);
+            --arc-size: calc(var(--orb-size) + 36px);
+            padding: 74px 18px 110px;
           }
 
-          .retroArc--top text {
-            font-size: 58px;
+          .posterArc--top text {
+            font-size: 66px;
           }
 
-          .retroArc--bottom text {
-            font-size: 40px;
+          .posterArc--bottom text {
+            font-size: 38px;
           }
 
-          .retroInfo {
-            top: calc(50% + (var(--circleSize) / 2) + 10px);
+          .posterInfo {
+            top: calc(50% + (var(--orb-size) / 2) - 2px);
             width: calc(100vw - 28px);
           }
 
-          .retroInfo__line {
+          .posterInfo__line {
             font-size: 0.82rem;
             letter-spacing: 0.1em;
           }
 
-          .retroNav {
+          .posterNav {
             bottom: 12px;
             padding: 12px 13px;
             font-size: 0.68rem;
           }
 
-          .retroNav__text {
+          .posterNav__text {
             display: none;
           }
         }
@@ -809,16 +745,14 @@ export default function PrivateHirePage() {
             scroll-snap-type: none;
           }
 
-          .retroGrid,
-          .retroOuterGlow,
-          .retroCircleShell {
+          .posterGrid {
             animation: none;
           }
 
-          .retroCircleImage,
-          .retroVenueArc,
-          .retroInfo__block,
-          .retroNav {
+          .orbPhoto,
+          .venueArc,
+          .posterInfo__block,
+          .posterNav {
             transition: none;
           }
         }
