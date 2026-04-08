@@ -27,21 +27,21 @@ const ASSETS = {
   venue: '/images/the-space/the-space-page-venue.png',
 };
 
-// Update hrefs if your real routes differ.
+// Update these if your routes differ.
 const AREAS: AreaConfig[] = [
   {
     id: 'tent',
     title: 'THE TENT',
     href: '/thetent',
     desktop: {
-      button: { x: '38.2%', y: '18.4%' },
-      lineStart: { x: '46.0%', y: '18.6%' },
-      lineEnd: { x: '52.6%', y: '31.8%' },
+      button: { x: '39.2%', y: '18.5%' },
+      lineStart: { x: '46.7%', y: '18.7%' },
+      lineEnd: { x: '53.4%', y: '31.9%' },
     },
     mobile: {
-      button: { x: '50.0%', y: '14.5%' },
-      lineStart: { x: '50.0%', y: '18.2%' },
-      lineEnd: { x: '52.0%', y: '32.5%' },
+      button: { x: '50.0%', y: '14.8%' },
+      lineStart: { x: '50.0%', y: '18.6%' },
+      lineEnd: { x: '52.2%', y: '32.8%' },
     },
   },
   {
@@ -49,14 +49,14 @@ const AREAS: AreaConfig[] = [
     title: "CHEF'S STUDIO",
     href: '/chefstudio',
     desktop: {
-      button: { x: '30.6%', y: '80.4%' },
-      lineStart: { x: '39.8%', y: '80.0%' },
-      lineEnd: { x: '35.7%', y: '72.0%' },
+      button: { x: '29.6%', y: '80.8%' },
+      lineStart: { x: '39.3%', y: '80.3%' },
+      lineEnd: { x: '35.6%', y: '71.8%' },
     },
     mobile: {
-      button: { x: '27.5%', y: '76.0%' },
+      button: { x: '27.5%', y: '75.8%' },
       lineStart: { x: '36.8%', y: '74.6%' },
-      lineEnd: { x: '38.6%', y: '66.2%' },
+      lineEnd: { x: '38.8%', y: '65.6%' },
     },
   },
   {
@@ -64,14 +64,14 @@ const AREAS: AreaConfig[] = [
     title: 'THE STUDIO',
     href: '/studio',
     desktop: {
-      button: { x: '76.8%', y: '74.8%' },
-      lineStart: { x: '67.9%', y: '74.5%' },
-      lineEnd: { x: '61.6%', y: '67.8%' },
+      button: { x: '77.2%', y: '74.8%' },
+      lineStart: { x: '68.3%', y: '74.5%' },
+      lineEnd: { x: '61.8%', y: '67.6%' },
     },
     mobile: {
-      button: { x: '72.5%', y: '76.0%' },
-      lineStart: { x: '63.4%', y: '74.8%' },
-      lineEnd: { x: '61.2%', y: '66.0%' },
+      button: { x: '72.7%', y: '75.9%' },
+      lineStart: { x: '63.7%', y: '74.7%' },
+      lineEnd: { x: '61.5%', y: '65.3%' },
     },
   },
 ];
@@ -102,8 +102,10 @@ export default function TheSpacePage() {
       <main className="page">
         <div className="page-bg" aria-hidden="true" />
         <div className="page-bg-overlay" aria-hidden="true" />
+
         <div className="twinkle twinkle-a" aria-hidden="true" />
         <div className="twinkle twinkle-b" aria-hidden="true" />
+
         <div className="page-glow page-glow-a" aria-hidden="true" />
         <div className="page-glow page-glow-b" aria-hidden="true" />
         <div className="page-glow page-glow-c" aria-hidden="true" />
@@ -118,6 +120,8 @@ export default function TheSpacePage() {
               draggable={false}
             />
           </picture>
+
+          <div className="scanlines" aria-hidden="true" />
 
           <img
             src={ASSETS.venue}
@@ -186,37 +190,40 @@ export default function TheSpacePage() {
 
           .page-bg-overlay {
             background:
-              radial-gradient(circle at 50% 10%, rgba(181, 74, 255, 0.12), transparent 24%),
-              radial-gradient(circle at 20% 24%, rgba(217, 58, 255, 0.08), transparent 18%),
-              radial-gradient(circle at 80% 72%, rgba(140, 34, 232, 0.08), transparent 20%),
-              linear-gradient(180deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.34) 100%);
+              radial-gradient(circle at 50% 10%, rgba(181, 74, 255, 0.14), transparent 24%),
+              radial-gradient(circle at 20% 24%, rgba(217, 58, 255, 0.10), transparent 18%),
+              radial-gradient(circle at 80% 72%, rgba(140, 34, 232, 0.10), transparent 20%),
+              linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.30) 100%);
           }
 
           .twinkle {
             mix-blend-mode: screen;
-            opacity: 0.42;
+            opacity: 0.58;
+            filter:
+              drop-shadow(0 0 3px rgba(246, 210, 255, 0.42))
+              drop-shadow(0 0 8px rgba(193, 120, 255, 0.22));
           }
 
           .twinkle-a {
             background-image:
-              radial-gradient(circle at 10% 18%, rgba(255,255,255,0.95) 0 1px, transparent 2px),
-              radial-gradient(circle at 22% 64%, rgba(255,255,255,0.75) 0 1.2px, transparent 2px),
-              radial-gradient(circle at 39% 28%, rgba(255,255,255,0.8) 0 1px, transparent 2px),
-              radial-gradient(circle at 51% 72%, rgba(255,255,255,0.95) 0 1.1px, transparent 2px),
-              radial-gradient(circle at 68% 22%, rgba(255,255,255,0.8) 0 1px, transparent 2px),
-              radial-gradient(circle at 79% 61%, rgba(255,255,255,0.85) 0 1.2px, transparent 2px),
-              radial-gradient(circle at 92% 18%, rgba(255,255,255,0.8) 0 1px, transparent 2px);
+              radial-gradient(circle at 10% 18%, rgba(255, 245, 255, 0.96) 0 1px, transparent 2.2px),
+              radial-gradient(circle at 22% 64%, rgba(238, 188, 255, 0.88) 0 1.2px, transparent 2.4px),
+              radial-gradient(circle at 39% 28%, rgba(227, 170, 255, 0.86) 0 1px, transparent 2.2px),
+              radial-gradient(circle at 51% 72%, rgba(255, 230, 255, 0.96) 0 1.1px, transparent 2.2px),
+              radial-gradient(circle at 68% 22%, rgba(219, 154, 255, 0.84) 0 1px, transparent 2.2px),
+              radial-gradient(circle at 79% 61%, rgba(235, 186, 255, 0.88) 0 1.2px, transparent 2.4px),
+              radial-gradient(circle at 92% 18%, rgba(230, 174, 255, 0.84) 0 1px, transparent 2.2px);
             animation: twinkleA 6s ease-in-out infinite;
           }
 
           .twinkle-b {
             background-image:
-              radial-gradient(circle at 14% 82%, rgba(255,255,255,0.95) 0 1.2px, transparent 2px),
-              radial-gradient(circle at 29% 15%, rgba(255,255,255,0.75) 0 1px, transparent 2px),
-              radial-gradient(circle at 44% 48%, rgba(255,255,255,0.85) 0 1.1px, transparent 2px),
-              radial-gradient(circle at 58% 18%, rgba(255,255,255,0.9) 0 1.1px, transparent 2px),
-              radial-gradient(circle at 73% 78%, rgba(255,255,255,0.9) 0 1px, transparent 2px),
-              radial-gradient(circle at 86% 36%, rgba(255,255,255,0.8) 0 1px, transparent 2px);
+              radial-gradient(circle at 14% 82%, rgba(255, 242, 255, 0.94) 0 1.2px, transparent 2.4px),
+              radial-gradient(circle at 29% 15%, rgba(233, 182, 255, 0.84) 0 1px, transparent 2.2px),
+              radial-gradient(circle at 44% 48%, rgba(243, 198, 255, 0.90) 0 1.1px, transparent 2.3px),
+              radial-gradient(circle at 58% 18%, rgba(255, 235, 255, 0.94) 0 1.1px, transparent 2.3px),
+              radial-gradient(circle at 73% 78%, rgba(230, 172, 255, 0.88) 0 1px, transparent 2.2px),
+              radial-gradient(circle at 86% 36%, rgba(223, 162, 255, 0.84) 0 1px, transparent 2.2px);
             animation: twinkleB 8s ease-in-out infinite;
           }
 
@@ -282,12 +289,35 @@ export default function TheSpacePage() {
             pointer-events: none;
           }
 
+          .scanlines {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+            opacity: 0.08;
+            background: linear-gradient(
+              180deg,
+              rgba(255, 255, 255, 0.06) 0%,
+              rgba(255, 255, 255, 0) 10%,
+              rgba(255, 255, 255, 0.04) 20%,
+              rgba(255, 255, 255, 0) 30%,
+              rgba(255, 255, 255, 0.03) 40%,
+              rgba(255, 255, 255, 0) 50%,
+              rgba(255, 255, 255, 0.04) 60%,
+              rgba(255, 255, 255, 0) 70%,
+              rgba(255, 255, 255, 0.03) 80%,
+              rgba(255, 255, 255, 0) 90%,
+              rgba(255, 255, 255, 0.04) 100%
+            );
+            mix-blend-mode: screen;
+          }
+
           .venue-image {
             z-index: 2;
             inset: auto;
-            top: 21.8%;
-            left: 13.9%;
-            width: 72.8%;
+            top: 17.6%;
+            left: 9.9%;
+            width: 79.6%;
             height: auto;
             object-fit: contain;
             pointer-events: none;
@@ -314,7 +344,7 @@ export default function TheSpacePage() {
               transform: translateY(0px);
             }
             50% {
-              transform: translateY(-14px);
+              transform: translateY(-18px);
             }
           }
 
@@ -327,8 +357,8 @@ export default function TheSpacePage() {
 
           @keyframes twinkleB {
             0%, 100% { opacity: 0.12; }
-            20% { opacity: 0.3; }
-            45% { opacity: 0.2; }
+            20% { opacity: 0.30; }
+            45% { opacity: 0.20; }
             70% { opacity: 0.46; }
           }
 
@@ -358,9 +388,9 @@ export default function TheSpacePage() {
             }
 
             .venue-image {
-              top: 31.0%;
-              left: 11.2%;
-              width: 77.6%;
+              top: 24.6%;
+              left: 4.8%;
+              width: 90.5%;
             }
 
             .hotspot-desktop {
