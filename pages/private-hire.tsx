@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 type Venue = {
   id: string;
@@ -57,86 +57,35 @@ const VENUES: Venue[] = [
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 
 export default function PrivateHirePage() {
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const [floatIndex, setFloatIndex] = useState(0);
-  const slideCount = VENUES.length;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const markerRefs = useRef<Array<HTMLDivElement | null>>([]);
 
-  useEffect(() => {
-    let frame = 0;
-
-    const updateProgress = () => {
-      const track = trackRef.current;
-      if (!track) return;
-
-      const rect = track.getBoundingClientRect();
-      const scrollable = Math.max(track.offsetHeight - window.innerHeight, 1);
-      const progress = clamp(-rect.top / scrollable, 0, 1);
-      setFloatIndex(progress * (slideCount - 1));
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(updateProgress);
-    };
-
-    updateProgress();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
-  }, [slideCount]);
-
-  const goToSlide = useCallback(
-    (index: number) => {
-      const track = trackRef.current;
-      if (!track) return;
-
-      const clampedIndex = clamp(index, 0, slideCount - 1);
-      const trackTop = window.scrollY + track.getBoundingClientRect().top;
-      const scrollable = Math.max(track.offsetHeight - window.innerHeight, 1);
-      const targetTop = trackTop + (clampedIndex / Math.max(slideCount - 1, 1)) * scrollable;
-
-      window.scrollTo({ top: targetTop, behavior: 'smooth' });
-    },
-    [slideCount]
-  );
-
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowDown' || event.key === 'PageDown') {
-        event.preventDefault();
-        goToSlide(Math.round(floatIndex) + 1);
-      }
-
-      if (event.key === 'ArrowUp' || event.key === 'PageUp') {
-        event.preventDefault();
-        goToSlide(Math.round(floatIndex) - 1);
-      }
-    };
-
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [floatIndex, goToSlide]);
-
-  const activeIndex = clamp(Math.round(floatIndex), 0, slideCount - 1);
   const activeVenue = VENUES[activeIndex];
 
-  const getLayerStyle = (index: number, offset = 24, scaleAmount = 0.08, fadeAmount = 1.45) => {
-    const delta = index - floatIndex;
-    const distance = Math.abs(delta);
-    const opacity = Math.max(0, 1 - distance * fadeAmount);
-    const translateY = delta * offset;
-    const scale = 1 - Math.min(distance, 1) * scaleAmount;
-
-    return {
-      opacity,
-      transform: `translate3d(-50%, ${translateY}px, 0) scale(${scale})`,
+  useEffect(() => {
+    const updateActiveIndex = () => {
+      const nextIndex = clamp(Math.round(window.scrollY / Math.max(window.innerHeight, 1)), 0, VENUES.length - 1);
+      setActiveIndex(nextIndex);
     };
+
+    updateActiveIndex();
+    window.addEventListener('scroll', updateActiveIndex, { passive: true });
+    window.addEventListener('resize', updateActiveIndex);
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveIndex);
+      window.removeEventListener('resize', updateActiveIndex);
+    };
+  }, []);
+
+  const goToSlide = (index: number) => {
+    const nextIndex = clamp(index, 0, VENUES.length - 1);
+    const node = markerRefs.current[nextIndex];
+    if (!node) return;
+    node.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+
+  const titleArcId = useMemo(() => `private-hire-top-arc-${VENUES.length}`, []);
 
   return (
     <>
@@ -144,13 +93,13 @@ export default function PrivateHirePage() {
         <title>Private Hire</title>
         <meta
           name="description"
-          content="Poster-inspired private hire page with a fixed immersive stage, circular venue image mask, and scroll-driven state changes."
+          content="Poster-inspired private hire page with snap scrolling, curved titles, and a circular venue image reveal."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <main className="retroPage">
-        <div className="retroStage">
+        <div className="retroStage" style={{ ['--accent' as string]: activeVenue.accent }}>
           <div className="retroSky" style={{ backgroundImage: `url(${STAR_BG})` }} />
           <img src={GRID_BG} alt="" aria-hidden="true" className="retroGrid" />
           <div className="retroVignette" />
@@ -178,21 +127,21 @@ export default function PrivateHirePage() {
             type="button"
             className="retroNav retroNav--next"
             onClick={() => goToSlide(activeIndex + 1)}
-            disabled={activeIndex === slideCount - 1}
+            disabled={activeIndex === VENUES.length - 1}
             aria-label="Next venue"
           >
             <span className="retroNav__text">Next</span>
             <span className="retroNav__arrow">↓</span>
           </button>
 
-          <div className="retroCenterpiece" style={{ ['--accent' as string]: activeVenue.accent }}>
-            <div className="retroArcStage retroArcStage--top" aria-hidden="true">
+          <section className="retroPoster" aria-live="polite">
+            <div className="retroArc retroArc--top" aria-hidden="true">
               <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
                 <defs>
-                  <path id="retroTopPerfectArc" d="M 180 500 A 320 320 0 0 1 820 500" />
+                  <path id={titleArcId} d="M 170 500 A 330 330 0 0 1 830 500" />
                 </defs>
                 <text>
-                  <textPath href="#retroTopPerfectArc" startOffset="50%" textAnchor="middle">
+                  <textPath href={`#${titleArcId}`} startOffset="50%" textAnchor="middle">
                     PRIVATE HIRE
                   </textPath>
                 </text>
@@ -203,59 +152,75 @@ export default function PrivateHirePage() {
               <div className="retroOuterGlow" />
               <div className="retroCircleShell">
                 <div className="retroCircleMask">
-                  {VENUES.map((venue, index) => (
-                    <img
-                      key={venue.id}
-                      src={venue.image}
-                      alt={venue.alt}
-                      className="retroCircleImage"
-                      style={{
-                        ...getLayerStyle(index, 34, 0.16, 1.24),
-                        objectPosition: venue.objectPosition || '50% 50%',
-                      }}
-                    />
-                  ))}
+                  {VENUES.map((venue, index) => {
+                    const isActive = index === activeIndex;
+                    return (
+                      <img
+                        key={venue.id}
+                        src={venue.image}
+                        alt={venue.alt}
+                        className={`retroCircleImage ${isActive ? 'is-active' : ''}`}
+                        style={{ objectPosition: venue.objectPosition || '50% 50%' }}
+                      />
+                    );
+                  })}
                   <div className="retroCircleShade" />
                 </div>
               </div>
             </div>
 
-            <div className="retroArcStage retroArcStage--bottom" aria-live="polite">
-              {VENUES.map((venue, index) => (
-                <svg
-                  key={venue.id}
-                  viewBox="0 0 1000 1000"
-                  preserveAspectRatio="none"
-                  className="retroVenueArc"
-                  style={getLayerStyle(index, 22, 0.08, 1.42)}
-                >
-                  <defs>
-                    <path id={`retroBottomPerfectArc-${venue.id}`} d="M 180 500 A 320 320 0 0 0 820 500" />
-                  </defs>
-                  <text>
-                    <textPath href={`#retroBottomPerfectArc-${venue.id}`} startOffset="50%" textAnchor="middle">
-                      {venue.title}
-                    </textPath>
-                  </text>
-                </svg>
-              ))}
+            <div className="retroArc retroArc--bottom">
+              {VENUES.map((venue, index) => {
+                const isActive = index === activeIndex;
+                return (
+                  <svg
+                    key={venue.id}
+                    viewBox="0 0 1000 1000"
+                    preserveAspectRatio="none"
+                    className={`retroVenueArc ${isActive ? 'is-active' : ''}`}
+                    aria-hidden={!isActive}
+                  >
+                    <defs>
+                      <path id={`venue-arc-${venue.id}`} d="M 200 500 A 300 300 0 0 0 800 500" />
+                    </defs>
+                    <text>
+                      <textPath href={`#venue-arc-${venue.id}`} startOffset="50%" textAnchor="middle">
+                        {venue.title}
+                      </textPath>
+                    </text>
+                  </svg>
+                );
+              })}
             </div>
 
-            <div className="retroInfo" aria-live="polite">
-              {VENUES.map((venue, index) => (
-                <div key={venue.id} className="retroInfo__block" style={getLayerStyle(index, 16, 0.03, 1.5)}>
-                  {venue.infoLines.map((line) => (
-                    <p key={`${venue.id}-${line}`} className="retroInfo__line">
-                      {line}
-                    </p>
-                  ))}
-                </div>
-              ))}
+            <div className="retroInfo">
+              {VENUES.map((venue, index) => {
+                const isActive = index === activeIndex;
+                return (
+                  <div key={venue.id} className={`retroInfo__block ${isActive ? 'is-active' : ''}`}>
+                    {venue.infoLines.map((line) => (
+                      <p key={`${venue.id}-${line}`} className="retroInfo__line">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                );
+              })}
             </div>
-          </div>
+          </section>
         </div>
 
-        <div ref={trackRef} className="retroScrollTrack" style={{ height: `${slideCount * 100}vh` }} aria-hidden="true" />
+        <div className="retroScrollTrack" aria-hidden="true">
+          {VENUES.map((venue, index) => (
+            <div
+              key={venue.id}
+              ref={(node) => {
+                markerRefs.current[index] = node;
+              }}
+              className="retroScrollMarker"
+            />
+          ))}
+        </div>
       </main>
 
       <style jsx global>{`
@@ -263,6 +228,7 @@ export default function PrivateHirePage() {
 
         html {
           scroll-behavior: smooth;
+          scroll-snap-type: y mandatory;
         }
 
         body {
@@ -313,11 +279,19 @@ export default function PrivateHirePage() {
           inset: 0;
           overflow: clip;
           background: #020406;
+          z-index: 2;
         }
 
         .retroScrollTrack {
           position: relative;
           z-index: 0;
+          pointer-events: none;
+        }
+
+        .retroScrollMarker {
+          height: 100vh;
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
         }
 
         .retroSky,
@@ -366,13 +340,14 @@ export default function PrivateHirePage() {
         .retroHud {
           position: absolute;
           inset: 0;
-          z-index: 10;
+          z-index: 12;
           pointer-events: none;
         }
 
         .retroLabel {
           position: absolute;
           top: 16px;
+          max-width: calc(50vw - 26px);
           padding: 11px 16px 10px;
           border: 1px solid rgba(70, 244, 209, 0.26);
           background: rgba(4, 12, 14, 0.68);
@@ -384,6 +359,9 @@ export default function PrivateHirePage() {
           line-height: 1;
           font-weight: 700;
           pointer-events: auto;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .retroLabel--left {
@@ -392,71 +370,24 @@ export default function PrivateHirePage() {
 
         .retroLabel--right {
           right: 16px;
+          text-align: right;
         }
 
-        .retroCenterpiece {
+        .retroPoster {
           position: absolute;
           inset: 0;
           z-index: 6;
           display: grid;
           place-items: center;
+          padding: clamp(88px, 11vh, 118px) 88px clamp(72px, 10vh, 100px);
           pointer-events: none;
         }
 
         .retroCircleCluster {
           position: relative;
-          width: min(44vw, 600px);
+          width: min(48vw, 620px);
           aspect-ratio: 1 / 1;
-          display: grid;
-          place-items: center;
           z-index: 7;
-        }
-
-        .retroArcStage {
-          position: absolute;
-          left: 50%;
-          width: min(74vw, 980px);
-          aspect-ratio: 1 / 1;
-          transform: translateX(-50%);
-          pointer-events: none;
-        }
-
-        .retroArcStage svg {
-          width: 100%;
-          height: 100%;
-        }
-
-        .retroArcStage--top {
-          top: max(3vh, calc(50% - min(22vw, 300px) - min(24vw, 270px)));
-        }
-
-        .retroArcStage--top text {
-          fill: #f3efe7;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 92px;
-          font-weight: 900;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-        }
-
-        .retroArcStage--bottom {
-          top: calc(50% - min(22vw, 300px) + min(6vw, 70px));
-        }
-
-        .retroVenueArc {
-          position: absolute;
-          left: 50%;
-          top: 0;
-          transform-origin: center;
-        }
-
-        .retroArcStage--bottom text {
-          fill: var(--accent, #46f4d1);
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 82px;
-          font-weight: 900;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
         }
 
         .retroOuterGlow {
@@ -497,14 +428,19 @@ export default function PrivateHirePage() {
 
         .retroCircleImage {
           position: absolute;
-          left: 50%;
-          top: 0;
+          inset: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
           filter: grayscale(100%) contrast(1.08) brightness(0.9);
-          will-change: opacity, transform;
-          transition: opacity 320ms ease, transform 320ms ease;
+          opacity: 0;
+          transform: scale(1.04);
+          transition: opacity 360ms ease, transform 360ms ease;
+        }
+
+        .retroCircleImage.is-active {
+          opacity: 1;
+          transform: scale(1);
         }
 
         .retroCircleShade {
@@ -516,23 +452,81 @@ export default function PrivateHirePage() {
           mix-blend-mode: screen;
         }
 
+        .retroArc {
+          position: absolute;
+          left: 50%;
+          width: min(80vw, 1020px);
+          aspect-ratio: 1 / 1;
+          transform: translateX(-50%);
+          pointer-events: none;
+        }
+
+        .retroArc svg {
+          width: 100%;
+          height: 100%;
+        }
+
+        .retroArc--top {
+          top: calc(50% - min(26vw, 330px) - min(14vw, 160px));
+        }
+
+        .retroArc--top text {
+          fill: #f3efe7;
+          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
+          font-size: 88px;
+          font-weight: 900;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+
+        .retroArc--bottom {
+          top: calc(50% - min(26vw, 330px) + min(7vw, 84px));
+        }
+
+        .retroVenueArc {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          transform: translateY(10px) scale(0.98);
+          transition: opacity 320ms ease, transform 320ms ease;
+        }
+
+        .retroVenueArc.is-active {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        .retroArc--bottom text {
+          fill: var(--accent, #46f4d1);
+          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
+          font-size: 78px;
+          font-weight: 900;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
         .retroInfo {
           position: absolute;
           left: 50%;
-          top: calc(50% + min(24vw, 300px) + min(9vw, 100px));
-          width: min(880px, 88vw);
-          min-height: 150px;
+          top: calc(50% + min(27vw, 340px) + min(6vw, 70px));
+          width: min(760px, calc(100vw - 120px));
+          min-height: 120px;
           transform: translateX(-50%);
           pointer-events: none;
         }
 
         .retroInfo__block {
           position: absolute;
-          left: 50%;
-          top: 0;
-          width: 100%;
+          inset: 0;
+          opacity: 0;
+          transform: translateY(10px) scale(0.98);
+          transition: opacity 320ms ease, transform 320ms ease;
           text-align: center;
-          transform-origin: center;
+        }
+
+        .retroInfo__block.is-active {
+          opacity: 1;
+          transform: translateY(0) scale(1);
         }
 
         .retroInfo__line {
@@ -541,7 +535,7 @@ export default function PrivateHirePage() {
           text-transform: uppercase;
           letter-spacing: 0.13em;
           line-height: 1.48;
-          font-size: clamp(1rem, 1.55vw, 1.28rem);
+          font-size: clamp(1rem, 1.45vw, 1.22rem);
           font-weight: 700;
           text-wrap: balance;
         }
@@ -553,27 +547,23 @@ export default function PrivateHirePage() {
         .retroNav {
           position: absolute;
           top: 50%;
-          z-index: 12;
+          z-index: 14;
           display: inline-flex;
           align-items: center;
           gap: 11px;
           padding: 14px 16px;
           border-radius: 999px;
           border: 1px solid rgba(70, 244, 209, 0.24);
-          background: rgba(5, 11, 13, 0.7);
+          background: rgba(5, 11, 13, 0.78);
           color: #46f4d1;
-          box-shadow: 0 0 24px rgba(70, 244, 209, 0.06);
+          box-shadow: 0 0 24px rgba(70, 244, 209, 0.08);
           letter-spacing: 0.16em;
           text-transform: uppercase;
           font-size: 0.84rem;
           font-weight: 700;
           backdrop-filter: blur(12px);
           transform: translateY(-50%);
-          transition:
-            opacity 180ms ease,
-            transform 180ms ease,
-            border-color 180ms ease,
-            background 180ms ease;
+          transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease, background 180ms ease;
           pointer-events: auto;
         }
 
@@ -581,7 +571,7 @@ export default function PrivateHirePage() {
         .retroNav:focus-visible {
           transform: translateY(calc(-50% - 2px));
           border-color: rgba(70, 244, 209, 0.45);
-          background: rgba(7, 15, 17, 0.82);
+          background: rgba(7, 15, 17, 0.88);
         }
 
         .retroNav:disabled {
@@ -593,15 +583,15 @@ export default function PrivateHirePage() {
         .retroNav:disabled:focus-visible {
           transform: translateY(-50%);
           border-color: rgba(70, 244, 209, 0.24);
-          background: rgba(5, 11, 13, 0.7);
+          background: rgba(5, 11, 13, 0.78);
         }
 
         .retroNav--prev {
-          left: 16px;
+          left: 20px;
         }
 
         .retroNav--next {
-          right: 16px;
+          right: 20px;
         }
 
         .retroNav__arrow {
@@ -652,72 +642,84 @@ export default function PrivateHirePage() {
         }
 
         @media (max-width: 1180px) {
-          .retroArcStage {
-            width: min(90vw, 980px);
-          }
-
-          .retroArcStage--top text {
-            font-size: 82px;
-          }
-
-          .retroArcStage--bottom text {
-            font-size: 70px;
+          .retroPoster {
+            padding-left: 72px;
+            padding-right: 72px;
           }
 
           .retroCircleCluster {
-            width: min(54vw, 560px);
+            width: min(58vw, 560px);
+          }
+
+          .retroArc {
+            width: min(90vw, 980px);
+          }
+
+          .retroArc--top text {
+            font-size: 78px;
+          }
+
+          .retroArc--bottom text {
+            font-size: 68px;
           }
         }
 
         @media (max-width: 860px) {
+          html {
+            scroll-snap-type: y proximity;
+          }
+
           .retroLabel {
             top: 12px;
+            max-width: calc(50vw - 18px);
             padding: 10px 12px 9px;
             font-size: 0.72rem;
             letter-spacing: 0.11em;
           }
 
-          .retroArcStage {
-            width: 100vw;
-          }
-
-          .retroArcStage--top {
-            top: max(5vh, calc(50% - min(31vw, 230px) - min(30vw, 220px)));
-          }
-
-          .retroArcStage--top text {
-            font-size: 56px;
-          }
-
-          .retroArcStage--bottom {
-            top: calc(50% - min(31vw, 230px) + min(8vw, 58px));
-          }
-
-          .retroArcStage--bottom text {
-            font-size: 48px;
+          .retroPoster {
+            padding: 84px 26px 120px;
           }
 
           .retroCircleCluster {
-            width: min(74vw, 460px);
+            width: min(80vw, 450px);
+          }
+
+          .retroArc {
+            width: min(100vw, 760px);
+          }
+
+          .retroArc--top {
+            top: calc(50% - min(38vw, 250px) - 92px);
+          }
+
+          .retroArc--top text {
+            font-size: 54px;
+          }
+
+          .retroArc--bottom {
+            top: calc(50% - min(38vw, 250px) + 74px);
+          }
+
+          .retroArc--bottom text {
+            font-size: 44px;
           }
 
           .retroInfo {
-            top: calc(50% + min(36vw, 260px) + min(11vw, 86px));
-            width: min(92vw, 620px);
-            min-height: 120px;
+            top: calc(50% + min(38vw, 250px) + 64px);
+            width: min(92vw, 560px);
           }
 
           .retroInfo__line {
-            font-size: 0.98rem;
+            font-size: 0.96rem;
             line-height: 1.42;
           }
 
           .retroNav {
             top: auto;
-            bottom: 24px;
+            bottom: 18px;
             transform: none;
-            padding: 12px 14px;
-            font-size: 0.74rem;
+            padding: 13px 14px;
           }
 
           .retroNav:hover,
@@ -728,34 +730,67 @@ export default function PrivateHirePage() {
           }
 
           .retroNav--prev {
-            left: 12px;
+            left: 16px;
           }
 
           .retroNav--next {
-            right: 12px;
+            right: 16px;
           }
         }
 
         @media (max-width: 560px) {
-          .retroArcStage--top text {
-            font-size: 40px;
+          .retroLabel {
+            max-width: calc(100vw - 24px);
+            font-size: 0.62rem;
+            letter-spacing: 0.08em;
           }
 
-          .retroArcStage--bottom text {
-            font-size: 32px;
+          .retroLabel--left {
+            left: 12px;
+            right: 12px;
+            max-width: none;
+            top: 10px;
+          }
+
+          .retroLabel--right {
+            left: 12px;
+            right: 12px;
+            top: 44px;
+            max-width: none;
+            text-align: left;
+          }
+
+          .retroPoster {
+            padding: 92px 18px 112px;
           }
 
           .retroCircleCluster {
             width: min(84vw, 360px);
           }
 
-          .retroOuterGlow {
-            inset: -20%;
+          .retroArc {
+            width: min(100vw, 520px);
+          }
+
+          .retroArc--top {
+            top: calc(50% - min(42vw, 190px) - 76px);
+          }
+
+          .retroArc--top text {
+            font-size: 36px;
+          }
+
+          .retroArc--bottom {
+            top: calc(50% - min(42vw, 190px) + 56px);
+          }
+
+          .retroArc--bottom text {
+            font-size: 30px;
           }
 
           .retroInfo {
-            top: calc(50% + min(41vw, 220px) + min(16vw, 78px));
-            width: calc(100vw - 34px);
+            top: calc(50% + min(42vw, 190px) + 52px);
+            width: calc(100vw - 28px);
           }
 
           .retroInfo__line {
@@ -764,7 +799,8 @@ export default function PrivateHirePage() {
           }
 
           .retroNav {
-            padding: 11px 13px;
+            bottom: 12px;
+            padding: 12px 13px;
             font-size: 0.68rem;
           }
 
@@ -776,6 +812,7 @@ export default function PrivateHirePage() {
         @media (prefers-reduced-motion: reduce) {
           html {
             scroll-behavior: auto;
+            scroll-snap-type: none;
           }
 
           .retroGrid,
@@ -785,6 +822,8 @@ export default function PrivateHirePage() {
           }
 
           .retroCircleImage,
+          .retroVenueArc,
+          .retroInfo__block,
           .retroNav {
             transition: none;
           }
