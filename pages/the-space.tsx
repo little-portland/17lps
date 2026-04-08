@@ -39,7 +39,7 @@ const AREAS: AreaConfig[] = [
 ];
 
 export default function TheSpacePage() {
-  const [activeArea, setActiveArea] = useState<AreaId>('tent');
+  const [activeArea, setActiveArea] = useState<AreaId | null>(null);
   const [isTouchMode, setIsTouchMode] = useState(false);
 
   useEffect(() => {
@@ -85,10 +85,16 @@ export default function TheSpacePage() {
     }
   };
 
+  const handleControlsLeave = () => {
+    if (!isTouchMode) {
+      setActiveArea(null);
+    }
+  };
+
   return (
     <>
       <Head>
-        <title>Venue Map</title>
+        <title>The Space</title>
         <meta
           name="description"
           content="Interactive retro-futurist venue map."
@@ -126,6 +132,12 @@ export default function TheSpacePage() {
           </picture>
 
           <div className="scanlines" aria-hidden="true" />
+
+          <div className="hud-title-wrap" aria-hidden="true">
+            <div className="hud-title-kicker" />
+            <h1 className="hud-title">THE SPACE</h1>
+            <div className="hud-title-kicker" />
+          </div>
 
           <div className="venue-wrap layer" aria-hidden="true">
             <img
@@ -174,7 +186,11 @@ export default function TheSpacePage() {
             />
           </div>
 
-          <nav className="zone-controls" aria-label="Venue areas">
+          <nav
+            className="zone-controls"
+            aria-label="Venue areas"
+            onMouseLeave={handleControlsLeave}
+          >
             {AREAS.map((area) => {
               const isActive = activeArea === area.id;
               const helperText = isTouchMode
@@ -370,6 +386,44 @@ export default function TheSpacePage() {
             mix-blend-mode: screen;
           }
 
+          .hud-title-wrap {
+            position: absolute;
+            top: 7.4%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            pointer-events: none;
+          }
+
+          .hud-title {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(24px, 2.25vw, 38px);
+            font-weight: 700;
+            letter-spacing: 0.26em;
+            color: #fff1ff;
+            text-transform: uppercase;
+            text-shadow:
+              0 0 12px rgba(255, 115, 235, 0.18),
+              0 0 28px rgba(183, 86, 255, 0.12);
+            white-space: nowrap;
+          }
+
+          .hud-title-kicker {
+            width: 68px;
+            height: 1px;
+            background: linear-gradient(
+              90deg,
+              rgba(255, 60, 226, 0) 0%,
+              rgba(255, 60, 226, 0.8) 40%,
+              rgba(179, 238, 255, 0.8) 100%
+            );
+            box-shadow: 0 0 10px rgba(255, 60, 226, 0.18);
+          }
+
           .venue-wrap {
             z-index: 2;
             pointer-events: none;
@@ -379,7 +433,7 @@ export default function TheSpacePage() {
           .venue-image {
             position: absolute;
             inset: auto;
-            top: 24.6%;
+            top: 21%;
             left: 12.4%;
             width: 75.6%;
             height: auto;
@@ -458,7 +512,7 @@ export default function TheSpacePage() {
             position: absolute;
             left: 11%;
             right: 11%;
-            bottom: 7.8%;
+            bottom: calc(7.8% + 25px);
             z-index: 20;
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -718,8 +772,22 @@ export default function TheSpacePage() {
               aspect-ratio: 1340 / 2048;
             }
 
+            .hud-title-wrap {
+              top: 10%;
+              gap: 10px;
+            }
+
+            .hud-title {
+              font-size: clamp(18px, 4.2vw, 26px);
+              letter-spacing: 0.18em;
+            }
+
+            .hud-title-kicker {
+              width: 36px;
+            }
+
             .venue-image {
-              top: 40.6%;
+              top: 20%;
               left: 9.4%;
               width: 80.5%;
             }
@@ -727,7 +795,7 @@ export default function TheSpacePage() {
             .zone-controls {
               left: 9%;
               right: 9%;
-              bottom: 9%;
+              bottom: calc(9% + 25px);
               grid-template-columns: 1fr;
               gap: 10px;
             }
