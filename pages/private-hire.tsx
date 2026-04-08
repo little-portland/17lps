@@ -410,278 +410,7 @@ export default function PrivateHirePage() {
         }
 
         .posterTitleWrap {
-          position: absolute;
-          left: 50%;
-          top: calc(50% - (var(--core-size) / 2) - 42px);
-          transform: translateX(-50%);
-          z-index: 9;
-          width: min(90vw, 760px);
-          display: flex;
-          justify-content: center;
-        }
-
-        .posterTitlePill {
-          min-height: 58px;
-          padding: 0 28px;
-          border-radius: 999px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid rgba(52, 129, 89, 0.42);
-          background: rgba(0, 0, 0, 0.74);
-          color: ${ACCENT};
-          box-shadow:
-            0 0 18px rgba(52, 129, 89, 0.14),
-            inset 0 0 18px rgba(52, 129, 89, 0.08);
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 3.8rem;
-          font-weight: 900;
-          text-shadow:
-            0 0 10px rgba(52, 129, 89, 0.12),
-            0 0 24px rgba(52, 129, 89, 0.08);
-          animation: titlePulse 4.8s ease-in-out infinite;
-        }
-
-        .orbCluster {
-          position: relative;
-          width: var(--orb-shell-size);
-          aspect-ratio: 1 / 1;
-          z-index: 7;
-        }
-
-        .orbBloomBack {
-          position: absolute;
-          inset: 8%;
-          border-radius: 999px;
-          background:
-            radial-gradient(circle,
-              rgba(95, 212, 156, 0.22) 0%,
-              rgba(63, 180, 121, 0.34) 34%,
-              rgba(52, 129, 89, 0.28) 52%,
-              rgba(52, 129, 89, 0.12) 68%,
-              rgba(52, 129, 89, 0) 84%);
-          filter: blur(34px);
-          transform: scale(1.08);
-          opacity: 1;
-          animation: orbPulse 5.4s ease-in-out infinite;
-          pointer-events: none;
-        }
-
-        .orbPhotoMask {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: var(--core-size);
-          height: var(--core-size);
-          transform: translate(-50%, -50%);
-          border-radius: 999px;
-          overflow: hidden;
-          background: #0a1310;
-          box-shadow:
-            inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-            inset 0 0 60px rgba(52, 129, 89, 0.24),
-            inset 0 0 130px rgba(52, 129, 89, 0.18);
-        }
-
-        .orbPhoto {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(100%) contrast(1.08) brightness(0.9);
-          opacity: 0;
-          transform: scale(1.04);
-          transition: opacity 360ms ease, transform 360ms ease;
-        }
-
-        .orbPhoto.is-active {
-          opacity: 1;
-          transform: scale(1);
-        }
-
-        .orbInnerTint {
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(circle at 50% 50%, rgba(52, 129, 89, 0.06), rgba(52, 129, 89, 0.1) 54%, rgba(52, 129, 89, 0.22) 78%, rgba(52, 129, 89, 0.38) 100%),
-            linear-gradient(180deg, rgba(125, 225, 180, 0.1), transparent 18%, transparent 68%, rgba(0, 0, 0, 0.2) 100%);
-          mix-blend-mode: screen;
-        }
-
-        .orbInnerGlow {
-          position: absolute;
-          inset: 0;
-          border-radius: 999px;
-          box-shadow:
-            inset 0 0 52px rgba(126, 228, 183, 0.2),
-            inset 0 0 140px rgba(52, 129, 89, 0.2),
-            inset 0 0 220px rgba(52, 129, 89, 0.1);
-          pointer-events: none;
-        }
-
-        .orbOverlay {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          pointer-events: none;
-        }
-
-        .orbOverlay--bloom {
-          opacity: 0.95;
-          filter: blur(18px);
-          transform: scale(1.08);
-          mix-blend-mode: screen;
-          animation: orbPulse 5.4s ease-in-out infinite;
-        }
-
-        .orbOverlay--main {
-          opacity: 1;
-          mix-blend-mode: screen;
-          animation: orbPulseSoft 5.4s ease-in-out infinite;
-        }
-
-        .posterAreaTitle {
-          position: absolute;
-          left: 50%;
-          top: calc(50% + (var(--core-size) / 2) + 26px);
-          width: min(820px, calc(100vw - 100px));
-          min-height: 72px;
-          transform: translateX(-50%);
-          z-index: 8;
-          pointer-events: none;
-        }
-
-        .posterAreaTitle__item {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transform: translateY(10px) scale(0.98);
-          transition: opacity 320ms ease, transform 320ms ease;
-          color: ${ACCENT};
-          text-transform: uppercase;
-          letter-spacing: 0.06em;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 3.6rem;
-          font-weight: 900;
-          text-shadow:
-            0 0 10px rgba(52, 129, 89, 0.22),
-            0 0 26px rgba(52, 129, 89, 0.12);
-        }
-
-        .posterAreaTitle__item.is-active {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-
-        .posterInfo {
-          position: absolute;
-          left: 50%;
-          top: calc(50% + (var(--core-size) / 2) + 88px);
-          width: min(760px, calc(100vw - 120px));
-          min-height: 110px;
-          transform: translateX(-50%);
-          pointer-events: none;
-        }
-
-        .posterInfo__block {
-          position: absolute;
-          inset: 0;
-          opacity: 0;
-          transform: translateY(10px) scale(0.98);
-          transition: opacity 320ms ease, transform 320ms ease;
-          text-align: center;
-        }
-
-        .posterInfo__block.is-active {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-
-        .posterInfo__line {
-          margin: 0;
-          color: #f4f0e8;
-          text-transform: uppercase;
-          letter-spacing: 0.13em;
-          line-height: 1.48;
-          font-size: clamp(1rem, 1.45vw, 1.18rem);
-          font-weight: 700;
-          text-wrap: balance;
-          text-shadow:
-            0 0 8px rgba(255, 255, 255, 0.08),
-            0 0 18px rgba(52, 129, 89, 0.28),
-            0 0 32px rgba(52, 129, 89, 0.18);
-        }
-
-        .posterInfo__line + .posterInfo__line {
-          margin-top: 4px;
-        }
-
-        @keyframes gridPulse {
-          0%,
-          100% {
-            opacity: 0.75;
-          }
-          50% {
-            opacity: 0.84;
-          }
-        }
-
-        @keyframes orbPulse {
-          0%,
-          100% {
-            transform: scale(1.08);
-            opacity: 0.92;
-          }
-          50% {
-            transform: scale(1.12);
-            opacity: 1;
-          }
-        }
-
-        @keyframes orbPulseSoft {
-          0%,
-          100% {
-            transform: scale(1);
-            opacity: 0.96;
-          }
-          50% {
-            transform: scale(1.012);
-            opacity: 1;
-          }
-        }
-
-        @keyframes titlePulse {
-          0%,
-          100% {
-            box-shadow:
-              0 0 18px rgba(52, 129, 89, 0.14),
-              inset 0 0 18px rgba(52, 129, 89, 0.08);
-          }
-          50% {
-            box-shadow:
-              0 0 24px rgba(52, 129, 89, 0.22),
-              inset 0 0 24px rgba(52, 129, 89, 0.12);
-          }
-        }
-
-        @media (max-width: 1180px) {
-          .posterFrame {
-            --core-size: min(54vw, 520px);
-            --orb-shell-size: calc(var(--core-size) + 120px);
-            padding-left: 72px;
-            padding-right: 72px;
-          }
-
-          .posterTitleWrap {
-            top: calc(50% - (var(--core-size) / 2) - 38px);
+            top: calc(50% - (var(--core-size) / 2) - 54px);
           }
 
           .posterTitlePill {
@@ -721,22 +450,21 @@ export default function PrivateHirePage() {
           }
 
           .posterTitlePill {
-            min-height: 50px;
-            padding: 0 22px;
-            font-size: 2.7rem;
+            font-size: 2.9rem;
           }
 
           .posterAreaTitle {
-            top: calc(50% + (var(--core-size) / 2) + 22px);
+            top: calc(50% + (var(--core-size) / 2) + 14px);
             width: min(94vw, 700px);
           }
 
           .posterAreaTitle__item {
-            font-size: 2.55rem;
+            padding: 12px 22px 13px;
+            font-size: 2rem;
           }
 
           .posterInfo {
-            top: calc(50% + (var(--core-size) / 2) + 72px);
+            top: calc(50% + (var(--core-size) / 2) + 92px);
             width: min(92vw, 560px);
           }
 
@@ -794,14 +522,12 @@ export default function PrivateHirePage() {
           }
 
           .posterTitleWrap {
-            top: calc(50% - (var(--core-size) / 2) - 24px);
+            top: calc(50% - (var(--core-size) / 2) - 46px);
             width: calc(100vw - 28px);
           }
 
           .posterTitlePill {
-            min-height: 44px;
-            padding: 0 16px;
-            font-size: 2rem;
+            font-size: 2.35rem;
             letter-spacing: 0.06em;
           }
 
@@ -812,12 +538,13 @@ export default function PrivateHirePage() {
           }
 
           .posterAreaTitle__item {
-            font-size: 1.9rem;
+            padding: 10px 18px 11px;
+            font-size: 1.5rem;
             letter-spacing: 0.05em;
           }
 
           .posterInfo {
-            top: calc(50% + (var(--core-size) / 2) + 62px);
+            top: calc(50% + (var(--core-size) / 2) + 78px);
             width: calc(100vw - 28px);
           }
 
