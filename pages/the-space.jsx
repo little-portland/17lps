@@ -52,8 +52,6 @@ const AREAS = [
   },
 ] as const;
 
-type Area = (typeof AREAS)[number];
-
 export default function VenuePage() {
   const [activeArea, setActiveArea] = useState<string>(AREAS[0].id);
   const [mounted, setMounted] = useState(false);
@@ -255,7 +253,7 @@ function AreaHotspot({
   isActive,
   onHover,
 }: {
-  area: Area;
+  area: (typeof AREAS)[number];
   isActive: boolean;
   onHover: () => void;
 }) {
@@ -294,10 +292,9 @@ function HotspotBubble({
   isActive,
   onHover,
 }: {
-  area: Area;
+  area: (typeof AREAS)[number];
   isActive: boolean;
   onHover: () => void;
-  mobile?: boolean;
 }) {
   return (
     <Link
