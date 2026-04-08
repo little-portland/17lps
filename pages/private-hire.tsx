@@ -1,78 +1,104 @@
 import Head from 'next/head';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
+type Stat = {
+  label: string;
+  value: number;
+  suffix?: string;
+};
+
 type Venue = {
   id: string;
-  kicker: string;
+  index: string;
   title: string;
+  eyebrow: string;
+  floor: string;
+  kicker: string;
+  strap: string;
   image: string;
   alt: string;
-  eyebrow?: string;
-  stats: Array<{
-    label: string;
-    value: number;
-    suffix?: string;
-  }>;
+  summary: string;
   description: string;
-  floor: string;
   accent: string;
+  stats: Stat[];
 };
+
+/**
+ * Update these filenames if your final files use different names.
+ * They are expected to live in /public/images/private-hire/
+ */
+const IMAGE_BASE = '/images/private-hire';
 
 const VENUES: Venue[] = [
   {
     id: 'full-venue',
-    kicker: '01 / Cinematic takeover',
+    index: '01',
     title: 'Full Venue',
-    image: '/images/private-hire/full-venue-placeholder.jpg',
-    alt: 'Placeholder image for the full venue.',
     eyebrow: 'Private Hire',
+    floor: 'Both floors',
+    kicker: 'Cinematic takeover',
+    strap: 'Launches / parties / screenings / full building takeover',
+    image: `${IMAGE_BASE}/full-venue.jpg`,
+    alt: 'Full venue private hire image.',
+    summary: 'The full-building moment. Big energy, sharp visuals, and enough drama to make the venue feel like an event before the event starts.',
+    description:
+      'Designed as the main reveal, this chapter sells the venue as an experience rather than a list of rooms. Use it for brand launches, private parties, screenings, music-led nights, and full-scale takeovers.',
+    accent: '#b7fff1',
     stats: [
       { label: 'Standing', value: 150 },
       { label: 'Floors', value: 2 },
     ],
-    description:
-      'A full-building takeover designed for launches, parties, screenings, and late-night events. Built as a scroll-led hero moment, this section introduces the venue with scale and drama.',
-    floor: 'Both floors',
-    accent: '#c5fff1',
   },
   {
     id: 'the-tent',
-    kicker: '02 / Ground floor mood',
+    index: '02',
     title: 'The Tent',
-    image: '/images/private-hire/the-tent-placeholder.jpg',
-    alt: 'Placeholder image for The Tent.',
+    eyebrow: 'Ground floor',
+    floor: 'Ground floor',
+    kicker: 'Atmospheric arrival',
+    strap: 'Soft light / seated dinners / drinks receptions / warm welcome',
+    image: `${IMAGE_BASE}/the-tent.jpg`,
+    alt: 'The Tent private hire image.',
+    summary: 'A softer, more intimate chapter that feels warm, glowy, and slightly theatrical.',
+    description:
+      'This section is deliberately mood-forward. It works beautifully for seated dinners, smaller receptions, and events that want a more immersive arrival space before opening out into the rest of the venue.',
+    accent: '#ffe3b5',
     stats: [
       { label: 'Seated', value: 36 },
       { label: 'Standing', value: 50 },
     ],
-    description:
-      'Atmospheric and intimate, with a softer visual language and slower reveal. This panel is designed to feel warm and immersive, giving the space its own identity within the overall story.',
-    floor: 'Ground floor',
-    accent: '#fff0cb',
   },
   {
     id: 'the-studio',
-    kicker: '03 / Lower ground energy',
+    index: '03',
     title: 'The Studio',
-    image: '/images/private-hire/the-studio-placeholder.jpg',
-    alt: 'Placeholder image for The Studio.',
-    stats: [{ label: 'Standing', value: 100 }],
-    description:
-      'A sharper, more stripped-back panel with stronger contrast and a sound-led attitude. The layout gives this space room to breathe while still feeling part of the same cinematic sequence.',
+    eyebrow: 'Lower ground',
     floor: 'Lower ground floor',
-    accent: '#d9d2ff',
+    kicker: 'Sound-led energy',
+    strap: 'Club nights / talks / showcases / sharper visual identity',
+    image: `${IMAGE_BASE}/the-studio.jpg`,
+    alt: 'The Studio private hire image.',
+    summary: 'Stripped back, focused, and stronger on contrast — this is the chapter with more edge.',
+    description:
+      'The Studio is framed as the performance-minded space: clean lines, harder typography, and a more confident energy. Ideal for late-night formats, talks, showcases, listening events, or a more club-like setup.',
+    accent: '#d5c9ff',
+    stats: [{ label: 'Standing', value: 100 }],
   },
   {
     id: 'chefs-studio',
-    kicker: '04 / Private dining finish',
+    index: '04',
     title: "Chef's Studio",
-    image: '/images/private-hire/chefs-studio-placeholder.jpg',
-    alt: "Placeholder image for Chef's Studio.",
-    stats: [{ label: 'Seated', value: 12 }],
-    description:
-      'The closing note of the experience: quieter, more intimate, and designed to feel exclusive. Perfect for private dining, hosted tastings, or a smaller gathering within the wider venue offer.',
+    eyebrow: 'Private dining',
     floor: 'Lower ground floor',
-    accent: '#ffd9e8',
+    kicker: 'Intimate finish',
+    strap: 'Hosted dinners / tastings / boardroom-style private dining',
+    image: `${IMAGE_BASE}/chefs-studio.jpg`,
+    alt: "Chef's Studio private hire image.",
+    summary: 'The quietest and most exclusive chapter — smaller scale, but with the strongest feeling of privacy.',
+    description:
+      'Use this as the closing note of the page. It shifts the tone from spectacle to intimacy, positioning the venue as somewhere that can also host dinners, tastings, and smaller invitation-only moments.',
+    accent: '#ffd5e4',
+    stats: [{ label: 'Seated', value: 12 }],
   },
 ];
 
@@ -80,6 +106,8 @@ function useActiveSection(ids: string[]) {
   const [activeId, setActiveId] = useState(ids[0]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const elements = ids
       .map((id) => document.getElementById(id))
       .filter((element): element is HTMLElement => Boolean(element));
@@ -97,13 +125,12 @@ function useActiveSection(ids: string[]) {
         }
       },
       {
-        rootMargin: '-20% 0px -30% 0px',
-        threshold: [0.2, 0.4, 0.6, 0.8],
+        threshold: [0.2, 0.35, 0.5, 0.7],
+        rootMargin: '-15% 0px -25% 0px',
       }
     );
 
     elements.forEach((element) => observer.observe(element));
-
     return () => observer.disconnect();
   }, [ids]);
 
@@ -117,82 +144,27 @@ function CountUp({ value, active }: { value: number; active: boolean }) {
   useEffect(() => {
     if (!active) return;
 
-    const duration = 1000;
-    const start = performance.now();
+    const duration = 900;
+    const startedAt = performance.now();
 
-    const animate = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
+    const tick = (time: number) => {
+      const progress = Math.min((time - startedAt) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setDisplayValue(Math.round(value * eased));
 
       if (progress < 1) {
-        frame.current = requestAnimationFrame(animate);
+        frame.current = requestAnimationFrame(tick);
       }
     };
 
-    frame.current = requestAnimationFrame(animate);
+    frame.current = requestAnimationFrame(tick);
 
     return () => {
       if (frame.current) cancelAnimationFrame(frame.current);
     };
   }, [value, active]);
 
-  return <span>{displayValue}</span>;
-}
-
-function VenueSection({
-  venue,
-  isActive,
-}: {
-  venue: Venue;
-  isActive: boolean;
-}) {
-  return (
-    <section id={venue.id} className={`panel ${isActive ? 'is-active' : ''}`}>
-      <div className="panel__sticky">
-        <div
-          className="panel__image"
-          role="img"
-          aria-label={venue.alt}
-          style={{ backgroundImage: `url(${venue.image})` }}
-        >
-          <div className="panel__noise" />
-          <div className="panel__gradient" />
-        </div>
-
-        <div className="panel__content">
-          <div className="panel__header">
-            <p className="panel__kicker">{venue.kicker}</p>
-            <p className="panel__floor">{venue.floor}</p>
-          </div>
-
-          <div className="panel__titleWrap">
-            {venue.eyebrow ? <span className="panel__eyebrow">{venue.eyebrow}</span> : null}
-            <h2 className="panel__title">{venue.title}</h2>
-          </div>
-
-          <div className="panel__meta">
-            <div className="panel__stats" aria-label={`${venue.title} capacities`}>
-              {venue.stats.map((stat) => (
-                <div className="stat" key={stat.label}>
-                  <div className="stat__value">
-                    <CountUp value={stat.value} active={isActive} />
-                    {stat.suffix ? <span>{stat.suffix}</span> : null}
-                  </div>
-                  <div className="stat__label">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
-            <div className="panel__copy">
-              <p>{venue.description}</p>
-              <div className="panel__accent" style={{ background: venue.accent }} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <>{displayValue}</>;
 }
 
 export default function PrivateHirePage() {
@@ -205,38 +177,54 @@ export default function PrivateHirePage() {
         <title>Private Hire</title>
         <meta
           name="description"
-          content="A cinematic private hire page concept for the venue, designed for desktop and mobile."
+          content="A cinematic, editorial private hire page with immersive venue sections and mobile-first layouts."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main className="page">
-        <section className="hero">
-          <div className="hero__grid" />
-          <div className="hero__inner">
-            <div className="hero__copy">
-              <p className="hero__kicker">Venue hire / Scroll experience</p>
-              <h1 className="hero__title">
-                Private <span>Hire</span>
+      <main className="phPage">
+        <section className="phHero">
+          <div className="phHero__ambient phHero__ambient--left" />
+          <div className="phHero__ambient phHero__ambient--right" />
+          <div className="phHero__grid" />
+
+          <div className="phShell phHero__inner">
+            <div className="phHero__copy">
+              <p className="phOverline">Venue hire / immersive microsite concept</p>
+              <h1 className="phHero__title">
+                Private
+                <span>Hire</span>
               </h1>
-              <p className="hero__body">
-                A scroll-driven, cinematic landing page concept that turns the venue into an experience.
-                Each space gets a full-screen reveal, animated capacity stats, and a distinct mood while
-                staying easy to explore on mobile.
+              <p className="phHero__body">
+                A more cinematic direction: oversized editorial type, immersive chapter reveals, and a
+                premium venue-story layout that feels designed for nightlife, launches, dinners, and
+                special events — not just a brochure page.
               </p>
+
+              <div className="phHero__actions">
+                <a href="#full-venue" className="phButton phButton--solid">
+                  Explore the spaces
+                </a>
+                <a href="#enquire" className="phButton phButton--ghost">
+                  Start an enquiry
+                </a>
+              </div>
             </div>
 
-            <nav className="hero__nav" aria-label="Jump to venue section">
-              {VENUES.map((venue, index) => {
+            <nav className="phRail" aria-label="Venue chapters">
+              {VENUES.map((venue) => {
                 const isActive = activeId === venue.id;
                 return (
                   <a
                     key={venue.id}
                     href={`#${venue.id}`}
-                    className={`hero__navItem ${isActive ? 'is-active' : ''}`}
+                    className={`phRail__item ${isActive ? 'is-active' : ''}`}
                   >
-                    <span className="hero__navIndex">0{index + 1}</span>
-                    <span className="hero__navLabel">{venue.title}</span>
+                    <span className="phRail__index">{venue.index}</span>
+                    <span className="phRail__labelWrap">
+                      <span className="phRail__label">{venue.title}</span>
+                      <span className="phRail__meta">{venue.floor}</span>
+                    </span>
                   </a>
                 );
               })}
@@ -244,522 +232,808 @@ export default function PrivateHirePage() {
           </div>
         </section>
 
-        {VENUES.map((venue) => (
-          <VenueSection key={venue.id} venue={venue} isActive={activeId === venue.id} />
-        ))}
-
-        <section className="cta">
-          <div className="cta__card">
-            <p className="cta__kicker">Next step</p>
-            <h2>Swap in your final images and connect your enquiry flow.</h2>
+        <section className="phIntroBand">
+          <div className="phShell phIntroBand__inner">
             <p>
-              The structure is already built for mobile and desktop. Once the final assets are added to
-              <code> /public/images/private-hire/</code>, this page is ready for copy refinement and CTA wiring.
+              Built to feel like a guided venue experience. Each space becomes a chapter with its own mood,
+              scale, and pace while the whole page stays clean, mobile-friendly, and easy to update.
             </p>
-            <div className="cta__actions">
-              <a href="mailto:hello@example.com" className="cta__button cta__button--solid">
-                Enquire now
-              </a>
-              <a href="#full-venue" className="cta__button cta__button--ghost">
-                Back to top
-              </a>
+          </div>
+        </section>
+
+        {VENUES.map((venue, index) => {
+          const isActive = activeId === venue.id;
+          const reverse = index % 2 === 1;
+
+          return (
+            <section
+              key={venue.id}
+              id={venue.id}
+              className={`phChapter ${reverse ? 'phChapter--reverse' : ''} ${isActive ? 'is-active' : ''}`}
+            >
+              <div className="phChapter__sticky">
+                <div className="phChapter__backdrop">
+                  <img src={venue.image} alt={venue.alt} className="phChapter__backdropImage" />
+                  <div className="phChapter__backdropWash" />
+                  <div className="phChapter__backdropGrid" />
+                </div>
+
+                <div className="phShell phChapter__shell">
+                  <div className="phChapter__frame">
+                    <div className="phChapter__mediaCol">
+                      <div className="phChapter__mediaCard">
+                        <img src={venue.image} alt={venue.alt} className="phChapter__mediaImage" />
+                        <div className="phChapter__mediaShade" />
+                        <div className="phChapter__strap">{venue.strap}</div>
+                      </div>
+                    </div>
+
+                    <div className="phChapter__contentCol">
+                      <div className="phChapter__contentCard">
+                        <div className="phChapter__topline">
+                          <p className="phOverline">
+                            {venue.index} / {venue.kicker}
+                          </p>
+                          <p className="phOverline">{venue.floor}</p>
+                        </div>
+
+                        <div className="phChapter__titleBlock">
+                          <span className="phChapter__eyebrow" style={{ borderColor: `${venue.accent}44`, color: venue.accent }}>
+                            {venue.eyebrow}
+                          </span>
+                          <h2 className="phChapter__title">{venue.title}</h2>
+                          <p className="phChapter__summary">{venue.summary}</p>
+                        </div>
+
+                        <div className="phChapter__stats">
+                          {venue.stats.map((stat) => (
+                            <div className="phStat" key={`${venue.id}-${stat.label}`}>
+                              <div className="phStat__value" style={{ color: venue.accent }}>
+                                <CountUp value={stat.value} active={isActive} />
+                                {stat.suffix ? <span>{stat.suffix}</span> : null}
+                              </div>
+                              <div className="phStat__label">{stat.label}</div>
+                            </div>
+                          ))}
+                        </div>
+
+                        <p className="phChapter__description">{venue.description}</p>
+
+                        <div className="phChapter__footer">
+                          <div className="phChapter__line" style={{ background: venue.accent }} />
+                          <span className="phChapter__footerText">{venue.strap}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        })}
+
+        <section id="enquire" className="phCta">
+          <div className="phShell">
+            <div className="phCta__card">
+              <div className="phCta__glow" />
+              <p className="phOverline">Next step</p>
+              <h2>Turn this into a polished venue enquiry page with your final copy and live CTA.</h2>
+              <p>
+                The layout now supports real imagery, stronger pacing, and a more premium venue-story feel.
+                If your filenames differ, just update the paths at the top of the file.
+              </p>
+
+              <div className="phCta__actions">
+                <a href="mailto:hello@example.com" className="phButton phButton--solid">
+                  Enquire now
+                </a>
+                <a href="#top" className="phButton phButton--ghost">
+                  Back to top
+                </a>
+              </div>
             </div>
           </div>
         </section>
       </main>
 
-      <style jsx>{`
-        :global(html) {
+      <style jsx global>{`
+        html {
           scroll-behavior: smooth;
         }
 
-        :global(body) {
+        body {
           margin: 0;
-          background: #0b0b0f;
-          color: #f7f5ef;
+          background: #05070b;
+          color: #f4f0ea;
           font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
-        :global(*) {
+        * {
           box-sizing: border-box;
         }
 
-        :global(a) {
+        a {
           color: inherit;
           text-decoration: none;
         }
 
-        .page {
+        img {
+          display: block;
+          max-width: 100%;
+        }
+
+        #__next {
+          min-height: 100vh;
+        }
+
+        .phPage {
+          position: relative;
           background:
-            radial-gradient(circle at top left, rgba(173, 255, 239, 0.11), transparent 34%),
-            radial-gradient(circle at top right, rgba(255, 223, 188, 0.08), transparent 28%),
-            #0b0b0f;
+            radial-gradient(circle at 10% 10%, rgba(132, 255, 236, 0.12), transparent 28%),
+            radial-gradient(circle at 90% 12%, rgba(255, 207, 163, 0.07), transparent 30%),
+            linear-gradient(180deg, #070a10 0%, #05070b 100%);
           overflow-x: clip;
         }
 
-        .hero {
-          min-height: 100svh;
-          position: relative;
-          padding: 24px;
-          display: flex;
-          align-items: center;
-        }
-
-        .hero__grid {
-          position: absolute;
-          inset: 0;
-          background-image:
-            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-          background-size: 44px 44px;
-          mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 80%);
-          pointer-events: none;
-        }
-
-        .hero__inner {
-          position: relative;
-          z-index: 1;
-          width: min(1320px, 100%);
+        .phShell {
+          width: min(1360px, calc(100% - 40px));
           margin: 0 auto;
-          display: grid;
-          grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
-          gap: 48px;
-          align-items: end;
         }
 
-        .hero__copy {
-          max-width: 780px;
-        }
-
-        .hero__kicker,
-        .panel__kicker,
-        .panel__floor,
-        .cta__kicker {
+        .phOverline {
           margin: 0;
+          font-size: 0.72rem;
+          line-height: 1.2;
           text-transform: uppercase;
-          letter-spacing: 0.22em;
-          font-size: 11px;
-          opacity: 0.78;
+          letter-spacing: 0.24em;
+          opacity: 0.76;
         }
 
-        .hero__title {
-          margin: 12px 0 18px;
-          font-size: clamp(4rem, 12vw, 10rem);
-          line-height: 0.88;
-          text-transform: uppercase;
-          letter-spacing: -0.06em;
-        }
-
-        .hero__title span {
-          display: block;
-          color: #b4fff0;
-          text-shadow: 0 0 32px rgba(180, 255, 240, 0.14);
-        }
-
-        .hero__body {
-          margin: 0;
-          max-width: 56ch;
-          font-size: clamp(1rem, 1.6vw, 1.15rem);
-          line-height: 1.7;
-          color: rgba(247, 245, 239, 0.8);
-        }
-
-        .hero__nav {
-          display: grid;
-          gap: 12px;
-          align-self: center;
-        }
-
-        .hero__navItem {
-          display: grid;
-          grid-template-columns: 42px 1fr;
-          gap: 16px;
+        .phButton {
+          min-height: 50px;
+          padding: 0 20px;
+          border-radius: 999px;
+          display: inline-flex;
           align-items: center;
-          padding: 14px 16px;
+          justify-content: center;
+          gap: 10px;
           border: 1px solid rgba(255, 255, 255, 0.12);
-          border-radius: 18px;
-          background: rgba(255, 255, 255, 0.04);
-          backdrop-filter: blur(10px);
           transition:
             transform 180ms ease,
             border-color 180ms ease,
             background 180ms ease;
+          backdrop-filter: blur(12px);
         }
 
-        .hero__navItem:hover,
-        .hero__navItem:focus-visible,
-        .hero__navItem.is-active {
+        .phButton:hover,
+        .phButton:focus-visible {
           transform: translateY(-2px);
-          border-color: rgba(180, 255, 240, 0.35);
-          background: rgba(180, 255, 240, 0.09);
         }
 
-        .hero__navIndex {
-          font-size: 0.78rem;
-          letter-spacing: 0.18em;
-          opacity: 0.6;
+        .phButton--solid {
+          background: #b7fff1;
+          border-color: #b7fff1;
+          color: #071016;
+          font-weight: 700;
         }
 
-        .hero__navLabel {
-          font-size: 1rem;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
+        .phButton--ghost {
+          background: rgba(255, 255, 255, 0.05);
         }
 
-        .panel {
-          min-height: 170svh;
+        .phHero {
           position: relative;
-          padding: 0 24px;
+          min-height: 100svh;
+          display: flex;
+          align-items: center;
+          padding: 28px 0;
         }
 
-        .panel__sticky {
+        .phHero__grid,
+        .phChapter__backdropGrid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+          background-size: 46px 46px;
+          pointer-events: none;
+        }
+
+        .phHero__ambient {
+          position: absolute;
+          width: 48vw;
+          height: 48vw;
+          filter: blur(70px);
+          border-radius: 999px;
+          opacity: 0.18;
+          pointer-events: none;
+        }
+
+        .phHero__ambient--left {
+          left: -14vw;
+          top: 8vh;
+          background: #74ffe6;
+        }
+
+        .phHero__ambient--right {
+          right: -18vw;
+          top: 15vh;
+          background: #ffb974;
+        }
+
+        .phHero__inner {
+          position: relative;
+          z-index: 1;
+          display: grid;
+          grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+          gap: 56px;
+          align-items: center;
+        }
+
+        .phHero__copy {
+          max-width: 760px;
+        }
+
+        .phHero__title {
+          margin: 16px 0 20px;
+          font-size: clamp(4rem, 14vw, 10rem);
+          line-height: 0.88;
+          letter-spacing: -0.08em;
+          text-transform: uppercase;
+        }
+
+        .phHero__title span {
+          display: block;
+          color: #b7fff1;
+          text-shadow: 0 0 34px rgba(183, 255, 241, 0.14);
+        }
+
+        .phHero__body {
+          margin: 0;
+          max-width: 54ch;
+          font-size: clamp(1rem, 1.7vw, 1.18rem);
+          line-height: 1.75;
+          color: rgba(244, 240, 234, 0.82);
+        }
+
+        .phHero__actions {
+          margin-top: 28px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .phRail {
+          display: grid;
+          gap: 12px;
+        }
+
+        .phRail__item {
+          display: grid;
+          grid-template-columns: 42px 1fr;
+          gap: 16px;
+          align-items: center;
+          padding: 14px 18px;
+          border-radius: 22px;
+          background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition:
+            border-color 180ms ease,
+            transform 180ms ease,
+            background 180ms ease;
+          backdrop-filter: blur(12px);
+        }
+
+        .phRail__item:hover,
+        .phRail__item:focus-visible,
+        .phRail__item.is-active {
+          transform: translateY(-2px);
+          border-color: rgba(183, 255, 241, 0.28);
+          background: linear-gradient(90deg, rgba(183, 255, 241, 0.12), rgba(255, 255, 255, 0.04));
+        }
+
+        .phRail__index {
+          font-size: 0.78rem;
+          letter-spacing: 0.24em;
+          opacity: 0.72;
+        }
+
+        .phRail__labelWrap {
+          display: grid;
+          gap: 4px;
+        }
+
+        .phRail__label {
+          font-size: 1.02rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+
+        .phRail__meta {
+          font-size: 0.82rem;
+          color: rgba(244, 240, 234, 0.62);
+        }
+
+        .phIntroBand {
+          position: relative;
+          padding: 0 0 36px;
+        }
+
+        .phIntroBand__inner {
+          padding: 18px 0 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .phIntroBand__inner p {
+          margin: 0;
+          max-width: 64ch;
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(244, 240, 234, 0.76);
+        }
+
+        .phChapter {
+          position: relative;
+          min-height: 170svh;
+          scroll-margin-top: 24px;
+        }
+
+        .phChapter__sticky {
           position: sticky;
           top: 0;
           min-height: 100svh;
-          display: grid;
-          place-items: center;
-          overflow: clip;
+          display: flex;
+          align-items: center;
         }
 
-        .panel__image {
+        .phChapter__backdrop {
           position: absolute;
           inset: 0;
-          background-position: center;
-          background-size: cover;
-          filter: grayscale(100%) contrast(1.05) brightness(0.45);
-          transform: scale(1.05);
+          overflow: hidden;
+        }
+
+        .phChapter__backdropImage {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(100%) brightness(0.28) contrast(1.05) blur(12px);
+          transform: scale(1.1);
           transition:
             transform 700ms ease,
             filter 700ms ease;
         }
 
-        .panel__noise {
-          position: absolute;
-          inset: 0;
-          opacity: 0.16;
-          background-image:
-            radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px),
-            radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px),
-            radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px);
-          background-size: 34px 34px, 48px 48px, 54px 54px;
-          mix-blend-mode: screen;
-        }
-
-        .panel__gradient {
+        .phChapter__backdropWash {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(180deg, rgba(11, 11, 15, 0.18) 0%, rgba(11, 11, 15, 0.38) 22%, rgba(11, 11, 15, 0.88) 100%),
-            linear-gradient(90deg, rgba(11, 11, 15, 0.84) 0%, rgba(11, 11, 15, 0.3) 48%, rgba(11, 11, 15, 0.72) 100%);
+            radial-gradient(circle at 50% 35%, rgba(183, 255, 241, 0.08), transparent 32%),
+            linear-gradient(180deg, rgba(5, 7, 11, 0.34) 0%, rgba(5, 7, 11, 0.86) 100%),
+            linear-gradient(90deg, rgba(5, 7, 11, 0.84) 0%, rgba(5, 7, 11, 0.45) 48%, rgba(5, 7, 11, 0.78) 100%);
         }
 
-        .panel__content {
+        .phChapter__shell {
           position: relative;
           z-index: 1;
-          width: min(1320px, 100%);
-          min-height: 100svh;
-          margin: 0 auto;
-          padding: clamp(28px, 4vw, 48px) 0;
-          display: grid;
-          grid-template-rows: auto 1fr auto;
-          gap: 24px;
+          width: 100%;
         }
 
-        .panel__header {
+        .phChapter__frame {
+          display: grid;
+          grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
+          gap: 28px;
+          align-items: stretch;
+          min-height: 78svh;
+        }
+
+        .phChapter--reverse .phChapter__frame {
+          grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+        }
+
+        .phChapter--reverse .phChapter__mediaCol {
+          order: 2;
+        }
+
+        .phChapter--reverse .phChapter__contentCol {
+          order: 1;
+        }
+
+        .phChapter__mediaCard,
+        .phChapter__contentCard {
+          position: relative;
+          height: 100%;
+          border-radius: 32px;
+          overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+          box-shadow: 0 24px 120px rgba(0, 0, 0, 0.28);
+          backdrop-filter: blur(16px);
+        }
+
+        .phChapter__mediaCard {
+          min-height: 74svh;
+        }
+
+        .phChapter__mediaImage {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(100%) contrast(1.04) brightness(0.78);
+          transform: scale(1.06);
+          transition: transform 700ms ease;
+        }
+
+        .phChapter__mediaShade {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(180deg, rgba(5, 7, 11, 0.12) 0%, rgba(5, 7, 11, 0.22) 34%, rgba(5, 7, 11, 0.72) 100%),
+            linear-gradient(90deg, rgba(5, 7, 11, 0.52) 0%, rgba(5, 7, 11, 0.1) 55%, rgba(5, 7, 11, 0.26) 100%);
+        }
+
+        .phChapter__strap {
+          position: absolute;
+          left: 18px;
+          right: 18px;
+          bottom: 18px;
+          padding: 14px 16px;
+          border-radius: 18px;
+          background: rgba(9, 12, 18, 0.7);
+          border: 1px solid rgba(255, 255, 255, 0.09);
+          font-size: 0.72rem;
+          line-height: 1.5;
+          text-transform: uppercase;
+          letter-spacing: 0.18em;
+        }
+
+        .phChapter__contentCard {
+          padding: clamp(24px, 3vw, 34px);
+          display: grid;
+          gap: 26px;
+          align-content: center;
+        }
+
+        .phChapter__topline {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 20px;
+          gap: 18px;
+          padding-bottom: 18px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .panel__titleWrap {
-          align-self: end;
-          max-width: min(920px, 100%);
+        .phChapter__titleBlock {
+          display: grid;
+          gap: 16px;
         }
 
-        .panel__eyebrow {
-          display: inline-block;
-          margin-bottom: 16px;
-          padding: 8px 12px;
+        .phChapter__eyebrow {
+          width: fit-content;
+          padding: 9px 12px;
           border-radius: 999px;
-          background: rgba(180, 255, 240, 0.12);
-          border: 1px solid rgba(180, 255, 240, 0.18);
-          font-size: 0.78rem;
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          background: rgba(255, 255, 255, 0.03);
+          font-size: 0.75rem;
           text-transform: uppercase;
           letter-spacing: 0.16em;
         }
 
-        .panel__title {
+        .phChapter__title {
           margin: 0;
-          font-size: clamp(3rem, 10vw, 8.8rem);
-          line-height: 0.9;
+          font-size: clamp(2.6rem, 7vw, 6.1rem);
+          line-height: 0.94;
+          letter-spacing: -0.07em;
           text-transform: uppercase;
-          letter-spacing: -0.06em;
-          transform: translateY(22px);
-          opacity: 0.5;
-          transition:
-            transform 700ms ease,
-            opacity 700ms ease;
           text-wrap: balance;
         }
 
-        .panel__meta {
-          display: grid;
-          grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-          gap: 24px;
-          align-items: end;
-        }
-
-        .panel__stats {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 14px;
-        }
-
-        .stat {
-          min-width: 154px;
-          padding: 18px 18px 16px;
-          border-radius: 20px;
-          border: 1px solid rgba(255, 255, 255, 0.14);
-          background: rgba(255, 255, 255, 0.07);
-          backdrop-filter: blur(12px);
-        }
-
-        .stat__value {
-          display: flex;
-          align-items: baseline;
-          gap: 6px;
-          font-size: clamp(2rem, 5vw, 3.4rem);
-          line-height: 1;
-          letter-spacing: -0.06em;
-        }
-
-        .stat__label {
-          margin-top: 10px;
-          font-size: 0.76rem;
-          text-transform: uppercase;
-          letter-spacing: 0.18em;
-          opacity: 0.72;
-        }
-
-        .panel__copy {
-          display: grid;
-          gap: 18px;
-          justify-items: start;
-        }
-
-        .panel__copy p {
+        .phChapter__summary {
           margin: 0;
-          max-width: 34ch;
-          font-size: clamp(0.98rem, 1.7vw, 1.1rem);
+          max-width: 36ch;
+          font-size: clamp(1rem, 1.55vw, 1.15rem);
           line-height: 1.75;
-          color: rgba(247, 245, 239, 0.86);
+          color: rgba(244, 240, 234, 0.84);
         }
 
-        .panel__accent {
-          width: 120px;
-          height: 6px;
-          border-radius: 999px;
-          box-shadow: 0 0 30px rgba(255, 255, 255, 0.16);
-        }
-
-        .panel.is-active .panel__image {
-          transform: scale(1);
-          filter: grayscale(100%) contrast(1.05) brightness(0.6);
-        }
-
-        .panel.is-active .panel__title {
-          transform: translateY(0);
-          opacity: 1;
-        }
-
-        .cta {
-          padding: 24px 24px 48px;
-        }
-
-        .cta__card {
-          width: min(1320px, 100%);
-          margin: 0 auto;
-          padding: clamp(24px, 4vw, 42px);
-          border-radius: 28px;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
-            rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(16px);
-        }
-
-        .cta__card h2 {
-          margin: 10px 0 12px;
-          font-size: clamp(2rem, 5vw, 3.5rem);
-          line-height: 1;
-          letter-spacing: -0.05em;
-          max-width: 12ch;
-        }
-
-        .cta__card p {
-          margin: 0;
-          max-width: 62ch;
-          color: rgba(247, 245, 239, 0.8);
-          line-height: 1.75;
-        }
-
-        .cta__card code {
-          font-family: inherit;
-          background: rgba(255, 255, 255, 0.08);
-          padding: 2px 7px;
-          border-radius: 999px;
-        }
-
-        .cta__actions {
-          margin-top: 24px;
+        .phChapter__stats {
           display: flex;
           flex-wrap: wrap;
           gap: 12px;
         }
 
-        .cta__button {
-          min-height: 48px;
-          padding: 0 18px;
-          border-radius: 999px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid rgba(255, 255, 255, 0.14);
-          transition:
-            transform 180ms ease,
-            background 180ms ease,
-            border-color 180ms ease;
-        }
-
-        .cta__button:hover,
-        .cta__button:focus-visible {
-          transform: translateY(-2px);
-        }
-
-        .cta__button--solid {
-          background: #b4fff0;
-          color: #0b0b0f;
-          border-color: #b4fff0;
-          font-weight: 700;
-        }
-
-        .cta__button--ghost {
+        .phStat {
+          min-width: 158px;
+          padding: 16px 16px 14px;
+          border-radius: 22px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
           background: rgba(255, 255, 255, 0.04);
         }
 
-        @media (max-width: 980px) {
-          .hero__inner,
-          .panel__meta {
+        .phStat__value {
+          display: flex;
+          align-items: baseline;
+          gap: 5px;
+          font-size: clamp(2rem, 4vw, 3rem);
+          line-height: 1;
+          letter-spacing: -0.06em;
+          font-weight: 700;
+        }
+
+        .phStat__label {
+          margin-top: 10px;
+          font-size: 0.72rem;
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          color: rgba(244, 240, 234, 0.68);
+        }
+
+        .phChapter__description {
+          margin: 0;
+          max-width: 54ch;
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(244, 240, 234, 0.8);
+        }
+
+        .phChapter__footer {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+
+        .phChapter__line {
+          width: 86px;
+          height: 6px;
+          border-radius: 999px;
+          box-shadow: 0 0 34px rgba(255, 255, 255, 0.08);
+        }
+
+        .phChapter__footerText {
+          font-size: 0.75rem;
+          line-height: 1.5;
+          text-transform: uppercase;
+          letter-spacing: 0.16em;
+          color: rgba(244, 240, 234, 0.68);
+        }
+
+        .phChapter.is-active .phChapter__backdropImage {
+          transform: scale(1.03);
+          filter: grayscale(100%) brightness(0.34) contrast(1.08) blur(8px);
+        }
+
+        .phChapter.is-active .phChapter__mediaImage {
+          transform: scale(1.01);
+        }
+
+        .phCta {
+          position: relative;
+          padding: 0 0 44px;
+        }
+
+        .phCta__card {
+          position: relative;
+          overflow: hidden;
+          padding: clamp(26px, 4vw, 46px);
+          border-radius: 34px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
+            rgba(255, 255, 255, 0.03);
+          box-shadow: 0 24px 120px rgba(0, 0, 0, 0.24);
+        }
+
+        .phCta__glow {
+          position: absolute;
+          right: -140px;
+          top: -110px;
+          width: 340px;
+          height: 340px;
+          border-radius: 999px;
+          background: rgba(183, 255, 241, 0.16);
+          filter: blur(70px);
+          pointer-events: none;
+        }
+
+        .phCta__card h2 {
+          position: relative;
+          margin: 14px 0 14px;
+          max-width: 14ch;
+          font-size: clamp(2.2rem, 6vw, 4.6rem);
+          line-height: 0.96;
+          letter-spacing: -0.07em;
+          text-wrap: balance;
+        }
+
+        .phCta__card p:last-of-type {
+          position: relative;
+          margin: 0;
+          max-width: 60ch;
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(244, 240, 234, 0.82);
+        }
+
+        .phCta__actions {
+          margin-top: 26px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        @media (max-width: 1120px) {
+          .phHero__inner,
+          .phChapter__frame,
+          .phChapter--reverse .phChapter__frame {
             grid-template-columns: 1fr;
           }
 
-          .hero__nav {
+          .phRail {
             grid-template-columns: 1fr 1fr;
           }
 
-          .panel__header {
-            flex-direction: column;
-            align-items: flex-start;
+          .phChapter {
+            min-height: 160svh;
+          }
+
+          .phChapter__mediaCol,
+          .phChapter__contentCol,
+          .phChapter--reverse .phChapter__mediaCol,
+          .phChapter--reverse .phChapter__contentCol {
+            order: unset;
+          }
+
+          .phChapter__mediaCard {
+            min-height: 38svh;
           }
         }
 
-        @media (max-width: 720px) {
-          .hero {
-            padding: 18px;
+        @media (max-width: 760px) {
+          .phShell {
+            width: min(100% - 28px, 1360px);
           }
 
-          .hero__inner {
-            gap: 28px;
+          .phHero {
+            min-height: auto;
+            padding: 92px 0 32px;
           }
 
-          .hero__nav {
+          .phHero__inner {
+            gap: 30px;
+          }
+
+          .phHero__title {
+            font-size: clamp(3.4rem, 22vw, 5.6rem);
+          }
+
+          .phHero__actions,
+          .phCta__actions {
+            flex-direction: column;
+          }
+
+          .phButton {
+            width: 100%;
+          }
+
+          .phRail {
             grid-template-columns: 1fr;
           }
 
-          .hero__navItem {
-            grid-template-columns: 34px 1fr;
-            padding: 12px 14px;
+          .phIntroBand {
+            padding-bottom: 24px;
           }
 
-          .panel {
-            min-height: 150svh;
-            padding: 0 18px;
+          .phChapter {
+            min-height: auto;
+            padding-bottom: 26px;
           }
 
-          .panel__content {
-            padding: 18px 0 28px;
-            gap: 18px;
-            grid-template-rows: auto auto 1fr;
-            align-content: end;
+          .phChapter__sticky {
+            position: relative;
+            min-height: auto;
+            display: block;
           }
 
-          .panel__title {
-            font-size: clamp(2.6rem, 18vw, 4.8rem);
+          .phChapter__backdrop {
+            display: none;
           }
 
-          .panel__meta {
-            align-items: start;
+          .phChapter__frame {
+            min-height: auto;
+            gap: 16px;
           }
 
-          .panel__stats {
+          .phChapter__mediaCard,
+          .phChapter__contentCard,
+          .phCta__card {
+            border-radius: 24px;
+          }
+
+          .phChapter__mediaCard {
+            min-height: 48svh;
+          }
+
+          .phChapter__contentCard {
+            padding: 22px 18px;
+            gap: 20px;
+          }
+
+          .phChapter__topline {
+            align-items: flex-start;
+            flex-direction: column;
+            padding-bottom: 16px;
+          }
+
+          .phChapter__title {
+            font-size: clamp(2.4rem, 14vw, 3.8rem);
+          }
+
+          .phChapter__summary,
+          .phChapter__description,
+          .phIntroBand__inner p,
+          .phHero__body,
+          .phCta__card p:last-of-type {
+            font-size: 0.98rem;
+          }
+
+          .phChapter__stats {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
 
-          .stat {
+          .phStat {
             min-width: 0;
-            padding: 16px 14px 14px;
-            border-radius: 18px;
           }
 
-          .panel__copy p {
+          .phCta {
+            padding-bottom: 28px;
+          }
+
+          .phCta__card h2 {
             max-width: none;
-          }
-
-          .cta {
-            padding: 18px 18px 28px;
-          }
-
-          .cta__card h2 {
-            max-width: none;
-          }
-
-          .cta__actions {
-            flex-direction: column;
-          }
-
-          .cta__button {
-            width: 100%;
           }
         }
 
         @media (max-width: 480px) {
-          .hero__title {
-            font-size: clamp(3.3rem, 19vw, 4.8rem);
+          .phOverline {
+            letter-spacing: 0.18em;
           }
 
-          .panel__stats {
+          .phHero {
+            padding-top: 82px;
+          }
+
+          .phChapter__mediaCard {
+            min-height: 42svh;
+          }
+
+          .phChapter__stats {
             grid-template-columns: 1fr;
           }
 
-          .panel__floor,
-          .panel__kicker,
-          .hero__kicker,
-          .cta__kicker {
-            letter-spacing: 0.16em;
+          .phRail__item {
+            padding: 13px 14px;
+            grid-template-columns: 34px 1fr;
+          }
+
+          .phChapter__strap,
+          .phChapter__footerText {
+            letter-spacing: 0.14em;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          :global(html) {
+          html {
             scroll-behavior: auto;
           }
 
-          .hero__navItem,
-          .panel__image,
-          .panel__title,
-          .cta__button {
+          .phButton,
+          .phRail__item,
+          .phChapter__backdropImage,
+          .phChapter__mediaImage {
             transition: none;
           }
         }
