@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
 
 const VENUE_IMAGE = '/images/venue-3d.png';
 
@@ -9,160 +8,116 @@ const AREAS = [
     id: 'tent',
     title: 'The Tent',
     href: '/tent',
-    subtitle: 'Lounge energy under a luminous canopy.',
-    theme: 'pink',
-    desktop: { top: '15%', left: '21%' },
-    mobile: { top: '7%', left: '50%' },
+    desktop: {
+      labelTop: '10%',
+      labelLeft: '12%',
+      pointTop: '23%',
+      pointLeft: '42%',
+      width: '28%',
+    },
+    mobile: {
+      labelTop: '6%',
+      labelLeft: '6%',
+      pointTop: '24%',
+      pointLeft: '49%',
+      width: '40%',
+    },
   },
   {
     id: 'chefs-studio',
     title: "The Chef's Studio",
     href: '/chefs-studio',
-    subtitle: 'Interactive culinary moments in mission control.',
-    theme: 'mint',
-    desktop: { bottom: '14%', left: '40%' },
-    mobile: { bottom: '19%', left: '18%' },
+    desktop: {
+      labelTop: '73%',
+      labelLeft: '18%',
+      pointTop: '78%',
+      pointLeft: '41%',
+      width: '22%',
+    },
+    mobile: {
+      labelTop: '80%',
+      labelLeft: '4%',
+      pointTop: '73%',
+      pointLeft: '42%',
+      width: '34%',
+    },
   },
   {
     id: 'studio',
     title: 'The Studio',
     href: '/studio',
-    subtitle: 'Broadcast-grade atmosphere with cosmic drama.',
-    theme: 'blue',
-    desktop: { bottom: '12%', right: '8%' },
-    mobile: { bottom: '8%', right: '7%' },
+    desktop: {
+      labelTop: '69%',
+      labelLeft: '72%',
+      pointTop: '72%',
+      pointLeft: '77%',
+      width: '16%',
+    },
+    mobile: {
+      labelTop: '82%',
+      labelLeft: '63%',
+      pointTop: '74%',
+      pointLeft: '78%',
+      width: '18%',
+    },
   },
 ];
 
 export default function TheSpacePage() {
-  const [activeArea, setActiveArea] = useState('tent');
-
-  const active = useMemo(() => {
-    return AREAS.find((area) => area.id === activeArea) || AREAS[0];
-  }, [activeArea]);
-
   return (
     <>
       <Head>
         <title>Venue Portal</title>
         <meta
           name="description"
-          content="Explore The Tent, The Chef's Studio, and The Studio."
+          content="Explore The Tent, The Chef's Studio, and The Studio from a retro-futurist venue screen."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <main className="space-page">
-        <div className="space-bg" />
         <div className="stars" />
-        <div className="nebula nebula-a" />
-        <div className="nebula nebula-b" />
+        <div className="glow glow-a" />
+        <div className="glow glow-b" />
 
         <div className="shell">
           <header className="hero">
-            <div className="eyebrow">Venue Navigation Portal</div>
-            <h1>Retro-futurist venue map</h1>
+            <div className="eyebrow">Venue navigation portal</div>
+            <h1>Venue map</h1>
             <p>
-              Drift through the venue and jump directly into each experience zone.
-              Tap a signal beacon on the image or use the access cards below.
+              A clean retro-futurist screen for entering each part of the venue.
             </p>
           </header>
 
-          <section className="layout">
-            <div className="map-panel">
-              <div className="map-frame">
-                <img
-                  src={VENUE_IMAGE}
-                  alt="3D venue map showing The Tent, The Chef's Studio and The Studio"
-                  className="venue-image"
-                />
+          <section className="screen">
+            <div className="screen-topline" />
+            <div className="screen-corner screen-corner-left" />
+            <div className="screen-corner screen-corner-right" />
 
-                {AREAS.map((area) => (
-                  <AreaBeacon
-                    key={area.id}
-                    area={area}
-                    active={area.id === active.id}
-                    onActivate={() => setActiveArea(area.id)}
-                  />
-                ))}
-              </div>
-
-              <div className="cards-grid">
-                {AREAS.map((area) => {
-                  const isActive = area.id === active.id;
-                  return (
-                    <Link key={area.id} href={area.href} passHref>
-                      <a
-                        className={['area-card', isActive ? 'is-active' : '', `theme-${area.theme}`]
-                          .filter(Boolean)
-                          .join(' ')}
-                        onMouseEnter={() => setActiveArea(area.id)}
-                        onFocus={() => setActiveArea(area.id)}
-                      >
-                        <span className="card-line" />
-                        <span className="card-kicker">Access node</span>
-                        <span className="card-title">{area.title}</span>
-                        <span className="card-text">{area.subtitle}</span>
-                        <span className="card-link">Enter zone →</span>
-                      </a>
-                    </Link>
-                  );
-                })}
-              </div>
+            <div className="screen-header">
+              <span>Interactive venue display</span>
+              <span>3 linked zones</span>
             </div>
 
-            <aside className="side-panel">
-              <div className={`focus-card theme-${active.theme}`}>
-                <div className="focus-kicker">Now selected</div>
-                <h2>{active.title}</h2>
-                <p>{active.subtitle}</p>
+            <div className="map-wrap">
+              <div className="map-grid" />
+              <img
+                src={VENUE_IMAGE}
+                alt="3D venue map with The Tent, The Chef's Studio and The Studio"
+                className="venue-image"
+              />
 
-                <div className="focus-list">
-                  {AREAS.map((area, index) => {
-                    const isSelected = area.id === active.id;
-                    return (
-                      <div
-                        key={area.id}
-                        className={['focus-row', isSelected ? 'selected' : '']
-                          .filter(Boolean)
-                          .join(' ')}
-                        onMouseEnter={() => setActiveArea(area.id)}
-                      >
-                        <button
-                          type="button"
-                          className="focus-row-main"
-                          onClick={() => setActiveArea(area.id)}
-                        >
-                          <span className="focus-index">0{index + 1}</span>
-                          <span className="focus-copy">
-                            <strong>{area.title}</strong>
-                            <small>Destination page</small>
-                          </span>
-                        </button>
-                        <Link href={area.href} passHref>
-                          <a className="focus-open">Open</a>
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="stat-row">
-                <div className="stat-box">
-                  <span>Zones</span>
-                  <strong>03</strong>
-                </div>
-                <div className="stat-box">
-                  <span>Mode</span>
-                  <strong>Live</strong>
-                </div>
-                <div className="stat-box">
-                  <span>Theme</span>
-                  <strong>Neo</strong>
-                </div>
-              </div>
-            </aside>
+              {AREAS.map((area) => (
+                <>
+                  <div key={`${area.id}-desktop`} className="hotspot desktop-only">
+                    <AreaLink area={area} position={area.desktop} />
+                  </div>
+                  <div key={`${area.id}-mobile`} className="hotspot mobile-only">
+                    <AreaLink area={area} position={area.mobile} />
+                  </div>
+                </>
+              ))}
+            </div>
           </section>
         </div>
 
@@ -171,482 +126,188 @@ export default function TheSpacePage() {
             position: relative;
             min-height: 100vh;
             overflow: hidden;
-            background: #02050b;
-            color: #ffffff;
+            background:
+              radial-gradient(circle at 50% 20%, rgba(205, 60, 255, 0.12), transparent 28%),
+              radial-gradient(circle at 50% 54%, rgba(28, 235, 223, 0.12), transparent 20%),
+              linear-gradient(180deg, #060611 0%, #04040c 100%);
+            color: #f7e9ff;
             font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           }
 
-          .space-bg,
           .stars,
-          .nebula {
+          .glow {
             position: absolute;
             inset: 0;
             pointer-events: none;
           }
 
-          .space-bg {
-            background:
-              radial-gradient(circle at 50% 42%, rgba(0, 233, 200, 0.18), transparent 18%),
-              radial-gradient(circle at 20% 15%, rgba(119, 72, 255, 0.12), transparent 22%),
-              radial-gradient(circle at 80% 12%, rgba(0, 189, 255, 0.1), transparent 18%),
-              linear-gradient(180deg, #02050b 0%, #010308 100%);
-          }
-
           .stars {
-            opacity: 0.28;
-            background-image: radial-gradient(#ffffff 0.8px, transparent 0.8px);
-            background-size: 30px 30px;
+            opacity: 0.32;
+            background-image: radial-gradient(rgba(255,255,255,0.9) 0.8px, transparent 0.8px);
+            background-size: 36px 36px;
           }
 
-          .nebula-a {
-            background: radial-gradient(circle at 50% 30%, rgba(49, 220, 197, 0.14), transparent 25%);
+          .glow-a {
+            background: radial-gradient(circle at 22% 18%, rgba(210, 92, 255, 0.13), transparent 22%);
+            filter: blur(60px);
+          }
+
+          .glow-b {
+            background: radial-gradient(circle at 68% 56%, rgba(23, 236, 228, 0.12), transparent 18%);
             filter: blur(80px);
-          }
-
-          .nebula-b {
-            background: radial-gradient(circle at 50% 75%, rgba(2, 167, 141, 0.14), transparent 22%);
-            filter: blur(100px);
           }
 
           .shell {
             position: relative;
-            z-index: 2;
-            max-width: 1380px;
+            z-index: 1;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 28px 20px 40px;
+            padding: 32px 20px 56px;
           }
 
           .hero {
-            max-width: 760px;
-            margin-bottom: 24px;
+            max-width: 700px;
+            margin: 0 auto 22px;
+            text-align: center;
           }
 
           .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-block;
             padding: 8px 14px;
-            border: 1px solid rgba(113, 235, 255, 0.25);
+            border: 1px solid rgba(255, 168, 249, 0.35);
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(14px);
-            color: #bdf6ff;
+            background: rgba(255, 255, 255, 0.04);
+            color: #ffc9fb;
             font-size: 11px;
             letter-spacing: 0.24em;
             text-transform: uppercase;
-            margin-bottom: 16px;
-            box-shadow: 0 0 24px rgba(75, 217, 255, 0.12);
+            box-shadow: 0 0 24px rgba(255, 112, 249, 0.12);
           }
 
           .hero h1 {
-            margin: 0;
-            font-size: clamp(2.4rem, 4.8vw, 5rem);
-            line-height: 0.98;
-            letter-spacing: -0.04em;
+            margin: 18px 0 0;
+            font-size: clamp(2.4rem, 6vw, 5.2rem);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+            color: #fff3ff;
           }
 
           .hero p {
-            margin: 16px 0 0;
-            max-width: 640px;
+            margin: 16px auto 0;
+            max-width: 520px;
+            color: rgba(243, 222, 255, 0.72);
             font-size: 1rem;
-            line-height: 1.75;
-            color: rgba(220, 233, 240, 0.82);
+            line-height: 1.7;
           }
 
-          .layout {
-            display: grid;
-            grid-template-columns: minmax(0, 1.45fr) 360px;
-            gap: 24px;
-            align-items: start;
-          }
-
-          .map-panel,
-          .focus-card,
-          .stat-box {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            box-shadow: 0 30px 120px rgba(0, 0, 0, 0.42);
-          }
-
-          .map-panel {
-            border-radius: 32px;
-            padding: 18px;
-          }
-
-          .map-frame {
+          .screen {
             position: relative;
-            border-radius: 26px;
-            overflow: hidden;
-            min-height: 700px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background:
-              radial-gradient(circle at 50% 48%, rgba(15, 173, 154, 0.2), transparent 25%),
-              radial-gradient(circle at 50% 50%, transparent 38%, rgba(0, 0, 0, 0.25) 70%, rgba(0, 0, 0, 0.72) 100%),
-              linear-gradient(180deg, rgba(8, 18, 25, 0.96) 0%, rgba(2, 6, 11, 0.98) 100%);
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px 20px 22px;
+            border: 1px solid rgba(240, 154, 255, 0.2);
+            border-radius: 30px;
+            background: rgba(11, 10, 24, 0.76);
+            backdrop-filter: blur(16px);
+            box-shadow:
+              0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+              0 0 60px rgba(152, 55, 199, 0.14),
+              0 24px 120px rgba(0, 0, 0, 0.45);
           }
 
-          .map-frame::before {
-            content: '';
+          .screen-topline {
+            position: absolute;
+            left: 34px;
+            right: 34px;
+            top: 12px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 127, 244, 0.5), rgba(112, 249, 255, 0.5), transparent);
+          }
+
+          .screen-corner {
+            position: absolute;
+            top: 16px;
+            width: 32px;
+            height: 32px;
+            border-top: 1px solid rgba(255, 150, 245, 0.34);
+          }
+
+          .screen-corner-left {
+            left: 16px;
+            border-left: 1px solid rgba(255, 150, 245, 0.34);
+            border-top-left-radius: 12px;
+          }
+
+          .screen-corner-right {
+            right: 16px;
+            border-right: 1px solid rgba(255, 150, 245, 0.34);
+            border-top-right-radius: 12px;
+          }
+
+          .screen-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 6px 4px 18px;
+            color: rgba(255, 208, 251, 0.74);
+            font-size: 11px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+          }
+
+          .map-wrap {
+            position: relative;
+            overflow: hidden;
+            min-height: 720px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            background:
+              radial-gradient(circle at 50% 50%, rgba(0, 255, 240, 0.12), transparent 18%),
+              linear-gradient(180deg, rgba(17, 8, 28, 0.94) 0%, rgba(8, 8, 18, 0.96) 100%);
+          }
+
+          .map-grid {
             position: absolute;
             inset: 0;
             background-image:
               linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
               linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-            background-size: 48px 48px;
-            opacity: 0.5;
+            background-size: 52px 52px;
+            opacity: 0.28;
           }
 
           .venue-image {
             position: relative;
             z-index: 1;
+            display: block;
             width: 100%;
-            max-width: 1250px;
+            max-width: 900px;
+            margin: 60px auto 70px;
             height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 20px 70px rgba(0, 232, 197, 0.18));
+            filter: drop-shadow(0 24px 70px rgba(20, 237, 227, 0.16));
           }
 
-          .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 16px;
-          }
-
-          .area-card {
-            position: relative;
-            display: block;
-            overflow: hidden;
-            min-height: 180px;
-            border-radius: 24px;
-            padding: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.04);
-            color: #fff;
-            text-decoration: none;
-            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-          }
-
-          .area-card:hover,
-          .area-card:focus {
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-          }
-
-          .area-card.is-active {
-            box-shadow: 0 0 0 1px rgba(145, 247, 255, 0.18), 0 0 32px rgba(58, 226, 255, 0.12);
-          }
-
-          .card-line {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            height: 4px;
-          }
-
-          .theme-pink .card-line,
-          .theme-pink.beacon-pill,
-          .theme-pink .focus-open,
-          .theme-pink.focus-card {
-            --theme-a: #ff58c7;
-            --theme-b: #61e8ff;
-          }
-
-          .theme-mint .card-line,
-          .theme-mint.beacon-pill,
-          .theme-mint .focus-open,
-          .theme-mint.focus-card {
-            --theme-a: #53f4c6;
-            --theme-b: #7ef5ff;
-          }
-
-          .theme-blue .card-line,
-          .theme-blue.beacon-pill,
-          .theme-blue .focus-open,
-          .theme-blue.focus-card {
-            --theme-a: #63b7ff;
-            --theme-b: #a67cff;
-          }
-
-          .card-line,
-          .beacon-pill::before,
-          .focus-open::before {
-            background: linear-gradient(90deg, var(--theme-a), var(--theme-b));
-          }
-
-          .card-kicker {
-            display: block;
-            font-size: 11px;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: #95a7b6;
-            margin-top: 6px;
-          }
-
-          .card-title {
-            display: block;
-            margin-top: 14px;
-            font-size: 1.45rem;
-            font-weight: 600;
-          }
-
-          .card-text {
-            display: block;
-            margin-top: 10px;
-            color: rgba(220, 233, 240, 0.82);
-            line-height: 1.65;
-          }
-
-          .card-link {
-            display: inline-block;
-            margin-top: 16px;
-            color: #bff6ff;
-            font-weight: 500;
-          }
-
-          .side-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-          }
-
-          .focus-card {
-            border-radius: 32px;
-            padding: 20px;
-          }
-
-          .focus-kicker {
-            color: #bdf6ff;
-            font-size: 11px;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-          }
-
-          .focus-card h2 {
-            margin: 14px 0 0;
-            font-size: 2rem;
-            line-height: 1.05;
-          }
-
-          .focus-card p {
-            margin: 12px 0 0;
-            color: rgba(220, 233, 240, 0.82);
-            line-height: 1.7;
-          }
-
-          .focus-list {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-          }
-
-          .focus-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 10px;
-          }
-
-          .focus-row.selected {
-            border-color: rgba(145, 247, 255, 0.18);
-            background: rgba(145, 247, 255, 0.08);
-          }
-
-          .focus-row-main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 0;
-            background: transparent;
-            color: #fff;
-            text-align: left;
-            cursor: pointer;
-            padding: 0;
-          }
-
-          .focus-index {
-            width: 42px;
-            height: 42px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            font-size: 12px;
-          }
-
-          .focus-copy {
-            display: flex;
-            flex-direction: column;
-          }
-
-          .focus-copy strong {
-            font-size: 0.98rem;
-            font-weight: 600;
-          }
-
-          .focus-copy small {
-            margin-top: 3px;
-            color: #95a7b6;
-            font-size: 12px;
-          }
-
-          .focus-open {
-            position: relative;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 70px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 10px 14px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 12px;
-          }
-
-          .focus-open::before {
-            content: '';
+          .hotspot {
             position: absolute;
             inset: 0;
-            opacity: 0.14;
+            z-index: 2;
           }
 
-          .focus-open span,
-          .focus-open {
-            position: relative;
-            z-index: 1;
-          }
-
-          .stat-row {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 12px;
-          }
-
-          .stat-box {
-            border-radius: 24px;
-            padding: 16px 12px;
-            text-align: center;
-          }
-
-          .stat-box span {
+          .desktop-only {
             display: block;
-            color: #95a7b6;
-            font-size: 11px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
           }
 
-          .stat-box strong {
-            display: block;
-            margin-top: 8px;
-            font-size: 1.25rem;
+          .mobile-only {
+            display: none;
           }
 
-          .beacon {
-            position: absolute;
-            z-index: 3;
-          }
-
-          .beacon-inner {
-            position: relative;
-            transform: translateX(-50%);
-          }
-
-          .beacon-line {
-            position: absolute;
-            left: 50%;
-            top: 100%;
-            width: 1px;
-            height: 46px;
-            transform: translateX(-50%);
-            background: linear-gradient(180deg, rgba(122, 241, 255, 0.85), transparent);
-          }
-
-          .beacon-dot {
-            position: absolute;
-            left: 50%;
-            top: calc(100% + 38px);
-            width: 12px;
-            height: 12px;
-            border-radius: 999px;
-            transform: translateX(-50%);
-            background: #88f5ff;
-            box-shadow: 0 0 18px rgba(136, 245, 255, 0.9);
-          }
-
-          .beacon-pill {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 16px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(4, 12, 19, 0.72);
-            color: #ffffff;
-            text-decoration: none;
-            backdrop-filter: blur(12px);
-            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
-          }
-
-          .beacon-pill::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0.14;
-            border-radius: inherit;
-          }
-
-          .beacon-pill:hover,
-          .beacon-pill:focus,
-          .beacon-pill.active {
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.24);
-            background: rgba(255, 255, 255, 0.09);
-            box-shadow: 0 0 28px rgba(114, 240, 255, 0.14);
-          }
-
-          .beacon-signal {
-            position: relative;
-            z-index: 1;
-            width: 10px;
-            height: 10px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--theme-a), var(--theme-b));
-            box-shadow: 0 0 18px rgba(114, 240, 255, 0.55);
-          }
-
-          .beacon-label {
-            position: relative;
-            z-index: 1;
-            white-space: nowrap;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-          }
-
-          @media (max-width: 1180px) {
-            .layout {
-              grid-template-columns: 1fr;
+          @media (max-width: 860px) {
+            .desktop-only {
+              display: none;
             }
 
-            .side-panel {
-              order: -1;
+            .mobile-only {
+              display: block;
             }
           }
 
@@ -656,65 +317,49 @@ export default function TheSpacePage() {
               padding-right: 14px;
             }
 
-            .map-panel,
-            .focus-card {
-              border-radius: 24px;
+            .screen {
+              padding: 16px 12px 14px;
+              border-radius: 22px;
             }
 
-            .map-frame {
-              min-height: 460px;
-              padding: 12px;
+            .screen-header {
+              padding: 4px 4px 14px;
+              font-size: 10px;
+              letter-spacing: 0.14em;
             }
 
-            .cards-grid {
-              grid-template-columns: 1fr;
+            .map-wrap {
+              min-height: 500px;
+              border-radius: 18px;
             }
 
-            .stat-row {
-              grid-template-columns: repeat(3, 1fr);
+            .venue-image {
+              margin-top: 72px;
+              margin-bottom: 90px;
             }
           }
 
           @media (max-width: 640px) {
             .hero {
-              margin-bottom: 18px;
+              margin-bottom: 16px;
             }
 
             .hero p {
-              font-size: 0.95rem;
-              line-height: 1.65;
+              font-size: 0.94rem;
             }
 
-            .map-panel {
-              padding: 12px;
+            .screen-header {
+              flex-direction: column;
+              align-items: flex-start;
             }
 
-            .map-frame {
-              min-height: 360px;
-              border-radius: 20px;
+            .map-wrap {
+              min-height: 420px;
             }
 
-            .beacon-pill {
-              padding: 10px 12px;
-            }
-
-            .beacon-label {
-              font-size: 10px;
-              letter-spacing: 0.12em;
-            }
-
-            .focus-card h2 {
-              font-size: 1.6rem;
-            }
-
-            .focus-row {
-              align-items: stretch;
-            }
-
-            .focus-open {
-              min-width: 62px;
-              padding-left: 10px;
-              padding-right: 10px;
+            .venue-image {
+              margin-top: 78px;
+              margin-bottom: 110px;
             }
           }
         `}</style>
@@ -723,55 +368,140 @@ export default function TheSpacePage() {
   );
 }
 
-function AreaBeacon({ area, active, onActivate }: any) {
+function AreaLink({ area, position }: any) {
   return (
     <>
-      <div className={`beacon desktop-only`} style={area.desktop}>
-        <BeaconLink area={area} active={active} onActivate={onActivate} />
-      </div>
-      <div className={`beacon mobile-only`} style={area.mobile}>
-        <BeaconLink area={area} active={active} onActivate={onActivate} />
-      </div>
+      <Link href={area.href} passHref>
+        <a
+          className={`area-link area-${area.id}`}
+          style={{ top: position.labelTop, left: position.labelLeft, width: position.width }}
+          aria-label={`Open ${area.title}`}
+        >
+          <span className="area-title">{area.title}</span>
+          <span
+            className="area-line"
+            style={{ top: `calc(${position.pointTop} - ${position.labelTop})`, width: position.width }}
+          />
+          <span
+            className="area-dot area-dot-start"
+            style={{ top: `calc(${position.pointTop} - ${position.labelTop} - 5px)`, left: `calc(${position.width} - 6px)` }}
+          />
+          <span
+            className="area-dot area-dot-end"
+            style={{ top: `calc(${position.pointTop} - ${position.labelTop} - 5px)`, left: position.pointLeft }}
+          />
+          <span className="area-pulse" style={{ top: position.pointTop, left: position.pointLeft }} />
+        </a>
+      </Link>
 
       <style jsx>{`
-        .desktop-only {
+        .area-link {
+          position: absolute;
           display: block;
+          color: #ffd8fd;
+          text-decoration: none;
         }
 
-        .mobile-only {
-          display: none;
+        .area-title {
+          display: inline-block;
+          padding: 10px 14px;
+          border: 1px solid rgba(255, 154, 245, 0.28);
+          border-radius: 999px;
+          background: rgba(28, 12, 40, 0.78);
+          color: #ffeafd;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          box-shadow: 0 0 18px rgba(255, 111, 238, 0.08);
+          transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+          position: relative;
+          z-index: 2;
+        }
+
+        .area-line {
+          position: absolute;
+          left: calc(100% - 6px);
+          height: 1px;
+          background: linear-gradient(90deg, rgba(255, 117, 241, 0.95), rgba(117, 244, 255, 0.95));
+          box-shadow: 0 0 10px rgba(255, 117, 241, 0.24);
+          transform-origin: left center;
+          animation: scan 1.8s ease-in-out infinite;
+        }
+
+        .area-dot {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          border-radius: 999px;
+          background: #ff8af3;
+          box-shadow: 0 0 14px rgba(255, 138, 243, 0.75);
+          animation: blink 1.5s ease-in-out infinite;
+        }
+
+        .area-dot-end {
+          background: #81f7ff;
+          box-shadow: 0 0 14px rgba(129, 247, 255, 0.75);
+          animation-delay: 0.3s;
+        }
+
+        .area-pulse {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          margin-left: -10px;
+          margin-top: -10px;
+          border-radius: 999px;
+          border: 1px solid rgba(129, 247, 255, 0.8);
+          box-shadow: 0 0 18px rgba(129, 247, 255, 0.32);
+          animation: pulse 1.8s ease-out infinite;
+        }
+
+        .area-link:hover .area-title,
+        .area-link:focus .area-title {
+          transform: translateY(-2px);
+          border-color: rgba(129, 247, 255, 0.4);
+          box-shadow: 0 0 26px rgba(129, 247, 255, 0.16);
+        }
+
+        @keyframes blink {
+          0%,
+          100% { opacity: 0.35; transform: scale(0.9); }
+          50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes pulse {
+          0% { opacity: 0.9; transform: scale(0.4); }
+          70% { opacity: 0; transform: scale(1.65); }
+          100% { opacity: 0; transform: scale(1.65); }
+        }
+
+        @keyframes scan {
+          0%,
+          100% { opacity: 0.55; transform: scaleX(0.94); }
+          50% { opacity: 1; transform: scaleX(1); }
         }
 
         @media (max-width: 900px) {
-          .desktop-only {
-            display: none;
+          .area-title {
+            padding: 8px 11px;
+            font-size: 10px;
+            letter-spacing: 0.12em;
           }
 
-          .mobile-only {
-            display: block;
+          .area-dot {
+            width: 8px;
+            height: 8px;
+          }
+
+          .area-pulse {
+            width: 16px;
+            height: 16px;
+            margin-left: -8px;
+            margin-top: -8px;
           }
         }
       `}</style>
     </>
-  );
-}
-
-function BeaconLink({ area, active, onActivate }: any) {
-  return (
-    <div className="beacon-inner">
-      <Link href={area.href} passHref>
-        <a
-          className={`beacon-pill theme-${area.theme} ${active ? 'active' : ''}`}
-          onMouseEnter={onActivate}
-          onFocus={onActivate}
-          aria-label={`Open ${area.title}`}
-        >
-          <span className="beacon-signal" />
-          <span className="beacon-label">{area.title}</span>
-        </a>
-      </Link>
-      <span className="beacon-line" />
-      <span className="beacon-dot" />
-    </div>
   );
 }
