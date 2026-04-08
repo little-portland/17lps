@@ -773,7 +773,7 @@ const DinningPage = () => {
               </div>
 
               <div className="cta-card">
-                <a className="cta-link" href="#concepts">Explore our futurist dining concept</a>
+                <a className="cta-link" href="/food">Explore our futurist dining concept</a>
               </div>
             </div>
 
@@ -827,9 +827,9 @@ const DinningPage = () => {
                       </ul>
 
                       <div className="link-row">
-                        <a href="#">Book</a>
-                        <a href="#">Menu</a>
-                        <a href="#">Explore The Tent</a>
+                        <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">Book</a>
+                        <a href="/menu">Menu</a>
+                        <a href="/thetent">Explore The Tent</a>
                       </div>
                     </div>
                   </div>
@@ -865,9 +865,9 @@ const DinningPage = () => {
                       </ul>
 
                       <div className="link-row">
-                        <a href="#">Book</a>
-                        <a href="#">Menu</a>
-                        <a href="#">Explore Chef&apos;s Studio</a>
+                        <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">Book</a>
+                        <a href="/menu">Menu</a>
+                        <a href="/chefstudio">Explore Chef&apos;s Studio</a>
                       </div>
                     </div>
                   </div>
