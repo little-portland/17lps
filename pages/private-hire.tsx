@@ -57,7 +57,6 @@ export default function PrivateHirePage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [displayIndex, setDisplayIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState<number | null>(null);
-  const activeVenue = VENUES[displayIndex];
 
   useEffect(() => {
     const updateActiveIndex = () => {
@@ -87,10 +86,12 @@ export default function PrivateHirePage() {
 
     const timeout = window.setTimeout(() => {
       setPreviousIndex(null);
-    }, 420);
+    }, 360);
 
     return () => window.clearTimeout(timeout);
   }, [activeIndex, displayIndex]);
+
+  const activeVenue = VENUES[displayIndex];
 
   const goToSlide = (index: number) => {
     const nextIndex = clamp(index, 0, VENUES.length - 1);
@@ -157,23 +158,25 @@ export default function PrivateHirePage() {
                 {previousIndex !== null && (
                   <div
                     aria-hidden="true"
-                    className="orbPhotoShell orbPhotoShell--previous"
+                    className="orbPhotoLayer orbPhotoLayer--previous"
                     style={{
                       backgroundImage: `url(${VENUES[previousIndex].image})`,
                       backgroundPosition: VENUES[previousIndex].objectPosition || '50% 50%',
                     }}
                   />
                 )}
+
                 <div
                   key={activeVenue.id}
                   role="img"
                   aria-label={activeVenue.alt}
-                  className={`orbPhotoShell orbPhotoShell--current ${previousIndex !== null ? 'is-glitching' : ''}`}
+                  className={`orbPhotoLayer orbPhotoLayer--current ${previousIndex !== null ? 'is-glitching' : ''}`}
                   style={{
                     backgroundImage: `url(${activeVenue.image})`,
                     backgroundPosition: activeVenue.objectPosition || '50% 50%',
                   }}
                 />
+
                 <div className="orbInnerTint" />
                 <div className="orbInnerGlow" />
               </div>
@@ -302,7 +305,7 @@ export default function PrivateHirePage() {
         }
 
         .posterSky {
-          background-size: contain;
+          background-size: cover;
           background-position: center;
           filter: saturate(0.92) brightness(0.54);
           opacity: 0.96;
@@ -480,8 +483,6 @@ export default function PrivateHirePage() {
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
           font-size: 3.8rem;
           font-weight: 900;
-          line-height: 0.92;
-          white-space: nowrap;
           text-shadow:
             0 0 10px rgba(255, 255, 255, 0.18),
             0 0 24px rgba(255, 255, 255, 0.2),
@@ -542,7 +543,7 @@ export default function PrivateHirePage() {
           animation: orbCorePulse 2.8s ease-in-out infinite;
         }
 
-        .orbPhotoShell {
+        .orbPhotoLayer {
           position: absolute;
           inset: 0;
           background-size: cover;
@@ -554,8 +555,8 @@ export default function PrivateHirePage() {
           will-change: opacity, transform;
         }
 
-        .orbPhotoShell::before,
-        .orbPhotoShell::after {
+        .orbPhotoLayer::before,
+        .orbPhotoLayer::after {
           content: '';
           position: absolute;
           inset: 0;
@@ -565,37 +566,36 @@ export default function PrivateHirePage() {
           background-repeat: inherit;
           pointer-events: none;
           opacity: 0;
+          mix-blend-mode: screen;
         }
 
-        .orbPhotoShell--current {
+        .orbPhotoLayer--current {
           opacity: 1;
         }
 
-        .orbPhotoShell--current.is-glitching {
-          animation: photoGlitchIn 420ms ease both;
+        .orbPhotoLayer--current.is-glitching {
+          animation: photoGlitchIn 360ms ease both;
         }
 
-        .orbPhotoShell--current.is-glitching::before {
-          animation: photoGlitchSliceA 420ms steps(2, end) both;
+        .orbPhotoLayer--current.is-glitching::before {
+          animation: photoGlitchSliceA 360ms steps(2, end) both;
         }
 
-        .orbPhotoShell--current.is-glitching::after {
-          animation: photoGlitchSliceB 420ms steps(2, end) both;
+        .orbPhotoLayer--current.is-glitching::after {
+          animation: photoGlitchSliceB 360ms steps(2, end) both;
         }
 
-        .orbPhotoShell--previous {
+        .orbPhotoLayer--previous {
           opacity: 1;
-          animation: photoGlitchOut 420ms ease forwards;
+          animation: photoGlitchOut 360ms ease forwards;
         }
-
-        
 
         .orbInnerTint {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(circle at 50% 50%, rgba(52, 129, 89, 0.06), rgba(52, 129, 89, 0.1) 54%, rgba(52, 129, 89, 0.22) 78%, rgba(52, 129, 89, 0.38) 100%),
-            linear-gradient(180deg, rgba(125, 225, 180, 0.1), transparent 18%, transparent 68%, rgba(0, 0, 0, 0.2) 100%);
+            radial-gradient(circle at 50% 50%, rgba(52, 129, 89, 0.04), rgba(52, 129, 89, 0.08) 54%, rgba(52, 129, 89, 0.18) 78%, rgba(52, 129, 89, 0.3) 100%),
+            linear-gradient(180deg, rgba(125, 225, 180, 0.08), transparent 18%, transparent 68%, rgba(0, 0, 0, 0.18) 100%);
           mix-blend-mode: screen;
           pointer-events: none;
         }
@@ -642,7 +642,7 @@ export default function PrivateHirePage() {
           left: 50%;
           top: 0;
           width: max-content;
-          max-width: min(100%, calc(100vw - 56px));
+          max-width: 100%;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -662,10 +662,6 @@ export default function PrivateHirePage() {
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
           font-size: 2.2rem;
           font-weight: 900;
-          line-height: 1;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
           text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
         }
 
@@ -798,21 +794,17 @@ export default function PrivateHirePage() {
 
         @keyframes photoGlitchIn {
           0% {
-            opacity: 0.24;
-            transform: scale(1.03) translateX(12px);
-            filter: contrast(1.18) brightness(1.08);
+            opacity: 0.28;
+            transform: scale(1.02) translateX(8px);
+            filter: contrast(1.12) brightness(1.04);
           }
-          16% {
-            opacity: 0.92;
-            transform: scale(1.01) translateX(-8px);
+          18% {
+            opacity: 0.9;
+            transform: scale(1.008) translateX(-6px);
           }
-          34% {
-            opacity: 0.66;
-            transform: scale(1.008) translateX(6px);
-          }
-          52% {
-            opacity: 0.96;
-            transform: scale(1.003) translateX(-3px);
+          42% {
+            opacity: 0.74;
+            transform: scale(1.005) translateX(4px);
           }
           100% {
             opacity: 1;
@@ -828,7 +820,7 @@ export default function PrivateHirePage() {
           }
           100% {
             opacity: 0;
-            transform: scale(0.995) translateX(-8px);
+            transform: scale(0.998) translateX(-6px);
           }
         }
 
@@ -836,22 +828,22 @@ export default function PrivateHirePage() {
           0% {
             opacity: 0;
             transform: translateX(0);
-            clip-path: inset(0 0 65% 0);
+            clip-path: inset(0 0 64% 0);
           }
-          18% {
-            opacity: 0.34;
-            transform: translateX(-14px);
+          20% {
+            opacity: 0.22;
+            transform: translateX(-10px);
             clip-path: inset(0 0 68% 0);
           }
-          42% {
-            opacity: 0.14;
-            transform: translateX(8px);
-            clip-path: inset(0 0 56% 0);
+          44% {
+            opacity: 0.08;
+            transform: translateX(6px);
+            clip-path: inset(0 0 58% 0);
           }
           100% {
             opacity: 0;
             transform: translateX(0);
-            clip-path: inset(0 0 65% 0);
+            clip-path: inset(0 0 64% 0);
           }
         }
 
@@ -862,24 +854,19 @@ export default function PrivateHirePage() {
             clip-path: inset(58% 0 0 0);
           }
           22% {
-            opacity: 0.28;
-            transform: translateX(16px);
+            opacity: 0.18;
+            transform: translateX(12px);
             clip-path: inset(54% 0 0 0);
           }
           46% {
-            opacity: 0.1;
-            transform: translateX(-7px);
+            opacity: 0.06;
+            transform: translateX(-5px);
             clip-path: inset(62% 0 0 0);
           }
           100% {
             opacity: 0;
             transform: translateX(0);
             clip-path: inset(58% 0 0 0);
-          }
-        }
-          100% {
-            opacity: 1;
-            transform: scale(1) translateZ(0);
           }
         }
 
@@ -911,10 +898,9 @@ export default function PrivateHirePage() {
 
           .posterLabel {
             top: 14px;
-            max-width: 45vw;
-            font-size: 0.58rem;
-            letter-spacing: 0.08em;
-            padding: 8px 10px;
+            max-width: 44vw;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
           }
 
           .posterFrame {
@@ -928,13 +914,12 @@ export default function PrivateHirePage() {
           }
 
           .posterTitleWrap {
-            top: 96px;
+            top: 106px;
             width: min(94vw, 700px);
           }
 
           .posterTitle {
-            font-size: 2.35rem;
-            letter-spacing: 0.06em;
+            font-size: 2.55rem;
           }
 
           .posterAreaTitle {
@@ -958,9 +943,9 @@ export default function PrivateHirePage() {
           }
 
           .posterNav {
-            top: auto !important;
-            bottom: 18px !important;
-            transform: none !important;
+            top: auto;
+            bottom: 18px;
+            transform: none;
             padding: 13px 14px;
           }
 
@@ -968,7 +953,7 @@ export default function PrivateHirePage() {
           .posterNav:focus-visible,
           .posterNav:disabled:hover,
           .posterNav:disabled:focus-visible {
-            transform: none !important;
+            transform: none;
           }
 
           .posterNav--prev {
@@ -1043,7 +1028,7 @@ export default function PrivateHirePage() {
           }
 
           .posterNav {
-            bottom: 12px !important;
+            bottom: 12px;
             padding: 12px 13px;
             font-size: 0.68rem;
           }
@@ -1067,7 +1052,7 @@ export default function PrivateHirePage() {
             animation: none;
           }
 
-          .orbPhotoShell,
+          .orbPhotoLayer,
           .posterAreaTitle__item,
           .posterInfo__block,
           .posterNav {
