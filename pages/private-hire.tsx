@@ -55,7 +55,9 @@ const clamp = (value: number, min: number, max: number) => Math.min(Math.max(val
 
 export default function PrivateHirePage() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeVenue = VENUES[activeIndex];
+  const [displayIndex, setDisplayIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState<number | null>(null);
+  const activeVenue = VENUES[displayIndex];
 
   useEffect(() => {
     const updateActiveIndex = () => {
@@ -76,6 +78,19 @@ export default function PrivateHirePage() {
       window.removeEventListener('resize', updateActiveIndex);
     };
   }, []);
+
+  useEffect(() => {
+    if (activeIndex === displayIndex) return;
+
+    setPreviousIndex(displayIndex);
+    setDisplayIndex(activeIndex);
+
+    const timeout = window.setTimeout(() => {
+      setPreviousIndex(null);
+    }, 420);
+
+    return () => window.clearTimeout(timeout);
+  }, [activeIndex, displayIndex]);
 
   const goToSlide = (index: number) => {
     const nextIndex = clamp(index, 0, VENUES.length - 1);
@@ -139,12 +154,25 @@ export default function PrivateHirePage() {
               <div className="orbBloomBack" />
 
               <div className="orbPhotoMask">
-                <img
+                {previousIndex !== null && (
+                  <div
+                    aria-hidden="true"
+                    className="orbPhotoShell orbPhotoShell--previous"
+                    style={{
+                      backgroundImage: `url(${VENUES[previousIndex].image})`,
+                      backgroundPosition: VENUES[previousIndex].objectPosition || '50% 50%',
+                    }}
+                  />
+                )}
+                <div
                   key={activeVenue.id}
-                  src={activeVenue.image}
-                  alt={activeVenue.alt}
-                  className="orbPhoto orbPhoto--single"
-                  style={{ objectPosition: activeVenue.objectPosition || '50% 50%' }}
+                  role="img"
+                  aria-label={activeVenue.alt}
+                  className={`orbPhotoShell orbPhotoShell--current ${previousIndex !== null ? 'is-glitching' : ''}`}
+                  style={{
+                    backgroundImage: `url(${activeVenue.image})`,
+                    backgroundPosition: activeVenue.objectPosition || '50% 50%',
+                  }}
                 />
                 <div className="orbInnerTint" />
                 <div className="orbInnerGlow" />
@@ -274,7 +302,7 @@ export default function PrivateHirePage() {
         }
 
         .posterSky {
-          background-size: contain;
+          background-size: cover;
           background-position: center;
           filter: saturate(0.92) brightness(0.54);
           opacity: 0.96;
@@ -514,12 +542,11 @@ export default function PrivateHirePage() {
           animation: orbCorePulse 2.8s ease-in-out infinite;
         }
 
-        .orbPhoto {
+        .orbPhotoShell {
           position: absolute;
           inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          background-size: cover;
+          background-repeat: no-repeat;
           filter: contrast(1.02) brightness(0.96);
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
@@ -527,10 +554,41 @@ export default function PrivateHirePage() {
           will-change: opacity, transform;
         }
 
-        .orbPhoto--single {
-          opacity: 1;
-          animation: photoSwap 420ms ease;
+        .orbPhotoShell::before,
+        .orbPhotoShell::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image: inherit;
+          background-size: inherit;
+          background-position: inherit;
+          background-repeat: inherit;
+          pointer-events: none;
+          opacity: 0;
         }
+
+        .orbPhotoShell--current {
+          opacity: 1;
+        }
+
+        .orbPhotoShell--current.is-glitching {
+          animation: photoGlitchIn 420ms ease both;
+        }
+
+        .orbPhotoShell--current.is-glitching::before {
+          animation: photoGlitchSliceA 420ms steps(2, end) both;
+        }
+
+        .orbPhotoShell--current.is-glitching::after {
+          animation: photoGlitchSliceB 420ms steps(2, end) both;
+        }
+
+        .orbPhotoShell--previous {
+          opacity: 1;
+          animation: photoGlitchOut 420ms ease forwards;
+        }
+
+        
 
         .orbInnerTint {
           position: absolute;
@@ -738,11 +796,87 @@ export default function PrivateHirePage() {
           }
         }
 
-        @keyframes photoSwap {
+        @keyframes photoGlitchIn {
+          0% {
+            opacity: 0.24;
+            transform: scale(1.03) translateX(12px);
+            filter: contrast(1.18) brightness(1.08);
+          }
+          16% {
+            opacity: 0.92;
+            transform: scale(1.01) translateX(-8px);
+          }
+          34% {
+            opacity: 0.66;
+            transform: scale(1.008) translateX(6px);
+          }
+          52% {
+            opacity: 0.96;
+            transform: scale(1.003) translateX(-3px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) translateX(0);
+            filter: contrast(1.02) brightness(0.96);
+          }
+        }
+
+        @keyframes photoGlitchOut {
+          0% {
+            opacity: 1;
+            transform: scale(1) translateX(0);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(0.995) translateX(-8px);
+          }
+        }
+
+        @keyframes photoGlitchSliceA {
           0% {
             opacity: 0;
-            transform: scale(1.018) translateZ(0);
+            transform: translateX(0);
+            clip-path: inset(0 0 65% 0);
           }
+          18% {
+            opacity: 0.34;
+            transform: translateX(-14px);
+            clip-path: inset(0 0 68% 0);
+          }
+          42% {
+            opacity: 0.14;
+            transform: translateX(8px);
+            clip-path: inset(0 0 56% 0);
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(0);
+            clip-path: inset(0 0 65% 0);
+          }
+        }
+
+        @keyframes photoGlitchSliceB {
+          0% {
+            opacity: 0;
+            transform: translateX(0);
+            clip-path: inset(58% 0 0 0);
+          }
+          22% {
+            opacity: 0.28;
+            transform: translateX(16px);
+            clip-path: inset(54% 0 0 0);
+          }
+          46% {
+            opacity: 0.1;
+            transform: translateX(-7px);
+            clip-path: inset(62% 0 0 0);
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(0);
+            clip-path: inset(58% 0 0 0);
+          }
+        }
           100% {
             opacity: 1;
             transform: scale(1) translateZ(0);
@@ -933,7 +1067,7 @@ export default function PrivateHirePage() {
             animation: none;
           }
 
-          .orbPhoto,
+          .orbPhotoShell,
           .posterAreaTitle__item,
           .posterInfo__block,
           .posterNav {
