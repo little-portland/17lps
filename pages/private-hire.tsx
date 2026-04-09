@@ -97,6 +97,7 @@ export default function PrivateHirePage() {
         <div className="posterStage">
           <div className="posterSky" style={{ backgroundImage: `url(${STAR_BG})` }} />
           <img src={GRID_BG} alt="" aria-hidden="true" className="posterGrid" />
+          <div className="posterGridSweep" aria-hidden="true" />
           <div className="posterVignette" />
           <div className="posterNoise" />
 
@@ -264,6 +265,7 @@ export default function PrivateHirePage() {
 
         .posterSky,
         .posterGrid,
+        .posterGridSweep,
         .posterVignette,
         .posterNoise {
           position: absolute;
@@ -286,6 +288,27 @@ export default function PrivateHirePage() {
           opacity: 0.78;
           filter: drop-shadow(0 0 18px rgba(52, 129, 89, 0.18));
           animation: gridPulse 8s ease-in-out infinite;
+        }
+
+        .posterGridSweep {
+          opacity: 0;
+          background:
+            linear-gradient(
+              102deg,
+              transparent 0%,
+              transparent 43%,
+              rgba(180, 255, 221, 0.03) 47%,
+              rgba(180, 255, 221, 0.16) 49.5%,
+              rgba(180, 255, 221, 0.26) 50%,
+              rgba(180, 255, 221, 0.16) 50.5%,
+              rgba(180, 255, 221, 0.03) 53%,
+              transparent 57%,
+              transparent 100%
+            );
+          mix-blend-mode: screen;
+          filter: blur(10px);
+          transform: translateX(-120%) skewX(-10deg);
+          animation: gridSweep 16s linear infinite;
         }
 
         .posterVignette {
@@ -368,7 +391,7 @@ export default function PrivateHirePage() {
 
         .posterNav:hover,
         .posterNav:focus-visible {
-          transform: translateY(calc(-50% - 2px));
+          transform: translateY(-50%);
           border-color: rgba(52, 129, 89, 0.56);
           background: rgba(0, 0, 0, 0.84);
         }
@@ -639,6 +662,33 @@ export default function PrivateHirePage() {
           }
         }
 
+        @keyframes gridSweep {
+          0%,
+          72% {
+            opacity: 0;
+            transform: translateX(-120%) skewX(-10deg);
+          }
+          76% {
+            opacity: 0.12;
+          }
+          84% {
+            opacity: 0.34;
+            transform: translateX(18%) skewX(-10deg);
+          }
+          90% {
+            opacity: 0.08;
+            transform: translateX(118%) skewX(-10deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(118%) skewX(-10deg);
+          }
+        }
+          50% {
+            opacity: 0.84;
+          }
+        }
+
         @keyframes orbPulse {
           0%,
           100% {
@@ -840,6 +890,7 @@ export default function PrivateHirePage() {
           }
 
           .posterGrid,
+          .posterGridSweep,
           .orbBloomBack,
           .orbOverlay--main {
             animation: none;
