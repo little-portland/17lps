@@ -116,10 +116,7 @@ export default function PrivateHirePage() {
           <div className="posterGridSweep" aria-hidden="true" />
           <div className="posterVignette" />
           <div className="posterNoise" />
-
-          <div className="posterHud">
-            <div className="posterLabel posterLabel--left">17 LITTLE PORTLAND STREET</div>
-            <a href="mailto:yo@little-portland.com" className="posterLabel posterLabel--right">
+<a href="mailto:yo@little-portland.com" className="posterLabel posterLabel--right">
               yo@little-portland.com
             </a>
           </div>
@@ -194,7 +191,6 @@ export default function PrivateHirePage() {
                 );
               })}
             </div>
-
             <div className="posterInfo">
               {VENUES.map((venue, index) => {
                 const isActive = index === activeIndex;
@@ -212,6 +208,10 @@ export default function PrivateHirePage() {
                 );
               })}
             </div>
+
+            <a href="mailto:yo@little-portland.com" className="posterFooterContact">
+              yo@little-portland.com
+            </a>
           </section>
         </div>
 
@@ -358,44 +358,7 @@ export default function PrivateHirePage() {
           mix-blend-mode: screen;
         }
 
-        .posterHud {
-          position: absolute;
-          inset: 0;
-          z-index: 12;
-          pointer-events: none;
-        }
-
-        .posterLabel {
-          position: absolute;
-          top: 16px;
-          max-width: calc(50vw - 26px);
-          padding: 10px 14px 9px;
-          border: 1px solid rgba(52, 129, 89, 0.42);
-          background: rgba(0, 0, 0, 0.72);
-          box-shadow: 0 0 16px rgba(52, 129, 89, 0.12);
-          color: ${ACCENT};
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          font-size: 0.76rem;
-          line-height: 1;
-          font-weight: 700;
-          pointer-events: auto;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
-        }
-
-        .posterLabel--left {
-          left: 16px;
-        }
-
-        .posterLabel--right {
-          right: 16px;
-          text-align: right;
-        }
-
-        .posterNav {
+                .posterNav {
           position: absolute;
           top: 50%;
           z-index: 14;
@@ -452,7 +415,7 @@ export default function PrivateHirePage() {
         }
 
         .posterFrame {
-          --core-size: min(44vw, 560px);
+          --core-size: min(41vw, 520px);
           --orb-shell-size: calc(var(--core-size) + clamp(120px, 12vw, 170px));
           position: absolute;
           inset: 0;
@@ -467,7 +430,7 @@ export default function PrivateHirePage() {
         .posterTitleWrap {
           position: absolute;
           left: 50%;
-          top: calc(50% - (var(--core-size) / 2) - 108px);
+          top: calc(50% - (var(--core-size) / 2) - 98px);
           transform: translateX(-50%);
           z-index: 9;
           width: min(90vw, 900px);
@@ -629,7 +592,7 @@ export default function PrivateHirePage() {
         .posterAreaTitle {
           position: absolute;
           left: 50%;
-          top: calc(50% + (var(--core-size) / 2) + 28px);
+          top: calc(50% + (var(--core-size) / 2) + 20px);
           width: min(820px, calc(100vw - 100px));
           min-height: 78px;
           transform: translateX(-50%);
@@ -673,7 +636,7 @@ export default function PrivateHirePage() {
         .posterInfo {
           position: absolute;
           left: 50%;
-          top: calc(50% + (var(--core-size) / 2) + 118px);
+          top: calc(50% + (var(--core-size) / 2) + 96px);
           width: min(760px, calc(100vw - 120px));
           min-height: 110px;
           transform: translateX(-50%);
@@ -713,6 +676,26 @@ export default function PrivateHirePage() {
           margin-top: 4px;
           font-size: 0.84em;
           opacity: 0.96;
+        }
+
+        .posterFooterContact {
+          position: absolute;
+          left: 50%;
+          bottom: 26px;
+          transform: translateX(-50%);
+          z-index: 12;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          color: ${ACCENT};
+          text-transform: uppercase;
+          letter-spacing: 0.14em;
+          font-size: 0.98rem;
+          font-weight: 700;
+          white-space: nowrap;
+          text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
+          pointer-events: auto;
         }
 
         @keyframes gridPulse {
@@ -872,14 +855,14 @@ export default function PrivateHirePage() {
 
         @media (max-width: 1180px) {
           .posterFrame {
-            --core-size: min(54vw, 520px);
+            --core-size: min(50vw, 480px);
             --orb-shell-size: calc(var(--core-size) + 120px);
             padding-left: 72px;
             padding-right: 72px;
           }
 
           .posterTitleWrap {
-            top: calc(50% - (var(--core-size) / 2) - 96px);
+            top: calc(50% - (var(--core-size) / 2) - 86px);
           }
 
           .posterTitle {
@@ -896,15 +879,8 @@ export default function PrivateHirePage() {
             scroll-snap-type: y proximity;
           }
 
-          .posterLabel {
-            top: 14px;
-            max-width: 44vw;
-            font-size: 0.62rem;
-            letter-spacing: 0.1em;
-          }
-
           .posterFrame {
-            --core-size: min(76vw, 430px);
+            --core-size: min(72vw, 410px);
             --orb-shell-size: calc(var(--core-size) + 96px);
             padding: 84px 20px 118px;
           }
@@ -914,7 +890,7 @@ export default function PrivateHirePage() {
           }
 
           .posterTitleWrap {
-            top: 106px;
+            top: 98px;
             width: min(94vw, 700px);
           }
 
@@ -923,7 +899,7 @@ export default function PrivateHirePage() {
           }
 
           .posterAreaTitle {
-            top: calc(50% + (var(--core-size) / 2) + 22px);
+            top: calc(50% + (var(--core-size) / 2) + 18px);
             width: min(94vw, 700px);
           }
 
@@ -933,7 +909,7 @@ export default function PrivateHirePage() {
           }
 
           .posterInfo {
-            top: calc(50% + (var(--core-size) / 2) + 98px);
+            top: calc(50% + (var(--core-size) / 2) + 82px);
             width: min(92vw, 560px);
           }
 
@@ -963,29 +939,17 @@ export default function PrivateHirePage() {
           .posterNav--next {
             right: 16px;
           }
+
+          .posterFooterContact {
+            bottom: 20px;
+            font-size: 0.84rem;
+            letter-spacing: 0.12em;
+          }
         }
 
         @media (max-width: 560px) {
-          .posterLabel {
-            max-width: 48vw;
-            font-size: 0.47rem;
-            letter-spacing: 0.05em;
-            padding: 7px 8px;
-          }
-
-          .posterLabel--left {
-            left: 10px;
-            top: 10px;
-          }
-
-          .posterLabel--right {
-            right: 10px;
-            top: 10px;
-            text-align: right;
-          }
-
           .posterFrame {
-            --core-size: min(74vw, 320px);
+            --core-size: min(72vw, 310px);
             --orb-shell-size: calc(var(--core-size) + 82px);
             padding: 62px 10px 108px;
           }
@@ -995,7 +959,7 @@ export default function PrivateHirePage() {
           }
 
           .posterTitleWrap {
-            top: 72px;
+            top: 58px;
             width: calc(100vw - 16px);
           }
 
@@ -1005,7 +969,7 @@ export default function PrivateHirePage() {
           }
 
           .posterAreaTitle {
-            top: calc(50% + (var(--core-size) / 2) + 14px);
+            top: calc(50% + (var(--core-size) / 2) + 12px);
             width: calc(100vw - 20px);
             min-height: 48px;
           }
@@ -1018,7 +982,7 @@ export default function PrivateHirePage() {
           }
 
           .posterInfo {
-            top: calc(50% + (var(--core-size) / 2) + 64px);
+            top: calc(50% + (var(--core-size) / 2) + 56px);
             width: calc(100vw - 20px);
           }
 
@@ -1035,6 +999,12 @@ export default function PrivateHirePage() {
 
           .posterNav__text {
             display: none;
+          }
+
+          .posterFooterContact {
+            bottom: 18px;
+            font-size: 0.78rem;
+            letter-spacing: 0.11em;
           }
         }
 
