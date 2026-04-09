@@ -505,7 +505,7 @@ export default function PrivateHirePage() {
           -webkit-mask-image: -webkit-radial-gradient(white, black);
           isolation: isolate;
           contain: paint;
-          background: #0a1310;
+          background: rgba(52, 129, 89, 0.28);
           box-shadow:
             inset 0 0 0 1px rgba(255, 255, 255, 0.03),
             inset 0 0 60px rgba(52, 129, 89, 0.26),
