@@ -292,23 +292,22 @@ export default function PrivateHirePage() {
 
         .posterGridSweep {
           opacity: 0;
-          background:
-            linear-gradient(
-              102deg,
-              transparent 0%,
-              transparent 43%,
-              rgba(180, 255, 221, 0.03) 47%,
-              rgba(180, 255, 221, 0.16) 49.5%,
-              rgba(180, 255, 221, 0.26) 50%,
-              rgba(180, 255, 221, 0.16) 50.5%,
-              rgba(180, 255, 221, 0.03) 53%,
-              transparent 57%,
-              transparent 100%
-            );
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            transparent 36%,
+            rgba(145, 242, 189, 0.03) 42%,
+            rgba(145, 242, 189, 0.12) 46%,
+            rgba(145, 242, 189, 0.24) 50%,
+            rgba(145, 242, 189, 0.12) 54%,
+            rgba(145, 242, 189, 0.03) 58%,
+            transparent 64%,
+            transparent 100%
+          );
           mix-blend-mode: screen;
-          filter: blur(10px);
-          transform: translateX(-120%) skewX(-10deg);
-          animation: gridSweep 16s linear infinite;
+          filter: blur(18px);
+          transform: translateY(-130%);
+          animation: gridSweepVertical 18s linear infinite;
         }
 
         .posterVignette {
@@ -353,7 +352,7 @@ export default function PrivateHirePage() {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          text-shadow: 0 0 8px rgba(52, 129, 89, .5), 0 0 18px rgba(52, 129, 89, .3), 0 0 34px rgba(52, 129, 89, .5);
+          text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
         }
 
         .posterLabel--left {
@@ -384,9 +383,9 @@ export default function PrivateHirePage() {
           font-weight: 700;
           backdrop-filter: blur(10px);
           transform: translateY(-50%);
-          transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease, background 180ms ease;
+          transition: opacity 180ms ease, border-color 180ms ease, background 180ms ease;
           pointer-events: auto;
-          text-shadow: 0 0 8px rgba(52, 129, 89, .5), 0 0 18px rgba(52, 129, 89, .3), 0 0 34px rgba(52, 129, 89, .5);
+          text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
         }
 
         .posterNav:hover,
@@ -429,6 +428,7 @@ export default function PrivateHirePage() {
           z-index: 6;
           display: grid;
           place-items: center;
+          justify-items: center;
           padding: clamp(88px, 11vh, 118px) 88px clamp(72px, 10vh, 100px);
           pointer-events: none;
         }
@@ -459,13 +459,15 @@ export default function PrivateHirePage() {
         }
 
         .orbCluster {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: var(--orb-shell-size);
+          position: relative;
+          width: min(var(--orb-shell-size), calc(100vw - 24px));
           aspect-ratio: 1 / 1;
-          transform: translate(-50%, -50%);
           z-index: 7;
+          display: grid;
+          place-items: center;
+          justify-self: center;
+          align-self: center;
+          margin-inline: auto;
           pointer-events: none;
         }
 
@@ -598,7 +600,7 @@ export default function PrivateHirePage() {
           font-family: 'Orbitron', 'IBM Plex Mono', monospace;
           font-size: 2.2rem;
           font-weight: 900;
-          text-shadow: 0 0 8px rgba(52, 129, 89, .5), 0 0 18px rgba(52, 129, 89, .3), 0 0 34px rgba(52, 129, 89, .5);
+          text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
         }
 
         .posterAreaTitle__item.is-active {
@@ -661,30 +663,26 @@ export default function PrivateHirePage() {
           }
         }
 
-        @keyframes gridSweep {
+        @keyframes gridSweepVertical {
           0%,
-          72% {
+          74% {
             opacity: 0;
-            transform: translateX(-120%) skewX(-10deg);
+            transform: translateY(-130%);
           }
-          76% {
+          78% {
             opacity: 0.12;
           }
-          84% {
-            opacity: 0.34;
-            transform: translateX(18%) skewX(-10deg);
+          86% {
+            opacity: 0.32;
+            transform: translateY(18%);
           }
-          90% {
+          92% {
             opacity: 0.08;
-            transform: translateX(118%) skewX(-10deg);
+            transform: translateY(116%);
           }
           100% {
             opacity: 0;
-            transform: translateX(118%) skewX(-10deg);
-          }
-        }
-          50% {
-            opacity: 0.84;
+            transform: translateY(116%);
           }
         }
 
@@ -759,16 +757,20 @@ export default function PrivateHirePage() {
           .posterFrame {
             --core-size: min(76vw, 430px);
             --orb-shell-size: calc(var(--core-size) + 96px);
-            padding: 84px 24px 118px;
+            padding: 84px 20px 118px;
+          }
+
+          .orbCluster {
+            width: min(var(--orb-shell-size), calc(100vw - 20px));
           }
 
           .posterTitleWrap {
-            top: calc(50% - (var(--core-size) / 2) - 72px);
+            top: 106px;
             width: min(94vw, 700px);
           }
 
           .posterTitle {
-            font-size: 2.8rem;
+            font-size: 2.55rem;
           }
 
           .posterAreaTitle {
@@ -834,24 +836,28 @@ export default function PrivateHirePage() {
           }
 
           .posterFrame {
-            --core-size: min(80vw, 350px);
-            --orb-shell-size: calc(var(--core-size) + 82px);
-            padding: 74px 12px 110px;
+            --core-size: min(76vw, 320px);
+            --orb-shell-size: calc(var(--core-size) + 72px);
+            padding: 70px 10px 108px;
+          }
+
+          .orbCluster {
+            width: min(var(--orb-shell-size), calc(100vw - 10px));
           }
 
           .posterTitleWrap {
-            top: calc(50% - (var(--core-size) / 2) - 60px);
-            width: calc(100vw - 24px);
+            top: 96px;
+            width: calc(100vw - 20px);
           }
 
           .posterTitle {
-            font-size: 2.35rem;
-            letter-spacing: 0.06em;
+            font-size: 1.95rem;
+            letter-spacing: 0.05em;
           }
 
           .posterAreaTitle {
             top: calc(50% + (var(--core-size) / 2) + 18px);
-            width: calc(100vw - 24px);
+            width: calc(100vw - 20px);
             min-height: 54px;
           }
 
@@ -863,7 +869,7 @@ export default function PrivateHirePage() {
 
           .posterInfo {
             top: calc(50% + (var(--core-size) / 2) + 82px);
-            width: calc(100vw - 24px);
+            width: calc(100vw - 20px);
           }
 
           .posterInfo__line {
