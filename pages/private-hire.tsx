@@ -305,7 +305,7 @@ export default function PrivateHirePage() {
         }
 
         .posterSky {
-          background-size: cover;
+          background-size: contain;
           background-position: center;
           filter: saturate(0.92) brightness(0.54);
           opacity: 0.96;
