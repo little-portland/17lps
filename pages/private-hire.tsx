@@ -302,7 +302,7 @@ export default function PrivateHirePage() {
         }
 
         .posterSky {
-          background-size: contain;
+          background-size: cover;
           background-position: center;
           filter: saturate(0.92) brightness(0.54);
           opacity: 0.96;
@@ -311,7 +311,7 @@ export default function PrivateHirePage() {
         .posterGrid {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           mix-blend-mode: screen;
           opacity: 0.78;
           filter: drop-shadow(0 0 18px rgba(52, 129, 89, 0.18));
@@ -867,6 +867,28 @@ export default function PrivateHirePage() {
 
           .posterAreaTitle__item {
             font-size: 1.95rem;
+          }
+        }
+
+        @media (min-width: 861px) {
+          .posterTitleWrap {
+            top: calc(50% - (var(--core-size) / 2) - 128px);
+          }
+
+          .posterAreaTitle {
+            top: calc(50% + (var(--core-size) / 2) + 4px);
+          }
+
+          .posterInfo {
+            top: calc(50% + (var(--core-size) / 2) + 74px);
+          }
+
+          .posterFooterContact {
+            padding: 10px 18px 9px;
+            border-radius: 999px;
+            border: 1px solid rgba(52, 129, 89, 0.42);
+            background: rgba(0, 0, 0, 0.74);
+            box-shadow: 0 0 16px rgba(52, 129, 89, 0.14), inset 0 0 18px rgba(52, 129, 89, 0.08);
           }
         }
 
