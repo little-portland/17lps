@@ -302,7 +302,7 @@ export default function PrivateHirePage() {
         }
 
         .posterSky {
-          background-size: cover;
+          background-size: contain;
           background-position: center;
           filter: saturate(0.92) brightness(0.54);
           opacity: 0.96;
@@ -311,7 +311,7 @@ export default function PrivateHirePage() {
         .posterGrid {
           width: 100%;
           height: 100%;
-          object-fit: contain;
+          object-fit: cover;
           mix-blend-mode: screen;
           opacity: 0.78;
           filter: drop-shadow(0 0 18px rgba(52, 129, 89, 0.18));
@@ -873,6 +873,10 @@ export default function PrivateHirePage() {
         @media (min-width: 861px) {
           .posterTitleWrap {
             top: calc(50% - (var(--core-size) / 2) - 128px);
+          }
+
+          .orbCluster {
+            transform: translateY(-22px);
           }
 
           .posterAreaTitle {
