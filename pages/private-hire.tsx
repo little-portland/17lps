@@ -889,7 +889,6 @@ export default function PrivateHirePage() {
 
           .posterFooterContact {
             padding: 10px 18px 9px;
-            border-radius: 999px;
             border: 1px solid rgba(52, 129, 89, 0.42);
             background: rgba(0, 0, 0, 0.74);
             box-shadow: 0 0 16px rgba(52, 129, 89, 0.14), inset 0 0 18px rgba(52, 129, 89, 0.08);
