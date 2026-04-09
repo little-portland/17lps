@@ -274,7 +274,7 @@ export default function PrivateHirePage() {
         }
 
         .posterSky {
-          background-size: cover;
+          background-size: contain;
           background-position: center;
           filter: saturate(0.92) brightness(0.54);
           opacity: 0.96;
@@ -295,19 +295,19 @@ export default function PrivateHirePage() {
           background: linear-gradient(
             180deg,
             transparent 0%,
-            transparent 36%,
-            rgba(145, 242, 189, 0.03) 42%,
-            rgba(145, 242, 189, 0.12) 46%,
-            rgba(145, 242, 189, 0.24) 50%,
-            rgba(145, 242, 189, 0.12) 54%,
-            rgba(145, 242, 189, 0.03) 58%,
-            transparent 64%,
+            transparent 34%,
+            rgba(145, 242, 189, 0.05) 40%,
+            rgba(145, 242, 189, 0.16) 45%,
+            rgba(145, 242, 189, 0.32) 50%,
+            rgba(145, 242, 189, 0.16) 55%,
+            rgba(145, 242, 189, 0.05) 60%,
+            transparent 66%,
             transparent 100%
           );
           mix-blend-mode: screen;
-          filter: blur(18px);
+          filter: blur(16px);
           transform: translateY(-130%);
-          animation: gridSweepVertical 18s linear infinite;
+          animation: gridSweepVertical 12s linear infinite;
         }
 
         .posterVignette {
@@ -665,10 +665,26 @@ export default function PrivateHirePage() {
 
         @keyframes gridSweepVertical {
           0%,
-          74% {
+          62% {
             opacity: 0;
             transform: translateY(-130%);
           }
+          66% {
+            opacity: 0.14;
+          }
+          78% {
+            opacity: 0.42;
+            transform: translateY(18%);
+          }
+          88% {
+            opacity: 0.12;
+            transform: translateY(116%);
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(116%);
+          }
+        }
           78% {
             opacity: 0.12;
           }
@@ -818,19 +834,19 @@ export default function PrivateHirePage() {
 
         @media (max-width: 560px) {
           .posterLabel {
-            max-width: 42vw;
+            max-width: 46vw;
             font-size: 0.54rem;
             letter-spacing: 0.08em;
             padding: 8px 10px;
           }
 
           .posterLabel--left {
-            left: 12px;
+            left: 10px;
             top: 10px;
           }
 
           .posterLabel--right {
-            right: 12px;
+            right: 10px;
             top: 10px;
             text-align: right;
           }
@@ -846,7 +862,7 @@ export default function PrivateHirePage() {
           }
 
           .posterTitleWrap {
-            top: 96px;
+            top: 102px;
             width: calc(100vw - 20px);
           }
 
