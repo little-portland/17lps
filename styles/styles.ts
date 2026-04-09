@@ -2507,6 +2507,8 @@ html, body {
             margin-bottom: 10px!important;
             max-width: 100%!important;
             line-height: 1.2rem!important;
+            margin-top: -70px!important;
+            margin-bottom: 30px !important;
         }
 
         .header-address {
