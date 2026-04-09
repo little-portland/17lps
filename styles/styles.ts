@@ -2503,10 +2503,10 @@ html, body {
         }
 
         .booking-heading {
-            font-size: 15px;
-            margin-bottom: 10px;
-            max-width: 100%;
-            line-height: 1.2rem;
+            font-size: 15px!important;
+            margin-bottom: 10px!important;
+            max-width: 100%!important;
+            line-height: 1.2rem!important;
         }
 
         .header-address {
