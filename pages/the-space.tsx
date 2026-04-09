@@ -261,7 +261,7 @@ export default function TheSpacePage() {
             background-image: url('${ASSETS.bg}');
             background-position: center center;
             background-repeat: no-repeat;
-            background-size: contain;
+            background-size: cover;
             opacity: 0.65;
             transform: scale(1.03);
           }
