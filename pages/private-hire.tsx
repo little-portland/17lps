@@ -459,15 +459,14 @@ export default function PrivateHirePage() {
         }
 
         .orbCluster {
-          position: relative;
+          position: absolute;
+          left: 50%;
+          top: 50%;
           width: var(--orb-shell-size);
           aspect-ratio: 1 / 1;
+          transform: translate(-50%, -50%);
           z-index: 7;
-          display: grid;
-          place-items: center;
-          justify-self: center;
-          align-self: center;
-          margin-inline: auto;
+          pointer-events: none;
         }
 
         .orbBloomBack {
