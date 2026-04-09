@@ -116,10 +116,6 @@ export default function PrivateHirePage() {
           <div className="posterGridSweep" aria-hidden="true" />
           <div className="posterVignette" />
           <div className="posterNoise" />
-<a href="mailto:yo@little-portland.com" className="posterLabel posterLabel--right">
-              yo@little-portland.com
-            </a>
-          </div>
 
           <button
             type="button"
@@ -191,6 +187,7 @@ export default function PrivateHirePage() {
                 );
               })}
             </div>
+
             <div className="posterInfo">
               {VENUES.map((venue, index) => {
                 const isActive = index === activeIndex;
@@ -305,7 +302,7 @@ export default function PrivateHirePage() {
         }
 
         .posterSky {
-          background-size: contain;
+          background-size: cover;
           background-position: center;
           filter: saturate(0.92) brightness(0.54);
           opacity: 0.96;
@@ -358,7 +355,7 @@ export default function PrivateHirePage() {
           mix-blend-mode: screen;
         }
 
-                .posterNav {
+        .posterNav {
           position: absolute;
           top: 50%;
           z-index: 14;
@@ -687,7 +684,6 @@ export default function PrivateHirePage() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 0;
           color: ${ACCENT};
           text-transform: uppercase;
           letter-spacing: 0.14em;
