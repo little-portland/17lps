@@ -33,8 +33,8 @@ const BookingOptions = () => {
               <h2><span>FRI</span>17 APR</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>BABYBASS & TONY SERBAN</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
+              <h3><span>TENT <b>//</b> </span>Ché Wilson, Semoa</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Tony Serban & BabyBass</h3>
             </div>
         </div>
 
