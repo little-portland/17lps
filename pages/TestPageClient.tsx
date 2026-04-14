@@ -154,7 +154,7 @@ function Scene({
           : "/images/obelisk-grey.png";
 
   return (
-    <div className="scene-wrapper">
+    <div className="scene-wrapper scene-wrapper--test">
       <div className="scene-content">
         <div className="scene-filter">
           <AnimationDesktopOnly
