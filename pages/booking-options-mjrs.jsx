@@ -33,7 +33,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>23 APR</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>GABY D'ANNUNZIO, JIMINY WATTS</h3>
+              <h3><span>TENT <b>//</b> </span>David Agrella, JIMINY WATTS</h3>
               <h3><span>STUDIO <b>//</b> </span>FELIPE VALENZUELA, MIKE SHANNON</h3>
             </div>
         </div>
