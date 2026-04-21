@@ -33,7 +33,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>09 MAY</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>GABRIEL RAI, Ché Wilson</h3>
+              <h3><span>TENT <b>//</b> </span>GABRIEL RAI, Ché Wax</h3>
               <h3><span>STUDIO <b>//</b> </span>ROB MELLO B2B JONNY ROCK</h3>
             </div>
         </div>
