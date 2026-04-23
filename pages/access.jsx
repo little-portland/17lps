@@ -199,29 +199,26 @@ const Menu = ({ menuImage }) => {
               display: none;
             }
 
-            .desktop-row-top,
-            .desktop-row-middle,
-            .desktop-row-bottom {
+            .desktop-art-row,
+            .desktop-panel-row,
+            .desktop-banner-row {
               width: 100%;
             }
 
-            .desktop-row-top {
+            .desktop-art-row {
               display: grid;
-              grid-template-columns: minmax(0, 1fr) 100px;
+              grid-template-columns: minmax(0, 1fr) 108px 214px;
               gap: 18px;
               align-items: stretch;
               margin-bottom: 18px;
+              min-height: 278px;
             }
 
-            .desktop-row-middle {
-              display: grid;
-              grid-template-columns: minmax(0, 1fr) 224px;
-              gap: 18px;
-              align-items: stretch;
+            .desktop-panel-row {
               margin-bottom: 18px;
             }
 
-            .desktop-row-bottom {
+            .desktop-banner-row {
               display: block;
             }
 
@@ -339,17 +336,34 @@ const Menu = ({ menuImage }) => {
               display: block;
               width: 100%;
               height: 100%;
-              object-fit: cover;
+              object-position: center;
               position: relative;
               z-index: 0;
             }
 
-            .square-desktop,
+            .decorative-desktop .graphic-image-fill {
+              object-fit: cover;
+            }
+
+            .tall-desktop .graphic-image-fill,
+            .square-desktop .graphic-image-fill {
+              object-fit: cover;
+            }
+
             .square-mobile,
-            .tall-desktop,
             .tall-mobile {
               display: flex;
               align-items: stretch;
+              min-height: 220px;
+            }
+
+            .square-mobile .graphic-image-fill {
+              object-fit: cover;
+            }
+
+            .tall-mobile .graphic-image-fill {
+              object-fit: contain;
+              background: #000;
             }
 
             .hero-panel {
@@ -398,13 +412,13 @@ const Menu = ({ menuImage }) => {
               font-size: 16px;
               line-height: 1.8;
               letter-spacing: 0.04em;
-              margin-bottom: 26px;
+              margin-bottom: 18px;
               position: relative;
               z-index: 1;
             }
 
             .friend-link-wrap {
-              margin-top: 10px;
+              margin-top: 8px;
               width: 100%;
               position: relative;
               z-index: 1;
@@ -564,32 +578,17 @@ const Menu = ({ menuImage }) => {
                 display: block !important;
               }
 
-              .mobile-row-side {
-                display: grid;
-                grid-template-columns: minmax(0, 1fr) minmax(0, 0.34fr);
-                gap: 14px;
-                align-items: stretch;
-              }
-
               .mobile-row-side,
               .mobile-row-decorative,
               .mobile-row-panel {
                 margin-bottom: 14px;
               }
 
-              .square-mobile {
-                aspect-ratio: 1 / 1;
-              }
-
-              .tall-mobile {
-                aspect-ratio: 1 / 1;
-              }
-
               .friend-link-wrap a {
-                min-height: 40px;
-                padding: 8px 12px;
-                font-size: 11px;
-                line-height: 1.2;
+                min-height: 28px;
+                padding: 6px 10px;
+                font-size: 9px;
+                line-height: 1.05;
               }
 
               .button-label-static,
@@ -629,14 +628,14 @@ const Menu = ({ menuImage }) => {
               </div>
 
               <div className="desktop-only">
-                <div className="desktop-row-top">
-                  <div className="graphic-card orange">
+                <div className="desktop-art-row">
+                  <div className="graphic-card orange decorative-desktop">
                     <Image
                       src="/images/foc/decorative-graphic.png"
                       alt="Decorative horizontal graphic"
                       width={1000}
                       height={300}
-                      className="graphic-image"
+                      className="graphic-image-fill"
                     />
                   </div>
 
@@ -646,12 +645,22 @@ const Menu = ({ menuImage }) => {
                       alt="Tall decorative graphic"
                       width={300}
                       height={1000}
-                      className="graphic-image"
+                      className="graphic-image-fill"
+                    />
+                  </div>
+
+                  <div className="graphic-card orange square-desktop">
+                    <Image
+                      src="/images/foc/square-graphic.png"
+                      alt="Square decorative graphic"
+                      width={500}
+                      height={500}
+                      className="graphic-image-fill"
                     />
                   </div>
                 </div>
 
-                <div className="desktop-row-middle">
+                <div className="desktop-panel-row">
                   <div className="hero-panel">
                     <div className="panel-label">status: accepting enquiries</div>
 
@@ -678,16 +687,6 @@ const Menu = ({ menuImage }) => {
                         </span>
                       </a>
                     </div>
-                  </div>
-
-                  <div className="graphic-card orange square-desktop">
-                    <Image
-                      src="/images/foc/square-graphic.png"
-                      alt="Square decorative graphic"
-                      width={500}
-                      height={500}
-                      className="graphic-image"
-                    />
                   </div>
                 </div>
               </div>
@@ -758,7 +757,7 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="mobile-row-banner">
+              <div className="desktop-banner-row mobile-row-banner">
                 <div className="hero-image-wrap">
                   <div className="hero-image-inner">
                     <Image
