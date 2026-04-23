@@ -149,7 +149,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .content-width {
-              max-width: 1000px;
+              width: 100%;
             }
 
             .hero-kicker {
@@ -335,30 +335,21 @@ const Menu = ({ menuImage }) => {
               z-index: 0;
             }
 
-            .square-desktop,
-            .square-mobile {
-              display: flex;
-              align-items: stretch;
-            }
-
-            .square-desktop img,
-            .square-mobile img {
+            .graphic-image-fill {
+              display: block;
               width: 100%;
               height: 100%;
               object-fit: cover;
+              position: relative;
+              z-index: 0;
             }
 
+            .square-desktop,
+            .square-mobile,
             .tall-desktop,
             .tall-mobile {
               display: flex;
               align-items: stretch;
-            }
-
-            .tall-desktop img,
-            .tall-mobile img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
             }
 
             .hero-panel {
@@ -573,10 +564,32 @@ const Menu = ({ menuImage }) => {
                 display: block !important;
               }
 
+              .mobile-row-side {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 0.34fr);
+                gap: 14px;
+                align-items: stretch;
+              }
+
+              .mobile-row-side,
+              .mobile-row-decorative,
+              .mobile-row-panel {
+                margin-bottom: 14px;
+              }
+
+              .square-mobile {
+                aspect-ratio: 1 / 1;
+              }
+
+              .tall-mobile {
+                aspect-ratio: 1 / 1;
+              }
+
               .friend-link-wrap a {
-                min-height: 54px;
-                font-size: 15px;
-                padding: 14px 16px;
+                min-height: 40px;
+                padding: 8px 12px;
+                font-size: 11px;
+                line-height: 1.2;
               }
 
               .button-label-static,
@@ -615,7 +628,6 @@ const Menu = ({ menuImage }) => {
                 </span>
               </div>
 
-              {/* Desktop layout */}
               <div className="desktop-only">
                 <div className="desktop-row-top">
                   <div className="graphic-card orange">
@@ -680,7 +692,6 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              {/* Mobile layout */}
               <div className="mobile-only">
                 <div className="mobile-row-decorative">
                   <div className="graphic-card orange">
