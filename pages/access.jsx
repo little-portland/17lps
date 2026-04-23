@@ -47,21 +47,13 @@ const Menu = ({ menuImage }) => {
             }
 
             @keyframes panelAmbientPulse {
-              0%, 100% {
-                opacity: 0.18;
-              }
-              50% {
-                opacity: 0.32;
-              }
+              0%, 100% { opacity: 0.18; }
+              50% { opacity: 0.32; }
             }
 
             @keyframes buttonTypeReveal {
-              from {
-                width: 0;
-              }
-              to {
-                width: 100%;
-              }
+              from { width: 0; }
+              to { width: 100%; }
             }
 
             .page-shell {
@@ -71,7 +63,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .nocturn.override {
-              width: min(100%, 980px);
+              width: min(100%, 1120px);
               margin: 0 auto;
               border: 2px solid #39ff14;
               padding: 0;
@@ -153,24 +145,9 @@ const Menu = ({ menuImage }) => {
             }
 
             .poster-inner {
-              padding: 56px 54px 64px;
+              padding: 54px 58px 72px;
               position: relative;
               z-index: 4;
-            }
-
-            .main-poster-grid {
-              display: grid;
-              grid-template-columns: minmax(0, 1fr) 120px;
-              column-gap: 18px;
-              row-gap: 18px;
-              align-items: start;
-            }
-
-            .hero-left {
-              display: flex;
-              flex-direction: column;
-              gap: 24px;
-              width: 100%;
             }
 
             .hero-kicker {
@@ -179,7 +156,7 @@ const Menu = ({ menuImage }) => {
               text-transform: uppercase;
               font-size: 13px;
               letter-spacing: 0.18em;
-              margin-bottom: 8px;
+              margin-bottom: 10px;
               font-weight: 700;
             }
 
@@ -187,26 +164,21 @@ const Menu = ({ menuImage }) => {
               color: #ffab00;
               font-family: "Courier New", monospace;
               text-transform: lowercase;
-              font-size: clamp(36px, 7vw, 54px);
+              font-size: clamp(42px, 7vw, 64px);
               line-height: 0.95;
               letter-spacing: 0.08em;
-              margin: 0;
+              margin: 0 0 26px 0;
               font-weight: 700;
-            }
-
-            .hero-heading-line {
-              display: inline-block;
-              position: relative;
-              white-space: nowrap;
             }
 
             .hero-copy {
               color: #ffab00;
               font-family: "Courier New", monospace;
               font-size: 18px;
-              line-height: 1.8;
+              line-height: 1.7;
               letter-spacing: 0.06em;
               text-transform: lowercase;
+              margin-bottom: 26px;
             }
 
             .hero-copy-line {
@@ -217,34 +189,47 @@ const Menu = ({ menuImage }) => {
               color: #39ff14;
             }
 
-            .top-copy {
-              grid-column: 1;
-              grid-row: 1;
-            }
-
-            .top-tall {
-              grid-column: 2;
-              grid-row: 1 / span 2;
-            }
-
-            .mid-graphics {
-              grid-column: 1;
-              grid-row: 2;
+            .poster-grid {
               display: grid;
-              grid-template-columns: minmax(0, 1.7fr) minmax(140px, 0.7fr);
-              gap: 18px;
+              grid-template-columns: minmax(0, 1fr) 120px;
+              grid-template-areas:
+                "copy tall"
+                "row  tall"
+                "panel panel"
+                "banner banner";
+              column-gap: 22px;
+              row-gap: 18px;
               align-items: start;
             }
 
-            .green-panel-wrap {
-              grid-column: 1;
-              grid-row: 3;
+            .copy-area {
+              grid-area: copy;
+              max-width: 820px;
             }
 
-            .bottom-banner-wrap {
-              grid-column: 1 / -1;
-              grid-row: 4;
-              padding-top: 10px;
+            .row-area {
+              grid-area: row;
+              display: grid;
+              grid-template-columns: minmax(0, 1fr) 128px;
+              gap: 18px;
+              align-items: start;
+              max-width: 820px;
+            }
+
+            .tall-area {
+              grid-area: tall;
+              align-self: start;
+              padding-top: 16px;
+            }
+
+            .panel-area {
+              grid-area: panel;
+              max-width: 940px;
+            }
+
+            .banner-area {
+              grid-area: banner;
+              max-width: 1080px;
             }
 
             .graphic-card,
@@ -318,6 +303,7 @@ const Menu = ({ menuImage }) => {
 
             .hero-image-wrap {
               border: 2px solid #39ff14;
+              padding: 10px;
             }
 
             .hero-image-wrap::after {
@@ -337,7 +323,7 @@ const Menu = ({ menuImage }) => {
               z-index: 0;
             }
 
-            .graphic-tall {
+            .graphic-decorative {
               width: 100%;
             }
 
@@ -345,7 +331,7 @@ const Menu = ({ menuImage }) => {
               width: 100%;
             }
 
-            .graphic-decorative {
+            .graphic-tall {
               width: 100%;
             }
 
@@ -476,12 +462,6 @@ const Menu = ({ menuImage }) => {
               animation: buttonTypeReveal 0.8s steps(36, end) 1 forwards;
             }
 
-            .hero-image-wrap {
-              width: 100%;
-              margin: 0;
-              padding: 10px;
-            }
-
             .hero-image-inner {
               width: 100%;
               background: #030303;
@@ -516,6 +496,40 @@ const Menu = ({ menuImage }) => {
               }
             }
 
+            @media (max-width: 900px) {
+              .poster-inner {
+                padding: 28px 18px 32px;
+              }
+
+              .poster-grid {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                  "copy"
+                  "row"
+                  "tall"
+                  "panel"
+                  "banner";
+                row-gap: 14px;
+              }
+
+              .copy-area,
+              .row-area,
+              .panel-area,
+              .banner-area,
+              .top-copy {
+                max-width: 100%;
+              }
+
+              .row-area {
+                grid-template-columns: 1fr;
+              }
+
+              .tall-area {
+                max-width: 120px;
+                padding-top: 0;
+              }
+            }
+
             @media (max-width: 768px) {
               .page-shell {
                 padding: 14px;
@@ -539,12 +553,9 @@ const Menu = ({ menuImage }) => {
                 font-size: 15px;
               }
 
-              .poster-inner {
-                padding: 28px 18px 32px;
-              }
-
               .hero-heading {
                 font-size: 30px;
+                margin-bottom: 18px;
               }
 
               .hero-copy,
@@ -556,34 +567,6 @@ const Menu = ({ menuImage }) => {
               .hero-kicker,
               .panel-label {
                 font-size: 12px;
-              }
-
-              .main-poster-grid {
-                grid-template-columns: 1fr;
-                row-gap: 14px;
-              }
-
-              .top-copy,
-              .top-tall,
-              .green-panel-wrap,
-              .bottom-banner-wrap {
-                grid-column: 1;
-                grid-row: auto;
-              }
-
-              .mid-graphics {
-                grid-column: 1;
-                grid-row: auto;
-                grid-template-columns: 1fr;
-                gap: 14px;
-              }
-
-              .top-tall {
-                max-width: 120px;
-              }
-
-              .graphic-square {
-                max-width: 180px;
               }
 
               .friend-link-wrap a {
@@ -615,28 +598,24 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="poster-inner">
-            <div className="main-poster-grid">
-              <div className="top-copy">
-                <div className="hero-left">
-                  <div>
-                    <div className="hero-kicker">17 little portland street</div>
-                    <h1 className="hero-heading">
-                      <span className="hero-heading-line">access protocol</span>
-                    </h1>
-                  </div>
+            <div className="poster-grid">
+              <div className="copy-area">
+                <div className="hero-kicker">17 little portland street</div>
+                <h1 className="hero-heading">
+                  <span className="hero-heading-line">access protocol</span>
+                </h1>
 
-                  <div className="hero-copy">
-                    <span className="hero-copy-line line-1">
-                      entry to the club is reserved for <span className="green">friends of the club</span>.
-                    </span>
-                    <span className="hero-copy-line line-2">
-                      submit your enquiry to begin the process.
-                    </span>
-                  </div>
+                <div className="hero-copy">
+                  <span className="hero-copy-line line-1">
+                    entry to the club is reserved for <span className="green">friends of the club</span>.
+                  </span>
+                  <span className="hero-copy-line line-2">
+                    submit your enquiry to begin the process.
+                  </span>
                 </div>
               </div>
 
-              <div className="top-tall">
+              <div className="tall-area">
                 <div className="graphic-card red graphic-tall">
                   <Image
                     src="/images/foc/tall-graphic.png"
@@ -648,7 +627,7 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="mid-graphics">
+              <div className="row-area">
                 <div className="graphic-card orange graphic-decorative">
                   <Image
                     src="/images/foc/decorative-graphic.png"
@@ -670,7 +649,7 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="green-panel-wrap">
+              <div className="panel-area">
                 <div className="hero-panel">
                   <div className="panel-label">status: accepting enquiries</div>
 
@@ -700,7 +679,7 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="bottom-banner-wrap">
+              <div className="banner-area">
                 <div className="hero-image-wrap">
                   <div className="hero-image-inner">
                     <Image
