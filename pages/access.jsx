@@ -150,6 +150,10 @@ const Menu = ({ menuImage }) => {
               z-index: 4;
             }
 
+            .layout-width {
+              width: 100%;
+            }
+
             .hero-kicker {
               color: #39ff14;
               font-family: "Courier New", monospace;
@@ -178,7 +182,7 @@ const Menu = ({ menuImage }) => {
               line-height: 1.7;
               letter-spacing: 0.06em;
               text-transform: lowercase;
-              margin-bottom: 26px;
+              margin-bottom: 28px;
             }
 
             .hero-copy-line {
@@ -189,47 +193,41 @@ const Menu = ({ menuImage }) => {
               color: #39ff14;
             }
 
-            .poster-grid {
+            .desktop-only {
+              display: block;
+            }
+
+            .mobile-only {
+              display: none;
+            }
+
+            .desktop-art-row,
+            .desktop-panel-row,
+            .bottom-banner-row,
+            .mobile-decorative-row,
+            .mobile-side-row,
+            .mobile-panel-row {
+              width: 100%;
+            }
+
+            .desktop-art-row {
               display: grid;
-              grid-template-columns: minmax(0, 1fr) 120px;
-              grid-template-areas:
-                "copy tall"
-                "row  tall"
-                "panel panel"
-                "banner banner";
-              column-gap: 22px;
-              row-gap: 18px;
+              grid-template-columns: minmax(0, 1fr) 122px;
+              gap: 18px;
               align-items: start;
+              margin-bottom: 18px;
             }
 
-            .copy-area {
-              grid-area: copy;
-              max-width: 820px;
-            }
-
-            .row-area {
-              grid-area: row;
+            .desktop-panel-row {
               display: grid;
               grid-template-columns: minmax(0, 1fr) 128px;
               gap: 18px;
               align-items: start;
-              max-width: 820px;
+              margin-bottom: 18px;
             }
 
-            .tall-area {
-              grid-area: tall;
-              align-self: start;
-              padding-top: 16px;
-            }
-
-            .panel-area {
-              grid-area: panel;
-              max-width: 940px;
-            }
-
-            .banner-area {
-              grid-area: banner;
-              max-width: 1080px;
+            .bottom-banner-row {
+              margin-top: 0;
             }
 
             .graphic-card,
@@ -289,15 +287,15 @@ const Menu = ({ menuImage }) => {
             }
 
             .graphic-card.red {
-              border: 2px solid #c40000;
+              border: 2px solid #ff2020;
             }
 
             .graphic-card.red::after {
               background: linear-gradient(
                 90deg,
-                rgba(196,0,0,0) 0%,
-                rgba(196,0,0,0.14) 50%,
-                rgba(196,0,0,0) 100%
+                rgba(255,32,32,0) 0%,
+                rgba(255,32,32,0.12) 50%,
+                rgba(255,32,32,0) 100%
               );
             }
 
@@ -323,16 +321,13 @@ const Menu = ({ menuImage }) => {
               z-index: 0;
             }
 
-            .graphic-decorative {
+            .graphic-image-fill {
               width: 100%;
-            }
-
-            .graphic-square {
-              width: 100%;
-            }
-
-            .graphic-tall {
-              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              display: block;
+              position: relative;
+              z-index: 0;
             }
 
             .hero-panel {
@@ -476,6 +471,20 @@ const Menu = ({ menuImage }) => {
               height: auto;
             }
 
+            .square-card-desktop {
+              align-self: stretch;
+            }
+
+            .square-card-desktop .graphic-image {
+              width: 100%;
+              height: auto;
+            }
+
+            .tall-card-desktop .graphic-image {
+              width: 100%;
+              height: auto;
+            }
+
             @media (prefers-reduced-motion: reduce) {
               .nocturn.override::after,
               .panel-label::after,
@@ -493,40 +502,6 @@ const Menu = ({ menuImage }) => {
               .friend-link-wrap a:hover .button-label-typed {
                 width: 100% !important;
                 opacity: 1 !important;
-              }
-            }
-
-            @media (max-width: 900px) {
-              .poster-inner {
-                padding: 28px 18px 32px;
-              }
-
-              .poster-grid {
-                grid-template-columns: 1fr;
-                grid-template-areas:
-                  "copy"
-                  "row"
-                  "tall"
-                  "panel"
-                  "banner";
-                row-gap: 14px;
-              }
-
-              .copy-area,
-              .row-area,
-              .panel-area,
-              .banner-area,
-              .top-copy {
-                max-width: 100%;
-              }
-
-              .row-area {
-                grid-template-columns: 1fr;
-              }
-
-              .tall-area {
-                max-width: 120px;
-                padding-top: 0;
               }
             }
 
@@ -553,6 +528,10 @@ const Menu = ({ menuImage }) => {
                 font-size: 15px;
               }
 
+              .poster-inner {
+                padding: 28px 18px 32px;
+              }
+
               .hero-heading {
                 font-size: 30px;
                 margin-bottom: 18px;
@@ -567,6 +546,50 @@ const Menu = ({ menuImage }) => {
               .hero-kicker,
               .panel-label {
                 font-size: 12px;
+              }
+
+              .desktop-only {
+                display: none !important;
+              }
+
+              .mobile-only {
+                display: block !important;
+              }
+
+              .mobile-decorative-row {
+                margin-bottom: 14px;
+              }
+
+              .mobile-side-row {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(86px, 0.46fr);
+                gap: 14px;
+                align-items: stretch;
+                margin-bottom: 14px;
+              }
+
+              .mobile-side-row .square-card-mobile {
+                aspect-ratio: 1 / 1;
+                display: flex;
+                align-items: stretch;
+                justify-content: stretch;
+              }
+
+              .mobile-side-row .tall-card-mobile {
+                display: flex;
+                align-items: stretch;
+                justify-content: stretch;
+              }
+
+              .mobile-side-row .square-card-mobile img,
+              .mobile-side-row .tall-card-mobile img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+              }
+
+              .mobile-panel-row {
+                margin-bottom: 14px;
               }
 
               .friend-link-wrap a {
@@ -598,25 +621,33 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="poster-inner">
-            <div className="poster-grid">
-              <div className="copy-area">
-                <div className="hero-kicker">17 little portland street</div>
-                <h1 className="hero-heading">
-                  <span className="hero-heading-line">access protocol</span>
-                </h1>
+            <div className="layout-width">
+              <div className="hero-kicker">17 little portland street</div>
 
-                <div className="hero-copy">
-                  <span className="hero-copy-line line-1">
-                    entry to the club is reserved for <span className="green">friends of the club</span>.
-                  </span>
-                  <span className="hero-copy-line line-2">
-                    submit your enquiry to begin the process.
-                  </span>
-                </div>
+              <h1 className="hero-heading">access protocol</h1>
+
+              <div className="hero-copy">
+                <span className="hero-copy-line">
+                  entry to the club is reserved for <span className="green">friends of the club</span>.
+                </span>
+                <span className="hero-copy-line">
+                  submit your enquiry to begin the process.
+                </span>
               </div>
 
-              <div className="tall-area">
-                <div className="graphic-card red graphic-tall">
+              {/* DESKTOP: decorative + tall red */}
+              <div className="desktop-only desktop-art-row">
+                <div className="graphic-card orange decorative-card-desktop">
+                  <Image
+                    src="/images/foc/decorative-graphic.png"
+                    alt="Decorative horizontal graphic"
+                    width={1000}
+                    height={300}
+                    className="graphic-image"
+                  />
+                </div>
+
+                <div className="graphic-card red tall-card-desktop">
                   <Image
                     src="/images/foc/tall-graphic.png"
                     alt="Tall decorative graphic"
@@ -627,8 +658,9 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="row-area">
-                <div className="graphic-card orange graphic-decorative">
+              {/* MOBILE: decorative on its own row */}
+              <div className="mobile-only mobile-decorative-row">
+                <div className="graphic-card orange">
                   <Image
                     src="/images/foc/decorative-graphic.png"
                     alt="Decorative horizontal graphic"
@@ -637,8 +669,39 @@ const Menu = ({ menuImage }) => {
                     className="graphic-image"
                   />
                 </div>
+              </div>
 
-                <div className="graphic-card orange graphic-square">
+              {/* DESKTOP: green panel + square */}
+              <div className="desktop-only desktop-panel-row">
+                <div className="hero-panel">
+                  <div className="panel-label">status: accepting enquiries</div>
+
+                  <div className="panel-copy">
+                    membership requests are handled via direct contact.
+                    <br />
+                    use the transmission panel below.
+                  </div>
+
+                  <div className="friend-link-wrap">
+                    <a
+                      href="mailto:friends@little-portland.com?subject=FOC Enquiry"
+                      aria-label="apply to become a friend of the club"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="button-text-wrap">
+                        <span className="button-label-static">
+                          apply to become a friend of the club
+                        </span>
+                        <span className="button-label-typed">
+                          apply to become a friend of the club
+                        </span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="graphic-card orange square-card-desktop">
                   <Image
                     src="/images/foc/square-graphic.png"
                     alt="Square decorative graphic"
@@ -649,7 +712,31 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="panel-area">
+              {/* MOBILE: square left, tall red right, same row / same height */}
+              <div className="mobile-only mobile-side-row">
+                <div className="graphic-card orange square-card-mobile">
+                  <Image
+                    src="/images/foc/square-graphic.png"
+                    alt="Square decorative graphic"
+                    width={500}
+                    height={500}
+                    className="graphic-image-fill"
+                  />
+                </div>
+
+                <div className="graphic-card red tall-card-mobile">
+                  <Image
+                    src="/images/foc/tall-graphic.png"
+                    alt="Tall decorative graphic"
+                    width={300}
+                    height={1000}
+                    className="graphic-image-fill"
+                  />
+                </div>
+              </div>
+
+              {/* MOBILE: green panel full width */}
+              <div className="mobile-only mobile-panel-row">
                 <div className="hero-panel">
                   <div className="panel-label">status: accepting enquiries</div>
 
@@ -679,7 +766,7 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="banner-area">
+              <div className="bottom-banner-row">
                 <div className="hero-image-wrap">
                   <div className="hero-image-inner">
                     <Image
