@@ -158,18 +158,32 @@ const Menu = ({ menuImage }) => {
               z-index: 4;
             }
 
-            .hero-grid {
+            .content-layout {
               display: grid;
-              grid-template-columns: 1fr;
-              gap: 28px;
+              grid-template-columns: minmax(0, 1fr) 110px;
+              gap: 18px;
               align-items: start;
-              width: 100%;
+            }
+
+            .main-column {
+              min-width: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 22px;
+            }
+
+            .side-rail {
+              min-width: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+              align-items: stretch;
             }
 
             .hero-left {
               display: flex;
               flex-direction: column;
-              gap: 26px;
+              gap: 24px;
               width: 100%;
             }
 
@@ -215,6 +229,108 @@ const Menu = ({ menuImage }) => {
 
             .hero-copy .green {
               color: #39ff14;
+            }
+
+            .mini-decor-row {
+              display: flex;
+              justify-content: flex-start;
+            }
+
+            .graphic-card {
+              background: #000;
+              padding: 10px;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .graphic-card::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              pointer-events: none;
+              background:
+                repeating-linear-gradient(
+                  to bottom,
+                  rgba(255,255,255,0.018) 0px,
+                  rgba(255,255,255,0.018) 1px,
+                  transparent 1px,
+                  transparent 4px
+                );
+              opacity: 0.1;
+              z-index: 1;
+            }
+
+            .graphic-card::after,
+            .hero-image-wrap::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              width: 100%;
+              pointer-events: none;
+              transform: translateX(-120%);
+              z-index: 2;
+              animation: imageSweep 4.8s linear infinite;
+            }
+
+            .graphic-card.orange {
+              border: 2px solid #ffab00;
+            }
+
+            .graphic-card.orange::after {
+              background: linear-gradient(
+                90deg,
+                rgba(255,171,0,0) 0%,
+                rgba(255,171,0,0.12) 50%,
+                rgba(255,171,0,0) 100%
+              );
+            }
+
+            .graphic-card.red {
+              border: 2px solid #c40000;
+            }
+
+            .graphic-card.red::after {
+              background: linear-gradient(
+                90deg,
+                rgba(196,0,0,0) 0%,
+                rgba(196,0,0,0.14) 50%,
+                rgba(196,0,0,0) 100%
+              );
+            }
+
+            .graphic-card.green {
+              border: 2px solid #39ff14;
+            }
+
+            .graphic-card.green::after,
+            .hero-image-wrap::after {
+              background: linear-gradient(
+                90deg,
+                rgba(57,255,20,0) 0%,
+                rgba(57,255,20,0.12) 50%,
+                rgba(57,255,20,0) 100%
+              );
+            }
+
+            .graphic-card.square-compact {
+              width: 100%;
+            }
+
+            .graphic-card.tall-compact {
+              width: 100%;
+            }
+
+            .graphic-card.decorative-inline {
+              width: min(100%, 320px);
+            }
+
+            .graphic-image {
+              display: block;
+              width: 100%;
+              height: auto;
+              position: relative;
+              z-index: 0;
             }
 
             .hero-panel {
@@ -346,114 +462,10 @@ const Menu = ({ menuImage }) => {
               animation: buttonTypeReveal 0.8s steps(36, end) 1 forwards;
             }
 
-            .graphics-grid {
-              margin-top: 22px;
-              display: grid;
-              grid-template-columns: minmax(0, 1fr) 120px;
-              grid-template-areas:
-                "square tall"
-                "decorative tall";
-              gap: 18px;
-              align-items: stretch;
-            }
-
-            .graphic-card {
-              background: #000;
-              padding: 10px;
-              position: relative;
-              overflow: hidden;
-            }
-
-            .graphic-card::before {
-              content: "";
-              position: absolute;
-              inset: 0;
-              pointer-events: none;
-              background:
-                repeating-linear-gradient(
-                  to bottom,
-                  rgba(255,255,255,0.018) 0px,
-                  rgba(255,255,255,0.018) 1px,
-                  transparent 1px,
-                  transparent 4px
-                );
-              opacity: 0.1;
-              z-index: 1;
-            }
-
-            .graphic-card.green {
-              border: 2px solid #39ff14;
-            }
-
-            .graphic-card.orange {
-              border: 2px solid #ffab00;
-            }
-
-            .graphic-card.red {
-              border: 2px solid #c40000;
-            }
-
-            .graphic-card.square {
-              grid-area: square;
-            }
-
-            .graphic-card.tall {
-              grid-area: tall;
-            }
-
-            .graphic-card.decorative {
-              grid-area: decorative;
-            }
-
-            .graphic-inner {
-              position: relative;
-              width: 100%;
-              background: #000;
-              line-height: 0;
-              z-index: 0;
-            }
-
-            .graphic-card.square .graphic-inner {
-              aspect-ratio: 1 / 1;
-            }
-
-            .graphic-card.tall .graphic-inner {
-              aspect-ratio: 3 / 10;
-              height: 100%;
-              min-height: 100%;
-            }
-
-            .graphic-card.decorative .graphic-inner {
-              aspect-ratio: 10 / 3;
-            }
-
-            .graphic-img {
-              display: block;
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-
             .poster-footer {
-              padding-top: 40px;
-              display: grid;
-              grid-template-columns: 1fr;
-              align-items: end;
+              padding-top: 28px;
+              display: block;
               position: relative;
-            }
-
-            .footer-meta {
-              font-family: "Courier New", monospace;
-              color: #ffab00;
-              text-transform: lowercase;
-              font-size: 14px;
-              line-height: 1.9;
-              letter-spacing: 0.08em;
-              font-weight: 700;
-            }
-
-            .footer-accent {
-              color: #39ff14;
             }
 
             .hero-image-wrap {
@@ -483,43 +495,6 @@ const Menu = ({ menuImage }) => {
               z-index: 1;
             }
 
-            .hero-image-wrap::after,
-            .graphic-card::after {
-              content: "";
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              width: 100%;
-              pointer-events: none;
-              background: linear-gradient(
-                90deg,
-                rgba(57,255,20,0) 0%,
-                rgba(57,255,20,0.12) 50%,
-                rgba(57,255,20,0) 100%
-              );
-              transform: translateX(-120%);
-              animation: imageSweep 4.8s linear infinite;
-              z-index: 2;
-            }
-
-            .graphic-card.orange::after {
-              background: linear-gradient(
-                90deg,
-                rgba(255,171,0,0) 0%,
-                rgba(255,171,0,0.14) 50%,
-                rgba(255,171,0,0) 100%
-              );
-            }
-
-            .graphic-card.red::after {
-              background: linear-gradient(
-                90deg,
-                rgba(196,0,0,0) 0%,
-                rgba(196,0,0,0.16) 50%,
-                rgba(196,0,0,0) 100%
-              );
-            }
-
             .hero-image-inner {
               width: 100%;
               background: #030303;
@@ -537,8 +512,8 @@ const Menu = ({ menuImage }) => {
             @media (prefers-reduced-motion: reduce) {
               .nocturn.override::after,
               .panel-label::after,
-              .hero-image-wrap::after,
               .graphic-card::after,
+              .hero-image-wrap::after,
               .hero-panel::before,
               .friend-link-wrap a:hover .button-label-typed {
                 animation: none !important;
@@ -581,9 +556,17 @@ const Menu = ({ menuImage }) => {
                 padding: 28px 18px 32px;
               }
 
-              .hero-grid {
+              .content-layout {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 16px;
+              }
+
+              .side-rail {
+                display: grid;
+                grid-template-columns: minmax(0, 120px) minmax(0, 90px);
+                gap: 14px;
+                align-items: start;
+                justify-content: start;
               }
 
               .hero-heading {
@@ -597,8 +580,7 @@ const Menu = ({ menuImage }) => {
               }
 
               .hero-kicker,
-              .panel-label,
-              .footer-meta {
+              .panel-label {
                 font-size: 12px;
               }
 
@@ -613,21 +595,12 @@ const Menu = ({ menuImage }) => {
                 white-space: normal;
               }
 
-              .graphics-grid {
-                grid-template-columns: 1fr;
-                grid-template-areas:
-                  "square"
-                  "tall"
-                  "decorative";
-                gap: 14px;
-              }
-
-              .graphic-card.tall .graphic-inner {
-                aspect-ratio: 3 / 8;
+              .graphic-card.decorative-inline {
+                width: min(100%, 240px);
               }
 
               .poster-footer {
-                gap: 12px;
+                padding-top: 22px;
               }
             }
           `}
@@ -648,88 +621,86 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="poster-inner">
-            <div className="hero-grid">
-              <div className="hero-left">
-                <div>
-                  <div className="hero-kicker">17 little portland street</div>
-                  <h1 className="hero-heading">
-                    <span className="hero-heading-line">access protocol</span>
-                  </h1>
-                </div>
+            <div className="content-layout">
+              <div className="main-column">
+                <div className="hero-left">
+                  <div>
+                    <div className="hero-kicker">17 little portland street</div>
+                    <h1 className="hero-heading">
+                      <span className="hero-heading-line">access protocol</span>
+                    </h1>
+                  </div>
 
-                <div className="hero-copy">
-                  <span className="hero-copy-line line-1">
-                    entry to the club is reserved for <span className="green">friends of the club</span>.
-                  </span>
-                  <span className="hero-copy-line line-2">
-                    submit your enquiry to begin the process.
-                  </span>
-                </div>
-              </div>
-
-              <div className="hero-panel">
-                <div className="panel-label">status: accepting enquiries</div>
-
-                <div className="panel-copy">
-                  membership requests are handled via direct contact.
-                  <br />
-                  use the transmission panel below.
-                </div>
-
-                <div className="friend-link-wrap">
-                  <a
-                    href="mailto:friends@little-portland.com?subject=FOC Enquiry"
-                    aria-label="apply to become a friend of the club"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span className="button-text-wrap">
-                      <span className="button-label-static">
-                        apply to become a friend of the club
-                      </span>
-                      <span className="button-label-typed">
-                        apply to become a friend of the club
-                      </span>
+                  <div className="hero-copy">
+                    <span className="hero-copy-line line-1">
+                      entry to the club is reserved for <span className="green">friends of the club</span>.
                     </span>
-                  </a>
-                </div>
-              </div>
-
-              <div className="graphics-grid">
-                <div className="graphic-card orange square">
-                  <div className="graphic-inner">
-                    <Image
-                      src="/images/foc/square-graphic.png"
-                      alt="Decorative square graphic"
-                      fill
-                      className="graphic-img"
-                      sizes="(max-width: 768px) 100vw, 70vw"
-                    />
+                    <span className="hero-copy-line line-2">
+                      submit your enquiry to begin the process.
+                    </span>
                   </div>
                 </div>
 
-                <div className="graphic-card red tall">
-                  <div className="graphic-inner">
-                    <Image
-                      src="/images/foc/tall-graphic.png"
-                      alt="Decorative tall graphic"
-                      fill
-                      className="graphic-img"
-                      sizes="(max-width: 768px) 100vw, 20vw"
-                    />
-                  </div>
-                </div>
-
-                <div className="graphic-card orange decorative">
-                  <div className="graphic-inner">
+                <div className="mini-decor-row">
+                  <div className="graphic-card orange decorative-inline">
                     <Image
                       src="/images/foc/decorative-graphic.png"
-                      alt="Decorative footer graphic"
-                      fill
-                      className="graphic-img"
-                      sizes="(max-width: 768px) 100vw, 70vw"
+                      alt="Decorative graphic"
+                      width={1000}
+                      height={300}
+                      className="graphic-image"
                     />
                   </div>
+                </div>
+
+                <div className="hero-panel">
+                  <div className="panel-label">status: accepting enquiries</div>
+
+                  <div className="panel-copy">
+                    membership requests are handled via direct contact.
+                    <br />
+                    use the transmission panel below.
+                  </div>
+
+                  <div className="friend-link-wrap">
+                    <a
+                      href="mailto:friends@little-portland.com?subject=FOC Enquiry"
+                      aria-label="apply to become a friend of the club"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="button-text-wrap">
+                        <span className="button-label-static">
+                          apply to become a friend of the club
+                        </span>
+                        <span className="button-label-typed">
+                          apply to become a friend of the club
+                        </span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="side-rail">
+                <div className="graphic-card orange square-compact">
+                  <Image
+                    src="/images/foc/square-graphic.png"
+                    alt="Square decorative graphic"
+                    width={500}
+                    height={500}
+                    className="graphic-image"
+                  />
+                </div>
+
+                <div className="graphic-card red tall-compact">
+                  <Image
+                    src="/images/foc/tall-graphic.png"
+                    alt="Tall decorative graphic"
+                    width={300}
+                    height={1000}
+                    className="graphic-image"
+                  />
                 </div>
               </div>
             </div>
