@@ -346,10 +346,98 @@ const Menu = ({ menuImage }) => {
               animation: buttonTypeReveal 0.8s steps(36, end) 1 forwards;
             }
 
+            .graphics-grid {
+              margin-top: 22px;
+              display: grid;
+              grid-template-columns: minmax(0, 1fr) 120px;
+              grid-template-areas:
+                "square tall"
+                "decorative tall";
+              gap: 18px;
+              align-items: stretch;
+            }
+
+            .graphic-card {
+              background: #000;
+              padding: 10px;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .graphic-card::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              pointer-events: none;
+              background:
+                repeating-linear-gradient(
+                  to bottom,
+                  rgba(255,255,255,0.018) 0px,
+                  rgba(255,255,255,0.018) 1px,
+                  transparent 1px,
+                  transparent 4px
+                );
+              opacity: 0.1;
+              z-index: 1;
+            }
+
+            .graphic-card.green {
+              border: 2px solid #39ff14;
+            }
+
+            .graphic-card.orange {
+              border: 2px solid #ffab00;
+            }
+
+            .graphic-card.red {
+              border: 2px solid #c40000;
+            }
+
+            .graphic-card.square {
+              grid-area: square;
+            }
+
+            .graphic-card.tall {
+              grid-area: tall;
+            }
+
+            .graphic-card.decorative {
+              grid-area: decorative;
+            }
+
+            .graphic-inner {
+              position: relative;
+              width: 100%;
+              background: #000;
+              line-height: 0;
+              z-index: 0;
+            }
+
+            .graphic-card.square .graphic-inner {
+              aspect-ratio: 1 / 1;
+            }
+
+            .graphic-card.tall .graphic-inner {
+              aspect-ratio: 3 / 10;
+              height: 100%;
+              min-height: 100%;
+            }
+
+            .graphic-card.decorative .graphic-inner {
+              aspect-ratio: 10 / 3;
+            }
+
+            .graphic-img {
+              display: block;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+
             .poster-footer {
               padding-top: 40px;
               display: grid;
-              grid-template-columns: 1fr auto;
+              grid-template-columns: 1fr;
               align-items: end;
               position: relative;
             }
@@ -395,7 +483,8 @@ const Menu = ({ menuImage }) => {
               z-index: 1;
             }
 
-            .hero-image-wrap::after {
+            .hero-image-wrap::after,
+            .graphic-card::after {
               content: "";
               position: absolute;
               top: 0;
@@ -411,6 +500,24 @@ const Menu = ({ menuImage }) => {
               transform: translateX(-120%);
               animation: imageSweep 4.8s linear infinite;
               z-index: 2;
+            }
+
+            .graphic-card.orange::after {
+              background: linear-gradient(
+                90deg,
+                rgba(255,171,0,0) 0%,
+                rgba(255,171,0,0.14) 50%,
+                rgba(255,171,0,0) 100%
+              );
+            }
+
+            .graphic-card.red::after {
+              background: linear-gradient(
+                90deg,
+                rgba(196,0,0,0) 0%,
+                rgba(196,0,0,0.16) 50%,
+                rgba(196,0,0,0) 100%
+              );
             }
 
             .hero-image-inner {
@@ -430,8 +537,8 @@ const Menu = ({ menuImage }) => {
             @media (prefers-reduced-motion: reduce) {
               .nocturn.override::after,
               .panel-label::after,
-              .poster-title::after,
               .hero-image-wrap::after,
+              .graphic-card::after,
               .hero-panel::before,
               .friend-link-wrap a:hover .button-label-typed {
                 animation: none !important;
@@ -506,8 +613,20 @@ const Menu = ({ menuImage }) => {
                 white-space: normal;
               }
 
-              .poster-footer {
+              .graphics-grid {
                 grid-template-columns: 1fr;
+                grid-template-areas:
+                  "square"
+                  "tall"
+                  "decorative";
+                gap: 14px;
+              }
+
+              .graphic-card.tall .graphic-inner {
+                aspect-ratio: 3 / 8;
+              }
+
+              .poster-footer {
                 gap: 12px;
               }
             }
@@ -573,6 +692,44 @@ const Menu = ({ menuImage }) => {
                       </span>
                     </span>
                   </a>
+                </div>
+              </div>
+
+              <div className="graphics-grid">
+                <div className="graphic-card orange square">
+                  <div className="graphic-inner">
+                    <Image
+                      src="/images/foc/square-graphic.png"
+                      alt="Decorative square graphic"
+                      fill
+                      className="graphic-img"
+                      sizes="(max-width: 768px) 100vw, 70vw"
+                    />
+                  </div>
+                </div>
+
+                <div className="graphic-card red tall">
+                  <div className="graphic-inner">
+                    <Image
+                      src="/images/foc/tall-graphic.png"
+                      alt="Decorative tall graphic"
+                      fill
+                      className="graphic-img"
+                      sizes="(max-width: 768px) 100vw, 20vw"
+                    />
+                  </div>
+                </div>
+
+                <div className="graphic-card orange decorative">
+                  <div className="graphic-inner">
+                    <Image
+                      src="/images/foc/decorative-graphic.png"
+                      alt="Decorative footer graphic"
+                      fill
+                      className="graphic-img"
+                      sizes="(max-width: 768px) 100vw, 70vw"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
