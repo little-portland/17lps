@@ -158,26 +158,12 @@ const Menu = ({ menuImage }) => {
               z-index: 4;
             }
 
-            .content-layout {
+            .main-poster-grid {
               display: grid;
-              grid-template-columns: minmax(0, 1fr) 110px;
-              gap: 18px;
+              grid-template-columns: minmax(0, 1fr) 120px;
+              column-gap: 18px;
+              row-gap: 18px;
               align-items: start;
-            }
-
-            .main-column {
-              min-width: 0;
-              display: flex;
-              flex-direction: column;
-              gap: 22px;
-            }
-
-            .side-rail {
-              min-width: 0;
-              display: flex;
-              flex-direction: column;
-              gap: 18px;
-              align-items: stretch;
             }
 
             .hero-left {
@@ -231,19 +217,50 @@ const Menu = ({ menuImage }) => {
               color: #39ff14;
             }
 
-            .mini-decor-row {
-              display: flex;
-              justify-content: flex-start;
+            .top-copy {
+              grid-column: 1;
+              grid-row: 1;
             }
 
-            .graphic-card {
+            .top-tall {
+              grid-column: 2;
+              grid-row: 1 / span 2;
+            }
+
+            .mid-graphics {
+              grid-column: 1;
+              grid-row: 2;
+              display: grid;
+              grid-template-columns: minmax(0, 1.7fr) minmax(140px, 0.7fr);
+              gap: 18px;
+              align-items: start;
+            }
+
+            .green-panel-wrap {
+              grid-column: 1;
+              grid-row: 3;
+            }
+
+            .bottom-banner-wrap {
+              grid-column: 1 / -1;
+              grid-row: 4;
+              padding-top: 10px;
+            }
+
+            .graphic-card,
+            .hero-panel,
+            .hero-image-wrap {
               background: #000;
-              padding: 10px;
               position: relative;
               overflow: hidden;
             }
 
-            .graphic-card::before {
+            .graphic-card {
+              padding: 10px;
+            }
+
+            .graphic-card::before,
+            .hero-image-wrap::before {
               content: "";
               position: absolute;
               inset: 0;
@@ -299,11 +316,10 @@ const Menu = ({ menuImage }) => {
               );
             }
 
-            .graphic-card.green {
+            .hero-image-wrap {
               border: 2px solid #39ff14;
             }
 
-            .graphic-card.green::after,
             .hero-image-wrap::after {
               background: linear-gradient(
                 90deg,
@@ -311,18 +327,6 @@ const Menu = ({ menuImage }) => {
                 rgba(57,255,20,0.12) 50%,
                 rgba(57,255,20,0) 100%
               );
-            }
-
-            .graphic-card.square-compact {
-              width: 100%;
-            }
-
-            .graphic-card.tall-compact {
-              width: 100%;
-            }
-
-            .graphic-card.decorative-inline {
-              width: min(100%, 320px);
             }
 
             .graphic-image {
@@ -333,14 +337,24 @@ const Menu = ({ menuImage }) => {
               z-index: 0;
             }
 
+            .graphic-tall {
+              width: 100%;
+            }
+
+            .graphic-square {
+              width: 100%;
+            }
+
+            .graphic-decorative {
+              width: 100%;
+            }
+
             .hero-panel {
               border: 2px solid #39ff14;
               padding: 20px;
               min-height: 100%;
-              position: relative;
               background: rgba(57, 255, 20, 0.12);
               width: 100%;
-              overflow: hidden;
             }
 
             .hero-panel::before {
@@ -462,37 +476,10 @@ const Menu = ({ menuImage }) => {
               animation: buttonTypeReveal 0.8s steps(36, end) 1 forwards;
             }
 
-            .poster-footer {
-              padding-top: 28px;
-              display: block;
-              position: relative;
-            }
-
             .hero-image-wrap {
               width: 100%;
               margin: 0;
-              border: 2px solid #39ff14;
-              background: #000;
               padding: 10px;
-              position: relative;
-              overflow: hidden;
-            }
-
-            .hero-image-wrap::before {
-              content: "";
-              position: absolute;
-              inset: 0;
-              pointer-events: none;
-              background:
-                repeating-linear-gradient(
-                  to bottom,
-                  rgba(255,255,255,0.02) 0px,
-                  rgba(255,255,255,0.02) 1px,
-                  transparent 1px,
-                  transparent 4px
-                );
-              opacity: 0.12;
-              z-index: 1;
             }
 
             .hero-image-inner {
@@ -556,19 +543,6 @@ const Menu = ({ menuImage }) => {
                 padding: 28px 18px 32px;
               }
 
-              .content-layout {
-                grid-template-columns: 1fr;
-                gap: 16px;
-              }
-
-              .side-rail {
-                display: grid;
-                grid-template-columns: minmax(0, 120px) minmax(0, 90px);
-                gap: 14px;
-                align-items: start;
-                justify-content: start;
-              }
-
               .hero-heading {
                 font-size: 30px;
               }
@@ -584,6 +558,34 @@ const Menu = ({ menuImage }) => {
                 font-size: 12px;
               }
 
+              .main-poster-grid {
+                grid-template-columns: 1fr;
+                row-gap: 14px;
+              }
+
+              .top-copy,
+              .top-tall,
+              .green-panel-wrap,
+              .bottom-banner-wrap {
+                grid-column: 1;
+                grid-row: auto;
+              }
+
+              .mid-graphics {
+                grid-column: 1;
+                grid-row: auto;
+                grid-template-columns: 1fr;
+                gap: 14px;
+              }
+
+              .top-tall {
+                max-width: 120px;
+              }
+
+              .graphic-square {
+                max-width: 180px;
+              }
+
               .friend-link-wrap a {
                 min-height: 54px;
                 font-size: 15px;
@@ -593,14 +595,6 @@ const Menu = ({ menuImage }) => {
               .button-label-static,
               .button-label-typed {
                 white-space: normal;
-              }
-
-              .graphic-card.decorative-inline {
-                width: min(100%, 240px);
-              }
-
-              .poster-footer {
-                padding-top: 22px;
               }
             }
           `}
@@ -621,8 +615,8 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="poster-inner">
-            <div className="content-layout">
-              <div className="main-column">
+            <div className="main-poster-grid">
+              <div className="top-copy">
                 <div className="hero-left">
                   <div>
                     <div className="hero-kicker">17 little portland street</div>
@@ -640,19 +634,43 @@ const Menu = ({ menuImage }) => {
                     </span>
                   </div>
                 </div>
+              </div>
 
-                <div className="mini-decor-row">
-                  <div className="graphic-card orange decorative-inline">
-                    <Image
-                      src="/images/foc/decorative-graphic.png"
-                      alt="Decorative graphic"
-                      width={1000}
-                      height={300}
-                      className="graphic-image"
-                    />
-                  </div>
+              <div className="top-tall">
+                <div className="graphic-card red graphic-tall">
+                  <Image
+                    src="/images/foc/tall-graphic.png"
+                    alt="Tall decorative graphic"
+                    width={300}
+                    height={1000}
+                    className="graphic-image"
+                  />
+                </div>
+              </div>
+
+              <div className="mid-graphics">
+                <div className="graphic-card orange graphic-decorative">
+                  <Image
+                    src="/images/foc/decorative-graphic.png"
+                    alt="Decorative horizontal graphic"
+                    width={1000}
+                    height={300}
+                    className="graphic-image"
+                  />
                 </div>
 
+                <div className="graphic-card orange graphic-square">
+                  <Image
+                    src="/images/foc/square-graphic.png"
+                    alt="Square decorative graphic"
+                    width={500}
+                    height={500}
+                    className="graphic-image"
+                  />
+                </div>
+              </div>
+
+              <div className="green-panel-wrap">
                 <div className="hero-panel">
                   <div className="panel-label">status: accepting enquiries</div>
 
@@ -682,40 +700,18 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="side-rail">
-                <div className="graphic-card orange square-compact">
-                  <Image
-                    src="/images/foc/square-graphic.png"
-                    alt="Square decorative graphic"
-                    width={500}
-                    height={500}
-                    className="graphic-image"
-                  />
-                </div>
-
-                <div className="graphic-card red tall-compact">
-                  <Image
-                    src="/images/foc/tall-graphic.png"
-                    alt="Tall decorative graphic"
-                    width={300}
-                    height={1000}
-                    className="graphic-image"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="poster-footer">
-              <div className="hero-image-wrap">
-                <div className="hero-image-inner">
-                  <Image
-                    src="/images/foc/foc-page-img1.png"
-                    alt="Friends of the Club artwork"
-                    width={2000}
-                    height={353}
-                    className="hero-image"
-                    priority
-                  />
+              <div className="bottom-banner-wrap">
+                <div className="hero-image-wrap">
+                  <div className="hero-image-inner">
+                    <Image
+                      src="/images/foc/foc-page-img1.png"
+                      alt="Friends of the Club artwork"
+                      width={2000}
+                      height={353}
+                      className="hero-image"
+                      priority
+                    />
+                  </div>
                 </div>
               </div>
             </div>
