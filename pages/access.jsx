@@ -192,36 +192,19 @@ const Menu = ({ menuImage }) => {
             }
 
             .desktop-only {
-              display: block;
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+              width: 100%;
             }
 
             .mobile-only {
               display: none;
             }
 
-            .desktop-art-row,
-            .desktop-panel-row,
-            .desktop-banner-row {
-              width: 100%;
-            }
-
-            .desktop-art-row {
-              display: grid;
-              grid-template-columns: minmax(0, 1fr) 108px 214px;
-              gap: 18px;
-              align-items: stretch;
-              margin-bottom: 18px;
-              min-height: 278px;
-            }
-
-            .desktop-panel-row {
-              margin-bottom: 18px;
-            }
-
-            .desktop-banner-row {
-              display: block;
-            }
-
+            .desktop-row-top,
+            .desktop-row-middle,
+            .desktop-row-bottom,
             .mobile-row-decorative,
             .mobile-row-side,
             .mobile-row-panel,
@@ -229,6 +212,24 @@ const Menu = ({ menuImage }) => {
               width: 100%;
             }
 
+            /* DESKTOP */
+            .desktop-row-top {
+              display: grid;
+              grid-template-columns: minmax(0, 1fr) 108px 214px;
+              gap: 18px;
+              align-items: stretch;
+              min-height: 278px;
+            }
+
+            .desktop-row-middle {
+              display: block;
+            }
+
+            .desktop-row-bottom {
+              display: block;
+            }
+
+            /* MOBILE */
             .mobile-row-decorative,
             .mobile-row-side,
             .mobile-row-panel {
@@ -336,20 +337,33 @@ const Menu = ({ menuImage }) => {
               display: block;
               width: 100%;
               height: 100%;
-              object-position: center;
               position: relative;
               z-index: 0;
             }
 
+            /* desktop row cards all same height */
+            .decorative-desktop,
+            .tall-desktop,
+            .square-desktop {
+              height: 100%;
+            }
+
             .decorative-desktop .graphic-image-fill {
               object-fit: cover;
+              object-position: center;
             }
 
-            .tall-desktop .graphic-image-fill,
+            .tall-desktop .graphic-image-fill {
+              object-fit: cover;
+              object-position: center;
+            }
+
             .square-desktop .graphic-image-fill {
               object-fit: cover;
+              object-position: center;
             }
 
+            /* mobile row: square left, tall red right, same row */
             .square-mobile,
             .tall-mobile {
               display: flex;
@@ -359,10 +373,12 @@ const Menu = ({ menuImage }) => {
 
             .square-mobile .graphic-image-fill {
               object-fit: cover;
+              object-position: center;
             }
 
             .tall-mobile .graphic-image-fill {
               object-fit: contain;
+              object-position: center;
               background: #000;
             }
 
@@ -585,8 +601,8 @@ const Menu = ({ menuImage }) => {
               }
 
               .friend-link-wrap a {
-                min-height: 28px;
-                padding: 6px 10px;
+                min-height: 24px;
+                padding: 5px 10px;
                 font-size: 9px;
                 line-height: 1.05;
               }
@@ -627,8 +643,9 @@ const Menu = ({ menuImage }) => {
                 </span>
               </div>
 
+              {/* Desktop */}
               <div className="desktop-only">
-                <div className="desktop-art-row">
+                <div className="desktop-art-row desktop-row-top">
                   <div className="graphic-card orange decorative-desktop">
                     <Image
                       src="/images/foc/decorative-graphic.png"
@@ -660,7 +677,7 @@ const Menu = ({ menuImage }) => {
                   </div>
                 </div>
 
-                <div className="desktop-panel-row">
+                <div className="desktop-panel-row desktop-row-middle">
                   <div className="hero-panel">
                     <div className="panel-label">status: accepting enquiries</div>
 
@@ -691,6 +708,7 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
+              {/* Mobile */}
               <div className="mobile-only">
                 <div className="mobile-row-decorative">
                   <div className="graphic-card orange">
@@ -757,7 +775,7 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              <div className="desktop-banner-row mobile-row-banner">
+              <div className="desktop-banner-row mobile-row-banner desktop-row-bottom">
                 <div className="hero-image-wrap">
                   <div className="hero-image-inner">
                     <Image
