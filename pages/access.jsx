@@ -59,14 +59,13 @@ const Menu = ({ menuImage }) => {
             .page-shell {
               min-height: 100vh;
               background: #000;
-              padding: 32px 18px;
+              padding: 28px 18px;
             }
 
             .nocturn.override {
               width: min(100%, 1120px);
               margin: 0 auto;
               border: 2px solid #39ff14;
-              padding: 0;
               background: #000;
               position: relative;
               overflow: hidden;
@@ -78,14 +77,13 @@ const Menu = ({ menuImage }) => {
               position: absolute;
               inset: 0;
               pointer-events: none;
-              background:
-                repeating-linear-gradient(
-                  to bottom,
-                  rgba(255,255,255,0.02) 0px,
-                  rgba(255,255,255,0.02) 1px,
-                  transparent 1px,
-                  transparent 3px
-                );
+              background: repeating-linear-gradient(
+                to bottom,
+                rgba(255,255,255,0.02) 0px,
+                rgba(255,255,255,0.02) 1px,
+                transparent 1px,
+                transparent 3px
+              );
               opacity: 0.08;
               z-index: 2;
             }
@@ -145,13 +143,13 @@ const Menu = ({ menuImage }) => {
             }
 
             .poster-inner {
-              padding: 54px 58px 72px;
+              padding: 46px 56px 58px;
               position: relative;
               z-index: 4;
             }
 
-            .layout-width {
-              width: 100%;
+            .content-width {
+              max-width: 1000px;
             }
 
             .hero-kicker {
@@ -168,10 +166,10 @@ const Menu = ({ menuImage }) => {
               color: #ffab00;
               font-family: "Courier New", monospace;
               text-transform: lowercase;
-              font-size: clamp(42px, 7vw, 64px);
+              font-size: clamp(40px, 7vw, 62px);
               line-height: 0.95;
               letter-spacing: 0.08em;
-              margin: 0 0 26px 0;
+              margin: 0 0 22px 0;
               font-weight: 700;
             }
 
@@ -182,7 +180,7 @@ const Menu = ({ menuImage }) => {
               line-height: 1.7;
               letter-spacing: 0.06em;
               text-transform: lowercase;
-              margin-bottom: 28px;
+              margin-bottom: 26px;
             }
 
             .hero-copy-line {
@@ -201,33 +199,50 @@ const Menu = ({ menuImage }) => {
               display: none;
             }
 
-            .desktop-art-row,
-            .desktop-panel-row,
-            .bottom-banner-row,
-            .mobile-decorative-row,
-            .mobile-side-row,
-            .mobile-panel-row {
+            .desktop-row-top,
+            .desktop-row-middle,
+            .desktop-row-bottom {
               width: 100%;
             }
 
-            .desktop-art-row {
+            .desktop-row-top {
               display: grid;
-              grid-template-columns: minmax(0, 1fr) 122px;
+              grid-template-columns: minmax(0, 1fr) 100px;
               gap: 18px;
-              align-items: start;
+              align-items: stretch;
               margin-bottom: 18px;
             }
 
-            .desktop-panel-row {
+            .desktop-row-middle {
               display: grid;
-              grid-template-columns: minmax(0, 1fr) 128px;
+              grid-template-columns: minmax(0, 1fr) 224px;
               gap: 18px;
-              align-items: start;
+              align-items: stretch;
               margin-bottom: 18px;
             }
 
-            .bottom-banner-row {
-              margin-top: 0;
+            .desktop-row-bottom {
+              display: block;
+            }
+
+            .mobile-row-decorative,
+            .mobile-row-side,
+            .mobile-row-panel,
+            .mobile-row-banner {
+              width: 100%;
+            }
+
+            .mobile-row-decorative,
+            .mobile-row-side,
+            .mobile-row-panel {
+              margin-bottom: 14px;
+            }
+
+            .mobile-row-side {
+              display: grid;
+              grid-template-columns: minmax(0, 1fr) minmax(0, 0.34fr);
+              gap: 14px;
+              align-items: stretch;
             }
 
             .graphic-card,
@@ -248,14 +263,13 @@ const Menu = ({ menuImage }) => {
               position: absolute;
               inset: 0;
               pointer-events: none;
-              background:
-                repeating-linear-gradient(
-                  to bottom,
-                  rgba(255,255,255,0.018) 0px,
-                  rgba(255,255,255,0.018) 1px,
-                  transparent 1px,
-                  transparent 4px
-                );
+              background: repeating-linear-gradient(
+                to bottom,
+                rgba(255,255,255,0.018) 0px,
+                rgba(255,255,255,0.018) 1px,
+                transparent 1px,
+                transparent 4px
+              );
               opacity: 0.1;
               z-index: 1;
             }
@@ -321,13 +335,30 @@ const Menu = ({ menuImage }) => {
               z-index: 0;
             }
 
-            .graphic-image-fill {
+            .square-desktop,
+            .square-mobile {
+              display: flex;
+              align-items: stretch;
+            }
+
+            .square-desktop img,
+            .square-mobile img {
               width: 100%;
               height: 100%;
-              object-fit: contain;
-              display: block;
-              position: relative;
-              z-index: 0;
+              object-fit: cover;
+            }
+
+            .tall-desktop,
+            .tall-mobile {
+              display: flex;
+              align-items: stretch;
+            }
+
+            .tall-desktop img,
+            .tall-mobile img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
             }
 
             .hero-panel {
@@ -471,20 +502,6 @@ const Menu = ({ menuImage }) => {
               height: auto;
             }
 
-            .square-card-desktop {
-              align-self: stretch;
-            }
-
-            .square-card-desktop .graphic-image {
-              width: 100%;
-              height: auto;
-            }
-
-            .tall-card-desktop .graphic-image {
-              width: 100%;
-              height: auto;
-            }
-
             @media (prefers-reduced-motion: reduce) {
               .nocturn.override::after,
               .panel-label::after,
@@ -556,42 +573,6 @@ const Menu = ({ menuImage }) => {
                 display: block !important;
               }
 
-              .mobile-decorative-row {
-                margin-bottom: 14px;
-              }
-
-              .mobile-side-row {
-                display: grid;
-                grid-template-columns: minmax(0, 1fr) minmax(86px, 0.46fr);
-                gap: 14px;
-                align-items: stretch;
-                margin-bottom: 14px;
-              }
-
-              .mobile-side-row .square-card-mobile {
-                aspect-ratio: 1 / 1;
-                display: flex;
-                align-items: stretch;
-                justify-content: stretch;
-              }
-
-              .mobile-side-row .tall-card-mobile {
-                display: flex;
-                align-items: stretch;
-                justify-content: stretch;
-              }
-
-              .mobile-side-row .square-card-mobile img,
-              .mobile-side-row .tall-card-mobile img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-              }
-
-              .mobile-panel-row {
-                margin-bottom: 14px;
-              }
-
               .friend-link-wrap a {
                 min-height: 54px;
                 font-size: 15px;
@@ -621,9 +602,8 @@ const Menu = ({ menuImage }) => {
           </div>
 
           <div className="poster-inner">
-            <div className="layout-width">
+            <div className="content-width">
               <div className="hero-kicker">17 little portland street</div>
-
               <h1 className="hero-heading">access protocol</h1>
 
               <div className="hero-copy">
@@ -635,138 +615,139 @@ const Menu = ({ menuImage }) => {
                 </span>
               </div>
 
-              {/* DESKTOP: decorative + tall red */}
-              <div className="desktop-only desktop-art-row">
-                <div className="graphic-card orange decorative-card-desktop">
-                  <Image
-                    src="/images/foc/decorative-graphic.png"
-                    alt="Decorative horizontal graphic"
-                    width={1000}
-                    height={300}
-                    className="graphic-image"
-                  />
-                </div>
-
-                <div className="graphic-card red tall-card-desktop">
-                  <Image
-                    src="/images/foc/tall-graphic.png"
-                    alt="Tall decorative graphic"
-                    width={300}
-                    height={1000}
-                    className="graphic-image"
-                  />
-                </div>
-              </div>
-
-              {/* MOBILE: decorative on its own row */}
-              <div className="mobile-only mobile-decorative-row">
-                <div className="graphic-card orange">
-                  <Image
-                    src="/images/foc/decorative-graphic.png"
-                    alt="Decorative horizontal graphic"
-                    width={1000}
-                    height={300}
-                    className="graphic-image"
-                  />
-                </div>
-              </div>
-
-              {/* DESKTOP: green panel + square */}
-              <div className="desktop-only desktop-panel-row">
-                <div className="hero-panel">
-                  <div className="panel-label">status: accepting enquiries</div>
-
-                  <div className="panel-copy">
-                    membership requests are handled via direct contact.
-                    <br />
-                    use the transmission panel below.
+              {/* Desktop layout */}
+              <div className="desktop-only">
+                <div className="desktop-row-top">
+                  <div className="graphic-card orange">
+                    <Image
+                      src="/images/foc/decorative-graphic.png"
+                      alt="Decorative horizontal graphic"
+                      width={1000}
+                      height={300}
+                      className="graphic-image"
+                    />
                   </div>
 
-                  <div className="friend-link-wrap">
-                    <a
-                      href="mailto:friends@little-portland.com?subject=FOC Enquiry"
-                      aria-label="apply to become a friend of the club"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span className="button-text-wrap">
-                        <span className="button-label-static">
-                          apply to become a friend of the club
-                        </span>
-                        <span className="button-label-typed">
-                          apply to become a friend of the club
-                        </span>
-                      </span>
-                    </a>
+                  <div className="graphic-card red tall-desktop">
+                    <Image
+                      src="/images/foc/tall-graphic.png"
+                      alt="Tall decorative graphic"
+                      width={300}
+                      height={1000}
+                      className="graphic-image"
+                    />
                   </div>
                 </div>
 
-                <div className="graphic-card orange square-card-desktop">
-                  <Image
-                    src="/images/foc/square-graphic.png"
-                    alt="Square decorative graphic"
-                    width={500}
-                    height={500}
-                    className="graphic-image"
-                  />
-                </div>
-              </div>
+                <div className="desktop-row-middle">
+                  <div className="hero-panel">
+                    <div className="panel-label">status: accepting enquiries</div>
 
-              {/* MOBILE: square left, tall red right, same row / same height */}
-              <div className="mobile-only mobile-side-row">
-                <div className="graphic-card orange square-card-mobile">
-                  <Image
-                    src="/images/foc/square-graphic.png"
-                    alt="Square decorative graphic"
-                    width={500}
-                    height={500}
-                    className="graphic-image-fill"
-                  />
-                </div>
+                    <div className="panel-copy">
+                      membership requests are handled via direct contact.
+                      <br />
+                      use the transmission panel below.
+                    </div>
 
-                <div className="graphic-card red tall-card-mobile">
-                  <Image
-                    src="/images/foc/tall-graphic.png"
-                    alt="Tall decorative graphic"
-                    width={300}
-                    height={1000}
-                    className="graphic-image-fill"
-                  />
-                </div>
-              </div>
-
-              {/* MOBILE: green panel full width */}
-              <div className="mobile-only mobile-panel-row">
-                <div className="hero-panel">
-                  <div className="panel-label">status: accepting enquiries</div>
-
-                  <div className="panel-copy">
-                    membership requests are handled via direct contact.
-                    <br />
-                    use the transmission panel below.
+                    <div className="friend-link-wrap">
+                      <a
+                        href="mailto:friends@little-portland.com?subject=FOC Enquiry"
+                        aria-label="apply to become a friend of the club"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span className="button-text-wrap">
+                          <span className="button-label-static">
+                            apply to become a friend of the club
+                          </span>
+                          <span className="button-label-typed">
+                            apply to become a friend of the club
+                          </span>
+                        </span>
+                      </a>
+                    </div>
                   </div>
 
-                  <div className="friend-link-wrap">
-                    <a
-                      href="mailto:friends@little-portland.com?subject=FOC Enquiry"
-                      aria-label="apply to become a friend of the club"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span className="button-text-wrap">
-                        <span className="button-label-static">
-                          apply to become a friend of the club
-                        </span>
-                        <span className="button-label-typed">
-                          apply to become a friend of the club
-                        </span>
-                      </span>
-                    </a>
+                  <div className="graphic-card orange square-desktop">
+                    <Image
+                      src="/images/foc/square-graphic.png"
+                      alt="Square decorative graphic"
+                      width={500}
+                      height={500}
+                      className="graphic-image"
+                    />
                   </div>
                 </div>
               </div>
 
-              <div className="bottom-banner-row">
+              {/* Mobile layout */}
+              <div className="mobile-only">
+                <div className="mobile-row-decorative">
+                  <div className="graphic-card orange">
+                    <Image
+                      src="/images/foc/decorative-graphic.png"
+                      alt="Decorative horizontal graphic"
+                      width={1000}
+                      height={300}
+                      className="graphic-image"
+                    />
+                  </div>
+                </div>
+
+                <div className="mobile-row-side">
+                  <div className="graphic-card orange square-mobile">
+                    <Image
+                      src="/images/foc/square-graphic.png"
+                      alt="Square decorative graphic"
+                      width={500}
+                      height={500}
+                      className="graphic-image-fill"
+                    />
+                  </div>
+
+                  <div className="graphic-card red tall-mobile">
+                    <Image
+                      src="/images/foc/tall-graphic.png"
+                      alt="Tall decorative graphic"
+                      width={300}
+                      height={1000}
+                      className="graphic-image-fill"
+                    />
+                  </div>
+                </div>
+
+                <div className="mobile-row-panel">
+                  <div className="hero-panel">
+                    <div className="panel-label">status: accepting enquiries</div>
+
+                    <div className="panel-copy">
+                      membership requests are handled via direct contact.
+                      <br />
+                      use the transmission panel below.
+                    </div>
+
+                    <div className="friend-link-wrap">
+                      <a
+                        href="mailto:friends@little-portland.com?subject=FOC Enquiry"
+                        aria-label="apply to become a friend of the club"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span className="button-text-wrap">
+                          <span className="button-label-static">
+                            apply to become a friend of the club
+                          </span>
+                          <span className="button-label-typed">
+                            apply to become a friend of the club
+                          </span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mobile-row-banner">
                 <div className="hero-image-wrap">
                   <div className="hero-image-inner">
                     <Image
