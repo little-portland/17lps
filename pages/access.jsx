@@ -212,35 +212,11 @@ const Menu = ({ menuImage }) => {
               width: 100%;
             }
 
-            /* DESKTOP */
             .desktop-row-top {
               display: grid;
               grid-template-columns: minmax(0, 1fr) 108px 214px;
               gap: 18px;
               align-items: stretch;
-              min-height: 205px;
-            }
-            
-            .decorative-desktop,
-            .tall-desktop,
-            .square-desktop {
-              height: 205px;
-            }
-            
-            .decorative-desktop .graphic-image-fill,
-            .tall-desktop .graphic-image-fill,
-            .square-desktop .graphic-image-fill {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-
-            .square-desktop .graphic-image-fill {
-              object-fit: contain;
-            }
-            
-            .decorative-desktop .graphic-image-fill {
-              object-fit: contain;
             }
 
             .desktop-row-middle {
@@ -251,7 +227,6 @@ const Menu = ({ menuImage }) => {
               display: block;
             }
 
-            /* MOBILE */
             .mobile-row-decorative,
             .mobile-row-side,
             .mobile-row-panel {
@@ -355,37 +330,45 @@ const Menu = ({ menuImage }) => {
               z-index: 0;
             }
 
-            .graphic-image-fill {
-              display: block;
-              width: 100%;
-              height: 100%;
+            /* THIS is the important fix for desktop heights */
+            .desktop-graphic-frame {
               position: relative;
+              width: 100%;
+              height: 260px;
               z-index: 0;
             }
 
-            /* desktop row cards all same height */
-            .decorative-desktop,
-            .tall-desktop,
-            .square-desktop {
-              height: 100%;
+            .desktop-decorative-frame {
+              height: 260px;
             }
 
-            .decorative-desktop .graphic-image-fill {
-              object-fit: cover;
+            .desktop-tall-frame {
+              height: 260px;
+            }
+
+            .desktop-square-frame {
+              height: 260px;
+            }
+
+            .desktop-decorative-frame :global(img),
+            .desktop-tall-frame :global(img),
+            .desktop-square-frame :global(img) {
               object-position: center;
             }
 
-            .tall-desktop .graphic-image-fill {
-              object-fit: cover;
-              object-position: center;
+            .desktop-decorative-img {
+              object-fit: contain;
             }
 
-            .square-desktop .graphic-image-fill {
-              object-fit: cover;
-              object-position: center;
+            .desktop-tall-img {
+              object-fit: contain;
             }
 
-            /* mobile row: square left, tall red right, same row */
+            .desktop-square-img {
+              object-fit: contain;
+            }
+
+            /* mobile row stays as before */
             .square-mobile,
             .tall-mobile {
               display: flex;
@@ -393,15 +376,23 @@ const Menu = ({ menuImage }) => {
               min-height: 220px;
             }
 
-            .square-mobile .graphic-image-fill {
+            .mobile-square-frame,
+            .mobile-tall-frame {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              min-height: 200px;
+              z-index: 0;
+            }
+
+            .mobile-square-img {
               object-fit: cover;
               object-position: center;
             }
 
-            .tall-mobile .graphic-image-fill {
+            .mobile-tall-img {
               object-fit: contain;
               object-position: center;
-              background: #000;
             }
 
             .hero-panel {
@@ -545,6 +536,11 @@ const Menu = ({ menuImage }) => {
               height: auto;
             }
 
+            .desktop-banner-row,
+            .mobile-row-banner {
+              margin-top: 18px;
+            }
+
             @media (prefers-reduced-motion: reduce) {
               .nocturn.override::after,
               .panel-label::after,
@@ -665,37 +661,39 @@ const Menu = ({ menuImage }) => {
                 </span>
               </div>
 
-              {/* Desktop */}
               <div className="desktop-only">
                 <div className="desktop-art-row desktop-row-top">
                   <div className="graphic-card orange decorative-desktop">
-                    <Image
-                      src="/images/foc/decorative-graphic.png"
-                      alt="Decorative horizontal graphic"
-                      width={1000}
-                      height={300}
-                      className="graphic-image-fill"
-                    />
+                    <div className="desktop-graphic-frame desktop-decorative-frame">
+                      <Image
+                        src="/images/foc/decorative-graphic.png"
+                        alt="Decorative horizontal graphic"
+                        fill
+                        className="desktop-decorative-img"
+                      />
+                    </div>
                   </div>
 
                   <div className="graphic-card red tall-desktop">
-                    <Image
-                      src="/images/foc/tall-graphic.png"
-                      alt="Tall decorative graphic"
-                      width={300}
-                      height={1000}
-                      className="graphic-image-fill"
-                    />
+                    <div className="desktop-graphic-frame desktop-tall-frame">
+                      <Image
+                        src="/images/foc/tall-graphic.png"
+                        alt="Tall decorative graphic"
+                        fill
+                        className="desktop-tall-img"
+                      />
+                    </div>
                   </div>
 
                   <div className="graphic-card orange square-desktop">
-                    <Image
-                      src="/images/foc/square-graphic.png"
-                      alt="Square decorative graphic"
-                      width={500}
-                      height={500}
-                      className="graphic-image-fill"
-                    />
+                    <div className="desktop-graphic-frame desktop-square-frame">
+                      <Image
+                        src="/images/foc/square-graphic.png"
+                        alt="Square decorative graphic"
+                        fill
+                        className="desktop-square-img"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -730,7 +728,6 @@ const Menu = ({ menuImage }) => {
                 </div>
               </div>
 
-              {/* Mobile */}
               <div className="mobile-only">
                 <div className="mobile-row-decorative">
                   <div className="graphic-card orange">
@@ -746,23 +743,25 @@ const Menu = ({ menuImage }) => {
 
                 <div className="mobile-row-side">
                   <div className="graphic-card orange square-mobile">
-                    <Image
-                      src="/images/foc/square-graphic.png"
-                      alt="Square decorative graphic"
-                      width={500}
-                      height={500}
-                      className="graphic-image-fill"
-                    />
+                    <div className="mobile-square-frame">
+                      <Image
+                        src="/images/foc/square-graphic.png"
+                        alt="Square decorative graphic"
+                        fill
+                        className="mobile-square-img"
+                      />
+                    </div>
                   </div>
 
                   <div className="graphic-card red tall-mobile">
-                    <Image
-                      src="/images/foc/tall-graphic.png"
-                      alt="Tall decorative graphic"
-                      width={300}
-                      height={1000}
-                      className="graphic-image-fill"
-                    />
+                    <div className="mobile-tall-frame">
+                      <Image
+                        src="/images/foc/tall-graphic.png"
+                        alt="Tall decorative graphic"
+                        fill
+                        className="mobile-tall-img"
+                      />
+                    </div>
                   </div>
                 </div>
 
