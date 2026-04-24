@@ -220,6 +220,20 @@ const Menu = ({ menuImage }) => {
               align-items: stretch;
               min-height: 205px;
             }
+            
+            .decorative-desktop,
+            .tall-desktop,
+            .square-desktop {
+              height: 205px;
+            }
+            
+            .decorative-desktop .graphic-image-fill,
+            .tall-desktop .graphic-image-fill,
+            .square-desktop .graphic-image-fill {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
 
             .desktop-row-middle {
               display: block;
