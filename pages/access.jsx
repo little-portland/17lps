@@ -235,6 +235,14 @@ const Menu = ({ menuImage }) => {
               object-fit: cover;
             }
 
+            .square-desktop .graphic-image-fill {
+              object-fit: contain;
+            }
+            
+            .decorative-desktop .graphic-image-fill {
+              object-fit: contain;
+            }
+
             .desktop-row-middle {
               display: block;
             }
