@@ -560,7 +560,7 @@ const DinningPage = () => {
             font-weight: 700;
             border: 2px solid var(--line);
             border-radius: 999px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
+            background: linear-gradient(90deg, rgba(16,0,101,0.14), rgba(16,0,101,0.03));
             transition: background 0.18s ease, box-shadow 0.18s ease;
             display: inline-flex;
             align-items: center;
