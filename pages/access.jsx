@@ -56,6 +56,14 @@ const Menu = ({ menuImage }) => {
               to { width: 100%; }
             }
 
+            @keyframes accessDotsFill {
+              0%, 19.999%   { background: var(--f0, transparent); }
+              20%, 39.999%  { background: var(--f1, transparent); }
+              40%, 59.999%  { background: var(--f2, transparent); }
+              60%, 79.999%  { background: var(--f3, transparent); }
+              80%, 100%     { background: var(--f4, transparent); }
+            }
+
             .page-shell {
               min-height: 100vh;
               background: #000;
@@ -174,18 +182,25 @@ const Menu = ({ menuImage }) => {
             }
 
             .access-dots-wrap {
-              width: 310px;
-              max-width: 100%;
+              display: flex;
+              align-items: center;
+              gap: 12px;
               margin: 0 0 18px 0;
-              line-height: 0;
               position: relative;
               z-index: 4;
+              line-height: 0;
+              width: fit-content;
+              max-width: 100%;
             }
 
-            .access-dots-gif {
-              display: block;
-              width: 100%;
-              height: auto;
+            .access-dot {
+              width: 28px;
+              height: 28px;
+              border-radius: 50%;
+              border: 3px solid #c8212d;
+              background: transparent;
+              flex: 0 0 auto;
+              animation: accessDotsFill 1.25s steps(1, end) infinite;
             }
 
             .hero-copy {
@@ -543,7 +558,8 @@ const Menu = ({ menuImage }) => {
               .graphic-card::after,
               .hero-image-wrap::after,
               .hero-panel::before,
-              .friend-link-wrap a:hover .button-label-typed {
+              .friend-link-wrap a:hover .button-label-typed,
+              .access-dot {
                 animation: none !important;
               }
 
@@ -590,8 +606,14 @@ const Menu = ({ menuImage }) => {
               }
 
               .access-dots-wrap {
-                width: 180px;
+                gap: 8px;
                 margin-bottom: 14px;
+              }
+
+              .access-dot {
+                width: 18px;
+                height: 18px;
+                border-width: 2px;
               }
 
               .hero-copy,
@@ -655,11 +677,17 @@ const Menu = ({ menuImage }) => {
               <h1 className="hero-heading">access protocol</h1>
 
               <div className="access-dots-wrap" aria-hidden="true">
-                <img
-                  src="/images/foc/access_page_dots-graphic.gif"
-                  alt=""
-                  className="access-dots-gif"
-                />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
               </div>
 
               <div className="hero-copy">
