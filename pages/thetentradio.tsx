@@ -19,7 +19,7 @@ const ORB_OVERLAY = `${IMAGE_BASE}/circle-orb-overlay.png`;
 const ACCENT = '#348159';
 const GENRES = 'Balearic / World / Downtempo / Electronica';
 
-const TRACKS: Track[] = [
+const BASE_TRACKS: Track[] = [
   {
     id: '24',
     episodeLabel: 'THE TENT 24',
@@ -65,6 +65,18 @@ const TRACKS: Track[] = [
   },
 ];
 
+const TRACKS: Track[] = Array.from({ length: 40 }, (_, index) => {
+  const base = BASE_TRACKS[index % BASE_TRACKS.length];
+  const episodeNumber = 40 - index;
+
+  return {
+    ...base,
+    id: `${base.id}-${index}`,
+    episodeLabel: `THE TENT ${episodeNumber}`,
+    title: `The Tent (at the End of the Universe) ${episodeNumber}`,
+  };
+});
+
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
@@ -81,6 +93,8 @@ export default function TentRadioPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isArchiveOpen, setIsArchiveOpen] = useState(false);
+  const [archiveQuery, setArchiveQuery] = useState('');
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const changeLockRef = useRef(false);
@@ -89,11 +103,47 @@ export default function TentRadioPage() {
 
   const currentTrack = useMemo(() => TRACKS[activeIndex], [activeIndex]);
 
+  const visibleArchiveTracks = useMemo(() => {
+    const query = archiveQuery.trim().toLowerCase();
+    if (!query) return TRACKS;
+
+    return TRACKS.filter((track) =>
+      [track.episodeLabel, track.title, track.artist, track.guest]
+        .filter(Boolean)
+        .some((value) => value!.toLowerCase().includes(query))
+    );
+  }, [archiveQuery]);
+
+  const nearbyTracks = useMemo(
+    () =>
+      TRACKS.map((track, index) => ({ track, index })).filter(
+        ({ index }) => Math.abs(index - activeIndex) <= 2
+      ),
+    [activeIndex]
+  );
+
+  const playAudio = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    try {
+      await audio.play();
+      setIsPlaying(true);
+    } catch {
+      setIsPlaying(false);
+    }
+  };
+
   const changeTrack = (index: number) => {
     const nextIndex = clamp(index, 0, TRACKS.length - 1);
-    if (nextIndex === activeIndex) return;
 
     shouldPlayOnTrackChangeRef.current = true;
+
+    if (nextIndex === activeIndex) {
+      playAudio();
+      return;
+    }
+
     setPreviousIndex(activeIndex);
     setActiveIndex(nextIndex);
 
@@ -126,12 +176,12 @@ export default function TentRadioPage() {
     setProgress(0);
     setDuration(0);
     audio.currentTime = 0;
+    audio.load();
 
     if (shouldPlayOnTrackChangeRef.current) {
-      audio
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => setIsPlaying(false));
+      requestAnimationFrame(() => {
+        playAudio();
+      });
     }
   }, [currentTrack.src]);
 
@@ -143,6 +193,8 @@ export default function TentRadioPage() {
     };
 
     const onWheel = (event: WheelEvent) => {
+      if (isArchiveOpen) return;
+
       event.preventDefault();
 
       if (changeLockRef.current) return;
@@ -160,10 +212,12 @@ export default function TentRadioPage() {
     };
 
     const onTouchStart = (event: TouchEvent) => {
+      if (isArchiveOpen) return;
       touchStartYRef.current = event.touches[0]?.clientY ?? null;
     };
 
     const onTouchEnd = (event: TouchEvent) => {
+      if (isArchiveOpen) return;
       if (touchStartYRef.current === null || changeLockRef.current) return;
 
       const endY = event.changedTouches[0]?.clientY ?? touchStartYRef.current;
@@ -193,15 +247,14 @@ export default function TentRadioPage() {
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchend', onTouchEnd);
     };
-  }, [activeIndex]);
+  }, [activeIndex, isArchiveOpen]);
 
   const togglePlay = async () => {
     const audio = audioRef.current;
     if (!audio) return;
 
     if (audio.paused) {
-      await audio.play();
-      setIsPlaying(true);
+      await playAudio();
     } else {
       audio.pause();
       setIsPlaying(false);
@@ -238,9 +291,7 @@ export default function TentRadioPage() {
           <section className="posterFrame" aria-live="polite">
             <header className="radioHeader">
               <h1 className="radioHeader__title">The Tent Radio</h1>
-              <p className="radioHeader__tag">
-                Transmissions from the end of the universe
-              </p>
+              <p className="radioHeader__tag">Transmissions from the end of the universe</p>
             </header>
 
             <div className="orbCluster">
@@ -289,12 +340,7 @@ export default function TentRadioPage() {
                 <div className="orbInnerGlow" />
               </div>
 
-              <img
-                src={ORB_OVERLAY}
-                alt=""
-                aria-hidden="true"
-                className="orbOverlay orbOverlay--main"
-              />
+              <img src={ORB_OVERLAY} alt="" aria-hidden="true" className="orbOverlay orbOverlay--main" />
             </div>
 
             <div className="trackHero">
@@ -304,24 +350,30 @@ export default function TentRadioPage() {
             </div>
           </section>
 
-          <nav className="trackIndex" aria-label="Transmission index">
-            <p className="trackIndex__label">Transmissions</p>
+          <nav className="trackIndex" aria-label="Nearby transmissions">
+            <p className="trackIndex__label">Now Tuning</p>
 
             <div className="trackIndex__list">
-              {TRACKS.map((track, index) => (
+              {nearbyTracks.map(({ track, index }) => (
                 <button
                   key={track.id}
                   type="button"
                   className={`trackIndex__item ${index === activeIndex ? 'is-active' : ''}`}
                   onClick={() => changeTrack(index)}
                 >
-                  <span className="trackIndex__number">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
+                  <span className="trackIndex__number">{String(index + 1).padStart(2, '0')}</span>
                   <span className="trackIndex__title">{track.episodeLabel}</span>
                 </button>
               ))}
             </div>
+
+            <button
+              type="button"
+              className="trackIndex__archive"
+              onClick={() => setIsArchiveOpen(true)}
+            >
+              Open Archive
+            </button>
           </nav>
 
           <div className="radioPlayer">
@@ -367,6 +419,71 @@ export default function TentRadioPage() {
                 ▶
               </button>
             </div>
+          </div>
+
+          <div className={`archiveDrawer ${isArchiveOpen ? 'is-open' : ''}`} aria-hidden={!isArchiveOpen}>
+            <button
+              type="button"
+              className="archiveDrawer__backdrop"
+              onClick={() => setIsArchiveOpen(false)}
+              aria-label="Close archive"
+            />
+
+            <aside className="archiveDrawer__panel" aria-label="Transmission archive">
+              <div className="archiveDrawer__header">
+                <div>
+                  <p className="archiveDrawer__eyebrow">Transmission Archive</p>
+                  <h2>All Episodes</h2>
+                </div>
+
+                <button
+                  type="button"
+                  className="archiveDrawer__close"
+                  onClick={() => setIsArchiveOpen(false)}
+                >
+                  Close
+                </button>
+              </div>
+
+              <input
+                className="archiveDrawer__search"
+                value={archiveQuery}
+                onChange={(event) => setArchiveQuery(event.target.value)}
+                placeholder="Search transmissions..."
+                aria-label="Search transmissions"
+              />
+
+              <div className="archiveDrawer__list">
+                {visibleArchiveTracks.map((track) => {
+                  const index = TRACKS.findIndex((item) => item.id === track.id);
+
+                  return (
+                    <button
+                      key={track.id}
+                      type="button"
+                      className={`archiveDrawer__item ${index === activeIndex ? 'is-active' : ''}`}
+                      onClick={() => {
+                        changeTrack(index);
+                        setIsArchiveOpen(false);
+                      }}
+                    >
+                      <span className="archiveDrawer__number">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+
+                      <span className="archiveDrawer__meta">
+                        <strong>{track.episodeLabel}</strong>
+                        <small>{track.guest || track.artist}</small>
+                      </span>
+
+                      <span className="archiveDrawer__status">
+                        {index === activeIndex ? 'Live' : 'Tune'}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </aside>
           </div>
 
           <audio ref={audioRef} src={currentTrack.src} preload="metadata" />
@@ -886,6 +1003,192 @@ export default function TentRadioPage() {
           color: #f4f0e8;
         }
 
+        .trackIndex__archive {
+          width: 100%;
+          margin-top: 12px;
+          padding: 10px 12px;
+          border-radius: 999px;
+          border: 1px solid rgba(52, 129, 89, 0.46);
+          background: rgba(52, 129, 89, 0.1);
+          color: ${ACCENT};
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+          font-size: 0.64rem;
+          font-weight: 900;
+          text-shadow: 0 0 10px rgba(52, 129, 89, 0.56);
+        }
+
+        .archiveDrawer {
+          position: fixed;
+          inset: 0;
+          z-index: 80;
+          pointer-events: none;
+        }
+
+        .archiveDrawer.is-open {
+          pointer-events: auto;
+        }
+
+        .archiveDrawer__backdrop {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0);
+          transition: background 240ms ease;
+        }
+
+        .archiveDrawer.is-open .archiveDrawer__backdrop {
+          background: rgba(0, 0, 0, 0.56);
+        }
+
+        .archiveDrawer__panel {
+          position: absolute;
+          top: 18px;
+          right: 18px;
+          bottom: 18px;
+          width: min(460px, calc(100vw - 36px));
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          border-radius: 30px;
+          border: 1px solid rgba(52, 129, 89, 0.42);
+          background:
+            linear-gradient(180deg, rgba(52, 129, 89, 0.12), transparent 34%),
+            rgba(0, 0, 0, 0.88);
+          backdrop-filter: blur(18px);
+          box-shadow:
+            0 0 32px rgba(52, 129, 89, 0.22),
+            inset 0 0 24px rgba(52, 129, 89, 0.08);
+          transform: translateX(calc(100% + 32px));
+          transition: transform 280ms ease;
+        }
+
+        .archiveDrawer.is-open .archiveDrawer__panel {
+          transform: translateX(0);
+        }
+
+        .archiveDrawer__header {
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+          align-items: flex-start;
+        }
+
+        .archiveDrawer__eyebrow {
+          margin: 0 0 6px;
+          color: ${ACCENT};
+          text-transform: uppercase;
+          letter-spacing: 0.16em;
+          font-size: 0.68rem;
+          font-weight: 900;
+        }
+
+        .archiveDrawer__header h2 {
+          margin: 0;
+          color: #f2efe6;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
+          font-size: 1.5rem;
+        }
+
+        .archiveDrawer__close {
+          padding: 9px 12px;
+          border-radius: 999px;
+          border: 1px solid rgba(52, 129, 89, 0.42);
+          color: ${ACCENT};
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          font-size: 0.66rem;
+          font-weight: 900;
+        }
+
+        .archiveDrawer__search {
+          width: 100%;
+          margin: 18px 0 14px;
+          padding: 14px 16px;
+          border-radius: 999px;
+          border: 1px solid rgba(52, 129, 89, 0.38);
+          outline: none;
+          background: rgba(0, 0, 0, 0.56);
+          color: #f2efe6;
+          font: inherit;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+
+        .archiveDrawer__search::placeholder {
+          color: rgba(244, 240, 232, 0.42);
+        }
+
+        .archiveDrawer__list {
+          min-height: 0;
+          overflow-y: auto;
+          padding-right: 4px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .archiveDrawer__item {
+          display: grid;
+          grid-template-columns: 42px 1fr auto;
+          gap: 12px;
+          align-items: center;
+          width: 100%;
+          padding: 12px 13px;
+          border-radius: 18px;
+          border: 1px solid rgba(52, 129, 89, 0.16);
+          background: rgba(0, 0, 0, 0.28);
+          color: rgba(244, 240, 232, 0.72);
+          text-align: left;
+        }
+
+        .archiveDrawer__item.is-active {
+          border-color: rgba(52, 129, 89, 0.58);
+          background: rgba(52, 129, 89, 0.14);
+          color: #f2efe6;
+        }
+
+        .archiveDrawer__number {
+          color: ${ACCENT};
+          font-weight: 900;
+        }
+
+        .archiveDrawer__meta {
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+        }
+
+        .archiveDrawer__meta strong,
+        .archiveDrawer__meta small {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .archiveDrawer__meta strong {
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          font-size: 0.78rem;
+        }
+
+        .archiveDrawer__meta small {
+          color: rgba(244, 240, 232, 0.54);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          font-size: 0.62rem;
+        }
+
+        .archiveDrawer__status {
+          color: ${ACCENT};
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          font-size: 0.62rem;
+          font-weight: 900;
+        }
+
         @keyframes waveDance {
           0%, 100% {
             transform: scaleY(0.32);
@@ -1074,6 +1377,10 @@ export default function TentRadioPage() {
             min-width: 132px;
           }
 
+          .trackIndex__archive {
+            margin-top: 8px;
+          }
+
           .radioPlayer {
             grid-template-columns: 1fr;
             border-radius: 26px;
@@ -1134,6 +1441,14 @@ export default function TentRadioPage() {
             bottom: 170px;
           }
 
+          .trackIndex__list {
+            display: none;
+          }
+
+          .trackIndex__archive {
+            margin-top: 0;
+          }
+
           .radioPlayer {
             padding: 12px;
           }
@@ -1145,6 +1460,29 @@ export default function TentRadioPage() {
           .radioPlayer__transmit {
             min-width: 176px;
             font-size: 0.66rem;
+          }
+
+          .archiveDrawer__panel {
+            top: auto;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            width: auto;
+            max-height: 72vh;
+            border-radius: 28px;
+            transform: translateY(calc(100% + 32px));
+          }
+
+          .archiveDrawer.is-open .archiveDrawer__panel {
+            transform: translateY(0);
+          }
+
+          .archiveDrawer__header h2 {
+            font-size: 1.18rem;
+          }
+
+          .archiveDrawer__item {
+            grid-template-columns: 34px 1fr auto;
           }
         }
 
