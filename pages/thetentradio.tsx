@@ -433,7 +433,10 @@ export default function TentRadioPage() {
             <button
               type="button"
               className="archiveDrawer__backdrop"
-              onClick={() => setIsArchiveOpen(false)}
+              onClick={() => {
+                setIsArchiveOpen(false);
+                setArchiveQuery('');
+              }}
               aria-label="Close archive"
             />
 
@@ -447,19 +450,35 @@ export default function TentRadioPage() {
                 <button
                   type="button"
                   className="archiveDrawer__close"
-                  onClick={() => setIsArchiveOpen(false)}
+                  onClick={() => {
+                    setIsArchiveOpen(false);
+                    setArchiveQuery('');
+                  }}
                 >
                   Close
                 </button>
               </div>
 
-              <input
-                className="archiveDrawer__search"
-                value={archiveQuery}
-                onChange={(event) => setArchiveQuery(event.target.value)}
-                placeholder="Search transmissions..."
-                aria-label="Search transmissions"
-              />
+              <div className="archiveDrawer__searchWrap">
+                <input
+                  className="archiveDrawer__search"
+                  value={archiveQuery}
+                  onChange={(event) => setArchiveQuery(event.target.value)}
+                  placeholder="Search transmissions..."
+                  aria-label="Search transmissions"
+                />
+
+                {archiveQuery && (
+                  <button
+                    type="button"
+                    className="archiveDrawer__clear"
+                    onClick={() => setArchiveQuery('')}
+                    aria-label="Clear search"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
 
               <div className="archiveDrawer__list">
                 {visibleArchiveTracks.map((track) => {
@@ -1138,10 +1157,14 @@ export default function TentRadioPage() {
           font-weight: 900;
         }
 
+        .archiveDrawer__searchWrap {
+          position: relative;
+          margin: 18px 0 14px;
+        }
+
         .archiveDrawer__search {
           width: 100%;
-          margin: 18px 0 14px;
-          padding: 14px 16px;
+          padding: 14px 48px 14px 16px;
           border-radius: 999px;
           border: 1px solid rgba(52, 129, 89, 0.38);
           outline: none;
@@ -1150,6 +1173,21 @@ export default function TentRadioPage() {
           font: inherit;
           text-transform: uppercase;
           letter-spacing: 0.08em;
+        }
+
+        .archiveDrawer__clear {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          width: 28px;
+          height: 28px;
+          transform: translateY(-50%);
+          border-radius: 999px;
+          border: 1px solid rgba(52, 129, 89, 0.42);
+          color: #348159;
+          font-size: 1rem;
+          font-weight: 900;
+          line-height: 1;
         }
 
         .archiveDrawer__search::placeholder {
@@ -1595,6 +1633,11 @@ export default function TentRadioPage() {
       @media (max-width: 760px) {
         .archiveDrawer__list {
           padding-right: 18px;
+        }
+
+        .radioPlayer {
+          padding-top: 24px;
+          padding-bottom: 24px;
         }
       
         .orbCluster {
