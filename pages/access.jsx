@@ -194,10 +194,10 @@ const Menu = ({ menuImage }) => {
             }
 
             .access-dot {
-              width: 28px;
-              height: 28px;
+              width: 18px;
+              height: 18px;
               border-radius: 50%;
-              border: 3px solid #c8212d;
+              border: 1px solid #c8212d;
               background: transparent;
               flex: 0 0 auto;
               animation: accessDotsFill 1.25s steps(1, end) infinite;
@@ -611,9 +611,9 @@ const Menu = ({ menuImage }) => {
               }
 
               .access-dot {
-                width: 18px;
-                height: 18px;
-                border-width: 2px;
+                width: 12px;
+                height: 12px;
+                border-width: 1px;
               }
 
               .hero-copy,
