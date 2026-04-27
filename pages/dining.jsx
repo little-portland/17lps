@@ -440,14 +440,14 @@ const DinningPage = () => {
             width: 100%;
             text-align: center;
             padding: 22px 20px 22px 76px;
-            color: var(--text);
+            color: #100065;
             font-family: var(--future);
             text-transform: uppercase;
             font-size: clamp(18px, 1.6vw, 34px);
             line-height: 0.92;
             letter-spacing: 0.04em;
             font-weight: 800;
-            background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            background: linear-gradient(90deg, rgba(16,0,101,0.14), rgba(16,0,101,0.03));
             transition: background 0.18s ease, box-shadow 0.18s ease;
             overflow-wrap: anywhere;
           }
@@ -479,7 +479,7 @@ const DinningPage = () => {
 
           .cta-link:hover {
             color: var(--text);
-            background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
+            background: linear-gradient(90deg, rgba(16,0,101,0.14), rgba(16,0,101,0.03));
             box-shadow: 0 0 18px rgba(255,255,255,0.08);
           }
 
@@ -535,7 +535,7 @@ const DinningPage = () => {
             width: 11px;
             height: 11px;
             transform: translateY(-50%);
-            border: 2px solid var(--text);
+            border: 2px solid var(--line);
             border-radius: 50%;
             background: transparent;
             box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
@@ -549,7 +549,7 @@ const DinningPage = () => {
           }
 
           .link-row a {
-            color: var(--text);
+            color: #100065;
             font-family: var(--future);
             text-transform: uppercase;
             font-size: clamp(13px, 1.3vw, 22px);
