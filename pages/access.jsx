@@ -636,10 +636,11 @@ const Menu = ({ menuImage }) => {
               }
 
               .friend-link-wrap a {
-                min-height: 24px;
-                padding: 5px 10px;
-                font-size: 9px;
-                line-height: 1.05;
+                  min-height: 24px;
+                  padding: 5px 10px;
+                  font-size: 14px;
+                  line-height: 1.2;
+                  max-height: 60px;
               }
 
               .button-label-static,
