@@ -165,10 +165,14 @@ const DinningPage = () => {
           }
 
           .shell {
-            width: min(1160px, 100%);
+            width: 50%;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
+          }
+
+          @media (max-width: 768px) {
+            .shell {
+              width: 90%;
+            }
           }
 
           .frame {
