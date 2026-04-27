@@ -83,7 +83,7 @@ const DinningPage = () => {
 
           @keyframes crawlFloat {
             0%, 84%, 100% {
-              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translate3d(0,0,0);
+              transform: perspective(900px) rotateX(50deg) scaleY(1.6) translate3d(0,0,0);
               text-shadow:
                 -2px 0 0 rgba(210,210,210,0.55),
                 2px 0 0 rgba(120,120,120,0.45),
@@ -91,14 +91,14 @@ const DinningPage = () => {
               filter: brightness(1);
             }
             85% {
-              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translate3d(-2px, 0, 0);
+              transform: perspective(900px) rotateX(50deg) scaleY(1.6) translate3d(-2px, 0, 0);
               text-shadow:
                 -5px 0 0 rgba(228,228,228,0.66),
                 5px 0 0 rgba(92,92,92,0.56),
                 0 0 14px rgba(255,255,255,0.12);
             }
             88% {
-              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translate3d(2px, -1px, 0);
+              transform: perspective(900px) rotateX(50deg) scaleY(1.6) translate3d(2px, -1px, 0);
               text-shadow:
                 -7px 0 0 rgba(238,238,238,0.72),
                 7px 0 0 rgba(78,78,78,0.62),
@@ -106,7 +106,7 @@ const DinningPage = () => {
               filter: brightness(1.12);
             }
             91% {
-              transform: perspective(900px) rotateX(50deg) scaleY(2.18) translate3d(-1px, 1px, 0);
+              transform: perspective(900px) rotateX(50deg) scaleY(1.6) translate3d(-1px, 1px, 0);
               text-shadow:
                 -4px 0 0 rgba(220,220,220,0.6),
                 4px 0 0 rgba(105,105,105,0.52),
@@ -166,13 +166,10 @@ const DinningPage = () => {
 
           .shell {
             width: 50%;
+            max-width: 900px;
             margin: 0 auto;
-          }
-
-          @media (max-width: 768px) {
-            .shell {
-              width: 90%;
-            }
+            position: relative;
+            z-index: 2;
           }
 
           .frame {
@@ -223,8 +220,9 @@ const DinningPage = () => {
           }
 
           .title-wrap {
-            width: min(1180px, 100%);
+            width: 100%;
             margin: 0 auto;
+            overflow: hidden;
           }
 
           .header-title {
@@ -232,10 +230,11 @@ const DinningPage = () => {
             text-transform: uppercase;
             letter-spacing: 0.02em;
             line-height: 0.88;
-            font-size: clamp(56px, 10vw, 150px);
+            font-size: clamp(42px, 6vw, 110px);
             font-weight: 900;
             color: var(--text);
             animation: floatPulse 6s ease-in-out infinite;
+            overflow-wrap: anywhere;
           }
 
           .header-subtitle {
@@ -245,9 +244,10 @@ const DinningPage = () => {
             font-family: var(--future);
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            font-size: clamp(14px, 3vw, 58px);
+            font-size: clamp(12px, 2vw, 36px);
             line-height: 1;
             font-weight: 700;
+            overflow-wrap: anywhere;
           }
 
           .top-lines {
@@ -310,65 +310,24 @@ const DinningPage = () => {
             text-transform: uppercase;
             letter-spacing: 0.02em;
             line-height: 0.82;
-            font-size: clamp(36px, 4vw, 58px);
+            font-size: clamp(22px, 3vw, 44px);
             text-shadow:
               -2px 0 0 rgba(210,210,210,0.55),
               2px 0 0 rgba(120,120,120,0.45),
               0 0 10px rgba(255,255,255,0.08);
-            transform: perspective(900px) rotateX(50deg) scaleY(2.18);
+            transform: perspective(900px) rotateX(50deg) scaleY(1.6);
             transform-origin: center top;
             display: inline-block;
             position: relative;
-            white-space: nowrap;
+            white-space: normal;
+            overflow-wrap: anywhere;
             animation: crawlFloat 4.2s steps(1, end) infinite;
-          }
-
-          .hero {
-            position: relative;
-            z-index: 1;
-            padding: 8px 22px 22px;
-          }
-
-          .tunnel-box {
-            position: relative;
-            margin: 0 0 22px;
-            height: min(46vw, 470px);
-            min-height: 260px;
-            border: 2px solid var(--line);
-            border-radius: 10px;
-            overflow: hidden;
-            background: transparent;
-          }
-
-          .tunnel-box::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-              repeating-linear-gradient(to right, transparent 0, transparent 3.8%, var(--line) 3.8%, var(--line) 4%, transparent 4%, transparent 7.8%),
-              repeating-linear-gradient(to bottom, transparent 0, transparent 4.8%, var(--line) 4.8%, var(--line) 5%, transparent 5%, transparent 9.8%);
-            transform: perspective(1100px) rotateX(69deg) scale(2.15) translateY(-3%);
-            transform-origin: center center;
-            opacity: 0.92;
-            animation: tunnelPulse 4.5s ease-in-out infinite;
-          }
-
-          .tunnel-box::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 10%;
-            height: 13%;
-            transform: translate(-50%, -50%);
-            background: var(--text);
-            box-shadow: 0 0 24px rgba(255,255,255,0.34);
           }
 
           .content-stack {
             padding: 0 22px 22px;
             display: grid;
-            gap: 14px;
+            gap: 16px;
             position: relative;
             z-index: 1;
           }
@@ -381,12 +340,6 @@ const DinningPage = () => {
           }
 
           .schedule-wrap,
-          .cta-card {
-            margin: 0;
-            margin-bottom: 16px !important;
-          }
-
-          .schedule-wrap,
           .cta-card,
           .venue-card,
           .content-wrap {
@@ -396,6 +349,12 @@ const DinningPage = () => {
             border-radius: 10px;
             overflow: hidden;
             animation: lineGlow 7s ease-in-out infinite;
+            margin: 0;
+          }
+
+          .schedule-wrap,
+          .cta-card {
+            margin-bottom: 16px !important;
           }
 
           .schedule-wrap::before,
@@ -422,7 +381,7 @@ const DinningPage = () => {
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.12em;
-            font-size: clamp(18px, 2vw, 28px);
+            font-size: clamp(14px, 1.6vw, 24px);
             color: var(--text);
             margin: 0;
           }
@@ -432,19 +391,50 @@ const DinningPage = () => {
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.18em;
-            font-size: 44px;
+            font-size: clamp(24px, 3vw, 44px);
             color: var(--text);
             margin: 0;
             padding: 6px 14px 8px;
             display: inline-block;
           }
 
-          .schedule-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-          .schedule-item { position: relative; z-index: 1; padding: 18px 16px 16px; border-top: 2px solid var(--line); border-right: 2px solid var(--line); }
-          .schedule-item:last-child { border-right: none; }
+          .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
 
-          .card-title { color: var(--text); font-family: var(--future); font-size: clamp(22px, 1vw, 34px); line-height: 0.95; text-transform: uppercase; margin-bottom: 12px; font-weight: 800; }
-          .card-time { color: var(--text); font-family: var(--future); font-size: clamp(26px, 3vw, 52px); line-height: 0.9; text-transform: uppercase; font-weight: 900; }
+          .schedule-item {
+            position: relative;
+            z-index: 1;
+            padding: 18px 16px 16px;
+            border-top: 2px solid var(--line);
+            border-right: 2px solid var(--line);
+            min-width: 0;
+          }
+
+          .schedule-item:last-child {
+            border-right: none;
+          }
+
+          .card-title {
+            color: var(--text);
+            font-family: var(--future);
+            font-size: clamp(14px, 1.25vw, 24px);
+            line-height: 0.95;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: 800;
+            overflow-wrap: anywhere;
+          }
+
+          .card-time {
+            color: var(--text);
+            font-family: var(--future);
+            font-size: clamp(24px, 3vw, 52px);
+            line-height: 0.9;
+            text-transform: uppercase;
+            font-weight: 900;
+          }
 
           .cta-link {
             position: relative;
@@ -456,12 +446,13 @@ const DinningPage = () => {
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
-            font-size: clamp(24px, 2.4vw, 38px);
+            font-size: clamp(18px, 2vw, 34px);
             line-height: 0.92;
             letter-spacing: 0.04em;
             font-weight: 800;
             background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
             transition: background 0.18s ease, box-shadow 0.18s ease;
+            overflow-wrap: anywhere;
           }
 
           .cta-link::before {
@@ -506,49 +497,39 @@ const DinningPage = () => {
             z-index: 1;
           }
 
-          .venue-title,
-          .concept-title,
-          .image-placeholder-title {
-            color: var(--text);
-            font-family: var(--future);
-            text-transform: uppercase;
-            line-height: 0.92;
-            letter-spacing: 0.03em;
-            font-weight: 900;
-          }
-
-          .venue-title { font-size: clamp(34px, 4vw, 58px); }
-          .venue-copy,
-          .image-placeholder-path,
-          .concept-subtitle { color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; font-weight: 800; font-family: var(--body); }
-          .venue-copy { margin-top: 12px; font-size: 14px; line-height: 1.35; }
-          .venue-path { margin-top: 10px; color: rgba(243,243,240,0.48); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 800; font-family: var(--body); }
-
           .concept-stack,
-          .concept-block { display: grid; gap: 18px; }
-
-          .image-placeholder {
-            min-height: 220px;
-            border: 2px solid var(--line);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 18px;
-            background: transparent;
-            animation: lineGlow 9s ease-in-out infinite;
+          .concept-block {
+            display: grid;
+            gap: 16px;
           }
 
-          .image-placeholder-title { font-size: clamp(28px, 3vw, 44px); }
-          .image-placeholder-path { display: block; margin-top: 10px; }
-          .concept-kicker { color: var(--muted); text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; font-weight: 800; margin-bottom: 10px; font-family: var(--body); }
-          .concept-title { margin: 0; font-size: clamp(34px, 4.2vw, 68px); }
-          .concept-subtitle { margin-top: 8px; }
-          .concept-copy { margin: 18px 0 18px; color: var(--text); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.34; font-weight: 700; width: 100%; }
+          .concept-copy {
+            margin: 18px 0 18px;
+            color: var(--text);
+            font-size: clamp(16px, 1.35vw, 22px);
+            line-height: 1.34;
+            font-weight: 700;
+            width: 100%;
+          }
 
-          .feature-list { list-style: none; padding: 0; margin: 0 0 18px; display: grid; gap: 8px; }
-          .feature-list li { color: var(--text); font-family: var(--body); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.34; position: relative; padding-left: 34px; font-weight: 700; }
+          .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 18px;
+            display: grid;
+            gap: 8px;
+          }
+
+          .feature-list li {
+            color: var(--text);
+            font-family: var(--body);
+            font-size: clamp(16px, 1.35vw, 22px);
+            line-height: 1.34;
+            position: relative;
+            padding-left: 34px;
+            font-weight: 700;
+          }
+
           .feature-list li::before {
             content: "";
             position: absolute;
@@ -562,6 +543,7 @@ const DinningPage = () => {
             background: transparent;
             box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
           }
+
           .link-row {
             display: flex;
             flex-wrap: wrap;
@@ -573,7 +555,7 @@ const DinningPage = () => {
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
-            font-size: clamp(15px, 1.7vw, 24px);
+            font-size: clamp(13px, 1.3vw, 22px);
             line-height: 1;
             letter-spacing: 0.05em;
             position: relative;
@@ -620,19 +602,67 @@ const DinningPage = () => {
           }
 
           ::-webkit-scrollbar-thumb {
-              border-radius: 10px!important;
-              background: white!important;
-              box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 6px inset!important;
+            border-radius: 10px!important;
+            background: white!important;
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 6px inset!important;
           }
 
-          .footer-strip { display: grid; grid-template-columns: 140px 1fr 140px; gap: 0; border: 2px solid var(--line); margin-top: 18px; position: relative; z-index: 1; border-radius: 10px;}
-          .footer-cell { min-height: 92px; border-right: 2px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 10px; position: relative; overflow: hidden; background: transparent; }
-          .footer-cell:last-child { border-right: none; }
-          .footer-mark { width: 74px; height: 74px; position: relative; border-radius: 50%; border: 2px solid var(--text); }
+          .footer-strip {
+            display: grid;
+            grid-template-columns: 140px 1fr 140px;
+            gap: 0;
+            border: 2px solid var(--line);
+            margin-top: 18px;
+            position: relative;
+            z-index: 1;
+            border-radius: 10px;
+          }
+
+          .footer-cell {
+            min-height: 92px;
+            border-right: 2px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+          }
+
+          .footer-cell:last-child {
+            border-right: none;
+          }
+
+          .footer-mark {
+            width: 74px;
+            height: 74px;
+            position: relative;
+            border-radius: 50%;
+            border: 2px solid var(--text);
+          }
+
           .footer-mark::before,
-          .footer-mark::after { content: ""; position: absolute; border-radius: 50%; }
-          .footer-mark::before { inset: 8px; border: 2px solid var(--text); }
-          .footer-mark::after { width: 10px; height: 10px; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--text); }
+          .footer-mark::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+          }
+
+          .footer-mark::before {
+            inset: 8px;
+            border: 2px solid var(--text);
+          }
+
+          .footer-mark::after {
+            width: 10px;
+            height: 10px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--text);
+          }
+
           .footer-lines {
             width: 100%;
             height: 80px;
@@ -653,70 +683,119 @@ const DinningPage = () => {
             opacity: 0.92;
           }
 
-          @media (max-width: 980px) {
-            .footer-strip { grid-template-columns: 110px 1fr 110px; }
-          }
+          @media (max-width: 1200px) {
+            .shell {
+              width: 58%;
+            }
 
-          @media (max-width: 900px) {
-            .header-tagline-wrap { padding-left: 4%; padding-right: 4%; }
-            .tagline { white-space: normal; font-size: clamp(14px, 5vw, 18px); line-height: 0.92; }
-          }
+            .header-title {
+              font-size: clamp(38px, 6vw, 86px);
+            }
 
-          @media (max-width: 640px) {
-            .page { padding: 14px 8px 22px; }
-            .hero,
-            .content-stack,
-            .header-bar { padding-left: 14px; padding-right: 14px; }
-            .tunnel-box { height: 220px; }
-            .schedule-grid { grid-template-columns: 1fr; }
-            .schedule-item { border-right: none; }
-            .cta-link { font-size: 15px; padding-left: 64px; text-align: left; }    
-            .schedule-label-top {font-size: 24px;}
-            .header-tagline-wrap {padding: 0;}
-          }
+            .header-subtitle {
+              font-size: clamp(12px, 2vw, 28px);
+            }
 
-          /* spacing overrides */
-          .content-stack {
-            gap: 0;
-          }
+            .tagline {
+              font-size: clamp(20px, 3vw, 36px);
+              transform: perspective(900px) rotateX(50deg) scaleY(1.35);
+            }
 
-          .schedule-wrap {
-            margin: 0 0 -2px 0;
-          }
-
-          .cta-card {
-            margin: 0 0 -2px 0;
-          }
-
-          .venue-card {
-            margin: 0;
-          }
-
-          @media (max-width: 640px) {
-            .content-stack {
-              gap: 0;
+            .card-title {
+              font-size: clamp(13px, 1.4vw, 20px);
             }
           }
 
-          /* stack alignment fixes */
-          .content-stack {
-            gap: 16px;
+          @media (max-width: 980px) {
+            .footer-strip {
+              grid-template-columns: 110px 1fr 110px;
+            }
           }
 
-          .concept-stack {
-            display: grid;
-            gap: 16px;
+          @media (max-width: 900px) {
+            .shell {
+              width: 72%;
+            }
+
+            .header-tagline-wrap {
+              padding-left: 4%;
+              padding-right: 4%;
+            }
+
+            .tagline {
+              font-size: clamp(18px, 4vw, 30px);
+              line-height: 0.95;
+              transform: perspective(900px) rotateX(42deg) scaleY(1.2);
+            }
+
+            .schedule-grid {
+              grid-template-columns: 1fr;
+            }
+
+            .schedule-item {
+              border-right: none;
+            }
           }
 
-          .schedule-wrap,
-          .cta-card,
-          .venue-card,
-          .content-wrap {
-            margin: 0;
-            border-radius: 10px;
+          @media (max-width: 768px) {
+            .shell {
+              width: 90%;
+            }
+
+            .header-title {
+              font-size: clamp(42px, 13vw, 74px);
+            }
+
+            .header-subtitle {
+              font-size: clamp(13px, 4vw, 24px);
+            }
+
+            .tagline {
+              transform: none;
+              font-size: clamp(20px, 6vw, 34px);
+              line-height: 0.9;
+            }
           }
 
           @media (max-width: 640px) {
+            .page {
+              padding: 14px 8px 22px;
+            }
+
+            .content-stack,
+            .header-bar {
+              padding-left: 14px;
+              padding-right: 14px;
+            }
+
+            .floating-panel {
+              padding-left: 14px;
+              padding-right: 14px;
+            }
+
+            .schedule-label-top {
+              font-size: 24px;
+            }
+
+            .header-tagline-wrap {
+              padding: 0;
+            }
+
+            .cta-link {
+              font-size: 15px;
+              padding-left: 64px;
+              text-align: left;
+            }
+
+            .concept-copy,
+            .feature-list li {
+              font-size: 16px;
+            }
+
+            .link-row a {
+              font-size: 13px;
+            }
+
             .content-stack,
             .concept-stack {
               gap: 14px;
@@ -726,30 +805,36 @@ const DinningPage = () => {
           @media (prefers-reduced-motion: reduce) {
             .page::before,
             .frame::after,
-            .tunnel-box::before,
             .screen-glitch,
             .header-title,
             .page::after,
             .tagline,
             .schedule-wrap,
-            .content-wrap,
-            .image-placeholder { animation: none !important; }
+            .content-wrap {
+              animation: none !important;
+            }
           }
         `}</style>
+
         <title>Dining at 17 Little Portland Street</title>
       </Head>
 
       <main className="page">
         <div className="screen-glitch" aria-hidden="true" />
+
         <div className="shell">
           <section className="frame">
             <div className="header-bar">
               <div className="title-wrap">
                 <div className="header-title">Dining At</div>
                 <div className="header-subtitle">17 Little Portland Street</div>
-                <div className="top-lines" aria-hidden="true"><span /></div>
+                <div className="top-lines" aria-hidden="true">
+                  <span />
+                </div>
                 <div className="header-tagline-wrap">
-                  <div className="tagline">More Than a Meal. Step Into The Void</div>
+                  <div className="tagline">
+                    More Than a Meal. Step Into The Void
+                  </div>
                 </div>
               </div>
             </div>
@@ -757,18 +842,23 @@ const DinningPage = () => {
             <div className="floating-panel">
               <div className="schedule-wrap">
                 <div className="schedule-header">
-                  <div className="schedule-open">Open Thursdays to Saturdays</div>
+                  <div className="schedule-open">
+                    Open Thursdays to Saturdays
+                  </div>
                   <div className="schedule-label-top">Nightly Schedule</div>
                 </div>
+
                 <div className="schedule-grid">
                   <div className="schedule-item">
                     <div className="card-title">Chef&apos;s Studio</div>
                     <div className="card-time">20:00</div>
                   </div>
+
                   <div className="schedule-item">
                     <div className="card-title">Dinner in The Tent</div>
                     <div className="card-time">20:30</div>
                   </div>
+
                   <div className="schedule-item">
                     <div className="card-title">Club Opens</div>
                     <div className="card-time">22:00</div>
@@ -777,50 +867,52 @@ const DinningPage = () => {
               </div>
 
               <div className="cta-card">
-                <a className="cta-link" href="/food">Explore our futurist dining concept</a>
+                <a className="cta-link" href="/food">
+                  Explore our futurist dining concept
+                </a>
               </div>
             </div>
 
             <div className="content-stack">
               <div className="venue-card">
                 <div className="venue-card-inner">
-                    <Image
-                      src="/images/floorplan-dining-page.png"
-                      alt="Chef's Studio"
-                      width={1600}
-                      height={909}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        display: "block",
-                        objectFit: "contain",
-                      }}
-                    />
+                  <Image
+                    src="/images/floorplan-dining-page.png"
+                    alt="Chef's Studio"
+                    width={1600}
+                    height={909}
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      display: "block",
+                      objectFit: "contain",
+                    }}
+                  />
                 </div>
               </div>
 
               <div className="concept-stack" id="concepts">
                 <article className="concept-block">
-
                   <div className="content-wrap concept-copy-wrap">
-                    <div style={{ padding: '18px' }}>
-                    <Image
-                      src="/images/tent-page-banner.png"
-                      alt="The Tent"
-                      width={1072}
-                      height={437}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        display: "block",
-                        objectFit: "contain",
-                      }}
-                    />
+                    <div style={{ padding: "18px" }}>
+                      <Image
+                        src="/images/tent-page-banner.png"
+                        alt="The Tent"
+                        width={1072}
+                        height={437}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          display: "block",
+                          objectFit: "contain",
+                        }}
+                      />
 
                       <p className="concept-copy">
-                        In a floating tent, lost in space, futurist menus set the stage for a sensorial
-                        experience as dinner seamlessly transitions into our hypnotic after-dark mode - a
-                        cosmic journey.
+                        In a floating tent, lost in space, futurist menus set
+                        the stage for a sensorial experience as dinner
+                        seamlessly transitions into our hypnotic after-dark mode
+                        - a cosmic journey.
                       </p>
 
                       <ul className="feature-list">
@@ -831,7 +923,9 @@ const DinningPage = () => {
                       </ul>
 
                       <div className="link-row">
-                        <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">Book</a>
+                        <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2025-03-06&default_time=21:00&default_party_size=5">
+                          Book
+                        </a>
                         <a href="/menu">Menu</a>
                         <a href="/thetent">Explore The Tent</a>
                       </div>
@@ -840,25 +934,25 @@ const DinningPage = () => {
                 </article>
 
                 <article className="concept-block">
-
                   <div className="content-wrap concept-copy-wrap">
-                    <div style={{ padding: '18px' }}>
-                    <Image
-                      src="/images/chefs-studio-page.png"
-                      alt="Chef's Studio"
-                      width={1600}
-                      height={805}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        display: "block",
-                        objectFit: "contain",
-                      }}
-                    />
+                    <div style={{ padding: "18px" }}>
+                      <Image
+                        src="/images/chefs-studio-page.png"
+                        alt="Chef's Studio"
+                        width={1600}
+                        height={805}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          display: "block",
+                          objectFit: "contain",
+                        }}
+                      />
 
                       <p className="concept-copy">
-                        Chef&apos;s Studio is an intimate and futuristic space beneath The Tent - the table of
-                        choice for those in the know.
+                        Chef&apos;s Studio is an intimate and futuristic space
+                        beneath The Tent - the table of choice for those in the
+                        know.
                       </p>
 
                       <ul className="feature-list">
@@ -869,7 +963,9 @@ const DinningPage = () => {
                       </ul>
 
                       <div className="link-row">
-                        <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">Book</a>
+                        <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=YYYY-MM-DD&default_time=21:00&default_party_size=5">
+                          Book
+                        </a>
                         <a href="/menu">Menu</a>
                         <a href="/chefstudio">Explore Chef&apos;s Studio</a>
                       </div>
@@ -879,9 +975,17 @@ const DinningPage = () => {
               </div>
 
               <div className="footer-strip">
-                <div className="footer-cell"><div className="footer-mark" aria-hidden="true" /></div>
-                <div className="footer-cell"><div className="footer-lines" aria-hidden="true" /></div>
-                <div className="footer-cell"><div className="footer-mark" aria-hidden="true" /></div>
+                <div className="footer-cell">
+                  <div className="footer-mark" aria-hidden="true" />
+                </div>
+
+                <div className="footer-cell">
+                  <div className="footer-lines" aria-hidden="true" />
+                </div>
+
+                <div className="footer-cell">
+                  <div className="footer-mark" aria-hidden="true" />
+                </div>
               </div>
             </div>
           </section>
