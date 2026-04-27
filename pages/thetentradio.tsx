@@ -1,65 +1,126 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import Head from "next/head";
-// If you actually use this container, keep it. Otherwise remove.
-import CenterContainer from "@components/UX/CenterContainer/CenterContainer";
+import Head from 'next/head';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
-// ---------- Types & Data (replace with your real files) ----------
 type Track = {
   id: string;
   title: string;
   artist: string;
-  src: string;   // /public/audio/*.mp3
-  cover: string; // /public/covers/*.jpg
-  duration?: number;
+  src: string;
+  cover: string;
+  episodeLabel: string;
+  infoLines: string[];
+  objectPosition?: string;
 };
 
-const tracks: Track[] = [
+const IMAGE_BASE = '/images/private-hire';
+const STAR_BG = `${IMAGE_BASE}/night-starry-sky-dark.jpg`;
+const GRID_BG = `${IMAGE_BASE}/buldge-grid.svg`;
+const ORB_OVERLAY = `${IMAGE_BASE}/circle-orb-overlay.png`;
+const ACCENT = '#348159';
+
+const TRACKS: Track[] = [
   {
-    id: "24",
-    title: "The Tent (at the End of the Universe) 24 [with Alia Indigo]",
-    artist: "OpenLab",
-    src: "/audio/tent-semoa.mp3",
-    cover: "/covers/tent-semoa.jpg",
+    id: '24',
+    episodeLabel: 'THE TENT 24',
+    title: 'The Tent (at the End of the Universe) 24 [with Alia Indigo]',
+    artist: 'OpenLab',
+    src: '/audio/tent-semoa.mp3',
+    cover: '/covers/tent-semoa.jpg',
+    infoLines: ['With Alia Indigo', 'Balearic / World / Downtempo / Electronica'],
   },
   {
-    id: "sEmoa",
-    title: "The Tent (at the End of the Universe) [with sEmoa]",
-    artist: "OpenLab",
-    src: "/audio/tent-semoa.mp3",
-    cover: "/covers/tent-semoa.jpg",
+    id: 'sEmoa',
+    episodeLabel: 'THE TENT',
+    title: 'The Tent (at the End of the Universe) [with sEmoa]',
+    artist: 'OpenLab',
+    src: '/audio/tent-semoa.mp3',
+    cover: '/covers/tent-semoa.jpg',
+    infoLines: ['With sEmoa', 'Balearic / World / Downtempo / Electronica'],
   },
   {
-    id: "22",
-    title: "The Tent (at the End of the Universe) 22 [with Bugsy]",
-    artist: "OpenLab",
-    src: "/audio/tent-semoa.mp3",
-    cover: "/covers/tent-semoa.jpg",
+    id: '22',
+    episodeLabel: 'THE TENT 22',
+    title: 'The Tent (at the End of the Universe) 22 [with Bugsy]',
+    artist: 'OpenLab',
+    src: '/audio/tent-semoa.mp3',
+    cover: '/covers/tent-semoa.jpg',
+    infoLines: ['With Bugsy', 'Balearic / World / Downtempo / Electronica'],
   },
   {
-    id: "21",
-    title: "The Tent (at the End of the Universe) 21",
-    artist: "OpenLab",
-    src: "/audio/tent-semoa.mp3",
-    cover: "/covers/tent-semoa.jpg",
+    id: '21',
+    episodeLabel: 'THE TENT 21',
+    title: 'The Tent (at the End of the Universe) 21',
+    artist: 'OpenLab',
+    src: '/audio/tent-semoa.mp3',
+    cover: '/covers/tent-semoa.jpg',
+    infoLines: ['OpenLab', 'Balearic / World / Downtempo / Electronica'],
   },
   {
-    id: "20",
-    title: "The Tent (at the End of the Universe) 20",
-    artist: "OpenLab",
-    src: "/audio/tent-semoa.mp3",
-    cover: "/covers/tent-semoa.jpg",
+    id: '20',
+    episodeLabel: 'THE TENT 20',
+    title: 'The Tent (at the End of the Universe) 20',
+    artist: 'OpenLab',
+    src: '/audio/tent-semoa.mp3',
+    cover: '/covers/tent-semoa.jpg',
+    infoLines: ['OpenLab', 'Balearic / World / Downtempo / Electronica'],
   },
 ];
 
-// ---------- Page ----------
-export default function Playlist() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(Math.max(value, min), max);
+
+const pretty = (s?: number) => {
+  if (!s && s !== 0) return '0:00';
+  const m = Math.floor(s / 60);
+  const ss = Math.floor(s % 60).toString().padStart(2, '0');
+  return `${m}:${ss}`;
+};
+
+export default function TentRadioPage() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [displayIndex, setDisplayIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState<number | null>(null);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const currentTrack = useMemo(() => tracks[currentIndex], [currentIndex]);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const activeTrack = TRACKS[displayIndex];
+  const currentTrack = useMemo(() => TRACKS[activeIndex], [activeIndex]);
+
+  useEffect(() => {
+    const updateActiveIndex = () => {
+      const nextIndex = clamp(
+        Math.round(window.scrollY / Math.max(window.innerHeight, 1)),
+        0,
+        TRACKS.length - 1
+      );
+      setActiveIndex(nextIndex);
+    };
+
+    updateActiveIndex();
+    window.addEventListener('scroll', updateActiveIndex, { passive: true });
+    window.addEventListener('resize', updateActiveIndex);
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveIndex);
+      window.removeEventListener('resize', updateActiveIndex);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (activeIndex === displayIndex) return;
+
+    setPreviousIndex(displayIndex);
+    setDisplayIndex(activeIndex);
+
+    const timeout = window.setTimeout(() => {
+      setPreviousIndex(null);
+    }, 360);
+
+    return () => window.clearTimeout(timeout);
+  }, [activeIndex, displayIndex]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -67,31 +128,41 @@ export default function Playlist() {
 
     const onTime = () => setProgress(audio.currentTime || 0);
     const onLoaded = () => setDuration(audio.duration || 0);
-    const onEnded = () =>
-      setCurrentIndex((i) => (i + 1) % tracks.length); // auto-next
+    const onEnded = () => setActiveIndex((i) => (i + 1) % TRACKS.length);
 
-    audio.addEventListener("timeupdate", onTime);
-    audio.addEventListener("loadedmetadata", onLoaded);
-    audio.addEventListener("ended", onEnded);
+    audio.addEventListener('timeupdate', onTime);
+    audio.addEventListener('loadedmetadata', onLoaded);
+    audio.addEventListener('ended', onEnded);
 
     return () => {
-      audio.removeEventListener("timeupdate", onTime);
-      audio.removeEventListener("loadedmetadata", onLoaded);
-      audio.removeEventListener("ended", onEnded);
+      audio.removeEventListener('timeupdate', onTime);
+      audio.removeEventListener('loadedmetadata', onLoaded);
+      audio.removeEventListener('ended', onEnded);
     };
-  }, [currentIndex]);
+  }, [activeIndex]);
 
   useEffect(() => {
-    // When track changes, start playing
     const audio = audioRef.current;
     if (!audio) return;
+
+    setProgress(0);
+    setDuration(0);
     audio.currentTime = 0;
-    audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
-  }, [currentIndex]);
+
+    if (isPlaying) {
+      audio.play().catch(() => setIsPlaying(false));
+    }
+  }, [currentTrack.src]);
+
+  const goToSlide = (index: number) => {
+    const nextIndex = clamp(index, 0, TRACKS.length - 1);
+    window.scrollTo({ top: nextIndex * window.innerHeight, behavior: 'smooth' });
+  };
 
   const togglePlay = async () => {
     const audio = audioRef.current;
     if (!audio) return;
+
     if (audio.paused) {
       await audio.play();
       setIsPlaying(true);
@@ -101,93 +172,135 @@ export default function Playlist() {
     }
   };
 
-  const seek = (val: number) => {
+  const seek = (value: number) => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.currentTime = val;
-    setProgress(val);
-  };
 
-  const pretty = (s?: number) => {
-    if (!s && s !== 0) return "0:00";
-    const m = Math.floor(s / 60);
-    const ss = Math.floor(s % 60).toString().padStart(2, "0");
-    return `${m}:${ss}`;
+    audio.currentTime = value;
+    setProgress(value);
   };
 
   return (
     <>
       <Head>
         <title>17 Little Portland Street — The Tent Radio</title>
-          <style>{`
-          html, body {
-            margin: 0;
-            padding: 0;
-            background-color: #000000!important;
-            background-image: url('/images/stars-sky.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100%;
-          }
-        `}</style>
+        <meta
+          name="description"
+          content="The Tent Radio playlist from 17 Little Portland Street."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <CenterContainer>
-        <header className="hero">
-          <div className="hero__glow" />
-          <h1>The Tent Radio</h1>
-          <p>BALEARIC, WORLD, DOWNTEMPO, ELECTRONICA</p>
-        </header>
+      <main className="posterPage">
+        <div className="posterStage">
+          <div className="posterSky" style={{ backgroundImage: `url(${STAR_BG})` }} />
+          <img src={GRID_BG} alt="" aria-hidden="true" className="posterGrid" />
+          <div className="posterGridSweep" aria-hidden="true" />
+          <div className="posterVignette" />
+          <div className="posterNoise" />
 
-        <section className="list" aria-label="Playlist">
-          {tracks.map((t, i) => {
-            const active = i === currentIndex;
-            return (
-              <button
-                key={t.id}
-                className={`row ${active ? "row--active" : ""}`}
-                onClick={() => setCurrentIndex(i)}
-                aria-pressed={active}
-              >
-                <div className="thumb">
-                  {/* use <img> so this works without next/image config */}
-                  <img src={t.cover} alt="" />
-                  <div className="thumb__shine" />
-                </div>
-                <div className="meta">
-                  <h3 className="title">{t.title}</h3>
-                  <p className="byline">by {t.artist}</p>
-                </div>
-                <div className="cta">
-                  <span className="time">
-                    {active ? pretty(progress) : ""}
-                  </span>
-                  <span className="pill">
-                    {active && isPlaying ? "Playing" : active ? "Paused" : "Play"}
-                  </span>
-                </div>
-              </button>
-            );
-          })}
-        </section>
-      </CenterContainer>
+          <button
+            type="button"
+            className="posterNav posterNav--prev"
+            onClick={() => goToSlide(activeIndex - 1)}
+            disabled={activeIndex === 0}
+            aria-label="Previous track"
+          >
+            <span className="posterNav__arrow">↑</span>
+            <span className="posterNav__text">Prev</span>
+          </button>
 
-      {/* Sticky player */}
-      <div className="player">
-        <div className="player__content">
-          <div className="player__art">
-            <img src={currentTrack.cover} alt="" />
-          </div>
+          <button
+            type="button"
+            className="posterNav posterNav--next"
+            onClick={() => goToSlide(activeIndex + 1)}
+            disabled={activeIndex === TRACKS.length - 1}
+            aria-label="Next track"
+          >
+            <span className="posterNav__text">Next</span>
+            <span className="posterNav__arrow">↓</span>
+          </button>
 
-          <div className="player__info">
-            <div className="player__titles">
-              <strong className="lineClamp">{currentTrack.title}</strong>
-              <span className="muted lineClamp">{currentTrack.artist}</span>
+          <section className="posterFrame" aria-live="polite">
+            <div className="posterTitleWrap">
+              <h1 className="posterTitle">THE TENT RADIO</h1>
             </div>
 
-            <div className="player__bar">
-              <span className="muted small">{pretty(progress)}</span>
+            <div className="orbCluster">
+              <div className="orbBloomBack" />
+
+              <div className="orbPhotoMask">
+                {previousIndex !== null && (
+                  <div
+                    aria-hidden="true"
+                    className="orbPhotoLayer orbPhotoLayer--previous"
+                    style={{
+                      backgroundImage: `url(${TRACKS[previousIndex].cover})`,
+                      backgroundPosition: TRACKS[previousIndex].objectPosition || '50% 50%',
+                    }}
+                  />
+                )}
+
+                <div
+                  key={activeTrack.id}
+                  role="img"
+                  aria-label={activeTrack.title}
+                  className={`orbPhotoLayer orbPhotoLayer--current ${
+                    previousIndex !== null ? 'is-glitching' : ''
+                  }`}
+                  style={{
+                    backgroundImage: `url(${activeTrack.cover})`,
+                    backgroundPosition: activeTrack.objectPosition || '50% 50%',
+                  }}
+                />
+
+                <div className="orbInnerTint" />
+                <div className="orbInnerGlow" />
+              </div>
+
+              <img src={ORB_OVERLAY} alt="" aria-hidden="true" className="orbOverlay orbOverlay--main" />
+            </div>
+
+            <div className="posterAreaTitle">
+              {TRACKS.map((track, index) => (
+                <div
+                  key={track.id}
+                  className={`posterAreaTitle__item ${index === activeIndex ? 'is-active' : ''}`}
+                >
+                  {track.episodeLabel}
+                </div>
+              ))}
+            </div>
+
+            <div className="posterInfo">
+              {TRACKS.map((track, index) => (
+                <div
+                  key={track.id}
+                  className={`posterInfo__block ${index === activeIndex ? 'is-active' : ''}`}
+                >
+                  <p className="posterInfo__line">{track.title}</p>
+                  {track.infoLines.map((line) => (
+                    <p key={line} className="posterInfo__line posterInfo__line--secondary">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <button type="button" className="posterPlayButton" onClick={togglePlay}>
+              {isPlaying ? 'Pause Transmission' : 'Play Transmission'}
+            </button>
+          </section>
+
+          <div className="radioPlayer">
+            <div className="radioPlayer__meta">
+              <strong>{currentTrack.episodeLabel}</strong>
+              <span>{currentTrack.artist}</span>
+            </div>
+
+            <div className="radioPlayer__bar">
+              <span>{pretty(progress)}</span>
               <input
                 type="range"
                 min={0}
@@ -196,95 +309,176 @@ export default function Playlist() {
                 value={Math.min(progress, duration || 0)}
                 onChange={(e) => seek(Number(e.target.value))}
               />
-              <span className="muted small">{pretty(duration)}</span>
+              <span>{pretty(duration)}</span>
+            </div>
+
+            <div className="radioPlayer__controls">
+              <button onClick={() => goToSlide(activeIndex - 1)} disabled={activeIndex === 0}>
+                ◀
+              </button>
+              <button onClick={togglePlay}>
+                {isPlaying ? 'Pause' : 'Play'}
+              </button>
+              <button
+                onClick={() => goToSlide(activeIndex + 1)}
+                disabled={activeIndex === TRACKS.length - 1}
+              >
+                ▶
+              </button>
             </div>
           </div>
 
-          <div className="player__controls">
-            <button
-              className="icon"
-              onClick={() =>
-                setCurrentIndex((i) => (i - 1 + tracks.length) % tracks.length)
-              }
-              aria-label="Previous"
-            >
-              ◀
-            </button>
-            <button className="play" onClick={togglePlay} aria-label="Play/Pause">
-              {isPlaying ? "Pause" : "Play"}
-            </button>
-            <button
-              className="icon"
-              onClick={() => setCurrentIndex((i) => (i + 1) % tracks.length)}
-              aria-label="Next"
-            >
-              ▶
-            </button>
-          </div>
+          <audio ref={audioRef} src={currentTrack.src} preload="metadata" />
         </div>
 
-        <audio ref={audioRef} src={currentTrack.src} preload="metadata" />
-      </div>
+        <div className="posterScrollTrack" aria-hidden="true">
+          {TRACKS.map((track) => (
+            <div key={track.id} className="posterScrollMarker" />
+          ))}
+        </div>
+      </main>
 
-      <style jsx>{`
+      {/* Keep your existing global CSS from the Private Hire page here. */}
+      {/* Then add this extra CSS near the bottom: */}
 
-        :root {
-          --card:#0f1117; --ink:#f6f7fb; --muted:#9aa3b2;
-          --accent:#7c5cff; --accent2:#00ffd5; --ring:rgba(124,92,255,.35);
-        }
-        *{box-sizing:border-box}
-        .hero{position:relative;padding:64px 20px 20px;text-align:center}
-        .hero h1{color:#fff;font-size:44px;margin:0 0 6px}
-        .hero p{color:var(--muted);margin:0}
-        .hero__glow{position:absolute;inset:0;pointer-events:none;background:
-          radial-gradient(60% 40% at 15% 10%, rgba(124,92,255,.28), transparent 60%),
-          radial-gradient(40% 40% at 85% 15%, rgba(0,255,213,.22), transparent 60%);
-          filter:blur(30px);
-        }
-
-        .list{display:flex;flex-direction:column;gap:14px;padding:0 20px 140px}
-        .row{
-          display:grid;grid-template-columns:132px 1fr auto;gap:18px;align-items:center;
-          padding:16px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-          backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.06);
-          box-shadow:0 10px 30px rgba(0,0,0,.25);text-align:left;cursor:pointer;
-          transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-          color:var(--ink);
-        }
-        .row:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(0,0,0,.35);border-color:var(--ring)}
-        .row--active{border-color:var(--accent);box-shadow:0 18px 40px rgba(124,92,255,.25)}
-        .thumb{position:relative;width:132px;height:132px;border-radius:16px;overflow:hidden}
-        .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-        .thumb__shine{position:absolute;inset:-25%;background:radial-gradient(50% 50% at 50% 50%, rgba(124,92,255,.3), transparent 55%);mix-blend:screen}
-        .meta{display:flex;flex-direction:column;gap:6px}
-        .title{font-size:18px;line-height:1.2;margin:0}
-        .byline{margin:0;color:var(--muted)}
-        .cta{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-        .pill{display:inline-flex;height:34px;align-items:center;border-radius:999px;padding:0 14px;
-          background:linear-gradient(90deg, var(--accent), var(--accent2));color:#0a0a0f;font-weight:800;letter-spacing:.2px}
-        .time{color:var(--muted);font-variant-numeric:tabular-nums}
-
-        @media (max-width: 720px){
-          .row{grid-template-columns:104px 1fr;gap:14px}
-          .thumb{width:104px;height:104px}
-          .cta{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center}
+      <style jsx global>{`
+        .posterPlayButton {
+          position: absolute;
+          left: 50%;
+          bottom: 82px;
+          transform: translateX(-50%);
+          z-index: 14;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 13px 22px;
+          border-radius: 999px;
+          border: 1px solid rgba(52, 129, 89, 0.5);
+          background: rgba(0, 0, 0, 0.76);
+          color: ${ACCENT};
+          text-transform: uppercase;
+          letter-spacing: 0.14em;
+          font-size: 0.82rem;
+          font-weight: 800;
+          pointer-events: auto;
+          box-shadow: 0 0 20px rgba(52, 129, 89, 0.18);
+          text-shadow: 0 0 8px rgba(52, 129, 89, 0.6);
+          cursor: pointer;
         }
 
-        .player{position:fixed;left:0;right:0;bottom:0;background:rgba(15,17,23,.86);
-          backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.08);padding:14px 16px}
-        .player__content{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
-        .player__art{width:60px;height:60px;border-radius:12px;overflow:hidden}
-        .player__art img{width:100%;height:100%;object-fit:cover}
-        .player__info{display:flex;flex-direction:column;gap:8px}
-        .player__titles{display:flex;gap:10px;align-items:baseline}
-        .muted{color:var(--muted)} .small{font-size:12px}
-        .player__bar{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
-        .player__bar input[type="range"]{appearance:none;width:100%;height:8px;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent2));outline:none}
-        .player__bar input[type="range"]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:white;box-shadow:0 4px 16px rgba(124,92,255,.7)}
-        .player__controls{display:flex;gap:12px;align-items:center}
-        .icon{background:transparent;border:1px solid rgba(255,255,255,.15);color:#fff;padding:8px 10px;border-radius:12px}
-        .play{background:linear-gradient(90deg, var(--accent), var(--accent2));color:#ffffff!important;border:0;padding:10px 18px;border-radius:14px;font-weight:800;letter-spacing:.2px}
-        .lineClamp{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+        .radioPlayer {
+          position: fixed;
+          left: 50%;
+          bottom: 18px;
+          z-index: 30;
+          width: min(920px, calc(100vw - 32px));
+          transform: translateX(-50%);
+          display: grid;
+          grid-template-columns: 1fr 1.5fr auto;
+          gap: 18px;
+          align-items: center;
+          padding: 14px 18px;
+          border-radius: 999px;
+          border: 1px solid rgba(52, 129, 89, 0.36);
+          background: rgba(0, 0, 0, 0.78);
+          color: #f4f0e8;
+          backdrop-filter: blur(14px);
+          box-shadow:
+            0 0 18px rgba(52, 129, 89, 0.14),
+            inset 0 0 18px rgba(52, 129, 89, 0.06);
+          font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        }
+
+        .radioPlayer__meta {
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+
+        .radioPlayer__meta strong,
+        .radioPlayer__meta span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .radioPlayer__meta strong {
+          color: ${ACCENT};
+          font-size: 0.82rem;
+        }
+
+        .radioPlayer__meta span {
+          color: rgba(244, 240, 232, 0.72);
+          font-size: 0.72rem;
+        }
+
+        .radioPlayer__bar {
+          display: grid;
+          grid-template-columns: auto 1fr auto;
+          gap: 10px;
+          align-items: center;
+          color: rgba(244, 240, 232, 0.72);
+          font-size: 0.72rem;
+          font-variant-numeric: tabular-nums;
+        }
+
+        .radioPlayer__bar input[type='range'] {
+          appearance: none;
+          width: 100%;
+          height: 5px;
+          border-radius: 999px;
+          background: rgba(52, 129, 89, 0.44);
+          outline: none;
+        }
+
+        .radioPlayer__bar input[type='range']::-webkit-slider-thumb {
+          appearance: none;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          background: #f4f0e8;
+          box-shadow: 0 0 16px rgba(52, 129, 89, 0.8);
+        }
+
+        .radioPlayer__controls {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+        }
+
+        .radioPlayer__controls button {
+          min-width: 42px;
+          height: 36px;
+          padding: 0 12px;
+          border-radius: 999px;
+          border: 1px solid rgba(52, 129, 89, 0.42);
+          background: rgba(0, 0, 0, 0.52);
+          color: ${ACCENT};
+          text-transform: uppercase;
+          font-size: 0.72rem;
+          font-weight: 800;
+          cursor: pointer;
+        }
+
+        .radioPlayer__controls button:disabled {
+          opacity: 0.28;
+          cursor: not-allowed;
+        }
+
+        @media (max-width: 860px) {
+          .radioPlayer {
+            grid-template-columns: 1fr;
+            border-radius: 24px;
+            gap: 10px;
+            bottom: 14px;
+          }
+
+          .posterPlayButton {
+            bottom: 128px;
+          }
+        }
       `}</style>
     </>
   );
