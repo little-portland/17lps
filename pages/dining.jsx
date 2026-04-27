@@ -9,9 +9,9 @@ const DinningPage = () => {
         <style>{`
           :root {
             --bg: #090909;
-            --line: rgba(255, 255, 255, 0.88);
+            --line: #ef0b00;
             --line-soft: rgba(255, 255, 255, 0.18);
-            --text: #f2f2ef;
+            --text: #000000;
             --muted: rgba(242, 242, 239, 0.72);
             --display: "Orbitron", "Eurostile", "Bank Gothic", "Arial Black", sans-serif;
             --body: "Space Mono", "IBM Plex Mono", monospace;
@@ -119,10 +119,7 @@ const DinningPage = () => {
             position: relative;
             overflow: hidden;
             padding: 28px 16px 42px;
-            background:
-              radial-gradient(circle at 50% 10%, rgba(255,255,255,0.04), transparent 30%),
-              radial-gradient(circle at 15% 80%, rgba(255,255,255,0.025), transparent 28%),
-              linear-gradient(180deg, #101010 0%, #070707 100%);
+            background: #a0a0a0;
           }
 
           .page::before,
