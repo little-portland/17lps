@@ -8,7 +8,7 @@ type Track = {
   src: string;
   cover: string;
   episodeLabel: string;
-  infoLines: string[];
+  guest?: string;
   objectPosition?: string;
 };
 
@@ -24,27 +24,27 @@ const TRACKS: Track[] = [
     episodeLabel: 'THE TENT 24',
     title: 'The Tent (at the End of the Universe) 24 [with Alia Indigo]',
     artist: 'OpenLab',
+    guest: 'With Alia Indigo',
     src: '/audio/tent-semoa.mp3',
     cover: '/covers/tent-semoa.jpg',
-    infoLines: ['With Alia Indigo', 'Balearic / World / Downtempo / Electronica'],
   },
   {
     id: 'sEmoa',
     episodeLabel: 'THE TENT',
     title: 'The Tent (at the End of the Universe) [with sEmoa]',
     artist: 'OpenLab',
+    guest: 'With sEmoa',
     src: '/audio/tent-semoa.mp3',
     cover: '/covers/tent-semoa.jpg',
-    infoLines: ['With sEmoa', 'Balearic / World / Downtempo / Electronica'],
   },
   {
     id: '22',
     episodeLabel: 'THE TENT 22',
     title: 'The Tent (at the End of the Universe) 22 [with Bugsy]',
     artist: 'OpenLab',
+    guest: 'With Bugsy',
     src: '/audio/tent-semoa.mp3',
     cover: '/covers/tent-semoa.jpg',
-    infoLines: ['With Bugsy', 'Balearic / World / Downtempo / Electronica'],
   },
   {
     id: '21',
@@ -53,7 +53,6 @@ const TRACKS: Track[] = [
     artist: 'OpenLab',
     src: '/audio/tent-semoa.mp3',
     cover: '/covers/tent-semoa.jpg',
-    infoLines: ['OpenLab', 'Balearic / World / Downtempo / Electronica'],
   },
   {
     id: '20',
@@ -62,9 +61,10 @@ const TRACKS: Track[] = [
     artist: 'OpenLab',
     src: '/audio/tent-semoa.mp3',
     cover: '/covers/tent-semoa.jpg',
-    infoLines: ['OpenLab', 'Balearic / World / Downtempo / Electronica'],
   },
 ];
+
+const GENRES = 'Balearic / World / Downtempo / Electronica';
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
@@ -88,6 +88,12 @@ export default function TentRadioPage() {
 
   const activeTrack = TRACKS[displayIndex];
   const currentTrack = useMemo(() => TRACKS[activeIndex], [activeIndex]);
+
+  const goToSlide = (index: number) => {
+    const nextIndex = clamp(index, 0, TRACKS.length - 1);
+    window.scrollTo({ top: nextIndex * window.innerHeight, behavior: 'smooth' });
+    setActiveIndex(nextIndex);
+  };
 
   useEffect(() => {
     const updateActiveIndex = () => {
@@ -130,10 +136,7 @@ export default function TentRadioPage() {
 
     const onTime = () => setProgress(audio.currentTime || 0);
     const onLoaded = () => setDuration(audio.duration || 0);
-    const onEnded = () => {
-      const nextIndex = (activeIndex + 1) % TRACKS.length;
-      goToSlide(nextIndex);
-    };
+    const onEnded = () => goToSlide((activeIndex + 1) % TRACKS.length);
 
     audio.addEventListener('timeupdate', onTime);
     audio.addEventListener('loadedmetadata', onLoaded);
@@ -157,13 +160,7 @@ export default function TentRadioPage() {
     if (isPlaying) {
       audio.play().catch(() => setIsPlaying(false));
     }
-  }, [currentTrack.src, isPlaying]);
-
-  const goToSlide = (index: number) => {
-    const nextIndex = clamp(index, 0, TRACKS.length - 1);
-    window.scrollTo({ top: nextIndex * window.innerHeight, behavior: 'smooth' });
-    setActiveIndex(nextIndex);
-  };
+  }, [currentTrack.src]);
 
   const togglePlay = async () => {
     const audio = audioRef.current;
@@ -205,28 +202,6 @@ export default function TentRadioPage() {
           <div className="posterVignette" />
           <div className="posterNoise" />
 
-          <button
-            type="button"
-            className="posterNav posterNav--prev"
-            onClick={() => goToSlide(activeIndex - 1)}
-            disabled={activeIndex === 0}
-            aria-label="Previous track"
-          >
-            <span className="posterNav__arrow">↑</span>
-            <span className="posterNav__text">Prev</span>
-          </button>
-
-          <button
-            type="button"
-            className="posterNav posterNav--next"
-            onClick={() => goToSlide(activeIndex + 1)}
-            disabled={activeIndex === TRACKS.length - 1}
-            aria-label="Next track"
-          >
-            <span className="posterNav__text">Next</span>
-            <span className="posterNav__arrow">↓</span>
-          </button>
-
           <section className="posterFrame" aria-live="polite">
             <div className="posterTitleWrap">
               <h1 className="posterTitle">THE TENT RADIO</h1>
@@ -236,7 +211,7 @@ export default function TentRadioPage() {
               <div className="orbBloomBack" />
 
               <div className="orbPhotoMask">
-                {previousIndex !== null && (
+                {previousIndex !== null && !isPlaying && (
                   <div
                     aria-hidden="true"
                     className="orbPhotoLayer orbPhotoLayer--previous"
@@ -247,18 +222,32 @@ export default function TentRadioPage() {
                   />
                 )}
 
-                <div
-                  key={activeTrack.id}
-                  role="img"
-                  aria-label={activeTrack.title}
-                  className={`orbPhotoLayer orbPhotoLayer--current ${
-                    previousIndex !== null ? 'is-glitching' : ''
-                  }`}
-                  style={{
-                    backgroundImage: `url(${activeTrack.cover})`,
-                    backgroundPosition: activeTrack.objectPosition || '50% 50%',
-                  }}
-                />
+                {isPlaying ? (
+                  <div className="orbWave" aria-label="Animated music wave">
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                ) : (
+                  <div
+                    key={activeTrack.id}
+                    role="img"
+                    aria-label={activeTrack.title}
+                    className={`orbPhotoLayer orbPhotoLayer--current ${
+                      previousIndex !== null ? 'is-glitching' : ''
+                    }`}
+                    style={{
+                      backgroundImage: `url(${activeTrack.cover})`,
+                      backgroundPosition: activeTrack.objectPosition || '50% 50%',
+                    }}
+                  />
+                )}
 
                 <div className="orbInnerTint" />
                 <div className="orbInnerGlow" />
@@ -289,30 +278,21 @@ export default function TentRadioPage() {
                   key={track.id}
                   className={`posterInfo__block ${index === activeIndex ? 'is-active' : ''}`}
                 >
-                  <p className="posterInfo__line">{track.title}</p>
-                  {track.infoLines.map((line, lineIndex) => (
-                    <p
-                      key={`${track.id}-${line}`}
-                      className={`posterInfo__line ${
-                        lineIndex >= 0 ? 'posterInfo__line--secondary' : ''
-                      }`}
-                    >
-                      {line}
-                    </p>
-                  ))}
+                  <p className="posterInfo__line">
+                    {track.guest || track.artist}
+                  </p>
+                  <p className="posterInfo__line posterInfo__line--secondary">
+                    {GENRES}
+                  </p>
                 </div>
               ))}
             </div>
-
-            <button type="button" className="posterPlayButton" onClick={togglePlay}>
-              {isPlaying ? 'Pause Transmission' : 'Play Transmission'}
-            </button>
           </section>
 
           <div className="radioPlayer">
             <div className="radioPlayer__meta">
               <strong>{currentTrack.episodeLabel}</strong>
-              <span>{currentTrack.artist}</span>
+              <span>{currentTrack.guest || currentTrack.artist}</span>
             </div>
 
             <div className="radioPlayer__bar">
@@ -385,13 +365,9 @@ export default function TentRadioPage() {
           box-sizing: border-box;
         }
 
-        a,
         button {
           color: inherit;
           font: inherit;
-        }
-
-        button {
           background: none;
           border: 0;
           padding: 0;
@@ -494,54 +470,6 @@ export default function TentRadioPage() {
             radial-gradient(circle at 28% 80%, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.4px);
           background-size: 320px 320px, 380px 380px, 340px 340px, 400px 400px;
           mix-blend-mode: screen;
-        }
-
-        .posterNav {
-          position: absolute;
-          top: 50%;
-          z-index: 14;
-          display: inline-flex;
-          align-items: center;
-          gap: 11px;
-          padding: 14px 16px;
-          border-radius: 999px;
-          border: 1px solid rgba(52, 129, 89, 0.42);
-          background: rgba(0, 0, 0, 0.74);
-          color: ${ACCENT};
-          box-shadow: 0 0 16px rgba(52, 129, 89, 0.14);
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          font-size: 0.82rem;
-          font-weight: 700;
-          backdrop-filter: blur(10px);
-          transform: translateY(-50%);
-          transition: opacity 180ms ease, border-color 180ms ease, background 180ms ease;
-          pointer-events: auto;
-          text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
-        }
-
-        .posterNav:hover,
-        .posterNav:focus-visible {
-          border-color: rgba(52, 129, 89, 0.56);
-          background: rgba(0, 0, 0, 0.84);
-        }
-
-        .posterNav:disabled {
-          opacity: 0.22;
-          cursor: not-allowed;
-        }
-
-        .posterNav--prev {
-          left: 20px;
-        }
-
-        .posterNav--next {
-          right: 20px;
-        }
-
-        .posterNav__arrow {
-          font-size: 0.96rem;
-          line-height: 1;
         }
 
         .posterFrame {
@@ -660,6 +588,36 @@ export default function TentRadioPage() {
           animation: photoGlitchOut 360ms ease forwards;
         }
 
+        .orbWave {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: clamp(8px, 1vw, 14px);
+          background:
+            radial-gradient(circle, rgba(52, 129, 89, 0.22), rgba(0, 0, 0, 0.4) 62%, rgba(0, 0, 0, 0.72));
+        }
+
+        .orbWave span {
+          width: clamp(7px, 0.8vw, 12px);
+          height: 28%;
+          border-radius: 999px;
+          background: #f4f0e8;
+          box-shadow:
+            0 0 12px rgba(255, 255, 255, 0.8),
+            0 0 28px rgba(52, 129, 89, 0.8);
+          animation: waveDance 900ms ease-in-out infinite;
+        }
+
+        .orbWave span:nth-child(2) { animation-delay: 80ms; }
+        .orbWave span:nth-child(3) { animation-delay: 160ms; }
+        .orbWave span:nth-child(4) { animation-delay: 240ms; }
+        .orbWave span:nth-child(5) { animation-delay: 320ms; }
+        .orbWave span:nth-child(6) { animation-delay: 240ms; }
+        .orbWave span:nth-child(7) { animation-delay: 160ms; }
+        .orbWave span:nth-child(8) { animation-delay: 80ms; }
+
         .orbInnerTint {
           position: absolute;
           inset: 0;
@@ -745,9 +703,10 @@ export default function TentRadioPage() {
           left: 50%;
           top: calc(50% + (var(--core-size) / 2) + 74px);
           width: min(820px, calc(100vw - 120px));
-          min-height: 120px;
+          min-height: 86px;
           transform: translateX(-50%);
           pointer-events: none;
+          z-index: 9;
         }
 
         .posterInfo__block {
@@ -783,29 +742,6 @@ export default function TentRadioPage() {
           margin-top: 4px;
           font-size: 0.82em;
           opacity: 0.96;
-        }
-
-        .posterPlayButton {
-          position: absolute;
-          left: 50%;
-          bottom: 94px;
-          transform: translateX(-50%);
-          z-index: 14;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 13px 22px;
-          border-radius: 999px;
-          border: 1px solid rgba(52, 129, 89, 0.5);
-          background: rgba(0, 0, 0, 0.76);
-          color: ${ACCENT};
-          text-transform: uppercase;
-          letter-spacing: 0.14em;
-          font-size: 0.82rem;
-          font-weight: 800;
-          pointer-events: auto;
-          box-shadow: 0 0 20px rgba(52, 129, 89, 0.18);
-          text-shadow: 0 0 8px rgba(52, 129, 89, 0.6);
         }
 
         .radioPlayer {
@@ -882,6 +818,7 @@ export default function TentRadioPage() {
           border-radius: 50%;
           background: #f4f0e8;
           box-shadow: 0 0 16px rgba(52, 129, 89, 0.8);
+          animation: playerDotPulse 1.25s ease-in-out infinite;
         }
 
         .radioPlayer__controls {
@@ -907,6 +844,34 @@ export default function TentRadioPage() {
         .radioPlayer__controls button:disabled {
           opacity: 0.28;
           cursor: not-allowed;
+        }
+
+        @keyframes waveDance {
+          0%,
+          100% {
+            transform: scaleY(0.32);
+            opacity: 0.45;
+          }
+
+          50% {
+            transform: scaleY(1.45);
+            opacity: 1;
+          }
+        }
+
+        @keyframes playerDotPulse {
+          0%,
+          100% {
+            box-shadow:
+              0 0 0 0 rgba(244, 240, 232, 0.32),
+              0 0 16px rgba(52, 129, 89, 0.8);
+          }
+
+          50% {
+            box-shadow:
+              0 0 0 10px rgba(244, 240, 232, 0),
+              0 0 28px rgba(52, 129, 89, 1);
+          }
         }
 
         @keyframes gridPulse {
@@ -1080,25 +1045,6 @@ export default function TentRadioPage() {
             line-height: 1.42;
           }
 
-          .posterNav {
-            top: auto;
-            bottom: 18px;
-            transform: none;
-            padding: 13px 14px;
-          }
-
-          .posterNav--prev {
-            left: 16px;
-          }
-
-          .posterNav--next {
-            right: 16px;
-          }
-
-          .posterPlayButton {
-            bottom: 140px;
-          }
-
           .radioPlayer {
             grid-template-columns: 1fr;
             border-radius: 24px;
@@ -1151,22 +1097,6 @@ export default function TentRadioPage() {
             letter-spacing: 0.07em;
           }
 
-          .posterNav {
-            bottom: 12px;
-            padding: 12px 13px;
-            font-size: 0.68rem;
-          }
-
-          .posterNav__text {
-            display: none;
-          }
-
-          .posterPlayButton {
-            bottom: 136px;
-            font-size: 0.68rem;
-            padding: 11px 16px;
-          }
-
           .radioPlayer {
             width: calc(100vw - 20px);
             padding: 12px;
@@ -1187,14 +1117,14 @@ export default function TentRadioPage() {
           .posterGridSweep,
           .orbBloomBack,
           .orbPhotoMask,
-          .orbOverlay--main {
+          .orbOverlay--main,
+          .orbWave span {
             animation: none;
           }
 
           .orbPhotoLayer,
           .posterAreaTitle__item,
-          .posterInfo__block,
-          .posterNav {
+          .posterInfo__block {
             transition: none;
             animation: none;
           }
