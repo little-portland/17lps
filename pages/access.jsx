@@ -249,7 +249,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .graphic-card {
-              padding: 10px;
+              padding: 5px;
             }
 
             .graphic-card::before,
@@ -390,7 +390,7 @@ const Menu = ({ menuImage }) => {
             .tall-mobile {
               display: flex;
               align-items: stretch;
-              min-height: 220px;
+              min-height: 210px;
             }
 
             .mobile-square-frame,
