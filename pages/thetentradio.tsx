@@ -1552,6 +1552,45 @@ export default function TentRadioPage() {
             min-width: 160px;
           }
         }
+
+        @media (max-width: 760px) {
+        .radioPlayer {
+          gap: 12px;
+        }
+      
+        .radioHeader__title {
+          white-space: nowrap;
+          font-size: clamp(1.45rem, 8.4vw, 2.25rem);
+          letter-spacing: 0.05em;
+        }
+      
+        .radioHeader__tag {
+          font-size: 0.5rem;
+          letter-spacing: 0.09em;
+        }
+      
+        .orbCluster {
+          transform: translateY(-66px);
+        }
+      
+        .trackHero {
+          top: calc(50% + (var(--core-size) / 2) - 42px);
+        }
+      }
+      
+      @media (max-width: 430px) {
+        .radioHeader__title {
+          font-size: clamp(1.35rem, 8vw, 1.95rem);
+        }
+      
+        .orbCluster {
+          transform: translateY(-74px);
+        }
+      
+        .trackHero {
+          top: calc(50% + (var(--core-size) / 2) - 54px);
+        }
+      }
       `}</style>
     </>
   );
