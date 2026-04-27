@@ -1616,7 +1616,7 @@ export default function TentRadioPage() {
         }
       
         .trackHero {
-          top: calc(50% + (var(--core-size) / 2) - 84px);
+          top: calc(50% + (var(--core-size) / 2) - 54px);
         }
       }
       `}</style>
