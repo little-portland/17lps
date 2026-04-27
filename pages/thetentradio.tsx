@@ -419,6 +419,14 @@ export default function TentRadioPage() {
                 ▶
               </button>
             </div>
+
+            <button
+              type="button"
+              className="radioPlayer__archive"
+              onClick={() => setIsArchiveOpen(true)}
+            >
+              Open Archive
+            </button>
           </div>
 
           <div className={`archiveDrawer ${isArchiveOpen ? 'is-open' : ''}`} aria-hidden={!isArchiveOpen}>
@@ -932,6 +940,10 @@ export default function TentRadioPage() {
           cursor: not-allowed;
         }
 
+        .radioPlayer__archive {
+          display: none;
+        }
+
         .trackIndex {
           position: fixed;
           right: 24px;
@@ -1438,15 +1450,7 @@ export default function TentRadioPage() {
           }
 
           .trackIndex {
-            bottom: 170px;
-          }
-
-          .trackIndex__list {
             display: none;
-          }
-
-          .trackIndex__archive {
-            margin-top: 0;
           }
 
           .radioPlayer {
@@ -1460,6 +1464,23 @@ export default function TentRadioPage() {
           .radioPlayer__transmit {
             min-width: 176px;
             font-size: 0.66rem;
+          }
+
+          .radioPlayer__archive {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 42px;
+            border-radius: 999px;
+            border: 1px solid rgba(52, 129, 89, 0.46);
+            background: rgba(52, 129, 89, 0.1);
+            color: ${ACCENT};
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.68rem;
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(52, 129, 89, 0.56);
           }
 
           .archiveDrawer__panel {
@@ -1497,15 +1518,6 @@ export default function TentRadioPage() {
 
           .trackHero {
             top: calc(50% + (var(--core-size) / 2) - 10px);
-          }
-
-          .trackIndex {
-            bottom: 166px;
-          }
-
-          .trackIndex__item {
-            min-width: 116px;
-            font-size: 0.58rem;
           }
 
           .radioPlayer__controls button:not(.radioPlayer__transmit) {
