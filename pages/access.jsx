@@ -351,7 +351,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .graphic-card {
-              padding: 6px;
+              padding: 5px;
             }
             
             /* tighter desktop art heights */
