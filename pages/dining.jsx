@@ -229,7 +229,7 @@ const DinningPage = () => {
             line-height: 0.88;
             font-size: clamp(42px, 6vw, 110px);
             font-weight: 900;
-            color: var(--text);
+            color: #100065;
             animation: floatPulse 6s ease-in-out infinite;
             overflow-wrap: anywhere;
           }
@@ -389,7 +389,7 @@ const DinningPage = () => {
             font-weight: 700;
             letter-spacing: 0.18em;
             font-size: clamp(24px, 3vw, 30px);
-            color: var(--text);
+            color: #100065;
             margin: 0;
             padding: 6px 14px 8px;
             display: inline-block;
@@ -425,7 +425,7 @@ const DinningPage = () => {
           }
 
           .card-time {
-            color: var(--text);
+            color: #100065;
             font-family: var(--future);
             font-size: clamp(24px, 2.5vw, 52px);
             line-height: 0.9;
@@ -461,7 +461,7 @@ const DinningPage = () => {
             height: 2px;
             background: var(--text);
             transform: translateY(-50%);
-            box-shadow: 0 -4px 0 rgba(0,0,0,0.18), 0 4px 0 rgba(0,0,0,0.18);
+            box-shadow: 0 -4px 0 rgba(16,0,101,0.18), 0 4px 0 rgba(16,0,101,0.18);
           }
 
           .cta-link::after {
@@ -474,7 +474,7 @@ const DinningPage = () => {
             height: 0;
             border-top: 7px solid transparent;
             border-bottom: 7px solid transparent;
-            border-left: 9px solid var(--text);
+            border-left: 9px solid #100065;
           }
 
           .cta-link:hover {
@@ -575,9 +575,9 @@ const DinningPage = () => {
             top: 50%;
             width: 14px;
             height: 2px;
-            background: var(--text);
+            background: #100065;
             transform: translateY(-50%);
-            box-shadow: 0 -4px 0 rgba(0,0,0,0.18), 0 4px 0 rgba(0,0,0,0.18);
+            box-shadow: 0 -4px 0 rgba(16,0,101,0.18), 0 4px 0 rgba(16,0,101,0.18);
           }
 
           .link-row a::after {
@@ -590,7 +590,7 @@ const DinningPage = () => {
             height: 0;
             border-top: 6px solid transparent;
             border-bottom: 6px solid transparent;
-            border-left: 8px solid var(--text);
+            border-left: 8px solid #100065;
           }
 
           .link-row a:hover {
