@@ -261,7 +261,7 @@ const DinningPage = () => {
             right: 8%;
             top: 8px;
             height: 2px;
-            background: rgba(255,255,255,0.86);
+            background: #ef0b00;
             box-shadow: 0 0 10px rgba(255,255,255,0.06);
           }
 
@@ -388,7 +388,7 @@ const DinningPage = () => {
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.18em;
-            font-size: clamp(24px, 3vw, 44px);
+            font-size: clamp(24px, 3vw, 30px);
             color: var(--text);
             margin: 0;
             padding: 6px 14px 8px;
@@ -416,7 +416,7 @@ const DinningPage = () => {
           .card-title {
             color: var(--text);
             font-family: var(--future);
-            font-size: clamp(14px, 1.25vw, 24px);
+            font-size: clamp(14px, 1vw, 24px);
             line-height: 0.95;
             text-transform: uppercase;
             margin-bottom: 12px;
@@ -427,7 +427,7 @@ const DinningPage = () => {
           .card-time {
             color: var(--text);
             font-family: var(--future);
-            font-size: clamp(24px, 3vw, 52px);
+            font-size: clamp(24px, 2.5vw, 52px);
             line-height: 0.9;
             text-transform: uppercase;
             font-weight: 900;
@@ -443,7 +443,7 @@ const DinningPage = () => {
             color: var(--text);
             font-family: var(--future);
             text-transform: uppercase;
-            font-size: clamp(18px, 2vw, 34px);
+            font-size: clamp(18px, 1.6vw, 34px);
             line-height: 0.92;
             letter-spacing: 0.04em;
             font-weight: 800;
@@ -558,7 +558,7 @@ const DinningPage = () => {
             position: relative;
             padding: 14px 18px 14px 46px;
             font-weight: 700;
-            border: 1px solid var(--line);
+            border: 2px solid var(--line);
             border-radius: 999px;
             background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.015));
             transition: background 0.18s ease, box-shadow 0.18s ease;
@@ -577,7 +577,7 @@ const DinningPage = () => {
             height: 2px;
             background: var(--text);
             transform: translateY(-50%);
-            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
+            box-shadow: 0 -4px 0 rgba(0,0,0,0.18), 0 4px 0 rgba(0,0,0,0.18);
           }
 
           .link-row a::after {
