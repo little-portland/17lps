@@ -214,7 +214,7 @@ const Menu = ({ menuImage }) => {
 
             .desktop-row-top {
               display: grid;
-              grid-template-columns: minmax(0, 1fr) 108px 214px;
+              grid-template-columns: minmax(0, 1fr) 78px 230px;
               gap: 18px;
               align-items: stretch;
             }
