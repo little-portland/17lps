@@ -669,6 +669,11 @@ const Menu = ({ menuImage }) => {
             <div className="content-width">
               <div className="hero-kicker">17 little portland street</div>
               <h1 className="hero-heading">access protocol</h1>
+              <Image
+                src="/images/foc/access_page_dots-graphic.gif"
+                alt="animated dots"
+                fill
+              />
 
               <div className="hero-copy">
                 <span className="hero-copy-line">
