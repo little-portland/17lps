@@ -169,8 +169,23 @@ const Menu = ({ menuImage }) => {
               font-size: clamp(40px, 7vw, 62px);
               line-height: 0.95;
               letter-spacing: 0.08em;
-              margin: 0 0 22px 0;
+              margin: 0 0 18px 0;
               font-weight: 700;
+            }
+
+            .access-dots-wrap {
+              width: 310px;
+              max-width: 100%;
+              margin: 0 0 18px 0;
+              line-height: 0;
+              position: relative;
+              z-index: 4;
+            }
+
+            .access-dots-gif {
+              display: block;
+              width: 100%;
+              height: auto;
             }
 
             .hero-copy {
@@ -330,62 +345,26 @@ const Menu = ({ menuImage }) => {
               z-index: 0;
             }
 
-            /* THIS is the important fix for desktop heights */
             .desktop-graphic-frame {
               position: relative;
               width: 100%;
-              height: 260px;
+              height: 210px;
               z-index: 0;
             }
 
-            .desktop-decorative-frame {
-              height: 260px;
-            }
-
-            .desktop-tall-frame {
-              height: 260px;
-            }
-
-            .desktop-square-frame {
-              height: 260px;
-            }
-
-            .graphic-card {
-              padding: 5px;
-            }
-            
-            /* tighter desktop art heights */
-            .desktop-decorative-frame {
-              height: 210px;
-            }
-            
-            .desktop-tall-frame {
-              height: 210px;
-            }
-            
+            .desktop-decorative-frame,
+            .desktop-tall-frame,
             .desktop-square-frame {
               height: 210px;
             }
 
-            .desktop-decorative-frame :global(img),
-            .desktop-tall-frame :global(img),
-            .desktop-square-frame :global(img) {
+            .desktop-decorative-img,
+            .desktop-tall-img,
+            .desktop-square-img {
+              object-fit: contain;
               object-position: center;
             }
 
-            .desktop-decorative-img {
-              object-fit: contain;
-            }
-
-            .desktop-tall-img {
-              object-fit: contain;
-            }
-
-            .desktop-square-img {
-              object-fit: contain;
-            }
-
-            /* mobile row stays as before */
             .square-mobile,
             .tall-mobile {
               display: flex;
@@ -607,7 +586,12 @@ const Menu = ({ menuImage }) => {
 
               .hero-heading {
                 font-size: 30px;
-                margin-bottom: 18px;
+                margin-bottom: 14px;
+              }
+
+              .access-dots-wrap {
+                width: 180px;
+                margin-bottom: 14px;
               }
 
               .hero-copy,
@@ -636,11 +620,11 @@ const Menu = ({ menuImage }) => {
               }
 
               .friend-link-wrap a {
-                  min-height: 24px;
-                  padding: 5px 10px;
-                  font-size: 14px;
-                  line-height: 1.2;
-                  max-height: 60px;
+                min-height: 24px;
+                padding: 5px 10px;
+                font-size: 14px;
+                line-height: 1.2;
+                max-height: 60px;
               }
 
               .button-label-static,
@@ -669,11 +653,14 @@ const Menu = ({ menuImage }) => {
             <div className="content-width">
               <div className="hero-kicker">17 little portland street</div>
               <h1 className="hero-heading">access protocol</h1>
-              <Image
-                src="/images/foc/access_page_dots-graphic.gif"
-                alt="animated dots"
-                fill
-              />
+
+              <div className="access-dots-wrap" aria-hidden="true">
+                <img
+                  src="/images/foc/access_page_dots-graphic.gif"
+                  alt=""
+                  className="access-dots-gif"
+                />
+              </div>
 
               <div className="hero-copy">
                 <span className="hero-copy-line">
