@@ -194,8 +194,8 @@ const Menu = ({ menuImage }) => {
             }
 
             .access-dot {
-              width: 18px;
-              height: 18px;
+              width: 12px;
+              height: 12px;
               border-radius: 50%;
               border: 1px solid #c8212d;
               background: transparent;
@@ -611,8 +611,8 @@ const Menu = ({ menuImage }) => {
               }
 
               .access-dot {
-                width: 12px;
-                height: 12px;
+                width: 8px;
+                height: 8px;
                 border-width: 1px;
               }
 
