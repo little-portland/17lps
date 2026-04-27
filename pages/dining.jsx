@@ -594,7 +594,7 @@ const DinningPage = () => {
           }
 
           .link-row a:hover {
-            background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
+            background: linear-gradient(-90deg, rgba(16,0,101,0.14), rgba(16,0,101,0.03));
             box-shadow: 0 0 18px rgba(255,255,255,0.08);
           }
 
