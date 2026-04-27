@@ -1591,6 +1591,34 @@ export default function TentRadioPage() {
           top: calc(50% + (var(--core-size) / 2) - 54px);
         }
       }
+
+      @media (max-width: 760px) {
+        .archiveDrawer__list {
+          padding-right: 18px;
+        }
+      
+        .orbCluster {
+          transform: translateY(-96px);
+        }
+      
+        .trackHero {
+          top: calc(50% + (var(--core-size) / 2) - 72px);
+        }
+      }
+      
+      @media (max-width: 430px) {
+        .archiveDrawer__list {
+          padding-right: 20px;
+        }
+      
+        .orbCluster {
+          transform: translateY(-104px);
+        }
+      
+        .trackHero {
+          top: calc(50% + (var(--core-size) / 2) - 84px);
+        }
+      }
       `}</style>
     </>
   );
