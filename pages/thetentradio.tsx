@@ -516,6 +516,30 @@ export default function TentRadioPage() {
           box-sizing: border-box;
         }
 
+        * {
+            scrollbar-color: #348159 rgba(0, 0, 0, 0.35);
+            scrollbar-width: thin;
+          }
+          
+          *::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+          }
+          
+          *::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.35);
+          }
+          
+          *::-webkit-scrollbar-thumb {
+            background: #348159;
+            border-radius: 999px;
+            box-shadow: 0 0 10px rgba(52, 129, 89, 0.8);
+          }
+          
+          *::-webkit-scrollbar-thumb:hover {
+            background: #46a66f;
+          }
+
         button {
           color: inherit;
           font: inherit;
