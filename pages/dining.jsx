@@ -461,7 +461,7 @@ const DinningPage = () => {
             height: 2px;
             background: var(--text);
             transform: translateY(-50%);
-            box-shadow: 0 -4px 0 rgba(255,255,255,0.18), 0 4px 0 rgba(255,255,255,0.18);
+            box-shadow: 0 -4px 0 rgba(0,0,0,0.18), 0 4px 0 rgba(0,0,0,0.18);
           }
 
           .cta-link::after {
