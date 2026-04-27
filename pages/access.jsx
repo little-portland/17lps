@@ -350,6 +350,23 @@ const Menu = ({ menuImage }) => {
               height: 260px;
             }
 
+            .graphic-card {
+              padding: 6px;
+            }
+            
+            /* tighter desktop art heights */
+            .desktop-decorative-frame {
+              height: 210px;
+            }
+            
+            .desktop-tall-frame {
+              height: 210px;
+            }
+            
+            .desktop-square-frame {
+              height: 210px;
+            }
+
             .desktop-decorative-frame :global(img),
             .desktop-tall-frame :global(img),
             .desktop-square-frame :global(img) {
