@@ -112,7 +112,7 @@ export default function PrivateHirePage() {
               >
                 <h2>{venue.title}</h2>
                 {venue.infoLines.map((line, lineIndex) => (
-                  <p key={line} className={lineIndex > 0 ? 'venueCard__secondaryLine' : undefined}>
+                  <p key={line} className={lineIndex === venue.infoLines.length - 1 ? 'venueCard__secondaryLine' : undefined}>
                     {line}
                   </p>
                 ))}
@@ -214,30 +214,11 @@ export default function PrivateHirePage() {
           z-index: 8;
           width: min(78%, 520px);
           aspect-ratio: 1;
-          margin: 0 auto 22px;
+          margin: 34px auto 58px;
         }
 
         .connector--top {
-          position: absolute;
-          left: 50%;
-          top: 5%;
-          z-index: 1;
-          width: 2px;
-          height: 25%;
-          background: #000;
-          transform: translateX(-50%);
-          pointer-events: none;
-        }
-
-        .connector--top::before {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: 0;
-          width: clamp(42px, 5vw, 68px);
-          height: 2px;
-          background: #000;
-          transform: translateX(-50%);
+          display: none;
         }
 
         .ringAsset {
@@ -331,24 +312,10 @@ export default function PrivateHirePage() {
           align-items: flex-start;
           padding: 13px 12px 15px;
           background: transparent;
-          border-top: 0;
+          border-top: 3px solid #000;
           text-align: left;
           text-transform: uppercase;
-          position: relative;
           transition: background 260ms ease, box-shadow 260ms ease, border-color 260ms ease, opacity 260ms ease;
-        }
-
-        .venueCard::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: -20px;
-          height: 3px;
-          background: #000;
-          box-shadow: 0 0 0 5px #fff;
-          z-index: 2;
-          transition: background 260ms ease;
         }
 
         .venueCard:hover,
@@ -358,6 +325,7 @@ export default function PrivateHirePage() {
 
         .venueCard.is-active {
           background: #000;
+          border-color: ${ACCENT};
           box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
         }
 
@@ -384,13 +352,16 @@ export default function PrivateHirePage() {
 
         .venueCard p + p {
           margin-top: 7px;
+        }
+
+        .venueCard__secondaryLine {
           font-size: clamp(0.62rem, 0.72vw, 0.78rem);
           line-height: 1.32;
           opacity: 0.9;
         }
 
-        .venueCard.is-active::before {
-          background: ${ACCENT};
+        .venueCard.is-active {
+          border-top-color: ${ACCENT};
         }
 
         .venueCard.is-active p {
@@ -488,13 +459,12 @@ export default function PrivateHirePage() {
 
           .heroTitle {
             font-size: clamp(2.3rem, 11vw, 4.4rem);
-            margin: 0 0 20px 0;
           }
 
           .orbSystem {
             width: min(90%, 470px);
-            margin-top: -2px;
-            margin-bottom: 18px;
+            margin-top: 24px;
+            margin-bottom: 44px;
           }
 
           .connector--top {
@@ -525,7 +495,7 @@ export default function PrivateHirePage() {
 
           .flyerSheet {
             width: 90%;
-            padding: 10px 10px 64px;
+            padding: 24px 10px 64px;
           }
 
           .heroTitle {
@@ -536,14 +506,14 @@ export default function PrivateHirePage() {
           .orbSystem {
             width: 100%;
             margin-left: 0;
-            margin-top: -2px;
-            margin-bottom: 14px;
+            margin-top: 20px;
+            margin-bottom: 38px;
           }
 
           .venueGrid {
             grid-template-columns: 1fr;
             width: 100%;
-            gap: 7px;
+            gap: 0;
             margin-top: 0;
           }
 
@@ -551,10 +521,10 @@ export default function PrivateHirePage() {
             min-height: 0;
             display: grid;
             grid-template-columns: 1fr 1.55fr;
-            gap: 12px;
+            gap: 8px 12px;
             align-items: start;
-            padding: 11px 9px;
-            border-top-width: 0;
+            padding: 8px 9px;
+            border-top-width: 2px;
           }
 
           .venueCard h2 {
