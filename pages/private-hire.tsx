@@ -358,7 +358,6 @@ export default function PrivateHirePage() {
 
         .venueCard.is-active {
           background: #000;
-          border-color: ${ACCENT};
           box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
         }
 
@@ -489,6 +488,7 @@ export default function PrivateHirePage() {
 
           .heroTitle {
             font-size: clamp(2.3rem, 11vw, 4.4rem);
+            margin: 0 0 20px 0;
           }
 
           .orbSystem {
@@ -525,7 +525,7 @@ export default function PrivateHirePage() {
 
           .flyerSheet {
             width: 90%;
-            padding: 24px 10px 64px;
+            padding: 10px 10px 64px;
           }
 
           .heroTitle {
