@@ -13,13 +13,13 @@ export default function SceneNav({
   const router = useRouter();
 
   const links = [
-    { label: "The Space", href: "/events" },
+    { label: "The Space", href: "/the-space" },
     { label: "Access", href: "/access" },
     { label: "Dining", href: "/food" },
     { label: "After Dark", href: "/theclub" },
     { label: "Nocturn", href: "/nocturn" },
     { label: "The Network", href: "#" },
-    { label: "LPX Radio", href: "#" },
+    { label: "LPX Radio", href: "/thetentradio" },
     { label: "Archives", href: "#" },
   ];
 
