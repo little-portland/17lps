@@ -13,13 +13,13 @@ export default function SceneNav({
   const router = useRouter();
 
   const links = [
-    { label: "The Space", href: "/events" },
+    { label: "The Space", href: "/the-space" },
     { label: "Access", href: "/access" },
     { label: "Dining", href: "/food" },
     { label: "After Dark", href: "/theclub" },
     { label: "Nocturn", href: "/nocturn" },
     { label: "The Network", href: "#" },
-    { label: "LPX Radio", href: "#" },
+    { label: "LPX Radio", href: "/thetentradio" },
     { label: "Archives", href: "#" },
   ];
 
@@ -32,13 +32,23 @@ export default function SceneNav({
     return classes.join(" ");
   };
 
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href === "#") {
+      event.preventDefault();
+    }
+
+    setOpen(false);
+  };
+
   return (
     <>
       {/* =====================================================
          TOP NAV
       ===================================================== */}
       <header className={`scene-nav scene-nav--${theme} ${visible ? "visible" : ""}`}>
-
         {/* BURGER (mobile) */}
         <button
           className={`scene-nav-burger ${open ? "open" : ""}`}
@@ -55,9 +65,8 @@ export default function SceneNav({
             <a
               key={l.label}
               href={l.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className={getLinkClassName(l.href)}
+              onClick={(event) => handleLinkClick(event, l.href)}
             >
               {l.label}
             </a>
@@ -80,9 +89,8 @@ export default function SceneNav({
             <a
               key={l.label}
               href={l.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className={getLinkClassName(l.href)}
+              onClick={(event) => handleLinkClick(event, l.href)}
             >
               {l.label}
             </a>
@@ -113,9 +121,8 @@ export default function SceneNav({
                 <a
                   key={l.label}
                   href={l.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={getLinkClassName(l.href)}
+                  onClick={(event) => handleLinkClick(event, l.href)}
                 >
                   {l.label}
                 </a>
