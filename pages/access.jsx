@@ -72,7 +72,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .page-shell--with-scene-nav {
-              padding-top: 110px;
+              padding-top: 80px;
             }
 
             .nocturn.override {
