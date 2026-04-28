@@ -71,6 +71,10 @@ const Menu = ({ menuImage }) => {
               padding: 28px 18px;
             }
 
+            .page-shell--with-scene-nav {
+              padding-top: 110px;
+            }
+
             .nocturn.override {
               width: min(100%, 1120px);
               margin: 0 auto;
@@ -555,8 +559,13 @@ const Menu = ({ menuImage }) => {
 
             /* =====================================================
                ACCESS PAGE NAV THEME
-               Only changes nav colour + font.
+               Only changes nav colour, font, and fixed-nav background.
             ===================================================== */
+
+            .scene-nav--access {
+              background: #000 !important;
+              z-index: 9999;
+            }
 
             .scene-nav--access,
             .scene-nav--access a {
@@ -565,7 +574,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .scene-nav--access a.active {
-              color: #ffab00 !important;
+              color: #39ff14 !important;
             }
 
             .scene-nav--access a.disabled {
@@ -604,7 +613,13 @@ const Menu = ({ menuImage }) => {
 
             @media (max-width: 768px) {
               .page-shell {
-                padding: 14px;
+                padding-left: 14px;
+                padding-right: 14px;
+                padding-bottom: 14px;
+              }
+
+              .page-shell--with-scene-nav {
+                padding-top: 78px;
               }
 
               .nocturn.override {
@@ -689,7 +704,7 @@ const Menu = ({ menuImage }) => {
         <title>17 Little Portland Street - Friend of the Club</title>
       </Head>
 
-      <div className="page-shell">
+      <div className="page-shell page-shell--with-scene-nav">
         <SceneNav theme="access" />
 
         <div className="nocturn override">
@@ -708,17 +723,17 @@ const Menu = ({ menuImage }) => {
               <h1 className="hero-heading">access protocol</h1>
 
               <div className="access-dots-wrap" aria-hidden="true">
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
               </div>
 
               <div className="hero-copy">
