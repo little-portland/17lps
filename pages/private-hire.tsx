@@ -206,12 +206,13 @@ export default function PrivateHirePage() {
 
         .heroTitleWrap {
           position: relative;
-          z-index: 14;
+          z-index: 30;
           display: flex;
           justify-content: center;
           align-items: center;
           width: 100%;
           margin: 0 auto;
+          background: #fff;
         }
 
         .heroTitle {
@@ -246,11 +247,11 @@ export default function PrivateHirePage() {
 
         .connector--top {
           left: 50%;
-          top: -2%;
+          top: 6%;
           width: 2px;
-          height: 31%;
+          height: 24%;
           transform: translateX(-50%);
-          z-index: -1;
+          z-index: 0;
         }
 
         .connector--top::before {
@@ -287,51 +288,40 @@ export default function PrivateHirePage() {
 
         .orbit span {
           --i: 0;
+          --arc: 34deg;
           position: absolute;
           inset: 0;
           border-radius: 50%;
           border: clamp(6px, 0.75vw, 9px) solid #000;
-          clip-path: polygon(50% 50%, 100% 3%, 100% 23%, 50% 50%);
           transform: rotate(calc(var(--i) * 61deg));
-        }
-
-        .orbit span::after {
-          content: '';
-          position: absolute;
-          right: -8px;
-          top: 9%;
-          width: 16px;
-          height: 16px;
-          border-radius: 999px;
-          background: #000;
+          -webkit-mask: conic-gradient(#000 0deg var(--arc), transparent var(--arc) 360deg);
+          mask: conic-gradient(#000 0deg var(--arc), transparent var(--arc) 360deg);
         }
 
         .orbit span:nth-child(even) {
           clip-path: polygon(50% 50%, 100% 4%, 100% 17%, 50% 50%);
         }
-
-        .orbit--middle span {
+.orbit sp.orbit--middle span {
+          --arc: 30deg;
           border-width: clamp(5px, 0.64vw, 8px);
-          clip-path: polygon(50% 50%, 100% 7%, 100% 25%, 50% 50%);
           transform: rotate(calc(var(--i) * 72deg + 10deg));
         }
 
         .orbit--middle span:nth-child(even) {
-          clip-path: polygon(50% 50%, 100% 11%, 100% 22%, 50% 50%);
+          --arc: 18deg;
         }
 
-        .orbit--inner span {
+        ..orbit--inner span {
+          --arc: 28deg;
           border-width: clamp(5px, 0.58vw, 7px);
-          clip-path: polygon(50% 50%, 100% 8%, 100% 26%, 50% 50%);
           transform: rotate(calc(var(--i) * 88deg + 18deg));
         }
 
-        .orbit--inner span:nth-child(even) {
-          clip-path: polygon(50% 50%, 100% 13%, 100% 23%, 50% 50%);
+       .orbit--inner span:nth-child(even) {
+          --arc: 16deg;
         }
 
-        .orbit--outer span:nth-child(n + 5),
-        .orbit--middle span:nth-child(n + 5) {
+        .orbit--outer span:nth-child(n + 5),5) {
           display: none;
         }
 
@@ -347,7 +337,7 @@ export default function PrivateHirePage() {
           background: #000;
           box-shadow: 0 0 0 2px #000;
           isolation: isolate;
-          z-index: 3;
+          z-index: 5;
         }
 
         .activeVenueImage {
@@ -460,12 +450,9 @@ export default function PrivateHirePage() {
           color: #fff;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          .footerEmail:hover,
-        .footerEmail:focus-visible {
-          color: ${ACCENT};
-          background: #000;
-          outline: none;
-        }-height: 1;
+          font-size: clamp(0.78rem, 1vw, 0.94rem);
+          font-weight: 700;
+          line-height: 1;
           white-space: nowrap;
           transition: color 180ms ease, background 180ms ease;
         }
@@ -473,6 +460,9 @@ export default function PrivateHirePage() {
         .footerEmail:hover,
         .footerEmail:focus-visible {
           color: ${ACCENT};
+          background: #000;
+          outline: none;
+        };
           outline: none;
         }
 
@@ -545,8 +535,8 @@ export default function PrivateHirePage() {
           }
 
           .connector--top {
-            top: -1%;
-            height: 31%;
+            top: 6%;
+            height: 24%;
           }
 
           .imageCircle {
