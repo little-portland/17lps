@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
+import SceneNav from '@components/SceneNav';
 
 type AreaId = 'tent' | 'chefs-studio' | 'studio';
 
@@ -67,12 +68,13 @@ export default function TheSpacePage() {
       } else {
         mediaQuery.removeListener(updateMode);
       }
+
       window.removeEventListener('resize', updateMode);
     };
   }, []);
 
   const handleCardClick =
-    (areaId: AreaId) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    (areaId: AreaId) => (event: MouseEvent<HTMLAnchorElement>) => {
       if (isTouchMode && activeArea !== areaId) {
         event.preventDefault();
         setActiveArea(areaId);
@@ -109,7 +111,9 @@ export default function TheSpacePage() {
         />
       </Head>
 
-      <main className="page">
+      <main className="page page--with-scene-nav">
+        <SceneNav theme="space" />
+
         <div className="page-bg" aria-hidden="true" />
         <div className="page-bg-overlay" aria-hidden="true" />
 
@@ -233,10 +237,49 @@ export default function TheSpacePage() {
           * {
             box-sizing: border-box;
           }
+
+          /* =====================================================
+             THE SPACE NAV THEME
+          ===================================================== */
+
+          .scene-nav--space {
+            background: transparent !important;
+            z-index: 9999;
+          }
+
+          .scene-nav--space,
+          .scene-nav--space a {
+            color: #e031c1 !important;
+            font-family: 'Orbitron', sans-serif !important;
+          }
+
+          .scene-nav--space a.active {
+            color: #ffffff !important;
+          }
+
+          .scene-nav--space a.disabled {
+            color: #e031c1 !important;
+            opacity: 0.45;
+          }
+
+          .scene-nav--space .scene-nav-burger span {
+            background: #e031c1 !important;
+          }
+
+          .scene-nav--space .scene-nav-logo img {
+            filter: brightness(0) saturate(100%) invert(38%) sepia(87%)
+              saturate(2127%) hue-rotate(283deg) brightness(93%) contrast(93%);
+          }
+
+          .scene-nav-mobile.scene-nav--space {
+            background: transparent !important;
+          }
         `}</style>
 
         <style jsx>{`
           .page {
+            --scene-nav-space: 80px;
+
             position: relative;
             height: 100dvh;
             min-height: 100dvh;
@@ -244,7 +287,7 @@ export default function TheSpacePage() {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: calc(var(--scene-nav-space) + 20px) 20px 20px;
             background: #000;
           }
 
@@ -341,7 +384,11 @@ export default function TheSpacePage() {
 
           .scene-shell {
             position: relative;
-            width: min(86vw, calc((100dvh - 48px) * 1.5004), 1240px);
+            width: min(
+              86vw,
+              calc((100dvh - var(--scene-nav-space) - 48px) * 1.5004),
+              1240px
+            );
             aspect-ratio: 2048 / 1365;
             overflow: visible;
           }
@@ -780,10 +827,12 @@ export default function TheSpacePage() {
 
           @media (max-width: 900px) {
             .page {
+              --scene-nav-space: 80px;
+
               height: 100dvh;
               min-height: 100dvh;
               padding:
-                max(10px, env(safe-area-inset-top))
+                calc(var(--scene-nav-space) + max(10px, env(safe-area-inset-top)))
                 10px
                 max(10px, env(safe-area-inset-bottom))
                 10px;
@@ -794,7 +843,11 @@ export default function TheSpacePage() {
               width: min(
                 92vw,
                 calc(
-                  100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 20px
+                  100dvh -
+                  var(--scene-nav-space) -
+                  env(safe-area-inset-top) -
+                  env(safe-area-inset-bottom) -
+                  20px
                 )
               );
               aspect-ratio: 1340 / 2048;
