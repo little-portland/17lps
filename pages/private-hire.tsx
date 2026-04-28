@@ -325,7 +325,7 @@ export default function PrivateHirePage() {
 
         .venueCard.is-active {
           background: #000;
-          border-color: ${ACCENT};
+          border-color: #000;
           box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
         }
 
@@ -358,10 +358,6 @@ export default function PrivateHirePage() {
           font-size: clamp(0.62rem, 0.72vw, 0.78rem);
           line-height: 1.32;
           opacity: 0.9;
-        }
-
-        .venueCard.is-active {
-          border-top-color: ${ACCENT};
         }
 
         .venueCard.is-active p {
@@ -539,14 +535,17 @@ export default function PrivateHirePage() {
           .venueCard {
             min-height: 0;
             display: grid;
-            grid-template-columns: 1fr 1.55fr;
-            gap: 8px 12px;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 12px;
             align-items: start;
             padding: 8px 9px;
             border-top-width: 2px;
+            margin: 0;
           }
 
           .venueCard h2 {
+            grid-column: 1;
+            grid-row: 1;
             min-height: 0;
             margin: 0;
             font-size: 0.88rem;
@@ -554,7 +553,20 @@ export default function PrivateHirePage() {
           }
 
           .venueCard p {
+            grid-column: 1;
             font-size: 0.72rem;
+          }
+
+          .venueCard .venueCard__secondaryLine {
+            grid-column: 2;
+            grid-row: 1 / span 3;
+            align-self: center;
+            margin-top: 0;
+            font-size: 0.72rem;
+          }
+
+          .venueCard.is-active {
+            box-shadow: none;
           }
 
           .footerEmail {
