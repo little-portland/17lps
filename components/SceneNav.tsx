@@ -7,7 +7,7 @@ export default function SceneNav({
   theme = "default",
 }: {
   visible?: boolean;
-  theme?: "default" | "access";
+  theme?: "default" | "access" | "space";
 }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
