@@ -558,6 +558,7 @@ export default function PrivateHirePage() {
           .venueCard p {
             grid-column: 1;
             font-size: 0.72rem;
+            line-height: 1.08;
           }
 
           .venueCard .venueCard__secondaryLine {
@@ -566,6 +567,7 @@ export default function PrivateHirePage() {
             align-self: center;
             margin-top: 0;
             font-size: 0.72rem;
+            line-height: 1.12;
           }
 
           .venueCard.is-active {
