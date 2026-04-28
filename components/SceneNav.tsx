@@ -13,13 +13,13 @@ export default function SceneNav({
   const router = useRouter();
 
   const links = [
-    { label: "The Space", href: "/the-space" },
+    { label: "The Space", href: "/events" },
     { label: "Access", href: "/access" },
     { label: "Dining", href: "/food" },
     { label: "After Dark", href: "/theclub" },
     { label: "Nocturn", href: "/nocturn" },
     { label: "The Network", href: "#" },
-    { label: "LPX Radio", href: "/thetentradio" },
+    { label: "LPX Radio", href: "#" },
     { label: "Archives", href: "#" },
   ];
 
@@ -45,15 +45,17 @@ export default function SceneNav({
 
   return (
     <>
-      {/* =====================================================
-         TOP NAV
-      ===================================================== */}
-      <header className={`scene-nav scene-nav--${theme} ${visible ? "visible" : ""}`}>
+      <header
+        className={`scene-nav scene-nav--${theme} ${visible ? "visible" : ""} ${
+          open ? "is-open" : ""
+        }`}
+      >
         {/* BURGER (mobile) */}
         <button
           className={`scene-nav-burger ${open ? "open" : ""}`}
           onClick={() => setOpen(!open)}
-          aria-label="Menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
         >
           <span />
           <span />
@@ -98,13 +100,10 @@ export default function SceneNav({
         </nav>
       </header>
 
-      {/* =====================================================
-         MOBILE OVERLAY
-      ===================================================== */}
       <AnimatePresence>
         {open && (
           <motion.div
-            className={`scene-nav-mobile scene-nav--${theme}`}
+            className={`scene-nav-mobile scene-nav-mobile--${theme}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
