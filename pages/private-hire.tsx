@@ -233,9 +233,9 @@ export default function PrivateHirePage() {
         .orbSystem {
           position: relative;
           z-index: 8;
-          width: min(82%, 560px);
+          width: min(74%, 500px);
           aspect-ratio: 1;
-          margin: -4px auto -18px;
+          margin: -2px auto -4px;
         }
 
         .connector {
@@ -277,51 +277,49 @@ export default function PrivateHirePage() {
         }
 
         .orbit--middle {
-          inset: 5%;
+          inset: 4.5%;
           animation: rotateSlowReverse 44s linear infinite;
         }
 
-        .orbit--inner {
-          inset: 10%;
+      .orbit--inner {
+          inset: 9%;
           animation: rotateSlow 34s linear infinite;
         }
 
-        .orbit span {
+        .or.orbit span {
           --i: 0;
-          --arc: 34deg;
           position: absolute;
           inset: 0;
           border-radius: 50%;
           border: clamp(6px, 0.75vw, 9px) solid #000;
+          clip-path: polygon(50% 50%, 100% 0, 100% 27%, 50% 50%);
           transform: rotate(calc(var(--i) * 61deg));
-          -webkit-mask: conic-gradient(#000 0deg var(--arc), transparent var(--arc) 360deg);
-          mask: conic-gradient(#000 0deg var(--arc), transparent var(--arc) 360deg);
         }
 
-        .orbit span:nth-child(even) {
-          clip-path: polygon(50% 50%, 100% 4%, 100% 17%, 50% 50%);
+        .orbit span:nth-child(even){
+          --arc: 20deg;
         }
-.orbit sp.orbit--middle span {
-          --arc: 30deg;
+
+        .orbit--middle span {
           border-width: clamp(5px, 0.64vw, 8px);
+          clip-path: polygon(50% 50%, 100% 7%, 100% 27%, 50% 50%);
           transform: rotate(calc(var(--i) * 72deg + 10deg));
         }
 
-        .orbit--middle span:nth-child(even) {
-          --arc: 18deg;
-        }
-
-        ..orbit--inner span {
-          --arc: 28deg;
+        .orbit--middle span:nth-child(even)        .orbit--middle span:nth-child(even) {
+          clip-path: polygon(50% 50%, 100% .orbit--inner span {
           border-width: clamp(5px, 0.58vw, 7px);
+          clip-path: polygon(50% 50%, 100% 8%, 100% 27%, 50% 50%);
           transform: rotate(calc(var(--i) * 88deg + 18deg));
         }
 
-       .orbit--inner span:nth-child(even) {
-          --arc: 16deg;
-        }
+        .orbit--inner span:nth-child(even)
 
-        .orbit--outer span:nth-child(n + 5),5) {
+        .orbit--inner span:nth-child(even) {
+          clip-path: polygon(50% 50%, 100% .orbit--outer span:nth-child(n + 6),
+        .orbit--middle span:nth-child(n + 6) {
+          display: none;
+        }(n + 5) {
           display: none;
         }
 
@@ -329,7 +327,7 @@ export default function PrivateHirePage() {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: 58%;
+          width: 60%;
           aspect-ratio: 1;
           transform: translate(-50%, -50%);
           border-radius: 50%;
@@ -367,7 +365,7 @@ export default function PrivateHirePage() {
           border-right-color: ${ACCENT};
           transform: rotate(18deg);
           filter: drop-shadow(0 0 6px rgba(255, 0, 184, 0.35));
-          animation: crescentPulse 5s ease-in-out infinite;
+          animation: crescentPulse 2.8s ease-in-out infinite;
           pointer-events: none;
         }
 
@@ -529,9 +527,9 @@ export default function PrivateHirePage() {
           }
 
           .orbSystem {
-            width: min(96%, 500px);
+            width: min(90%, 470px);
             margin-top: -2px;
-            margin-bottom: -12px;
+            margin-bottom: 0;
           }
 
           .connector--top {
@@ -571,10 +569,10 @@ export default function PrivateHirePage() {
           }
 
           .orbSystem {
-            width: 108%;
-            margin-left: -4%;
+            width: 100%;
+            margin-left: 0;
             margin-top: -2px;
-            margin-bottom: -8px;
+            margin-bottom: 0;
           }
 
           .orbit span {
