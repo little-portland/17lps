@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
 
 type Venue = {
   id: string;
@@ -11,10 +10,7 @@ type Venue = {
 };
 
 const IMAGE_BASE = '/images/private-hire';
-const STAR_BG = `${IMAGE_BASE}/night-starry-sky-dark.jpg`;
-const GRID_BG = `${IMAGE_BASE}/buldge-grid.svg`;
-const ORB_OVERLAY = `${IMAGE_BASE}/circle-orb-overlay.png`;
-const ACCENT = '#348159';
+const ACCENT = '#ff00b8';
 
 const VENUES: Venue[] = [
   {
@@ -31,7 +27,7 @@ const VENUES: Venue[] = [
     image: `${IMAGE_BASE}/the-tent-placeholder.png`,
     alt: 'The Tent private hire image.',
     objectPosition: '50% 50%',
-    infoLines: ['36 Seated / 50 Standing', 'Located on the Ground Floor'],
+    infoLines: ['36 Seated / 50 Standing', 'Ground Floor'],
   },
   {
     id: 'the-studio',
@@ -39,7 +35,7 @@ const VENUES: Venue[] = [
     image: `${IMAGE_BASE}/the-studio-placeholder.png`,
     alt: 'The Studio private hire image.',
     objectPosition: '50% 42%',
-    infoLines: ['100 Standing', 'Located on the lower ground floor'],
+    infoLines: ['100 Standing', 'Lower Ground Floor'],
   },
   {
     id: 'chefs-studio',
@@ -47,192 +43,111 @@ const VENUES: Venue[] = [
     image: `${IMAGE_BASE}/chefs-studio-placeholder.png`,
     alt: "Chef's Studio private hire image.",
     objectPosition: '50% 50%',
-    infoLines: ['Private Dining | 12 Seated', 'Located on the lower ground floor'],
+    infoLines: ['Private Dining | 12 Seated', 'Lower Ground Floor'],
   },
 ];
 
-const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
-
 export default function PrivateHirePage() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [displayIndex, setDisplayIndex] = useState(0);
-  const [previousIndex, setPreviousIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    const updateActiveIndex = () => {
-      const nextIndex = clamp(
-        Math.round(window.scrollY / Math.max(window.innerHeight, 1)),
-        0,
-        VENUES.length - 1
-      );
-      setActiveIndex(nextIndex);
-    };
-
-    updateActiveIndex();
-    window.addEventListener('scroll', updateActiveIndex, { passive: true });
-    window.addEventListener('resize', updateActiveIndex);
-
-    return () => {
-      window.removeEventListener('scroll', updateActiveIndex);
-      window.removeEventListener('resize', updateActiveIndex);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (activeIndex === displayIndex) return;
-
-    setPreviousIndex(displayIndex);
-    setDisplayIndex(activeIndex);
-
-    const timeout = window.setTimeout(() => {
-      setPreviousIndex(null);
-    }, 360);
-
-    return () => window.clearTimeout(timeout);
-  }, [activeIndex, displayIndex]);
-
-  const activeVenue = VENUES[displayIndex];
-
-  const goToSlide = (index: number) => {
-    const nextIndex = clamp(index, 0, VENUES.length - 1);
-    window.scrollTo({ top: nextIndex * window.innerHeight, behavior: 'smooth' });
-  };
-
   return (
     <>
       <Head>
-        <title>Private Hire</title>
+        <title>Private Hire | Little Portland</title>
         <meta
           name="description"
-          content="Poster-inspired private hire page with snap scrolling, glowing orb imagery, and venue-by-venue transitions."
+          content="Private hire options at Little Portland: full venue, The Tent, The Studio, and Chef's Studio."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main className="posterPage">
-        <div className="posterStage">
-          <div className="posterSky" style={{ backgroundImage: `url(${STAR_BG})` }} />
-          <img src={GRID_BG} alt="" aria-hidden="true" className="posterGrid" />
-          <div className="posterGridSweep" aria-hidden="true" />
-          <div className="posterVignette" />
-          <div className="posterNoise" />
+      <main className="flyerPage">
+        <section className="flyerSheet" aria-labelledby="private-hire-title">
+          <div className="topBar">17 LITTLE PORTLAND STREET</div>
+          <div className="sideBar">YO@LITTLE-PORTLAND.COM</div>
+          <div className="bottomBar">LPX // PRIVATE HIRE</div>
 
-          <button
-            type="button"
-            className="posterNav posterNav--prev"
-            onClick={() => goToSlide(activeIndex - 1)}
-            disabled={activeIndex === 0}
-            aria-label="Previous venue"
-          >
-            <span className="posterNav__arrow">↑</span>
-            <span className="posterNav__text">Prev</span>
-          </button>
+          <div className="dateBlock">
+            <span>PRIVATE</span>
+            <span>HIRE</span>
+          </div>
 
-          <button
-            type="button"
-            className="posterNav posterNav--next"
-            onClick={() => goToSlide(activeIndex + 1)}
-            disabled={activeIndex === VENUES.length - 1}
-            aria-label="Next venue"
-          >
-            <span className="posterNav__text">Next</span>
-            <span className="posterNav__arrow">↓</span>
-          </button>
+          <div className="issueBlock">ISSUE 01</div>
 
-          <section className="posterFrame" aria-live="polite">
-            <div className="posterTitleWrap">
-              <h1 className="posterTitle">PRIVATE HIRE</h1>
+          <header className="heroTitleWrap">
+            <h1 id="private-hire-title" className="heroTitle">
+              PRIVATE HIRE
+            </h1>
+            <div className="titleRule" aria-hidden="true" />
+          </header>
+
+          <section className="orbSystem" aria-label="Private hire venue options">
+            <div className="connector connector--top" aria-hidden="true" />
+            <div className="connector connector--left" aria-hidden="true" />
+
+            <div className="orbit orbit--outer" aria-hidden="true">
+              <span style={{ '--i': 0 } as React.CSSProperties} />
+              <span style={{ '--i': 1 } as React.CSSProperties} />
+              <span style={{ '--i': 2 } as React.CSSProperties} />
+              <span style={{ '--i': 3 } as React.CSSProperties} />
+              <span style={{ '--i': 4 } as React.CSSProperties} />
+              <span style={{ '--i': 5 } as React.CSSProperties} />
             </div>
 
-            <div className="orbCluster">
-              <div className="orbBloomBack" />
+            <div className="orbit orbit--middle" aria-hidden="true">
+              <span style={{ '--i': 0 } as React.CSSProperties} />
+              <span style={{ '--i': 1 } as React.CSSProperties} />
+              <span style={{ '--i': 2 } as React.CSSProperties} />
+              <span style={{ '--i': 3 } as React.CSSProperties} />
+              <span style={{ '--i': 4 } as React.CSSProperties} />
+            </div>
 
-              <div className="orbPhotoMask">
-                {previousIndex !== null && (
-                  <div
-                    aria-hidden="true"
-                    className="orbPhotoLayer orbPhotoLayer--previous"
-                    style={{
-                      backgroundImage: `url(${VENUES[previousIndex].image})`,
-                      backgroundPosition: VENUES[previousIndex].objectPosition || '50% 50%',
-                    }}
+            <div className="orbit orbit--inner" aria-hidden="true">
+              <span style={{ '--i': 0 } as React.CSSProperties} />
+              <span style={{ '--i': 1 } as React.CSSProperties} />
+              <span style={{ '--i': 2 } as React.CSSProperties} />
+              <span style={{ '--i': 3 } as React.CSSProperties} />
+            </div>
+
+            <div className="imageCircle">
+              {VENUES.map((venue, index) => (
+                <article key={venue.id} className={`venueSlice venueSlice--${index + 1}`}>
+                  <img
+                    src={venue.image}
+                    alt={venue.alt}
+                    style={{ objectPosition: venue.objectPosition || '50% 50%' }}
                   />
-                )}
-
-                <div
-                  key={activeVenue.id}
-                  role="img"
-                  aria-label={activeVenue.alt}
-                  className={`orbPhotoLayer orbPhotoLayer--current ${previousIndex !== null ? 'is-glitching' : ''}`}
-                  style={{
-                    backgroundImage: `url(${activeVenue.image})`,
-                    backgroundPosition: activeVenue.objectPosition || '50% 50%',
-                  }}
-                />
-
-                <div className="orbInnerTint" />
-                <div className="orbInnerGlow" />
-              </div>
-
-              <img src={ORB_OVERLAY} alt="" aria-hidden="true" className="orbOverlay orbOverlay--main" />
+                </article>
+              ))}
+              <div className="circleShade" aria-hidden="true" />
+              <div className="pinkCrescent" aria-hidden="true" />
             </div>
-
-            <div className="posterAreaTitle">
-              {VENUES.map((venue, index) => {
-                const isActive = index === activeIndex;
-                return (
-                  <div key={venue.id} className={`posterAreaTitle__item ${isActive ? 'is-active' : ''}`}>
-                    {venue.title}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="posterInfo">
-              {VENUES.map((venue, index) => {
-                const isActive = index === activeIndex;
-                return (
-                  <div key={venue.id} className={`posterInfo__block ${isActive ? 'is-active' : ''}`}>
-                    {venue.infoLines.map((line, lineIndex) => (
-                      <p
-                        key={`${venue.id}-${line}`}
-                        className={`posterInfo__line ${lineIndex > 0 ? 'posterInfo__line--secondary' : ''}`}
-                      >
-                        {line}
-                      </p>
-                    ))}
-                  </div>
-                );
-              })}
-            </div>
-
-            <a href="mailto:yo@little-portland.com" className="posterFooterContact">
-              yo@little-portland.com
-            </a>
           </section>
-        </div>
 
-        <div className="posterScrollTrack" aria-hidden="true">
-          {VENUES.map((venue) => (
-            <div key={venue.id} className="posterScrollMarker" />
-          ))}
-        </div>
+          <section className="venueGrid" aria-label="Venue capacities">
+            {VENUES.map((venue, index) => (
+              <article key={venue.id} className={`venueCard venueCard--${index + 1}`}>
+                <h2>{venue.title}</h2>
+                {venue.infoLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </article>
+            ))}
+          </section>
+        </section>
       </main>
 
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&display=swap');
 
-        html {
-          scroll-behavior: smooth;
-          scroll-snap-type: y mandatory;
-          overflow-x: hidden;
+        html,
+        body,
+        #__next {
+          min-height: 100%;
         }
 
         body {
           margin: 0;
-          background: #040707;
-          color: #f1eee7;
-          overflow-x: hidden;
+          background: #e9e9e6;
+          color: #050505;
           font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         }
 
@@ -240,807 +155,492 @@ export default function PrivateHirePage() {
           box-sizing: border-box;
         }
 
-        a,
-        button {
-          color: inherit;
-          font: inherit;
-        }
-
-        a {
-          text-decoration: none;
-        }
-
-        img,
-        svg {
+        img {
           display: block;
         }
 
-        button {
-          background: none;
-          border: 0;
-          padding: 0;
-          cursor: pointer;
+        .flyerPage {
+          min-height: 100dvh;
+          display: grid;
+          place-items: center;
+          padding: clamp(10px, 2vw, 24px);
+          background: #e9e9e6;
         }
 
-        #__next {
-          min-height: 100vh;
-        }
-
-        .posterPage {
-          min-height: 100vh;
-          background: #040707;
-        }
-
-        .posterStage {
-          position: fixed;
-          inset: 0;
-          overflow: clip;
-          background: #040707;
-          z-index: 2;
-        }
-
-        .posterScrollTrack {
+        .flyerSheet {
           position: relative;
-          z-index: 0;
-          pointer-events: none;
+          width: min(100%, 1180px);
+          min-height: min(100dvh - 20px, 940px);
+          overflow: hidden;
+          background: #f6f6f4;
+          isolation: isolate;
+          padding: clamp(72px, 8vw, 112px) clamp(24px, 6vw, 88px) clamp(82px, 7vw, 104px);
         }
 
-        .posterScrollMarker {
-          height: 100vh;
-          scroll-snap-align: start;
-          scroll-snap-stop: always;
+        .topBar,
+        .sideBar,
+        .bottomBar {
+          position: absolute;
+          z-index: 20;
+          display: inline-flex;
+          align-items: center;
+          width: max-content;
+          background: #000;
+          color: #fff;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          font-weight: 700;
+          line-height: 1;
+          box-decoration-break: clone;
+          -webkit-box-decoration-break: clone;
         }
 
-        .posterSky,
-        .posterGrid,
-        .posterGridSweep,
-        .posterVignette,
-        .posterNoise {
+        .topBar {
+          top: 16px;
+          left: 16px;
+          padding: 7px 10px 8px;
+          font-size: clamp(0.82rem, 1.6vw, 1.22rem);
+        }
+
+        .sideBar {
+          left: 16px;
+          bottom: 16px;
+          transform-origin: left bottom;
+          transform: rotate(-90deg) translateY(100%);
+          padding: 7px 10px 8px;
+          font-size: clamp(0.78rem, 1.25vw, 1rem);
+        }
+
+        .bottomBar {
+          right: 16px;
+          bottom: 16px;
+          padding: 8px 12px 9px;
+          font-size: clamp(0.78rem, 1.5vw, 1.1rem);
+        }
+
+        .dateBlock,
+        .issueBlock {
+          position: absolute;
+          z-index: 15;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          font-weight: 700;
+          line-height: 1.12;
+          font-size: clamp(0.86rem, 1.6vw, 1.14rem);
+        }
+
+        .dateBlock {
+          left: clamp(24px, 4vw, 36px);
+          top: 55%;
+          display: grid;
+        }
+
+        .issueBlock {
+          right: clamp(24px, 4vw, 36px);
+          top: 55.5%;
+        }
+
+        .heroTitleWrap {
+          position: absolute;
+          left: 15.2%;
+          top: 34%;
+          z-index: 14;
+          display: flex;
+          align-items: center;
+          gap: clamp(18px, 3vw, 32px);
+        }
+
+        .heroTitle {
+          margin: 0;
+          color: ${ACCENT};
+          font-size: clamp(2.8rem, 6.3vw, 5.1rem);
+          line-height: 0.9;
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+
+        .titleRule {
+          width: clamp(96px, 18vw, 230px);
+          height: 2px;
+          background: #000;
+          position: relative;
+        }
+
+        .titleRule::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 2px;
+          height: 34px;
+          background: #000;
+          transform: translateY(-50%);
+        }
+
+        .orbSystem {
+          position: absolute;
+          left: 52%;
+          top: 62%;
+          width: min(58vw, 650px);
+          aspect-ratio: 1;
+          transform: translate(-50%, -50%);
+          z-index: 8;
+        }
+
+        .connector {
+          position: absolute;
+          z-index: -1;
+          background: #000;
+        }
+
+        .connector--top {
+          left: 50%;
+          top: -16%;
+          width: 2px;
+          height: 34%;
+        }
+
+        .connector--top::before {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 34%;
+          height: 2px;
+          background: #000;
+        }
+
+        .connector--left {
+          left: -12%;
+          top: 58%;
+          width: 28%;
+          height: 2px;
+        }
+
+        .connector--left::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 2px;
+          height: 34px;
+          background: #000;
+        }
+
+        .orbit {
           position: absolute;
           inset: 0;
+          border-radius: 50%;
           pointer-events: none;
         }
 
-        .posterSky {
-          background-size: contain;
-          background-position: center;
-          filter: saturate(0.92) brightness(0.54);
-          opacity: 0.96;
+        .orbit--outer {
+          animation: rotateSlow 54s linear infinite;
         }
 
-        .posterGrid {
+        .orbit--middle {
+          inset: 9%;
+          animation: rotateSlowReverse 44s linear infinite;
+        }
+
+        .orbit--inner {
+          inset: 18%;
+          animation: rotateSlow 34s linear infinite;
+        }
+
+        .orbit span {
+          --i: 0;
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          border: clamp(6px, 0.8vw, 9px) solid #000;
+          clip-path: polygon(50% 50%, 100% 0, 100% 30%, 50% 50%);
+          transform: rotate(calc(var(--i) * 61deg));
+        }
+
+        .orbit--middle span {
+          border-width: clamp(5px, 0.7vw, 8px);
+          clip-path: polygon(50% 50%, 100% 8%, 100% 31%, 50% 50%);
+          transform: rotate(calc(var(--i) * 72deg + 10deg));
+        }
+
+        .orbit--inner span {
+          border-width: clamp(5px, 0.62vw, 7px);
+          clip-path: polygon(50% 50%, 100% 5%, 100% 28%, 50% 50%);
+          transform: rotate(calc(var(--i) * 88deg + 18deg));
+        }
+
+        .imageCircle {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 44%;
+          aspect-ratio: 1;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          overflow: hidden;
+          background: #000;
+          box-shadow: 0 0 0 2px #000;
+        }
+
+        .venueSlice {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          opacity: 0.72;
+        }
+
+        .venueSlice img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          mix-blend-mode: screen;
-          opacity: 0.78;
-          filter: drop-shadow(0 0 18px rgba(52, 129, 89, 0.18));
-          animation: gridPulse 8s ease-in-out infinite;
+          filter: grayscale(1) contrast(1.1) brightness(0.62);
         }
 
-        .posterGridSweep {
-          opacity: 0;
-          background: linear-gradient(
-            180deg,
-            transparent 0%,
-            transparent 34%,
-            rgba(145, 242, 189, 0.05) 40%,
-            rgba(145, 242, 189, 0.16) 45%,
-            rgba(145, 242, 189, 0.32) 50%,
-            rgba(145, 242, 189, 0.16) 55%,
-            rgba(145, 242, 189, 0.05) 60%,
-            transparent 66%,
-            transparent 100%
-          );
-          mix-blend-mode: screen;
-          filter: blur(16px);
-          transform: translateY(-130%);
-          animation: gridSweepVertical 12s linear infinite;
+        .venueSlice--1 {
+          clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 50%);
         }
 
-        .posterVignette {
-          background:
-            radial-gradient(circle at center, transparent 34%, rgba(4, 7, 7, 0.12) 58%, rgba(4, 7, 7, 0.74) 100%),
-            linear-gradient(180deg, rgba(4, 7, 7, 0.12), rgba(4, 7, 7, 0.44));
+        .venueSlice--2 {
+          clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
         }
 
-        .posterNoise {
-          opacity: 0.08;
-          background-image:
-            radial-gradient(circle at 8% 16%, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.4px),
-            radial-gradient(circle at 76% 22%, rgba(255, 255, 255, 0.66) 0 1px, transparent 1.4px),
-            radial-gradient(circle at 86% 72%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.4px),
-            radial-gradient(circle at 28% 80%, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.4px);
-          background-size: 320px 320px, 380px 380px, 340px 340px, 400px 400px;
-          mix-blend-mode: screen;
+        .venueSlice--3 {
+          clip-path: polygon(50% 50%, 50% 100%, 0 100%, 0 50%);
         }
 
-        .posterNav {
-          position: absolute;
-          top: 50%;
-          z-index: 14;
-          display: inline-flex;
-          align-items: center;
-          gap: 11px;
-          padding: 14px 16px;
-          border-radius: 999px;
-          border: 1px solid rgba(52, 129, 89, 0.42);
-          background: rgba(0, 0, 0, 0.74);
-          color: ${ACCENT};
-          box-shadow: 0 0 16px rgba(52, 129, 89, 0.14);
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          font-size: 0.82rem;
-          font-weight: 700;
-          backdrop-filter: blur(10px);
-          transform: translateY(-50%);
-          transition: opacity 180ms ease, border-color 180ms ease, background 180ms ease;
-          pointer-events: auto;
-          text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
+        .venueSlice--4 {
+          clip-path: polygon(50% 50%, 0 50%, 0 0, 50% 0);
         }
 
-        .posterNav:hover,
-        .posterNav:focus-visible {
-          transform: translateY(-50%);
-          border-color: rgba(52, 129, 89, 0.56);
-          background: rgba(0, 0, 0, 0.84);
-        }
-
-        .posterNav:disabled {
-          opacity: 0.22;
-          cursor: not-allowed;
-        }
-
-        .posterNav:disabled:hover,
-        .posterNav:disabled:focus-visible {
-          transform: translateY(-50%);
-          border-color: rgba(52, 129, 89, 0.42);
-          background: rgba(0, 0, 0, 0.74);
-        }
-
-        .posterNav--prev {
-          left: 20px;
-        }
-
-        .posterNav--next {
-          right: 20px;
-        }
-
-        .posterNav__arrow {
-          font-size: 0.96rem;
-          line-height: 1;
-        }
-
-        .posterFrame {
-          --core-size: min(41vw, 520px);
-          --orb-shell-size: calc(var(--core-size) + clamp(120px, 12vw, 170px));
+        .circleShade {
           position: absolute;
           inset: 0;
-          z-index: 6;
-          display: grid;
-          place-items: center;
-          justify-items: center;
-          padding: clamp(88px, 11vh, 118px) 88px clamp(72px, 10vh, 100px);
-          pointer-events: none;
-        }
-
-        .posterTitleWrap {
-          position: absolute;
-          left: 50%;
-          top: calc(50% - (var(--core-size) / 2) - 98px);
-          transform: translateX(-50%);
-          z-index: 9;
-          width: min(90vw, 900px);
-          display: flex;
-          justify-content: center;
-        }
-
-        .posterTitle {
-          margin: 0;
-          color: #f2efe6;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 3.8rem;
-          font-weight: 900;
-          text-shadow:
-            0 0 10px rgba(255, 255, 255, 0.18),
-            0 0 24px rgba(255, 255, 255, 0.2),
-            0 0 40px rgba(255, 255, 255, 0.5);
-        }
-
-        .orbCluster {
-          position: relative;
-          width: min(var(--orb-shell-size), calc(100vw - 24px));
-          aspect-ratio: 1 / 1;
-          z-index: 7;
-          display: grid;
-          place-items: center;
-          justify-self: center;
-          align-self: center;
-          margin-inline: auto;
-          pointer-events: none;
-        }
-
-        .orbBloomBack {
-          position: absolute;
-          inset: 5%;
-          border-radius: 999px;
           background:
-            radial-gradient(circle,
-              rgba(95, 212, 156, 0.3) 0%,
-              rgba(63, 180, 121, 0.52) 32%,
-              rgba(52, 129, 89, 0.42) 50%,
-              rgba(52, 129, 89, 0.24) 68%,
-              rgba(52, 129, 89, 0) 86%);
-          filter: blur(54px);
-          transform: scale(1.08);
-          opacity: 0.72;
-          animation: orbPulse 2.8s ease-in-out infinite;
-          pointer-events: none;
+            radial-gradient(circle at center, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.78) 65%, #000 100%),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.34), transparent 52%, rgba(0, 0, 0, 0.24));
+          mix-blend-mode: multiply;
         }
 
-        .orbPhotoMask {
+        .pinkCrescent {
           position: absolute;
-          left: 50%;
-          top: 50%;
-          width: var(--core-size);
-          height: var(--core-size);
-          transform: translate3d(-50%, -50%, 0);
+          inset: 4%;
           border-radius: 50%;
-          overflow: hidden;
-          clip-path: circle(50% at 50% 50%);
-          -webkit-clip-path: circle(50% at 50% 50%);
-          -webkit-mask-image: -webkit-radial-gradient(white, black);
-          isolation: isolate;
-          contain: paint;
-          background: rgba(52, 129, 89, 0.28);
-          box-shadow:
-            inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-            inset 0 0 60px rgba(52, 129, 89, 0.26),
-            inset 0 0 130px rgba(52, 129, 89, 0.2),
-            0 0 22px rgba(52, 129, 89, 0.12);
-          animation: orbCorePulse 2.8s ease-in-out infinite;
+          border: clamp(6px, 0.75vw, 9px) solid transparent;
+          border-right-color: ${ACCENT};
+          transform: rotate(18deg);
+          filter: drop-shadow(0 0 6px rgba(255, 0, 184, 0.35));
         }
 
-        .orbPhotoLayer {
+        .venueGrid {
           position: absolute;
-          inset: 0;
-          background-size: cover;
-          background-repeat: no-repeat;
-          filter: contrast(1.02) brightness(0.96);
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-          transform: translateZ(0);
-          will-change: opacity, transform;
+          inset: auto clamp(40px, 6vw, 92px) clamp(72px, 8vw, 104px);
+          z-index: 18;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: clamp(12px, 1.7vw, 22px);
         }
 
-        .orbPhotoLayer::before,
-        .orbPhotoLayer::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background-image: inherit;
-          background-size: inherit;
-          background-position: inherit;
-          background-repeat: inherit;
-          pointer-events: none;
-          opacity: 0;
-          mix-blend-mode: screen;
-        }
-
-        .orbPhotoLayer--current {
-          opacity: 1;
-        }
-
-        .orbPhotoLayer--current.is-glitching {
-          animation: photoGlitchIn 360ms ease both;
-        }
-
-        .orbPhotoLayer--current.is-glitching::before {
-          animation: photoGlitchSliceA 360ms steps(2, end) both;
-        }
-
-        .orbPhotoLayer--current.is-glitching::after {
-          animation: photoGlitchSliceB 360ms steps(2, end) both;
-        }
-
-        .orbPhotoLayer--previous {
-          opacity: 1;
-          animation: photoGlitchOut 360ms ease forwards;
-        }
-
-        .orbInnerTint {
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(circle at 50% 50%, rgba(52, 129, 89, 0.04), rgba(52, 129, 89, 0.08) 54%, rgba(52, 129, 89, 0.18) 78%, rgba(52, 129, 89, 0.3) 100%),
-            linear-gradient(180deg, rgba(125, 225, 180, 0.08), transparent 18%, transparent 68%, rgba(0, 0, 0, 0.18) 100%);
-          mix-blend-mode: screen;
-          pointer-events: none;
-        }
-
-        .orbInnerGlow {
-          position: absolute;
-          inset: 0;
-          border-radius: 999px;
-          box-shadow:
-            inset 0 0 52px rgba(126, 228, 183, 0.22),
-            inset 0 0 140px rgba(52, 129, 89, 0.22),
-            inset 0 0 220px rgba(52, 129, 89, 0.12);
-          pointer-events: none;
-        }
-
-        .orbOverlay {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          pointer-events: none;
-        }
-
-        .orbOverlay--main {
-          opacity: 0.96;
-          mix-blend-mode: screen;
-          animation: orbPulseSoft 2.8s ease-in-out infinite;
-        }
-
-        .posterAreaTitle {
-          position: absolute;
-          left: 50%;
-          top: calc(50% + (var(--core-size) / 2) + 20px);
-          width: min(820px, calc(100vw - 100px));
-          min-height: 78px;
-          transform: translateX(-50%);
-          z-index: 8;
-          pointer-events: none;
-        }
-
-        .posterAreaTitle__item {
-          position: absolute;
-          left: 50%;
-          top: 0;
-          width: max-content;
-          max-width: 100%;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 14px 26px 15px;
-          border-radius: 999px;
-          border: 1px solid rgba(52, 129, 89, 0.42);
-          background: rgba(0, 0, 0, 0.74);
-          box-shadow:
-            0 0 16px rgba(52, 129, 89, 0.14),
-            inset 0 0 18px rgba(52, 129, 89, 0.08);
-          opacity: 0;
-          transform: translate(-50%, 10px) scale(0.98);
-          transition: opacity 320ms ease, transform 320ms ease;
-          color: ${ACCENT};
+        .venueCard {
+          min-height: 126px;
+          padding: 14px 14px 16px;
+          background: rgba(246, 246, 244, 0.88);
+          border-top: 3px solid #000;
           text-transform: uppercase;
-          letter-spacing: 0.06em;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 2.2rem;
-          font-weight: 900;
-          text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
         }
 
-        .posterAreaTitle__item.is-active {
-          opacity: 1;
-          transform: translate(-50%, 0) scale(1);
+        .venueCard h2 {
+          margin: 0 0 12px;
+          color: ${ACCENT};
+          font-size: clamp(0.94rem, 1.55vw, 1.32rem);
+          line-height: 1.02;
+          letter-spacing: -0.03em;
         }
 
-        .posterInfo {
-          position: absolute;
-          left: 50%;
-          top: calc(50% + (var(--core-size) / 2) + 96px);
-          width: min(760px, calc(100vw - 120px));
-          min-height: 110px;
-          transform: translateX(-50%);
-          pointer-events: none;
-        }
-
-        .posterInfo__block {
-          position: absolute;
-          inset: 0;
-          opacity: 0;
-          transform: translateY(10px) scale(0.98);
-          transition: opacity 320ms ease, transform 320ms ease;
-          text-align: center;
-        }
-
-        .posterInfo__block.is-active {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-
-        .posterInfo__line {
+        .venueCard p {
           margin: 0;
-          color: #f4f0e8;
-          text-transform: uppercase;
-          letter-spacing: 0.13em;
-          line-height: 1.48;
-          font-size: clamp(1rem, 1.45vw, 1.18rem);
+          font-size: clamp(0.68rem, 1vw, 0.84rem);
           font-weight: 700;
-          text-wrap: balance;
-          text-shadow:
-            0 0 8px rgba(255, 255, 255, 0.5),
-            0 0 18px rgba(52, 129, 89, 0.3),
-            0 0 34px rgba(52, 129, 89, 0.5);
+          line-height: 1.28;
+          letter-spacing: 0.01em;
         }
 
-        .posterInfo__line--secondary {
-          margin-top: 4px;
-          font-size: 0.84em;
-          opacity: 0.96;
+        .venueCard p + p {
+          margin-top: 5px;
         }
 
-        .posterFooterContact {
-          position: absolute;
-          left: 50%;
-          bottom: 26px;
-          transform: translateX(-50%);
-          z-index: 12;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          color: ${ACCENT};
-          text-transform: uppercase;
-          letter-spacing: 0.14em;
-          font-size: 0.98rem;
-          font-weight: 700;
-          white-space: nowrap;
-          text-shadow: 0 0 8px rgba(52, 129, 89, 0.5), 0 0 18px rgba(52, 129, 89, 0.3), 0 0 34px rgba(52, 129, 89, 0.5);
-          pointer-events: auto;
-        }
-
-        @keyframes gridPulse {
-          0%,
-          100% {
-            opacity: 0.75;
-          }
-          50% {
-            opacity: 0.84;
+        @keyframes rotateSlow {
+          to {
+            transform: rotate(360deg);
           }
         }
 
-        @keyframes gridSweepVertical {
-          0%,
-          62% {
-            opacity: 0;
-            transform: translateY(-130%);
-          }
-          66% {
-            opacity: 0.14;
-          }
-          78% {
-            opacity: 0.42;
-            transform: translateY(18%);
-          }
-          88% {
-            opacity: 0.12;
-            transform: translateY(116%);
-          }
-          100% {
-            opacity: 0;
-            transform: translateY(116%);
+        @keyframes rotateSlowReverse {
+          to {
+            transform: rotate(-360deg);
           }
         }
 
-        @keyframes orbPulse {
-          0%,
-          100% {
-            transform: scale(1.06);
-            opacity: 0.58;
-            filter: blur(46px) brightness(0.96);
-          }
-          50% {
-            transform: scale(1.24);
-            opacity: 1;
-            filter: blur(66px) brightness(1.12);
-          }
-        }
-
-        @keyframes orbPulseSoft {
-          0%,
-          100% {
-            transform: scale(0.992);
-            opacity: 0.82;
-          }
-          50% {
-            transform: scale(1.05);
-            opacity: 1;
-          }
-        }
-
-        @keyframes orbCorePulse {
-          0%,
-          100% {
-            box-shadow:
-              inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-              inset 0 0 54px rgba(52, 129, 89, 0.2),
-              inset 0 0 110px rgba(52, 129, 89, 0.14),
-              0 0 14px rgba(52, 129, 89, 0.08);
-          }
-          50% {
-            box-shadow:
-              inset 0 0 0 1px rgba(255, 255, 255, 0.04),
-              inset 0 0 78px rgba(52, 129, 89, 0.34),
-              inset 0 0 160px rgba(52, 129, 89, 0.24),
-              0 0 28px rgba(52, 129, 89, 0.18);
-          }
-        }
-
-        @keyframes photoGlitchIn {
-          0% {
-            opacity: 0.28;
-            transform: scale(1.02) translateX(8px);
-            filter: contrast(1.12) brightness(1.04);
-          }
-          18% {
-            opacity: 0.9;
-            transform: scale(1.008) translateX(-6px);
-          }
-          42% {
-            opacity: 0.74;
-            transform: scale(1.005) translateX(4px);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1) translateX(0);
-            filter: contrast(1.02) brightness(0.96);
-          }
-        }
-
-        @keyframes photoGlitchOut {
-          0% {
-            opacity: 1;
-            transform: scale(1) translateX(0);
-          }
-          100% {
-            opacity: 0;
-            transform: scale(0.998) translateX(-6px);
-          }
-        }
-
-        @keyframes photoGlitchSliceA {
-          0% {
-            opacity: 0;
-            transform: translateX(0);
-            clip-path: inset(0 0 64% 0);
-          }
-          20% {
-            opacity: 0.22;
-            transform: translateX(-10px);
-            clip-path: inset(0 0 68% 0);
-          }
-          44% {
-            opacity: 0.08;
-            transform: translateX(6px);
-            clip-path: inset(0 0 58% 0);
-          }
-          100% {
-            opacity: 0;
-            transform: translateX(0);
-            clip-path: inset(0 0 64% 0);
-          }
-        }
-
-        @keyframes photoGlitchSliceB {
-          0% {
-            opacity: 0;
-            transform: translateX(0);
-            clip-path: inset(58% 0 0 0);
-          }
-          22% {
-            opacity: 0.18;
-            transform: translateX(12px);
-            clip-path: inset(54% 0 0 0);
-          }
-          46% {
-            opacity: 0.06;
-            transform: translateX(-5px);
-            clip-path: inset(62% 0 0 0);
-          }
-          100% {
-            opacity: 0;
-            transform: translateX(0);
-            clip-path: inset(58% 0 0 0);
-          }
-        }
-
-        @media (max-width: 1180px) {
-          .posterFrame {
-            --core-size: min(50vw, 480px);
-            --orb-shell-size: calc(var(--core-size) + 120px);
-            padding-left: 72px;
-            padding-right: 72px;
+        @media (max-width: 900px) {
+          .flyerPage {
+            display: block;
+            padding: 0;
+            background: #f6f6f4;
           }
 
-          .posterTitleWrap {
-            top: calc(50% - (var(--core-size) / 2) - 86px);
+          .flyerSheet {
+            width: 100%;
+            min-height: 100dvh;
+            padding: 70px 18px 88px;
           }
 
-          .posterTitle {
-            font-size: 3.2rem;
+          .topBar {
+            top: 12px;
+            left: 12px;
           }
 
-          .posterAreaTitle__item {
-            font-size: 1.95rem;
-          }
-        }
-
-        @media (min-width: 861px) {
-          .posterTitleWrap {
-            top: calc(50% - (var(--core-size) / 2) - 128px);
-          }
-
-          .orbCluster {
-            transform: translateY(-22px);
-          }
-
-          .posterAreaTitle {
-            top: calc(50% + (var(--core-size) / 2) + 4px);
-          }
-
-          .posterInfo {
-            top: calc(50% + (var(--core-size) / 2) + 74px);
-          }
-        }
-
-        @media (max-width: 860px) {
-          html {
-            scroll-snap-type: y proximity;
-          }
-
-          .posterFrame {
-            --core-size: min(72vw, 410px);
-            --orb-shell-size: calc(var(--core-size) + 96px);
-            padding: 84px 20px 118px;
-          }
-
-          .orbCluster {
-            width: min(var(--orb-shell-size), calc(100vw - 20px));
-          }
-
-          .posterTitleWrap {
-            top: 98px;
-            width: min(94vw, 700px);
-          }
-
-          .posterTitle {
-            font-size: 2.55rem;
-          }
-
-          .posterAreaTitle {
-            top: calc(50% + (var(--core-size) / 2) + 18px);
-            width: min(94vw, 700px);
-          }
-
-          .posterAreaTitle__item {
-            padding: 12px 22px 13px;
-            font-size: 1.7rem;
-          }
-
-          .posterInfo {
-            top: calc(50% + (var(--core-size) / 2) + 82px);
-            width: min(92vw, 560px);
-          }
-
-          .posterInfo__line {
-            font-size: 0.94rem;
-            line-height: 1.42;
-          }
-
-          .posterNav {
-            top: auto;
-            bottom: 18px;
-            transform: none;
-            padding: 13px 14px;
-          }
-
-          .posterNav:hover,
-          .posterNav:focus-visible,
-          .posterNav:disabled:hover,
-          .posterNav:disabled:focus-visible {
-            transform: none;
-          }
-
-          .posterNav--prev {
-            left: 16px;
-          }
-
-          .posterNav--next {
-            right: 16px;
-          }
-
-          .posterFooterContact {
-            bottom: 20px;
-            font-size: 0.84rem;
-            letter-spacing: 0.12em;
-          }
-        }
-
-        @media (max-width: 560px) {
-          .posterFrame {
-            --core-size: min(72vw, 310px);
-            --orb-shell-size: calc(var(--core-size) + 82px);
-            padding: 62px 10px 108px;
-          }
-
-          .orbCluster {
-            width: min(var(--orb-shell-size), calc(100vw - 12px));
-          }
-
-          .posterTitleWrap {
-            top: 58px;
-            width: calc(100vw - 16px);
-          }
-
-          .posterTitle {
-            font-size: 1.68rem;
-            letter-spacing: 0.03em;
-          }
-
-          .posterAreaTitle {
-            top: calc(50% + (var(--core-size) / 2) + 12px);
-            width: calc(100vw - 20px);
-            min-height: 48px;
-          }
-
-          .posterAreaTitle__item {
-            max-width: calc(100vw - 42px);
-            padding: 10px 16px 11px;
-            font-size: 0.98rem;
-            letter-spacing: 0.04em;
-          }
-
-          .posterInfo {
-            top: calc(50% + (var(--core-size) / 2) + 56px);
-            width: calc(100vw - 20px);
-          }
-
-          .posterInfo__line {
-            font-size: 0.76rem;
-            letter-spacing: 0.08em;
-          }
-
-          .posterNav {
-            bottom: 12px;
-            padding: 12px 13px;
-            font-size: 0.68rem;
-          }
-
-          .posterNav__text {
+          .sideBar {
             display: none;
           }
 
-          .posterFooterContact {
-            bottom: 18px;
+          .bottomBar {
+            right: 12px;
+            bottom: 12px;
+          }
+
+          .dateBlock,
+          .issueBlock {
+            top: 118px;
             font-size: 0.78rem;
-            letter-spacing: 0.11em;
+          }
+
+          .dateBlock {
+            left: 18px;
+          }
+
+          .issueBlock {
+            right: 18px;
+          }
+
+          .heroTitleWrap {
+            position: relative;
+            left: auto;
+            top: auto;
+            margin-top: 78px;
+            justify-content: center;
+            gap: 16px;
+          }
+
+          .heroTitle {
+            font-size: clamp(2.35rem, 11vw, 4.2rem);
+          }
+
+          .titleRule {
+            flex: 1;
+            max-width: 96px;
+          }
+
+          .orbSystem {
+            position: relative;
+            left: auto;
+            top: auto;
+            width: min(104vw, 560px);
+            margin: 30px auto 18px;
+            transform: none;
+          }
+
+          .connector {
+            display: none;
+          }
+
+          .imageCircle {
+            width: 47%;
+          }
+
+          .venueGrid {
+            position: relative;
+            inset: auto;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 8px;
+          }
+
+          .venueCard {
+            min-height: 112px;
+            padding: 12px;
+            background: transparent;
+          }
+        }
+
+        @media (max-width: 520px) {
+          .flyerSheet {
+            padding: 58px 12px 74px;
+          }
+
+          .topBar,
+          .bottomBar {
+            font-size: 0.68rem;
+          }
+
+          .dateBlock,
+          .issueBlock {
+            display: none;
+          }
+
+          .heroTitleWrap {
+            margin-top: 46px;
+            gap: 10px;
+          }
+
+          .titleRule {
+            max-width: 54px;
+          }
+
+          .titleRule::before {
+            height: 24px;
+          }
+
+          .orbSystem {
+            width: 112vw;
+            margin-left: -6vw;
+            margin-top: 20px;
+            margin-bottom: 10px;
+          }
+
+          .orbit span {
+            border-width: 5px;
+          }
+
+          .venueGrid {
+            grid-template-columns: 1fr;
+            gap: 4px;
+          }
+
+          .venueCard {
+            min-height: 0;
+            display: grid;
+            grid-template-columns: 1fr 1.45fr;
+            gap: 12px;
+            align-items: start;
+            padding: 11px 4px;
+            border-top-width: 2px;
+          }
+
+          .venueCard h2 {
+            margin: 0;
+            font-size: 0.98rem;
+          }
+
+          .venueCard p {
+            font-size: 0.72rem;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          html {
-            scroll-behavior: auto;
-            scroll-snap-type: none;
-          }
-
-          .posterGrid,
-          .posterGridSweep,
-          .orbBloomBack,
-          .orbPhotoMask,
-          .orbOverlay--main {
-            animation: none;
-          }
-
-          .orbPhotoLayer,
-          .posterAreaTitle__item,
-          .posterInfo__block,
-          .posterNav {
-            transition: none;
+          .orbit--outer,
+          .orbit--middle,
+          .orbit--inner {
             animation: none;
           }
         }
