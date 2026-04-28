@@ -12,9 +12,9 @@ type Venue = {
 
 const IMAGE_BASE = '/images/private-hire';
 const ACCENT = '#ff00b8';
-const INNER_RING = `${IMAGE_BASE}/inner_ring.svg`;
-const MIDDLE_RING = `${IMAGE_BASE}/middle_ring.svg`;
-const OUTER_RING = `${IMAGE_BASE}/outer_ring.svg`;
+const INNER_RING = `${IMAGE_BASE}/inner_ring.png`;
+const MIDDLE_RING = `${IMAGE_BASE}/middle_ring.png`;
+const OUTER_RING = `${IMAGE_BASE}/outer_ring.png`;
 
 const VENUES: Venue[] = [
   {
@@ -242,33 +242,33 @@ export default function PrivateHirePage() {
           left: 50%;
           top: 50%;
           z-index: 2;
-          width: 100%;
-          height: 100%;
           object-fit: contain;
           pointer-events: none;
-          transform-origin: center;
+          transform-origin: center center;
           will-change: transform;
         }
 
         .ringAsset--outer {
+          width: 96%;
+          height: 96%;
           animation: ringOuter 42s linear infinite;
         }
 
         .ringAsset--middle {
-          width: 88%;
- .ringAsset--middle {
-          width: 88%;
-          height: 88%;
+          width: 86%;
+          height: 86%;
           animation: ringMiddle 34s linear infinite;
         }
 
-        .ringAsse.ringAsset--inner {
+        .ringAsset--inner {
           width: 76%;
           height: 76%;
           animation: ringInner 26s linear infinite;
         }
 
-        .imageCircle
+        .imageCircle {
+          position: absolute;
+          left: 50%;
           top: 50%;
           z-index: 5;
           width: 60%;
@@ -519,20 +519,6 @@ export default function PrivateHirePage() {
             margin-bottom: 14px;
           }
 
-          .ringAsset--middle {
-            width: 88%;
-            height: 88%;
-          }
-
-          .ringAsset--inner {
-            width: 76%;
-            height: 76%;
-          }
-
-          .connector--top::before {
-            width: 42px;
-          }
-
           .venueGrid {
             grid-template-columns: 1fr;
             width: 100%;
@@ -575,6 +561,12 @@ export default function PrivateHirePage() {
           .pinkCrescent,
           .activeVenueImage {
             animation: none;
+          }
+
+          .ringAsset--outer,
+          .ringAsset--middle,
+          .ringAsset--inner {
+            transform: translate(-50%, -50%);
           }
 
           .venueCard,
