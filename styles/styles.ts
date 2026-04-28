@@ -159,7 +159,7 @@ html, body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px;
+  height: 60px;
 
   display: grid;
   grid-template-columns: 1fr auto 1fr;
