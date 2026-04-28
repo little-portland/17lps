@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import SceneNav from '@components/SceneNav';
 
 type Track = {
   id: string;
@@ -280,7 +281,9 @@ export default function TentRadioPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main className="posterPage">
+      <main className="posterPage posterPage--with-scene-nav">
+        <SceneNav theme="tent-radio" />
+
         <div className="posterStage">
           <div className="posterSky" style={{ backgroundImage: `url(${STAR_BG})` }} />
           <img src={GRID_BG} alt="" aria-hidden="true" className="posterGrid" />
@@ -536,28 +539,28 @@ export default function TentRadioPage() {
         }
 
         * {
-            scrollbar-color: #348159 rgba(0, 0, 0, 0.35);
-            scrollbar-width: thin;
-          }
-          
-          *::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-          }
-          
-          *::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.35);
-          }
-          
-          *::-webkit-scrollbar-thumb {
-            background: #348159;
-            border-radius: 999px;
-            box-shadow: 0 0 10px rgba(52, 129, 89, 0.8);
-          }
-          
-          *::-webkit-scrollbar-thumb:hover {
-            background: #46a66f;
-          }
+          scrollbar-color: #348159 rgba(0, 0, 0, 0.35);
+          scrollbar-width: thin;
+        }
+
+        *::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+
+        *::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.35);
+        }
+
+        *::-webkit-scrollbar-thumb {
+          background: #348159;
+          border-radius: 999px;
+          box-shadow: 0 0 10px rgba(52, 129, 89, 0.8);
+        }
+
+        *::-webkit-scrollbar-thumb:hover {
+          background: #46a66f;
+        }
 
         button {
           color: inherit;
@@ -582,6 +585,85 @@ export default function TentRadioPage() {
           inset: 0;
           overflow: hidden;
           background: #040707;
+        }
+
+        /* =====================================================
+           TENT RADIO NAV THEME
+        ===================================================== */
+
+        .posterPage--with-scene-nav .posterStage {
+          top: 80px !important;
+        }
+
+        .scene-nav {
+          z-index: 10020 !important;
+        }
+
+        .scene-nav-burger,
+        .scene-nav-logo {
+          position: relative;
+          z-index: 10030 !important;
+        }
+
+        .scene-nav-mobile {
+          z-index: 10010 !important;
+        }
+
+        .scene-nav--tent-radio {
+          background: #000 !important;
+          z-index: 10020 !important;
+        }
+
+        .scene-nav--tent-radio,
+        .scene-nav--tent-radio a,
+        .scene-nav-mobile--tent-radio,
+        .scene-nav-mobile--tent-radio a {
+          color: #348159 !important;
+          font-family: 'Orbitron', 'IBM Plex Mono', monospace !important;
+        }
+
+        .scene-nav--tent-radio a.active,
+        .scene-nav-mobile--tent-radio a.active {
+          color: #ffffff !important;
+        }
+
+        .scene-nav--tent-radio a.disabled,
+        .scene-nav-mobile--tent-radio a.disabled {
+          color: #348159 !important;
+          opacity: 0.45;
+        }
+
+        .scene-nav--tent-radio .scene-nav-burger span {
+          background: #348159 !important;
+        }
+
+        .scene-nav--tent-radio .scene-nav-logo img {
+          filter: brightness(0) saturate(100%) invert(42%) sepia(18%)
+            saturate(1082%) hue-rotate(93deg) brightness(89%) contrast(86%);
+        }
+
+        .scene-nav-mobile.scene-nav--tent-radio,
+        .scene-nav-mobile--tent-radio {
+          background: #000 !important;
+        }
+
+        @media (max-width: 900px) {
+          .posterPage--with-scene-nav .posterStage {
+            top: 80px !important;
+          }
+
+          .scene-nav--tent-radio {
+            background: #000 !important;
+          }
+
+          .scene-nav-mobile.scene-nav--tent-radio,
+          .scene-nav-mobile--tent-radio {
+            background: #000 !important;
+          }
+
+          .scene-nav-mobile--tent-radio .scene-nav-mobile-inner {
+            padding-top: 96px;
+          }
         }
 
         .posterSky,
@@ -1592,76 +1674,76 @@ export default function TentRadioPage() {
         }
 
         @media (max-width: 760px) {
-        .radioPlayer {
-          gap: 12px;
-        }
-      
-        .radioHeader__title {
-          white-space: nowrap;
-          font-size: clamp(1.45rem, 8.4vw, 2.25rem);
-          letter-spacing: 0.05em;
-        }
-      
-        .radioHeader__tag {
-          font-size: 0.5rem;
-          letter-spacing: 0.09em;
-        }
-      
-        .orbCluster {
-          transform: translateY(-66px);
-        }
-      
-        .trackHero {
-          top: calc(50% + (var(--core-size) / 2) - 42px);
-        }
-      }
-      
-      @media (max-width: 430px) {
-        .radioHeader__title {
-          font-size: clamp(1.35rem, 8vw, 1.95rem);
-        }
-      
-        .orbCluster {
-          transform: translateY(-74px);
-        }
-      
-        .trackHero {
-          top: calc(50% + (var(--core-size) / 2) - 54px);
-        }
-      }
+          .radioPlayer {
+            gap: 12px;
+          }
 
-      @media (max-width: 760px) {
-        .archiveDrawer__list {
-          padding-right: 18px;
+          .radioHeader__title {
+            white-space: nowrap;
+            font-size: clamp(1.45rem, 8.4vw, 2.25rem);
+            letter-spacing: 0.05em;
+          }
+
+          .radioHeader__tag {
+            font-size: 0.5rem;
+            letter-spacing: 0.09em;
+          }
+
+          .orbCluster {
+            transform: translateY(-66px);
+          }
+
+          .trackHero {
+            top: calc(50% + (var(--core-size) / 2) - 42px);
+          }
         }
 
-        .radioPlayer {
-          padding-top: 24px;
-          padding-bottom: 24px;
+        @media (max-width: 430px) {
+          .radioHeader__title {
+            font-size: clamp(1.35rem, 8vw, 1.95rem);
+          }
+
+          .orbCluster {
+            transform: translateY(-74px);
+          }
+
+          .trackHero {
+            top: calc(50% + (var(--core-size) / 2) - 54px);
+          }
         }
-      
-        .orbCluster {
-          transform: translateY(-96px);
+
+        @media (max-width: 760px) {
+          .archiveDrawer__list {
+            padding-right: 18px;
+          }
+
+          .radioPlayer {
+            padding-top: 24px;
+            padding-bottom: 24px;
+          }
+
+          .orbCluster {
+            transform: translateY(-96px);
+          }
+
+          .trackHero {
+            top: calc(50% + (var(--core-size) / 2) - 72px);
+          }
         }
-      
-        .trackHero {
-          top: calc(50% + (var(--core-size) / 2) - 72px);
+
+        @media (max-width: 430px) {
+          .archiveDrawer__list {
+            padding-right: 20px;
+          }
+
+          .orbCluster {
+            transform: translateY(-104px);
+          }
+
+          .trackHero {
+            top: calc(50% + (var(--core-size) / 2) - 54px);
+          }
         }
-      }
-      
-      @media (max-width: 430px) {
-        .archiveDrawer__list {
-          padding-right: 20px;
-        }
-      
-        .orbCluster {
-          transform: translateY(-104px);
-        }
-      
-        .trackHero {
-          top: calc(50% + (var(--core-size) / 2) - 54px);
-        }
-      }
       `}</style>
     </>
   );
