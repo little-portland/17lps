@@ -12,6 +12,9 @@ type Venue = {
 
 const IMAGE_BASE = '/images/private-hire';
 const ACCENT = '#ff00b8';
+const INNER_RING = `${IMAGE_BASE}/inner_ring.svg`;
+const MIDDLE_RING = `${IMAGE_BASE}/middle_ring.svg`;
+const OUTER_RING = `${IMAGE_BASE}/outer_ring.svg`;
 
 const VENUES: Venue[] = [
   {
@@ -81,29 +84,9 @@ export default function PrivateHirePage() {
           <section className="orbSystem" aria-label="Private hire venue image carousel">
             <div className="connector connector--top" aria-hidden="true" />
 
-            <div className="orbit orbit--outer" aria-hidden="true">
-              <span style={{ '--i': 0 } as React.CSSProperties} />
-              <span style={{ '--i': 1 } as React.CSSProperties} />
-              <span style={{ '--i': 2 } as React.CSSProperties} />
-              <span style={{ '--i': 3 } as React.CSSProperties} />
-              <span style={{ '--i': 4 } as React.CSSProperties} />
-              <span style={{ '--i': 5 } as React.CSSProperties} />
-            </div>
-
-            <div className="orbit orbit--middle" aria-hidden="true">
-              <span style={{ '--i': 0 } as React.CSSProperties} />
-              <span style={{ '--i': 1 } as React.CSSProperties} />
-              <span style={{ '--i': 2 } as React.CSSProperties} />
-              <span style={{ '--i': 3 } as React.CSSProperties} />
-              <span style={{ '--i': 4 } as React.CSSProperties} />
-            </div>
-
-            <div className="orbit orbit--inner" aria-hidden="true">
-              <span style={{ '--i': 0 } as React.CSSProperties} />
-              <span style={{ '--i': 1 } as React.CSSProperties} />
-              <span style={{ '--i': 2 } as React.CSSProperties} />
-              <span style={{ '--i': 3 } as React.CSSProperties} />
-            </div>
+            <img src={OUTER_RING} alt="" aria-hidden="true" className="ringAsset ringAsset--outer" />
+            <img src={MIDDLE_RING} alt="" aria-hidden="true" className="ringAsset ringAsset--middle" />
+            <img src={INNER_RING} alt="" aria-hidden="true" className="ringAsset ringAsset--inner" />
 
             <div className="imageCircle" aria-live="polite">
               <img
@@ -254,60 +237,33 @@ export default function PrivateHirePage() {
           transform: translateX(-50%);
         }
 
-        .orbit {
+        .ringAsset {
           position: absolute;
-          inset: 0;
-          border-radius: 50%;
+          left: 50%;
+          top: 50%;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
           pointer-events: none;
+          transform-origin: center;
+          will-change: transform;
         }
 
-        .orbit--outer {
-          inset: 0;
-          animation: rotateSlow 54s linear infinite;
+        .ringAsset--outer {
+          animation: ringOuter 42s linear infinite, ringBreatheOuter 5.8s ease-in-out infinite;
         }
 
-        .orbit--middle {
-          inset: 5%;
-          animation: rotateSlowReverse 44s linear infinite;
+        .ringAsset--middle {
+          width: 88%;
+          height: 88%;
+          animation: ringMiddle 34s linear infinite reverse, ringBreatheMiddle 4.9s ease-in-out infinite;
         }
 
-        .orbit--inner {
-          inset: 10%;
-          animation: rotateSlow 34s linear infinite;
-        }
-
-        .orbit span {
-          --i: 0;
-          position: absolute;
-          inset: 0;
-          border-radius: 50%;
-          border: clamp(6px, 0.75vw, 9px) solid #000;
-          clip-path: polygon(50% 50%, 100% 0, 100% 27%, 50% 50%);
-          transform: rotate(calc(var(--i) * 61deg));
-        }
-
-        .orbit span:nth-child(even) {
-          clip-path: polygon(50% 50%, 100% 4%, 100% 18%, 50% 50%);
-        }
-
-        .orbit--middle span {
-          border-width: clamp(5px, 0.64vw, 8px);
-          clip-path: polygon(50% 50%, 100% 7%, 100% 27%, 50% 50%);
-          transform: rotate(calc(var(--i) * 72deg + 10deg));
-        }
-
-        .orbit--middle span:nth-child(even) {
-          clip-path: polygon(50% 50%, 100% 11%, 100% 22%, 50% 50%);
-        }
-
-        .orbit--inner span {
-          border-width: clamp(5px, 0.58vw, 7px);
-          clip-path: polygon(50% 50%, 100% 8%, 100% 27%, 50% 50%);
-          transform: rotate(calc(var(--i) * 88deg + 18deg));
-        }
-
-        .orbit--inner span:nth-child(even) {
-          clip-path: polygon(50% 50%, 100% 13%, 100% 23%, 50% 50%);
+        .ringAsset--inner {
+          width: 76%;
+          height: 76%;
+          animation: ringInner 26s linear infinite, ringBreatheInner 4.2s ease-in-out infinite;
         }
 
         .imageCircle {
@@ -449,12 +405,32 @@ export default function PrivateHirePage() {
           outline: none;
         }
 
-        @keyframes rotateSlow {
-          to { transform: rotate(360deg); }
+        @keyframes ringOuter {
+          to { rotate: 360deg; }
         }
 
-        @keyframes rotateSlowReverse {
-          to { transform: rotate(-360deg); }
+        @keyframes ringMiddle {
+          to { rotate: 360deg; }
+        }
+
+        @keyframes ringInner {
+          to { rotate: 360deg; }
+        }
+
+        @keyframes ringBreatheOuter {
+          0%, 100% { scale: 0.985; }
+          50% { scale: 1.015; }
+        }
+
+        @keyframes ringBreatheMiddle {
+          0%, 100% { scale: 1.01; }
+          50% { scale: 0.985; }
+        }
+
+        @keyframes ringBreatheInner {
+          0%, 100% { scale: 0.992; }
+          50% { scale: 1.02; }
+        }
         }
 
         @keyframes imageReveal {
@@ -553,8 +529,14 @@ export default function PrivateHirePage() {
             margin-bottom: 14px;
           }
 
-          .orbit span {
-            border-width: 5px;
+          .ringAsset--middle {
+            width: 88%;
+            height: 88%;
+          }
+
+          .ringAsset--inner {
+            width: 76%;
+            height: 76%;
           }
 
           .connector--top::before {
@@ -597,9 +579,9 @@ export default function PrivateHirePage() {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .orbit--outer,
-          .orbit--middle,
-          .orbit--inner,
+          .ringAsset--outer,
+          .ringAsset--middle,
+          .ringAsset--inner,
           .pinkCrescent,
           .activeVenueImage {
             animation: none;
