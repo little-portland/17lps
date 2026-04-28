@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 
 type Venue = {
   id: string;
@@ -48,6 +49,18 @@ const VENUES: Venue[] = [
 ];
 
 export default function PrivateHirePage() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % VENUES.length);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const activeVenue = VENUES[activeIndex];
+
   return (
     <>
       <Head>
@@ -61,16 +74,6 @@ export default function PrivateHirePage() {
 
       <main className="flyerPage">
         <section className="flyerSheet" aria-labelledby="private-hire-title">
-          <div className="topBar">17 LITTLE PORTLAND STREET</div>
-          <div className="sideBar">YO@LITTLE-PORTLAND.COM</div>
-          <div className="bottomBar">LPX // PRIVATE HIRE</div>
-
-          <div className="dateBlock">
-            <span>PRIVATE</span>
-            <span>HIRE</span>
-          </div>
-
-          <div className="issueBlock">ISSUE 01</div>
 
           <header className="heroTitleWrap">
             <h1 id="private-hire-title" className="heroTitle">
@@ -81,7 +84,6 @@ export default function PrivateHirePage() {
 
           <section className="orbSystem" aria-label="Private hire venue options">
             <div className="connector connector--top" aria-hidden="true" />
-            <div className="connector connector--left" aria-hidden="true" />
 
             <div className="orbit orbit--outer" aria-hidden="true">
               <span style={{ '--i': 0 } as React.CSSProperties} />
@@ -107,16 +109,14 @@ export default function PrivateHirePage() {
               <span style={{ '--i': 3 } as React.CSSProperties} />
             </div>
 
-            <div className="imageCircle">
-              {VENUES.map((venue, index) => (
-                <article key={venue.id} className={`venueSlice venueSlice--${index + 1}`}>
-                  <img
-                    src={venue.image}
-                    alt={venue.alt}
-                    style={{ objectPosition: venue.objectPosition || '50% 50%' }}
-                  />
-                </article>
-              ))}
+            <div className="imageCircle" aria-live="polite">
+              <img
+                key={activeVenue.id}
+                src={activeVenue.image}
+                alt={activeVenue.alt}
+                className="activeVenueImage"
+                style={{ objectPosition: activeVenue.objectPosition || '50% 50%' }}
+              />
               <div className="circleShade" aria-hidden="true" />
               <div className="pinkCrescent" aria-hidden="true" />
             </div>
@@ -124,14 +124,24 @@ export default function PrivateHirePage() {
 
           <section className="venueGrid" aria-label="Venue capacities">
             {VENUES.map((venue, index) => (
-              <article key={venue.id} className={`venueCard venueCard--${index + 1}`}>
+              <button
+                key={venue.id}
+                type="button"
+                className={`venueCard venueCard--${index + 1} ${activeIndex === index ? 'is-active' : ''}`}
+                onClick={() => setActiveIndex(index)}
+                aria-pressed={activeIndex === index}
+              >
                 <h2>{venue.title}</h2>
                 {venue.infoLines.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
-              </article>
+              </button>
             ))}
           </section>
+
+          <a href="mailto:yo@little-portland.com" className="footerEmail">
+            yo@little-portland.com
+          </a>
         </section>
       </main>
 
@@ -146,13 +156,28 @@ export default function PrivateHirePage() {
 
         body {
           margin: 0;
-          background: #e9e9e6;
+          background: #fff;
           color: #050505;
           font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         }
 
         * {
           box-sizing: border-box;
+        }
+
+        button,
+        a {
+          color: inherit;
+          font: inherit;
+        }
+
+        button {
+          border: 0;
+          cursor: pointer;
+        }
+
+        a {
+          text-decoration: none;
         }
 
         img {
@@ -163,169 +188,79 @@ export default function PrivateHirePage() {
           min-height: 100dvh;
           display: grid;
           place-items: center;
-          padding: clamp(10px, 2vw, 24px);
-          background: #e9e9e6;
+          padding: clamp(18px, 3vw, 38px) 0;
+          background: #fff;
         }
 
         .flyerSheet {
           position: relative;
-          width: min(100%, 1180px);
-          min-height: min(100dvh - 20px, 940px);
+          width: 50%;
+          min-height: min(100dvh - 76px, 860px);
+          margin: 0 auto;
           overflow: hidden;
-          background: #f6f6f4;
+          background: #fff;
+          border: 2px solid #000;
           isolation: isolate;
-          padding: clamp(72px, 8vw, 112px) clamp(24px, 6vw, 88px) clamp(82px, 7vw, 104px);
-        }
-
-        .topBar,
-        .sideBar,
-        .bottomBar {
-          position: absolute;
-          z-index: 20;
-          display: inline-flex;
-          align-items: center;
-          width: max-content;
-          background: #000;
-          color: #fff;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-weight: 700;
-          line-height: 1;
-          box-decoration-break: clone;
-          -webkit-box-decoration-break: clone;
-        }
-
-        .topBar {
-          top: 16px;
-          left: 16px;
-          padding: 7px 10px 8px;
-          font-size: clamp(0.82rem, 1.6vw, 1.22rem);
-        }
-
-        .sideBar {
-          left: 16px;
-          bottom: 16px;
-          transform-origin: left bottom;
-          transform: rotate(-90deg) translateY(100%);
-          padding: 7px 10px 8px;
-          font-size: clamp(0.78rem, 1.25vw, 1rem);
-        }
-
-        .bottomBar {
-          right: 16px;
-          bottom: 16px;
-          padding: 8px 12px 9px;
-          font-size: clamp(0.78rem, 1.5vw, 1.1rem);
-        }
-
-        .dateBlock,
-        .issueBlock {
-          position: absolute;
-          z-index: 15;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          font-weight: 700;
-          line-height: 1.12;
-          font-size: clamp(0.86rem, 1.6vw, 1.14rem);
-        }
-
-        .dateBlock {
-          left: clamp(24px, 4vw, 36px);
-          top: 55%;
-          display: grid;
-        }
-
-        .issueBlock {
-          right: clamp(24px, 4vw, 36px);
-          top: 55.5%;
+          padding: clamp(34px, 4vw, 58px) clamp(20px, 3vw, 54px) 82px;
         }
 
         .heroTitleWrap {
-          position: absolute;
-          left: 15.2%;
-          top: 34%;
+          position: relative;
           z-index: 14;
           display: flex;
+          justify-content: center;
           align-items: center;
-          gap: clamp(18px, 3vw, 32px);
+          width: 100%;
+          margin: 0 auto;
         }
 
         .heroTitle {
           margin: 0;
           color: ${ACCENT};
-          font-size: clamp(2.8rem, 6.3vw, 5.1rem);
+          font-size: clamp(2.45rem, 4.8vw, 5.2rem);
           line-height: 0.9;
-          letter-spacing: -0.04em;
+          letter-spacing: -0.05em;
+          text-align: center;
           text-transform: uppercase;
           font-weight: 700;
         }
 
         .titleRule {
-          width: clamp(96px, 18vw, 230px);
-          height: 2px;
-          background: #000;
-          position: relative;
-        }
-
-        .titleRule::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 50%;
-          width: 2px;
-          height: 34px;
-          background: #000;
-          transform: translateY(-50%);
+          display: none;
         }
 
         .orbSystem {
-          position: absolute;
-          left: 52%;
-          top: 62%;
-          width: min(58vw, 650px);
-          aspect-ratio: 1;
-          transform: translate(-50%, -50%);
+          position: relative;
           z-index: 8;
+          width: min(96%, 650px);
+          aspect-ratio: 1;
+          margin: clamp(2px, 0.6vw, 10px) auto 0;
         }
 
         .connector {
           position: absolute;
-          z-index: -1;
+          z-index: 1;
           background: #000;
+          pointer-events: none;
         }
 
         .connector--top {
           left: 50%;
-          top: -16%;
+          top: 7%;
           width: 2px;
-          height: 34%;
+          height: 26%;
+          transform: translateX(-50%);
         }
 
         .connector--top::before {
           content: '';
           position: absolute;
-          right: 0;
+          left: 50%;
           top: 0;
-          width: 34%;
+          width: clamp(42px, 5vw, 72px);
           height: 2px;
           background: #000;
-        }
-
-        .connector--left {
-          left: -12%;
-          top: 58%;
-          width: 28%;
-          height: 2px;
-        }
-
-        .connector--left::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 2px;
-          height: 34px;
-          background: #000;
+          transform: translateX(-50%);
         }
 
         .orbit {
@@ -354,19 +289,19 @@ export default function PrivateHirePage() {
           position: absolute;
           inset: 0;
           border-radius: 50%;
-          border: clamp(6px, 0.8vw, 9px) solid #000;
+          border: clamp(6px, 0.75vw, 9px) solid #000;
           clip-path: polygon(50% 50%, 100% 0, 100% 30%, 50% 50%);
           transform: rotate(calc(var(--i) * 61deg));
         }
 
         .orbit--middle span {
-          border-width: clamp(5px, 0.7vw, 8px);
+          border-width: clamp(5px, 0.64vw, 8px);
           clip-path: polygon(50% 50%, 100% 8%, 100% 31%, 50% 50%);
           transform: rotate(calc(var(--i) * 72deg + 10deg));
         }
 
         .orbit--inner span {
-          border-width: clamp(5px, 0.62vw, 7px);
+          border-width: clamp(5px, 0.58vw, 7px);
           clip-path: polygon(50% 50%, 100% 5%, 100% 28%, 50% 50%);
           transform: rotate(calc(var(--i) * 88deg + 18deg));
         }
@@ -374,53 +309,34 @@ export default function PrivateHirePage() {
         .imageCircle {
           position: absolute;
           left: 50%;
-          top: 50%;
-          width: 44%;
+          top: 48%;
+          width: 52%;
           aspect-ratio: 1;
           transform: translate(-50%, -50%);
           border-radius: 50%;
           overflow: hidden;
           background: #000;
           box-shadow: 0 0 0 2px #000;
+          isolation: isolate;
         }
 
-        .venueSlice {
-          position: absolute;
-          inset: 0;
-          overflow: hidden;
-          opacity: 0.72;
-        }
-
-        .venueSlice img {
+        .activeVenueImage {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          filter: grayscale(1) contrast(1.1) brightness(0.62);
-        }
-
-        .venueSlice--1 {
-          clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 50%);
-        }
-
-        .venueSlice--2 {
-          clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
-        }
-
-        .venueSlice--3 {
-          clip-path: polygon(50% 50%, 50% 100%, 0 100%, 0 50%);
-        }
-
-        .venueSlice--4 {
-          clip-path: polygon(50% 50%, 0 50%, 0 0, 50% 0);
+          filter: grayscale(1) contrast(1.08) brightness(0.72);
+          transform: scale(1.04);
+          animation: imageReveal 720ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
         }
 
         .circleShade {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(circle at center, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.78) 65%, #000 100%),
-            linear-gradient(90deg, rgba(0, 0, 0, 0.34), transparent 52%, rgba(0, 0, 0, 0.24));
+            radial-gradient(circle at center, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.62) 66%, #000 100%),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.2), transparent 52%, rgba(0, 0, 0, 0.16));
           mix-blend-mode: multiply;
+          pointer-events: none;
         }
 
         .pinkCrescent {
@@ -431,43 +347,93 @@ export default function PrivateHirePage() {
           border-right-color: ${ACCENT};
           transform: rotate(18deg);
           filter: drop-shadow(0 0 6px rgba(255, 0, 184, 0.35));
+          animation: crescentPulse 5s ease-in-out infinite;
+          pointer-events: none;
         }
 
         .venueGrid {
-          position: absolute;
-          inset: auto clamp(40px, 6vw, 92px) clamp(72px, 8vw, 104px);
+          position: relative;
           z-index: 18;
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: clamp(12px, 1.7vw, 22px);
+          gap: clamp(10px, 1.25vw, 18px);
+          margin-top: clamp(-40px, -3vw, -20px);
         }
 
         .venueCard {
           min-height: 126px;
-          padding: 14px 14px 16px;
-          background: rgba(246, 246, 244, 0.88);
+          padding: 13px 12px 15px;
+          background: transparent;
           border-top: 3px solid #000;
+          text-align: left;
           text-transform: uppercase;
+          transition:
+            transform 260ms ease,
+            background 260ms ease,
+            box-shadow 260ms ease,
+            border-color 260ms ease,
+            opacity 260ms ease;
+        }
+
+        .venueCard:hover,
+        .venueCard:focus-visible {
+          transform: translateY(-4px);
+          outline: none;
+        }
+
+        .venueCard.is-active {
+          background: #000;
+          border-color: ${ACCENT};
+          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+          transform: translateY(-6px);
         }
 
         .venueCard h2 {
           margin: 0 0 12px;
           color: ${ACCENT};
-          font-size: clamp(0.94rem, 1.55vw, 1.32rem);
+          font-size: clamp(0.92rem, 1.25vw, 1.28rem);
           line-height: 1.02;
           letter-spacing: -0.03em;
+          transition: color 260ms ease;
         }
 
         .venueCard p {
           margin: 0;
-          font-size: clamp(0.68rem, 1vw, 0.84rem);
+          color: #000;
+          font-size: clamp(0.66rem, 0.82vw, 0.84rem);
           font-weight: 700;
           line-height: 1.28;
           letter-spacing: 0.01em;
+          transition: color 260ms ease;
         }
 
         .venueCard p + p {
           margin-top: 5px;
+        }
+
+        .venueCard.is-active p {
+          color: #fff;
+        }
+
+        .footerEmail {
+          position: absolute;
+          left: 50%;
+          bottom: 22px;
+          z-index: 20;
+          transform: translateX(-50%);
+          color: #000;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          font-size: clamp(0.78rem, 1vw, 0.94rem);
+          font-weight: 700;
+          white-space: nowrap;
+          transition: color 180ms ease;
+        }
+
+        .footerEmail:hover,
+        .footerEmail:focus-visible {
+          color: ${ACCENT};
+          outline: none;
         }
 
         @keyframes rotateSlow {
@@ -482,148 +448,128 @@ export default function PrivateHirePage() {
           }
         }
 
+        @keyframes imageReveal {
+          0% {
+            opacity: 0;
+            transform: scale(1.12) rotate(1.5deg);
+            filter: grayscale(1) contrast(1.18) brightness(0.52) blur(3px);
+          }
+          55% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1.04) rotate(0deg);
+            filter: grayscale(1) contrast(1.08) brightness(0.72) blur(0);
+          }
+        }
+
+        @keyframes crescentPulse {
+          0%,
+          100% {
+            opacity: 0.86;
+            transform: rotate(18deg) scale(0.99);
+          }
+          50% {
+            opacity: 1;
+            transform: rotate(18deg) scale(1.03);
+          }
+        }
+
+        @media (max-width: 1280px) {
+          .flyerSheet {
+            width: 64%;
+          }
+        }
+
         @media (max-width: 900px) {
           .flyerPage {
             display: block;
-            padding: 0;
-            background: #f6f6f4;
+            padding: 16px 0;
           }
 
           .flyerSheet {
-            width: 100%;
-            min-height: 100dvh;
-            padding: 70px 18px 88px;
-          }
-
-          .topBar {
-            top: 12px;
-            left: 12px;
-          }
-
-          .sideBar {
-            display: none;
-          }
-
-          .bottomBar {
-            right: 12px;
-            bottom: 12px;
-          }
-
-          .dateBlock,
-          .issueBlock {
-            top: 118px;
-            font-size: 0.78rem;
-          }
-
-          .dateBlock {
-            left: 18px;
-          }
-
-          .issueBlock {
-            right: 18px;
-          }
-
-          .heroTitleWrap {
-            position: relative;
-            left: auto;
-            top: auto;
-            margin-top: 78px;
-            justify-content: center;
-            gap: 16px;
+            width: 90%;
+            min-height: auto;
+            padding: 30px 16px 70px;
           }
 
           .heroTitle {
-            font-size: clamp(2.35rem, 11vw, 4.2rem);
-          }
-
-          .titleRule {
-            flex: 1;
-            max-width: 96px;
+            font-size: clamp(2.3rem, 11vw, 4.4rem);
           }
 
           .orbSystem {
-            position: relative;
-            left: auto;
-            top: auto;
-            width: min(104vw, 560px);
-            margin: 30px auto 18px;
-            transform: none;
+            width: min(104%, 540px);
+            margin-top: 4px;
           }
 
-          .connector {
-            display: none;
+          .connector--top {
+            top: 6%;
+            height: 25%;
           }
 
           .imageCircle {
-            width: 47%;
+            width: 54%;
           }
 
           .venueGrid {
-            position: relative;
-            inset: auto;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 12px;
-            margin-top: 8px;
+            margin-top: -22px;
           }
 
           .venueCard {
             min-height: 112px;
             padding: 12px;
-            background: transparent;
           }
         }
 
-        @media (max-width: 520px) {
+        @media (max-width: 560px) {
+          .flyerPage {
+            padding: 10px 0;
+          }
+
           .flyerSheet {
-            padding: 58px 12px 74px;
+            width: 90%;
+            padding: 24px 10px 64px;
           }
 
-          .topBar,
-          .bottomBar {
-            font-size: 0.68rem;
-          }
-
-          .dateBlock,
-          .issueBlock {
-            display: none;
-          }
-
-          .heroTitleWrap {
-            margin-top: 46px;
-            gap: 10px;
-          }
-
-          .titleRule {
-            max-width: 54px;
-          }
-
-          .titleRule::before {
-            height: 24px;
+          .heroTitle {
+            font-size: clamp(2rem, 13vw, 3.45rem);
+            letter-spacing: -0.07em;
           }
 
           .orbSystem {
-            width: 112vw;
-            margin-left: -6vw;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            width: 116%;
+            margin-left: -8%;
+            margin-top: 0;
           }
 
           .orbit span {
             border-width: 5px;
           }
 
+          .connector--top::before {
+            width: 42px;
+          }
+
+          .imageCircle {
+            width: 57%;
+          }
+
           .venueGrid {
             grid-template-columns: 1fr;
-            gap: 4px;
+            gap: 7px;
+            margin-top: -18px;
           }
 
           .venueCard {
             min-height: 0;
             display: grid;
-            grid-template-columns: 1fr 1.45fr;
+            grid-template-columns: 1fr 1.55fr;
             gap: 12px;
             align-items: start;
-            padding: 11px 4px;
+            padding: 11px 9px;
             border-top-width: 2px;
           }
 
@@ -635,13 +581,28 @@ export default function PrivateHirePage() {
           .venueCard p {
             font-size: 0.72rem;
           }
+
+          .footerEmail {
+            bottom: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
           .orbit--outer,
           .orbit--middle,
-          .orbit--inner {
+          .orbit--inner,
+          .pinkCrescent,
+          .activeVenueImage {
             animation: none;
+          }
+
+          .venueCard,
+          .venueCard h2,
+          .venueCard p,
+          .footerEmail {
+            transition: none;
           }
         }
       `}</style>
