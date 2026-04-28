@@ -539,7 +539,7 @@ export default function PrivateHirePage() {
             min-height: 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px 12px;
+            gap: 2px 12px;
             align-items: start;
             padding: 8px 9px;
             border-top-width: 2px;
@@ -550,7 +550,7 @@ export default function PrivateHirePage() {
             grid-column: 1;
             grid-row: 1;
             min-height: 0;
-            margin: 0 0 2px;
+            margin: 0;
             font-size: 0.88rem;
             white-space: normal;
           }
@@ -558,7 +558,7 @@ export default function PrivateHirePage() {
           .venueCard p {
             grid-column: 1;
             font-size: 0.72rem;
-            line-height: 1.08;
+            line-height: 1.02;
           }
 
           .venueCard .venueCard__secondaryLine {
