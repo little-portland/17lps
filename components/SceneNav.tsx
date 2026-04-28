@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 export default function SceneNav({
   visible = true,
+  theme = "default",
 }: {
   visible?: boolean;
+  theme?: "default" | "access";
 }) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const links = [
     { label: "The Space", href: "/events" },
@@ -19,12 +23,21 @@ export default function SceneNav({
     { label: "Archives", href: "#" },
   ];
 
+  const getLinkClassName = (href: string) => {
+    const classes = [];
+
+    if (href === "#") classes.push("disabled");
+    if (router.pathname === href) classes.push("active");
+
+    return classes.join(" ");
+  };
+
   return (
     <>
       {/* =====================================================
          TOP NAV
       ===================================================== */}
-      <header className={`scene-nav ${visible ? "visible" : ""}`}>
+      <header className={`scene-nav scene-nav--${theme} ${visible ? "visible" : ""}`}>
 
         {/* BURGER (mobile) */}
         <button
@@ -39,7 +52,13 @@ export default function SceneNav({
         {/* LEFT LINKS (desktop) */}
         <nav className="scene-nav-left">
           {links.slice(0, 4).map((l) => (
-            <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer">
+            <a
+              key={l.label}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={getLinkClassName(l.href)}
+            >
               {l.label}
             </a>
           ))}
@@ -58,11 +77,12 @@ export default function SceneNav({
         {/* RIGHT LINKS (desktop) */}
         <nav className="scene-nav-right">
           {links.slice(4).map((l) => (
-           <a
+            <a
               key={l.label}
               href={l.href}
-              target="_blank" rel="noopener noreferrer"
-              className={l.href === "#" ? "disabled" : ""}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={getLinkClassName(l.href)}
             >
               {l.label}
             </a>
@@ -76,7 +96,7 @@ export default function SceneNav({
       <AnimatePresence>
         {open && (
           <motion.div
-            className="scene-nav-mobile"
+            className={`scene-nav-mobile scene-nav--${theme}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -89,16 +109,17 @@ export default function SceneNav({
               exit={{ y: 40, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-            {links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target="_blank" rel="noopener noreferrer"
-                className={l.href === "#" ? "disabled" : ""}
-              >
-                {l.label}
-              </a>
-            ))}
+              {links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={getLinkClassName(l.href)}
+                >
+                  {l.label}
+                </a>
+              ))}
             </motion.div>
           </motion.div>
         )}
