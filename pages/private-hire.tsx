@@ -360,19 +360,17 @@ export default function PrivateHirePage() {
           position: relative;
           z-index: 18;
           display: grid;
-          grid-template-columns: 1fr;
-          gap: 8px;
-          width: min(440px, 82%);
-          margin: 0 auto;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: clamp(10px, 1.25vw, 18px);
+          margin-top: 0;
         }
 
         .venueCard {
-          min-height: 0;
-          display: grid;
-          grid-template-columns: 1.1fr 1fr;
-          align-items: start;
-          column-gap: 16px;
-          padding: 12px 14px 13px;
+          min-height: 126px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 13px 12px 15px;
           background: transparent;
           border-top: 3px solid #000;
           text-align: left;
@@ -392,31 +390,30 @@ export default function PrivateHirePage() {
         }
 
         .venueCard h2 {
-          grid-row: 1 / span 2;
-          align-self: start;
-          margin: 0;
+          min-height: 2.08em;
+          margin: 0 0 12px;
           color: ${ACCENT};
-          font-size: clamp(1rem, 1.45vw, 1.34rem);
-          line-height: 1.02;
+          font-size: clamp(0.76rem, 1vw, 1rem);
+          line-height: 1.04;
           letter-spacing: -0.03em;
-          white-space: nowrap;
+          white-space: normal;
           transition: color 260ms ease;
         }
 
         .venueCard p {
           margin: 0;
           color: #000;
-          font-size: clamp(0.88rem, 1.1vw, 1.08rem);
+          font-size: clamp(0.78rem, 0.95vw, 1rem);
           font-weight: 700;
-          line-height: 1.18;
+          line-height: 1.24;
           letter-spacing: 0.01em;
           transition: color 260ms ease;
         }
 
         .venueCard p + p {
-          margin-top: 5px;
-          font-size: clamp(0.68rem, 0.82vw, 0.86rem);
-          line-height: 1.28;
+          margin-top: 7px;
+          font-size: clamp(0.62rem, 0.72vw, 0.78rem);
+          line-height: 1.32;
           opacity: 0.9;
         }
 
@@ -523,15 +520,14 @@ export default function PrivateHirePage() {
           }
 
           .venueGrid {
-            grid-template-columns: 1fr;
-            width: min(440px, 88%);
-            gap: 8px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
             margin-top: 0;
           }
 
           .venueCard {
-            min-height: 0;
-            padding: 12px 14px;
+            min-height: 112px;
+            padding: 12px;
           }
         }
 
@@ -575,7 +571,7 @@ export default function PrivateHirePage() {
           .venueCard {
             min-height: 0;
             display: grid;
-            grid-template-columns: 1fr 1.45fr;
+            grid-template-columns: 1fr 1.55fr;
             gap: 12px;
             align-items: start;
             padding: 11px 9px;
@@ -583,8 +579,9 @@ export default function PrivateHirePage() {
           }
 
           .venueCard h2 {
+            min-height: 0;
             margin: 0;
-            font-size: 0.98rem;
+            font-size: 0.88rem;
             white-space: normal;
           }
 
