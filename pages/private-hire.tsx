@@ -439,6 +439,25 @@ export default function PrivateHirePage() {
           }
         }
 
+        @media (min-width: 901px) {
+          html,
+          body {
+            overflow: hidden;
+          }
+
+          .flyerPage {
+            height: 100dvh;
+            min-height: 100dvh;
+            padding: 12px 0;
+            overflow: hidden;
+          }
+
+          .flyerSheet {
+            height: calc(100dvh - 24px);
+            min-height: 0;
+          }
+        }
+
         @media (max-width: 1280px) {
           .flyerSheet {
             width: 64%;
