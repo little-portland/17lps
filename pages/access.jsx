@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
+import SceneNav from "@components/SceneNav";
 
 // hooks
 import useFetchContent from "@utils/useFetchContent";
@@ -552,6 +553,34 @@ const Menu = ({ menuImage }) => {
               margin-top: 18px;
             }
 
+            /* =====================================================
+               ACCESS PAGE NAV THEME
+               Only changes nav colour + font.
+            ===================================================== */
+
+            .scene-nav--access,
+            .scene-nav--access a {
+              color: #ffab00 !important;
+              font-family: "Courier New", monospace !important;
+            }
+
+            .scene-nav--access a.active {
+              color: #ffab00 !important;
+            }
+
+            .scene-nav--access a.disabled {
+              color: #ffab00 !important;
+              opacity: 0.45;
+            }
+
+            .scene-nav--access .scene-nav-burger span {
+              background: #ffab00 !important;
+            }
+
+            .scene-nav--access .scene-nav-logo img {
+              filter: brightness(0) saturate(100%) invert(68%) sepia(94%) saturate(1466%) hue-rotate(359deg) brightness(102%) contrast(104%);
+            }
+
             @media (prefers-reduced-motion: reduce) {
               .nocturn.override::after,
               .panel-label::after,
@@ -661,6 +690,8 @@ const Menu = ({ menuImage }) => {
       </Head>
 
       <div className="page-shell">
+        <SceneNav theme="access" />
+
         <div className="nocturn override">
           <div className="poster-topbar">
             <div className="poster-dots" aria-hidden="true">
