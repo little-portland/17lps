@@ -232,9 +232,9 @@ export default function PrivateHirePage() {
         .orbSystem {
           position: relative;
           z-index: 8;
-          width: min(96%, 650px);
+          width: min(82%, 560px);
           aspect-ratio: 1;
-          margin: clamp(2px, 0.6vw, 10px) auto 0;
+          margin: -4px auto -18px;
         }
 
         .connector {
@@ -246,9 +246,9 @@ export default function PrivateHirePage() {
 
         .connector--top {
           left: 50%;
-          top: 14%;
+          top: -2%;
           width: 2px;
-          height: 18%;
+          height: 31%;
           transform: translateX(-50%);
           z-index: -1;
         }
@@ -276,12 +276,12 @@ export default function PrivateHirePage() {
         }
 
         .orbit--middle {
-          inset: 6%;
+          inset: 5%;
           animation: rotateSlowReverse 44s linear infinite;
         }
 
         .orbit--inner {
-          inset: 12%;
+          inset: 10%;
           animation: rotateSlow 34s linear infinite;
         }
 
@@ -291,8 +291,19 @@ export default function PrivateHirePage() {
           inset: 0;
           border-radius: 50%;
           border: clamp(6px, 0.75vw, 9px) solid #000;
-          clip-path: polygon(50% 50%, 100% 0, 100% 24%, 50% 50%);
+          clip-path: polygon(50% 50%, 100% 3%, 100% 23%, 50% 50%);
           transform: rotate(calc(var(--i) * 61deg));
+        }
+
+        .orbit span::after {
+          content: '';
+          position: absolute;
+          right: -8px;
+          top: 9%;
+          width: 16px;
+          height: 16px;
+          border-radius: 999px;
+          background: #000;
         }
 
         .orbit span:nth-child(even) {
@@ -319,11 +330,16 @@ export default function PrivateHirePage() {
           clip-path: polygon(50% 50%, 100% 13%, 100% 23%, 50% 50%);
         }
 
+        .orbit--outer span:nth-child(n + 5),
+        .orbit--middle span:nth-child(n + 5) {
+          display: none;
+        }
+
         .imageCircle {
           position: absolute;
           left: 50%;
-          top: 48%;
-          width: 52%;
+          top: 50%;
+          width: 58%;
           aspect-ratio: 1;
           transform: translate(-50%, -50%);
           border-radius: 50%;
@@ -338,7 +354,7 @@ export default function PrivateHirePage() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          filter: grayscale(1) contrast(1.08) brightness(0.72);
+          filter: grayscale(1) contrast(1.02) brightness(0.95);
           transform: scale(1.04);
           animation: imageReveal 720ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
         }
@@ -347,7 +363,7 @@ export default function PrivateHirePage() {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(circle at center, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.62) 66%, #000 100%),
+            radial-gradient(circle at center, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.34) 68%, rgba(0, 0, 0, 0.82) 100%),
             linear-gradient(90deg, rgba(0, 0, 0, 0.2), transparent 52%, rgba(0, 0, 0, 0.16));
           mix-blend-mode: multiply;
           pointer-events: none;
@@ -371,7 +387,7 @@ export default function PrivateHirePage() {
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: clamp(10px, 1.25vw, 18px);
-          margin-top: clamp(-40px, -3vw, -20px);
+          margin-top: 0;
         }
 
         .venueCard {
@@ -382,7 +398,6 @@ export default function PrivateHirePage() {
           text-align: left;
           text-transform: uppercase;
           transition:
-            transform 260ms ease,
             background 260ms ease,
             box-shadow 260ms ease,
             border-color 260ms ease,
@@ -391,7 +406,6 @@ export default function PrivateHirePage() {
 
         .venueCard:hover,
         .venueCard:focus-visible {
-          transform: translateY(-4px);
           outline: none;
         }
 
@@ -399,15 +413,15 @@ export default function PrivateHirePage() {
           background: #000;
           border-color: ${ACCENT};
           box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-          transform: translateY(-6px);
         }
 
         .venueCard h2 {
           margin: 0 0 12px;
           color: ${ACCENT};
-          font-size: clamp(0.92rem, 1.25vw, 1.28rem);
+          font-size: clamp(0.76rem, 1vw, 1rem);
           line-height: 1.02;
           letter-spacing: -0.03em;
+          white-space: nowrap;
           transition: color 260ms ease;
         }
 
@@ -438,13 +452,22 @@ export default function PrivateHirePage() {
           bottom: 22px;
           z-index: 20;
           transform: translateX(-50%);
-          color: #000;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 12px 9px;
+          background: #000;
+          color: #fff;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          font-size: clamp(0.78rem, 1vw, 0.94rem);
-          font-weight: 700;
+          .footerEmail:hover,
+        .footerEmail:focus-visible {
+          color: ${ACCENT};
+          background: #000;
+          outline: none;
+        }-height: 1;
           white-space: nowrap;
-          transition: color 180ms ease;
+          transition: color 180ms ease, background 180ms ease;
         }
 
         .footerEmail:hover,
@@ -469,7 +492,7 @@ export default function PrivateHirePage() {
           0% {
             opacity: 0;
             transform: scale(1.12) rotate(1.5deg);
-            filter: grayscale(1) contrast(1.18) brightness(0.52) blur(3px);
+            filter: grayscale(1) contrast(1.08) brightness(0.82) blur(3px);
           }
           55% {
             opacity: 1;
@@ -477,7 +500,7 @@ export default function PrivateHirePage() {
           100% {
             opacity: 1;
             transform: scale(1.04) rotate(0deg);
-            filter: grayscale(1) contrast(1.08) brightness(0.72) blur(0);
+            filter: grayscale(1) contrast(1.02) brightness(0.95) blur(0);
           }
         }
 
@@ -516,23 +539,24 @@ export default function PrivateHirePage() {
           }
 
           .orbSystem {
-            width: min(104%, 540px);
-            margin-top: 4px;
+            width: min(96%, 500px);
+            margin-top: -2px;
+            margin-bottom: -12px;
           }
 
           .connector--top {
-            top: 13%;
-            height: 18%;
+            top: -1%;
+            height: 31%;
           }
 
           .imageCircle {
-            width: 54%;
+            width: 58%;
           }
 
           .venueGrid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 12px;
-            margin-top: -22px;
+            margin-top: 0;
           }
 
           .venueCard {
@@ -557,9 +581,10 @@ export default function PrivateHirePage() {
           }
 
           .orbSystem {
-            width: 116%;
-            margin-left: -8%;
-            margin-top: 0;
+            width: 108%;
+            margin-left: -4%;
+            margin-top: -2px;
+            margin-bottom: -8px;
           }
 
           .orbit span {
@@ -577,7 +602,7 @@ export default function PrivateHirePage() {
           .venueGrid {
             grid-template-columns: 1fr;
             gap: 7px;
-            margin-top: -18px;
+            margin-top: 0;
           }
 
           .venueCard {
@@ -592,7 +617,8 @@ export default function PrivateHirePage() {
 
           .venueCard h2 {
             margin: 0;
-            font-size: 0.98rem;
+            font-size: 0.88rem;
+            white-space: normal;
           }
 
           .venueCard p {
