@@ -31,7 +31,7 @@ const VENUES: Venue[] = [
     image: `${IMAGE_BASE}/the-tent-placeholder.png`,
     alt: 'The Tent private hire image.',
     objectPosition: '50% 50%',
-    infoLines: ['36 Seated / 50 Standing', 'Ground Floor'],
+    infoLines: ['36 Seated', '50 Standing', 'Ground Floor'],
   },
   {
     id: 'the-studio',
@@ -47,7 +47,7 @@ const VENUES: Venue[] = [
     image: `${IMAGE_BASE}/chefs-studio-placeholder.png`,
     alt: "Chef's Studio private hire image.",
     objectPosition: '50% 50%',
-    infoLines: ['Private Dining | 12 Seated', 'Lower Ground Floor'],
+    infoLines: ['Private Dining', '12 Seated', 'Lower Ground Floor'],
   },
 ];
 
@@ -55,12 +55,12 @@ export default function PrivateHirePage() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
+    const timeout = window.setTimeout(() => {
       setActiveIndex((current) => (current + 1) % VENUES.length);
     }, 5000);
 
-    return () => window.clearInterval(interval);
-  }, []);
+    return () => window.clearTimeout(timeout);
+  }, [activeIndex]);
 
   const activeVenue = VENUES[activeIndex];
 
@@ -111,8 +111,11 @@ export default function PrivateHirePage() {
                 aria-pressed={activeIndex === index}
               >
                 <h2>{venue.title}</h2>
-                <p>{venue.infoLines[0]}</p>
-                <p>{venue.infoLines[1]}</p>
+                {venue.infoLines.map((line, lineIndex) => (
+                  <p key={line} className={lineIndex > 0 ? 'venueCard__secondaryLine' : undefined}>
+                    {line}
+                  </p>
+                ))}
               </button>
             ))}
           </section>
@@ -328,10 +331,24 @@ export default function PrivateHirePage() {
           align-items: flex-start;
           padding: 13px 12px 15px;
           background: transparent;
-          border-top: 3px solid #000;
+          border-top: 0;
           text-align: left;
           text-transform: uppercase;
+          position: relative;
           transition: background 260ms ease, box-shadow 260ms ease, border-color 260ms ease, opacity 260ms ease;
+        }
+
+        .venueCard::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -20px;
+          height: 3px;
+          background: #000;
+          box-shadow: 0 0 0 5px #fff;
+          z-index: 2;
+          transition: background 260ms ease;
         }
 
         .venueCard:hover,
@@ -371,6 +388,10 @@ export default function PrivateHirePage() {
           font-size: clamp(0.62rem, 0.72vw, 0.78rem);
           line-height: 1.32;
           opacity: 0.9;
+        }
+
+        .venueCard.is-active::before {
+          background: ${ACCENT};
         }
 
         .venueCard.is-active p {
@@ -533,7 +554,7 @@ export default function PrivateHirePage() {
             gap: 12px;
             align-items: start;
             padding: 11px 9px;
-            border-top-width: 2px;
+            border-top-width: 0;
           }
 
           .venueCard h2 {
