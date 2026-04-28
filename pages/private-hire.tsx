@@ -363,7 +363,7 @@ export default function PrivateHirePage() {
         }
 
         .venueCard p + p {
-          margin-top: 4px;
+          margin-top: 3px;
         }
 
         .venueCard .venueCard__secondaryLine {
@@ -561,7 +561,7 @@ export default function PrivateHirePage() {
             grid-column: 1;
             grid-row: 1;
             min-height: 0;
-            margin: 0;
+            margin: 0 0 8px;
             font-size: 0.88rem;
             white-space: normal;
           }
@@ -569,7 +569,7 @@ export default function PrivateHirePage() {
           .venueCard p {
             grid-column: 1;
             font-size: 0.72rem;
-            line-height: 1.02;
+            line-height: 1;
           }
 
           .venueCard .venueCard__secondaryLine {
