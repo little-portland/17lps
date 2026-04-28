@@ -242,44 +242,56 @@ export default function TheSpacePage() {
              THE SPACE NAV THEME
           ===================================================== */
 
+       .scene-nav--space {
+          background: transparent !important;
+          z-index: 9999;
+        }
+        
+        .scene-nav--space,
+        .scene-nav--space a {
+          color: #e031c1 !important;
+          font-family: 'Orbitron', sans-serif !important;
+        }
+        
+        .scene-nav--space a.active {
+          color: #ffffff !important;
+        }
+        
+        .scene-nav--space a.disabled {
+          color: #e031c1 !important;
+          opacity: 0.45;
+        }
+        
+        .scene-nav--space .scene-nav-burger span {
+          background: #e031c1 !important;
+        }
+        
+        .scene-nav--space .scene-nav-logo img {
+          filter: brightness(0) saturate(100%) invert(38%) sepia(87%)
+            saturate(2127%) hue-rotate(283deg) brightness(93%) contrast(93%);
+        }
+        
+        .scene-nav-mobile.scene-nav--space {
+          background: transparent !important;
+        }
+
+        @media (max-width: 900px) {
           .scene-nav--space {
-            background: transparent !important;
-            z-index: 9999;
+            background: rgba(0, 0, 0, 0.28) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
           }
-
-          .scene-nav--space,
-          .scene-nav--space a {
-            color: #e031c1 !important;
-            font-family: 'Orbitron', sans-serif !important;
-          }
-
-          .scene-nav--space a.active {
-            color: #ffffff !important;
-          }
-
-          .scene-nav--space a.disabled {
-            color: #e031c1 !important;
-            opacity: 0.45;
-          }
-
-          .scene-nav--space .scene-nav-burger span {
-            background: #e031c1 !important;
-          }
-
-          .scene-nav--space .scene-nav-logo img {
-            filter: brightness(0) saturate(100%) invert(38%) sepia(87%)
-              saturate(2127%) hue-rotate(283deg) brightness(93%) contrast(93%);
-          }
-
+        
           .scene-nav-mobile.scene-nav--space {
-            background: transparent !important;
+            background: rgba(0, 0, 0, 0.42) !important;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
           }
+        }
         `}</style>
 
         <style jsx>{`
           .page {
-            --scene-nav-space: 80px;
-
             position: relative;
             height: 100dvh;
             min-height: 100dvh;
@@ -384,11 +396,7 @@ export default function TheSpacePage() {
 
           .scene-shell {
             position: relative;
-            width: min(
-              86vw,
-              calc((100dvh - var(--scene-nav-space) - 48px) * 1.5004),
-              1240px
-            );
+            width: min(86vw, calc((100dvh - 48px) * 1.5004), 1240px);
             aspect-ratio: 2048 / 1365;
             overflow: visible;
           }
@@ -827,12 +835,10 @@ export default function TheSpacePage() {
 
           @media (max-width: 900px) {
             .page {
-              --scene-nav-space: 80px;
-
               height: 100dvh;
               min-height: 100dvh;
               padding:
-                calc(var(--scene-nav-space) + max(10px, env(safe-area-inset-top)))
+                max(10px, env(safe-area-inset-top))
                 10px
                 max(10px, env(safe-area-inset-bottom))
                 10px;
@@ -844,7 +850,6 @@ export default function TheSpacePage() {
                 92vw,
                 calc(
                   100dvh -
-                  var(--scene-nav-space) -
                   env(safe-area-inset-top) -
                   env(safe-area-inset-bottom) -
                   20px
