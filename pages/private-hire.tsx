@@ -246,10 +246,11 @@ export default function PrivateHirePage() {
 
         .connector--top {
           left: 50%;
-          top: 7%;
+          top: 14%;
           width: 2px;
-          height: 26%;
+          height: 18%;
           transform: translateX(-50%);
+          z-index: -1;
         }
 
         .connector--top::before {
@@ -257,7 +258,7 @@ export default function PrivateHirePage() {
           position: absolute;
           left: 50%;
           top: 0;
-          width: clamp(42px, 5vw, 72px);
+          width: clamp(42px, 5vw, 68px);
           height: 2px;
           background: #000;
           transform: translateX(-50%);
@@ -275,12 +276,12 @@ export default function PrivateHirePage() {
         }
 
         .orbit--middle {
-          inset: 9%;
+          inset: 6%;
           animation: rotateSlowReverse 44s linear infinite;
         }
 
         .orbit--inner {
-          inset: 18%;
+          inset: 12%;
           animation: rotateSlow 34s linear infinite;
         }
 
@@ -290,20 +291,32 @@ export default function PrivateHirePage() {
           inset: 0;
           border-radius: 50%;
           border: clamp(6px, 0.75vw, 9px) solid #000;
-          clip-path: polygon(50% 50%, 100% 0, 100% 30%, 50% 50%);
+          clip-path: polygon(50% 50%, 100% 0, 100% 24%, 50% 50%);
           transform: rotate(calc(var(--i) * 61deg));
+        }
+
+        .orbit span:nth-child(even) {
+          clip-path: polygon(50% 50%, 100% 4%, 100% 17%, 50% 50%);
         }
 
         .orbit--middle span {
           border-width: clamp(5px, 0.64vw, 8px);
-          clip-path: polygon(50% 50%, 100% 8%, 100% 31%, 50% 50%);
+          clip-path: polygon(50% 50%, 100% 7%, 100% 25%, 50% 50%);
           transform: rotate(calc(var(--i) * 72deg + 10deg));
+        }
+
+        .orbit--middle span:nth-child(even) {
+          clip-path: polygon(50% 50%, 100% 11%, 100% 22%, 50% 50%);
         }
 
         .orbit--inner span {
           border-width: clamp(5px, 0.58vw, 7px);
-          clip-path: polygon(50% 50%, 100% 5%, 100% 28%, 50% 50%);
+          clip-path: polygon(50% 50%, 100% 8%, 100% 26%, 50% 50%);
           transform: rotate(calc(var(--i) * 88deg + 18deg));
+        }
+
+        .orbit--inner span:nth-child(even) {
+          clip-path: polygon(50% 50%, 100% 13%, 100% 23%, 50% 50%);
         }
 
         .imageCircle {
@@ -318,6 +331,7 @@ export default function PrivateHirePage() {
           background: #000;
           box-shadow: 0 0 0 2px #000;
           isolation: isolate;
+          z-index: 3;
         }
 
         .activeVenueImage {
@@ -400,15 +414,18 @@ export default function PrivateHirePage() {
         .venueCard p {
           margin: 0;
           color: #000;
-          font-size: clamp(0.66rem, 0.82vw, 0.84rem);
+          font-size: clamp(0.78rem, 0.95vw, 1rem);
           font-weight: 700;
-          line-height: 1.28;
+          line-height: 1.24;
           letter-spacing: 0.01em;
           transition: color 260ms ease;
         }
 
         .venueCard p + p {
-          margin-top: 5px;
+          margin-top: 7px;
+          font-size: clamp(0.62rem, 0.72vw, 0.78rem);
+          line-height: 1.32;
+          opacity: 0.9;
         }
 
         .venueCard.is-active p {
@@ -504,8 +521,8 @@ export default function PrivateHirePage() {
           }
 
           .connector--top {
-            top: 6%;
-            height: 25%;
+            top: 13%;
+            height: 18%;
           }
 
           .imageCircle {
