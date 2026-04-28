@@ -242,52 +242,75 @@ export default function TheSpacePage() {
              THE SPACE NAV THEME
           ===================================================== */
 
-       .scene-nav--space {
-          background: transparent !important;
-          z-index: 9999;
-        }
-        
-        .scene-nav--space,
-        .scene-nav--space a {
-          color: #e031c1 !important;
-          font-family: 'Orbitron', sans-serif !important;
-        }
-        
-        .scene-nav--space a.active {
-          color: #ffffff !important;
-        }
-        
-        .scene-nav--space a.disabled {
-          color: #e031c1 !important;
-          opacity: 0.45;
-        }
-        
-        .scene-nav--space .scene-nav-burger span {
-          background: #e031c1 !important;
-        }
-        
-        .scene-nav--space .scene-nav-logo img {
-          filter: brightness(0) saturate(100%) invert(38%) sepia(87%)
-            saturate(2127%) hue-rotate(283deg) brightness(93%) contrast(93%);
-        }
-        
-        .scene-nav-mobile.scene-nav--space {
-          background: transparent !important;
-        }
+          .scene-nav {
+            z-index: 10020 !important;
+          }
 
-        @media (max-width: 900px) {
+          .scene-nav-burger,
+          .scene-nav-logo {
+            position: relative;
+            z-index: 10030 !important;
+          }
+
+          .scene-nav-mobile {
+            z-index: 10010 !important;
+          }
+
           .scene-nav--space {
-            background: rgba(0, 0, 0, 0.28) !important;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: transparent !important;
+            z-index: 10020 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
           }
-        
-          .scene-nav-mobile.scene-nav--space {
-            background: rgba(0, 0, 0, 0.42) !important;
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+
+          .scene-nav--space,
+          .scene-nav--space a {
+            color: #e031c1 !important;
+            font-family: 'Orbitron', sans-serif !important;
           }
-        }
+
+          .scene-nav--space a.active {
+            color: #ffffff !important;
+          }
+
+          .scene-nav--space a.disabled {
+            color: #e031c1 !important;
+            opacity: 0.45;
+          }
+
+          .scene-nav--space .scene-nav-burger span {
+            background: #e031c1 !important;
+          }
+
+          .scene-nav--space .scene-nav-logo img {
+            filter: brightness(0) saturate(100%) invert(38%) sepia(87%)
+              saturate(2127%) hue-rotate(283deg) brightness(93%) contrast(93%);
+          }
+
+          .scene-nav-mobile.scene-nav--space,
+          .scene-nav-mobile--space {
+            background: transparent !important;
+          }
+
+          @media (max-width: 900px) {
+            .scene-nav--space {
+              background: transparent !important;
+              backdrop-filter: none !important;
+              -webkit-backdrop-filter: none !important;
+            }
+
+            .scene-nav-mobile.scene-nav--space,
+            .scene-nav-mobile--space {
+              background: rgba(5, 0, 16, 0.42) !important;
+              backdrop-filter: blur(18px);
+              -webkit-backdrop-filter: blur(18px);
+            }
+
+            .scene-nav-mobile.scene-nav--space .scene-nav-mobile-inner,
+            .scene-nav-mobile--space .scene-nav-mobile-inner {
+              padding-top: 96px;
+            }
+          }
         `}</style>
 
         <style jsx>{`
@@ -299,7 +322,7 @@ export default function TheSpacePage() {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: calc(var(--scene-nav-space) + 20px) 20px 20px;
+            padding: 20px;
             background: #000;
           }
 
