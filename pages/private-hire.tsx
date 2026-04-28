@@ -251,24 +251,24 @@ export default function PrivateHirePage() {
         }
 
         .ringAsset--outer {
-          animation: ringOuter 42s linear infinite, ringBreatheOuter 5.8s ease-in-out infinite;
+          animation: ringOuter 42s linear infinite;
         }
 
         .ringAsset--middle {
           width: 88%;
+ .ringAsset--middle {
+          width: 88%;
           height: 88%;
-          animation: ringMiddle 34s linear infinite reverse, ringBreatheMiddle 4.9s ease-in-out infinite;
+          animation: ringMiddle 34s linear infinite;
         }
 
-        .ringAsset--inner {
+        .ringAsse.ringAsset--inner {
           width: 76%;
           height: 76%;
-          animation: ringInner 26s linear infinite, ringBreatheInner 4.2s ease-in-out infinite;
+          animation: ringInner 26s linear infinite;
         }
 
-        .imageCircle {
-          position: absolute;
-          left: 50%;
+        .imageCircle
           top: 50%;
           z-index: 5;
           width: 60%;
@@ -406,31 +406,21 @@ export default function PrivateHirePage() {
         }
 
         @keyframes ringOuter {
-          to { rotate: 360deg; }
+          0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.985); }
+          50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.015); }
+          100% { transform: translate(-50%, -50%) rotate(360deg) scale(0.985); }
         }
 
         @keyframes ringMiddle {
-          to { rotate: 360deg; }
+          0% { transform: translate(-50%, -50%) rotate(0deg) scale(1.01); }
+          50% { transform: translate(-50%, -50%) rotate(-180deg) scale(0.985); }
+          100% { transform: translate(-50%, -50%) rotate(-360deg) scale(1.01); }
         }
 
         @keyframes ringInner {
-          to { rotate: 360deg; }
-        }
-
-        @keyframes ringBreatheOuter {
-          0%, 100% { scale: 0.985; }
-          50% { scale: 1.015; }
-        }
-
-        @keyframes ringBreatheMiddle {
-          0%, 100% { scale: 1.01; }
-          50% { scale: 0.985; }
-        }
-
-        @keyframes ringBreatheInner {
-          0%, 100% { scale: 0.992; }
-          50% { scale: 1.02; }
-        }
+          0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.992); }
+          50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.02); }
+          100% { transform: translate(-50%, -50%) rotate(360deg) scale(0.992); }
         }
 
         @keyframes imageReveal {
