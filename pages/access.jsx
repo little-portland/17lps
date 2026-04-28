@@ -559,7 +559,6 @@ const Menu = ({ menuImage }) => {
 
             /* =====================================================
                ACCESS PAGE NAV THEME
-               Only changes nav colour, font, and fixed-nav background.
             ===================================================== */
 
             .scene-nav--access {
@@ -723,17 +722,17 @@ const Menu = ({ menuImage }) => {
               <h1 className="hero-heading">access protocol</h1>
 
               <div className="access-dots-wrap" aria-hidden="true">
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
-                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" } as React.CSSProperties} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "transparent", "--f2": "#c8212d", "--f3": "#c8212d", "--f4": "transparent" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
+                <span className="access-dot" style={{ "--f0": "transparent", "--f1": "#c8212d", "--f2": "transparent", "--f3": "#c8212d", "--f4": "#c8212d" }} />
               </div>
 
               <div className="hero-copy">
