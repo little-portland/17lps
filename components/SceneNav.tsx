@@ -2,32 +2,74 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 
+type SceneNavTheme = "default" | "access" | "space" | "tent-radio";
+
+type NavLink = {
+  label: string;
+  href: string;
+  activePaths: string[];
+};
+
 export default function SceneNav({
   visible = true,
   theme = "default",
 }: {
   visible?: boolean;
-  theme?: "default" | "access" | "space";
+  theme?: SceneNavTheme;
 }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
-  const links = [
-    { label: "The Space", href: "/the-space" },
-    { label: "Access", href: "/access" },
-    { label: "Dining", href: "/food" },
-    { label: "After Dark", href: "/theclub" },
-    { label: "Nocturn", href: "/nocturn" },
-    { label: "The Network", href: "#" },
-    { label: "LPX Radio", href: "/thetentradio" },
-    { label: "Archives", href: "#" },
+  const links: NavLink[] = [
+    {
+      label: "The Space",
+      href: "/the-space",
+      activePaths: ["/the-space", "/events"],
+    },
+    {
+      label: "Access",
+      href: "/access",
+      activePaths: ["/access"],
+    },
+    {
+      label: "Dining",
+      href: "/food",
+      activePaths: ["/food"],
+    },
+    {
+      label: "After Dark",
+      href: "/theclub",
+      activePaths: ["/theclub"],
+    },
+    {
+      label: "Nocturn",
+      href: "/nocturn",
+      activePaths: ["/nocturn"],
+    },
+    {
+      label: "The Network",
+      href: "#",
+      activePaths: [],
+    },
+    {
+      label: "LPX Radio",
+      href: "/thetentradio",
+      activePaths: ["/thetentradio"],
+    },
+    {
+      label: "Archives",
+      href: "#",
+      activePaths: [],
+    },
   ];
 
-  const getLinkClassName = (href: string) => {
-    const classes = [];
+  const currentPath = router.asPath.split("?")[0].split("#")[0];
+
+  const getLinkClassName = (href: string, activePaths: string[] = []) => {
+    const classes: string[] = [];
 
     if (href === "#") classes.push("disabled");
-    if (router.pathname === href) classes.push("active");
+    if (activePaths.includes(currentPath)) classes.push("active");
 
     return classes.join(" ");
   };
@@ -67,7 +109,7 @@ export default function SceneNav({
             <a
               key={l.label}
               href={l.href}
-              className={getLinkClassName(l.href)}
+              className={getLinkClassName(l.href, l.activePaths)}
               onClick={(event) => handleLinkClick(event, l.href)}
             >
               {l.label}
@@ -91,7 +133,7 @@ export default function SceneNav({
             <a
               key={l.label}
               href={l.href}
-              className={getLinkClassName(l.href)}
+              className={getLinkClassName(l.href, l.activePaths)}
               onClick={(event) => handleLinkClick(event, l.href)}
             >
               {l.label}
@@ -103,7 +145,7 @@ export default function SceneNav({
       <AnimatePresence>
         {open && (
           <motion.div
-            className={`scene-nav-mobile scene-nav-mobile--${theme}`}
+            className={`scene-nav-mobile scene-nav--${theme} scene-nav-mobile--${theme}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -120,7 +162,7 @@ export default function SceneNav({
                 <a
                   key={l.label}
                   href={l.href}
-                  className={getLinkClassName(l.href)}
+                  className={getLinkClassName(l.href, l.activePaths)}
                   onClick={(event) => handleLinkClick(event, l.href)}
                 >
                   {l.label}
