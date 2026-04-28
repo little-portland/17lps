@@ -260,18 +260,29 @@ export default function PrivateHirePage() {
           transform: translate(-50%, -50%);
           border-radius: 50%;
           overflow: hidden;
+          clip-path: circle(50% at 50% 50%);
+          -webkit-clip-path: circle(50% at 50% 50%);
+          -webkit-mask-image: -webkit-radial-gradient(white, black);
           background: #000;
           box-shadow: 0 0 0 2px #000;
           isolation: isolate;
+          contain: paint;
         }
 
         .activeVenueImage {
+          position: absolute;
+          inset: 0;
           width: 100%;
           height: 100%;
+          border-radius: 50%;
+          clip-path: circle(50% at 50% 50%);
+          -webkit-clip-path: circle(50% at 50% 50%);
           object-fit: cover;
           filter: grayscale(1) contrast(1.02) brightness(0.95);
           transform: scale(1.04);
           animation: imageReveal 720ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
 
         .circleShade {
@@ -414,13 +425,13 @@ export default function PrivateHirePage() {
         @keyframes imageReveal {
           0% {
             opacity: 0;
-            transform: scale(1.12) rotate(1.5deg);
-            filter: grayscale(1) contrast(1.08) brightness(0.82) blur(3px);
+            transform: scale(1.08);
+            filter: grayscale(1) contrast(1.08) brightness(0.82) blur(2px);
           }
           55% { opacity: 1; }
           100% {
             opacity: 1;
-            transform: scale(1.04) rotate(0deg);
+            transform: scale(1.04);
             filter: grayscale(1) contrast(1.02) brightness(0.95) blur(0);
           }
         }
