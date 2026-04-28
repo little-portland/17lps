@@ -354,7 +354,7 @@ export default function PrivateHirePage() {
           margin-top: 7px;
         }
 
-        .venueCard__secondaryLine {
+        .venueCard .venueCard__secondaryLine {
           font-size: clamp(0.62rem, 0.72vw, 0.78rem);
           line-height: 1.32;
           opacity: 0.9;
