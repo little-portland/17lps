@@ -588,83 +588,91 @@ export default function TentRadioPage() {
         }
 
         /* =====================================================
-           TENT RADIO NAV THEME
-        ===================================================== */
-
-        .posterPage--with-scene-nav .posterStage {
-          top: 80px !important;
-        }
-
-        .scene-nav {
-          z-index: 10020 !important;
-        }
-
-        .scene-nav-burger,
-        .scene-nav-logo {
-          position: relative;
-          z-index: 10030 !important;
-        }
-
-        .scene-nav-mobile {
-          z-index: 10010 !important;
-        }
-
-        .scene-nav--tent-radio {
-          background: #000 !important;
-          z-index: 10020 !important;
-        }
-
-        .scene-nav--tent-radio,
-        .scene-nav--tent-radio a,
-        .scene-nav-mobile--tent-radio,
-        .scene-nav-mobile--tent-radio a {
-          color: #348159 !important;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace !important;
-        }
-
-        .scene-nav--tent-radio a.active,
-        .scene-nav-mobile--tent-radio a.active {
-          color: #ffffff !important;
-        }
-
-        .scene-nav--tent-radio a.disabled,
-        .scene-nav-mobile--tent-radio a.disabled {
-          color: #348159 !important;
-          opacity: 0.45;
-        }
-
-        .scene-nav--tent-radio .scene-nav-burger span {
-          background: #348159 !important;
-        }
-
-        .scene-nav--tent-radio .scene-nav-logo img {
-          filter: brightness(0) saturate(100%) invert(42%) sepia(18%)
-            saturate(1082%) hue-rotate(93deg) brightness(89%) contrast(86%);
-        }
-
-        .scene-nav-mobile.scene-nav--tent-radio,
-        .scene-nav-mobile--tent-radio {
-          background: #000 !important;
-        }
-
-        @media (max-width: 900px) {
-          .posterPage--with-scene-nav .posterStage {
-            top: 80px !important;
-          }
-
-          .scene-nav--tent-radio {
-            background: #000 !important;
-          }
-
-          .scene-nav-mobile.scene-nav--tent-radio,
-          .scene-nav-mobile--tent-radio {
-            background: #000 !important;
-          }
-
-          .scene-nav-mobile--tent-radio .scene-nav-mobile-inner {
-            padding-top: 96px;
-          }
-        }
+               TENT RADIO NAV THEME
+            ===================================================== */
+            
+            .posterPage--with-scene-nav .posterStage {
+              top: 60px !important;
+            }
+            
+            .scene-nav {
+              z-index: 10040 !important;
+            }
+            
+            .scene-nav-burger,
+            .scene-nav-logo {
+              position: relative;
+              z-index: 10050 !important;
+            }
+            
+            .scene-nav-mobile {
+              z-index: 10030 !important;
+            }
+            
+            .scene-nav--tent-radio {
+              background: rgba(0, 0, 0, 0.72) !important;
+              z-index: 10040 !important;
+            }
+            
+            .scene-nav--tent-radio,
+            .scene-nav--tent-radio a,
+            .scene-nav-mobile--tent-radio,
+            .scene-nav-mobile--tent-radio a {
+              color: #348159 !important;
+              font-family: 'Orbitron', 'IBM Plex Mono', monospace !important;
+            }
+            
+            .scene-nav--tent-radio a.active,
+            .scene-nav-mobile--tent-radio a.active {
+              color: #ffffff !important;
+            }
+            
+            .scene-nav--tent-radio a.disabled,
+            .scene-nav-mobile--tent-radio a.disabled {
+              color: #348159 !important;
+              opacity: 0.45;
+            }
+            
+            .scene-nav--tent-radio .scene-nav-burger span {
+              background: #348159 !important;
+            }
+            
+            .scene-nav--tent-radio .scene-nav-logo img {
+              filter: brightness(0) saturate(100%) invert(42%) sepia(18%)
+                saturate(1082%) hue-rotate(93deg) brightness(89%) contrast(86%);
+            }
+            
+            .scene-nav-mobile.scene-nav--tent-radio,
+            .scene-nav-mobile--tent-radio {
+              background: rgba(0, 0, 0, 0.74) !important;
+              z-index: 10030 !important;
+            }
+            
+            @media (max-width: 900px) {
+              .posterPage--with-scene-nav .posterStage {
+                top: 60px !important;
+              }
+            
+              .scene-nav--tent-radio {
+                background: rgba(0, 0, 0, 0.72) !important;
+                z-index: 10040 !important;
+              }
+            
+              .scene-nav-burger,
+              .scene-nav-logo {
+                z-index: 10050 !important;
+              }
+            
+              .scene-nav-mobile.scene-nav--tent-radio,
+              .scene-nav-mobile--tent-radio {
+                background: rgba(0, 0, 0, 0.76) !important;
+                z-index: 10030 !important;
+              }
+            
+              .scene-nav-mobile--tent-radio .scene-nav-mobile-inner {
+                padding-top: 96px;
+              }
+            }
 
         .posterSky,
         .posterGrid,
