@@ -428,11 +428,12 @@ export default function TentRadioPage() {
             <div className="radioPlayer__controls">
               <button
                 type="button"
+                className="radioPlayer__iconButton radioPlayer__iconButton--prev"
                 onClick={() => changeTrack(activeIndex - 1)}
                 disabled={activeIndex === 0}
                 aria-label="Previous track"
               >
-                ◀
+                <span aria-hidden="true">◀</span>
               </button>
 
               <button
@@ -446,11 +447,12 @@ export default function TentRadioPage() {
 
               <button
                 type="button"
+                className="radioPlayer__iconButton radioPlayer__iconButton--next"
                 onClick={() => changeTrack(activeIndex + 1)}
                 disabled={activeIndex === TRACKS.length - 1}
                 aria-label="Next track"
               >
-                ▶
+                <span aria-hidden="true">▶</span>
               </button>
             </div>
 
@@ -515,7 +517,7 @@ export default function TentRadioPage() {
                     onClick={() => setArchiveQuery('')}
                     aria-label="Clear search"
                   >
-                    ×
+                    <span aria-hidden="true">×</span>
                   </button>
                 )}
               </div>
@@ -1376,6 +1378,39 @@ export default function TentRadioPage() {
           width: 42px;
         }
 
+        .radioPlayer__iconButton,
+        .archiveDrawer__clear {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          line-height: 1;
+        }
+
+        .radioPlayer__iconButton {
+          width: 42px;
+        }
+
+        .radioPlayer__iconButton > span,
+        .archiveDrawer__clear > span {
+          display: block;
+          line-height: 1;
+        }
+
+        .radioPlayer__iconButton--prev > span {
+          transform: translate(-1px, -1px);
+        }
+
+        .radioPlayer__iconButton--next > span {
+          transform: translate(1px, -1px);
+        }
+
+        .archiveDrawer__clear > span {
+          transform: translateY(-1px);
+          font-size: 1rem;
+          font-weight: 900;
+        }
+
         .radioPlayer__transmit {
           min-width: 240px;
           padding: 0 20px;
@@ -1594,7 +1629,6 @@ export default function TentRadioPage() {
           color: ${GREEN};
           font-size: 1rem;
           font-weight: 900;
-          line-height: 1;
         }
 
         .archiveDrawer__search::placeholder {
@@ -2024,8 +2058,10 @@ export default function TentRadioPage() {
             font-size: 0.68rem;
           }
 
-          .radioPlayer__controls button:not(.radioPlayer__transmit) {
+          .radioPlayer__controls button:not(.radioPlayer__transmit),
+          .radioPlayer__iconButton {
             width: 38px;
+            height: 38px;
           }
 
           .radioPlayer__transmit {
@@ -2129,8 +2165,10 @@ export default function TentRadioPage() {
             font-size: 0.64rem;
           }
 
-          .radioPlayer__controls button:not(.radioPlayer__transmit) {
+          .radioPlayer__controls button:not(.radioPlayer__transmit),
+          .radioPlayer__iconButton {
             width: 36px;
+            height: 36px;
           }
 
           .radioPlayer__transmit {
