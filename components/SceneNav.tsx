@@ -80,6 +80,7 @@ export default function SceneNav({
   ) => {
     if (href === "#") {
       event.preventDefault();
+      return;
     }
 
     setOpen(false);
@@ -92,17 +93,20 @@ export default function SceneNav({
           open ? "is-open" : ""
         }`}
       >
+        {/* BURGER */}
         <button
           className={`scene-nav-burger ${open ? "open" : ""}`}
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          type="button"
         >
           <span />
           <span />
         </button>
 
-        <nav className="scene-nav-left">
+        {/* LEFT LINKS */}
+        <nav className="scene-nav-left" aria-label="Primary left navigation">
           {links.slice(0, 4).map((l) => (
             <a
               key={l.label}
@@ -115,6 +119,7 @@ export default function SceneNav({
           ))}
         </nav>
 
+        {/* LOGO / HOME */}
         <a
           href="/"
           className="scene-nav-logo"
@@ -129,7 +134,8 @@ export default function SceneNav({
           />
         </a>
 
-        <nav className="scene-nav-right">
+        {/* RIGHT LINKS */}
+        <nav className="scene-nav-right" aria-label="Primary right navigation">
           {links.slice(4).map((l) => (
             <a
               key={l.label}
@@ -143,6 +149,7 @@ export default function SceneNav({
         </nav>
       </header>
 
+      {/* MOBILE OVERLAY */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -173,6 +180,14 @@ export default function SceneNav({
           </motion.div>
         )}
       </AnimatePresence>
+
+      <style jsx global>{`
+        @media (max-width: 900px) {
+          .scene-nav-mobile-inner {
+            padding-top: calc(var(--scene-nav-space, 60px) + 14px) !important;
+          }
+        }
+      `}</style>
     </>
   );
 }
