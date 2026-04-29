@@ -92,7 +92,6 @@ export default function SceneNav({
           open ? "is-open" : ""
         }`}
       >
-        {/* BURGER (mobile) */}
         <button
           className={`scene-nav-burger ${open ? "open" : ""}`}
           onClick={() => setOpen(!open)}
@@ -103,7 +102,6 @@ export default function SceneNav({
           <span />
         </button>
 
-        {/* LEFT LINKS (desktop) */}
         <nav className="scene-nav-left">
           {links.slice(0, 4).map((l) => (
             <a
@@ -117,17 +115,20 @@ export default function SceneNav({
           ))}
         </nav>
 
-        {/* LOGO */}
-        <div className="scene-nav-logo">
+        <a
+          href="/"
+          className="scene-nav-logo"
+          aria-label="Go to home page"
+          onClick={() => setOpen(false)}
+        >
           <img
             src="/images/LPS-logo-bandw.png"
             alt="Logo"
             width={250}
             height={250}
           />
-        </div>
+        </a>
 
-        {/* RIGHT LINKS (desktop) */}
         <nav className="scene-nav-right">
           {links.slice(4).map((l) => (
             <a
