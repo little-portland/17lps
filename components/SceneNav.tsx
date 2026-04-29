@@ -184,7 +184,7 @@ export default function SceneNav({
       <style jsx global>{`
         @media (max-width: 900px) {
           .scene-nav-mobile-inner {
-            padding-top: 0!important;
+            padding-top: calc(var(--scene-nav-space,0px) + 14px)!important;
           }
         }
       `}</style>
