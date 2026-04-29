@@ -87,7 +87,9 @@ const pretty = (s?: number) => {
   if (!s && s !== 0) return '0:00';
 
   const m = Math.floor(s / 60);
-  const ss = Math.floor(s % 60).toString().padStart(2, '0');
+  const ss = Math.floor(s % 60)
+    .toString()
+    .padStart(2, '0');
 
   return `${m}:${ss}`;
 };
@@ -181,7 +183,6 @@ export default function TentRadioPage() {
 
     setProgress(0);
     setDuration(0);
-
     audio.currentTime = 0;
     audio.load();
 
@@ -227,7 +228,8 @@ export default function TentRadioPage() {
       if (isArchiveOpen) return;
       if (touchStartYRef.current === null || changeLockRef.current) return;
 
-      const endY = event.changedTouches[0]?.clientY ?? touchStartYRef.current;
+      const endY =
+        event.changedTouches[0]?.clientY ?? touchStartYRef.current;
       const diff = touchStartYRef.current - endY;
 
       touchStartYRef.current = null;
@@ -626,8 +628,8 @@ export default function TentRadioPage() {
           inset: 0;
           overflow: hidden;
           background:
-            radial-gradient(circle at 28% 32%, rgba(106, 55, 150, 0.26), transparent 30%),
-            radial-gradient(circle at 72% 62%, rgba(72, 157, 154, 0.18), transparent 32%),
+            radial-gradient(circle at 28% 32%, rgba(106, 55, 150, 0.24), transparent 30%),
+            radial-gradient(circle at 72% 62%, rgba(72, 157, 154, 0.16), transparent 32%),
             linear-gradient(180deg, #05030c 0%, #07040f 100%);
         }
 
@@ -766,8 +768,8 @@ export default function TentRadioPage() {
             hue-rotate(14deg)
             saturate(1.35)
             brightness(0.84)
-            drop-shadow(0 0 18px rgba(72, 157, 154, 0.24))
-            drop-shadow(0 0 28px rgba(106, 55, 150, 0.22));
+            drop-shadow(0 0 18px rgba(72, 157, 154, 0.22))
+            drop-shadow(0 0 26px rgba(106, 55, 150, 0.18));
           animation: gridPulse 6.4s ease-in-out infinite;
         }
 
@@ -775,23 +777,23 @@ export default function TentRadioPage() {
           background:
             linear-gradient(
               125deg,
-              rgba(72, 157, 154, 0.26) 0%,
+              rgba(72, 157, 154, 0.22) 0%,
               rgba(72, 157, 154, 0.08) 22%,
-              rgba(106, 55, 150, 0.2) 48%,
-              rgba(223, 121, 214, 0.14) 70%,
-              rgba(72, 157, 154, 0.14) 100%
+              rgba(106, 55, 150, 0.18) 48%,
+              rgba(223, 121, 214, 0.12) 70%,
+              rgba(72, 157, 154, 0.12) 100%
             );
           mix-blend-mode: screen;
-          opacity: 0.92;
+          opacity: 0.9;
         }
 
         .posterGridGlow {
           background:
-            radial-gradient(circle at 28% 34%, rgba(106, 55, 150, 0.34), transparent 32%),
-            radial-gradient(circle at 66% 58%, rgba(72, 157, 154, 0.26), transparent 28%),
-            radial-gradient(circle at 50% 22%, rgba(223, 121, 214, 0.18), transparent 26%);
-          filter: blur(54px);
-          opacity: 0.85;
+            radial-gradient(circle at 28% 34%, rgba(106, 55, 150, 0.28), transparent 32%),
+            radial-gradient(circle at 66% 58%, rgba(72, 157, 154, 0.22), transparent 28%),
+            radial-gradient(circle at 50% 22%, rgba(223, 121, 214, 0.16), transparent 26%);
+          filter: blur(50px);
+          opacity: 0.76;
           mix-blend-mode: screen;
         }
 
@@ -800,19 +802,19 @@ export default function TentRadioPage() {
           background: linear-gradient(
             180deg,
             transparent 0%,
-            transparent 34%,
-            rgba(72, 157, 154, 0.04) 40%,
-            rgba(72, 157, 154, 0.14) 46%,
-            rgba(223, 121, 214, 0.22) 50%,
-            rgba(72, 157, 154, 0.14) 54%,
-            rgba(72, 157, 154, 0.04) 60%,
-            transparent 66%,
+            transparent 28%,
+            rgba(72, 157, 154, 0.08) 35%,
+            rgba(72, 157, 154, 0.24) 42%,
+            rgba(223, 121, 214, 0.42) 50%,
+            rgba(72, 157, 154, 0.24) 58%,
+            rgba(72, 157, 154, 0.08) 65%,
+            transparent 72%,
             transparent 100%
           );
           mix-blend-mode: screen;
-          filter: blur(18px);
+          filter: blur(12px);
           transform: translateY(-130%);
-          animation: gridSweepVertical 12s linear infinite;
+          animation: gridSweepVertical 9s linear infinite;
         }
 
         .posterVignette {
@@ -866,9 +868,9 @@ export default function TentRadioPage() {
           letter-spacing: 0.08em;
           line-height: 0.94;
           text-shadow:
-            0 0 10px rgba(223, 121, 214, 0.36),
-            0 0 26px rgba(223, 121, 214, 0.22),
-            0 0 54px rgba(106, 55, 150, 0.34);
+            0 0 10px rgba(223, 121, 214, 0.32),
+            0 0 22px rgba(223, 121, 214, 0.18),
+            0 0 44px rgba(106, 55, 150, 0.24);
         }
 
         .radioHeader__tag {
@@ -878,8 +880,8 @@ export default function TentRadioPage() {
           font-weight: 800;
           letter-spacing: 0.22em;
           text-shadow:
-            0 0 8px rgba(72, 157, 154, 0.36),
-            0 0 18px rgba(106, 55, 150, 0.22);
+            0 0 8px rgba(72, 157, 154, 0.3),
+            0 0 16px rgba(106, 55, 150, 0.18);
         }
 
         .orbCluster {
@@ -900,13 +902,13 @@ export default function TentRadioPage() {
           background:
             radial-gradient(
               ellipse at center,
-              rgba(223, 121, 214, 0.42) 0%,
-              rgba(106, 55, 150, 0.34) 32%,
-              rgba(72, 157, 154, 0.22) 54%,
+              rgba(223, 121, 214, 0.32) 0%,
+              rgba(106, 55, 150, 0.26) 34%,
+              rgba(72, 157, 154, 0.16) 56%,
               rgba(72, 157, 154, 0) 78%
             );
-          filter: blur(46px);
-          opacity: 0.78;
+          filter: blur(42px);
+          opacity: 0.58;
           z-index: 1;
           animation: orbPulse 2.8s ease-in-out infinite;
         }
@@ -918,15 +920,15 @@ export default function TentRadioPage() {
           background:
             radial-gradient(
               ellipse at center,
-              rgba(223, 121, 214, 0.48) 0%,
-              rgba(106, 55, 150, 0.42) 28%,
-              rgba(72, 157, 154, 0.34) 48%,
-              rgba(72, 157, 154, 0.12) 66%,
+              rgba(223, 121, 214, 0.34) 0%,
+              rgba(106, 55, 150, 0.28) 30%,
+              rgba(72, 157, 154, 0.22) 50%,
+              rgba(72, 157, 154, 0.08) 66%,
               rgba(72, 157, 154, 0) 84%
             );
-          filter: blur(76px);
+          filter: blur(68px);
           transform: scale(1);
-          opacity: 0.88;
+          opacity: 0.7;
           animation: orbPulseWide 2.8s ease-in-out infinite;
           z-index: 0;
         }
@@ -935,28 +937,50 @@ export default function TentRadioPage() {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: var(--portal-width);
+          width: calc(var(--portal-width) + 18px);
           height: var(--portal-height);
           transform: translate3d(-50%, -50%, 0);
-          border-radius: 24px;
           overflow: hidden;
           isolation: isolate;
           contain: paint;
           background:
             linear-gradient(
               180deg,
-              rgba(106, 55, 150, 0.24),
-              rgba(72, 157, 154, 0.1)
+              rgba(106, 55, 150, 0.2),
+              rgba(72, 157, 154, 0.08)
             ),
             rgba(7, 4, 15, 0.9);
+          border-radius: 28px;
+          clip-path: polygon(
+            11% 0%,
+            89% 0%,
+            93% 4%,
+            96% 12%,
+            99% 24%,
+            100% 38%,
+            100% 62%,
+            99% 76%,
+            96% 88%,
+            93% 96%,
+            89% 100%,
+            11% 100%,
+            7% 96%,
+            4% 88%,
+            1% 76%,
+            0% 62%,
+            0% 38%,
+            1% 24%,
+            4% 12%,
+            7% 4%
+          );
           box-shadow:
-            inset 0 0 0 1px rgba(223, 121, 214, 0.16),
-            inset 0 0 48px rgba(223, 121, 214, 0.2),
-            inset 0 0 96px rgba(106, 55, 150, 0.28),
-            inset 0 0 170px rgba(72, 157, 154, 0.18),
-            0 0 36px rgba(223, 121, 214, 0.34),
-            0 0 82px rgba(106, 55, 150, 0.38),
-            0 0 128px rgba(72, 157, 154, 0.24);
+            inset 0 0 0 1px rgba(223, 121, 214, 0.12),
+            inset 0 0 34px rgba(223, 121, 214, 0.12),
+            inset 0 0 78px rgba(106, 55, 150, 0.18),
+            inset 0 0 130px rgba(72, 157, 154, 0.1),
+            0 0 26px rgba(223, 121, 214, 0.2),
+            0 0 62px rgba(106, 55, 150, 0.22),
+            0 0 92px rgba(72, 157, 154, 0.14);
           z-index: 3;
           animation: portalPulse 2.8s ease-in-out infinite;
         }
@@ -970,13 +994,13 @@ export default function TentRadioPage() {
           background:
             radial-gradient(
               ellipse at center,
-              rgba(223, 121, 214, 0.18),
-              rgba(106, 55, 150, 0.16) 42%,
-              rgba(72, 157, 154, 0.1) 62%,
+              rgba(223, 121, 214, 0.12),
+              rgba(106, 55, 150, 0.1) 42%,
+              rgba(72, 157, 154, 0.06) 62%,
               transparent 78%
             );
           mix-blend-mode: screen;
-          opacity: 0.76;
+          opacity: 0.54;
           animation: innerBreath 2.8s ease-in-out infinite;
         }
 
@@ -989,19 +1013,19 @@ export default function TentRadioPage() {
           background:
             repeating-linear-gradient(
               0deg,
-              rgba(255, 255, 255, 0.035) 0 1px,
+              rgba(255, 255, 255, 0.03) 0 1px,
               transparent 1px 3px
             ),
-            radial-gradient(circle at 18% 28%, rgba(223, 121, 214, 0.2) 0 1px, transparent 1.8px),
-            radial-gradient(circle at 74% 38%, rgba(72, 157, 154, 0.18) 0 1px, transparent 1.8px),
-            radial-gradient(circle at 44% 78%, rgba(255, 255, 255, 0.13) 0 1px, transparent 1.6px);
+            radial-gradient(circle at 18% 28%, rgba(223, 121, 214, 0.18) 0 1px, transparent 1.8px),
+            radial-gradient(circle at 74% 38%, rgba(72, 157, 154, 0.16) 0 1px, transparent 1.8px),
+            radial-gradient(circle at 44% 78%, rgba(255, 255, 255, 0.1) 0 1px, transparent 1.6px);
           background-size:
             100% 4px,
             90px 90px,
             120px 120px,
             140px 140px;
           mix-blend-mode: screen;
-          opacity: 0.28;
+          opacity: 0.22;
         }
 
         .orbPhotoLayer {
@@ -1010,7 +1034,8 @@ export default function TentRadioPage() {
           background-size: cover;
           background-repeat: no-repeat;
           filter: contrast(1.06) brightness(0.88) saturate(0.9);
-          transform: translateZ(0);
+          transform: scaleX(1.06) translateZ(0);
+          transform-origin: center center;
           transition:
             filter 420ms ease,
             transform 420ms ease,
@@ -1020,11 +1045,11 @@ export default function TentRadioPage() {
         .orbPhotoLayer--current.is-playing {
           filter:
             blur(7px)
-            contrast(1.06)
-            brightness(0.58)
-            saturate(1.2);
-          transform: scale(1.06);
-          opacity: 0.72;
+            contrast(1.04)
+            brightness(0.56)
+            saturate(1.12);
+          transform: scaleX(1.08) scale(1.03);
+          opacity: 0.68;
         }
 
         .orbPhotoLayer--current.is-glitching {
@@ -1043,7 +1068,7 @@ export default function TentRadioPage() {
           place-items: center;
           pointer-events: none;
           opacity: 0;
-          transform: scale(0.92);
+          transform: scale(0.9);
           transition:
             opacity 420ms ease,
             transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -1062,9 +1087,9 @@ export default function TentRadioPage() {
           background:
             radial-gradient(
               circle,
-              rgba(223, 121, 214, 0.24) 0%,
-              rgba(106, 55, 150, 0.18) 42%,
-              rgba(72, 157, 154, 0.08) 62%,
+              rgba(223, 121, 214, 0.22) 0%,
+              rgba(106, 55, 150, 0.16) 42%,
+              rgba(72, 157, 154, 0.06) 62%,
               transparent 76%
             );
           filter: blur(18px);
@@ -1094,8 +1119,8 @@ export default function TentRadioPage() {
             );
           box-shadow:
             0 0 10px rgba(223, 121, 214, 0.82),
-            0 0 22px rgba(106, 55, 150, 0.62),
-            0 0 34px rgba(72, 157, 154, 0.28);
+            0 0 22px rgba(106, 55, 150, 0.58),
+            0 0 32px rgba(72, 157, 154, 0.24);
           animation: waveDance 900ms ease-in-out infinite;
         }
 
@@ -1174,28 +1199,28 @@ export default function TentRadioPage() {
 
         .portalGridOverlay {
           background-image:
-            linear-gradient(rgba(223, 121, 214, 0.12) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(72, 157, 154, 0.12) 1px, transparent 1px);
+            linear-gradient(rgba(223, 121, 214, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(72, 157, 154, 0.1) 1px, transparent 1px);
           background-size: 30px 30px;
           mix-blend-mode: screen;
-          opacity: 0.18;
+          opacity: 0.14;
           z-index: 8;
         }
 
         .orbInnerTint {
           background:
-            radial-gradient(circle at 50% 50%, rgba(223, 121, 214, 0.04), rgba(106, 55, 150, 0.08) 54%, rgba(72, 157, 154, 0.12) 78%, rgba(72, 157, 154, 0.2) 100%),
-            linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%, transparent 68%, rgba(0, 0, 0, 0.16) 100%);
+            radial-gradient(circle at 50% 50%, rgba(223, 121, 214, 0.04), rgba(106, 55, 150, 0.06) 54%, rgba(72, 157, 154, 0.08) 78%, rgba(72, 157, 154, 0.12) 100%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%, transparent 68%, rgba(0, 0, 0, 0.14) 100%);
           mix-blend-mode: screen;
           z-index: 9;
         }
 
         .orbInnerGlow {
-          border-radius: 24px;
+          border-radius: 28px;
           box-shadow:
-            inset 0 0 44px rgba(223, 121, 214, 0.22),
-            inset 0 0 110px rgba(106, 55, 150, 0.24),
-            inset 0 0 190px rgba(72, 157, 154, 0.16);
+            inset 0 0 32px rgba(223, 121, 214, 0.14),
+            inset 0 0 84px rgba(106, 55, 150, 0.18),
+            inset 0 0 150px rgba(72, 157, 154, 0.1);
           z-index: 10;
         }
 
@@ -1233,11 +1258,11 @@ export default function TentRadioPage() {
           font-weight: 900;
           letter-spacing: 0.08em;
           text-shadow:
-            0 0 8px rgba(223, 121, 214, 0.52),
-            0 0 20px rgba(106, 55, 150, 0.38);
+            0 0 8px rgba(223, 121, 214, 0.44),
+            0 0 18px rgba(106, 55, 150, 0.28);
           box-shadow:
-            0 0 18px rgba(106, 55, 150, 0.14),
-            inset 0 0 18px rgba(72, 157, 154, 0.08);
+            0 0 16px rgba(106, 55, 150, 0.12),
+            inset 0 0 18px rgba(72, 157, 154, 0.06);
         }
 
         .trackHero__guest,
@@ -1252,7 +1277,7 @@ export default function TentRadioPage() {
           font-weight: 800;
           letter-spacing: 0.18em;
           font-size: clamp(0.68rem, 0.84vw, 0.88rem);
-          text-shadow: 0 0 8px rgba(72, 157, 154, 0.34);
+          text-shadow: 0 0 8px rgba(72, 157, 154, 0.28);
         }
 
         .trackHero__genres {
@@ -1262,7 +1287,7 @@ export default function TentRadioPage() {
           letter-spacing: 0.16em;
           font-size: clamp(0.54rem, 0.72vw, 0.72rem);
           opacity: 0.92;
-          text-shadow: 0 0 10px rgba(223, 121, 214, 0.22);
+          text-shadow: 0 0 8px rgba(223, 121, 214, 0.18);
         }
 
         .radioPlayer {
@@ -1290,8 +1315,8 @@ export default function TentRadioPage() {
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
           box-shadow:
-            0 0 24px rgba(106, 55, 150, 0.2),
-            inset 0 0 22px rgba(72, 157, 154, 0.06);
+            0 0 24px rgba(106, 55, 150, 0.18),
+            inset 0 0 22px rgba(72, 157, 154, 0.05);
         }
 
         .radioPlayer__bar {
@@ -1343,8 +1368,8 @@ export default function TentRadioPage() {
           font-size: 0.76rem;
           font-weight: 900;
           letter-spacing: 0.12em;
-          text-shadow: 0 0 10px rgba(223, 121, 214, 0.4);
-          box-shadow: inset 0 0 14px rgba(106, 55, 150, 0.08);
+          text-shadow: 0 0 10px rgba(223, 121, 214, 0.36);
+          box-shadow: inset 0 0 14px rgba(106, 55, 150, 0.06);
         }
 
         .radioPlayer__controls button:not(.radioPlayer__transmit) {
@@ -1422,7 +1447,7 @@ export default function TentRadioPage() {
           border-color: rgba(223, 121, 214, 0.54);
           background: rgba(106, 55, 150, 0.18);
           color: ${PINK};
-          box-shadow: 0 0 16px rgba(223, 121, 214, 0.12);
+          box-shadow: 0 0 16px rgba(223, 121, 214, 0.1);
         }
 
         .trackIndex__number {
@@ -1451,7 +1476,7 @@ export default function TentRadioPage() {
           letter-spacing: 0.12em;
           font-size: 0.64rem;
           font-weight: 900;
-          text-shadow: 0 0 10px rgba(223, 121, 214, 0.34);
+          text-shadow: 0 0 10px rgba(223, 121, 214, 0.28);
         }
 
         .archiveDrawer {
@@ -1478,9 +1503,9 @@ export default function TentRadioPage() {
 
         .archiveDrawer__panel {
           position: absolute;
-          top: 18px;
+          top: calc(var(--scene-nav-space, 60px) + 14px);
           right: 18px;
-          bottom: 18px;
+          height: calc(100dvh - var(--scene-nav-space, 60px) - 32px);
           width: min(460px, calc(100vw - 36px));
           display: flex;
           flex-direction: column;
@@ -1493,8 +1518,8 @@ export default function TentRadioPage() {
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
           box-shadow:
-            0 0 32px rgba(106, 55, 150, 0.2),
-            inset 0 0 24px rgba(72, 157, 154, 0.06);
+            0 0 32px rgba(106, 55, 150, 0.18),
+            inset 0 0 24px rgba(72, 157, 154, 0.05);
           transform: translateX(calc(100% + 32px));
           transition: transform 280ms ease;
         }
@@ -1660,71 +1685,71 @@ export default function TentRadioPage() {
 
         @keyframes gridSweepVertical {
           0%,
-          62% {
+          58% {
             opacity: 0;
-            transform: translateY(-130%);
+            transform: translateY(-132%);
           }
 
-          66% {
-            opacity: 0.14;
+          62% {
+            opacity: 0.22;
           }
 
-          78% {
-            opacity: 0.34;
+          74% {
+            opacity: 0.6;
             transform: translateY(18%);
           }
 
-          88% {
-            opacity: 0.1;
-            transform: translateY(116%);
+          84% {
+            opacity: 0.18;
+            transform: translateY(118%);
           }
 
           100% {
             opacity: 0;
-            transform: translateY(116%);
+            transform: translateY(118%);
           }
         }
 
         @keyframes orbPulse {
           0%,
           100% {
-            transform: scale(0.96);
-            opacity: 0.56;
-            filter: blur(42px) brightness(0.94);
+            transform: scale(0.97);
+            opacity: 0.5;
+            filter: blur(38px) brightness(0.94);
           }
 
           50% {
-            transform: scale(1.12);
-            opacity: 0.98;
-            filter: blur(56px) brightness(1.15);
+            transform: scale(1.08);
+            opacity: 0.82;
+            filter: blur(50px) brightness(1.08);
           }
         }
 
         @keyframes orbPulseWide {
           0%,
           100% {
-            transform: scale(0.96);
-            opacity: 0.58;
-            filter: blur(68px) brightness(0.94);
+            transform: scale(0.97);
+            opacity: 0.5;
+            filter: blur(62px) brightness(0.94);
           }
 
           50% {
-            transform: scale(1.2);
-            opacity: 1;
-            filter: blur(88px) brightness(1.16);
+            transform: scale(1.15);
+            opacity: 0.84;
+            filter: blur(78px) brightness(1.1);
           }
         }
 
         @keyframes innerBreath {
           0%,
           100% {
-            opacity: 0.38;
-            transform: scale(0.96);
+            opacity: 0.32;
+            transform: scale(0.97);
           }
 
           50% {
-            opacity: 0.78;
-            transform: scale(1.08);
+            opacity: 0.58;
+            transform: scale(1.06);
           }
         }
 
@@ -1732,24 +1757,24 @@ export default function TentRadioPage() {
           0%,
           100% {
             box-shadow:
-              inset 0 0 0 1px rgba(223, 121, 214, 0.16),
-              inset 0 0 48px rgba(223, 121, 214, 0.2),
-              inset 0 0 96px rgba(106, 55, 150, 0.28),
-              inset 0 0 170px rgba(72, 157, 154, 0.18),
-              0 0 36px rgba(223, 121, 214, 0.34),
-              0 0 82px rgba(106, 55, 150, 0.38),
-              0 0 128px rgba(72, 157, 154, 0.24);
+              inset 0 0 0 1px rgba(223, 121, 214, 0.12),
+              inset 0 0 34px rgba(223, 121, 214, 0.12),
+              inset 0 0 78px rgba(106, 55, 150, 0.18),
+              inset 0 0 130px rgba(72, 157, 154, 0.1),
+              0 0 26px rgba(223, 121, 214, 0.2),
+              0 0 62px rgba(106, 55, 150, 0.22),
+              0 0 92px rgba(72, 157, 154, 0.14);
           }
 
           50% {
             box-shadow:
-              inset 0 0 0 1px rgba(223, 121, 214, 0.22),
-              inset 0 0 68px rgba(223, 121, 214, 0.28),
-              inset 0 0 130px rgba(106, 55, 150, 0.34),
-              inset 0 0 210px rgba(72, 157, 154, 0.22),
-              0 0 52px rgba(223, 121, 214, 0.46),
-              0 0 116px rgba(106, 55, 150, 0.46),
-              0 0 160px rgba(72, 157, 154, 0.3);
+              inset 0 0 0 1px rgba(223, 121, 214, 0.16),
+              inset 0 0 46px rgba(223, 121, 214, 0.16),
+              inset 0 0 96px rgba(106, 55, 150, 0.22),
+              inset 0 0 150px rgba(72, 157, 154, 0.12),
+              0 0 34px rgba(223, 121, 214, 0.26),
+              0 0 74px rgba(106, 55, 150, 0.28),
+              0 0 106px rgba(72, 157, 154, 0.16);
           }
         }
 
@@ -1782,34 +1807,34 @@ export default function TentRadioPage() {
         @keyframes photoGlitchIn {
           0% {
             opacity: 0.28;
-            transform: scale(1.02) translateX(8px);
+            transform: scaleX(1.08) scale(1.02) translateX(8px);
           }
 
           18% {
             opacity: 0.9;
-            transform: scale(1.008) translateX(-6px);
+            transform: scaleX(1.07) scale(1.008) translateX(-6px);
           }
 
           42% {
             opacity: 0.74;
-            transform: scale(1.005) translateX(4px);
+            transform: scaleX(1.065) scale(1.005) translateX(4px);
           }
 
           100% {
             opacity: 1;
-            transform: scale(1) translateX(0);
+            transform: scaleX(1.06) scale(1) translateX(0);
           }
         }
 
         @keyframes photoGlitchOut {
           0% {
             opacity: 1;
-            transform: scale(1) translateX(0);
+            transform: scaleX(1.06) scale(1) translateX(0);
           }
 
           100% {
             opacity: 0;
-            transform: scale(0.998) translateX(-6px);
+            transform: scaleX(1.08) scale(0.998) translateX(-6px);
           }
         }
 
@@ -1830,7 +1855,7 @@ export default function TentRadioPage() {
 
         @media (max-width: 980px) {
           .posterFrame {
-            --portal-width: min(34vw, 290px);
+            --portal-width: min(34vw, 300px);
           }
 
           .radioHeader {
@@ -1838,15 +1863,15 @@ export default function TentRadioPage() {
           }
 
           .radioHeader__title {
-            font-size: clamp(1.7rem, 6vw, 3rem);
+            font-size: clamp(1.8rem, 6vw, 3rem);
             white-space: normal;
             max-width: 92vw;
           }
 
           .radioHeader__tag {
             display: block;
-            font-size: clamp(0.52rem, 1.8vw, 0.74rem);
-            letter-spacing: 0.16em;
+            font-size: clamp(0.62rem, 1.8vw, 0.82rem);
+            letter-spacing: 0.15em;
             max-width: 90vw;
             margin-inline: auto;
           }
@@ -1907,56 +1932,60 @@ export default function TentRadioPage() {
 
         @media (max-width: 760px) {
           .posterFrame {
-            --portal-width: min(56vw, 250px);
+            --portal-width: min(62vw, 280px);
           }
 
           .radioHeader {
-            top: calc(var(--scene-nav-space, 60px) + 20px);
+            top: calc(var(--scene-nav-space, 60px) + 18px);
             width: 98vw;
           }
 
           .radioHeader__title {
             white-space: nowrap;
-            font-size: clamp(1.05rem, 5.6vw, 1.55rem);
-            line-height: 0.9;
+            font-size: clamp(1.28rem, 6.2vw, 1.78rem);
+            line-height: 0.92;
             letter-spacing: 0.04em;
-            margin-bottom: 4px;
-            padding: 0 6px;
+            margin-bottom: 6px;
+            padding: 0 8px;
           }
 
           .radioHeader__tag {
-            font-size: 0.38rem;
-            line-height: 1.15;
-            letter-spacing: 0.065em;
+            font-size: clamp(0.52rem, 1.9vw, 0.66rem);
+            line-height: 1.2;
+            letter-spacing: 0.075em;
           }
 
           .orbCluster {
-            top: 41%;
-            width: calc(var(--portal-width) + 86px);
-            height: calc(var(--portal-height) + 86px);
+            top: 42%;
+            width: calc(var(--portal-width) + 92px);
+            height: calc(var(--portal-height) + 92px);
+          }
+
+          .orbPhotoMask {
+            width: calc(var(--portal-width) + 14px);
           }
 
           .trackHero {
-            top: calc(41% + (var(--portal-height) / 2) + 30px);
+            top: calc(42% + (var(--portal-height) / 2) + 22px);
             bottom: auto;
-            width: calc(100vw - 28px);
+            width: calc(100vw - 26px);
           }
 
           .trackHero__label {
-            font-size: 0.82rem;
-            padding: 8px 14px 9px;
-            margin-bottom: 6px;
+            font-size: 0.96rem;
+            padding: 10px 18px 11px;
+            margin-bottom: 8px;
           }
 
           .trackHero__guest {
-            font-size: 0.52rem;
-            letter-spacing: 0.14em;
+            font-size: 0.72rem;
+            letter-spacing: 0.13em;
           }
 
           .trackHero__genres {
-            margin-top: 5px;
-            font-size: 0.4rem;
-            letter-spacing: 0.075em;
+            margin-top: 6px;
+            font-size: 0.56rem;
+            letter-spacing: 0.09em;
           }
 
           .trackIndex {
@@ -1966,19 +1995,19 @@ export default function TentRadioPage() {
           .radioPlayer {
             bottom: 8px;
             width: calc(100vw - 18px);
-            padding: 10px;
-            gap: 8px;
+            padding: 14px 10px 14px;
+            gap: 10px;
             border-radius: 22px;
           }
 
           .radioPlayer__bar {
-            grid-template-columns: 38px 1fr 44px;
-            gap: 8px;
-            font-size: 0.68rem;
+            grid-template-columns: 44px 1fr 54px;
+            gap: 10px;
+            font-size: 0.92rem;
           }
 
           .radioPlayer__bar input[type='range'] {
-            height: 5px;
+            height: 6px;
           }
 
           .radioPlayer__bar input[type='range']::-webkit-slider-thumb {
@@ -1987,21 +2016,21 @@ export default function TentRadioPage() {
           }
 
           .radioPlayer__controls {
-            gap: 8px;
+            gap: 10px;
           }
 
           .radioPlayer__controls button {
-            height: 34px;
-            font-size: 0.56rem;
+            height: 38px;
+            font-size: 0.68rem;
           }
 
           .radioPlayer__controls button:not(.radioPlayer__transmit) {
-            width: 34px;
+            width: 38px;
           }
 
           .radioPlayer__transmit {
-            min-width: 146px;
-            padding: 0 12px;
+            min-width: 172px;
+            padding: 0 14px;
           }
 
           .radioPlayer__archive {
@@ -2009,14 +2038,14 @@ export default function TentRadioPage() {
             align-items: center;
             justify-content: center;
             width: 100%;
-            height: 34px;
+            height: 38px;
             border-radius: 999px;
             border: 1px solid rgba(72, 157, 154, 0.28);
             background: rgba(106, 55, 150, 0.16);
             color: ${PINK};
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.56rem;
+            letter-spacing: 0.12em;
+            font-size: 0.66rem;
             font-weight: 900;
           }
 
@@ -2026,6 +2055,7 @@ export default function TentRadioPage() {
             right: 10px;
             bottom: 10px;
             width: auto;
+            height: auto;
             max-height: 72vh;
             border-radius: 28px;
             transform: translateY(calc(100% + 32px));
@@ -2046,63 +2076,70 @@ export default function TentRadioPage() {
 
         @media (max-width: 430px) {
           .posterFrame {
-            --portal-width: min(58vw, 220px);
+            --portal-width: min(64vw, 244px);
           }
 
           .radioHeader {
-            top: calc(var(--scene-nav-space, 60px) + 18px);
+            top: calc(var(--scene-nav-space, 60px) + 16px);
           }
 
           .radioHeader__title {
-            font-size: clamp(0.95rem, 5.75vw, 1.32rem);
+            font-size: clamp(1.18rem, 6vw, 1.46rem);
             letter-spacing: 0.03em;
           }
 
           .radioHeader__tag {
-            font-size: 0.34rem;
-            letter-spacing: 0.055em;
+            font-size: 0.48rem;
+            letter-spacing: 0.06em;
           }
 
           .orbCluster {
-            top: 40.5%;
+            top: 42%;
           }
 
           .trackHero {
-            top: calc(40.5% + (var(--portal-height) / 2) + 28px);
+            top: calc(42% + (var(--portal-height) / 2) + 18px);
           }
 
           .trackHero__label {
-            font-size: 0.74rem;
-            padding: 7px 12px 8px;
+            font-size: 0.9rem;
+            padding: 9px 15px 10px;
           }
 
           .trackHero__guest {
-            font-size: 0.46rem;
+            font-size: 0.66rem;
           }
 
           .trackHero__genres {
-            font-size: 0.34rem;
+            font-size: 0.5rem;
           }
 
           .radioPlayer {
-            padding: 9px;
-            gap: 7px;
+            padding: 14px 9px 14px;
+            gap: 10px;
+          }
+
+          .radioPlayer__bar {
+            grid-template-columns: 42px 1fr 52px;
+            font-size: 0.88rem;
           }
 
           .radioPlayer__controls button {
-            height: 32px;
+            height: 36px;
+            font-size: 0.64rem;
           }
 
           .radioPlayer__controls button:not(.radioPlayer__transmit) {
-            width: 32px;
+            width: 36px;
           }
 
           .radioPlayer__transmit {
-            min-width: 136px;
+            min-width: 158px;
           }
 
           .radioPlayer__archive {
-            height: 32px;
+            height: 36px;
+            font-size: 0.64rem;
           }
 
           .archiveDrawer__list {
