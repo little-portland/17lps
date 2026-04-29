@@ -777,7 +777,7 @@ export default function TentRadioPage() {
         }
 
         .posterSky {
-          background-size: cover;
+          background-size: contain;
           background-position: center;
           filter: saturate(0.82) brightness(0.4);
           opacity: 0.95;
