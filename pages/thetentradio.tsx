@@ -30,7 +30,7 @@ const BASE_TRACKS: Track[] = [
     artist: 'OpenLab',
     guest: 'With Alia Indigo',
     src: '/audio/tent-semoa.mp3',
-    cover: '/covers/tent-semoa.jpg',
+    cover: '/covers/Openlab_Apr.png',
   },
   {
     id: 'sEmoa',
@@ -39,7 +39,7 @@ const BASE_TRACKS: Track[] = [
     artist: 'OpenLab',
     guest: 'With sEmoa',
     src: '/audio/tent-semoa.mp3',
-    cover: '/covers/tent-semoa.jpg',
+    cover: '/covers/Openlab_Apr.png',
   },
   {
     id: '22',
@@ -48,7 +48,7 @@ const BASE_TRACKS: Track[] = [
     artist: 'OpenLab',
     guest: 'With Bugsy',
     src: '/audio/tent-semoa.mp3',
-    cover: '/covers/tent-semoa.jpg',
+    cover: '/covers/Openlab_Apr.png',
   },
   {
     id: '21',
@@ -56,7 +56,7 @@ const BASE_TRACKS: Track[] = [
     title: 'The Tent (at the End of the Universe) 21',
     artist: 'OpenLab',
     src: '/audio/tent-semoa.mp3',
-    cover: '/covers/tent-semoa.jpg',
+    cover: '/covers/Openlab_Apr.png',
   },
   {
     id: '20',
@@ -64,7 +64,7 @@ const BASE_TRACKS: Track[] = [
     title: 'The Tent (at the End of the Universe) 20',
     artist: 'OpenLab',
     src: '/audio/tent-semoa.mp3',
-    cover: '/covers/tent-semoa.jpg',
+    cover: '/covers/Openlab_Apr.png',
   },
 ];
 
