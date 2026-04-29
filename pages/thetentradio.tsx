@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import SceneNav from '@components/SceneNav';
+import SceneNav from '@components/SceneNav'; 
 
 type Track = {
   id: string;
