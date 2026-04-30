@@ -1679,7 +1679,6 @@ export default function TentRadioPage() {
         @media (max-width: 760px) {
           .posterFrame {
             --core-width: clamp(222px, 54vw, 250px);
-             --core-height: calc(var(--core-width) * 1);
             --core-radius: 26px;
             padding:
               calc(var(--scene-nav-space, 60px) + 30px)
@@ -1805,7 +1804,6 @@ export default function TentRadioPage() {
         @media (max-width: 430px) {
           .posterFrame {
             --core-width: clamp(212px, 53vw, 235px);
-            --core-height: calc(var(--core-width) * 1);
             padding:
               calc(var(--scene-nav-space, 60px) + 28px)
               10px
