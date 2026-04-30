@@ -1,136 +1,136 @@
-import Head from 'next/head';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import SceneNav from '@components/SceneNav';
+// pages/thetentradio.tsx
+
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import SceneNav from "../components/SceneNav";
 
 type Track = {
   id: string;
+  episodeLabel: string;
   title: string;
   artist: string;
+  guest?: string;
   src: string;
   cover: string;
-  episodeLabel: string;
-  guest?: string;
-  objectPosition?: string;
+  genres?: string[];
 };
 
-const IMAGE_BASE = '/images/private-hire';
-const STAR_BG = `${IMAGE_BASE}/night-starry-sky-dark.jpg`;
-const GRID_BG = `${IMAGE_BASE}/buldge-grid.svg`;
-
-const PINK = '#df79d6';
-const PURPLE = '#6a3796';
-const GREEN = '#489d9a';
-
-const GENRES = 'Balearic / World / Downtempo / Electronica';
+const DEFAULT_GENRES = ["Balearic", "World", "Downtempo", "Electronica"];
 
 const BASE_TRACKS: Track[] = [
   {
-    id: '24',
-    episodeLabel: 'THE TENT 24',
-    title: 'The Tent (at the End of the Universe) 24 [with Alia Indigo]',
-    artist: 'OpenLab',
-    guest: 'With Alia Indigo',
-    src: '/audio/tent-semoa.mp3',
-    cover: '/covers/Openlab_Apr.png',
+    id: "40",
+    episodeLabel: "THE TENT 40",
+    title: "The Tent 40",
+    artist: "OpenLab",
+    guest: "With Alia Indigo",
+    src: "/audio/tent-semoa.mp3",
+    cover: "/covers/Openlab_Apr.png",
+    genres: DEFAULT_GENRES,
   },
   {
-    id: 'sEmoa',
-    episodeLabel: 'THE TENT',
-    title: 'The Tent (at the End of the Universe) [with sEmoa]',
-    artist: 'OpenLab',
-    guest: 'With sEmoa',
-    src: '/audio/tent-semoa.mp3',
-    cover: '/covers/Openlab_Apr.png',
+    id: "39",
+    episodeLabel: "THE TENT 39",
+    title: "The Tent 39",
+    artist: "OpenLab",
+    guest: "With sEmoa",
+    src: "/audio/tent-semoa.mp3",
+    cover: "/covers/Openlab_Apr.png",
+    genres: DEFAULT_GENRES,
   },
   {
-    id: '22',
-    episodeLabel: 'THE TENT 22',
-    title: 'The Tent (at the End of the Universe) 22 [with Bugsy]',
-    artist: 'OpenLab',
-    guest: 'With Bugsy',
-    src: '/audio/tent-semoa.mp3',
-    cover: '/covers/Openlab_Apr.png',
+    id: "38",
+    episodeLabel: "THE TENT 38",
+    title: "The Tent 38",
+    artist: "OpenLab",
+    guest: "With Bugsy",
+    src: "/audio/tent-semoa.mp3",
+    cover: "/covers/Openlab_Apr.png",
+    genres: DEFAULT_GENRES,
   },
-  {
-    id: '21',
-    episodeLabel: 'THE TENT 21',
-    title: 'The Tent (at the End of the Universe) 21',
-    artist: 'OpenLab',
-    src: '/audio/tent-semoa.mp3',
-    cover: '/covers/Openlab_Apr.png',
-  },
-  {
-    id: '20',
-    episodeLabel: 'THE TENT 20',
-    title: 'The Tent (at the End of the Universe) 20',
-    artist: 'OpenLab',
-    src: '/audio/tent-semoa.mp3',
-    cover: '/covers/Openlab_Apr.png',
-  },
+  // add the rest of your tracks here
 ];
 
-const TRACKS: Track[] = Array.from({ length: 40 }, (_, index) => {
-  const base = BASE_TRACKS[index % BASE_TRACKS.length];
-  const episodeNumber = 40 - index;
+const WAVE_BARS = [0.48, 0.72, 0.94, 0.76, 0.56, 0.4, 0.56, 0.76, 0.94, 0.72, 0.48];
 
-  return {
-    ...base,
-    id: `${base.id}-${index}`,
-    episodeLabel: `THE TENT ${episodeNumber}`,
-    title: `The Tent (at the End of the Universe) ${episodeNumber}`,
-  };
-});
-
-const clamp = (value: number, min: number, max: number) =>
-  Math.min(Math.max(value, min), max);
-
-const pretty = (s?: number) => {
-  if (!s && s !== 0) return '0:00';
-
-  const m = Math.floor(s / 60);
-  const ss = Math.floor(s % 60).toString().padStart(2, '0');
-
-  return `${m}:${ss}`;
-};
+function formatTime(seconds: number) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
 
 export default function TentRadioPage() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [previousIndex, setPreviousIndex] = useState<number | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [isArchiveOpen, setIsArchiveOpen] = useState(false);
-  const [archiveQuery, setArchiveQuery] = useState('');
-
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const changeLockRef = useRef(false);
-  const touchStartYRef = useRef<number | null>(null);
-  const shouldPlayOnTrackChangeRef = useRef(false);
 
-  const currentTrack = useMemo(() => TRACKS[activeIndex], [activeIndex]);
+  const [tracks] = useState<Track[]>(BASE_TRACKS);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [archiveOpen, setArchiveOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
-  const visibleArchiveTracks = useMemo(() => {
-    const query = archiveQuery.trim().toLowerCase();
-    if (!query) return TRACKS;
+  const currentTrack = tracks[currentIndex];
 
-    return TRACKS.filter((track) =>
+  const filteredTracks = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    if (!q) return tracks;
+    return tracks.filter((track) =>
       [track.episodeLabel, track.title, track.artist, track.guest]
         .filter(Boolean)
-        .some((value) => value!.toLowerCase().includes(query))
+        .join(" ")
+        .toLowerCase()
+        .includes(q)
     );
-  }, [archiveQuery]);
+  }, [tracks, search]);
 
-  const nearbyTracks = useMemo(
-    () =>
-      TRACKS.map((track, index) => ({ track, index })).filter(
-        ({ index }) => Math.abs(index - activeIndex) <= 2
-      ),
-    [activeIndex]
-  );
-
-  const playAudio = async () => {
+  useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
+    audio.src = currentTrack.src;
+    audio.load();
+    setCurrentTime(0);
+    setDuration(0);
+
+    if (isPlaying) {
+      audio
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
+    }
+  }, [currentTrack, isPlaying]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleLoaded = () => setDuration(audio.duration || 0);
+    const handleTime = () => setCurrentTime(audio.currentTime || 0);
+    const handleEnded = () => {
+      setCurrentIndex((prev) => (prev + 1) % tracks.length);
+    };
+
+    audio.addEventListener("loadedmetadata", handleLoaded);
+    audio.addEventListener("timeupdate", handleTime);
+    audio.addEventListener("ended", handleEnded);
+
+    return () => {
+      audio.removeEventListener("loadedmetadata", handleLoaded);
+      audio.removeEventListener("timeupdate", handleTime);
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, [tracks.length]);
+
+  const togglePlayback = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+      return;
+    }
 
     try {
       await audio.play();
@@ -140,1856 +140,954 @@ export default function TentRadioPage() {
     }
   };
 
-  const changeTrack = (index: number) => {
-    const nextIndex = clamp(index, 0, TRACKS.length - 1);
-
-    shouldPlayOnTrackChangeRef.current = true;
-
-    if (nextIndex === activeIndex) {
-      playAudio();
-      return;
-    }
-
-    setPreviousIndex(activeIndex);
-    setActiveIndex(nextIndex);
-
-    window.setTimeout(() => setPreviousIndex(null), 360);
+  const goPrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + tracks.length) % tracks.length);
   };
 
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const onTime = () => setProgress(audio.currentTime || 0);
-    const onLoaded = () => setDuration(audio.duration || 0);
-    const onEnded = () => changeTrack(activeIndex + 1);
-
-    audio.addEventListener('timeupdate', onTime);
-    audio.addEventListener('loadedmetadata', onLoaded);
-    audio.addEventListener('ended', onEnded);
-
-    return () => {
-      audio.removeEventListener('timeupdate', onTime);
-      audio.removeEventListener('loadedmetadata', onLoaded);
-      audio.removeEventListener('ended', onEnded);
-    };
-  }, [activeIndex]);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    setProgress(0);
-    setDuration(0);
-    audio.currentTime = 0;
-    audio.load();
-
-    if (shouldPlayOnTrackChangeRef.current) {
-      requestAnimationFrame(() => {
-        playAudio();
-      });
-    }
-  }, [currentTrack.src]);
-
-  useEffect(() => {
-    const releaseLock = () => {
-      window.setTimeout(() => {
-        changeLockRef.current = false;
-      }, 520);
-    };
-
-    const onWheel = (event: WheelEvent) => {
-      if (isArchiveOpen) return;
-
-      event.preventDefault();
-
-      if (changeLockRef.current) return;
-      if (Math.abs(event.deltaY) < 22) return;
-
-      changeLockRef.current = true;
-
-      if (event.deltaY > 0) {
-        changeTrack(activeIndex + 1);
-      } else {
-        changeTrack(activeIndex - 1);
-      }
-
-      releaseLock();
-    };
-
-    const onTouchStart = (event: TouchEvent) => {
-      if (isArchiveOpen) return;
-      touchStartYRef.current = event.touches[0]?.clientY ?? null;
-    };
-
-    const onTouchEnd = (event: TouchEvent) => {
-      if (isArchiveOpen) return;
-      if (touchStartYRef.current === null || changeLockRef.current) return;
-
-      const endY = event.changedTouches[0]?.clientY ?? touchStartYRef.current;
-      const diff = touchStartYRef.current - endY;
-
-      touchStartYRef.current = null;
-
-      if (Math.abs(diff) < 48) return;
-
-      changeLockRef.current = true;
-
-      if (diff > 0) {
-        changeTrack(activeIndex + 1);
-      } else {
-        changeTrack(activeIndex - 1);
-      }
-
-      releaseLock();
-    };
-
-    window.addEventListener('wheel', onWheel, { passive: false });
-    window.addEventListener('touchstart', onTouchStart, { passive: true });
-    window.addEventListener('touchend', onTouchEnd, { passive: true });
-
-    return () => {
-      window.removeEventListener('wheel', onWheel);
-      window.removeEventListener('touchstart', onTouchStart);
-      window.removeEventListener('touchend', onTouchEnd);
-    };
-  }, [activeIndex, isArchiveOpen]);
-
-  const togglePlay = async () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (audio.paused) {
-      await playAudio();
-    } else {
-      audio.pause();
-      setIsPlaying(false);
-    }
+  const goNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % tracks.length);
   };
 
-  const seek = (value: number) => {
+  const handleSeek = (value: number) => {
     const audio = audioRef.current;
     if (!audio) return;
-
     audio.currentTime = value;
-    setProgress(value);
+    setCurrentTime(value);
+  };
+
+  const selectTrack = (trackId: string) => {
+    const idx = tracks.findIndex((t) => t.id === trackId);
+    if (idx >= 0) {
+      setCurrentIndex(idx);
+      setArchiveOpen(false);
+    }
   };
 
   return (
     <>
-      <Head>
-        <title>17 Little Portland Street — The Tent Radio</title>
-        <meta
-          name="description"
-          content="The Tent Radio playlist from 17 Little Portland Street."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <SceneNav visible theme="tent-radio" />
 
-      <main className="posterPage posterPage--with-scene-nav">
-        <SceneNav theme="tent-radio" />
+      <main className="tentRadioPage">
+        <div className="posterStars" aria-hidden="true" />
+        <div className="posterGrid" aria-hidden="true" />
 
-        <div className="posterStage">
-          <div
-            className="posterSky"
-            style={{ backgroundImage: `url(${STAR_BG})` }}
-          />
-          <img src={GRID_BG} alt="" aria-hidden="true" className="posterGrid" />
-          <div className="posterGridTint" aria-hidden="true" />
-          <div className="posterGridGlow" aria-hidden="true" />
-          <div className="posterGridSweep" aria-hidden="true" />
-          <div className="posterVignette" />
-          <div className="posterNoise" />
+        <section className="posterFrame" aria-label="The Tent Radio player">
+          <header className="radioHeader">
+            <h1 className="radioHeader__title">THE TENT RADIO</h1>
+            <p className="radioHeader__tag">TRANSMISSIONS FROM THE END OF THE UNIVERSE</p>
+          </header>
 
-          <section className="posterFrame" aria-live="polite">
-            <header className="radioHeader">
-              <h1 className="radioHeader__title">The Tent Radio</h1>
-              <p className="radioHeader__tag">
-                Transmissions from the end of the universe
-              </p>
-            </header>
-
-            <div className="orbCluster">
-              <div className="orbBloomBack" />
-
-              <div className="orbPhotoMask">
-                {previousIndex !== null && !isPlaying && (
-                  <div
-                    aria-hidden="true"
-                    className="orbPhotoLayer orbPhotoLayer--previous"
-                    style={{
-                      backgroundImage: `url(${TRACKS[previousIndex].cover})`,
-                      backgroundPosition:
-                        TRACKS[previousIndex].objectPosition || '50% 50%',
-                    }}
-                  />
-                )}
-
-                <div
-                  key={currentTrack.id}
-                  role="img"
-                  aria-label={currentTrack.title}
-                  className={`orbPhotoLayer orbPhotoLayer--current ${
-                    previousIndex !== null ? 'is-glitching' : ''
-                  } ${isPlaying ? 'is-playing' : ''}`}
-                  style={{
-                    backgroundImage: `url(${currentTrack.cover})`,
-                    backgroundPosition:
-                      currentTrack.objectPosition || '50% 50%',
-                  }}
-                />
-
-                {isPlaying && (
-                  <div className="orbWave" aria-label="Animated music wave">
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                )}
-
-                <div className="orbInnerTint" />
-                <div className="orbInnerGlow" />
-              </div>
-            </div>
-
-            <div className="trackHero">
-              <p className="trackHero__label">{currentTrack.episodeLabel}</p>
-              <p className="trackHero__guest">
-                {currentTrack.guest || currentTrack.artist}
-              </p>
-              <p className="trackHero__genres">{GENRES}</p>
-            </div>
-          </section>
-
-          <nav className="trackIndex" aria-label="Nearby transmissions">
-            <p className="trackIndex__label">Now Tuning</p>
-
-            <div className="trackIndex__list">
-              {nearbyTracks.map(({ track, index }) => (
-                <button
-                  key={track.id}
-                  type="button"
-                  className={`trackIndex__item ${
-                    index === activeIndex ? 'is-active' : ''
-                  }`}
-                  onClick={() => changeTrack(index)}
-                >
-                  <span className="trackIndex__number">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="trackIndex__title">
-                    {track.episodeLabel}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            <button
-              type="button"
-              className="trackIndex__archive"
-              onClick={() => setIsArchiveOpen(true)}
-            >
-              Open Archive
-            </button>
-          </nav>
-
-          <div className="radioPlayer">
-            <div className="radioPlayer__bar">
-              <span>{pretty(progress)}</span>
-              <input
-                type="range"
-                min={0}
-                max={duration || 0}
-                step={0.1}
-                value={Math.min(progress, duration || 0)}
-                onChange={(e) => seek(Number(e.target.value))}
-                aria-label="Seek track"
+          <div className="orbCluster">
+            <div className="orbPhotoMask">
+              <div
+                className="orbPhotoBackdrop"
+                style={{ backgroundImage: `url(${currentTrack.cover})` }}
               />
-              <span>{pretty(duration)}</span>
+              <img
+                className="orbPhoto"
+                src={currentTrack.cover}
+                alt={currentTrack.title}
+                loading="eager"
+              />
+
+              {isPlaying && (
+                <div className="orbWave" aria-hidden="true">
+                  <div className="orbWave__inner">
+                    {WAVE_BARS.map((h, i) => (
+                      <span
+                        key={`${h}-${i}`}
+                        className="orbWave__bar"
+                        style={
+                          {
+                            ["--wave-h" as any]: h,
+                            ["--wave-delay" as any]: `${i * 0.08}s`,
+                          } as React.CSSProperties
+                        }
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-
-            <div className="radioPlayer__controls">
-              <button
-                type="button"
-                onClick={() => changeTrack(activeIndex - 1)}
-                disabled={activeIndex === 0}
-                aria-label="Previous track"
-              >
-                ◀
-              </button>
-
-              <button
-                type="button"
-                className="radioPlayer__transmit"
-                onClick={togglePlay}
-                aria-label="Play or pause"
-              >
-                {isPlaying ? 'Pause Transmission' : 'Play Transmission'}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => changeTrack(activeIndex + 1)}
-                disabled={activeIndex === TRACKS.length - 1}
-                aria-label="Next track"
-              >
-                ▶
-              </button>
-            </div>
-
-            <button
-              type="button"
-              className="radioPlayer__archive"
-              onClick={() => setIsArchiveOpen(true)}
-            >
-              Open Archive
-            </button>
           </div>
 
-          <div
-            className={`archiveDrawer ${isArchiveOpen ? 'is-open' : ''}`}
-            aria-hidden={!isArchiveOpen}
-          >
-            <button
-              type="button"
-              className="archiveDrawer__backdrop"
-              onClick={() => {
-                setIsArchiveOpen(false);
-                setArchiveQuery('');
-              }}
-              aria-label="Close archive"
-            />
+          <div className="trackMeta">
+            <div className="trackMeta__pill">{currentTrack.episodeLabel}</div>
+            {currentTrack.guest ? <p className="trackMeta__guest">{currentTrack.guest}</p> : null}
+            <p className="trackMeta__genres">
+              {(currentTrack.genres || DEFAULT_GENRES).join(" / ").toUpperCase()}
+            </p>
+          </div>
+        </section>
 
-            <aside
-              className="archiveDrawer__panel"
-              aria-label="Transmission archive"
-            >
-              <div className="archiveDrawer__header">
-                <div>
-                  <p className="archiveDrawer__eyebrow">
-                    Transmission Archive
-                  </p>
-                  <h2>All Episodes</h2>
-                </div>
+        <aside className={`archivePanel ${archiveOpen ? "is-open" : ""}`}>
+          <div className="archivePanel__inner">
+            <h2>ALL EPISODES</h2>
 
+            <div className="archiveSearch">
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="SEARCH TRANSMISSIONS..."
+              />
+              {search ? (
                 <button
                   type="button"
-                  className="archiveDrawer__close"
-                  onClick={() => {
-                    setIsArchiveOpen(false);
-                    setArchiveQuery('');
-                  }}
+                  className="archiveSearch__clear"
+                  onClick={() => setSearch("")}
+                  aria-label="Clear search"
                 >
                   ×
                 </button>
-              </div>
+              ) : null}
+            </div>
 
-              <div className="archiveDrawer__searchWrap">
-                <input
-                  className="archiveDrawer__search"
-                  value={archiveQuery}
-                  onChange={(event) => setArchiveQuery(event.target.value)}
-                  placeholder="Search transmissions..."
-                  aria-label="Search transmissions"
-                />
-
-                {archiveQuery && (
+            <div className="archiveList">
+              {filteredTracks.map((track, i) => {
+                const active = track.id === currentTrack.id;
+                return (
                   <button
+                    key={track.id}
                     type="button"
-                    className="archiveDrawer__clear"
-                    onClick={() => setArchiveQuery('')}
-                    aria-label="Clear search"
+                    className={`archiveItem ${active ? "is-active" : ""}`}
+                    onClick={() => selectTrack(track.id)}
                   >
-                    ×
+                    <span className="archiveItem__num">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="archiveItem__meta">
+                      <strong>{track.episodeLabel}</strong>
+                      <em>{track.guest || track.artist}</em>
+                    </span>
+                    <span className="archiveItem__cta">{active ? "LIVE" : "TUNE"}</span>
                   </button>
-                )}
-              </div>
+                );
+              })}
+            </div>
+          </div>
+        </aside>
 
-              <div className="archiveDrawer__list">
-                {visibleArchiveTracks.map((track) => {
-                  const index = TRACKS.findIndex(
-                    (item) => item.id === track.id
-                  );
-
-                  return (
-                    <button
-                      key={track.id}
-                      type="button"
-                      className={`archiveDrawer__item ${
-                        index === activeIndex ? 'is-active' : ''
-                      }`}
-                      onClick={() => {
-                        changeTrack(index);
-                        setIsArchiveOpen(false);
-                      }}
-                    >
-                      <span className="archiveDrawer__number">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-
-                      <span className="archiveDrawer__meta">
-                        <strong>{track.episodeLabel}</strong>
-                        <small>{track.guest || track.artist}</small>
-                      </span>
-
-                      <span className="archiveDrawer__status">
-                        {index === activeIndex ? 'Live' : 'Tune'}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </aside>
+        <div className="controlDock">
+          <div className="timelineRow">
+            <span>{formatTime(currentTime)}</span>
+            <input
+              type="range"
+              min={0}
+              max={Math.max(duration, 1)}
+              step={1}
+              value={Math.min(currentTime, duration || 0)}
+              onChange={(e) => handleSeek(Number(e.target.value))}
+              aria-label="Track timeline"
+            />
+            <span>{formatTime(duration)}</span>
           </div>
 
-          <audio ref={audioRef} src={currentTrack.src} preload="metadata" />
+          <div className="transportRow">
+            <button type="button" className="transportIcon" onClick={goPrev} aria-label="Previous track">
+              <span>◀</span>
+            </button>
+
+            <button type="button" className="playButton" onClick={togglePlayback}>
+              {isPlaying ? "PAUSE TRANSMISSION" : "PLAY TRANSMISSION"}
+            </button>
+
+            <button type="button" className="transportIcon" onClick={goNext} aria-label="Next track">
+              <span>▶</span>
+            </button>
+          </div>
+
+          <button type="button" className="archiveButton" onClick={() => setArchiveOpen((v) => !v)}>
+            OPEN ARCHIVE
+          </button>
         </div>
-      </main>
 
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
-
-        html,
-        body {
-          margin: 0;
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
-          background: #040707 !important;
-          color: #f1eee7;
-          font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-
-        * {
-          scrollbar-color: ${PINK} rgba(0, 0, 0, 0.35);
-          scrollbar-width: thin;
-        }
-
-        *::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
-        }
-
-        *::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.35);
-        }
-
-        *::-webkit-scrollbar-thumb {
-          background: ${PINK};
-          border-radius: 999px;
-          box-shadow: 0 0 10px rgba(223, 121, 214, 0.8);
-        }
-
-        *::-webkit-scrollbar-thumb:hover {
-          background: #f08be8;
-        }
-
-        button {
-          color: inherit;
-          font: inherit;
-          background: none;
-          border: 0;
-          padding: 0;
-          cursor: pointer;
-        }
-
-        img {
-          display: block;
-        }
-
-        #__next {
-          height: 100%;
-        }
-
-        .posterPage,
-        .posterStage {
-          position: fixed;
-          inset: 0;
-          overflow: hidden;
-          background: #040707;
-        }
-
-        /* =====================================================
-           TENT RADIO NAV THEME
-        ===================================================== */
-
-        .scene-nav {
-          z-index: 10040 !important;
-        }
-
-        .scene-nav-burger,
-        .scene-nav-logo {
-          position: relative;
-          z-index: 10050 !important;
-        }
-
-        .scene-nav-mobile {
-          z-index: 10030 !important;
-        }
-
-        .scene-nav--tent-radio {
-          background: rgba(2, 2, 12, 0.68) !important;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          z-index: 10040 !important;
-        }
-
-        .scene-nav--tent-radio,
-        .scene-nav--tent-radio a,
-        .scene-nav-mobile--tent-radio,
-        .scene-nav-mobile--tent-radio a {
-          color: ${GREEN} !important;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace !important;
-        }
-
-        .scene-nav--tent-radio a.active,
-        .scene-nav-mobile--tent-radio a.active {
-          color: ${PINK} !important;
-          text-shadow:
-            0 0 8px rgba(223, 121, 214, 0.7),
-            0 0 18px rgba(223, 121, 214, 0.28);
-        }
-
-        .scene-nav--tent-radio a.disabled,
-        .scene-nav-mobile--tent-radio a.disabled {
-          color: ${GREEN} !important;
-          opacity: 0.32;
-        }
-
-        .scene-nav--tent-radio .scene-nav-burger span {
-          background: ${GREEN} !important;
-        }
-
-        .scene-nav--tent-radio .scene-nav-logo img {
-          filter: brightness(0) saturate(100%) invert(58%) sepia(38%)
-            saturate(560%) hue-rotate(129deg) brightness(92%) contrast(88%);
-        }
-
-        .scene-nav-mobile.scene-nav--tent-radio,
-        .scene-nav-mobile--tent-radio {
-          background:
-            radial-gradient(circle at 46% 20%, rgba(106, 55, 150, 0.46), transparent 34%),
-            radial-gradient(circle at 36% 62%, rgba(72, 157, 154, 0.16), transparent 35%),
-            rgba(3, 3, 14, 0.82) !important;
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
-          z-index: 10030 !important;
-        }
-
-        @media (max-width: 900px) {
-          .scene-nav-mobile--tent-radio .scene-nav-mobile-inner {
-            padding-top: 24px !important;
-          }
-        }
-
-        .scene-nav-mobile--tent-radio .scene-nav-mobile-inner a {
-          color: ${GREEN} !important;
-        }
-
-        .scene-nav-mobile--tent-radio .scene-nav-mobile-inner a.active {
-          color: ${PINK} !important;
-        }
-
-        .scene-nav-mobile--tent-radio .scene-nav-mobile-inner a.disabled {
-          color: ${GREEN} !important;
-          opacity: 0.32;
-        }
-      `}</style>
-
-      <style jsx>{`
-        .posterSky,
-        .posterGrid,
-        .posterGridTint,
-        .posterGridGlow,
-        .posterGridSweep,
-        .posterVignette,
-        .posterNoise {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-        }
-
-        .posterSky {
-          background-size: cover;
-          background-position: center;
-          filter: saturate(0.9) brightness(0.5);
-          opacity: 0.96;
-        }
-
-        .posterGrid {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          mix-blend-mode: screen;
-          opacity: 0.78;
-          filter:
-            drop-shadow(0 0 14px rgba(72, 157, 154, 0.24))
-            drop-shadow(0 0 22px rgba(106, 55, 150, 0.18));
-          animation: gridPulse 7.5s ease-in-out infinite;
-        }
-
-        .posterGridTint {
-          background:
-            linear-gradient(
-              115deg,
-              rgba(72, 157, 154, 0.22) 0%,
-              rgba(72, 157, 154, 0.1) 34%,
-              rgba(106, 55, 150, 0.12) 58%,
-              rgba(223, 121, 214, 0.18) 100%
-            );
-          mix-blend-mode: screen;
-          opacity: 0.62;
-          animation: gridTintPulse 8s ease-in-out infinite;
-        }
-
-        .posterGridGlow {
-          background:
-            radial-gradient(circle at 35% 45%, rgba(72, 157, 154, 0.18), transparent 34%),
-            radial-gradient(circle at 66% 45%, rgba(223, 121, 214, 0.14), transparent 34%),
-            radial-gradient(circle at 50% 52%, rgba(106, 55, 150, 0.2), transparent 44%);
-          filter: blur(24px);
-          mix-blend-mode: screen;
-          opacity: 0.72;
-          animation: gridGlowPulse 6.8s ease-in-out infinite;
-        }
-
-        .posterGridSweep {
-          opacity: 0;
-          background: linear-gradient(
-            180deg,
-            transparent 0%,
-            transparent 31%,
-            rgba(72, 157, 154, 0.07) 38%,
-            rgba(223, 121, 214, 0.2) 47%,
-            rgba(106, 55, 150, 0.28) 50%,
-            rgba(72, 157, 154, 0.16) 57%,
-            transparent 68%,
-            transparent 100%
-          );
-          mix-blend-mode: screen;
-          filter: blur(12px);
-          transform: translateY(-130%);
-          animation: gridSweepVertical 9s linear infinite;
-        }
-
-        .posterVignette {
-          background:
-            radial-gradient(circle at center, transparent 28%, rgba(4, 7, 7, 0.16) 58%, rgba(4, 7, 7, 0.84) 100%),
-            linear-gradient(180deg, rgba(4, 7, 7, 0.08), rgba(4, 7, 7, 0.5));
-        }
-
-        .posterNoise {
-          opacity: 0.1;
-          background-image:
-            radial-gradient(circle at 8% 16%, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.4px),
-            radial-gradient(circle at 76% 22%, rgba(255, 255, 255, 0.66) 0 1px, transparent 1.4px),
-            radial-gradient(circle at 86% 72%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.4px),
-            radial-gradient(circle at 28% 80%, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.4px);
-          background-size: 320px 320px, 380px 380px, 340px 340px, 400px 400px;
-          mix-blend-mode: screen;
-        }
-
-        .posterFrame {
-          --core-width: clamp(300px, 25vw, 390px);
-          --core-height: calc(var(--core-width) * 1.25);
-          --image-top: clamp(190px, 23vh, 220px);
-          position: absolute;
-          inset: 0;
-          z-index: 6;
-          pointer-events: none;
-        }
-
-        .radioHeader {
-          position: absolute;
-          left: 50%;
-          top: 82px;
-          z-index: 12;
-          width: min(94vw, 1100px);
-          transform: translateX(-50%);
-          text-align: center;
-          text-transform: uppercase;
-        }
-
-        .radioHeader__title {
-          position: relative;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 0 4px;
-          color: ${PINK};
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: clamp(3rem, 5vw, 5rem);
-          font-weight: 900;
-          letter-spacing: 0.08em;
-          line-height: 0.92;
-          white-space: nowrap;
-          text-shadow:
-            0 0 10px rgba(223, 121, 214, 0.5),
-            0 0 24px rgba(223, 121, 214, 0.34),
-            0 0 44px rgba(106, 55, 150, 0.52);
-        }
-
-        .radioHeader__tag {
-          margin: 0;
-          color: ${GREEN};
-          font-size: clamp(0.9rem, 1.05vw, 1.1rem);
-          font-weight: 900;
-          letter-spacing: 0.28em;
-          text-shadow:
-            0 0 8px rgba(72, 157, 154, 0.7),
-            0 0 20px rgba(72, 157, 154, 0.34);
-        }
-
-        .orbCluster {
-          position: absolute;
-          left: 50%;
-          top: var(--image-top);
-          width: calc(var(--core-width) + 76px);
-          height: calc(var(--core-height) + 76px);
-          z-index: 7;
-          display: grid;
-          place-items: center;
-          pointer-events: none;
-          transform: translateX(-50%);
-        }
-
-        .orbBloomBack {
-          position: absolute;
-          inset: 4%;
-          border-radius: 36px;
-          background:
-            radial-gradient(circle at 50% 50%,
-              rgba(223, 121, 214, 0.28) 0%,
-              rgba(106, 55, 150, 0.34) 38%,
-              rgba(72, 157, 154, 0.16) 58%,
-              rgba(72, 157, 154, 0) 82%);
-          filter: blur(38px);
-          opacity: 0.64;
-          animation: orbPulse 3s ease-in-out infinite;
-        }
-
-        .orbPhotoMask {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: var(--core-width);
-          height: var(--core-height);
-          transform: translate3d(-50%, -50%, 0);
-          border-radius: 28px;
-          overflow: hidden;
-          isolation: isolate;
-          contain: paint;
-          background: rgba(8, 8, 18, 0.58);
-          box-shadow:
-            inset 0 0 34px rgba(106, 55, 150, 0.24),
-            inset 0 0 80px rgba(72, 157, 154, 0.1),
-            0 0 18px rgba(223, 121, 214, 0.18),
-            0 0 42px rgba(106, 55, 150, 0.32);
-          animation: orbCorePulse 3s ease-in-out infinite;
-        }
-
-        .orbPhotoLayer {
-          position: absolute;
-          inset: 0;
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-          filter: contrast(1.06) brightness(0.88) saturate(0.9);
-          transform: translateZ(0);
-          transition:
-            filter 420ms ease,
-            opacity 420ms ease,
-            transform 420ms ease;
-        }
-
-        .orbPhotoLayer--current.is-glitching {
-          animation: photoGlitchIn 360ms ease both;
-        }
-
-        .orbPhotoLayer--previous {
-          animation: photoGlitchOut 360ms ease forwards;
-        }
-
-        .orbPhotoLayer.is-playing {
-          filter: blur(7px) contrast(1.08) brightness(0.48) saturate(0.9);
-          transform: scale(1.04);
-          opacity: 0.66;
-        }
-
-        .orbWave {
-          position: absolute;
-          inset: 0;
-          z-index: 16;
-          display: grid;
-          place-items: center;
-          pointer-events: none;
-          opacity: 0;
-          animation: waveEnter 480ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
-
-        .orbWave::before {
-          content: '';
-          position: absolute;
-          width: 70%;
-          height: 34%;
-          border-radius: 999px;
-          background:
-            radial-gradient(circle at center, rgba(223, 121, 214, 0.16), transparent 68%),
-            linear-gradient(90deg, transparent, rgba(72, 157, 154, 0.12), transparent);
-          filter: blur(16px);
-        }
-
-        .orbWave span {
-          grid-area: 1 / 1;
-          width: clamp(5px, 0.52vw, 9px);
-          height: 26%;
-          border-radius: 999px;
-          background: ${PINK};
-          box-shadow:
-            0 0 12px rgba(223, 121, 214, 0.9),
-            0 0 26px rgba(223, 121, 214, 0.55);
-          transform-origin: center;
-          animation: waveOrbit 1.16s ease-in-out infinite;
-        }
-
-        .orbWave span:nth-child(1) {
-          transform: translateX(-84px) scaleY(0.4);
-          animation-delay: 0ms;
-        }
-
-        .orbWave span:nth-child(2) {
-          transform: translateX(-66px) scaleY(0.74);
-          animation-delay: 70ms;
-          background: ${GREEN};
-        }
-
-        .orbWave span:nth-child(3) {
-          transform: translateX(-48px) scaleY(1.02);
-          animation-delay: 140ms;
-        }
-
-        .orbWave span:nth-child(4) {
-          transform: translateX(-30px) scaleY(0.7);
-          animation-delay: 210ms;
-          background: ${GREEN};
-        }
-
-        .orbWave span:nth-child(5) {
-          transform: translateX(-12px) scaleY(1.24);
-          animation-delay: 280ms;
-        }
-
-        .orbWave span:nth-child(6) {
-          transform: translateX(6px) scaleY(0.68);
-          animation-delay: 350ms;
-          background: ${GREEN};
-        }
-
-        .orbWave span:nth-child(7) {
-          transform: translateX(24px) scaleY(1.12);
-          animation-delay: 420ms;
-        }
-
-        .orbWave span:nth-child(8) {
-          transform: translateX(42px) scaleY(0.74);
-          animation-delay: 490ms;
-          background: ${GREEN};
-        }
-
-        .orbWave span:nth-child(9) {
-          transform: translateX(60px) scaleY(1.36);
-          animation-delay: 560ms;
-        }
-
-        .orbWave span:nth-child(10) {
-          transform: translateX(78px) scaleY(0.86);
-          animation-delay: 630ms;
-          background: ${GREEN};
-        }
-
-        .orbWave span:nth-child(11) {
-          transform: translateX(96px) scaleY(1.52);
-          animation-delay: 700ms;
-        }
-
-        .orbInnerTint,
-        .orbInnerGlow {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-        }
-
-        .orbInnerTint {
-          background:
-            radial-gradient(circle at 50% 50%, rgba(223, 121, 214, 0.03), rgba(106, 55, 150, 0.08) 62%, rgba(106, 55, 150, 0.16) 100%),
-            linear-gradient(180deg, rgba(72, 157, 154, 0.06), transparent 18%, transparent 72%, rgba(0, 0, 0, 0.2) 100%);
-          mix-blend-mode: screen;
-        }
-
-        .orbInnerGlow {
-          border-radius: 28px;
-          box-shadow:
-            inset 0 0 34px rgba(223, 121, 214, 0.14),
-            inset 0 0 92px rgba(106, 55, 150, 0.2);
-        }
-
-        .trackHero {
-          position: absolute;
-          left: 50%;
-          top: calc(var(--image-top) + var(--core-height) + 30px);
-          z-index: 14;
-          width: min(780px, calc(100vw - 120px));
-          transform: translateX(-50%);
-          text-align: center;
-          text-transform: uppercase;
-          pointer-events: none;
-        }
-
-        .trackHero__label {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 0 10px;
-          padding: 10px 32px 11px;
-          border-radius: 999px;
-          border: 1px solid rgba(72, 157, 154, 0.5);
-          background:
-            linear-gradient(90deg, rgba(106, 55, 150, 0.18), rgba(72, 157, 154, 0.12)),
-            rgba(0, 0, 0, 0.68);
-          color: ${PINK};
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: clamp(1.45rem, 2.2vw, 2.25rem);
-          font-weight: 900;
-          letter-spacing: 0.06em;
-          text-shadow:
-            0 0 9px rgba(223, 121, 214, 0.72),
-            0 0 24px rgba(223, 121, 214, 0.34);
-          box-shadow:
-            0 0 16px rgba(72, 157, 154, 0.12),
-            inset 0 0 18px rgba(106, 55, 150, 0.1);
-        }
-
-        .trackHero__guest,
-        .trackHero__genres {
-          margin: 0;
-          font-weight: 900;
-          letter-spacing: 0.16em;
-          line-height: 1.35;
-        }
-
-        .trackHero__guest {
-          color: ${GREEN};
-          font-size: clamp(0.82rem, 1vw, 1rem);
-          text-shadow:
-            0 0 8px rgba(72, 157, 154, 0.7),
-            0 0 18px rgba(72, 157, 154, 0.3);
-        }
-
-        .trackHero__genres {
-          margin-top: 6px;
-          color: ${PINK};
-          font-size: clamp(0.7rem, 0.86vw, 0.86rem);
-          text-shadow:
-            0 0 8px rgba(223, 121, 214, 0.58),
-            0 0 18px rgba(223, 121, 214, 0.28);
-        }
-
-        .radioPlayer {
-          position: fixed;
-          left: 50%;
-          bottom: 22px;
-          z-index: 30;
-          width: min(1080px, calc(100vw - 32px));
-          transform: translateX(-50%);
-          display: grid;
-          grid-template-columns: 1fr auto;
-          gap: 22px;
-          align-items: center;
-          padding: 16px 18px;
-          border-radius: 999px;
-          border: 1px solid rgba(72, 157, 154, 0.42);
-          background:
-            linear-gradient(90deg, rgba(106, 55, 150, 0.14), transparent 24%, transparent 76%, rgba(72, 157, 154, 0.12)),
-            rgba(0, 0, 0, 0.84);
-          backdrop-filter: blur(14px);
-          box-shadow:
-            0 0 22px rgba(72, 157, 154, 0.16),
-            inset 0 0 24px rgba(106, 55, 150, 0.1);
-        }
-
-        .radioPlayer__bar {
-          display: grid;
-          grid-template-columns: 58px minmax(280px, 1fr) 58px;
-          gap: 14px;
-          align-items: center;
-          color: ${PINK};
-          font-size: 0.78rem;
-          font-weight: 900;
-          font-variant-numeric: tabular-nums;
-          text-shadow: 0 0 8px rgba(223, 121, 214, 0.52);
-        }
-
-        .radioPlayer__bar input[type='range'] {
-          appearance: none;
-          width: 100%;
-          height: 6px;
-          border-radius: 999px;
-          background:
-            linear-gradient(90deg, ${GREEN}, ${PINK}),
-            rgba(72, 157, 154, 0.26);
-          outline: none;
-        }
-
-        .radioPlayer__bar input[type='range']::-webkit-slider-thumb {
-          appearance: none;
-          width: 17px;
-          height: 17px;
-          border-radius: 50%;
-          background: ${PINK};
-          animation: playerDotPulse 1.25s ease-in-out infinite;
-        }
-
-        .radioPlayer__controls {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-        }
-
-        .radioPlayer__controls button {
-          height: 42px;
-          border-radius: 999px;
-          border: 1px solid rgba(72, 157, 154, 0.48);
-          background: rgba(0, 0, 0, 0.58);
-          color: ${PINK};
-          text-transform: uppercase;
-          font-size: 0.76rem;
-          font-weight: 900;
-          letter-spacing: 0.08em;
-          text-shadow: 0 0 10px rgba(223, 121, 214, 0.65);
-          box-shadow: inset 0 0 14px rgba(106, 55, 150, 0.1);
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          line-height: 1;
-        }
-
-        .radioPlayer__controls button:not(.radioPlayer__transmit) {
-          width: 42px;
-        }
-
-        .radioPlayer__transmit {
-          min-width: 210px;
-          padding: 0 20px;
-        }
-
-        .radioPlayer__controls button:disabled {
-          opacity: 0.24;
-          cursor: not-allowed;
-        }
-
-        .radioPlayer__archive {
-          display: none;
-        }
-
-        .trackIndex {
-          position: fixed;
-          right: 24px;
-          top: 50%;
-          z-index: 24;
-          width: 210px;
-          transform: translateY(-50%);
-          padding: 16px;
-          border-radius: 26px;
-          border: 1px solid rgba(72, 157, 154, 0.32);
-          background:
-            linear-gradient(180deg, rgba(106, 55, 150, 0.16), rgba(0, 0, 0, 0.18)),
-            rgba(0, 0, 0, 0.46);
-          backdrop-filter: blur(12px);
-          box-shadow:
-            0 0 18px rgba(72, 157, 154, 0.12),
-            inset 0 0 18px rgba(106, 55, 150, 0.08);
-        }
-
-        .trackIndex__label {
-          margin: 0 0 12px;
-          color: ${PINK};
-          text-transform: uppercase;
-          letter-spacing: 0.16em;
-          font-size: 0.68rem;
-          font-weight: 900;
-        }
-
-        .trackIndex__list {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .trackIndex__item {
-          display: grid;
-          grid-template-columns: 34px 1fr;
-          gap: 8px;
-          align-items: center;
-          width: 100%;
-          padding: 9px 10px;
-          border-radius: 999px;
-          border: 1px solid transparent;
-          background: rgba(0, 0, 0, 0.2);
-          color: ${GREEN};
-          text-align: left;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-size: 0.68rem;
-          font-weight: 900;
-          opacity: 0.82;
-        }
-
-        .trackIndex__item.is-active {
-          border-color: rgba(223, 121, 214, 0.62);
-          background: rgba(223, 121, 214, 0.12);
-          color: ${PINK};
-          box-shadow: 0 0 16px rgba(223, 121, 214, 0.18);
-          opacity: 1;
-        }
-
-        .trackIndex__number {
-          color: ${GREEN};
-        }
-
-        .trackIndex__title {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .trackIndex__item.is-active .trackIndex__number {
-          color: ${GREEN};
-        }
-
-        .trackIndex__archive {
-          width: 100%;
-          margin-top: 12px;
-          padding: 10px 12px;
-          border-radius: 999px;
-          border: 1px solid rgba(223, 121, 214, 0.52);
-          background: rgba(106, 55, 150, 0.16);
-          color: ${PINK};
-          text-transform: uppercase;
-          letter-spacing: 0.12em;
-          font-size: 0.64rem;
-          font-weight: 900;
-          text-shadow: 0 0 10px rgba(223, 121, 214, 0.56);
-        }
-
-        .archiveDrawer {
-          position: fixed;
-          inset: 0;
-          z-index: 80;
-          pointer-events: none;
-        }
-
-        .archiveDrawer.is-open {
-          pointer-events: auto;
-        }
-
-        .archiveDrawer__backdrop {
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0);
-          transition: background 240ms ease;
-        }
-
-        .archiveDrawer.is-open .archiveDrawer__backdrop {
-          background: rgba(0, 0, 0, 0.56);
-        }
-
-        .archiveDrawer__panel {
-          position: absolute;
-          top: 78px;
-          right: 18px;
-          bottom: 18px;
-          width: min(460px, calc(100vw - 36px));
-          display: flex;
-          flex-direction: column;
-          padding: 20px;
-          border-radius: 30px;
-          border: 1px solid rgba(72, 157, 154, 0.42);
-          background:
-            linear-gradient(180deg, rgba(106, 55, 150, 0.16), transparent 34%),
-            rgba(0, 0, 0, 0.9);
-          backdrop-filter: blur(18px);
-          box-shadow:
-            0 0 32px rgba(223, 121, 214, 0.18),
-            inset 0 0 24px rgba(106, 55, 150, 0.12);
-          transform: translateX(calc(100% + 32px));
-          transition: transform 280ms ease;
-        }
-
-        .archiveDrawer.is-open .archiveDrawer__panel {
-          transform: translateX(0);
-        }
-
-        .archiveDrawer__header {
-          display: flex;
-          justify-content: space-between;
-          gap: 16px;
-          align-items: flex-start;
-        }
-
-        .archiveDrawer__eyebrow {
-          margin: 0 0 6px;
-          color: ${GREEN};
-          text-transform: uppercase;
-          letter-spacing: 0.16em;
-          font-size: 0.68rem;
-          font-weight: 900;
-        }
-
-        .archiveDrawer__header h2 {
-          margin: 0;
-          color: ${PINK};
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-family: 'Orbitron', 'IBM Plex Mono', monospace;
-          font-size: 1.5rem;
-        }
-
-        .archiveDrawer__close {
-          width: 44px;
-          height: 44px;
-          padding: 0;
-          border-radius: 999px;
-          border: 1px solid rgba(72, 157, 154, 0.42);
-          color: ${GREEN};
-          text-transform: uppercase;
-          letter-spacing: 0;
-          font-size: 1.35rem;
-          font-weight: 900;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          line-height: 1;
-        }
-
-        .archiveDrawer__searchWrap {
-          position: relative;
-          margin: 18px 0 14px;
-        }
-
-        .archiveDrawer__search {
-          width: 100%;
-          padding: 14px 48px 14px 16px;
-          border-radius: 999px;
-          border: 1px solid rgba(72, 157, 154, 0.38);
-          outline: none;
-          background: rgba(0, 0, 0, 0.56);
-          color: ${PINK};
-          font: inherit;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-        }
-
-        .archiveDrawer__clear {
-          position: absolute;
-          right: 12px;
-          top: 50%;
-          width: 28px;
-          height: 28px;
-          transform: translateY(-50%);
-          border-radius: 999px;
-          border: 1px solid rgba(72, 157, 154, 0.42);
-          color: ${GREEN};
-          font-size: 1rem;
-          font-weight: 900;
-          line-height: 1;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .archiveDrawer__search::placeholder {
-          color: rgba(223, 121, 214, 0.54);
-        }
-
-        .archiveDrawer__list {
-          min-height: 0;
-          overflow-y: auto;
-          padding-right: 4px;
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .archiveDrawer__item {
-          display: grid;
-          grid-template-columns: 42px 1fr auto;
-          gap: 12px;
-          align-items: center;
-          width: 100%;
-          padding: 12px 13px;
-          border-radius: 18px;
-          border: 1px solid rgba(72, 157, 154, 0.16);
-          background: rgba(0, 0, 0, 0.28);
-          color: rgba(223, 121, 214, 0.78);
-          text-align: left;
-        }
-
-        .archiveDrawer__item.is-active {
-          border-color: rgba(223, 121, 214, 0.58);
-          background: rgba(106, 55, 150, 0.18);
-          color: ${PINK};
-        }
-
-        .archiveDrawer__number {
-          color: ${GREEN};
-          font-weight: 900;
-        }
-
-        .archiveDrawer__meta {
-          min-width: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 3px;
-        }
-
-        .archiveDrawer__meta strong,
-        .archiveDrawer__meta small {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .archiveDrawer__meta strong {
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-size: 0.78rem;
-        }
-
-        .archiveDrawer__meta small {
-          color: ${GREEN};
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-size: 0.62rem;
-        }
-
-        .archiveDrawer__status {
-          color: ${PINK};
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          font-size: 0.62rem;
-          font-weight: 900;
-        }
-
-        @keyframes gridPulse {
-          0%,
-          100% {
-            opacity: 0.68;
-            filter:
-              drop-shadow(0 0 11px rgba(72, 157, 154, 0.18))
-              drop-shadow(0 0 18px rgba(106, 55, 150, 0.12));
-            transform: scale(1);
+        <audio ref={audioRef} preload="metadata" />
+
+        <style jsx global>{`
+          :root {
+            --scene-nav-space: 58px;
+            --radio-bg: #04040f;
+            --radio-bg-2: #080717;
+            --cyan: #62d9d8;
+            --pink: #ef80e1;
+            --pink-2: #d36ad0;
+            --purple-glow: rgba(205, 109, 238, 0.34);
+            --grid-cyan: rgba(82, 221, 220, 0.42);
+            --grid-pink: rgba(231, 112, 226, 0.32);
+            --panel: rgba(6, 5, 21, 0.92);
+            --panel-border: rgba(84, 215, 214, 0.24);
+            --text-dim: rgba(121, 226, 225, 0.8);
           }
 
-          50% {
-            opacity: 0.9;
-            filter:
-              drop-shadow(0 0 20px rgba(72, 157, 154, 0.34))
-              drop-shadow(0 0 30px rgba(223, 121, 214, 0.22));
-            transform: scale(1.008);
-          }
-        }
-
-        @keyframes gridTintPulse {
-          0%,
-          100% {
-            opacity: 0.5;
+          html,
+          body,
+          #__next {
+            min-height: 100%;
+            background: #e8e1e6;
           }
 
-          50% {
-            opacity: 0.74;
-          }
-        }
-
-        @keyframes gridGlowPulse {
-          0%,
-          100% {
-            opacity: 0.46;
-            transform: scale(0.99);
+          body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
           }
 
-          50% {
-            opacity: 0.82;
-            transform: scale(1.04);
-          }
-        }
-
-        @keyframes gridSweepVertical {
-          0%,
-          58% {
-            opacity: 0;
-            transform: translateY(-130%);
+          .tentRadioPage {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+            background:
+              radial-gradient(circle at 50% 42%, rgba(171, 106, 239, 0.16), transparent 34%),
+              linear-gradient(180deg, #050613 0%, #07081a 45%, #050714 100%);
+            color: white;
           }
 
-          64% {
-            opacity: 0.18;
+          .posterStars,
+          .posterGrid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
           }
 
-          76% {
-            opacity: 0.42;
-            transform: translateY(18%);
+          .posterStars {
+            opacity: 0.85;
+            background-image:
+              radial-gradient(circle at 12% 22%, rgba(255,255,255,0.85) 0 1px, transparent 1.2px),
+              radial-gradient(circle at 72% 18%, rgba(255,255,255,0.7) 0 1px, transparent 1.2px),
+              radial-gradient(circle at 38% 64%, rgba(255,255,255,0.7) 0 1px, transparent 1.2px),
+              radial-gradient(circle at 88% 60%, rgba(255,255,255,0.55) 0 1px, transparent 1.2px),
+              radial-gradient(circle at 22% 80%, rgba(255,255,255,0.6) 0 1px, transparent 1.2px),
+              radial-gradient(circle at 58% 84%, rgba(255,255,255,0.5) 0 1px, transparent 1.2px);
+            background-size: 280px 280px, 320px 320px, 360px 360px, 400px 400px, 420px 420px, 500px 500px;
+            mix-blend-mode: screen;
           }
 
-          88% {
-            opacity: 0.12;
-            transform: translateY(116%);
+          .posterGrid {
+            opacity: 0.95;
           }
 
-          100% {
-            opacity: 0;
-            transform: translateY(116%);
-          }
-        }
-
-        @keyframes orbPulse {
-          0%,
-          100% {
-            transform: scale(1.02);
-            opacity: 0.46;
-            filter: blur(32px) brightness(0.95);
+          .posterGrid::before,
+          .posterGrid::after {
+            content: "";
+            position: absolute;
+            inset: -8%;
+            border-radius: 50%;
+            transform-origin: 50% 42%;
+            animation: gridPulse 8.5s ease-in-out infinite;
+            pointer-events: none;
           }
 
-          50% {
-            transform: scale(1.14);
-            opacity: 0.82;
-            filter: blur(44px) brightness(1.08);
-          }
-        }
-
-        @keyframes orbCorePulse {
-          0%,
-          100% {
-            box-shadow:
-              inset 0 0 34px rgba(106, 55, 150, 0.2),
-              inset 0 0 78px rgba(72, 157, 154, 0.08),
-              0 0 16px rgba(223, 121, 214, 0.16),
-              0 0 38px rgba(106, 55, 150, 0.28);
-          }
-
-          50% {
-            box-shadow:
-              inset 0 0 44px rgba(223, 121, 214, 0.16),
-              inset 0 0 100px rgba(106, 55, 150, 0.22),
-              0 0 24px rgba(223, 121, 214, 0.25),
-              0 0 54px rgba(106, 55, 150, 0.38);
-          }
-        }
-
-        @keyframes photoGlitchIn {
-          0% {
-            opacity: 0.28;
-            transform: scale(1.02) translateX(8px);
+          .posterGrid::before {
+            background:
+              repeating-radial-gradient(
+                ellipse at center,
+                transparent 0 112px,
+                rgba(95, 229, 227, 0.13) 112px 114px
+              ),
+              repeating-conic-gradient(
+                from 0deg at center,
+                rgba(95, 229, 227, 0.14) 0deg 0.6deg,
+                transparent 0.6deg 18deg,
+                rgba(226, 111, 221, 0.13) 18deg 18.6deg,
+                transparent 18.6deg 36deg
+              );
+            filter: blur(0.15px);
+            opacity: 0.62;
           }
 
-          18% {
-            opacity: 0.9;
-            transform: scale(1.008) translateX(-6px);
+          .posterGrid::after {
+            background:
+              repeating-radial-gradient(
+                ellipse at center,
+                transparent 0 112px,
+                rgba(226, 111, 221, 0.12) 112px 114px
+              ),
+              repeating-conic-gradient(
+                from 9deg at center,
+                rgba(95, 229, 227, 0.1) 0deg 0.5deg,
+                transparent 0.5deg 18deg,
+                rgba(226, 111, 221, 0.1) 18deg 18.5deg,
+                transparent 18.5deg 36deg
+              );
+            opacity: 0.34;
+            filter: blur(6px);
           }
 
-          42% {
-            opacity: 0.74;
-            transform: scale(1.005) translateX(4px);
+          @keyframes gridPulse {
+            0%,
+            100% {
+              transform: scale(1);
+              opacity: 0.9;
+            }
+            50% {
+              transform: scale(1.018);
+              opacity: 1;
+            }
           }
 
-          100% {
-            opacity: 1;
-            transform: scale(1) translateX(0);
-          }
-        }
-
-        @keyframes photoGlitchOut {
-          0% {
-            opacity: 1;
-            transform: scale(1) translateX(0);
-          }
-
-          100% {
-            opacity: 0;
-            transform: scale(0.998) translateX(-6px);
-          }
-        }
-
-        @keyframes waveEnter {
-          0% {
-            opacity: 0;
-            transform: scale(0.88);
-            filter: blur(10px);
-          }
-
-          100% {
-            opacity: 1;
-            transform: scale(1);
-            filter: blur(0);
-          }
-        }
-
-        @keyframes waveOrbit {
-          0%,
-          100% {
-            height: 16%;
-            opacity: 0.5;
-          }
-
-          40% {
-            height: 44%;
-            opacity: 1;
-          }
-
-          70% {
-            height: 24%;
-            opacity: 0.74;
-          }
-        }
-
-        @keyframes playerDotPulse {
-          0%,
-          100% {
-            box-shadow:
-              0 0 0 0 rgba(223, 121, 214, 0.32),
-              0 0 16px rgba(223, 121, 214, 0.8);
-          }
-
-          50% {
-            box-shadow:
-              0 0 0 10px rgba(223, 121, 214, 0),
-              0 0 28px rgba(223, 121, 214, 1);
-          }
-        }
-
-        @media (max-width: 1180px) {
           .posterFrame {
-            --core-width: clamp(290px, 26vw, 370px);
-          }
-
-          .trackIndex {
-            right: 16px;
-            width: 190px;
-          }
-
-          .radioHeader__title {
-            font-size: clamp(2.75rem, 4.8vw, 4.4rem);
-          }
-        }
-
-        @media (max-width: 980px) {
-          .posterFrame {
-            --core-width: clamp(250px, 32vw, 330px);
-            --image-top: 195px;
+            position: relative;
+            z-index: 2;
+            max-width: 1320px;
+            margin: 0 auto;
+            min-height: calc(100vh - var(--scene-nav-space));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: calc(var(--scene-nav-space) + 22px) 24px 220px;
           }
 
           .radioHeader {
-            top: 84px;
-          }
-
-          .radioHeader__title {
-            font-size: clamp(2.2rem, 6.8vw, 3.7rem);
-            white-space: normal;
-            max-width: 92vw;
-          }
-
-          .radioHeader__tag {
-            display: block;
-            font-size: clamp(0.72rem, 2vw, 0.95rem);
-            letter-spacing: 0.18em;
-            max-width: 88vw;
-            margin-inline: auto;
-          }
-
-          .trackHero {
-            width: calc(100vw - 32px);
-          }
-
-          .trackIndex {
-            left: 50%;
-            right: auto;
-            top: auto;
-            bottom: 158px;
-            width: min(620px, calc(100vw - 32px));
-            transform: translateX(-50%);
-            padding: 10px;
-          }
-
-          .trackIndex__label {
-            display: none;
-          }
-
-          .trackIndex__list {
-            flex-direction: row;
-            overflow-x: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 8px;
-            scrollbar-width: none;
-          }
-
-          .trackIndex__list::-webkit-scrollbar {
-            display: none;
-          }
-
-          .trackIndex__item {
-            min-width: 132px;
-          }
-
-          .trackIndex__archive {
-            margin-top: 8px;
-          }
-
-          .radioPlayer {
-            grid-template-columns: 1fr;
-            border-radius: 26px;
-            bottom: 16px;
-            width: calc(100vw - 24px);
-          }
-
-          .radioPlayer__controls {
-            justify-content: center;
-          }
-        }
-
-        @media (max-width: 760px) {
-          .posterFrame {
-            --core-width: min(50vw, 210px);
-            --core-height: calc(var(--core-width) * 1.25);
-            --image-top: 270px;
-          }
-
-          .radioHeader {
-            top: 144px;
+            margin-bottom: 18px;
+            text-align: center;
           }
 
           .radioHeader__title {
-            font-size: clamp(1.75rem, 8.1vw, 2.45rem);
+            margin: 0;
+            font-size: clamp(3.6rem, 6.1vw, 6.2rem);
             line-height: 0.9;
-            margin-bottom: 6px;
-            white-space: nowrap;
+            letter-spacing: 0.08em;
+            color: var(--pink);
+            text-shadow:
+              0 0 10px rgba(239, 128, 225, 0.95),
+              0 0 26px rgba(239, 128, 225, 0.45);
           }
 
           .radioHeader__tag {
-            display: block;
-            font-size: clamp(0.66rem, 2.35vw, 0.8rem);
-            line-height: 1.25;
-            letter-spacing: 0.1em;
-            max-width: 92vw;
+            margin: 0;
+            font-size: clamp(0.95rem, 1.4vw, 1.35rem);
+            line-height: 1.1;
+            letter-spacing: 0.26em;
+            color: var(--cyan);
+            text-shadow: 0 0 14px rgba(98, 217, 216, 0.15);
           }
 
           .orbCluster {
-            width: calc(var(--core-width) + 58px);
-            height: calc(var(--core-height) + 58px);
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
           }
 
-          .orbPhotoMask,
-          .orbInnerGlow {
-            border-radius: 22px;
+          .orbPhotoMask {
+            position: relative;
+            width: clamp(420px, 38vw, 520px);
+            aspect-ratio: 0.78 / 1;
+            border-radius: 34px;
+            overflow: hidden;
+            transform: translateY(-30px);
+            box-shadow:
+              0 0 0 1px rgba(224, 124, 228, 0.14),
+              0 0 34px rgba(195, 91, 236, 0.22),
+              0 0 90px rgba(90, 215, 214, 0.08);
           }
 
-          .trackHero {
-            top: calc(var(--image-top) + var(--core-height) + 24px);
+          .orbPhotoBackdrop {
+            position: absolute;
+            inset: 0;
+            background-position: center;
+            background-size: cover;
+            filter: blur(18px) saturate(0.9) brightness(0.72);
+            transform: scale(1.08);
+            opacity: 0.9;
           }
 
-          .trackHero__label {
-            font-size: clamp(1.02rem, 5.2vw, 1.32rem);
-            padding: 8px 22px 9px;
-            margin-bottom: 9px;
+          .orbPhotoMask::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            box-shadow:
+              inset 0 0 0 2px rgba(223, 131, 234, 0.12),
+              0 0 30px rgba(217, 115, 230, 0.36);
           }
 
-          .trackHero__guest {
-            font-size: clamp(0.78rem, 3.15vw, 0.92rem);
-            letter-spacing: 0.14em;
+          .orbPhoto {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            z-index: 2;
           }
 
-          .trackHero__genres {
-            margin-top: 7px;
-            font-size: clamp(0.62rem, 2.55vw, 0.74rem);
-            letter-spacing: 0.08em;
+          .orbWave {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            display: grid;
+            place-items: center;
+            background: rgba(8, 6, 23, 0.18);
+            backdrop-filter: blur(12px) saturate(1.1);
           }
 
-          .trackIndex {
-            display: none;
+          .orbWave__inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(10px, 1vw, 12px);
+            width: 52%;
+            height: 34%;
           }
 
-          .radioPlayer {
-            bottom: 12px;
-            gap: 10px;
-            padding: 16px 18px 16px;
-            border-radius: 28px;
+          .orbWave__bar {
+            width: clamp(10px, 0.8vw, 14px);
+            height: calc(100% * var(--wave-h));
+            border-radius: 999px;
+            background: linear-gradient(180deg, #66e0dd 0%, #ef82e6 100%);
+            box-shadow:
+              0 0 10px rgba(102, 224, 221, 0.25),
+              0 0 18px rgba(239, 130, 230, 0.28);
+            transform-origin: center center;
+            animation: wavePulse 1.5s ease-in-out infinite;
+            animation-delay: var(--wave-delay);
           }
 
-          .radioPlayer__bar {
-            grid-template-columns: 48px 1fr 58px;
-            gap: 10px;
-            font-size: 1rem;
+          @keyframes wavePulse {
+            0%,
+            100% {
+              transform: scaleY(0.72);
+              opacity: 0.84;
+            }
+            50% {
+              transform: scaleY(1.08);
+              opacity: 1;
+            }
           }
 
-          .radioPlayer__bar input[type='range'] {
-            height: 7px;
+          .trackMeta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -6px;
+            gap: 8px;
+            text-align: center;
           }
 
-          .radioPlayer__bar input[type='range']::-webkit-slider-thumb {
-            width: 28px;
-            height: 28px;
-          }
-
-          .radioPlayer__controls {
-            gap: 16px;
-          }
-
-          .radioPlayer__controls button:not(.radioPlayer__transmit) {
-            width: 56px;
-            height: 56px;
-          }
-
-          .radioPlayer__transmit {
-            min-width: 210px;
-            height: 56px;
-            padding: 0 20px;
-            font-size: 0.86rem;
-          }
-
-          .radioPlayer__archive {
+          .trackMeta__pill {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
-            height: 56px;
-            margin-top: 4px;
+            min-width: 320px;
+            min-height: 78px;
+            padding: 0 28px;
             border-radius: 999px;
-            border: 1px solid rgba(72, 157, 154, 0.46);
-            background: rgba(106, 55, 150, 0.24);
-            color: ${PINK};
+            color: var(--pink);
+            font-size: clamp(2rem, 2.8vw, 3rem);
+            line-height: 1;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            text-shadow:
+              0 0 10px rgba(239, 128, 225, 0.9),
+              0 0 26px rgba(239, 128, 225, 0.36);
+            background: linear-gradient(90deg, rgba(25, 18, 52, 0.78), rgba(9, 11, 25, 0.88));
+            box-shadow:
+              inset 0 0 0 2px rgba(96, 223, 222, 0.22),
+              0 0 24px rgba(86, 220, 219, 0.08);
+          }
+
+          .trackMeta__guest {
+            margin: 0;
+            color: var(--cyan);
+            font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-size: 0.86rem;
-            font-weight: 900;
-            text-shadow: 0 0 10px rgba(223, 121, 214, 0.56);
           }
 
-          .archiveDrawer__panel {
-            top: auto;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            width: auto;
-            max-height: 72vh;
+          .trackMeta__genres {
+            margin: 0;
+            color: var(--pink);
+            opacity: 0.95;
+            font-size: clamp(0.88rem, 1.1vw, 1.05rem);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+          }
+
+          .archivePanel {
+            position: fixed;
+            right: 26px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 6;
+            width: 245px;
+          }
+
+          .archivePanel__inner {
             border-radius: 28px;
-            transform: translateY(calc(100% + 32px));
+            padding: 18px 16px 16px;
+            background: rgba(8, 6, 24, 0.92);
+            border: 1px solid rgba(224, 122, 232, 0.16);
+            box-shadow:
+              inset 0 0 0 1px rgba(88, 221, 220, 0.08),
+              0 0 28px rgba(95, 229, 227, 0.07);
           }
 
-          .archiveDrawer.is-open .archiveDrawer__panel {
-            transform: translateY(0);
+          .archivePanel h2 {
+            margin: 0 0 14px;
+            color: var(--pink);
+            font-size: 1rem;
+            letter-spacing: 0.22em;
           }
 
-          .archiveDrawer__header h2 {
-            font-size: 1.18rem;
+          .archiveSearch {
+            position: relative;
+            margin-bottom: 14px;
           }
 
-          .archiveDrawer__item {
-            grid-template-columns: 34px 1fr auto;
-          }
-        }
-
-        @media (max-width: 430px) {
-          .posterFrame {
-            --core-width: min(54vw, 220px);
-            --image-top: 260px;
-          }
-
-          .radioHeader {
-            top: 142px;
+          .archiveSearch input {
+            width: 100%;
+            height: 48px;
+            border-radius: 999px;
+            border: 1px solid rgba(88, 221, 220, 0.18);
+            background: rgba(5, 5, 18, 0.95);
+            color: var(--pink);
+            padding: 0 44px 0 16px;
+            outline: none;
+            font-size: 0.84rem;
+            letter-spacing: 0.14em;
           }
 
-          .radioHeader__title {
-            font-size: clamp(1.8rem, 8.2vw, 2.12rem);
+          .archiveSearch__clear {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--cyan);
+            font-size: 1.2rem;
+            cursor: pointer;
           }
 
-          .radioHeader__tag {
-            font-size: clamp(0.6rem, 2.2vw, 0.72rem);
+          .archiveList {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 320px;
+            overflow: auto;
+            padding-right: 2px;
           }
 
-          .trackHero {
-            top: calc(var(--image-top) + var(--core-height) + 22px);
+          .archiveItem {
+            display: grid;
+            grid-template-columns: 32px 1fr auto;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            min-height: 46px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(3, 4, 16, 0.84);
+            color: var(--cyan);
+            padding: 0 12px;
+            cursor: pointer;
+            text-align: left;
           }
 
-          .trackHero__label {
-            font-size: 1.08rem;
+          .archiveItem.is-active {
+            color: var(--pink);
+            border-color: rgba(239, 128, 225, 0.52);
+            box-shadow: 0 0 18px rgba(239, 128, 225, 0.12);
           }
 
-          .trackHero__guest {
+          .archiveItem__num {
             font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
           }
 
-          .trackHero__genres {
-            font-size: 0.62rem;
+          .archiveItem__meta {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
           }
 
-          .radioPlayer {
-            padding: 15px 16px 15px;
-            gap: 9px;
+          .archiveItem__meta strong {
+            font-size: 0.84rem;
+            letter-spacing: 0.11em;
+            font-weight: 700;
           }
 
-          .radioPlayer__controls {
+          .archiveItem__meta em {
+            font-style: normal;
+            opacity: 0.9;
+            font-size: 0.67rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+          }
+
+          .archiveItem__cta {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            color: var(--pink);
+            font-weight: 700;
+          }
+
+          .controlDock {
+            position: fixed;
+            left: 50%;
+            bottom: 18px;
+            transform: translateX(-50%);
+            z-index: 8;
+            width: min(1120px, calc(100vw - 36px));
+            border-radius: 999px;
+            background: rgba(5, 6, 20, 0.95);
+            padding: 16px 18px;
+            box-shadow:
+              inset 0 0 0 1px rgba(90, 217, 216, 0.2),
+              0 0 24px rgba(81, 219, 218, 0.08);
+            display: grid;
+            grid-template-columns: minmax(240px, 1fr) auto auto;
+            align-items: center;
+            gap: 16px;
+          }
+
+          .timelineRow {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 16px;
+            color: var(--pink);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-size: 0.95rem;
+          }
+
+          .timelineRow input[type="range"] {
+            width: 100%;
+            appearance: none;
+            height: 8px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #9be3e3 0%, #ef80e1 100%);
+            outline: none;
+          }
+
+          .timelineRow input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--pink);
+            box-shadow: 0 0 16px rgba(239, 128, 225, 0.4);
+            cursor: pointer;
+          }
+
+          .timelineRow input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border: none;
+            border-radius: 50%;
+            background: var(--pink);
+            box-shadow: 0 0 16px rgba(239, 128, 225, 0.4);
+            cursor: pointer;
+          }
+
+          .transportRow {
+            display: flex;
+            align-items: center;
             gap: 12px;
           }
 
-          .radioPlayer__controls button:not(.radioPlayer__transmit) {
+          .transportIcon,
+          .playButton,
+          .archiveButton {
+            border: none;
+            color: var(--pink);
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+          }
+
+          .transportIcon {
             width: 52px;
             height: 52px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(7, 7, 21, 0.9);
+            box-shadow: inset 0 0 0 1px rgba(90, 217, 216, 0.16);
           }
 
-          .radioPlayer__transmit {
-            min-width: 186px;
-            height: 52px;
-            font-size: 0.78rem;
+          .transportIcon span {
+            font-size: 1rem;
+            line-height: 1;
+            display: inline-flex;
+            transform: translateX(1px);
           }
 
-          .radioPlayer__archive {
-            height: 52px;
-            margin-top: 2px;
-          }
-        }
-
-        @media (max-height: 720px) and (max-width: 760px) {
-          .posterFrame {
-            --core-width: min(48vw, 195px);
-            --image-top: 245px;
-          }
-
-          .radioHeader {
-            top: 138px;
+          .playButton {
+            min-width: 222px;
+            height: 56px;
+            padding: 0 30px;
+            border-radius: 999px;
+            background: rgba(6, 6, 22, 0.92);
+            box-shadow:
+              inset 0 0 0 1px rgba(90, 217, 216, 0.3),
+              0 0 14px rgba(239, 128, 225, 0.06);
+            font-size: 0.98rem;
+            letter-spacing: 0.16em;
+            font-weight: 700;
           }
 
-          .trackHero {
-            top: calc(var(--image-top) + var(--core-height) + 20px);
+          .archiveButton {
+            min-width: 220px;
+            height: 56px;
+            padding: 0 24px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(34, 22, 61, 0.98), rgba(20, 26, 55, 0.92));
+            box-shadow: inset 0 0 0 1px rgba(90, 217, 216, 0.24);
+            font-size: 0.92rem;
+            letter-spacing: 0.16em;
+            font-weight: 700;
           }
 
-          .radioPlayer {
-            padding: 14px 16px;
-            gap: 8px;
+          @media (max-width: 1180px) {
+            .archivePanel {
+              right: 18px;
+            }
+
+            .controlDock {
+              grid-template-columns: 1fr auto;
+              grid-template-areas:
+                "timeline timeline"
+                "transport archive";
+            }
+
+            .timelineRow {
+              grid-area: timeline;
+            }
+
+            .transportRow {
+              grid-area: transport;
+            }
+
+            .archiveButton {
+              grid-area: archive;
+              min-width: 190px;
+            }
           }
 
-          .radioPlayer__archive {
-            margin-top: 0;
+          @media (max-width: 900px) {
+            .scene-nav-mobile--tent-radio .scene-nav-mobile-inner {
+              padding-top: 24px !important;
+            }
+
+            .posterFrame {
+              padding: calc(var(--scene-nav-space) + 32px) 16px 238px;
+            }
+
+            .radioHeader {
+              gap: 8px;
+              margin-bottom: 12px;
+            }
+
+            .radioHeader__title {
+              font-size: clamp(2.35rem, 10vw, 3.45rem);
+              line-height: 0.95;
+            }
+
+            .radioHeader__tag {
+              font-size: 0.86rem;
+              letter-spacing: 0.14em;
+            }
+
+            .orbPhotoMask {
+              width: min(69vw, 330px);
+              aspect-ratio: 0.72 / 1;
+              transform: none;
+              border-radius: 28px;
+            }
+
+            .trackMeta {
+              margin-top: 12px;
+              gap: 6px;
+            }
+
+            .trackMeta__pill {
+              min-width: min(70vw, 308px);
+              min-height: 64px;
+              padding: 0 20px;
+              font-size: 1.28rem;
+            }
+
+            .trackMeta__guest {
+              font-size: 0.84rem;
+              letter-spacing: 0.16em;
+            }
+
+            .trackMeta__genres {
+              font-size: 0.72rem;
+              letter-spacing: 0.11em;
+            }
+
+            .archivePanel {
+              position: fixed;
+              inset: 0;
+              width: auto;
+              transform: none;
+              top: 0;
+              right: 0;
+              opacity: 0;
+              visibility: hidden;
+              pointer-events: none;
+              transition: opacity 0.25s ease;
+              background: rgba(4, 4, 12, 0.72);
+              backdrop-filter: blur(10px);
+              display: flex;
+              align-items: stretch;
+              justify-content: stretch;
+              padding-top: calc(var(--scene-nav-space) + 2px);
+            }
+
+            .archivePanel.is-open {
+              opacity: 1;
+              visibility: visible;
+              pointer-events: auto;
+            }
+
+            .archivePanel__inner {
+              width: 100%;
+              height: 100%;
+              border-radius: 0;
+              padding: 16px;
+              overflow: auto;
+            }
+
+            .archivePanel h2 {
+              font-size: 2rem;
+              margin-bottom: 14px;
+            }
+
+            .archiveSearch input {
+              height: 56px;
+              font-size: 0.9rem;
+            }
+
+            .archiveList {
+              max-height: none;
+              padding-bottom: 40px;
+            }
+
+            .archiveItem {
+              min-height: 56px;
+            }
+
+            .controlDock {
+              width: calc(100vw - 28px);
+              border-radius: 28px;
+              padding: 12px 12px 12px;
+              bottom: 14px;
+              display: flex;
+              flex-direction: column;
+              align-items: stretch;
+              gap: 10px;
+            }
+
+            .timelineRow {
+              gap: 10px;
+              font-size: 0.78rem;
+            }
+
+            .transportRow {
+              gap: 10px;
+              justify-content: center;
+            }
+
+            .transportIcon {
+              width: 48px;
+              height: 48px;
+            }
+
+            .playButton {
+              flex: 1;
+              min-width: 0;
+              height: 50px;
+              padding: 0 18px;
+              font-size: 0.82rem;
+              letter-spacing: 0.14em;
+            }
+
+            .archiveButton {
+              width: 100%;
+              min-width: 0;
+              height: 48px;
+              font-size: 0.82rem;
+              letter-spacing: 0.16em;
+            }
+
+            .orbWave__inner {
+              gap: 8px;
+              width: 58%;
+            }
+
+            .orbWave__bar {
+              width: 8px;
+            }
           }
-        }
-      `}</style>
+
+          @media (max-width: 520px) {
+            .posterFrame {
+              padding: calc(var(--scene-nav-space) + 26px) 14px 228px;
+            }
+
+            .radioHeader__title {
+              font-size: 2.15rem;
+            }
+
+            .radioHeader__tag {
+              font-size: 0.8rem;
+              letter-spacing: 0.12em;
+            }
+
+            .orbPhotoMask {
+              width: min(72vw, 320px);
+            }
+
+            .trackMeta__pill {
+              min-width: min(72vw, 300px);
+              min-height: 58px;
+              font-size: 1.1rem;
+            }
+
+            .trackMeta__guest {
+              font-size: 0.72rem;
+            }
+
+            .trackMeta__genres {
+              font-size: 0.62rem;
+            }
+
+            .timelineRow {
+              font-size: 0.72rem;
+            }
+
+            .transportIcon {
+              width: 44px;
+              height: 44px;
+            }
+
+            .playButton {
+              height: 46px;
+              font-size: 0.76rem;
+              letter-spacing: 0.12em;
+            }
+
+            .archiveButton {
+              height: 46px;
+              font-size: 0.76rem;
+            }
+          }
+        `}</style>
+      </main>
     </>
   );
 }
