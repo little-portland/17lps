@@ -1016,6 +1016,7 @@ export default function TentRadioPage() {
           inset: 0;
           background-size: contain;
           background-repeat: no-repeat;
+          background-position: center center;
           filter: contrast(1.06) brightness(0.88) saturate(0.94);
           transform: translateZ(0);
           transition:
@@ -1302,6 +1303,10 @@ export default function TentRadioPage() {
 
         .radioPlayer__controls button {
           height: 42px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          line-height: 1;
           border-radius: 999px;
           border: 1px solid rgba(72, 157, 154, 0.38);
           background: rgba(0, 0, 0, 0.58);
@@ -1856,54 +1861,66 @@ export default function TentRadioPage() {
           }
 
           .posterFrame {
-            --core-width: min(45vw, 202px);
+            --core-width: min(42vw, 182px);
             --image-radius: clamp(22px, 5vw, 34px);
+
+            display: block;
           }
 
           .radioHeader {
-            top: 106px;
+            top: calc(var(--scene-nav-space, 60px) + 14px);
+            width: 100%;
+            padding: 0 14px;
           }
 
           .radioHeader__title {
-            font-size: clamp(1.22rem, 6.5vw, 1.75rem);
+            font-size: clamp(1.32rem, 7.1vw, 1.88rem);
             line-height: 0.95;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
             letter-spacing: 0.055em;
             white-space: nowrap;
+            max-width: none;
           }
 
           .radioHeader__tag {
-            font-size: 0.46rem;
-            line-height: 1.2;
-            letter-spacing: 0.09em;
+            font-size: clamp(0.54rem, 2.35vw, 0.7rem);
+            line-height: 1.15;
+            letter-spacing: 0.1em;
+            max-width: none;
+            white-space: nowrap;
           }
 
           .orbCluster {
-            transform: translateY(-44px);
+            position: absolute;
+            left: 50%;
+            top: calc(var(--scene-nav-space, 60px) + 104px);
+            transform: translateX(-50%);
           }
 
           .trackHero {
-            top: calc(50% + (var(--core-height) / 2) + 18px);
-            transform: translateX(-50%) translateY(-44px);
-            width: calc(100vw - 32px);
+            top: calc(
+              var(--scene-nav-space, 60px) + 104px + var(--core-height) + 18px
+            );
+            transform: translateX(-50%);
+            width: calc(100vw - 28px);
           }
 
           .trackHero__label {
-            font-size: 0.82rem;
-            padding: 7px 14px 8px;
-            margin-bottom: 5px;
+            font-size: clamp(0.9rem, 4.2vw, 1.02rem);
+            padding: 8px 16px 9px;
+            margin-bottom: 6px;
             letter-spacing: 0.06em;
           }
 
           .trackHero__guest {
-            font-size: 0.58rem;
-            letter-spacing: 0.12em;
+            font-size: clamp(0.65rem, 2.7vw, 0.76rem);
+            letter-spacing: 0.13em;
           }
 
           .trackHero__genres {
-            font-size: 0.44rem;
-            letter-spacing: 0.07em;
-            margin-top: 4px;
+            font-size: clamp(0.52rem, 2.25vw, 0.64rem);
+            letter-spacing: 0.08em;
+            margin-top: 5px;
           }
 
           .trackIndex {
@@ -1919,9 +1936,9 @@ export default function TentRadioPage() {
           }
 
           .radioPlayer__bar {
-            grid-template-columns: 44px 1fr 50px;
+            grid-template-columns: 44px 1fr 52px;
             gap: 10px;
-            font-size: 0.78rem;
+            font-size: 0.82rem;
           }
 
           .radioPlayer__controls {
@@ -1936,7 +1953,7 @@ export default function TentRadioPage() {
           .radioPlayer__transmit {
             min-width: 168px;
             height: 40px;
-            font-size: 0.64rem;
+            font-size: 0.66rem;
             padding: 0 14px;
           }
 
@@ -1952,7 +1969,7 @@ export default function TentRadioPage() {
             color: ${PINK};
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            font-size: 0.68rem;
+            font-size: 0.72rem;
             font-weight: 900;
             text-shadow: 0 0 10px rgba(223, 121, 214, 0.56);
           }
@@ -1987,41 +2004,43 @@ export default function TentRadioPage() {
 
         @media (max-width: 430px) {
           .posterFrame {
-            --core-width: min(44vw, 190px);
+            --core-width: min(41vw, 174px);
           }
 
           .radioHeader {
-            top: 110px;
+            top: calc(var(--scene-nav-space, 60px) + 12px);
           }
 
           .radioHeader__title {
-            font-size: clamp(1.14rem, 6.2vw, 1.58rem);
+            font-size: clamp(1.24rem, 6.7vw, 1.7rem);
           }
 
           .radioHeader__tag {
-            font-size: 0.41rem;
+            font-size: clamp(0.48rem, 2.2vw, 0.58rem);
+            letter-spacing: 0.09em;
           }
 
           .orbCluster {
-            transform: translateY(-48px);
+            top: calc(var(--scene-nav-space, 60px) + 96px);
           }
 
           .trackHero {
-            top: calc(50% + (var(--core-height) / 2) + 16px);
-            transform: translateX(-50%) translateY(-48px);
+            top: calc(
+              var(--scene-nav-space, 60px) + 96px + var(--core-height) + 16px
+            );
           }
 
           .trackHero__label {
-            font-size: 0.78rem;
-            padding: 7px 13px 8px;
+            font-size: 0.86rem;
+            padding: 7px 14px 8px;
           }
 
           .trackHero__guest {
-            font-size: 0.54rem;
+            font-size: 0.62rem;
           }
 
           .trackHero__genres {
-            font-size: 0.4rem;
+            font-size: 0.49rem;
           }
 
           .radioPlayer {
@@ -2030,8 +2049,8 @@ export default function TentRadioPage() {
           }
 
           .radioPlayer__bar {
-            grid-template-columns: 42px 1fr 48px;
-            font-size: 0.76rem;
+            grid-template-columns: 42px 1fr 50px;
+            font-size: 0.8rem;
           }
 
           .radioPlayer__controls button:not(.radioPlayer__transmit) {
@@ -2046,10 +2065,51 @@ export default function TentRadioPage() {
 
           .radioPlayer__archive {
             height: 40px;
+            font-size: 0.68rem;
           }
 
           .archiveDrawer__list {
             padding-right: 20px;
+          }
+        }
+
+        @media (max-width: 390px) {
+          .posterFrame {
+            --core-width: min(39vw, 160px);
+          }
+
+          .radioHeader__title {
+            font-size: clamp(1.16rem, 6.25vw, 1.5rem);
+          }
+
+          .radioHeader__tag {
+            font-size: 0.45rem;
+          }
+
+          .orbCluster {
+            top: calc(var(--scene-nav-space, 60px) + 92px);
+          }
+
+          .trackHero {
+            top: calc(
+              var(--scene-nav-space, 60px) + 92px + var(--core-height) + 14px
+            );
+          }
+
+          .trackHero__label {
+            font-size: 0.78rem;
+          }
+
+          .trackHero__guest {
+            font-size: 0.58rem;
+          }
+
+          .trackHero__genres {
+            font-size: 0.45rem;
+          }
+
+          .radioPlayer {
+            padding: 14px 16px;
           }
         }
       `}</style>
