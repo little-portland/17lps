@@ -24,22 +24,22 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category disco-saturdays"><span className="day">Utopia</span> Presents</h1>        
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Utopia</span> Presents</h1> 
+        <h1 className="event-name desktop-only day-category disco-saturdays"><span className="day">Alegria</span> Presents</h1>        
+        <h1 className="event-name mobile-only cat"><span className="cat-day">Alegria</span> Presents</h1> 
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>SAT</span>18 Apr</h2>
+              <h2><span>SAT</span>23 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>GOOD BLOCK, LOA SZALA</h3>
-              <h3><span>STUDIO <b>//</b> </span>ALEX BRADLEY, Willie Graff</h3>
+              <h3><span>TENT <b>//</b> </span>Cassius Taylor, Dük</h3>
+              <h3><span>STUDIO <b>//</b> </span>Dobao, Kenia, Signo</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/x83ylt0M" target="_blank">
+            <a href="https://sevn.ly/xF6Z4ki1" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
@@ -75,7 +75,7 @@ const BookingOptions = () => {
 
          <div class="button-wrapper new-button-wrapper desktop-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-18&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-05-23&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Club Entry</p>
                 <p class="details"><span>8:30PM</span></p>
@@ -104,7 +104,7 @@ const BookingOptions = () => {
          
          <div class="button-wrapper new-button-wrapper mobile-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-18&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-05-23&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="details"><span>8:30PM</span></p>
                 <p class="btn-tagline">The Cosmic Experience</p>
@@ -134,7 +134,7 @@ const BookingOptions = () => {
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/x83ylt0M" target="_blank">
+            <a href="https://sevn.ly/xF6Z4ki1" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
