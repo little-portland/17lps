@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>JIMINY WATTS, Trixie</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, BOBBY., JACK, WAYNE HOLLAND</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, BOBBY., JACK MULQUEEN, WAYNE HOLLAND</h3>
             </div>
         </div>
 
