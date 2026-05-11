@@ -33,8 +33,8 @@ const BookingOptions = () => {
               <h2><span>THU</span>21 May</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>JOSH KEIT, LOA SZALA</h3>
-              <h3><span>STUDIO <b>//</b> </span>SATOSHI TOMIIE</h3>
+              <h3><span>TENT <b>//</b> </span>JOSH KEIT, LOA SZALA, NATE OLDFIELD</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, SATOSHI TOMIIE</h3>
             </div>
         </div>
 
