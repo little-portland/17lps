@@ -33,7 +33,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>FRANKY VALENTINE, ROBERTA CUTOLO</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS, PARAMIDA</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS Ibellini, PARAMIDA</h3>
             </div>
         </div>
 
