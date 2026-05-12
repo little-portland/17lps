@@ -33,7 +33,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>30 MAY</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>ALEX BRADLEY, FREDERIKA</h3>
+              <h3><span>TENT <b>//</b> </span>FREDERIKA, GIACOMO XL B2B SAM KARAM</h3>
               <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY & FRIENDS</h3>
             </div>
         </div>
