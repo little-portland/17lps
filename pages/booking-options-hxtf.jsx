@@ -33,14 +33,14 @@ const BookingOptions = () => {
               <h2><span>SAT</span>30 MAY</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>ANTONY SERBAN, FREDERIKA</h3>
-              <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY, JIVE TALK</h3>
+              <h3><span>TENT <b>//</b> </span>ALEX BRADLEY, FREDERIKA</h3>
+              <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY & FRIENDS</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="" target="_blank">
+            <a href="https://sevn.ly/xAFLRWIs" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
@@ -134,7 +134,7 @@ const BookingOptions = () => {
 
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="" target="_blank">
+            <a href="https://sevn.ly/xAFLRWIs" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
