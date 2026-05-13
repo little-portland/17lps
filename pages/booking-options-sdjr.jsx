@@ -20,7 +20,7 @@ const BookingOptions = () => {
   return (
     <>
       <Head>
-        <title>Bookings</title>
+        <title>Bookings</title> 
       </Head>
 
       <div id="bookingOptions">
