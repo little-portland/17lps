@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Oli Bedia, Semoa</h3>
-              <h3><span>STUDIO <b>//</b> </span>Giles Smith</h3>
+              <h3><span>STUDIO <b>//</b> </span>Giles Smith, Max Sinàl</h3>
             </div>
         </div>
 
