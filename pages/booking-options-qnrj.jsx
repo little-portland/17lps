@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>LADY JANE BEACH</h3>
-              <h3><span>STUDIO <b>//</b> </span>Rechulski</h3>
+              <h3><span>STUDIO <b>//</b> </span>HARRI PEPPER, Rechulski</h3>
             </div>
         </div>
 
