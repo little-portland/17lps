@@ -1,269 +1,538 @@
-import React, { useEffect, useMemo, useState } from "react";
-import Head from "next/head";
+'use client';
 
-const SPACE_LINKS = [
-  { label: "The Tent", href: "/thetent" },
-  { label: "Chef’s Studio", href: "/chefstudio" },
-  { label: "The Studio", href: "/studio" },
+import Head from 'next/head';
+import { useEffect, useState, type MouseEvent } from 'react';
+import SceneNav from '@components/SceneNav';
+
+const C = {
+  cream: '#E8E2D4',
+  ink: '#1C1C1A',
+  pink: '#D4507A',
+  muted: '#7A7870',
+} as const;
+
+const MONO = '"Space Mono", "Courier New", monospace';
+const SANS = '"Space Grotesk", "Helvetica Neue", Arial, sans-serif';
+
+type AreaId = 'tent' | 'chefs-studio' | 'studio';
+
+type AreaConfig = {
+  id: AreaId;
+  title: string;
+  href: string;
+  highlight: string;
+};
+
+const CONCEPT_ASSETS = {
+  funnel: '/images/concept/grid_funel.png',
+  floor: '/images/concept/noise_floor.png',
+  obelisk: '/images/concept/obelisk-dark-grey.png',
+};
+
+const SPACE_ASSETS = {
+  venue: '/images/the-space/the-space-page-venue.png',
+};
+
+const AREAS: AreaConfig[] = [
+  {
+    id: 'tent',
+    title: 'THE TENT',
+    href: '/thetent',
+    highlight: '/images/the-space/tent-highlight.png',
+  },
+  {
+    id: 'chefs-studio',
+    title: "CHEF'S STUDIO",
+    href: '/chefstudio',
+    highlight: '/images/the-space/chefs-studio-highlight.png',
+  },
+  {
+    id: 'studio',
+    title: 'THE STUDIO',
+    href: '/studio',
+    highlight: '/images/the-space/studio-highlight.png',
+  },
 ];
 
-const EXPERIENCE_LINKS = [
-  { label: "After Dark", href: "/after-dark" },
-  { label: "Dining", href: "/dining" },
+const EXPERIENCE_BTNS = [
+  { label: 'After Dark', href: '/after-dark', dark: true },
+  { label: 'Dining', href: '/dining', dark: false },
 ];
 
-function Wormhole({ className = "" }: { className?: string }) {
-  const verticals = useMemo(() => Array.from({ length: 17 }), []);
-  const rings = useMemo(() => Array.from({ length: 14 }), []);
-
+function Grain() {
   return (
-    <div className={`wormhole ${className}`} aria-hidden="true">
-      <svg viewBox="0 0 420 300" role="img">
-        <defs>
-          <linearGradient id="wormLine" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#f2469a" />
-            <stop offset="1" stopColor="#e94f93" />
-          </linearGradient>
-        </defs>
-
-        {rings.map((_, i) => {
-          const t = i / (rings.length - 1);
-          const cx = 210;
-          const cy = 242 - t * 196;
-          const rx = 172 - t * 108;
-          const ry = 34 - t * 18;
-          return (
-            <ellipse
-              key={`ring-${i}`}
-              cx={cx}
-              cy={cy}
-              rx={rx}
-              ry={ry}
-              fill="none"
-              stroke="url(#wormLine)"
-              strokeWidth="2.2"
-              opacity={0.72 - t * 0.1}
-            />
-          );
-        })}
-
-        {verticals.map((_, i) => {
-          const t = i / (verticals.length - 1);
-          const xTop = 154 + t * 112;
-          const xBottom = 38 + t * 344;
-          return (
-            <path
-              key={`strand-${i}`}
-              d={`M ${xTop} 50 C ${xTop + (t - 0.5) * 78} 116, ${xBottom + (0.5 - t) * 34} 188, ${xBottom} 242`}
-              fill="none"
-              stroke="url(#wormLine)"
-              strokeWidth="2.2"
-              opacity="0.74"
-            />
-          );
-        })}
-      </svg>
-    </div>
+    <svg
+      aria-hidden="true"
+      className="grain-layer"
+      preserveAspectRatio="none"
+      viewBox="0 0 100 100"
+    >
+      <filter id="concept-grain" x="0%" y="0%" width="100%" height="100%">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.72"
+          numOctaves="4"
+          stitchTiles="stitch"
+        />
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+      <rect width="100" height="100" filter="url(#concept-grain)" />
+    </svg>
   );
 }
 
-function Obelisk() {
-  return (
-    <div className="obelisk" aria-hidden="true">
-      <span className="obeliskFace obeliskFaceA" />
-      <span className="obeliskFace obeliskFaceB" />
-      <span className="obeliskFace obeliskFaceC" />
-    </div>
-  );
-}
-
-function Axis() {
-  return (
-    <div className="axis" aria-hidden="true">
-      <span className="axisVertical" />
-      <span className="axisFloor" />
-      <span className="axisFloor axisFloorB" />
-    </div>
-  );
-}
-
-export default function RhadooConceptPage() {
-  const [loaded, setLoaded] = useState(false);
+export default function ConceptPage() {
+  const [activeArea, setActiveArea] = useState<AreaId | null>(null);
+  const [isTouchMode, setIsTouchMode] = useState(false);
 
   useEffect(() => {
-    const previousBg = document.body.style.background;
-    const previousColor = document.body.style.color;
+    const mediaQuery = window.matchMedia(
+      '(hover: none), (pointer: coarse), (max-width: 900px)'
+    );
 
-    document.body.style.background = "#e5e1d6";
-    document.body.style.color = "#35363d";
-    setLoaded(true);
+    const updateMode = () => {
+      setIsTouchMode(mediaQuery.matches || window.innerWidth <= 900);
+    };
+
+    updateMode();
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', updateMode);
+    } else {
+      mediaQuery.addListener(updateMode);
+    }
+
+    window.addEventListener('resize', updateMode);
 
     return () => {
-      document.body.style.background = previousBg;
-      document.body.style.color = previousColor;
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', updateMode);
+      } else {
+        mediaQuery.removeListener(updateMode);
+      }
+
+      window.removeEventListener('resize', updateMode);
     };
   }, []);
+
+  const handleCardClick =
+    (areaId: AreaId) => (event: MouseEvent<HTMLAnchorElement>) => {
+      if (isTouchMode && activeArea !== areaId) {
+        event.preventDefault();
+        setActiveArea(areaId);
+      }
+    };
+
+  const handleCardEnter = (areaId: AreaId) => {
+    if (!isTouchMode) {
+      setActiveArea(areaId);
+    }
+  };
+
+  const handleControlsLeave = () => {
+    if (!isTouchMode) {
+      setActiveArea(null);
+    }
+  };
 
   return (
     <>
       <Head>
-        <title>Concept — Little Portland</title>
+        <title>Concept — 17 Little Portland Street</title>
         <meta
           name="description"
           content="Concept, space and experience at 17 Little Portland Street, London."
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Space+Mono:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
-      <main className={`posterPage ${loaded ? "isLoaded" : ""}`}>
-        <div className="paperTexture" aria-hidden="true" />
-        <div className="posterGrain" aria-hidden="true" />
-        <Axis />
-        <Wormhole className="wormholeTop" />
-        <Wormhole className="wormholeFloor" />
-        <Obelisk />
+      <main className="page page--with-scene-nav">
+        <SceneNav theme="space" />
+        <Grain />
 
-        <section className="heroBlock" aria-labelledby="concept-title">
-          <p className="microLabel">LPX//UNDERGROUND ISSUE 51</p>
+        <div className="paper-field" aria-hidden="true" />
 
-          <div className="conceptIntro revealBlock">
-            <h1 id="concept-title">Concept</h1>
-            <p>17 Little Portland Street, London</p>
-          </div>
+        <div className="shell">
+          <div className="axis-v" aria-hidden="true" />
 
-          <div className="spaceBlock revealBlock revealDelayA" aria-labelledby="space-title">
-            <h2 id="space-title">The Space</h2>
+          <img
+            className="concept-asset asset-funnel asset-funnel-top"
+            src={CONCEPT_ASSETS.funnel}
+            alt=""
+            draggable={false}
+          />
+          <img
+            className="concept-asset asset-funnel asset-funnel-echo"
+            src={CONCEPT_ASSETS.funnel}
+            alt=""
+            draggable={false}
+          />
+          <img
+            className="concept-asset asset-floor"
+            src={CONCEPT_ASSETS.floor}
+            alt=""
+            draggable={false}
+          />
+          <img
+            className="concept-asset asset-obelisk"
+            src={CONCEPT_ASSETS.obelisk}
+            alt=""
+            draggable={false}
+          />
 
-            <div className="spaceScene">
-              <div className="floatingTentWrap" aria-hidden="true">
-                <img
-                  className="floatingTent"
-                  src="/images/the-space/the-space-page-venue.png"
-                  alt=""
-                />
+          <section className="rail-section hero-section" aria-labelledby="concept-title">
+            <div className="rail-title">
+              <p className="eyebrow">LPX // Underground</p>
+              <h1 id="concept-title">
+                Concept<span className="pink-dot">.</span>
+              </h1>
+            </div>
+
+            <div className="rail-content hero-content">
+              <div className="address-card">
+                <span className="address-kicker">Location</span>
+                <p>17 Little Portland Street, London</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="rail-section space-section" aria-labelledby="space-title">
+            <div className="rail-title">
+              <h2 id="space-title">The Space</h2>
+            </div>
+
+            <div className="rail-content">
+              <div className="concept-space-map" aria-label="Interactive venue map">
+                <div className="venue-wrap" aria-hidden="true">
+                  <img
+                    src={SPACE_ASSETS.venue}
+                    alt="Venue layout showing The Tent, Chef's Studio and The Studio"
+                    className="venue-image venue-base"
+                    draggable={false}
+                  />
+
+                  {AREAS.map((area) => {
+                    const isActive = activeArea === area.id;
+
+                    return (
+                      <div key={area.id}>
+                        <img
+                          src={area.highlight}
+                          alt=""
+                          className={`venue-image venue-highlight-glow ${
+                            isActive ? 'is-active' : ''
+                          }`}
+                          draggable={false}
+                        />
+                        <img
+                          src={area.highlight}
+                          alt=""
+                          className={`venue-image venue-highlight ${
+                            isActive ? 'is-active' : ''
+                          }`}
+                          draggable={false}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
-              <nav className="spaceNav" aria-label="Explore the space">
-                {SPACE_LINKS.map((item) => (
-                  <a key={item.href} href={item.href}>
-                    {item.label}
+              <nav
+                className="zone-controls"
+                aria-label="Venue areas"
+                onMouseLeave={handleControlsLeave}
+              >
+                {AREAS.map((area) => {
+                  const isActive = activeArea === area.id;
+                  const helperText = isTouchMode
+                    ? isActive
+                      ? 'Tap to explore →'
+                      : 'Tap to preview'
+                    : 'Explore →';
+
+                  return (
+                    <a
+                      key={area.id}
+                      href={area.href}
+                      className={`zone-card ${isActive ? 'is-active' : ''}`}
+                      onMouseEnter={() => handleCardEnter(area.id)}
+                      onFocus={() => setActiveArea(area.id)}
+                      onClick={handleCardClick(area.id)}
+                      aria-label={`${area.title} ${helperText}`}
+                    >
+                      <span className="zone-card-title">{area.title}</span>
+                      <span className="zone-card-meta">{helperText}</span>
+                    </a>
+                  );
+                })}
+              </nav>
+            </div>
+          </section>
+
+          <section className="rail-section experience-section" aria-labelledby="experience-title">
+            <div className="rail-title">
+              <h2 id="experience-title">The Experience</h2>
+            </div>
+
+            <div className="rail-content experience-content">
+              <div className="experience-copy">
+                <span className="address-kicker">Programme</span>
+                <p>Move from dinner into late-night Little Portland energy.</p>
+              </div>
+
+              <nav className="experience-nav" aria-label="Explore the experience">
+                {EXPERIENCE_BTNS.map((button) => (
+                  <a
+                    key={button.href}
+                    href={button.href}
+                    className={`concept-btn ${button.dark ? 'is-dark' : ''}`}
+                  >
+                    {button.label}
                   </a>
                 ))}
               </nav>
             </div>
-          </div>
+          </section>
 
-          <div className="experienceBlock revealBlock revealDelayB" aria-labelledby="experience-title">
-            <h2 id="experience-title">The Experience</h2>
-
-            <nav className="experienceNav" aria-label="Explore the experience">
-              {EXPERIENCE_LINKS.map((item) => (
-                <a key={item.href} href={item.href}>
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </section>
+          <footer className="foot">
+            <span>17 Little Portland Street</span>
+            <span>LPX // Underground</span>
+          </footer>
+        </div>
       </main>
 
-      <style jsx>{`
-        @font-face {
-          font-family: "RhadooMono";
-          src: local("Courier New");
-          font-weight: 700;
-          font-style: normal;
-          font-display: swap;
-        }
-
-        :global(html),
-        :global(body) {
+      <style jsx global>{`
+        html,
+        body,
+        #__next {
           margin: 0;
           min-height: 100%;
-          background: #e5e1d6;
+          background: ${C.cream};
+          color: ${C.ink};
+          -webkit-font-smoothing: antialiased;
+          text-rendering: geometricPrecision;
         }
 
-        :global(*) {
+        body {
+          overflow-x: hidden;
+        }
+
+        * {
           box-sizing: border-box;
         }
 
-        .posterPage {
-          --paper: #e5e1d6;
-          --paperWarm: #d8d2c4;
-          --ink: #34353d;
-          --inkSoft: rgba(52, 53, 61, 0.72);
-          --pink: #ee4f98;
-          --line: rgba(52, 53, 61, 0.32);
+        .scene-nav {
+          z-index: 10020 !important;
+        }
+
+        .scene-nav-burger,
+        .scene-nav-logo {
+          position: relative;
+          z-index: 10030 !important;
+        }
+
+        .scene-nav-mobile {
+          z-index: 10010 !important;
+        }
+
+        .scene-nav--space {
+          background: transparent !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        .scene-nav--space,
+        .scene-nav--space a,
+        .scene-nav-mobile--space,
+        .scene-nav-mobile--space a {
+          color: ${C.ink} !important;
+          font-family: ${MONO} !important;
+          letter-spacing: 0.16em !important;
+        }
+
+        .scene-nav--space a.active,
+        .scene-nav-mobile--space a.active {
+          color: ${C.pink} !important;
+        }
+
+        .scene-nav--space a.disabled,
+        .scene-nav-mobile--space a.disabled {
+          color: ${C.ink} !important;
+          opacity: 0.4;
+        }
+
+        .scene-nav--space .scene-nav-burger span {
+          background: ${C.ink} !important;
+        }
+
+        .scene-nav--space .scene-nav-logo img {
+          filter: brightness(0) saturate(100%) invert(8%) sepia(5%) saturate(851%)
+            hue-rotate(21deg) brightness(99%) contrast(91%);
+        }
+
+        .scene-nav-mobile.scene-nav--space,
+        .scene-nav-mobile--space {
+          background: rgba(232, 226, 212, 0.92) !important;
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+        }
+
+        @media (max-width: 900px) {
+          .scene-nav-mobile.scene-nav--space .scene-nav-mobile-inner,
+          .scene-nav-mobile--space .scene-nav-mobile-inner {
+            padding-top: 96px;
+          }
+        }
+      `}</style>
+
+      <style jsx>{`
+        .page {
           position: relative;
           min-height: 100svh;
           overflow: hidden;
-          isolation: isolate;
-          color: var(--ink);
           background:
-            radial-gradient(circle at 72% 38%, rgba(238, 79, 152, 0.07), transparent 28rem),
-            linear-gradient(180deg, rgba(255, 252, 238, 0.42), rgba(196, 204, 195, 0.28) 82%, rgba(229, 225, 214, 0.95)),
-            var(--paper);
-          font-family: "RhadooMono", "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          letter-spacing: -0.045em;
+            radial-gradient(circle at 72% 17%, rgba(212, 80, 122, 0.08), transparent 24rem),
+            radial-gradient(circle at 31% 76%, rgba(28, 28, 26, 0.08), transparent 28rem),
+            linear-gradient(180deg, rgba(255, 250, 236, 0.32), rgba(213, 207, 191, 0.22)),
+            ${C.cream};
         }
 
-        .paperTexture {
-          position: absolute;
+        .paper-field {
+          position: fixed;
           inset: 0;
-          z-index: -5;
-          background:
-            radial-gradient(circle at 12% 16%, rgba(76, 113, 125, 0.08) 0 1px, transparent 1px 7px),
-            radial-gradient(circle at 74% 64%, rgba(238, 79, 152, 0.08) 0 1px, transparent 1px 8px),
-            radial-gradient(circle at 35% 74%, rgba(43, 45, 55, 0.08) 0 1px, transparent 1px 6px),
-            repeating-linear-gradient(98deg, rgba(60, 72, 74, 0.035) 0 1px, transparent 1px 4px);
-          opacity: 0.88;
-          mix-blend-mode: multiply;
-        }
-
-        .posterGrain {
-          position: absolute;
-          inset: -50%;
-          z-index: 20;
+          z-index: 0;
           pointer-events: none;
-          opacity: 0.21;
+          background:
+            radial-gradient(circle at 12% 16%, rgba(38, 89, 92, 0.08) 0 1px, transparent 1px 7px),
+            radial-gradient(circle at 74% 64%, rgba(212, 80, 122, 0.08) 0 1px, transparent 1px 8px),
+            radial-gradient(circle at 35% 74%, rgba(28, 28, 26, 0.08) 0 1px, transparent 1px 6px),
+            repeating-linear-gradient(98deg, rgba(60, 72, 74, 0.035) 0 1px, transparent 1px 4px);
+          opacity: 0.78;
           mix-blend-mode: multiply;
-          background-image:
-            radial-gradient(circle at 18% 22%, rgba(0, 0, 0, 0.44) 0 0.55px, transparent 0.75px),
-            radial-gradient(circle at 82% 72%, rgba(238, 79, 152, 0.34) 0 0.55px, transparent 0.75px),
-            radial-gradient(circle at 45% 58%, rgba(38, 105, 110, 0.28) 0 0.55px, transparent 0.75px);
-          background-size: 3px 3px, 4px 4px, 5px 5px;
-          animation: grainDrift 9s steps(8) infinite;
         }
 
-        .heroBlock {
+        .grain-layer {
+          position: fixed;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 70;
+          pointer-events: none;
+          opacity: 0.22;
+          mix-blend-mode: multiply;
+        }
+
+        .shell {
           position: relative;
-          z-index: 5;
-          width: min(100%, 1120px);
+          z-index: 2;
+          width: 75%;
+          max-width: 1120px;
           min-height: 100svh;
           margin: 0 auto;
-          padding: clamp(34px, 6vw, 78px) clamp(20px, 5vw, 74px) clamp(44px, 7vw, 86px);
-          display: grid;
-          grid-template-rows: auto 1fr auto;
-          gap: clamp(44px, 7vw, 90px);
+          padding: clamp(96px, 10vw, 128px) 0 48px;
         }
 
-        .microLabel {
+        .axis-v {
           position: absolute;
-          right: clamp(20px, 4.5vw, 64px);
-          bottom: clamp(16px, 3vw, 34px);
-          margin: 0;
-          max-width: 20rem;
-          color: rgba(38, 39, 46, 0.78);
-          font-size: clamp(11px, 1.2vw, 16px);
-          line-height: 0.98;
-          text-align: right;
-          text-transform: uppercase;
-          letter-spacing: -0.08em;
+          top: 30px;
+          bottom: 30px;
+          left: 25%;
+          z-index: 1;
+          width: 1px;
+          background: linear-gradient(
+            180deg,
+            rgba(28, 28, 26, 0),
+            rgba(28, 28, 26, 0.48) 8%,
+            rgba(28, 28, 26, 0.34) 92%,
+            rgba(28, 28, 26, 0)
+          );
+          pointer-events: none;
         }
 
-        .conceptIntro {
-          align-self: start;
-          max-width: 760px;
-          padding-top: clamp(12px, 4vw, 26px);
+        .concept-asset {
+          position: absolute;
+          z-index: 0;
+          pointer-events: none;
+          user-select: none;
+          mix-blend-mode: multiply;
+        }
+
+        .asset-funnel {
+          width: clamp(110px, 12vw, 174px);
+          opacity: 0.72;
+          filter: saturate(0.88) contrast(0.96);
+        }
+
+        .asset-funnel-top {
+          top: 82px;
+          right: 6%;
+          animation: assetFloatA 7.5s ease-in-out infinite;
+        }
+
+        .asset-funnel-echo {
+          top: 54%;
+          left: 1.5%;
+          width: clamp(92px, 11vw, 142px);
+          opacity: 0.28;
+          transform: rotate(-22deg) scaleY(0.68);
+          transform-origin: center center;
+          animation: assetFloatB 9s ease-in-out infinite;
+        }
+
+        .asset-floor {
+          top: 61%;
+          left: 31%;
+          width: clamp(190px, 30vw, 390px);
+          opacity: 0.36;
+          filter: contrast(0.9) saturate(0.7);
+          animation: floorDrift 10s ease-in-out infinite;
+        }
+
+        .asset-obelisk {
+          top: 58%;
+          right: 8%;
+          width: clamp(56px, 6vw, 86px);
+          opacity: 0.58;
+          filter: contrast(0.96) drop-shadow(16px 26px 24px rgba(28, 28, 26, 0.16));
+          animation: obeliskHover 8s ease-in-out infinite;
+        }
+
+        .rail-section {
+          position: relative;
+          z-index: 3;
+          display: grid;
+          grid-template-columns: 25% minmax(0, 75%);
+          align-items: start;
+        }
+
+        .hero-section {
+          min-height: clamp(460px, 76svh, 760px);
+          align-items: center;
+        }
+
+        .space-section,
+        .experience-section {
+          padding: clamp(88px, 10vw, 140px) 0;
+        }
+
+        .rail-title {
+          position: relative;
+          z-index: 4;
+          padding-right: clamp(18px, 3vw, 42px);
+        }
+
+        .rail-content {
+          position: relative;
+          z-index: 4;
+          padding-left: clamp(34px, 5vw, 68px);
         }
 
         h1,
@@ -272,527 +541,549 @@ export default function RhadooConceptPage() {
           margin: 0;
         }
 
+        .eyebrow,
+        .address-kicker,
+        .foot,
+        .zone-card-meta,
+        .concept-btn {
+          font-family: ${MONO};
+        }
+
+        .eyebrow {
+          display: block;
+          margin-bottom: 22px;
+          color: ${C.muted};
+          font-size: 10px;
+          line-height: 1.2;
+          letter-spacing: 0.24em;
+          text-transform: uppercase;
+        }
+
         h1,
         h2 {
-          color: var(--ink);
+          font-family: ${SANS};
+          color: ${C.ink};
           text-transform: uppercase;
           font-weight: 900;
-          line-height: 0.82;
-          letter-spacing: -0.095em;
+          line-height: 0.9;
+          letter-spacing: -0.045em;
           text-wrap: balance;
         }
 
         h1 {
-          font-size: clamp(58px, 12vw, 152px);
+          font-size: clamp(44px, 5.2vw, 80px);
         }
 
         h2 {
-          font-size: clamp(42px, 8vw, 102px);
+          font-size: clamp(36px, 4.4vw, 66px);
         }
 
-        .conceptIntro p {
-          margin-top: clamp(10px, 1.8vw, 18px);
-          color: rgba(38, 39, 46, 0.83);
-          font-size: clamp(15px, 1.8vw, 24px);
-          line-height: 0.95;
-          text-transform: uppercase;
-          letter-spacing: -0.075em;
+        .pink-dot {
+          color: ${C.pink};
         }
 
-        .spaceBlock {
-          align-self: center;
-          display: grid;
-          gap: clamp(24px, 4vw, 46px);
+        .address-card,
+        .experience-copy {
+          width: min(100%, 610px);
+          border-top: 1px solid rgba(28, 28, 26, 0.22);
+          border-bottom: 1px solid rgba(28, 28, 26, 0.12);
+          padding: 24px 0 26px;
         }
 
-        .spaceScene {
-          position: relative;
-          min-height: clamp(330px, 48vw, 520px);
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
-          align-items: end;
-          gap: clamp(26px, 5vw, 72px);
-        }
-
-        .floatingTentWrap {
-          position: relative;
-          min-height: clamp(260px, 37vw, 440px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .floatingTentWrap::before {
-          content: "";
-          position: absolute;
-          width: 72%;
-          height: 18%;
-          left: 14%;
-          bottom: 7%;
-          border-radius: 50%;
-          background: radial-gradient(ellipse at center, rgba(52, 53, 61, 0.19), transparent 70%);
-          filter: blur(8px);
-          transform: rotate(-5deg);
-          opacity: 0.46;
-        }
-
-        .floatingTent {
-          position: relative;
+        .address-kicker {
           display: block;
-          width: min(100%, 600px);
-          max-height: 440px;
-          object-fit: contain;
-          filter: contrast(1.05) saturate(0.78) drop-shadow(16px 26px 28px rgba(47, 47, 54, 0.22));
-          animation: floatTent 6.5s ease-in-out infinite;
+          margin-bottom: 12px;
+          color: ${C.muted};
+          font-size: 10px;
+          letter-spacing: 0.28em;
+          text-transform: uppercase;
         }
 
-        .spaceNav,
-        .experienceNav {
-          display: flex;
-          gap: 12px;
-          flex-wrap: wrap;
-          align-items: center;
+        .address-card p,
+        .experience-copy p {
+          font-family: ${MONO};
+          color: rgba(28, 28, 26, 0.72);
+          font-size: clamp(12px, 1.25vw, 16px);
+          line-height: 1.55;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
         }
 
-        .spaceNav {
-          align-self: center;
-          justify-content: flex-end;
-          flex-direction: column;
-        }
-
-        .spaceNav a,
-        .experienceNav a {
+        .concept-space-map {
           position: relative;
-          display: inline-flex;
+          width: 100%;
+          min-height: clamp(300px, 38vw, 520px);
+          margin-top: -24px;
+          display: flex;
           align-items: center;
           justify-content: center;
-          min-height: 44px;
-          padding: 12px 18px 10px;
-          color: var(--ink);
-          text-decoration: none;
-          text-transform: uppercase;
-          font-size: clamp(13px, 1.22vw, 17px);
-          line-height: 1;
-          letter-spacing: -0.07em;
-          background: rgba(229, 225, 214, 0.56);
-          border: 1px solid rgba(52, 53, 61, 0.5);
-          box-shadow: 4px 4px 0 rgba(52, 53, 61, 0.13);
-          backdrop-filter: blur(5px);
-          transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, color 220ms ease,
-            box-shadow 220ms ease;
         }
 
-        .spaceNav a::after,
-        .experienceNav a::after {
-          content: "";
+        .concept-space-map::before {
+          content: '';
+          position: absolute;
+          left: 7%;
+          right: 7%;
+          bottom: 14%;
+          height: 18%;
+          border-radius: 50%;
+          background: radial-gradient(ellipse at center, rgba(28, 28, 26, 0.16), transparent 72%);
+          filter: blur(10px);
+          opacity: 0.56;
+          transform: rotate(-4deg);
+        }
+
+        .venue-wrap {
+          position: relative;
+          width: min(100%, 760px);
+          aspect-ratio: 2048 / 1140;
+          animation: venueFloat 4.8s ease-in-out infinite;
+        }
+
+        .venue-image {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          pointer-events: none;
+          user-select: none;
+        }
+
+        .venue-base {
+          z-index: 2;
+          filter:
+            saturate(0.78)
+            contrast(1.02)
+            drop-shadow(0 18px 28px rgba(28, 28, 26, 0.12))
+            drop-shadow(0 36px 60px rgba(28, 28, 26, 0.1));
+        }
+
+        .venue-highlight-glow,
+        .venue-highlight {
+          opacity: 0;
+          transition:
+            opacity 0.28s ease,
+            filter 0.28s ease,
+            transform 0.28s ease;
+        }
+
+        .venue-highlight-glow {
+          z-index: 3;
+          filter:
+            blur(14px)
+            saturate(1.1)
+            drop-shadow(0 0 20px rgba(212, 80, 122, 0.25));
+          mix-blend-mode: multiply;
+        }
+
+        .venue-highlight {
+          z-index: 4;
+          mix-blend-mode: multiply;
+          filter:
+            saturate(1.08)
+            contrast(1.08)
+            drop-shadow(0 0 12px rgba(212, 80, 122, 0.18));
+        }
+
+        .venue-highlight-glow.is-active {
+          opacity: 0.46;
+          animation: highlightPulse 2.8s ease-in-out infinite;
+        }
+
+        .venue-highlight.is-active {
+          opacity: 0.78;
+          animation: highlightPulse 2.8s ease-in-out infinite;
+        }
+
+        .zone-controls {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 12px;
+          margin-top: 22px;
+        }
+
+        .zone-card {
+          position: relative;
+          min-height: 76px;
+          padding: 15px 16px 13px;
+          border: 1px solid rgba(28, 28, 26, 0.42);
+          background: rgba(232, 226, 212, 0.4);
+          color: ${C.ink};
+          text-decoration: none;
+          box-shadow: 5px 5px 0 rgba(28, 28, 26, 0.08);
+          transition:
+            transform 0.22s ease,
+            border-color 0.22s ease,
+            background 0.22s ease,
+            box-shadow 0.22s ease;
+        }
+
+        .zone-card::before {
+          content: '';
           position: absolute;
           left: 12px;
           right: 12px;
-          bottom: 7px;
+          bottom: 9px;
           height: 1px;
-          background: var(--pink);
+          background: ${C.pink};
           opacity: 0;
-          transform: scaleX(0.3);
+          transform: scaleX(0.28);
           transform-origin: left center;
-          transition: opacity 220ms ease, transform 220ms ease;
+          transition: opacity 0.22s ease, transform 0.22s ease;
         }
 
-        .spaceNav a:hover,
-        .experienceNav a:hover,
-        .spaceNav a:focus-visible,
-        .experienceNav a:focus-visible {
-          color: #17181d;
-          background: rgba(238, 79, 152, 0.12);
-          border-color: rgba(238, 79, 152, 0.76);
-          box-shadow: 7px 7px 0 rgba(238, 79, 152, 0.16);
+        .zone-card-title {
+          display: block;
+          font-family: ${SANS};
+          font-size: clamp(13px, 1.25vw, 18px);
+          font-weight: 900;
+          line-height: 1.02;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+        }
+
+        .zone-card-meta {
+          display: block;
+          margin-top: 7px;
+          color: rgba(28, 28, 26, 0.58);
+          font-size: 10px;
+          letter-spacing: 0.16em;
+          line-height: 1.15;
+          text-transform: uppercase;
+        }
+
+        .zone-card:hover,
+        .zone-card:focus-visible,
+        .zone-card.is-active {
+          border-color: rgba(212, 80, 122, 0.8);
+          background: rgba(212, 80, 122, 0.08);
+          box-shadow: 8px 8px 0 rgba(212, 80, 122, 0.12);
           transform: translate(-2px, -2px);
           outline: none;
         }
 
-        .spaceNav a:hover::after,
-        .experienceNav a:hover::after,
-        .spaceNav a:focus-visible::after,
-        .experienceNav a:focus-visible::after {
+        .zone-card:hover::before,
+        .zone-card:focus-visible::before,
+        .zone-card.is-active::before {
           opacity: 1;
           transform: scaleX(1);
         }
 
-        .experienceBlock {
-          align-self: end;
+        .experience-content {
           display: grid;
-          gap: clamp(20px, 3vw, 34px);
-          padding-bottom: clamp(32px, 4vw, 54px);
+          gap: 28px;
         }
 
-        .experienceNav {
-          justify-content: flex-start;
+        .experience-copy {
+          max-width: 600px;
         }
 
-        .experienceNav a {
-          min-width: clamp(142px, 17vw, 210px);
+        .experience-nav {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
         }
 
-        .axis {
-          position: absolute;
-          inset: 0;
-          z-index: 0;
-          pointer-events: none;
-          opacity: 0.72;
+        .concept-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 46px;
+          min-width: 168px;
+          padding: 13px 26px 12px;
+          border: 1px solid ${C.ink};
+          background: transparent;
+          color: ${C.ink};
+          text-decoration: none;
+          font-size: 10px;
+          line-height: 1;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          box-shadow: 5px 5px 0 rgba(28, 28, 26, 0.08);
+          transition:
+            transform 0.22s ease,
+            background 0.22s ease,
+            color 0.22s ease,
+            border-color 0.22s ease,
+            box-shadow 0.22s ease;
         }
 
-        .axisVertical {
-          position: absolute;
-          left: 39%;
-          top: 8.6%;
-          width: 2px;
-          height: 68%;
-          background: linear-gradient(180deg, rgba(45, 48, 56, 0.72), rgba(45, 48, 56, 0.3), transparent);
-          transform-origin: top center;
+        .concept-btn.is-dark {
+          background: ${C.ink};
+          color: ${C.cream};
         }
 
-        .axisFloor,
-        .axisFloorB {
-          position: absolute;
-          left: 39%;
-          top: 76%;
-          width: 34%;
-          height: 2px;
-          background: linear-gradient(90deg, rgba(45, 48, 56, 0.42), transparent);
-          transform-origin: left center;
-          transform: rotate(0deg);
+        .concept-btn:hover,
+        .concept-btn:focus-visible {
+          border-color: ${C.pink};
+          background: rgba(212, 80, 122, 0.1);
+          color: ${C.ink};
+          box-shadow: 8px 8px 0 rgba(212, 80, 122, 0.14);
+          transform: translate(-2px, -2px);
+          outline: none;
         }
 
-        .axisFloorB {
-          width: 30%;
-          transform: rotate(-20deg);
-          opacity: 0.52;
+        .concept-btn.is-dark:hover,
+        .concept-btn.is-dark:focus-visible {
+          background: ${C.pink};
+          color: ${C.cream};
         }
 
-        .wormhole {
-          position: absolute;
-          z-index: 1;
-          pointer-events: none;
-          filter: saturate(0.95) contrast(0.92);
-          mix-blend-mode: multiply;
+        .foot {
+          position: relative;
+          z-index: 4;
+          display: flex;
+          justify-content: space-between;
+          gap: 24px;
+          padding: 36px 0 24px;
+          border-top: 1px solid rgba(28, 28, 26, 0.15);
+          color: ${C.muted};
+          font-size: 9px;
+          letter-spacing: 0.24em;
+          text-transform: uppercase;
         }
 
-        .wormhole svg {
-          display: block;
-          width: 100%;
-          height: 100%;
-          overflow: visible;
-        }
-
-        .wormholeTop {
-          top: 9%;
-          right: 9%;
-          width: clamp(160px, 23vw, 316px);
-          height: clamp(120px, 18vw, 226px);
-          opacity: 0.74;
-          transform: rotate(0deg);
-          animation: driftTop 9s ease-in-out infinite;
-        }
-
-        .wormholeFloor {
-          left: 18%;
-          bottom: 17%;
-          width: clamp(190px, 35vw, 444px);
-          height: clamp(126px, 22vw, 280px);
-          opacity: 0.48;
-          transform: rotate(-7deg) scaleY(0.72);
-          animation: driftFloor 10.5s ease-in-out infinite;
-        }
-
-        .obelisk {
-          position: absolute;
-          right: clamp(74px, 14vw, 190px);
-          top: 41%;
-          z-index: 2;
-          width: clamp(58px, 7vw, 96px);
-          height: clamp(238px, 26vw, 360px);
-          transform: perspective(720px) rotateY(-17deg) rotateX(1deg);
-          filter: drop-shadow(32px 30px 30px rgba(47, 48, 55, 0.24));
-          opacity: 0.9;
-          animation: obeliskBreathe 7.5s ease-in-out infinite;
-        }
-
-        .obeliskFace {
-          position: absolute;
-          inset: 0;
-          display: block;
-        }
-
-        .obeliskFaceA {
-          clip-path: polygon(26% 9%, 100% 0, 100% 100%, 26% 92%);
-          background: linear-gradient(90deg, #2a2b30, #3c3e42);
-        }
-
-        .obeliskFaceB {
-          clip-path: polygon(0 22%, 26% 9%, 26% 92%, 0 82%);
-          background: linear-gradient(180deg, #44474a, #16171b);
-        }
-
-        .obeliskFaceC {
-          clip-path: polygon(26% 9%, 100% 0, 74% 10%, 0 22%);
-          background: #53575a;
-          opacity: 0.42;
-        }
-
-        .revealBlock {
-          opacity: 0;
-          transform: translateY(18px);
-        }
-
-        .isLoaded .revealBlock {
-          animation: reveal 850ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
-
-        .isLoaded .revealDelayA {
-          animation-delay: 130ms;
-        }
-
-        .isLoaded .revealDelayB {
-          animation-delay: 260ms;
-        }
-
-        @keyframes reveal {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes floatTent {
-          0%,
-          100% {
-            transform: translate3d(0, 0, 0) rotate(-0.5deg);
-          }
-          50% {
-            transform: translate3d(0, -14px, 0) rotate(0.8deg);
-          }
-        }
-
-        @keyframes driftTop {
+        @keyframes assetFloatA {
           0%,
           100% {
             transform: translate3d(0, 0, 0) rotate(0deg);
           }
           50% {
-            transform: translate3d(-9px, 10px, 0) rotate(1.8deg);
+            transform: translate3d(-8px, 10px, 0) rotate(1.4deg);
           }
         }
 
-        @keyframes driftFloor {
+        @keyframes assetFloatB {
           0%,
           100% {
-            transform: translate3d(0, 0, 0) rotate(-7deg) scaleY(0.72);
+            transform: translate3d(0, 0, 0) rotate(-22deg) scaleY(0.68);
           }
           50% {
-            transform: translate3d(12px, -8px, 0) rotate(-4.5deg) scaleY(0.72);
+            transform: translate3d(10px, -7px, 0) rotate(-19deg) scaleY(0.68);
           }
         }
 
-        @keyframes obeliskBreathe {
+        @keyframes floorDrift {
           0%,
           100% {
-            transform: perspective(720px) rotateY(-17deg) rotateX(1deg) translateY(0);
+            transform: translate3d(0, 0, 0);
           }
           50% {
-            transform: perspective(720px) rotateY(-14deg) rotateX(1deg) translateY(-8px);
+            transform: translate3d(12px, -6px, 0);
           }
         }
 
-        @keyframes grainDrift {
+        @keyframes obeliskHover {
           0%,
           100% {
-            transform: translate(0, 0);
-          }
-          10% {
-            transform: translate(-1%, -1%);
-          }
-          20% {
-            transform: translate(-2%, 1%);
-          }
-          30% {
-            transform: translate(1%, -2%);
-          }
-          40% {
-            transform: translate(-1%, 2%);
+            transform: translate3d(0, 0, 0);
           }
           50% {
-            transform: translate(2%, 1%);
-          }
-          60% {
-            transform: translate(1%, 2%);
-          }
-          70% {
-            transform: translate(-2%, -1%);
-          }
-          80% {
-            transform: translate(2%, -2%);
-          }
-          90% {
-            transform: translate(1%, -1%);
+            transform: translate3d(0, -10px, 0);
           }
         }
 
-        @media (max-width: 900px) {
-          .heroBlock {
-            gap: 58px;
-            padding-inline: 22px;
-            grid-template-rows: auto auto auto;
+        @keyframes venueFloat {
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+
+        @keyframes highlightPulse {
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.01);
+          }
+        }
+
+        @media (max-width: 1100px) {
+          .shell {
+            width: 82%;
           }
 
-          .conceptIntro {
-            padding-top: 22px;
-          }
-
-          .spaceScene {
-            min-height: auto;
+          .zone-controls {
             grid-template-columns: 1fr;
-            gap: 24px;
-          }
-
-          .floatingTentWrap {
-            min-height: clamp(250px, 68vw, 440px);
-          }
-
-          .floatingTent {
-            width: min(100%, 520px);
-          }
-
-          .spaceNav {
-            width: 100%;
-            justify-content: center;
-            flex-direction: row;
-          }
-
-          .spaceNav a {
-            flex: 1 1 160px;
-          }
-
-          .experienceBlock {
-            padding-bottom: 80px;
-          }
-
-          .experienceNav a {
-            flex: 1 1 150px;
-          }
-
-          .microLabel {
-            left: 22px;
-            right: 22px;
-            text-align: left;
-          }
-
-          .axisVertical {
-            left: 50%;
-            top: 20%;
-            height: 54%;
-            opacity: 0.42;
-          }
-
-          .axisFloor,
-          .axisFloorB {
-            left: 50%;
-            top: 74%;
-            width: 42%;
-          }
-
-          .wormholeTop {
-            top: 14%;
-            right: -6%;
-            opacity: 0.42;
-          }
-
-          .wormholeFloor {
-            left: -8%;
-            bottom: 30%;
-            opacity: 0.3;
-          }
-
-          .obelisk {
-            top: 44%;
-            right: 1%;
-            opacity: 0.32;
-            width: 58px;
-            height: 240px;
           }
         }
 
-        @media (max-width: 560px) {
-          .posterPage {
-            letter-spacing: -0.055em;
+        @media (max-width: 820px) {
+          .shell {
+            width: calc(100% - 40px);
+            max-width: none;
+            padding-top: 96px;
           }
 
-          .heroBlock {
-            min-height: auto;
-            padding-top: 30px;
-            padding-bottom: 112px;
+          .axis-v {
+            left: 22px;
+          }
+
+          .rail-section {
+            grid-template-columns: 1fr;
+            padding-left: 52px;
+          }
+
+          .hero-section {
+            min-height: 68svh;
+          }
+
+          .space-section,
+          .experience-section {
+            padding: 88px 0;
+          }
+
+          .rail-title {
+            padding-right: 0;
+            margin-bottom: 26px;
+          }
+
+          .rail-content {
+            padding-left: 0;
+          }
+
+          .eyebrow {
+            margin-bottom: 16px;
           }
 
           h1 {
-            font-size: clamp(54px, 18vw, 82px);
+            font-size: clamp(48px, 15vw, 74px);
           }
 
           h2 {
-            font-size: clamp(40px, 14vw, 62px);
+            font-size: clamp(38px, 12vw, 60px);
           }
 
-          .conceptIntro p {
-            max-width: 260px;
-            font-size: 15px;
+          .address-card,
+          .experience-copy {
+            padding: 20px 0 22px;
           }
 
-          .floatingTentWrap {
-            min-height: 260px;
-            margin-inline: -10px;
+          .concept-space-map {
+            min-height: clamp(240px, 64vw, 390px);
+            margin-top: -10px;
           }
 
-          .spaceNav,
-          .experienceNav {
-            gap: 10px;
+          .venue-wrap {
+            width: min(112%, 620px);
+            margin-left: -6%;
           }
 
-          .spaceNav a,
-          .experienceNav a {
-            width: 100%;
-            min-height: 48px;
-            font-size: 14px;
+          .asset-funnel-top {
+            top: 116px;
+            right: -16px;
+            width: 112px;
+            opacity: 0.44;
           }
 
-          .wormholeTop {
-            width: 160px;
-            height: 120px;
-            right: -42px;
-            top: 135px;
-          }
-
-          .wormholeFloor {
-            width: 250px;
-            height: 160px;
-            left: -94px;
-            bottom: 39%;
-          }
-
-          .obelisk {
+          .asset-funnel-echo {
             display: none;
+          }
+
+          .asset-floor {
+            top: 66%;
+            left: 12%;
+            width: 260px;
+            opacity: 0.22;
+          }
+
+          .asset-obelisk {
+            top: 62%;
+            right: -10px;
+            width: 58px;
+            opacity: 0.28;
+          }
+
+          .foot {
+            margin-left: 52px;
+            flex-direction: column;
+            gap: 9px;
+          }
+        }
+
+        @media (max-width: 520px) {
+          .shell {
+            width: calc(100% - 28px);
+            padding-top: 88px;
+          }
+
+          .axis-v {
+            left: 16px;
+            top: 24px;
+            bottom: 24px;
+          }
+
+          .rail-section {
+            padding-left: 40px;
+          }
+
+          .hero-section {
+            min-height: 62svh;
+          }
+
+          .space-section,
+          .experience-section {
+            padding: 72px 0;
+          }
+
+          .address-card p,
+          .experience-copy p {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+          }
+
+          .concept-space-map {
+            min-height: 230px;
+          }
+
+          .venue-wrap {
+            width: 124%;
+            margin-left: -12%;
+          }
+
+          .zone-card {
+            min-height: 66px;
+            padding: 13px 14px 12px;
+          }
+
+          .zone-card-title {
+            font-size: 13px;
+          }
+
+          .zone-card-meta {
+            font-size: 9px;
+          }
+
+          .experience-nav,
+          .concept-btn {
+            width: 100%;
+          }
+
+          .concept-btn {
+            min-width: 0;
+          }
+
+          .foot {
+            margin-left: 40px;
+            padding-bottom: 30px;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .posterGrain,
-          .floatingTent,
-          .wormholeTop,
-          .wormholeFloor,
-          .obelisk,
-          .isLoaded .revealBlock {
+          .asset-funnel-top,
+          .asset-funnel-echo,
+          .asset-floor,
+          .asset-obelisk,
+          .venue-wrap,
+          .venue-highlight-glow.is-active,
+          .venue-highlight.is-active {
             animation: none;
-          }
-
-          .revealBlock {
-            opacity: 1;
-            transform: none;
           }
         }
       `}</style>
