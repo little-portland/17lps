@@ -518,6 +518,7 @@ html, body {
   
   .hire-modal .btn-wrapper-border {
     margin-top: -40px;
+    z-index: 1 !important;
   }
 
   .food-box p {
