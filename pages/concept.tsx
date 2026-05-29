@@ -140,18 +140,34 @@ export default function ConceptPage() {
           <div className="axis-v" aria-hidden="true" />
 
           <section className="content-section hero-section" aria-labelledby="concept-title">
-            <img
-              className="concept-funnel-inline"
-              src={CONCEPT_ASSETS.funnel}
-              alt=""
-              draggable={false}
-            />
+            <div className="hero-copy">
+              <h1 id="concept-title">
+                Concept<span className="pink-dot">.</span>
+              </h1>
 
-            <h1 id="concept-title">
-              Concept<span className="pink-dot">.</span>
-            </h1>
+              <p className="address">17 Little Portland Street, London</p>
+            </div>
 
-            <p className="address">17 Little Portland Street, London</p>
+            <div className="hero-art" aria-hidden="true">
+              <img
+                className="concept-floor"
+                src={CONCEPT_ASSETS.floor}
+                alt=""
+                draggable={false}
+              />
+              <img
+                className="concept-funnel-inline"
+                src={CONCEPT_ASSETS.funnel}
+                alt=""
+                draggable={false}
+              />
+              <img
+                className="concept-obelisk"
+                src={CONCEPT_ASSETS.obelisk}
+                alt=""
+                draggable={false}
+              />
+            </div>
           </section>
 
           <section className="content-section space-section" aria-labelledby="space-title">
@@ -225,53 +241,37 @@ export default function ConceptPage() {
                   <a
                     key={area.id}
                     href={area.href}
-                    className={`zone-card ${isActive ? 'is-active' : ''}`}
+                    className={`action-card zone-card ${isActive ? 'is-active' : ''}`}
                     onMouseEnter={() => handleCardEnter(area.id)}
                     onFocus={() => setActiveArea(area.id)}
                     onClick={handleCardClick(area.id)}
                     aria-label={`${area.title} ${helperText}`}
                   >
-                    <span className="zone-card-title">{area.title}</span>
-                    <span className="zone-card-meta">{helperText}</span>
+                    <span className="action-card-title">{area.title}</span>
+                    <span className="action-card-meta">{helperText}</span>
                   </a>
                 );
               })}
             </nav>
           </section>
 
-          <img
-            className="noise-floor-asset"
-            src={CONCEPT_ASSETS.floor}
-            alt=""
-            draggable={false}
-          />
-
           <section className="content-section experience-section" aria-labelledby="experience-title">
             <div className="section-rule" aria-hidden="true" />
 
             <h2 id="experience-title">The Experience</h2>
 
-            <div className="experience-layout">
-              <nav className="experience-nav" aria-label="Explore the experience">
-                {EXPERIENCE_BTNS.map((button) => (
-                  <a
-                    key={button.href}
-                    href={button.href}
-                    className={`experience-card ${button.dark ? 'is-dark' : ''}`}
-                  >
-                    <span>{button.label}</span>
-                    <small>Explore →</small>
-                  </a>
-                ))}
-              </nav>
-
-              <img
-                className="experience-obelisk"
-                src={CONCEPT_ASSETS.obelisk}
-                alt=""
-                draggable={false}
-              />
-            </div>
+            <nav className="experience-nav" aria-label="Explore the experience">
+              {EXPERIENCE_BTNS.map((button) => (
+                <a
+                  key={button.href}
+                  href={button.href}
+                  className={`action-card experience-card ${button.dark ? 'is-dark' : ''}`}
+                >
+                  <span className="action-card-title">{button.label}</span>
+                  <span className="action-card-meta">Explore →</span>
+                </a>
+              ))}
+            </nav>
           </section>
         </div>
       </main>
@@ -450,19 +450,31 @@ export default function ConceptPage() {
         }
 
         .hero-section {
-          min-height: clamp(380px, 52svh, 560px);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
+          min-height: clamp(420px, 58svh, 620px);
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(250px, 38%);
+          align-items: center;
+          gap: clamp(20px, 4vw, 54px);
+        }
+
+        .hero-copy {
+          position: relative;
+          z-index: 5;
+        }
+
+        .hero-art {
+          position: relative;
+          min-height: clamp(320px, 36vw, 520px);
+          z-index: 4;
         }
 
         .space-section {
           padding-top: clamp(72px, 8vw, 110px);
-          padding-bottom: clamp(58px, 6vw, 82px);
+          padding-bottom: clamp(52px, 5.5vw, 74px);
         }
 
         .experience-section {
-          padding-top: clamp(58px, 6vw, 86px);
+          padding-top: clamp(56px, 6vw, 80px);
         }
 
         h1,
@@ -514,27 +526,54 @@ export default function ConceptPage() {
           text-transform: uppercase;
         }
 
+        .concept-floor {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: clamp(220px, 28vw, 430px);
+          height: auto;
+          opacity: 0.34;
+          mix-blend-mode: multiply;
+          filter: contrast(0.92) saturate(0.82);
+          pointer-events: none;
+          user-select: none;
+          animation: floorDrift 10s ease-in-out infinite;
+        }
+
         .concept-funnel-inline {
           position: absolute;
-          z-index: 4;
-          top: 46%;
-          right: clamp(0px, 4vw, 72px);
-          width: clamp(190px, 23vw, 340px);
+          top: 0;
+          right: clamp(12px, 3vw, 48px);
+          width: clamp(120px, 14vw, 210px);
           height: auto;
           opacity: 0.62;
           pointer-events: none;
           user-select: none;
           mix-blend-mode: multiply;
           filter: saturate(0.9) contrast(1);
-          transform: translateY(-58%);
           animation: funnelFloat 8.5s ease-in-out infinite;
+        }
+
+        .concept-obelisk {
+          position: absolute;
+          right: clamp(28px, 3vw, 58px);
+          bottom: clamp(34px, 4vw, 62px);
+          width: clamp(58px, 5.6vw, 90px);
+          height: auto;
+          opacity: 0.9;
+          pointer-events: none;
+          user-select: none;
+          filter:
+            contrast(0.98)
+            drop-shadow(20px 24px 22px rgba(28, 28, 26, 0.18));
+          animation: obeliskHover 8s ease-in-out infinite;
         }
 
         .concept-space-map {
           position: relative;
           width: 100%;
-          min-height: clamp(320px, 39vw, 560px);
-          margin-top: clamp(8px, 2vw, 20px);
+          min-height: clamp(310px, 37vw, 520px);
+          margin-top: clamp(6px, 1.6vw, 16px);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -543,20 +582,20 @@ export default function ConceptPage() {
         .concept-space-map::before {
           content: '';
           position: absolute;
-          left: 5%;
-          right: 5%;
+          left: 8%;
+          right: 8%;
           bottom: 14%;
           height: 18%;
           border-radius: 50%;
           background: radial-gradient(ellipse at center, rgba(28, 28, 26, 0.16), transparent 72%);
           filter: blur(10px);
-          opacity: 0.44;
+          opacity: 0.38;
           transform: rotate(-4deg);
         }
 
         .venue-wrap {
           position: relative;
-          width: min(100%, 850px);
+          width: min(100%, 820px);
           aspect-ratio: 2048 / 1140;
           animation: venueFloat 4.8s ease-in-out infinite;
         }
@@ -644,18 +683,24 @@ export default function ConceptPage() {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 16px;
-          margin-top: clamp(8px, 1.4vw, 18px);
+          margin-top: clamp(6px, 1vw, 14px);
         }
 
-        .zone-card,
-        .experience-card {
+        .experience-nav {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 16px;
+          margin-top: clamp(14px, 2vw, 24px);
+        }
+
+        .action-card {
           position: relative;
           min-height: clamp(96px, 10vw, 138px);
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
-          gap: 8px;
-          padding: clamp(20px, 2vw, 28px);
+          gap: 6px;
+          padding: clamp(16px, 1.8vw, 24px);
           border: 1px solid rgba(28, 28, 26, 0.48);
           background: rgba(232, 226, 212, 0.34);
           color: ${C.ink};
@@ -670,8 +715,7 @@ export default function ConceptPage() {
             box-shadow 0.24s ease;
         }
 
-        .zone-card::before,
-        .experience-card::before {
+        .action-card::before {
           content: '';
           position: absolute;
           inset: 0;
@@ -682,16 +726,13 @@ export default function ConceptPage() {
           transition: opacity 0.24s ease;
         }
 
-        .zone-card-title,
-        .zone-card-meta,
-        .experience-card span,
-        .experience-card small {
+        .action-card-title,
+        .action-card-meta {
           position: relative;
           z-index: 1;
         }
 
-        .zone-card-title,
-        .experience-card span {
+        .action-card-title {
           display: block;
           font-family: ${MONO};
           font-size: clamp(18px, 1.7vw, 28px);
@@ -702,10 +743,9 @@ export default function ConceptPage() {
           text-shadow: 0.012em 0 0 currentColor;
         }
 
-        .zone-card-meta,
-        .experience-card small {
+        .action-card-meta {
           display: block;
-          margin-top: 2px;
+          margin-top: 0;
           font-family: ${MONO};
           color: rgba(28, 28, 26, 0.58);
           font-size: 10px;
@@ -714,11 +754,9 @@ export default function ConceptPage() {
           text-transform: uppercase;
         }
 
-        .zone-card:hover,
-        .zone-card:focus-visible,
-        .zone-card.is-active,
-        .experience-card:hover,
-        .experience-card:focus-visible {
+        .action-card:hover,
+        .action-card:focus-visible,
+        .zone-card.is-active {
           border-color: rgba(212, 80, 122, 0.9);
           background: rgba(212, 80, 122, 0.1);
           color: ${C.ink};
@@ -727,47 +765,14 @@ export default function ConceptPage() {
           outline: none;
         }
 
-        .zone-card:hover::before,
-        .zone-card:focus-visible::before,
-        .zone-card.is-active::before,
-        .experience-card:hover::before,
-        .experience-card:focus-visible::before {
+        .action-card:hover::before,
+        .action-card:focus-visible::before,
+        .zone-card.is-active::before {
           opacity: 1;
         }
 
-        .zone-card.is-active .zone-card-meta {
+        .zone-card.is-active .action-card-meta {
           color: rgba(28, 28, 26, 0.78);
-        }
-
-        .noise-floor-asset {
-          position: absolute;
-          z-index: 1;
-          left: clamp(48px, 5.5vw, 82px);
-          right: 0;
-          bottom: clamp(170px, 18vw, 260px);
-          width: min(84%, 860px);
-          height: auto;
-          opacity: 0.28;
-          pointer-events: none;
-          user-select: none;
-          mix-blend-mode: multiply;
-          filter: contrast(0.92) saturate(0.8);
-        }
-
-        .experience-layout {
-          position: relative;
-          z-index: 4;
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(150px, 300px);
-          gap: clamp(28px, 5vw, 78px);
-          align-items: center;
-          margin-top: clamp(18px, 2.4vw, 32px);
-        }
-
-        .experience-nav {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 16px;
         }
 
         .experience-card.is-dark {
@@ -775,7 +780,7 @@ export default function ConceptPage() {
           color: ${C.cream};
         }
 
-        .experience-card.is-dark small {
+        .experience-card.is-dark .action-card-meta {
           color: rgba(232, 226, 212, 0.66);
         }
 
@@ -785,36 +790,29 @@ export default function ConceptPage() {
           color: ${C.cream};
         }
 
-        .experience-card:hover small,
-        .experience-card:focus-visible small {
+        .action-card:hover .action-card-meta,
+        .action-card:focus-visible .action-card-meta {
           color: currentColor;
           opacity: 0.7;
-        }
-
-        .experience-obelisk {
-          position: relative;
-          z-index: 4;
-          display: block;
-          width: clamp(108px, 11vw, 176px);
-          height: auto;
-          justify-self: center;
-          opacity: 0.88;
-          pointer-events: none;
-          user-select: none;
-          filter:
-            contrast(0.98)
-            drop-shadow(22px 34px 28px rgba(28, 28, 26, 0.18));
-          animation: obeliskHover 8s ease-in-out infinite;
         }
 
         @keyframes funnelFloat {
           0%,
           100% {
-            transform: translate3d(0, -58%, 0) rotate(0deg);
+            transform: translate3d(0, 0, 0) rotate(0deg);
           }
-
           50% {
-            transform: translate3d(-10px, calc(-58% + 10px), 0) rotate(1.4deg);
+            transform: translate3d(-8px, 8px, 0) rotate(1.3deg);
+          }
+        }
+
+        @keyframes floorDrift {
+          0%,
+          100% {
+            transform: translate3d(0, 0, 0);
+          }
+          50% {
+            transform: translate3d(10px, -4px, 0);
           }
         }
 
@@ -823,9 +821,8 @@ export default function ConceptPage() {
           100% {
             transform: translate3d(0, 0, 0);
           }
-
           50% {
-            transform: translate3d(0, -10px, 0);
+            transform: translate3d(0, -8px, 0);
           }
         }
 
@@ -834,7 +831,6 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0px) rotate(-0.15deg);
           }
-
           50% {
             transform: translateY(-10px) rotate(0.25deg);
           }
@@ -845,7 +841,6 @@ export default function ConceptPage() {
           100% {
             transform: scale(1);
           }
-
           50% {
             transform: scale(1.01);
           }
@@ -859,37 +854,31 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
-
           73% {
             opacity: 0.18;
             transform: translate3d(-8px, -3px, 0);
             clip-path: inset(0% 0 82% 0);
           }
-
           74% {
             opacity: 0.24;
             transform: translate3d(10px, 4px, 0);
             clip-path: inset(16% 0 58% 0);
           }
-
           75% {
             opacity: 0.18;
             transform: translate3d(-7px, -5px, 0);
             clip-path: inset(34% 0 34% 0);
           }
-
           76% {
             opacity: 0.22;
             transform: translate3d(8px, 6px, 0);
             clip-path: inset(52% 0 16% 0);
           }
-
           77% {
             opacity: 0.14;
             transform: translate3d(-5px, -4px, 0);
             clip-path: inset(74% 0 3% 0);
           }
-
           78% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -905,37 +894,31 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
-
           73.2% {
             opacity: 0.12;
             transform: translate3d(7px, 5px, 0);
             clip-path: inset(8% 0 72% 0);
           }
-
           74.1% {
             opacity: 0.18;
             transform: translate3d(-10px, -3px, 0);
             clip-path: inset(24% 0 46% 0);
           }
-
           75.2% {
             opacity: 0.14;
             transform: translate3d(6px, -7px, 0);
             clip-path: inset(44% 0 24% 0);
           }
-
           76.1% {
             opacity: 0.18;
             transform: translate3d(-8px, 6px, 0);
             clip-path: inset(63% 0 9% 0);
           }
-
           77.2% {
             opacity: 0.1;
             transform: translate3d(4px, -2px, 0);
             clip-path: inset(82% 0 0% 0);
           }
-
           78% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -958,10 +941,14 @@ export default function ConceptPage() {
             grid-template-columns: 1fr;
           }
 
-          .concept-funnel-inline {
-            width: clamp(150px, 30vw, 220px);
-            right: -10px;
-            opacity: 0.34;
+          .hero-section {
+            grid-template-columns: 1fr;
+          }
+
+          .hero-art {
+            max-width: 420px;
+            width: 100%;
+            margin-left: auto;
           }
         }
 
@@ -977,21 +964,23 @@ export default function ConceptPage() {
           }
 
           .hero-section {
-            min-height: 58svh;
+            min-height: auto;
+            gap: 18px;
+          }
+
+          .hero-art {
+            min-height: 280px;
+            max-width: 330px;
           }
 
           .space-section {
-            padding-top: 76px;
-            padding-bottom: 56px;
+            padding-top: 74px;
+            padding-bottom: 50px;
           }
 
           .experience-section {
-            padding-top: 72px;
+            padding-top: 64px;
             padding-bottom: 72px;
-          }
-
-          .zone-controls {
-            margin-top: 8px;
           }
 
           h1 {
@@ -1017,23 +1006,47 @@ export default function ConceptPage() {
             margin-left: -8%;
           }
 
-          .experience-layout {
+          .concept-floor {
+            width: 290px;
+            opacity: 0.28;
+          }
+
+          .concept-funnel-inline {
+            width: 142px;
+            right: 18px;
+            opacity: 0.48;
+          }
+
+          .concept-obelisk {
+            width: 72px;
+            right: 32px;
+            bottom: 28px;
+          }
+
+          .experience-nav {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        @media (max-width: 620px) {
+          .experience-nav {
             grid-template-columns: 1fr;
-            margin-top: 18px;
           }
 
-          .experience-obelisk {
-            width: 104px;
-            justify-self: end;
-            margin-right: 8%;
-            opacity: 0.62;
+          .hero-art {
+            max-width: 280px;
           }
 
-          .noise-floor-asset {
-            left: 48px;
-            width: 92%;
-            bottom: 180px;
-            opacity: 0.2;
+          .concept-floor {
+            width: 250px;
+          }
+
+          .concept-funnel-inline {
+            width: 120px;
+          }
+
+          .concept-obelisk {
+            width: 64px;
           }
         }
 
@@ -1053,7 +1066,12 @@ export default function ConceptPage() {
           }
 
           .hero-section {
-            min-height: 54svh;
+            gap: 14px;
+          }
+
+          .hero-art {
+            min-height: 240px;
+            max-width: 240px;
           }
 
           .section-rule {
@@ -1061,20 +1079,13 @@ export default function ConceptPage() {
           }
 
           .space-section {
-            padding-top: 66px;
-            padding-bottom: 44px;
+            padding-top: 62px;
+            padding-bottom: 42px;
           }
 
           .experience-section {
-            padding-top: 66px;
-            padding-bottom: 66px;
-          }
-
-          .concept-funnel-inline {
-            top: 24%;
-            right: -34px;
-            width: 142px;
-            opacity: 0.24;
+            padding-top: 58px;
+            padding-bottom: 60px;
           }
 
           .concept-space-map {
@@ -1086,38 +1097,43 @@ export default function ConceptPage() {
             margin-left: -16%;
           }
 
-          .zone-card,
-          .experience-card {
+          .action-card {
             min-height: 104px;
           }
 
-          .zone-card-title,
-          .experience-card span {
+          .action-card-title {
             font-size: 20px;
           }
 
-          .zone-card-meta,
-          .experience-card small {
+          .action-card-meta {
             font-size: 9px;
           }
 
-          .noise-floor-asset {
-            left: 34px;
-            width: 108%;
-            bottom: 156px;
-            opacity: 0.16;
+          .concept-floor {
+            width: 210px;
+            right: -4px;
+            bottom: 0;
+            opacity: 0.22;
           }
 
-          .experience-obelisk {
-            width: 86px;
-            justify-self: start;
-            margin-left: 24px;
+          .concept-funnel-inline {
+            width: 104px;
+            right: 8px;
+            top: 8px;
+            opacity: 0.36;
+          }
+
+          .concept-obelisk {
+            width: 54px;
+            right: 18px;
+            bottom: 18px;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
+          .concept-floor,
           .concept-funnel-inline,
-          .experience-obelisk,
+          .concept-obelisk,
           .venue-wrap,
           .venue-glitch-a,
           .venue-glitch-b,
