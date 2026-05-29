@@ -77,6 +77,31 @@ const typeStyle = (chars: number, delay: string): CSSProperties =>
     '--type-delay': delay,
   }) as CSSProperties;
 
+function TimeReadout({
+  finalValue,
+  variant,
+  scrambles,
+}: {
+  finalValue: string;
+  variant: 'dining' | 'after-dark';
+  scrambles: string[];
+}) {
+  return (
+    <span className={`signal-time signal-time-${variant}`} aria-label={finalValue}>
+      <span className="time-final">{finalValue}</span>
+      {scrambles.map((value, index) => (
+        <span
+          key={`${variant}-${value}`}
+          className={`time-scramble scramble-${index + 1}`}
+          aria-hidden="true"
+        >
+          {value}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function ActionCard({
   href,
   title,
@@ -376,14 +401,22 @@ export default function ConceptPage() {
               </div>
 
               <div className="signal-node signal-node-dining">
-                <span className="signal-time">20:00 / 20:30</span>
+                <TimeReadout
+                  variant="dining"
+                  finalValue="20:00 / 20:30"
+                  scrambles={['18:40 / 19:10', '21:12 / 21:40', '19:55 / 20:14', '20:00 / 20:30']}
+                />
                 <span className="signal-dot">
                   <span className="signal-dot-fill" />
                 </span>
               </div>
 
               <div className="signal-node signal-node-after-dark">
-                <span className="signal-time">22:00</span>
+                <TimeReadout
+                  variant="after-dark"
+                  finalValue="22:00"
+                  scrambles={['23:17', '01:40', '21:52', '22:00']}
+                />
                 <span className="signal-dot">
                   <span className="signal-dot-fill" />
                 </span>
@@ -797,6 +830,7 @@ export default function ConceptPage() {
           padding-right: 28px;
           padding-bottom: 18px;
           margin-bottom: -18px;
+          overflow: visible;
         }
 
         h2,
@@ -822,7 +856,7 @@ export default function ConceptPage() {
         }
 
         .concept-dot {
-          --dot-y: -0.16em;
+          --dot-y: 0.105em;
 
           display: inline-block;
           width: clamp(18px, 2vw, 31px);
@@ -1033,7 +1067,7 @@ export default function ConceptPage() {
         }
 
         .experience-section.is-inview .signal-line-fill {
-          animation: signalFillLoop 5.2s ease-in-out 1200ms infinite;
+          animation: signalFillLoop 9.6s ease-in-out 1200ms infinite;
         }
 
         .signal-node {
@@ -1092,16 +1126,17 @@ export default function ConceptPage() {
         }
 
         .experience-section.is-inview .signal-node-dining .signal-dot-fill {
-          animation: diningDotFill 5.2s ease-in-out 1200ms infinite;
+          animation: diningDotFill 9.6s ease-in-out 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-node-after-dark .signal-dot-fill {
-          animation: afterDarkDotFill 5.2s ease-in-out 1200ms infinite;
+          animation: afterDarkDotFill 9.6s ease-in-out 1200ms infinite;
         }
 
         .signal-time {
           position: absolute;
           top: 0;
+          display: inline-block;
           font-family: ${MONO};
           font-size: clamp(12px, 1.1vw, 16px);
           font-weight: 700;
@@ -1120,12 +1155,62 @@ export default function ConceptPage() {
           right: 0;
         }
 
+        .time-final {
+          display: inline-block;
+        }
+
+        .time-scramble {
+          position: absolute;
+          inset: 0 auto auto 0;
+          opacity: 0;
+          color: ${C.pink};
+          white-space: nowrap;
+          pointer-events: none;
+        }
+
+        .signal-time-after-dark .time-scramble {
+          left: auto;
+          right: 0;
+        }
+
         .experience-section.is-inview .signal-node-dining .signal-time {
-          animation: diningTimeFill 5.2s ease-in-out 1200ms infinite;
+          animation: diningTimeFill 9.6s ease-in-out 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-node-after-dark .signal-time {
-          animation: afterDarkTimeFill 5.2s ease-in-out 1200ms infinite;
+          animation: afterDarkTimeFill 9.6s ease-in-out 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-time-dining .scramble-1 {
+          animation: diningScramble1 9.6s steps(1, end) 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-time-dining .scramble-2 {
+          animation: diningScramble2 9.6s steps(1, end) 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-time-dining .scramble-3 {
+          animation: diningScramble3 9.6s steps(1, end) 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-time-dining .scramble-4 {
+          animation: diningScramble4 9.6s steps(1, end) 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-time-after-dark .scramble-1 {
+          animation: afterDarkScramble1 9.6s steps(1, end) 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-time-after-dark .scramble-2 {
+          animation: afterDarkScramble2 9.6s steps(1, end) 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-time-after-dark .scramble-3 {
+          animation: afterDarkScramble3 9.6s steps(1, end) 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-time-after-dark .scramble-4 {
+          animation: afterDarkScramble4 9.6s steps(1, end) 1200ms infinite;
         }
 
         .experience-nav {
@@ -1480,22 +1565,22 @@ export default function ConceptPage() {
 
         @keyframes signalFillLoop {
           0%,
-          12% {
+          17% {
             transform: scaleX(0);
             opacity: 0;
           }
 
-          20% {
+          22% {
             transform: scaleX(0);
             opacity: 1;
           }
 
-          62% {
+          56% {
             transform: scaleX(1);
             opacity: 1;
           }
 
-          80%,
+          72%,
           100% {
             transform: scaleX(1);
             opacity: 0;
@@ -1511,16 +1596,16 @@ export default function ConceptPage() {
 
         @keyframes diningDotFill {
           0%,
-          12% {
+          17% {
             opacity: 0;
           }
 
-          20%,
-          68% {
+          22%,
+          62% {
             opacity: 1;
           }
 
-          86%,
+          78%,
           100% {
             opacity: 0;
           }
@@ -1528,16 +1613,16 @@ export default function ConceptPage() {
 
         @keyframes afterDarkDotFill {
           0%,
-          48% {
+          47% {
             opacity: 0;
           }
 
-          62%,
-          78% {
+          56%,
+          70% {
             opacity: 1;
           }
 
-          92%,
+          84%,
           100% {
             opacity: 0;
           }
@@ -1545,16 +1630,16 @@ export default function ConceptPage() {
 
         @keyframes diningTimeFill {
           0%,
-          12% {
+          17% {
             color: rgba(28, 28, 26, 0.62);
           }
 
-          20%,
-          68% {
+          22%,
+          62% {
             color: ${C.pink};
           }
 
-          86%,
+          78%,
           100% {
             color: rgba(28, 28, 26, 0.62);
           }
@@ -1562,18 +1647,124 @@ export default function ConceptPage() {
 
         @keyframes afterDarkTimeFill {
           0%,
-          48% {
+          47% {
             color: rgba(28, 28, 26, 0.62);
           }
 
-          62%,
-          78% {
+          56%,
+          70% {
             color: ${C.pink};
           }
 
-          92%,
+          84%,
           100% {
             color: rgba(28, 28, 26, 0.62);
+          }
+        }
+
+        @keyframes diningScramble1 {
+          0%,
+          17%,
+          19%,
+          100% {
+            opacity: 0;
+          }
+
+          18% {
+            opacity: 1;
+          }
+        }
+
+        @keyframes diningScramble2 {
+          0%,
+          19%,
+          21%,
+          100% {
+            opacity: 0;
+          }
+
+          20% {
+            opacity: 1;
+          }
+        }
+
+        @keyframes diningScramble3 {
+          0%,
+          21%,
+          23%,
+          100% {
+            opacity: 0;
+          }
+
+          22% {
+            opacity: 1;
+          }
+        }
+
+        @keyframes diningScramble4 {
+          0%,
+          23%,
+          27%,
+          100% {
+            opacity: 0;
+          }
+
+          24%,
+          26% {
+            opacity: 1;
+          }
+        }
+
+        @keyframes afterDarkScramble1 {
+          0%,
+          47%,
+          49%,
+          100% {
+            opacity: 0;
+          }
+
+          48% {
+            opacity: 1;
+          }
+        }
+
+        @keyframes afterDarkScramble2 {
+          0%,
+          49%,
+          51%,
+          100% {
+            opacity: 0;
+          }
+
+          50% {
+            opacity: 1;
+          }
+        }
+
+        @keyframes afterDarkScramble3 {
+          0%,
+          51%,
+          53%,
+          100% {
+            opacity: 0;
+          }
+
+          52% {
+            opacity: 1;
+          }
+        }
+
+        @keyframes afterDarkScramble4 {
+          0%,
+          53%,
+          58%,
+          100% {
+            opacity: 0;
+          }
+
+          54%,
+          57% {
+            opacity: 1;
           }
         }
 
@@ -1788,6 +1979,7 @@ export default function ConceptPage() {
           }
 
           .concept-dot {
+            --dot-y: 0.09em;
             width: 18px;
             height: 18px;
           }
@@ -2073,6 +2265,7 @@ export default function ConceptPage() {
           .signal-node,
           .signal-dot-fill,
           .signal-time,
+          .time-scramble,
           .action-card,
           .action-card::after {
             animation: none !important;
