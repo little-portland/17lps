@@ -78,7 +78,7 @@ export default function ConceptPage() {
   useEffect(() => {
     const menuTimer = window.setTimeout(() => {
       setMenuReady(true);
-    }, 2600);
+    }, 2100);
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
@@ -91,6 +91,31 @@ export default function ConceptPage() {
       window.clearTimeout(menuTimer);
       window.removeEventListener('scroll', handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>('.reveal-section')
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add('is-inview');
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -175,16 +200,17 @@ export default function ConceptPage() {
         <div className="shell">
           <div className="axis-v" aria-hidden="true" />
 
-          <section className="content-section hero-section" aria-labelledby="concept-title">
+          <section
+            className="content-section hero-section reveal-section"
+            aria-labelledby="concept-title"
+          >
             <div className="hero-copy">
               <h1 id="concept-title" className="scan-title scan-title-hero">
-                Concept
+                Concept<span className="concept-dot" aria-hidden="true" />
               </h1>
 
-              <span className="concept-dot" aria-hidden="true" />
-
               <p className="address">
-                <span className="type-text" style={typeStyle(33, '1120ms')}>
+                <span className="type-text" style={typeStyle(33, '620ms')}>
                   17 Little Portland Street, London
                 </span>
               </p>
@@ -214,7 +240,10 @@ export default function ConceptPage() {
             </div>
           </section>
 
-          <section className="content-section space-section" aria-labelledby="space-title">
+          <section
+            className="content-section space-section reveal-section"
+            aria-labelledby="space-title"
+          >
             <div className="section-rule" aria-hidden="true" />
 
             <h2 id="space-title" className="scan-title scan-title-space">
@@ -294,14 +323,14 @@ export default function ConceptPage() {
                     aria-label={`${area.title} ${helperText}`}
                     style={
                       {
-                        '--card-delay': `${1960 + index * 120}ms`,
+                        '--card-delay': `${280 + index * 100}ms`,
                       } as CSSProperties
                     }
                   >
                     <span className="action-card-title">
                       <span
                         className="type-text"
-                        style={typeStyle(area.chars, `${2100 + index * 120}ms`)}
+                        style={typeStyle(area.chars, `${420 + index * 100}ms`)}
                       >
                         {area.title}
                       </span>
@@ -309,7 +338,7 @@ export default function ConceptPage() {
                     <span className="action-card-meta">
                       <span
                         className="type-text"
-                        style={typeStyle(9, `${2260 + index * 120}ms`)}
+                        style={typeStyle(9, `${560 + index * 100}ms`)}
                       >
                         {helperText}
                       </span>
@@ -320,12 +349,31 @@ export default function ConceptPage() {
             </nav>
           </section>
 
-          <section className="content-section experience-section" aria-labelledby="experience-title">
+          <section
+            className="content-section experience-section reveal-section"
+            aria-labelledby="experience-title"
+          >
             <div className="section-rule" aria-hidden="true" />
 
             <h2 id="experience-title" className="scan-title scan-title-experience">
               The Experience
             </h2>
+
+            <div className="experience-signal" aria-hidden="true">
+              <div className="signal-line" />
+
+              <div className="signal-node signal-node-dining">
+                <span className="signal-dot" />
+                <span className="signal-time">20:30</span>
+                <span className="signal-label">Dining</span>
+              </div>
+
+              <div className="signal-node signal-node-after-dark">
+                <span className="signal-dot" />
+                <span className="signal-time">22:00</span>
+                <span className="signal-label">After Dark</span>
+              </div>
+            </div>
 
             <nav className="experience-nav" aria-label="Explore the experience">
               {EXPERIENCE_BTNS.map((button, index) => (
@@ -335,14 +383,14 @@ export default function ConceptPage() {
                   className={`action-card experience-card ${button.dark ? 'is-dark' : ''}`}
                   style={
                     {
-                      '--card-delay': `${2420 + index * 140}ms`,
+                      '--card-delay': `${460 + index * 120}ms`,
                     } as CSSProperties
                   }
                 >
                   <span className="action-card-title">
                     <span
                       className="type-text"
-                      style={typeStyle(button.chars, `${2560 + index * 140}ms`)}
+                      style={typeStyle(button.chars, `${620 + index * 120}ms`)}
                     >
                       {button.label}
                     </span>
@@ -350,7 +398,7 @@ export default function ConceptPage() {
                   <span className="action-card-meta">
                     <span
                       className="type-text"
-                      style={typeStyle(9, `${2720 + index * 140}ms`)}
+                      style={typeStyle(9, `${760 + index * 120}ms`)}
                     >
                       Explore →
                     </span>
@@ -413,14 +461,6 @@ export default function ConceptPage() {
             -webkit-backdrop-filter 0.28s ease !important;
         }
 
-        .concept-nav-shell.is-scrolled .scene-nav {
-          background: rgba(232, 226, 212, 0.5) !important;
-          border-bottom: 1px solid rgba(28, 28, 26, 0.14);
-          box-shadow: 0 10px 28px rgba(28, 28, 26, 0.07);
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
-        }
-
         .scene-nav-burger,
         .scene-nav-logo {
           position: relative;
@@ -464,6 +504,14 @@ export default function ConceptPage() {
         .scene-nav--space .scene-nav-logo img {
           filter: brightness(0) saturate(100%) invert(8%) sepia(5%) saturate(851%)
             hue-rotate(21deg) brightness(99%) contrast(91%);
+        }
+
+        .concept-nav-shell.is-scrolled .scene-nav.scene-nav--space {
+          background: rgba(232, 226, 212, 0.5) !important;
+          border-bottom: 1px solid rgba(28, 28, 26, 0.14);
+          box-shadow: 0 10px 28px rgba(28, 28, 26, 0.07);
+          backdrop-filter: blur(18px) !important;
+          -webkit-backdrop-filter: blur(18px) !important;
         }
 
         .scene-nav-mobile.scene-nav--space,
@@ -571,21 +619,16 @@ export default function ConceptPage() {
           );
           transform: scaleX(0);
           transform-origin: left center;
+        }
+
+        .reveal-section.is-inview .section-rule {
           animation: drawHorizontal 0.78s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-        }
-
-        .space-section .section-rule {
-          animation-delay: 1180ms;
-        }
-
-        .experience-section .section-rule {
-          animation-delay: 1900ms;
         }
 
         .hero-section {
           min-height: clamp(440px, 62svh, 680px);
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(270px, 40%);
+          grid-template-columns: minmax(0, 1fr) minmax(240px, 34%);
           align-items: center;
           gap: clamp(22px, 4vw, 64px);
         }
@@ -598,7 +641,8 @@ export default function ConceptPage() {
         .hero-art {
           position: relative;
           z-index: 4;
-          min-height: clamp(420px, 40vw, 620px);
+          min-height: clamp(430px, 42vw, 580px);
+          overflow: hidden;
         }
 
         .space-section {
@@ -608,6 +652,7 @@ export default function ConceptPage() {
 
         .experience-section {
           padding-top: clamp(48px, 5vw, 70px);
+          padding-bottom: clamp(92px, 9vw, 140px);
         }
 
         h1,
@@ -650,43 +695,37 @@ export default function ConceptPage() {
           opacity: 0;
           clip-path: inset(0 100% 0 0);
           transform: translateX(-10px);
+        }
+
+        .reveal-section.is-inview .scan-title {
           animation:
-            scanTitleReveal 0.48s steps(8, end) forwards,
-            titleMicroGlitch 0.5s steps(2, end) forwards;
-        }
-
-        .scan-title-hero {
-          animation-delay: 560ms, 1040ms;
-        }
-
-        .scan-title-space {
-          animation-delay: 1320ms, 1780ms;
-        }
-
-        .scan-title-experience {
-          animation-delay: 2040ms, 2480ms;
+            scanTitleReveal 0.46s steps(8, end) 220ms forwards,
+            titleMicroGlitch 0.48s steps(2, end) 720ms forwards;
         }
 
         .concept-dot {
-          position: absolute;
-          z-index: 6;
-          left: clamp(18px, 2.2vw, 32px);
-          top: calc(100% + clamp(26px, 4vw, 54px));
+          display: inline-block;
           width: clamp(18px, 2vw, 31px);
           height: clamp(18px, 2vw, 31px);
+          margin-left: clamp(14px, 1.35vw, 24px);
           border-radius: 999px;
           background: ${C.ink};
+          vertical-align: 0.04em;
           opacity: 0;
           transform: scale(0.4);
+          text-shadow: none;
+        }
+
+        .hero-section.is-inview .concept-dot {
           animation:
-            dotEnter 0.36s cubic-bezier(0.2, 1.6, 0.3, 1) 1020ms forwards,
-            dotSignal 4.8s steps(1, end) 1700ms infinite;
+            dotEnter 0.36s cubic-bezier(0.2, 1.6, 0.3, 1) 720ms forwards,
+            dotSignal 4.8s steps(1, end) 1350ms infinite;
         }
 
         .address {
           position: relative;
           z-index: 5;
-          margin-top: clamp(82px, 7.5vw, 122px);
+          margin-top: clamp(34px, 4.2vw, 58px);
           font-family: ${MONO};
           color: ${C.pink};
           font-size: clamp(13px, 1.24vw, 18px);
@@ -701,62 +740,66 @@ export default function ConceptPage() {
           white-space: nowrap;
           overflow: hidden;
           clip-path: inset(0 100% 0 0);
-          animation: typeReveal 0.54s steps(var(--chars), end) var(--type-delay) forwards;
+        }
+
+        .reveal-section.is-inview .type-text {
+          animation: typeReveal 0.5s steps(var(--chars), end) var(--type-delay) forwards;
         }
 
         .concept-floor {
           position: absolute;
           z-index: 2;
-          left: 50%;
-          bottom: 0;
-          width: clamp(390px, 42vw, 660px);
+          right: 0;
+          bottom: clamp(38px, 4.2vw, 60px);
+          width: min(100%, 390px);
           height: auto;
           opacity: 0;
-          mix-blend-mode: multiply;
           filter: contrast(0.94) saturate(0.9);
           pointer-events: none;
           user-select: none;
-          transform: translate3d(-48%, 18px, 0);
-          animation:
-            floorIn 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) 880ms forwards,
-            floorDrift 10s ease-in-out 2300ms infinite;
+          transform: translate3d(0, 18px, 0);
         }
 
         .concept-funnel-inline {
           position: absolute;
           z-index: 3;
-          top: clamp(12px, 2.2vw, 38px);
-          left: 50%;
-          width: clamp(124px, 13vw, 205px);
+          top: clamp(22px, 3.2vw, 46px);
+          right: clamp(56px, 7vw, 104px);
+          width: clamp(88px, 7.8vw, 112px);
           height: auto;
           opacity: 0;
           pointer-events: none;
           user-select: none;
-          mix-blend-mode: multiply;
           filter: saturate(1) contrast(1.02);
-          transform: translate3d(-50%, -20px, 0) scale(0.96);
-          animation:
-            funnelIn 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) 1000ms forwards,
-            funnelFloat 8.5s ease-in-out 2200ms infinite;
+          transform: translate3d(0, -18px, 0) scale(0.96);
         }
 
         .concept-obelisk {
           position: absolute;
           z-index: 4;
-          left: 50%;
-          bottom: clamp(60px, 6vw, 92px);
-          width: clamp(56px, 5.4vw, 88px);
+          right: clamp(78px, 8.8vw, 124px);
+          bottom: clamp(92px, 8.6vw, 116px);
+          width: clamp(38px, 3.8vw, 54px);
           height: auto;
           opacity: 0;
           pointer-events: none;
           user-select: none;
           filter:
             contrast(1)
-            drop-shadow(20px 24px 22px rgba(28, 28, 26, 0.18));
-          transform: translate3d(-10%, 22px, 0) scale(0.96);
-          animation:
-            obeliskIn 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) 1140ms forwards,
-            obeliskHover 8s ease-in-out 2400ms infinite;
+            drop-shadow(14px 20px 18px rgba(28, 28, 26, 0.18));
+          transform: translate3d(0, 22px, 0) scale(0.96);
+        }
+
+        .hero-section.is-inview .concept-floor {
+          animation: floorIn 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) 680ms forwards;
+        }
+
+        .hero-section.is-inview .concept-funnel-inline {
+          animation: funnelIn 0.66s cubic-bezier(0.2, 0.8, 0.2, 1) 820ms forwards;
+        }
+
+        .hero-section.is-inview .concept-obelisk {
+          animation: obeliskIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 960ms forwards;
         }
 
         .concept-space-map {
@@ -781,7 +824,10 @@ export default function ConceptPage() {
           filter: blur(10px);
           opacity: 0;
           transform: rotate(-4deg) scaleX(0.7);
-          animation: shadowIn 0.7s ease 1660ms forwards;
+        }
+
+        .space-section.is-inview .concept-space-map::before {
+          animation: shadowIn 0.7s ease 520ms forwards;
         }
 
         .venue-wrap {
@@ -790,9 +836,12 @@ export default function ConceptPage() {
           aspect-ratio: 2048 / 1140;
           opacity: 0;
           transform: translateY(22px) scale(0.98);
+        }
+
+        .space-section.is-inview .venue-wrap {
           animation:
-            venueIn 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) 1520ms forwards,
-            venueFloat 4.8s ease-in-out 2700ms infinite;
+            venueIn 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) 420ms forwards,
+            venueFloat 4.8s ease-in-out 1600ms infinite;
         }
 
         .venue-image {
@@ -858,20 +907,20 @@ export default function ConceptPage() {
           pointer-events: none;
         }
 
-        .venue-glitch-a {
+        .space-section.is-inview .venue-glitch-a {
           filter:
             drop-shadow(0 0 12px rgba(212, 80, 122, 0.3))
             hue-rotate(-16deg)
             saturate(1.25);
-          animation: venueGlitchA 8.5s steps(1, end) 3000ms infinite;
+          animation: venueGlitchA 8.5s steps(1, end) 1800ms infinite;
         }
 
-        .venue-glitch-b {
+        .space-section.is-inview .venue-glitch-b {
           filter:
             drop-shadow(0 0 12px rgba(80, 120, 130, 0.2))
             hue-rotate(18deg)
             saturate(1.12);
-          animation: venueGlitchB 8.5s steps(1, end) 3000ms infinite;
+          animation: venueGlitchB 8.5s steps(1, end) 1800ms infinite;
         }
 
         .zone-controls {
@@ -881,11 +930,116 @@ export default function ConceptPage() {
           margin-top: clamp(4px, 0.8vw, 10px);
         }
 
+        .experience-signal {
+          position: relative;
+          z-index: 4;
+          width: 100%;
+          height: clamp(82px, 8vw, 116px);
+          margin-top: clamp(38px, 5vw, 62px);
+          margin-bottom: clamp(20px, 2.4vw, 34px);
+        }
+
+        .signal-line {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 38px;
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            rgba(28, 28, 26, 0.16),
+            rgba(28, 28, 26, 0.58),
+            rgba(28, 28, 26, 0.16)
+          );
+          transform: scaleX(0);
+          transform-origin: left center;
+        }
+
+        .experience-section.is-inview .signal-line {
+          animation: signalLineIn 0.82s cubic-bezier(0.25, 0.8, 0.25, 1) 420ms forwards;
+        }
+
+        .signal-node {
+          position: absolute;
+          top: 0;
+          display: grid;
+          grid-template-columns: auto 1fr;
+          grid-template-areas:
+            'dot time'
+            'dot label';
+          column-gap: 13px;
+          align-items: center;
+          opacity: 0;
+          transform: translateY(8px);
+        }
+
+        .signal-node-dining {
+          left: 0;
+        }
+
+        .signal-node-after-dark {
+          right: 0;
+          text-align: right;
+          grid-template-columns: 1fr auto;
+          grid-template-areas:
+            'time dot'
+            'label dot';
+        }
+
+        .experience-section.is-inview .signal-node-dining {
+          animation: signalNodeIn 0.48s ease 680ms forwards;
+        }
+
+        .experience-section.is-inview .signal-node-after-dark {
+          animation: signalNodeIn 0.48s ease 820ms forwards;
+        }
+
+        .signal-dot {
+          grid-area: dot;
+          width: 15px;
+          height: 15px;
+          border-radius: 999px;
+          background: ${C.ink};
+          box-shadow: 0 0 0 5px rgba(28, 28, 26, 0.06);
+        }
+
+        .signal-node-after-dark .signal-dot {
+          background: ${C.pink};
+          box-shadow: 0 0 0 5px rgba(212, 80, 122, 0.1);
+        }
+
+        .signal-time {
+          grid-area: time;
+          font-family: ${MONO};
+          font-size: clamp(12px, 1.1vw, 16px);
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: 0.18em;
+          color: ${C.ink};
+          text-transform: uppercase;
+        }
+
+        .signal-label {
+          grid-area: label;
+          margin-top: 8px;
+          font-family: ${MONO};
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: 0.22em;
+          color: rgba(28, 28, 26, 0.52);
+          text-transform: uppercase;
+        }
+
+        .signal-node-after-dark .signal-label {
+          color: ${C.pink};
+        }
+
         .experience-nav {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 16px;
-          margin-top: clamp(42px, 5vw, 64px);
+          margin-top: 0;
         }
 
         .action-card {
@@ -904,12 +1058,15 @@ export default function ConceptPage() {
           overflow: hidden;
           opacity: 0;
           transform: translateY(12px);
-          animation: cardIn 0.54s ease var(--card-delay, 1900ms) forwards;
           transition:
             transform 0.24s ease,
             background 0.24s ease,
             color 0.24s ease,
             box-shadow 0.24s ease;
+        }
+
+        .reveal-section.is-inview .action-card {
+          animation: cardIn 0.54s ease var(--card-delay, 320ms) forwards;
         }
 
         .action-card::before {
@@ -930,7 +1087,10 @@ export default function ConceptPage() {
           border: 1px solid rgba(28, 28, 26, 0.48);
           pointer-events: none;
           clip-path: inset(0 100% 100% 0);
-          animation: borderDraw 0.64s ease calc(var(--card-delay, 1900ms) + 100ms) forwards;
+        }
+
+        .reveal-section.is-inview .action-card::after {
+          animation: borderDraw 0.64s ease calc(var(--card-delay, 320ms) + 100ms) forwards;
         }
 
         .action-card-title,
@@ -1123,21 +1283,21 @@ export default function ConceptPage() {
         @keyframes floorIn {
           to {
             opacity: 1;
-            transform: translate3d(-48%, 0, 0);
+            transform: translate3d(0, 0, 0);
           }
         }
 
         @keyframes funnelIn {
           to {
             opacity: 1;
-            transform: translate3d(-50%, 0, 0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
           }
         }
 
         @keyframes obeliskIn {
           to {
             opacity: 1;
-            transform: translate3d(-10%, 0, 0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
           }
         }
 
@@ -1152,6 +1312,19 @@ export default function ConceptPage() {
           to {
             opacity: 1;
             transform: translateY(0) scale(1);
+          }
+        }
+
+        @keyframes signalLineIn {
+          to {
+            transform: scaleX(1);
+          }
+        }
+
+        @keyframes signalNodeIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
 
@@ -1174,39 +1347,6 @@ export default function ConceptPage() {
 
           100% {
             clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes funnelFloat {
-          0%,
-          100% {
-            transform: translate3d(-50%, 0, 0) rotate(0deg);
-          }
-
-          50% {
-            transform: translate3d(calc(-50% - 8px), 8px, 0) rotate(1.3deg);
-          }
-        }
-
-        @keyframes floorDrift {
-          0%,
-          100% {
-            transform: translate3d(-48%, 0, 0);
-          }
-
-          50% {
-            transform: translate3d(calc(-48% + 10px), -4px, 0);
-          }
-        }
-
-        @keyframes obeliskHover {
-          0%,
-          100% {
-            transform: translate3d(-10%, 0, 0);
-          }
-
-          50% {
-            transform: translate3d(-10%, -8px, 0);
           }
         }
 
@@ -1340,7 +1480,7 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            max-width: 460px;
+            max-width: 360px;
             width: 100%;
             margin-left: auto;
             margin-right: auto;
@@ -1368,8 +1508,8 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            min-height: 350px;
-            max-width: 380px;
+            min-height: 330px;
+            max-width: 330px;
           }
 
           .space-section {
@@ -1394,12 +1534,13 @@ export default function ConceptPage() {
           }
 
           .concept-dot {
-            left: 0;
-            top: calc(100% + 22px);
+            width: 18px;
+            height: 18px;
+            margin-left: 12px;
           }
 
           .address {
-            margin-top: 72px;
+            margin-top: 34px;
             max-width: 360px;
             font-size: 12px;
             letter-spacing: 0.18em;
@@ -1420,22 +1561,28 @@ export default function ConceptPage() {
           }
 
           .concept-floor {
-            width: 410px;
+            width: min(100%, 310px);
+            bottom: 36px;
           }
 
           .concept-funnel-inline {
-            width: 142px;
-            top: 16px;
+            width: 92px;
+            right: 74px;
+            top: 28px;
           }
 
           .concept-obelisk {
-            width: 76px;
-            bottom: 68px;
+            width: 44px;
+            right: 96px;
+            bottom: 92px;
+          }
+
+          .experience-signal {
+            height: 104px;
           }
 
           .experience-nav {
             grid-template-columns: 1fr 1fr;
-            margin-top: 42px;
           }
         }
 
@@ -1445,20 +1592,46 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            max-width: 320px;
+            max-width: 280px;
           }
 
           .concept-floor {
-            width: 320px;
+            width: min(100%, 270px);
           }
 
           .concept-funnel-inline {
-            width: 118px;
+            width: 78px;
+            right: 62px;
           }
 
           .concept-obelisk {
-            width: 62px;
-            bottom: 58px;
+            width: 38px;
+            right: 78px;
+            bottom: 82px;
+          }
+
+          .experience-signal {
+            height: 140px;
+          }
+
+          .signal-line {
+            top: 50%;
+          }
+
+          .signal-node-dining {
+            left: 0;
+            top: 0;
+          }
+
+          .signal-node-after-dark {
+            right: auto;
+            left: 0;
+            top: 76px;
+            text-align: left;
+            grid-template-columns: auto 1fr;
+            grid-template-areas:
+              'dot time'
+              'dot label';
           }
         }
 
@@ -1482,8 +1655,8 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            min-height: 280px;
-            max-width: 280px;
+            min-height: 250px;
+            max-width: 240px;
           }
 
           .section-rule {
@@ -1523,21 +1696,25 @@ export default function ConceptPage() {
           }
 
           .concept-floor {
-            width: 280px;
+            width: min(100%, 230px);
+            bottom: 30px;
           }
 
           .concept-funnel-inline {
-            width: 104px;
-            top: 10px;
+            width: 68px;
+            right: 50px;
+            top: 20px;
           }
 
           .concept-obelisk {
-            width: 54px;
-            bottom: 48px;
+            width: 32px;
+            right: 64px;
+            bottom: 72px;
           }
 
-          .experience-nav {
-            margin-top: 36px;
+          .experience-signal {
+            margin-top: 34px;
+            margin-bottom: 18px;
           }
         }
 
@@ -1557,6 +1734,8 @@ export default function ConceptPage() {
           .venue-glitch-b,
           .venue-highlight-glow.is-active,
           .venue-highlight.is-active,
+          .signal-line,
+          .signal-node,
           .action-card,
           .action-card::after {
             animation: none !important;
@@ -1570,12 +1749,14 @@ export default function ConceptPage() {
           .concept-funnel-inline,
           .concept-obelisk,
           .venue-wrap,
+          .signal-node,
           .action-card {
             opacity: 1;
           }
 
           .axis-v,
-          .section-rule {
+          .section-rule,
+          .signal-line {
             transform: none;
           }
 
@@ -1589,20 +1770,9 @@ export default function ConceptPage() {
           .concept-funnel-inline,
           .concept-obelisk,
           .venue-wrap,
+          .signal-node,
           .action-card {
             transform: none;
-          }
-
-          .concept-floor {
-            transform: translate3d(-48%, 0, 0);
-          }
-
-          .concept-funnel-inline {
-            transform: translate3d(-50%, 0, 0);
-          }
-
-          .concept-obelisk {
-            transform: translate3d(-10%, 0, 0);
           }
 
           .action-card::after {
