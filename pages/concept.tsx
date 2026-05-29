@@ -1768,7 +1768,7 @@ export default function ConceptPage() {
 
           .space-section {
             padding-top: 64px;
-            padding-bottom: 24px;
+            padding-bottom: 12px;
           }
 
           .experience-section {
@@ -1825,10 +1825,10 @@ export default function ConceptPage() {
           }
 
           .experience-signal {
-            --signal-y: 42px;
-            height: 72px;
+            --signal-y: 30px;
+            height: 58px;
             margin-top: 34px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
           }
 
           .signal-track {
@@ -1838,7 +1838,7 @@ export default function ConceptPage() {
           .signal-node {
             top: 0;
             min-width: auto;
-            height: 72px;
+            height: 58px;
           }
 
           .signal-node-dining {
@@ -1896,11 +1896,15 @@ export default function ConceptPage() {
             width: min(100%, 270px);
           }
 
+          .space-section {
+            padding-bottom: 11px;
+          }
+
           .experience-signal {
-            --signal-y: 44px;
-            height: 74px;
-            margin-top: 30px;
-            margin-bottom: 18px;
+            --signal-y: 30px;
+            height: 58px;
+            margin-top: 28px;
+            margin-bottom: 14px;
           }
 
           .signal-track {
@@ -1910,7 +1914,7 @@ export default function ConceptPage() {
           .signal-node {
             top: 0;
             min-width: auto;
-            height: 74px;
+            height: 58px;
           }
 
           .signal-node-dining {
@@ -1980,7 +1984,7 @@ export default function ConceptPage() {
 
           .space-section {
             padding-top: 54px;
-            padding-bottom: 22px;
+            padding-bottom: 11px;
           }
 
           .experience-section {
@@ -2024,10 +2028,14 @@ export default function ConceptPage() {
           }
 
           .experience-signal {
-            --signal-y: 44px;
-            height: 74px;
-            margin-top: 28px;
-            margin-bottom: 14px;
+            --signal-y: 28px;
+            height: 56px;
+            margin-top: 26px;
+            margin-bottom: 12px;
+          }
+
+          .signal-node {
+            height: 56px;
           }
         }
 
