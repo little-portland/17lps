@@ -522,30 +522,98 @@ export default function ConceptPage() {
 
         @media (max-width: 900px) {
           .concept-nav-shell {
-            z-index: 40000 !important;
+            z-index: 50000 !important;
+          }
+
+          .concept-nav-shell::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 49990;
+            opacity: 0;
+            pointer-events: none;
+            background: rgba(232, 226, 212, 0.86);
+            backdrop-filter: blur(22px) saturate(1.08);
+            -webkit-backdrop-filter: blur(22px) saturate(1.08);
+            transition: opacity 0.28s ease;
+          }
+
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true'])::before,
+          .concept-nav-shell:has(button[aria-expanded='true'])::before {
+            opacity: 1;
+            pointer-events: auto;
           }
 
           .concept-nav-shell .scene-nav {
-            z-index: 40020 !important;
+            z-index: 50020 !important;
           }
 
-          .scene-nav-mobile,
-          .scene-nav-mobile--space,
-          .scene-nav-mobile.scene-nav--space {
+          .scene-nav-burger,
+          .scene-nav-logo {
+            z-index: 50040 !important;
+          }
+
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav,
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav {
+            background: rgba(232, 226, 212, 0.86) !important;
+            backdrop-filter: blur(22px) !important;
+            -webkit-backdrop-filter: blur(22px) !important;
+            box-shadow: none !important;
+          }
+
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile,
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile,
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile--space,
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile--space {
             position: fixed !important;
             inset: 0 !important;
-            z-index: 40010 !important;
-            background: rgba(232, 226, 212, 0.92) !important;
-            backdrop-filter: blur(18px) !important;
-            -webkit-backdrop-filter: blur(18px) !important;
+            z-index: 50010 !important;
+            min-height: 100dvh !important;
+            height: 100dvh !important;
+            padding: 104px 28px 38px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 20px !important;
+            overflow-y: auto !important;
+            background: rgba(232, 226, 212, 0.86) !important;
+            backdrop-filter: blur(22px) saturate(1.08) !important;
+            -webkit-backdrop-filter: blur(22px) saturate(1.08) !important;
           }
 
-          .scene-nav-mobile.scene-nav--space .scene-nav-mobile-inner,
-          .scene-nav-mobile--space .scene-nav-mobile-inner,
-          .scene-nav-mobile-inner {
-            padding-top: 96px !important;
-            position: relative;
-            z-index: 40011 !important;
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile-inner,
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile-inner {
+            width: 100% !important;
+            min-height: auto !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 20px !important;
+          }
+
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a,
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a,
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile-link,
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile-link {
+            display: block !important;
+            position: relative !important;
+            margin: 0 !important;
+            padding: 4px 0 !important;
+            font-size: clamp(28px, 9vw, 48px) !important;
+            line-height: 1.06 !important;
+            letter-spacing: 0.12em !important;
+            text-align: center !important;
+            color: ${C.ink} !important;
+            opacity: 1 !important;
+            text-shadow: none !important;
+          }
+
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a.disabled,
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a.disabled {
+            opacity: 0.36 !important;
           }
         }
       `}</style>
@@ -607,8 +675,17 @@ export default function ConceptPage() {
           left: 0;
           z-index: 1;
           width: 1px;
-          background: #1c1c1a;
-          opacity: 0.28;
+          background: linear-gradient(
+            to bottom,
+            rgba(28, 28, 26, 0) 0%,
+            rgba(28, 28, 26, 0.04) 4%,
+            rgba(28, 28, 26, 0.18) 14%,
+            rgba(28, 28, 26, 0.34) 32%,
+            rgba(28, 28, 26, 0.34) 68%,
+            rgba(28, 28, 26, 0.18) 86%,
+            rgba(28, 28, 26, 0.04) 96%,
+            rgba(28, 28, 26, 0) 100%
+          );
           pointer-events: none;
           transform: scaleY(0);
           transform-origin: top center;
@@ -628,7 +705,14 @@ export default function ConceptPage() {
           height: 1px;
           margin-left: calc(var(--section-pad) * -1);
           margin-bottom: clamp(28px, 4vw, 48px);
-          background: rgba(28, 28, 26, 0.18);
+          background: linear-gradient(
+            to right,
+            rgba(28, 28, 26, 0.26) 0%,
+            rgba(28, 28, 26, 0.2) 28%,
+            rgba(28, 28, 26, 0.13) 62%,
+            rgba(28, 28, 26, 0.04) 88%,
+            rgba(28, 28, 26, 0) 100%
+          );
           transform: scaleX(0);
           transform-origin: left center;
         }
@@ -923,12 +1007,24 @@ export default function ConceptPage() {
         }
 
         .signal-line {
-          background: rgba(28, 28, 26, 0.28);
+          background: linear-gradient(
+            to right,
+            rgba(28, 28, 26, 0.28) 0%,
+            rgba(28, 28, 26, 0.2) 62%,
+            rgba(28, 28, 26, 0.08) 88%,
+            rgba(28, 28, 26, 0) 100%
+          );
           transform: scaleX(0);
         }
 
         .signal-line-fill {
-          background: ${C.pink};
+          background: linear-gradient(
+            to right,
+            rgba(212, 80, 122, 1) 0%,
+            rgba(212, 80, 122, 0.84) 72%,
+            rgba(212, 80, 122, 0.2) 92%,
+            rgba(212, 80, 122, 0) 100%
+          );
           transform: scaleX(0);
           opacity: 0;
         }
@@ -1653,6 +1749,7 @@ export default function ConceptPage() {
             width: calc(100% - 40px);
             max-width: none;
             padding-top: 96px;
+            padding-bottom: 28px;
           }
 
           .content-section {
@@ -1661,21 +1758,23 @@ export default function ConceptPage() {
 
           .hero-section {
             min-height: auto;
-            gap: 26px;
+            gap: 12px;
           }
 
           .hero-art {
             justify-content: center;
+            margin-top: -4px;
+            margin-bottom: -26px;
           }
 
           .space-section {
-            padding-top: 74px;
-            padding-bottom: 36px;
+            padding-top: 64px;
+            padding-bottom: 24px;
           }
 
           .experience-section {
-            padding-top: 64px;
-            padding-bottom: 72px;
+            padding-top: 56px;
+            padding-bottom: 24px;
           }
 
           h1,
@@ -1695,17 +1794,22 @@ export default function ConceptPage() {
           }
 
           .address {
-            margin-top: 24px;
+            margin-top: 22px;
             max-width: 360px;
             font-size: 12px;
             letter-spacing: 0.18em;
           }
 
+          .concept-flyer-graphic {
+            width: min(100%, 300px);
+            margin-left: auto;
+            margin-right: auto;
+          }
+
           .concept-space-map {
-            min-height: clamp(250px, 58vw, 390px);
-            margin-top: 34px;
-            padding-left: 8px;
-            padding-right: 8px;
+            min-height: auto;
+            margin-top: 30px;
+            padding: 0 8px;
           }
 
           .venue-wrap {
@@ -1716,7 +1820,8 @@ export default function ConceptPage() {
           }
 
           .zone-controls {
-            margin-top: 10px;
+            grid-template-columns: 1fr;
+            margin-top: 18px;
             width: 100%;
           }
 
@@ -1724,7 +1829,7 @@ export default function ConceptPage() {
             --signal-y: 42px;
             height: 72px;
             margin-top: 34px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
           }
 
           .signal-track {
@@ -1743,6 +1848,7 @@ export default function ConceptPage() {
 
           .signal-node-after-dark {
             right: 0;
+            left: auto;
             text-align: right;
           }
 
@@ -1788,14 +1894,14 @@ export default function ConceptPage() {
           }
 
           .concept-flyer-graphic {
-            width: min(100%, 280px);
+            width: min(100%, 270px);
           }
 
           .experience-signal {
             --signal-y: 44px;
             height: 74px;
             margin-top: 30px;
-            margin-bottom: 14px;
+            margin-bottom: 18px;
           }
 
           .signal-track {
@@ -1848,6 +1954,7 @@ export default function ConceptPage() {
           .shell {
             width: calc(100% - 28px);
             padding-top: 88px;
+            padding-bottom: 22px;
           }
 
           .axis-v {
@@ -1860,7 +1967,12 @@ export default function ConceptPage() {
           }
 
           .hero-section {
-            gap: 20px;
+            gap: 8px;
+          }
+
+          .hero-art {
+            margin-top: -6px;
+            margin-bottom: -34px;
           }
 
           .section-rule {
@@ -1868,18 +1980,18 @@ export default function ConceptPage() {
           }
 
           .space-section {
-            padding-top: 62px;
-            padding-bottom: 30px;
+            padding-top: 54px;
+            padding-bottom: 22px;
           }
 
           .experience-section {
-            padding-top: 58px;
-            padding-bottom: 60px;
+            padding-top: 52px;
+            padding-bottom: 16px;
           }
 
           .concept-space-map {
-            min-height: 230px;
-            margin-top: 30px;
+            min-height: auto;
+            margin-top: 26px;
             padding-left: 6px;
             padding-right: 6px;
           }
@@ -1909,14 +2021,14 @@ export default function ConceptPage() {
           }
 
           .concept-flyer-graphic {
-            width: min(100%, 240px);
+            width: min(100%, 248px);
           }
 
           .experience-signal {
             --signal-y: 44px;
             height: 74px;
-            margin-top: 30px;
-            margin-bottom: 12px;
+            margin-top: 28px;
+            margin-bottom: 14px;
           }
         }
 
@@ -1929,6 +2041,10 @@ export default function ConceptPage() {
           .signal-dot {
             width: 16px;
             height: 16px;
+          }
+
+          .concept-flyer-graphic {
+            width: min(100%, 230px);
           }
         }
 
