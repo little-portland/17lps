@@ -486,8 +486,11 @@ export default function ConceptPage() {
         }
 
         .scene-nav--space a.active,
-        .scene-nav-mobile--space a.active {
+        .scene-nav-mobile--space a.active,
+        .scene-nav--space a[aria-current='page'],
+        .scene-nav-mobile--space a[aria-current='page'] {
           color: ${C.pink} !important;
+          opacity: 1 !important;
         }
 
         .scene-nav--space a.disabled,
@@ -591,7 +594,7 @@ export default function ConceptPage() {
             flex-direction: column !important;
             align-items: center !important;
             justify-content: flex-start !important;
-            gap: 20px !important;
+            gap: 18px !important;
           }
 
           .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a,
@@ -602,13 +605,23 @@ export default function ConceptPage() {
             position: relative !important;
             margin: 0 !important;
             padding: 4px 0 !important;
-            font-size: clamp(28px, 9vw, 48px) !important;
-            line-height: 1.06 !important;
-            letter-spacing: 0.12em !important;
+            font-size: clamp(16px, 4.7vw, 24px) !important;
+            line-height: 1.15 !important;
+            letter-spacing: 0.16em !important;
             text-align: center !important;
             color: ${C.ink} !important;
             opacity: 1 !important;
             text-shadow: none !important;
+          }
+
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a.active,
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a.active,
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile-link.active,
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile-link.active,
+          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'],
+          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'] {
+            color: ${C.pink} !important;
+            opacity: 1 !important;
           }
 
           .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a.disabled,
@@ -678,12 +691,10 @@ export default function ConceptPage() {
           background: linear-gradient(
             to bottom,
             rgba(28, 28, 26, 0) 0%,
-            rgba(28, 28, 26, 0.04) 4%,
-            rgba(28, 28, 26, 0.18) 14%,
-            rgba(28, 28, 26, 0.34) 32%,
-            rgba(28, 28, 26, 0.34) 68%,
-            rgba(28, 28, 26, 0.18) 86%,
-            rgba(28, 28, 26, 0.04) 96%,
+            rgba(28, 28, 26, 0.18) 6%,
+            rgba(28, 28, 26, 0.34) 14%,
+            rgba(28, 28, 26, 0.34) 86%,
+            rgba(28, 28, 26, 0.18) 94%,
             rgba(28, 28, 26, 0) 100%
           );
           pointer-events: none;
@@ -708,9 +719,9 @@ export default function ConceptPage() {
           background: linear-gradient(
             to right,
             rgba(28, 28, 26, 0.26) 0%,
-            rgba(28, 28, 26, 0.2) 28%,
-            rgba(28, 28, 26, 0.13) 62%,
-            rgba(28, 28, 26, 0.04) 88%,
+            rgba(28, 28, 26, 0.22) 72%,
+            rgba(28, 28, 26, 0.14) 88%,
+            rgba(28, 28, 26, 0.04) 97%,
             rgba(28, 28, 26, 0) 100%
           );
           transform: scaleX(0);
@@ -1007,24 +1018,12 @@ export default function ConceptPage() {
         }
 
         .signal-line {
-          background: linear-gradient(
-            to right,
-            rgba(28, 28, 26, 0.28) 0%,
-            rgba(28, 28, 26, 0.2) 62%,
-            rgba(28, 28, 26, 0.08) 88%,
-            rgba(28, 28, 26, 0) 100%
-          );
+          background: rgba(28, 28, 26, 0.28);
           transform: scaleX(0);
         }
 
         .signal-line-fill {
-          background: linear-gradient(
-            to right,
-            rgba(212, 80, 122, 1) 0%,
-            rgba(212, 80, 122, 0.84) 72%,
-            rgba(212, 80, 122, 0.2) 92%,
-            rgba(212, 80, 122, 0) 100%
-          );
+          background: ${C.pink};
           transform: scaleX(0);
           opacity: 0;
         }
