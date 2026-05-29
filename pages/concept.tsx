@@ -1858,15 +1858,12 @@ export default function ConceptPage() {
           }
 
           .experience-nav {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
           }
         }
 
         @media (max-width: 620px) {
-          .experience-nav {
-            grid-template-columns: 1fr;
-          }
-
           .concept-flyer-graphic {
             width: min(100%, 270px);
           }
@@ -1925,6 +1922,27 @@ export default function ConceptPage() {
           .signal-time {
             font-size: 10px;
             letter-spacing: 0.06em;
+          }
+
+          .experience-nav {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+          }
+
+          .experience-nav .action-card {
+            min-height: 84px;
+            padding: 14px 12px;
+          }
+
+          .experience-nav .action-card-title {
+            font-size: clamp(15px, 4vw, 20px);
+            line-height: 0.95;
+            white-space: nowrap;
+          }
+
+          .experience-nav .action-card-meta {
+            font-size: 8px;
+            letter-spacing: 0.14em;
           }
         }
 
@@ -2013,6 +2031,21 @@ export default function ConceptPage() {
           .signal-node {
             height: 56px;
           }
+
+          .experience-nav {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+          }
+
+          .experience-nav .action-card {
+            min-height: 84px;
+            padding: 14px 10px;
+          }
+
+          .experience-nav .action-card-title {
+            font-size: clamp(14px, 3.8vw, 18px);
+            white-space: nowrap;
+          }
         }
 
         @media (max-width: 420px) {
@@ -2033,6 +2066,25 @@ export default function ConceptPage() {
 
           .concept-flyer-graphic {
             width: min(100%, 230px);
+          }
+        }
+
+        @media (max-width: 380px) {
+          .experience-nav {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 7px;
+          }
+
+          .experience-nav .action-card {
+            padding: 13px 8px;
+          }
+
+          .experience-nav .action-card-title {
+            font-size: 13px;
+          }
+
+          .experience-nav .action-card-meta {
+            font-size: 7px;
           }
         }
 
