@@ -78,7 +78,7 @@ export default function ConceptPage() {
   useEffect(() => {
     const menuTimer = window.setTimeout(() => {
       setMenuReady(true);
-    }, 3200);
+    }, 2600);
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
@@ -177,21 +177,14 @@ export default function ConceptPage() {
 
           <section className="content-section hero-section" aria-labelledby="concept-title">
             <div className="hero-copy">
-              <h1 id="concept-title">
-                <span
-                  className="type-text type-title"
-                  style={typeStyle(7, '760ms')}
-                >
-                  Concept
-                </span>
-                <span className="pink-dot">.</span>
+              <h1 id="concept-title" className="scan-title scan-title-hero">
+                Concept
               </h1>
 
+              <span className="concept-dot" aria-hidden="true" />
+
               <p className="address">
-                <span
-                  className="type-text"
-                  style={typeStyle(33, '1580ms')}
-                >
+                <span className="type-text" style={typeStyle(33, '1120ms')}>
                   17 Little Portland Street, London
                 </span>
               </p>
@@ -224,13 +217,8 @@ export default function ConceptPage() {
           <section className="content-section space-section" aria-labelledby="space-title">
             <div className="section-rule" aria-hidden="true" />
 
-            <h2 id="space-title">
-              <span
-                className="type-text type-title"
-                style={typeStyle(9, '1920ms')}
-              >
-                The Space
-              </span>
+            <h2 id="space-title" className="scan-title scan-title-space">
+              The Space
             </h2>
 
             <div className="concept-space-map" aria-label="Interactive venue map">
@@ -306,14 +294,14 @@ export default function ConceptPage() {
                     aria-label={`${area.title} ${helperText}`}
                     style={
                       {
-                        '--card-delay': `${2280 + index * 120}ms`,
+                        '--card-delay': `${1960 + index * 120}ms`,
                       } as CSSProperties
                     }
                   >
                     <span className="action-card-title">
                       <span
                         className="type-text"
-                        style={typeStyle(area.chars, `${2480 + index * 140}ms`)}
+                        style={typeStyle(area.chars, `${2100 + index * 120}ms`)}
                       >
                         {area.title}
                       </span>
@@ -321,7 +309,7 @@ export default function ConceptPage() {
                     <span className="action-card-meta">
                       <span
                         className="type-text"
-                        style={typeStyle(9, `${2700 + index * 140}ms`)}
+                        style={typeStyle(9, `${2260 + index * 120}ms`)}
                       >
                         {helperText}
                       </span>
@@ -335,13 +323,8 @@ export default function ConceptPage() {
           <section className="content-section experience-section" aria-labelledby="experience-title">
             <div className="section-rule" aria-hidden="true" />
 
-            <h2 id="experience-title">
-              <span
-                className="type-text type-title"
-                style={typeStyle(14, '2320ms')}
-              >
-                The Experience
-              </span>
+            <h2 id="experience-title" className="scan-title scan-title-experience">
+              The Experience
             </h2>
 
             <nav className="experience-nav" aria-label="Explore the experience">
@@ -352,14 +335,14 @@ export default function ConceptPage() {
                   className={`action-card experience-card ${button.dark ? 'is-dark' : ''}`}
                   style={
                     {
-                      '--card-delay': `${2700 + index * 140}ms`,
+                      '--card-delay': `${2420 + index * 140}ms`,
                     } as CSSProperties
                   }
                 >
                   <span className="action-card-title">
                     <span
                       className="type-text"
-                      style={typeStyle(button.chars, `${2860 + index * 160}ms`)}
+                      style={typeStyle(button.chars, `${2560 + index * 140}ms`)}
                     >
                       {button.label}
                     </span>
@@ -367,7 +350,7 @@ export default function ConceptPage() {
                   <span className="action-card-meta">
                     <span
                       className="type-text"
-                      style={typeStyle(9, `${3060 + index * 160}ms`)}
+                      style={typeStyle(9, `${2720 + index * 140}ms`)}
                     >
                       Explore →
                     </span>
@@ -423,6 +406,19 @@ export default function ConceptPage() {
 
         .scene-nav {
           z-index: 10020 !important;
+          transition:
+            background 0.28s ease,
+            box-shadow 0.28s ease,
+            backdrop-filter 0.28s ease,
+            -webkit-backdrop-filter 0.28s ease !important;
+        }
+
+        .concept-nav-shell.is-scrolled .scene-nav {
+          background: rgba(232, 226, 212, 0.5) !important;
+          border-bottom: 1px solid rgba(28, 28, 26, 0.14);
+          box-shadow: 0 10px 28px rgba(28, 28, 26, 0.07);
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
         }
 
         .scene-nav-burger,
@@ -472,7 +468,7 @@ export default function ConceptPage() {
 
         .scene-nav-mobile.scene-nav--space,
         .scene-nav-mobile--space {
-          background: rgba(232, 226, 212, 0.94) !important;
+          background: rgba(232, 226, 212, 0.92) !important;
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
         }
@@ -503,33 +499,14 @@ export default function ConceptPage() {
           transform: translateY(-18px);
           pointer-events: none;
           transition:
-            opacity 0.8s ease,
-            transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .concept-nav-shell::before {
-          content: '';
-          position: absolute;
-          inset: 0 0 auto 0;
-          height: 76px;
-          z-index: 0;
-          background: rgba(232, 226, 212, 0.86);
-          border-bottom: 1px solid rgba(28, 28, 26, 0.12);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          opacity: 0;
-          transition: opacity 0.28s ease;
-          pointer-events: none;
+            opacity 0.7s ease,
+            transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .concept-nav-shell.is-ready {
           opacity: 1;
           transform: translateY(0);
           pointer-events: auto;
-        }
-
-        .concept-nav-shell.is-scrolled::before {
-          opacity: 1;
         }
 
         .bg-image {
@@ -571,7 +548,7 @@ export default function ConceptPage() {
           pointer-events: none;
           transform: scaleY(0);
           transform-origin: top center;
-          animation: drawVertical 1.1s cubic-bezier(0.25, 0.8, 0.25, 1) 180ms forwards;
+          animation: drawVertical 0.95s cubic-bezier(0.25, 0.8, 0.25, 1) 120ms forwards;
         }
 
         .content-section {
@@ -594,34 +571,34 @@ export default function ConceptPage() {
           );
           transform: scaleX(0);
           transform-origin: left center;
-          animation: drawHorizontal 0.95s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+          animation: drawHorizontal 0.78s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
         }
 
         .space-section .section-rule {
-          animation-delay: 1320ms;
+          animation-delay: 1180ms;
         }
 
         .experience-section .section-rule {
-          animation-delay: 2140ms;
+          animation-delay: 1900ms;
         }
 
         .hero-section {
-          min-height: clamp(420px, 58svh, 620px);
+          min-height: clamp(440px, 62svh, 680px);
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(250px, 38%);
+          grid-template-columns: minmax(0, 1fr) minmax(270px, 40%);
           align-items: center;
-          gap: clamp(20px, 4vw, 54px);
+          gap: clamp(22px, 4vw, 64px);
         }
 
         .hero-copy {
           position: relative;
-          z-index: 6;
+          z-index: 7;
         }
 
         .hero-art {
           position: relative;
           z-index: 4;
-          min-height: clamp(360px, 38vw, 560px);
+          min-height: clamp(420px, 40vw, 620px);
         }
 
         .space-section {
@@ -640,7 +617,8 @@ export default function ConceptPage() {
         }
 
         h1,
-        h2 {
+        h2,
+        .scan-title {
           font-family: ${MONO};
           color: ${C.ink};
           text-transform: uppercase;
@@ -651,17 +629,71 @@ export default function ConceptPage() {
           text-shadow: 0.018em 0 0 currentColor;
         }
 
-        h1 {
+        h1,
+        .scan-title-hero {
           position: relative;
           z-index: 5;
           font-size: clamp(64px, 8.4vw, 128px);
         }
 
-        h2 {
+        h2,
+        .scan-title-space,
+        .scan-title-experience {
           position: relative;
           z-index: 5;
           max-width: 720px;
           font-size: clamp(48px, 5.8vw, 92px);
+        }
+
+        .scan-title {
+          display: inline-block;
+          opacity: 0;
+          clip-path: inset(0 100% 0 0);
+          transform: translateX(-10px);
+          animation:
+            scanTitleReveal 0.48s steps(8, end) forwards,
+            titleMicroGlitch 0.5s steps(2, end) forwards;
+        }
+
+        .scan-title-hero {
+          animation-delay: 560ms, 1040ms;
+        }
+
+        .scan-title-space {
+          animation-delay: 1320ms, 1780ms;
+        }
+
+        .scan-title-experience {
+          animation-delay: 2040ms, 2480ms;
+        }
+
+        .concept-dot {
+          position: absolute;
+          z-index: 6;
+          left: clamp(18px, 2.2vw, 32px);
+          top: calc(100% + clamp(26px, 4vw, 54px));
+          width: clamp(18px, 2vw, 31px);
+          height: clamp(18px, 2vw, 31px);
+          border-radius: 999px;
+          background: ${C.ink};
+          opacity: 0;
+          transform: scale(0.4);
+          animation:
+            dotEnter 0.36s cubic-bezier(0.2, 1.6, 0.3, 1) 1020ms forwards,
+            dotSignal 4.8s steps(1, end) 1700ms infinite;
+        }
+
+        .address {
+          position: relative;
+          z-index: 5;
+          margin-top: clamp(82px, 7.5vw, 122px);
+          font-family: ${MONO};
+          color: ${C.pink};
+          font-size: clamp(13px, 1.24vw, 18px);
+          line-height: 1.45;
+          letter-spacing: 0.24em;
+          font-weight: 700;
+          text-transform: uppercase;
         }
 
         .type-text {
@@ -669,88 +701,62 @@ export default function ConceptPage() {
           white-space: nowrap;
           overflow: hidden;
           clip-path: inset(0 100% 0 0);
-          animation:
-            typeReveal 0.85s steps(var(--chars), end) var(--type-delay) forwards;
-        }
-
-        .type-title {
-          animation-duration: 0.95s;
-        }
-
-        .pink-dot {
-          display: inline-block;
-          color: ${C.pink};
-          text-shadow: none;
-          opacity: 0;
-          transform: scale(0.2);
-          animation: dotPop 0.38s cubic-bezier(0.2, 1.6, 0.3, 1) 1500ms forwards;
-        }
-
-        .address {
-          position: relative;
-          z-index: 5;
-          margin-top: clamp(18px, 2vw, 26px);
-          font-family: ${MONO};
-          color: rgba(28, 28, 26, 0.72);
-          font-size: clamp(11px, 1.05vw, 15px);
-          line-height: 1.45;
-          letter-spacing: 0.24em;
-          font-weight: 700;
-          text-transform: uppercase;
+          animation: typeReveal 0.54s steps(var(--chars), end) var(--type-delay) forwards;
         }
 
         .concept-floor {
           position: absolute;
+          z-index: 2;
           left: 50%;
           bottom: 0;
-          width: clamp(360px, 40vw, 640px);
+          width: clamp(390px, 42vw, 660px);
           height: auto;
           opacity: 0;
           mix-blend-mode: multiply;
-          filter: contrast(0.92) saturate(0.82);
+          filter: contrast(0.94) saturate(0.9);
           pointer-events: none;
           user-select: none;
           transform: translate3d(-48%, 18px, 0);
           animation:
-            floorIn 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) 1040ms forwards,
-            floorDrift 10s ease-in-out 2450ms infinite;
+            floorIn 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) 880ms forwards,
+            floorDrift 10s ease-in-out 2300ms infinite;
         }
 
         .concept-funnel-inline {
           position: absolute;
           z-index: 3;
-          top: clamp(0px, 1.4vw, 18px);
-          right: clamp(34px, 6vw, 92px);
-          width: clamp(132px, 14vw, 220px);
+          top: clamp(12px, 2.2vw, 38px);
+          left: 50%;
+          width: clamp(124px, 13vw, 205px);
           height: auto;
           opacity: 0;
           pointer-events: none;
           user-select: none;
           mix-blend-mode: multiply;
-          filter: saturate(0.95) contrast(1.02);
-          transform: translate3d(0, -18px, 0) scale(0.96);
+          filter: saturate(1) contrast(1.02);
+          transform: translate3d(-50%, -20px, 0) scale(0.96);
           animation:
-            funnelIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 1220ms forwards,
-            funnelFloat 8.5s ease-in-out 2450ms infinite;
+            funnelIn 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) 1000ms forwards,
+            funnelFloat 8.5s ease-in-out 2200ms infinite;
         }
 
         .concept-obelisk {
           position: absolute;
           z-index: 4;
-          right: clamp(62px, 8vw, 126px);
-          bottom: clamp(34px, 3.8vw, 58px);
-          width: clamp(64px, 6vw, 102px);
+          left: 50%;
+          bottom: clamp(60px, 6vw, 92px);
+          width: clamp(56px, 5.4vw, 88px);
           height: auto;
           opacity: 0;
           pointer-events: none;
           user-select: none;
           filter:
-            contrast(0.98)
+            contrast(1)
             drop-shadow(20px 24px 22px rgba(28, 28, 26, 0.18));
-          transform: translate3d(0, 22px, 0) scale(0.96);
+          transform: translate3d(-10%, 22px, 0) scale(0.96);
           animation:
-            obeliskIn 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) 1420ms forwards,
-            obeliskHover 8s ease-in-out 2600ms infinite;
+            obeliskIn 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) 1140ms forwards,
+            obeliskHover 8s ease-in-out 2400ms infinite;
         }
 
         .concept-space-map {
@@ -775,7 +781,7 @@ export default function ConceptPage() {
           filter: blur(10px);
           opacity: 0;
           transform: rotate(-4deg) scaleX(0.7);
-          animation: shadowIn 0.8s ease 1980ms forwards;
+          animation: shadowIn 0.7s ease 1660ms forwards;
         }
 
         .venue-wrap {
@@ -785,8 +791,8 @@ export default function ConceptPage() {
           opacity: 0;
           transform: translateY(22px) scale(0.98);
           animation:
-            venueIn 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) 1780ms forwards,
-            venueFloat 4.8s ease-in-out 3000ms infinite;
+            venueIn 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) 1520ms forwards,
+            venueFloat 4.8s ease-in-out 2700ms infinite;
         }
 
         .venue-image {
@@ -857,7 +863,7 @@ export default function ConceptPage() {
             drop-shadow(0 0 12px rgba(212, 80, 122, 0.3))
             hue-rotate(-16deg)
             saturate(1.25);
-          animation: venueGlitchA 8.5s steps(1, end) 3300ms infinite;
+          animation: venueGlitchA 8.5s steps(1, end) 3000ms infinite;
         }
 
         .venue-glitch-b {
@@ -865,7 +871,7 @@ export default function ConceptPage() {
             drop-shadow(0 0 12px rgba(80, 120, 130, 0.2))
             hue-rotate(18deg)
             saturate(1.12);
-          animation: venueGlitchB 8.5s steps(1, end) 3300ms infinite;
+          animation: venueGlitchB 8.5s steps(1, end) 3000ms infinite;
         }
 
         .zone-controls {
@@ -898,7 +904,7 @@ export default function ConceptPage() {
           overflow: hidden;
           opacity: 0;
           transform: translateY(12px);
-          animation: cardIn 0.6s ease var(--card-delay, 2300ms) forwards;
+          animation: cardIn 0.54s ease var(--card-delay, 1900ms) forwards;
           transition:
             transform 0.24s ease,
             background 0.24s ease,
@@ -924,7 +930,7 @@ export default function ConceptPage() {
           border: 1px solid rgba(28, 28, 26, 0.48);
           pointer-events: none;
           clip-path: inset(0 100% 100% 0);
-          animation: borderDraw 0.78s ease calc(var(--card-delay, 2300ms) + 120ms) forwards;
+          animation: borderDraw 0.64s ease calc(var(--card-delay, 1900ms) + 100ms) forwards;
         }
 
         .action-card-title,
@@ -1014,37 +1020,124 @@ export default function ConceptPage() {
           }
         }
 
+        @keyframes scanTitleReveal {
+          0% {
+            opacity: 0;
+            clip-path: inset(0 100% 0 0);
+            transform: translateX(-10px);
+            filter: blur(2px);
+          }
+
+          65% {
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+            transform: translateX(0);
+            filter: blur(0);
+          }
+
+          75% {
+            transform: translateX(4px);
+          }
+
+          82% {
+            transform: translateX(-2px);
+          }
+
+          100% {
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+            transform: translateX(0);
+            filter: blur(0);
+          }
+        }
+
+        @keyframes titleMicroGlitch {
+          0%,
+          100% {
+            text-shadow: 0.018em 0 0 currentColor;
+          }
+
+          35% {
+            text-shadow:
+              0.018em 0 0 currentColor,
+              0.08em 0 0 rgba(212, 80, 122, 0.38);
+          }
+
+          65% {
+            text-shadow:
+              0.018em 0 0 currentColor,
+              -0.06em 0 0 rgba(122, 120, 112, 0.34);
+          }
+        }
+
         @keyframes typeReveal {
           to {
             clip-path: inset(0 0 0 0);
           }
         }
 
-        @keyframes dotPop {
+        @keyframes dotEnter {
           to {
             opacity: 1;
             transform: scale(1);
           }
         }
 
+        @keyframes dotSignal {
+          0%,
+          72%,
+          100% {
+            background: ${C.ink};
+            transform: scale(1);
+            box-shadow: none;
+          }
+
+          76% {
+            background: ${C.muted};
+            transform: translateX(1px) scale(1.05);
+          }
+
+          80% {
+            background: ${C.pink};
+            transform: translateX(-2px) scale(1.12);
+            box-shadow: 0 0 0 5px rgba(212, 80, 122, 0.08);
+          }
+
+          83% {
+            background: ${C.ink};
+            transform: translateX(2px) scale(0.96);
+          }
+
+          86% {
+            background: ${C.pink};
+            transform: scale(1.08);
+          }
+
+          90% {
+            background: ${C.ink};
+            transform: scale(1);
+            box-shadow: none;
+          }
+        }
+
         @keyframes floorIn {
           to {
-            opacity: 0.34;
+            opacity: 1;
             transform: translate3d(-48%, 0, 0);
           }
         }
 
         @keyframes funnelIn {
           to {
-            opacity: 0.72;
-            transform: translate3d(0, 0, 0) scale(1);
+            opacity: 1;
+            transform: translate3d(-50%, 0, 0) scale(1);
           }
         }
 
         @keyframes obeliskIn {
           to {
-            opacity: 0.9;
-            transform: translate3d(0, 0, 0) scale(1);
+            opacity: 1;
+            transform: translate3d(-10%, 0, 0) scale(1);
           }
         }
 
@@ -1087,10 +1180,11 @@ export default function ConceptPage() {
         @keyframes funnelFloat {
           0%,
           100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
+            transform: translate3d(-50%, 0, 0) rotate(0deg);
           }
+
           50% {
-            transform: translate3d(-8px, 8px, 0) rotate(1.3deg);
+            transform: translate3d(calc(-50% - 8px), 8px, 0) rotate(1.3deg);
           }
         }
 
@@ -1099,6 +1193,7 @@ export default function ConceptPage() {
           100% {
             transform: translate3d(-48%, 0, 0);
           }
+
           50% {
             transform: translate3d(calc(-48% + 10px), -4px, 0);
           }
@@ -1107,10 +1202,11 @@ export default function ConceptPage() {
         @keyframes obeliskHover {
           0%,
           100% {
-            transform: translate3d(0, 0, 0);
+            transform: translate3d(-10%, 0, 0);
           }
+
           50% {
-            transform: translate3d(0, -8px, 0);
+            transform: translate3d(-10%, -8px, 0);
           }
         }
 
@@ -1119,6 +1215,7 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0px) rotate(-0.15deg);
           }
+
           50% {
             transform: translateY(-10px) rotate(0.25deg);
           }
@@ -1129,6 +1226,7 @@ export default function ConceptPage() {
           100% {
             transform: scale(1);
           }
+
           50% {
             transform: scale(1.01);
           }
@@ -1142,31 +1240,37 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
+
           73% {
             opacity: 0.18;
             transform: translate3d(-8px, -3px, 0);
             clip-path: inset(0% 0 82% 0);
           }
+
           74% {
             opacity: 0.24;
             transform: translate3d(10px, 4px, 0);
             clip-path: inset(16% 0 58% 0);
           }
+
           75% {
             opacity: 0.18;
             transform: translate3d(-7px, -5px, 0);
             clip-path: inset(34% 0 34% 0);
           }
+
           76% {
             opacity: 0.22;
             transform: translate3d(8px, 6px, 0);
             clip-path: inset(52% 0 16% 0);
           }
+
           77% {
             opacity: 0.14;
             transform: translate3d(-5px, -4px, 0);
             clip-path: inset(74% 0 3% 0);
           }
+
           78% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -1182,31 +1286,37 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
+
           73.2% {
             opacity: 0.12;
             transform: translate3d(7px, 5px, 0);
             clip-path: inset(8% 0 72% 0);
           }
+
           74.1% {
             opacity: 0.18;
             transform: translate3d(-10px, -3px, 0);
             clip-path: inset(24% 0 46% 0);
           }
+
           75.2% {
             opacity: 0.14;
             transform: translate3d(6px, -7px, 0);
             clip-path: inset(44% 0 24% 0);
           }
+
           76.1% {
             opacity: 0.18;
             transform: translate3d(-8px, 6px, 0);
             clip-path: inset(63% 0 9% 0);
           }
+
           77.2% {
             opacity: 0.1;
             transform: translate3d(4px, -2px, 0);
             clip-path: inset(82% 0 0% 0);
           }
+
           78% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -1258,7 +1368,7 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            min-height: 330px;
+            min-height: 350px;
             max-width: 380px;
           }
 
@@ -1272,17 +1382,26 @@ export default function ConceptPage() {
             padding-bottom: 72px;
           }
 
-          h1 {
+          h1,
+          .scan-title-hero {
             font-size: clamp(52px, 14vw, 82px);
           }
 
-          h2 {
+          h2,
+          .scan-title-space,
+          .scan-title-experience {
             font-size: clamp(40px, 11vw, 64px);
           }
 
+          .concept-dot {
+            left: 0;
+            top: calc(100% + 22px);
+          }
+
           .address {
-            max-width: 320px;
-            font-size: 11px;
+            margin-top: 72px;
+            max-width: 360px;
+            font-size: 12px;
             letter-spacing: 0.18em;
           }
 
@@ -1301,18 +1420,17 @@ export default function ConceptPage() {
           }
 
           .concept-floor {
-            width: 390px;
+            width: 410px;
           }
 
           .concept-funnel-inline {
             width: 142px;
-            right: 58px;
+            top: 16px;
           }
 
           .concept-obelisk {
             width: 76px;
-            right: 86px;
-            bottom: 36px;
+            bottom: 68px;
           }
 
           .experience-nav {
@@ -1327,22 +1445,20 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            max-width: 300px;
+            max-width: 320px;
           }
 
           .concept-floor {
-            width: 300px;
+            width: 320px;
           }
 
           .concept-funnel-inline {
             width: 118px;
-            right: 46px;
           }
 
           .concept-obelisk {
             width: 62px;
-            right: 66px;
-            bottom: 30px;
+            bottom: 58px;
           }
         }
 
@@ -1366,8 +1482,8 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            min-height: 260px;
-            max-width: 270px;
+            min-height: 280px;
+            max-width: 280px;
           }
 
           .section-rule {
@@ -1407,19 +1523,17 @@ export default function ConceptPage() {
           }
 
           .concept-floor {
-            width: 270px;
+            width: 280px;
           }
 
           .concept-funnel-inline {
             width: 104px;
-            right: 38px;
-            top: 6px;
+            top: 10px;
           }
 
           .concept-obelisk {
             width: 54px;
-            right: 56px;
-            bottom: 26px;
+            bottom: 48px;
           }
 
           .experience-nav {
@@ -1431,8 +1545,9 @@ export default function ConceptPage() {
           .concept-nav-shell,
           .axis-v,
           .section-rule,
+          .scan-title,
           .type-text,
-          .pink-dot,
+          .concept-dot,
           .concept-floor,
           .concept-funnel-inline,
           .concept-obelisk,
@@ -1449,6 +1564,8 @@ export default function ConceptPage() {
           }
 
           .concept-nav-shell,
+          .scan-title,
+          .concept-dot,
           .concept-floor,
           .concept-funnel-inline,
           .concept-obelisk,
@@ -1462,11 +1579,17 @@ export default function ConceptPage() {
             transform: none;
           }
 
+          .scan-title,
           .type-text {
             clip-path: inset(0 0 0 0);
           }
 
-          .pink-dot {
+          .concept-dot,
+          .concept-floor,
+          .concept-funnel-inline,
+          .concept-obelisk,
+          .venue-wrap,
+          .action-card {
             transform: none;
           }
 
@@ -1474,11 +1597,12 @@ export default function ConceptPage() {
             transform: translate3d(-48%, 0, 0);
           }
 
-          .concept-funnel-inline,
-          .concept-obelisk,
-          .venue-wrap,
-          .action-card {
-            transform: none;
+          .concept-funnel-inline {
+            transform: translate3d(-50%, 0, 0);
+          }
+
+          .concept-obelisk {
+            transform: translate3d(-10%, 0, 0);
           }
 
           .action-card::after {
