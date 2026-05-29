@@ -80,6 +80,7 @@ const typeStyle = (chars: number, delay: string): CSSProperties =>
 function ActionCard({
   href,
   title,
+  meta = 'Explore',
   dark = false,
   active = false,
   onMouseEnter,
@@ -91,6 +92,7 @@ function ActionCard({
 }: {
   href: string;
   title: string;
+  meta?: string;
   dark?: boolean;
   active?: boolean;
   onMouseEnter?: () => void;
@@ -113,7 +115,7 @@ function ActionCard({
     >
       <span className="action-card-title">{title}</span>
       <span className="action-card-meta">
-        Explore <span className="action-arrow" aria-hidden="true">→</span>
+        {meta} <span className="action-arrow" aria-hidden="true">→</span>
       </span>
     </a>
   );
@@ -334,12 +336,14 @@ export default function ConceptPage() {
             >
               {AREAS.map((area, index) => {
                 const isActive = activeArea === area.id;
+                const mobileMeta = isActive ? 'Tap to explore' : 'Tap to preview';
 
                 return (
                   <ActionCard
                     key={area.id}
                     href={area.href}
                     title={area.title}
+                    meta={isTouchMode ? mobileMeta : 'Explore'}
                     active={isActive}
                     onMouseEnter={() => handleCardEnter(area.id)}
                     onFocus={() => setActiveArea(area.id)}
@@ -517,9 +521,31 @@ export default function ConceptPage() {
         }
 
         @media (max-width: 900px) {
+          .concept-nav-shell {
+            z-index: 40000 !important;
+          }
+
+          .concept-nav-shell .scene-nav {
+            z-index: 40020 !important;
+          }
+
+          .scene-nav-mobile,
+          .scene-nav-mobile--space,
+          .scene-nav-mobile.scene-nav--space {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 40010 !important;
+            background: rgba(232, 226, 212, 0.92) !important;
+            backdrop-filter: blur(18px) !important;
+            -webkit-backdrop-filter: blur(18px) !important;
+          }
+
           .scene-nav-mobile.scene-nav--space .scene-nav-mobile-inner,
-          .scene-nav-mobile--space .scene-nav-mobile-inner {
-            padding-top: 96px;
+          .scene-nav-mobile--space .scene-nav-mobile-inner,
+          .scene-nav-mobile-inner {
+            padding-top: 96px !important;
+            position: relative;
+            z-index: 40011 !important;
           }
         }
       `}</style>
@@ -1607,6 +1633,8 @@ export default function ConceptPage() {
 
           .concept-flyer-graphic {
             width: min(100%, 320px);
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .zone-controls {
@@ -1615,6 +1643,12 @@ export default function ConceptPage() {
         }
 
         @media (max-width: 820px) {
+          .bg-image {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+
           .shell {
             width: calc(100% - 40px);
             max-width: none;
@@ -1622,12 +1656,16 @@ export default function ConceptPage() {
           }
 
           .content-section {
-            --section-pad: 48px;
+            --section-pad: 24px;
           }
 
           .hero-section {
             min-height: auto;
             gap: 26px;
+          }
+
+          .hero-art {
+            justify-content: center;
           }
 
           .space-section {
@@ -1664,28 +1702,79 @@ export default function ConceptPage() {
           }
 
           .concept-space-map {
-            min-height: clamp(250px, 64vw, 410px);
+            min-height: clamp(250px, 58vw, 390px);
             margin-top: 34px;
+            padding-left: 8px;
+            padding-right: 8px;
           }
 
           .venue-wrap {
-            width: min(116%, 640px);
-            margin-left: -8%;
+            width: 100%;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .zone-controls {
-            margin-top: 4px;
+            margin-top: 10px;
+            width: 100%;
           }
 
           .experience-signal {
-            height: 58px;
+            --signal-y: 42px;
+            height: 72px;
             margin-top: 34px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+          }
+
+          .signal-track {
+            top: var(--signal-y);
+          }
+
+          .signal-node {
+            top: 0;
+            min-width: auto;
+            height: 72px;
+          }
+
+          .signal-node-dining {
+            left: 0;
+          }
+
+          .signal-node-after-dark {
+            right: 0;
+            text-align: right;
+          }
+
+          .signal-dot {
+            top: var(--signal-y);
+            width: 18px;
+            height: 18px;
+          }
+
+          .signal-node-dining .signal-dot {
+            left: 0;
+            right: auto;
+          }
+
+          .signal-node-after-dark .signal-dot {
+            right: 0;
+            left: auto;
+          }
+
+          .signal-node-dining .signal-time {
+            left: 0;
+            right: auto;
+          }
+
+          .signal-node-after-dark .signal-time {
+            right: 0;
+            left: auto;
           }
 
           .signal-time {
             font-size: 11px;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
           }
 
           .experience-nav {
@@ -1703,39 +1792,55 @@ export default function ConceptPage() {
           }
 
           .experience-signal {
-            height: 102px;
+            --signal-y: 44px;
+            height: 74px;
+            margin-top: 30px;
+            margin-bottom: 14px;
           }
 
           .signal-track {
-            top: 48px;
+            top: var(--signal-y);
           }
 
           .signal-node {
-            min-width: 220px;
+            top: 0;
+            min-width: auto;
+            height: 74px;
           }
 
           .signal-node-dining {
             left: 0;
-            top: 0;
           }
 
           .signal-node-after-dark {
-            right: auto;
-            left: 0;
-            top: 56px;
-            text-align: left;
+            right: 0;
+            left: auto;
+            text-align: right;
           }
 
-          .signal-node-dining .signal-dot,
+          .signal-node-dining .signal-dot {
+            left: 0;
+            right: auto;
+          }
+
           .signal-node-after-dark .signal-dot {
+            right: 0;
+            left: auto;
+          }
+
+          .signal-node-dining .signal-time {
             left: 0;
             right: auto;
           }
 
-          .signal-node-dining .signal-time,
           .signal-node-after-dark .signal-time {
-            left: 0;
-            right: auto;
+            right: 0;
+            left: auto;
+          }
+
+          .signal-time {
+            font-size: 10px;
+            letter-spacing: 0.06em;
           }
         }
 
@@ -1751,7 +1856,7 @@ export default function ConceptPage() {
           }
 
           .content-section {
-            --section-pad: 34px;
+            --section-pad: 18px;
           }
 
           .hero-section {
@@ -1775,11 +1880,15 @@ export default function ConceptPage() {
           .concept-space-map {
             min-height: 230px;
             margin-top: 30px;
+            padding-left: 6px;
+            padding-right: 6px;
           }
 
           .venue-wrap {
-            width: 132%;
-            margin-left: -16%;
+            width: 100%;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .action-card {
@@ -1792,6 +1901,11 @@ export default function ConceptPage() {
 
           .action-card-meta {
             font-size: 9px;
+            gap: 3px;
+          }
+
+          .action-arrow {
+            font-size: 2em;
           }
 
           .concept-flyer-graphic {
@@ -1799,8 +1913,22 @@ export default function ConceptPage() {
           }
 
           .experience-signal {
+            --signal-y: 44px;
+            height: 74px;
             margin-top: 30px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .signal-time {
+            font-size: 9px;
+            letter-spacing: 0.04em;
+          }
+
+          .signal-dot {
+            width: 16px;
+            height: 16px;
           }
         }
 
