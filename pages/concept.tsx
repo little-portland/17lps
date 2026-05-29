@@ -1,7 +1,7 @@
 'use client';
 
 import Head from 'next/head';
-import { useEffect, useState, type MouseEvent } from 'react';
+import { useEffect, useState, type CSSProperties, type MouseEvent } from 'react';
 import SceneNav from '@components/SceneNav';
 
 const C = {
@@ -20,6 +20,7 @@ type AreaConfig = {
   title: string;
   href: string;
   highlight: string;
+  chars: number;
 };
 
 const CONCEPT_ASSETS = {
@@ -39,29 +40,58 @@ const AREAS: AreaConfig[] = [
     title: 'THE TENT',
     href: '/thetent',
     highlight: '/images/the-space/tent-highlight.png',
+    chars: 8,
   },
   {
     id: 'chefs-studio',
     title: "CHEF'S STUDIO",
     href: '/chefstudio',
     highlight: '/images/the-space/chefs-studio-highlight.png',
+    chars: 13,
   },
   {
     id: 'studio',
     title: 'THE STUDIO',
     href: '/studio',
     highlight: '/images/the-space/studio-highlight.png',
+    chars: 10,
   },
 ];
 
 const EXPERIENCE_BTNS = [
-  { label: 'Dining', href: '/dining', dark: false },
-  { label: 'After Dark', href: '/after-dark', dark: true },
+  { label: 'Dining', href: '/dining', dark: false, chars: 6 },
+  { label: 'After Dark', href: '/after-dark', dark: true, chars: 10 },
 ];
+
+const typeStyle = (chars: number, delay: string): CSSProperties =>
+  ({
+    '--chars': chars,
+    '--type-delay': delay,
+  }) as CSSProperties;
 
 export default function ConceptPage() {
   const [activeArea, setActiveArea] = useState<AreaId | null>(null);
   const [isTouchMode, setIsTouchMode] = useState(false);
+  const [menuReady, setMenuReady] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const menuTimer = window.setTimeout(() => {
+      setMenuReady(true);
+    }, 3200);
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 24);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.clearTimeout(menuTimer);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(
@@ -132,7 +162,13 @@ export default function ConceptPage() {
       </Head>
 
       <main className="page page--with-scene-nav">
-        <SceneNav theme="space" />
+        <div
+          className={`concept-nav-shell ${menuReady ? 'is-ready' : ''} ${
+            isScrolled ? 'is-scrolled' : ''
+          }`}
+        >
+          <SceneNav theme="space" />
+        </div>
 
         <div className="bg-image" aria-hidden="true" />
 
@@ -142,10 +178,23 @@ export default function ConceptPage() {
           <section className="content-section hero-section" aria-labelledby="concept-title">
             <div className="hero-copy">
               <h1 id="concept-title">
-                Concept<span className="pink-dot">.</span>
+                <span
+                  className="type-text type-title"
+                  style={typeStyle(7, '760ms')}
+                >
+                  Concept
+                </span>
+                <span className="pink-dot">.</span>
               </h1>
 
-              <p className="address">17 Little Portland Street, London</p>
+              <p className="address">
+                <span
+                  className="type-text"
+                  style={typeStyle(33, '1580ms')}
+                >
+                  17 Little Portland Street, London
+                </span>
+              </p>
             </div>
 
             <div className="hero-art" aria-hidden="true">
@@ -175,7 +224,14 @@ export default function ConceptPage() {
           <section className="content-section space-section" aria-labelledby="space-title">
             <div className="section-rule" aria-hidden="true" />
 
-            <h2 id="space-title">The Space</h2>
+            <h2 id="space-title">
+              <span
+                className="type-text type-title"
+                style={typeStyle(9, '1920ms')}
+              >
+                The Space
+              </span>
+            </h2>
 
             <div className="concept-space-map" aria-label="Interactive venue map">
               <div className="venue-wrap" aria-hidden="true">
@@ -231,7 +287,7 @@ export default function ConceptPage() {
               aria-label="Venue areas"
               onMouseLeave={handleControlsLeave}
             >
-              {AREAS.map((area) => {
+              {AREAS.map((area, index) => {
                 const isActive = activeArea === area.id;
                 const helperText = isTouchMode
                   ? isActive
@@ -248,9 +304,28 @@ export default function ConceptPage() {
                     onFocus={() => setActiveArea(area.id)}
                     onClick={handleCardClick(area.id)}
                     aria-label={`${area.title} ${helperText}`}
+                    style={
+                      {
+                        '--card-delay': `${2280 + index * 120}ms`,
+                      } as CSSProperties
+                    }
                   >
-                    <span className="action-card-title">{area.title}</span>
-                    <span className="action-card-meta">{helperText}</span>
+                    <span className="action-card-title">
+                      <span
+                        className="type-text"
+                        style={typeStyle(area.chars, `${2480 + index * 140}ms`)}
+                      >
+                        {area.title}
+                      </span>
+                    </span>
+                    <span className="action-card-meta">
+                      <span
+                        className="type-text"
+                        style={typeStyle(9, `${2700 + index * 140}ms`)}
+                      >
+                        {helperText}
+                      </span>
+                    </span>
                   </a>
                 );
               })}
@@ -260,17 +335,43 @@ export default function ConceptPage() {
           <section className="content-section experience-section" aria-labelledby="experience-title">
             <div className="section-rule" aria-hidden="true" />
 
-            <h2 id="experience-title">The Experience</h2>
+            <h2 id="experience-title">
+              <span
+                className="type-text type-title"
+                style={typeStyle(14, '2320ms')}
+              >
+                The Experience
+              </span>
+            </h2>
 
             <nav className="experience-nav" aria-label="Explore the experience">
-              {EXPERIENCE_BTNS.map((button) => (
+              {EXPERIENCE_BTNS.map((button, index) => (
                 <a
                   key={button.href}
                   href={button.href}
                   className={`action-card experience-card ${button.dark ? 'is-dark' : ''}`}
+                  style={
+                    {
+                      '--card-delay': `${2700 + index * 140}ms`,
+                    } as CSSProperties
+                  }
                 >
-                  <span className="action-card-title">{button.label}</span>
-                  <span className="action-card-meta">Explore →</span>
+                  <span className="action-card-title">
+                    <span
+                      className="type-text"
+                      style={typeStyle(button.chars, `${2860 + index * 160}ms`)}
+                    >
+                      {button.label}
+                    </span>
+                  </span>
+                  <span className="action-card-meta">
+                    <span
+                      className="type-text"
+                      style={typeStyle(9, `${3060 + index * 160}ms`)}
+                    >
+                      Explore →
+                    </span>
+                  </span>
                 </a>
               ))}
             </nav>
@@ -371,7 +472,7 @@ export default function ConceptPage() {
 
         .scene-nav-mobile.scene-nav--space,
         .scene-nav-mobile--space {
-          background: rgba(232, 226, 212, 0.92) !important;
+          background: rgba(232, 226, 212, 0.94) !important;
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
         }
@@ -390,6 +491,45 @@ export default function ConceptPage() {
           min-height: 100svh;
           overflow-x: clip;
           background: ${C.cream};
+        }
+
+        .concept-nav-shell {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 10000;
+          opacity: 0;
+          transform: translateY(-18px);
+          pointer-events: none;
+          transition:
+            opacity 0.8s ease,
+            transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .concept-nav-shell::before {
+          content: '';
+          position: absolute;
+          inset: 0 0 auto 0;
+          height: 76px;
+          z-index: 0;
+          background: rgba(232, 226, 212, 0.86);
+          border-bottom: 1px solid rgba(28, 28, 26, 0.12);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          opacity: 0;
+          transition: opacity 0.28s ease;
+          pointer-events: none;
+        }
+
+        .concept-nav-shell.is-ready {
+          opacity: 1;
+          transform: translateY(0);
+          pointer-events: auto;
+        }
+
+        .concept-nav-shell.is-scrolled::before {
+          opacity: 1;
         }
 
         .bg-image {
@@ -429,6 +569,9 @@ export default function ConceptPage() {
             rgba(28, 28, 26, 0)
           );
           pointer-events: none;
+          transform: scaleY(0);
+          transform-origin: top center;
+          animation: drawVertical 1.1s cubic-bezier(0.25, 0.8, 0.25, 1) 180ms forwards;
         }
 
         .content-section {
@@ -449,6 +592,17 @@ export default function ConceptPage() {
             rgba(28, 28, 26, 0.42),
             rgba(28, 28, 26, 0.16)
           );
+          transform: scaleX(0);
+          transform-origin: left center;
+          animation: drawHorizontal 0.95s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
+        .space-section .section-rule {
+          animation-delay: 1320ms;
+        }
+
+        .experience-section .section-rule {
+          animation-delay: 2140ms;
         }
 
         .hero-section {
@@ -510,9 +664,26 @@ export default function ConceptPage() {
           font-size: clamp(48px, 5.8vw, 92px);
         }
 
+        .type-text {
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
+          clip-path: inset(0 100% 0 0);
+          animation:
+            typeReveal 0.85s steps(var(--chars), end) var(--type-delay) forwards;
+        }
+
+        .type-title {
+          animation-duration: 0.95s;
+        }
+
         .pink-dot {
+          display: inline-block;
           color: ${C.pink};
           text-shadow: none;
+          opacity: 0;
+          transform: scale(0.2);
+          animation: dotPop 0.38s cubic-bezier(0.2, 1.6, 0.3, 1) 1500ms forwards;
         }
 
         .address {
@@ -534,13 +705,15 @@ export default function ConceptPage() {
           bottom: 0;
           width: clamp(360px, 40vw, 640px);
           height: auto;
-          opacity: 0.34;
+          opacity: 0;
           mix-blend-mode: multiply;
           filter: contrast(0.92) saturate(0.82);
           pointer-events: none;
           user-select: none;
-          transform: translateX(-48%);
-          animation: floorDrift 10s ease-in-out infinite;
+          transform: translate3d(-48%, 18px, 0);
+          animation:
+            floorIn 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) 1040ms forwards,
+            floorDrift 10s ease-in-out 2450ms infinite;
         }
 
         .concept-funnel-inline {
@@ -550,12 +723,15 @@ export default function ConceptPage() {
           right: clamp(34px, 6vw, 92px);
           width: clamp(132px, 14vw, 220px);
           height: auto;
-          opacity: 0.72;
+          opacity: 0;
           pointer-events: none;
           user-select: none;
           mix-blend-mode: multiply;
           filter: saturate(0.95) contrast(1.02);
-          animation: funnelFloat 8.5s ease-in-out infinite;
+          transform: translate3d(0, -18px, 0) scale(0.96);
+          animation:
+            funnelIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 1220ms forwards,
+            funnelFloat 8.5s ease-in-out 2450ms infinite;
         }
 
         .concept-obelisk {
@@ -565,13 +741,16 @@ export default function ConceptPage() {
           bottom: clamp(34px, 3.8vw, 58px);
           width: clamp(64px, 6vw, 102px);
           height: auto;
-          opacity: 0.9;
+          opacity: 0;
           pointer-events: none;
           user-select: none;
           filter:
             contrast(0.98)
             drop-shadow(20px 24px 22px rgba(28, 28, 26, 0.18));
-          animation: obeliskHover 8s ease-in-out infinite;
+          transform: translate3d(0, 22px, 0) scale(0.96);
+          animation:
+            obeliskIn 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) 1420ms forwards,
+            obeliskHover 8s ease-in-out 2600ms infinite;
         }
 
         .concept-space-map {
@@ -594,15 +773,20 @@ export default function ConceptPage() {
           border-radius: 50%;
           background: radial-gradient(ellipse at center, rgba(28, 28, 26, 0.16), transparent 72%);
           filter: blur(10px);
-          opacity: 0.38;
-          transform: rotate(-4deg);
+          opacity: 0;
+          transform: rotate(-4deg) scaleX(0.7);
+          animation: shadowIn 0.8s ease 1980ms forwards;
         }
 
         .venue-wrap {
           position: relative;
           width: min(100%, 820px);
           aspect-ratio: 2048 / 1140;
-          animation: venueFloat 4.8s ease-in-out infinite;
+          opacity: 0;
+          transform: translateY(22px) scale(0.98);
+          animation:
+            venueIn 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) 1780ms forwards,
+            venueFloat 4.8s ease-in-out 3000ms infinite;
         }
 
         .venue-image {
@@ -673,7 +857,7 @@ export default function ConceptPage() {
             drop-shadow(0 0 12px rgba(212, 80, 122, 0.3))
             hue-rotate(-16deg)
             saturate(1.25);
-          animation: venueGlitchA 8.5s steps(1, end) infinite;
+          animation: venueGlitchA 8.5s steps(1, end) 3300ms infinite;
         }
 
         .venue-glitch-b {
@@ -681,7 +865,7 @@ export default function ConceptPage() {
             drop-shadow(0 0 12px rgba(80, 120, 130, 0.2))
             hue-rotate(18deg)
             saturate(1.12);
-          animation: venueGlitchB 8.5s steps(1, end) infinite;
+          animation: venueGlitchB 8.5s steps(1, end) 3300ms infinite;
         }
 
         .zone-controls {
@@ -706,15 +890,17 @@ export default function ConceptPage() {
           justify-content: center;
           gap: 5px;
           padding: clamp(14px, 1.4vw, 20px) clamp(16px, 1.8vw, 24px);
-          border: 1px solid rgba(28, 28, 26, 0.48);
+          border: 1px solid transparent;
           background: rgba(232, 226, 212, 0.34);
           color: ${C.ink};
           text-decoration: none;
-          box-shadow: 6px 6px 0 rgba(28, 28, 26, 0.08);
+          box-shadow: 6px 6px 0 rgba(28, 28, 26, 0);
           overflow: hidden;
+          opacity: 0;
+          transform: translateY(12px);
+          animation: cardIn 0.6s ease var(--card-delay, 2300ms) forwards;
           transition:
             transform 0.24s ease,
-            border-color 0.24s ease,
             background 0.24s ease,
             color 0.24s ease,
             box-shadow 0.24s ease;
@@ -729,6 +915,16 @@ export default function ConceptPage() {
             repeating-linear-gradient(90deg, rgba(28, 28, 26, 0.06) 0 1px, transparent 1px 11px);
           opacity: 0;
           transition: opacity 0.24s ease;
+        }
+
+        .action-card::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border: 1px solid rgba(28, 28, 26, 0.48);
+          pointer-events: none;
+          clip-path: inset(0 100% 100% 0);
+          animation: borderDraw 0.78s ease calc(var(--card-delay, 2300ms) + 120ms) forwards;
         }
 
         .action-card-title,
@@ -762,7 +958,6 @@ export default function ConceptPage() {
         .action-card:hover,
         .action-card:focus-visible,
         .zone-card.is-active {
-          border-color: rgba(212, 80, 122, 0.9);
           background: rgba(212, 80, 122, 0.1);
           color: ${C.ink};
           box-shadow: 10px 10px 0 rgba(212, 80, 122, 0.14);
@@ -774,6 +969,12 @@ export default function ConceptPage() {
         .action-card:focus-visible::before,
         .zone-card.is-active::before {
           opacity: 1;
+        }
+
+        .action-card:hover::after,
+        .action-card:focus-visible::after,
+        .zone-card.is-active::after {
+          border-color: rgba(212, 80, 122, 0.9);
         }
 
         .zone-card.is-active .action-card-meta {
@@ -799,6 +1000,88 @@ export default function ConceptPage() {
         .action-card:focus-visible .action-card-meta {
           color: currentColor;
           opacity: 0.7;
+        }
+
+        @keyframes drawVertical {
+          to {
+            transform: scaleY(1);
+          }
+        }
+
+        @keyframes drawHorizontal {
+          to {
+            transform: scaleX(1);
+          }
+        }
+
+        @keyframes typeReveal {
+          to {
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        @keyframes dotPop {
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes floorIn {
+          to {
+            opacity: 0.34;
+            transform: translate3d(-48%, 0, 0);
+          }
+        }
+
+        @keyframes funnelIn {
+          to {
+            opacity: 0.72;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+        }
+
+        @keyframes obeliskIn {
+          to {
+            opacity: 0.9;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+        }
+
+        @keyframes shadowIn {
+          to {
+            opacity: 0.38;
+            transform: rotate(-4deg) scaleX(1);
+          }
+        }
+
+        @keyframes venueIn {
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        @keyframes cardIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 6px 6px 0 rgba(28, 28, 26, 0.08);
+          }
+        }
+
+        @keyframes borderDraw {
+          0% {
+            clip-path: inset(0 100% 100% 0);
+          }
+
+          45% {
+            clip-path: inset(0 0 100% 0);
+          }
+
+          100% {
+            clip-path: inset(0 0 0 0);
+          }
         }
 
         @keyframes funnelFloat {
@@ -1019,13 +1302,11 @@ export default function ConceptPage() {
 
           .concept-floor {
             width: 390px;
-            opacity: 0.28;
           }
 
           .concept-funnel-inline {
             width: 142px;
             right: 58px;
-            opacity: 0.58;
           }
 
           .concept-obelisk {
@@ -1127,14 +1408,12 @@ export default function ConceptPage() {
 
           .concept-floor {
             width: 270px;
-            opacity: 0.22;
           }
 
           .concept-funnel-inline {
             width: 104px;
             right: 38px;
             top: 6px;
-            opacity: 0.46;
           }
 
           .concept-obelisk {
@@ -1149,15 +1428,61 @@ export default function ConceptPage() {
         }
 
         @media (prefers-reduced-motion: reduce) {
+          .concept-nav-shell,
+          .axis-v,
+          .section-rule,
+          .type-text,
+          .pink-dot,
           .concept-floor,
           .concept-funnel-inline,
           .concept-obelisk,
+          .concept-space-map::before,
           .venue-wrap,
           .venue-glitch-a,
           .venue-glitch-b,
           .venue-highlight-glow.is-active,
-          .venue-highlight.is-active {
-            animation: none;
+          .venue-highlight.is-active,
+          .action-card,
+          .action-card::after {
+            animation: none !important;
+            transition: none !important;
+          }
+
+          .concept-nav-shell,
+          .concept-floor,
+          .concept-funnel-inline,
+          .concept-obelisk,
+          .venue-wrap,
+          .action-card {
+            opacity: 1;
+          }
+
+          .axis-v,
+          .section-rule {
+            transform: none;
+          }
+
+          .type-text {
+            clip-path: inset(0 0 0 0);
+          }
+
+          .pink-dot {
+            transform: none;
+          }
+
+          .concept-floor {
+            transform: translate3d(-48%, 0, 0);
+          }
+
+          .concept-funnel-inline,
+          .concept-obelisk,
+          .venue-wrap,
+          .action-card {
+            transform: none;
+          }
+
+          .action-card::after {
+            clip-path: inset(0 0 0 0);
           }
         }
       `}</style>
