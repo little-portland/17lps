@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/router";
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 
-type SceneNavTheme = "default" | "access" | "space" | "tent-radio";
+type SceneNavTheme = 'default' | 'access' | 'space' | 'tent-radio';
 
 type NavLink = {
   label: string;
@@ -12,7 +12,7 @@ type NavLink = {
 
 export default function SceneNav({
   visible = true,
-  theme = "default",
+  theme = 'default',
 }: {
   visible?: boolean;
   theme?: SceneNavTheme;
@@ -22,63 +22,53 @@ export default function SceneNav({
 
   const links: NavLink[] = [
     {
-      label: "The Space",
-      href: "/the-space",
-      activePaths: ["/the-space", "/events"],
+      label: 'Concept',
+      href: '/concept',
+      activePaths: ['/concept'],
     },
     {
-      label: "Access",
-      href: "/access",
-      activePaths: ["/access"],
+      label: 'Access',
+      href: '/access',
+      activePaths: ['/access'],
     },
     {
-      label: "Dining",
-      href: "/food",
-      activePaths: ["/food"],
+      label: 'Nocturn',
+      href: '/nocturn',
+      activePaths: ['/nocturn'],
     },
     {
-      label: "After Dark",
-      href: "/theclub",
-      activePaths: ["/theclub"],
+      label: 'Projects',
+      href: '/projects',
+      activePaths: ['/projects'],
     },
     {
-      label: "Nocturn",
-      href: "/nocturn",
-      activePaths: ["/nocturn"],
-    },
-    {
-      label: "The Network",
-      href: "#",
+      label: 'Network',
+      href: '#',
       activePaths: [],
     },
     {
-      label: "LPX Radio",
-      href: "/thetentradio",
-      activePaths: ["/thetentradio"],
-    },
-    {
-      label: "Archives",
-      href: "#",
+      label: 'Archives',
+      href: '#',
       activePaths: [],
     },
   ];
 
-  const currentPath = router.asPath.split("?")[0].split("#")[0];
+  const currentPath = router.asPath.split('?')[0].split('#')[0];
 
   const getLinkClassName = (href: string, activePaths: string[] = []) => {
     const classes: string[] = [];
 
-    if (href === "#") classes.push("disabled");
-    if (activePaths.includes(currentPath)) classes.push("active");
+    if (href === '#') classes.push('disabled');
+    if (activePaths.includes(currentPath)) classes.push('active');
 
-    return classes.join(" ");
+    return classes.join(' ');
   };
 
   const handleLinkClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
-    if (href === "#") {
+    if (href === '#') {
       event.preventDefault();
       return;
     }
@@ -89,15 +79,14 @@ export default function SceneNav({
   return (
     <>
       <header
-        className={`scene-nav scene-nav--${theme} ${visible ? "visible" : ""} ${
-          open ? "is-open" : ""
+        className={`scene-nav scene-nav--${theme} ${visible ? 'visible' : ''} ${
+          open ? 'is-open' : ''
         }`}
       >
-        {/* BURGER */}
         <button
-          className={`scene-nav-burger ${open ? "open" : ""}`}
+          className={`scene-nav-burger ${open ? 'open' : ''}`}
           onClick={() => setOpen(!open)}
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           type="button"
         >
@@ -105,21 +94,20 @@ export default function SceneNav({
           <span />
         </button>
 
-        {/* LEFT LINKS */}
-        <nav className="scene-nav-left" aria-label="Primary left navigation">
-          {links.slice(0, 4).map((l) => (
+        <nav className="scene-nav-left" aria-label="Primary navigation left">
+          {links.slice(0, 3).map((l) => (
             <a
               key={l.label}
               href={l.href}
               className={getLinkClassName(l.href, l.activePaths)}
               onClick={(event) => handleLinkClick(event, l.href)}
+              aria-disabled={l.href === '#'}
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        {/* LOGO / HOME */}
         <a
           href="/"
           className="scene-nav-logo"
@@ -134,14 +122,14 @@ export default function SceneNav({
           />
         </a>
 
-        {/* RIGHT LINKS */}
-        <nav className="scene-nav-right" aria-label="Primary right navigation">
-          {links.slice(4).map((l) => (
+        <nav className="scene-nav-right" aria-label="Primary navigation right">
+          {links.slice(3).map((l) => (
             <a
               key={l.label}
               href={l.href}
               className={getLinkClassName(l.href, l.activePaths)}
               onClick={(event) => handleLinkClick(event, l.href)}
+              aria-disabled={l.href === '#'}
             >
               {l.label}
             </a>
@@ -149,7 +137,6 @@ export default function SceneNav({
         </nav>
       </header>
 
-      {/* MOBILE OVERLAY */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -172,6 +159,7 @@ export default function SceneNav({
                   href={l.href}
                   className={getLinkClassName(l.href, l.activePaths)}
                   onClick={(event) => handleLinkClick(event, l.href)}
+                  aria-disabled={l.href === '#'}
                 >
                   {l.label}
                 </a>
@@ -184,7 +172,7 @@ export default function SceneNav({
       <style jsx global>{`
         @media (max-width: 900px) {
           .scene-nav-mobile-inner {
-            padding-top: calc(var(--scene-nav-space,0px) + 14px)!important;
+            padding-top: calc(var(--scene-nav-space, 0px) + 14px) !important;
           }
         }
       `}</style>
