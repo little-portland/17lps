@@ -670,9 +670,12 @@ export default function ConceptPage() {
           z-index: 5;
           display: inline-flex;
           align-items: flex-end;
-          gap: clamp(12px, 1.2vw, 22px);
+          gap: clamp(10px, 0.9vw, 18px);
           font-size: clamp(64px, 8.4vw, 128px);
           white-space: nowrap;
+          padding-right: 28px;
+          padding-bottom: 18px;
+          margin-bottom: -18px;
         }
 
         h2,
@@ -698,6 +701,8 @@ export default function ConceptPage() {
         }
 
         .concept-dot {
+          --dot-y: -0.16em;
+
           display: inline-block;
           width: clamp(18px, 2vw, 31px);
           height: clamp(18px, 2vw, 31px);
@@ -705,7 +710,8 @@ export default function ConceptPage() {
           background: ${C.ink};
           opacity: 0;
           flex: 0 0 auto;
-          transform: translateY(-0.02em) scale(0.4);
+          transform: translateY(var(--dot-y)) scale(0.4);
+          transform-origin: center center;
           text-shadow: none;
         }
 
@@ -751,7 +757,9 @@ export default function ConceptPage() {
         }
 
         .hero-section.is-inview .concept-flyer-graphic {
-          animation: flyerGraphicIn 0.76s cubic-bezier(0.2, 0.8, 0.2, 1) 760ms forwards;
+          animation:
+            flyerGraphicIn 0.76s cubic-bezier(0.2, 0.8, 0.2, 1) 760ms forwards,
+            flyerGraphicGlitchLoop 9.5s steps(1, end) 2600ms infinite;
         }
 
         .concept-space-map {
@@ -1077,7 +1085,7 @@ export default function ConceptPage() {
         .action-card-meta {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
+          gap: 4px;
           margin-top: 0;
           font-family: ${MONO};
           color: rgba(28, 28, 26, 0.58);
@@ -1091,9 +1099,9 @@ export default function ConceptPage() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.65em;
-          line-height: 0.65;
-          transform: translateY(-0.01em);
+          font-size: 2.1em;
+          line-height: 0.55;
+          transform: translateY(-0.015em);
         }
 
         .action-card:hover,
@@ -1242,7 +1250,7 @@ export default function ConceptPage() {
         @keyframes dotEnter {
           to {
             opacity: 1;
-            transform: translateY(-0.02em) scale(1);
+            transform: translateY(var(--dot-y)) scale(1);
           }
         }
 
@@ -1251,34 +1259,34 @@ export default function ConceptPage() {
           72%,
           100% {
             background: ${C.ink};
-            transform: translateY(-0.02em) scale(1);
+            transform: translateY(var(--dot-y)) scale(1);
             box-shadow: none;
           }
 
           76% {
             background: ${C.muted};
-            transform: translateY(-0.02em) translateX(1px) scale(1.05);
+            transform: translateY(var(--dot-y)) translateX(1px) scale(1.05);
           }
 
           80% {
             background: ${C.pink};
-            transform: translateY(-0.02em) translateX(-2px) scale(1.12);
+            transform: translateY(var(--dot-y)) translateX(-2px) scale(1.12);
             box-shadow: 0 0 0 5px rgba(212, 80, 122, 0.08);
           }
 
           83% {
             background: ${C.ink};
-            transform: translateY(-0.02em) translateX(2px) scale(0.96);
+            transform: translateY(var(--dot-y)) translateX(2px) scale(0.96);
           }
 
           86% {
             background: ${C.pink};
-            transform: translateY(-0.02em) scale(1.08);
+            transform: translateY(var(--dot-y)) scale(1.08);
           }
 
           90% {
             background: ${C.ink};
-            transform: translateY(-0.02em) scale(1);
+            transform: translateY(var(--dot-y)) scale(1);
             box-shadow: none;
           }
         }
@@ -1287,6 +1295,45 @@ export default function ConceptPage() {
           to {
             opacity: 1;
             transform: translate3d(0, 0, 0) scale(1);
+          }
+        }
+
+        @keyframes flyerGraphicGlitchLoop {
+          0%,
+          84%,
+          100% {
+            opacity: 1;
+            filter: contrast(1) saturate(1);
+            clip-path: inset(0 0 0 0);
+          }
+
+          85% {
+            opacity: 0.72;
+            filter: contrast(1.12) saturate(1.18);
+            clip-path: inset(0 0 82% 0);
+          }
+
+          86% {
+            opacity: 0.18;
+            filter: contrast(1.25) saturate(1.3);
+            clip-path: inset(28% 0 42% 0);
+          }
+
+          87% {
+            opacity: 0;
+            clip-path: inset(0 0 0 0);
+          }
+
+          88% {
+            opacity: 0.65;
+            filter: contrast(1.16) saturate(1.22);
+            clip-path: inset(62% 0 14% 0);
+          }
+
+          89% {
+            opacity: 1;
+            filter: contrast(1) saturate(1);
+            clip-path: inset(0 0 0 0);
           }
         }
 
