@@ -155,12 +155,14 @@ export default function ConceptPage() {
                 alt=""
                 draggable={false}
               />
+
               <img
                 className="concept-funnel-inline"
                 src={CONCEPT_ASSETS.funnel}
                 alt=""
                 draggable={false}
               />
+
               <img
                 className="concept-obelisk"
                 src={CONCEPT_ASSETS.obelisk}
@@ -459,22 +461,22 @@ export default function ConceptPage() {
 
         .hero-copy {
           position: relative;
-          z-index: 5;
+          z-index: 6;
         }
 
         .hero-art {
           position: relative;
-          min-height: clamp(320px, 36vw, 520px);
           z-index: 4;
+          min-height: clamp(360px, 38vw, 560px);
         }
 
         .space-section {
           padding-top: clamp(72px, 8vw, 110px);
-          padding-bottom: clamp(52px, 5.5vw, 74px);
+          padding-bottom: clamp(34px, 4vw, 56px);
         }
 
         .experience-section {
-          padding-top: clamp(56px, 6vw, 80px);
+          padding-top: clamp(48px, 5vw, 70px);
         }
 
         h1,
@@ -528,37 +530,40 @@ export default function ConceptPage() {
 
         .concept-floor {
           position: absolute;
-          right: 0;
+          left: 50%;
           bottom: 0;
-          width: clamp(220px, 28vw, 430px);
+          width: clamp(360px, 40vw, 640px);
           height: auto;
           opacity: 0.34;
           mix-blend-mode: multiply;
           filter: contrast(0.92) saturate(0.82);
           pointer-events: none;
           user-select: none;
+          transform: translateX(-48%);
           animation: floorDrift 10s ease-in-out infinite;
         }
 
         .concept-funnel-inline {
           position: absolute;
-          top: 0;
-          right: clamp(12px, 3vw, 48px);
-          width: clamp(120px, 14vw, 210px);
+          z-index: 3;
+          top: clamp(0px, 1.4vw, 18px);
+          right: clamp(34px, 6vw, 92px);
+          width: clamp(132px, 14vw, 220px);
           height: auto;
-          opacity: 0.62;
+          opacity: 0.72;
           pointer-events: none;
           user-select: none;
           mix-blend-mode: multiply;
-          filter: saturate(0.9) contrast(1);
+          filter: saturate(0.95) contrast(1.02);
           animation: funnelFloat 8.5s ease-in-out infinite;
         }
 
         .concept-obelisk {
           position: absolute;
-          right: clamp(28px, 3vw, 58px);
-          bottom: clamp(34px, 4vw, 62px);
-          width: clamp(58px, 5.6vw, 90px);
+          z-index: 4;
+          right: clamp(62px, 8vw, 126px);
+          bottom: clamp(34px, 3.8vw, 58px);
+          width: clamp(64px, 6vw, 102px);
           height: auto;
           opacity: 0.9;
           pointer-events: none;
@@ -572,8 +577,8 @@ export default function ConceptPage() {
         .concept-space-map {
           position: relative;
           width: 100%;
-          min-height: clamp(310px, 37vw, 520px);
-          margin-top: clamp(6px, 1.6vw, 16px);
+          min-height: clamp(300px, 36vw, 500px);
+          margin-top: clamp(26px, 4vw, 48px);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -683,24 +688,24 @@ export default function ConceptPage() {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 16px;
-          margin-top: clamp(6px, 1vw, 14px);
+          margin-top: clamp(4px, 0.8vw, 10px);
         }
 
         .experience-nav {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 16px;
-          margin-top: clamp(14px, 2vw, 24px);
+          margin-top: clamp(42px, 5vw, 64px);
         }
 
         .action-card {
           position: relative;
-          min-height: clamp(96px, 10vw, 138px);
+          min-height: clamp(76px, 7vw, 104px);
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
-          gap: 6px;
-          padding: clamp(16px, 1.8vw, 24px);
+          justify-content: center;
+          gap: 5px;
+          padding: clamp(14px, 1.4vw, 20px) clamp(16px, 1.8vw, 24px);
           border: 1px solid rgba(28, 28, 26, 0.48);
           background: rgba(232, 226, 212, 0.34);
           color: ${C.ink};
@@ -809,10 +814,10 @@ export default function ConceptPage() {
         @keyframes floorDrift {
           0%,
           100% {
-            transform: translate3d(0, 0, 0);
+            transform: translate3d(-48%, 0, 0);
           }
           50% {
-            transform: translate3d(10px, -4px, 0);
+            transform: translate3d(calc(-48% + 10px), -4px, 0);
           }
         }
 
@@ -937,18 +942,19 @@ export default function ConceptPage() {
             width: 82%;
           }
 
-          .zone-controls {
-            grid-template-columns: 1fr;
-          }
-
           .hero-section {
             grid-template-columns: 1fr;
           }
 
           .hero-art {
-            max-width: 420px;
+            max-width: 460px;
             width: 100%;
             margin-left: auto;
+            margin-right: auto;
+          }
+
+          .zone-controls {
+            grid-template-columns: 1fr;
           }
         }
 
@@ -969,13 +975,13 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            min-height: 280px;
-            max-width: 330px;
+            min-height: 330px;
+            max-width: 380px;
           }
 
           .space-section {
             padding-top: 74px;
-            padding-bottom: 50px;
+            padding-bottom: 36px;
           }
 
           .experience-section {
@@ -999,6 +1005,7 @@ export default function ConceptPage() {
 
           .concept-space-map {
             min-height: clamp(250px, 64vw, 410px);
+            margin-top: 34px;
           }
 
           .venue-wrap {
@@ -1006,25 +1013,30 @@ export default function ConceptPage() {
             margin-left: -8%;
           }
 
+          .zone-controls {
+            margin-top: 4px;
+          }
+
           .concept-floor {
-            width: 290px;
+            width: 390px;
             opacity: 0.28;
           }
 
           .concept-funnel-inline {
             width: 142px;
-            right: 18px;
-            opacity: 0.48;
+            right: 58px;
+            opacity: 0.58;
           }
 
           .concept-obelisk {
-            width: 72px;
-            right: 32px;
-            bottom: 28px;
+            width: 76px;
+            right: 86px;
+            bottom: 36px;
           }
 
           .experience-nav {
             grid-template-columns: 1fr 1fr;
+            margin-top: 42px;
           }
         }
 
@@ -1034,19 +1046,22 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            max-width: 280px;
+            max-width: 300px;
           }
 
           .concept-floor {
-            width: 250px;
+            width: 300px;
           }
 
           .concept-funnel-inline {
-            width: 120px;
+            width: 118px;
+            right: 46px;
           }
 
           .concept-obelisk {
-            width: 64px;
+            width: 62px;
+            right: 66px;
+            bottom: 30px;
           }
         }
 
@@ -1070,8 +1085,8 @@ export default function ConceptPage() {
           }
 
           .hero-art {
-            min-height: 240px;
-            max-width: 240px;
+            min-height: 260px;
+            max-width: 270px;
           }
 
           .section-rule {
@@ -1080,7 +1095,7 @@ export default function ConceptPage() {
 
           .space-section {
             padding-top: 62px;
-            padding-bottom: 42px;
+            padding-bottom: 30px;
           }
 
           .experience-section {
@@ -1090,6 +1105,7 @@ export default function ConceptPage() {
 
           .concept-space-map {
             min-height: 230px;
+            margin-top: 30px;
           }
 
           .venue-wrap {
@@ -1098,7 +1114,7 @@ export default function ConceptPage() {
           }
 
           .action-card {
-            min-height: 104px;
+            min-height: 84px;
           }
 
           .action-card-title {
@@ -1110,23 +1126,25 @@ export default function ConceptPage() {
           }
 
           .concept-floor {
-            width: 210px;
-            right: -4px;
-            bottom: 0;
+            width: 270px;
             opacity: 0.22;
           }
 
           .concept-funnel-inline {
             width: 104px;
-            right: 8px;
-            top: 8px;
-            opacity: 0.36;
+            right: 38px;
+            top: 6px;
+            opacity: 0.46;
           }
 
           .concept-obelisk {
             width: 54px;
-            right: 18px;
-            bottom: 18px;
+            right: 56px;
+            bottom: 26px;
+          }
+
+          .experience-nav {
+            margin-top: 36px;
           }
         }
 
