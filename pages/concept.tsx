@@ -61,13 +61,11 @@ const EXPERIENCE_BTNS = [
     label: 'Dining',
     href: 'https://www.little-portland.com/food',
     dark: false,
-    chars: 6,
   },
   {
     label: 'After Dark',
     href: 'https://www.little-portland.com/theclub',
     dark: true,
-    chars: 10,
   },
 ];
 
@@ -832,12 +830,13 @@ export default function ConceptPage() {
         .scan-title-hero {
           position: relative;
           z-index: 5;
-          display: block;
-          width: max-content;
-          max-width: 100%;
+          display: inline-block;
+          width: auto;
+          max-width: none;
           font-size: clamp(64px, 8.4vw, 128px);
           white-space: nowrap;
           overflow: visible;
+          padding-right: 0.04em;
         }
 
         h2,
@@ -1758,7 +1757,8 @@ export default function ConceptPage() {
 
           h1,
           .scan-title-hero {
-            font-size: clamp(52px, 14vw, 82px);
+            font-size: clamp(48px, 13vw, 82px);
+            max-width: none;
           }
 
           h2,
@@ -2016,6 +2016,11 @@ export default function ConceptPage() {
         }
 
         @media (max-width: 420px) {
+          h1,
+          .scan-title-hero {
+            font-size: clamp(42px, 12.5vw, 60px);
+          }
+
           .signal-time {
             font-size: 9px;
             letter-spacing: 0.04em;
