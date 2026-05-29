@@ -12,7 +12,6 @@ const C = {
 } as const;
 
 const MONO = '"Space Mono", "Courier New", monospace';
-const SANS = '"Space Grotesk", "Helvetica Neue", Arial, sans-serif';
 
 type AreaId = 'tent' | 'chefs-studio' | 'studio';
 
@@ -126,7 +125,7 @@ export default function ConceptPage() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Space+Mono:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
           rel="stylesheet"
         />
       </Head>
@@ -135,34 +134,28 @@ export default function ConceptPage() {
         <SceneNav theme="space" />
 
         <div className="bg-image" aria-hidden="true" />
-        <div className="bg-wash" aria-hidden="true" />
 
         <div className="shell">
           <div className="axis-v" aria-hidden="true" />
 
-          <img
-            className="concept-asset asset-funnel asset-funnel-space"
-            src={CONCEPT_ASSETS.funnel}
-            alt=""
-            draggable={false}
-          />
-          <img
-            className="concept-asset asset-obelisk"
-            src={CONCEPT_ASSETS.obelisk}
-            alt=""
-            draggable={false}
-          />
-
           <section className="content-section hero-section" aria-labelledby="concept-title">
-            <div className="section-rule" aria-hidden="true" />
+            <img
+              className="concept-funnel-inline"
+              src={CONCEPT_ASSETS.funnel}
+              alt=""
+              draggable={false}
+            />
+
             <h1 id="concept-title">
               Concept<span className="pink-dot">.</span>
             </h1>
+
             <p className="address">17 Little Portland Street, London</p>
           </section>
 
           <section className="content-section space-section" aria-labelledby="space-title">
             <div className="section-rule" aria-hidden="true" />
+
             <h2 id="space-title">The Space</h2>
 
             <div className="concept-space-map" aria-label="Interactive venue map">
@@ -247,20 +240,30 @@ export default function ConceptPage() {
 
           <section className="content-section experience-section" aria-labelledby="experience-title">
             <div className="section-rule" aria-hidden="true" />
+
             <h2 id="experience-title">The Experience</h2>
 
-            <nav className="experience-nav" aria-label="Explore the experience">
-              {EXPERIENCE_BTNS.map((button) => (
-                <a
-                  key={button.href}
-                  href={button.href}
-                  className={`experience-card ${button.dark ? 'is-dark' : ''}`}
-                >
-                  <span>{button.label}</span>
-                  <small>Explore →</small>
-                </a>
-              ))}
-            </nav>
+            <div className="experience-layout">
+              <nav className="experience-nav" aria-label="Explore the experience">
+                {EXPERIENCE_BTNS.map((button) => (
+                  <a
+                    key={button.href}
+                    href={button.href}
+                    className={`experience-card ${button.dark ? 'is-dark' : ''}`}
+                  >
+                    <span>{button.label}</span>
+                    <small>Explore →</small>
+                  </a>
+                ))}
+              </nav>
+
+              <img
+                className="experience-obelisk"
+                src={CONCEPT_ASSETS.obelisk}
+                alt=""
+                draggable={false}
+              />
+            </div>
           </section>
         </div>
       </main>
@@ -273,8 +276,10 @@ export default function ConceptPage() {
           min-height: 100%;
           background: ${C.cream};
           color: ${C.ink};
+          font-family: ${MONO};
           -webkit-font-smoothing: antialiased;
           text-rendering: geometricPrecision;
+          scrollbar-color: ${C.ink} rgba(28, 28, 26, 0.14);
         }
 
         body {
@@ -283,6 +288,26 @@ export default function ConceptPage() {
 
         * {
           box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: rgba(28, 28, 26, 0.12);
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: ${C.ink};
+          border: 2px solid rgba(232, 226, 212, 0.7);
+          background-clip: content-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: ${C.pink};
+          border: 2px solid rgba(232, 226, 212, 0.7);
+          background-clip: content-box;
         }
 
         .scene-nav {
@@ -357,34 +382,22 @@ export default function ConceptPage() {
           background: ${C.cream};
         }
 
-        .bg-image,
-        .bg-wash {
+        .bg-image {
           position: fixed;
           inset: 0;
-          pointer-events: none;
-        }
-
-        .bg-image {
           z-index: 0;
+          pointer-events: none;
           background-image: url('${CONCEPT_ASSETS.bg}');
-          background-size: cover;
+          background-size: contain;
+          background-repeat: repeat;
           background-position: center top;
-          background-repeat: no-repeat;
-          opacity: 1;
-        }
-
-        .bg-wash {
-          z-index: 1;
-          background:
-            radial-gradient(circle at 70% 28%, rgba(212, 80, 122, 0.055), transparent 28rem),
-            linear-gradient(180deg, rgba(232, 226, 212, 0.08), rgba(232, 226, 212, 0.18));
-          mix-blend-mode: multiply;
+          opacity: 0.7;
         }
 
         .shell {
           position: relative;
           z-index: 2;
-          width: 75%;
+          width: 65%;
           max-width: 1180px;
           min-height: 100svh;
           margin: 0 auto;
@@ -401,43 +414,31 @@ export default function ConceptPage() {
           background: linear-gradient(
             180deg,
             rgba(28, 28, 26, 0),
-            rgba(28, 28, 26, 0.42) 5%,
-            rgba(28, 28, 26, 0.28) 94%,
+            rgba(28, 28, 26, 0.48) 5%,
+            rgba(28, 28, 26, 0.34) 94%,
             rgba(28, 28, 26, 0)
           );
           pointer-events: none;
         }
 
-        .concept-asset {
-          position: absolute;
-          z-index: 1;
-          pointer-events: none;
-          user-select: none;
-          mix-blend-mode: multiply;
-        }
-
-        .asset-funnel-space {
-          top: 36%;
-          right: -3%;
-          width: clamp(104px, 13vw, 178px);
-          opacity: 0.2;
-          filter: saturate(0.78) contrast(0.92);
-          animation: assetFloatA 8.5s ease-in-out infinite;
-        }
-
-        .asset-obelisk {
-          top: 53%;
-          right: 5%;
-          width: clamp(48px, 5vw, 78px);
-          opacity: 0.18;
-          filter: contrast(0.94) drop-shadow(16px 24px 24px rgba(28, 28, 26, 0.12));
-          animation: obeliskHover 8s ease-in-out infinite;
-        }
-
         .content-section {
+          --section-pad: clamp(48px, 5.5vw, 82px);
           position: relative;
           z-index: 3;
-          padding-left: clamp(48px, 5.5vw, 82px);
+          padding-left: var(--section-pad);
+        }
+
+        .section-rule {
+          position: relative;
+          width: calc(100% + var(--section-pad));
+          height: 1px;
+          margin-left: calc(var(--section-pad) * -1);
+          margin-bottom: clamp(28px, 4vw, 48px);
+          background: linear-gradient(
+            90deg,
+            rgba(28, 28, 26, 0.42),
+            rgba(28, 28, 26, 0.16)
+          );
         }
 
         .hero-section {
@@ -456,13 +457,6 @@ export default function ConceptPage() {
           padding-top: clamp(76px, 8vw, 112px);
         }
 
-        .section-rule {
-          width: 100%;
-          height: 1px;
-          margin-bottom: clamp(28px, 4vw, 48px);
-          background: linear-gradient(90deg, rgba(28, 28, 26, 0.32), rgba(28, 28, 26, 0.12));
-        }
-
         h1,
         h2,
         p {
@@ -471,36 +465,61 @@ export default function ConceptPage() {
 
         h1,
         h2 {
-          font-family: ${SANS};
+          font-family: ${MONO};
           color: ${C.ink};
           text-transform: uppercase;
-          font-weight: 900;
-          line-height: 0.88;
-          letter-spacing: -0.045em;
+          font-weight: 700;
+          line-height: 0.9;
+          letter-spacing: -0.1em;
           text-wrap: balance;
+          text-shadow: 0.018em 0 0 currentColor;
         }
 
         h1 {
-          font-size: clamp(68px, 10vw, 150px);
+          position: relative;
+          z-index: 4;
+          font-size: clamp(64px, 8.4vw, 128px);
         }
 
         h2 {
-          max-width: 620px;
-          font-size: clamp(52px, 7vw, 104px);
+          position: relative;
+          z-index: 4;
+          max-width: 720px;
+          font-size: clamp(48px, 5.8vw, 92px);
         }
 
         .pink-dot {
           color: ${C.pink};
+          text-shadow: none;
         }
 
         .address {
+          position: relative;
+          z-index: 4;
           margin-top: clamp(18px, 2vw, 26px);
           font-family: ${MONO};
-          color: rgba(28, 28, 26, 0.7);
+          color: rgba(28, 28, 26, 0.72);
           font-size: clamp(11px, 1.05vw, 15px);
           line-height: 1.45;
           letter-spacing: 0.24em;
+          font-weight: 700;
           text-transform: uppercase;
+        }
+
+        .concept-funnel-inline {
+          position: absolute;
+          z-index: 3;
+          top: 50%;
+          right: clamp(0px, 3vw, 46px);
+          width: clamp(156px, 19.5vw, 267px);
+          height: auto;
+          opacity: 0.56;
+          pointer-events: none;
+          user-select: none;
+          mix-blend-mode: multiply;
+          filter: saturate(0.86) contrast(0.98);
+          transform: translateY(-58%);
+          animation: funnelFloat 8.5s ease-in-out infinite;
         }
 
         .concept-space-map {
@@ -616,85 +635,11 @@ export default function ConceptPage() {
         .zone-controls {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 14px;
-          margin-top: clamp(20px, 3vw, 36px);
-        }
-
-        .zone-card {
-          position: relative;
-          min-height: 80px;
-          padding: 17px 18px 15px;
-          border: 1px solid rgba(28, 28, 26, 0.42);
-          background: rgba(232, 226, 212, 0.36);
-          color: ${C.ink};
-          text-decoration: none;
-          box-shadow: 5px 5px 0 rgba(28, 28, 26, 0.08);
-          transition:
-            transform 0.22s ease,
-            border-color 0.22s ease,
-            background 0.22s ease,
-            box-shadow 0.22s ease;
-        }
-
-        .zone-card::before {
-          content: '';
-          position: absolute;
-          left: 12px;
-          right: 12px;
-          bottom: 9px;
-          height: 1px;
-          background: ${C.pink};
-          opacity: 0;
-          transform: scaleX(0.28);
-          transform-origin: left center;
-          transition: opacity 0.22s ease, transform 0.22s ease;
-        }
-
-        .zone-card-title {
-          display: block;
-          font-family: ${SANS};
-          font-size: clamp(13px, 1.25vw, 18px);
-          font-weight: 900;
-          line-height: 1.02;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-        }
-
-        .zone-card-meta {
-          display: block;
-          margin-top: 7px;
-          color: rgba(28, 28, 26, 0.58);
-          font-family: ${MONO};
-          font-size: 10px;
-          letter-spacing: 0.16em;
-          line-height: 1.15;
-          text-transform: uppercase;
-        }
-
-        .zone-card:hover,
-        .zone-card:focus-visible,
-        .zone-card.is-active {
-          border-color: rgba(212, 80, 122, 0.82);
-          background: rgba(212, 80, 122, 0.08);
-          box-shadow: 8px 8px 0 rgba(212, 80, 122, 0.12);
-          transform: translate(-2px, -2px);
-          outline: none;
-        }
-
-        .zone-card:hover::before,
-        .zone-card:focus-visible::before,
-        .zone-card.is-active::before {
-          opacity: 1;
-          transform: scaleX(1);
-        }
-
-        .experience-nav {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 16px;
-          margin-top: clamp(34px, 4vw, 52px);
+          margin-top: clamp(22px, 3vw, 40px);
         }
 
+        .zone-card,
         .experience-card {
           position: relative;
           min-height: clamp(96px, 10vw, 138px);
@@ -717,6 +662,7 @@ export default function ConceptPage() {
             box-shadow 0.24s ease;
         }
 
+        .zone-card::before,
         .experience-card::before {
           content: '';
           position: absolute;
@@ -728,22 +674,30 @@ export default function ConceptPage() {
           transition: opacity 0.24s ease;
         }
 
+        .zone-card-title,
+        .zone-card-meta,
         .experience-card span,
         .experience-card small {
           position: relative;
           z-index: 1;
         }
 
+        .zone-card-title,
         .experience-card span {
-          font-family: ${SANS};
-          font-size: clamp(22px, 2.8vw, 42px);
-          font-weight: 900;
-          line-height: 0.92;
-          letter-spacing: -0.025em;
+          display: block;
+          font-family: ${MONO};
+          font-size: clamp(18px, 1.7vw, 28px);
+          font-weight: 700;
+          line-height: 0.95;
+          letter-spacing: -0.07em;
           text-transform: uppercase;
+          text-shadow: 0.012em 0 0 currentColor;
         }
 
+        .zone-card-meta,
         .experience-card small {
+          display: block;
+          margin-top: 2px;
           font-family: ${MONO};
           color: rgba(28, 28, 26, 0.58);
           font-size: 10px;
@@ -752,15 +706,9 @@ export default function ConceptPage() {
           text-transform: uppercase;
         }
 
-        .experience-card.is-dark {
-          background: ${C.ink};
-          color: ${C.cream};
-        }
-
-        .experience-card.is-dark small {
-          color: rgba(232, 226, 212, 0.66);
-        }
-
+        .zone-card:hover,
+        .zone-card:focus-visible,
+        .zone-card.is-active,
         .experience-card:hover,
         .experience-card:focus-visible {
           border-color: rgba(212, 80, 122, 0.9);
@@ -771,9 +719,41 @@ export default function ConceptPage() {
           outline: none;
         }
 
+        .zone-card:hover::before,
+        .zone-card:focus-visible::before,
+        .zone-card.is-active::before,
         .experience-card:hover::before,
         .experience-card:focus-visible::before {
           opacity: 1;
+        }
+
+        .zone-card.is-active .zone-card-meta {
+          color: rgba(28, 28, 26, 0.78);
+        }
+
+        .experience-layout {
+          position: relative;
+          z-index: 4;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(120px, 240px);
+          gap: clamp(28px, 5vw, 78px);
+          align-items: center;
+          margin-top: clamp(34px, 4vw, 52px);
+        }
+
+        .experience-nav {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .experience-card.is-dark {
+          background: ${C.ink};
+          color: ${C.cream};
+        }
+
+        .experience-card.is-dark small {
+          color: rgba(232, 226, 212, 0.66);
         }
 
         .experience-card.is-dark:hover,
@@ -788,13 +768,30 @@ export default function ConceptPage() {
           opacity: 0.7;
         }
 
-        @keyframes assetFloatA {
+        .experience-obelisk {
+          position: relative;
+          z-index: 4;
+          display: block;
+          width: clamp(72px, 7.5vw, 117px);
+          height: auto;
+          justify-self: center;
+          opacity: 0.82;
+          pointer-events: none;
+          user-select: none;
+          filter:
+            contrast(0.96)
+            drop-shadow(18px 28px 24px rgba(28, 28, 26, 0.18));
+          animation: obeliskHover 8s ease-in-out infinite;
+        }
+
+        @keyframes funnelFloat {
           0%,
           100% {
-            transform: translate3d(0, 0, 0) rotate(0deg);
+            transform: translate3d(0, -58%, 0) rotate(0deg);
           }
+
           50% {
-            transform: translate3d(-8px, 10px, 0) rotate(1.4deg);
+            transform: translate3d(-10px, calc(-58% + 10px), 0) rotate(1.4deg);
           }
         }
 
@@ -803,6 +800,7 @@ export default function ConceptPage() {
           100% {
             transform: translate3d(0, 0, 0);
           }
+
           50% {
             transform: translate3d(0, -10px, 0);
           }
@@ -813,6 +811,7 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0px) rotate(-0.15deg);
           }
+
           50% {
             transform: translateY(-10px) rotate(0.25deg);
           }
@@ -823,6 +822,7 @@ export default function ConceptPage() {
           100% {
             transform: scale(1);
           }
+
           50% {
             transform: scale(1.01);
           }
@@ -920,13 +920,25 @@ export default function ConceptPage() {
           }
         }
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1280px) {
+          .shell {
+            width: 72%;
+          }
+        }
+
+        @media (max-width: 980px) {
           .shell {
             width: 82%;
           }
 
           .zone-controls {
             grid-template-columns: 1fr;
+          }
+
+          .concept-funnel-inline {
+            width: clamp(130px, 24vw, 190px);
+            right: 0;
+            opacity: 0.34;
           }
         }
 
@@ -938,7 +950,7 @@ export default function ConceptPage() {
           }
 
           .content-section {
-            padding-left: 48px;
+            --section-pad: 48px;
           }
 
           .hero-section {
@@ -952,11 +964,11 @@ export default function ConceptPage() {
           }
 
           h1 {
-            font-size: clamp(54px, 16vw, 84px);
+            font-size: clamp(52px, 14vw, 82px);
           }
 
           h2 {
-            font-size: clamp(42px, 13vw, 68px);
+            font-size: clamp(40px, 11vw, 64px);
           }
 
           .address {
@@ -974,22 +986,15 @@ export default function ConceptPage() {
             margin-left: -8%;
           }
 
-          .asset-funnel-space {
-            top: 38%;
-            right: -28px;
-            width: 114px;
-            opacity: 0.14;
-          }
-
-          .asset-obelisk {
-            top: 60%;
-            right: -12px;
-            width: 54px;
-            opacity: 0.13;
-          }
-
-          .experience-nav {
+          .experience-layout {
             grid-template-columns: 1fr;
+          }
+
+          .experience-obelisk {
+            width: 88px;
+            justify-self: start;
+            margin-left: clamp(20px, 12vw, 80px);
+            opacity: 0.5;
           }
         }
 
@@ -1005,7 +1010,7 @@ export default function ConceptPage() {
           }
 
           .content-section {
-            padding-left: 34px;
+            --section-pad: 34px;
           }
 
           .hero-section {
@@ -1022,6 +1027,13 @@ export default function ConceptPage() {
             padding-bottom: 72px;
           }
 
+          .concept-funnel-inline {
+            top: 22%;
+            right: -26px;
+            width: 132px;
+            opacity: 0.24;
+          }
+
           .concept-space-map {
             min-height: 230px;
           }
@@ -1031,27 +1043,30 @@ export default function ConceptPage() {
             margin-left: -16%;
           }
 
-          .zone-card {
-            min-height: 66px;
-            padding: 13px 14px 12px;
+          .zone-card,
+          .experience-card {
+            min-height: 104px;
           }
 
-          .zone-card-title {
-            font-size: 13px;
+          .zone-card-title,
+          .experience-card span {
+            font-size: 20px;
           }
 
-          .zone-card-meta {
+          .zone-card-meta,
+          .experience-card small {
             font-size: 9px;
           }
 
-          .experience-card {
-            min-height: 104px;
+          .experience-obelisk {
+            width: 76px;
+            margin-left: 24px;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .asset-funnel-space,
-          .asset-obelisk,
+          .concept-funnel-inline,
+          .experience-obelisk,
           .venue-wrap,
           .venue-glitch-a,
           .venue-glitch-b,
