@@ -1,35 +1,26 @@
 'use client';
 
 import Head from 'next/head';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-
-const NAV_LEFT = [
-  { label: 'Concept', href: '/concept', active: true },
-  { label: 'Access', href: '/access' },
-  { label: 'Nocturn', href: '/nocturn' },
-];
-
-const NAV_RIGHT = [
-  { label: 'Projects', href: '/projects' },
-  { label: 'Network', href: '/network', muted: true },
-  { label: 'Archives', href: '/archives', muted: true },
-];
+import SceneNav from '@components/SceneNav';
 
 const SPACE_ITEMS = [
   {
     key: 'tent',
     label: 'THE TENT',
+    href: '/thetent',
     overlay: '/images/concept/tent-highlight.png',
   },
   {
     key: 'chef',
-    label: `CHEF’S STUDIO`,
+    label: "CHEF'S STUDIO",
+    href: '/chefstudio',
     overlay: '/images/concept/chefs-studio-highlight.png',
   },
   {
     key: 'studio',
     label: 'THE STUDIO',
+    href: '/studio',
     overlay: '/images/concept/studio-highlight.png',
   },
 ] as const;
@@ -38,6 +29,7 @@ type SpaceKey = (typeof SPACE_ITEMS)[number]['key'];
 
 function PanelButton({
   title,
+  href,
   dark = false,
   active = false,
   onMouseEnter,
@@ -47,6 +39,7 @@ function PanelButton({
   onClick,
 }: {
   title: string;
+  href?: string;
   dark?: boolean;
   active?: boolean;
   onMouseEnter?: () => void;
@@ -55,18 +48,44 @@ function PanelButton({
   onBlur?: () => void;
   onClick?: () => void;
 }) {
+  const className = `panel-btn ${dark ? 'is-dark' : ''} ${active ? 'is-active' : ''}`;
+
+  const content = (
+    <>
+      <span className="panel-btn__title">{title}</span>
+      <span className="panel-btn__sub">
+        EXPLORE <span className="panel-btn__chevron" aria-hidden>›</span>
+      </span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={className}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onClick={onClick}
+      >
+        {content}
+      </a>
+    );
+  }
+
   return (
     <button
       type="button"
-      className={`panel-btn ${dark ? 'is-dark' : ''} ${active ? 'is-active' : ''}`}
+      className={className}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onFocus={onFocus}
       onBlur={onBlur}
       onClick={onClick}
     >
-      <span className="panel-btn__title">{title}</span>
-      <span className="panel-btn__sub">EXPLORE →</span>
+      {content}
     </button>
   );
 }
@@ -75,64 +94,60 @@ export default function ConceptPage() {
   const [activeSpace, setActiveSpace] = useState<SpaceKey | null>(null);
   const [navReady, setNavReady] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const navTimer = window.setTimeout(() => setNavReady(true), 1200);
+    const navTimer = window.setTimeout(() => setNavReady(true), 1900);
     return () => window.clearTimeout(navTimer);
   }, []);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 8);
     onScroll();
+
     window.addEventListener('scroll', onScroll, { passive: true });
+
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll<HTMLElement>('.reveal-section'));
-    if (!sections.length) return;
 
-    const visibleNow = () => {
+    const revealVisibleNow = () => {
       sections.forEach((section, index) => {
         const rect = section.getBoundingClientRect();
-        const isOnScreen = rect.top < window.innerHeight * 0.88 && rect.bottom > 0;
-        if (index === 0 || isOnScreen) section.classList.add('is-visible');
+        const isOnScreen = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+
+        if (index === 0 || isOnScreen) {
+          section.classList.add('is-visible');
+        }
       });
     };
 
-    visibleNow();
+    revealVisibleNow();
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            (entry.target as HTMLElement).classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
         });
       },
       {
-        threshold: 0.2,
+        threshold: 0.18,
         rootMargin: '0px 0px -10% 0px',
       }
     );
 
-    sections.forEach((section, index) => {
-      if (index !== 0 && !section.classList.contains('is-visible')) {
+    sections.forEach((section) => {
+      if (!section.classList.contains('is-visible')) {
         observer.observe(section);
       }
     });
 
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [mobileOpen]);
 
   const resetSpace = () => setActiveSpace(null);
 
@@ -141,99 +156,41 @@ export default function ConceptPage() {
       <Head>
         <title>Concept — 17 Little Portland Street</title>
         <meta
+          name="description"
+          content="Concept, space and experience at 17 Little Portland Street, London."
+        />
+        <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
         />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
           rel="stylesheet"
         />
       </Head>
 
-      <main className="page">
-        <header
-          className={[
-            'concept-nav-shell',
-            navReady ? 'is-ready' : '',
-            isScrolled ? 'is-scrolled' : '',
-            mobileOpen ? 'is-open' : '',
-          ].join(' ')}
+      <main className="page page--with-scene-nav">
+        <div
+          className={`concept-nav-shell ${navReady ? 'is-ready' : ''} ${
+            isScrolled ? 'is-scrolled' : ''
+          }`}
         >
-          <div className="concept-nav">
-            <button
-              type="button"
-              className="scene-nav-burger"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((v) => !v)}
-            >
-              <span />
-              <span />
-              <span />
-            </button>
-
-            <nav className="scene-nav-left" aria-label="Primary navigation left">
-              {NAV_LEFT.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={`scene-nav-link ${item.active ? 'is-active' : ''}`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-
-            <Link href="/" aria-label="Go to home page" className="scene-nav-logo">
-              <span className="logo-ring outer" />
-              <span className="logo-ring inner" />
-              <span className="logo-core" />
-            </Link>
-
-            <nav className="scene-nav-right" aria-label="Primary navigation right">
-              {NAV_RIGHT.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={`scene-nav-link ${item.muted ? 'is-muted' : ''}`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          <div className="scene-nav-mobile">
-            {[...NAV_LEFT, ...NAV_RIGHT].map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`scene-nav-mobile-link ${item.active ? 'is-active' : ''} ${
-                  item.muted ? 'is-muted' : ''
-                }`}
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </header>
+          <SceneNav />
+        </div>
 
         <div className="shell">
           <div className="axis-v" aria-hidden />
 
-          {/* CONCEPT */}
           <section className="hero-section reveal-section" id="concept">
             <div className="section-pad hero-pad">
               <div className="hero-grid">
                 <div className="hero-copy">
                   <h1 className="concept-title title-glitch" id="concept-title">
                     <span className="title-word">CONCEPT</span>
-                    <span className="concept-dot" aria-hidden>
-                      .
-                    </span>
+                    <span className="concept-dot" aria-hidden>.</span>
                   </h1>
 
                   <p className="hero-address">17 LITTLE PORTLAND STREET, LONDON</p>
@@ -241,29 +198,35 @@ export default function ConceptPage() {
 
                 <div className="concept-graphic" aria-hidden>
                   <div className="concept-graphic__axis" />
+
                   <img
                     src="/images/concept/grid_funel.png"
                     alt=""
                     className="concept-graphic__funnel"
+                    draggable={false}
                   />
+
                   <img
                     src="/images/concept/noise_floor.png"
                     alt=""
                     className="concept-graphic__floor"
+                    draggable={false}
                   />
+
                   <img
                     src="/images/concept/obelisk-dark-grey.png"
                     alt=""
                     className="concept-graphic__obelisk"
+                    draggable={false}
                   />
                 </div>
               </div>
             </div>
           </section>
 
-          {/* SPACE */}
           <section className="space-section reveal-section" id="space">
             <div className="section-rule" aria-hidden />
+
             <div className="section-pad">
               <h2 className="section-title title-glitch">
                 <span className="title-word">THE SPACE</span>
@@ -275,6 +238,7 @@ export default function ConceptPage() {
                     src="/images/concept/the-space-page-venue.png"
                     alt="Illustrated venue overview"
                     className="space-visual__base"
+                    draggable={false}
                   />
 
                   {SPACE_ITEMS.map((item) => (
@@ -285,6 +249,7 @@ export default function ConceptPage() {
                       className={`space-visual__overlay ${
                         activeSpace === item.key ? 'is-active' : ''
                       }`}
+                      draggable={false}
                     />
                   ))}
                 </div>
@@ -295,23 +260,21 @@ export default function ConceptPage() {
                   <PanelButton
                     key={item.key}
                     title={item.label}
+                    href={item.href}
                     active={activeSpace === item.key}
                     onMouseEnter={() => setActiveSpace(item.key)}
                     onMouseLeave={resetSpace}
                     onFocus={() => setActiveSpace(item.key)}
                     onBlur={resetSpace}
-                    onClick={() =>
-                      setActiveSpace((current) => (current === item.key ? null : item.key))
-                    }
                   />
                 ))}
               </div>
             </div>
           </section>
 
-          {/* EXPERIENCE */}
           <section className="experience-section reveal-section" id="experience">
             <div className="section-rule" aria-hidden />
+
             <div className="section-pad">
               <h2 className="section-title section-title--stack title-glitch">
                 <span className="title-word">THE</span>
@@ -323,14 +286,14 @@ export default function ConceptPage() {
                 <div className="timeline-line timeline-line--progress" />
 
                 <div className="timeline-marker timeline-marker--start">
+                  <span className="timeline-time">20:00 / 20:30</span>
                   <span className="timeline-dot">
                     <span className="timeline-dot__fill" />
                   </span>
-                  <span className="timeline-time timeline-time--start">20:00 / 20:30</span>
                 </div>
 
                 <div className="timeline-marker timeline-marker--end">
-                  <span className="timeline-time timeline-time--end">22:00</span>
+                  <span className="timeline-time">22:00</span>
                   <span className="timeline-dot">
                     <span className="timeline-dot__fill" />
                   </span>
@@ -338,8 +301,12 @@ export default function ConceptPage() {
               </div>
 
               <div className="experience-buttons">
-                <PanelButton title="DINING" />
-                <PanelButton title="AFTER DARK" dark />
+                <PanelButton title="DINING" href="https://www.little-portland.com/food" />
+                <PanelButton
+                  title="AFTER DARK"
+                  href="https://www.little-portland.com/theclub"
+                  dark
+                />
               </div>
             </div>
           </section>
@@ -400,12 +367,8 @@ export default function ConceptPage() {
           --muted: #8c877d;
           --soft: #bcb6ab;
           --pink: #e25c90;
-          --line-dark: rgba(28, 28, 26, 0.4);
-          --line-mid: rgba(28, 28, 26, 0.16);
-          --line-light: rgba(28, 28, 26, 0.03);
           --section-pad: clamp(56px, 5.7vw, 110px);
           --shadow-soft: 0 12px 28px rgba(28, 28, 26, 0.04);
-          --border-soft: rgba(28, 28, 26, 0.18);
         }
 
         .page {
@@ -435,163 +398,39 @@ export default function ConceptPage() {
           z-index: 80;
           opacity: 0;
           transform: translateY(-18px);
-          transition: opacity 0.45s ease, transform 0.45s ease, background-color 0.35s ease,
-            box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+          pointer-events: none;
           background: rgba(232, 226, 212, 0);
           border-bottom: 1px solid rgba(28, 28, 26, 0);
+          transition:
+            opacity 0.55s ease,
+            transform 0.55s ease,
+            background-color 0.35s ease,
+            border-color 0.35s ease,
+            box-shadow 0.35s ease,
+            backdrop-filter 0.35s ease;
         }
 
         .concept-nav-shell.is-ready {
           opacity: 1;
           transform: translateY(0);
+          pointer-events: auto;
         }
 
-        .concept-nav-shell.is-scrolled,
-        .concept-nav-shell.is-open {
+        .concept-nav-shell.is-scrolled {
           background: rgba(232, 226, 212, 0.94);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           border-bottom-color: rgba(28, 28, 26, 0.08);
           box-shadow: 0 10px 24px rgba(28, 28, 26, 0.06);
         }
 
-        .concept-nav {
-          max-width: min(1480px, calc(100vw - 32px));
-          margin: 0 auto;
-          min-height: 58px;
-          display: grid;
-          grid-template-columns: 1fr auto 1fr;
-          align-items: center;
-          gap: 18px;
-          padding: 8px 20px 7px;
+        .concept-nav-shell :global(.scene-nav) {
+          background: transparent !important;
         }
 
-        .scene-nav-left,
-        .scene-nav-right {
-          display: flex;
-          align-items: center;
-          gap: clamp(14px, 2vw, 28px);
-        }
-
-        .scene-nav-left {
-          justify-content: flex-end;
-        }
-
-        .scene-nav-right {
-          justify-content: flex-start;
-        }
-
-        .scene-nav-link,
-        .scene-nav-mobile-link {
-          color: var(--ink);
-          text-decoration: none;
-          font-size: 12px;
-          line-height: 1;
-          letter-spacing: 0.12em;
-          text-transform: none;
-          transition: color 0.22s ease, opacity 0.22s ease;
-          white-space: nowrap;
-        }
-
-        .scene-nav-link.is-active,
-        .scene-nav-mobile-link.is-active {
-          color: var(--pink);
-        }
-
-        .scene-nav-link.is-muted,
-        .scene-nav-mobile-link.is-muted {
-          opacity: 0.34;
-        }
-
-        .scene-nav-link:hover,
-        .scene-nav-mobile-link:hover {
-          color: var(--pink);
-        }
-
-        .scene-nav-logo {
-          position: relative;
-          width: 38px;
-          height: 38px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-        }
-
-        .logo-ring,
-        .logo-core {
-          position: absolute;
-          border-radius: 999px;
-          border: 2px solid var(--ink);
-        }
-
-        .logo-ring.outer {
-          width: 38px;
-          height: 38px;
-        }
-
-        .logo-ring.inner {
-          width: 24px;
-          height: 24px;
-        }
-
-        .logo-core {
-          width: 5px;
-          height: 5px;
-          background: var(--ink);
-          border: 0;
-        }
-
-        .scene-nav-burger {
-          display: none;
-          appearance: none;
-          border: 0;
-          background: transparent;
-          padding: 0;
-          width: 34px;
-          height: 34px;
-          margin-right: auto;
-          cursor: pointer;
-          position: relative;
-        }
-
-        .scene-nav-burger span {
-          position: absolute;
-          left: 5px;
-          right: 5px;
-          height: 2px;
-          background: var(--ink);
-          transition: transform 0.25s ease, opacity 0.25s ease, top 0.25s ease;
-        }
-
-        .scene-nav-burger span:nth-child(1) {
-          top: 10px;
-        }
-
-        .scene-nav-burger span:nth-child(2) {
-          top: 16px;
-        }
-
-        .scene-nav-burger span:nth-child(3) {
-          top: 22px;
-        }
-
-        .concept-nav-shell.is-open .scene-nav-burger span:nth-child(1) {
-          top: 16px;
-          transform: rotate(45deg);
-        }
-
-        .concept-nav-shell.is-open .scene-nav-burger span:nth-child(2) {
-          opacity: 0;
-        }
-
-        .concept-nav-shell.is-open .scene-nav-burger span:nth-child(3) {
-          top: 16px;
-          transform: rotate(-45deg);
-        }
-
-        .scene-nav-mobile {
-          display: none;
+        .concept-nav-shell.is-scrolled :global(.scene-nav) {
+          background: transparent !important;
+          box-shadow: none !important;
         }
 
         .shell {
@@ -621,10 +460,6 @@ export default function ConceptPage() {
             rgba(28, 28, 26, 0.14) 78%,
             rgba(28, 28, 26, 0.06) 100%
           );
-        }
-
-        .reveal-section.is-visible ~ .axis-v,
-        .shell .axis-v {
           animation: drawVertical 1s cubic-bezier(0.2, 0.75, 0.25, 1) 120ms forwards;
         }
 
@@ -714,9 +549,9 @@ export default function ConceptPage() {
         .concept-dot {
           display: inline-block;
           font-size: 0.92em;
-          line-height: 0.74;
+          line-height: 0.52;
           position: relative;
-          top: 0.11em;
+          top: 0.18em;
           color: var(--ink);
           animation: dotCycle 7.6s ease-in-out infinite;
         }
@@ -829,8 +664,9 @@ export default function ConceptPage() {
         .space-visual__overlay {
           opacity: 0;
           visibility: hidden;
-          transition: opacity 0.22s ease, visibility 0.22s ease;
+          transition: opacity 0.18s ease, visibility 0.18s ease;
           mix-blend-mode: normal;
+          filter: none;
         }
 
         .space-visual__overlay.is-active {
@@ -862,8 +698,13 @@ export default function ConceptPage() {
           box-shadow: var(--shadow-soft);
           cursor: pointer;
           text-align: left;
-          transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease,
-            box-shadow 0.22s ease, color 0.22s ease;
+          text-decoration: none;
+          transition:
+            border-color 0.22s ease,
+            background 0.22s ease,
+            transform 0.22s ease,
+            box-shadow 0.22s ease,
+            color 0.22s ease;
           font-family: 'Space Mono', 'Courier New', monospace;
         }
 
@@ -900,7 +741,9 @@ export default function ConceptPage() {
         }
 
         .panel-btn__sub {
-          display: block;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
           font-size: 12px;
           line-height: 1;
           letter-spacing: 0.12em;
@@ -909,17 +752,26 @@ export default function ConceptPage() {
           text-transform: uppercase;
         }
 
+        .panel-btn__chevron {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.35em;
+          line-height: 0.8;
+          transform: translateY(-0.02em);
+        }
+
         .experience-timeline {
           position: relative;
-          margin: 8px 0 24px;
-          height: 62px;
+          margin: 8px 0 22px;
+          height: 64px;
         }
 
         .timeline-line {
           position: absolute;
           left: 0;
           right: 0;
-          top: 31px;
+          top: 38px;
           height: 2px;
           border-radius: 999px;
         }
@@ -946,12 +798,9 @@ export default function ConceptPage() {
 
         .timeline-marker {
           position: absolute;
-          top: 31px;
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          transform: translateY(-50%);
-          white-space: nowrap;
+          top: 0;
+          height: 64px;
+          min-width: 210px;
         }
 
         .timeline-marker--start {
@@ -960,16 +809,46 @@ export default function ConceptPage() {
 
         .timeline-marker--end {
           right: 0;
+          text-align: right;
+        }
+
+        .timeline-time {
+          position: absolute;
+          top: 0;
+          font-size: clamp(18px, 1.5vw, 28px);
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #6f6a62;
+        }
+
+        .timeline-marker--start .timeline-time {
+          left: 0;
+        }
+
+        .timeline-marker--end .timeline-time {
+          right: 0;
         }
 
         .timeline-dot {
-          position: relative;
-          flex: 0 0 auto;
+          position: absolute;
+          top: 38px;
           width: 22px;
           height: 22px;
           border-radius: 999px;
           background: #9d988e;
           overflow: hidden;
+          transform: translateY(-50%);
+          z-index: 2;
+        }
+
+        .timeline-marker--start .timeline-dot {
+          left: 0;
+        }
+
+        .timeline-marker--end .timeline-dot {
+          right: 0;
         }
 
         .timeline-dot__fill {
@@ -978,20 +857,6 @@ export default function ConceptPage() {
           border-radius: inherit;
           background: var(--pink);
           opacity: 0;
-        }
-
-        .timeline-time {
-          font-size: clamp(18px, 1.5vw, 28px);
-          font-weight: 700;
-          line-height: 1;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: #6f6a62;
-          transition: color 0.35s ease;
-        }
-
-        .timeline-marker--end .timeline-time {
-          text-align: right;
         }
 
         .reveal-section.is-visible .timeline-line--progress {
@@ -1021,10 +886,6 @@ export default function ConceptPage() {
           margin-top: 10px;
         }
 
-        .reveal-section {
-          opacity: 1;
-        }
-
         .reveal-section .hero-copy,
         .reveal-section .concept-graphic,
         .reveal-section .space-visual-wrap,
@@ -1049,19 +910,19 @@ export default function ConceptPage() {
         }
 
         .reveal-section.is-visible .hero-copy {
-          transition-delay: 0.15s;
+          transition-delay: 0.12s;
         }
 
         .reveal-section.is-visible .concept-graphic {
-          transition-delay: 0.28s;
+          transition-delay: 0.25s;
         }
 
         .reveal-section.is-visible .space-visual-wrap {
-          transition-delay: 0.18s;
+          transition-delay: 0.16s;
         }
 
         .reveal-section.is-visible .space-buttons {
-          transition-delay: 0.28s;
+          transition-delay: 0.26s;
         }
 
         .reveal-section.is-visible .experience-timeline {
@@ -1076,16 +937,11 @@ export default function ConceptPage() {
           animation: titleJitterLoop 8.2s steps(2, end) infinite;
         }
 
-        .hero-section.is-visible .concept-title .title-word,
-        .hero-section.is-visible .concept-dot,
-        .hero-section.is-visible .hero-address {
-          animation-delay: 0s;
-        }
-
         @keyframes drawVertical {
           from {
             transform: scaleY(0);
           }
+
           to {
             transform: scaleY(1);
           }
@@ -1095,6 +951,7 @@ export default function ConceptPage() {
           from {
             transform: scaleX(0);
           }
+
           to {
             transform: scaleX(1);
           }
@@ -1107,14 +964,21 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             text-shadow: 0 0 0 transparent;
           }
+
           90% {
             transform: translate3d(1px, 0, 0);
-            text-shadow: 1px 0 rgba(226, 92, 144, 0.45), -1px 0 rgba(28, 28, 26, 0.18);
+            text-shadow:
+              1px 0 rgba(226, 92, 144, 0.45),
+              -1px 0 rgba(28, 28, 26, 0.18);
           }
+
           91% {
             transform: translate3d(-1px, 0, 0);
-            text-shadow: -1px 0 rgba(226, 92, 144, 0.55), 1px 0 rgba(28, 28, 26, 0.12);
+            text-shadow:
+              -1px 0 rgba(226, 92, 144, 0.55),
+              1px 0 rgba(28, 28, 26, 0.12);
           }
+
           92% {
             transform: translate3d(0, 0, 0);
             text-shadow: 0 0 0 transparent;
@@ -1128,14 +992,16 @@ export default function ConceptPage() {
             color: var(--ink);
             filter: none;
           }
+
           68% {
             color: #9c978c;
-            filter: none;
           }
+
           74% {
             color: var(--pink);
             filter: drop-shadow(1px 0 0 rgba(28, 28, 26, 0.18));
           }
+
           77% {
             color: var(--ink);
             filter: none;
@@ -1147,6 +1013,7 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0);
           }
+
           50% {
             transform: translateY(-6px);
           }
@@ -1159,14 +1026,17 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             filter: none;
           }
+
           92% {
             transform: translate3d(1px, 0, 0);
             filter: contrast(1.02);
           }
+
           93% {
             transform: translate3d(-1px, 0, 0);
             filter: contrast(1.04);
           }
+
           94% {
             transform: translate3d(0, 0, 0);
             filter: none;
@@ -1180,12 +1050,15 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0) scale(1);
             filter: none;
           }
+
           82% {
             transform: translate3d(0, -2px, 0) scale(1.01);
           }
+
           84% {
             transform: translate3d(1px, -1px, 0) scale(1.01);
           }
+
           86% {
             transform: translate3d(0, 0, 0) scale(1);
           }
@@ -1198,10 +1071,12 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             filter: drop-shadow(0 8px 18px rgba(28, 28, 26, 0.03));
           }
+
           80% {
             transform: translate3d(0, -1px, 0);
             filter: drop-shadow(0 10px 20px rgba(28, 28, 26, 0.07));
           }
+
           83% {
             transform: translate3d(0, 0, 0);
           }
@@ -1214,9 +1089,11 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             filter: none;
           }
+
           82% {
             transform: translate3d(0, 1px, 0);
           }
+
           86% {
             transform: translate3d(0, 0, 0);
           }
@@ -1228,18 +1105,22 @@ export default function ConceptPage() {
             transform: scaleX(0);
             opacity: 0;
           }
-          16% {
+
+          18% {
             transform: scaleX(0);
             opacity: 1;
           }
+
           62% {
             transform: scaleX(1);
             opacity: 1;
           }
-          76% {
+
+          78% {
             transform: scaleX(1);
             opacity: 0;
           }
+
           100% {
             transform: scaleX(0);
             opacity: 0;
@@ -1251,11 +1132,13 @@ export default function ConceptPage() {
           12% {
             opacity: 0;
           }
-          16%,
-          62% {
+
+          18%,
+          66% {
             opacity: 1;
           }
-          76%,
+
+          82%,
           100% {
             opacity: 0;
           }
@@ -1263,14 +1146,16 @@ export default function ConceptPage() {
 
         @keyframes endDotFill {
           0%,
-          44% {
+          46% {
             opacity: 0;
           }
-          58%,
-          72% {
+
+          60%,
+          76% {
             opacity: 1;
           }
-          86%,
+
+          92%,
           100% {
             opacity: 0;
           }
@@ -1281,10 +1166,12 @@ export default function ConceptPage() {
           12% {
             color: #6f6a62;
           }
-          16%,
+
+          18%,
           66% {
             color: var(--pink);
           }
+
           82%,
           100% {
             color: #6f6a62;
@@ -1296,11 +1183,13 @@ export default function ConceptPage() {
           46% {
             color: #6f6a62;
           }
+
           60%,
-          74% {
+          76% {
             color: var(--pink);
           }
-          88%,
+
+          92%,
           100% {
             color: #6f6a62;
           }
@@ -1322,40 +1211,6 @@ export default function ConceptPage() {
         }
 
         @media (max-width: 860px) {
-          .concept-nav {
-            grid-template-columns: auto 1fr auto;
-          }
-
-          .scene-nav-burger {
-            display: inline-block;
-          }
-
-          .scene-nav-left,
-          .scene-nav-right {
-            display: none;
-          }
-
-          .scene-nav-logo {
-            margin-left: auto;
-          }
-
-          .scene-nav-mobile {
-            display: grid;
-            gap: 14px;
-            padding: 0 20px 18px;
-            max-width: min(1480px, calc(100vw - 32px));
-            margin: 0 auto;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.28s ease, max-height 0.28s ease;
-          }
-
-          .concept-nav-shell.is-open .scene-nav-mobile {
-            opacity: 1;
-            max-height: 320px;
-          }
-
           .shell {
             width: calc(100% - 28px);
             padding-top: 84px;
@@ -1429,13 +1284,9 @@ export default function ConceptPage() {
             margin-bottom: 18px;
           }
 
-          .timeline-line {
-            top: 38px;
-          }
-
-          .timeline-marker {
-            top: 38px;
-            gap: 10px;
+          .timeline-line,
+          .timeline-dot {
+            top: 42px;
           }
 
           .timeline-dot {
@@ -1458,6 +1309,17 @@ export default function ConceptPage() {
 
           .panel-btn__sub {
             font-size: 11px;
+          }
+        }
+
+        @media (max-width: 560px) {
+          .timeline-marker {
+            min-width: 150px;
+          }
+
+          .timeline-time {
+            font-size: 12px;
+            letter-spacing: 0.08em;
           }
         }
       `}</style>
