@@ -89,9 +89,10 @@ function TimeReadout({
   return (
     <span className={`signal-time signal-time-${variant}`} aria-label={finalValue}>
       <span className="time-final">{finalValue}</span>
+
       {scrambles.map((value, index) => (
         <span
-          key={`${variant}-${value}`}
+          key={`${variant}-${index}-${value}`}
           className={`time-scramble scramble-${index + 1}`}
           aria-hidden="true"
         >
@@ -283,8 +284,7 @@ export default function ConceptPage() {
           >
             <div className="hero-copy">
               <h1 id="concept-title" className="scan-title scan-title-hero">
-                <span>Concept</span>
-                <span className="concept-dot" aria-hidden="true" />
+                Concept<span className="concept-period" aria-hidden="true">.</span>
               </h1>
 
               <p className="address">
@@ -404,7 +404,12 @@ export default function ConceptPage() {
                 <TimeReadout
                   variant="dining"
                   finalValue="20:00 / 20:30"
-                  scrambles={['18:40 / 19:10', '21:12 / 21:40', '19:55 / 20:14', '20:00 / 20:30']}
+                  scrambles={[
+                    '18:40 / 19:10',
+                    '21:12 / 21:40',
+                    '19:55 / 20:14',
+                    '20:00 / 20:30',
+                  ]}
                 />
                 <span className="signal-dot">
                   <span className="signal-dot-fill" />
@@ -822,14 +827,12 @@ export default function ConceptPage() {
         .scan-title-hero {
           position: relative;
           z-index: 5;
-          display: inline-flex;
-          align-items: flex-end;
-          gap: clamp(10px, 0.9vw, 18px);
+          display: block;
+          width: max-content;
+          max-width: 100%;
           font-size: clamp(64px, 8.4vw, 128px);
           white-space: nowrap;
-          padding-right: 28px;
-          padding-bottom: 18px;
-          margin-bottom: -18px;
+          padding-right: 0.18em;
           overflow: visible;
         }
 
@@ -855,25 +858,18 @@ export default function ConceptPage() {
             titleIdleGlitch 7.5s steps(2, end) 3200ms infinite;
         }
 
-        .concept-dot {
-          --dot-y: 0.105em;
-
-          display: inline-block;
-          width: clamp(18px, 2vw, 31px);
-          height: clamp(18px, 2vw, 31px);
-          border-radius: 999px;
-          background: ${C.ink};
-          opacity: 0;
-          flex: 0 0 auto;
-          transform: translateY(var(--dot-y)) scale(0.4);
-          transform-origin: center center;
-          text-shadow: none;
+        .concept-period {
+          display: inline;
+          font: inherit;
+          line-height: inherit;
+          color: ${C.ink};
+          margin-left: 0.055em;
+          vertical-align: baseline;
+          text-shadow: inherit;
         }
 
-        .hero-section.is-inview .concept-dot {
-          animation:
-            dotEnter 0.36s cubic-bezier(0.2, 1.6, 0.3, 1) 720ms forwards,
-            dotSignal 4.8s steps(1, end) 1350ms infinite;
+        .hero-section.is-inview .concept-period {
+          animation: conceptPeriodSignal 4.8s steps(1, end) 1350ms infinite;
         }
 
         .address {
@@ -1157,6 +1153,7 @@ export default function ConceptPage() {
 
         .time-final {
           display: inline-block;
+          opacity: 1;
         }
 
         .time-scramble {
@@ -1181,36 +1178,44 @@ export default function ConceptPage() {
           animation: afterDarkTimeFill 9.6s ease-in-out 1200ms infinite;
         }
 
+        .experience-section.is-inview .signal-time-dining .time-final {
+          animation: diningFinalVisibility 9.6s linear 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-time-after-dark .time-final {
+          animation: afterDarkFinalVisibility 9.6s linear 1200ms infinite;
+        }
+
         .experience-section.is-inview .signal-time-dining .scramble-1 {
-          animation: diningScramble1 9.6s steps(1, end) 1200ms infinite;
+          animation: diningScramble1 9.6s linear 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-time-dining .scramble-2 {
-          animation: diningScramble2 9.6s steps(1, end) 1200ms infinite;
+          animation: diningScramble2 9.6s linear 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-time-dining .scramble-3 {
-          animation: diningScramble3 9.6s steps(1, end) 1200ms infinite;
+          animation: diningScramble3 9.6s linear 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-time-dining .scramble-4 {
-          animation: diningScramble4 9.6s steps(1, end) 1200ms infinite;
+          animation: diningScramble4 9.6s linear 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-time-after-dark .scramble-1 {
-          animation: afterDarkScramble1 9.6s steps(1, end) 1200ms infinite;
+          animation: afterDarkScramble1 9.6s linear 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-time-after-dark .scramble-2 {
-          animation: afterDarkScramble2 9.6s steps(1, end) 1200ms infinite;
+          animation: afterDarkScramble2 9.6s linear 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-time-after-dark .scramble-3 {
-          animation: afterDarkScramble3 9.6s steps(1, end) 1200ms infinite;
+          animation: afterDarkScramble3 9.6s linear 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-time-after-dark .scramble-4 {
-          animation: afterDarkScramble4 9.6s steps(1, end) 1200ms infinite;
+          animation: afterDarkScramble4 9.6s linear 1200ms infinite;
         }
 
         .experience-nav {
@@ -1447,53 +1452,48 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes typeReveal {
-          to {
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes dotEnter {
-          to {
-            opacity: 1;
-            transform: translateY(var(--dot-y)) scale(1);
-          }
-        }
-
-        @keyframes dotSignal {
+        @keyframes conceptPeriodSignal {
           0%,
           72%,
           100% {
-            background: ${C.ink};
-            transform: translateY(var(--dot-y)) scale(1);
-            box-shadow: none;
+            color: ${C.ink};
+            text-shadow: 0.018em 0 0 currentColor;
           }
 
           76% {
-            background: ${C.muted};
-            transform: translateY(var(--dot-y)) translateX(1px) scale(1.05);
+            color: ${C.muted};
+            text-shadow:
+              0.018em 0 0 currentColor,
+              0.08em 0 0 rgba(122, 120, 112, 0.32);
           }
 
           80% {
-            background: ${C.pink};
-            transform: translateY(var(--dot-y)) translateX(-2px) scale(1.12);
-            box-shadow: 0 0 0 5px rgba(212, 80, 122, 0.08);
+            color: ${C.pink};
+            text-shadow:
+              0.018em 0 0 currentColor,
+              -0.08em 0 0 rgba(212, 80, 122, 0.35);
           }
 
-          83% {
-            background: ${C.ink};
-            transform: translateY(var(--dot-y)) translateX(2px) scale(0.96);
+          84% {
+            color: ${C.ink};
+            text-shadow:
+              0.018em 0 0 currentColor,
+              0.06em 0 0 rgba(28, 28, 26, 0.22);
           }
 
-          86% {
-            background: ${C.pink};
-            transform: translateY(var(--dot-y)) scale(1.08);
+          88% {
+            color: ${C.pink};
           }
 
-          90% {
-            background: ${C.ink};
-            transform: translateY(var(--dot-y)) scale(1);
-            box-shadow: none;
+          92% {
+            color: ${C.ink};
+            text-shadow: 0.018em 0 0 currentColor;
+          }
+        }
+
+        @keyframes typeReveal {
+          to {
+            clip-path: inset(0 0 0 0);
           }
         }
 
@@ -1662,108 +1662,148 @@ export default function ConceptPage() {
           }
         }
 
+        @keyframes diningFinalVisibility {
+          0%,
+          17.9% {
+            opacity: 1;
+          }
+
+          18%,
+          27% {
+            opacity: 0;
+          }
+
+          27.1%,
+          100% {
+            opacity: 1;
+          }
+        }
+
+        @keyframes afterDarkFinalVisibility {
+          0%,
+          47.9% {
+            opacity: 1;
+          }
+
+          48%,
+          58% {
+            opacity: 0;
+          }
+
+          58.1%,
+          100% {
+            opacity: 1;
+          }
+        }
+
         @keyframes diningScramble1 {
           0%,
-          17%,
-          19%,
+          17.9%,
+          19.9%,
           100% {
             opacity: 0;
           }
 
-          18% {
+          18%,
+          19.8% {
             opacity: 1;
           }
         }
 
         @keyframes diningScramble2 {
           0%,
-          19%,
-          21%,
+          19.8%,
+          21.9%,
           100% {
             opacity: 0;
           }
 
-          20% {
+          19.9%,
+          21.8% {
             opacity: 1;
           }
         }
 
         @keyframes diningScramble3 {
           0%,
-          21%,
-          23%,
+          21.8%,
+          23.9%,
           100% {
             opacity: 0;
           }
 
-          22% {
+          21.9%,
+          23.8% {
             opacity: 1;
           }
         }
 
         @keyframes diningScramble4 {
           0%,
-          23%,
-          27%,
+          23.8%,
+          27.1%,
           100% {
             opacity: 0;
           }
 
-          24%,
-          26% {
+          23.9%,
+          27% {
             opacity: 1;
           }
         }
 
         @keyframes afterDarkScramble1 {
           0%,
-          47%,
-          49%,
+          47.9%,
+          49.9%,
           100% {
             opacity: 0;
           }
 
-          48% {
+          48%,
+          49.8% {
             opacity: 1;
           }
         }
 
         @keyframes afterDarkScramble2 {
           0%,
-          49%,
-          51%,
+          49.8%,
+          51.9%,
           100% {
             opacity: 0;
           }
 
-          50% {
+          49.9%,
+          51.8% {
             opacity: 1;
           }
         }
 
         @keyframes afterDarkScramble3 {
           0%,
-          51%,
-          53%,
+          51.8%,
+          53.9%,
           100% {
             opacity: 0;
           }
 
-          52% {
+          51.9%,
+          53.8% {
             opacity: 1;
           }
         }
 
         @keyframes afterDarkScramble4 {
           0%,
-          53%,
-          58%,
+          53.8%,
+          58.1%,
           100% {
             opacity: 0;
           }
 
-          54%,
-          57% {
+          53.9%,
+          58% {
             opacity: 1;
           }
         }
@@ -1976,12 +2016,6 @@ export default function ConceptPage() {
           .scan-title-space,
           .scan-title-experience {
             font-size: clamp(40px, 11vw, 64px);
-          }
-
-          .concept-dot {
-            --dot-y: 0.09em;
-            width: 18px;
-            height: 18px;
           }
 
           .address {
@@ -2253,7 +2287,7 @@ export default function ConceptPage() {
           .section-rule,
           .scan-title,
           .type-text,
-          .concept-dot,
+          .concept-period,
           .concept-flyer-graphic,
           .concept-space-map::before,
           .venue-wrap,
@@ -2265,6 +2299,7 @@ export default function ConceptPage() {
           .signal-node,
           .signal-dot-fill,
           .signal-time,
+          .time-final,
           .time-scramble,
           .action-card,
           .action-card::after {
@@ -2274,7 +2309,6 @@ export default function ConceptPage() {
 
           .concept-nav-shell,
           .scan-title,
-          .concept-dot,
           .concept-flyer-graphic,
           .venue-wrap,
           .signal-node,
@@ -2293,7 +2327,6 @@ export default function ConceptPage() {
             clip-path: inset(0 0 0 0);
           }
 
-          .concept-dot,
           .concept-flyer-graphic,
           .venue-wrap,
           .signal-node,
