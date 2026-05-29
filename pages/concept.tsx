@@ -1,35 +1,85 @@
 'use client';
 
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties, type MouseEvent } from 'react';
 import SceneNav from '@components/SceneNav';
 
-const SPACE_ITEMS = [
+const C = {
+  cream: '#E8E2D4',
+  ink: '#1C1C1A',
+  pink: '#D4507A',
+  muted: '#7A7870',
+} as const;
+
+const MONO = '"Space Mono", "Courier New", monospace';
+
+type AreaId = 'tent' | 'chefs-studio' | 'studio';
+
+type AreaConfig = {
+  id: AreaId;
+  title: string;
+  href: string;
+  highlight: string;
+  chars: number;
+};
+
+const CONCEPT_ASSETS = {
+  bg: '/images/concept/concept_bg.jpg',
+  flyerGraphic: '/images/concept/concept_flyer_graphics.png',
+};
+
+const SPACE_ASSETS = {
+  venue: '/images/concept/the-space-page-venue.png',
+};
+
+const AREAS: AreaConfig[] = [
   {
-    key: 'tent',
-    label: 'THE TENT',
+    id: 'tent',
+    title: 'THE TENT',
     href: '/thetent',
-    overlay: '/images/concept/tent-highlight.png',
+    highlight: '/images/concept/tent-highlight.png',
+    chars: 8,
   },
   {
-    key: 'chef',
-    label: "CHEF'S STUDIO",
+    id: 'chefs-studio',
+    title: "CHEF'S STUDIO",
     href: '/chefstudio',
-    overlay: '/images/concept/chefs-studio-highlight.png',
+    highlight: '/images/concept/chefs-studio-highlight.png',
+    chars: 13,
   },
   {
-    key: 'studio',
-    label: 'THE STUDIO',
+    id: 'studio',
+    title: 'THE STUDIO',
     href: '/studio',
-    overlay: '/images/concept/studio-highlight.png',
+    highlight: '/images/concept/studio-highlight.png',
+    chars: 10,
   },
-] as const;
+];
 
-type SpaceKey = (typeof SPACE_ITEMS)[number]['key'];
+const EXPERIENCE_BTNS = [
+  {
+    label: 'Dining',
+    href: 'https://www.little-portland.com/food',
+    dark: false,
+    chars: 6,
+  },
+  {
+    label: 'After Dark',
+    href: 'https://www.little-portland.com/theclub',
+    dark: true,
+    chars: 10,
+  },
+];
 
-function PanelButton({
-  title,
+const typeStyle = (chars: number, delay: string): CSSProperties =>
+  ({
+    '--chars': chars,
+    '--type-delay': delay,
+  }) as CSSProperties;
+
+function ActionCard({
   href,
+  title,
   dark = false,
   active = false,
   onMouseEnter,
@@ -37,119 +87,136 @@ function PanelButton({
   onFocus,
   onBlur,
   onClick,
+  style,
 }: {
+  href: string;
   title: string;
-  href?: string;
   dark?: boolean;
   active?: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
-  onClick?: () => void;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+  style?: CSSProperties;
 }) {
-  const className = `panel-btn ${dark ? 'is-dark' : ''} ${active ? 'is-active' : ''}`;
-
-  const content = (
-    <>
-      <span className="panel-btn__title">{title}</span>
-      <span className="panel-btn__sub">
-        EXPLORE <span className="panel-btn__chevron" aria-hidden>›</span>
-      </span>
-    </>
-  );
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        className={className}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onClick={onClick}
-      >
-        {content}
-      </a>
-    );
-  }
-
   return (
-    <button
-      type="button"
-      className={className}
+    <a
+      href={href}
+      className={`action-card ${dark ? 'is-dark' : ''} ${active ? 'is-active' : ''}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onFocus={onFocus}
       onBlur={onBlur}
       onClick={onClick}
+      style={style}
     >
-      {content}
-    </button>
+      <span className="action-card-title">{title}</span>
+      <span className="action-card-meta">
+        Explore <span className="action-chevron" aria-hidden="true">›</span>
+      </span>
+    </a>
   );
 }
 
 export default function ConceptPage() {
-  const [activeSpace, setActiveSpace] = useState<SpaceKey | null>(null);
-  const [navReady, setNavReady] = useState(false);
+  const [activeArea, setActiveArea] = useState<AreaId | null>(null);
+  const [isTouchMode, setIsTouchMode] = useState(false);
+  const [menuReady, setMenuReady] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const navTimer = window.setTimeout(() => setNavReady(true), 1900);
-    return () => window.clearTimeout(navTimer);
-  }, []);
+    const menuTimer = window.setTimeout(() => {
+      setMenuReady(true);
+    }, 2100);
 
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 8);
-    onScroll();
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>('.reveal-section'));
-
-    const revealVisibleNow = () => {
-      sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const isOnScreen = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
-
-        if (index === 0 || isOnScreen) {
-          section.classList.add('is-visible');
-        }
-      });
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 24);
     };
 
-    revealVisibleNow();
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.clearTimeout(menuTimer);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>('.reveal-section')
+    );
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
 
-          entry.target.classList.add('is-visible');
+          entry.target.classList.add('is-inview');
           observer.unobserve(entry.target);
         });
       },
       {
         threshold: 0.18,
-        rootMargin: '0px 0px -10% 0px',
+        rootMargin: '0px 0px -8% 0px',
       }
     );
 
-    sections.forEach((section) => {
-      if (!section.classList.contains('is-visible')) {
-        observer.observe(section);
-      }
-    });
+    sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
   }, []);
 
-  const resetSpace = () => setActiveSpace(null);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      '(hover: none), (pointer: coarse), (max-width: 900px)'
+    );
+
+    const updateMode = () => {
+      setIsTouchMode(mediaQuery.matches || window.innerWidth <= 900);
+    };
+
+    updateMode();
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', updateMode);
+    } else {
+      mediaQuery.addListener(updateMode);
+    }
+
+    window.addEventListener('resize', updateMode);
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', updateMode);
+      } else {
+        mediaQuery.removeListener(updateMode);
+      }
+
+      window.removeEventListener('resize', updateMode);
+    };
+  }, []);
+
+  const handleCardClick =
+    (areaId: AreaId) => (event: MouseEvent<HTMLAnchorElement>) => {
+      if (isTouchMode && activeArea !== areaId) {
+        event.preventDefault();
+        setActiveArea(areaId);
+      }
+    };
+
+  const handleCardEnter = (areaId: AreaId) => {
+    if (!isTouchMode) {
+      setActiveArea(areaId);
+    }
+  };
+
+  const handleControlsLeave = () => {
+    if (!isTouchMode) {
+      setActiveArea(null);
+    }
+  };
 
   return (
     <>
@@ -159,10 +226,7 @@ export default function ConceptPage() {
           name="description"
           content="Concept, space and experience at 17 Little Portland Street, London."
         />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -174,220 +238,298 @@ export default function ConceptPage() {
 
       <main className="page page--with-scene-nav">
         <div
-          className={`concept-nav-shell ${navReady ? 'is-ready' : ''} ${
+          className={`concept-nav-shell ${menuReady ? 'is-ready' : ''} ${
             isScrolled ? 'is-scrolled' : ''
           }`}
         >
-          <SceneNav />
+          <SceneNav theme="space" />
         </div>
 
+        <div className="bg-image" aria-hidden="true" />
+
         <div className="shell">
-          <div className="axis-v" aria-hidden />
+          <div className="axis-v" aria-hidden="true" />
 
-          <section className="hero-section reveal-section" id="concept">
-            <div className="section-pad hero-pad">
-              <div className="hero-grid">
-                <div className="hero-copy">
-                  <h1 className="concept-title title-glitch" id="concept-title">
-                    <span className="title-word">CONCEPT</span>
-                    <span className="concept-dot" aria-hidden>.</span>
-                  </h1>
+          <section
+            className="content-section hero-section reveal-section"
+            aria-labelledby="concept-title"
+          >
+            <div className="hero-copy">
+              <h1 id="concept-title" className="scan-title scan-title-hero">
+                <span>Concept</span>
+                <span className="concept-dot" aria-hidden="true" />
+              </h1>
 
-                  <p className="hero-address">17 LITTLE PORTLAND STREET, LONDON</p>
-                </div>
+              <p className="address">
+                <span className="type-text" style={typeStyle(33, '620ms')}>
+                  17 Little Portland Street, London
+                </span>
+              </p>
+            </div>
 
-                <div className="concept-graphic" aria-hidden>
-                  <div className="concept-graphic__axis" />
-
-                  <img
-                    src="/images/concept/grid_funel.png"
-                    alt=""
-                    className="concept-graphic__funnel"
-                    draggable={false}
-                  />
-
-                  <img
-                    src="/images/concept/noise_floor.png"
-                    alt=""
-                    className="concept-graphic__floor"
-                    draggable={false}
-                  />
-
-                  <img
-                    src="/images/concept/obelisk-dark-grey.png"
-                    alt=""
-                    className="concept-graphic__obelisk"
-                    draggable={false}
-                  />
-                </div>
-              </div>
+            <div className="hero-art" aria-hidden="true">
+              <img
+                className="concept-flyer-graphic"
+                src={CONCEPT_ASSETS.flyerGraphic}
+                alt=""
+                draggable={false}
+              />
             </div>
           </section>
 
-          <section className="space-section reveal-section" id="space">
-            <div className="section-rule" aria-hidden />
+          <section
+            className="content-section space-section reveal-section"
+            aria-labelledby="space-title"
+          >
+            <div className="section-rule" aria-hidden="true" />
 
-            <div className="section-pad">
-              <h2 className="section-title title-glitch">
-                <span className="title-word">THE SPACE</span>
-              </h2>
+            <h2 id="space-title" className="scan-title scan-title-space">
+              The Space
+            </h2>
 
-              <div className="space-visual-wrap">
-                <div className="space-visual">
-                  <img
-                    src="/images/concept/the-space-page-venue.png"
-                    alt="Illustrated venue overview"
-                    className="space-visual__base"
-                    draggable={false}
-                  />
+            <div className="concept-space-map" aria-label="Interactive venue map">
+              <div className="venue-wrap" aria-hidden="true">
+                <img
+                  src={SPACE_ASSETS.venue}
+                  alt="Venue layout showing The Tent, Chef's Studio and The Studio"
+                  className="venue-image venue-base"
+                  draggable={false}
+                />
 
-                  {SPACE_ITEMS.map((item) => (
+                {AREAS.map((area) => {
+                  const isActive = activeArea === area.id;
+
+                  return (
                     <img
-                      key={item.key}
-                      src={item.overlay}
+                      key={area.id}
+                      src={area.highlight}
                       alt=""
-                      className={`space-visual__overlay ${
-                        activeSpace === item.key ? 'is-active' : ''
+                      className={`venue-image venue-highlight ${
+                        isActive ? 'is-active' : ''
                       }`}
                       draggable={false}
                     />
-                  ))}
-                </div>
-              </div>
+                  );
+                })}
 
-              <div className="space-buttons">
-                {SPACE_ITEMS.map((item) => (
-                  <PanelButton
-                    key={item.key}
-                    title={item.label}
-                    href={item.href}
-                    active={activeSpace === item.key}
-                    onMouseEnter={() => setActiveSpace(item.key)}
-                    onMouseLeave={resetSpace}
-                    onFocus={() => setActiveSpace(item.key)}
-                    onBlur={resetSpace}
-                  />
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section className="experience-section reveal-section" id="experience">
-            <div className="section-rule" aria-hidden />
-
-            <div className="section-pad">
-              <h2 className="section-title section-title--stack title-glitch">
-                <span className="title-word">THE</span>
-                <span className="title-word">EXPERIENCE</span>
-              </h2>
-
-              <div className="experience-timeline" aria-hidden>
-                <div className="timeline-line timeline-line--base" />
-                <div className="timeline-line timeline-line--progress" />
-
-                <div className="timeline-marker timeline-marker--start">
-                  <span className="timeline-time">20:00 / 20:30</span>
-                  <span className="timeline-dot">
-                    <span className="timeline-dot__fill" />
-                  </span>
-                </div>
-
-                <div className="timeline-marker timeline-marker--end">
-                  <span className="timeline-time">22:00</span>
-                  <span className="timeline-dot">
-                    <span className="timeline-dot__fill" />
-                  </span>
-                </div>
-              </div>
-
-              <div className="experience-buttons">
-                <PanelButton title="DINING" href="https://www.little-portland.com/food" />
-                <PanelButton
-                  title="AFTER DARK"
-                  href="https://www.little-portland.com/theclub"
-                  dark
+                <img
+                  src={SPACE_ASSETS.venue}
+                  alt=""
+                  className="venue-image venue-glitch venue-glitch-a"
+                  draggable={false}
+                />
+                <img
+                  src={SPACE_ASSETS.venue}
+                  alt=""
+                  className="venue-image venue-glitch venue-glitch-b"
+                  draggable={false}
                 />
               </div>
             </div>
+
+            <nav
+              className="zone-controls"
+              aria-label="Venue areas"
+              onMouseLeave={handleControlsLeave}
+            >
+              {AREAS.map((area, index) => {
+                const isActive = activeArea === area.id;
+
+                return (
+                  <ActionCard
+                    key={area.id}
+                    href={area.href}
+                    title={area.title}
+                    active={isActive}
+                    onMouseEnter={() => handleCardEnter(area.id)}
+                    onFocus={() => setActiveArea(area.id)}
+                    onClick={handleCardClick(area.id)}
+                    style={
+                      {
+                        '--card-delay': `${280 + index * 100}ms`,
+                      } as CSSProperties
+                    }
+                  />
+                );
+              })}
+            </nav>
+          </section>
+
+          <section
+            className="content-section experience-section reveal-section"
+            aria-labelledby="experience-title"
+          >
+            <div className="section-rule" aria-hidden="true" />
+
+            <h2 id="experience-title" className="scan-title scan-title-experience">
+              The Experience
+            </h2>
+
+            <div className="experience-signal" aria-hidden="true">
+              <div className="signal-track">
+                <div className="signal-line" />
+                <div className="signal-line-fill" />
+              </div>
+
+              <div className="signal-node signal-node-dining">
+                <span className="signal-time">20:00 / 20:30</span>
+                <span className="signal-dot">
+                  <span className="signal-dot-fill" />
+                </span>
+              </div>
+
+              <div className="signal-node signal-node-after-dark">
+                <span className="signal-time">22:00</span>
+                <span className="signal-dot">
+                  <span className="signal-dot-fill" />
+                </span>
+              </div>
+            </div>
+
+            <nav className="experience-nav" aria-label="Explore the experience">
+              {EXPERIENCE_BTNS.map((button, index) => (
+                <ActionCard
+                  key={button.href}
+                  href={button.href}
+                  title={button.label}
+                  dark={button.dark}
+                  style={
+                    {
+                      '--card-delay': `${460 + index * 120}ms`,
+                    } as CSSProperties
+                  }
+                />
+              ))}
+            </nav>
           </section>
         </div>
       </main>
 
       <style jsx global>{`
-        html {
-          scroll-behavior: smooth;
-          background: #e8e2d4;
+        html,
+        body,
+        #__next {
+          margin: 0;
+          min-height: 100%;
+          background: ${C.cream};
+          color: ${C.ink};
+          font-family: ${MONO};
+          -webkit-font-smoothing: antialiased;
+          text-rendering: geometricPrecision;
+          scrollbar-color: ${C.ink} rgba(28, 28, 26, 0.14);
         }
 
         body {
-          margin: 0;
-          background: #e8e2d4;
-          color: #1c1c1a;
-          font-family: 'Space Mono', 'Courier New', monospace;
-          -webkit-font-smoothing: antialiased;
-          text-rendering: optimizeLegibility;
           overflow-x: hidden;
         }
 
-        *,
-        *::before,
-        *::after {
+        * {
           box-sizing: border-box;
         }
 
-        ::selection {
-          background: rgba(226, 92, 144, 0.18);
-          color: #1c1c1a;
-        }
-
         ::-webkit-scrollbar {
-          width: 12px;
-          height: 12px;
+          width: 10px;
         }
 
         ::-webkit-scrollbar-track {
-          background: #ddd6c8;
+          background: rgba(28, 28, 26, 0.12);
         }
 
         ::-webkit-scrollbar-thumb {
-          background: #1c1c1a;
-          border: 2px solid #ddd6c8;
+          background: ${C.ink};
+          border: 2px solid rgba(232, 226, 212, 0.7);
+          background-clip: content-box;
         }
 
-        * {
-          scrollbar-color: #1c1c1a #ddd6c8;
-          scrollbar-width: thin;
+        ::-webkit-scrollbar-thumb:hover {
+          background: ${C.pink};
+          border: 2px solid rgba(232, 226, 212, 0.7);
+          background-clip: content-box;
+        }
+
+        .scene-nav {
+          z-index: 10020 !important;
+          transition:
+            background 0.28s ease,
+            box-shadow 0.28s ease,
+            backdrop-filter 0.28s ease,
+            -webkit-backdrop-filter 0.28s ease !important;
+        }
+
+        .scene-nav-burger,
+        .scene-nav-logo {
+          position: relative;
+          z-index: 10030 !important;
+        }
+
+        .scene-nav-mobile {
+          z-index: 10010 !important;
+        }
+
+        .scene-nav--space {
+          background: transparent !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        .scene-nav--space,
+        .scene-nav--space a,
+        .scene-nav-mobile--space,
+        .scene-nav-mobile--space a {
+          color: ${C.ink} !important;
+          font-family: ${MONO} !important;
+          letter-spacing: 0.16em !important;
+        }
+
+        .scene-nav--space a.active,
+        .scene-nav-mobile--space a.active {
+          color: ${C.pink} !important;
+        }
+
+        .scene-nav--space a.disabled,
+        .scene-nav-mobile--space a.disabled {
+          color: ${C.ink} !important;
+          opacity: 0.4;
+        }
+
+        .scene-nav--space .scene-nav-burger span {
+          background: ${C.ink} !important;
+        }
+
+        .scene-nav--space .scene-nav-logo img {
+          filter: brightness(0) saturate(100%) invert(8%) sepia(5%) saturate(851%)
+            hue-rotate(21deg) brightness(99%) contrast(91%);
+        }
+
+        .concept-nav-shell.is-scrolled .scene-nav.scene-nav--space {
+          background: rgba(232, 226, 212, 0.5) !important;
+          border-bottom: 1px solid rgba(28, 28, 26, 0.14);
+          box-shadow: 0 10px 28px rgba(28, 28, 26, 0.07);
+          backdrop-filter: blur(18px) !important;
+          -webkit-backdrop-filter: blur(18px) !important;
+        }
+
+        .scene-nav-mobile.scene-nav--space,
+        .scene-nav-mobile--space {
+          background: rgba(232, 226, 212, 0.92) !important;
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+        }
+
+        @media (max-width: 900px) {
+          .scene-nav-mobile.scene-nav--space .scene-nav-mobile-inner,
+          .scene-nav-mobile--space .scene-nav-mobile-inner {
+            padding-top: 96px;
+          }
         }
       `}</style>
 
       <style jsx>{`
-        :global(:root) {
-          --bg: #e8e2d4;
-          --ink: #1c1c1a;
-          --muted: #8c877d;
-          --soft: #bcb6ab;
-          --pink: #e25c90;
-          --section-pad: clamp(56px, 5.7vw, 110px);
-          --shadow-soft: 0 12px 28px rgba(28, 28, 26, 0.04);
-        }
-
         .page {
           position: relative;
-          min-height: 100vh;
-          background: var(--bg);
-          isolation: isolate;
-        }
-
-        .page::before {
-          content: '';
-          position: fixed;
-          inset: 0;
-          background-image: url('/images/concept/concept_bg.jpg');
-          background-size: contain;
-          background-repeat: repeat;
-          opacity: 0.7;
-          pointer-events: none;
-          z-index: -1;
+          min-height: 100svh;
+          overflow-x: clip;
+          background: ${C.cream};
         }
 
         .concept-nav-shell {
@@ -395,19 +537,13 @@ export default function ConceptPage() {
           top: 0;
           left: 0;
           right: 0;
-          z-index: 80;
+          z-index: 10000;
           opacity: 0;
           transform: translateY(-18px);
           pointer-events: none;
-          background: rgba(232, 226, 212, 0);
-          border-bottom: 1px solid rgba(28, 28, 26, 0);
           transition:
-            opacity 0.55s ease,
-            transform 0.55s ease,
-            background-color 0.35s ease,
-            border-color 0.35s ease,
-            box-shadow 0.35s ease,
-            backdrop-filter 0.35s ease;
+            opacity 0.7s ease,
+            transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .concept-nav-shell.is-ready {
@@ -416,697 +552,772 @@ export default function ConceptPage() {
           pointer-events: auto;
         }
 
-        .concept-nav-shell.is-scrolled {
-          background: rgba(232, 226, 212, 0.94);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border-bottom-color: rgba(28, 28, 26, 0.08);
-          box-shadow: 0 10px 24px rgba(28, 28, 26, 0.06);
-        }
-
-        .concept-nav-shell :global(.scene-nav) {
-          background: transparent !important;
-        }
-
-        .concept-nav-shell.is-scrolled :global(.scene-nav) {
-          background: transparent !important;
-          box-shadow: none !important;
+        .bg-image {
+          position: fixed;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          background-image: url('${CONCEPT_ASSETS.bg}');
+          background-size: contain;
+          background-repeat: repeat;
+          background-position: center top;
+          opacity: 0.7;
         }
 
         .shell {
           position: relative;
-          width: min(65%, 1380px);
+          z-index: 2;
+          width: 65%;
+          max-width: 1180px;
+          min-height: 100svh;
           margin: 0 auto;
-          min-height: 100vh;
-          padding-top: 92px;
-          padding-bottom: 70px;
+          padding: clamp(104px, 10vw, 132px) 0 clamp(72px, 8vw, 112px);
         }
 
         .axis-v {
           position: absolute;
-          top: 0;
-          bottom: 0;
+          top: 30px;
+          bottom: 30px;
           left: 0;
-          width: 2px;
-          pointer-events: none;
           z-index: 1;
+          width: 1px;
+          background: #1c1c1a;
+          opacity: 0.28;
+          pointer-events: none;
           transform: scaleY(0);
           transform-origin: top center;
-          background: linear-gradient(
-            90deg,
-            rgba(28, 28, 26, 0.06) 0%,
-            rgba(28, 28, 26, 0.14) 22%,
-            rgba(28, 28, 26, 0.42) 50%,
-            rgba(28, 28, 26, 0.14) 78%,
-            rgba(28, 28, 26, 0.06) 100%
-          );
-          animation: drawVertical 1s cubic-bezier(0.2, 0.75, 0.25, 1) 120ms forwards;
+          animation: drawVertical 0.95s cubic-bezier(0.25, 0.8, 0.25, 1) 120ms forwards;
         }
 
-        .section-pad {
+        .content-section {
+          --section-pad: clamp(48px, 5.5vw, 82px);
           position: relative;
-          z-index: 2;
+          z-index: 3;
           padding-left: var(--section-pad);
-          padding-right: clamp(8px, 1vw, 18px);
-        }
-
-        .hero-section,
-        .space-section,
-        .experience-section {
-          position: relative;
-        }
-
-        .hero-pad {
-          padding-top: clamp(86px, 8vw, 128px);
-          padding-bottom: clamp(74px, 8vw, 118px);
-        }
-
-        .space-section .section-pad {
-          padding-top: clamp(28px, 4vw, 40px);
-          padding-bottom: clamp(72px, 6vw, 96px);
-        }
-
-        .experience-section .section-pad {
-          padding-top: clamp(28px, 4vw, 40px);
-          padding-bottom: clamp(24px, 4vw, 40px);
         }
 
         .section-rule {
           position: relative;
           width: calc(100% + var(--section-pad));
-          height: 2px;
+          height: 1px;
           margin-left: calc(var(--section-pad) * -1);
-          margin-bottom: clamp(22px, 3vw, 40px);
+          margin-bottom: clamp(28px, 4vw, 48px);
+          background: rgba(28, 28, 26, 0.18);
           transform: scaleX(0);
           transform-origin: left center;
-          background: linear-gradient(
-            90deg,
-            rgba(28, 28, 26, 0.42) 0%,
-            rgba(28, 28, 26, 0.24) 18%,
-            rgba(28, 28, 26, 0.12) 52%,
-            rgba(28, 28, 26, 0.06) 78%,
-            rgba(28, 28, 26, 0.03) 100%
-          );
         }
 
-        .reveal-section.is-visible .section-rule {
-          animation: drawHorizontal 0.95s cubic-bezier(0.2, 0.75, 0.25, 1) forwards;
+        .reveal-section.is-inview .section-rule {
+          animation: drawHorizontal 0.78s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
         }
 
-        .hero-grid {
+        .hero-section {
+          min-height: clamp(420px, 58svh, 640px);
           display: grid;
-          grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-          gap: clamp(26px, 4vw, 54px);
+          grid-template-columns: minmax(0, 1.18fr) minmax(220px, 0.82fr);
           align-items: center;
+          gap: clamp(28px, 5vw, 76px);
         }
 
         .hero-copy {
+          position: relative;
+          z-index: 7;
           min-width: 0;
         }
 
-        .concept-title,
-        .section-title {
-          margin: 0;
-          font-family: 'Space Mono', 'Courier New', monospace;
-          font-weight: 700;
-          letter-spacing: 0;
-          text-transform: uppercase;
-          color: var(--ink);
-          line-height: 0.86;
+        .hero-art {
+          position: relative;
+          z-index: 4;
+          min-height: clamp(280px, 28vw, 420px);
+          overflow: visible;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .concept-title {
+        .space-section {
+          padding-top: clamp(72px, 8vw, 110px);
+          padding-bottom: clamp(34px, 4vw, 56px);
+        }
+
+        .experience-section {
+          padding-top: clamp(48px, 5vw, 70px);
+          padding-bottom: clamp(92px, 9vw, 140px);
+        }
+
+        h1,
+        h2,
+        p {
+          margin: 0;
+        }
+
+        h1,
+        h2,
+        .scan-title {
+          font-family: ${MONO};
+          color: ${C.ink};
+          text-transform: uppercase;
+          font-weight: 700;
+          line-height: 0.9;
+          letter-spacing: 0px;
+          text-wrap: balance;
+          text-shadow: 0.018em 0 0 currentColor;
+        }
+
+        h1,
+        .scan-title-hero {
+          position: relative;
+          z-index: 5;
           display: inline-flex;
           align-items: flex-end;
-          gap: 0.08em;
-          font-size: clamp(72px, 11.2vw, 172px);
+          gap: clamp(12px, 1.2vw, 22px);
+          font-size: clamp(64px, 8.4vw, 128px);
+          white-space: nowrap;
         }
 
-        .title-word {
-          display: inline-block;
+        h2,
+        .scan-title-space,
+        .scan-title-experience {
+          position: relative;
+          z-index: 5;
+          max-width: 720px;
+          font-size: clamp(48px, 5.8vw, 92px);
+        }
+
+        .scan-title {
+          opacity: 0;
+          clip-path: inset(0 100% 0 0);
+          transform: translateX(-10px);
+        }
+
+        .reveal-section.is-inview .scan-title {
+          animation:
+            scanTitleReveal 0.46s steps(8, end) 220ms forwards,
+            titleMicroGlitch 0.48s steps(2, end) 720ms forwards,
+            titleIdleGlitch 7.5s steps(2, end) 3200ms infinite;
         }
 
         .concept-dot {
           display: inline-block;
-          font-size: 0.92em;
-          line-height: 0.52;
-          position: relative;
-          top: 0.18em;
-          color: var(--ink);
-          animation: dotCycle 7.6s ease-in-out infinite;
+          width: clamp(18px, 2vw, 31px);
+          height: clamp(18px, 2vw, 31px);
+          border-radius: 999px;
+          background: ${C.ink};
+          opacity: 0;
+          flex: 0 0 auto;
+          transform: translateY(-0.02em) scale(0.4);
+          text-shadow: none;
         }
 
-        .hero-address {
-          margin: 20px 0 0;
-          font-size: clamp(18px, 1.5vw, 32px);
+        .hero-section.is-inview .concept-dot {
+          animation:
+            dotEnter 0.36s cubic-bezier(0.2, 1.6, 0.3, 1) 720ms forwards,
+            dotSignal 4.8s steps(1, end) 1350ms infinite;
+        }
+
+        .address {
+          position: relative;
+          z-index: 5;
+          margin-top: clamp(22px, 2.6vw, 38px);
+          font-family: ${MONO};
+          color: ${C.pink};
+          font-size: clamp(13px, 1.24vw, 18px);
+          line-height: 1.45;
+          letter-spacing: 0.24em;
           font-weight: 700;
-          letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: var(--pink);
-          line-height: 1.2;
         }
 
-        .section-title {
-          font-size: clamp(60px, 7.2vw, 124px);
-          margin-bottom: 34px;
+        .type-text {
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
+          clip-path: inset(0 100% 0 0);
         }
 
-        .section-title--stack {
-          display: inline-flex;
-          flex-direction: column;
-          gap: 0.02em;
-          line-height: 0.88;
-          margin-bottom: 50px;
+        .reveal-section.is-inview .type-text {
+          animation: typeReveal 0.5s steps(var(--chars), end) var(--type-delay) forwards;
         }
 
-        .concept-graphic {
-          position: relative;
-          min-height: clamp(360px, 38vw, 520px);
-          width: 100%;
-          max-width: 470px;
-          justify-self: end;
-        }
-
-        .concept-graphic__axis {
-          position: absolute;
-          top: 24px;
-          bottom: 22px;
-          left: 50%;
-          width: 2px;
-          background: linear-gradient(
-            90deg,
-            rgba(28, 28, 26, 0.06) 0%,
-            rgba(28, 28, 26, 0.14) 22%,
-            rgba(28, 28, 26, 0.42) 50%,
-            rgba(28, 28, 26, 0.14) 78%,
-            rgba(28, 28, 26, 0.06) 100%
-          );
-        }
-
-        .concept-graphic__funnel,
-        .concept-graphic__floor,
-        .concept-graphic__obelisk {
-          position: absolute;
+        .concept-flyer-graphic {
           display: block;
-          opacity: 1;
-          will-change: transform, filter;
+          width: min(100%, 360px);
+          height: auto;
+          opacity: 0;
+          transform: translate3d(16px, 20px, 0) scale(0.98);
+          pointer-events: none;
+          user-select: none;
+          filter: contrast(1) saturate(1);
         }
 
-        .concept-graphic__funnel {
-          width: clamp(110px, 11vw, 176px);
-          top: 12px;
-          right: 36px;
-          animation: graphicFunnelLoop 13.6s ease-in-out infinite;
+        .hero-section.is-inview .concept-flyer-graphic {
+          animation: flyerGraphicIn 0.76s cubic-bezier(0.2, 0.8, 0.2, 1) 760ms forwards;
         }
 
-        .concept-graphic__floor {
-          width: clamp(190px, 18vw, 286px);
-          right: 4px;
-          bottom: 0;
-          animation: graphicFloorLoop 13.6s ease-in-out infinite;
-        }
-
-        .concept-graphic__obelisk {
-          width: clamp(54px, 5vw, 88px);
-          right: 74px;
-          bottom: 32px;
-          animation: graphicObeliskLoop 13.6s ease-in-out infinite;
-        }
-
-        .space-visual-wrap {
-          display: flex;
-          justify-content: center;
-          margin-top: 10px;
-        }
-
-        .space-visual {
+        .concept-space-map {
           position: relative;
-          width: min(100%, 1120px);
-          aspect-ratio: 1.73 / 1;
-          margin: 0 auto;
+          width: 100%;
+          min-height: clamp(300px, 36vw, 500px);
+          margin-top: clamp(26px, 4vw, 48px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .space-visual__base,
-        .space-visual__overlay {
+        .concept-space-map::before {
+          content: '';
+          position: absolute;
+          left: 8%;
+          right: 8%;
+          bottom: 14%;
+          height: 18%;
+          border-radius: 50%;
+          background: radial-gradient(ellipse at center, rgba(28, 28, 26, 0.16), transparent 72%);
+          filter: blur(10px);
+          opacity: 0;
+          transform: rotate(-4deg) scaleX(0.7);
+        }
+
+        .space-section.is-inview .concept-space-map::before {
+          animation: shadowIn 0.7s ease 520ms forwards;
+        }
+
+        .venue-wrap {
+          position: relative;
+          width: min(100%, 820px);
+          aspect-ratio: 2048 / 1140;
+          opacity: 0;
+          transform: translateY(22px) scale(0.98);
+        }
+
+        .space-section.is-inview .venue-wrap {
+          animation:
+            venueIn 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) 420ms forwards,
+            venueFloat 4.8s ease-in-out 1600ms infinite;
+        }
+
+        .venue-image {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
           object-fit: contain;
-          display: block;
+          pointer-events: none;
+          user-select: none;
         }
 
-        .space-visual__base {
-          filter: drop-shadow(0 16px 34px rgba(28, 28, 26, 0.05));
-          animation: tentIdle 9.5s ease-in-out infinite;
+        .venue-base {
+          z-index: 2;
+          filter:
+            saturate(0.8)
+            contrast(1.02)
+            drop-shadow(0 18px 28px rgba(28, 28, 26, 0.12))
+            drop-shadow(0 36px 60px rgba(28, 28, 26, 0.1));
         }
 
-        .space-visual__overlay {
+        .venue-highlight {
+          z-index: 4;
           opacity: 0;
           visibility: hidden;
-          transition: opacity 0.18s ease, visibility 0.18s ease;
           mix-blend-mode: normal;
           filter: none;
+          transition:
+            opacity 0.18s ease,
+            visibility 0.18s ease;
         }
 
-        .space-visual__overlay.is-active {
+        .venue-highlight.is-active {
           opacity: 1;
           visibility: visible;
-          animation: hoverGlitch 4.8s steps(1, end) infinite;
         }
 
-        .space-buttons {
+        .venue-glitch {
+          z-index: 5;
+          opacity: 0;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+        }
+
+        .space-section.is-inview .venue-glitch-a {
+          filter:
+            drop-shadow(0 0 12px rgba(212, 80, 122, 0.3))
+            hue-rotate(-16deg)
+            saturate(1.25);
+          animation: venueGlitchA 8.5s steps(1, end) 1800ms infinite;
+        }
+
+        .space-section.is-inview .venue-glitch-b {
+          filter:
+            drop-shadow(0 0 12px rgba(80, 120, 130, 0.2))
+            hue-rotate(18deg)
+            saturate(1.12);
+          animation: venueGlitchB 8.5s steps(1, end) 1800ms infinite;
+        }
+
+        .zone-controls {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 18px;
-          margin-top: 22px;
+          gap: 16px;
+          margin-top: clamp(4px, 0.8vw, 10px);
         }
 
-        .panel-btn {
-          appearance: none;
-          width: 100%;
-          min-height: 110px;
-          padding: 18px 20px 16px;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: flex-end;
-          gap: 10px;
-          border: 1px solid rgba(28, 28, 26, 0.22);
-          background: rgba(232, 226, 212, 0.68);
-          color: var(--ink);
-          box-shadow: var(--shadow-soft);
-          cursor: pointer;
-          text-align: left;
-          text-decoration: none;
-          transition:
-            border-color 0.22s ease,
-            background 0.22s ease,
-            transform 0.22s ease,
-            box-shadow 0.22s ease,
-            color 0.22s ease;
-          font-family: 'Space Mono', 'Courier New', monospace;
-        }
-
-        .panel-btn:hover,
-        .panel-btn:focus-visible,
-        .panel-btn.is-active {
-          border-color: rgba(226, 92, 144, 0.5);
-          background: rgba(255, 255, 255, 0.46);
-          transform: translateY(-1px);
-          outline: none;
-        }
-
-        .panel-btn.is-dark {
-          background: #121210;
-          color: #ece6da;
-          border-color: #121210;
-        }
-
-        .panel-btn.is-dark:hover,
-        .panel-btn.is-dark:focus-visible,
-        .panel-btn.is-dark.is-active {
-          background: #1b1b18;
-          border-color: rgba(226, 92, 144, 0.5);
-          color: #fff8ef;
-        }
-
-        .panel-btn__title {
-          display: block;
-          font-size: clamp(18px, 1.3vw, 34px);
-          font-weight: 700;
-          line-height: 1;
-          letter-spacing: 0;
-          text-transform: uppercase;
-        }
-
-        .panel-btn__sub {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 12px;
-          line-height: 1;
-          letter-spacing: 0.12em;
-          color: inherit;
-          opacity: 0.6;
-          text-transform: uppercase;
-        }
-
-        .panel-btn__chevron {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.35em;
-          line-height: 0.8;
-          transform: translateY(-0.02em);
-        }
-
-        .experience-timeline {
+        .experience-signal {
+          --signal-y: 38px;
           position: relative;
-          margin: 8px 0 22px;
-          height: 64px;
+          z-index: 4;
+          width: 100%;
+          height: clamp(58px, 5.6vw, 78px);
+          margin-top: clamp(34px, 4.6vw, 58px);
+          margin-bottom: clamp(6px, 0.8vw, 12px);
+          overflow: visible;
         }
 
-        .timeline-line {
+        .signal-track {
           position: absolute;
           left: 0;
           right: 0;
-          top: 38px;
+          top: var(--signal-y);
           height: 2px;
-          border-radius: 999px;
         }
 
-        .timeline-line--base {
-          background: linear-gradient(
-            90deg,
-            rgba(28, 28, 26, 0.34) 0%,
-            rgba(28, 28, 26, 0.18) 40%,
-            rgba(28, 28, 26, 0.08) 100%
-          );
-        }
-
-        .timeline-line--progress {
-          background: linear-gradient(
-            90deg,
-            rgba(226, 92, 144, 0.95) 0%,
-            rgba(226, 92, 144, 0.88) 100%
-          );
+        .signal-line,
+        .signal-line-fill {
+          position: absolute;
+          inset: 0;
+          height: 2px;
           transform-origin: left center;
+        }
+
+        .signal-line {
+          background: rgba(28, 28, 26, 0.28);
+          transform: scaleX(0);
+        }
+
+        .signal-line-fill {
+          background: ${C.pink};
           transform: scaleX(0);
           opacity: 0;
         }
 
-        .timeline-marker {
-          position: absolute;
-          top: 0;
-          height: 64px;
-          min-width: 210px;
+        .experience-section.is-inview .signal-line {
+          animation: signalLineIn 0.82s cubic-bezier(0.25, 0.8, 0.25, 1) 420ms forwards;
         }
 
-        .timeline-marker--start {
+        .experience-section.is-inview .signal-line-fill {
+          animation: signalFillLoop 5.2s ease-in-out 1200ms infinite;
+        }
+
+        .signal-node {
+          position: absolute;
+          top: 0;
+          min-width: 180px;
+          height: 60px;
+          opacity: 0;
+          transform: translateY(8px);
+        }
+
+        .signal-node-dining {
           left: 0;
         }
 
-        .timeline-marker--end {
+        .signal-node-after-dark {
           right: 0;
           text-align: right;
         }
 
-        .timeline-time {
+        .experience-section.is-inview .signal-node-dining {
+          animation: signalNodeIn 0.48s ease 680ms forwards;
+        }
+
+        .experience-section.is-inview .signal-node-after-dark {
+          animation: signalNodeIn 0.48s ease 820ms forwards;
+        }
+
+        .signal-dot {
           position: absolute;
-          top: 0;
-          font-size: clamp(18px, 1.5vw, 28px);
-          font-weight: 700;
-          line-height: 1;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: #6f6a62;
-        }
-
-        .timeline-marker--start .timeline-time {
-          left: 0;
-        }
-
-        .timeline-marker--end .timeline-time {
-          right: 0;
-        }
-
-        .timeline-dot {
-          position: absolute;
-          top: 38px;
-          width: 22px;
-          height: 22px;
+          top: var(--signal-y);
+          width: 18px;
+          height: 18px;
           border-radius: 999px;
-          background: #9d988e;
+          background: #8f8a80;
           overflow: hidden;
           transform: translateY(-50%);
           z-index: 2;
         }
 
-        .timeline-marker--start .timeline-dot {
+        .signal-node-dining .signal-dot {
           left: 0;
         }
 
-        .timeline-marker--end .timeline-dot {
+        .signal-node-after-dark .signal-dot {
           right: 0;
         }
 
-        .timeline-dot__fill {
+        .signal-dot-fill {
           position: absolute;
           inset: 0;
           border-radius: inherit;
-          background: var(--pink);
+          background: ${C.pink};
           opacity: 0;
+          transition: opacity 0.45s ease;
         }
 
-        .reveal-section.is-visible .timeline-line--progress {
-          animation: timelineFill 7.4s ease-in-out infinite;
+        .experience-section.is-inview .signal-node-dining .signal-dot-fill {
+          animation: diningDotFill 5.2s ease-in-out 1200ms infinite;
         }
 
-        .reveal-section.is-visible .timeline-marker--start .timeline-dot__fill {
-          animation: startDotFill 7.4s ease-in-out infinite;
+        .experience-section.is-inview .signal-node-after-dark .signal-dot-fill {
+          animation: afterDarkDotFill 5.2s ease-in-out 1200ms infinite;
         }
 
-        .reveal-section.is-visible .timeline-marker--end .timeline-dot__fill {
-          animation: endDotFill 7.4s ease-in-out infinite;
+        .signal-time {
+          position: absolute;
+          top: 0;
+          font-family: ${MONO};
+          font-size: clamp(12px, 1.1vw, 16px);
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: 0.18em;
+          color: rgba(28, 28, 26, 0.62);
+          text-transform: uppercase;
+          white-space: nowrap;
         }
 
-        .reveal-section.is-visible .timeline-marker--start .timeline-time {
-          animation: startTimeColor 7.4s ease-in-out infinite;
+        .signal-node-dining .signal-time {
+          left: 0;
         }
 
-        .reveal-section.is-visible .timeline-marker--end .timeline-time {
-          animation: endTimeColor 7.4s ease-in-out infinite;
+        .signal-node-after-dark .signal-time {
+          right: 0;
         }
 
-        .experience-buttons {
+        .experience-section.is-inview .signal-node-dining .signal-time {
+          animation: diningTimeFill 5.2s ease-in-out 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-node-after-dark .signal-time {
+          animation: afterDarkTimeFill 5.2s ease-in-out 1200ms infinite;
+        }
+
+        .experience-nav {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 20px;
-          margin-top: 10px;
+          gap: 16px;
+          margin-top: 0;
         }
 
-        .reveal-section .hero-copy,
-        .reveal-section .concept-graphic,
-        .reveal-section .space-visual-wrap,
-        .reveal-section .space-buttons,
-        .reveal-section .section-title,
-        .reveal-section .experience-timeline,
-        .reveal-section .experience-buttons {
+        .action-card {
+          position: relative;
+          min-height: clamp(76px, 7vw, 104px);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 5px;
+          padding: clamp(14px, 1.4vw, 20px) clamp(16px, 1.8vw, 24px);
+          border: 1px solid transparent;
+          background: rgba(232, 226, 212, 0.34);
+          color: ${C.ink};
+          text-decoration: none;
+          box-shadow: 6px 6px 0 rgba(28, 28, 26, 0);
+          overflow: hidden;
           opacity: 0;
-          transform: translateY(26px);
-          transition: opacity 0.75s ease, transform 0.75s ease;
+          transform: translateY(12px);
+          transition:
+            transform 0.24s ease,
+            background 0.24s ease,
+            color 0.24s ease,
+            box-shadow 0.24s ease;
         }
 
-        .reveal-section.is-visible .hero-copy,
-        .reveal-section.is-visible .concept-graphic,
-        .reveal-section.is-visible .space-visual-wrap,
-        .reveal-section.is-visible .space-buttons,
-        .reveal-section.is-visible .section-title,
-        .reveal-section.is-visible .experience-timeline,
-        .reveal-section.is-visible .experience-buttons {
+        .reveal-section.is-inview .action-card {
+          animation: cardIn 0.54s ease var(--card-delay, 320ms) forwards;
+        }
+
+        .action-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(135deg, rgba(212, 80, 122, 0.16), transparent 42%),
+            repeating-linear-gradient(90deg, rgba(28, 28, 26, 0.06) 0 1px, transparent 1px 11px);
+          opacity: 0;
+          transition: opacity 0.24s ease;
+        }
+
+        .action-card::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border: 1px solid rgba(28, 28, 26, 0.48);
+          pointer-events: none;
+          clip-path: inset(0 100% 100% 0);
+        }
+
+        .reveal-section.is-inview .action-card::after {
+          animation: borderDraw 0.64s ease calc(var(--card-delay, 320ms) + 100ms) forwards;
+        }
+
+        .action-card-title,
+        .action-card-meta {
+          position: relative;
+          z-index: 1;
+        }
+
+        .action-card-title {
+          display: block;
+          font-family: ${MONO};
+          font-size: clamp(18px, 1.7vw, 28px);
+          font-weight: 700;
+          line-height: 0.95;
+          letter-spacing: 0px;
+          text-transform: uppercase;
+          text-shadow: 0.012em 0 0 currentColor;
+        }
+
+        .action-card-meta {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 0;
+          font-family: ${MONO};
+          color: rgba(28, 28, 26, 0.58);
+          font-size: 10px;
+          letter-spacing: 0.18em;
+          line-height: 1;
+          text-transform: uppercase;
+        }
+
+        .action-chevron {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.45em;
+          line-height: 0.7;
+          transform: translateY(-0.01em);
+        }
+
+        .action-card:hover,
+        .action-card:focus-visible,
+        .action-card.is-active {
+          background: rgba(212, 80, 122, 0.1);
+          color: ${C.ink};
+          box-shadow: 10px 10px 0 rgba(212, 80, 122, 0.14);
+          transform: translate(-3px, -3px);
+          outline: none;
+        }
+
+        .action-card:hover::before,
+        .action-card:focus-visible::before,
+        .action-card.is-active::before {
           opacity: 1;
-          transform: translateY(0);
         }
 
-        .reveal-section.is-visible .hero-copy {
-          transition-delay: 0.12s;
+        .action-card:hover::after,
+        .action-card:focus-visible::after,
+        .action-card.is-active::after {
+          border-color: rgba(212, 80, 122, 0.9);
         }
 
-        .reveal-section.is-visible .concept-graphic {
-          transition-delay: 0.25s;
+        .action-card.is-dark {
+          background: ${C.ink};
+          color: ${C.cream};
         }
 
-        .reveal-section.is-visible .space-visual-wrap {
-          transition-delay: 0.16s;
+        .action-card.is-dark .action-card-meta {
+          color: rgba(232, 226, 212, 0.66);
         }
 
-        .reveal-section.is-visible .space-buttons {
-          transition-delay: 0.26s;
+        .action-card.is-dark:hover,
+        .action-card.is-dark:focus-visible {
+          background: ${C.pink};
+          color: ${C.cream};
         }
 
-        .reveal-section.is-visible .experience-timeline {
-          transition-delay: 0.16s;
-        }
-
-        .reveal-section.is-visible .experience-buttons {
-          transition-delay: 0.28s;
-        }
-
-        .title-glitch .title-word {
-          animation: titleJitterLoop 8.2s steps(2, end) infinite;
+        .action-card:hover .action-card-meta,
+        .action-card:focus-visible .action-card-meta {
+          color: currentColor;
+          opacity: 0.7;
         }
 
         @keyframes drawVertical {
-          from {
-            transform: scaleY(0);
-          }
-
           to {
             transform: scaleY(1);
           }
         }
 
         @keyframes drawHorizontal {
-          from {
-            transform: scaleX(0);
-          }
-
           to {
             transform: scaleX(1);
           }
         }
 
-        @keyframes titleJitterLoop {
-          0%,
-          89%,
-          100% {
-            transform: translate3d(0, 0, 0);
-            text-shadow: 0 0 0 transparent;
+        @keyframes scanTitleReveal {
+          0% {
+            opacity: 0;
+            clip-path: inset(0 100% 0 0);
+            transform: translateX(-10px);
+            filter: blur(2px);
           }
 
-          90% {
-            transform: translate3d(1px, 0, 0);
+          65% {
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+            transform: translateX(0);
+            filter: blur(0);
+          }
+
+          75% {
+            transform: translateX(4px);
+          }
+
+          82% {
+            transform: translateX(-2px);
+          }
+
+          100% {
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+            transform: translateX(0);
+            filter: blur(0);
+          }
+        }
+
+        @keyframes titleMicroGlitch {
+          0%,
+          100% {
+            text-shadow: 0.018em 0 0 currentColor;
+          }
+
+          35% {
             text-shadow:
-              1px 0 rgba(226, 92, 144, 0.45),
-              -1px 0 rgba(28, 28, 26, 0.18);
+              0.018em 0 0 currentColor,
+              0.08em 0 0 rgba(212, 80, 122, 0.38);
           }
 
-          91% {
-            transform: translate3d(-1px, 0, 0);
+          65% {
             text-shadow:
-              -1px 0 rgba(226, 92, 144, 0.55),
-              1px 0 rgba(28, 28, 26, 0.12);
-          }
-
-          92% {
-            transform: translate3d(0, 0, 0);
-            text-shadow: 0 0 0 transparent;
+              0.018em 0 0 currentColor,
+              -0.06em 0 0 rgba(122, 120, 112, 0.34);
           }
         }
 
-        @keyframes dotCycle {
+        @keyframes titleIdleGlitch {
           0%,
-          62%,
+          92%,
           100% {
-            color: var(--ink);
             filter: none;
-          }
-
-          68% {
-            color: #9c978c;
-          }
-
-          74% {
-            color: var(--pink);
-            filter: drop-shadow(1px 0 0 rgba(28, 28, 26, 0.18));
-          }
-
-          77% {
-            color: var(--ink);
-            filter: none;
-          }
-        }
-
-        @keyframes tentIdle {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-
-          50% {
-            transform: translateY(-6px);
-          }
-        }
-
-        @keyframes hoverGlitch {
-          0%,
-          90%,
-          100% {
-            transform: translate3d(0, 0, 0);
-            filter: none;
-          }
-
-          92% {
-            transform: translate3d(1px, 0, 0);
-            filter: contrast(1.02);
+            text-shadow: 0.018em 0 0 currentColor;
           }
 
           93% {
-            transform: translate3d(-1px, 0, 0);
-            filter: contrast(1.04);
+            filter: blur(0.2px);
+            text-shadow:
+              0.018em 0 0 currentColor,
+              0.08em 0 0 rgba(212, 80, 122, 0.32);
           }
 
           94% {
-            transform: translate3d(0, 0, 0);
             filter: none;
+            text-shadow:
+              0.018em 0 0 currentColor,
+              -0.07em 0 0 rgba(122, 120, 112, 0.28);
+          }
+
+          95% {
+            filter: blur(0.3px);
+          }
+
+          96% {
+            filter: none;
+            text-shadow: 0.018em 0 0 currentColor;
           }
         }
 
-        @keyframes graphicFunnelLoop {
-          0%,
-          78%,
-          100% {
-            transform: translate3d(0, 0, 0) scale(1);
-            filter: none;
-          }
-
-          82% {
-            transform: translate3d(0, -2px, 0) scale(1.01);
-          }
-
-          84% {
-            transform: translate3d(1px, -1px, 0) scale(1.01);
-          }
-
-          86% {
-            transform: translate3d(0, 0, 0) scale(1);
+        @keyframes typeReveal {
+          to {
+            clip-path: inset(0 0 0 0);
           }
         }
 
-        @keyframes graphicObeliskLoop {
+        @keyframes dotEnter {
+          to {
+            opacity: 1;
+            transform: translateY(-0.02em) scale(1);
+          }
+        }
+
+        @keyframes dotSignal {
           0%,
-          76%,
+          72%,
           100% {
-            transform: translate3d(0, 0, 0);
-            filter: drop-shadow(0 8px 18px rgba(28, 28, 26, 0.03));
+            background: ${C.ink};
+            transform: translateY(-0.02em) scale(1);
+            box-shadow: none;
+          }
+
+          76% {
+            background: ${C.muted};
+            transform: translateY(-0.02em) translateX(1px) scale(1.05);
           }
 
           80% {
-            transform: translate3d(0, -1px, 0);
-            filter: drop-shadow(0 10px 20px rgba(28, 28, 26, 0.07));
+            background: ${C.pink};
+            transform: translateY(-0.02em) translateX(-2px) scale(1.12);
+            box-shadow: 0 0 0 5px rgba(212, 80, 122, 0.08);
           }
 
           83% {
-            transform: translate3d(0, 0, 0);
-          }
-        }
-
-        @keyframes graphicFloorLoop {
-          0%,
-          78%,
-          100% {
-            transform: translate3d(0, 0, 0);
-            filter: none;
-          }
-
-          82% {
-            transform: translate3d(0, 1px, 0);
+            background: ${C.ink};
+            transform: translateY(-0.02em) translateX(2px) scale(0.96);
           }
 
           86% {
-            transform: translate3d(0, 0, 0);
+            background: ${C.pink};
+            transform: translateY(-0.02em) scale(1.08);
+          }
+
+          90% {
+            background: ${C.ink};
+            transform: translateY(-0.02em) scale(1);
+            box-shadow: none;
           }
         }
 
-        @keyframes timelineFill {
+        @keyframes flyerGraphicIn {
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+        }
+
+        @keyframes shadowIn {
+          to {
+            opacity: 0.38;
+            transform: rotate(-4deg) scaleX(1);
+          }
+        }
+
+        @keyframes venueIn {
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        @keyframes signalLineIn {
+          to {
+            transform: scaleX(1);
+          }
+        }
+
+        @keyframes signalFillLoop {
           0%,
           12% {
             transform: scaleX(0);
             opacity: 0;
           }
 
-          18% {
+          20% {
             transform: scaleX(0);
             opacity: 1;
           }
@@ -1116,42 +1327,45 @@ export default function ConceptPage() {
             opacity: 1;
           }
 
-          78% {
+          80%,
+          100% {
             transform: scaleX(1);
             opacity: 0;
           }
+        }
 
-          100% {
-            transform: scaleX(0);
-            opacity: 0;
+        @keyframes signalNodeIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
 
-        @keyframes startDotFill {
+        @keyframes diningDotFill {
           0%,
           12% {
             opacity: 0;
           }
 
-          18%,
-          66% {
+          20%,
+          68% {
             opacity: 1;
           }
 
-          82%,
+          86%,
           100% {
             opacity: 0;
           }
         }
 
-        @keyframes endDotFill {
+        @keyframes afterDarkDotFill {
           0%,
-          46% {
+          48% {
             opacity: 0;
           }
 
-          60%,
-          76% {
+          62%,
+          78% {
             opacity: 1;
           }
 
@@ -1161,165 +1375,443 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes startTimeColor {
+        @keyframes diningTimeFill {
           0%,
           12% {
-            color: #6f6a62;
+            color: rgba(28, 28, 26, 0.62);
           }
 
-          18%,
-          66% {
-            color: var(--pink);
+          20%,
+          68% {
+            color: ${C.pink};
           }
 
-          82%,
+          86%,
           100% {
-            color: #6f6a62;
+            color: rgba(28, 28, 26, 0.62);
           }
         }
 
-        @keyframes endTimeColor {
+        @keyframes afterDarkTimeFill {
           0%,
-          46% {
-            color: #6f6a62;
+          48% {
+            color: rgba(28, 28, 26, 0.62);
           }
 
-          60%,
-          76% {
-            color: var(--pink);
+          62%,
+          78% {
+            color: ${C.pink};
           }
 
           92%,
           100% {
-            color: #6f6a62;
+            color: rgba(28, 28, 26, 0.62);
           }
         }
 
-        @media (max-width: 1180px) {
-          .shell {
-            width: min(78%, 1380px);
-          }
-
-          .hero-grid {
-            grid-template-columns: minmax(0, 1fr);
-          }
-
-          .concept-graphic {
-            justify-self: start;
-            max-width: 420px;
+        @keyframes cardIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 6px 6px 0 rgba(28, 28, 26, 0.08);
           }
         }
 
-        @media (max-width: 860px) {
+        @keyframes borderDraw {
+          0% {
+            clip-path: inset(0 100% 100% 0);
+          }
+
+          45% {
+            clip-path: inset(0 0 100% 0);
+          }
+
+          100% {
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        @keyframes venueFloat {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(-0.15deg);
+          }
+
+          50% {
+            transform: translateY(-10px) rotate(0.25deg);
+          }
+        }
+
+        @keyframes venueGlitchA {
+          0%,
+          72%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            clip-path: inset(0 0 0 0);
+          }
+
+          73% {
+            opacity: 0.18;
+            transform: translate3d(-8px, -3px, 0);
+            clip-path: inset(0% 0 82% 0);
+          }
+
+          74% {
+            opacity: 0.24;
+            transform: translate3d(10px, 4px, 0);
+            clip-path: inset(16% 0 58% 0);
+          }
+
+          75% {
+            opacity: 0.18;
+            transform: translate3d(-7px, -5px, 0);
+            clip-path: inset(34% 0 34% 0);
+          }
+
+          76% {
+            opacity: 0.22;
+            transform: translate3d(8px, 6px, 0);
+            clip-path: inset(52% 0 16% 0);
+          }
+
+          77% {
+            opacity: 0.14;
+            transform: translate3d(-5px, -4px, 0);
+            clip-path: inset(74% 0 3% 0);
+          }
+
+          78% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        @keyframes venueGlitchB {
+          0%,
+          72%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            clip-path: inset(0 0 0 0);
+          }
+
+          73.2% {
+            opacity: 0.12;
+            transform: translate3d(7px, 5px, 0);
+            clip-path: inset(8% 0 72% 0);
+          }
+
+          74.1% {
+            opacity: 0.18;
+            transform: translate3d(-10px, -3px, 0);
+            clip-path: inset(24% 0 46% 0);
+          }
+
+          75.2% {
+            opacity: 0.14;
+            transform: translate3d(6px, -7px, 0);
+            clip-path: inset(44% 0 24% 0);
+          }
+
+          76.1% {
+            opacity: 0.18;
+            transform: translate3d(-8px, 6px, 0);
+            clip-path: inset(63% 0 9% 0);
+          }
+
+          77.2% {
+            opacity: 0.1;
+            transform: translate3d(4px, -2px, 0);
+            clip-path: inset(82% 0 0% 0);
+          }
+
+          78% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        @media (max-width: 1280px) {
           .shell {
-            width: calc(100% - 28px);
-            padding-top: 84px;
+            width: 72%;
+          }
+        }
+
+        @media (max-width: 980px) {
+          .shell {
+            width: 82%;
           }
 
-          .hero-pad {
-            padding-top: 54px;
+          .hero-section {
+            grid-template-columns: 1fr;
+            align-items: start;
           }
 
-          .section-pad {
-            padding-left: 28px;
-            padding-right: 4px;
+          .hero-art {
+            max-width: 360px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: auto;
           }
 
-          .section-rule {
-            width: calc(100% + 28px);
-            margin-left: -28px;
+          .concept-flyer-graphic {
+            width: min(100%, 320px);
           }
 
-          .concept-title {
-            font-size: clamp(58px, 15vw, 98px);
-          }
-
-          .hero-address {
-            font-size: clamp(14px, 4vw, 20px);
-            letter-spacing: 0.14em;
-          }
-
-          .concept-graphic {
-            min-height: 300px;
-            max-width: 320px;
-          }
-
-          .concept-graphic__funnel {
-            width: 108px;
-            right: 20px;
-            top: 8px;
-          }
-
-          .concept-graphic__floor {
-            width: 180px;
-            right: 0;
-          }
-
-          .concept-graphic__obelisk {
-            width: 56px;
-            right: 50px;
-            bottom: 24px;
-          }
-
-          .space-buttons,
-          .experience-buttons {
+          .zone-controls {
             grid-template-columns: 1fr;
           }
+        }
 
-          .space-visual {
-            width: 100%;
+        @media (max-width: 820px) {
+          .shell {
+            width: calc(100% - 40px);
+            max-width: none;
+            padding-top: 96px;
           }
 
-          .section-title {
-            font-size: clamp(48px, 11vw, 72px);
-            margin-bottom: 24px;
+          .content-section {
+            --section-pad: 48px;
           }
 
-          .section-title--stack {
-            margin-bottom: 38px;
+          .hero-section {
+            min-height: auto;
+            gap: 26px;
           }
 
-          .experience-timeline {
-            height: 76px;
-            margin-bottom: 18px;
+          .space-section {
+            padding-top: 74px;
+            padding-bottom: 36px;
           }
 
-          .timeline-line,
-          .timeline-dot {
-            top: 42px;
+          .experience-section {
+            padding-top: 64px;
+            padding-bottom: 72px;
           }
 
-          .timeline-dot {
+          h1,
+          .scan-title-hero {
+            font-size: clamp(52px, 14vw, 82px);
+          }
+
+          h2,
+          .scan-title-space,
+          .scan-title-experience {
+            font-size: clamp(40px, 11vw, 64px);
+          }
+
+          .concept-dot {
             width: 18px;
             height: 18px;
           }
 
-          .timeline-time {
-            font-size: 16px;
+          .address {
+            margin-top: 24px;
+            max-width: 360px;
+            font-size: 12px;
+            letter-spacing: 0.18em;
+          }
+
+          .concept-space-map {
+            min-height: clamp(250px, 64vw, 410px);
+            margin-top: 34px;
+          }
+
+          .venue-wrap {
+            width: min(116%, 640px);
+            margin-left: -8%;
+          }
+
+          .zone-controls {
+            margin-top: 4px;
+          }
+
+          .experience-signal {
+            height: 58px;
+            margin-top: 34px;
+            margin-bottom: 10px;
+          }
+
+          .signal-time {
+            font-size: 11px;
             letter-spacing: 0.12em;
           }
 
-          .panel-btn {
-            min-height: 96px;
-          }
-
-          .panel-btn__title {
-            font-size: 17px;
-          }
-
-          .panel-btn__sub {
-            font-size: 11px;
+          .experience-nav {
+            grid-template-columns: 1fr 1fr;
           }
         }
 
-        @media (max-width: 560px) {
-          .timeline-marker {
-            min-width: 150px;
+        @media (max-width: 620px) {
+          .experience-nav {
+            grid-template-columns: 1fr;
           }
 
-          .timeline-time {
-            font-size: 12px;
-            letter-spacing: 0.08em;
+          .concept-flyer-graphic {
+            width: min(100%, 280px);
+          }
+
+          .experience-signal {
+            height: 102px;
+          }
+
+          .signal-track {
+            top: 48px;
+          }
+
+          .signal-node {
+            min-width: 220px;
+          }
+
+          .signal-node-dining {
+            left: 0;
+            top: 0;
+          }
+
+          .signal-node-after-dark {
+            right: auto;
+            left: 0;
+            top: 56px;
+            text-align: left;
+          }
+
+          .signal-node-dining .signal-dot,
+          .signal-node-after-dark .signal-dot {
+            left: 0;
+            right: auto;
+          }
+
+          .signal-node-dining .signal-time,
+          .signal-node-after-dark .signal-time {
+            left: 0;
+            right: auto;
+          }
+        }
+
+        @media (max-width: 520px) {
+          .shell {
+            width: calc(100% - 28px);
+            padding-top: 88px;
+          }
+
+          .axis-v {
+            top: 24px;
+            bottom: 24px;
+          }
+
+          .content-section {
+            --section-pad: 34px;
+          }
+
+          .hero-section {
+            gap: 20px;
+          }
+
+          .section-rule {
+            margin-bottom: 26px;
+          }
+
+          .space-section {
+            padding-top: 62px;
+            padding-bottom: 30px;
+          }
+
+          .experience-section {
+            padding-top: 58px;
+            padding-bottom: 60px;
+          }
+
+          .concept-space-map {
+            min-height: 230px;
+            margin-top: 30px;
+          }
+
+          .venue-wrap {
+            width: 132%;
+            margin-left: -16%;
+          }
+
+          .action-card {
+            min-height: 84px;
+          }
+
+          .action-card-title {
+            font-size: 20px;
+          }
+
+          .action-card-meta {
+            font-size: 9px;
+          }
+
+          .concept-flyer-graphic {
+            width: min(100%, 240px);
+          }
+
+          .experience-signal {
+            margin-top: 30px;
+            margin-bottom: 10px;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .concept-nav-shell,
+          .axis-v,
+          .section-rule,
+          .scan-title,
+          .type-text,
+          .concept-dot,
+          .concept-flyer-graphic,
+          .concept-space-map::before,
+          .venue-wrap,
+          .venue-glitch-a,
+          .venue-glitch-b,
+          .venue-highlight.is-active,
+          .signal-line,
+          .signal-line-fill,
+          .signal-node,
+          .signal-dot-fill,
+          .signal-time,
+          .action-card,
+          .action-card::after {
+            animation: none !important;
+            transition: none !important;
+          }
+
+          .concept-nav-shell,
+          .scan-title,
+          .concept-dot,
+          .concept-flyer-graphic,
+          .venue-wrap,
+          .signal-node,
+          .action-card {
+            opacity: 1;
+          }
+
+          .axis-v,
+          .section-rule,
+          .signal-line {
+            transform: none;
+          }
+
+          .scan-title,
+          .type-text {
+            clip-path: inset(0 0 0 0);
+          }
+
+          .concept-dot,
+          .concept-flyer-graphic,
+          .venue-wrap,
+          .signal-node,
+          .action-card {
+            transform: none;
+          }
+
+          .action-card::after {
+            clip-path: inset(0 0 0 0);
           }
         }
       `}</style>
