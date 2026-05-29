@@ -113,7 +113,7 @@ function ActionCard({
     >
       <span className="action-card-title">{title}</span>
       <span className="action-card-meta">
-        Explore <span className="action-chevron" aria-hidden="true">›</span>
+        Explore <span className="action-arrow" aria-hidden="true">→</span>
       </span>
     </a>
   );
@@ -524,7 +524,7 @@ export default function ConceptPage() {
         }
       `}</style>
 
-      <style jsx>{`
+      <style jsx global>{`
         .page {
           position: relative;
           min-height: 100svh;
@@ -1087,12 +1087,12 @@ export default function ConceptPage() {
           text-transform: uppercase;
         }
 
-        .action-chevron {
+        .action-arrow {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.45em;
-          line-height: 0.7;
+          font-size: 1.65em;
+          line-height: 0.65;
           transform: translateY(-0.01em);
         }
 
