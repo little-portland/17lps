@@ -29,7 +29,7 @@ const CONCEPT_ASSETS = {
 };
 
 const SPACE_ASSETS = {
-  venue: '/images/the-space/the-space-page-venue.png',
+  venue: '/images/concept/the-space-page-venue.png',
 };
 
 const AREAS: AreaConfig[] = [
@@ -37,21 +37,21 @@ const AREAS: AreaConfig[] = [
     id: 'tent',
     title: 'THE TENT',
     href: '/thetent',
-    highlight: '/images/the-space/tent-highlight.png',
+    highlight: '/images/concept/tent-highlight.png',
     chars: 8,
   },
   {
     id: 'chefs-studio',
     title: "CHEF'S STUDIO",
     href: '/chefstudio',
-    highlight: '/images/the-space/chefs-studio-highlight.png',
+    highlight: '/images/concept/chefs-studio-highlight.png',
     chars: 13,
   },
   {
     id: 'studio',
     title: 'THE STUDIO',
     href: '/studio',
-    highlight: '/images/the-space/studio-highlight.png',
+    highlight: '/images/concept/studio-highlight.png',
     chars: 10,
   },
 ];
@@ -344,8 +344,10 @@ export default function ConceptPage() {
             </h2>
 
             <div className="experience-signal" aria-hidden="true">
-              <div className="signal-line" />
-              <div className="signal-runner" />
+              <div className="signal-track">
+                <div className="signal-line" />
+                <div className="signal-line-fill" />
+              </div>
 
               <div className="signal-node signal-node-dining">
                 <span className="signal-dot" />
@@ -611,7 +613,7 @@ export default function ConceptPage() {
         .hero-section {
           min-height: clamp(420px, 58svh, 640px);
           display: grid;
-          grid-template-columns: minmax(0, 1.18fr) minmax(220px, 0.82fr);
+          grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
           align-items: center;
           gap: clamp(28px, 5vw, 76px);
         }
@@ -625,11 +627,12 @@ export default function ConceptPage() {
         .hero-art {
           position: relative;
           z-index: 4;
-          min-height: clamp(280px, 28vw, 420px);
+          min-height: clamp(320px, 32vw, 460px);
           overflow: visible;
           display: flex;
-          align-items: center;
-          justify-content: center;
+          align-items: flex-end;
+          justify-content: flex-end;
+          padding-top: clamp(48px, 6vw, 90px);
         }
 
         .space-section {
@@ -666,6 +669,8 @@ export default function ConceptPage() {
           position: relative;
           z-index: 5;
           font-size: clamp(64px, 8.4vw, 128px);
+          white-space: nowrap;
+          padding-right: clamp(34px, 3vw, 54px);
         }
 
         h2,
@@ -692,15 +697,16 @@ export default function ConceptPage() {
         }
 
         .concept-dot {
-          display: inline-block;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          display: block;
           width: clamp(18px, 2vw, 31px);
           height: clamp(18px, 2vw, 31px);
-          margin-left: clamp(14px, 1.35vw, 24px);
           border-radius: 999px;
           background: ${C.ink};
-          vertical-align: 0.04em;
           opacity: 0;
-          transform: scale(0.4);
+          transform: translateY(-50%) scale(0.4);
           text-shadow: none;
         }
 
@@ -736,10 +742,10 @@ export default function ConceptPage() {
 
         .concept-flyer-graphic {
           display: block;
-          width: min(100%, 360px);
+          width: min(100%, 390px);
           height: auto;
           opacity: 0;
-          transform: translate3d(16px, 20px, 0) scale(0.98);
+          transform: translate3d(18px, 42px, 0) scale(0.98);
           pointer-events: none;
           user-select: none;
           filter: contrast(1) saturate(1);
@@ -878,62 +884,55 @@ export default function ConceptPage() {
         }
 
         .experience-signal {
+          --signal-y: 36px;
           position: relative;
           z-index: 4;
           width: 100%;
           height: clamp(58px, 5.6vw, 78px);
           margin-top: clamp(34px, 4.6vw, 58px);
-          margin-bottom: clamp(8px, 1vw, 14px);
+          margin-bottom: clamp(6px, 0.8vw, 12px);
           overflow: visible;
         }
 
-        .signal-line {
+        .signal-track {
           position: absolute;
           left: 0;
           right: 0;
-          top: 36px;
+          top: var(--signal-y);
           height: 1px;
-          background: linear-gradient(
-            90deg,
-            rgba(28, 28, 26, 0.14),
-            rgba(28, 28, 26, 0.58),
-            rgba(28, 28, 26, 0.14)
-          );
-          transform: scaleX(0);
+        }
+
+        .signal-line,
+        .signal-line-fill {
+          position: absolute;
+          inset: 0;
+          height: 1px;
           transform-origin: left center;
+        }
+
+        .signal-line {
+          background: rgba(28, 28, 26, 0.32);
+          transform: scaleX(0);
+        }
+
+        .signal-line-fill {
+          background: ${C.pink};
+          transform: scaleX(0);
         }
 
         .experience-section.is-inview .signal-line {
           animation: signalLineIn 0.82s cubic-bezier(0.25, 0.8, 0.25, 1) 420ms forwards;
         }
 
-        .signal-runner {
-          position: absolute;
-          top: 31px;
-          left: 0;
-          width: 11px;
-          height: 11px;
-          border-radius: 999px;
-          background: ${C.pink};
-          opacity: 0;
-          box-shadow:
-            0 0 0 5px rgba(212, 80, 122, 0.08),
-            0 0 18px rgba(212, 80, 122, 0.28);
-          transform: translateX(0);
-        }
-
-        .experience-section.is-inview .signal-runner {
-          animation:
-            signalRunnerIn 0.3s ease 900ms forwards,
-            signalRunnerLoop 3.8s cubic-bezier(0.65, 0, 0.25, 1) 1200ms infinite;
+        .experience-section.is-inview .signal-line-fill {
+          animation: signalFillLoop 4.6s cubic-bezier(0.65, 0, 0.25, 1) 1200ms infinite;
         }
 
         .signal-node {
           position: absolute;
           top: 0;
-          display: flex;
-          align-items: center;
-          gap: 12px;
+          min-width: 160px;
+          height: 56px;
           opacity: 0;
           transform: translateY(8px);
         }
@@ -944,7 +943,6 @@ export default function ConceptPage() {
 
         .signal-node-after-dark {
           right: 0;
-          flex-direction: row-reverse;
           text-align: right;
         }
 
@@ -957,39 +955,59 @@ export default function ConceptPage() {
         }
 
         .signal-dot {
+          position: absolute;
+          top: var(--signal-y);
           width: 15px;
           height: 15px;
           border-radius: 999px;
-          background: ${C.ink};
-          box-shadow: 0 0 0 5px rgba(28, 28, 26, 0.06);
+          background: rgba(28, 28, 26, 0.42);
+          box-shadow: 0 0 0 5px rgba(28, 28, 26, 0.05);
+          transform: translateY(-50%);
+        }
+
+        .signal-node-dining .signal-dot {
+          left: 0;
         }
 
         .signal-node-after-dark .signal-dot {
-          background: ${C.pink};
-          box-shadow: 0 0 0 5px rgba(212, 80, 122, 0.1);
+          right: 0;
         }
 
         .experience-section.is-inview .signal-node-dining .signal-dot {
-          animation: diningNodePulse 3.8s steps(1, end) 1200ms infinite;
+          animation: diningDotFill 4.6s steps(1, end) 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-node-after-dark .signal-dot {
-          animation: afterDarkNodePulse 3.8s steps(1, end) 1200ms infinite;
+          animation: afterDarkDotFill 4.6s steps(1, end) 1200ms infinite;
         }
 
         .signal-time {
+          position: absolute;
+          top: 0;
           font-family: ${MONO};
           font-size: clamp(12px, 1.1vw, 16px);
           font-weight: 700;
           line-height: 1;
           letter-spacing: 0.18em;
-          color: ${C.ink};
+          color: rgba(28, 28, 26, 0.62);
           text-transform: uppercase;
           white-space: nowrap;
         }
 
+        .signal-node-dining .signal-time {
+          left: 28px;
+        }
+
         .signal-node-after-dark .signal-time {
-          color: ${C.pink};
+          right: 28px;
+        }
+
+        .experience-section.is-inview .signal-node-dining .signal-time {
+          animation: diningTimeFill 4.6s steps(1, end) 1200ms infinite;
+        }
+
+        .experience-section.is-inview .signal-node-after-dark .signal-time {
+          animation: afterDarkTimeFill 4.6s steps(1, end) 1200ms infinite;
         }
 
         .experience-nav {
@@ -1228,7 +1246,7 @@ export default function ConceptPage() {
         @keyframes dotEnter {
           to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(-50%) scale(1);
           }
         }
 
@@ -1237,34 +1255,34 @@ export default function ConceptPage() {
           72%,
           100% {
             background: ${C.ink};
-            transform: scale(1);
+            transform: translateY(-50%) scale(1);
             box-shadow: none;
           }
 
           76% {
             background: ${C.muted};
-            transform: translateX(1px) scale(1.05);
+            transform: translateY(-50%) translateX(1px) scale(1.05);
           }
 
           80% {
             background: ${C.pink};
-            transform: translateX(-2px) scale(1.12);
+            transform: translateY(-50%) translateX(-2px) scale(1.12);
             box-shadow: 0 0 0 5px rgba(212, 80, 122, 0.08);
           }
 
           83% {
             background: ${C.ink};
-            transform: translateX(2px) scale(0.96);
+            transform: translateY(-50%) translateX(2px) scale(0.96);
           }
 
           86% {
             background: ${C.pink};
-            transform: scale(1.08);
+            transform: translateY(-50%) scale(1.08);
           }
 
           90% {
             background: ${C.ink};
-            transform: scale(1);
+            transform: translateY(-50%) scale(1);
             box-shadow: none;
           }
         }
@@ -1272,7 +1290,7 @@ export default function ConceptPage() {
         @keyframes flyerGraphicIn {
           to {
             opacity: 1;
-            transform: translate3d(0, 0, 0) scale(1);
+            transform: translate3d(0, 36px, 0) scale(1);
           }
         }
 
@@ -1296,37 +1314,25 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes signalRunnerIn {
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes signalRunnerLoop {
-          0% {
-            transform: translateX(0);
+        @keyframes signalFillLoop {
+          0%,
+          12% {
+            transform: scaleX(0);
             opacity: 0;
           }
 
-          8% {
+          18% {
             opacity: 1;
           }
 
-          48% {
+          56% {
+            transform: scaleX(1);
             opacity: 1;
           }
 
-          62% {
-            transform: translateX(calc(100vw * 0.65 - clamp(96px, 11vw, 164px)));
-            opacity: 1;
-          }
-
-          72% {
-            opacity: 0;
-          }
-
+          72%,
           100% {
-            transform: translateX(calc(100vw * 0.65 - clamp(96px, 11vw, 164px)));
+            transform: scaleX(1);
             opacity: 0;
           }
         }
@@ -1338,33 +1344,59 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes diningNodePulse {
+        @keyframes diningDotFill {
           0%,
-          30%,
+          12%,
           100% {
-            background: ${C.ink};
-            box-shadow: 0 0 0 5px rgba(28, 28, 26, 0.06);
+            background: rgba(28, 28, 26, 0.42);
+            box-shadow: 0 0 0 5px rgba(28, 28, 26, 0.05);
           }
 
-          8%,
-          14% {
+          18%,
+          66% {
             background: ${C.pink};
-            box-shadow: 0 0 0 8px rgba(212, 80, 122, 0.08);
+            box-shadow: 0 0 0 7px rgba(212, 80, 122, 0.1);
           }
         }
 
-        @keyframes afterDarkNodePulse {
+        @keyframes afterDarkDotFill {
           0%,
-          45%,
+          48%,
           100% {
-            background: ${C.pink};
-            box-shadow: 0 0 0 5px rgba(212, 80, 122, 0.1);
+            background: rgba(28, 28, 26, 0.42);
+            box-shadow: 0 0 0 5px rgba(28, 28, 26, 0.05);
           }
 
-          58%,
+          56%,
+          76% {
+            background: ${C.pink};
+            box-shadow: 0 0 0 7px rgba(212, 80, 122, 0.1);
+          }
+        }
+
+        @keyframes diningTimeFill {
+          0%,
+          12%,
+          100% {
+            color: rgba(28, 28, 26, 0.62);
+          }
+
+          18%,
           66% {
-            background: ${C.ink};
-            box-shadow: 0 0 0 8px rgba(28, 28, 26, 0.08);
+            color: ${C.pink};
+          }
+        }
+
+        @keyframes afterDarkTimeFill {
+          0%,
+          48%,
+          100% {
+            color: rgba(28, 28, 26, 0.62);
+          }
+
+          56%,
+          76% {
+            color: ${C.pink};
           }
         }
 
@@ -1508,31 +1540,6 @@ export default function ConceptPage() {
           .shell {
             width: 72%;
           }
-
-          @keyframes signalRunnerLoop {
-            0% {
-              transform: translateX(0);
-              opacity: 0;
-            }
-
-            8% {
-              opacity: 1;
-            }
-
-            62% {
-              transform: translateX(calc(100vw * 0.72 - clamp(96px, 11vw, 164px)));
-              opacity: 1;
-            }
-
-            72% {
-              opacity: 0;
-            }
-
-            100% {
-              transform: translateX(calc(100vw * 0.72 - clamp(96px, 11vw, 164px)));
-              opacity: 0;
-            }
-          }
         }
 
         @media (max-width: 980px) {
@@ -1551,6 +1558,8 @@ export default function ConceptPage() {
             margin-left: auto;
             margin-right: auto;
             min-height: auto;
+            justify-content: center;
+            padding-top: 18px;
           }
 
           .concept-flyer-graphic {
@@ -1602,7 +1611,6 @@ export default function ConceptPage() {
           .concept-dot {
             width: 18px;
             height: 18px;
-            margin-left: 12px;
           }
 
           .address {
@@ -1652,15 +1660,15 @@ export default function ConceptPage() {
           }
 
           .experience-signal {
-            height: 116px;
+            height: 102px;
           }
 
-          .signal-line {
-            top: 50%;
+          .signal-track {
+            top: 48px;
           }
 
-          .signal-runner {
-            display: none;
+          .signal-node {
+            min-width: 220px;
           }
 
           .signal-node-dining {
@@ -1671,9 +1679,20 @@ export default function ConceptPage() {
           .signal-node-after-dark {
             right: auto;
             left: 0;
-            top: 68px;
+            top: 56px;
             text-align: left;
-            flex-direction: row;
+          }
+
+          .signal-node-dining .signal-dot,
+          .signal-node-after-dark .signal-dot {
+            left: 0;
+            right: auto;
+          }
+
+          .signal-node-dining .signal-time,
+          .signal-node-after-dark .signal-time {
+            left: 28px;
+            right: auto;
           }
         }
 
@@ -1757,9 +1776,10 @@ export default function ConceptPage() {
           .venue-highlight-glow.is-active,
           .venue-highlight.is-active,
           .signal-line,
-          .signal-runner,
+          .signal-line-fill,
           .signal-node,
           .signal-dot,
+          .signal-time,
           .action-card,
           .action-card::after {
             animation: none !important;
@@ -1771,7 +1791,6 @@ export default function ConceptPage() {
           .concept-dot,
           .concept-flyer-graphic,
           .venue-wrap,
-          .signal-runner,
           .signal-node,
           .action-card {
             opacity: 1;
@@ -1779,7 +1798,8 @@ export default function ConceptPage() {
 
           .axis-v,
           .section-rule,
-          .signal-line {
+          .signal-line,
+          .signal-line-fill {
             transform: none;
           }
 
@@ -1788,7 +1808,10 @@ export default function ConceptPage() {
             clip-path: inset(0 0 0 0);
           }
 
-          .concept-dot,
+          .concept-dot {
+            transform: translateY(-50%) scale(1);
+          }
+
           .concept-flyer-graphic,
           .venue-wrap,
           .signal-node,
