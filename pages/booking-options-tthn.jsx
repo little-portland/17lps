@@ -24,23 +24,23 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category disco-saturdays"><span className="day">Openlab</span> Presents</h1>
+        <h1 className="event-name desktop-only day-category disco-saturdays"><span className="day">NEXT DOOR RECORDS</span> Presents</h1>
         
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Openlab</span> Presents</h1>
+        <h1 className="event-name mobile-only cat"><span className="cat-day">NEXT DOOR RECORDS</span> Presents</h1>
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>SAT</span>25 APR</h2>
+              <h2><span>SAT</span>20 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>RICHARD MARSHALL, TinTin</h3>
-              <h3><span>STUDIO <b>//</b> </span>HEIDI LAWDEN, RALPH LAWSON</h3>
+              <h3><span>TENT <b>//</b> </span>Red, SON OF PAUL</h3>
+              <h3><span>STUDIO <b>//</b> </span>LUTHER VINE, NEXT DOOR RECORDS</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xtCpjhb8" target="_blank">
+            <a href="https://sevn.ly/xKRFz35M" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
@@ -58,7 +58,6 @@ const BookingOptions = () => {
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-sat.svg" alt="The Tent Food" width="100%" /></div>
 
           <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
             <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
@@ -76,7 +75,7 @@ const BookingOptions = () => {
 
          <div class="button-wrapper new-button-wrapper desktop-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-25&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-06-20&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="time">Includes Free Club Entry</p>
                 <p class="details"><span>8:30PM</span></p>
@@ -105,7 +104,7 @@ const BookingOptions = () => {
          
          <div class="button-wrapper new-button-wrapper mobile-only">
             <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-04-25&default_time=21:00&default_party_size=4" target="_blank">
+              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-06-20&default_time=21:00&default_party_size=4" target="_blank">
                 <span class="space">IN THE TENT</span>
                 <p class="details"><span>8:30PM</span></p>
                 <p class="btn-tagline">The Cosmic Experience</p>
@@ -135,7 +134,7 @@ const BookingOptions = () => {
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xtCpjhb8" target="_blank">
+            <a href="https://sevn.ly/xKRFz35M" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
