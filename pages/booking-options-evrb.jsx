@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>CHÉ WAX, THEO G</h3>
-              <h3><span>STUDIO <b>//</b> </span>Momo Trosman</h3>
+              <h3><span>STUDIO <b>//</b> </span>Marlie, Momo Trosman</h3>
             </div>
         </div>
 
