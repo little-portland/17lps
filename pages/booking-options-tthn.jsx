@@ -33,7 +33,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>20 Jun</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Red, SON OF PAUL</h3>
+              <h3><span>TENT <b>//</b> </span>GABRIEL FINCH, RED</h3>
               <h3><span>STUDIO <b>//</b> </span>LUTHER VINE, NEXT DOOR RECORDS</h3>
             </div>
         </div>
