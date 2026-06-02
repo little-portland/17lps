@@ -33,7 +33,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MAYBE LAURA, OLI SILVA</h3>
-              <h3><span>STUDIO <b>//</b> </span>Emel Rowe, Der & Tony Serban</h3>
+              <h3><span>STUDIO <b>//</b> </span>DER & TONY SERBAN, EMEL ROWE</h3>
             </div>
         </div>
 
