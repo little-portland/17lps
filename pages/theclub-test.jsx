@@ -25,7 +25,7 @@ const Menu = ({ menuImage }) => {
         <div className="nocturn override">
           <img
             className="override-logo club-top-logo"
-            src="/images/theclub/theclub-page-top.gif"
+            src="/images/theclub/theclub-page-top-test.gif"
             alt="The Club"
             width="100%"
           />
