@@ -30,6 +30,19 @@ const DiningTest = () => {
               margin: 0;
             }
 
+            /*
+              Dining-test is a secondary page, so no primary nav item should appear active.
+              This neutralises the active colour only on this page.
+            */
+            .scene-nav--dining a.active,
+            .scene-nav-mobile--dining .scene-nav-mobile-inner a.active {
+              color: rgba(61, 207, 214, 0.86) !important;
+            }
+
+            .scene-nav--dining a.active:hover {
+              color: #f57658 !important;
+            }
+
             .dining-page-main {
               width: 100%;
               padding-top: 86px;
@@ -121,7 +134,7 @@ const DiningTest = () => {
               color: #f57658;
               font-family: 'Space Mono', 'Courier New', monospace;
               font-size: clamp(14px, 1.25vw, 17px);
-              font-weight: 400;
+              font-weight: 700;
               line-height: 1;
               letter-spacing: 0.08em;
               text-transform: uppercase;
