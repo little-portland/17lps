@@ -44,14 +44,26 @@ const NocturnPage = () => {
               -webkit-overflow-scrolling: touch !important;
             }
 
+            .nocturn-page-main {
+              width: 100%;
+              padding-top: 18px;
+            }
+
             .nocturn {
               width: 50%;
-              margin: 0 auto 30px auto;
+              margin: 0 auto 42px auto;
+            }
+
+            .nocturn img {
+              display: block;
+              width: 100%;
+              height: auto;
             }
 
             .nocturn-wider-section {
               width: 80%;
               margin: 0 auto 30px auto;
+              box-sizing: border-box;
             }
 
             .subscribe {
@@ -72,12 +84,14 @@ const NocturnPage = () => {
               display: flex;
               flex-wrap: wrap;
               padding: 0 4px;
+              box-sizing: border-box;
             }
 
             .column {
               flex: 50%;
               max-width: 50%;
               padding: 0 4px;
+              box-sizing: border-box;
             }
 
             .subscribe .column {
@@ -91,9 +105,14 @@ const NocturnPage = () => {
               color: #ffffff !important;
               font-size: 20px;
               margin-top: -20px;
-              margin-bottom: 10px;
+              margin-bottom: 28px;
               text-align: center;
               line-height: 1.5;
+            }
+
+            .subscribe .klaviyo-form-RNQ78y {
+              max-width: 640px;
+              margin: 0 auto;
             }
 
             .column img {
@@ -103,13 +122,23 @@ const NocturnPage = () => {
             }
 
             .playlist {
-              width: 84%;
+              width: 80%;
               margin: 0 auto 100px auto;
+              box-sizing: border-box;
+            }
+
+            .playlist .row {
+              display: block;
+              width: 100%;
+              padding: 0 !important;
             }
 
             .playlist .column {
-              flex: 100%;
+              display: block;
+              width: 100%;
               max-width: 100%;
+              flex: none;
+              padding: 0;
             }
 
             .playlist .column img {
@@ -179,13 +208,14 @@ const NocturnPage = () => {
             .nocturn-tabs-wrapper {
               width: 80%;
               margin: 0 auto 30px auto;
+              box-sizing: border-box;
             }
 
             .nocturn-tabs {
               display: flex;
               justify-content: space-between;
               align-items: stretch;
-              margin: 0 10px;
+              margin: 0;
               border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
 
@@ -230,37 +260,40 @@ const NocturnPage = () => {
             .tab-panel {
               width: 100%;
               animation: tabContentFade 0.35s ease;
+              overflow: hidden;
             }
 
             .contact-block {
-              margin-top: 56px !important;
-              margin-bottom: 70px !important;
+              width: 100%;
+              max-width: 640px;
+              margin: 18px auto 70px auto !important;
               text-align: center !important;
             }
 
             .contact-button {
-              display: inline-flex;
+              display: flex;
               align-items: center;
               justify-content: center;
-              min-width: 190px;
-              min-height: 54px;
+              width: 100%;
+              min-height: 64px;
               padding: 0 34px;
-              border: 2px solid #ff9292;
-              border-radius: 999px;
-              background: #ff9292;
+              border: 2px solid #ffffff;
+              border-radius: 4px;
+              background: #ffffff;
               color: #0a186d !important;
               font-family: Helvetica, Arial, sans-serif;
               font-weight: 800;
               font-size: 15px;
               letter-spacing: 0.08em;
               text-decoration: none;
+              box-sizing: border-box;
               transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
             }
 
             .contact-button:hover {
               transform: translateY(-2px);
               background: transparent;
-              color: #ff9292 !important;
+              color: #ffffff !important;
             }
 
             @keyframes tabUnderline {
@@ -298,13 +331,17 @@ const NocturnPage = () => {
             }
 
             @media (max-width: 768px) {
+              .nocturn-page-main {
+                padding-top: 8px;
+              }
+
               .afterhours {
                 margin-bottom: 25px;
               }
 
               .nocturn {
                 width: 90%;
-                margin: 0 auto 15px auto;
+                margin: 0 auto 24px auto;
               }
 
               .nocturn-wider-section .flyer:hover {
@@ -317,7 +354,7 @@ const NocturnPage = () => {
 
               .subscribe h2 {
                 margin-top: 20px !important;
-                margin-bottom: 10px !important;
+                margin-bottom: 22px !important;
                 font-size: 16px;
                 padding: 0 18px;
               }
@@ -369,7 +406,7 @@ const NocturnPage = () => {
               }
 
               .playlist {
-                width: 92%;
+                width: 90%;
                 margin-top: -10px;
                 margin-bottom: 65px;
               }
@@ -389,7 +426,7 @@ const NocturnPage = () => {
               }
 
               .nocturn-tabs {
-                margin: 0 5px;
+                margin: 0;
               }
 
               .nocturn-tab {
@@ -397,9 +434,13 @@ const NocturnPage = () => {
                 padding: 0 8px 14px 8px;
               }
 
+              .contact-block {
+                width: 90%;
+                margin-top: 14px !important;
+              }
+
               .contact-button {
-                min-width: 170px;
-                min-height: 50px;
+                min-height: 56px;
                 font-size: 14px;
               }
             }
@@ -409,195 +450,199 @@ const NocturnPage = () => {
         <title>Nocturn — Archive</title>
       </Head>
 
-      <SceneNav theme="default" />
+      <SceneNav theme="nocturn" />
 
-      <div className="nocturn">
-        <img
-          src="/images/nocturn-main-web-page-header.png"
-          alt="Nocturn"
-          width="100%"
-        />
-      </div>
-
-      <div className="nocturn-tabs-wrapper">
-        <div className="nocturn-tabs">
-          <button
-            type="button"
-            className={`nocturn-tab ${activeTab === 'archive' ? 'active' : ''}`}
-            onClick={() => setActiveTab('archive')}
-          >
-            Main Archive
-          </button>
-
-          <button
-            type="button"
-            className={`nocturn-tab ${
-              activeTab === 'playlist' ? 'active' : ''
-            }`}
-            onClick={() => setActiveTab('playlist')}
-          >
-            Sonic Archive
-          </button>
+      <main className="nocturn-page-main">
+        <div className="nocturn">
+          <img
+            src="/images/nocturn-main-web-page-header.png"
+            alt="Nocturn"
+            width="100%"
+          />
         </div>
-      </div>
 
-      {activeTab === 'archive' && (
-        <div className="tab-panel">
-          <div className="nocturn-wider-section flyers">
-            <div className="row">
-              <div className="column">
-                <a
-                  href="https://www.little-portland.com/nocturn-06"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className="flyer"
-                    src="/images/nocturn/17LPS_Nocturn_06.png"
-                    alt="Nocturn 06"
-                  />
-                </a>
+        <div className="nocturn-tabs-wrapper">
+          <div className="nocturn-tabs">
+            <button
+              type="button"
+              className={`nocturn-tab ${
+                activeTab === 'archive' ? 'active' : ''
+              }`}
+              onClick={() => setActiveTab('archive')}
+            >
+              Main Archive
+            </button>
+
+            <button
+              type="button"
+              className={`nocturn-tab ${
+                activeTab === 'playlist' ? 'active' : ''
+              }`}
+              onClick={() => setActiveTab('playlist')}
+            >
+              Sonic Archive
+            </button>
+          </div>
+        </div>
+
+        {activeTab === 'archive' && (
+          <div className="tab-panel">
+            <div className="nocturn-wider-section flyers">
+              <div className="row">
+                <div className="column">
+                  <a
+                    href="https://www.little-portland.com/nocturn-06"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="flyer"
+                      src="/images/nocturn/17LPS_Nocturn_06.png"
+                      alt="Nocturn 06"
+                    />
+                  </a>
+                </div>
+
+                <div className="column">
+                  <a
+                    href="https://sevn.ly/xn6MyA5b"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="flyer"
+                      src="/images/nocturn/17LPS_Nocturn_resonance_new.png"
+                      alt="Nocturn Resonance"
+                    />
+                  </a>
+                </div>
               </div>
 
-              <div className="column">
-                <a
-                  href="https://sevn.ly/xn6MyA5b"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+              <div className="row">
+                <div className="column afterhours">
                   <img
                     className="flyer"
-                    src="/images/nocturn/17LPS_Nocturn_resonance_new.png"
-                    alt="Nocturn Resonance"
+                    src="/images/nocturn/Nocturn_afterhours_new_poster.gif"
+                    alt="Nocturn Afterhours"
                   />
-                </a>
+                </div>
+
+                <div className="column">
+                  <a
+                    href="https://www.little-portland.com/nocturn-05"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="flyer"
+                      src="/images/nocturn/nocturn-05/17LPS_Nocturn_5_Richie_Culver.gif"
+                      alt="Nocturn 05"
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="column">
+                  <a
+                    href="https://www.little-portland.com/nocturn-04"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="flyer"
+                      src="/images/nocturn/17LPS_Flyer_Nocturn_04.jpg"
+                      alt="Nocturn 04"
+                    />
+                  </a>
+                </div>
+
+                <div className="column">
+                  <a
+                    href="https://www.little-portland.com/nocturn-03"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="flyer"
+                      src="/images/nocturn/17LPS_Flyer_Nocturn03.gif"
+                      alt="Nocturn 03"
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="column">
+                  <a
+                    href="https://www.little-portland.com/nocturn-02"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="flyer"
+                      src="/images/nocturn/17LPS_Flyer_Nocturn_2.jpg"
+                      alt="Nocturn 02"
+                    />
+                  </a>
+                </div>
+
+                <div className="column">
+                  <a
+                    href="https://www.little-portland.com/nocturn-01"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="flyer"
+                      src="/images/nocturn/17LPS_Flyer_Nocturn_1.jpg"
+                      alt="Nocturn 01"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
+          </div>
+        )}
 
-            <div className="row">
-              <div className="column afterhours">
-                <img
-                  className="flyer"
-                  src="/images/nocturn/Nocturn_afterhours_new_poster.gif"
-                  alt="Nocturn Afterhours"
-                />
-              </div>
-
-              <div className="column">
-                <a
-                  href="https://www.little-portland.com/nocturn-05"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className="flyer"
-                    src="/images/nocturn/nocturn-05/17LPS_Nocturn_5_Richie_Culver.gif"
-                    alt="Nocturn 05"
-                  />
-                </a>
+        {activeTab === 'playlist' && (
+          <div className="tab-panel">
+            <div className="nocturn-wider-section playlist">
+              <div className="row">
+                <div className="column">
+                  <PlaylistSection tracks={TRACKS} />
+                </div>
               </div>
             </div>
+          </div>
+        )}
 
-            <div className="row">
-              <div className="column">
-                <a
-                  href="https://www.little-portland.com/nocturn-04"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className="flyer"
-                    src="/images/nocturn/17LPS_Flyer_Nocturn_04.jpg"
-                    alt="Nocturn 04"
-                  />
-                </a>
-              </div>
+        <div className="nocturn-wider-section subscribe">
+          <div className="row">
+            <div className="column">
+              <h2>Sign up to receive updates for forthcoming projects and events</h2>
 
-              <div className="column">
-                <a
-                  href="https://www.little-portland.com/nocturn-03"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className="flyer"
-                    src="/images/nocturn/17LPS_Flyer_Nocturn03.gif"
-                    alt="Nocturn 03"
-                  />
-                </a>
-              </div>
-            </div>
+              <div className="klaviyo-form-RNQ78y"></div>
 
-            <div className="row">
-              <div className="column">
-                <a
-                  href="https://www.little-portland.com/nocturn-02"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className="flyer"
-                    src="/images/nocturn/17LPS_Flyer_Nocturn_2.jpg"
-                    alt="Nocturn 02"
-                  />
-                </a>
-              </div>
+              <Script id="klaviyo-embed" strategy="afterInteractive">
+                {`
+                  window._klOnsite = window._klOnsite || [];
+                  window._klOnsite.push(['embedForm', 'RNQ78y']);
+                `}
+              </Script>
 
-              <div className="column">
+              <div className="nocturn-text-wrapper bottom contact-block">
                 <a
-                  href="https://www.little-portland.com/nocturn-01"
-                  target="_blank"
-                  rel="noreferrer"
+                  className="contact-button"
+                  href="mailto:bianca@little-portland.com"
                 >
-                  <img
-                    className="flyer"
-                    src="/images/nocturn/17LPS_Flyer_Nocturn_1.jpg"
-                    alt="Nocturn 01"
-                  />
+                  CONTACT
                 </a>
               </div>
             </div>
           </div>
         </div>
-      )}
-
-      {activeTab === 'playlist' && (
-        <div className="tab-panel">
-          <div className="nocturn-wider-section playlist">
-            <div className="row">
-              <div className="column">
-                <PlaylistSection tracks={TRACKS} />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="nocturn-wider-section subscribe">
-        <div className="row">
-          <div className="column">
-            <h2>Sign up to receive updates for forthcoming projects and events</h2>
-
-            <div className="klaviyo-form-RNQ78y"></div>
-
-            <Script id="klaviyo-embed" strategy="afterInteractive">
-              {`
-                window._klOnsite = window._klOnsite || [];
-                window._klOnsite.push(['embedForm', 'RNQ78y']);
-              `}
-            </Script>
-
-            <div className="nocturn-text-wrapper bottom contact-block">
-              <a
-                className="contact-button"
-                href="mailto:bianca@little-portland.com"
-              >
-                CONTACT
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      </main>
     </>
   );
 };
