@@ -11,6 +11,13 @@ const Menu = ({ menuImage }) => {
   return (
     <>
       <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+
         <link rel="preload" as="image" href="/images/food/food_page_top.png" />
         <link rel="preload" as="image" href="/images/food/food_page_title_anim.gif" />
         <link rel="preload" as="image" href="/images/food/food_page_food_more_than_meal.gif" />
@@ -28,17 +35,42 @@ const Menu = ({ menuImage }) => {
         <div className="nocturn override food-content">
           <img src="/images/food/food_page_top.png" alt="The Tent Food" width="100%" />
           <img src="/images/food/food_page_title_anim.gif" alt="The Tent Food" width="100%" />
-          <img className="futurist-menu" src="/images/food/food_page_food_more_than_meal.gif" alt="The Tent Food" width="95%" />
-          <img className="line-anim" src="/images/food/food_page_line_anim.gif" alt="The Tent Food" width="100%" />
-          <img className="futurist-menu" src="/images/food/food_page_food_futurist_menu.gif" alt="The Tent Food" width="95%" />
+          <img
+            className="futurist-menu"
+            src="/images/food/food_page_food_more_than_meal.gif"
+            alt="The Tent Food"
+            width="95%"
+          />
+          <img
+            className="line-anim"
+            src="/images/food/food_page_line_anim.gif"
+            alt="The Tent Food"
+            width="100%"
+          />
+          <img
+            className="futurist-menu"
+            src="/images/food/food_page_food_futurist_menu.gif"
+            alt="The Tent Food"
+            width="95%"
+          />
           <img src="/images/food/food_page_futurist_dinner.png" alt="The Tent Food" width="100%" />
           <img src="/images/food/food_page_food_board.png" alt="The Tent Food" width="100%" />
 
           <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
-          <img className="dining-concept" src="/images/food/food_page_dining_concept.gif" alt="The Tent Food" width="88%" />
+          <img
+            className="dining-concept"
+            src="/images/food/food_page_dining_concept.gif"
+            alt="The Tent Food"
+            width="88%"
+          />
           <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
 
-          <img className="override-logo" src="/images/food/food_page_food_floorplan.png" alt="The Tent Food" width="100%" />
+          <img
+            className="override-logo"
+            src="/images/food/food_page_food_floorplan.png"
+            alt="The Tent Food"
+            width="100%"
+          />
 
           <div className="override-buttons-wrapper explore-btns">
             <div className="button-half-page">
@@ -146,61 +178,72 @@ const Menu = ({ menuImage }) => {
 
         .food-page {
           min-height: 100vh;
-          padding-top: 78px;
+          padding-top: 0;
           background: #d8e1e9;
+          font-family: "Oxanium", Helvetica, Arial, sans-serif;
         }
 
         /* =====================================================
-           FOOD PAGE NAV THEME
-           Uses shared SceneNav component, only restyled here.
+           SHARED SCENENAV — FOOD PAGE THEME ONLY
+           SceneNav remains centralised.
         ===================================================== */
 
         .scene-nav {
           z-index: 10020 !important;
-          background: rgba(216, 225, 233, 0.92) !important;
+          margin-bottom: 10px !important;
+          padding-bottom: 0 !important;
+          background: transparent !important;
           border-bottom: none !important;
           box-shadow: none !important;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-        }
-
-        .scene-nav-burger,
-        .scene-nav-logo {
-          position: relative;
-          z-index: 10030 !important;
-        }
-
-        .scene-nav-mobile {
-          z-index: 10010 !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
         }
 
         .scene-nav,
         .scene-nav a,
+        .scene-nav button,
         .scene-nav-mobile,
-        .scene-nav-mobile a {
-          color: #ff0200 !important;
-          font-family: Helvetica, Arial, sans-serif !important;
+        .scene-nav-mobile a,
+        .scene-nav-mobile button {
+          font-family: "Oxanium", Helvetica, Arial, sans-serif !important;
           font-weight: 700 !important;
+        }
+
+        .scene-nav a,
+        .scene-nav-mobile a {
+          color: #5990f7 !important;
+        }
+
+        .scene-nav a:hover,
+        .scene-nav-mobile a:hover {
+          color: #000000 !important;
         }
 
         .scene-nav a.active,
         .scene-nav-mobile a.active {
-          color: #000000 !important;
+          color: #5990f7 !important;
         }
 
         .scene-nav a.disabled,
         .scene-nav-mobile a.disabled {
-          color: #ff0200 !important;
-          opacity: 0.42 !important;
+          color: #5990f7 !important;
+          opacity: 0.45 !important;
+        }
+
+        .scene-nav-logo,
+        .scene-nav-logo a,
+        .scene-nav-logo svg,
+        .scene-nav-logo img {
+          color: #000000 !important;
+        }
+
+        .scene-nav-logo img,
+        .scene-nav-logo svg {
+          filter: brightness(0) saturate(100%) !important;
         }
 
         .scene-nav .scene-nav-burger span {
-          background: #ff0200 !important;
-        }
-
-        .scene-nav .scene-nav-logo img {
-          filter: brightness(0) saturate(100%) invert(15%) sepia(100%)
-            saturate(7494%) hue-rotate(358deg) brightness(101%) contrast(113%);
+          background: #5990f7 !important;
         }
 
         .scene-nav-mobile {
@@ -210,7 +253,11 @@ const Menu = ({ menuImage }) => {
         }
 
         .scene-nav-mobile-inner {
-          padding-top: 92px;
+          padding-top: 82px;
+        }
+
+        .food-page > .food-content {
+          margin-top: 8px !important;
         }
 
         .override-logo {
@@ -282,8 +329,8 @@ const Menu = ({ menuImage }) => {
         }
 
         .override-button {
-          color: #ff0200 !important;
-          border: 3px solid #ff0200 !important;
+          color: #5990f7 !important;
+          border: 3px solid #5990f7 !important;
           text-decoration: none !important;
           display: inline-flex;
           align-items: center;
@@ -298,8 +345,8 @@ const Menu = ({ menuImage }) => {
 
         .override-button:hover {
           color: #000000 !important;
-          background-color: #ff0200 !important;
-          border: 3px solid #ff0200 !important;
+          background-color: #5990f7 !important;
+          border: 3px solid #5990f7 !important;
         }
 
         .dining-concept {
@@ -476,15 +523,20 @@ const Menu = ({ menuImage }) => {
 
         @media (max-width: 768px) {
           .food-page {
-            padding-top: 66px;
+            padding-top: 0;
           }
 
           .scene-nav {
-            background: rgba(216, 225, 233, 0.94) !important;
+            margin-bottom: 8px !important;
+            background: transparent !important;
           }
 
           .scene-nav-mobile-inner {
-            padding-top: 82px;
+            padding-top: 76px;
+          }
+
+          .food-page > .food-content {
+            margin-top: 6px !important;
           }
 
           .override-buttons-wrapper {
