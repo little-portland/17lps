@@ -21,10 +21,7 @@ type AudioWaveformProps = {
   onSeek: (event: React.MouseEvent<HTMLDivElement>, track: Track) => void;
 };
 
-const BAR_COUNT = 120;
-const SVG_WIDTH = 1200;
-const SVG_HEIGHT = 150;
-const SVG_CENTER = SVG_HEIGHT / 2;
+const BAR_COUNT = 96;
 
 const parseDuration = (value?: string) => {
   if (!value || typeof value !== 'string') return 0;
@@ -62,25 +59,20 @@ const makeBars = (seedSource: string | number, count = BAR_COUNT) => {
   };
 
   return Array.from({ length: count }, (_, index) => {
-    const waveA = 0.34 + 0.24 * Math.sin(index * 0.12);
-    const waveB = 0.28 + 0.22 * Math.sin(index * 0.31 + 1.5);
-    const waveC = 0.16 + 0.18 * Math.sin(index * 0.71 + 0.4);
-    const detail = random() * 0.36;
+    const waveA = 0.34 + 0.24 * Math.sin(index * 0.18);
+    const waveB = 0.24 + 0.22 * Math.sin(index * 0.43 + 1.4);
+    const detail = random() * 0.38;
 
-    return Math.max(0.16, Math.min(1, waveA + waveB + waveC + detail));
+    const base = Math.max(0.22, Math.min(1, waveA + waveB + detail));
+
+    return {
+      scaleA: 0.35 + base * 0.55,
+      scaleB: 0.48 + random() * 0.92,
+      scaleC: 0.28 + random() * 0.72,
+      delay: index * 0.018,
+      duration: 0.8 + random() * 0.75,
+    };
   });
-};
-
-const getBarColor = (index: number, total: number) => {
-  const ratio = index / Math.max(total - 1, 1);
-
-  if (ratio < 0.16) return '#ff8a3d';
-  if (ratio < 0.32) return '#ffe747';
-  if (ratio < 0.48) return '#ff9292';
-  if (ratio < 0.64) return '#d94cff';
-  if (ratio < 0.82) return '#5990f7';
-
-  return '#c85a9f';
 };
 
 const AudioWaveform = ({
@@ -95,9 +87,6 @@ const AudioWaveform = ({
     [track.id, track.title]
   );
 
-  const step = SVG_WIDTH / bars.length;
-  const barWidth = Math.max(4, step * 0.46);
-
   return (
     <div
       className={`audio-waveform ${active ? 'active' : ''} ${
@@ -108,44 +97,28 @@ const AudioWaveform = ({
       tabIndex={0}
       aria-label={`Seek ${track.title}`}
     >
-      <svg
-        className="audio-waveform-svg"
-        viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <line
-          className="audio-waveform-centre-line"
-          x1="0"
-          y1={SVG_CENTER}
-          x2={SVG_WIDTH}
-          y2={SVG_CENTER}
-        />
-
-        {bars.map((height, index) => {
+      <div className="audio-waveform-track">
+        {bars.map((bar, index) => {
           const barProgress = index / (bars.length - 1);
           const isPlayed = active && barProgress <= progress;
-          const visualHeight = 18 + height * 112;
-          const x = index * step + (step - barWidth) / 2;
-          const y = SVG_CENTER - visualHeight / 2;
 
           return (
-            <rect
+            <span
               key={`${track.id}-${index}`}
               className={`audio-waveform-bar ${isPlayed ? 'played' : ''}`}
-              x={x}
-              y={y}
-              width={barWidth}
-              height={visualHeight}
-              rx={barWidth / 2}
-              fill={isPlayed ? getBarColor(index, bars.length) : 'rgba(255, 146, 146, 0.34)'}
-              style={{
-                animationDelay: `${index * 0.014}s`,
-              }}
+              style={
+                {
+                  '--scale-a': bar.scaleA,
+                  '--scale-b': bar.scaleB,
+                  '--scale-c': bar.scaleC,
+                  '--bar-delay': `${bar.delay}s`,
+                  '--bar-duration': `${bar.duration}s`,
+                } as React.CSSProperties
+              }
             />
           );
         })}
-      </svg>
+      </div>
 
       <span
         className={`audio-waveform-playhead ${active ? 'visible' : ''} ${
@@ -502,9 +475,9 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           position: relative;
           width: 100%;
           max-width: 100%;
-          height: 116px;
+          height: 94px;
           cursor: pointer;
-          overflow: visible;
+          overflow: hidden;
           box-sizing: border-box;
         }
 
@@ -513,32 +486,35 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           outline-offset: 3px;
         }
 
-        .audio-waveform-svg {
-          display: block;
-          width: 100%;
-          height: 116px;
-          overflow: visible;
-        }
-
-        .audio-waveform-centre-line {
-          stroke: rgba(255, 255, 255, 0.16);
-          stroke-width: 1.5;
-          vector-effect: non-scaling-stroke;
+        .audio-waveform-track {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          gap: 4px;
         }
 
         .audio-waveform-bar {
-          transform-box: fill-box;
+          flex: 1;
+          min-width: 2px;
+          max-width: 8px;
+          height: 42%;
+          border-radius: 999px;
+          background: rgba(255, 146, 146, 0.26);
+          opacity: 0.72;
+          transform: scaleY(1);
           transform-origin: center;
-          opacity: 0.8;
+          transition: background 0.18s ease, opacity 0.18s ease;
         }
 
         .audio-waveform-bar.played {
+          background: #ff9292;
           opacity: 1;
-          filter: saturate(1.22);
         }
 
         .audio-card.playing .audio-waveform-bar {
-          animation: audioWaveIdle 1.1s ease-in-out infinite;
+          animation: audioWaveInactive var(--bar-duration) ease-in-out infinite;
+          animation-delay: var(--bar-delay);
         }
 
         .audio-card.playing .audio-waveform-bar.played {
@@ -547,8 +523,8 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
 
         .audio-waveform-playhead {
           position: absolute;
-          top: 2px;
-          bottom: 2px;
+          top: 6px;
+          bottom: 6px;
           width: 2px;
           border-radius: 999px;
           background: #ffffff;
@@ -567,28 +543,38 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           animation: playheadGlow 1.1s ease-in-out infinite;
         }
 
-        @keyframes audioWaveIdle {
+        @keyframes audioWaveInactive {
           0%,
           100% {
-            transform: scaleY(0.88);
-            opacity: 0.68;
+            transform: scaleY(0.36);
+            opacity: 0.32;
           }
 
-          50% {
-            transform: scaleY(1.04);
-            opacity: 0.86;
+          35% {
+            transform: scaleY(var(--scale-a));
+            opacity: 0.48;
+          }
+
+          70% {
+            transform: scaleY(var(--scale-c));
+            opacity: 0.38;
           }
         }
 
         @keyframes audioWaveActive {
           0%,
           100% {
-            transform: scaleY(0.92);
-            opacity: 0.92;
+            transform: scaleY(var(--scale-a));
+            opacity: 1;
           }
 
-          50% {
-            transform: scaleY(1.18);
+          35% {
+            transform: scaleY(var(--scale-b));
+            opacity: 1;
+          }
+
+          70% {
+            transform: scaleY(var(--scale-c));
             opacity: 1;
           }
         }
@@ -660,16 +646,16 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           }
 
           .audio-waveform {
-            height: 58px;
+            height: 54px;
           }
 
-          .audio-waveform-svg {
-            height: 58px;
+          .audio-waveform-track {
+            gap: 2px;
           }
 
           .audio-waveform-playhead {
-            top: 2px;
-            bottom: 2px;
+            top: 4px;
+            bottom: 4px;
           }
         }
 
@@ -690,11 +676,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           }
 
           .audio-waveform {
-            height: 48px;
-          }
-
-          .audio-waveform-svg {
-            height: 48px;
+            height: 46px;
           }
         }
       `}</style>
