@@ -20,7 +20,7 @@ const DiningTest = () => {
           {`
             html,
             body {
-              background: #efd8e1 !important;
+              background: #000000 !important;
               overflow-x: hidden !important;
               overflow-y: auto !important;
               -webkit-overflow-scrolling: touch !important;
@@ -34,6 +34,7 @@ const DiningTest = () => {
               width: 100%;
               padding-top: 86px;
               padding-bottom: 40px;
+              background: #000000;
               box-sizing: border-box;
             }
 
