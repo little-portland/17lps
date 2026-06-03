@@ -57,7 +57,7 @@ const NocturnPage = () => {
 
             .nocturn {
               width: 100%;
-              margin: 0 auto 42px auto;
+              margin: -10px auto 42px auto;
             }
 
             .nocturn img {
@@ -273,7 +273,7 @@ const NocturnPage = () => {
             .contact-block {
               width: 100%;
               max-width: 640px;
-              margin: 18px auto 140px auto !important;
+              margin: 9px auto 140px auto !important;
               text-align: center !important;
             }
 
@@ -453,8 +453,8 @@ const NocturnPage = () => {
 
               .contact-block {
                 width: 100%;
-                margin-top: 18px !important;
-                margin-bottom: 120px !important;
+                margin-top: 9px !important;
+                margin-bottom: 60px !important;
               }
 
               .contact-button {
