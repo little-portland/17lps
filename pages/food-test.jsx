@@ -186,13 +186,7 @@ const Menu = ({ menuImage }) => {
           min-height: 100vh;
           background: #d8e1e9;
           font-family: "Oxanium", Helvetica, Arial, sans-serif;
-
-          /*
-            Keeps the first image below the fixed menu.
-            This is reduced compared with the first version,
-            but avoids the menu sitting over the top graphic.
-          */
-          padding-top: 82px;
+          padding-top: 52px;
         }
 
         /* =====================================================
