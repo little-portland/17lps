@@ -35,34 +35,40 @@ const Menu = ({ menuImage }) => {
         <div className="nocturn override food-content">
           <img src="/images/food/food_page_top.png" alt="The Tent Food" width="100%" />
           <img src="/images/food/food_page_title_anim.gif" alt="The Tent Food" width="100%" />
+
           <img
             className="futurist-menu"
             src="/images/food/food_page_food_more_than_meal.gif"
             alt="The Tent Food"
             width="95%"
           />
+
           <img
             className="line-anim"
             src="/images/food/food_page_line_anim.gif"
             alt="The Tent Food"
             width="100%"
           />
+
           <img
             className="futurist-menu"
             src="/images/food/food_page_food_futurist_menu.gif"
             alt="The Tent Food"
             width="95%"
           />
+
           <img src="/images/food/food_page_futurist_dinner.png" alt="The Tent Food" width="100%" />
           <img src="/images/food/food_page_food_board.png" alt="The Tent Food" width="100%" />
 
           <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
+
           <img
             className="dining-concept"
             src="/images/food/food_page_dining_concept.gif"
             alt="The Tent Food"
             width="88%"
           />
+
           <img src="/images/food/food_page_divider.png" alt="The Tent Food" width="100%" />
 
           <img
@@ -178,9 +184,15 @@ const Menu = ({ menuImage }) => {
 
         .food-page {
           min-height: 100vh;
-          padding-top: 0;
           background: #d8e1e9;
           font-family: "Oxanium", Helvetica, Arial, sans-serif;
+
+          /*
+            Keeps the first image below the fixed menu.
+            This is reduced compared with the first version,
+            but avoids the menu sitting over the top graphic.
+          */
+          padding-top: 82px;
         }
 
         /* =====================================================
@@ -189,14 +201,21 @@ const Menu = ({ menuImage }) => {
         ===================================================== */
 
         .scene-nav {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          width: 100% !important;
           z-index: 10020 !important;
-          margin-bottom: 10px !important;
-          padding-bottom: 0 !important;
-          background: transparent !important;
+
+          background: rgba(216, 225, 233, 0.94) !important;
           border-bottom: none !important;
           box-shadow: none !important;
-          backdrop-filter: none !important;
-          -webkit-backdrop-filter: none !important;
+
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+
+          margin-bottom: 0 !important;
         }
 
         .scene-nav,
@@ -238,8 +257,15 @@ const Menu = ({ menuImage }) => {
         }
 
         .scene-nav-logo img,
-        .scene-nav-logo svg {
+        .scene-nav-logo svg,
+        .scene-nav-logo svg *,
+        .scene-nav-logo path,
+        .scene-nav-logo circle,
+        .scene-nav-logo rect,
+        .scene-nav-logo line {
           filter: brightness(0) saturate(100%) !important;
+          fill: #000000 !important;
+          stroke: #000000 !important;
         }
 
         .scene-nav .scene-nav-burger span {
@@ -250,6 +276,7 @@ const Menu = ({ menuImage }) => {
           background: rgba(216, 225, 233, 0.96) !important;
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
+          z-index: 10010 !important;
         }
 
         .scene-nav-mobile-inner {
@@ -257,7 +284,7 @@ const Menu = ({ menuImage }) => {
         }
 
         .food-page > .food-content {
-          margin-top: 8px !important;
+          margin-top: 12px !important;
         }
 
         .override-logo {
@@ -406,7 +433,7 @@ const Menu = ({ menuImage }) => {
         .nocturn {
           background-color: #e2e2df !important;
           width: 65%;
-          margin: 30px auto;
+          margin: 18px auto 30px auto;
           padding: 0;
         }
 
@@ -523,12 +550,11 @@ const Menu = ({ menuImage }) => {
 
         @media (max-width: 768px) {
           .food-page {
-            padding-top: 0;
+            padding-top: 72px;
           }
 
           .scene-nav {
-            margin-bottom: 8px !important;
-            background: transparent !important;
+            background: rgba(216, 225, 233, 0.96) !important;
           }
 
           .scene-nav-mobile-inner {
@@ -536,7 +562,7 @@ const Menu = ({ menuImage }) => {
           }
 
           .food-page > .food-content {
-            margin-top: 6px !important;
+            margin-top: 8px !important;
           }
 
           .override-buttons-wrapper {
@@ -551,7 +577,7 @@ const Menu = ({ menuImage }) => {
           }
 
           .nocturn {
-            margin-top: 30px;
+            margin-top: 14px;
             width: 90%;
           }
 
