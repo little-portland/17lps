@@ -33,8 +33,8 @@ export default function SceneNav({
     },
     {
       label: 'Nocturn',
-      href: '/nocturn',
-      activePaths: ['/nocturn'],
+      href: '/nocturn-test',
+      activePaths: ['/nocturn', '/nocturn-test'],
     },
     {
       label: 'Projects',
