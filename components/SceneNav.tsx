@@ -58,7 +58,7 @@ export default function SceneNav({
     {
       label: 'Projects',
       href: '/projects',
-      activePaths: ['/projects', '/dining-test'],
+      activePaths: ['/projects'],
     },
     {
       label: 'Network',
