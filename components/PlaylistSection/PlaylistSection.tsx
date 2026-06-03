@@ -13,7 +13,7 @@ type PlaylistSectionProps = {
   tracks: Track[];
 };
 
-type WaveformProps = {
+type EqualizerProps = {
   track: Track;
   active: boolean;
   playing: boolean;
@@ -21,10 +21,7 @@ type WaveformProps = {
   onSeek: (event: React.MouseEvent<HTMLDivElement>, track: Track) => void;
 };
 
-const BAR_COUNT = 150;
-const WAVEFORM_WIDTH = 1000;
-const WAVEFORM_HEIGHT = 160;
-const WAVEFORM_CENTER = WAVEFORM_HEIGHT / 2;
+const BAR_COUNT = 96;
 
 const parseDuration = (value?: string) => {
   if (!value || typeof value !== 'string') return 0;
@@ -62,95 +59,63 @@ const makeBars = (seedSource: string | number, count = BAR_COUNT) => {
   };
 
   return Array.from({ length: count }, (_, index) => {
-    const slowWave = 0.42 + 0.22 * Math.sin(index * 0.17);
-    const longWave = 0.32 + 0.26 * Math.sin(index * 0.055 + 1.9);
-    const midWave = 0.16 * Math.sin(index * 0.43 + 0.7);
-    const detail = random() * 0.42;
+    const slowWave = 0.44 + 0.22 * Math.sin(index * 0.17);
+    const longWave = 0.3 + 0.24 * Math.sin(index * 0.055 + 1.9);
+    const midWave = 0.14 * Math.sin(index * 0.43 + 0.7);
+    const detail = random() * 0.36;
 
-    return Math.max(0.12, Math.min(1, slowWave + longWave + midWave + detail));
+    return Math.max(0.2, Math.min(1, slowWave + longWave + midWave + detail));
   });
 };
 
-const Waveform = ({
+const Equalizer = ({
   track,
   active,
   playing,
   progress,
   onSeek,
-}: WaveformProps) => {
+}: EqualizerProps) => {
   const bars = useMemo(
     () => makeBars(`${track.id}-${track.title}`),
     [track.id, track.title]
   );
 
-  const step = WAVEFORM_WIDTH / bars.length;
-  const barWidth = Math.max(3, step * 0.48);
-
   return (
-    <div className="waveform-block">
-      <div
-        className={`waveform-shell ${active ? 'active' : ''} ${
+    <div
+      className={`equalizer ${active ? 'active' : ''} ${
+        playing ? 'playing' : ''
+      }`}
+      onClick={(event) => onSeek(event, track)}
+      role="button"
+      tabIndex={0}
+      aria-label={`Seek ${track.title}`}
+    >
+      <div className="equalizer-bars">
+        {bars.map((height, index) => {
+          const barProgress = index / (bars.length - 1);
+          const isPlayed = active && barProgress <= progress;
+
+          return (
+            <span
+              key={`${track.id}-${index}`}
+              className={`equalizer-bar ${isPlayed ? 'played' : ''}`}
+              style={{
+                height: `${20 + height * 72}%`,
+                animationDelay: `${index * 0.018}s`,
+              }}
+            />
+          );
+        })}
+      </div>
+
+      <span
+        className={`equalizer-playhead ${active ? 'visible' : ''} ${
           playing ? 'playing' : ''
         }`}
-        onClick={(event) => onSeek(event, track)}
-        role="button"
-        tabIndex={0}
-        aria-label={`Seek ${track.title}`}
-      >
-        <div className="waveform-glow" />
-
-        <svg
-          className="waveform-svg"
-          viewBox={`0 0 ${WAVEFORM_WIDTH} ${WAVEFORM_HEIGHT}`}
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <line
-            className="waveform-baseline"
-            x1="0"
-            y1={WAVEFORM_CENTER}
-            x2={WAVEFORM_WIDTH}
-            y2={WAVEFORM_CENTER}
-          />
-
-          {bars.map((height, index) => {
-            const barProgress = index / (bars.length - 1);
-            const isPlayed = active && barProgress <= progress;
-            const visualHeight = 14 + height * 126;
-            const x = index * step + (step - barWidth) / 2;
-            const y = WAVEFORM_CENTER - visualHeight / 2;
-
-            return (
-              <rect
-                key={`${track.id}-${index}`}
-                className={`waveform-bar ${isPlayed ? 'played' : ''}`}
-                x={x}
-                y={y}
-                width={barWidth}
-                height={visualHeight}
-                rx={barWidth / 2}
-                style={{
-                  animationDelay: `${index * 0.012}s`,
-                }}
-              />
-            );
-          })}
-        </svg>
-
-        <span
-          className={`waveform-playhead ${active ? 'visible' : ''} ${
-            playing ? 'playing' : ''
-          }`}
-          style={{
-            left: `${Math.max(0, Math.min(1, progress)) * 100}%`,
-          }}
-        />
-      </div>
-
-      <div className="waveform-time-row">
-        <span>00:00</span>
-        <span>{track.duration || '00:00'}</span>
-      </div>
+        style={{
+          left: `${Math.max(0, Math.min(1, progress)) * 100}%`,
+        }}
+      />
     </div>
   );
 };
@@ -343,7 +308,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
                 <span>{track.duration || formatTime(duration)}</span>
               </div>
 
-              <Waveform
+              <Equalizer
                 track={track}
                 active={isActive}
                 playing={isActive && isPlaying}
@@ -494,90 +459,56 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           letter-spacing: 0.04em;
         }
 
-        .waveform-block {
-          width: 100%;
-          max-width: 100%;
-        }
-
-        .waveform-shell {
+        .equalizer {
           position: relative;
           width: 100%;
           max-width: 100%;
-          height: 108px;
-          border-radius: 12px;
-          overflow: hidden;
+          height: 92px;
           cursor: pointer;
-          background:
-            linear-gradient(
-              180deg,
-              rgba(255, 255, 255, 0.035),
-              rgba(255, 255, 255, 0.012)
-            );
+          overflow: hidden;
           box-sizing: border-box;
         }
 
-        .waveform-shell:focus {
+        .equalizer:focus {
           outline: 1px solid rgba(255, 146, 146, 0.7);
           outline-offset: 3px;
         }
 
-        .waveform-glow {
+        .equalizer-bars {
           position: absolute;
           inset: 0;
-          background: radial-gradient(
-            circle at 0% 50%,
-            rgba(255, 146, 146, 0.12),
-            transparent 34%
-          );
-          opacity: 0;
-          transition: opacity 0.25s ease;
+          display: flex;
+          align-items: center;
+          gap: 4px;
         }
 
-        .waveform-shell.active .waveform-glow {
-          opacity: 1;
-        }
-
-        .waveform-svg {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 8px;
-          width: 100%;
-          height: 92px;
-          display: block;
-          overflow: visible;
-        }
-
-        .waveform-baseline {
-          stroke: rgba(255, 255, 255, 0.14);
-          stroke-width: 1.5;
-          vector-effect: non-scaling-stroke;
-        }
-
-        .waveform-bar {
-          fill: rgba(255, 255, 255, 0.28) !important;
-          transform-box: fill-box;
+        .equalizer-bar {
+          flex: 1;
+          min-width: 2px;
+          max-width: 8px;
+          border-radius: 999px;
+          background: rgba(255, 146, 146, 0.48);
           transform-origin: center;
-          transition: fill 0.18s ease, opacity 0.18s ease;
+          transition: background 0.18s ease, opacity 0.18s ease;
         }
 
-        .waveform-bar.played {
-          fill: #ffffff !important;
+        .equalizer-bar.played {
+          background: #ffffff;
           opacity: 1;
         }
 
-        .audio-card.playing .waveform-bar {
-          animation: waveformBreathe 1.15s ease-in-out infinite;
+        .audio-card.playing .equalizer-bar {
+          animation: equalizerPulse 0.95s ease-in-out infinite;
         }
 
-        .audio-card.playing .waveform-bar.played {
-          animation-name: waveformBreathePlayed;
+        .audio-card.playing .equalizer-bar.played {
+          animation-name: equalizerPulsePlayed;
         }
 
-        .waveform-playhead {
+        .equalizer-playhead {
           position: absolute;
-          top: 14px;
-          bottom: 14px;
+          top: 8px;
+          bottom: 8px;
           width: 2px;
           border-radius: 999px;
           background: #ff9292;
@@ -588,49 +519,36 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           pointer-events: none;
         }
 
-        .waveform-playhead.visible {
+        .equalizer-playhead.visible {
           opacity: 1;
         }
 
-        .waveform-playhead.playing {
+        .equalizer-playhead.playing {
           animation: playheadGlow 1.1s ease-in-out infinite;
         }
 
-        .waveform-time-row {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-top: 6px;
-          color: #ff9292;
-          font-family: 'Courier New', Courier, monospace;
-          font-size: 12px;
-          font-weight: 800;
-          letter-spacing: 0.04em;
-          line-height: 1;
-        }
-
-        @keyframes waveformBreathe {
+        @keyframes equalizerPulse {
           0%,
           100% {
-            transform: scaleY(0.9);
-            opacity: 0.56;
+            transform: scaleY(0.72);
+            opacity: 0.52;
           }
 
           50% {
-            transform: scaleY(1.16);
-            opacity: 1;
-          }
-        }
-
-        @keyframes waveformBreathePlayed {
-          0%,
-          100% {
-            transform: scaleY(0.92);
+            transform: scaleY(1.12);
             opacity: 0.9;
           }
+        }
+
+        @keyframes equalizerPulsePlayed {
+          0%,
+          100% {
+            transform: scaleY(0.82);
+            opacity: 0.85;
+          }
 
           50% {
-            transform: scaleY(1.24);
+            transform: scaleY(1.22);
             opacity: 1;
           }
         }
@@ -701,24 +619,17 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
             font-size: 11px;
           }
 
-          .waveform-shell {
+          .equalizer {
             height: 58px;
-            border-radius: 8px;
           }
 
-          .waveform-svg {
-            top: 4px;
-            height: 50px;
+          .equalizer-bars {
+            gap: 2px;
           }
 
-          .waveform-playhead {
-            top: 8px;
-            bottom: 8px;
-          }
-
-          .waveform-time-row {
-            margin-top: 5px;
-            font-size: 10px;
+          .equalizer-playhead {
+            top: 6px;
+            bottom: 6px;
           }
         }
 
@@ -738,12 +649,8 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
             font-size: 13px;
           }
 
-          .waveform-shell {
+          .equalizer {
             height: 48px;
-          }
-
-          .waveform-svg {
-            height: 42px;
           }
         }
       `}</style>
