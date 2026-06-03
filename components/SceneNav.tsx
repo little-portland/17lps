@@ -170,29 +170,37 @@ export default function SceneNav({
       </AnimatePresence>
 
       <style jsx global>{`
-        .scene-nav--nocturn {
+        .scene-nav.scene-nav--nocturn {
           position: relative !important;
           top: auto !important;
           left: auto !important;
           right: auto !important;
           z-index: 50 !important;
-          width: min(92%, 1280px) !important;
-          margin: 34px auto 46px auto !important;
+          width: min(90%, 1080px) !important;
+          margin: 18px auto 22px auto !important;
           padding: 0 !important;
           display: grid !important;
           grid-template-columns: 1fr auto 1fr !important;
           align-items: center !important;
-          gap: clamp(24px, 4vw, 56px) !important;
+          gap: clamp(20px, 3vw, 42px) !important;
           opacity: 1 !important;
           pointer-events: auto !important;
           transform: none !important;
+          border: 0 !important;
+          background: transparent !important;
+        }
+
+        .scene-nav.scene-nav--nocturn::before,
+        .scene-nav.scene-nav--nocturn::after {
+          content: none !important;
+          display: none !important;
         }
 
         .scene-nav--nocturn .scene-nav-left,
         .scene-nav--nocturn .scene-nav-right {
           display: flex !important;
           align-items: center !important;
-          gap: clamp(26px, 3vw, 48px) !important;
+          gap: clamp(22px, 2.6vw, 42px) !important;
         }
 
         .scene-nav--nocturn .scene-nav-left {
@@ -204,38 +212,35 @@ export default function SceneNav({
         }
 
         .scene-nav--nocturn a {
+          position: relative !important;
           font-family: Helvetica, Arial, sans-serif !important;
-          font-size: clamp(15px, 1.2vw, 18px) !important;
+          font-size: clamp(12px, 0.9vw, 15px) !important;
           font-weight: 800 !important;
           line-height: 1 !important;
           letter-spacing: 0.02em !important;
           color: rgba(255, 255, 255, 0.82) !important;
           text-decoration: none !important;
           text-transform: none !important;
-          transition: color 0.22s ease, opacity 0.22s ease, transform 0.22s ease !important;
+          transition: color 0.22s ease, opacity 0.22s ease !important;
+        }
+
+        .scene-nav--nocturn a::before,
+        .scene-nav--nocturn a::after {
+          content: none !important;
+          display: none !important;
         }
 
         .scene-nav--nocturn a:hover {
           color: #ff9292 !important;
-          transform: translateY(-1px) !important;
         }
 
         .scene-nav--nocturn a.active {
           color: #ff9292 !important;
         }
 
-        .scene-nav--nocturn a.active::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: -8px;
-          height: 2px;
-          background: #ff9292;
-        }
-
         .scene-nav--nocturn a.disabled {
-          color: rgba(255, 255, 255, 0.26) !important;
+          color: rgba(255, 255, 255, 0.46) !important;
+          opacity: 1 !important;
           pointer-events: none !important;
           cursor: default !important;
         }
@@ -245,19 +250,22 @@ export default function SceneNav({
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
-          width: 54px !important;
-          height: 54px !important;
+          width: 38px !important;
+          height: 38px !important;
           transform: none !important;
+          flex: 0 0 38px !important;
         }
 
+        .scene-nav--nocturn .scene-nav-logo::before,
         .scene-nav--nocturn .scene-nav-logo::after {
+          content: none !important;
           display: none !important;
         }
 
         .scene-nav--nocturn .scene-nav-logo img {
           display: block !important;
-          width: 54px !important;
-          height: 54px !important;
+          width: 38px !important;
+          height: 38px !important;
           object-fit: contain !important;
           filter: brightness(0) invert(1) !important;
           opacity: 0.96 !important;
@@ -268,13 +276,13 @@ export default function SceneNav({
         }
 
         @media (max-width: 900px) {
-          .scene-nav--nocturn {
+          .scene-nav.scene-nav--nocturn {
             width: 90% !important;
-            margin: 22px auto 32px auto !important;
+            margin: 16px auto 22px auto !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            min-height: 48px !important;
+            min-height: 44px !important;
           }
 
           .scene-nav--nocturn .scene-nav-left,
@@ -283,13 +291,14 @@ export default function SceneNav({
           }
 
           .scene-nav--nocturn .scene-nav-logo {
-            width: 48px !important;
-            height: 48px !important;
+            width: 38px !important;
+            height: 38px !important;
+            flex-basis: 38px !important;
           }
 
           .scene-nav--nocturn .scene-nav-logo img {
-            width: 48px !important;
-            height: 48px !important;
+            width: 38px !important;
+            height: 38px !important;
           }
 
           .scene-nav--nocturn .scene-nav-burger {
@@ -297,10 +306,10 @@ export default function SceneNav({
             position: absolute !important;
             left: 0 !important;
             top: 50% !important;
-            width: 42px !important;
-            height: 42px !important;
+            width: 40px !important;
+            height: 40px !important;
             transform: translateY(-50%) !important;
-            border: 1px solid rgba(255, 255, 255, 0.28) !important;
+            border: 1px solid rgba(255, 255, 255, 0.32) !important;
             border-radius: 999px !important;
             background: rgba(255, 255, 255, 0.06) !important;
             align-items: center !important;
@@ -359,7 +368,7 @@ export default function SceneNav({
           }
 
           .scene-nav-mobile--nocturn .scene-nav-mobile-inner a.disabled {
-            color: rgba(255, 255, 255, 0.24) !important;
+            color: rgba(255, 255, 255, 0.46) !important;
             pointer-events: none !important;
           }
         }
