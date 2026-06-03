@@ -189,26 +189,6 @@ export default function SceneNav({
       </AnimatePresence>
 
       <style jsx global>{`
-        /*
-          Shared nav sizing.
-          All themes use the same font size, logo size, letter spacing and item spacing.
-          Only colours/font family change per theme.
-        */
-
-        .scene-nav {
-          --scene-nav-font-size: 14px;
-          --scene-nav-mobile-font-size: 28px;
-          --scene-nav-letter-spacing: 0.025em;
-          --scene-nav-item-gap: clamp(18px, 2vw, 30px);
-          --scene-nav-main-gap: clamp(18px, 2.3vw, 34px);
-          --scene-nav-logo-size: 34px;
-          --scene-nav-mobile-logo-size: 46px;
-        }
-
-        .scene-nav.scene-nav--default,
-        .scene-nav.scene-nav--access,
-        .scene-nav.scene-nav--space,
-        .scene-nav.scene-nav--tent-radio,
         .scene-nav.scene-nav--nocturn,
         .scene-nav.scene-nav--dining {
           position: fixed !important;
@@ -223,7 +203,7 @@ export default function SceneNav({
           display: grid !important;
           grid-template-columns: 1fr auto 1fr !important;
           align-items: center !important;
-          gap: var(--scene-nav-main-gap) !important;
+          gap: clamp(22px, 3vw, 46px) !important;
           opacity: 1 !important;
           pointer-events: auto !important;
           transform: none !important;
@@ -232,22 +212,6 @@ export default function SceneNav({
           transition: background 0.25s ease, box-shadow 0.25s ease,
             backdrop-filter 0.25s ease !important;
           box-sizing: border-box !important;
-        }
-
-        .scene-nav.scene-nav--default.has-scrolled,
-        .scene-nav.scene-nav--space.has-scrolled,
-        .scene-nav.scene-nav--tent-radio.has-scrolled {
-          background: rgba(0, 0, 0, 0.88) !important;
-          backdrop-filter: blur(10px) !important;
-          -webkit-backdrop-filter: blur(10px) !important;
-          box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2) !important;
-        }
-
-        .scene-nav.scene-nav--access.has-scrolled {
-          background: rgba(232, 226, 212, 0.94) !important;
-          backdrop-filter: blur(10px) !important;
-          -webkit-backdrop-filter: blur(10px) !important;
-          box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12) !important;
         }
 
         .scene-nav.scene-nav--nocturn.has-scrolled {
@@ -264,130 +228,79 @@ export default function SceneNav({
           box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28) !important;
         }
 
-        .scene-nav.is-open {
+        .scene-nav.scene-nav--nocturn.is-open,
+        .scene-nav.scene-nav--dining.is-open {
           z-index: 1001 !important;
         }
 
-        .scene-nav::before,
-        .scene-nav::after {
+        .scene-nav.scene-nav--nocturn::before,
+        .scene-nav.scene-nav--nocturn::after,
+        .scene-nav.scene-nav--dining::before,
+        .scene-nav.scene-nav--dining::after {
           content: none !important;
           display: none !important;
         }
 
-        .scene-nav-left,
-        .scene-nav-right {
+        .scene-nav--nocturn .scene-nav-left,
+        .scene-nav--nocturn .scene-nav-right,
+        .scene-nav--dining .scene-nav-left,
+        .scene-nav--dining .scene-nav-right {
           display: flex !important;
           align-items: center !important;
-          gap: var(--scene-nav-item-gap) !important;
         }
 
-        .scene-nav-left {
+        .scene-nav--nocturn .scene-nav-left,
+        .scene-nav--nocturn .scene-nav-right {
+          gap: clamp(24px, 2.8vw, 46px) !important;
+        }
+
+        .scene-nav--dining .scene-nav-left,
+        .scene-nav--dining .scene-nav-right {
+          gap: clamp(20px, 2.1vw, 34px) !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-left,
+        .scene-nav--dining .scene-nav-left {
           justify-content: flex-end !important;
         }
 
-        .scene-nav-right {
+        .scene-nav--nocturn .scene-nav-right,
+        .scene-nav--dining .scene-nav-right {
           justify-content: flex-start !important;
         }
 
-        .scene-nav a {
+        .scene-nav--nocturn a,
+        .scene-nav--dining a {
           position: relative !important;
-          font-size: var(--scene-nav-font-size) !important;
-          line-height: 1 !important;
-          letter-spacing: var(--scene-nav-letter-spacing) !important;
           text-decoration: none !important;
           text-transform: none !important;
           transition: color 0.22s ease, opacity 0.22s ease !important;
         }
 
-        .scene-nav a::before,
-        .scene-nav a::after {
-          content: none !important;
-          display: none !important;
-        }
-
-        .scene-nav-logo {
-          position: relative !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          width: var(--scene-nav-logo-size) !important;
-          height: var(--scene-nav-logo-size) !important;
-          transform: none !important;
-          flex: 0 0 var(--scene-nav-logo-size) !important;
-        }
-
-        .scene-nav-logo::before,
-        .scene-nav-logo::after {
-          content: none !important;
-          display: none !important;
-        }
-
-        .scene-nav-logo img {
-          display: block !important;
-          width: var(--scene-nav-logo-size) !important;
-          height: var(--scene-nav-logo-size) !important;
-          object-fit: contain !important;
-          opacity: 0.96 !important;
-        }
-
-        .scene-nav-burger {
-          display: none !important;
-        }
-
-        /*
-          Default / shared dark nav.
-        */
-
-        .scene-nav--default a,
-        .scene-nav--space a,
-        .scene-nav--tent-radio a {
-          font-family: Helvetica, Arial, sans-serif !important;
-          font-weight: 800 !important;
-          color: rgba(255, 255, 255, 0.82) !important;
-        }
-
-        .scene-nav--default a:hover,
-        .scene-nav--default a.active,
-        .scene-nav--space a:hover,
-        .scene-nav--space a.active,
-        .scene-nav--tent-radio a:hover,
-        .scene-nav--tent-radio a.active {
-          color: #ffffff !important;
-        }
-
-        .scene-nav--default .scene-nav-logo img,
-        .scene-nav--space .scene-nav-logo img,
-        .scene-nav--tent-radio .scene-nav-logo img {
-          filter: brightness(0) invert(1) !important;
-        }
-
-        /*
-          Access theme.
-        */
-
-        .scene-nav--access a {
-          font-family: Helvetica, Arial, sans-serif !important;
-          font-weight: 800 !important;
-          color: rgba(28, 28, 26, 0.78) !important;
-        }
-
-        .scene-nav--access a:hover,
-        .scene-nav--access a.active {
-          color: #d4507a !important;
-        }
-
-        .scene-nav--access .scene-nav-logo img {
-          filter: none !important;
-        }
-
-        /*
-          Nocturn theme.
-        */
-
         .scene-nav--nocturn a {
           font-family: Helvetica, Arial, sans-serif !important;
+          font-size: clamp(16px, 1.12vw, 19px) !important;
           font-weight: 800 !important;
+          line-height: 1 !important;
+          letter-spacing: 0.02em !important;
           color: rgba(255, 255, 255, 0.82) !important;
+        }
+
+        .scene-nav--dining a {
+          font-family: 'Space Mono', 'Courier New', monospace !important;
+          font-size: clamp(13px, 0.9vw, 15px) !important;
+          font-weight: 700 !important;
+          line-height: 1 !important;
+          letter-spacing: 0.025em !important;
+          color: rgba(61, 207, 214, 0.86) !important;
+        }
+
+        .scene-nav--nocturn a::before,
+        .scene-nav--nocturn a::after,
+        .scene-nav--dining a::before,
+        .scene-nav--dining a::after {
+          content: none !important;
+          display: none !important;
         }
 
         .scene-nav--nocturn a:hover,
@@ -395,47 +308,13 @@ export default function SceneNav({
           color: #ff9292 !important;
         }
 
-        .scene-nav--nocturn .scene-nav-logo img {
-          filter: brightness(0) invert(1) !important;
-        }
-
-        /*
-          Dining theme.
-        */
-
-        .scene-nav--dining a {
-          font-family: 'Space Mono', 'Courier New', monospace !important;
-          font-weight: 700 !important;
-          color: rgba(61, 207, 214, 0.86) !important;
-        }
-
         .scene-nav--dining a:hover,
         .scene-nav--dining a.active {
           color: #f57658 !important;
         }
 
-        .scene-nav--dining .scene-nav-logo img {
-          filter: brightness(0) saturate(100%) invert(62%) sepia(66%)
-            saturate(1077%) hue-rotate(322deg) brightness(101%)
-            contrast(93%) !important;
-        }
-
-        /*
-          Disabled links.
-        */
-
-        .scene-nav--default a.disabled,
-        .scene-nav--space a.disabled,
-        .scene-nav--tent-radio a.disabled,
         .scene-nav--nocturn a.disabled {
           color: rgba(255, 255, 255, 0.56) !important;
-          opacity: 1 !important;
-          pointer-events: none !important;
-          cursor: default !important;
-        }
-
-        .scene-nav--access a.disabled {
-          color: rgba(28, 28, 26, 0.4) !important;
           opacity: 1 !important;
           pointer-events: none !important;
           cursor: default !important;
@@ -448,11 +327,51 @@ export default function SceneNav({
           cursor: default !important;
         }
 
+        .scene-nav--nocturn .scene-nav-logo,
+        .scene-nav--dining .scene-nav-logo {
+          position: relative !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 40px !important;
+          height: 40px !important;
+          transform: none !important;
+          flex: 0 0 40px !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-logo::before,
+        .scene-nav--nocturn .scene-nav-logo::after,
+        .scene-nav--dining .scene-nav-logo::before,
+        .scene-nav--dining .scene-nav-logo::after {
+          content: none !important;
+          display: none !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-logo img,
+        .scene-nav--dining .scene-nav-logo img {
+          display: block !important;
+          width: 40px !important;
+          height: 40px !important;
+          object-fit: contain !important;
+          opacity: 0.96 !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-logo img {
+          filter: brightness(0) invert(1) !important;
+        }
+
+        .scene-nav--dining .scene-nav-logo img {
+          filter: brightness(0) saturate(100%) invert(62%) sepia(66%)
+            saturate(1077%) hue-rotate(322deg) brightness(101%)
+            contrast(93%) !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-burger,
+        .scene-nav--dining .scene-nav-burger {
+          display: none !important;
+        }
+
         @media (max-width: 900px) {
-          .scene-nav.scene-nav--default,
-          .scene-nav.scene-nav--access,
-          .scene-nav.scene-nav--space,
-          .scene-nav.scene-nav--tent-radio,
           .scene-nav.scene-nav--nocturn,
           .scene-nav.scene-nav--dining {
             width: 100% !important;
@@ -464,23 +383,33 @@ export default function SceneNav({
             min-height: 72px !important;
           }
 
-          .scene-nav-left,
-          .scene-nav-right {
+          .scene-nav.scene-nav--nocturn.is-open,
+          .scene-nav.scene-nav--dining.is-open {
+            z-index: 1001 !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-left,
+          .scene-nav--nocturn .scene-nav-right,
+          .scene-nav--dining .scene-nav-left,
+          .scene-nav--dining .scene-nav-right {
             display: none !important;
           }
 
-          .scene-nav-logo {
-            width: var(--scene-nav-mobile-logo-size) !important;
-            height: var(--scene-nav-mobile-logo-size) !important;
-            flex-basis: var(--scene-nav-mobile-logo-size) !important;
+          .scene-nav--nocturn .scene-nav-logo,
+          .scene-nav--dining .scene-nav-logo {
+            width: 46px !important;
+            height: 46px !important;
+            flex-basis: 46px !important;
           }
 
-          .scene-nav-logo img {
-            width: var(--scene-nav-mobile-logo-size) !important;
-            height: var(--scene-nav-mobile-logo-size) !important;
+          .scene-nav--nocturn .scene-nav-logo img,
+          .scene-nav--dining .scene-nav-logo img {
+            width: 46px !important;
+            height: 46px !important;
           }
 
-          .scene-nav-burger {
+          .scene-nav--nocturn .scene-nav-burger,
+          .scene-nav--dining .scene-nav-burger {
             display: flex !important;
             position: absolute !important;
             left: 6% !important;
@@ -500,7 +429,8 @@ export default function SceneNav({
             overflow: visible !important;
           }
 
-          .scene-nav-burger span {
+          .scene-nav--nocturn .scene-nav-burger span,
+          .scene-nav--dining .scene-nav-burger span {
             display: block !important;
             width: 38px !important;
             height: 3px !important;
@@ -508,22 +438,16 @@ export default function SceneNav({
             transition: transform 0.22s ease, opacity 0.22s ease !important;
           }
 
-          .scene-nav--default .scene-nav-burger span,
-          .scene-nav--space .scene-nav-burger span,
-          .scene-nav--tent-radio .scene-nav-burger span,
           .scene-nav--nocturn .scene-nav-burger span {
             background: #ffffff !important;
-          }
-
-          .scene-nav--access .scene-nav-burger span {
-            background: #1c1c1a !important;
           }
 
           .scene-nav--dining .scene-nav-burger span {
             background: #3dcfd6 !important;
           }
 
-          .scene-nav-burger.open span {
+          .scene-nav--nocturn .scene-nav-burger.open span,
+          .scene-nav--dining .scene-nav-burger.open span {
             position: absolute !important;
             top: 50% !important;
             left: 50% !important;
@@ -531,31 +455,24 @@ export default function SceneNav({
             height: 3px !important;
           }
 
-          .scene-nav-burger.open span:first-child {
+          .scene-nav--nocturn .scene-nav-burger.open span:first-child,
+          .scene-nav--dining .scene-nav-burger.open span:first-child {
             transform: translate(-50%, -50%) rotate(45deg) !important;
           }
 
-          .scene-nav-burger.open span:last-child {
+          .scene-nav--nocturn .scene-nav-burger.open span:last-child,
+          .scene-nav--dining .scene-nav-burger.open span:last-child {
             transform: translate(-50%, -50%) rotate(-45deg) !important;
           }
 
-          .scene-nav-mobile {
+          .scene-nav-mobile--nocturn,
+          .scene-nav-mobile--dining {
             position: fixed !important;
             inset: 0 !important;
             z-index: 999 !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-          }
-
-          .scene-nav-mobile--default,
-          .scene-nav-mobile--space,
-          .scene-nav-mobile--tent-radio {
-            background: rgba(0, 0, 0, 0.96) !important;
-          }
-
-          .scene-nav-mobile--access {
-            background: rgba(232, 226, 212, 0.96) !important;
           }
 
           .scene-nav-mobile--nocturn {
@@ -566,7 +483,8 @@ export default function SceneNav({
             background: rgba(0, 0, 0, 0.96) !important;
           }
 
-          .scene-nav-mobile-inner {
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner,
+          .scene-nav-mobile--dining .scene-nav-mobile-inner {
             width: min(86vw, 420px) !important;
             padding: 82px 24px 24px 24px !important;
             display: flex !important;
@@ -575,42 +493,25 @@ export default function SceneNav({
             gap: 18px !important;
           }
 
-          .scene-nav-mobile-inner a {
-            font-size: var(--scene-nav-mobile-font-size) !important;
-            line-height: 1.1 !important;
-            letter-spacing: var(--scene-nav-letter-spacing) !important;
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner a,
+          .scene-nav-mobile--dining .scene-nav-mobile-inner a {
             text-decoration: none !important;
           }
 
-          .scene-nav-mobile--default .scene-nav-mobile-inner a,
-          .scene-nav-mobile--space .scene-nav-mobile-inner a,
-          .scene-nav-mobile--tent-radio .scene-nav-mobile-inner a,
           .scene-nav-mobile--nocturn .scene-nav-mobile-inner a {
             font-family: Helvetica, Arial, sans-serif !important;
+            font-size: 28px !important;
             font-weight: 800 !important;
+            line-height: 1.1 !important;
             color: rgba(255, 255, 255, 0.84) !important;
-          }
-
-          .scene-nav-mobile--access .scene-nav-mobile-inner a {
-            font-family: Helvetica, Arial, sans-serif !important;
-            font-weight: 800 !important;
-            color: rgba(28, 28, 26, 0.78) !important;
           }
 
           .scene-nav-mobile--dining .scene-nav-mobile-inner a {
             font-family: 'Space Mono', 'Courier New', monospace !important;
+            font-size: 23px !important;
             font-weight: 700 !important;
+            line-height: 1.1 !important;
             color: rgba(61, 207, 214, 0.86) !important;
-          }
-
-          .scene-nav-mobile--default .scene-nav-mobile-inner a.active,
-          .scene-nav-mobile--space .scene-nav-mobile-inner a.active,
-          .scene-nav-mobile--tent-radio .scene-nav-mobile-inner a.active {
-            color: #ffffff !important;
-          }
-
-          .scene-nav-mobile--access .scene-nav-mobile-inner a.active {
-            color: #d4507a !important;
           }
 
           .scene-nav-mobile--nocturn .scene-nav-mobile-inner a.active {
@@ -621,16 +522,8 @@ export default function SceneNav({
             color: #f57658 !important;
           }
 
-          .scene-nav-mobile--default .scene-nav-mobile-inner a.disabled,
-          .scene-nav-mobile--space .scene-nav-mobile-inner a.disabled,
-          .scene-nav-mobile--tent-radio .scene-nav-mobile-inner a.disabled,
           .scene-nav-mobile--nocturn .scene-nav-mobile-inner a.disabled {
             color: rgba(255, 255, 255, 0.56) !important;
-            pointer-events: none !important;
-          }
-
-          .scene-nav-mobile--access .scene-nav-mobile-inner a.disabled {
-            color: rgba(28, 28, 26, 0.4) !important;
             pointer-events: none !important;
           }
 
