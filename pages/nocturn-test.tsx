@@ -46,7 +46,7 @@ const NocturnPage = () => {
 
             .nocturn-page-main {
               width: 100%;
-              padding-top: 0;
+              padding-top: 74px;
             }
 
             .nocturn-page-frame {
@@ -131,6 +131,7 @@ const NocturnPage = () => {
             .playlist {
               width: 100%;
               margin: 0 auto 100px auto;
+              padding-top: 16px;
               box-sizing: border-box;
             }
 
@@ -267,7 +268,7 @@ const NocturnPage = () => {
             .tab-panel {
               width: 100%;
               animation: tabContentFade 0.35s ease;
-              overflow: hidden;
+              overflow: visible;
             }
 
             .contact-block {
@@ -348,6 +349,10 @@ const NocturnPage = () => {
             }
 
             @media (max-width: 768px) {
+              .nocturn-page-main {
+                padding-top: 78px;
+              }
+
               .nocturn-page-frame {
                 width: 88%;
               }
@@ -426,6 +431,7 @@ const NocturnPage = () => {
                 width: 100%;
                 margin-top: -10px;
                 margin-bottom: 65px;
+                padding-top: 14px;
               }
 
               .playlist h3 {
