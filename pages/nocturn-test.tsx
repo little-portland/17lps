@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Script from "next/script";
 
-import SceneNav from "@components/SceneNav/SceneNav";
+import SceneNav from '@components/SceneNav';
 import PlaylistSection from "@components/PlaylistSection/PlaylistSection";
 
 const TRACKS = [
