@@ -617,16 +617,17 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           gap: 12px;
           margin-bottom: 10px;
           color: rgba(255, 146, 146, 0.88);
-          font-family: 'Courier New', Courier, monospace;
-          font-size: 11px;
-          font-weight: 800;
-          letter-spacing: 0.13em;
+          font-family: Helvetica, Arial, sans-serif;
+          font-size: 10px;
+          font-weight: 500;
+          letter-spacing: 0.18em;
           line-height: 1;
           text-transform: uppercase;
         }
 
         .archive-kicker span + span {
           color: rgba(255, 255, 255, 0.42);
+          font-weight: 400;
         }
 
         .audio-heading {
@@ -788,7 +789,8 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
             gap: 5px;
             margin-bottom: 8px;
             font-size: 8px;
-            letter-spacing: 0.09em;
+            font-weight: 500;
+            letter-spacing: 0.11em;
           }
 
           .audio-heading {
