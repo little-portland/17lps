@@ -198,7 +198,8 @@ export default function SceneNav({
           z-index: 1000 !important;
           width: 100% !important;
           margin: 0 !important;
-          padding: 12px max(5vw, calc((100vw - 1080px) / 2)) 10px max(5vw, calc((100vw - 1080px) / 2)) !important;
+          padding: 12px max(5vw, calc((100vw - 1080px) / 2)) 10px
+            max(5vw, calc((100vw - 1080px) / 2)) !important;
           display: grid !important;
           grid-template-columns: 1fr auto 1fr !important;
           align-items: center !important;
@@ -246,7 +247,16 @@ export default function SceneNav({
         .scene-nav--dining .scene-nav-right {
           display: flex !important;
           align-items: center !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-left,
+        .scene-nav--nocturn .scene-nav-right {
           gap: clamp(24px, 2.8vw, 46px) !important;
+        }
+
+        .scene-nav--dining .scene-nav-left,
+        .scene-nav--dining .scene-nav-right {
+          gap: clamp(20px, 2.1vw, 34px) !important;
         }
 
         .scene-nav--nocturn .scene-nav-left,
@@ -278,10 +288,10 @@ export default function SceneNav({
 
         .scene-nav--dining a {
           font-family: 'Space Mono', 'Courier New', monospace !important;
-          font-size: clamp(15px, 1.02vw, 18px) !important;
+          font-size: clamp(13px, 0.9vw, 15px) !important;
           font-weight: 700 !important;
           line-height: 1 !important;
-          letter-spacing: 0.04em !important;
+          letter-spacing: 0.025em !important;
           color: rgba(61, 207, 214, 0.86) !important;
         }
 
@@ -497,7 +507,7 @@ export default function SceneNav({
 
           .scene-nav-mobile--dining .scene-nav-mobile-inner a {
             font-family: 'Space Mono', 'Courier New', monospace !important;
-            font-size: 25px !important;
+            font-size: 23px !important;
             font-weight: 700 !important;
             line-height: 1.1 !important;
             color: rgba(61, 207, 214, 0.86) !important;
