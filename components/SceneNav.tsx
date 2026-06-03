@@ -361,8 +361,9 @@ export default function SceneNav({
         }
 
         .scene-nav--dining .scene-nav-logo img {
-          filter: brightness(0) saturate(100%) invert(78%) sepia(54%)
-            saturate(600%) hue-rotate(134deg) brightness(89%) contrast(92%) !important;
+          filter: brightness(0) saturate(100%) invert(62%) sepia(66%)
+            saturate(1077%) hue-rotate(322deg) brightness(101%)
+            contrast(93%) !important;
         }
 
         .scene-nav--nocturn .scene-nav-burger,
