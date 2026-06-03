@@ -401,8 +401,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           border-radius: 22px;
           background: rgba(255, 255, 255, 0.055);
           box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035);
-          transition: border-color 0.25s ease, background 0.25s ease,
-            transform 0.25s ease;
+          transition: border-color 0.25s ease, background 0.25s ease;
           box-sizing: border-box;
           overflow: hidden;
         }
@@ -411,10 +410,6 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
         .audio-card.active {
           border-color: rgba(255, 146, 146, 0.78);
           background: rgba(255, 255, 255, 0.075);
-        }
-
-        .audio-card:hover {
-          transform: translateY(-2px);
         }
 
         .thumbnail-button {
