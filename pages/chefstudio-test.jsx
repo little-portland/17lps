@@ -168,9 +168,11 @@ const Menu = ({ menuImage }) => {
         }
 
         .scene-nav a.disabled,
-        .scene-nav-mobile a.disabled {
-          color: #ff0200 !important;
-          opacity: 0.55 !important;
+        .scene-nav-mobile a.disabled,
+        .scene-nav a[aria-disabled="true"],
+        .scene-nav-mobile a[aria-disabled="true"] {
+          color: #ffffff !important;
+          opacity: 0.38 !important;
         }
 
         .scene-nav-logo,
