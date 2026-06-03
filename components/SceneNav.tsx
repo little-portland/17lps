@@ -177,7 +177,7 @@ export default function SceneNav({
           right: auto !important;
           z-index: 50 !important;
           width: min(90%, 1080px) !important;
-          margin: 12px auto 8px auto !important;
+          margin: 12px auto 4px auto !important;
           padding: 0 !important;
           display: grid !important;
           grid-template-columns: 1fr auto 1fr !important;
@@ -218,7 +218,7 @@ export default function SceneNav({
         .scene-nav--nocturn a {
           position: relative !important;
           font-family: Helvetica, Arial, sans-serif !important;
-          font-size: clamp(15px, 1.08vw, 18px) !important;
+          font-size: clamp(16px, 1.12vw, 19px) !important;
           font-weight: 800 !important;
           line-height: 1 !important;
           letter-spacing: 0.02em !important;
@@ -315,8 +315,8 @@ export default function SceneNav({
             position: absolute !important;
             left: 0 !important;
             top: 50% !important;
-            width: 46px !important;
-            height: 46px !important;
+            width: 52px !important;
+            height: 52px !important;
             transform: translateY(-50%) !important;
             border: 0 !important;
             border-radius: 0 !important;
@@ -327,23 +327,32 @@ export default function SceneNav({
             gap: 9px !important;
             cursor: pointer !important;
             padding: 0 !important;
+            overflow: visible !important;
           }
 
           .scene-nav--nocturn .scene-nav-burger span {
             display: block !important;
-            width: 36px !important;
+            width: 38px !important;
             height: 3px !important;
             border-radius: 999px !important;
             background: #ffffff !important;
             transition: transform 0.22s ease, opacity 0.22s ease !important;
           }
 
+          .scene-nav--nocturn .scene-nav-burger.open span {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            width: 42px !important;
+            height: 3px !important;
+          }
+
           .scene-nav--nocturn .scene-nav-burger.open span:first-child {
-            transform: translateY(6px) rotate(45deg) !important;
+            transform: translate(-50%, -50%) rotate(45deg) !important;
           }
 
           .scene-nav--nocturn .scene-nav-burger.open span:last-child {
-            transform: translateY(-6px) rotate(-45deg) !important;
+            transform: translate(-50%, -50%) rotate(-45deg) !important;
           }
 
           .scene-nav-mobile--nocturn {
@@ -358,18 +367,18 @@ export default function SceneNav({
 
           .scene-nav-mobile--nocturn .scene-nav-mobile-inner {
             width: min(86vw, 420px) !important;
-            padding: 90px 24px 24px 24px !important;
+            padding: 82px 24px 24px 24px !important;
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
-            gap: 22px !important;
+            gap: 18px !important;
           }
 
           .scene-nav-mobile--nocturn .scene-nav-mobile-inner a {
             font-family: Helvetica, Arial, sans-serif !important;
-            font-size: 36px !important;
+            font-size: 28px !important;
             font-weight: 800 !important;
-            line-height: 1.12 !important;
+            line-height: 1.1 !important;
             color: rgba(255, 255, 255, 0.84) !important;
             text-decoration: none !important;
           }
