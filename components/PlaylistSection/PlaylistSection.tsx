@@ -21,7 +21,7 @@ type EqualizerProps = {
   onSeek: (event: React.MouseEvent<HTMLDivElement>, track: Track) => void;
 };
 
-const BAR_COUNT = 96;
+const BAR_COUNT = 64;
 
 const parseDuration = (value?: string) => {
   if (!value || typeof value !== 'string') return 0;
@@ -59,12 +59,11 @@ const makeBars = (seedSource: string | number, count = BAR_COUNT) => {
   };
 
   return Array.from({ length: count }, (_, index) => {
-    const slowWave = 0.44 + 0.22 * Math.sin(index * 0.17);
-    const longWave = 0.3 + 0.24 * Math.sin(index * 0.055 + 1.9);
-    const midWave = 0.14 * Math.sin(index * 0.43 + 0.7);
-    const detail = random() * 0.36;
+    const slowWave = 0.34 + 0.18 * Math.sin(index * 0.28);
+    const midWave = 0.2 + 0.18 * Math.sin(index * 0.7 + 0.8);
+    const detail = random() * 0.34;
 
-    return Math.max(0.2, Math.min(1, slowWave + longWave + midWave + detail));
+    return Math.max(0.18, Math.min(1, slowWave + midWave + detail));
   });
 };
 
@@ -100,8 +99,8 @@ const Equalizer = ({
               key={`${track.id}-${index}`}
               className={`equalizer-bar ${isPlayed ? 'played' : ''}`}
               style={{
-                height: `${20 + height * 72}%`,
-                animationDelay: `${index * 0.018}s`,
+                height: `${24 + height * 68}%`,
+                animationDelay: `${index * 0.028}s`,
               }}
             />
           );
@@ -463,7 +462,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           position: relative;
           width: 100%;
           max-width: 100%;
-          height: 92px;
+          height: 44px;
           cursor: pointer;
           overflow: hidden;
           box-sizing: border-box;
@@ -485,20 +484,20 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
         .equalizer-bar {
           flex: 1;
           min-width: 2px;
-          max-width: 8px;
+          max-width: 6px;
           border-radius: 999px;
-          background: rgba(255, 146, 146, 0.48);
+          background: rgba(255, 146, 146, 0.32);
           transform-origin: center;
           transition: background 0.18s ease, opacity 0.18s ease;
         }
 
         .equalizer-bar.played {
-          background: #ffffff;
+          background: #ff9292;
           opacity: 1;
         }
 
         .audio-card.playing .equalizer-bar {
-          animation: equalizerPulse 0.95s ease-in-out infinite;
+          animation: equalizerPulse 0.85s ease-in-out infinite;
         }
 
         .audio-card.playing .equalizer-bar.played {
@@ -507,14 +506,14 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
 
         .equalizer-playhead {
           position: absolute;
-          top: 8px;
-          bottom: 8px;
+          top: 3px;
+          bottom: 3px;
           width: 2px;
           border-radius: 999px;
-          background: #ff9292;
+          background: #ffffff;
           opacity: 0;
           transform: translateX(-1px);
-          box-shadow: 0 0 20px rgba(255, 146, 146, 0.85);
+          box-shadow: 0 0 16px rgba(255, 255, 255, 0.7);
           transition: opacity 0.2s ease;
           pointer-events: none;
         }
@@ -530,12 +529,12 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
         @keyframes equalizerPulse {
           0%,
           100% {
-            transform: scaleY(0.72);
+            transform: scaleY(0.68);
             opacity: 0.52;
           }
 
           50% {
-            transform: scaleY(1.12);
+            transform: scaleY(1.08);
             opacity: 0.9;
           }
         }
@@ -544,11 +543,11 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           0%,
           100% {
             transform: scaleY(0.82);
-            opacity: 0.85;
+            opacity: 0.9;
           }
 
           50% {
-            transform: scaleY(1.22);
+            transform: scaleY(1.28);
             opacity: 1;
           }
         }
@@ -556,11 +555,11 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
         @keyframes playheadGlow {
           0%,
           100% {
-            box-shadow: 0 0 12px rgba(255, 146, 146, 0.45);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
           }
 
           50% {
-            box-shadow: 0 0 30px rgba(255, 146, 146, 0.95);
+            box-shadow: 0 0 24px rgba(255, 255, 255, 0.9);
           }
         }
 
@@ -620,7 +619,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           }
 
           .equalizer {
-            height: 58px;
+            height: 32px;
           }
 
           .equalizer-bars {
@@ -628,8 +627,8 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           }
 
           .equalizer-playhead {
-            top: 6px;
-            bottom: 6px;
+            top: 3px;
+            bottom: 3px;
           }
         }
 
@@ -650,7 +649,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           }
 
           .equalizer {
-            height: 48px;
+            height: 28px;
           }
         }
       `}</style>
