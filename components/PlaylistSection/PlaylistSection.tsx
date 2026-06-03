@@ -1,11 +1,32 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+
+type Track = {
+  id: string | number;
+  title: string;
+  thumbnail: string;
+  audioSrc: string;
+  duration?: string;
+};
+
+type PlaylistSectionProps = {
+  title?: string;
+  tracks: Track[];
+};
+
+type WaveformProps = {
+  track: Track;
+  active: boolean;
+  playing: boolean;
+  progress: number;
+  onSeek: (event: React.MouseEvent<HTMLButtonElement>, track: Track) => void;
+};
 
 const BAR_COUNT = 120;
 
-const parseDuration = (value) => {
-  if (!value || typeof value !== "string") return 0;
+const parseDuration = (value?: string) => {
+  if (!value || typeof value !== 'string') return 0;
 
-  const parts = value.split(":").map(Number);
+  const parts = value.split(':').map(Number);
 
   if (parts.length === 2) {
     return parts[0] * 60 + parts[1];
@@ -18,18 +39,18 @@ const parseDuration = (value) => {
   return 0;
 };
 
-const formatTime = (seconds) => {
-  if (!Number.isFinite(seconds) || seconds < 0) return "00:00";
+const formatTime = (seconds: number) => {
+  if (!Number.isFinite(seconds) || seconds < 0) return '00:00';
 
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
 
-  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+  return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 };
 
-const makeBars = (seedSource, count = BAR_COUNT) => {
+const makeBars = (seedSource: string | number, count = BAR_COUNT) => {
   let seed = String(seedSource)
-    .split("")
+    .split('')
     .reduce((acc, char) => acc + char.charCodeAt(0), 0);
 
   const random = () => {
@@ -52,7 +73,7 @@ const Waveform = ({
   playing,
   progress,
   onSeek,
-}) => {
+}: WaveformProps) => {
   const bars = useMemo(
     () => makeBars(`${track.id}-${track.title}`),
     [track.id, track.title]
@@ -64,7 +85,11 @@ const Waveform = ({
       className="waveform"
       onClick={(event) => onSeek(event, track)}
       aria-label={`Seek ${track.title}`}
-      style={{ "--progress": `${progress * 100}%` }}
+      style={
+        {
+          '--progress': `${progress * 100}%`,
+        } as React.CSSProperties
+      }
     >
       <span className="waveform-baseline" />
 
@@ -75,9 +100,8 @@ const Waveform = ({
 
           return (
             <span
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-              className={`waveform-bar ${isPlayed ? "played" : ""}`}
+              key={`${track.id}-${index}`}
+              className={`waveform-bar ${isPlayed ? 'played' : ''}`}
               style={{
                 height: `${18 + height * 72}%`,
                 animationDelay: `${index * 0.018}s`,
@@ -88,23 +112,27 @@ const Waveform = ({
       </span>
 
       <span
-        className={`waveform-playhead ${active ? "visible" : ""} ${
-          playing ? "playing" : ""
+        className={`waveform-playhead ${active ? 'visible' : ''} ${
+          playing ? 'playing' : ''
         }`}
       />
     </button>
   );
 };
 
-const PlaylistSection = ({ tracks = [] }) => {
-  const audioRef = useRef(null);
-  const pendingSeekRef = useRef(null);
+const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const pendingSeekRef = useRef<number | null>(null);
   const shouldAutoPlayRef = useRef(false);
 
-  const [activeTrackId, setActiveTrackId] = useState(tracks[0]?.id ?? null);
+  const [activeTrackId, setActiveTrackId] = useState<string | number | null>(
+    tracks[0]?.id ?? null
+  );
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [durationByTrack, setDurationByTrack] = useState({});
+  const [durationByTrack, setDurationByTrack] = useState<
+    Record<string | number, number>
+  >({});
 
   const activeTrack = useMemo(
     () => tracks.find((track) => track.id === activeTrackId) || tracks[0],
@@ -136,11 +164,11 @@ const PlaylistSection = ({ tracks = [] }) => {
     }
   }, [activeTrack?.id, activeTrack?.audioSrc]);
 
-  const getTrackDuration = (track) => {
+  const getTrackDuration = (track: Track) => {
     return durationByTrack[track.id] || parseDuration(track.duration);
   };
 
-  const handleTogglePlay = (track) => {
+  const handleTogglePlay = (track: Track) => {
     const audio = audioRef.current;
 
     if (!audio) return;
@@ -167,7 +195,10 @@ const PlaylistSection = ({ tracks = [] }) => {
     }
   };
 
-  const handleSeek = (event, track) => {
+  const handleSeek = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    track: Track
+  ) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const ratio = Math.max(
       0,
@@ -237,15 +268,15 @@ const PlaylistSection = ({ tracks = [] }) => {
         return (
           <article
             key={track.id}
-            className={`audio-card ${isActive ? "active" : ""} ${
-              isActive && isPlaying ? "playing" : ""
+            className={`audio-card ${isActive ? 'active' : ''} ${
+              isActive && isPlaying ? 'playing' : ''
             }`}
           >
             <button
               type="button"
               className="thumbnail-button"
               onClick={() => handleTogglePlay(track)}
-              aria-label={isActive && isPlaying ? "Pause" : "Play"}
+              aria-label={isActive && isPlaying ? 'Pause' : 'Play'}
             >
               <img
                 className="audio-thumbnail"
@@ -279,9 +310,9 @@ const PlaylistSection = ({ tracks = [] }) => {
                   <span />
                 </span>
 
-                <span>{isActive ? formatTime(currentTime) : "00:00"}</span>
+                <span>{isActive ? formatTime(currentTime) : '00:00'}</span>
                 <span>/</span>
-                <span>{track.duration}</span>
+                <span>{track.duration || formatTime(duration)}</span>
               </div>
 
               <Waveform
@@ -420,7 +451,7 @@ const PlaylistSection = ({ tracks = [] }) => {
           gap: 13px;
           margin-bottom: 18px;
           color: rgba(255, 255, 255, 0.82);
-          font-family: "Courier New", Courier, monospace;
+          font-family: 'Courier New', Courier, monospace;
           font-size: 17px;
           font-weight: 800;
           letter-spacing: 0.04em;
