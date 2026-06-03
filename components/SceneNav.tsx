@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
@@ -18,7 +18,20 @@ export default function SceneNav({
   theme?: SceneNavTheme;
 }) {
   const [open, setOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 8);
+    };
+
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const links: NavLink[] = [
     {
@@ -81,7 +94,7 @@ export default function SceneNav({
       <header
         className={`scene-nav scene-nav--${theme} ${visible ? 'visible' : ''} ${
           open ? 'is-open' : ''
-        }`}
+        } ${hasScrolled ? 'has-scrolled' : ''}`}
       >
         <button
           className={`scene-nav-burger ${open ? 'open' : ''}`}
@@ -171,14 +184,14 @@ export default function SceneNav({
 
       <style jsx global>{`
         .scene-nav.scene-nav--nocturn {
-          position: relative !important;
-          top: auto !important;
-          left: auto !important;
-          right: auto !important;
-          z-index: 50 !important;
-          width: min(90%, 1080px) !important;
-          margin: 12px auto 4px auto !important;
-          padding: 0 !important;
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          z-index: 1000 !important;
+          width: 100% !important;
+          margin: 0 !important;
+          padding: 12px max(5vw, calc((100vw - 1080px) / 2)) 10px max(5vw, calc((100vw - 1080px) / 2)) !important;
           display: grid !important;
           grid-template-columns: 1fr auto 1fr !important;
           align-items: center !important;
@@ -188,6 +201,16 @@ export default function SceneNav({
           transform: none !important;
           border: 0 !important;
           background: transparent !important;
+          transition: background 0.25s ease, box-shadow 0.25s ease,
+            backdrop-filter 0.25s ease !important;
+          box-sizing: border-box !important;
+        }
+
+        .scene-nav.scene-nav--nocturn.has-scrolled {
+          background: rgba(10, 24, 109, 0.94) !important;
+          backdrop-filter: blur(10px) !important;
+          -webkit-backdrop-filter: blur(10px) !important;
+          box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12) !important;
         }
 
         .scene-nav.scene-nav--nocturn.is-open {
@@ -281,16 +304,16 @@ export default function SceneNav({
 
         @media (max-width: 900px) {
           .scene-nav.scene-nav--nocturn {
-            width: 88% !important;
-            margin: 18px auto 18px auto !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 18px 6% 14px 6% !important;
             display: flex !important;
             align-items: center !important;
             justify-content: flex-end !important;
-            min-height: 46px !important;
+            min-height: 72px !important;
           }
 
           .scene-nav.scene-nav--nocturn.is-open {
-            position: relative !important;
             z-index: 1001 !important;
           }
 
@@ -313,7 +336,7 @@ export default function SceneNav({
           .scene-nav--nocturn .scene-nav-burger {
             display: flex !important;
             position: absolute !important;
-            left: 0 !important;
+            left: 6% !important;
             top: 50% !important;
             width: 52px !important;
             height: 52px !important;
