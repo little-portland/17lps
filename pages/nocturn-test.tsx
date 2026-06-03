@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import Head from "next/head";
-import Script from "next/script";
+import React, { useState } from 'react';
+import Head from 'next/head';
+import Script from 'next/script';
 
 import SceneNav from '@components/SceneNav';
-import PlaylistSection from "@components/PlaylistSection/PlaylistSection";
+import PlaylistSection from '@components/PlaylistSection/PlaylistSection';
 
 const TRACKS = [
   {
     id: 1,
-    title: "Nocturn – Resonance x Doyenne 27 Nov 2025",
-    thumbnail: "/images/nocturn/playlist/playlist-thumb.png",
-    audioSrc: "/audio/nocturn/resonance.mp3",
-    duration: "29:02",
+    title: 'Nocturn – Resonance x Doyenne 27 Nov 2025',
+    thumbnail: '/images/nocturn/playlist/playlist-thumb.png',
+    audioSrc: '/audio/nocturn/resonance.mp3',
+    duration: '29:02',
   },
   {
     id: 2,
-    title: "Nocturn 06 Sonics – Eros Downstairs (Stereo)",
-    thumbnail: "/images/nocturn/playlist/playlist-thumb.png",
-    audioSrc: "/audio/nocturn/eros-downstairs.mp3",
-    duration: "10:17",
+    title: 'Nocturn 06 Sonics – Eros Downstairs (Stereo)',
+    thumbnail: '/images/nocturn/playlist/playlist-thumb.png',
+    audioSrc: '/audio/nocturn/eros-downstairs.mp3',
+    duration: '10:17',
   },
   {
     id: 3,
-    title: "Nocturn 06 Sonics – Eros Upstairs (Stereo)",
-    thumbnail: "/images/nocturn/playlist/playlist-thumb.png",
-    audioSrc: "/audio/nocturn/eros-upstairs.mp3",
-    duration: "13:56",
+    title: 'Nocturn 06 Sonics – Eros Upstairs (Stereo)',
+    thumbnail: '/images/nocturn/playlist/playlist-thumb.png',
+    audioSrc: '/audio/nocturn/eros-upstairs.mp3',
+    duration: '13:56',
   },
 ];
 
 const NocturnPage = () => {
-  const [activeTab, setActiveTab] = useState("archive");
+  const [activeTab, setActiveTab] = useState('archive');
 
   return (
     <>
@@ -409,7 +409,7 @@ const NocturnPage = () => {
         <title>Nocturn — Archive</title>
       </Head>
 
-      <SceneNav active="Nocturn" />
+      <SceneNav theme="default" />
 
       <div className="nocturn">
         <img
@@ -423,23 +423,25 @@ const NocturnPage = () => {
         <div className="nocturn-tabs">
           <button
             type="button"
-            className={`nocturn-tab ${activeTab === "archive" ? "active" : ""}`}
-            onClick={() => setActiveTab("archive")}
+            className={`nocturn-tab ${activeTab === 'archive' ? 'active' : ''}`}
+            onClick={() => setActiveTab('archive')}
           >
             Main Archive
           </button>
 
           <button
             type="button"
-            className={`nocturn-tab ${activeTab === "playlist" ? "active" : ""}`}
-            onClick={() => setActiveTab("playlist")}
+            className={`nocturn-tab ${
+              activeTab === 'playlist' ? 'active' : ''
+            }`}
+            onClick={() => setActiveTab('playlist')}
           >
             Sonic Archive
           </button>
         </div>
       </div>
 
-      {activeTab === "archive" && (
+      {activeTab === 'archive' && (
         <div className="tab-panel">
           <div className="nocturn-wider-section flyers">
             <div className="row">
@@ -559,7 +561,7 @@ const NocturnPage = () => {
         </div>
       )}
 
-      {activeTab === "playlist" && (
+      {activeTab === 'playlist' && (
         <div className="tab-panel">
           <div className="nocturn-wider-section playlist">
             <div className="row">
