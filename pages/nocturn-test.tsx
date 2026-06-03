@@ -46,7 +46,7 @@ const NocturnPage = () => {
 
             .nocturn-page-main {
               width: 100%;
-              padding-top: 18px;
+              padding-top: 0;
             }
 
             .nocturn {
@@ -111,6 +111,7 @@ const NocturnPage = () => {
             }
 
             .subscribe .klaviyo-form-RNQ78y {
+              width: 100%;
               max-width: 640px;
               margin: 0 auto;
             }
@@ -266,7 +267,7 @@ const NocturnPage = () => {
             .contact-block {
               width: 100%;
               max-width: 640px;
-              margin: 18px auto 70px auto !important;
+              margin: -42px auto 70px auto !important;
               text-align: center !important;
             }
 
@@ -275,17 +276,20 @@ const NocturnPage = () => {
               align-items: center;
               justify-content: center;
               width: 100%;
-              min-height: 64px;
-              padding: 0 34px;
+              height: 54px;
+              min-height: 54px;
+              padding: 0;
               border: 2px solid #ffffff;
               border-radius: 4px;
               background: #ffffff;
               color: #0a186d !important;
               font-family: Helvetica, Arial, sans-serif;
-              font-weight: 800;
-              font-size: 15px;
-              letter-spacing: 0.08em;
+              font-weight: 700;
+              font-size: 16px;
+              letter-spacing: 0;
+              line-height: 1;
               text-decoration: none;
+              text-transform: none;
               box-sizing: border-box;
               transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
             }
@@ -331,10 +335,6 @@ const NocturnPage = () => {
             }
 
             @media (max-width: 768px) {
-              .nocturn-page-main {
-                padding-top: 8px;
-              }
-
               .afterhours {
                 margin-bottom: 25px;
               }
@@ -436,12 +436,13 @@ const NocturnPage = () => {
 
               .contact-block {
                 width: 90%;
-                margin-top: 14px !important;
+                margin-top: -28px !important;
               }
 
               .contact-button {
-                min-height: 56px;
-                font-size: 14px;
+                height: 54px;
+                min-height: 54px;
+                font-size: 16px;
               }
             }
           `}
@@ -636,7 +637,7 @@ const NocturnPage = () => {
                   className="contact-button"
                   href="mailto:bianca@little-portland.com"
                 >
-                  CONTACT
+                  Contact
                 </a>
               </div>
             </div>
