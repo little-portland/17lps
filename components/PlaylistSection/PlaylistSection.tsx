@@ -103,6 +103,9 @@ const AudioWaveform = ({
     [track.id, track.title]
   );
 
+  const safeTrackId = String(track.id).replace(/[^a-zA-Z0-9-_]/g, '');
+  const glowId = `audio-waveform-glow-${safeTrackId}`;
+
   const step = SVG_WIDTH / bars.length;
   const barWidth = Math.max(4, step * 0.46);
 
@@ -122,6 +125,23 @@ const AudioWaveform = ({
         preserveAspectRatio="none"
         aria-hidden="true"
       >
+        <defs>
+          <filter
+            id={glowId}
+            x="-30%"
+            y="-60%"
+            width="160%"
+            height="220%"
+            colorInterpolationFilters="sRGB"
+          >
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
         {bars.map((bar, index) => {
           const barProgress = index / (bars.length - 1);
           const isPlayed = active && barProgress <= progress;
@@ -140,6 +160,7 @@ const AudioWaveform = ({
               height={staticHeight}
               rx={barWidth / 2}
               fill={isPlayed ? WAVE_COLOUR : 'rgba(255, 146, 146, 0.24)'}
+              filter={isPlayed && playing ? `url(#${glowId})` : undefined}
             >
               {playing && (
                 <>
@@ -196,6 +217,8 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
     () => tracks.find((track) => track.id === activeTrackId) || tracks[0],
     [tracks, activeTrackId]
   );
+
+  const hasPlayingTrack = isPlaying && activeTrackId !== null;
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -308,7 +331,9 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
   };
 
   return (
-    <section className="playlist-section">
+    <section
+      className={`playlist-section ${hasPlayingTrack ? 'has-playing' : ''}`}
+    >
       <audio
         ref={audioRef}
         preload="metadata"
@@ -317,15 +342,19 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
         onEnded={handleEnded}
       />
 
-      {tracks.map((track) => {
+      {tracks.map((track, index) => {
         const isActive = activeTrackId === track.id;
         const duration = getTrackDuration(track);
         const progress =
           isActive && duration ? Math.min(currentTime / duration, 1) : 0;
 
+        const archiveNumber = String(index + 1).padStart(3, '0');
+        const largeNumber = String(index + 1).padStart(2, '0');
+
         return (
           <article
             key={track.id}
+            data-card-number={largeNumber}
             className={`audio-card ${isActive ? 'active' : ''} ${
               isActive && isPlaying ? 'playing' : ''
             }`}
@@ -356,6 +385,11 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
             </button>
 
             <div className="audio-content">
+              <div className="archive-kicker">
+                <span>Sonic Archive {archiveNumber}</span>
+                <span>Live Recording</span>
+              </div>
+
               <div className="audio-heading">
                 <h3>{track.title}</h3>
               </div>
@@ -384,45 +418,127 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           max-width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 30px;
+          gap: 34px;
           box-sizing: border-box;
         }
 
         .audio-card {
+          position: relative;
           width: 100%;
           max-width: 100%;
-          min-height: 260px;
+          min-height: 278px;
           display: grid;
           grid-template-columns: 190px minmax(0, 1fr);
-          gap: 30px;
+          gap: 32px;
           align-items: center;
-          padding: 48px 28px 28px 28px;
+          padding: 48px 30px 30px 30px;
           border: 1px solid rgba(255, 146, 146, 0.5);
-          border-radius: 22px;
-          background: rgba(255, 255, 255, 0.055);
-          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035);
-          transition: border-color 0.25s ease, background 0.25s ease;
+          border-radius: 24px;
+          background:
+            radial-gradient(
+              circle at 18% 50%,
+              rgba(255, 146, 146, 0.13),
+              transparent 34%
+            ),
+            radial-gradient(
+              circle at 78% 52%,
+              rgba(255, 146, 146, 0.075),
+              transparent 42%
+            ),
+            rgba(255, 255, 255, 0.055);
+          box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+            0 18px 70px rgba(0, 0, 0, 0.08);
+          transition:
+            border-color 0.25s ease,
+            background 0.25s ease,
+            box-shadow 0.25s ease,
+            opacity 0.25s ease,
+            transform 0.25s ease;
           box-sizing: border-box;
           overflow: hidden;
+          isolation: isolate;
         }
 
-        .audio-card:hover,
+        .audio-card::after {
+          content: attr(data-card-number);
+          position: absolute;
+          right: 28px;
+          bottom: -38px;
+          z-index: 0;
+          color: rgba(255, 255, 255, 0.035);
+          font-family: Helvetica, Arial, sans-serif;
+          font-size: clamp(110px, 10vw, 170px);
+          font-weight: 900;
+          line-height: 0.8;
+          letter-spacing: -0.08em;
+          pointer-events: none;
+        }
+
+        .audio-card:hover {
+          transform: translateY(-2px);
+          border-color: rgba(255, 146, 146, 0.75);
+          background:
+            radial-gradient(
+              circle at 18% 50%,
+              rgba(255, 146, 146, 0.16),
+              transparent 34%
+            ),
+            radial-gradient(
+              circle at 78% 52%,
+              rgba(255, 146, 146, 0.105),
+              transparent 42%
+            ),
+            rgba(255, 255, 255, 0.075);
+        }
+
         .audio-card.active {
           border-color: rgba(255, 146, 146, 0.78);
-          background: rgba(255, 255, 255, 0.075);
+        }
+
+        .audio-card.playing {
+          border-color: rgba(255, 146, 146, 0.98);
+          box-shadow:
+            0 0 0 1px rgba(255, 146, 146, 0.45),
+            0 24px 80px rgba(255, 146, 146, 0.14),
+            inset 0 0 42px rgba(255, 146, 146, 0.05);
+        }
+
+        .playlist-section.has-playing .audio-card:not(.playing) {
+          opacity: 0.74;
+        }
+
+        .playlist-section.has-playing .audio-card:not(.playing):hover {
+          opacity: 1;
         }
 
         .thumbnail-button {
           position: relative;
+          z-index: 1;
           width: 190px;
           height: 190px;
           padding: 0;
-          border: 0;
+          border: 1px solid rgba(255, 146, 146, 0);
           border-radius: 18px;
           overflow: hidden;
           cursor: pointer;
           background: transparent;
           box-sizing: border-box;
+          box-shadow:
+            inset 0 0 35px rgba(0, 0, 0, 0.18),
+            0 20px 42px rgba(0, 0, 0, 0.14);
+          transition:
+            border-color 0.25s ease,
+            box-shadow 0.25s ease,
+            transform 0.25s ease;
+        }
+
+        .audio-card.playing .thumbnail-button {
+          border-color: rgba(255, 146, 146, 0.7);
+          box-shadow:
+            0 0 0 1px rgba(255, 146, 146, 0.32),
+            0 24px 54px rgba(255, 146, 146, 0.16),
+            inset 0 0 35px rgba(0, 0, 0, 0.18);
         }
 
         .audio-thumbnail {
@@ -445,15 +561,25 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: 72px;
-          height: 72px;
+          width: 76px;
+          height: 76px;
           transform: translate(-50%, -50%);
           border-radius: 50%;
           background: rgba(10, 24, 109, 0.88);
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+          box-shadow:
+            0 14px 34px rgba(0, 0, 0, 0.24),
+            0 0 0 0 rgba(255, 146, 146, 0.35);
+          transition:
+            background 0.25s ease,
+            box-shadow 0.25s ease,
+            transform 0.25s ease;
+        }
+
+        .audio-card.playing .play-button {
+          animation: pulsePlay 1.8s ease-in-out infinite;
         }
 
         .play-icon {
@@ -478,9 +604,29 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
         }
 
         .audio-content {
+          position: relative;
+          z-index: 1;
           min-width: 0;
           width: 100%;
           box-sizing: border-box;
+        }
+
+        .archive-kicker {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 10px;
+          color: rgba(255, 146, 146, 0.88);
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.13em;
+          line-height: 1;
+          text-transform: uppercase;
+        }
+
+        .archive-kicker span + span {
+          color: rgba(255, 255, 255, 0.42);
         }
 
         .audio-heading {
@@ -488,7 +634,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           align-items: flex-start;
           justify-content: space-between;
           gap: 24px;
-          margin-bottom: 14px;
+          margin-bottom: 12px;
         }
 
         .audio-heading h3 {
@@ -498,6 +644,10 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           font-size: clamp(20px, 2vw, 30px);
           font-weight: 800;
           line-height: 1.15;
+        }
+
+        .audio-card.playing .audio-heading h3 {
+          text-shadow: 0 0 24px rgba(255, 255, 255, 0.12);
         }
 
         .audio-meta {
@@ -560,6 +710,21 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           animation: playheadGlow 1.1s ease-in-out infinite;
         }
 
+        @keyframes pulsePlay {
+          0%,
+          100% {
+            box-shadow:
+              0 14px 34px rgba(0, 0, 0, 0.24),
+              0 0 0 0 rgba(255, 146, 146, 0.3);
+          }
+
+          50% {
+            box-shadow:
+              0 14px 34px rgba(0, 0, 0, 0.24),
+              0 0 0 12px rgba(255, 146, 146, 0);
+          }
+        }
+
         @keyframes playheadGlow {
           0%,
           100% {
@@ -579,9 +744,15 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           .audio-card {
             grid-template-columns: 104px minmax(0, 1fr);
             gap: 16px;
-            min-height: 180px;
+            min-height: 190px;
             padding: 36px 16px 16px 16px;
             border-radius: 17px;
+          }
+
+          .audio-card::after {
+            right: 16px;
+            bottom: -22px;
+            font-size: 84px;
           }
 
           .thumbnail-button {
@@ -609,6 +780,15 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           .pause-icon span {
             width: 6px;
             height: 20px;
+          }
+
+          .archive-kicker {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            margin-bottom: 8px;
+            font-size: 8px;
+            letter-spacing: 0.09em;
           }
 
           .audio-heading {
