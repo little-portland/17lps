@@ -30,7 +30,7 @@ const Menu = ({ menuImage }) => {
         <div className="nocturn override">
           <img
             className="override-logo tent-page-logo"
-            src="/images/thetent/the_tent_page_logo.png"
+            src="/images/thetent/the_tent_page_logo-test.png"
             alt="The Tent"
             width="100%"
           />
@@ -236,14 +236,17 @@ const Menu = ({ menuImage }) => {
           color: #e67e62 !important;
         }
 
-        .scene-nav-logo img,
+        .scene-nav-logo img {
+          filter: brightness(0) saturate(100%) invert(67%) sepia(47%) saturate(1448%)
+            hue-rotate(323deg) brightness(97%) contrast(85%) !important;
+        }
+
         .scene-nav-logo svg,
         .scene-nav-logo svg *,
         .scene-nav-logo path,
         .scene-nav-logo circle,
         .scene-nav-logo rect,
         .scene-nav-logo line {
-          filter: none !important;
           fill: #e67e62 !important;
           stroke: #e67e62 !important;
         }
