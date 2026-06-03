@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
-type SceneNavTheme = 'default' | 'access' | 'space' | 'tent-radio' | 'nocturn';
+type SceneNavTheme =
+  | 'default'
+  | 'access'
+  | 'space'
+  | 'tent-radio'
+  | 'nocturn'
+  | 'dining';
 
 type NavLink = {
   label: string;
@@ -52,7 +58,7 @@ export default function SceneNav({
     {
       label: 'Projects',
       href: '/projects',
-      activePaths: ['/projects'],
+      activePaths: ['/projects', '/dining-test'],
     },
     {
       label: 'Network',
@@ -183,7 +189,8 @@ export default function SceneNav({
       </AnimatePresence>
 
       <style jsx global>{`
-        .scene-nav.scene-nav--nocturn {
+        .scene-nav.scene-nav--nocturn,
+        .scene-nav.scene-nav--dining {
           position: fixed !important;
           top: 0 !important;
           left: 0 !important;
@@ -213,56 +220,87 @@ export default function SceneNav({
           box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12) !important;
         }
 
-        .scene-nav.scene-nav--nocturn.is-open {
+        .scene-nav.scene-nav--dining.has-scrolled {
+          background: rgba(0, 0, 0, 0.94) !important;
+          backdrop-filter: blur(10px) !important;
+          -webkit-backdrop-filter: blur(10px) !important;
+          box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28) !important;
+        }
+
+        .scene-nav.scene-nav--nocturn.is-open,
+        .scene-nav.scene-nav--dining.is-open {
           z-index: 1001 !important;
         }
 
         .scene-nav.scene-nav--nocturn::before,
-        .scene-nav.scene-nav--nocturn::after {
+        .scene-nav.scene-nav--nocturn::after,
+        .scene-nav.scene-nav--dining::before,
+        .scene-nav.scene-nav--dining::after {
           content: none !important;
           display: none !important;
         }
 
         .scene-nav--nocturn .scene-nav-left,
-        .scene-nav--nocturn .scene-nav-right {
+        .scene-nav--nocturn .scene-nav-right,
+        .scene-nav--dining .scene-nav-left,
+        .scene-nav--dining .scene-nav-right {
           display: flex !important;
           align-items: center !important;
           gap: clamp(24px, 2.8vw, 46px) !important;
         }
 
-        .scene-nav--nocturn .scene-nav-left {
+        .scene-nav--nocturn .scene-nav-left,
+        .scene-nav--dining .scene-nav-left {
           justify-content: flex-end !important;
         }
 
-        .scene-nav--nocturn .scene-nav-right {
+        .scene-nav--nocturn .scene-nav-right,
+        .scene-nav--dining .scene-nav-right {
           justify-content: flex-start !important;
         }
 
-        .scene-nav--nocturn a {
+        .scene-nav--nocturn a,
+        .scene-nav--dining a {
           position: relative !important;
+          text-decoration: none !important;
+          text-transform: none !important;
+          transition: color 0.22s ease, opacity 0.22s ease !important;
+        }
+
+        .scene-nav--nocturn a {
           font-family: Helvetica, Arial, sans-serif !important;
           font-size: clamp(16px, 1.12vw, 19px) !important;
           font-weight: 800 !important;
           line-height: 1 !important;
           letter-spacing: 0.02em !important;
           color: rgba(255, 255, 255, 0.82) !important;
-          text-decoration: none !important;
-          text-transform: none !important;
-          transition: color 0.22s ease, opacity 0.22s ease !important;
+        }
+
+        .scene-nav--dining a {
+          font-family: 'Space Mono', 'Courier New', monospace !important;
+          font-size: clamp(15px, 1.02vw, 18px) !important;
+          font-weight: 700 !important;
+          line-height: 1 !important;
+          letter-spacing: 0.04em !important;
+          color: rgba(61, 207, 214, 0.86) !important;
         }
 
         .scene-nav--nocturn a::before,
-        .scene-nav--nocturn a::after {
+        .scene-nav--nocturn a::after,
+        .scene-nav--dining a::before,
+        .scene-nav--dining a::after {
           content: none !important;
           display: none !important;
         }
 
-        .scene-nav--nocturn a:hover {
+        .scene-nav--nocturn a:hover,
+        .scene-nav--nocturn a.active {
           color: #ff9292 !important;
         }
 
-        .scene-nav--nocturn a.active {
-          color: #ff9292 !important;
+        .scene-nav--dining a:hover,
+        .scene-nav--dining a.active {
+          color: #f57658 !important;
         }
 
         .scene-nav--nocturn a.disabled {
@@ -272,7 +310,15 @@ export default function SceneNav({
           cursor: default !important;
         }
 
-        .scene-nav--nocturn .scene-nav-logo {
+        .scene-nav--dining a.disabled {
+          color: rgba(61, 207, 214, 0.5) !important;
+          opacity: 1 !important;
+          pointer-events: none !important;
+          cursor: default !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-logo,
+        .scene-nav--dining .scene-nav-logo {
           position: relative !important;
           display: flex !important;
           align-items: center !important;
@@ -284,26 +330,39 @@ export default function SceneNav({
         }
 
         .scene-nav--nocturn .scene-nav-logo::before,
-        .scene-nav--nocturn .scene-nav-logo::after {
+        .scene-nav--nocturn .scene-nav-logo::after,
+        .scene-nav--dining .scene-nav-logo::before,
+        .scene-nav--dining .scene-nav-logo::after {
           content: none !important;
           display: none !important;
         }
 
-        .scene-nav--nocturn .scene-nav-logo img {
+        .scene-nav--nocturn .scene-nav-logo img,
+        .scene-nav--dining .scene-nav-logo img {
           display: block !important;
           width: 40px !important;
           height: 40px !important;
           object-fit: contain !important;
-          filter: brightness(0) invert(1) !important;
           opacity: 0.96 !important;
         }
 
-        .scene-nav--nocturn .scene-nav-burger {
+        .scene-nav--nocturn .scene-nav-logo img {
+          filter: brightness(0) invert(1) !important;
+        }
+
+        .scene-nav--dining .scene-nav-logo img {
+          filter: brightness(0) saturate(100%) invert(78%) sepia(54%)
+            saturate(600%) hue-rotate(134deg) brightness(89%) contrast(92%) !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-burger,
+        .scene-nav--dining .scene-nav-burger {
           display: none !important;
         }
 
         @media (max-width: 900px) {
-          .scene-nav.scene-nav--nocturn {
+          .scene-nav.scene-nav--nocturn,
+          .scene-nav.scene-nav--dining {
             width: 100% !important;
             margin: 0 !important;
             padding: 18px 6% 14px 6% !important;
@@ -313,27 +372,33 @@ export default function SceneNav({
             min-height: 72px !important;
           }
 
-          .scene-nav.scene-nav--nocturn.is-open {
+          .scene-nav.scene-nav--nocturn.is-open,
+          .scene-nav.scene-nav--dining.is-open {
             z-index: 1001 !important;
           }
 
           .scene-nav--nocturn .scene-nav-left,
-          .scene-nav--nocturn .scene-nav-right {
+          .scene-nav--nocturn .scene-nav-right,
+          .scene-nav--dining .scene-nav-left,
+          .scene-nav--dining .scene-nav-right {
             display: none !important;
           }
 
-          .scene-nav--nocturn .scene-nav-logo {
+          .scene-nav--nocturn .scene-nav-logo,
+          .scene-nav--dining .scene-nav-logo {
             width: 46px !important;
             height: 46px !important;
             flex-basis: 46px !important;
           }
 
-          .scene-nav--nocturn .scene-nav-logo img {
+          .scene-nav--nocturn .scene-nav-logo img,
+          .scene-nav--dining .scene-nav-logo img {
             width: 46px !important;
             height: 46px !important;
           }
 
-          .scene-nav--nocturn .scene-nav-burger {
+          .scene-nav--nocturn .scene-nav-burger,
+          .scene-nav--dining .scene-nav-burger {
             display: flex !important;
             position: absolute !important;
             left: 6% !important;
@@ -353,16 +418,25 @@ export default function SceneNav({
             overflow: visible !important;
           }
 
-          .scene-nav--nocturn .scene-nav-burger span {
+          .scene-nav--nocturn .scene-nav-burger span,
+          .scene-nav--dining .scene-nav-burger span {
             display: block !important;
             width: 38px !important;
             height: 3px !important;
             border-radius: 999px !important;
-            background: #ffffff !important;
             transition: transform 0.22s ease, opacity 0.22s ease !important;
           }
 
-          .scene-nav--nocturn .scene-nav-burger.open span {
+          .scene-nav--nocturn .scene-nav-burger span {
+            background: #ffffff !important;
+          }
+
+          .scene-nav--dining .scene-nav-burger span {
+            background: #3dcfd6 !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger.open span,
+          .scene-nav--dining .scene-nav-burger.open span {
             position: absolute !important;
             top: 50% !important;
             left: 50% !important;
@@ -370,25 +444,36 @@ export default function SceneNav({
             height: 3px !important;
           }
 
-          .scene-nav--nocturn .scene-nav-burger.open span:first-child {
+          .scene-nav--nocturn .scene-nav-burger.open span:first-child,
+          .scene-nav--dining .scene-nav-burger.open span:first-child {
             transform: translate(-50%, -50%) rotate(45deg) !important;
           }
 
-          .scene-nav--nocturn .scene-nav-burger.open span:last-child {
+          .scene-nav--nocturn .scene-nav-burger.open span:last-child,
+          .scene-nav--dining .scene-nav-burger.open span:last-child {
             transform: translate(-50%, -50%) rotate(-45deg) !important;
           }
 
-          .scene-nav-mobile--nocturn {
+          .scene-nav-mobile--nocturn,
+          .scene-nav-mobile--dining {
             position: fixed !important;
             inset: 0 !important;
             z-index: 999 !important;
-            background: rgba(10, 24, 109, 0.96) !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
           }
 
-          .scene-nav-mobile--nocturn .scene-nav-mobile-inner {
+          .scene-nav-mobile--nocturn {
+            background: rgba(10, 24, 109, 0.96) !important;
+          }
+
+          .scene-nav-mobile--dining {
+            background: rgba(0, 0, 0, 0.96) !important;
+          }
+
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner,
+          .scene-nav-mobile--dining .scene-nav-mobile-inner {
             width: min(86vw, 420px) !important;
             padding: 82px 24px 24px 24px !important;
             display: flex !important;
@@ -397,21 +482,42 @@ export default function SceneNav({
             gap: 18px !important;
           }
 
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner a,
+          .scene-nav-mobile--dining .scene-nav-mobile-inner a {
+            text-decoration: none !important;
+          }
+
           .scene-nav-mobile--nocturn .scene-nav-mobile-inner a {
             font-family: Helvetica, Arial, sans-serif !important;
             font-size: 28px !important;
             font-weight: 800 !important;
             line-height: 1.1 !important;
             color: rgba(255, 255, 255, 0.84) !important;
-            text-decoration: none !important;
+          }
+
+          .scene-nav-mobile--dining .scene-nav-mobile-inner a {
+            font-family: 'Space Mono', 'Courier New', monospace !important;
+            font-size: 25px !important;
+            font-weight: 700 !important;
+            line-height: 1.1 !important;
+            color: rgba(61, 207, 214, 0.86) !important;
           }
 
           .scene-nav-mobile--nocturn .scene-nav-mobile-inner a.active {
             color: #ff9292 !important;
           }
 
+          .scene-nav-mobile--dining .scene-nav-mobile-inner a.active {
+            color: #f57658 !important;
+          }
+
           .scene-nav-mobile--nocturn .scene-nav-mobile-inner a.disabled {
             color: rgba(255, 255, 255, 0.56) !important;
+            pointer-events: none !important;
+          }
+
+          .scene-nav-mobile--dining .scene-nav-mobile-inner a.disabled {
+            color: rgba(61, 207, 214, 0.5) !important;
             pointer-events: none !important;
           }
         }
