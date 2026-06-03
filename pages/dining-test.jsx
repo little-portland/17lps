@@ -131,7 +131,7 @@ const DiningTest = () => {
 
             .schedule-inner h4 {
               margin: 0 0 15px 0;
-              color: #f57658;
+              color: #dd674b;
               font-family: 'Space Mono', 'Courier New', monospace;
               font-size: clamp(14px, 1.25vw, 17px);
               font-weight: 700;
