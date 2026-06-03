@@ -13,7 +13,7 @@ type PlaylistSectionProps = {
   tracks: Track[];
 };
 
-type WaveformProps = {
+type AudioWaveformProps = {
   track: Track;
   active: boolean;
   playing: boolean;
@@ -21,7 +21,10 @@ type WaveformProps = {
   onSeek: (event: React.MouseEvent<HTMLDivElement>, track: Track) => void;
 };
 
-const BAR_COUNT = 118;
+const BAR_COUNT = 120;
+const SVG_WIDTH = 1200;
+const SVG_HEIGHT = 150;
+const SVG_CENTER = SVG_HEIGHT / 2;
 
 const parseDuration = (value?: string) => {
   if (!value || typeof value !== 'string') return 0;
@@ -71,26 +74,29 @@ const makeBars = (seedSource: string | number, count = BAR_COUNT) => {
 const getBarColor = (index: number, total: number) => {
   const ratio = index / Math.max(total - 1, 1);
 
-  if (ratio < 0.18) return '#ff9a4f';
-  if (ratio < 0.34) return '#f8e64e';
-  if (ratio < 0.5) return '#ff9292';
-  if (ratio < 0.68) return '#d04bff';
-  if (ratio < 0.86) return '#5990f7';
+  if (ratio < 0.16) return '#ff8a3d';
+  if (ratio < 0.32) return '#ffe747';
+  if (ratio < 0.48) return '#ff9292';
+  if (ratio < 0.64) return '#d94cff';
+  if (ratio < 0.82) return '#5990f7';
 
   return '#c85a9f';
 };
 
-const Waveform = ({
+const AudioWaveform = ({
   track,
   active,
   playing,
   progress,
   onSeek,
-}: WaveformProps) => {
+}: AudioWaveformProps) => {
   const bars = useMemo(
     () => makeBars(`${track.id}-${track.title}`),
     [track.id, track.title]
   );
+
+  const step = SVG_WIDTH / bars.length;
+  const barWidth = Math.max(4, step * 0.46);
 
   return (
     <div
@@ -102,24 +108,44 @@ const Waveform = ({
       tabIndex={0}
       aria-label={`Seek ${track.title}`}
     >
-      <div className="audio-waveform-track">
+      <svg
+        className="audio-waveform-svg"
+        viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <line
+          className="audio-waveform-centre-line"
+          x1="0"
+          y1={SVG_CENTER}
+          x2={SVG_WIDTH}
+          y2={SVG_CENTER}
+        />
+
         {bars.map((height, index) => {
           const barProgress = index / (bars.length - 1);
           const isPlayed = active && barProgress <= progress;
+          const visualHeight = 18 + height * 112;
+          const x = index * step + (step - barWidth) / 2;
+          const y = SVG_CENTER - visualHeight / 2;
 
           return (
-            <span
+            <rect
               key={`${track.id}-${index}`}
               className={`audio-waveform-bar ${isPlayed ? 'played' : ''}`}
+              x={x}
+              y={y}
+              width={barWidth}
+              height={visualHeight}
+              rx={barWidth / 2}
+              fill={isPlayed ? getBarColor(index, bars.length) : 'rgba(255, 146, 146, 0.34)'}
               style={{
-                height: `${18 + height * 82}%`,
-                '--bar-color': getBarColor(index, bars.length),
                 animationDelay: `${index * 0.014}s`,
-              } as React.CSSProperties}
+              }}
             />
           );
         })}
-      </div>
+      </svg>
 
       <span
         className={`audio-waveform-playhead ${active ? 'visible' : ''} ${
@@ -321,7 +347,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
                 <span>{track.duration || formatTime(duration)}</span>
               </div>
 
-              <Waveform
+              <AudioWaveform
                 track={track}
                 active={isActive}
                 playing={isActive && isPlaying}
@@ -346,12 +372,12 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
         .audio-card {
           width: 100%;
           max-width: 100%;
-          min-height: 240px;
+          min-height: 260px;
           display: grid;
           grid-template-columns: 190px minmax(0, 1fr);
           gap: 30px;
           align-items: center;
-          padding: 38px 28px 28px 28px;
+          padding: 48px 28px 28px 28px;
           border: 1px solid rgba(255, 146, 146, 0.5);
           border-radius: 22px;
           background: rgba(255, 255, 255, 0.055);
@@ -464,7 +490,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           display: flex;
           align-items: center;
           gap: 13px;
-          margin-bottom: 18px;
+          margin-bottom: 14px;
           color: rgba(255, 255, 255, 0.82);
           font-family: 'Courier New', Courier, monospace;
           font-size: 17px;
@@ -476,9 +502,9 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           position: relative;
           width: 100%;
           max-width: 100%;
-          height: 92px;
+          height: 116px;
           cursor: pointer;
-          overflow: hidden;
+          overflow: visible;
           box-sizing: border-box;
         }
 
@@ -487,30 +513,28 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           outline-offset: 3px;
         }
 
-        .audio-waveform-track {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          gap: 3px;
+        .audio-waveform-svg {
+          display: block;
+          width: 100%;
+          height: 116px;
+          overflow: visible;
+        }
+
+        .audio-waveform-centre-line {
+          stroke: rgba(255, 255, 255, 0.16);
+          stroke-width: 1.5;
+          vector-effect: non-scaling-stroke;
         }
 
         .audio-waveform-bar {
-          flex: 1;
-          min-width: 2px;
-          max-width: 8px;
-          border-radius: 999px;
-          background: rgba(255, 255, 255, 0.26);
+          transform-box: fill-box;
           transform-origin: center;
-          opacity: 0.58;
-          transition: background 0.18s ease, opacity 0.18s ease,
-            filter 0.18s ease;
+          opacity: 0.8;
         }
 
         .audio-waveform-bar.played {
-          background: var(--bar-color);
           opacity: 1;
-          filter: saturate(1.2);
+          filter: saturate(1.22);
         }
 
         .audio-card.playing .audio-waveform-bar {
@@ -523,8 +547,8 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
 
         .audio-waveform-playhead {
           position: absolute;
-          top: 4px;
-          bottom: 4px;
+          top: 2px;
+          bottom: 2px;
           width: 2px;
           border-radius: 999px;
           background: #ffffff;
@@ -546,25 +570,25 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
         @keyframes audioWaveIdle {
           0%,
           100% {
-            transform: scaleY(0.82);
-            opacity: 0.5;
+            transform: scaleY(0.88);
+            opacity: 0.68;
           }
 
           50% {
-            transform: scaleY(1.06);
-            opacity: 0.78;
+            transform: scaleY(1.04);
+            opacity: 0.86;
           }
         }
 
         @keyframes audioWaveActive {
           0%,
           100% {
-            transform: scaleY(0.9);
-            opacity: 0.9;
+            transform: scaleY(0.92);
+            opacity: 0.92;
           }
 
           50% {
-            transform: scaleY(1.22);
+            transform: scaleY(1.18);
             opacity: 1;
           }
         }
@@ -588,8 +612,8 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           .audio-card {
             grid-template-columns: 104px minmax(0, 1fr);
             gap: 16px;
-            min-height: 170px;
-            padding: 26px 16px 16px 16px;
+            min-height: 180px;
+            padding: 36px 16px 16px 16px;
             border-radius: 17px;
           }
 
@@ -631,21 +655,21 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
 
           .audio-meta {
             gap: 7px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 11px;
           }
 
           .audio-waveform {
-            height: 52px;
+            height: 58px;
           }
 
-          .audio-waveform-track {
-            gap: 2px;
+          .audio-waveform-svg {
+            height: 58px;
           }
 
           .audio-waveform-playhead {
-            top: 3px;
-            bottom: 3px;
+            top: 2px;
+            bottom: 2px;
           }
         }
 
@@ -653,7 +677,7 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           .audio-card {
             grid-template-columns: 86px minmax(0, 1fr);
             gap: 14px;
-            padding: 24px 14px 14px 14px;
+            padding: 34px 14px 14px 14px;
           }
 
           .thumbnail-button {
@@ -666,7 +690,11 @@ const PlaylistSection = ({ tracks }: PlaylistSectionProps) => {
           }
 
           .audio-waveform {
-            height: 44px;
+            height: 48px;
+          }
+
+          .audio-waveform-svg {
+            height: 48px;
           }
         }
       `}</style>
