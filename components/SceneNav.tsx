@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
-type SceneNavTheme = 'default' | 'access' | 'space' | 'tent-radio';
+type SceneNavTheme = 'default' | 'access' | 'space' | 'tent-radio' | 'nocturn';
 
 type NavLink = {
   label: string;
@@ -170,9 +170,197 @@ export default function SceneNav({
       </AnimatePresence>
 
       <style jsx global>{`
+        .scene-nav--nocturn {
+          position: relative !important;
+          top: auto !important;
+          left: auto !important;
+          right: auto !important;
+          z-index: 50 !important;
+          width: min(92%, 1280px) !important;
+          margin: 34px auto 46px auto !important;
+          padding: 0 !important;
+          display: grid !important;
+          grid-template-columns: 1fr auto 1fr !important;
+          align-items: center !important;
+          gap: clamp(24px, 4vw, 56px) !important;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          transform: none !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-left,
+        .scene-nav--nocturn .scene-nav-right {
+          display: flex !important;
+          align-items: center !important;
+          gap: clamp(26px, 3vw, 48px) !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-left {
+          justify-content: flex-end !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-right {
+          justify-content: flex-start !important;
+        }
+
+        .scene-nav--nocturn a {
+          font-family: Helvetica, Arial, sans-serif !important;
+          font-size: clamp(15px, 1.2vw, 18px) !important;
+          font-weight: 800 !important;
+          line-height: 1 !important;
+          letter-spacing: 0.02em !important;
+          color: rgba(255, 255, 255, 0.82) !important;
+          text-decoration: none !important;
+          text-transform: none !important;
+          transition: color 0.22s ease, opacity 0.22s ease, transform 0.22s ease !important;
+        }
+
+        .scene-nav--nocturn a:hover {
+          color: #ff9292 !important;
+          transform: translateY(-1px) !important;
+        }
+
+        .scene-nav--nocturn a.active {
+          color: #ff9292 !important;
+        }
+
+        .scene-nav--nocturn a.active::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -8px;
+          height: 2px;
+          background: #ff9292;
+        }
+
+        .scene-nav--nocturn a.disabled {
+          color: rgba(255, 255, 255, 0.26) !important;
+          pointer-events: none !important;
+          cursor: default !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-logo {
+          position: relative !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 54px !important;
+          height: 54px !important;
+          transform: none !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-logo::after {
+          display: none !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-logo img {
+          display: block !important;
+          width: 54px !important;
+          height: 54px !important;
+          object-fit: contain !important;
+          filter: brightness(0) invert(1) !important;
+          opacity: 0.96 !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-burger {
+          display: none !important;
+        }
+
         @media (max-width: 900px) {
-          .scene-nav-mobile-inner {
-            padding-top: calc(var(--scene-nav-space, 0px) + 14px) !important;
+          .scene-nav--nocturn {
+            width: 90% !important;
+            margin: 22px auto 32px auto !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 48px !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-left,
+          .scene-nav--nocturn .scene-nav-right {
+            display: none !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-logo {
+            width: 48px !important;
+            height: 48px !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-logo img {
+            width: 48px !important;
+            height: 48px !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger {
+            display: flex !important;
+            position: absolute !important;
+            left: 0 !important;
+            top: 50% !important;
+            width: 42px !important;
+            height: 42px !important;
+            transform: translateY(-50%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.28) !important;
+            border-radius: 999px !important;
+            background: rgba(255, 255, 255, 0.06) !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+            cursor: pointer !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger span {
+            display: block !important;
+            width: 18px !important;
+            height: 2px !important;
+            border-radius: 999px !important;
+            background: #ffffff !important;
+            transition: transform 0.22s ease, opacity 0.22s ease !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger.open span:first-child {
+            transform: translateY(4px) rotate(45deg) !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger.open span:last-child {
+            transform: translateY(-4px) rotate(-45deg) !important;
+          }
+
+          .scene-nav-mobile--nocturn {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 999 !important;
+            background: rgba(10, 24, 109, 0.96) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner {
+            width: min(86vw, 420px) !important;
+            padding: calc(var(--scene-nav-space, 0px) + 14px) 24px 24px 24px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 22px !important;
+          }
+
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner a {
+            font-family: Helvetica, Arial, sans-serif !important;
+            font-size: 26px !important;
+            font-weight: 800 !important;
+            color: rgba(255, 255, 255, 0.84) !important;
+            text-decoration: none !important;
+          }
+
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner a.active {
+            color: #ff9292 !important;
+          }
+
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner a.disabled {
+            color: rgba(255, 255, 255, 0.24) !important;
+            pointer-events: none !important;
           }
         }
       `}</style>
