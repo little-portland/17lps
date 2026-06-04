@@ -65,35 +65,10 @@ const Menu = ({ menuImage }) => {
               80%, 100%     { background: var(--f4, transparent); }
             }
 
-            @keyframes dinnerGraphicPulse {
-              0%, 100% {
-                opacity: 0.72;
-                transform: scaleY(0.65);
-              }
-              50% {
-                opacity: 1;
-                transform: scaleY(1);
-              }
-            }
-
-            @keyframes dinnerGraphicSweep {
-              0% {
-                transform: translateX(-140%);
-                opacity: 0;
-              }
-              18% {
-                opacity: 1;
-              }
-              100% {
-                transform: translateX(140%);
-                opacity: 0;
-              }
-            }
-
             @keyframes dinnerGraphicDot {
               0%, 100% {
-                opacity: 0.25;
-                transform: scale(0.8);
+                opacity: 0.18;
+                transform: scale(0.72);
               }
               50% {
                 opacity: 1;
@@ -597,7 +572,7 @@ const Menu = ({ menuImage }) => {
 
             .dinner-cta-row {
               display: grid;
-              grid-template-columns: 3fr 1fr;
+              grid-template-columns: 1fr 2fr 1fr;
               gap: 14px;
               align-items: stretch;
               margin-top: 18px;
@@ -616,6 +591,7 @@ const Menu = ({ menuImage }) => {
               align-items: center;
               justify-content: center;
               width: 100%;
+              height: 100%;
               min-height: 48px;
               padding: 12px 18px;
               background: #ffab00;
@@ -648,6 +624,7 @@ const Menu = ({ menuImage }) => {
 
             .dinner-red-graphic {
               min-height: 48px;
+              height: 100%;
               border: 2px solid #ff2020;
               background: #000;
               position: relative;
@@ -673,72 +650,33 @@ const Menu = ({ menuImage }) => {
               opacity: 0.5;
             }
 
-            .dinner-red-graphic::after {
-              content: "";
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              width: 60%;
-              background: linear-gradient(
-                90deg,
-                rgba(255,32,32,0) 0%,
-                rgba(255,32,32,0.24) 50%,
-                rgba(255,32,32,0) 100%
-              );
-              animation: dinnerGraphicSweep 3.2s linear infinite;
-            }
-
             .dinner-graphic-inner {
               position: relative;
               z-index: 1;
               display: flex;
               align-items: center;
               justify-content: center;
-              gap: 8px;
+              gap: 12px;
               width: 100%;
               height: 100%;
             }
 
-            .dinner-graphic-bar {
-              width: 7px;
-              height: 24px;
-              background: #ff2020;
-              box-shadow: 0 0 10px rgba(255,32,32,0.4);
-              transform-origin: center;
-              animation: dinnerGraphicPulse 1.2s ease-in-out infinite;
-            }
-
-            .dinner-graphic-bar:nth-child(2) {
-              height: 14px;
-              animation-delay: 0.12s;
-            }
-
-            .dinner-graphic-bar:nth-child(3) {
-              height: 32px;
-              animation-delay: 0.24s;
-            }
-
-            .dinner-graphic-bar:nth-child(4) {
-              height: 18px;
-              animation-delay: 0.36s;
-            }
-
             .dinner-graphic-dot {
-              width: 9px;
-              height: 9px;
+              width: 11px;
+              height: 11px;
               border-radius: 50%;
               border: 1px solid #ff2020;
               background: #ff2020;
-              box-shadow: 0 0 10px rgba(255,32,32,0.5);
+              box-shadow: 0 0 10px rgba(255,32,32,0.52);
               animation: dinnerGraphicDot 1.2s steps(1, end) infinite;
             }
 
-            .dinner-graphic-dot:nth-child(6) {
-              animation-delay: 0.3s;
+            .dinner-graphic-dot:nth-child(2) {
+              animation-delay: 0.22s;
             }
 
-            .dinner-graphic-dot:nth-child(7) {
-              animation-delay: 0.6s;
+            .dinner-graphic-dot:nth-child(3) {
+              animation-delay: 0.44s;
             }
 
             /* =====================================================
@@ -782,8 +720,6 @@ const Menu = ({ menuImage }) => {
               .friend-link-wrap a:hover .button-label-typed,
               .dinner-link-wrap a:hover .button-label-typed,
               .access-dot,
-              .dinner-red-graphic::after,
-              .dinner-graphic-bar,
               .dinner-graphic-dot {
                 animation: none !important;
               }
@@ -888,6 +824,18 @@ const Menu = ({ menuImage }) => {
                 margin-top: 14px;
               }
 
+              .dinner-red-graphic--left {
+                display: none;
+              }
+
+              .dinner-link-wrap {
+                order: 1;
+              }
+
+              .dinner-red-graphic--right {
+                order: 2;
+              }
+
               .dinner-link-wrap a {
                 min-height: 42px;
                 padding: 10px 12px;
@@ -900,29 +848,12 @@ const Menu = ({ menuImage }) => {
               }
 
               .dinner-graphic-inner {
-                gap: 7px;
-              }
-
-              .dinner-graphic-bar {
-                width: 6px;
-                height: 20px;
-              }
-
-              .dinner-graphic-bar:nth-child(2) {
-                height: 12px;
-              }
-
-              .dinner-graphic-bar:nth-child(3) {
-                height: 26px;
-              }
-
-              .dinner-graphic-bar:nth-child(4) {
-                height: 16px;
+                gap: 10px;
               }
 
               .dinner-graphic-dot {
-                width: 8px;
-                height: 8px;
+                width: 9px;
+                height: 9px;
               }
 
               .button-label-static,
@@ -1128,6 +1059,14 @@ const Menu = ({ menuImage }) => {
               </div>
 
               <div className="dinner-cta-row">
+                <div className="dinner-red-graphic dinner-red-graphic--left" aria-hidden="true">
+                  <div className="dinner-graphic-inner">
+                    <span className="dinner-graphic-dot" />
+                    <span className="dinner-graphic-dot" />
+                    <span className="dinner-graphic-dot" />
+                  </div>
+                </div>
+
                 <div className="dinner-link-wrap">
                   <a
                     href="https://www.little-portland.com/dinner-options"
@@ -1142,12 +1081,8 @@ const Menu = ({ menuImage }) => {
                   </a>
                 </div>
 
-                <div className="dinner-red-graphic" aria-hidden="true">
+                <div className="dinner-red-graphic dinner-red-graphic--right" aria-hidden="true">
                   <div className="dinner-graphic-inner">
-                    <span className="dinner-graphic-bar" />
-                    <span className="dinner-graphic-bar" />
-                    <span className="dinner-graphic-bar" />
-                    <span className="dinner-graphic-bar" />
                     <span className="dinner-graphic-dot" />
                     <span className="dinner-graphic-dot" />
                     <span className="dinner-graphic-dot" />
