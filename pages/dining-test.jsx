@@ -1,9 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 
 import SceneNav from '@components/SceneNav';
 
 const DiningTest = () => {
+  const [copiedPhone, setCopiedPhone] = useState(false);
+
+  const handleStayConnected = () => {
+    if (typeof window !== 'undefined') {
+      window._klOnsite = window._klOnsite || [];
+      window._klOnsite.push(['openForm', 'TQjH7u']);
+    }
+  };
+
+  const handleCopyPhone = async () => {
+    const phoneNumber = '+44 20 3848 7430';
+
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(phoneNumber);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = phoneNumber;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+
+      setCopiedPhone(true);
+      window.setTimeout(() => setCopiedPhone(false), 1600);
+    } catch (error) {
+      setCopiedPhone(false);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -32,7 +66,6 @@ const DiningTest = () => {
 
             /*
               Dining-test is a secondary page, so no primary nav item should appear active.
-              This neutralises the active colour only on this page.
             */
             .scene-nav--dining a.active,
             .scene-nav-mobile--dining .scene-nav-mobile-inner a.active {
@@ -41,6 +74,51 @@ const DiningTest = () => {
 
             .scene-nav--dining a.active:hover {
               color: #f57658 !important;
+            }
+
+            /*
+              Match nav sizing/spacing to the other pages without touching SceneNav globally.
+            */
+            .scene-nav.scene-nav--dining {
+              grid-template-columns: 1fr 34px 1fr !important;
+              gap: 0 !important;
+              padding-top: 12px !important;
+              padding-bottom: 10px !important;
+            }
+
+            .scene-nav--dining .scene-nav-left,
+            .scene-nav--dining .scene-nav-right {
+              gap: 28px !important;
+              width: 100% !important;
+            }
+
+            .scene-nav--dining .scene-nav-left {
+              justify-content: flex-end !important;
+              padding-right: 32px !important;
+            }
+
+            .scene-nav--dining .scene-nav-right {
+              justify-content: flex-start !important;
+              padding-left: 32px !important;
+            }
+
+            .scene-nav--dining .scene-nav-logo {
+              width: 34px !important;
+              height: 34px !important;
+              flex: 0 0 34px !important;
+            }
+
+            .scene-nav--dining .scene-nav-logo img {
+              width: 34px !important;
+              height: 34px !important;
+              filter: brightness(0) saturate(100%) invert(62%) sepia(66%)
+                saturate(1077%) hue-rotate(322deg) brightness(101%)
+                contrast(93%) !important;
+            }
+
+            .scene-nav--dining a {
+              font-size: 14px !important;
+              letter-spacing: 0.025em !important;
             }
 
             .dining-page-main {
@@ -225,7 +303,7 @@ const DiningTest = () => {
               box-sizing: border-box;
             }
 
-            .food-card:last-child {
+            .food-card:last-of-type {
               margin-bottom: 0;
             }
 
@@ -300,9 +378,84 @@ const DiningTest = () => {
               text-shadow: 0 0 18px rgba(245, 118, 88, 0.45);
             }
 
+            .dining-footer-buttons {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 16px;
+              width: 100%;
+              margin: 34px auto 0 auto;
+            }
+
+            .dining-footer-button {
+              appearance: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              min-height: 52px;
+              padding: 12px 16px;
+              border: 2px solid #3dcfd6;
+              border-radius: 0;
+              background: #000000;
+              color: #3dcfd6;
+              font-family: 'Space Mono', 'Courier New', monospace;
+              font-size: clamp(13px, 1vw, 16px);
+              font-weight: 700;
+              line-height: 1.15;
+              letter-spacing: 0.03em;
+              text-align: center;
+              text-decoration: none;
+              cursor: pointer;
+              box-sizing: border-box;
+              transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+            }
+
+            .dining-footer-button:hover {
+              background: #3dcfd6;
+              color: #000000;
+              border-color: #3dcfd6;
+              transform: translateY(-2px);
+              box-shadow: 0 0 24px rgba(61, 207, 214, 0.28);
+            }
+
+            .dining-footer-button.copied {
+              background: #f57658;
+              border-color: #f57658;
+              color: #000000;
+            }
+
             @media (max-width: 1100px) {
               .dining-page-frame {
                 width: 75%;
+              }
+            }
+
+            @media (max-width: 900px) {
+              .scene-nav.scene-nav--dining {
+                display: flex !important;
+                grid-template-columns: none !important;
+                gap: 0 !important;
+              }
+
+              .scene-nav--dining .scene-nav-left,
+              .scene-nav--dining .scene-nav-right {
+                padding: 0 !important;
+                gap: 0 !important;
+              }
+
+              .scene-nav--dining .scene-nav-logo {
+                width: 46px !important;
+                height: 46px !important;
+                flex-basis: 46px !important;
+              }
+
+              .scene-nav--dining .scene-nav-logo img {
+                width: 46px !important;
+                height: 46px !important;
               }
             }
 
@@ -391,6 +544,18 @@ const DiningTest = () => {
 
               .food-card p {
                 line-height: 1.3;
+              }
+
+              .dining-footer-buttons {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-top: 28px;
+              }
+
+              .dining-footer-button {
+                width: 100%;
+                min-height: 50px;
+                font-size: 13px;
               }
             }
 
@@ -577,6 +742,32 @@ const DiningTest = () => {
                 [Explore Chef&apos;s Studio]
               </a>
             </p>
+          </section>
+
+          <section className="dining-footer-buttons" aria-label="Dining contact links">
+            <button
+              type="button"
+              className="dining-footer-button"
+              onClick={handleStayConnected}
+            >
+              STAY CONNECTED
+            </button>
+
+            <a
+              className="dining-footer-button"
+              href="mailto:eat@little-portland.com"
+            >
+              eat@little-portland.com
+            </a>
+
+            <button
+              type="button"
+              className={`dining-footer-button ${copiedPhone ? 'copied' : ''}`}
+              onClick={handleCopyPhone}
+              aria-label="Copy phone number"
+            >
+              {copiedPhone ? 'Copied' : '+44 20 3848 7430'}
+            </button>
           </section>
         </div>
       </main>
