@@ -11,7 +11,7 @@ const PROJECTS = [
       'Live and archived sound from The Tent at the End of the Universe.',
     href: 'https://www.little-portland.com/thetentradio',
     meta: 'ONLINE',
-    image: '/images/projects/projects-board.jpeg',
+    mode: 'waves',
   },
   {
     eyebrow: 'TRANSMISSION 02',
@@ -20,7 +20,7 @@ const PROJECTS = [
       'Resident frequencies, recordings and future transmissions from 17 Little Portland Street.',
     href: '/lpxradio',
     meta: 'COMING SOON',
-    image: '/images/projects/projects-bg.jpeg',
+    mode: 'radar',
   },
 ];
 
@@ -233,8 +233,8 @@ const ProjectsPage = () => {
         <section className="projects-frame">
           <header className="projects-header">
             <div className="header-topline">
-              <span className="typing tiny">LPX//PROJECTS</span>
-              <span className="typing tiny delay">ISSUE 001</span>
+              <span className="typing tiny">RADIO PROJECTS / LIVE + ARCHIVE</span>
+              <span className="typing tiny delay">2 CHANNELS / MORE SOON</span>
             </div>
 
             <div className="title-row">
@@ -258,7 +258,7 @@ const ProjectsPage = () => {
           </header>
 
           <div className="projects-grid">
-            {PROJECTS.map((project, index) => (
+            {PROJECTS.map((project) => (
               <a
                 key={project.title}
                 className="project-card"
@@ -271,15 +271,47 @@ const ProjectsPage = () => {
                   <span>{project.meta}</span>
                 </div>
 
-                <h2 className="typing-loop">{project.title}</h2>
+                <h2>{project.title}</h2>
 
                 <p>{project.description}</p>
 
-                <div
-                  className={`project-art project-art-${index + 1}`}
-                  style={{ backgroundImage: `url(${project.image})` }}
-                  aria-hidden="true"
-                />
+                <div className={`signal-panel signal-panel--${project.mode}`} aria-hidden="true">
+                  {project.mode === 'waves' && (
+                    <>
+                      <div className="waveform">
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                      </div>
+                      <div className="frequency-line" />
+                      <div className="frequency-readout">87.17 FM / TENT SIGNAL</div>
+                    </>
+                  )}
+
+                  {project.mode === 'radar' && (
+                    <>
+                      <div className="radar">
+                        <span className="radar-ring ring-1" />
+                        <span className="radar-ring ring-2" />
+                        <span className="radar-ring ring-3" />
+                        <span className="radar-sweep" />
+                        <span className="radar-dot dot-1" />
+                        <span className="radar-dot dot-2" />
+                        <span className="radar-dot dot-3" />
+                      </div>
+                      <div className="frequency-readout">LPX SIGNAL / STANDBY</div>
+                    </>
+                  )}
+                </div>
 
                 <div className="card-footer">
                   <span>OPEN SIGNAL</span>
@@ -288,11 +320,6 @@ const ProjectsPage = () => {
               </a>
             ))}
           </div>
-
-          <footer className="projects-footer">
-            <span>www.little-portland.com</span>
-            <span>17 LITTLE PORTLAND STREET</span>
-          </footer>
         </section>
       </main>
 
@@ -315,12 +342,12 @@ const ProjectsPage = () => {
           inset: 0;
           z-index: 0;
           background-image:
-            linear-gradient(rgba(5, 5, 5, 0.18), rgba(5, 5, 5, 0.72)),
+            linear-gradient(rgba(5, 5, 5, 0.12), rgba(5, 5, 5, 0.62)),
             url('/images/projects/projects-bg.jpeg');
           background-size: cover;
           background-position: center;
-          opacity: 0.88;
-          filter: contrast(1.16) brightness(0.82);
+          opacity: 0.92;
+          filter: contrast(1.18) brightness(0.84);
           transform: scale(1.02);
           pointer-events: none;
         }
@@ -330,7 +357,7 @@ const ProjectsPage = () => {
           inset: 0;
           z-index: 1;
           pointer-events: none;
-          opacity: 0.22;
+          opacity: 0.18;
           background:
             repeating-linear-gradient(
               to bottom,
@@ -350,19 +377,11 @@ const ProjectsPage = () => {
           margin: 0 auto;
           padding: 30px;
           border: 2px solid #04ff00;
-          background: rgba(4, 4, 4, 0.62);
+          background: transparent;
           box-sizing: border-box;
           box-shadow:
-            0 0 0 1px rgba(4, 255, 0, 0.12),
+            0 0 0 1px rgba(4, 255, 0, 0.08),
             0 0 38px rgba(4, 255, 0, 0.08);
-        }
-
-        .projects-frame::before {
-          content: '';
-          position: absolute;
-          inset: 8px;
-          border: 1px solid rgba(4, 255, 0, 0.18);
-          pointer-events: none;
         }
 
         .projects-header {
@@ -520,12 +539,12 @@ const ProjectsPage = () => {
           position: relative;
           display: flex;
           flex-direction: column;
-          min-height: 460px;
+          min-height: 510px;
           padding: 20px;
           border: 2px solid #04ff00;
           color: #04ff00 !important;
           text-decoration: none;
-          background: rgba(0, 0, 0, 0.64);
+          background: rgba(0, 0, 0, 0.58);
           overflow: hidden;
           box-sizing: border-box;
           transition:
@@ -536,7 +555,7 @@ const ProjectsPage = () => {
 
         .project-card:hover {
           transform: translateY(-3px);
-          background: rgba(4, 255, 0, 0.08);
+          background: rgba(0, 0, 0, 0.42);
           box-shadow: 0 0 24px rgba(4, 255, 0, 0.16);
         }
 
@@ -566,6 +585,7 @@ const ProjectsPage = () => {
         .card-meta,
         .project-card h2,
         .project-card p,
+        .signal-panel,
         .card-footer {
           position: relative;
           z-index: 2;
@@ -575,7 +595,7 @@ const ProjectsPage = () => {
           display: flex;
           justify-content: space-between;
           gap: 16px;
-          margin-bottom: 28px;
+          margin-bottom: 34px;
           font-size: 12px;
           font-weight: 700;
           line-height: 1.1;
@@ -583,53 +603,237 @@ const ProjectsPage = () => {
         }
 
         .project-card h2 {
-          width: max-content;
-          max-width: 100%;
-          margin: 0 0 20px 0;
-          overflow: hidden;
+          margin: 0 0 24px 0;
+          overflow: visible;
           color: #04ff00;
-          font-size: clamp(30px, 4vw, 56px);
+          font-size: clamp(34px, 3.25vw, 58px);
           font-weight: 700;
-          line-height: 0.96;
+          line-height: 0.98;
           letter-spacing: -0.045em;
           text-transform: uppercase;
-          white-space: nowrap;
-          text-shadow: 0 0 8px rgba(4, 255, 0, 0.35);
+          white-space: normal;
+          word-break: normal;
+          overflow-wrap: normal;
+          text-shadow:
+            0 0 8px rgba(4, 255, 0, 0.55),
+            0 0 18px rgba(4, 255, 0, 0.18);
+          animation: softPulse 4.5s ease-in-out infinite;
         }
 
         .project-card p {
-          max-width: 92%;
-          margin: 0 0 24px 0;
+          max-width: 94%;
+          min-height: 70px;
+          margin: 0 0 28px 0;
           font-size: 14px;
           font-weight: 700;
           line-height: 1.45;
           text-transform: uppercase;
         }
 
-        .project-art {
-          position: relative;
-          z-index: 1;
+        .signal-panel {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: calc(100% + 40px);
           min-height: 180px;
           margin: auto -20px 18px -20px;
-          background-size: cover;
-          background-position: center;
-          filter: grayscale(1) contrast(1.25) brightness(0.75);
-          border-top: 2px solid rgba(4, 255, 0, 0.8);
-          border-bottom: 2px solid rgba(4, 255, 0, 0.8);
-          opacity: 0.82;
+          border-top: 2px solid rgba(4, 255, 0, 0.82);
+          border-bottom: 2px solid rgba(4, 255, 0, 0.82);
+          background:
+            radial-gradient(circle at 50% 50%, rgba(4, 255, 0, 0.08), transparent 42%),
+            linear-gradient(rgba(4, 255, 0, 0.04), rgba(4, 255, 0, 0.01));
+          overflow: hidden;
         }
 
-        .project-art::after {
+        .signal-panel::before {
           content: '';
           position: absolute;
           inset: 0;
-          background: rgba(4, 255, 0, 0.08);
-          mix-blend-mode: screen;
+          background:
+            repeating-linear-gradient(
+              to right,
+              rgba(4, 255, 0, 0.08) 0,
+              rgba(4, 255, 0, 0.08) 1px,
+              transparent 1px,
+              transparent 34px
+            );
+          opacity: 0.32;
+          animation: gridDrift 5s linear infinite;
         }
 
-        .project-art-2 {
-          background-position: center top;
+        .signal-panel::after {
+          content: '';
+          position: absolute;
+          left: -20%;
+          top: 0;
+          width: 18%;
+          height: 100%;
+          background: linear-gradient(
+            to right,
+            transparent,
+            rgba(4, 255, 0, 0.24),
+            transparent
+          );
+          animation: signalSweep 4.8s ease-in-out infinite;
+        }
+
+        .waveform {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+          height: 110px;
+          width: 78%;
+        }
+
+        .waveform span {
+          display: block;
+          width: 8px;
+          height: 34px;
+          background: #04ff00;
+          box-shadow: 0 0 10px rgba(4, 255, 0, 0.55);
+          animation: waveform 1.1s ease-in-out infinite;
+        }
+
+        .waveform span:nth-child(1) {
+          animation-delay: -0.8s;
+        }
+
+        .waveform span:nth-child(2) {
+          animation-delay: -0.64s;
+        }
+
+        .waveform span:nth-child(3) {
+          animation-delay: -0.48s;
+        }
+
+        .waveform span:nth-child(4) {
+          animation-delay: -0.32s;
+        }
+
+        .waveform span:nth-child(5) {
+          animation-delay: -0.16s;
+        }
+
+        .waveform span:nth-child(6) {
+          animation-delay: 0s;
+        }
+
+        .waveform span:nth-child(7) {
+          animation-delay: -0.22s;
+        }
+
+        .waveform span:nth-child(8) {
+          animation-delay: -0.44s;
+        }
+
+        .waveform span:nth-child(9) {
+          animation-delay: -0.66s;
+        }
+
+        .waveform span:nth-child(10) {
+          animation-delay: -0.88s;
+        }
+
+        .waveform span:nth-child(11) {
+          animation-delay: -0.5s;
+        }
+
+        .waveform span:nth-child(12) {
+          animation-delay: -0.18s;
+        }
+
+        .frequency-line {
+          position: absolute;
+          z-index: 2;
+          left: 0;
+          right: 0;
+          top: 50%;
+          height: 2px;
+          background: rgba(4, 255, 0, 0.72);
+          box-shadow: 0 0 12px rgba(4, 255, 0, 0.45);
+          animation: lineFlicker 3.5s steps(2, end) infinite;
+        }
+
+        .frequency-readout {
+          position: absolute;
+          z-index: 3;
+          left: 20px;
+          bottom: 16px;
+          font-size: 11px;
+          font-weight: 700;
+          line-height: 1;
+          text-transform: uppercase;
+          opacity: 0.8;
+        }
+
+        .radar {
+          position: relative;
+          z-index: 2;
+          width: 138px;
+          height: 138px;
+          border: 2px solid rgba(4, 255, 0, 0.92);
+          border-radius: 999px;
+          box-shadow:
+            0 0 16px rgba(4, 255, 0, 0.22),
+            inset 0 0 18px rgba(4, 255, 0, 0.12);
+        }
+
+        .radar-ring {
+          position: absolute;
+          inset: 18px;
+          border: 1px solid rgba(4, 255, 0, 0.45);
+          border-radius: 999px;
+        }
+
+        .ring-2 {
+          inset: 38px;
+        }
+
+        .ring-3 {
+          inset: 58px;
+          background: #04ff00;
+          box-shadow: 0 0 14px rgba(4, 255, 0, 0.75);
+        }
+
+        .radar-sweep {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 50%;
+          height: 2px;
+          background: linear-gradient(to right, #04ff00, transparent);
+          transform-origin: left center;
+          animation: radarSweep 1.9s linear infinite;
+        }
+
+        .radar-dot {
+          position: absolute;
+          width: 7px;
+          height: 7px;
+          border-radius: 999px;
+          background: #04ff00;
+          box-shadow: 0 0 10px rgba(4, 255, 0, 0.75);
+          animation: dotBlink 2.4s steps(2, end) infinite;
+        }
+
+        .dot-1 {
+          left: 30px;
+          top: 42px;
+        }
+
+        .dot-2 {
+          right: 28px;
+          top: 70px;
+          animation-delay: 0.4s;
+        }
+
+        .dot-3 {
+          left: 62px;
+          bottom: 25px;
+          animation-delay: 0.8s;
         }
 
         .card-footer {
@@ -653,33 +857,17 @@ const ProjectsPage = () => {
           transform: translateX(5px);
         }
 
-        .projects-footer {
-          position: relative;
-          z-index: 1;
-          display: flex;
-          justify-content: space-between;
-          gap: 24px;
-          margin-top: 76px;
-          font-size: 13px;
-          font-weight: 700;
-          line-height: 1.2;
-        }
-
         .typing {
           display: inline-block;
           width: max-content;
           max-width: 100%;
           overflow: hidden;
           white-space: nowrap;
-          animation: typeOnce 1.2s steps(16, end) both;
+          animation: typeOnce 1.4s steps(30, end) both;
         }
 
         .typing.delay {
           animation-delay: 0.35s;
-        }
-
-        .typing-loop {
-          animation: typeLoop 12s steps(22, end) infinite;
         }
 
         @keyframes typeOnce {
@@ -689,28 +877,6 @@ const ProjectsPage = () => {
 
           to {
             max-width: 42ch;
-          }
-        }
-
-        @keyframes typeLoop {
-          0% {
-            max-width: 0;
-          }
-
-          11% {
-            max-width: 32ch;
-          }
-
-          78% {
-            max-width: 32ch;
-          }
-
-          86% {
-            max-width: 0;
-          }
-
-          100% {
-            max-width: 0;
           }
         }
 
@@ -794,6 +960,100 @@ const ProjectsPage = () => {
           }
         }
 
+        @keyframes softPulse {
+          0%,
+          100% {
+            text-shadow:
+              0 0 8px rgba(4, 255, 0, 0.45),
+              0 0 18px rgba(4, 255, 0, 0.12);
+          }
+
+          50% {
+            text-shadow:
+              0 0 12px rgba(4, 255, 0, 0.72),
+              0 0 28px rgba(4, 255, 0, 0.24);
+          }
+        }
+
+        @keyframes gridDrift {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(34px);
+          }
+        }
+
+        @keyframes signalSweep {
+          0% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+
+          22% {
+            opacity: 1;
+          }
+
+          60% {
+            opacity: 1;
+          }
+
+          100% {
+            transform: translateX(760%);
+            opacity: 0;
+          }
+        }
+
+        @keyframes waveform {
+          0%,
+          100% {
+            height: 26px;
+            opacity: 0.58;
+          }
+
+          50% {
+            height: 98px;
+            opacity: 1;
+          }
+        }
+
+        @keyframes lineFlicker {
+          0%,
+          100% {
+            opacity: 0.7;
+          }
+
+          50% {
+            opacity: 0.2;
+          }
+
+          52% {
+            opacity: 1;
+          }
+        }
+
+        @keyframes radarSweep {
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes dotBlink {
+          0%,
+          100% {
+            opacity: 1;
+          }
+
+          50% {
+            opacity: 0.25;
+          }
+        }
+
         @media (max-width: 1100px) {
           .projects-frame {
             width: 75%;
@@ -804,7 +1064,11 @@ const ProjectsPage = () => {
           }
 
           .project-card {
-            min-height: 420px;
+            min-height: 500px;
+          }
+
+          .project-card h2 {
+            font-size: clamp(32px, 4vw, 48px);
           }
         }
 
@@ -819,11 +1083,9 @@ const ProjectsPage = () => {
             padding: 18px;
           }
 
-          .projects-frame::before {
-            inset: 6px;
-          }
-
           .header-topline {
+            flex-direction: column;
+            gap: 10px;
             margin-bottom: 42px;
             font-size: 12px;
           }
@@ -864,7 +1126,7 @@ const ProjectsPage = () => {
           }
 
           .project-card {
-            min-height: 390px;
+            min-height: 430px;
             padding: 16px;
           }
 
@@ -874,28 +1136,48 @@ const ProjectsPage = () => {
           }
 
           .project-card h2 {
-            font-size: clamp(28px, 9vw, 42px);
-            white-space: normal;
-            animation: none;
+            margin-bottom: 20px;
+            font-size: clamp(34px, 11vw, 48px);
+            line-height: 0.96;
+            letter-spacing: -0.055em;
           }
 
           .project-card p {
             max-width: 100%;
+            min-height: 0;
             font-size: 13px;
           }
 
-          .project-art {
+          .signal-panel {
             width: calc(100% + 32px);
             min-height: 150px;
             margin-left: -16px;
             margin-right: -16px;
           }
 
-          .projects-footer {
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 48px;
-            font-size: 11px;
+          .waveform {
+            gap: 6px;
+          }
+
+          .waveform span {
+            width: 6px;
+          }
+
+          .radar {
+            width: 118px;
+            height: 118px;
+          }
+
+          .ring-1 {
+            inset: 16px;
+          }
+
+          .ring-2 {
+            inset: 33px;
+          }
+
+          .ring-3 {
+            inset: 50px;
           }
         }
       `}</style>
