@@ -189,6 +189,24 @@ export default function SceneNav({
       </AnimatePresence>
 
       <style jsx global>{`
+        /*
+          Prevent menu items from moving up/down on hover on every page.
+          This also protects against older page-level styles that might still
+          add transform: translateY(...) to nav links.
+        */
+        .scene-nav a,
+        .scene-nav a:hover,
+        .scene-nav a:focus,
+        .scene-nav a:active,
+        .scene-nav a.active,
+        .scene-nav-mobile a,
+        .scene-nav-mobile a:hover,
+        .scene-nav-mobile a:focus,
+        .scene-nav-mobile a:active,
+        .scene-nav-mobile a.active {
+          transform: none !important;
+        }
+
         .scene-nav.scene-nav--nocturn,
         .scene-nav.scene-nav--dining {
           position: fixed !important;
