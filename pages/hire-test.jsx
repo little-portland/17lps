@@ -57,6 +57,153 @@ const HireTestPage = () => {
 
       <SceneNav theme="dining" />
 
+      <style jsx global>{`
+        /*
+          Same compact nav spacing as nocturn-test,
+          with hire page colours.
+        */
+
+        .scene-nav.scene-nav--dining {
+          grid-template-columns: 1fr 36px 1fr !important;
+          gap: 0 !important;
+          padding-top: 11px !important;
+          padding-bottom: 9px !important;
+          background: transparent !important;
+        }
+
+        .scene-nav.scene-nav--dining.has-scrolled {
+          background: rgba(161, 211, 193, 0.96) !important;
+          backdrop-filter: blur(10px) !important;
+          -webkit-backdrop-filter: blur(10px) !important;
+          box-shadow: 0 8px 28px rgba(80, 40, 109, 0.14) !important;
+        }
+
+        .scene-nav--dining .scene-nav-left,
+        .scene-nav--dining .scene-nav-right {
+          display: flex !important;
+          align-items: center !important;
+          width: 100% !important;
+          gap: 28px !important;
+        }
+
+        .scene-nav--dining .scene-nav-left {
+          justify-content: flex-end !important;
+          padding-right: 32px !important;
+        }
+
+        .scene-nav--dining .scene-nav-right {
+          justify-content: flex-start !important;
+          padding-left: 32px !important;
+        }
+
+        .scene-nav--dining .scene-nav-logo {
+          width: 36px !important;
+          height: 36px !important;
+          flex: 0 0 36px !important;
+          transform: none !important;
+        }
+
+        .scene-nav--dining .scene-nav-logo img {
+          width: 36px !important;
+          height: 36px !important;
+          object-fit: contain !important;
+          opacity: 1 !important;
+          filter: brightness(0) saturate(100%) invert(18%) sepia(32%)
+            saturate(2131%) hue-rotate(249deg) brightness(93%) contrast(90%) !important;
+        }
+
+        .scene-nav--dining a {
+          font-size: 13px !important;
+          line-height: 1 !important;
+          letter-spacing: 0.015em !important;
+          font-family: 'Space Mono', 'Courier New', monospace !important;
+          font-weight: 700 !important;
+          color: #50286d !important;
+          opacity: 1 !important;
+          text-decoration: none !important;
+          transform: none !important;
+          transition: opacity 0.22s ease, color 0.22s ease !important;
+          white-space: nowrap !important;
+        }
+
+        .scene-nav--dining a:hover,
+        .scene-nav--dining a.active {
+          color: #50286d !important;
+          opacity: 0.68 !important;
+          transform: none !important;
+        }
+
+        .scene-nav--dining a.disabled {
+          color: rgba(80, 40, 109, 0.42) !important;
+          opacity: 1 !important;
+          pointer-events: none !important;
+          cursor: default !important;
+        }
+
+        .scene-nav--dining a::before,
+        .scene-nav--dining a::after {
+          content: none !important;
+          display: none !important;
+        }
+
+        .scene-nav--dining .scene-nav-burger span {
+          background: #50286d !important;
+        }
+
+        .scene-nav-mobile--dining {
+          background: rgba(161, 211, 193, 0.98) !important;
+        }
+
+        .scene-nav-mobile--dining .scene-nav-mobile-inner a {
+          font-family: 'Space Mono', 'Courier New', monospace !important;
+          color: #50286d !important;
+        }
+
+        .scene-nav-mobile--dining .scene-nav-mobile-inner a:hover,
+        .scene-nav-mobile--dining .scene-nav-mobile-inner a.active {
+          color: #50286d !important;
+          opacity: 0.68 !important;
+        }
+
+        .scene-nav-mobile--dining .scene-nav-mobile-inner a.disabled {
+          color: rgba(80, 40, 109, 0.42) !important;
+          opacity: 1 !important;
+          pointer-events: none !important;
+        }
+
+        @media (max-width: 900px) {
+          .scene-nav.scene-nav--dining {
+            display: flex !important;
+            grid-template-columns: none !important;
+            gap: 0 !important;
+            padding: 18px 6% 14px 6% !important;
+            background: transparent !important;
+          }
+
+          .scene-nav.scene-nav--dining.has-scrolled,
+          .scene-nav.scene-nav--dining.is-open {
+            background: rgba(161, 211, 193, 0.96) !important;
+          }
+
+          .scene-nav--dining .scene-nav-left,
+          .scene-nav--dining .scene-nav-right {
+            padding: 0 !important;
+            gap: 0 !important;
+          }
+
+          .scene-nav--dining .scene-nav-logo {
+            width: 46px !important;
+            height: 46px !important;
+            flex-basis: 46px !important;
+          }
+
+          .scene-nav--dining .scene-nav-logo img {
+            width: 46px !important;
+            height: 46px !important;
+          }
+        }
+      `}</style>
+
       <main className="hire-page">
         <div className="hire-page-frame">
           <h1 className="hire-title">PRIVATE HIRE</h1>
@@ -144,15 +291,15 @@ const HireTestPage = () => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: min(24vw, 360px);
+          width: min(22vw, 340px);
           max-width: 100%;
-          min-width: 300px;
-          min-height: 46px;
-          padding: 9px 22px;
+          min-width: 280px;
+          min-height: 42px;
+          padding: 8px 20px;
           background: #50286d;
           color: #ffffff !important;
           font-family: 'Space Mono', 'Courier New', monospace;
-          font-size: clamp(15px, 1.25vw, 22px);
+          font-size: clamp(14px, 1.05vw, 18px);
           font-weight: 700;
           line-height: 1;
           letter-spacing: 0.01em;
@@ -183,8 +330,8 @@ const HireTestPage = () => {
           }
 
           .hire-mail-button {
-            width: min(42vw, 360px);
-            min-width: 290px;
+            width: auto;
+            min-width: 270px;
           }
         }
 
@@ -220,213 +367,9 @@ const HireTestPage = () => {
             width: auto;
             min-width: 0;
             max-width: 100%;
-            min-height: 48px;
-            padding: 10px 18px;
-            font-size: clamp(15px, 4.2vw, 19px);
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        /* =====================================================
-           HIRE PAGE NAV OVERRIDES
-           Same sizing / spacing principle as dining-test and
-           nocturn-test, with page-specific hire colours.
-        ===================================================== */
-
-        .scene-nav.scene-nav--dining {
-          background: transparent !important;
-          width: 100% !important;
-        }
-
-        .scene-nav.scene-nav--dining.has-scrolled {
-          background: rgba(161, 211, 193, 0.96) !important;
-          backdrop-filter: blur(10px) !important;
-          -webkit-backdrop-filter: blur(10px) !important;
-          box-shadow: 0 8px 28px rgba(80, 40, 109, 0.14) !important;
-        }
-
-        .scene-nav--dining .scene-nav-inner,
-        .scene-nav--dining nav,
-        .scene-nav--dining .nav-inner,
-        .scene-nav--dining .nav-wrap {
-          width: 65% !important;
-          max-width: none !important;
-          margin-left: auto !important;
-          margin-right: auto !important;
-          padding-left: 0 !important;
-          padding-right: 0 !important;
-          display: grid !important;
-          grid-template-columns: 1fr auto 1fr !important;
-          align-items: center !important;
-          column-gap: 58px !important;
-        }
-
-        .scene-nav--dining .scene-nav-left,
-        .scene-nav--dining .nav-left,
-        .scene-nav--dining .left {
-          display: flex !important;
-          align-items: center !important;
-          justify-content: flex-end !important;
-          gap: 42px !important;
-          margin: 0 !important;
-          padding: 0 !important;
-        }
-
-        .scene-nav--dining .scene-nav-right,
-        .scene-nav--dining .nav-right,
-        .scene-nav--dining .right {
-          display: flex !important;
-          align-items: center !important;
-          justify-content: flex-start !important;
-          gap: 42px !important;
-          margin: 0 !important;
-          padding: 0 !important;
-        }
-
-        .scene-nav--dining a {
-          font-family: 'Space Mono', 'Courier New', monospace !important;
-          font-size: 15px !important;
-          font-weight: 700 !important;
-          line-height: 1 !important;
-          letter-spacing: 0.025em !important;
-          color: #50286d !important;
-          opacity: 1 !important;
-          text-decoration: none !important;
-          text-transform: none !important;
-          transform: none !important;
-          transition: opacity 0.22s ease, color 0.22s ease !important;
-          white-space: nowrap !important;
-        }
-
-        .scene-nav--dining a:hover,
-        .scene-nav--dining a.active {
-          color: #50286d !important;
-          opacity: 0.68 !important;
-          transform: none !important;
-        }
-
-        .scene-nav--dining a.disabled {
-          color: rgba(80, 40, 109, 0.48) !important;
-          opacity: 1 !important;
-          pointer-events: none !important;
-          cursor: default !important;
-        }
-
-        .scene-nav--dining a::before,
-        .scene-nav--dining a::after {
-          content: none !important;
-          display: none !important;
-        }
-
-        .scene-nav--dining .scene-nav-logo,
-        .scene-nav--dining .nav-logo,
-        .scene-nav--dining .logo {
-          width: 40px !important;
-          height: 40px !important;
-          flex: 0 0 40px !important;
-          justify-self: center !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          transform: none !important;
-        }
-
-        .scene-nav--dining .scene-nav-logo img,
-        .scene-nav--dining .nav-logo img,
-        .scene-nav--dining .logo img {
-          display: block !important;
-          width: 40px !important;
-          height: 40px !important;
-          object-fit: contain !important;
-          opacity: 0.98 !important;
-          filter: brightness(0) saturate(100%) invert(18%) sepia(31%)
-            saturate(1950%) hue-rotate(250deg) brightness(94%) contrast(89%) !important;
-        }
-
-        .scene-nav--dining .scene-nav-burger span {
-          background: #50286d !important;
-        }
-
-        @media (max-width: 1100px) {
-          .scene-nav--dining .scene-nav-inner,
-          .scene-nav--dining nav,
-          .scene-nav--dining .nav-inner,
-          .scene-nav--dining .nav-wrap {
-            width: 75% !important;
-            column-gap: 44px !important;
-          }
-
-          .scene-nav--dining .scene-nav-left,
-          .scene-nav--dining .nav-left,
-          .scene-nav--dining .left,
-          .scene-nav--dining .scene-nav-right,
-          .scene-nav--dining .nav-right,
-          .scene-nav--dining .right {
-            gap: 32px !important;
-          }
-
-          .scene-nav--dining a {
-            font-size: 14px !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .scene-nav.scene-nav--dining {
-            background: transparent !important;
-          }
-
-          .scene-nav.scene-nav--dining.has-scrolled,
-          .scene-nav.scene-nav--dining.is-open {
-            background: rgba(161, 211, 193, 0.96) !important;
-          }
-
-          .scene-nav--dining .scene-nav-inner,
-          .scene-nav--dining nav,
-          .scene-nav--dining .nav-inner,
-          .scene-nav--dining .nav-wrap {
-            width: 88% !important;
-            display: flex !important;
-            justify-content: space-between !important;
-            column-gap: 0 !important;
-          }
-
-          .scene-nav--dining .scene-nav-logo,
-          .scene-nav--dining .nav-logo,
-          .scene-nav--dining .logo {
-            width: 46px !important;
-            height: 46px !important;
-            flex-basis: 46px !important;
-          }
-
-          .scene-nav--dining .scene-nav-logo img,
-          .scene-nav--dining .nav-logo img,
-          .scene-nav--dining .logo img {
-            width: 46px !important;
-            height: 46px !important;
-          }
-
-          .scene-nav-mobile--dining {
-            background: rgba(161, 211, 193, 0.98) !important;
-          }
-
-          .scene-nav-mobile--dining .scene-nav-mobile-inner a {
-            font-family: 'Space Mono', 'Courier New', monospace !important;
-            font-size: 23px !important;
-            font-weight: 700 !important;
-            line-height: 1.1 !important;
-            color: #50286d !important;
-          }
-
-          .scene-nav-mobile--dining .scene-nav-mobile-inner a:hover,
-          .scene-nav-mobile--dining .scene-nav-mobile-inner a.active {
-            color: #50286d !important;
-            opacity: 0.68 !important;
-          }
-
-          .scene-nav-mobile--dining .scene-nav-mobile-inner a.disabled {
-            color: rgba(80, 40, 109, 0.48) !important;
-            opacity: 1 !important;
-            pointer-events: none !important;
+            min-height: 46px;
+            padding: 10px 16px;
+            font-size: clamp(14px, 4vw, 18px);
           }
         }
       `}</style>
