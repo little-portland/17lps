@@ -8,7 +8,7 @@ const PROJECTS = [
     eyebrow: 'TRANSMISSION 01',
     title: 'THE TENT RADIO',
     description: 'Archived sound from The Tent at the End of the Universe.',
-    href: 'https://www.little-portland.com/thetentradio',
+    href: '/thetentradio',
     meta: 'ONLINE',
     mode: 'waves',
     footer: 'OPEN SIGNAL',
@@ -120,7 +120,11 @@ const ProjectsPage = () => {
           opacity: 1 !important;
           text-decoration: none !important;
           transform: none !important;
-          transition: opacity 0.22s ease, color 0.22s ease !important;
+          transition:
+            opacity 0.22s ease,
+            color 0.22s ease,
+            text-shadow 0.22s ease,
+            box-shadow 0.22s ease !important;
           white-space: nowrap !important;
         }
 
@@ -131,11 +135,30 @@ const ProjectsPage = () => {
           transform: none !important;
         }
 
+        .scene-nav--projects a[href="/projects"],
+        .scene-nav--projects a[href="/projects/"],
+        .scene-nav--projects a[href*="/projects"] {
+          color: #04ff00 !important;
+          opacity: 1 !important;
+          text-shadow:
+            0 0 7px rgba(4, 255, 0, 0.9),
+            0 0 16px rgba(4, 255, 0, 0.42) !important;
+          box-shadow: inset 0 -2px 0 #04ff00 !important;
+        }
+
+        .scene-nav--projects a[href="/projects"]:hover,
+        .scene-nav--projects a[href="/projects/"]:hover,
+        .scene-nav--projects a[href*="/projects"]:hover {
+          opacity: 1 !important;
+        }
+
         .scene-nav--projects a.disabled {
           color: rgba(4, 255, 0, 0.38) !important;
           opacity: 1 !important;
           pointer-events: none !important;
           cursor: default !important;
+          text-shadow: none !important;
+          box-shadow: none !important;
         }
 
         .scene-nav--projects a::before,
@@ -163,10 +186,21 @@ const ProjectsPage = () => {
           opacity: 0.68 !important;
         }
 
+        .scene-nav-mobile--projects .scene-nav-mobile-inner a[href="/projects"],
+        .scene-nav-mobile--projects .scene-nav-mobile-inner a[href="/projects/"],
+        .scene-nav-mobile--projects .scene-nav-mobile-inner a[href*="/projects"] {
+          color: #04ff00 !important;
+          opacity: 1 !important;
+          text-shadow:
+            0 0 7px rgba(4, 255, 0, 0.9),
+            0 0 16px rgba(4, 255, 0, 0.42) !important;
+        }
+
         .scene-nav-mobile--projects .scene-nav-mobile-inner a.disabled {
           color: rgba(4, 255, 0, 0.38) !important;
           opacity: 1 !important;
           pointer-events: none !important;
+          text-shadow: none !important;
         }
 
         @media (max-width: 900px) {
@@ -258,8 +292,6 @@ const ProjectsPage = () => {
                   {...(project.href
                     ? {
                         href: project.href,
-                        target: '_blank',
-                        rel: 'noreferrer',
                       }
                     : {
                         'aria-disabled': 'true',
