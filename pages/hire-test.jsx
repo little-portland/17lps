@@ -144,15 +144,15 @@ const HireTestPage = () => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: min(46vw, 700px);
+          width: min(24vw, 360px);
           max-width: 100%;
-          min-width: 380px;
-          min-height: 62px;
-          padding: 12px 28px;
+          min-width: 300px;
+          min-height: 46px;
+          padding: 9px 22px;
           background: #50286d;
           color: #ffffff !important;
           font-family: 'Space Mono', 'Courier New', monospace;
-          font-size: clamp(18px, 2vw, 34px);
+          font-size: clamp(15px, 1.25vw, 22px);
           font-weight: 700;
           line-height: 1;
           letter-spacing: 0.01em;
@@ -183,7 +183,8 @@ const HireTestPage = () => {
           }
 
           .hire-mail-button {
-            width: min(58vw, 640px);
+            width: min(42vw, 360px);
+            min-width: 290px;
           }
         }
 
@@ -216,11 +217,12 @@ const HireTestPage = () => {
           }
 
           .hire-mail-button {
-            width: 100%;
+            width: auto;
             min-width: 0;
-            min-height: 54px;
-            padding: 11px 16px;
-            font-size: clamp(16px, 4.6vw, 21px);
+            max-width: 100%;
+            min-height: 48px;
+            padding: 10px 18px;
+            font-size: clamp(15px, 4.2vw, 19px);
           }
         }
       `}</style>
@@ -228,12 +230,13 @@ const HireTestPage = () => {
       <style jsx global>{`
         /* =====================================================
            HIRE PAGE NAV OVERRIDES
-           Uses the dining nav structure for the same spacing,
-           item sizing and logo sizing, then overrides colours.
+           Same sizing / spacing principle as dining-test and
+           nocturn-test, with page-specific hire colours.
         ===================================================== */
 
         .scene-nav.scene-nav--dining {
           background: transparent !important;
+          width: 100% !important;
         }
 
         .scene-nav.scene-nav--dining.has-scrolled {
@@ -243,9 +246,47 @@ const HireTestPage = () => {
           box-shadow: 0 8px 28px rgba(80, 40, 109, 0.14) !important;
         }
 
+        .scene-nav--dining .scene-nav-inner,
+        .scene-nav--dining nav,
+        .scene-nav--dining .nav-inner,
+        .scene-nav--dining .nav-wrap {
+          width: 65% !important;
+          max-width: none !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          display: grid !important;
+          grid-template-columns: 1fr auto 1fr !important;
+          align-items: center !important;
+          column-gap: 58px !important;
+        }
+
+        .scene-nav--dining .scene-nav-left,
+        .scene-nav--dining .nav-left,
+        .scene-nav--dining .left {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: flex-end !important;
+          gap: 42px !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .scene-nav--dining .scene-nav-right,
+        .scene-nav--dining .nav-right,
+        .scene-nav--dining .right {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: flex-start !important;
+          gap: 42px !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
         .scene-nav--dining a {
           font-family: 'Space Mono', 'Courier New', monospace !important;
-          font-size: clamp(13px, 0.9vw, 15px) !important;
+          font-size: 15px !important;
           font-weight: 700 !important;
           line-height: 1 !important;
           letter-spacing: 0.025em !important;
@@ -255,6 +296,7 @@ const HireTestPage = () => {
           text-transform: none !important;
           transform: none !important;
           transition: opacity 0.22s ease, color 0.22s ease !important;
+          white-space: nowrap !important;
         }
 
         .scene-nav--dining a:hover,
@@ -277,14 +319,21 @@ const HireTestPage = () => {
           display: none !important;
         }
 
-        .scene-nav--dining .scene-nav-logo {
+        .scene-nav--dining .scene-nav-logo,
+        .scene-nav--dining .nav-logo,
+        .scene-nav--dining .logo {
           width: 40px !important;
           height: 40px !important;
           flex: 0 0 40px !important;
+          justify-self: center !important;
+          margin: 0 !important;
+          padding: 0 !important;
           transform: none !important;
         }
 
-        .scene-nav--dining .scene-nav-logo img {
+        .scene-nav--dining .scene-nav-logo img,
+        .scene-nav--dining .nav-logo img,
+        .scene-nav--dining .logo img {
           display: block !important;
           width: 40px !important;
           height: 40px !important;
@@ -298,6 +347,29 @@ const HireTestPage = () => {
           background: #50286d !important;
         }
 
+        @media (max-width: 1100px) {
+          .scene-nav--dining .scene-nav-inner,
+          .scene-nav--dining nav,
+          .scene-nav--dining .nav-inner,
+          .scene-nav--dining .nav-wrap {
+            width: 75% !important;
+            column-gap: 44px !important;
+          }
+
+          .scene-nav--dining .scene-nav-left,
+          .scene-nav--dining .nav-left,
+          .scene-nav--dining .left,
+          .scene-nav--dining .scene-nav-right,
+          .scene-nav--dining .nav-right,
+          .scene-nav--dining .right {
+            gap: 32px !important;
+          }
+
+          .scene-nav--dining a {
+            font-size: 14px !important;
+          }
+        }
+
         @media (max-width: 900px) {
           .scene-nav.scene-nav--dining {
             background: transparent !important;
@@ -308,13 +380,27 @@ const HireTestPage = () => {
             background: rgba(161, 211, 193, 0.96) !important;
           }
 
-          .scene-nav--dining .scene-nav-logo {
+          .scene-nav--dining .scene-nav-inner,
+          .scene-nav--dining nav,
+          .scene-nav--dining .nav-inner,
+          .scene-nav--dining .nav-wrap {
+            width: 88% !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            column-gap: 0 !important;
+          }
+
+          .scene-nav--dining .scene-nav-logo,
+          .scene-nav--dining .nav-logo,
+          .scene-nav--dining .logo {
             width: 46px !important;
             height: 46px !important;
             flex-basis: 46px !important;
           }
 
-          .scene-nav--dining .scene-nav-logo img {
+          .scene-nav--dining .scene-nav-logo img,
+          .scene-nav--dining .nav-logo img,
+          .scene-nav--dining .logo img {
             width: 46px !important;
             height: 46px !important;
           }
