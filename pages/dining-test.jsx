@@ -530,17 +530,17 @@ const DiningTest = () => {
           display: flex !important;
           align-items: center !important;
           width: 100% !important;
-          gap: 24px !important;
+          gap: 28px !important;
         }
 
         .scene-nav--dining .scene-nav-left {
           justify-content: flex-end !important;
-          padding-right: 22px !important;
+          padding-right: 32px !important;
         }
 
         .scene-nav--dining .scene-nav-right {
           justify-content: flex-start !important;
-          padding-left: 22px !important;
+          padding-left: 32px !important;
         }
 
         .scene-nav--dining .scene-nav-logo {
