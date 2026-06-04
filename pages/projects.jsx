@@ -429,7 +429,7 @@ const ProjectsPage = () => {
 
         .title-row {
           display: grid;
-          grid-template-columns: 1fr auto;
+          grid-template-columns: minmax(0, 1fr) auto;
           align-items: end;
           gap: 24px;
         }
@@ -1108,19 +1108,23 @@ const ProjectsPage = () => {
           }
 
           .title-row {
-            grid-template-columns: 1fr;
-            gap: 20px;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 14px;
           }
 
           .glitch-title {
-            font-size: clamp(42px, 17vw, 72px);
+            font-size: clamp(40px, 14vw, 64px);
+            line-height: 0.86;
+            letter-spacing: -0.065em;
           }
 
           .spinner {
             width: 38px;
             height: 38px;
-            margin-left: auto;
+            margin-left: 0;
             margin-bottom: 0;
+            justify-self: end;
           }
 
           .spinner span {
@@ -1200,6 +1204,24 @@ const ProjectsPage = () => {
 
           .card-footer {
             font-size: 12px;
+          }
+        }
+
+        @media (max-width: 430px) {
+          .glitch-title {
+            font-size: clamp(36px, 13.4vw, 54px);
+          }
+
+          .spinner {
+            width: 34px;
+            height: 34px;
+          }
+
+          .spinner span {
+            width: 4px;
+            height: 11px;
+            margin-left: -2px;
+            transform-origin: 50% 17px;
           }
         }
       `}</style>
