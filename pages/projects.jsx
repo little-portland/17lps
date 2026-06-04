@@ -123,8 +123,7 @@ const ProjectsPage = () => {
           transition:
             opacity 0.22s ease,
             color 0.22s ease,
-            text-shadow 0.22s ease,
-            box-shadow 0.22s ease !important;
+            text-shadow 0.22s ease !important;
           white-space: nowrap !important;
         }
 
@@ -143,7 +142,6 @@ const ProjectsPage = () => {
           text-shadow:
             0 0 7px rgba(4, 255, 0, 0.9),
             0 0 16px rgba(4, 255, 0, 0.42) !important;
-          box-shadow: inset 0 -2px 0 #04ff00 !important;
         }
 
         .scene-nav--projects a[href="/projects"]:hover,
@@ -640,9 +638,7 @@ const ProjectsPage = () => {
           line-height: 0.98;
           letter-spacing: -0.045em;
           text-transform: uppercase;
-          text-shadow:
-            0 0 8px rgba(4, 255, 0, 0.55),
-            0 0 18px rgba(4, 255, 0, 0.18);
+          text-shadow: none;
         }
 
         .project-title-mask {
@@ -657,6 +653,7 @@ const ProjectsPage = () => {
         .project-title-text {
           display: inline-block;
           white-space: nowrap;
+          text-shadow: none;
         }
 
         .project-card p {
