@@ -174,6 +174,14 @@ export default function TentRadioPage() {
     window.setTimeout(() => setPreviousIndex(null), 360);
   };
 
+  const goToPreviousEpisode = () => {
+    changeTrack(activeIndex + 1);
+  };
+
+  const goToNextEpisode = () => {
+    changeTrack(activeIndex - 1);
+  };
+
   useEffect(() => {
     const audio = audioRef.current;
 
@@ -181,7 +189,11 @@ export default function TentRadioPage() {
 
     const onTime = () => setProgress(audio.currentTime || 0);
     const onLoaded = () => setDuration(audio.duration || 0);
-    const onEnded = () => changeTrack(activeIndex + 1);
+    const onEnded = () => {
+      if (activeIndex < TRACKS.length - 1) {
+        changeTrack(activeIndex + 1);
+      }
+    };
     const onPause = () => setIsPlaying(false);
     const onPlay = () => setIsPlaying(true);
 
@@ -421,9 +433,9 @@ export default function TentRadioPage() {
               <button
                 type="button"
                 className="radioPlayer__skip"
-                onClick={() => changeTrack(activeIndex - 1)}
-                disabled={activeIndex === 0}
-                aria-label="Previous track"
+                onClick={goToPreviousEpisode}
+                disabled={activeIndex === TRACKS.length - 1}
+                aria-label="Previous episode"
               >
                 <span className="skipIcon skipIcon--prev" aria-hidden="true">
                   <b />
@@ -455,9 +467,9 @@ export default function TentRadioPage() {
               <button
                 type="button"
                 className="radioPlayer__skip"
-                onClick={() => changeTrack(activeIndex + 1)}
-                disabled={activeIndex === TRACKS.length - 1}
-                aria-label="Next track"
+                onClick={goToNextEpisode}
+                disabled={activeIndex === 0}
+                aria-label="Next episode"
               >
                 <span className="skipIcon skipIcon--next" aria-hidden="true">
                   <i />
@@ -1213,7 +1225,14 @@ export default function TentRadioPage() {
           align-items: center;
           justify-content: center;
           gap: 0;
-          transform: translateX(0);
+        }
+
+        .skipIcon--prev {
+          transform: translateX(-2px);
+        }
+
+        .skipIcon--next {
+          transform: translateX(2px);
         }
 
         .skipIcon i {
