@@ -12,17 +12,102 @@ const PROJECTS = [
     href: 'https://www.little-portland.com/thetentradio',
     meta: 'ONLINE',
     mode: 'waves',
+    footer: 'OPEN SIGNAL',
+    readout: '87.17 FM / TENT SIGNAL',
   },
   {
     eyebrow: 'TRANSMISSION 02',
     title: 'LPX RADIO',
     description:
       'Resident frequencies, recordings and future transmissions from 17 Little Portland Street.',
-    href: '/lpxradio',
+    href: null,
     meta: 'COMING SOON',
     mode: 'radar',
+    footer: 'SIGNAL STANDBY',
+    readout: 'LPX SIGNAL / STANDBY',
   },
 ];
+
+const ProjectCard = ({ project }) => {
+  const content = (
+    <>
+      <div className="card-meta">
+        <span>{project.eyebrow}</span>
+        <span>{project.meta}</span>
+      </div>
+
+      <h2 style={{ '--title-max': `${project.title.length + 1}ch` }}>
+        <span className="project-title-mask">
+          <span className="project-title-text">{project.title}</span>
+        </span>
+      </h2>
+
+      <p>{project.description}</p>
+
+      <div className={`signal-panel signal-panel--${project.mode}`} aria-hidden="true">
+        <div className="signal-stage">
+          {project.mode === 'waves' && (
+            <>
+              <div className="waveform">
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+              <div className="frequency-line" />
+            </>
+          )}
+
+          {project.mode === 'radar' && (
+            <div className="radar">
+              <span className="radar-ring ring-1" />
+              <span className="radar-ring ring-2" />
+              <span className="radar-ring ring-3" />
+              <span className="radar-sweep" />
+              <span className="radar-dot dot-1" />
+              <span className="radar-dot dot-2" />
+              <span className="radar-dot dot-3" />
+            </div>
+          )}
+        </div>
+
+        <div className="frequency-readout">{project.readout}</div>
+      </div>
+
+      <div className="card-footer">
+        <span>{project.footer}</span>
+        {project.href ? <span className="arrow">→</span> : <span className="standby-dot">●</span>}
+      </div>
+    </>
+  );
+
+  if (!project.href) {
+    return (
+      <div className="project-card project-card--disabled" aria-disabled="true">
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <a
+      className="project-card"
+      href={project.href}
+      target="_blank"
+      rel="noreferrer"
+    >
+      {content}
+    </a>
+  );
+};
 
 const ProjectsPage = () => {
   return (
@@ -60,12 +145,6 @@ const ProjectsPage = () => {
       <SceneNav theme="projects" />
 
       <style jsx global>{`
-        /*
-          PROJECTS PAGE NAV
-          Same compact sizing / spacing principle as nocturn-test,
-          colour-swapped for the projects flyer style.
-        */
-
         .scene-nav.scene-nav--projects {
           grid-template-columns: 1fr 36px 1fr !important;
           gap: 0 !important;
@@ -232,9 +311,22 @@ const ProjectsPage = () => {
 
         <section className="projects-frame">
           <header className="projects-header">
-            <div className="header-topline">
-              <span className="typing tiny">RADIO PROJECTS / LIVE + ARCHIVE</span>
-              <span className="typing tiny delay">2 CHANNELS / MORE SOON</span>
+            <div className="status-strip">
+              <div className="status-item">
+                <span className="status-label">ACTIVE SIGNAL</span>
+                <span className="typing status-value">THE TENT RADIO / ONLINE</span>
+              </div>
+
+              <div className="status-centre" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
+
+              <div className="status-item status-item-right">
+                <span className="status-label">NEXT TRANSMISSION</span>
+                <span className="typing delay status-value">LPX RADIO / STANDBY</span>
+              </div>
             </div>
 
             <div className="title-row">
@@ -259,65 +351,7 @@ const ProjectsPage = () => {
 
           <div className="projects-grid">
             {PROJECTS.map((project) => (
-              <a
-                key={project.title}
-                className="project-card"
-                href={project.href}
-                target={project.href.startsWith('http') ? '_blank' : undefined}
-                rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
-              >
-                <div className="card-meta">
-                  <span>{project.eyebrow}</span>
-                  <span>{project.meta}</span>
-                </div>
-
-                <h2>{project.title}</h2>
-
-                <p>{project.description}</p>
-
-                <div className={`signal-panel signal-panel--${project.mode}`} aria-hidden="true">
-                  {project.mode === 'waves' && (
-                    <>
-                      <div className="waveform">
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                      </div>
-                      <div className="frequency-line" />
-                      <div className="frequency-readout">87.17 FM / TENT SIGNAL</div>
-                    </>
-                  )}
-
-                  {project.mode === 'radar' && (
-                    <>
-                      <div className="radar">
-                        <span className="radar-ring ring-1" />
-                        <span className="radar-ring ring-2" />
-                        <span className="radar-ring ring-3" />
-                        <span className="radar-sweep" />
-                        <span className="radar-dot dot-1" />
-                        <span className="radar-dot dot-2" />
-                        <span className="radar-dot dot-3" />
-                      </div>
-                      <div className="frequency-readout">LPX SIGNAL / STANDBY</div>
-                    </>
-                  )}
-                </div>
-
-                <div className="card-footer">
-                  <span>OPEN SIGNAL</span>
-                  <span className="arrow">→</span>
-                </div>
-              </a>
+              <ProjectCard key={project.title} project={project} />
             ))}
           </div>
         </section>
@@ -342,7 +376,7 @@ const ProjectsPage = () => {
           inset: 0;
           z-index: 0;
           background-image:
-            linear-gradient(rgba(5, 5, 5, 0.12), rgba(5, 5, 5, 0.62)),
+            linear-gradient(rgba(5, 5, 5, 0.1), rgba(5, 5, 5, 0.58)),
             url('/images/projects/projects-bg.jpeg');
           background-size: cover;
           background-position: center;
@@ -390,20 +424,67 @@ const ProjectsPage = () => {
           margin-bottom: 28px;
         }
 
-        .header-topline {
-          display: flex;
-          justify-content: space-between;
+        .status-strip {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: center;
           gap: 24px;
-          margin-bottom: 62px;
+          margin-bottom: 58px;
+          padding: 0;
+          color: #04ff00;
+          text-transform: uppercase;
+        }
+
+        .status-item {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          min-width: 0;
+        }
+
+        .status-item-right {
+          text-align: right;
+          align-items: flex-end;
+        }
+
+        .status-label {
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: 0.08em;
+          opacity: 0.55;
+        }
+
+        .status-value {
           font-size: 15px;
           font-weight: 700;
           line-height: 1;
           letter-spacing: 0.015em;
-          text-transform: uppercase;
         }
 
-        .tiny {
-          font-size: 15px;
+        .status-centre {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+
+        .status-centre span {
+          display: block;
+          width: 9px;
+          height: 9px;
+          border-radius: 999px;
+          background: #04ff00;
+          box-shadow: 0 0 10px rgba(4, 255, 0, 0.8);
+          animation: statusBlink 1.6s steps(2, end) infinite;
+        }
+
+        .status-centre span:nth-child(2) {
+          animation-delay: 0.25s;
+        }
+
+        .status-centre span:nth-child(3) {
+          animation-delay: 0.5s;
         }
 
         .title-row {
@@ -553,10 +634,14 @@ const ProjectsPage = () => {
             box-shadow 0.24s ease;
         }
 
-        .project-card:hover {
+        .project-card:not(.project-card--disabled):hover {
           transform: translateY(-3px);
           background: rgba(0, 0, 0, 0.42);
           box-shadow: 0 0 24px rgba(4, 255, 0, 0.16);
+        }
+
+        .project-card--disabled {
+          cursor: default;
         }
 
         .project-card::before {
@@ -578,7 +663,7 @@ const ProjectsPage = () => {
           pointer-events: none;
         }
 
-        .project-card:hover::before {
+        .project-card:not(.project-card--disabled):hover::before {
           transform: translateX(120%);
         }
 
@@ -603,21 +688,32 @@ const ProjectsPage = () => {
         }
 
         .project-card h2 {
+          max-width: 100%;
           margin: 0 0 24px 0;
-          overflow: visible;
+          overflow: hidden;
           color: #04ff00;
-          font-size: clamp(34px, 3.25vw, 58px);
+          font-size: clamp(30px, 2.75vw, 50px);
           font-weight: 700;
           line-height: 0.98;
           letter-spacing: -0.045em;
           text-transform: uppercase;
-          white-space: normal;
-          word-break: normal;
-          overflow-wrap: normal;
           text-shadow:
             0 0 8px rgba(4, 255, 0, 0.55),
             0 0 18px rgba(4, 255, 0, 0.18);
-          animation: softPulse 4.5s ease-in-out infinite;
+        }
+
+        .project-title-mask {
+          display: inline-block;
+          max-width: 0;
+          overflow: hidden;
+          vertical-align: bottom;
+          white-space: nowrap;
+          animation: projectTitleType 12s steps(18, end) infinite;
+        }
+
+        .project-title-text {
+          display: inline-block;
+          white-space: nowrap;
         }
 
         .project-card p {
@@ -632,10 +728,9 @@ const ProjectsPage = () => {
 
         .signal-panel {
           display: flex;
-          align-items: center;
-          justify-content: center;
+          flex-direction: column;
           width: calc(100% + 40px);
-          min-height: 180px;
+          min-height: 210px;
           margin: auto -20px 18px -20px;
           border-top: 2px solid rgba(4, 255, 0, 0.82);
           border-bottom: 2px solid rgba(4, 255, 0, 0.82);
@@ -675,6 +770,18 @@ const ProjectsPage = () => {
             transparent
           );
           animation: signalSweep 4.8s ease-in-out infinite;
+        }
+
+        .signal-stage {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: 1;
+          min-height: 150px;
+          width: 100%;
+          overflow: hidden;
         }
 
         .waveform {
@@ -758,15 +865,16 @@ const ProjectsPage = () => {
         }
 
         .frequency-readout {
-          position: absolute;
+          position: relative;
           z-index: 3;
-          left: 20px;
-          bottom: 16px;
+          width: 100%;
+          padding: 0 20px 18px 20px;
           font-size: 11px;
           font-weight: 700;
           line-height: 1;
           text-transform: uppercase;
           opacity: 0.8;
+          box-sizing: border-box;
         }
 
         .radar {
@@ -853,8 +961,13 @@ const ProjectsPage = () => {
           transition: transform 0.24s ease;
         }
 
-        .project-card:hover .arrow {
+        .project-card:not(.project-card--disabled):hover .arrow {
           transform: translateX(5px);
+        }
+
+        .standby-dot {
+          font-size: 12px;
+          animation: dotBlink 2s steps(2, end) infinite;
         }
 
         .typing {
@@ -877,6 +990,28 @@ const ProjectsPage = () => {
 
           to {
             max-width: 42ch;
+          }
+        }
+
+        @keyframes projectTitleType {
+          0% {
+            max-width: 0;
+          }
+
+          12% {
+            max-width: var(--title-max);
+          }
+
+          76% {
+            max-width: var(--title-max);
+          }
+
+          88% {
+            max-width: 0;
+          }
+
+          100% {
+            max-width: 0;
           }
         }
 
@@ -960,21 +1095,6 @@ const ProjectsPage = () => {
           }
         }
 
-        @keyframes softPulse {
-          0%,
-          100% {
-            text-shadow:
-              0 0 8px rgba(4, 255, 0, 0.45),
-              0 0 18px rgba(4, 255, 0, 0.12);
-          }
-
-          50% {
-            text-shadow:
-              0 0 12px rgba(4, 255, 0, 0.72),
-              0 0 28px rgba(4, 255, 0, 0.24);
-          }
-        }
-
         @keyframes gridDrift {
           from {
             transform: translateX(0);
@@ -1054,6 +1174,17 @@ const ProjectsPage = () => {
           }
         }
 
+        @keyframes statusBlink {
+          0%,
+          100% {
+            opacity: 1;
+          }
+
+          50% {
+            opacity: 0.24;
+          }
+        }
+
         @media (max-width: 1100px) {
           .projects-frame {
             width: 75%;
@@ -1068,7 +1199,7 @@ const ProjectsPage = () => {
           }
 
           .project-card h2 {
-            font-size: clamp(32px, 4vw, 48px);
+            font-size: clamp(30px, 3.5vw, 44px);
           }
         }
 
@@ -1083,15 +1214,34 @@ const ProjectsPage = () => {
             padding: 18px;
           }
 
-          .header-topline {
-            flex-direction: column;
-            gap: 10px;
+          .status-strip {
+            grid-template-columns: 1fr;
+            gap: 14px;
             margin-bottom: 42px;
+          }
+
+          .status-item,
+          .status-item-right {
+            align-items: flex-start;
+            text-align: left;
+          }
+
+          .status-label {
+            font-size: 9px;
+          }
+
+          .status-value {
             font-size: 12px;
           }
 
-          .tiny {
-            font-size: 12px;
+          .status-centre {
+            justify-content: flex-start;
+            order: 3;
+          }
+
+          .status-centre span {
+            width: 7px;
+            height: 7px;
           }
 
           .title-row {
@@ -1126,7 +1276,7 @@ const ProjectsPage = () => {
           }
 
           .project-card {
-            min-height: 430px;
+            min-height: 0;
             padding: 16px;
           }
 
@@ -1137,7 +1287,7 @@ const ProjectsPage = () => {
 
           .project-card h2 {
             margin-bottom: 20px;
-            font-size: clamp(34px, 11vw, 48px);
+            font-size: clamp(30px, 9.4vw, 43px);
             line-height: 0.96;
             letter-spacing: -0.055em;
           }
@@ -1145,17 +1295,22 @@ const ProjectsPage = () => {
           .project-card p {
             max-width: 100%;
             min-height: 0;
+            margin-bottom: 26px;
             font-size: 13px;
           }
 
           .signal-panel {
             width: calc(100% + 32px);
-            min-height: 150px;
-            margin-left: -16px;
-            margin-right: -16px;
+            min-height: 205px;
+            margin: 0 -16px 18px -16px;
+          }
+
+          .signal-stage {
+            min-height: 148px;
           }
 
           .waveform {
+            width: 82%;
             gap: 6px;
           }
 
@@ -1163,21 +1318,31 @@ const ProjectsPage = () => {
             width: 6px;
           }
 
+          .frequency-readout {
+            padding: 0 16px 17px 16px;
+            font-size: 10px;
+            line-height: 1.2;
+          }
+
           .radar {
-            width: 118px;
-            height: 118px;
+            width: 112px;
+            height: 112px;
           }
 
           .ring-1 {
-            inset: 16px;
+            inset: 15px;
           }
 
           .ring-2 {
-            inset: 33px;
+            inset: 31px;
           }
 
           .ring-3 {
-            inset: 50px;
+            inset: 48px;
+          }
+
+          .card-footer {
+            font-size: 12px;
           }
         }
       `}</style>
