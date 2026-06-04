@@ -76,7 +76,7 @@ const Menu = ({ menuImage }) => {
             }
 
             .nocturn.override {
-              width: min(100%, 1120px);
+              width: 65%;
               margin: 0 auto;
               border: 2px solid #39ff14;
               background: #000;
