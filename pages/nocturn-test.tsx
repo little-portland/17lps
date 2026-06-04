@@ -478,6 +478,91 @@ const NocturnPage = () => {
 
       <SceneNav theme="nocturn" />
 
+      <style jsx global>{`
+        /*
+          This style block sits AFTER SceneNav, so it wins over SceneNav's own
+          global CSS. It makes nocturn-test match the compact nav spacing used
+          on dining-test and the other test pages.
+        */
+
+        .scene-nav.scene-nav--nocturn {
+          grid-template-columns: 1fr 36px 1fr !important;
+          gap: 0 !important;
+          padding-top: 11px !important;
+          padding-bottom: 9px !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-left,
+        .scene-nav--nocturn .scene-nav-right {
+          display: flex !important;
+          align-items: center !important;
+          width: 100% !important;
+          gap: 28px !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-left {
+          justify-content: flex-end !important;
+          padding-right: 32px !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-right {
+          justify-content: flex-start !important;
+          padding-left: 32px !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-logo {
+          width: 36px !important;
+          height: 36px !important;
+          flex: 0 0 36px !important;
+        }
+
+        .scene-nav--nocturn .scene-nav-logo img {
+          width: 36px !important;
+          height: 36px !important;
+          object-fit: contain !important;
+          filter: brightness(0) invert(1) !important;
+        }
+
+        .scene-nav--nocturn a {
+          font-size: 13px !important;
+          line-height: 1 !important;
+          letter-spacing: 0.015em !important;
+          font-family: Helvetica, Arial, sans-serif !important;
+          font-weight: 800 !important;
+        }
+
+        .scene-nav--nocturn a:hover,
+        .scene-nav--nocturn a.active {
+          color: #ff9292 !important;
+        }
+
+        @media (max-width: 900px) {
+          .scene-nav.scene-nav--nocturn {
+            display: flex !important;
+            grid-template-columns: none !important;
+            gap: 0 !important;
+            padding: 18px 6% 14px 6% !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-left,
+          .scene-nav--nocturn .scene-nav-right {
+            padding: 0 !important;
+            gap: 0 !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-logo {
+            width: 46px !important;
+            height: 46px !important;
+            flex-basis: 46px !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-logo img {
+            width: 46px !important;
+            height: 46px !important;
+          }
+        }
+      `}</style>
+
       <main className="nocturn-page-main">
         <div className="nocturn-page-frame">
           <div className="nocturn">
