@@ -68,7 +68,7 @@ const Menu = ({ menuImage }) => {
             .page-shell {
               min-height: 100vh;
               background: #000;
-              padding: 28px 18px;
+              padding: 28px 0;
             }
 
             .page-shell--with-scene-nav {
