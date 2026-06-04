@@ -36,21 +36,21 @@ const AREAS: AreaConfig[] = [
   {
     id: 'tent',
     title: 'THE TENT',
-    href: '/thetent',
+    href: '/thetent-test',
     highlight: '/images/concept/tent-highlight.png',
     chars: 8,
   },
   {
     id: 'chefs-studio',
     title: "CHEF'S STUDIO",
-    href: '/chefstudio',
+    href: '/chefstudio-test',
     highlight: '/images/concept/chefs-studio-highlight.png',
     chars: 13,
   },
   {
     id: 'studio',
     title: 'THE STUDIO',
-    href: '/studio',
+    href: '/studio-test',
     highlight: '/images/concept/studio-highlight.png',
     chars: 10,
   },
@@ -59,12 +59,12 @@ const AREAS: AreaConfig[] = [
 const EXPERIENCE_BTNS = [
   {
     label: 'Dining',
-    href: 'https://www.little-portland.com/food',
+    href: '/food-test',
     dark: false,
   },
   {
     label: 'After Dark',
-    href: 'https://www.little-portland.com/theclub',
+    href: '/theclub-test',
     dark: true,
   },
 ];
