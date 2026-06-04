@@ -65,6 +65,42 @@ const Menu = ({ menuImage }) => {
               80%, 100%     { background: var(--f4, transparent); }
             }
 
+            @keyframes dinnerGraphicPulse {
+              0%, 100% {
+                opacity: 0.72;
+                transform: scaleY(0.65);
+              }
+              50% {
+                opacity: 1;
+                transform: scaleY(1);
+              }
+            }
+
+            @keyframes dinnerGraphicSweep {
+              0% {
+                transform: translateX(-140%);
+                opacity: 0;
+              }
+              18% {
+                opacity: 1;
+              }
+              100% {
+                transform: translateX(140%);
+                opacity: 0;
+              }
+            }
+
+            @keyframes dinnerGraphicDot {
+              0%, 100% {
+                opacity: 0.25;
+                transform: scale(0.8);
+              }
+              50% {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
+
             .page-shell {
               min-height: 100vh;
               background: #000;
@@ -529,11 +565,13 @@ const Menu = ({ menuImage }) => {
               pointer-events: none;
             }
 
-            .friend-link-wrap a:hover .button-label-static {
+            .friend-link-wrap a:hover .button-label-static,
+            .dinner-link-wrap a:hover .button-label-static {
               opacity: 0;
             }
 
-            .friend-link-wrap a:hover .button-label-typed {
+            .friend-link-wrap a:hover .button-label-typed,
+            .dinner-link-wrap a:hover .button-label-typed {
               opacity: 1;
               animation: buttonTypeReveal 0.8s steps(36, end) 1 forwards;
             }
@@ -555,6 +593,152 @@ const Menu = ({ menuImage }) => {
             .desktop-banner-row,
             .mobile-row-banner {
               margin-top: 18px;
+            }
+
+            .dinner-cta-row {
+              display: grid;
+              grid-template-columns: 3fr 1fr;
+              gap: 14px;
+              align-items: stretch;
+              margin-top: 18px;
+              position: relative;
+              z-index: 4;
+            }
+
+            .dinner-link-wrap {
+              width: 100%;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .dinner-link-wrap a {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              min-height: 48px;
+              padding: 12px 18px;
+              background: #ffab00;
+              color: #000 !important;
+              font-family: "Courier New", monospace;
+              font-size: 18px;
+              font-weight: 700;
+              text-transform: lowercase;
+              letter-spacing: 0.08em;
+              text-decoration: none !important;
+              text-align: center;
+              position: relative;
+              overflow: hidden;
+              transition:
+                background 0.22s ease,
+                color 0.22s ease,
+                box-shadow 0.22s ease,
+                transform 0.22s ease;
+              box-shadow: 0 0 0 rgba(255,171,0,0);
+            }
+
+            .dinner-link-wrap a:hover {
+              background: #39ff14;
+              color: #000 !important;
+              transform: translateY(-1px);
+              box-shadow:
+                0 0 18px rgba(57,255,20,0.18),
+                0 0 32px rgba(57,255,20,0.08);
+            }
+
+            .dinner-red-graphic {
+              min-height: 48px;
+              border: 2px solid #ff2020;
+              background: #000;
+              position: relative;
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 8px;
+            }
+
+            .dinner-red-graphic::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              background:
+                repeating-linear-gradient(
+                  to bottom,
+                  rgba(255,32,32,0.08) 0px,
+                  rgba(255,32,32,0.08) 1px,
+                  transparent 1px,
+                  transparent 4px
+                );
+              opacity: 0.5;
+            }
+
+            .dinner-red-graphic::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              width: 60%;
+              background: linear-gradient(
+                90deg,
+                rgba(255,32,32,0) 0%,
+                rgba(255,32,32,0.24) 50%,
+                rgba(255,32,32,0) 100%
+              );
+              animation: dinnerGraphicSweep 3.2s linear infinite;
+            }
+
+            .dinner-graphic-inner {
+              position: relative;
+              z-index: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              width: 100%;
+              height: 100%;
+            }
+
+            .dinner-graphic-bar {
+              width: 7px;
+              height: 24px;
+              background: #ff2020;
+              box-shadow: 0 0 10px rgba(255,32,32,0.4);
+              transform-origin: center;
+              animation: dinnerGraphicPulse 1.2s ease-in-out infinite;
+            }
+
+            .dinner-graphic-bar:nth-child(2) {
+              height: 14px;
+              animation-delay: 0.12s;
+            }
+
+            .dinner-graphic-bar:nth-child(3) {
+              height: 32px;
+              animation-delay: 0.24s;
+            }
+
+            .dinner-graphic-bar:nth-child(4) {
+              height: 18px;
+              animation-delay: 0.36s;
+            }
+
+            .dinner-graphic-dot {
+              width: 9px;
+              height: 9px;
+              border-radius: 50%;
+              border: 1px solid #ff2020;
+              background: #ff2020;
+              box-shadow: 0 0 10px rgba(255,32,32,0.5);
+              animation: dinnerGraphicDot 1.2s steps(1, end) infinite;
+            }
+
+            .dinner-graphic-dot:nth-child(6) {
+              animation-delay: 0.3s;
+            }
+
+            .dinner-graphic-dot:nth-child(7) {
+              animation-delay: 0.6s;
             }
 
             /* =====================================================
@@ -596,15 +780,21 @@ const Menu = ({ menuImage }) => {
               .hero-image-wrap::after,
               .hero-panel::before,
               .friend-link-wrap a:hover .button-label-typed,
-              .access-dot {
+              .dinner-link-wrap a:hover .button-label-typed,
+              .access-dot,
+              .dinner-red-graphic::after,
+              .dinner-graphic-bar,
+              .dinner-graphic-dot {
                 animation: none !important;
               }
 
-              .friend-link-wrap a:hover .button-label-static {
+              .friend-link-wrap a:hover .button-label-static,
+              .dinner-link-wrap a:hover .button-label-static {
                 opacity: 0;
               }
 
-              .friend-link-wrap a:hover .button-label-typed {
+              .friend-link-wrap a:hover .button-label-typed,
+              .dinner-link-wrap a:hover .button-label-typed {
                 width: 100% !important;
                 opacity: 1 !important;
               }
@@ -690,6 +880,49 @@ const Menu = ({ menuImage }) => {
                 font-size: 14px;
                 line-height: 1.2;
                 max-height: 60px;
+              }
+
+              .dinner-cta-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-top: 14px;
+              }
+
+              .dinner-link-wrap a {
+                min-height: 42px;
+                padding: 10px 12px;
+                font-size: 15px;
+                line-height: 1.2;
+              }
+
+              .dinner-red-graphic {
+                min-height: 42px;
+              }
+
+              .dinner-graphic-inner {
+                gap: 7px;
+              }
+
+              .dinner-graphic-bar {
+                width: 6px;
+                height: 20px;
+              }
+
+              .dinner-graphic-bar:nth-child(2) {
+                height: 12px;
+              }
+
+              .dinner-graphic-bar:nth-child(3) {
+                height: 26px;
+              }
+
+              .dinner-graphic-bar:nth-child(4) {
+                height: 16px;
+              }
+
+              .dinner-graphic-dot {
+                width: 8px;
+                height: 8px;
               }
 
               .button-label-static,
@@ -890,6 +1123,34 @@ const Menu = ({ menuImage }) => {
                       className="hero-image"
                       priority
                     />
+                  </div>
+                </div>
+              </div>
+
+              <div className="dinner-cta-row">
+                <div className="dinner-link-wrap">
+                  <a
+                    href="https://www.little-portland.com/dinner-options"
+                    aria-label="book dinner"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="button-text-wrap">
+                      <span className="button-label-static">book dinner</span>
+                      <span className="button-label-typed">book dinner</span>
+                    </span>
+                  </a>
+                </div>
+
+                <div className="dinner-red-graphic" aria-hidden="true">
+                  <div className="dinner-graphic-inner">
+                    <span className="dinner-graphic-bar" />
+                    <span className="dinner-graphic-bar" />
+                    <span className="dinner-graphic-bar" />
+                    <span className="dinner-graphic-bar" />
+                    <span className="dinner-graphic-dot" />
+                    <span className="dinner-graphic-dot" />
+                    <span className="dinner-graphic-dot" />
                   </div>
                 </div>
               </div>
