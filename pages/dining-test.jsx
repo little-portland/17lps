@@ -64,63 +64,6 @@ const DiningTest = () => {
               margin: 0;
             }
 
-            /*
-              Dining-test is a secondary page, so no primary nav item should appear active.
-            */
-            .scene-nav--dining a.active,
-            .scene-nav-mobile--dining .scene-nav-mobile-inner a.active {
-              color: rgba(61, 207, 214, 0.86) !important;
-            }
-
-            .scene-nav--dining a.active:hover {
-              color: #f57658 !important;
-            }
-
-            /*
-              Match nav sizing/spacing to the other pages without touching SceneNav globally.
-            */
-            .scene-nav.scene-nav--dining {
-              grid-template-columns: 1fr 34px 1fr !important;
-              gap: 0 !important;
-              padding-top: 12px !important;
-              padding-bottom: 10px !important;
-            }
-
-            .scene-nav--dining .scene-nav-left,
-            .scene-nav--dining .scene-nav-right {
-              gap: 28px !important;
-              width: 100% !important;
-            }
-
-            .scene-nav--dining .scene-nav-left {
-              justify-content: flex-end !important;
-              padding-right: 32px !important;
-            }
-
-            .scene-nav--dining .scene-nav-right {
-              justify-content: flex-start !important;
-              padding-left: 32px !important;
-            }
-
-            .scene-nav--dining .scene-nav-logo {
-              width: 34px !important;
-              height: 34px !important;
-              flex: 0 0 34px !important;
-            }
-
-            .scene-nav--dining .scene-nav-logo img {
-              width: 34px !important;
-              height: 34px !important;
-              filter: brightness(0) saturate(100%) invert(62%) sepia(66%)
-                saturate(1077%) hue-rotate(322deg) brightness(101%)
-                contrast(93%) !important;
-            }
-
-            .scene-nav--dining a {
-              font-size: 14px !important;
-              letter-spacing: 0.025em !important;
-            }
-
             .dining-page-main {
               width: 100%;
               padding-top: 86px;
@@ -434,31 +377,6 @@ const DiningTest = () => {
               }
             }
 
-            @media (max-width: 900px) {
-              .scene-nav.scene-nav--dining {
-                display: flex !important;
-                grid-template-columns: none !important;
-                gap: 0 !important;
-              }
-
-              .scene-nav--dining .scene-nav-left,
-              .scene-nav--dining .scene-nav-right {
-                padding: 0 !important;
-                gap: 0 !important;
-              }
-
-              .scene-nav--dining .scene-nav-logo {
-                width: 46px !important;
-                height: 46px !important;
-                flex-basis: 46px !important;
-              }
-
-              .scene-nav--dining .scene-nav-logo img {
-                width: 46px !important;
-                height: 46px !important;
-              }
-            }
-
             @media (max-width: 768px) {
               .dining-page-main {
                 padding-top: 82px;
@@ -593,6 +511,96 @@ const DiningTest = () => {
       </Head>
 
       <SceneNav theme="dining" />
+
+      <style jsx global>{`
+        /*
+          This style block sits AFTER SceneNav, so it wins over SceneNav's own
+          global CSS. It makes dining-test match the compact nav on thetent-test.
+        */
+
+        .scene-nav.scene-nav--dining {
+          grid-template-columns: 1fr 36px 1fr !important;
+          gap: 0 !important;
+          padding-top: 11px !important;
+          padding-bottom: 9px !important;
+        }
+
+        .scene-nav--dining .scene-nav-left,
+        .scene-nav--dining .scene-nav-right {
+          display: flex !important;
+          align-items: center !important;
+          width: 100% !important;
+          gap: 24px !important;
+        }
+
+        .scene-nav--dining .scene-nav-left {
+          justify-content: flex-end !important;
+          padding-right: 22px !important;
+        }
+
+        .scene-nav--dining .scene-nav-right {
+          justify-content: flex-start !important;
+          padding-left: 22px !important;
+        }
+
+        .scene-nav--dining .scene-nav-logo {
+          width: 36px !important;
+          height: 36px !important;
+          flex: 0 0 36px !important;
+        }
+
+        .scene-nav--dining .scene-nav-logo img {
+          width: 36px !important;
+          height: 36px !important;
+          object-fit: contain !important;
+          filter: brightness(0) saturate(100%) invert(62%) sepia(66%)
+            saturate(1077%) hue-rotate(322deg) brightness(101%)
+            contrast(93%) !important;
+        }
+
+        .scene-nav--dining a {
+          font-size: 13px !important;
+          line-height: 1 !important;
+          letter-spacing: 0.015em !important;
+          font-family: 'Space Mono', 'Courier New', monospace !important;
+          font-weight: 700 !important;
+        }
+
+        .scene-nav--dining a.active {
+          color: rgba(61, 207, 214, 0.86) !important;
+        }
+
+        .scene-nav--dining a.active:hover,
+        .scene-nav--dining a:hover {
+          color: #f57658 !important;
+        }
+
+        @media (max-width: 900px) {
+          .scene-nav.scene-nav--dining {
+            display: flex !important;
+            grid-template-columns: none !important;
+            gap: 0 !important;
+            padding: 18px 6% 14px 6% !important;
+          }
+
+          .scene-nav--dining .scene-nav-left,
+          .scene-nav--dining .scene-nav-right {
+            padding: 0 !important;
+            gap: 0 !important;
+          }
+
+          .scene-nav--dining .scene-nav-logo {
+            width: 46px !important;
+            height: 46px !important;
+            flex-basis: 46px !important;
+          }
+
+          .scene-nav--dining .scene-nav-logo img {
+            width: 46px !important;
+            height: 46px !important;
+          }
+        }
+      `}</style>
 
       <main className="dining-page-main">
         <div className="dining-page-frame">
