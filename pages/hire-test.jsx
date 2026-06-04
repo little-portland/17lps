@@ -59,8 +59,9 @@ const HireTestPage = () => {
 
       <style jsx global>{`
         /*
-          Same compact nav spacing as nocturn-test,
-          with hire page colours.
+          Hire page nav.
+          Desktop copies the compact spacing from nocturn-test.
+          Mobile explicitly hides the desktop nav groups so they don't bleed through.
         */
 
         .scene-nav.scene-nav--dining {
@@ -174,6 +175,8 @@ const HireTestPage = () => {
         @media (max-width: 900px) {
           .scene-nav.scene-nav--dining {
             display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
             grid-template-columns: none !important;
             gap: 0 !important;
             padding: 18px 6% 14px 6% !important;
@@ -187,19 +190,36 @@ const HireTestPage = () => {
 
           .scene-nav--dining .scene-nav-left,
           .scene-nav--dining .scene-nav-right {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
             padding: 0 !important;
+            margin: 0 !important;
             gap: 0 !important;
           }
 
           .scene-nav--dining .scene-nav-logo {
+            display: block !important;
             width: 46px !important;
             height: 46px !important;
-            flex-basis: 46px !important;
+            flex: 0 0 46px !important;
+            margin-left: auto !important;
+            margin-right: 0 !important;
+            order: 2 !important;
           }
 
           .scene-nav--dining .scene-nav-logo img {
             width: 46px !important;
             height: 46px !important;
+          }
+
+          .scene-nav--dining .scene-nav-burger {
+            display: flex !important;
+            order: 1 !important;
+            margin-right: auto !important;
+            margin-left: 0 !important;
           }
         }
       `}</style>
