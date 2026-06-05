@@ -128,9 +128,9 @@ export default function SceneNav({
         </nav>
 
         <a
-          href="/"
+          href="/test"
           className="scene-nav-logo"
-          aria-label="Go to home page"
+          aria-label="Go to test page"
           onClick={() => setOpen(false)}
         >
           <img
