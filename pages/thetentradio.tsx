@@ -350,7 +350,7 @@ export default function TentRadioPage() {
             <header className="radioHeader">
               <h1 className="radioHeader__title">Tent Transmissions</h1>
               <p className="radioHeader__tag">
-                Transmissions from the end of the universe
+                From the end of the universe
               </p>
             </header>
 
