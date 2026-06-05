@@ -539,26 +539,133 @@ const NocturnPage = () => {
         @media (max-width: 900px) {
           .scene-nav.scene-nav--nocturn {
             display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
             grid-template-columns: none !important;
             gap: 0 !important;
             padding: 18px 6% 14px 6% !important;
+            min-height: 72px !important;
+            width: 100% !important;
+            margin: 0 !important;
           }
 
           .scene-nav--nocturn .scene-nav-left,
           .scene-nav--nocturn .scene-nav-right {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            max-width: 0 !important;
+            overflow: hidden !important;
             padding: 0 !important;
+            margin: 0 !important;
             gap: 0 !important;
+            pointer-events: none !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger {
+            display: flex !important;
+            position: absolute !important;
+            left: 6% !important;
+            top: 50% !important;
+            width: 52px !important;
+            height: 52px !important;
+            transform: translateY(-50%) !important;
+            border: 0 !important;
+            border-radius: 0 !important;
+            background: transparent !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-direction: column !important;
+            gap: 9px !important;
+            cursor: pointer !important;
+            padding: 0 !important;
+            overflow: visible !important;
+            margin: 0 !important;
+            order: 1 !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger span {
+            display: block !important;
+            width: 38px !important;
+            height: 3px !important;
+            border-radius: 999px !important;
+            background: #ffffff !important;
+            transition: transform 0.22s ease, opacity 0.22s ease !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger.open span {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            width: 42px !important;
+            height: 3px !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger.open span:first-child {
+            transform: translate(-50%, -50%) rotate(45deg) !important;
+          }
+
+          .scene-nav--nocturn .scene-nav-burger.open span:last-child {
+            transform: translate(-50%, -50%) rotate(-45deg) !important;
           }
 
           .scene-nav--nocturn .scene-nav-logo {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             width: 46px !important;
             height: 46px !important;
+            flex: 0 0 46px !important;
             flex-basis: 46px !important;
+            margin-left: auto !important;
+            margin-right: 0 !important;
+            order: 2 !important;
+            position: relative !important;
           }
 
           .scene-nav--nocturn .scene-nav-logo img {
             width: 46px !important;
             height: 46px !important;
+            object-fit: contain !important;
+            filter: brightness(0) invert(1) !important;
+          }
+
+          .scene-nav-mobile--nocturn {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 999 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: rgba(10, 24, 109, 0.96) !important;
+          }
+
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner {
+            width: min(86vw, 420px) !important;
+            padding: 82px 24px 24px 24px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 18px !important;
+          }
+
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner a {
+            font-family: Helvetica, Arial, sans-serif !important;
+            font-size: 28px !important;
+            font-weight: 800 !important;
+            line-height: 1.1 !important;
+            color: rgba(255, 255, 255, 0.84) !important;
+            text-decoration: none !important;
+          }
+
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner a.active {
+            color: #ff9292 !important;
+          }
+
+          .scene-nav-mobile--nocturn .scene-nav-mobile-inner a.disabled {
+            color: rgba(255, 255, 255, 0.56) !important;
+            pointer-events: none !important;
           }
         }
       `}</style>
