@@ -42,13 +42,13 @@ export default function SceneNav({
   const links: NavLink[] = [
     {
       label: 'Concept',
-      href: '/concept',
-      activePaths: ['/concept'],
+      href: '#',
+      activePaths: [],
     },
     {
       label: 'Access',
-      href: '/access',
-      activePaths: ['/access'],
+      href: '#',
+      activePaths: [],
     },
     {
       label: 'Nocturn',
@@ -57,8 +57,8 @@ export default function SceneNav({
     },
     {
       label: 'Projects',
-      href: '/projects',
-      activePaths: ['/projects'],
+      href: '#',
+      activePaths: [],
     },
     {
       label: 'Network',
