@@ -481,15 +481,9 @@ const NocturnPage = () => {
         <title>Nocturn — Archive</title>
       </Head>
 
-      <SceneNav theme="nocturn" />
+      <SceneNav visible theme="nocturn" />
 
       <style jsx global>{`
-        /*
-          This style block sits AFTER SceneNav, so it wins over SceneNav's own
-          global CSS. It makes nocturn-test match the compact nav spacing used
-          on dining-test and the other test pages.
-        */
-
         .scene-nav.scene-nav--nocturn {
           grid-template-columns: 1fr 36px 1fr !important;
           gap: 0 !important;
@@ -681,7 +675,6 @@ const NocturnPage = () => {
             <img
               src="/images/nocturn-main-web-page-header.png"
               alt="Nocturn"
-              width="100%"
             />
           </div>
 
@@ -844,13 +837,18 @@ const NocturnPage = () => {
           <div className="nocturn-wider-section subscribe">
             <div className="row">
               <div className="column">
-                <h2>Sign up to receive updates for forthcoming projects and events</h2>
+                <h2>
+                  Sign up to receive updates for forthcoming projects and events
+                </h2>
 
                 {klaviyoMounted && (
                   <>
                     <div className="klaviyo-form-RNQ78y"></div>
 
-                    <Script id="klaviyo-embed-nocturn-test" strategy="afterInteractive">
+                    <Script
+                      id="klaviyo-embed-nocturn-test"
+                      strategy="afterInteractive"
+                    >
                       {`
                         window._klOnsite = window._klOnsite || [];
                         window._klOnsite.push(['embedForm', 'RNQ78y']);
