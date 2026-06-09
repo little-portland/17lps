@@ -29,7 +29,7 @@ const BookingOptions = () => {
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>FRI</span>19 Jun</h2>
+              <h2><span>FRI</span>26 Jun</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DEMI, KRISTINA MAY</h3>
@@ -39,7 +39,7 @@ const BookingOptions = () => {
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="" target="_blank">
+            <a href="https://sevn.ly/xhF5XFmU" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
@@ -133,7 +133,7 @@ const BookingOptions = () => {
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="" target="_blank">
+            <a href="https://sevn.ly/xhF5XFmU" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
