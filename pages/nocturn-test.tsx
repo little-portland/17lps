@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 
@@ -31,6 +31,11 @@ const TRACKS = [
 
 const NocturnPage = () => {
   const [activeTab, setActiveTab] = useState('archive');
+  const [klaviyoMounted, setKlaviyoMounted] = useState(false);
+
+  useEffect(() => {
+    setKlaviyoMounted(true);
+  }, []);
 
   return (
     <>
@@ -841,14 +846,18 @@ const NocturnPage = () => {
               <div className="column">
                 <h2>Sign up to receive updates for forthcoming projects and events</h2>
 
-                <div className="klaviyo-form-RNQ78y"></div>
+                {klaviyoMounted && (
+                  <>
+                    <div className="klaviyo-form-RNQ78y"></div>
 
-                <Script id="klaviyo-embed" strategy="afterInteractive">
-                  {`
-                    window._klOnsite = window._klOnsite || [];
-                    window._klOnsite.push(['embedForm', 'RNQ78y']);
-                  `}
-                </Script>
+                    <Script id="klaviyo-embed-nocturn-test" strategy="afterInteractive">
+                      {`
+                        window._klOnsite = window._klOnsite || [];
+                        window._klOnsite.push(['embedForm', 'RNQ78y']);
+                      `}
+                    </Script>
+                  </>
+                )}
 
                 <div className="nocturn-text-wrapper bottom contact-block">
                   <a

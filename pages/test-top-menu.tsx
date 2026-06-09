@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Layout from "@components/Layout/Layout-old";
 import { AnimatePresence } from "framer-motion";
-import Animation from "@components/Animation";
+import dynamic from "next/dynamic";
+
+const Animation = dynamic(() => import("@components/Animation"), {
+  ssr: false,
+});
 import { useLoaded } from "../store/context";
 
 // Import Modal and test content

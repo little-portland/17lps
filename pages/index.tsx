@@ -1,30 +1,41 @@
-import { useLoaded } from "../store/context";
-
-//Components
-import Animation from "@components/Animation";
-import Layout from "@components/Layout";
+import dynamic from "next/dynamic";
+import Head from "next/head";
 import { AnimatePresence } from "framer-motion";
 
-<link
-href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-rel="stylesheet"
-/>
+import { useLoaded } from "../store/context";
 
-//hooks
+// Components
+import Layout from "@components/Layout";
+
+// Hooks
 import useFetchContent from "@utils/useFetchContent";
+
+const Animation = dynamic(() => import("@components/Animation"), {
+  ssr: false,
+});
 
 export default function Index({ eatItem, hireItem }) {
   const { isLoaded, setLoaded } = useLoaded();
+
   return (
-    <Layout
-      main={
-        <AnimatePresence exitBeforeEnter>
-          <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
-        </AnimatePresence>
-      }
-      eatItem={eatItem}
-      hireItem={hireItem}
-    />
+    <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+
+      <Layout
+        main={
+          <AnimatePresence exitBeforeEnter>
+            <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
+          </AnimatePresence>
+        }
+        eatItem={eatItem}
+        hireItem={hireItem}
+      />
+    </>
   );
 }
 
@@ -64,14 +75,13 @@ export async function getStaticProps() {
   `);
 
   const eatItem = imageData.eatImageCollection.items[0];
-
   const hireItem = imageData.hireImageCollection.items[0];
 
   return {
     props: {
       eatItem,
       hireItem,
-    }, // will be passed to the page component as props
-    revalidate: 30, // In seconds
+    },
+    revalidate: 30,
   };
 }

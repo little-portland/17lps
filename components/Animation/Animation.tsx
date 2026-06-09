@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-//Libs
+// Libs
 import Lottie from "lottie-react";
 import { motion } from "framer-motion";
 
-//main animation
+// Main animation
 import houseAnimation from "public/Web_assets/Initial_Web.json";
 import mobileMain from "public/Web_assets/Main_Mobile.json";
 import mobileInit from "public/Web_assets/Initial_animation_Mobile.json";
@@ -14,12 +14,12 @@ import AnimationLayer from "./components/AnimationLayer";
 
 import eatDance from "public/Web_assets/still.json";
 
-//hooks
+// Hooks
 import useDeviceDetect from "@utils/useDeviceDetect";
 import { useUI } from "@components/UX/context";
 import { useLoaded } from "store/context";
 
-//Styles
+// Styles
 import { SvgContainer } from "./styles";
 
 type AnimationProps = {
@@ -33,63 +33,102 @@ const Animation: React.FC<AnimationProps> = ({
   setLoaded,
   isTestPage,
 }) => {
-  //UI Handlers
+  // UI handlers
   const { displayLineup, closeLineup, closeMenu } = useUI();
   const { canvasState, setCanvasState } = useLoaded();
 
-  //Animation Ref
-  const lottieRef = useRef<any>();
-  const lottieRef2 = useRef<any>();
-  const lottieRef3 = useRef<any>();
-  const lottieRefMobile = useRef<any>();
-  // const loopRef = useRef<any>();
-  const wrapperRef = useRef<HTMLDivElement>();
-  const opacityMobileRef = useRef<HTMLDivElement>();
+  // Animation refs
+  const lottieRef = useRef<any>(null);
+  const lottieRef2 = useRef<any>(null);
+  const lottieRef3 = useRef<any>(null);
+  const lottieRefMobile = useRef<any>(null);
 
-  //Check Device
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const opacityMobileRef = useRef<HTMLDivElement | null>(null);
+  const hideIntroTimerRef = useRef<number | null>(null);
+
+  // Check device
   const { isMobile } = useDeviceDetect();
 
   const [showMobileLoop, setShowMobileLoop] = useState(false);
 
+  const clearHideIntroTimer = () => {
+    if (hideIntroTimerRef.current) {
+      window.clearTimeout(hideIntroTimerRef.current);
+      hideIntroTimerRef.current = null;
+    }
+  };
+
   const onAnimationCompleteHandler = (): void => {
     setLoaded(true);
-    setCanvasState(false)
+    setCanvasState(false);
 
-    sessionStorage.setItem("canvas", "true");
-
-    //sessionStorage.setItem("isLoaded", "true");
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("canvas", "true");
+    }
   };
 
   const onMobileAnimationCompleteHandler = (): void => {
     setShowMobileLoop(true);
     setLoaded(true);
-    setCanvasState(false)
+    setCanvasState(false);
 
-    sessionStorage.setItem("canvas", "true");
-    //sessionStorage.setItem("isLoaded", "true");
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("canvas", "true");
+    }
 
-    if (isMobile) {
+    if (isMobile && opacityMobileRef.current) {
       opacityMobileRef.current.style.opacity = "0";
     }
   };
 
   useEffect(() => {
     if (!isLoaded && !canvasState) {
-      if (lottieRef.current && typeof lottieRef.current.playSegments === "function") {
+      clearHideIntroTimer();
+
+      if (
+        lottieRef.current &&
+        typeof lottieRef.current.playSegments === "function"
+      ) {
         lottieRef.current.playSegments([0, 120], true);
       }
-  
-      if (lottieRef2.current && typeof lottieRef2.current.playSegments === "function") {
+
+      if (
+        lottieRef2.current &&
+        typeof lottieRef2.current.playSegments === "function"
+      ) {
         lottieRef2.current.playSegments([0, 625], true);
       }
-  
+
       if (wrapperRef.current) {
         wrapperRef.current.style.opacity = "1";
       }
-    } else if (!isMobile && wrapperRef.current) {
-      wrapperRef.current.style.opacity = "0";
+
+      return;
     }
-  }, [isLoaded, canvasState]);
+
+    /*
+      Desktop handover fix:
+      Keep the intro Lottie visible briefly after isLoaded becomes true.
+      This gives AnimationLayer time to mount/paint, avoiding the blink where
+      the venue disappears for a split second.
+    */
+    if (!isMobile && wrapperRef.current) {
+      clearHideIntroTimer();
+
+      hideIntroTimerRef.current = window.setTimeout(() => {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.opacity = "0";
+        }
+
+        hideIntroTimerRef.current = null;
+      }, 450);
+    }
+
+    return () => {
+      clearHideIntroTimer();
+    };
+  }, [isLoaded, canvasState, isMobile]);
 
   return (
     <>
@@ -100,8 +139,7 @@ const Animation: React.FC<AnimationProps> = ({
             animationData={houseAnimation}
             loop={false}
             autoplay={false}
-            onComplete={() => onAnimationCompleteHandler()}
-            // onEnterFrame={onAnimationStartHandler}
+            onComplete={onAnimationCompleteHandler}
           />
         ) : (
           <>
@@ -110,18 +148,16 @@ const Animation: React.FC<AnimationProps> = ({
               animationData={mobileMain}
               loop={false}
               autoplay={false}
-              onComplete={() => onAnimationCompleteHandler()}
-              // onComplete={() => console.log("complete")}
-              // onEnterFrame={onAnimationStartHandler}
+              onComplete={onAnimationCompleteHandler}
             />
+
             <div ref={opacityMobileRef}>
               <Lottie
                 lottieRef={lottieRef2}
                 animationData={mobileInit}
                 loop={false}
                 autoplay={false}
-                onComplete={() => onMobileAnimationCompleteHandler()}
-                // onEnterFrame={onAnimationStartHandler}
+                onComplete={onMobileAnimationCompleteHandler}
               />
             </div>
 
@@ -131,13 +167,12 @@ const Animation: React.FC<AnimationProps> = ({
                 animationData={mobileLoop}
                 loop={true}
                 autoplay={true}
-                // onComplete={() => onAnimationCompleteHandler()}
-                // onEnterFrame={onAnimationStartHandler}
               />
             )}
           </>
         )}
       </SvgContainer>
+
       {isLoaded && !isMobile && (
         <AnimationLayer isTestPage={isTestPage} />
       )}

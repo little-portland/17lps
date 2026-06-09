@@ -915,7 +915,7 @@ const Menu = ({ menuImage }) => {
                       <Image
                         src="/images/foc/decorative-graphic.png"
                         alt="Decorative horizontal graphic"
-                        fill
+                        layout="fill"
                         className="desktop-decorative-img"
                       />
                     </div>
@@ -926,7 +926,7 @@ const Menu = ({ menuImage }) => {
                       <Image
                         src="/images/foc/tall-graphic.png"
                         alt="Tall decorative graphic"
-                        fill
+                        layout="fill"
                         className="desktop-tall-img"
                       />
                     </div>
@@ -937,7 +937,7 @@ const Menu = ({ menuImage }) => {
                       <Image
                         src="/images/foc/square-graphic.png"
                         alt="Square decorative graphic"
-                        fill
+                        layout="fill"
                         className="desktop-square-img"
                       />
                     </div>
@@ -994,7 +994,7 @@ const Menu = ({ menuImage }) => {
                       <Image
                         src="/images/foc/square-graphic.png"
                         alt="Square decorative graphic"
-                        fill
+                        layout="fill"
                         className="mobile-square-img"
                       />
                     </div>
@@ -1005,7 +1005,7 @@ const Menu = ({ menuImage }) => {
                       <Image
                         src="/images/foc/tall-graphic.png"
                         alt="Tall decorative graphic"
-                        fill
+                        layout="fill"
                         className="mobile-tall-img"
                       />
                     </div>

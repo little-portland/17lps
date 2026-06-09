@@ -43,14 +43,17 @@ export default function TestPageClient() {
   const [bookHovered, setBookHovered] = useState(false);
 
   useEffect(() => {
-    const prevBg = document.body.style.backgroundColor;
+    const prevHtmlBg = document.documentElement.style.backgroundColor;
+    const prevBodyBg = document.body.style.backgroundColor;
     const prevColor = document.body.style.color;
-
-    document.body.style.backgroundColor = "rgba(0,0,0,.1)";
+  
+    document.documentElement.style.backgroundColor = "#f3f3f3";
+    document.body.style.backgroundColor = "#f3f3f3";
     document.body.style.color = "#000";
-
+  
     return () => {
-      document.body.style.backgroundColor = prevBg;
+      document.documentElement.style.backgroundColor = prevHtmlBg;
+      document.body.style.backgroundColor = prevBodyBg;
       document.body.style.color = prevColor;
     };
   }, []);
@@ -119,6 +122,45 @@ export default function TestPageClient() {
       >
         Book
       </motion.a>
+
+      <style jsx global>{`
+  html,
+  body,
+  #__next {
+    background: #f3f3f3 !important;
+    background-color: #f3f3f3 !important;
+  }
+
+  .scene-wrapper--test {
+    background: #f3f3f3;
+  }
+
+  .scene-wrapper--test .scene-content {
+    position: relative;
+    isolation: isolate;
+    background: #f3f3f3;
+  }
+
+  .scene-wrapper--test .scene-filter {
+    position: relative;
+    z-index: 1;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  .scene-wrapper--test .scene-filter svg {
+    filter: none !important;
+  }
+
+  .scene-wrapper--test .scene-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    pointer-events: none;
+  }
+`}</style>
     </>
   );
 }
@@ -157,11 +199,12 @@ function Scene({
     <div className="scene-wrapper scene-wrapper--test">
       <div className="scene-content">
         <div className="scene-filter">
-          <AnimationDesktopOnly
-            isLoaded={isLoaded}
-            setLoaded={setLoaded}
-            isTestPage
-          />
+        <AnimationDesktopOnly
+          isLoaded={isLoaded}
+          setLoaded={setLoaded}
+          isTestPage
+          variant="bw"
+        />
         </div>
 
         <svg
