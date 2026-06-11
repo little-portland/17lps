@@ -3,7 +3,6 @@
 import Head from 'next/head';
 import {
   useEffect,
-  useRef,
   useState,
   type CSSProperties,
   type MouseEvent,
@@ -20,23 +19,20 @@ const C = {
 const MONO = '"Space Mono", "Courier New", monospace';
 
 type AreaId = 'tent' | 'chefs-studio' | 'studio';
-type ModeId = 'concept' | 'space' | 'experience';
 
 type AreaConfig = {
   id: AreaId;
   title: string;
   href: string;
   highlight: string;
+  caption: string;
 };
 
-const CONCEPT_ASSETS = {
+const ASSETS = {
   bg: '/images/concept/concept_bg.jpg',
   funnel: '/images/concept/grid_funel.png',
   floor: '/images/concept/noise_floor.png',
   obelisk: '/images/concept/obelisk-dark-grey.png',
-};
-
-const SPACE_ASSETS = {
   venue: '/images/concept/the-space-page-venue.png',
 };
 
@@ -46,18 +42,21 @@ const AREAS: AreaConfig[] = [
     title: 'THE TENT',
     href: '/thetent-test',
     highlight: '/images/concept/tent-highlight.png',
+    caption: 'A flexible underground dining and gathering chamber.',
   },
   {
     id: 'chefs-studio',
     title: "CHEF'S STUDIO",
     href: '/chefstudio-test',
     highlight: '/images/concept/chefs-studio-highlight.png',
+    caption: 'An intimate studio for food, theatre and close encounters.',
   },
   {
     id: 'studio',
     title: 'THE STUDIO',
     href: '/studio-test',
     highlight: '/images/concept/studio-highlight.png',
+    caption: 'A future-facing room for sound, culture and private energy.',
   },
 ];
 
@@ -72,12 +71,6 @@ const EXPERIENCE_BTNS = [
     href: '/theclub-test',
     dark: true,
   },
-];
-
-const MODES: { id: ModeId; label: string }[] = [
-  { id: 'concept', label: 'Concept' },
-  { id: 'space', label: 'The Space' },
-  { id: 'experience', label: 'Experience' },
 ];
 
 function ActionCard({
@@ -125,17 +118,10 @@ function ActionCard({
 }
 
 export default function ConceptPage() {
-  const conceptRef = useRef<HTMLElement | null>(null);
-  const spaceRef = useRef<HTMLElement | null>(null);
-  const experienceRef = useRef<HTMLElement | null>(null);
-
-  const [activeMode, setActiveMode] = useState<ModeId>('concept');
   const [activeArea, setActiveArea] = useState<AreaId | null>(null);
   const [isTouchMode, setIsTouchMode] = useState(false);
   const [menuReady, setMenuReady] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [diningTime, setDiningTime] = useState('20:00 / 20:30');
-  const [afterDarkTime, setAfterDarkTime] = useState('22:00');
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -152,51 +138,6 @@ export default function ConceptPage() {
     return () => {
       window.clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>('.poster-section')
-    );
-
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          entry.target.classList.toggle('is-inview', entry.isIntersecting);
-        });
-      },
-      {
-        threshold: 0.22,
-        rootMargin: '0px 0px -8% 0px',
-      }
-    );
-
-    sections.forEach((section) => revealObserver.observe(section));
-
-    const modeObserver = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        const mode = visible?.target.getAttribute('data-mode') as ModeId | null;
-
-        if (mode) {
-          setActiveMode(mode);
-        }
-      },
-      {
-        threshold: [0.2, 0.35, 0.5, 0.65],
-        rootMargin: '-24% 0px -42% 0px',
-      }
-    );
-
-    sections.forEach((section) => modeObserver.observe(section));
-
-    return () => {
-      revealObserver.disconnect();
-      modeObserver.disconnect();
     };
   }, []);
 
@@ -231,54 +172,26 @@ export default function ConceptPage() {
   }, []);
 
   useEffect(() => {
-    let timers: number[] = [];
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>('.reveal-section')
+    );
 
-    const clearTimers = () => {
-      timers.forEach((timer) => window.clearTimeout(timer));
-      timers = [];
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('is-inview', entry.isIntersecting);
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    );
 
-    const runTimeSequence = () => {
-      clearTimers();
+    sections.forEach((section) => observer.observe(section));
 
-      setDiningTime('20:00 / 20:30');
-      setAfterDarkTime('22:00');
-
-      timers = [
-        window.setTimeout(() => setDiningTime('18:40 / 19:10'), 3000),
-        window.setTimeout(() => setDiningTime('21:12 / 21:40'), 3280),
-        window.setTimeout(() => setDiningTime('19:55 / 20:14'), 3560),
-        window.setTimeout(() => setDiningTime('20:00 / 20:30'), 3900),
-
-        window.setTimeout(() => setAfterDarkTime('23:17'), 7200),
-        window.setTimeout(() => setAfterDarkTime('01:40'), 7480),
-        window.setTimeout(() => setAfterDarkTime('21:52'), 7760),
-        window.setTimeout(() => setAfterDarkTime('22:00'), 8100),
-      ];
-    };
-
-    runTimeSequence();
-
-    const interval = window.setInterval(runTimeSequence, 15000);
-
-    return () => {
-      window.clearInterval(interval);
-      clearTimers();
-    };
+    return () => observer.disconnect();
   }, []);
-
-  const scrollToMode = (mode: ModeId) => {
-    const refs = {
-      concept: conceptRef,
-      space: spaceRef,
-      experience: experienceRef,
-    };
-
-    refs[mode].current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  };
 
   const handleCardClick =
     (areaId: AreaId) => (event: MouseEvent<HTMLAnchorElement>) => {
@@ -299,6 +212,10 @@ export default function ConceptPage() {
       setActiveArea(null);
     }
   };
+
+  const activeCaption =
+    AREAS.find((area) => area.id === activeArea)?.caption ||
+    'Select a chamber to isolate the programme inside the space.';
 
   return (
     <>
@@ -329,33 +246,11 @@ export default function ConceptPage() {
 
         <div className="site-bg" aria-hidden="true" />
 
-        <article className="poster" aria-label="Concept interactive poster">
-          <div className="poster-bg" aria-hidden="true" />
-          <div className="poster-axis" aria-hidden="true" />
+        <article className="protocol-shell" aria-label="Monolith Protocol concept page">
+          <div className="paper-bg" aria-hidden="true" />
+          <div className="protocol-axis" aria-hidden="true" />
 
-          <nav className="poster-mode-nav" aria-label="Concept page sections">
-            {MODES.map((mode) => (
-              <button
-                key={mode.id}
-                type="button"
-                className={`poster-mode-btn ${
-                  activeMode === mode.id ? 'is-active' : ''
-                }`}
-                onClick={() => scrollToMode(mode.id)}
-              >
-                {mode.label}
-              </button>
-            ))}
-          </nav>
-
-          <section
-            ref={conceptRef}
-            className="poster-section hero-section"
-            data-mode="concept"
-            aria-labelledby="concept-title"
-          >
-            <div className="section-line section-line-hero" aria-hidden="true" />
-
+          <section className="hero-section reveal-section" aria-labelledby="concept-title">
             <div className="hero-copy">
               <p className="micro-label">LPX // UNDERGROUND ISSUE 51</p>
 
@@ -367,101 +262,107 @@ export default function ConceptPage() {
                 17 Little Portland Street, London
               </p>
 
-              <p className="hero-note">
-                A space hidden below street level, built as a living programme:
-                dinner, sound, club energy and future-facing hospitality.
+              <p className="hero-intro">
+                A concealed programme beneath the city: dining, sound,
+                architecture and after-dark energy, arranged as one continuous
+                underground sequence.
               </p>
             </div>
 
-            <div className="portal-module" aria-hidden="true">
-              <span className="portal-axis" />
+            <div className="monolith-stage" aria-hidden="true">
+              <div className="monolith-field">
+                <span className="monolith-axis" />
+                <img
+                  src={ASSETS.funnel}
+                  alt=""
+                  className="monolith-img funnel-top"
+                  draggable={false}
+                />
+                <img
+                  src={ASSETS.floor}
+                  alt=""
+                  className="monolith-img floor-plane"
+                  draggable={false}
+                />
+                <img
+                  src={ASSETS.funnel}
+                  alt=""
+                  className="monolith-img funnel-floor"
+                  draggable={false}
+                />
+                <img
+                  src={ASSETS.obelisk}
+                  alt=""
+                  className="monolith-img obelisk"
+                  draggable={false}
+                />
 
-              <img
-                src={CONCEPT_ASSETS.funnel}
-                alt=""
-                className="portal-img portal-funnel-top"
-                draggable={false}
-              />
-
-              <img
-                src={CONCEPT_ASSETS.floor}
-                alt=""
-                className="portal-img portal-floor"
-                draggable={false}
-              />
-
-              <img
-                src={CONCEPT_ASSETS.funnel}
-                alt=""
-                className="portal-img portal-funnel-floor"
-                draggable={false}
-              />
-
-              <img
-                src={CONCEPT_ASSETS.obelisk}
-                alt=""
-                className="portal-img portal-obelisk"
-                draggable={false}
-              />
-
-              <div className="portal-scan portal-scan-a" />
-              <div className="portal-scan portal-scan-b" />
+                <span className="scan-line scan-one" />
+                <span className="scan-line scan-two" />
+              </div>
             </div>
           </section>
 
-          <section
-            ref={spaceRef}
-            className="poster-section space-section"
-            data-mode="space"
-            aria-labelledby="space-title"
-          >
-            <div className="section-line" aria-hidden="true" />
+          <section className="space-section reveal-section" aria-labelledby="space-title">
+            <div className="section-rule" aria-hidden="true" />
 
-            <div className="section-heading-row">
+            <div className="section-kicker-row">
               <p className="micro-label">MODULE 01</p>
-              <h2 id="space-title" className="section-title">
-                THE SPACE
-              </h2>
+              <p className="module-copy">
+                The venue is treated as a diagram: three zones, one connected
+                system.
+              </p>
             </div>
 
-            <div className="space-board">
-              <div className="venue-wrap" aria-label="Interactive venue map">
-                <img
-                  src={SPACE_ASSETS.venue}
-                  alt="Venue layout showing The Tent, Chef's Studio and The Studio"
-                  className="venue-image venue-base"
-                  draggable={false}
-                />
+            <h2 id="space-title" className="section-title">
+              THE SPACE
+            </h2>
 
-                {AREAS.map((area) => {
-                  const isActive = activeArea === area.id;
+            <div className="space-grid">
+              <div className="venue-system">
+                <div className="venue-wrap">
+                  <img
+                    src={ASSETS.venue}
+                    alt="Venue layout showing The Tent, Chef's Studio and The Studio"
+                    className="venue-image venue-base"
+                    draggable={false}
+                  />
 
-                  return (
-                    <img
-                      key={area.id}
-                      src={area.highlight}
-                      alt=""
-                      className={`venue-image venue-highlight ${
-                        isActive ? 'is-active' : ''
-                      }`}
-                      draggable={false}
-                    />
-                  );
-                })}
+                  {AREAS.map((area) => {
+                    const isActive = activeArea === area.id;
 
-                <img
-                  src={SPACE_ASSETS.venue}
-                  alt=""
-                  className="venue-image venue-glitch venue-glitch-a"
-                  draggable={false}
-                />
-                <img
-                  src={SPACE_ASSETS.venue}
-                  alt=""
-                  className="venue-image venue-glitch venue-glitch-b"
-                  draggable={false}
-                />
+                    return (
+                      <img
+                        key={area.id}
+                        src={area.highlight}
+                        alt=""
+                        className={`venue-image venue-highlight ${
+                          isActive ? 'is-active' : ''
+                        }`}
+                        draggable={false}
+                      />
+                    );
+                  })}
+
+                  <img
+                    src={ASSETS.venue}
+                    alt=""
+                    className="venue-image venue-glitch venue-glitch-a"
+                    draggable={false}
+                  />
+                  <img
+                    src={ASSETS.venue}
+                    alt=""
+                    className="venue-image venue-glitch venue-glitch-b"
+                    draggable={false}
+                  />
+                </div>
               </div>
+
+              <aside className="space-console">
+                <p className="console-label">ACTIVE CHAMBER</p>
+                <p className="console-copy">{activeCaption}</p>
+              </aside>
             </div>
 
             <nav
@@ -495,72 +396,59 @@ export default function ConceptPage() {
           </section>
 
           <section
-            ref={experienceRef}
-            className="poster-section experience-section"
-            data-mode="experience"
+            className="experience-section reveal-section"
             aria-labelledby="experience-title"
           >
-            <div className="section-line" aria-hidden="true" />
+            <div className="section-rule" aria-hidden="true" />
 
-            <div className="section-heading-row">
+            <div className="section-kicker-row">
               <p className="micro-label">MODULE 02</p>
-              <h2 id="experience-title" className="section-title experience-title">
-                THE EXPERIENCE
-              </h2>
+              <p className="module-copy">
+                The night moves from dinner into late-night Little Portland
+                energy.
+              </p>
             </div>
 
-            <div className="experience-grid">
-              <div className="experience-copy">
-                <p>
-                  A controlled transition from seated dinner into late-night
-                  Little Portland energy.
-                </p>
+            <h2 id="experience-title" className="section-title experience-title">
+              THE EXPERIENCE
+            </h2>
+
+            <div className="experience-protocol" aria-hidden="true">
+              <div className="time-row">
+                <span>20:00 / 20:30</span>
+                <span>22:00</span>
               </div>
 
-              <div className="experience-console">
-                <div className="experience-signal" aria-hidden="true">
-                  <div className="signal-track">
-                    <div className="signal-line" />
-                    <div className="signal-line-fill" />
-                  </div>
-
-                  <div className="signal-node signal-node-dining">
-                    <span className="signal-time signal-time-dining">
-                      {diningTime}
-                    </span>
-                    <span className="signal-dot">
-                      <span className="signal-dot-fill" />
-                    </span>
-                  </div>
-
-                  <div className="signal-node signal-node-after-dark">
-                    <span className="signal-time signal-time-after-dark">
-                      {afterDarkTime}
-                    </span>
-                    <span className="signal-dot">
-                      <span className="signal-dot-fill" />
-                    </span>
-                  </div>
-                </div>
-
-                <nav className="experience-nav" aria-label="Explore the experience">
-                  {EXPERIENCE_BTNS.map((button, index) => (
-                    <ActionCard
-                      key={button.href}
-                      href={button.href}
-                      title={button.label}
-                      dark={button.dark}
-                      style={
-                        {
-                          '--card-delay': `${460 + index * 120}ms`,
-                        } as CSSProperties
-                      }
-                    />
-                  ))}
-                </nav>
+              <div className="protocol-line">
+                <span className="protocol-dot protocol-dot-left" />
+                <span className="protocol-track" />
+                <span className="protocol-fill" />
+                <span className="protocol-dot protocol-dot-right" />
               </div>
             </div>
+
+            <nav className="experience-nav" aria-label="Explore the experience">
+              {EXPERIENCE_BTNS.map((button, index) => (
+                <ActionCard
+                  key={button.href}
+                  href={button.href}
+                  title={button.label}
+                  dark={button.dark}
+                  style={
+                    {
+                      '--card-delay': `${460 + index * 120}ms`,
+                    } as CSSProperties
+                  }
+                />
+              ))}
+            </nav>
           </section>
+
+          <footer className="protocol-footer">
+            <span>17 LITTLE PORTLAND STREET</span>
+            <span>ENTRY SEQUENCE COMPLETE</span>
+            <span>LPX // UNDERGROUND</span>
+          </footer>
         </article>
       </main>
 
@@ -658,24 +546,12 @@ export default function ConceptPage() {
           background: ${C.ink} !important;
         }
 
-        .scene-nav--space .scene-nav-logo img {
-          filter: brightness(0) saturate(100%) invert(8%) sepia(5%) saturate(851%)
-            hue-rotate(21deg) brightness(99%) contrast(91%);
-        }
-
         .concept-nav-shell.is-scrolled .scene-nav.scene-nav--space {
           background: rgba(232, 226, 212, 0.5) !important;
           border-bottom: 1px solid rgba(28, 28, 26, 0.14);
           box-shadow: 0 10px 28px rgba(28, 28, 26, 0.07);
           backdrop-filter: blur(18px) !important;
           -webkit-backdrop-filter: blur(18px) !important;
-        }
-
-        .scene-nav-mobile.scene-nav--space,
-        .scene-nav-mobile--space {
-          background: rgba(232, 226, 212, 0.92) !important;
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
         }
 
         @media (max-width: 900px) {
@@ -740,18 +616,6 @@ export default function ConceptPage() {
             -webkit-backdrop-filter: blur(22px) saturate(1.08) !important;
           }
 
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile-inner,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile-inner {
-            width: 100% !important;
-            min-height: auto !important;
-            padding: 0 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: flex-start !important;
-            gap: 18px !important;
-          }
-
           .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a,
           .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a,
           .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile-link,
@@ -771,27 +635,18 @@ export default function ConceptPage() {
 
           .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a.active,
           .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a.active,
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile-link.active,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile-link.active,
           .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'],
           .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'] {
             color: ${C.pink} !important;
             opacity: 1 !important;
           }
-
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a.disabled,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a.disabled {
-            opacity: 0.36 !important;
-          }
         }
-      `}</style>
 
-      <style jsx global>{`
         .page {
           position: relative;
           min-height: 100svh;
           overflow-x: clip;
-          padding: clamp(82px, 7vw, 112px) 0 clamp(32px, 4vw, 60px);
+          padding: clamp(88px, 7vw, 120px) 0 clamp(32px, 4vw, 60px);
           background: #eadfe5;
         }
 
@@ -801,7 +656,7 @@ export default function ConceptPage() {
           z-index: 0;
           pointer-events: none;
           background:
-            radial-gradient(circle at 50% 0%, rgba(232, 226, 212, 0.52), transparent 34%),
+            radial-gradient(circle at 50% 0%, rgba(232, 226, 212, 0.5), transparent 34%),
             #eadfe5;
         }
 
@@ -825,7 +680,7 @@ export default function ConceptPage() {
           pointer-events: auto;
         }
 
-        .poster {
+        .protocol-shell {
           position: relative;
           z-index: 2;
           width: 65%;
@@ -840,18 +695,18 @@ export default function ConceptPage() {
           isolation: isolate;
         }
 
-        .poster-bg {
+        .paper-bg {
           position: absolute;
           inset: 0;
           z-index: -2;
-          background-image: url('${CONCEPT_ASSETS.bg}');
+          background-image: url('${ASSETS.bg}');
           background-size: contain;
           background-repeat: repeat;
           background-position: center top;
           opacity: 0.78;
         }
 
-        .poster::before {
+        .protocol-shell::before {
           content: '';
           position: absolute;
           inset: 0;
@@ -862,10 +717,10 @@ export default function ConceptPage() {
             linear-gradient(180deg, rgba(28, 28, 26, 0.025) 1px, transparent 1px);
           background-size: 180px 180px;
           mix-blend-mode: multiply;
-          opacity: 0.5;
+          opacity: 0.45;
         }
 
-        .poster::after {
+        .protocol-shell::after {
           content: '';
           position: absolute;
           inset: 0;
@@ -875,15 +730,15 @@ export default function ConceptPage() {
             radial-gradient(circle at 50% 20%, transparent 0 48%, rgba(28, 28, 26, 0.025) 100%),
             repeating-linear-gradient(
               0deg,
-              rgba(28, 28, 26, 0.025) 0px,
-              rgba(28, 28, 26, 0.025) 1px,
+              rgba(28, 28, 26, 0.024) 0px,
+              rgba(28, 28, 26, 0.024) 1px,
               transparent 1px,
               transparent 5px
             );
-          opacity: 0.45;
+          opacity: 0.42;
         }
 
-        .poster-axis {
+        .protocol-axis {
           position: absolute;
           top: 28px;
           bottom: 28px;
@@ -902,89 +757,15 @@ export default function ConceptPage() {
           );
         }
 
-        .poster-mode-nav {
-          position: sticky;
-          top: 72px;
-          z-index: 40;
-          display: flex;
-          justify-content: center;
-          gap: 8px;
-          padding: 14px clamp(18px, 3vw, 40px);
-          background: rgba(232, 226, 212, 0.62);
-          border-bottom: 1px solid rgba(28, 28, 26, 0.12);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-        }
-
-        .poster-mode-btn {
-          appearance: none;
-          border: 0;
-          background: transparent;
-          color: rgba(28, 28, 26, 0.45);
-          font-family: ${MONO};
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.18em;
-          line-height: 1;
-          text-transform: uppercase;
-          cursor: pointer;
-          padding: 10px 12px;
-          transition:
-            color 0.2s ease,
-            background 0.2s ease,
-            transform 0.2s ease;
-        }
-
-        .poster-mode-btn:hover,
-        .poster-mode-btn:focus-visible {
-          color: ${C.ink};
-          background: rgba(28, 28, 26, 0.055);
-          outline: none;
-        }
-
-        .poster-mode-btn.is-active {
-          color: ${C.pink};
-          background: rgba(212, 80, 122, 0.08);
-        }
-
-        .poster-section {
-          position: relative;
-          min-height: 88svh;
-          padding: clamp(76px, 8vw, 132px) clamp(48px, 6vw, 96px)
-            clamp(72px, 7vw, 118px) clamp(82px, 8vw, 132px);
-        }
-
-        .section-line {
-          position: absolute;
-          left: clamp(34px, 4vw, 64px);
-          right: clamp(30px, 4vw, 62px);
-          top: 0;
-          height: 1px;
-          background: linear-gradient(
-            to right,
-            rgba(28, 28, 26, 0.28) 0%,
-            rgba(28, 28, 26, 0.24) 72%,
-            rgba(28, 28, 26, 0.12) 92%,
-            rgba(28, 28, 26, 0) 100%
-          );
-          transform-origin: left center;
-          transform: scaleX(0);
-        }
-
-        .poster-section.is-inview .section-line {
-          animation: drawHorizontal 0.78s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-        }
-
-        .section-line-hero {
-          display: none;
-        }
-
         .hero-section {
+          position: relative;
+          min-height: 84svh;
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(260px, 0.78fr);
+          grid-template-columns: minmax(0, 1fr) minmax(280px, 0.74fr);
           align-items: center;
-          gap: clamp(32px, 5vw, 86px);
-          padding-top: clamp(90px, 8vw, 140px);
+          gap: clamp(28px, 4.8vw, 78px);
+          padding: clamp(88px, 8vw, 138px) clamp(48px, 6vw, 96px)
+            clamp(74px, 7vw, 118px) clamp(82px, 8vw, 132px);
         }
 
         .hero-copy {
@@ -993,7 +774,7 @@ export default function ConceptPage() {
         }
 
         .micro-label {
-          margin: 0 0 18px 0;
+          margin: 0;
           font-family: ${MONO};
           font-size: 10px;
           font-weight: 700;
@@ -1016,13 +797,14 @@ export default function ConceptPage() {
         }
 
         .hero-title {
+          margin-top: 20px;
           font-size: clamp(62px, 7.4vw, 126px);
           white-space: nowrap;
           opacity: 0;
           clip-path: inset(0 100% 0 0);
         }
 
-        .poster-section.is-inview .hero-title {
+        .hero-section.is-inview .hero-title {
           animation:
             scanTitleReveal 0.48s steps(8, end) 140ms forwards,
             titleMicroGlitch 0.48s steps(2, end) 680ms forwards,
@@ -1043,44 +825,49 @@ export default function ConceptPage() {
           transform: translateY(12px);
         }
 
-        .poster-section.is-inview .hero-address {
+        .hero-section.is-inview .hero-address {
           animation: copyIn 0.54s ease 520ms forwards;
         }
 
-        .hero-note {
-          max-width: 520px;
+        .hero-intro {
+          max-width: 560px;
           margin: clamp(30px, 3.4vw, 48px) 0 0 0;
-          color: rgba(28, 28, 26, 0.58);
+          color: rgba(28, 28, 26, 0.6);
           font-family: ${MONO};
           font-size: clamp(11px, 0.92vw, 14px);
           line-height: 1.8;
           letter-spacing: 0.08em;
+          font-weight: 700;
           text-transform: uppercase;
           opacity: 0;
           transform: translateY(12px);
         }
 
-        .poster-section.is-inview .hero-note {
+        .hero-section.is-inview .hero-intro {
           animation: copyIn 0.54s ease 680ms forwards;
         }
 
-        .portal-module {
+        .monolith-stage {
           position: relative;
           z-index: 7;
-          width: min(100%, 470px);
-          aspect-ratio: 460 / 600;
-          margin-left: auto;
           opacity: 0;
           transform: translateY(20px);
         }
 
-        .poster-section.is-inview .portal-module {
+        .hero-section.is-inview .monolith-stage {
           animation:
             copyIn 0.7s ease 320ms forwards,
-            portalIdle 7s ease-in-out 1400ms infinite;
+            monolithFloat 7s ease-in-out 1400ms infinite;
         }
 
-        .portal-axis {
+        .monolith-field {
+          position: relative;
+          width: min(100%, 470px);
+          aspect-ratio: 460 / 600;
+          margin-left: auto;
+        }
+
+        .monolith-axis {
           position: absolute;
           left: 34%;
           top: 7%;
@@ -1097,7 +884,7 @@ export default function ConceptPage() {
           animation: portalAxisPulse 5s ease-in-out infinite;
         }
 
-        .portal-img {
+        .monolith-img {
           position: absolute;
           display: block;
           height: auto;
@@ -1105,7 +892,7 @@ export default function ConceptPage() {
           pointer-events: none;
         }
 
-        .portal-funnel-top {
+        .funnel-top {
           z-index: 5;
           top: 0;
           right: 9%;
@@ -1113,7 +900,7 @@ export default function ConceptPage() {
           filter: drop-shadow(0 10px 18px rgba(212, 80, 122, 0.08));
         }
 
-        .portal-floor {
+        .floor-plane {
           z-index: 2;
           left: 3%;
           bottom: 4%;
@@ -1121,7 +908,7 @@ export default function ConceptPage() {
           opacity: 0.92;
         }
 
-        .portal-funnel-floor {
+        .funnel-floor {
           z-index: 4;
           left: 0%;
           bottom: 1%;
@@ -1130,7 +917,7 @@ export default function ConceptPage() {
           filter: drop-shadow(0 8px 14px rgba(212, 80, 122, 0.08));
         }
 
-        .portal-obelisk {
+        .obelisk {
           z-index: 6;
           right: 22%;
           bottom: 8%;
@@ -1138,7 +925,7 @@ export default function ConceptPage() {
           filter: drop-shadow(0 20px 24px rgba(28, 28, 26, 0.16));
         }
 
-        .portal-scan {
+        .scan-line {
           position: absolute;
           left: 0;
           right: 0;
@@ -1150,24 +937,68 @@ export default function ConceptPage() {
           mix-blend-mode: multiply;
         }
 
-        .portal-scan-a {
+        .scan-one {
           top: 34%;
           animation: portalScan 5.4s linear 1.2s infinite;
         }
 
-        .portal-scan-b {
+        .scan-two {
           top: 63%;
           animation: portalScan 6.8s linear 3.1s infinite;
         }
 
-        .section-heading-row {
+        .space-section,
+        .experience-section {
           position: relative;
-          z-index: 8;
+          padding: clamp(76px, 8vw, 124px) clamp(48px, 6vw, 96px)
+            clamp(76px, 7vw, 116px) clamp(82px, 8vw, 132px);
+        }
+
+        .section-rule {
+          position: absolute;
+          left: clamp(34px, 4vw, 64px);
+          right: clamp(30px, 4vw, 62px);
+          top: 0;
+          height: 1px;
+          background: linear-gradient(
+            to right,
+            rgba(28, 28, 26, 0.28) 0%,
+            rgba(28, 28, 26, 0.24) 72%,
+            rgba(28, 28, 26, 0.12) 92%,
+            rgba(28, 28, 26, 0) 100%
+          );
+          transform-origin: left center;
+          transform: scaleX(0);
+        }
+
+        .reveal-section.is-inview .section-rule {
+          animation: drawHorizontal 0.78s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
+        .section-kicker-row {
           display: grid;
           grid-template-columns: 150px minmax(0, 1fr);
           gap: clamp(24px, 4vw, 72px);
-          align-items: end;
-          margin-bottom: clamp(28px, 4vw, 58px);
+          align-items: start;
+          margin-bottom: clamp(24px, 3vw, 42px);
+        }
+
+        .module-copy {
+          max-width: 560px;
+          margin: 0;
+          color: rgba(28, 28, 26, 0.58);
+          font-family: ${MONO};
+          font-size: clamp(11px, 0.92vw, 14px);
+          line-height: 1.8;
+          letter-spacing: 0.08em;
+          font-weight: 700;
+          text-transform: uppercase;
+          opacity: 0;
+          transform: translateY(12px);
+        }
+
+        .reveal-section.is-inview .module-copy {
+          animation: copyIn 0.54s ease 420ms forwards;
         }
 
         .section-title {
@@ -1176,23 +1007,27 @@ export default function ConceptPage() {
           clip-path: inset(0 100% 0 0);
         }
 
-        .poster-section.is-inview .section-title {
+        .reveal-section.is-inview .section-title {
           animation:
             scanTitleReveal 0.48s steps(8, end) 120ms forwards,
             titleMicroGlitch 0.48s steps(2, end) 640ms forwards,
             titleIdleGlitch 7.5s steps(2, end) 3300ms infinite;
         }
 
-        .space-board {
-          position: relative;
-          z-index: 8;
-          width: 100%;
-          margin: 0 auto;
+        .space-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(210px, 0.28fr);
+          gap: clamp(24px, 4vw, 58px);
+          align-items: center;
+          margin-top: clamp(26px, 4vw, 54px);
+        }
+
+        .venue-system {
           opacity: 0;
           transform: translateY(26px) scale(0.98);
         }
 
-        .space-section.is-inview .space-board {
+        .space-section.is-inview .venue-system {
           animation:
             objectIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 360ms forwards,
             venueFloat 5.6s ease-in-out 1500ms infinite;
@@ -1200,7 +1035,7 @@ export default function ConceptPage() {
 
         .venue-wrap {
           position: relative;
-          width: min(100%, 930px);
+          width: min(100%, 860px);
           aspect-ratio: 2048 / 1140;
           margin: 0 auto;
         }
@@ -1275,197 +1110,134 @@ export default function ConceptPage() {
           animation: venueGlitchB 8.5s steps(1, end) 1800ms infinite;
         }
 
+        .space-console {
+          position: relative;
+          border-left: 1px solid rgba(28, 28, 26, 0.24);
+          padding: 22px 0 22px 22px;
+          opacity: 0;
+          transform: translateY(14px);
+        }
+
+        .space-section.is-inview .space-console {
+          animation: copyIn 0.6s ease 580ms forwards;
+        }
+
+        .console-label {
+          margin: 0 0 18px 0;
+          color: ${C.pink};
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+        }
+
+        .console-copy {
+          margin: 0;
+          color: rgba(28, 28, 26, 0.66);
+          font-size: clamp(11px, 0.9vw, 13px);
+          line-height: 1.75;
+          letter-spacing: 0.06em;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+
         .zone-controls {
           position: relative;
           z-index: 9;
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 16px;
-          margin-top: clamp(14px, 1.8vw, 22px);
+          margin-top: clamp(18px, 2vw, 28px);
         }
 
-        .experience-grid {
+        .experience-protocol {
           position: relative;
-          z-index: 8;
-          display: grid;
-          grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
-          gap: clamp(26px, 4vw, 64px);
-          align-items: start;
-        }
-
-        .experience-copy {
+          margin-top: clamp(34px, 4.6vw, 58px);
+          margin-bottom: clamp(20px, 2vw, 30px);
           opacity: 0;
-          transform: translateY(18px);
+          transform: translateY(14px);
         }
 
-        .experience-section.is-inview .experience-copy {
-          animation: copyIn 0.54s ease 420ms forwards;
+        .experience-section.is-inview .experience-protocol {
+          animation: copyIn 0.58s ease 480ms forwards;
         }
 
-        .experience-copy p {
-          margin: 0;
+        .time-row {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 16px;
           color: rgba(28, 28, 26, 0.62);
-          font-family: ${MONO};
-          font-size: clamp(11px, 0.96vw, 14px);
-          line-height: 1.8;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
+          font-size: clamp(12px, 1.1vw, 16px);
+          font-weight: 700;
+          letter-spacing: 0.16em;
         }
 
-        .experience-console {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-
-        .experience-section.is-inview .experience-console {
-          animation: copyIn 0.62s ease 520ms forwards;
-        }
-
-        .experience-signal {
-          --signal-y: 38px;
+        .protocol-line {
           position: relative;
-          z-index: 4;
-          width: 100%;
-          height: clamp(58px, 5.6vw, 78px);
-          margin-top: 0;
-          margin-bottom: clamp(14px, 1.5vw, 22px);
-          overflow: visible;
+          height: 20px;
         }
 
-        .signal-track {
+        .protocol-track,
+        .protocol-fill {
           position: absolute;
           left: 0;
           right: 0;
-          top: var(--signal-y);
+          top: 50%;
           height: 2px;
-        }
-
-        .signal-line,
-        .signal-line-fill {
-          position: absolute;
-          inset: 0;
-          height: 2px;
+          transform: translateY(-50%);
           transform-origin: left center;
         }
 
-        .signal-line {
+        .protocol-track {
           background: rgba(28, 28, 26, 0.28);
-          transform: scaleX(0);
         }
 
-        .signal-line-fill {
+        .protocol-fill {
           background: ${C.pink};
-          transform: scaleX(0);
-          opacity: 0;
+          transform: translateY(-50%) scaleX(0);
+          animation: protocolFill 12s ease-in-out infinite;
         }
 
-        .experience-section.is-inview .signal-line {
-          animation: signalLineIn 0.82s cubic-bezier(0.25, 0.8, 0.25, 1) 720ms forwards;
-        }
-
-        .experience-section.is-inview .signal-line-fill {
-          animation: signalFillLoop 15s ease-in-out 1500ms infinite;
-        }
-
-        .signal-node {
+        .protocol-dot {
           position: absolute;
-          top: 0;
-          min-width: 180px;
-          height: 60px;
-          opacity: 0;
-          transform: translateY(8px);
-        }
-
-        .signal-node-dining {
-          left: 0;
-        }
-
-        .signal-node-after-dark {
-          right: 0;
-          text-align: right;
-        }
-
-        .experience-section.is-inview .signal-node-dining {
-          animation: signalNodeIn 0.48s ease 860ms forwards;
-        }
-
-        .experience-section.is-inview .signal-node-after-dark {
-          animation: signalNodeIn 0.48s ease 980ms forwards;
-        }
-
-        .signal-dot {
-          position: absolute;
-          top: var(--signal-y);
+          top: 50%;
+          z-index: 2;
           width: 18px;
           height: 18px;
           border-radius: 999px;
           background: #8f8a80;
-          overflow: hidden;
           transform: translateY(-50%);
-          z-index: 2;
+          animation: protocolDot 12s ease-in-out infinite;
         }
 
-        .signal-node-dining .signal-dot {
+        .protocol-dot-left {
           left: 0;
         }
 
-        .signal-node-after-dark .signal-dot {
+        .protocol-dot-right {
           right: 0;
-        }
-
-        .signal-dot-fill {
-          position: absolute;
-          inset: 0;
-          border-radius: inherit;
-          background: ${C.pink};
-          opacity: 0;
-          transition: opacity 0.45s ease;
-        }
-
-        .experience-section.is-inview .signal-node-dining .signal-dot-fill {
-          animation: diningDotFill 15s ease-in-out 1500ms infinite;
-        }
-
-        .experience-section.is-inview .signal-node-after-dark .signal-dot-fill {
-          animation: afterDarkDotFill 15s ease-in-out 1500ms infinite;
-        }
-
-        .signal-time {
-          position: absolute;
-          top: 0;
-          display: inline-block;
-          font-family: ${MONO};
-          font-size: clamp(12px, 1.1vw, 16px);
-          font-weight: 700;
-          line-height: 1;
-          letter-spacing: 0.18em;
-          color: rgba(28, 28, 26, 0.62);
-          text-transform: uppercase;
-          white-space: nowrap;
-          transition: color 0.18s ease;
-        }
-
-        .signal-node-dining .signal-time {
-          left: 0;
-        }
-
-        .signal-node-after-dark .signal-time {
-          right: 0;
-        }
-
-        .experience-section.is-inview .signal-node-dining .signal-time {
-          animation: diningTimeFill 15s ease-in-out 1500ms infinite;
-        }
-
-        .experience-section.is-inview .signal-node-after-dark .signal-time {
-          animation: afterDarkTimeFill 15s ease-in-out 1500ms infinite;
+          animation-delay: 1.8s;
         }
 
         .experience-nav {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 16px;
-          margin-top: 0;
+        }
+
+        .protocol-footer {
+          position: relative;
+          z-index: 5;
+          display: flex;
+          justify-content: space-between;
+          gap: 22px;
+          padding: 20px clamp(34px, 4vw, 64px);
+          border-top: 1px solid rgba(28, 28, 26, 0.14);
+          color: rgba(28, 28, 26, 0.52);
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
         }
 
         .action-card {
@@ -1491,7 +1263,7 @@ export default function ConceptPage() {
             box-shadow 0.24s ease;
         }
 
-        .poster-section.is-inview .action-card {
+        .reveal-section.is-inview .action-card {
           animation: cardIn 0.54s ease var(--card-delay, 320ms) forwards;
         }
 
@@ -1515,7 +1287,7 @@ export default function ConceptPage() {
           clip-path: inset(0 100% 100% 0);
         }
 
-        .poster-section.is-inview .action-card::after {
+        .reveal-section.is-inview .action-card::after {
           animation: borderDraw 0.64s ease calc(var(--card-delay, 320ms) + 100ms) forwards;
         }
 
@@ -1724,7 +1496,7 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes portalIdle {
+        @keyframes monolithFloat {
           0%,
           100% {
             transform: translateY(0);
@@ -1780,6 +1552,47 @@ export default function ConceptPage() {
 
           50% {
             transform: translateY(-10px) rotate(0.25deg);
+          }
+        }
+
+        @keyframes protocolFill {
+          0%,
+          16% {
+            transform: translateY(-50%) scaleX(0);
+            opacity: 0;
+          }
+
+          22% {
+            transform: translateY(-50%) scaleX(0);
+            opacity: 1;
+          }
+
+          58% {
+            transform: translateY(-50%) scaleX(1);
+            opacity: 1;
+          }
+
+          78%,
+          100% {
+            transform: translateY(-50%) scaleX(1);
+            opacity: 0;
+          }
+        }
+
+        @keyframes protocolDot {
+          0%,
+          20% {
+            background: #8f8a80;
+          }
+
+          28%,
+          66% {
+            background: ${C.pink};
+          }
+
+          82%,
+          100% {
+            background: #8f8a80;
           }
         }
 
@@ -1875,139 +1688,42 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes signalLineIn {
-          to {
-            transform: scaleX(1);
-          }
-        }
-
-        @keyframes signalFillLoop {
-          0%,
-          18% {
-            transform: scaleX(0);
-            opacity: 0;
-          }
-
-          23% {
-            transform: scaleX(0);
-            opacity: 1;
-          }
-
-          58% {
-            transform: scaleX(1);
-            opacity: 1;
-          }
-
-          74%,
-          100% {
-            transform: scaleX(1);
-            opacity: 0;
-          }
-        }
-
-        @keyframes signalNodeIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes diningDotFill {
-          0%,
-          18% {
-            opacity: 0;
-          }
-
-          23%,
-          64% {
-            opacity: 1;
-          }
-
-          80%,
-          100% {
-            opacity: 0;
-          }
-        }
-
-        @keyframes afterDarkDotFill {
-          0%,
-          48% {
-            opacity: 0;
-          }
-
-          58%,
-          72% {
-            opacity: 1;
-          }
-
-          86%,
-          100% {
-            opacity: 0;
-          }
-        }
-
-        @keyframes diningTimeFill {
-          0%,
-          18% {
-            color: rgba(28, 28, 26, 0.62);
-          }
-
-          23%,
-          64% {
-            color: ${C.pink};
-          }
-
-          80%,
-          100% {
-            color: rgba(28, 28, 26, 0.62);
-          }
-        }
-
-        @keyframes afterDarkTimeFill {
-          0%,
-          48% {
-            color: rgba(28, 28, 26, 0.62);
-          }
-
-          58%,
-          72% {
-            color: ${C.pink};
-          }
-
-          86%,
-          100% {
-            color: rgba(28, 28, 26, 0.62);
-          }
-        }
-
         @media (max-width: 1280px) {
-          .poster {
+          .protocol-shell {
             width: 72%;
           }
         }
 
         @media (max-width: 980px) {
-          .poster {
+          .protocol-shell {
             width: 82%;
           }
 
-          .poster-section {
+          .hero-section,
+          .space-section,
+          .experience-section {
             padding-left: 82px;
             padding-right: 48px;
           }
 
-          .hero-section {
+          .hero-section,
+          .space-grid {
             grid-template-columns: 1fr;
           }
 
-          .portal-module {
+          .monolith-field {
             width: min(100%, 440px);
             margin: 18px auto 0;
           }
 
-          .section-heading-row,
-          .experience-grid {
+          .section-kicker-row {
             grid-template-columns: 1fr;
+          }
+
+          .space-console {
+            border-left: 0;
+            border-top: 1px solid rgba(28, 28, 26, 0.18);
+            padding: 20px 0 0;
           }
 
           .zone-controls {
@@ -2021,34 +1737,23 @@ export default function ConceptPage() {
             padding-bottom: 28px;
           }
 
-          .poster {
+          .protocol-shell {
             width: calc(100% - 40px);
           }
 
-          .poster-bg {
+          .paper-bg {
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
           }
 
-          .poster-mode-nav {
-            top: 68px;
-            overflow-x: auto;
-            justify-content: flex-start;
-            padding: 12px 16px;
-          }
-
-          .poster-mode-btn {
-            flex: 0 0 auto;
-            font-size: 9px;
-            padding: 9px 10px;
-          }
-
-          .poster-axis {
+          .protocol-axis {
             left: 28px;
           }
 
-          .poster-section {
+          .hero-section,
+          .space-section,
+          .experience-section {
             min-height: auto;
             padding: 66px 26px 62px 52px;
           }
@@ -2069,11 +1774,11 @@ export default function ConceptPage() {
             letter-spacing: 0.18em;
           }
 
-          .hero-note {
+          .hero-intro {
             font-size: 11px;
           }
 
-          .portal-module {
+          .monolith-field {
             width: min(100%, 360px);
           }
 
@@ -2085,14 +1790,12 @@ export default function ConceptPage() {
             width: 100%;
           }
 
-          .experience-signal {
-            --signal-y: 30px;
-            height: 58px;
-            margin-top: 4px;
-            margin-bottom: 14px;
+          .experience-protocol {
+            margin-top: 34px;
+            margin-bottom: 18px;
           }
 
-          .signal-time {
+          .time-row {
             font-size: 11px;
             letter-spacing: 0.1em;
           }
@@ -2101,18 +1804,26 @@ export default function ConceptPage() {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 12px;
           }
+
+          .protocol-footer {
+            flex-direction: column;
+            gap: 8px;
+            padding: 18px 28px;
+          }
         }
 
         @media (max-width: 520px) {
-          .poster {
+          .protocol-shell {
             width: calc(100% - 28px);
           }
 
-          .poster-axis {
+          .protocol-axis {
             left: 22px;
           }
 
-          .poster-section {
+          .hero-section,
+          .space-section,
+          .experience-section {
             padding: 58px 20px 54px 42px;
           }
 
@@ -2126,12 +1837,12 @@ export default function ConceptPage() {
             letter-spacing: 0.13em;
           }
 
-          .portal-module {
+          .monolith-field {
             width: min(100%, 320px);
           }
 
-          .space-board {
-            margin-top: 2px;
+          .space-grid {
+            margin-top: 26px;
           }
 
           .zone-controls {
@@ -2155,13 +1866,6 @@ export default function ConceptPage() {
             font-size: 2em;
           }
 
-          .experience-signal {
-            --signal-y: 28px;
-            height: 56px;
-            margin-top: 0;
-            margin-bottom: 12px;
-          }
-
           .experience-nav {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 8px;
@@ -2179,12 +1883,12 @@ export default function ConceptPage() {
         }
 
         @media (max-width: 420px) {
-          .signal-time {
+          .time-row {
             font-size: 9px;
             letter-spacing: 0.04em;
           }
 
-          .signal-dot {
+          .protocol-dot {
             width: 16px;
             height: 16px;
           }
@@ -2214,23 +1918,21 @@ export default function ConceptPage() {
           .hero-title,
           .section-title,
           .hero-address,
-          .hero-note,
-          .portal-module,
-          .space-board,
-          .experience-copy,
-          .experience-console,
+          .hero-intro,
+          .monolith-stage,
+          .module-copy,
+          .venue-system,
+          .space-console,
+          .experience-protocol,
           .action-card,
-          .section-line,
+          .section-rule,
           .action-card::after,
-          .signal-line,
-          .signal-line-fill,
-          .signal-node,
-          .signal-dot-fill,
-          .signal-time,
           .venue-glitch-a,
           .venue-glitch-b,
-          .portal-scan,
-          .portal-axis {
+          .scan-line,
+          .monolith-axis,
+          .protocol-fill,
+          .protocol-dot {
             animation: none !important;
             transition: none !important;
           }
@@ -2238,13 +1940,13 @@ export default function ConceptPage() {
           .hero-title,
           .section-title,
           .hero-address,
-          .hero-note,
-          .portal-module,
-          .space-board,
-          .experience-copy,
-          .experience-console,
-          .action-card,
-          .signal-node {
+          .hero-intro,
+          .monolith-stage,
+          .module-copy,
+          .venue-system,
+          .space-console,
+          .experience-protocol,
+          .action-card {
             opacity: 1 !important;
             transform: none !important;
           }
@@ -2254,8 +1956,7 @@ export default function ConceptPage() {
             clip-path: inset(0 0 0 0) !important;
           }
 
-          .section-line,
-          .signal-line {
+          .section-rule {
             transform: scaleX(1) !important;
           }
 
