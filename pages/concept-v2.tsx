@@ -1,7 +1,13 @@
 'use client';
 
 import Head from 'next/head';
-import { useEffect, useState, type CSSProperties, type MouseEvent } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type MouseEvent,
+} from 'react';
 import SceneNav from '@components/SceneNav';
 
 const C = {
@@ -67,6 +73,69 @@ const EXPERIENCE_BTNS = [
   },
 ];
 
+const clamp = (value: number, min = 0, max = 1) =>
+  Math.max(min, Math.min(max, value));
+
+const range = (value: number, start: number, end: number) => {
+  if (start === end) return value >= end ? 1 : 0;
+  return clamp((value - start) / (end - start));
+};
+
+const mix = (start: number, end: number, amount: number) =>
+  start + (end - start) * amount;
+
+function FloorFunnel({
+  progress,
+  className = '',
+}: {
+  progress: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 460 220"
+      aria-hidden="true"
+      style={
+        {
+          '--draw': progress,
+        } as CSSProperties
+      }
+    >
+      <g className="floor-funnel-lines">
+        {Array.from({ length: 11 }).map((_, i) => {
+          const y = 30 + i * 14;
+          const left = 30 + i * 13;
+          const right = 286 + i * 6;
+
+          return (
+            <path
+              key={`arc-${i}`}
+              d={`M ${left} ${y} C ${right - 120} ${y + 52}, ${right - 78} ${
+                y + 112
+              }, ${right} ${y + 150}`}
+              pathLength="1"
+            />
+          );
+        })}
+
+        {Array.from({ length: 12 }).map((_, i) => {
+          const startX = 32 + i * 24;
+          const endX = 264 + i * 4;
+
+          return (
+            <path
+              key={`ray-${i}`}
+              d={`M ${startX} 32 C ${startX + 52} 88, ${endX - 58} 154, ${endX} 205`}
+              pathLength="1"
+            />
+          );
+        })}
+      </g>
+    </svg>
+  );
+}
+
 function ActionCard({
   href,
   title,
@@ -112,12 +181,48 @@ function ActionCard({
 }
 
 export default function ConceptPage() {
+  const storyRef = useRef<HTMLElement | null>(null);
+
+  const [progress, setProgress] = useState(0);
   const [activeArea, setActiveArea] = useState<AreaId | null>(null);
   const [isTouchMode, setIsTouchMode] = useState(false);
   const [menuReady, setMenuReady] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [diningTime, setDiningTime] = useState('20:00 / 20:30');
   const [afterDarkTime, setAfterDarkTime] = useState('22:00');
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateProgress = () => {
+      frame = 0;
+
+      const story = storyRef.current;
+      if (!story) return;
+
+      const rect = story.getBoundingClientRect();
+      const distance = Math.max(1, rect.height - window.innerHeight);
+      const next = clamp(-rect.top / distance);
+
+      setProgress(next);
+    };
+
+    const requestUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', requestUpdate);
+      window.removeEventListener('resize', requestUpdate);
+    };
+  }, []);
 
   useEffect(() => {
     let timers: number[] = [];
@@ -134,21 +239,21 @@ export default function ConceptPage() {
       setAfterDarkTime('22:00');
 
       timers = [
-        window.setTimeout(() => setDiningTime('18:40 / 19:10'), 2200),
-        window.setTimeout(() => setDiningTime('21:12 / 21:40'), 2420),
-        window.setTimeout(() => setDiningTime('19:55 / 20:14'), 2640),
-        window.setTimeout(() => setDiningTime('20:00 / 20:30'), 2880),
+        window.setTimeout(() => setDiningTime('18:40 / 19:10'), 2600),
+        window.setTimeout(() => setDiningTime('21:12 / 21:40'), 2860),
+        window.setTimeout(() => setDiningTime('19:55 / 20:14'), 3120),
+        window.setTimeout(() => setDiningTime('20:00 / 20:30'), 3420),
 
-        window.setTimeout(() => setAfterDarkTime('23:17'), 5600),
-        window.setTimeout(() => setAfterDarkTime('01:40'), 5820),
-        window.setTimeout(() => setAfterDarkTime('21:52'), 6040),
-        window.setTimeout(() => setAfterDarkTime('22:00'), 6280),
+        window.setTimeout(() => setAfterDarkTime('23:17'), 6400),
+        window.setTimeout(() => setAfterDarkTime('01:40'), 6660),
+        window.setTimeout(() => setAfterDarkTime('21:52'), 6920),
+        window.setTimeout(() => setAfterDarkTime('22:00'), 7220),
       ];
     };
 
     runTimeSequence();
 
-    const interval = window.setInterval(runTimeSequence, 12000);
+    const interval = window.setInterval(runTimeSequence, 14000);
 
     return () => {
       window.clearInterval(interval);
@@ -175,8 +280,8 @@ export default function ConceptPage() {
   }, []);
 
   useEffect(() => {
-    const items = Array.from(
-      document.querySelectorAll<HTMLElement>('.story-panel, .reveal-section')
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>('.reveal-section')
     );
 
     const observer = new IntersectionObserver(
@@ -186,12 +291,12 @@ export default function ConceptPage() {
         });
       },
       {
-        threshold: 0.2,
-        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.18,
+        rootMargin: '0px 0px -8% 0px',
       }
     );
 
-    items.forEach((item) => observer.observe(item));
+    sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
   }, []);
@@ -246,6 +351,106 @@ export default function ConceptPage() {
     }
   };
 
+  const axisDraw = range(progress, 0.02, 0.1);
+  const floorDraw = range(progress, 0.08, 0.22);
+  const floorFunnelDraw = range(progress, 0.14, 0.32);
+  const obeliskDraw = range(progress, 0.22, 0.4);
+  const topFunnelDraw = range(progress, 0.32, 0.48);
+  const conceptDraw = range(progress, 0.02, 0.16);
+  const addressDraw = range(progress, 0.12, 0.22);
+  const conceptExit = range(progress, 0.42, 0.56);
+  const sceneShift = range(progress, 0.42, 0.62);
+  const portalFade = range(progress, 0.64, 0.78);
+  const spaceTitleDraw = range(progress, 0.5, 0.64);
+  const venueDraw = range(progress, 0.58, 0.78);
+  const cardsDraw = range(progress, 0.74, 0.88);
+
+  const storyLineStyle: CSSProperties = {
+    transform: `scaleY(${axisDraw})`,
+    opacity: range(progress, 0.01, 0.08),
+  };
+
+  const titleStyle: CSSProperties = {
+    opacity: conceptDraw * (1 - conceptExit),
+    clipPath: `inset(0 ${100 - conceptDraw * 100}% 0 0)`,
+    transform: `translate3d(${mix(0, -40, conceptExit)}px, ${mix(
+      0,
+      -26,
+      conceptExit
+    )}px, 0)`,
+  };
+
+  const addressStyle: CSSProperties = {
+    opacity: addressDraw * (1 - conceptExit),
+    transform: `translate3d(0, ${mix(14, 0, addressDraw)}px, 0)`,
+  };
+
+  const portalSceneStyle: CSSProperties = {
+    opacity: 1 - portalFade,
+    transform: `translate3d(${mix(0, -40, sceneShift)}px, ${mix(
+      0,
+      -20,
+      sceneShift
+    )}px, 0) scale(${mix(1, 0.82, sceneShift)})`,
+  };
+
+  const floorStyle: CSSProperties = {
+    opacity: floorDraw * (1 - portalFade * 0.7),
+    transform: `translate3d(${mix(-80, 0, floorDraw)}px, ${mix(
+      24,
+      0,
+      floorDraw
+    )}px, 0) scaleX(${mix(0.35, 1, floorDraw)})`,
+  };
+
+  const floorFunnelStyle: CSSProperties = {
+    opacity: floorFunnelDraw * (1 - portalFade * 0.7),
+    transform: `translate3d(${mix(-32, 0, floorFunnelDraw)}px, ${mix(
+      18,
+      0,
+      floorFunnelDraw
+    )}px, 0)`,
+  };
+
+  const obeliskStyle: CSSProperties = {
+    opacity: obeliskDraw * (1 - portalFade * 0.6),
+    transform: `translate3d(${mix(34, 0, obeliskDraw)}px, ${mix(
+      -140,
+      0,
+      obeliskDraw
+    )}px, 0) scale(${mix(0.78, 1, obeliskDraw)})`,
+  };
+
+  const topFunnelStyle: CSSProperties = {
+    opacity: topFunnelDraw * (1 - portalFade * 0.55),
+    transform: `translate3d(0, ${mix(-52, 0, topFunnelDraw)}px, 0) scale(${mix(
+      0.72,
+      1,
+      topFunnelDraw
+    )})`,
+  };
+
+  const spaceTitleStyle: CSSProperties = {
+    opacity: spaceTitleDraw,
+    clipPath: `inset(0 ${100 - spaceTitleDraw * 100}% 0 0)`,
+    transform: `translateY(${mix(24, 0, spaceTitleDraw)}px)`,
+  };
+
+  const venueStyle: CSSProperties = {
+    opacity: venueDraw,
+    transform: `translate3d(0, ${mix(74, 0, venueDraw)}px, 0) scale(${mix(
+      0.86,
+      1,
+      venueDraw
+    )})`,
+  };
+
+  const storyCardsStyle: CSSProperties = {
+    opacity: cardsDraw,
+    transform: `translateY(${mix(26, 0, cardsDraw)}px)`,
+    pointerEvents: cardsDraw > 0.85 ? 'auto' : 'none',
+  };
+
   return (
     <>
       <Head>
@@ -275,207 +480,134 @@ export default function ConceptPage() {
 
         <div className="bg-image" aria-hidden="true" />
 
-        <section className="story-shell">
-          <div className="story-axis-v" aria-hidden="true" />
+        <section ref={storyRef} className="scroll-story" aria-label="Concept scroll story">
+          <div className="story-stage">
+            <div className="story-shell">
+              <span className="story-axis" style={storyLineStyle} aria-hidden="true" />
 
-          <article className="story-panel story-panel--intro" aria-labelledby="concept-title">
-            <div className="story-rule" aria-hidden="true" />
-            <div className="story-grid">
               <div className="story-copy">
-                <p className="story-kicker">LPX // UNDERGROUND ISSUE 51</p>
+                <p className="story-kicker" style={addressStyle}>
+                  LPX // UNDERGROUND
+                </p>
 
-                <h1 id="concept-title" className="story-title">
+                <h1 id="concept-title" className="story-title" style={titleStyle}>
                   CONCEPT.
                 </h1>
 
-                <p className="story-address">
+                <p className="story-address" style={addressStyle}>
                   17 Little Portland Street, London
                 </p>
               </div>
 
-              <div className="story-art story-art--portal" aria-hidden="true">
-                <div className="portal-scene portal-scene--intro">
-                  <span className="portal-axis" />
-                  <img
-                    src={CONCEPT_ASSETS.funnel}
-                    alt=""
-                    className="portal-img portal-funnel"
-                    draggable={false}
-                  />
-                  <img
-                    src={CONCEPT_ASSETS.floor}
-                    alt=""
-                    className="portal-img portal-floor"
-                    draggable={false}
-                  />
-                  <img
-                    src={CONCEPT_ASSETS.obelisk}
-                    alt=""
-                    className="portal-img portal-obelisk"
-                    draggable={false}
-                  />
-                </div>
-              </div>
-            </div>
-          </article>
+              <div className="portal-scene" style={portalSceneStyle} aria-hidden="true">
+                <span className="portal-axis" style={storyLineStyle} />
 
-          <article className="story-panel story-panel--transition" aria-labelledby="signal-title">
-            <div className="story-rule" aria-hidden="true" />
-            <div className="story-grid story-grid--reverse">
-              <div className="story-art story-art--portal-large" aria-hidden="true">
-                <div className="portal-scene portal-scene--transition">
-                  <span className="portal-axis" />
-                  <img
-                    src={CONCEPT_ASSETS.funnel}
-                    alt=""
-                    className="portal-img portal-funnel"
-                    draggable={false}
-                  />
-                  <img
-                    src={CONCEPT_ASSETS.floor}
-                    alt=""
-                    className="portal-img portal-floor"
-                    draggable={false}
-                  />
-                  <img
-                    src={CONCEPT_ASSETS.obelisk}
-                    alt=""
-                    className="portal-img portal-obelisk"
-                    draggable={false}
-                  />
-                </div>
+                <img
+                  src={CONCEPT_ASSETS.floor}
+                  alt=""
+                  className="portal-img portal-floor"
+                  style={floorStyle}
+                  draggable={false}
+                />
+
+                <FloorFunnel
+                  progress={floorFunnelDraw}
+                  className="portal-floor-funnel"
+                />
+
+                <img
+                  src={CONCEPT_ASSETS.obelisk}
+                  alt=""
+                  className="portal-img portal-obelisk"
+                  style={obeliskStyle}
+                  draggable={false}
+                />
+
+                <img
+                  src={CONCEPT_ASSETS.funnel}
+                  alt=""
+                  className="portal-img portal-funnel"
+                  style={topFunnelStyle}
+                  draggable={false}
+                />
               </div>
 
-              <div className="story-copy">
-                <p className="story-kicker">SCROLL THROUGH THE SIGNAL</p>
-
-                <h2 id="signal-title" className="story-section-title">
-                  THE SIGNAL
-                </h2>
-
-                <p className="story-text">
-                  The funnel opens the scene, the floor draws itself into place,
-                  and the obelisk becomes the anchor — a portal that resolves
-                  into the space below.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article className="story-panel story-panel--space" aria-labelledby="space-story-title">
-            <div className="story-rule" aria-hidden="true" />
-            <div className="story-grid">
-              <div className="story-copy">
-                <p className="story-kicker">THE ROOM APPEARS</p>
-
-                <h2 id="space-story-title" className="story-section-title">
+              <div className="space-reveal">
+                <h2 className="space-reveal-title" style={spaceTitleStyle}>
                   THE SPACE
                 </h2>
 
-                <p className="story-text">
-                  From the portal, the venue emerges — The Tent, Chef’s Studio
-                  and The Studio — ready to preview and explore.
-                </p>
+                <div className="story-venue" style={venueStyle} aria-hidden="true">
+                  <div className="venue-wrap story-venue-wrap">
+                    <img
+                      src={SPACE_ASSETS.venue}
+                      alt=""
+                      className="venue-image venue-base"
+                      draggable={false}
+                    />
 
-                <p className="story-prompt">Scroll to explore the zones</p>
-              </div>
+                    {AREAS.map((area) => {
+                      const isActive = activeArea === area.id;
 
-              <div className="story-art story-art--venue" aria-hidden="true">
-                <div className="story-venue-wrap">
-                  <img
-                    src={SPACE_ASSETS.venue}
-                    alt=""
-                    className="story-venue-image"
-                    draggable={false}
-                  />
+                      return (
+                        <img
+                          key={area.id}
+                          src={area.highlight}
+                          alt=""
+                          className={`venue-image venue-highlight ${
+                            isActive ? 'is-active' : ''
+                          }`}
+                          draggable={false}
+                        />
+                      );
+                    })}
+
+                    <img
+                      src={SPACE_ASSETS.venue}
+                      alt=""
+                      className="venue-image venue-glitch venue-glitch-a"
+                      draggable={false}
+                    />
+                    <img
+                      src={SPACE_ASSETS.venue}
+                      alt=""
+                      className="venue-image venue-glitch venue-glitch-b"
+                      draggable={false}
+                    />
+                  </div>
                 </div>
+
+                <nav
+                  className="zone-controls story-zone-controls"
+                  aria-label="Venue areas"
+                  onMouseLeave={handleControlsLeave}
+                  style={storyCardsStyle}
+                >
+                  {AREAS.map((area) => {
+                    const isActive = activeArea === area.id;
+                    const mobileMeta = isActive ? 'Tap to explore' : 'Tap to preview';
+
+                    return (
+                      <ActionCard
+                        key={area.id}
+                        href={area.href}
+                        title={area.title}
+                        meta={isTouchMode ? mobileMeta : 'Explore'}
+                        active={isActive}
+                        onMouseEnter={() => handleCardEnter(area.id)}
+                        onFocus={() => setActiveArea(area.id)}
+                        onClick={handleCardClick(area.id)}
+                      />
+                    );
+                  })}
+                </nav>
               </div>
             </div>
-          </article>
+          </div>
         </section>
 
         <div className="shell">
           <div className="axis-v" aria-hidden="true" />
-
-          <section
-            className="content-section space-section reveal-section"
-            aria-labelledby="space-title"
-          >
-            <div className="section-rule" aria-hidden="true" />
-
-            <h2 id="space-title" className="scan-title scan-title-space">
-              THE SPACE
-            </h2>
-
-            <div className="concept-space-map" aria-label="Interactive venue map">
-              <div className="venue-wrap" aria-hidden="true">
-                <img
-                  src={SPACE_ASSETS.venue}
-                  alt="Venue layout showing The Tent, Chef's Studio and The Studio"
-                  className="venue-image venue-base"
-                  draggable={false}
-                />
-
-                {AREAS.map((area) => {
-                  const isActive = activeArea === area.id;
-
-                  return (
-                    <img
-                      key={area.id}
-                      src={area.highlight}
-                      alt=""
-                      className={`venue-image venue-highlight ${
-                        isActive ? 'is-active' : ''
-                      }`}
-                      draggable={false}
-                    />
-                  );
-                })}
-
-                <img
-                  src={SPACE_ASSETS.venue}
-                  alt=""
-                  className="venue-image venue-glitch venue-glitch-a"
-                  draggable={false}
-                />
-                <img
-                  src={SPACE_ASSETS.venue}
-                  alt=""
-                  className="venue-image venue-glitch venue-glitch-b"
-                  draggable={false}
-                />
-              </div>
-            </div>
-
-            <nav
-              className="zone-controls"
-              aria-label="Venue areas"
-              onMouseLeave={handleControlsLeave}
-            >
-              {AREAS.map((area, index) => {
-                const isActive = activeArea === area.id;
-                const mobileMeta = isActive ? 'Tap to explore' : 'Tap to preview';
-
-                return (
-                  <ActionCard
-                    key={area.id}
-                    href={area.href}
-                    title={area.title}
-                    meta={isTouchMode ? mobileMeta : 'Explore'}
-                    active={isActive}
-                    onMouseEnter={() => handleCardEnter(area.id)}
-                    onFocus={() => setActiveArea(area.id)}
-                    onClick={handleCardClick(area.id)}
-                    style={
-                      {
-                        '--card-delay': `${280 + index * 100}ms`,
-                      } as CSSProperties
-                    }
-                  />
-                );
-              })}
-            </nav>
-          </section>
 
           <section
             className="content-section experience-section reveal-section"
@@ -747,9 +879,7 @@ export default function ConceptPage() {
             opacity: 0.36 !important;
           }
         }
-      `}</style>
 
-      <style jsx global>{`
         .page {
           position: relative;
           min-height: 100svh;
@@ -789,6 +919,20 @@ export default function ConceptPage() {
           opacity: 0.7;
         }
 
+        .scroll-story {
+          position: relative;
+          z-index: 3;
+          height: 520svh;
+        }
+
+        .story-stage {
+          position: sticky;
+          top: 0;
+          height: 100svh;
+          min-height: 680px;
+          overflow: hidden;
+        }
+
         .story-shell,
         .shell {
           position: relative;
@@ -798,16 +942,15 @@ export default function ConceptPage() {
         }
 
         .story-shell {
-          z-index: 2;
-          padding-top: clamp(104px, 10vw, 132px);
+          height: 100%;
         }
 
         .shell {
-          z-index: 3;
-          padding: clamp(24px, 3vw, 36px) 0 clamp(72px, 8vw, 112px);
+          z-index: 5;
+          padding: clamp(38px, 4vw, 58px) 0 clamp(72px, 8vw, 112px);
         }
 
-        .story-axis-v,
+        .story-axis,
         .axis-v {
           position: absolute;
           top: 30px;
@@ -825,76 +968,20 @@ export default function ConceptPage() {
             rgba(28, 28, 26, 0) 100%
           );
           pointer-events: none;
-        }
-
-        .story-panel {
-          --section-pad: clamp(48px, 5.5vw, 82px);
-          position: relative;
-          min-height: 88svh;
-          display: flex;
-          align-items: center;
-          padding-left: var(--section-pad);
-        }
-
-        .story-rule,
-        .section-rule {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          height: 1px;
-          background: linear-gradient(
-            to right,
-            rgba(28, 28, 26, 0.26) 0%,
-            rgba(28, 28, 26, 0.22) 76%,
-            rgba(28, 28, 26, 0.12) 92%,
-            rgba(28, 28, 26, 0.02) 98%,
-            rgba(28, 28, 26, 0) 100%
-          );
-          transform: scaleX(0);
-          transform-origin: left center;
-        }
-
-        .story-panel.is-inview .story-rule,
-        .reveal-section.is-inview .section-rule {
-          animation: drawHorizontal 0.78s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-        }
-
-        .story-grid {
-          position: relative;
-          z-index: 3;
-          width: 100%;
-          display: grid;
-          grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-          align-items: center;
-          gap: clamp(32px, 5vw, 84px);
-        }
-
-        .story-grid--reverse {
-          grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
-        }
-
-        .story-copy,
-        .story-art {
-          opacity: 0;
-          transform: translateY(26px);
-          transition:
-            opacity 0.72s ease,
-            transform 0.72s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .story-panel.is-inview .story-copy,
-        .story-panel.is-inview .story-art {
-          opacity: 1;
-          transform: translateY(0);
+          transform-origin: top center;
         }
 
         .story-copy {
-          min-width: 0;
+          position: absolute;
+          z-index: 7;
+          left: clamp(48px, 5.5vw, 82px);
+          top: 34%;
+          width: min(58%, 720px);
+          transform-origin: left center;
         }
 
         .story-kicker {
-          margin: 0 0 18px 0;
+          margin: 0 0 20px 0;
           font-family: ${MONO};
           font-size: 10px;
           font-weight: 700;
@@ -905,7 +992,7 @@ export default function ConceptPage() {
         }
 
         .story-title,
-        .story-section-title,
+        .space-reveal-title,
         .scan-title {
           font-family: ${MONO};
           color: ${C.ink};
@@ -922,12 +1009,6 @@ export default function ConceptPage() {
           white-space: nowrap;
         }
 
-        .story-section-title {
-          margin: 0;
-          font-size: clamp(48px, 5.8vw, 92px);
-          max-width: 700px;
-        }
-
         .story-address {
           margin: clamp(22px, 2.6vw, 38px) 0 0 clamp(8px, 0.62vw, 13px);
           font-family: ${MONO};
@@ -937,74 +1018,35 @@ export default function ConceptPage() {
           letter-spacing: 0.24em;
           font-weight: 700;
           text-transform: uppercase;
-        }
-
-        .story-text {
-          margin: clamp(18px, 2vw, 28px) 0 0 0;
-          max-width: 480px;
-          font-family: ${MONO};
-          font-size: clamp(12px, 1.02vw, 15px);
-          line-height: 1.8;
-          letter-spacing: 0.08em;
-          color: rgba(28, 28, 26, 0.66);
-          text-transform: uppercase;
-        }
-
-        .story-prompt {
-          margin: 26px 0 0 0;
-          font-family: ${MONO};
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.22em;
-          color: ${C.pink};
-          text-transform: uppercase;
-        }
-
-        .story-prompt::before {
-          content: '';
-          display: inline-block;
-          width: 42px;
-          height: 1px;
-          margin-right: 14px;
-          vertical-align: middle;
-          background: ${C.pink};
-        }
-
-        .story-art {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          white-space: nowrap;
         }
 
         .portal-scene {
-          position: relative;
-          width: min(100%, 430px);
-          aspect-ratio: 420 / 520;
-        }
-
-        .portal-scene--transition {
-          width: min(100%, 520px);
+          position: absolute;
+          z-index: 6;
+          right: 0;
+          top: 16%;
+          width: min(42vw, 470px);
+          height: min(54vw, 620px);
+          pointer-events: none;
+          will-change: transform, opacity;
         }
 
         .portal-axis {
           position: absolute;
           left: 34%;
-          top: 5%;
-          bottom: 13%;
+          top: 3%;
+          bottom: 12%;
+          z-index: 1;
           width: 1px;
           background: linear-gradient(
             to bottom,
             rgba(28, 28, 26, 0) 0%,
-            rgba(28, 28, 26, 0.42) 14%,
-            rgba(28, 28, 26, 0.42) 84%,
+            rgba(28, 28, 26, 0.4) 14%,
+            rgba(28, 28, 26, 0.4) 84%,
             rgba(28, 28, 26, 0) 100%
           );
-          transform: scaleY(0.88);
           transform-origin: top center;
-        }
-
-        .story-panel.is-inview .portal-axis {
-          animation: axisPulse 1.2s ease forwards;
         }
 
         .portal-img {
@@ -1013,161 +1055,113 @@ export default function ConceptPage() {
           height: auto;
           user-select: none;
           pointer-events: none;
+          will-change: transform, opacity;
         }
 
         .portal-funnel {
-          z-index: 4;
+          z-index: 5;
           top: 0;
-          right: 7%;
+          right: 8%;
           width: 48%;
-          opacity: 0;
-          transform: translateY(-24px) scale(0.88);
+          filter: drop-shadow(0 10px 18px rgba(212, 80, 122, 0.08));
         }
 
         .portal-floor {
           z-index: 2;
-          left: 5%;
-          bottom: 4%;
-          width: 95%;
-          opacity: 0;
-          transform: translateX(-30px) scaleX(0.72);
+          left: 8%;
+          bottom: 5%;
+          width: 96%;
           transform-origin: left center;
         }
 
         .portal-obelisk {
-          z-index: 5;
-          right: 22%;
-          bottom: 8%;
+          z-index: 6;
+          right: 23%;
+          bottom: 7%;
           width: 22%;
-          opacity: 0;
-          transform: translateY(36px) scale(0.9);
-          filter: drop-shadow(0 18px 26px rgba(28, 28, 26, 0.12));
+          filter: drop-shadow(0 20px 22px rgba(28, 28, 26, 0.12));
         }
 
-        .story-panel.is-inview .portal-funnel {
-          animation: funnelIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 180ms forwards;
+        .portal-floor-funnel {
+          position: absolute;
+          z-index: 4;
+          left: 6%;
+          bottom: 2%;
+          width: 46%;
+          height: auto;
+          overflow: visible;
+          opacity: calc(var(--draw, 0));
+          transform-origin: center center;
         }
 
-        .story-panel.is-inview .portal-floor {
-          animation: floorIn 0.86s cubic-bezier(0.2, 0.8, 0.2, 1) 280ms forwards;
+        .floor-funnel-lines path {
+          fill: none;
+          stroke: ${C.pink};
+          stroke-width: 2;
+          opacity: 0.9;
+          stroke-dasharray: 1;
+          stroke-dashoffset: calc(1 - var(--draw, 0));
+          vector-effect: non-scaling-stroke;
         }
 
-        .story-panel.is-inview .portal-obelisk {
-          animation: obeliskIn 0.92s cubic-bezier(0.2, 0.8, 0.2, 1) 420ms forwards;
+        .space-reveal {
+          position: absolute;
+          z-index: 8;
+          inset: 0;
+          pointer-events: none;
         }
 
-        .story-panel--transition.is-inview .portal-scene {
-          animation: portalFloat 6s ease-in-out 1s infinite;
+        .space-reveal-title {
+          position: absolute;
+          top: 12%;
+          left: clamp(48px, 5.5vw, 82px);
+          margin: 0;
+          max-width: 720px;
+          font-size: clamp(52px, 6vw, 96px);
+          will-change: clip-path, opacity, transform;
+        }
+
+        .story-venue {
+          position: absolute;
+          left: clamp(48px, 5.5vw, 82px);
+          right: 0;
+          top: 26%;
+          will-change: transform, opacity;
         }
 
         .story-venue-wrap {
-          position: relative;
-          width: min(100%, 760px);
-          opacity: 0;
-          transform: translateY(22px) scale(0.98);
+          width: min(100%, 880px);
+          margin-left: auto;
+          margin-right: auto;
+          pointer-events: none;
         }
 
-        .story-panel.is-inview .story-venue-wrap {
-          animation:
-            venueIn 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) 220ms forwards,
-            venueFloat 4.8s ease-in-out 1400ms infinite;
-        }
-
-        .story-venue-wrap::before,
-        .concept-space-map::before {
-          content: '';
+        .story-zone-controls {
           position: absolute;
-          left: 8%;
-          right: 8%;
-          bottom: 12%;
-          height: 18%;
-          border-radius: 50%;
-          background: radial-gradient(ellipse at center, rgba(28, 28, 26, 0.16), transparent 72%);
-          filter: blur(10px);
-          opacity: 0.36;
-          transform: rotate(-4deg);
-        }
-
-        .story-venue-image {
-          position: relative;
-          z-index: 2;
-          display: block;
-          width: 100%;
-          height: auto;
-          filter:
-            saturate(0.8)
-            contrast(1.02)
-            drop-shadow(0 18px 28px rgba(28, 28, 26, 0.12))
-            drop-shadow(0 36px 60px rgba(28, 28, 26, 0.1));
-        }
-
-        .content-section {
-          --section-pad: clamp(48px, 5.5vw, 82px);
-          position: relative;
-          z-index: 3;
-          padding-left: var(--section-pad);
-        }
-
-        .space-section {
-          padding-top: clamp(52px, 6vw, 74px);
-          padding-bottom: clamp(28px, 3vw, 42px);
-        }
-
-        .experience-section {
-          padding-top: clamp(48px, 5vw, 70px);
-          padding-bottom: clamp(92px, 9vw, 140px);
-        }
-
-        h1,
-        h2,
-        p {
-          margin: 0;
-        }
-
-        h2,
-        .scan-title-space,
-        .scan-title-experience {
-          position: relative;
-          z-index: 5;
-          max-width: 720px;
-          font-size: clamp(48px, 5.8vw, 92px);
-        }
-
-        .scan-title {
-          opacity: 0;
-          clip-path: inset(0 100% 0 0);
-          transform: translateX(-10px);
-        }
-
-        .reveal-section.is-inview .scan-title {
-          animation:
-            scanTitleReveal 0.46s steps(8, end) 220ms forwards,
-            titleMicroGlitch 0.48s steps(2, end) 720ms forwards,
-            titleIdleGlitch 7.5s steps(2, end) 3200ms infinite;
-        }
-
-        .concept-space-map {
-          position: relative;
-          width: 100%;
-          min-height: clamp(300px, 36vw, 500px);
-          margin-top: clamp(26px, 4vw, 48px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          left: clamp(48px, 5.5vw, 82px);
+          right: 0;
+          bottom: clamp(38px, 5vw, 76px);
+          will-change: transform, opacity;
+          pointer-events: auto;
         }
 
         .venue-wrap {
           position: relative;
-          width: min(100%, 820px);
           aspect-ratio: 2048 / 1140;
-          opacity: 0;
-          transform: translateY(22px) scale(0.98);
         }
 
-        .space-section.is-inview .venue-wrap {
-          animation:
-            venueIn 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) 420ms forwards,
-            venueFloat 4.8s ease-in-out 1600ms infinite;
+        .venue-wrap::before {
+          content: '';
+          position: absolute;
+          left: 8%;
+          right: 8%;
+          bottom: 14%;
+          height: 18%;
+          border-radius: 50%;
+          background: radial-gradient(ellipse at center, rgba(28, 28, 26, 0.16), transparent 72%);
+          filter: blur(10px);
+          opacity: 0.38;
+          transform: rotate(-4deg);
         }
 
         .venue-image {
@@ -1210,27 +1204,75 @@ export default function ConceptPage() {
           pointer-events: none;
         }
 
-        .space-section.is-inview .venue-glitch-a {
-          filter:
-            drop-shadow(0 0 12px rgba(212, 80, 122, 0.3))
-            hue-rotate(-16deg)
-            saturate(1.25);
-          animation: venueGlitchA 8.5s steps(1, end) 1800ms infinite;
-        }
-
-        .space-section.is-inview .venue-glitch-b {
-          filter:
-            drop-shadow(0 0 12px rgba(80, 120, 130, 0.2))
-            hue-rotate(18deg)
-            saturate(1.12);
-          animation: venueGlitchB 8.5s steps(1, end) 1800ms infinite;
+        .story-zone-controls .action-card {
+          opacity: 1;
+          transform: none;
         }
 
         .zone-controls {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 16px;
-          margin-top: clamp(8px, 1vw, 12px);
+        }
+
+        .content-section {
+          --section-pad: clamp(48px, 5.5vw, 82px);
+          position: relative;
+          z-index: 3;
+          padding-left: var(--section-pad);
+        }
+
+        .section-rule {
+          position: relative;
+          width: calc(100% + var(--section-pad));
+          height: 1px;
+          margin-left: calc(var(--section-pad) * -1);
+          margin-bottom: clamp(28px, 4vw, 48px);
+          background: linear-gradient(
+            to right,
+            rgba(28, 28, 26, 0.26) 0%,
+            rgba(28, 28, 26, 0.22) 76%,
+            rgba(28, 28, 26, 0.12) 92%,
+            rgba(28, 28, 26, 0.02) 98%,
+            rgba(28, 28, 26, 0) 100%
+          );
+          transform: scaleX(0);
+          transform-origin: left center;
+        }
+
+        .reveal-section.is-inview .section-rule {
+          animation: drawHorizontal 0.78s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
+        .experience-section {
+          padding-top: clamp(48px, 5vw, 70px);
+          padding-bottom: clamp(92px, 9vw, 140px);
+        }
+
+        h1,
+        h2,
+        p {
+          margin: 0;
+        }
+
+        .scan-title-experience {
+          position: relative;
+          z-index: 5;
+          max-width: 720px;
+          font-size: clamp(48px, 5.8vw, 92px);
+        }
+
+        .scan-title {
+          opacity: 0;
+          clip-path: inset(0 100% 0 0);
+          transform: translateX(-10px);
+        }
+
+        .reveal-section.is-inview .scan-title {
+          animation:
+            scanTitleReveal 0.46s steps(8, end) 220ms forwards,
+            titleMicroGlitch 0.48s steps(2, end) 720ms forwards,
+            titleIdleGlitch 7.5s steps(2, end) 3200ms infinite;
         }
 
         .experience-signal {
@@ -1276,7 +1318,7 @@ export default function ConceptPage() {
         }
 
         .experience-section.is-inview .signal-line-fill {
-          animation: signalFillLoop 12s ease-in-out 1200ms infinite;
+          animation: signalFillLoop 14s ease-in-out 1200ms infinite;
         }
 
         .signal-node {
@@ -1335,11 +1377,11 @@ export default function ConceptPage() {
         }
 
         .experience-section.is-inview .signal-node-dining .signal-dot-fill {
-          animation: diningDotFill 12s ease-in-out 1200ms infinite;
+          animation: diningDotFill 14s ease-in-out 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-node-after-dark .signal-dot-fill {
-          animation: afterDarkDotFill 12s ease-in-out 1200ms infinite;
+          animation: afterDarkDotFill 14s ease-in-out 1200ms infinite;
         }
 
         .signal-time {
@@ -1366,11 +1408,11 @@ export default function ConceptPage() {
         }
 
         .experience-section.is-inview .signal-node-dining .signal-time {
-          animation: diningTimeFill 12s ease-in-out 1200ms infinite;
+          animation: diningTimeFill 14s ease-in-out 1200ms infinite;
         }
 
         .experience-section.is-inview .signal-node-after-dark .signal-time {
-          animation: afterDarkTimeFill 12s ease-in-out 1200ms infinite;
+          animation: afterDarkTimeFill 14s ease-in-out 1200ms infinite;
         }
 
         .experience-nav {
@@ -1429,6 +1471,10 @@ export default function ConceptPage() {
 
         .reveal-section.is-inview .action-card::after {
           animation: borderDraw 0.64s ease calc(var(--card-delay, 320ms) + 100ms) forwards;
+        }
+
+        .story-zone-controls .action-card::after {
+          clip-path: inset(0 0 0 0);
         }
 
         .action-card-title,
@@ -1512,6 +1558,11 @@ export default function ConceptPage() {
           opacity: 0.7;
         }
 
+        .story-zone-controls .venue-glitch-a,
+        .story-zone-controls .venue-glitch-b {
+          animation: none;
+        }
+
         @keyframes drawHorizontal {
           to {
             transform: scaleX(1);
@@ -1525,18 +1576,22 @@ export default function ConceptPage() {
             transform: translateX(-10px);
             filter: blur(2px);
           }
+
           65% {
             opacity: 1;
             clip-path: inset(0 0 0 0);
             transform: translateX(0);
             filter: blur(0);
           }
+
           75% {
             transform: translateX(4px);
           }
+
           82% {
             transform: translateX(-2px);
           }
+
           100% {
             opacity: 1;
             clip-path: inset(0 0 0 0);
@@ -1546,14 +1601,17 @@ export default function ConceptPage() {
         }
 
         @keyframes titleMicroGlitch {
-          0%, 100% {
+          0%,
+          100% {
             text-shadow: 0.018em 0 0 currentColor;
           }
+
           35% {
             text-shadow:
               0.018em 0 0 currentColor,
               0.08em 0 0 rgba(212, 80, 122, 0.38);
           }
+
           65% {
             text-shadow:
               0.018em 0 0 currentColor,
@@ -1562,76 +1620,34 @@ export default function ConceptPage() {
         }
 
         @keyframes titleIdleGlitch {
-          0%, 92%, 100% {
+          0%,
+          92%,
+          100% {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
           }
+
           93% {
             filter: blur(0.2px);
             text-shadow:
               0.018em 0 0 currentColor,
               0.08em 0 0 rgba(212, 80, 122, 0.32);
           }
+
           94% {
             filter: none;
             text-shadow:
               0.018em 0 0 currentColor,
               -0.07em 0 0 rgba(122, 120, 112, 0.28);
           }
+
           95% {
             filter: blur(0.3px);
           }
+
           96% {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
-          }
-        }
-
-        @keyframes axisPulse {
-          0% {
-            transform: scaleY(0.84);
-            opacity: 0.3;
-          }
-          100% {
-            transform: scaleY(1);
-            opacity: 1;
-          }
-        }
-
-        @keyframes funnelIn {
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        @keyframes floorIn {
-          to {
-            opacity: 1;
-            transform: translateX(0) scaleX(1);
-          }
-        }
-
-        @keyframes obeliskIn {
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        @keyframes portalFloat {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-8px);
-          }
-        }
-
-        @keyframes venueIn {
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
           }
         }
 
@@ -1642,19 +1658,24 @@ export default function ConceptPage() {
         }
 
         @keyframes signalFillLoop {
-          0%, 18% {
+          0%,
+          18% {
             transform: scaleX(0);
             opacity: 0;
           }
+
           23% {
             transform: scaleX(0);
             opacity: 1;
           }
+
           58% {
             transform: scaleX(1);
             opacity: 1;
           }
-          74%, 100% {
+
+          74%,
+          100% {
             transform: scaleX(1);
             opacity: 0;
           }
@@ -1668,49 +1689,69 @@ export default function ConceptPage() {
         }
 
         @keyframes diningDotFill {
-          0%, 18% {
+          0%,
+          18% {
             opacity: 0;
           }
-          23%, 64% {
+
+          23%,
+          64% {
             opacity: 1;
           }
-          80%, 100% {
+
+          80%,
+          100% {
             opacity: 0;
           }
         }
 
         @keyframes afterDarkDotFill {
-          0%, 48% {
+          0%,
+          48% {
             opacity: 0;
           }
-          58%, 72% {
+
+          58%,
+          72% {
             opacity: 1;
           }
-          86%, 100% {
+
+          86%,
+          100% {
             opacity: 0;
           }
         }
 
         @keyframes diningTimeFill {
-          0%, 18% {
+          0%,
+          18% {
             color: rgba(28, 28, 26, 0.62);
           }
-          23%, 64% {
+
+          23%,
+          64% {
             color: ${C.pink};
           }
-          80%, 100% {
+
+          80%,
+          100% {
             color: rgba(28, 28, 26, 0.62);
           }
         }
 
         @keyframes afterDarkTimeFill {
-          0%, 48% {
+          0%,
+          48% {
             color: rgba(28, 28, 26, 0.62);
           }
-          58%, 72% {
+
+          58%,
+          72% {
             color: ${C.pink};
           }
-          86%, 100% {
+
+          86%,
+          100% {
             color: rgba(28, 28, 26, 0.62);
           }
         }
@@ -1727,95 +1768,12 @@ export default function ConceptPage() {
           0% {
             clip-path: inset(0 100% 100% 0);
           }
+
           45% {
             clip-path: inset(0 0 100% 0);
           }
+
           100% {
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes venueFloat {
-          0%, 100% {
-            transform: translateY(0px) rotate(-0.15deg);
-          }
-          50% {
-            transform: translateY(-10px) rotate(0.25deg);
-          }
-        }
-
-        @keyframes venueGlitchA {
-          0%, 72%, 100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            clip-path: inset(0 0 0 0);
-          }
-          73% {
-            opacity: 0.18;
-            transform: translate3d(-8px, -3px, 0);
-            clip-path: inset(0% 0 82% 0);
-          }
-          74% {
-            opacity: 0.24;
-            transform: translate3d(10px, 4px, 0);
-            clip-path: inset(16% 0 58% 0);
-          }
-          75% {
-            opacity: 0.18;
-            transform: translate3d(-7px, -5px, 0);
-            clip-path: inset(34% 0 34% 0);
-          }
-          76% {
-            opacity: 0.22;
-            transform: translate3d(8px, 6px, 0);
-            clip-path: inset(52% 0 16% 0);
-          }
-          77% {
-            opacity: 0.14;
-            transform: translate3d(-5px, -4px, 0);
-            clip-path: inset(74% 0 3% 0);
-          }
-          78% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes venueGlitchB {
-          0%, 72%, 100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            clip-path: inset(0 0 0 0);
-          }
-          73.2% {
-            opacity: 0.12;
-            transform: translate3d(7px, 5px, 0);
-            clip-path: inset(8% 0 72% 0);
-          }
-          74.1% {
-            opacity: 0.18;
-            transform: translate3d(-10px, -3px, 0);
-            clip-path: inset(24% 0 46% 0);
-          }
-          75.2% {
-            opacity: 0.14;
-            transform: translate3d(6px, -7px, 0);
-            clip-path: inset(44% 0 24% 0);
-          }
-          76.1% {
-            opacity: 0.18;
-            transform: translate3d(-8px, 6px, 0);
-            clip-path: inset(63% 0 9% 0);
-          }
-          77.2% {
-            opacity: 0.1;
-            transform: translate3d(4px, -2px, 0);
-            clip-path: inset(82% 0 0% 0);
-          }
-          78% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
         }
@@ -1845,53 +1803,30 @@ export default function ConceptPage() {
             background-position: center center;
           }
 
+          .scroll-story {
+            height: 500svh;
+          }
+
+          .story-stage {
+            min-height: 720px;
+          }
+
           .story-shell,
           .shell {
             width: calc(100% - 40px);
             max-width: none;
           }
 
-          .story-shell {
-            padding-top: 96px;
-          }
-
-          .shell {
-            padding-top: 20px;
-            padding-bottom: 28px;
-          }
-
-          .story-axis-v,
-          .axis-v {
-            top: 24px;
-            bottom: 24px;
-          }
-
-          .story-panel {
-            --section-pad: 24px;
-            min-height: auto;
-            padding-top: 56px;
-            padding-bottom: 56px;
-          }
-
-          .story-grid,
-          .story-grid--reverse {
-            grid-template-columns: 1fr;
-            gap: 28px;
-          }
-
-          .story-grid--reverse .story-art {
-            order: -1;
+          .story-copy {
+            left: 24px;
+            right: 18px;
+            top: 16%;
+            width: auto;
           }
 
           .story-title {
             font-size: clamp(48px, 13vw, 82px);
             white-space: normal;
-          }
-
-          .story-section-title,
-          .scan-title-space,
-          .scan-title-experience {
-            font-size: clamp(40px, 11vw, 64px);
           }
 
           .story-address {
@@ -1901,29 +1836,45 @@ export default function ConceptPage() {
             letter-spacing: 0.18em;
           }
 
-          .story-art {
-            justify-content: center;
+          .portal-scene {
+            width: min(86vw, 360px);
+            height: min(112vw, 500px);
+            right: auto;
+            left: 50%;
+            top: 38%;
+            transform-origin: center center;
           }
 
-          .portal-scene,
-          .portal-scene--transition {
-            width: min(88vw, 360px);
+          .space-reveal-title {
+            top: 13%;
+            left: 24px;
+            font-size: clamp(40px, 11vw, 64px);
           }
 
-          .story-venue-wrap {
-            width: 100%;
-            max-width: 640px;
-            margin-left: auto;
-            margin-right: auto;
+          .story-venue {
+            left: 18px;
+            right: 18px;
+            top: 28%;
+          }
+
+          .story-zone-controls {
+            left: 24px;
+            right: 24px;
+            bottom: 30px;
+          }
+
+          .shell {
+            padding-top: 34px;
+            padding-bottom: 28px;
+          }
+
+          .axis-v {
+            top: 24px;
+            bottom: 24px;
           }
 
           .content-section {
             --section-pad: 24px;
-          }
-
-          .space-section {
-            padding-top: 52px;
-            padding-bottom: 12px;
           }
 
           .experience-section {
@@ -1931,23 +1882,8 @@ export default function ConceptPage() {
             padding-bottom: 24px;
           }
 
-          .concept-space-map {
-            min-height: auto;
-            margin-top: 30px;
-            padding: 0 8px;
-          }
-
-          .venue-wrap {
-            width: 100%;
-            max-width: 640px;
-            margin-left: auto;
-            margin-right: auto;
-          }
-
-          .zone-controls {
-            grid-template-columns: 1fr;
-            margin-top: 18px;
-            width: 100%;
+          .scan-title-experience {
+            font-size: clamp(40px, 11vw, 64px);
           }
 
           .experience-signal {
@@ -1974,14 +1910,13 @@ export default function ConceptPage() {
             width: calc(100% - 28px);
           }
 
-          .story-shell {
-            padding-top: 90px;
+          .story-stage {
+            min-height: 650px;
           }
 
-          .story-panel {
-            --section-pad: 18px;
-            padding-top: 48px;
-            padding-bottom: 48px;
+          .story-copy {
+            left: 18px;
+            right: 14px;
           }
 
           .story-title {
@@ -1994,42 +1929,33 @@ export default function ConceptPage() {
             letter-spacing: 0.13em;
           }
 
-          .story-text {
-            font-size: 11px;
-            letter-spacing: 0.08em;
+          .portal-scene {
+            width: min(88vw, 320px);
+            height: min(118vw, 470px);
           }
 
-          .portal-scene,
-          .portal-scene--transition {
-            width: min(88vw, 320px);
+          .space-reveal-title {
+            left: 18px;
+          }
+
+          .story-venue {
+            left: 10px;
+            right: 10px;
+          }
+
+          .story-zone-controls {
+            left: 18px;
+            right: 18px;
+            bottom: 24px;
           }
 
           .content-section {
             --section-pad: 18px;
           }
 
-          .space-section {
-            padding-top: 54px;
-            padding-bottom: 11px;
-          }
-
           .experience-section {
             padding-top: 52px;
             padding-bottom: 16px;
-          }
-
-          .concept-space-map {
-            min-height: auto;
-            margin-top: 26px;
-            padding-left: 6px;
-            padding-right: 6px;
-          }
-
-          .venue-wrap {
-            width: 100%;
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
           }
 
           .action-card {
@@ -2105,19 +2031,7 @@ export default function ConceptPage() {
 
         @media (prefers-reduced-motion: reduce) {
           .concept-nav-shell,
-          .story-copy,
-          .story-art,
-          .story-rule,
-          .section-rule,
           .scan-title,
-          .portal-axis,
-          .portal-funnel,
-          .portal-floor,
-          .portal-obelisk,
-          .story-venue-wrap,
-          .venue-wrap,
-          .venue-glitch-a,
-          .venue-glitch-b,
           .signal-line,
           .signal-line-fill,
           .signal-node,
@@ -2129,18 +2043,13 @@ export default function ConceptPage() {
             transition: none !important;
           }
 
-          .story-copy,
-          .story-art,
           .scan-title,
-          .story-venue-wrap,
-          .venue-wrap,
           .signal-node,
           .action-card {
             opacity: 1 !important;
             transform: none !important;
           }
 
-          .story-rule,
           .section-rule,
           .signal-line {
             transform: scaleX(1) !important;
@@ -2148,14 +2057,6 @@ export default function ConceptPage() {
 
           .scan-title {
             clip-path: inset(0 0 0 0) !important;
-          }
-
-          .portal-axis,
-          .portal-funnel,
-          .portal-floor,
-          .portal-obelisk {
-            opacity: 1 !important;
-            transform: none !important;
           }
 
           .action-card::after {
