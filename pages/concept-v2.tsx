@@ -10,10 +10,15 @@ import {
 import SceneNav from '@components/SceneNav';
 
 const C = {
-  cream: '#E8E2D4',
-  ink: '#1C1C1A',
+  cream: '#F1E9D8',
+  paper: '#E8E2D4',
+  ink: '#10100E',
+  black: '#050504',
+  red: '#E52520',
+  redDark: '#B61514',
   pink: '#D4507A',
-  muted: '#7A7870',
+  amber: '#F3A800',
+  muted: '#77736B',
 } as const;
 
 const MONO = '"Space Mono", "Courier New", monospace';
@@ -42,21 +47,21 @@ const AREAS: AreaConfig[] = [
     title: 'THE TENT',
     href: '/thetent-test',
     highlight: '/images/concept/tent-highlight.png',
-    caption: 'A flexible underground dining and gathering chamber.',
+    caption: 'A concealed dining chamber built for close, theatrical evenings.',
   },
   {
     id: 'chefs-studio',
     title: "CHEF'S STUDIO",
     href: '/chefstudio-test',
     highlight: '/images/concept/chefs-studio-highlight.png',
-    caption: 'An intimate studio for food, theatre and close encounters.',
+    caption: 'An intimate studio for food, performance and controlled spectacle.',
   },
   {
     id: 'studio',
     title: 'THE STUDIO',
     href: '/studio-test',
     highlight: '/images/concept/studio-highlight.png',
-    caption: 'A future-facing room for sound, culture and private energy.',
+    caption: 'A private room for sound, culture and after-dark transmission.',
   },
 ];
 
@@ -117,6 +122,40 @@ function ActionCard({
   );
 }
 
+function CorridorGraphic() {
+  return (
+    <div className="corridor" aria-hidden="true">
+      <div className="corridor-frame corridor-frame-1" />
+      <div className="corridor-frame corridor-frame-2" />
+      <div className="corridor-frame corridor-frame-3" />
+      <div className="corridor-frame corridor-frame-4" />
+      <div className="corridor-core" />
+      <div className="corridor-panel corridor-panel-a" />
+      <div className="corridor-panel corridor-panel-b" />
+      <div className="corridor-panel corridor-panel-c" />
+      <div className="corridor-panel corridor-panel-d" />
+      <div className="corridor-person" />
+    </div>
+  );
+}
+
+function OrbitGraphic() {
+  return (
+    <div className="orbit" aria-hidden="true">
+      <div className="orbit-ring orbit-ring-1" />
+      <div className="orbit-ring orbit-ring-2" />
+      <div className="orbit-ring orbit-ring-3" />
+      <div className="orbit-arm orbit-arm-a" />
+      <div className="orbit-arm orbit-arm-b" />
+      <div className="orbit-arm orbit-arm-c" />
+      <div className="orbit-core" />
+      <div className="orbit-dot orbit-dot-a" />
+      <div className="orbit-dot orbit-dot-b" />
+      <div className="orbit-dot orbit-dot-c" />
+    </div>
+  );
+}
+
 export default function ConceptPage() {
   const [activeArea, setActiveArea] = useState<AreaId | null>(null);
   const [isTouchMode, setIsTouchMode] = useState(false);
@@ -126,7 +165,7 @@ export default function ConceptPage() {
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setMenuReady(true);
-    }, 650);
+    }, 520);
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
@@ -183,7 +222,7 @@ export default function ConceptPage() {
         });
       },
       {
-        threshold: 0.18,
+        threshold: 0.16,
         rootMargin: '0px 0px -8% 0px',
       }
     );
@@ -246,13 +285,13 @@ export default function ConceptPage() {
 
         <div className="site-bg" aria-hidden="true" />
 
-        <article className="protocol-shell" aria-label="Monolith Protocol concept page">
-          <div className="paper-bg" aria-hidden="true" />
-          <div className="protocol-axis" aria-hidden="true" />
+        <section className="hero reveal-section" aria-labelledby="concept-title">
+          <div className="hero-paper" aria-hidden="true" />
+          <div className="hero-grid" aria-hidden="true" />
 
-          <section className="hero-section reveal-section" aria-labelledby="concept-title">
+          <div className="hero-inner">
             <div className="hero-copy">
-              <p className="micro-label">LPX // UNDERGROUND ISSUE 51</p>
+              <p className="hero-kicker">LPX // UNDERGROUND TRANSMISSION</p>
 
               <h1 id="concept-title" className="hero-title">
                 CONCEPT.
@@ -263,193 +302,217 @@ export default function ConceptPage() {
               </p>
 
               <p className="hero-intro">
-                A concealed programme beneath the city: dining, sound,
-                architecture and after-dark energy, arranged as one continuous
-                underground sequence.
+                A concealed programme below street level. Dining, sound,
+                architecture and after-dark energy arranged as a single
+                cinematic sequence.
               </p>
-            </div>
 
-            <div className="monolith-stage" aria-hidden="true">
-              <div className="monolith-field">
-                <span className="monolith-axis" />
-                <img
-                  src={ASSETS.funnel}
-                  alt=""
-                  className="monolith-img funnel-top"
-                  draggable={false}
-                />
-                <img
-                  src={ASSETS.floor}
-                  alt=""
-                  className="monolith-img floor-plane"
-                  draggable={false}
-                />
-                <img
-                  src={ASSETS.funnel}
-                  alt=""
-                  className="monolith-img funnel-floor"
-                  draggable={false}
-                />
-                <img
-                  src={ASSETS.obelisk}
-                  alt=""
-                  className="monolith-img obelisk"
-                  draggable={false}
-                />
-
-                <span className="scan-line scan-one" />
-                <span className="scan-line scan-two" />
+              <div className="hero-actions" aria-label="Page sections">
+                <a href="#the-space">The Space</a>
+                <a href="#the-experience">The Experience</a>
               </div>
             </div>
-          </section>
 
-          <section className="space-section reveal-section" aria-labelledby="space-title">
-            <div className="section-rule" aria-hidden="true" />
+            <div className="hero-visual" aria-hidden="true">
+              <div className="red-panel">
+                <div className="red-panel-grain" />
+                <div className="red-panel-orbit">
+                  <OrbitGraphic />
+                </div>
 
-            <div className="section-kicker-row">
-              <p className="micro-label">MODULE 01</p>
-              <p className="module-copy">
-                The venue is treated as a diagram: three zones, one connected
-                system.
-              </p>
+                <div className="monolith-system">
+                  <div className="monolith-shadow" />
+                  <img
+                    src={ASSETS.obelisk}
+                    alt=""
+                    className="monolith-img"
+                    draggable={false}
+                  />
+                  <img
+                    src={ASSETS.funnel}
+                    alt=""
+                    className="monolith-funnel"
+                    draggable={false}
+                  />
+                  <span className="monolith-scan monolith-scan-a" />
+                  <span className="monolith-scan monolith-scan-b" />
+                </div>
+
+                <div className="red-mark red-mark-a" />
+                <div className="red-mark red-mark-b" />
+                <div className="red-mark red-mark-c" />
+              </div>
+
+              <div className="corridor-panel">
+                <CorridorGraphic />
+              </div>
             </div>
+          </div>
+        </section>
 
+        <section
+          id="the-space"
+          className="space-section reveal-section"
+          aria-labelledby="space-title"
+        >
+          <div className="space-bg" aria-hidden="true" />
+
+          <div className="section-label-row">
+            <span>MODULE 01</span>
+            <span>ARCHITECTURAL SYSTEM</span>
+          </div>
+
+          <div className="section-heading-grid">
             <h2 id="space-title" className="section-title">
               THE SPACE
             </h2>
 
-            <div className="space-grid">
-              <div className="venue-system">
-                <div className="venue-wrap">
-                  <img
-                    src={ASSETS.venue}
-                    alt="Venue layout showing The Tent, Chef's Studio and The Studio"
-                    className="venue-image venue-base"
-                    draggable={false}
-                  />
+            <p className="section-copy">
+              Three chambers operate as one underground vessel. Hover or tap to
+              isolate each programme.
+            </p>
+          </div>
 
-                  {AREAS.map((area) => {
-                    const isActive = activeArea === area.id;
+          <div className="space-composition">
+            <div className="venue-shell">
+              <div className="venue-wrap">
+                <img
+                  src={ASSETS.venue}
+                  alt="Venue layout showing The Tent, Chef's Studio and The Studio"
+                  className="venue-image venue-base"
+                  draggable={false}
+                />
 
-                    return (
-                      <img
-                        key={area.id}
-                        src={area.highlight}
-                        alt=""
-                        className={`venue-image venue-highlight ${
-                          isActive ? 'is-active' : ''
-                        }`}
-                        draggable={false}
-                      />
-                    );
-                  })}
+                {AREAS.map((area) => {
+                  const isActive = activeArea === area.id;
 
-                  <img
-                    src={ASSETS.venue}
-                    alt=""
-                    className="venue-image venue-glitch venue-glitch-a"
-                    draggable={false}
-                  />
-                  <img
-                    src={ASSETS.venue}
-                    alt=""
-                    className="venue-image venue-glitch venue-glitch-b"
-                    draggable={false}
-                  />
-                </div>
+                  return (
+                    <img
+                      key={area.id}
+                      src={area.highlight}
+                      alt=""
+                      className={`venue-image venue-highlight ${
+                        isActive ? 'is-active' : ''
+                      }`}
+                      draggable={false}
+                    />
+                  );
+                })}
+
+                <img
+                  src={ASSETS.venue}
+                  alt=""
+                  className="venue-image venue-glitch venue-glitch-a"
+                  draggable={false}
+                />
+                <img
+                  src={ASSETS.venue}
+                  alt=""
+                  className="venue-image venue-glitch venue-glitch-b"
+                  draggable={false}
+                />
               </div>
-
-              <aside className="space-console">
-                <p className="console-label">ACTIVE CHAMBER</p>
-                <p className="console-copy">{activeCaption}</p>
-              </aside>
             </div>
 
-            <nav
-              className="zone-controls"
-              aria-label="Venue areas"
-              onMouseLeave={handleControlsLeave}
-            >
-              {AREAS.map((area, index) => {
-                const isActive = activeArea === area.id;
-                const mobileMeta = isActive ? 'Tap to explore' : 'Tap to preview';
+            <aside className="space-readout">
+              <span className="readout-dot" />
+              <p className="readout-label">ACTIVE CHAMBER</p>
+              <p className="readout-copy">{activeCaption}</p>
+            </aside>
+          </div>
 
-                return (
-                  <ActionCard
-                    key={area.id}
-                    href={area.href}
-                    title={area.title}
-                    meta={isTouchMode ? mobileMeta : 'Explore'}
-                    active={isActive}
-                    onMouseEnter={() => handleCardEnter(area.id)}
-                    onFocus={() => setActiveArea(area.id)}
-                    onClick={handleCardClick(area.id)}
-                    style={
-                      {
-                        '--card-delay': `${260 + index * 120}ms`,
-                      } as CSSProperties
-                    }
-                  />
-                );
-              })}
-            </nav>
-          </section>
-
-          <section
-            className="experience-section reveal-section"
-            aria-labelledby="experience-title"
+          <nav
+            className="zone-controls"
+            aria-label="Venue areas"
+            onMouseLeave={handleControlsLeave}
           >
-            <div className="section-rule" aria-hidden="true" />
+            {AREAS.map((area, index) => {
+              const isActive = activeArea === area.id;
+              const mobileMeta = isActive ? 'Tap to explore' : 'Tap to preview';
 
-            <div className="section-kicker-row">
-              <p className="micro-label">MODULE 02</p>
-              <p className="module-copy">
-                The night moves from dinner into late-night Little Portland
-                energy.
-              </p>
-            </div>
-
-            <h2 id="experience-title" className="section-title experience-title">
-              THE EXPERIENCE
-            </h2>
-
-            <div className="experience-protocol" aria-hidden="true">
-              <div className="time-row">
-                <span>20:00 / 20:30</span>
-                <span>22:00</span>
-              </div>
-
-              <div className="protocol-line">
-                <span className="protocol-dot protocol-dot-left" />
-                <span className="protocol-track" />
-                <span className="protocol-fill" />
-                <span className="protocol-dot protocol-dot-right" />
-              </div>
-            </div>
-
-            <nav className="experience-nav" aria-label="Explore the experience">
-              {EXPERIENCE_BTNS.map((button, index) => (
+              return (
                 <ActionCard
-                  key={button.href}
-                  href={button.href}
-                  title={button.label}
-                  dark={button.dark}
+                  key={area.id}
+                  href={area.href}
+                  title={area.title}
+                  meta={isTouchMode ? mobileMeta : 'Explore'}
+                  active={isActive}
+                  onMouseEnter={() => handleCardEnter(area.id)}
+                  onFocus={() => setActiveArea(area.id)}
+                  onClick={handleCardClick(area.id)}
                   style={
                     {
-                      '--card-delay': `${460 + index * 120}ms`,
+                      '--card-delay': `${220 + index * 120}ms`,
                     } as CSSProperties
                   }
                 />
-              ))}
-            </nav>
-          </section>
+              );
+            })}
+          </nav>
+        </section>
 
-          <footer className="protocol-footer">
-            <span>17 LITTLE PORTLAND STREET</span>
-            <span>ENTRY SEQUENCE COMPLETE</span>
-            <span>LPX // UNDERGROUND</span>
-          </footer>
-        </article>
+        <section
+          id="the-experience"
+          className="experience-section reveal-section"
+          aria-labelledby="experience-title"
+        >
+          <div className="experience-bg" aria-hidden="true" />
+
+          <div className="section-label-row">
+            <span>MODULE 02</span>
+            <span>EVENING TRANSITION</span>
+          </div>
+
+          <div className="experience-layout">
+            <div className="experience-copy">
+              <h2 id="experience-title" className="section-title">
+                THE EXPERIENCE
+              </h2>
+
+              <p className="section-copy">
+                A precise shift from seated dinner to late-night Little Portland
+                energy. The evening behaves like a signal changing state.
+              </p>
+            </div>
+
+            <div className="experience-orbit" aria-hidden="true">
+              <div className="experience-orbit-ring" />
+              <div className="experience-orbit-core" />
+              <div className="experience-orbit-moon experience-orbit-moon-a" />
+              <div className="experience-orbit-moon experience-orbit-moon-b" />
+            </div>
+          </div>
+
+          <div className="experience-protocol" aria-hidden="true">
+            <div className="time-row">
+              <span>20:00 / 20:30</span>
+              <span>22:00</span>
+            </div>
+
+            <div className="protocol-line">
+              <span className="protocol-dot protocol-dot-left" />
+              <span className="protocol-track" />
+              <span className="protocol-fill" />
+              <span className="protocol-dot protocol-dot-right" />
+            </div>
+          </div>
+
+          <nav className="experience-nav" aria-label="Explore the experience">
+            {EXPERIENCE_BTNS.map((button, index) => (
+              <ActionCard
+                key={button.href}
+                href={button.href}
+                title={button.label}
+                dark={button.dark}
+                style={
+                  {
+                    '--card-delay': `${420 + index * 120}ms`,
+                  } as CSSProperties
+                }
+              />
+            ))}
+          </nav>
+        </section>
       </main>
 
       <style jsx global>{`
@@ -458,12 +521,12 @@ export default function ConceptPage() {
         #__next {
           margin: 0;
           min-height: 100%;
-          background: #eadfe5;
-          color: ${C.ink};
+          background: ${C.black};
+          color: ${C.cream};
           font-family: ${MONO};
           -webkit-font-smoothing: antialiased;
           text-rendering: geometricPrecision;
-          scrollbar-color: ${C.ink} rgba(28, 28, 26, 0.14);
+          scrollbar-color: ${C.red} rgba(255, 255, 255, 0.12);
         }
 
         body {
@@ -474,23 +537,22 @@ export default function ConceptPage() {
           box-sizing: border-box;
         }
 
+        ::selection {
+          background: ${C.red};
+          color: ${C.cream};
+        }
+
         ::-webkit-scrollbar {
           width: 10px;
         }
 
         ::-webkit-scrollbar-track {
-          background: rgba(28, 28, 26, 0.12);
+          background: ${C.black};
         }
 
         ::-webkit-scrollbar-thumb {
-          background: ${C.ink};
-          border: 2px solid rgba(232, 226, 212, 0.7);
-          background-clip: content-box;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-          background: ${C.pink};
-          border: 2px solid rgba(232, 226, 212, 0.7);
+          background: ${C.red};
+          border: 2px solid ${C.black};
           background-clip: content-box;
         }
 
@@ -523,7 +585,7 @@ export default function ConceptPage() {
         .scene-nav--space a,
         .scene-nav-mobile--space,
         .scene-nav-mobile--space a {
-          color: ${C.ink} !important;
+          color: ${C.cream} !important;
           font-family: ${MONO} !important;
           letter-spacing: 0.16em !important;
         }
@@ -532,26 +594,26 @@ export default function ConceptPage() {
         .scene-nav-mobile--space a.active,
         .scene-nav--space a[aria-current='page'],
         .scene-nav-mobile--space a[aria-current='page'] {
-          color: ${C.pink} !important;
+          color: ${C.red} !important;
           opacity: 1 !important;
         }
 
         .scene-nav--space a.disabled,
         .scene-nav-mobile--space a.disabled {
-          color: ${C.ink} !important;
-          opacity: 0.4;
+          color: ${C.cream} !important;
+          opacity: 0.42;
         }
 
         .scene-nav--space .scene-nav-burger span {
-          background: ${C.ink} !important;
+          background: ${C.cream} !important;
         }
 
         .concept-nav-shell.is-scrolled .scene-nav.scene-nav--space {
-          background: rgba(232, 226, 212, 0.5) !important;
-          border-bottom: 1px solid rgba(28, 28, 26, 0.14);
-          box-shadow: 0 10px 28px rgba(28, 28, 26, 0.07);
-          backdrop-filter: blur(18px) !important;
-          -webkit-backdrop-filter: blur(18px) !important;
+          background: rgba(5, 5, 4, 0.72) !important;
+          border-bottom: 1px solid rgba(241, 233, 216, 0.16);
+          box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+          backdrop-filter: blur(20px) !important;
+          -webkit-backdrop-filter: blur(20px) !important;
         }
 
         @media (max-width: 900px) {
@@ -566,7 +628,7 @@ export default function ConceptPage() {
             z-index: 49990;
             opacity: 0;
             pointer-events: none;
-            background: rgba(232, 226, 212, 0.86);
+            background: rgba(5, 5, 4, 0.88);
             backdrop-filter: blur(22px) saturate(1.08);
             -webkit-backdrop-filter: blur(22px) saturate(1.08);
             transition: opacity 0.28s ease;
@@ -589,7 +651,7 @@ export default function ConceptPage() {
 
           .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav,
           .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav {
-            background: rgba(232, 226, 212, 0.86) !important;
+            background: rgba(5, 5, 4, 0.88) !important;
             backdrop-filter: blur(22px) !important;
             -webkit-backdrop-filter: blur(22px) !important;
             box-shadow: none !important;
@@ -611,7 +673,7 @@ export default function ConceptPage() {
             justify-content: flex-start !important;
             gap: 20px !important;
             overflow-y: auto !important;
-            background: rgba(232, 226, 212, 0.86) !important;
+            background: rgba(5, 5, 4, 0.88) !important;
             backdrop-filter: blur(22px) saturate(1.08) !important;
             -webkit-backdrop-filter: blur(22px) saturate(1.08) !important;
           }
@@ -624,11 +686,11 @@ export default function ConceptPage() {
             position: relative !important;
             margin: 0 !important;
             padding: 4px 0 !important;
-            font-size: clamp(16px, 4.7vw, 24px) !important;
+            font-size: clamp(15px, 4.4vw, 22px) !important;
             line-height: 1.15 !important;
             letter-spacing: 0.16em !important;
             text-align: center !important;
-            color: ${C.ink} !important;
+            color: ${C.cream} !important;
             opacity: 1 !important;
             text-shadow: none !important;
           }
@@ -637,7 +699,7 @@ export default function ConceptPage() {
           .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a.active,
           .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'],
           .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'] {
-            color: ${C.pink} !important;
+            color: ${C.red} !important;
             opacity: 1 !important;
           }
         }
@@ -646,8 +708,8 @@ export default function ConceptPage() {
           position: relative;
           min-height: 100svh;
           overflow-x: clip;
-          padding: clamp(88px, 7vw, 120px) 0 clamp(32px, 4vw, 60px);
-          background: #eadfe5;
+          padding-top: clamp(74px, 6vw, 96px);
+          background: ${C.black};
         }
 
         .site-bg {
@@ -656,8 +718,9 @@ export default function ConceptPage() {
           z-index: 0;
           pointer-events: none;
           background:
-            radial-gradient(circle at 50% 0%, rgba(232, 226, 212, 0.5), transparent 34%),
-            #eadfe5;
+            radial-gradient(circle at 50% 0%, rgba(229, 37, 32, 0.16), transparent 34%),
+            radial-gradient(circle at 82% 18%, rgba(243, 168, 0, 0.12), transparent 22%),
+            ${C.black};
         }
 
         .concept-nav-shell {
@@ -680,362 +743,675 @@ export default function ConceptPage() {
           pointer-events: auto;
         }
 
-        .protocol-shell {
+        .hero {
           position: relative;
           z-index: 2;
-          width: 65%;
-          max-width: 1180px;
-          margin: 0 auto;
+          min-height: calc(100svh - 74px);
+          display: flex;
+          align-items: stretch;
           overflow: hidden;
-          border: 1px solid rgba(28, 28, 26, 0.16);
-          background: ${C.cream};
-          box-shadow:
-            0 30px 90px rgba(28, 28, 26, 0.12),
-            0 2px 0 rgba(255, 255, 255, 0.25) inset;
-          isolation: isolate;
+          background: ${C.red};
+          border-top: 1px solid rgba(241, 233, 216, 0.16);
+          border-bottom: 1px solid rgba(241, 233, 216, 0.16);
         }
 
-        .paper-bg {
+        .hero-paper {
           position: absolute;
           inset: 0;
-          z-index: -2;
-          background-image: url('${ASSETS.bg}');
-          background-size: contain;
-          background-repeat: repeat;
-          background-position: center top;
-          opacity: 0.78;
-        }
-
-        .protocol-shell::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          z-index: -1;
-          pointer-events: none;
+          z-index: 0;
           background:
-            linear-gradient(90deg, rgba(28, 28, 26, 0.035) 1px, transparent 1px),
-            linear-gradient(180deg, rgba(28, 28, 26, 0.025) 1px, transparent 1px);
-          background-size: 180px 180px;
-          mix-blend-mode: multiply;
-          opacity: 0.45;
-        }
-
-        .protocol-shell::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          z-index: 30;
-          background:
-            radial-gradient(circle at 50% 20%, transparent 0 48%, rgba(28, 28, 26, 0.025) 100%),
+            radial-gradient(circle at 35% 40%, rgba(255, 255, 255, 0.12), transparent 26%),
             repeating-linear-gradient(
               0deg,
-              rgba(28, 28, 26, 0.024) 0px,
-              rgba(28, 28, 26, 0.024) 1px,
-              transparent 1px,
-              transparent 5px
+              rgba(255, 255, 255, 0.06) 0 1px,
+              transparent 1px 5px
             );
+          opacity: 0.6;
+          mix-blend-mode: screen;
+          pointer-events: none;
+        }
+
+        .hero-grid {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          background:
+            linear-gradient(90deg, rgba(5, 5, 4, 0.12) 1px, transparent 1px),
+            linear-gradient(180deg, rgba(5, 5, 4, 0.1) 1px, transparent 1px);
+          background-size: 110px 110px;
+          mask-image: radial-gradient(circle at center, black, transparent 78%);
           opacity: 0.42;
         }
 
-        .protocol-axis {
+        .hero::before,
+        .hero::after {
+          content: '';
           position: absolute;
-          top: 28px;
-          bottom: 28px;
-          left: clamp(34px, 4vw, 64px);
-          z-index: 4;
-          width: 1px;
-          pointer-events: none;
-          background: linear-gradient(
-            to bottom,
-            rgba(28, 28, 26, 0) 0%,
-            rgba(28, 28, 26, 0.16) 6%,
-            rgba(28, 28, 26, 0.34) 14%,
-            rgba(28, 28, 26, 0.34) 86%,
-            rgba(28, 28, 26, 0.16) 94%,
-            rgba(28, 28, 26, 0) 100%
-          );
+          z-index: 1;
+          width: min(30vw, 430px);
+          height: min(30vw, 430px);
+          background: ${C.black};
+          transform: rotate(45deg);
+          opacity: 0.98;
         }
 
-        .hero-section {
+        .hero::before {
+          left: min(-15vw, -150px);
+          top: 16%;
+        }
+
+        .hero::after {
+          right: min(-15vw, -150px);
+          bottom: 10%;
+        }
+
+        .hero-inner {
           position: relative;
-          min-height: 84svh;
+          z-index: 4;
+          width: min(1380px, 86vw);
+          min-height: inherit;
+          margin: 0 auto;
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(280px, 0.74fr);
+          grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.88fr);
+          gap: clamp(34px, 5vw, 84px);
           align-items: center;
-          gap: clamp(28px, 4.8vw, 78px);
-          padding: clamp(88px, 8vw, 138px) clamp(48px, 6vw, 96px)
-            clamp(74px, 7vw, 118px) clamp(82px, 8vw, 132px);
+          padding: clamp(56px, 7vw, 118px) 0 clamp(46px, 6vw, 88px);
         }
 
         .hero-copy {
           position: relative;
-          z-index: 8;
+          z-index: 7;
+          max-width: 720px;
+          color: ${C.cream};
         }
 
-        .micro-label {
-          margin: 0;
-          font-family: ${MONO};
+        .hero-kicker {
+          margin: 0 0 clamp(18px, 2vw, 28px) 0;
           font-size: 10px;
           font-weight: 700;
           line-height: 1.2;
-          letter-spacing: 0.22em;
-          color: rgba(28, 28, 26, 0.48);
+          letter-spacing: 0.24em;
+          color: rgba(241, 233, 216, 0.7);
           text-transform: uppercase;
+          opacity: 0;
+          transform: translateY(12px);
         }
 
-        .hero-title,
-        .section-title {
-          margin: 0;
-          font-family: ${MONO};
-          color: ${C.ink};
-          text-transform: uppercase;
-          font-weight: 700;
-          line-height: 0.9;
-          letter-spacing: 0;
-          text-shadow: 0.018em 0 0 currentColor;
+        .hero.is-inview .hero-kicker {
+          animation: copyIn 0.48s ease 120ms forwards;
         }
 
         .hero-title {
-          margin-top: 20px;
-          font-size: clamp(62px, 7.4vw, 126px);
-          white-space: nowrap;
+          margin: 0;
+          color: ${C.cream};
+          font-family: ${MONO};
+          font-size: clamp(68px, 10.5vw, 176px);
+          font-weight: 700;
+          line-height: 0.84;
+          letter-spacing: -0.055em;
+          text-transform: uppercase;
+          text-shadow:
+            0.018em 0 0 currentColor,
+            0 8px 0 rgba(5, 5, 4, 0.16);
           opacity: 0;
           clip-path: inset(0 100% 0 0);
         }
 
-        .hero-section.is-inview .hero-title {
+        .hero.is-inview .hero-title {
           animation:
-            scanTitleReveal 0.48s steps(8, end) 140ms forwards,
-            titleMicroGlitch 0.48s steps(2, end) 680ms forwards,
-            titleIdleGlitch 7.5s steps(2, end) 3400ms infinite;
+            scanTitleReveal 0.5s steps(8, end) 180ms forwards,
+            titleMicroGlitch 0.48s steps(2, end) 700ms forwards,
+            titleIdleGlitch 7s steps(2, end) 3400ms infinite;
         }
 
         .hero-address {
-          margin: clamp(22px, 2.4vw, 34px) 0 0 clamp(8px, 0.62vw, 13px);
-          font-family: ${MONO};
-          color: ${C.pink};
-          font-size: clamp(13px, 1.24vw, 18px);
-          line-height: 1.45;
-          letter-spacing: 0.24em;
+          margin: clamp(20px, 2.2vw, 30px) 0 0 0;
+          color: ${C.black};
+          font-size: clamp(14px, 1.45vw, 22px);
           font-weight: 700;
+          line-height: 1.45;
+          letter-spacing: 0.22em;
           text-transform: uppercase;
-          white-space: nowrap;
           opacity: 0;
           transform: translateY(12px);
         }
 
-        .hero-section.is-inview .hero-address {
+        .hero.is-inview .hero-address {
           animation: copyIn 0.54s ease 520ms forwards;
         }
 
         .hero-intro {
-          max-width: 560px;
-          margin: clamp(30px, 3.4vw, 48px) 0 0 0;
-          color: rgba(28, 28, 26, 0.6);
-          font-family: ${MONO};
-          font-size: clamp(11px, 0.92vw, 14px);
-          line-height: 1.8;
-          letter-spacing: 0.08em;
+          max-width: 650px;
+          margin: clamp(28px, 3.2vw, 46px) 0 0 0;
+          color: rgba(241, 233, 216, 0.78);
+          font-size: clamp(12px, 0.95vw, 15px);
           font-weight: 700;
+          line-height: 1.85;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
           opacity: 0;
           transform: translateY(12px);
         }
 
-        .hero-section.is-inview .hero-intro {
+        .hero.is-inview .hero-intro {
           animation: copyIn 0.54s ease 680ms forwards;
         }
 
-        .monolith-stage {
-          position: relative;
-          z-index: 7;
+        .hero-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: clamp(28px, 3.2vw, 46px);
           opacity: 0;
-          transform: translateY(20px);
+          transform: translateY(12px);
         }
 
-        .hero-section.is-inview .monolith-stage {
-          animation:
-            copyIn 0.7s ease 320ms forwards,
-            monolithFloat 7s ease-in-out 1400ms infinite;
+        .hero.is-inview .hero-actions {
+          animation: copyIn 0.54s ease 820ms forwards;
         }
 
-        .monolith-field {
+        .hero-actions a {
+          color: ${C.cream};
+          text-decoration: none;
+          border: 1px solid rgba(241, 233, 216, 0.58);
+          padding: 12px 18px;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          background: rgba(5, 5, 4, 0.1);
+          transition:
+            background 0.2s ease,
+            color 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .hero-actions a:hover,
+        .hero-actions a:focus-visible {
+          background: ${C.cream};
+          color: ${C.red};
+          transform: translateY(-2px);
+          outline: none;
+        }
+
+        .hero-visual {
           position: relative;
-          width: min(100%, 470px);
-          aspect-ratio: 460 / 600;
-          margin-left: auto;
+          z-index: 5;
+          display: grid;
+          gap: clamp(18px, 2vw, 28px);
+          align-items: center;
+          opacity: 0;
+          transform: translateY(26px);
         }
 
-        .monolith-axis {
+        .hero.is-inview .hero-visual {
+          animation: visualIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 360ms forwards;
+        }
+
+        .red-panel {
+          position: relative;
+          min-height: clamp(420px, 46vw, 690px);
+          overflow: hidden;
+          background:
+            radial-gradient(circle at 52% 42%, rgba(243, 168, 0, 0.26), transparent 9%),
+            ${C.cream};
+          box-shadow:
+            0 30px 80px rgba(5, 5, 4, 0.28),
+            inset 0 0 0 1px rgba(5, 5, 4, 0.14);
+        }
+
+        .red-panel::before {
+          content: '';
           position: absolute;
-          left: 34%;
-          top: 7%;
-          bottom: 15%;
-          width: 1px;
-          background: linear-gradient(
-            to bottom,
-            rgba(28, 28, 26, 0) 0%,
-            rgba(28, 28, 26, 0.44) 18%,
-            rgba(28, 28, 26, 0.44) 84%,
-            rgba(28, 28, 26, 0) 100%
-          );
-          transform-origin: top center;
-          animation: portalAxisPulse 5s ease-in-out infinite;
+          inset: 0;
+          z-index: 1;
+          background:
+            linear-gradient(90deg, transparent 0 18%, rgba(229, 37, 32, 0.9) 18% 19%, transparent 19% 81%, rgba(229, 37, 32, 0.9) 81% 82%, transparent 82%),
+            repeating-linear-gradient(
+              0deg,
+              rgba(5, 5, 4, 0.045) 0 1px,
+              transparent 1px 4px
+            );
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        .red-panel-grain {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background-image: url('${ASSETS.bg}');
+          background-size: contain;
+          background-repeat: repeat;
+          opacity: 0.26;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+        }
+
+        .red-panel-orbit {
+          position: absolute;
+          inset: 5%;
+          z-index: 3;
+        }
+
+        .orbit {
+          position: absolute;
+          inset: 0;
+          opacity: 0.78;
+        }
+
+        .orbit-ring {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          border: 2px solid ${C.black};
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .orbit-ring-1 {
+          width: 78%;
+          height: 78%;
+          opacity: 0.18;
+        }
+
+        .orbit-ring-2 {
+          width: 54%;
+          height: 54%;
+          opacity: 0.28;
+        }
+
+        .orbit-ring-3 {
+          width: 26%;
+          height: 26%;
+          opacity: 0.35;
+        }
+
+        .orbit-arm {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 90%;
+          height: 18px;
+          background:
+            linear-gradient(90deg, ${C.black} 0 10%, transparent 10% 19%, ${C.black} 19% 25%, transparent 25% 75%, ${C.black} 75% 81%, transparent 81% 90%, ${C.black} 90% 100%);
+          transform-origin: center;
+          opacity: 0.9;
+        }
+
+        .orbit-arm-a {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        .orbit-arm-b {
+          transform: translate(-50%, -50%) rotate(60deg);
+        }
+
+        .orbit-arm-c {
+          transform: translate(-50%, -50%) rotate(120deg);
+        }
+
+        .orbit-core {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 72px;
+          height: 72px;
+          border-radius: 50%;
+          background: ${C.amber};
+          border: 6px solid ${C.black};
+          transform: translate(-50%, -50%);
+          box-shadow: 0 12px 22px rgba(5, 5, 4, 0.4);
+        }
+
+        .orbit-dot {
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          background: ${C.black};
+          transform: rotate(45deg);
+        }
+
+        .orbit-dot-a {
+          top: 18%;
+          left: 49%;
+        }
+
+        .orbit-dot-b {
+          bottom: 18%;
+          left: 49%;
+        }
+
+        .orbit-dot-c {
+          top: 48%;
+          right: 17%;
+        }
+
+        .monolith-system {
+          position: absolute;
+          inset: 0;
+          z-index: 6;
         }
 
         .monolith-img {
           position: absolute;
-          display: block;
-          height: auto;
-          user-select: none;
-          pointer-events: none;
+          right: 15%;
+          bottom: 12%;
+          width: 18%;
+          min-width: 78px;
+          max-width: 120px;
+          filter: drop-shadow(0 26px 28px rgba(5, 5, 4, 0.36));
+          animation: monolithFloat 7s ease-in-out infinite;
         }
 
-        .funnel-top {
-          z-index: 5;
-          top: 0;
-          right: 9%;
-          width: 46%;
-          filter: drop-shadow(0 10px 18px rgba(212, 80, 122, 0.08));
-        }
-
-        .floor-plane {
-          z-index: 2;
-          left: 3%;
-          bottom: 4%;
-          width: 103%;
-          opacity: 0.92;
-        }
-
-        .funnel-floor {
-          z-index: 4;
-          left: 0%;
-          bottom: 1%;
-          width: 45%;
-          transform: rotate(-2deg);
-          filter: drop-shadow(0 8px 14px rgba(212, 80, 122, 0.08));
-        }
-
-        .obelisk {
-          z-index: 6;
-          right: 22%;
-          bottom: 8%;
-          width: 22%;
-          filter: drop-shadow(0 20px 24px rgba(28, 28, 26, 0.16));
-        }
-
-        .scan-line {
+        .monolith-funnel {
           position: absolute;
-          left: 0;
-          right: 0;
-          height: 1px;
-          z-index: 8;
-          background: ${C.pink};
+          right: 6%;
+          top: 12%;
+          width: 34%;
+          opacity: 0.96;
+          filter: drop-shadow(0 8px 16px rgba(212, 80, 122, 0.18));
+          animation: funnelPulse 6.5s ease-in-out infinite;
+        }
+
+        .monolith-shadow {
+          position: absolute;
+          right: 4%;
+          bottom: 7%;
+          width: 56%;
+          height: 15%;
+          background: radial-gradient(ellipse at center, rgba(5, 5, 4, 0.26), transparent 72%);
+          filter: blur(14px);
+          transform: rotate(-7deg);
+        }
+
+        .monolith-scan {
+          position: absolute;
+          left: 8%;
+          right: 8%;
+          height: 2px;
+          background: ${C.red};
           opacity: 0;
-          transform-origin: left center;
+          z-index: 8;
           mix-blend-mode: multiply;
         }
 
-        .scan-one {
-          top: 34%;
-          animation: portalScan 5.4s linear 1.2s infinite;
+        .monolith-scan-a {
+          top: 32%;
+          animation: scanLine 5.8s linear 1.4s infinite;
         }
 
-        .scan-two {
-          top: 63%;
-          animation: portalScan 6.8s linear 3.1s infinite;
+        .monolith-scan-b {
+          top: 58%;
+          animation: scanLine 7.4s linear 3.1s infinite;
         }
 
-        .space-section,
-        .experience-section {
-          position: relative;
-          padding: clamp(76px, 8vw, 124px) clamp(48px, 6vw, 96px)
-            clamp(76px, 7vw, 116px) clamp(82px, 8vw, 132px);
-        }
-
-        .section-rule {
+        .red-mark {
           position: absolute;
-          left: clamp(34px, 4vw, 64px);
-          right: clamp(30px, 4vw, 62px);
-          top: 0;
-          height: 1px;
-          background: linear-gradient(
-            to right,
-            rgba(28, 28, 26, 0.28) 0%,
-            rgba(28, 28, 26, 0.24) 72%,
-            rgba(28, 28, 26, 0.12) 92%,
-            rgba(28, 28, 26, 0) 100%
-          );
-          transform-origin: left center;
-          transform: scaleX(0);
+          z-index: 5;
+          background: ${C.black};
+          transform: rotate(45deg);
         }
 
-        .reveal-section.is-inview .section-rule {
-          animation: drawHorizontal 0.78s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        .red-mark-a {
+          left: 7%;
+          top: 12%;
+          width: 70px;
+          height: 70px;
         }
 
-        .section-kicker-row {
-          display: grid;
-          grid-template-columns: 150px minmax(0, 1fr);
-          gap: clamp(24px, 4vw, 72px);
-          align-items: start;
-          margin-bottom: clamp(24px, 3vw, 42px);
+        .red-mark-b {
+          left: 13%;
+          bottom: 12%;
+          width: 44px;
+          height: 44px;
         }
 
-        .module-copy {
-          max-width: 560px;
-          margin: 0;
-          color: rgba(28, 28, 26, 0.58);
-          font-family: ${MONO};
-          font-size: clamp(11px, 0.92vw, 14px);
-          line-height: 1.8;
-          letter-spacing: 0.08em;
+        .red-mark-c {
+          right: 12%;
+          top: 48%;
+          width: 38px;
+          height: 38px;
+        }
+
+        .corridor-panel {
+          position: relative;
+          min-height: 210px;
+          background: ${C.black};
+          border: 1px solid rgba(241, 233, 216, 0.16);
+          box-shadow: 0 24px 60px rgba(5, 5, 4, 0.28);
+          overflow: hidden;
+        }
+
+        .corridor {
+          position: absolute;
+          inset: 0;
+          perspective: 800px;
+          background:
+            radial-gradient(circle at 50% 50%, rgba(241, 233, 216, 0.12), transparent 26%),
+            ${C.black};
+        }
+
+        .corridor-frame {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          border: 10px solid ${C.cream};
+          transform: translate(-50%, -50%) rotate(45deg);
+          opacity: 0.9;
+        }
+
+        .corridor-frame-1 {
+          width: 90%;
+          height: 90%;
+        }
+
+        .corridor-frame-2 {
+          width: 66%;
+          height: 66%;
+          opacity: 0.76;
+        }
+
+        .corridor-frame-3 {
+          width: 44%;
+          height: 44%;
+          opacity: 0.62;
+        }
+
+        .corridor-frame-4 {
+          width: 24%;
+          height: 24%;
+          opacity: 0.48;
+        }
+
+        .corridor-core {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 72px;
+          height: 72px;
+          background: ${C.red};
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .corridor-panel .corridor-panel-a,
+        .corridor-panel .corridor-panel-b,
+        .corridor-panel .corridor-panel-c,
+        .corridor-panel .corridor-panel-d {
+          position: absolute;
+          width: 14%;
+          height: 18%;
+          background: ${C.black};
+          border: 2px solid ${C.cream};
+        }
+
+        .corridor-panel-a {
+          left: 12%;
+          top: 18%;
+          transform: rotate(45deg);
+        }
+
+        .corridor-panel-b {
+          right: 12%;
+          top: 18%;
+          transform: rotate(45deg);
+        }
+
+        .corridor-panel-c {
+          left: 12%;
+          bottom: 18%;
+          transform: rotate(45deg);
+        }
+
+        .corridor-panel-d {
+          right: 12%;
+          bottom: 18%;
+          transform: rotate(45deg);
+        }
+
+        .corridor-person {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 16px;
+          height: 42px;
+          border-radius: 10px 10px 6px 6px;
+          background: ${C.amber};
+          transform: translate(-50%, -50%);
+          box-shadow:
+            0 -15px 0 2px ${C.cream},
+            0 16px 0 -4px ${C.cream};
+        }
+
+        .space-section {
+          position: relative;
+          z-index: 2;
+          overflow: hidden;
+          padding: clamp(80px, 8vw, 132px) 7vw;
+          background: ${C.black};
+          color: ${C.cream};
+        }
+
+        .space-bg {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          background:
+            radial-gradient(circle at 20% 18%, rgba(229, 37, 32, 0.14), transparent 26%),
+            radial-gradient(circle at 88% 72%, rgba(212, 80, 122, 0.12), transparent 24%),
+            repeating-linear-gradient(
+              90deg,
+              rgba(241, 233, 216, 0.04) 0 1px,
+              transparent 1px 120px
+            );
+          pointer-events: none;
+        }
+
+        .section-label-row {
+          position: relative;
+          z-index: 3;
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+          margin-bottom: clamp(26px, 3vw, 42px);
+          color: rgba(241, 233, 216, 0.52);
+          font-size: 10px;
           font-weight: 700;
+          letter-spacing: 0.24em;
           text-transform: uppercase;
           opacity: 0;
           transform: translateY(12px);
         }
 
-        .reveal-section.is-inview .module-copy {
-          animation: copyIn 0.54s ease 420ms forwards;
+        .reveal-section.is-inview .section-label-row {
+          animation: copyIn 0.5s ease 90ms forwards;
+        }
+
+        .section-heading-grid {
+          position: relative;
+          z-index: 3;
+          display: grid;
+          grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.38fr);
+          gap: clamp(30px, 5vw, 90px);
+          align-items: end;
+          margin-bottom: clamp(34px, 5vw, 74px);
         }
 
         .section-title {
-          font-size: clamp(50px, 6vw, 96px);
+          margin: 0;
+          color: ${C.cream};
+          font-size: clamp(54px, 8vw, 132px);
+          font-weight: 700;
+          line-height: 0.86;
+          letter-spacing: -0.045em;
+          text-transform: uppercase;
+          text-shadow:
+            0.018em 0 0 currentColor,
+            0 7px 0 rgba(229, 37, 32, 0.12);
           opacity: 0;
           clip-path: inset(0 100% 0 0);
         }
 
         .reveal-section.is-inview .section-title {
           animation:
-            scanTitleReveal 0.48s steps(8, end) 120ms forwards,
-            titleMicroGlitch 0.48s steps(2, end) 640ms forwards,
-            titleIdleGlitch 7.5s steps(2, end) 3300ms infinite;
+            scanTitleReveal 0.5s steps(8, end) 160ms forwards,
+            titleMicroGlitch 0.48s steps(2, end) 680ms forwards,
+            titleIdleGlitch 7s steps(2, end) 3400ms infinite;
         }
 
-        .space-grid {
+        .section-copy {
+          margin: 0;
+          max-width: 520px;
+          color: rgba(241, 233, 216, 0.68);
+          font-size: clamp(11px, 0.95vw, 14px);
+          font-weight: 700;
+          line-height: 1.8;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          opacity: 0;
+          transform: translateY(12px);
+        }
+
+        .reveal-section.is-inview .section-copy {
+          animation: copyIn 0.5s ease 360ms forwards;
+        }
+
+        .space-composition {
+          position: relative;
+          z-index: 3;
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(210px, 0.28fr);
-          gap: clamp(24px, 4vw, 58px);
+          grid-template-columns: minmax(0, 1fr) minmax(220px, 0.28fr);
+          gap: clamp(28px, 4vw, 70px);
           align-items: center;
-          margin-top: clamp(26px, 4vw, 54px);
         }
 
-        .venue-system {
+        .venue-shell {
+          position: relative;
           opacity: 0;
           transform: translateY(26px) scale(0.98);
         }
 
-        .space-section.is-inview .venue-system {
+        .space-section.is-inview .venue-shell {
           animation:
-            objectIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 360ms forwards,
+            visualIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 360ms forwards,
             venueFloat 5.6s ease-in-out 1500ms infinite;
+        }
+
+        .venue-shell::before {
+          content: '';
+          position: absolute;
+          inset: -6%;
+          z-index: -1;
+          background:
+            linear-gradient(90deg, rgba(229, 37, 32, 0.16), transparent 38%),
+            radial-gradient(circle at 50% 60%, rgba(241, 233, 216, 0.12), transparent 44%);
+          border: 1px solid rgba(241, 233, 216, 0.12);
         }
 
         .venue-wrap {
           position: relative;
-          width: min(100%, 860px);
+          width: min(100%, 900px);
           aspect-ratio: 2048 / 1140;
           margin: 0 auto;
         }
@@ -1048,9 +1424,9 @@ export default function ConceptPage() {
           bottom: 13%;
           height: 18%;
           border-radius: 50%;
-          background: radial-gradient(ellipse at center, rgba(28, 28, 26, 0.16), transparent 72%);
+          background: radial-gradient(ellipse at center, rgba(241, 233, 216, 0.18), transparent 72%);
           filter: blur(10px);
-          opacity: 0.38;
+          opacity: 0.36;
           transform: rotate(-4deg);
         }
 
@@ -1067,10 +1443,10 @@ export default function ConceptPage() {
         .venue-base {
           z-index: 2;
           filter:
-            saturate(0.86)
-            contrast(1.02)
-            drop-shadow(0 18px 28px rgba(28, 28, 26, 0.12))
-            drop-shadow(0 36px 60px rgba(28, 28, 26, 0.1));
+            saturate(0.98)
+            contrast(1.08)
+            drop-shadow(0 18px 28px rgba(0, 0, 0, 0.34))
+            drop-shadow(0 36px 60px rgba(0, 0, 0, 0.32));
         }
 
         .venue-highlight {
@@ -1090,70 +1466,198 @@ export default function ConceptPage() {
         .venue-glitch {
           z-index: 5;
           opacity: 0;
-          mix-blend-mode: multiply;
+          mix-blend-mode: screen;
           pointer-events: none;
         }
 
         .space-section.is-inview .venue-glitch-a {
           filter:
-            drop-shadow(0 0 12px rgba(212, 80, 122, 0.3))
-            hue-rotate(-16deg)
-            saturate(1.25);
+            drop-shadow(0 0 12px rgba(229, 37, 32, 0.38))
+            hue-rotate(-18deg)
+            saturate(1.35);
           animation: venueGlitchA 8.5s steps(1, end) 1800ms infinite;
         }
 
         .space-section.is-inview .venue-glitch-b {
           filter:
-            drop-shadow(0 0 12px rgba(80, 120, 130, 0.2))
+            drop-shadow(0 0 12px rgba(241, 233, 216, 0.26))
             hue-rotate(18deg)
             saturate(1.12);
           animation: venueGlitchB 8.5s steps(1, end) 1800ms infinite;
         }
 
-        .space-console {
+        .space-readout {
           position: relative;
-          border-left: 1px solid rgba(28, 28, 26, 0.24);
-          padding: 22px 0 22px 22px;
+          min-height: 260px;
+          padding: 26px 0 26px 26px;
+          border-left: 1px solid rgba(241, 233, 216, 0.28);
           opacity: 0;
           transform: translateY(14px);
         }
 
-        .space-section.is-inview .space-console {
+        .space-section.is-inview .space-readout {
           animation: copyIn 0.6s ease 580ms forwards;
         }
 
-        .console-label {
+        .readout-dot {
+          display: block;
+          width: 18px;
+          height: 18px;
+          margin-bottom: 26px;
+          border-radius: 50%;
+          background: ${C.red};
+          box-shadow: 0 0 0 8px rgba(229, 37, 32, 0.12);
+          animation: readoutPulse 2.4s ease-in-out infinite;
+        }
+
+        .readout-label {
           margin: 0 0 18px 0;
-          color: ${C.pink};
+          color: ${C.red};
           font-size: 10px;
           font-weight: 700;
-          letter-spacing: 0.2em;
+          letter-spacing: 0.22em;
           text-transform: uppercase;
         }
 
-        .console-copy {
+        .readout-copy {
           margin: 0;
-          color: rgba(28, 28, 26, 0.66);
-          font-size: clamp(11px, 0.9vw, 13px);
-          line-height: 1.75;
-          letter-spacing: 0.06em;
+          color: rgba(241, 233, 216, 0.74);
+          font-size: clamp(11px, 0.95vw, 14px);
           font-weight: 700;
+          line-height: 1.8;
+          letter-spacing: 0.06em;
           text-transform: uppercase;
         }
 
         .zone-controls {
           position: relative;
-          z-index: 9;
+          z-index: 4;
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 16px;
-          margin-top: clamp(18px, 2vw, 28px);
+          margin-top: clamp(30px, 4vw, 58px);
+        }
+
+        .experience-section {
+          position: relative;
+          z-index: 2;
+          overflow: hidden;
+          padding: clamp(80px, 8vw, 132px) 7vw;
+          background: ${C.cream};
+          color: ${C.black};
+        }
+
+        .experience-bg {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          background:
+            radial-gradient(circle at 76% 16%, rgba(229, 37, 32, 0.18), transparent 22%),
+            linear-gradient(135deg, rgba(229, 37, 32, 0.96) 0 26%, transparent 26% 100%),
+            ${C.cream};
+          pointer-events: none;
+        }
+
+        .experience-bg::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image: url('${ASSETS.bg}');
+          background-size: contain;
+          background-repeat: repeat;
+          opacity: 0.22;
+          mix-blend-mode: multiply;
+        }
+
+        .experience-section .section-label-row {
+          color: rgba(5, 5, 4, 0.58);
+        }
+
+        .experience-section .section-title {
+          color: ${C.black};
+          text-shadow:
+            0.018em 0 0 currentColor,
+            0 7px 0 rgba(229, 37, 32, 0.14);
+        }
+
+        .experience-section .section-copy {
+          color: rgba(5, 5, 4, 0.72);
+        }
+
+        .experience-layout {
+          position: relative;
+          z-index: 3;
+          display: grid;
+          grid-template-columns: minmax(0, 0.68fr) minmax(260px, 0.32fr);
+          gap: clamp(32px, 5vw, 90px);
+          align-items: center;
+        }
+
+        .experience-copy {
+          position: relative;
+          z-index: 2;
+        }
+
+        .experience-orbit {
+          position: relative;
+          aspect-ratio: 1;
+          opacity: 0;
+          transform: translateY(20px) scale(0.96);
+        }
+
+        .experience-section.is-inview .experience-orbit {
+          animation:
+            visualIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 420ms forwards,
+            orbitSpin 14s linear 1400ms infinite;
+        }
+
+        .experience-orbit-ring {
+          position: absolute;
+          inset: 8%;
+          border: 18px solid ${C.black};
+          border-radius: 50%;
+          box-shadow:
+            inset 0 0 0 2px ${C.cream},
+            0 0 0 1px rgba(5, 5, 4, 0.12);
+        }
+
+        .experience-orbit-core {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 74px;
+          height: 74px;
+          border-radius: 50%;
+          background: ${C.amber};
+          border: 8px solid ${C.black};
+          transform: translate(-50%, -50%);
+        }
+
+        .experience-orbit-moon {
+          position: absolute;
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+          background: ${C.red};
+          border: 5px solid ${C.black};
+        }
+
+        .experience-orbit-moon-a {
+          left: 7%;
+          top: 48%;
+        }
+
+        .experience-orbit-moon-b {
+          right: 13%;
+          top: 20%;
+          background: ${C.cream};
         }
 
         .experience-protocol {
           position: relative;
-          margin-top: clamp(34px, 4.6vw, 58px);
-          margin-bottom: clamp(20px, 2vw, 30px);
+          z-index: 3;
+          margin-top: clamp(42px, 5vw, 80px);
+          margin-bottom: clamp(26px, 3vw, 42px);
           opacity: 0;
           transform: translateY(14px);
         }
@@ -1166,7 +1670,7 @@ export default function ConceptPage() {
           display: flex;
           justify-content: space-between;
           margin-bottom: 16px;
-          color: rgba(28, 28, 26, 0.62);
+          color: rgba(5, 5, 4, 0.62);
           font-size: clamp(12px, 1.1vw, 16px);
           font-weight: 700;
           letter-spacing: 0.16em;
@@ -1189,11 +1693,11 @@ export default function ConceptPage() {
         }
 
         .protocol-track {
-          background: rgba(28, 28, 26, 0.28);
+          background: rgba(5, 5, 4, 0.28);
         }
 
         .protocol-fill {
-          background: ${C.pink};
+          background: ${C.red};
           transform: translateY(-50%) scaleX(0);
           animation: protocolFill 12s ease-in-out infinite;
         }
@@ -1202,8 +1706,8 @@ export default function ConceptPage() {
           position: absolute;
           top: 50%;
           z-index: 2;
-          width: 18px;
-          height: 18px;
+          width: 20px;
+          height: 20px;
           border-radius: 999px;
           background: #8f8a80;
           transform: translateY(-50%);
@@ -1220,39 +1724,26 @@ export default function ConceptPage() {
         }
 
         .experience-nav {
+          position: relative;
+          z-index: 3;
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 16px;
         }
 
-        .protocol-footer {
-          position: relative;
-          z-index: 5;
-          display: flex;
-          justify-content: space-between;
-          gap: 22px;
-          padding: 20px clamp(34px, 4vw, 64px);
-          border-top: 1px solid rgba(28, 28, 26, 0.14);
-          color: rgba(28, 28, 26, 0.52);
-          font-size: 9px;
-          font-weight: 700;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-        }
-
         .action-card {
           position: relative;
-          min-height: clamp(76px, 7vw, 104px);
+          min-height: clamp(86px, 7vw, 116px);
           display: flex;
           flex-direction: column;
           justify-content: center;
-          gap: 5px;
-          padding: clamp(14px, 1.4vw, 20px) clamp(16px, 1.8vw, 24px);
+          gap: 7px;
+          padding: clamp(16px, 1.5vw, 22px) clamp(18px, 2vw, 28px);
           border: 1px solid transparent;
-          background: rgba(232, 226, 212, 0.34);
-          color: ${C.ink};
+          background: rgba(241, 233, 216, 0.04);
+          color: inherit;
           text-decoration: none;
-          box-shadow: 6px 6px 0 rgba(28, 28, 26, 0);
+          box-shadow: 7px 7px 0 rgba(229, 37, 32, 0);
           overflow: hidden;
           opacity: 0;
           transform: translateY(12px);
@@ -1272,8 +1763,8 @@ export default function ConceptPage() {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(135deg, rgba(212, 80, 122, 0.16), transparent 42%),
-            repeating-linear-gradient(90deg, rgba(28, 28, 26, 0.06) 0 1px, transparent 1px 11px);
+            linear-gradient(135deg, rgba(229, 37, 32, 0.16), transparent 42%),
+            repeating-linear-gradient(90deg, rgba(241, 233, 216, 0.08) 0 1px, transparent 1px 11px);
           opacity: 0;
           transition: opacity 0.24s ease;
         }
@@ -1282,9 +1773,13 @@ export default function ConceptPage() {
           content: '';
           position: absolute;
           inset: 0;
-          border: 1px solid rgba(28, 28, 26, 0.48);
+          border: 1px solid rgba(241, 233, 216, 0.5);
           pointer-events: none;
           clip-path: inset(0 100% 100% 0);
+        }
+
+        .experience-section .action-card::after {
+          border-color: rgba(5, 5, 4, 0.48);
         }
 
         .reveal-section.is-inview .action-card::after {
@@ -1299,11 +1794,10 @@ export default function ConceptPage() {
 
         .action-card-title {
           display: block;
-          font-family: ${MONO};
-          font-size: clamp(18px, 1.7vw, 28px);
+          font-size: clamp(18px, 1.8vw, 30px);
           font-weight: 700;
           line-height: 0.95;
-          letter-spacing: 0px;
+          letter-spacing: 0;
           text-transform: uppercase;
           text-shadow: 0.012em 0 0 currentColor;
         }
@@ -1312,12 +1806,16 @@ export default function ConceptPage() {
           display: inline-flex;
           align-items: center;
           gap: 4px;
-          font-family: ${MONO};
-          color: rgba(28, 28, 26, 0.58);
+          color: rgba(241, 233, 216, 0.62);
           font-size: 10px;
+          font-weight: 700;
           letter-spacing: 0.18em;
           line-height: 1;
           text-transform: uppercase;
+        }
+
+        .experience-section .action-card-meta {
+          color: rgba(5, 5, 4, 0.56);
         }
 
         .action-arrow {
@@ -1332,9 +1830,8 @@ export default function ConceptPage() {
         .action-card:hover,
         .action-card:focus-visible,
         .action-card.is-active {
-          background: rgba(212, 80, 122, 0.1);
-          color: ${C.ink};
-          box-shadow: 10px 10px 0 rgba(212, 80, 122, 0.14);
+          background: rgba(229, 37, 32, 0.16);
+          box-shadow: 10px 10px 0 rgba(229, 37, 32, 0.22);
           transform: translate(-3px, -3px);
           outline: none;
         }
@@ -1348,34 +1845,28 @@ export default function ConceptPage() {
         .action-card:hover::after,
         .action-card:focus-visible::after,
         .action-card.is-active::after {
-          border-color: rgba(212, 80, 122, 0.9);
+          border-color: ${C.red};
         }
 
         .action-card.is-dark {
-          background: ${C.ink};
+          background: ${C.black};
           color: ${C.cream};
         }
 
         .action-card.is-dark .action-card-meta {
-          color: rgba(232, 226, 212, 0.66);
+          color: rgba(241, 233, 216, 0.66);
         }
 
         .action-card.is-dark:hover,
         .action-card.is-dark:focus-visible {
-          background: ${C.pink};
+          background: ${C.red};
           color: ${C.cream};
         }
 
         .action-card:hover .action-card-meta,
         .action-card:focus-visible .action-card-meta {
           color: currentColor;
-          opacity: 0.7;
-        }
-
-        @keyframes drawHorizontal {
-          to {
-            transform: scaleX(1);
-          }
+          opacity: 0.72;
         }
 
         @keyframes scanTitleReveal {
@@ -1412,19 +1903,21 @@ export default function ConceptPage() {
         @keyframes titleMicroGlitch {
           0%,
           100% {
-            text-shadow: 0.018em 0 0 currentColor;
+            text-shadow:
+              0.018em 0 0 currentColor,
+              0 8px 0 rgba(5, 5, 4, 0.16);
           }
 
           35% {
             text-shadow:
               0.018em 0 0 currentColor,
-              0.08em 0 0 rgba(212, 80, 122, 0.38);
+              0.08em 0 0 rgba(5, 5, 4, 0.38);
           }
 
           65% {
             text-shadow:
               0.018em 0 0 currentColor,
-              -0.06em 0 0 rgba(122, 120, 112, 0.34);
+              -0.06em 0 0 rgba(241, 233, 216, 0.34);
           }
         }
 
@@ -1433,30 +1926,20 @@ export default function ConceptPage() {
           92%,
           100% {
             filter: none;
-            text-shadow: 0.018em 0 0 currentColor;
           }
 
           93% {
             filter: blur(0.2px);
-            text-shadow:
-              0.018em 0 0 currentColor,
-              0.08em 0 0 rgba(212, 80, 122, 0.32);
+            transform: translateX(2px);
           }
 
           94% {
-            filter: none;
-            text-shadow:
-              0.018em 0 0 currentColor,
-              -0.07em 0 0 rgba(122, 120, 112, 0.28);
-          }
-
-          95% {
-            filter: blur(0.3px);
+            transform: translateX(-2px);
           }
 
           96% {
             filter: none;
-            text-shadow: 0.018em 0 0 currentColor;
+            transform: translateX(0);
           }
         }
 
@@ -1467,7 +1950,7 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes objectIn {
+        @keyframes visualIn {
           to {
             opacity: 1;
             transform: translateY(0) scale(1);
@@ -1478,7 +1961,7 @@ export default function ConceptPage() {
           to {
             opacity: 1;
             transform: translateY(0);
-            box-shadow: 6px 6px 0 rgba(28, 28, 26, 0.08);
+            box-shadow: 7px 7px 0 rgba(229, 37, 32, 0.14);
           }
         }
 
@@ -1503,39 +1986,39 @@ export default function ConceptPage() {
           }
 
           50% {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
           }
         }
 
-        @keyframes portalAxisPulse {
+        @keyframes funnelPulse {
           0%,
           100% {
-            opacity: 0.7;
-            transform: scaleY(0.98);
+            transform: translateY(0) scale(1);
+            opacity: 0.92;
           }
 
           50% {
+            transform: translateY(-8px) scale(1.025);
             opacity: 1;
-            transform: scaleY(1);
           }
         }
 
-        @keyframes portalScan {
+        @keyframes scanLine {
           0%,
-          86%,
+          84%,
           100% {
             opacity: 0;
-            transform: translateX(-20%) scaleX(0);
+            transform: translateX(-18%) scaleX(0);
           }
 
-          88% {
-            opacity: 0.8;
+          87% {
+            opacity: 0.72;
             transform: translateX(0) scaleX(0.4);
           }
 
           91% {
-            opacity: 0.35;
-            transform: translateX(30%) scaleX(0.8);
+            opacity: 0.28;
+            transform: translateX(32%) scaleX(0.8);
           }
 
           94% {
@@ -1552,6 +2035,23 @@ export default function ConceptPage() {
 
           50% {
             transform: translateY(-10px) rotate(0.25deg);
+          }
+        }
+
+        @keyframes readoutPulse {
+          0%,
+          100% {
+            box-shadow: 0 0 0 8px rgba(229, 37, 32, 0.12);
+          }
+
+          50% {
+            box-shadow: 0 0 0 14px rgba(229, 37, 32, 0);
+          }
+        }
+
+        @keyframes orbitSpin {
+          to {
+            transform: rotate(360deg);
           }
         }
 
@@ -1587,7 +2087,7 @@ export default function ConceptPage() {
 
           28%,
           66% {
-            background: ${C.pink};
+            background: ${C.red};
           }
 
           82%,
@@ -1688,204 +2188,165 @@ export default function ConceptPage() {
           }
         }
 
-        @media (max-width: 1280px) {
-          .protocol-shell {
-            width: 72%;
-          }
-        }
-
-        @media (max-width: 980px) {
-          .protocol-shell {
-            width: 82%;
-          }
-
-          .hero-section,
-          .space-section,
-          .experience-section {
-            padding-left: 82px;
-            padding-right: 48px;
-          }
-
-          .hero-section,
-          .space-grid {
+        @media (max-width: 1120px) {
+          .hero-inner {
+            width: min(92vw, 1100px);
             grid-template-columns: 1fr;
           }
 
-          .monolith-field {
-            width: min(100%, 440px);
-            margin: 18px auto 0;
+          .hero-visual {
+            grid-template-columns: minmax(0, 1fr);
           }
 
-          .section-kicker-row {
+          .red-panel {
+            min-height: 520px;
+          }
+
+          .corridor-panel {
+            display: none;
+          }
+
+          .section-heading-grid,
+          .space-composition,
+          .experience-layout {
             grid-template-columns: 1fr;
           }
 
-          .space-console {
+          .space-readout {
+            min-height: auto;
             border-left: 0;
-            border-top: 1px solid rgba(28, 28, 26, 0.18);
-            padding: 20px 0 0;
-          }
-
-          .zone-controls {
-            grid-template-columns: 1fr;
+            border-top: 1px solid rgba(241, 233, 216, 0.22);
+            padding: 22px 0 0;
           }
         }
 
         @media (max-width: 820px) {
           .page {
-            padding-top: 86px;
-            padding-bottom: 28px;
-          }
-
-          .protocol-shell {
-            width: calc(100% - 40px);
-          }
-
-          .paper-bg {
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-          }
-
-          .protocol-axis {
-            left: 28px;
-          }
-
-          .hero-section,
-          .space-section,
-          .experience-section {
-            min-height: auto;
-            padding: 66px 26px 62px 52px;
-          }
-
-          .hero-section {
             padding-top: 78px;
           }
 
+          .hero {
+            min-height: auto;
+          }
+
+          .hero-inner {
+            width: calc(100% - 34px);
+            padding: 44px 0 54px;
+          }
+
           .hero-title {
-            font-size: clamp(48px, 13vw, 82px);
-            white-space: normal;
+            font-size: clamp(58px, 18vw, 96px);
+            letter-spacing: -0.07em;
           }
 
           .hero-address {
-            max-width: 360px;
-            white-space: normal;
             font-size: 12px;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.16em;
           }
 
           .hero-intro {
             font-size: 11px;
           }
 
-          .monolith-field {
-            width: min(100%, 360px);
+          .red-panel {
+            min-height: 460px;
+          }
+
+          .red-panel::before {
+            opacity: 0.32;
+          }
+
+          .monolith-img {
+            right: 18%;
+            width: 20%;
+          }
+
+          .monolith-funnel {
+            width: 38%;
+          }
+
+          .orbit-arm {
+            height: 13px;
+          }
+
+          .orbit-core {
+            width: 58px;
+            height: 58px;
+          }
+
+          .space-section,
+          .experience-section {
+            padding: 60px 22px;
+          }
+
+          .section-label-row {
+            font-size: 8px;
+            letter-spacing: 0.16em;
           }
 
           .section-title {
-            font-size: clamp(40px, 11vw, 64px);
+            font-size: clamp(48px, 15vw, 82px);
           }
 
-          .venue-wrap {
-            width: 100%;
-          }
-
-          .experience-protocol {
-            margin-top: 34px;
-            margin-bottom: 18px;
-          }
-
-          .time-row {
+          .section-copy {
             font-size: 11px;
-            letter-spacing: 0.1em;
-          }
-
-          .experience-nav {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-          }
-
-          .protocol-footer {
-            flex-direction: column;
-            gap: 8px;
-            padding: 18px 28px;
-          }
-        }
-
-        @media (max-width: 520px) {
-          .protocol-shell {
-            width: calc(100% - 28px);
-          }
-
-          .protocol-axis {
-            left: 22px;
-          }
-
-          .hero-section,
-          .space-section,
-          .experience-section {
-            padding: 58px 20px 54px 42px;
-          }
-
-          .hero-title {
-            font-size: clamp(42px, 12.5vw, 60px);
-          }
-
-          .hero-address {
-            margin-top: 18px;
-            font-size: 11px;
-            letter-spacing: 0.13em;
-          }
-
-          .monolith-field {
-            width: min(100%, 320px);
-          }
-
-          .space-grid {
-            margin-top: 26px;
           }
 
           .zone-controls {
-            margin-top: 14px;
-          }
-
-          .action-card {
-            min-height: 84px;
-          }
-
-          .action-card-title {
-            font-size: 20px;
-          }
-
-          .action-card-meta {
-            font-size: 9px;
-            gap: 3px;
-          }
-
-          .action-arrow {
-            font-size: 2em;
+            grid-template-columns: 1fr;
           }
 
           .experience-nav {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 8px;
+            gap: 10px;
+          }
+
+          .action-card {
+            min-height: 86px;
           }
 
           .experience-nav .action-card {
-            min-height: 84px;
             padding: 14px 10px;
           }
 
           .experience-nav .action-card-title {
-            font-size: clamp(14px, 3.8vw, 18px);
+            font-size: clamp(14px, 4.1vw, 18px);
             white-space: nowrap;
+          }
+
+          .experience-orbit {
+            max-width: 280px;
+            margin: 0 auto;
           }
         }
 
-        @media (max-width: 420px) {
+        @media (max-width: 520px) {
+          .hero-actions {
+            flex-direction: column;
+          }
+
+          .hero-actions a {
+            width: 100%;
+            text-align: center;
+          }
+
+          .red-panel {
+            min-height: 390px;
+          }
+
+          .red-mark-a,
+          .red-mark-b,
+          .red-mark-c {
+            transform: rotate(45deg) scale(0.7);
+          }
+
+          .venue-shell::before {
+            inset: -3%;
+          }
+
           .time-row {
             font-size: 9px;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.06em;
           }
 
           .protocol-dot {
@@ -1896,12 +2357,7 @@ export default function ConceptPage() {
 
         @media (max-width: 380px) {
           .experience-nav {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 7px;
-          }
-
-          .experience-nav .action-card {
-            padding: 13px 8px;
           }
 
           .experience-nav .action-card-title {
@@ -1915,36 +2371,45 @@ export default function ConceptPage() {
 
         @media (prefers-reduced-motion: reduce) {
           .concept-nav-shell,
+          .hero-kicker,
           .hero-title,
-          .section-title,
           .hero-address,
           .hero-intro,
-          .monolith-stage,
-          .module-copy,
-          .venue-system,
-          .space-console,
+          .hero-actions,
+          .hero-visual,
+          .section-label-row,
+          .section-title,
+          .section-copy,
+          .venue-shell,
+          .space-readout,
+          .experience-orbit,
           .experience-protocol,
           .action-card,
-          .section-rule,
           .action-card::after,
           .venue-glitch-a,
           .venue-glitch-b,
-          .scan-line,
-          .monolith-axis,
+          .monolith-img,
+          .monolith-funnel,
+          .monolith-scan,
           .protocol-fill,
-          .protocol-dot {
+          .protocol-dot,
+          .experience-orbit {
             animation: none !important;
             transition: none !important;
           }
 
+          .hero-kicker,
           .hero-title,
-          .section-title,
           .hero-address,
           .hero-intro,
-          .monolith-stage,
-          .module-copy,
-          .venue-system,
-          .space-console,
+          .hero-actions,
+          .hero-visual,
+          .section-label-row,
+          .section-title,
+          .section-copy,
+          .venue-shell,
+          .space-readout,
+          .experience-orbit,
           .experience-protocol,
           .action-card {
             opacity: 1 !important;
@@ -1954,10 +2419,6 @@ export default function ConceptPage() {
           .hero-title,
           .section-title {
             clip-path: inset(0 0 0 0) !important;
-          }
-
-          .section-rule {
-            transform: scaleX(1) !important;
           }
 
           .action-card::after {
