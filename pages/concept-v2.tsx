@@ -84,12 +84,6 @@ const rangeProgress = (value: number, start: number, end: number) => {
   return clamp01((value - start) / (end - start));
 };
 
-const typeStyle = (chars: number, delay: string): CSSProperties =>
-  ({
-    '--chars': chars,
-    '--type-delay': delay,
-  }) as CSSProperties;
-
 function ActionCard({
   href,
   title,
@@ -194,20 +188,20 @@ export default function ConceptPage() {
 
       timers = [
         window.setTimeout(() => setDiningTime('18:40 / 19:10'), 1800),
-        window.setTimeout(() => setDiningTime('21:12 / 21:40'), 1960),
-        window.setTimeout(() => setDiningTime('19:55 / 20:14'), 2120),
-        window.setTimeout(() => setDiningTime('20:00 / 20:30'), 2320),
+        window.setTimeout(() => setDiningTime('21:12 / 21:40'), 1980),
+        window.setTimeout(() => setDiningTime('19:55 / 20:14'), 2160),
+        window.setTimeout(() => setDiningTime('20:00 / 20:30'), 2380),
 
-        window.setTimeout(() => setAfterDarkTime('23:17'), 4600),
-        window.setTimeout(() => setAfterDarkTime('01:40'), 4760),
-        window.setTimeout(() => setAfterDarkTime('21:52'), 4920),
-        window.setTimeout(() => setAfterDarkTime('22:00'), 5120),
+        window.setTimeout(() => setAfterDarkTime('23:17'), 4800),
+        window.setTimeout(() => setAfterDarkTime('01:40'), 4980),
+        window.setTimeout(() => setAfterDarkTime('21:52'), 5160),
+        window.setTimeout(() => setAfterDarkTime('22:00'), 5380),
       ];
     };
 
     runTimeSequence();
 
-    const interval = window.setInterval(runTimeSequence, 11800);
+    const interval = window.setInterval(runTimeSequence, 12800);
 
     return () => {
       window.clearInterval(interval);
@@ -218,7 +212,7 @@ export default function ConceptPage() {
   useEffect(() => {
     const menuTimer = window.setTimeout(() => {
       setMenuReady(true);
-    }, 1400);
+    }, 850);
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
@@ -291,96 +285,107 @@ export default function ConceptPage() {
   const storyStyles = useMemo(() => {
     const p = storyProgress;
 
-    const titleExit = rangeProgress(p, 0.2, 0.48);
-    const portalIn = rangeProgress(p, 0.08, 0.34);
-    const portalHold = 1 - rangeProgress(p, 0.58, 0.82);
-    const portalOpacity = portalIn * portalHold;
-    const spaceIn = rangeProgress(p, 0.58, 0.82);
-    const spaceSettle = rangeProgress(p, 0.72, 0.96);
+    const introExit = rangeProgress(p, 0.16, 0.42);
+    const sceneAssemble = rangeProgress(p, 0.06, 0.36);
+    const portalExit = rangeProgress(p, 0.58, 0.78);
+    const spaceIn = rangeProgress(p, 0.44, 0.68);
+    const venueIn = rangeProgress(p, 0.58, 0.82);
+    const promptIn = rangeProgress(p, 0.76, 0.92);
+
+    const portalOpacity = Math.max(
+      0.08,
+      sceneAssemble * lerp(1, 0.16, portalExit)
+    );
 
     const conceptStyle: CSSProperties = {
-      opacity: lerp(1, 0.16, titleExit),
-      transform: `translate3d(${lerp(0, -42, titleExit)}px, ${lerp(
+      opacity: lerp(1, 0.18, introExit),
+      transform: `translate3d(${lerp(0, -32, introExit)}px, ${lerp(
         0,
-        -78,
-        titleExit
-      )}px, 0) scale(${lerp(1, 0.86, titleExit)})`,
+        -76,
+        introExit
+      )}px, 0) scale(${lerp(1, 0.88, introExit)})`,
+    };
+
+    const storyLabelStyle: CSSProperties = {
+      opacity: lerp(1, 0, rangeProgress(p, 0.18, 0.34)),
+      transform: `translateY(${lerp(0, -18, rangeProgress(p, 0.18, 0.34))}px)`,
     };
 
     const portalStyle: CSSProperties = {
       opacity: portalOpacity,
-      transform: `translate3d(${lerp(32, 0, portalIn)}px, ${lerp(
-        44,
-        -12,
+      transform: `translate3d(${lerp(38, -12, sceneAssemble)}px, ${lerp(
+        34,
+        -18,
         rangeProgress(p, 0.12, 0.5)
-      )}px, 0) scale(${lerp(0.92, 1, portalIn)})`,
+      )}px, 0) scale(${lerp(0.88, 1, sceneAssemble)})`,
     };
 
     const portalAxisStyle: CSSProperties = {
-      transform: `scaleY(${rangeProgress(p, 0.12, 0.42)})`,
-      opacity: rangeProgress(p, 0.1, 0.24) * portalHold,
+      opacity: rangeProgress(p, 0.08, 0.24) * lerp(1, 0.18, portalExit),
+      transform: `scaleY(${rangeProgress(p, 0.08, 0.32)})`,
     };
 
     const funnelStyle: CSSProperties = {
-      opacity: rangeProgress(p, 0.08, 0.22) * portalHold,
-      transform: `translate3d(${lerp(44, 0, rangeProgress(p, 0.1, 0.3))}px, ${lerp(
-        -120,
+      opacity: rangeProgress(p, 0.03, 0.16) * lerp(1, 0.22, portalExit),
+      transform: `translate3d(${lerp(20, 0, sceneAssemble)}px, ${lerp(
+        -124,
         0,
-        rangeProgress(p, 0.08, 0.3)
-      )}px, 0) scale(${lerp(0.72, 1, rangeProgress(p, 0.08, 0.32))})`,
+        rangeProgress(p, 0.03, 0.24)
+      )}px, 0) scale(${lerp(0.68, 1, rangeProgress(p, 0.03, 0.25))})`,
     };
 
     const floorStyle: CSSProperties = {
-      opacity: rangeProgress(p, 0.18, 0.36) * portalHold,
-      transform: `translate3d(${lerp(-90, 0, rangeProgress(p, 0.18, 0.36))}px, ${lerp(
-        36,
+      opacity: rangeProgress(p, 0.16, 0.34) * lerp(1, 0.22, portalExit),
+      transform: `translate3d(${lerp(-118, 0, rangeProgress(p, 0.16, 0.36))}px, ${lerp(
+        42,
         0,
-        rangeProgress(p, 0.18, 0.36)
-      )}px, 0) scaleX(${lerp(0.52, 1, rangeProgress(p, 0.18, 0.38))})`,
+        rangeProgress(p, 0.16, 0.36)
+      )}px, 0) scaleX(${lerp(0.48, 1, rangeProgress(p, 0.16, 0.38))})`,
     };
 
     const obeliskStyle: CSSProperties = {
-      opacity: rangeProgress(p, 0.16, 0.34) * portalHold,
-      transform: `translate3d(${lerp(70, 0, rangeProgress(p, 0.18, 0.38))}px, ${lerp(
-        160,
+      opacity: rangeProgress(p, 0.12, 0.3) * lerp(1, 0.2, portalExit),
+      transform: `translate3d(${lerp(72, 0, rangeProgress(p, 0.12, 0.36))}px, ${lerp(
+        162,
         0,
-        rangeProgress(p, 0.16, 0.38)
-      )}px, 0) scale(${lerp(0.86, 1, rangeProgress(p, 0.18, 0.38))})`,
+        rangeProgress(p, 0.12, 0.36)
+      )}px, 0) scale(${lerp(0.82, 1, rangeProgress(p, 0.12, 0.36))})`,
     };
 
-    const storySpaceStyle: CSSProperties = {
+    const spaceCopyStyle: CSSProperties = {
       opacity: spaceIn,
-      transform: `translate3d(0, ${lerp(58, 0, spaceIn)}px, 0) scale(${lerp(
-        0.92,
+      transform: `translate3d(0, ${lerp(44, 0, spaceIn)}px, 0) scale(${lerp(
+        0.94,
         1,
         spaceIn
       )})`,
     };
 
     const storyVenueStyle: CSSProperties = {
-      opacity: spaceIn,
-      transform: `translate3d(0, ${lerp(72, 0, spaceIn)}px, 0) scale(${lerp(
-        0.88,
+      opacity: venueIn,
+      transform: `translate3d(0, ${lerp(70, 0, venueIn)}px, 0) scale(${lerp(
+        0.9,
         1,
-        spaceIn
+        venueIn
       )})`,
     };
 
-    const storyPromptStyle: CSSProperties = {
-      opacity: spaceSettle,
-      transform: `translateY(${lerp(14, 0, spaceSettle)}px)`,
+    const promptStyle: CSSProperties = {
+      opacity: promptIn,
+      transform: `translateY(${lerp(14, 0, promptIn)}px)`,
     };
 
     return {
       conceptStyle,
+      storyLabelStyle,
       portalStyle,
       portalAxisStyle,
       funnelStyle,
       floorStyle,
       obeliskStyle,
-      storySpaceStyle,
+      spaceCopyStyle,
       storyVenueStyle,
-      storyPromptStyle,
+      promptStyle,
     };
   }, [storyProgress]);
 
@@ -438,12 +443,12 @@ export default function ConceptPage() {
             <div className="story-shell">
               <div className="story-axis" aria-hidden="true" />
 
-              <div className="story-copy" style={storyStyles.conceptStyle}>
-                <p className="story-kicker">
-                  <span>LPX // UNDERGROUND</span>
-                  <span>TRANSMISSION 51</span>
-                </p>
+              <div className="story-label" style={storyStyles.storyLabelStyle}>
+                <span>LPX // UNDERGROUND</span>
+                <span>ISSUE 51</span>
+              </div>
 
+              <div className="story-copy" style={storyStyles.conceptStyle}>
                 <h1 id="concept-title" className="story-title">
                   CONCEPT.
                 </h1>
@@ -481,10 +486,10 @@ export default function ConceptPage() {
                 />
               </div>
 
-              <div className="story-space-copy" style={storyStyles.storySpaceStyle}>
+              <div className="story-space-copy" style={storyStyles.spaceCopyStyle}>
                 <h2 className="story-space-title">The Space</h2>
                 <p className="story-space-line">
-                  Move from signal to room. From diagram to atmosphere.
+                  The signal resolves into a room.
                 </p>
               </div>
 
@@ -497,8 +502,8 @@ export default function ConceptPage() {
                 />
               </div>
 
-              <p className="story-scroll-prompt" style={storyStyles.storyPromptStyle}>
-                Scroll to enter the space
+              <p className="story-scroll-prompt" style={storyStyles.promptStyle}>
+                Enter the space
               </p>
             </div>
           </div>
@@ -902,7 +907,7 @@ export default function ConceptPage() {
         .story-section {
           position: relative;
           z-index: 3;
-          height: 430svh;
+          height: 320svh;
         }
 
         .story-stage {
@@ -944,6 +949,23 @@ export default function ConceptPage() {
           animation: drawVertical 0.95s cubic-bezier(0.25, 0.8, 0.25, 1) 120ms forwards;
         }
 
+        .story-label {
+          position: absolute;
+          z-index: 8;
+          top: clamp(90px, 10vh, 130px);
+          left: clamp(48px, 5.5vw, 82px);
+          display: flex;
+          gap: 18px;
+          font-family: ${MONO};
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.22em;
+          line-height: 1.2;
+          text-transform: uppercase;
+          color: rgba(28, 28, 26, 0.48);
+          will-change: opacity, transform;
+        }
+
         .story-copy {
           position: absolute;
           z-index: 8;
@@ -954,21 +976,6 @@ export default function ConceptPage() {
           will-change: transform, opacity;
         }
 
-        .story-kicker {
-          display: flex;
-          gap: 18px;
-          margin-bottom: clamp(18px, 2.4vw, 28px);
-          font-family: ${MONO};
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.22em;
-          line-height: 1.2;
-          text-transform: uppercase;
-          color: rgba(28, 28, 26, 0.48);
-          opacity: 0;
-          animation: storyKickerIn 0.7s ease 280ms forwards;
-        }
-
         .story-title {
           margin: 0;
           font-family: ${MONO};
@@ -976,15 +983,10 @@ export default function ConceptPage() {
           font-weight: 700;
           line-height: 0.9;
           letter-spacing: 0;
+          white-space: nowrap;
           text-transform: uppercase;
           color: ${C.ink};
           text-shadow: 0.018em 0 0 currentColor;
-          opacity: 0;
-          clip-path: inset(0 100% 0 0);
-          animation:
-            scanTitleReveal 0.58s steps(8, end) 520ms forwards,
-            titleMicroGlitch 0.48s steps(2, end) 1180ms forwards,
-            titleIdleGlitch 7.5s steps(2, end) 3200ms infinite;
         }
 
         .story-address {
@@ -997,9 +999,6 @@ export default function ConceptPage() {
           font-weight: 700;
           text-transform: uppercase;
           white-space: nowrap;
-          overflow: hidden;
-          clip-path: inset(0 100% 0 0);
-          animation: typeReveal 0.62s steps(33, end) 980ms forwards;
         }
 
         .portal-scene {
@@ -1068,7 +1067,7 @@ export default function ConceptPage() {
           position: absolute;
           z-index: 9;
           left: clamp(48px, 5.5vw, 82px);
-          top: 18%;
+          top: 17%;
           width: min(540px, 58%);
           pointer-events: none;
           will-change: opacity, transform;
@@ -1148,6 +1147,7 @@ export default function ConceptPage() {
           letter-spacing: 0.22em;
           text-transform: uppercase;
           color: ${C.pink};
+          will-change: opacity, transform;
         }
 
         .story-scroll-prompt::before {
@@ -1650,12 +1650,6 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes storyKickerIn {
-          to {
-            opacity: 1;
-          }
-        }
-
         @keyframes scanTitleReveal {
           0% {
             opacity: 0;
@@ -1735,12 +1729,6 @@ export default function ConceptPage() {
           96% {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
-          }
-        }
-
-        @keyframes typeReveal {
-          to {
-            clip-path: inset(0 0 0 0);
           }
         }
 
@@ -2036,7 +2024,7 @@ export default function ConceptPage() {
           }
 
           .story-section {
-            height: 390svh;
+            height: 340svh;
           }
 
           .story-stage {
@@ -2049,13 +2037,18 @@ export default function ConceptPage() {
             max-width: none;
           }
 
-          .story-shell {
-            height: 100%;
-          }
-
           .shell {
             padding-top: 42px;
             padding-bottom: 28px;
+          }
+
+          .story-label {
+            top: 82px;
+            left: 24px;
+            right: 24px;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 9px;
           }
 
           .story-copy {
@@ -2063,13 +2056,6 @@ export default function ConceptPage() {
             right: 18px;
             top: 18%;
             margin-top: 0;
-          }
-
-          .story-kicker {
-            flex-direction: column;
-            gap: 6px;
-            font-size: 9px;
-            margin-bottom: 16px;
           }
 
           .story-title {
@@ -2088,7 +2074,7 @@ export default function ConceptPage() {
             height: min(112vw, 500px);
             right: auto;
             left: 50%;
-            top: 48%;
+            top: 47%;
             margin-top: 0;
             transform-origin: center center;
           }
@@ -2172,52 +2158,6 @@ export default function ConceptPage() {
             margin-bottom: 14px;
           }
 
-          .signal-track {
-            top: var(--signal-y);
-          }
-
-          .signal-node {
-            top: 0;
-            min-width: auto;
-            height: 58px;
-          }
-
-          .signal-node-dining {
-            left: 0;
-          }
-
-          .signal-node-after-dark {
-            right: 0;
-            left: auto;
-            text-align: right;
-          }
-
-          .signal-dot {
-            top: var(--signal-y);
-            width: 18px;
-            height: 18px;
-          }
-
-          .signal-node-dining .signal-dot {
-            left: 0;
-            right: auto;
-          }
-
-          .signal-node-after-dark .signal-dot {
-            right: 0;
-            left: auto;
-          }
-
-          .signal-node-dining .signal-time {
-            left: 0;
-            right: auto;
-          }
-
-          .signal-node-after-dark .signal-time {
-            right: 0;
-            left: auto;
-          }
-
           .signal-time {
             font-size: 11px;
             letter-spacing: 0.1em;
@@ -2226,93 +2166,6 @@ export default function ConceptPage() {
           .experience-nav {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 12px;
-          }
-        }
-
-        @media (max-width: 620px) {
-          .story-stage {
-            min-height: 680px;
-          }
-
-          .story-address {
-            margin-top: 18px;
-          }
-
-          .space-section {
-            padding-bottom: 11px;
-          }
-
-          .experience-signal {
-            --signal-y: 30px;
-            height: 58px;
-            margin-top: 28px;
-            margin-bottom: 14px;
-          }
-
-          .signal-track {
-            top: var(--signal-y);
-          }
-
-          .signal-node {
-            top: 0;
-            min-width: auto;
-            height: 58px;
-          }
-
-          .signal-node-dining {
-            left: 0;
-          }
-
-          .signal-node-after-dark {
-            right: 0;
-            left: auto;
-            text-align: right;
-          }
-
-          .signal-node-dining .signal-dot {
-            left: 0;
-            right: auto;
-          }
-
-          .signal-node-after-dark .signal-dot {
-            right: 0;
-            left: auto;
-          }
-
-          .signal-node-dining .signal-time {
-            left: 0;
-            right: auto;
-          }
-
-          .signal-node-after-dark .signal-time {
-            right: 0;
-            left: auto;
-          }
-
-          .signal-time {
-            font-size: 10px;
-            letter-spacing: 0.06em;
-          }
-
-          .experience-nav {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-          }
-
-          .experience-nav .action-card {
-            min-height: 84px;
-            padding: 14px 12px;
-          }
-
-          .experience-nav .action-card-title {
-            font-size: clamp(15px, 4vw, 20px);
-            line-height: 0.95;
-            white-space: nowrap;
-          }
-
-          .experience-nav .action-card-meta {
-            font-size: 8px;
-            letter-spacing: 0.14em;
           }
         }
 
@@ -2337,10 +2190,21 @@ export default function ConceptPage() {
             bottom: 24px;
           }
 
+          .story-label {
+            left: 18px;
+            right: 18px;
+          }
+
           .story-copy {
             left: 18px;
             right: 14px;
             top: 18%;
+          }
+
+          .story-address {
+            margin-top: 18px;
+            font-size: 11px;
+            letter-spacing: 0.13em;
           }
 
           .portal-scene {
@@ -2413,10 +2277,6 @@ export default function ConceptPage() {
             margin-bottom: 12px;
           }
 
-          .signal-node {
-            height: 56px;
-          }
-
           .experience-nav {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 8px;
@@ -2436,11 +2296,6 @@ export default function ConceptPage() {
         @media (max-width: 420px) {
           .story-title {
             font-size: clamp(42px, 12.5vw, 60px);
-          }
-
-          .story-address {
-            font-size: 11px;
-            letter-spacing: 0.13em;
           }
 
           .signal-time {
@@ -2478,7 +2333,8 @@ export default function ConceptPage() {
           .story-axis,
           .axis-v,
           .section-rule,
-          .story-kicker,
+          .story-label,
+          .story-copy,
           .story-title,
           .story-address,
           .scan-title,
@@ -2505,7 +2361,8 @@ export default function ConceptPage() {
           }
 
           .concept-nav-shell,
-          .story-kicker,
+          .story-label,
+          .story-copy,
           .story-title,
           .story-address,
           .scan-title,
@@ -2528,8 +2385,6 @@ export default function ConceptPage() {
             transform: none;
           }
 
-          .story-title,
-          .story-address,
           .scan-title {
             clip-path: inset(0 0 0 0);
           }
