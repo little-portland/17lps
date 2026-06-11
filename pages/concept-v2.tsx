@@ -19,8 +19,6 @@ const C = {
   red: '#EB3A21',
   redDark: '#B92314',
   grey: '#8D877D',
-  softGrey: '#C8C0B3',
-  pink: '#E44E83',
 } as const;
 
 const MONO = '"Space Mono", "Courier New", monospace';
@@ -80,6 +78,40 @@ const EXPERIENCE = [
   },
 ];
 
+const WINDOWS = [
+  // outer ring — closest black windows
+  { angle: 0, radius: '46vmin', w: '5.4vmin', h: '14vmin', rot: 0 },
+  { angle: 30, radius: '46vmin', w: '5vmin', h: '13vmin', rot: 0 },
+  { angle: 60, radius: '46vmin', w: '5vmin', h: '13vmin', rot: 0 },
+  { angle: 90, radius: '46vmin', w: '13vmin', h: '13vmin', rot: 45 },
+  { angle: 120, radius: '46vmin', w: '5vmin', h: '13vmin', rot: 0 },
+  { angle: 150, radius: '46vmin', w: '5vmin', h: '13vmin', rot: 0 },
+  { angle: 180, radius: '46vmin', w: '5.4vmin', h: '14vmin', rot: 0 },
+  { angle: 210, radius: '46vmin', w: '5vmin', h: '13vmin', rot: 0 },
+  { angle: 240, radius: '46vmin', w: '5vmin', h: '13vmin', rot: 0 },
+  { angle: 270, radius: '46vmin', w: '13vmin', h: '13vmin', rot: 45 },
+  { angle: 300, radius: '46vmin', w: '5vmin', h: '13vmin', rot: 0 },
+  { angle: 330, radius: '46vmin', w: '5vmin', h: '13vmin', rot: 0 },
+
+  // middle ring
+  { angle: 0, radius: '31vmin', w: '3.8vmin', h: '9.5vmin', rot: 0 },
+  { angle: 45, radius: '31vmin', w: '7vmin', h: '7vmin', rot: 45 },
+  { angle: 90, radius: '31vmin', w: '3.8vmin', h: '9.5vmin', rot: 0 },
+  { angle: 135, radius: '31vmin', w: '7vmin', h: '7vmin', rot: 45 },
+  { angle: 180, radius: '31vmin', w: '3.8vmin', h: '9.5vmin', rot: 0 },
+  { angle: 225, radius: '31vmin', w: '7vmin', h: '7vmin', rot: 45 },
+  { angle: 270, radius: '31vmin', w: '3.8vmin', h: '9.5vmin', rot: 0 },
+  { angle: 315, radius: '31vmin', w: '7vmin', h: '7vmin', rot: 45 },
+
+  // inner ring — distant windows
+  { angle: 0, radius: '17vmin', w: '2.3vmin', h: '5.8vmin', rot: 0 },
+  { angle: 60, radius: '17vmin', w: '2.3vmin', h: '5.8vmin', rot: 0 },
+  { angle: 120, radius: '17vmin', w: '2.3vmin', h: '5.8vmin', rot: 0 },
+  { angle: 180, radius: '17vmin', w: '2.3vmin', h: '5.8vmin', rot: 0 },
+  { angle: 240, radius: '17vmin', w: '2.3vmin', h: '5.8vmin', rot: 0 },
+  { angle: 300, radius: '17vmin', w: '2.3vmin', h: '5.8vmin', rot: 0 },
+];
+
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
@@ -124,60 +156,52 @@ function ActionCard({
   );
 }
 
-function CorridorWindows() {
+function CorridorWindows({ progress }: { progress: number }) {
   return (
     <div className="corridor-windows" aria-hidden="true">
-      <span className="cw cw-01" />
-      <span className="cw cw-02" />
-      <span className="cw cw-03" />
-      <span className="cw cw-04" />
-      <span className="cw cw-05" />
-      <span className="cw cw-06" />
-      <span className="cw cw-07" />
-      <span className="cw cw-08" />
-      <span className="cw cw-09" />
-      <span className="cw cw-10" />
-      <span className="cw cw-11" />
-      <span className="cw cw-12" />
-      <span className="cw cw-13" />
-      <span className="cw cw-14" />
-      <span className="cw cw-15" />
-      <span className="cw cw-16" />
-      <span className="cw cw-17" />
-      <span className="cw cw-18" />
+      {WINDOWS.map((win, index) => {
+        const pulse = 1 + progress * 0.035;
+
+        return (
+          <span
+            key={`${win.angle}-${index}`}
+            className="window-panel"
+            style={
+              {
+                '--angle': `${win.angle}deg`,
+                '--radius': win.radius,
+                '--w': win.w,
+                '--h': win.h,
+                '--rot': `${win.rot}deg`,
+                '--pulse': pulse,
+              } as CSSProperties
+            }
+          />
+        );
+      })}
     </div>
   );
 }
 
 function CorridorFrame({ progress }: { progress: number }) {
-  const gateScale = 1 + progress * 0.18;
-  const gateOpacity = 0.9 - progress * 0.22;
+  const gateScale = 1 + progress * 0.14;
 
   return (
     <div className="corridor-frame" aria-hidden="true">
       <div
         className="corridor-gate corridor-gate-a"
-        style={{
-          transform: `translate(-50%, -50%) scale(${gateScale})`,
-          opacity: gateOpacity,
-        }}
+        style={{ transform: `translate(-50%, -50%) scale(${gateScale})` }}
       />
       <div
         className="corridor-gate corridor-gate-b"
-        style={{
-          transform: `translate(-50%, -50%) scale(${gateScale * 0.76})`,
-          opacity: gateOpacity * 0.78,
-        }}
+        style={{ transform: `translate(-50%, -50%) scale(${gateScale * 0.72})` }}
       />
       <div
         className="corridor-gate corridor-gate-c"
-        style={{
-          transform: `translate(-50%, -50%) scale(${gateScale * 0.52})`,
-          opacity: gateOpacity * 0.62,
-        }}
+        style={{ transform: `translate(-50%, -50%) scale(${gateScale * 0.46})` }}
       />
 
-      <CorridorWindows />
+      <CorridorWindows progress={progress} />
 
       <div className="vanish-point" />
     </div>
@@ -201,11 +225,11 @@ export default function ConceptPage() {
       if (!track) return;
 
       const rect = track.getBoundingClientRect();
-      const top = window.scrollY + rect.top;
+      const trackTop = window.scrollY + rect.top;
       const scrollable = Math.max(track.offsetHeight - window.innerHeight, 1);
-      const next = clamp((window.scrollY - top) / scrollable, 0, 1);
+      const nextProgress = clamp((window.scrollY - trackTop) / scrollable, 0, 1);
 
-      setScrollProgress(next);
+      setScrollProgress(nextProgress);
       setIsScrolled(window.scrollY > 18);
     };
 
@@ -256,17 +280,13 @@ export default function ConceptPage() {
       (index: number): CSSProperties => {
         const diff = Math.abs(slidePosition - index);
         const closeness = clamp(1 - diff, 0, 1);
-        const direction = index - slidePosition;
 
         return {
           opacity: clamp(1 - diff * 1.35, 0, 1),
-          transform: `
-            translate3d(0, ${direction * 7}vh, 0)
-            scale(${0.72 + closeness * 0.28})
-          `,
-          filter: `blur(${diff * 4}px)`,
-          pointerEvents: diff < 0.45 ? 'auto' : 'none',
-          zIndex: Math.round(closeness * 10),
+          transform: `translate3d(-50%, -50%, 0) scale(${0.42 + closeness * 0.58})`,
+          filter: `blur(${diff * 5}px)`,
+          pointerEvents: diff < 0.42 ? 'auto' : 'none',
+          zIndex: Math.round(closeness * 20) + 20,
         };
       },
     [slidePosition]
@@ -343,7 +363,9 @@ export default function ConceptPage() {
               <div className="section-grid">
                 <div className="section-copy">
                   <p className="tiny-label">MODULE 01</p>
+
                   <h2 className="section-title">THE SPACE</h2>
+
                   <p className="section-text">
                     Three chambers inside one underground vessel. Hover or tap to
                     isolate each room.
@@ -376,10 +398,7 @@ export default function ConceptPage() {
                     ))}
                   </div>
 
-                  <div
-                    className="zone-controls"
-                    onMouseLeave={handleAreaLeave}
-                  >
+                  <div className="zone-controls" onMouseLeave={handleAreaLeave}>
                     {AREAS.map((area) => {
                       const isActive = activeArea === area.id;
                       const touchMeta = isActive ? 'Tap to explore' : 'Tap to preview';
@@ -406,7 +425,9 @@ export default function ConceptPage() {
               <div className="section-grid experience-grid">
                 <div className="section-copy">
                   <p className="tiny-label">MODULE 02</p>
+
                   <h2 className="section-title">THE EXPERIENCE</h2>
+
                   <p className="section-text">
                     A clean signal change from seated dinner to after-dark Little
                     Portland energy.
@@ -514,7 +535,7 @@ export default function ConceptPage() {
 
         .scene-nav {
           z-index: 10020 !important;
-          background: rgba(244, 239, 227, 0.72) !important;
+          background: rgba(244, 239, 227, 0.74) !important;
           backdrop-filter: blur(18px) !important;
           -webkit-backdrop-filter: blur(18px) !important;
           border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -524,7 +545,7 @@ export default function ConceptPage() {
         }
 
         .concept-nav-shell.is-scrolled .scene-nav {
-          background: rgba(244, 239, 227, 0.9) !important;
+          background: rgba(244, 239, 227, 0.92) !important;
           box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
         }
 
@@ -550,13 +571,14 @@ export default function ConceptPage() {
 
         .odyssey-track {
           position: relative;
-          height: 360svh;
+          height: 340svh;
           background: ${C.cream2};
         }
 
         .odyssey-sticky {
           position: sticky;
           top: 0;
+          width: 100%;
           height: 100svh;
           overflow: hidden;
           background: ${C.cream};
@@ -569,10 +591,10 @@ export default function ConceptPage() {
           z-index: 1;
           pointer-events: none;
           background-image: url('${ASSETS.texture}');
-          background-size: 680px auto;
+          background-size: 720px auto;
           background-repeat: repeat;
           background-position: center;
-          opacity: 0.34;
+          opacity: 0.32;
           mix-blend-mode: multiply;
         }
 
@@ -583,14 +605,20 @@ export default function ConceptPage() {
           z-index: 2;
           pointer-events: none;
           background:
-            radial-gradient(circle at 50% 48%, rgba(255,255,255,0.9), transparent 28%),
-            linear-gradient(90deg, rgba(0,0,0,0.08), transparent 16%, transparent 84%, rgba(0,0,0,0.08));
-          opacity: 0.68;
+            radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.95), transparent 30%),
+            linear-gradient(
+              90deg,
+              rgba(0, 0, 0, 0.075),
+              transparent 15%,
+              transparent 85%,
+              rgba(0, 0, 0, 0.075)
+            );
+          opacity: 0.72;
         }
 
         .corridor-frame {
           position: absolute;
-          inset: 0;
+          inset: 70px 0 0;
           z-index: 3;
           pointer-events: none;
           perspective: 900px;
@@ -599,36 +627,36 @@ export default function ConceptPage() {
         .corridor-gate {
           position: absolute;
           left: 50%;
-          top: 52%;
-          border: 2px solid rgba(0, 0, 0, 0.08);
+          top: 50%;
+          border: 2px solid rgba(0, 0, 0, 0.06);
           transform-origin: center;
         }
 
         .corridor-gate-a {
           width: 92vw;
-          height: 78vh;
+          height: 76vh;
         }
 
         .corridor-gate-b {
           width: 92vw;
-          height: 78vh;
+          height: 76vh;
         }
 
         .corridor-gate-c {
           width: 92vw;
-          height: 78vh;
+          height: 76vh;
         }
 
         .vanish-point {
           position: absolute;
           left: 50%;
-          top: 52%;
-          width: 16px;
-          height: 16px;
+          top: 50%;
+          width: 18px;
+          height: 18px;
           border-radius: 50%;
           background: ${C.red};
           transform: translate(-50%, -50%);
-          opacity: 0.14;
+          opacity: 0.12;
         }
 
         .corridor-windows {
@@ -637,176 +665,39 @@ export default function ConceptPage() {
           transform-style: preserve-3d;
         }
 
-        .cw {
+        .window-panel {
           position: absolute;
+          left: 50%;
+          top: 50%;
           display: block;
+          width: var(--w);
+          height: var(--h);
           background: ${C.black};
+          transform:
+            translate(-50%, -50%)
+            rotate(var(--angle))
+            translateY(calc(-1 * var(--radius)))
+            rotate(var(--rot))
+            scale(var(--pulse));
+          transform-origin: center;
           box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
-        }
-
-        .cw-01 {
-          left: 49%;
-          top: 6%;
-          width: 54px;
-          height: 110px;
-          transform: translateX(-50%);
-        }
-
-        .cw-02 {
-          left: 31%;
-          top: 16%;
-          width: 38px;
-          height: 88px;
-          transform: rotate(34deg);
-        }
-
-        .cw-03 {
-          right: 31%;
-          top: 16%;
-          width: 38px;
-          height: 88px;
-          transform: rotate(-34deg);
-        }
-
-        .cw-04 {
-          left: 22%;
-          top: 29%;
-          width: 42px;
-          height: 92px;
-          transform: rotate(53deg);
-        }
-
-        .cw-05 {
-          right: 22%;
-          top: 29%;
-          width: 42px;
-          height: 92px;
-          transform: rotate(-53deg);
-        }
-
-        .cw-06 {
-          left: 14%;
-          top: 45%;
-          width: 48px;
-          height: 110px;
-          transform: rotate(72deg);
-        }
-
-        .cw-07 {
-          right: 14%;
-          top: 45%;
-          width: 48px;
-          height: 110px;
-          transform: rotate(-72deg);
-        }
-
-        .cw-08 {
-          left: 49%;
-          bottom: 7%;
-          width: 54px;
-          height: 110px;
-          transform: translateX(-50%);
-        }
-
-        .cw-09 {
-          left: 31%;
-          bottom: 16%;
-          width: 38px;
-          height: 88px;
-          transform: rotate(-34deg);
-        }
-
-        .cw-10 {
-          right: 31%;
-          bottom: 16%;
-          width: 38px;
-          height: 88px;
-          transform: rotate(34deg);
-        }
-
-        .cw-11 {
-          left: 22%;
-          bottom: 29%;
-          width: 42px;
-          height: 92px;
-          transform: rotate(-53deg);
-        }
-
-        .cw-12 {
-          right: 22%;
-          bottom: 29%;
-          width: 42px;
-          height: 92px;
-          transform: rotate(53deg);
-        }
-
-        .cw-13 {
-          left: 2%;
-          top: 22%;
-          width: 190px;
-          height: 190px;
-          transform: rotate(45deg);
-        }
-
-        .cw-14 {
-          right: 2%;
-          bottom: 15%;
-          width: 190px;
-          height: 190px;
-          transform: rotate(45deg);
-        }
-
-        .cw-15 {
-          left: 41%;
-          top: 28%;
-          width: 26px;
-          height: 50px;
-          transform: rotate(25deg);
-          opacity: 0.72;
-        }
-
-        .cw-16 {
-          right: 41%;
-          top: 28%;
-          width: 26px;
-          height: 50px;
-          transform: rotate(-25deg);
-          opacity: 0.72;
-        }
-
-        .cw-17 {
-          left: 41%;
-          bottom: 28%;
-          width: 26px;
-          height: 50px;
-          transform: rotate(-25deg);
-          opacity: 0.72;
-        }
-
-        .cw-18 {
-          right: 41%;
-          bottom: 28%;
-          width: 26px;
-          height: 50px;
-          transform: rotate(25deg);
-          opacity: 0.72;
         }
 
         .panel {
           position: absolute;
-          inset: 0;
-          z-index: 8;
-          min-height: 100svh;
+          left: 50%;
+          top: calc(50% + 35px);
+          z-index: 20;
+          width: min(1320px, 84vw);
+          min-height: 66vh;
           display: grid;
           place-items: center;
-          padding: 96px clamp(24px, 6vw, 96px) 54px;
           will-change: transform, opacity, filter;
         }
 
         .concept-copy {
-          width: min(880px, 72vw);
+          width: min(900px, 100%);
           text-align: center;
-          transform: translateY(-1vh);
         }
 
         .tiny-label {
@@ -844,7 +735,7 @@ export default function ConceptPage() {
         }
 
         .intro {
-          max-width: 680px;
+          max-width: 720px;
           margin: clamp(34px, 4.5vw, 60px) auto 0;
           color: rgba(0, 0, 0, 0.66);
           font-size: clamp(11px, 1vw, 15px);
@@ -855,10 +746,10 @@ export default function ConceptPage() {
         }
 
         .section-grid {
-          width: min(1380px, 90vw);
+          width: min(1320px, 100%);
           display: grid;
-          grid-template-columns: minmax(300px, 0.46fr) minmax(0, 1fr);
-          gap: clamp(32px, 5vw, 72px);
+          grid-template-columns: minmax(300px, 0.44fr) minmax(0, 1fr);
+          gap: clamp(34px, 5vw, 76px);
           align-items: center;
         }
 
@@ -869,7 +760,7 @@ export default function ConceptPage() {
         .section-title {
           margin: 0;
           color: ${C.ink};
-          font-size: clamp(58px, 8.2vw, 140px);
+          font-size: clamp(58px, 8.2vw, 136px);
           line-height: 0.9;
           font-weight: 700;
           letter-spacing: -0.065em;
@@ -920,7 +811,7 @@ export default function ConceptPage() {
           position: absolute;
           inset: -4%;
           border: 1px solid rgba(0, 0, 0, 0.14);
-          background: rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.24);
           z-index: -1;
         }
 
@@ -1043,7 +934,7 @@ export default function ConceptPage() {
           color: ${C.ink};
           text-decoration: none;
           border: 1px solid rgba(0, 0, 0, 0.32);
-          background: rgba(255, 255, 255, 0.22);
+          background: rgba(255, 255, 255, 0.32);
           box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.06);
           transition:
             transform 0.22s ease,
@@ -1109,7 +1000,7 @@ export default function ConceptPage() {
           position: absolute;
           left: 50%;
           bottom: 22px;
-          z-index: 20;
+          z-index: 60;
           display: flex;
           align-items: center;
           gap: 10px;
@@ -1217,12 +1108,37 @@ export default function ConceptPage() {
 
         @media (max-width: 760px) {
           .odyssey-track {
-            height: 390svh;
+            height: auto;
+          }
+
+          .odyssey-sticky {
+            position: relative;
+            height: auto;
+            min-height: 100svh;
+            overflow: visible;
+            padding: 92px 18px 70px;
+          }
+
+          .corridor-frame {
+            inset: 72px 0 0;
+            height: 90svh;
+          }
+
+          .window-panel {
+            opacity: 0.26;
           }
 
           .panel {
-            padding: 96px 20px 48px;
-            align-items: center;
+            position: relative;
+            left: auto;
+            top: auto;
+            width: 100%;
+            min-height: auto;
+            padding: 46px 0;
+            opacity: 1 !important;
+            transform: none !important;
+            filter: none !important;
+            pointer-events: auto !important;
           }
 
           .concept-copy,
@@ -1230,8 +1146,13 @@ export default function ConceptPage() {
             width: min(100%, 620px);
           }
 
+          .concept-copy {
+            margin: 0 auto;
+            text-align: left;
+          }
+
           .main-title {
-            font-size: clamp(54px, 16vw, 86px);
+            font-size: clamp(52px, 16vw, 84px);
             letter-spacing: -0.08em;
           }
 
@@ -1244,6 +1165,10 @@ export default function ConceptPage() {
             font-size: 10px;
           }
 
+          .section-grid {
+            grid-template-columns: 1fr;
+          }
+
           .section-title {
             font-size: clamp(48px, 13vw, 74px);
           }
@@ -1251,10 +1176,6 @@ export default function ConceptPage() {
           .section-text,
           .active-room {
             font-size: 10px;
-          }
-
-          .venue-wrap {
-            width: 100%;
           }
 
           .experience-buttons {
@@ -1281,51 +1202,12 @@ export default function ConceptPage() {
             letter-spacing: 0.08em;
           }
 
-          .cw-13,
-          .cw-14 {
-            width: 112px;
-            height: 112px;
-          }
-
-          .cw-01,
-          .cw-08 {
-            width: 36px;
-            height: 78px;
-          }
-
           .scroll-indicator {
             display: none;
           }
         }
 
-        @media (max-width: 520px) {
-          .concept-copy {
-            text-align: left;
-          }
-
-          .main-title {
-            font-size: clamp(48px, 16vw, 68px);
-          }
-
-          .experience-buttons {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-
-          .action-card {
-            min-height: 78px;
-          }
-
-          .action-title {
-            font-size: 12px;
-          }
-        }
-
         @media (prefers-reduced-motion: reduce) {
-          .panel {
-            transition: none !important;
-            filter: none !important;
-          }
-
           .timeline-fill,
           .timeline-dot,
           .scroll-indicator span {
