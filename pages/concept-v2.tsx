@@ -10,23 +10,24 @@ import {
 import SceneNav from '@components/SceneNav';
 
 const C = {
-  black: '#040404',
-  deep: '#090807',
-  panel: '#10100E',
-  panelSoft: '#171613',
-  cream: '#F1E9D8',
-  creamSoft: '#D8CDBA',
-  red: '#E73522',
-  redDeep: '#9E1D14',
-  amber: '#F0A900',
-  muted: '#8C8576',
-  line: 'rgba(241, 233, 216, 0.16)',
+  paper: '#EDE6D7',
+  paperLight: '#F4EFE3',
+  ink: '#252525',
+  inkSoft: '#4B4B48',
+  black: '#080808',
+  pink: '#E84F8A',
+  pinkSoft: 'rgba(232, 79, 138, 0.16)',
+  red: '#E33A27',
+  line: 'rgba(37, 37, 37, 0.34)',
+  lineSoft: 'rgba(37, 37, 37, 0.12)',
 } as const;
 
 const MONO = '"Space Mono", "Courier New", monospace';
 
 const ASSETS = {
   texture: '/images/concept/concept_bg.jpg',
+  funnel: '/images/concept/grid_funel.png',
+  obelisk: '/images/concept/obelisk-dark-grey.png',
   venue: '/images/concept/the-space-page-venue.png',
   tent: '/images/concept/tent-highlight.png',
   chefs: '/images/concept/chefs-studio-highlight.png',
@@ -47,136 +48,134 @@ const AREAS: {
     title: 'THE TENT',
     href: '/thetent-test',
     highlight: ASSETS.tent,
-    description:
-      'A concealed dining chamber for close, theatrical evenings below street level.',
+    description: 'An iconic chamber for immersive dining below street level.',
   },
   {
     id: 'chefs',
     title: "CHEF'S STUDIO",
     href: '/chefstudio-test',
     highlight: ASSETS.chefs,
-    description:
-      'An intimate studio for food-led performance, private dinners and controlled spectacle.',
+    description: 'An intimate stage for culinary performance and private dinners.',
   },
   {
     id: 'studio',
     title: 'THE STUDIO',
     href: '/studio-test',
     highlight: ASSETS.studio,
-    description:
-      'A cultural room for sound, conversation and after-dark transmission.',
+    description: 'A flexible room for music, culture and late-night energy.',
   },
 ];
 
 const EXPERIENCE = [
   {
-    title: 'Dining',
+    title: 'DINING',
     href: '/food-test',
     time: '20:00 / 20:30',
-    description: 'Curated menus, conversation and atmosphere.',
-    dark: false,
+    description: 'Curated menus, conversation, atmosphere.',
   },
   {
-    title: 'After Dark',
+    title: 'AFTER DARK',
     href: '/theclub-test',
     time: '22:00',
-    description: 'Music, culture, connection and nocturn.',
-    dark: true,
+    description: 'Music, culture, connection, nocturn.',
   },
 ];
 
-function ActionCard({
-  href,
-  title,
-  meta = 'Explore',
-  dark = false,
-  active = false,
-  onMouseEnter,
-  onMouseLeave,
-  onFocus,
-  onBlur,
-  onClick,
-  style,
+function PosterMeta({
+  left,
+  right,
 }: {
-  href: string;
-  title: string;
-  meta?: string;
-  dark?: boolean;
-  active?: boolean;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
-  style?: CSSProperties;
+  left: string;
+  right: string;
 }) {
   return (
-    <a
-      href={href}
-      className={`action-card ${dark ? 'is-dark' : ''} ${active ? 'is-active' : ''}`}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onClick={onClick}
-      style={style}
-    >
-      <span className="action-card-title">{title}</span>
-      <span className="action-card-meta">
-        {meta} <span className="action-arrow" aria-hidden="true">→</span>
-      </span>
-    </a>
+    <div className="poster-meta">
+      <span>{left}</span>
+      <span>{right}</span>
+    </div>
   );
 }
 
-function SignalBars() {
+function PosterLabel({
+  children,
+  active = false,
+}: {
+  children: React.ReactNode;
+  active?: boolean;
+}) {
+  return <p className={`poster-label ${active ? 'is-active' : ''}`}>{children}</p>;
+}
+
+function MonolithScene() {
   return (
-    <div className="signal-bars" aria-hidden="true">
-      {Array.from({ length: 18 }).map((_, index) => (
-        <span
-          key={index}
-          style={
-            {
-              '--bar-delay': `${index * 72}ms`,
-              '--bar-height': `${28 + ((index * 17) % 44)}%`,
-            } as CSSProperties
-          }
+    <div className="monolith-scene" aria-hidden="true">
+      <img src={ASSETS.funnel} alt="" className="wireframe wireframe-top" draggable={false} />
+      <img src={ASSETS.funnel} alt="" className="wireframe wireframe-floor" draggable={false} />
+
+      <div className="ground-shadow" />
+
+      <img
+        src={ASSETS.obelisk}
+        alt=""
+        className="monolith-img"
+        draggable={false}
+      />
+    </div>
+  );
+}
+
+function VenueScene({
+  activeArea,
+}: {
+  activeArea: AreaId | null;
+}) {
+  return (
+    <div className="venue-scene" aria-hidden="true">
+      <div className="scan-beam" />
+
+      <div className="venue-wrap">
+        <img
+          src={ASSETS.venue}
+          alt=""
+          className="venue-img venue-base"
+          draggable={false}
         />
-      ))}
+
+        {AREAS.map((area) => (
+          <img
+            key={area.id}
+            src={area.highlight}
+            alt=""
+            className={`venue-img venue-highlight ${
+              activeArea === area.id ? 'is-active' : ''
+            }`}
+            draggable={false}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
-function HalCore() {
+function ExperienceScene() {
   return (
-    <div className="hal-core" aria-hidden="true">
-      <div className="hal-ring hal-ring-1" />
-      <div className="hal-ring hal-ring-2" />
-      <div className="hal-ring hal-ring-3" />
-      <div className="hal-eye" />
-    </div>
-  );
-}
+    <div className="experience-scene">
+      <div className="experience-axis" aria-hidden="true">
+        <span className="experience-line" />
+        <span className="experience-fill" />
+        <span className="experience-dot experience-dot-left" />
+        <span className="experience-dot experience-dot-right" />
+      </div>
 
-function MonolithSystem() {
-  return (
-    <div className="monolith-system" aria-hidden="true">
-      <div className="orbit orbit-1" />
-      <div className="orbit orbit-2" />
-      <div className="orbit orbit-3" />
-
-      <div className="monolith-shadow" />
-      <div className="monolith" />
-
-      <div className="monolith-edge monolith-edge-left" />
-      <div className="monolith-edge monolith-edge-right" />
-
-      <HalCore />
-
-      <span className="signal-dot signal-dot-a" />
-      <span className="signal-dot signal-dot-b" />
-      <span className="signal-dot signal-dot-c" />
-      <span className="signal-dot signal-dot-d" />
+      <div className="experience-items">
+        {EXPERIENCE.map((item) => (
+          <a key={item.href} href={item.href} className="experience-item">
+            <span className="experience-time">{item.time}</span>
+            <span className="experience-title">{item.title}</span>
+            <span className="experience-description">{item.description}</span>
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
@@ -207,21 +206,18 @@ export default function ConceptPage() {
 
   useEffect(() => {
     const sections = Array.from(
-      document.querySelectorAll<HTMLElement>('.reveal-section')
+      document.querySelectorAll<HTMLElement>('.poster-section')
     );
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          entry.target.classList.add('is-inview');
-          observer.unobserve(entry.target);
+          entry.target.classList.toggle('is-inview', entry.isIntersecting);
         });
       },
       {
-        threshold: 0.16,
-        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.28,
+        rootMargin: '0px 0px -12% 0px',
       }
     );
 
@@ -307,203 +303,115 @@ export default function ConceptPage() {
           <SceneNav theme="space" />
         </div>
 
-        <div className="ambient-bg" aria-hidden="true" />
+        <div className="site-texture" aria-hidden="true" />
 
-        <section className="hero-section reveal-section" aria-labelledby="concept-title">
-          <div className="section-inner hero-grid">
-            <div className="hero-copy">
-              <p className="terminal-label">LPX // UNDERGROUND TRANSMISSION</p>
+        <section className="poster-section poster-hero">
+          <div className="poster-inner">
+            <div className="poster-axis" aria-hidden="true" />
 
-              <h1 id="concept-title" className="hero-title">
-                CONCEPT.
-              </h1>
+            <div className="poster-left">
+              <PosterLabel active>LPX ISSUE 51</PosterLabel>
 
-              <p className="hero-address">
-                17 Little Portland Street, London
+              <h1 className="poster-title">CONCEPT.</h1>
+
+              <p className="poster-copy">
+                A concealed cultural destination below street level. Dinner,
+                architecture, sound and late-night energy arranged as one
+                continuous sequence.
               </p>
-
-              <p className="hero-intro">
-                A future-focused cultural destination beneath the city.
-                Dinner, architecture, sound and late-night energy operating
-                as one continuous transmission.
-              </p>
-
-              <div className="hero-actions">
-                <a href="#space">Scan The Space</a>
-                <a href="#experience">Enter Sequence</a>
-              </div>
             </div>
 
-            <div className="hero-visual">
-              <MonolithSystem />
-
-              <div className="transmission-panel">
-                <div className="panel-header">
-                  <span>TRANSMISSION STATUS</span>
-                  <span>LIVE</span>
-                </div>
-
-                <SignalBars />
-
-                <div className="panel-footer">
-                  <span>LPX / 001</span>
-                  <span>17 LPS</span>
-                </div>
-              </div>
+            <div className="poster-right">
+              <MonolithScene />
             </div>
+
+            <PosterMeta
+              left="17 LITTLE PORTLAND STREET / LONDON W1W 8BP"
+              right="LPX//UNDERGROUND / ISSUE 51"
+            />
           </div>
         </section>
 
-        <section
-          id="space"
-          className="space-section reveal-section"
-          aria-labelledby="space-title"
-        >
-          <div className="section-inner">
-            <div className="section-heading">
-              <p className="terminal-label">MODULE 01 // SPATIAL SCAN</p>
+        <section id="space" className="poster-section poster-space">
+          <div className="poster-inner">
+            <div className="poster-axis" aria-hidden="true" />
 
-              <h2 id="space-title" className="section-title">
-                THE SPACE
-              </h2>
+            <div className="poster-left">
+              <PosterLabel>MODULE 01</PosterLabel>
 
-              <p className="section-intro">
-                Three chambers operate as one underground vessel. Hover or tap
-                to isolate each programme.
+              <h2 className="poster-title">THE SPACE.</h2>
+
+              <p className="poster-copy">
+                Three distinct environments operating as one underground vessel.
+                Select a chamber to isolate the programme.
               </p>
-            </div>
 
-            <div className="scan-layout">
-              <div className="scan-frame">
-                <div className="scan-line" aria-hidden="true" />
+              <p className="active-copy">
+                {activeCopy?.description ||
+                  'Hover or tap one of the spatial labels below.'}
+              </p>
 
-                <div className="venue-wrap" aria-hidden="true">
-                  <img
-                    src={ASSETS.venue}
-                    alt=""
-                    className="venue-img venue-base"
-                    draggable={false}
-                  />
+              <nav
+                className="space-links"
+                aria-label="Venue areas"
+                onMouseLeave={handleAreaLeave}
+              >
+                {AREAS.map((area) => {
+                  const isActive = activeArea === area.id;
 
-                  {AREAS.map((area) => (
-                    <img
+                  return (
+                    <a
                       key={area.id}
-                      src={area.highlight}
-                      alt=""
-                      className={`venue-img venue-highlight ${
-                        activeArea === area.id ? 'is-active' : ''
-                      }`}
-                      draggable={false}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <aside className="readout-panel">
-                <div className="readout-live">
-                  <span />
-                  ACTIVE CHAMBER
-                </div>
-
-                <p>
-                  {activeCopy?.description ||
-                    'Select a chamber to isolate the programme inside the space.'}
-                </p>
-              </aside>
+                      href={area.href}
+                      className={`space-link ${isActive ? 'is-active' : ''}`}
+                      onMouseEnter={() => handleAreaEnter(area.id)}
+                      onFocus={() => setActiveArea(area.id)}
+                      onClick={handleAreaClick(area.id)}
+                    >
+                      <span>{area.title}</span>
+                      <em>{isTouchMode && !isActive ? 'tap to preview' : 'explore'}</em>
+                    </a>
+                  );
+                })}
+              </nav>
             </div>
 
-            <nav
-              className="zone-controls"
-              aria-label="Venue areas"
-              onMouseLeave={handleAreaLeave}
-            >
-              {AREAS.map((area, index) => {
-                const isActive = activeArea === area.id;
-                const touchMeta = isActive ? 'Tap to explore' : 'Tap to preview';
+            <div className="poster-right">
+              <VenueScene activeArea={activeArea} />
+            </div>
 
-                return (
-                  <ActionCard
-                    key={area.id}
-                    href={area.href}
-                    title={area.title}
-                    meta={isTouchMode ? touchMeta : 'Explore'}
-                    active={isActive}
-                    onMouseEnter={() => handleAreaEnter(area.id)}
-                    onFocus={() => setActiveArea(area.id)}
-                    onClick={handleAreaClick(area.id)}
-                    style={
-                      {
-                        '--card-delay': `${260 + index * 110}ms`,
-                      } as CSSProperties
-                    }
-                  />
-                );
-              })}
-            </nav>
+            <PosterMeta
+              left="THE TENT / CHEF'S STUDIO / THE STUDIO"
+              right="SPATIAL SCAN / 17 LPS"
+            />
           </div>
         </section>
 
-        <section
-          id="experience"
-          className="experience-section reveal-section"
-          aria-labelledby="experience-title"
-        >
-          <div className="section-inner experience-grid">
-            <div className="experience-copy">
-              <p className="terminal-label">MODULE 02 // SIGNAL CHANGE</p>
+        <section id="experience" className="poster-section poster-experience">
+          <div className="poster-inner">
+            <div className="poster-axis" aria-hidden="true" />
 
-              <h2 id="experience-title" className="section-title">
-                THE EXPERIENCE
-              </h2>
+            <div className="poster-left">
+              <PosterLabel>MODULE 02</PosterLabel>
 
-              <p className="section-intro">
-                A clean transition from seated dinner to after-dark Little
-                Portland energy. The evening behaves like a signal changing
-                state.
+              <h2 className="poster-title">THE EXPERIENCE.</h2>
+
+              <p className="poster-copy">
+                A quiet transition from seated dinner into after-dark Little
+                Portland energy. One evening, two states.
               </p>
             </div>
 
-            <div className="experience-system">
-              <HalCore />
-
-              <div className="timeline">
-                <div className="timeline-times">
-                  <span>20:00 / 20:30</span>
-                  <span>22:00</span>
-                </div>
-
-                <div className="timeline-track">
-                  <span className="timeline-base" />
-                  <span className="timeline-fill" />
-                  <span className="timeline-dot timeline-dot-left" />
-                  <span className="timeline-dot timeline-dot-right" />
-                </div>
-              </div>
-
-              <div className="experience-cards">
-                {EXPERIENCE.map((item, index) => (
-                  <ActionCard
-                    key={item.href}
-                    href={item.href}
-                    title={item.title}
-                    meta={item.time}
-                    dark={item.dark}
-                    style={
-                      {
-                        '--card-delay': `${360 + index * 120}ms`,
-                      } as CSSProperties
-                    }
-                  />
-                ))}
-              </div>
+            <div className="poster-right">
+              <ExperienceScene />
             </div>
+
+            <PosterMeta
+              left="DINING / 20:00—20:30"
+              right="AFTER DARK / 22:00"
+            />
           </div>
         </section>
-
-        <footer className="footer-transmission">
-          <span>LPX // UNDERGROUND TRANSMISSION COMPLETE</span>
-          <span>17 LITTLE PORTLAND STREET</span>
-        </footer>
       </main>
 
       <style jsx global>{`
@@ -512,12 +420,12 @@ export default function ConceptPage() {
         #__next {
           margin: 0;
           min-height: 100%;
-          background: ${C.black};
-          color: ${C.cream};
+          background: ${C.paper};
+          color: ${C.ink};
           font-family: ${MONO};
           -webkit-font-smoothing: antialiased;
           text-rendering: geometricPrecision;
-          scrollbar-color: ${C.red} ${C.black};
+          scrollbar-color: ${C.pink} ${C.paper};
         }
 
         body {
@@ -529,8 +437,8 @@ export default function ConceptPage() {
         }
 
         ::selection {
-          background: ${C.red};
-          color: ${C.cream};
+          background: ${C.pink};
+          color: ${C.paper};
         }
 
         ::-webkit-scrollbar {
@@ -538,12 +446,12 @@ export default function ConceptPage() {
         }
 
         ::-webkit-scrollbar-track {
-          background: ${C.black};
+          background: ${C.paper};
         }
 
         ::-webkit-scrollbar-thumb {
-          background: ${C.red};
-          border: 2px solid ${C.black};
+          background: ${C.pink};
+          border: 2px solid ${C.paper};
           background-clip: content-box;
         }
 
@@ -569,25 +477,25 @@ export default function ConceptPage() {
 
         .scene-nav {
           z-index: 10020 !important;
-          background: rgba(4, 4, 4, 0.62) !important;
+          background: rgba(244, 239, 227, 0.72) !important;
           backdrop-filter: blur(18px) !important;
           -webkit-backdrop-filter: blur(18px) !important;
-          border-bottom: 1px solid rgba(241, 233, 216, 0.1);
+          border-bottom: 1px solid rgba(37, 37, 37, 0.12);
           transition:
             background 0.25s ease,
             box-shadow 0.25s ease !important;
         }
 
         .concept-nav-shell.is-scrolled .scene-nav {
-          background: rgba(4, 4, 4, 0.86) !important;
-          box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+          background: rgba(244, 239, 227, 0.9) !important;
+          box-shadow: 0 14px 36px rgba(37, 37, 37, 0.08);
         }
 
         .scene-nav,
         .scene-nav a,
         .scene-nav-mobile,
         .scene-nav-mobile a {
-          color: ${C.cream} !important;
+          color: ${C.ink} !important;
           font-family: ${MONO} !important;
           letter-spacing: 0.16em !important;
         }
@@ -595,12 +503,12 @@ export default function ConceptPage() {
         .scene-nav a[href='/concept'],
         .scene-nav a[href='/concept-test'],
         .scene-nav a[aria-current='page'] {
-          color: ${C.red} !important;
+          color: ${C.pink} !important;
           opacity: 1 !important;
         }
 
         .scene-nav--space .scene-nav-burger span {
-          background: ${C.cream} !important;
+          background: ${C.ink} !important;
         }
 
         @media (max-width: 900px) {
@@ -615,7 +523,7 @@ export default function ConceptPage() {
             z-index: 49990;
             opacity: 0;
             pointer-events: none;
-            background: rgba(4, 4, 4, 0.9);
+            background: rgba(244, 239, 227, 0.9);
             backdrop-filter: blur(22px) saturate(1.08);
             -webkit-backdrop-filter: blur(22px) saturate(1.08);
             transition: opacity 0.28s ease;
@@ -638,7 +546,7 @@ export default function ConceptPage() {
 
           .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav,
           .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav {
-            background: rgba(4, 4, 4, 0.9) !important;
+            background: rgba(244, 239, 227, 0.9) !important;
             box-shadow: none !important;
           }
 
@@ -658,7 +566,7 @@ export default function ConceptPage() {
             justify-content: flex-start !important;
             gap: 20px !important;
             overflow-y: auto !important;
-            background: rgba(4, 4, 4, 0.9) !important;
+            background: rgba(244, 239, 227, 0.9) !important;
             backdrop-filter: blur(22px) saturate(1.08) !important;
             -webkit-backdrop-filter: blur(22px) saturate(1.08) !important;
           }
@@ -667,445 +575,298 @@ export default function ConceptPage() {
         .page {
           position: relative;
           min-height: 100svh;
-          background: ${C.black};
+          background: ${C.paper};
           overflow-x: hidden;
         }
 
-        .ambient-bg {
+        .site-texture {
           position: fixed;
           inset: 0;
           z-index: 0;
           pointer-events: none;
-          background:
-            radial-gradient(circle at 70% 18%, rgba(231, 53, 34, 0.18), transparent 28%),
-            radial-gradient(circle at 18% 78%, rgba(240, 169, 0, 0.08), transparent 28%),
-            linear-gradient(180deg, ${C.black}, ${C.deep});
-        }
-
-        .ambient-bg::before {
-          content: '';
-          position: absolute;
-          inset: 0;
           background-image: url('${ASSETS.texture}');
-          background-size: 700px auto;
+          background-size: 720px auto;
           background-repeat: repeat;
-          opacity: 0.1;
-          mix-blend-mode: screen;
-        }
-
-        .ambient-bg::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: repeating-linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.028) 0px,
-            rgba(255, 255, 255, 0.028) 1px,
-            transparent 1px,
-            transparent 5px
-          );
+          background-position: center;
           opacity: 0.42;
+          mix-blend-mode: multiply;
         }
 
-        .hero-section,
-        .space-section,
-        .experience-section {
+        .poster-section {
           position: relative;
           z-index: 2;
           min-height: 100svh;
           display: flex;
           align-items: center;
-          padding: clamp(110px, 10vw, 150px) 0 clamp(76px, 7vw, 110px);
-          border-bottom: 1px solid rgba(241, 233, 216, 0.1);
+          padding: clamp(96px, 9vw, 136px) 0 clamp(64px, 6vw, 96px);
+          border-bottom: 1px solid ${C.lineSoft};
+          background:
+            linear-gradient(180deg, rgba(255,255,255,0.18), transparent 42%),
+            ${C.paper};
         }
 
-        .section-inner {
-          width: min(1340px, calc(100% - 72px));
-          margin: 0 auto;
+        .poster-inner {
           position: relative;
-          z-index: 3;
-        }
-
-        .hero-grid {
+          width: min(1180px, calc(100% - 88px));
+          min-height: min(720px, 72svh);
+          margin: 0 auto;
           display: grid;
-          grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.76fr);
-          gap: clamp(44px, 6vw, 96px);
+          grid-template-columns: minmax(0, 0.72fr) 1px minmax(360px, 0.88fr);
+          gap: clamp(38px, 5vw, 78px);
           align-items: center;
         }
 
-        .hero-copy,
-        .section-heading,
-        .experience-copy {
+        .poster-axis {
+          position: relative;
+          width: 1px;
+          height: 100%;
+          min-height: 620px;
+          background: ${C.line};
+          transform: scaleY(0);
+          transform-origin: top center;
+        }
+
+        .poster-section.is-inview .poster-axis {
+          animation: axisDraw 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .poster-left,
+        .poster-right {
+          position: relative;
+          z-index: 2;
           opacity: 0;
           transform: translateY(18px);
         }
 
-        .hero-section.is-inview .hero-copy,
-        .space-section.is-inview .section-heading,
-        .experience-section.is-inview .experience-copy {
-          animation: fadeUp 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        .poster-section.is-inview .poster-left {
+          animation: fadeUp 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) 120ms forwards;
         }
 
-        .terminal-label {
-          margin: 0 0 22px;
-          color: ${C.red};
+        .poster-section.is-inview .poster-right {
+          animation: fadeUp 0.78s cubic-bezier(0.2, 0.8, 0.2, 1) 240ms forwards;
+        }
+
+        .poster-label {
+          margin: 0 0 clamp(18px, 2vw, 28px);
+          color: ${C.inkSoft};
           font-size: 10px;
-          line-height: 1.2;
-          font-weight: 700;
-          letter-spacing: 0.26em;
-          text-transform: uppercase;
-        }
-
-        .hero-title,
-        .section-title {
-          margin: 0;
-          color: ${C.cream};
-          font-family: ${MONO};
-          font-weight: 700;
-          line-height: 0.86;
-          letter-spacing: -0.07em;
-          text-transform: uppercase;
-          text-shadow:
-            0.018em 0 0 currentColor,
-            0 10px 0 rgba(231, 53, 34, 0.16);
-        }
-
-        .hero-title {
-          font-size: clamp(72px, 11vw, 178px);
-        }
-
-        .section-title {
-          font-size: clamp(62px, 8vw, 134px);
-        }
-
-        .hero-address {
-          margin: clamp(24px, 2.8vw, 40px) 0 0;
-          color: ${C.amber};
-          font-size: clamp(13px, 1.24vw, 20px);
-          line-height: 1.35;
+          line-height: 1.1;
           font-weight: 700;
           letter-spacing: 0.24em;
           text-transform: uppercase;
         }
 
-        .hero-intro,
-        .section-intro {
-          max-width: 650px;
-          margin: clamp(34px, 4vw, 56px) 0 0;
-          color: rgba(241, 233, 216, 0.72);
-          font-size: clamp(12px, 0.98vw, 15px);
-          line-height: 1.9;
+        .poster-label.is-active {
+          color: ${C.pink};
+        }
+
+        .poster-title {
+          margin: 0;
+          color: ${C.ink};
+          font-family: ${MONO};
+          font-size: clamp(58px, 7.8vw, 126px);
           font-weight: 700;
-          letter-spacing: 0.09em;
+          line-height: 0.88;
+          letter-spacing: -0.07em;
+          text-transform: uppercase;
+          text-shadow:
+            0.018em 0 0 currentColor,
+            0 10px 0 rgba(37, 37, 37, 0.06);
+        }
+
+        .poster-copy {
+          max-width: 520px;
+          margin: clamp(32px, 4vw, 54px) 0 0;
+          color: rgba(37, 37, 37, 0.72);
+          font-size: clamp(12px, 0.96vw, 15px);
+          line-height: 1.85;
+          font-weight: 700;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
         }
 
-        .hero-actions {
+        .poster-meta {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -22px;
           display: flex;
-          flex-wrap: wrap;
-          gap: 12px;
-          margin-top: 38px;
-        }
-
-        .hero-actions a {
-          min-width: 168px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 13px 18px;
-          border: 1px solid rgba(241, 233, 216, 0.36);
-          color: ${C.cream};
-          background: rgba(241, 233, 216, 0.03);
-          text-decoration: none;
-          font-size: 10px;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 24px;
+          color: ${C.inkSoft};
+          font-size: 11px;
+          line-height: 1.3;
           font-weight: 700;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
-          transition:
-            background 0.22s ease,
-            color 0.22s ease,
-            border-color 0.22s ease,
-            transform 0.22s ease;
-        }
-
-        .hero-actions a:hover,
-        .hero-actions a:focus-visible {
-          background: ${C.red};
-          color: ${C.cream};
-          border-color: ${C.red};
-          transform: translateY(-2px);
-          outline: none;
-        }
-
-        .hero-visual {
-          position: relative;
           opacity: 0;
-          transform: translateY(18px) scale(0.985);
+          transform: translateY(8px);
         }
 
-        .hero-section.is-inview .hero-visual {
-          animation: visualIn 0.84s cubic-bezier(0.2, 0.8, 0.2, 1) 220ms forwards;
+        .poster-section.is-inview .poster-meta {
+          animation: fadeUp 0.64s ease 420ms forwards;
         }
 
-        .monolith-system {
+        .monolith-scene {
           position: relative;
-          width: min(100%, 520px);
-          aspect-ratio: 1;
+          width: min(100%, 540px);
+          aspect-ratio: 1 / 1.15;
           margin-left: auto;
         }
 
-        .orbit {
+        .wireframe {
           position: absolute;
-          left: 50%;
-          top: 50%;
-          border: 1px solid rgba(241, 233, 216, 0.16);
-          border-radius: 50%;
-          transform: translate(-50%, -50%);
+          user-select: none;
+          pointer-events: none;
+          opacity: 0.95;
+          filter: drop-shadow(0 10px 18px rgba(232, 79, 138, 0.08));
         }
 
-        .orbit-1 {
-          width: 96%;
-          height: 96%;
-        }
-
-        .orbit-2 {
-          width: 68%;
-          height: 68%;
-        }
-
-        .orbit-3 {
-          width: 38%;
-          height: 38%;
-        }
-
-        .monolith-shadow {
-          position: absolute;
-          left: 48%;
-          bottom: 12%;
+        .wireframe-top {
+          right: 6%;
+          top: 0;
           width: 44%;
-          height: 11%;
-          background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.75), transparent 70%);
-          filter: blur(18px);
-          transform: translateX(-50%);
+          animation: wireFloatTop 7.5s ease-in-out infinite;
         }
 
-        .monolith {
+        .wireframe-floor {
+          left: -3%;
+          bottom: 9%;
+          width: 54%;
+          transform: rotate(-8deg) skewX(-7deg);
+          opacity: 0.82;
+          animation: wireFloatFloor 8.4s ease-in-out infinite;
+        }
+
+        .ground-shadow {
           position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 21%;
-          height: 64%;
-          background:
-            linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent 24%),
-            linear-gradient(180deg, #181818, #020202);
-          border: 1px solid rgba(241, 233, 216, 0.14);
-          transform: translate(-50%, -50%);
-          box-shadow:
-            0 28px 44px rgba(0, 0, 0, 0.56),
-            inset -18px 0 24px rgba(255, 255, 255, 0.035);
+          left: 18%;
+          right: 6%;
+          bottom: 7%;
+          height: 17%;
+          background: radial-gradient(ellipse at center, rgba(37,37,37,0.22), transparent 70%);
+          filter: blur(10px);
+          transform: rotate(-3deg);
+        }
+
+        .monolith-img {
+          position: absolute;
+          right: 18%;
+          bottom: 14%;
+          width: 22%;
+          min-width: 86px;
+          user-select: none;
+          pointer-events: none;
+          filter:
+            drop-shadow(0 22px 28px rgba(37,37,37,0.22))
+            contrast(1.04);
           animation: monolithFloat 6.8s ease-in-out infinite;
         }
 
-        .monolith-edge {
-          position: absolute;
-          top: 18%;
-          bottom: 18%;
-          width: 1px;
-          background: ${C.red};
-          opacity: 0.46;
-        }
-
-        .monolith-edge-left {
-          left: 39.5%;
-        }
-
-        .monolith-edge-right {
-          right: 39.5%;
-        }
-
-        .hal-core {
-          position: absolute;
-          left: 16%;
-          top: 15%;
-          width: 132px;
-          height: 132px;
-        }
-
-        .hal-ring {
-          position: absolute;
-          inset: 0;
-          border-radius: 50%;
-          border: 1px solid rgba(241, 233, 216, 0.26);
-          animation: ringPulse 4.8s ease-in-out infinite;
-        }
-
-        .hal-ring-2 {
-          inset: 18%;
-          animation-delay: 0.4s;
-        }
-
-        .hal-ring-3 {
-          inset: 34%;
-          animation-delay: 0.8s;
-        }
-
-        .hal-eye {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 34%;
-          height: 34%;
-          border-radius: 50%;
-          background: ${C.red};
-          transform: translate(-50%, -50%);
-          box-shadow:
-            0 0 20px rgba(231, 53, 34, 0.6),
-            0 0 50px rgba(231, 53, 34, 0.28);
-          animation: eyePulse 2.9s ease-in-out infinite;
-        }
-
-        .signal-dot {
-          position: absolute;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: ${C.amber};
-          box-shadow: 0 0 18px rgba(240, 169, 0, 0.5);
-        }
-
-        .signal-dot-a {
-          right: 18%;
-          top: 20%;
-        }
-
-        .signal-dot-b {
-          right: 8%;
-          top: 54%;
-        }
-
-        .signal-dot-c {
-          left: 28%;
-          bottom: 12%;
-        }
-
-        .signal-dot-d {
-          left: 12%;
-          top: 48%;
-        }
-
-        .transmission-panel {
-          position: absolute;
-          right: 0;
-          bottom: -24px;
-          width: min(360px, 70%);
-          padding: 18px;
-          background: rgba(16, 16, 14, 0.76);
-          border: 1px solid rgba(241, 233, 216, 0.16);
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
-          box-shadow: 0 22px 44px rgba(0, 0, 0, 0.34);
-        }
-
-        .panel-header,
-        .panel-footer {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          color: rgba(241, 233, 216, 0.62);
-          font-size: 9px;
+        .active-copy {
+          max-width: 460px;
+          min-height: 64px;
+          margin: 30px 0 0;
+          padding-left: 18px;
+          border-left: 4px solid ${C.pink};
+          color: ${C.inkSoft};
+          font-size: 11px;
+          line-height: 1.8;
           font-weight: 700;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
         }
 
-        .panel-header span:last-child {
-          color: ${C.red};
-        }
-
-        .signal-bars {
-          height: 80px;
-          display: flex;
-          align-items: end;
-          gap: 5px;
-          margin: 22px 0;
-        }
-
-        .signal-bars span {
-          width: 100%;
-          height: var(--bar-height);
-          background: linear-gradient(180deg, ${C.red}, rgba(231, 53, 34, 0.15));
-          animation: barSignal 1.7s ease-in-out var(--bar-delay) infinite alternate;
-          opacity: 0.65;
-        }
-
-        .space-section {
-          background: linear-gradient(180deg, rgba(4, 4, 4, 0), rgba(231, 53, 34, 0.035));
-        }
-
-        .section-heading {
-          max-width: 760px;
-          margin-bottom: 42px;
-        }
-
-        .scan-layout {
+        .space-links {
           display: grid;
-          grid-template-columns: minmax(0, 1fr) 300px;
-          gap: 22px;
-          align-items: stretch;
+          gap: 12px;
+          margin-top: 34px;
         }
 
-        .scan-frame {
+        .space-link {
           position: relative;
-          min-height: clamp(380px, 40vw, 620px);
           display: flex;
-          align-items: center;
-          justify-content: center;
+          align-items: baseline;
+          justify-content: space-between;
+          gap: 18px;
+          padding: 13px 0;
+          color: ${C.ink};
+          text-decoration: none;
+          border-top: 1px solid ${C.lineSoft};
+          font-weight: 700;
+          text-transform: uppercase;
+          transition:
+            color 0.22s ease,
+            padding-left 0.22s ease,
+            border-color 0.22s ease;
+        }
+
+        .space-link:last-child {
+          border-bottom: 1px solid ${C.lineSoft};
+        }
+
+        .space-link span {
+          font-size: clamp(15px, 1.3vw, 20px);
+          letter-spacing: -0.02em;
+        }
+
+        .space-link em {
+          color: rgba(37,37,37,0.48);
+          font-style: normal;
+          font-size: 9px;
+          letter-spacing: 0.18em;
+        }
+
+        .space-link:hover,
+        .space-link:focus-visible,
+        .space-link.is-active {
+          color: ${C.pink};
+          border-color: rgba(232, 79, 138, 0.42);
+          padding-left: 12px;
+          outline: none;
+        }
+
+        .venue-scene {
+          position: relative;
+          width: min(100%, 680px);
+          aspect-ratio: 2048 / 1140;
+          margin-left: auto;
+          padding: 22px;
+          border: 1px solid ${C.lineSoft};
+          background: rgba(255,255,255,0.18);
           overflow: hidden;
-          padding: clamp(28px, 4vw, 54px);
-          background:
-            linear-gradient(90deg, rgba(231, 53, 34, 0.14), transparent 34%),
-            rgba(241, 233, 216, 0.025);
-          border: 1px solid rgba(241, 233, 216, 0.14);
-          opacity: 0;
-          transform: translateY(18px);
         }
 
-        .space-section.is-inview .scan-frame {
-          animation: visualIn 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) 240ms forwards;
-        }
-
-        .scan-frame::before {
+        .venue-scene::before {
           content: '';
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(rgba(241, 233, 216, 0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(241, 233, 216, 0.08) 1px, transparent 1px);
-          background-size: 74px 74px;
-          opacity: 0.18;
+            linear-gradient(rgba(37,37,37,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37,37,37,0.08) 1px, transparent 1px);
+          background-size: 46px 46px;
+          opacity: 0.16;
         }
 
-        .scan-line {
+        .scan-beam {
           position: absolute;
-          left: 0;
-          right: 0;
           top: 0;
-          height: 2px;
-          background: ${C.red};
-          box-shadow: 0 0 22px rgba(231, 53, 34, 0.72);
+          bottom: 0;
+          width: 2px;
+          background: ${C.pink};
+          box-shadow: 0 0 18px rgba(232, 79, 138, 0.55);
           opacity: 0;
-          animation: scanLine 5.4s linear infinite;
+          z-index: 4;
+          animation: scanBeam 5.5s linear infinite;
         }
 
         .venue-wrap {
           position: relative;
           z-index: 3;
-          width: min(100%, 920px);
-          aspect-ratio: 2048 / 1140;
-          filter:
-            drop-shadow(0 24px 40px rgba(0, 0, 0, 0.42))
-            saturate(0.9)
-            contrast(1.08);
+          width: 100%;
+          height: 100%;
+          filter: drop-shadow(0 20px 28px rgba(37,37,37,0.15));
         }
 
         .venue-img {
@@ -1120,6 +881,7 @@ export default function ConceptPage() {
 
         .venue-base {
           z-index: 1;
+          filter: saturate(0.85) contrast(1.02);
         }
 
         .venue-highlight {
@@ -1136,261 +898,122 @@ export default function ConceptPage() {
           visibility: visible;
         }
 
-        .readout-panel {
+        .experience-scene {
+          width: min(100%, 650px);
+          margin-left: auto;
+        }
+
+        .experience-axis {
           position: relative;
-          padding: 26px;
-          background: rgba(16, 16, 14, 0.76);
-          border: 1px solid rgba(241, 233, 216, 0.14);
-          opacity: 0;
-          transform: translateY(18px);
-        }
-
-        .space-section.is-inview .readout-panel {
-          animation: visualIn 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) 360ms forwards;
-        }
-
-        .readout-live {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          color: ${C.red};
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
+          height: 78px;
           margin-bottom: 28px;
         }
 
-        .readout-live span {
-          width: 13px;
-          height: 13px;
-          border-radius: 50%;
-          background: ${C.red};
-          box-shadow: 0 0 18px rgba(231, 53, 34, 0.6);
-          animation: eyePulse 2.2s ease-in-out infinite;
-        }
-
-        .readout-panel p {
-          margin: 0;
-          color: rgba(241, 233, 216, 0.74);
-          font-size: 12px;
-          line-height: 1.9;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-        }
-
-        .zone-controls {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 16px;
-          margin-top: 20px;
-        }
-
-        .experience-grid {
-          display: grid;
-          grid-template-columns: minmax(0, 0.8fr) minmax(360px, 0.9fr);
-          gap: clamp(44px, 6vw, 96px);
-          align-items: center;
-        }
-
-        .experience-system {
-          position: relative;
-          min-height: 460px;
-          padding: 34px;
-          background: rgba(241, 233, 216, 0.035);
-          border: 1px solid rgba(241, 233, 216, 0.14);
-          opacity: 0;
-          transform: translateY(18px);
-        }
-
-        .experience-section.is-inview .experience-system {
-          animation: visualIn 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) 280ms forwards;
-        }
-
-        .experience-system .hal-core {
-          position: relative;
-          left: auto;
-          top: auto;
-          margin: 0 auto 48px;
-          width: 180px;
-          height: 180px;
-        }
-
-        .timeline {
-          margin-bottom: 28px;
-        }
-
-        .timeline-times {
-          display: flex;
-          justify-content: space-between;
-          color: rgba(241, 233, 216, 0.62);
-          font-size: 12px;
-          font-weight: 700;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          margin-bottom: 16px;
-        }
-
-        .timeline-track {
-          position: relative;
-          height: 22px;
-        }
-
-        .timeline-base,
-        .timeline-fill {
+        .experience-line,
+        .experience-fill {
           position: absolute;
           left: 0;
           right: 0;
           top: 50%;
-          height: 2px;
+          height: 1px;
           transform: translateY(-50%);
           transform-origin: left center;
         }
 
-        .timeline-base {
-          background: rgba(241, 233, 216, 0.24);
+        .experience-line {
+          background: ${C.line};
         }
 
-        .timeline-fill {
-          background: ${C.red};
-          animation: signalFill 8.5s ease-in-out infinite;
+        .experience-fill {
+          background: ${C.pink};
+          animation: experienceFill 8s ease-in-out infinite;
         }
 
-        .timeline-dot {
+        .experience-dot {
           position: absolute;
           top: 50%;
           width: 18px;
           height: 18px;
-          border-radius: 50%;
-          background: ${C.muted};
+          border-radius: 999px;
+          background: ${C.inkSoft};
           transform: translateY(-50%);
         }
 
-        .timeline-dot-left {
+        .experience-dot-left {
           left: 0;
-          animation: leftDot 8.5s ease-in-out infinite;
+          animation: dotLeft 8s ease-in-out infinite;
         }
 
-        .timeline-dot-right {
+        .experience-dot-right {
           right: 0;
-          animation: rightDot 8.5s ease-in-out infinite;
+          animation: dotRight 8s ease-in-out infinite;
         }
 
-        .experience-cards {
+        .experience-items {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 14px;
+          gap: 18px;
         }
 
-        .action-card {
-          position: relative;
-          min-height: 104px;
+        .experience-item {
+          min-height: 220px;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          gap: 6px;
-          padding: 18px 20px;
-          color: ${C.cream};
+          justify-content: flex-end;
+          padding: 24px;
+          color: ${C.ink};
           text-decoration: none;
-          border: 1px solid rgba(241, 233, 216, 0.2);
-          background: rgba(241, 233, 216, 0.035);
-          box-shadow: 8px 8px 0 rgba(231, 53, 34, 0);
-          overflow: hidden;
-          opacity: 0;
-          transform: translateY(12px);
+          border: 1px solid ${C.lineSoft};
+          background: rgba(255,255,255,0.16);
           transition:
             transform 0.22s ease,
-            background 0.22s ease,
-            color 0.22s ease,
             border-color 0.22s ease,
-            box-shadow 0.22s ease;
+            background 0.22s ease;
         }
 
-        .reveal-section.is-inview .action-card {
-          animation: cardIn 0.52s ease var(--card-delay, 320ms) forwards;
-        }
-
-        .action-card::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background:
-            linear-gradient(135deg, rgba(231, 53, 34, 0.16), transparent 45%),
-            repeating-linear-gradient(90deg, rgba(241, 233, 216, 0.05) 0 1px, transparent 1px 10px);
-          opacity: 0;
-          transition: opacity 0.22s ease;
-        }
-
-        .action-card.is-dark {
-          background: ${C.red};
-          color: ${C.cream};
-          border-color: ${C.red};
-        }
-
-        .action-card:hover,
-        .action-card:focus-visible,
-        .action-card.is-active {
-          transform: translate(-3px, -3px);
-          background: rgba(231, 53, 34, 0.12);
-          border-color: ${C.red};
-          box-shadow: 10px 10px 0 rgba(231, 53, 34, 0.16);
+        .experience-item:hover,
+        .experience-item:focus-visible {
+          transform: translateY(-4px);
+          border-color: rgba(232, 79, 138, 0.48);
+          background: ${C.pinkSoft};
           outline: none;
         }
 
-        .action-card:hover::before,
-        .action-card:focus-visible::before,
-        .action-card.is-active::before {
-          opacity: 1;
-        }
-
-        .action-card-title,
-        .action-card-meta {
-          position: relative;
-          z-index: 1;
-        }
-
-        .action-card-title {
+        .experience-time {
           display: block;
-          font-size: clamp(18px, 1.7vw, 30px);
-          line-height: 0.96;
-          font-weight: 700;
-          letter-spacing: 0;
-          text-transform: uppercase;
-        }
-
-        .action-card-meta {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          color: rgba(241, 233, 216, 0.62);
-          font-size: 10px;
-          line-height: 1;
+          color: ${C.pink};
+          font-size: 11px;
           font-weight: 700;
           letter-spacing: 0.18em;
           text-transform: uppercase;
+          margin-bottom: 18px;
         }
 
-        .action-arrow {
-          font-size: 2em;
-          line-height: 0.55;
-          transform: translateY(-0.02em);
-        }
-
-        .footer-transmission {
-          position: relative;
-          z-index: 3;
-          display: flex;
-          justify-content: space-between;
-          gap: 20px;
-          padding: 22px clamp(28px, 5vw, 72px);
-          background: ${C.black};
-          border-top: 1px solid rgba(241, 233, 216, 0.1);
-          color: rgba(241, 233, 216, 0.48);
-          font-size: 9px;
+        .experience-title {
+          display: block;
+          font-size: clamp(24px, 2.6vw, 44px);
+          line-height: 0.92;
           font-weight: 700;
-          letter-spacing: 0.2em;
+          letter-spacing: -0.06em;
           text-transform: uppercase;
+        }
+
+        .experience-description {
+          display: block;
+          max-width: 260px;
+          margin-top: 18px;
+          color: rgba(37,37,37,0.62);
+          font-size: 10px;
+          line-height: 1.7;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        @keyframes axisDraw {
+          to {
+            transform: scaleY(1);
+          }
         }
 
         @keyframes fadeUp {
@@ -1400,89 +1023,42 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes visualIn {
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        @keyframes cardIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
         @keyframes monolithFloat {
           0%,
           100% {
-            transform: translate(-50%, -50%) translateY(0);
+            transform: translateY(0) rotate(0deg);
           }
 
           50% {
-            transform: translate(-50%, -50%) translateY(-10px);
+            transform: translateY(-10px) rotate(0.8deg);
           }
         }
 
-        @keyframes ringPulse {
+        @keyframes wireFloatTop {
           0%,
           100% {
-            opacity: 0.26;
-            transform: scale(1);
+            transform: translateY(0) rotate(0deg);
           }
 
           50% {
-            opacity: 0.72;
-            transform: scale(1.04);
+            transform: translateY(-8px) rotate(1.4deg);
           }
         }
 
-        @keyframes eyePulse {
+        @keyframes wireFloatFloor {
           0%,
           100% {
-            opacity: 0.78;
-            transform: translate(-50%, -50%) scale(1);
+            transform: rotate(-8deg) skewX(-7deg) translateY(0);
           }
 
           50% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.08);
+            transform: rotate(-8deg) skewX(-7deg) translateY(8px);
           }
         }
 
-        .experience-system .hal-eye {
-          animation-name: eyePulseOnly;
-        }
-
-        @keyframes eyePulseOnly {
-          0%,
-          100% {
-            opacity: 0.78;
-            transform: translate(-50%, -50%) scale(1);
-          }
-
-          50% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.08);
-          }
-        }
-
-        @keyframes barSignal {
+        @keyframes scanBeam {
           0% {
-            height: calc(var(--bar-height) * 0.42);
-            opacity: 0.32;
-          }
-
-          100% {
-            height: var(--bar-height);
-            opacity: 0.88;
-          }
-        }
-
-        @keyframes scanLine {
-          0% {
-            top: 0%;
+            left: 0%;
             opacity: 0;
           }
 
@@ -1490,268 +1066,241 @@ export default function ConceptPage() {
             opacity: 1;
           }
 
-          52% {
-            opacity: 0.75;
+          55% {
+            opacity: 0.65;
           }
 
           100% {
-            top: 100%;
+            left: 100%;
             opacity: 0;
           }
         }
 
-        @keyframes signalFill {
+        @keyframes experienceFill {
           0%,
-          18% {
-            opacity: 0;
+          15% {
             transform: translateY(-50%) scaleX(0);
+            opacity: 0;
           }
 
           24% {
-            opacity: 1;
             transform: translateY(-50%) scaleX(0);
-          }
-
-          62% {
             opacity: 1;
-            transform: translateY(-50%) scaleX(1);
           }
 
-          78%,
-          100% {
-            opacity: 0;
+          68% {
             transform: translateY(-50%) scaleX(1);
+            opacity: 1;
+          }
+
+          88%,
+          100% {
+            transform: translateY(-50%) scaleX(1);
+            opacity: 0;
           }
         }
 
-        @keyframes leftDot {
+        @keyframes dotLeft {
           0%,
-          18% {
-            background: ${C.muted};
+          15% {
+            background: ${C.inkSoft};
           }
 
           24%,
-          68% {
-            background: ${C.red};
+          70% {
+            background: ${C.pink};
           }
 
-          80%,
+          88%,
           100% {
-            background: ${C.muted};
+            background: ${C.inkSoft};
           }
         }
 
-        @keyframes rightDot {
+        @keyframes dotRight {
           0%,
-          48% {
-            background: ${C.muted};
+          55% {
+            background: ${C.inkSoft};
           }
 
-          62%,
-          76% {
-            background: ${C.red};
+          68%,
+          82% {
+            background: ${C.pink};
           }
 
-          86%,
+          92%,
           100% {
-            background: ${C.muted};
+            background: ${C.inkSoft};
           }
         }
 
         @media (max-width: 1180px) {
-          .hero-grid,
-          .experience-grid,
-          .scan-layout {
+          .poster-inner {
             grid-template-columns: 1fr;
+            gap: 42px;
           }
 
-          .hero-visual {
-            width: min(560px, 100%);
-            margin: 0 auto;
+          .poster-axis {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            height: auto;
+            min-height: 0;
           }
 
-          .monolith-system {
-            margin: 0 auto;
+          .poster-left {
+            padding-left: 34px;
           }
 
-          .transmission-panel {
-            right: 50%;
-            transform: translateX(50%);
+          .poster-right {
+            padding-left: 34px;
           }
 
-          .section-heading,
-          .experience-copy {
-            max-width: 820px;
-          }
-
-          .readout-panel {
-            min-height: 180px;
+          .monolith-scene,
+          .venue-scene,
+          .experience-scene {
+            margin-left: 0;
           }
         }
 
         @media (max-width: 820px) {
-          .hero-section,
-          .space-section,
-          .experience-section {
+          .poster-section {
             min-height: auto;
-            padding: 104px 0 68px;
+            padding: 104px 0 74px;
           }
 
-          .section-inner {
+          .poster-inner {
             width: calc(100% - 34px);
+            min-height: auto;
           }
 
-          .hero-title {
-            font-size: clamp(56px, 16vw, 98px);
+          .poster-left,
+          .poster-right {
+            padding-left: 24px;
           }
 
-          .section-title {
-            font-size: clamp(48px, 13vw, 82px);
+          .poster-title {
+            font-size: clamp(48px, 14vw, 78px);
           }
 
-          .hero-address {
-            font-size: 11px;
-            letter-spacing: 0.14em;
-          }
-
-          .hero-intro,
-          .section-intro {
+          .poster-copy {
             font-size: 11px;
           }
 
-          .hero-actions {
+          .poster-meta {
+            position: relative;
+            bottom: auto;
             flex-direction: column;
+            align-items: flex-start;
+            padding-left: 24px;
+            margin-top: 28px;
+            font-size: 9px;
           }
 
-          .hero-actions a {
-            width: 100%;
-          }
-
-          .monolith-system {
+          .monolith-scene {
             width: min(100%, 390px);
           }
 
-          .hal-core {
-            width: 100px;
-            height: 100px;
+          .venue-scene {
+            padding: 14px;
           }
 
-          .transmission-panel {
-            position: relative;
-            right: auto;
-            bottom: auto;
-            transform: none;
-            width: 100%;
-            margin-top: 24px;
+          .space-links {
+            margin-top: 28px;
           }
 
-          .scan-frame {
-            min-height: auto;
-            padding: 22px 14px;
-          }
-
-          .zone-controls {
-            grid-template-columns: 1fr;
-          }
-
-          .experience-system {
-            min-height: auto;
-            padding: 24px;
-          }
-
-          .experience-system .hal-core {
-            width: 140px;
-            height: 140px;
-            margin-bottom: 34px;
-          }
-
-          .experience-cards {
+          .experience-items {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 10px;
           }
 
-          .action-card {
-            min-height: 86px;
-            padding: 14px 12px;
+          .experience-item {
+            min-height: 160px;
+            padding: 16px;
           }
 
-          .experience-cards .action-card-title {
-            font-size: clamp(14px, 4vw, 18px);
+          .experience-title {
+            font-size: clamp(18px, 5vw, 28px);
           }
 
-          .action-card-meta {
+          .experience-description {
             font-size: 8px;
-            letter-spacing: 0.14em;
-          }
-
-          .footer-transmission {
-            flex-direction: column;
           }
         }
 
         @media (max-width: 520px) {
-          .section-inner {
+          .poster-inner {
             width: calc(100% - 28px);
           }
 
-          .hero-title {
-            font-size: clamp(48px, 15vw, 68px);
+          .poster-title {
+            font-size: clamp(42px, 13vw, 62px);
           }
 
-          .terminal-label {
+          .poster-label {
             font-size: 8px;
           }
 
-          .timeline-times {
-            font-size: 9px;
-            letter-spacing: 0.08em;
+          .poster-copy,
+          .active-copy {
+            font-size: 10px;
           }
 
-          .experience-cards {
+          .space-link {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+          }
+
+          .experience-axis {
+            height: 54px;
+          }
+
+          .experience-items {
             gap: 8px;
           }
 
-          .experience-cards .action-card {
-            padding: 13px 9px;
+          .experience-item {
+            min-height: 142px;
+            padding: 14px 10px;
           }
 
-          .experience-cards .action-card-title {
-            font-size: 13px;
+          .experience-time {
+            font-size: 8px;
+            letter-spacing: 0.1em;
           }
 
-          .experience-cards .action-card-meta {
-            font-size: 7px;
+          .experience-title {
+            font-size: 16px;
+          }
+
+          .experience-description {
+            display: none;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .hero-copy,
-          .section-heading,
-          .experience-copy,
-          .hero-visual,
-          .scan-frame,
-          .readout-panel,
-          .experience-system,
-          .action-card,
-          .monolith,
-          .hal-ring,
-          .hal-eye,
-          .signal-bars span,
-          .scan-line,
-          .timeline-fill,
-          .timeline-dot {
+          .poster-axis,
+          .poster-left,
+          .poster-right,
+          .poster-meta,
+          .monolith-img,
+          .wireframe,
+          .scan-beam,
+          .experience-fill,
+          .experience-dot {
             animation: none !important;
             transition: none !important;
           }
 
-          .hero-copy,
-          .section-heading,
-          .experience-copy,
-          .hero-visual,
-          .scan-frame,
-          .readout-panel,
-          .experience-system,
-          .action-card {
+          .poster-axis {
+            transform: scaleY(1) !important;
+          }
+
+          .poster-left,
+          .poster-right,
+          .poster-meta {
             opacity: 1 !important;
             transform: none !important;
           }
