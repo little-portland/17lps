@@ -55,11 +55,10 @@ export default function ConceptPage() {
   const [darkTime,     setDarkTime]     = useState('22:00');
   const [curtainPhase, setCurtainPhase] = useState<'visible' | 'fading' | 'gone'>('visible');
 
-  // refs for zero-rerender parallax + scroll thread
+  // refs for zero-rerender parallax
   const funnelParRef  = useRef<HTMLDivElement>(null);
   const obeliskParRef = useRef<HTMLDivElement>(null);
   const gateParRef    = useRef<HTMLDivElement>(null);
-  const scrollFillRef = useRef<HTMLDivElement>(null);
 
   // ── time scramble ──────────────────────────────────────
   useEffect(() => {
@@ -91,17 +90,9 @@ export default function ConceptPage() {
     return () => { window.clearTimeout(t1); window.clearTimeout(t2); window.clearTimeout(t3); };
   }, []);
 
-  // ── scroll thread (direct DOM, no re-render) ───────────
+  // ── scrolled state for nav backdrop ────────────────────
   useEffect(() => {
-    const onS = () => {
-      setScrolled(window.scrollY > 24);
-      if (scrollFillRef.current) {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        scrollFillRef.current.style.height = max > 0
-          ? `${(window.scrollY / max) * 100}%`
-          : '0%';
-      }
-    };
+    const onS = () => setScrolled(window.scrollY > 24);
     onS();
     window.addEventListener('scroll', onS, { passive: true });
     return () => window.removeEventListener('scroll', onS);
@@ -178,11 +169,6 @@ export default function ConceptPage() {
       {/* ── 5. CRT scanline overlay ─── */}
       <div className="scanlines" aria-hidden="true" />
 
-      {/* ── 2. Scroll progress thread ─── */}
-      <div className="scroll-thread" aria-hidden="true">
-        <div ref={scrollFillRef} className="scroll-thread-fill" />
-      </div>
-
       <main className="page">
         <div className={`nav-shell ${ready ? 'rdy' : ''} ${scrolled ? 'scrolled' : ''}`}>
           <SceneNav theme="space" />
@@ -191,9 +177,6 @@ export default function ConceptPage() {
 
         {/* ══ ACT I — HERO ═════════════════════════════════════════ */}
         <section className="act a-hero">
-          {/* 3. Act marker */}
-          <span className="act-num" aria-hidden="true">ACT&nbsp;I</span>
-
           {/* Funnel drops from above; par-wrap handles mouse parallax */}
           <div className="hero-funnel-drop" aria-hidden="true">
             <div ref={funnelParRef} className="par-wrap">
@@ -203,22 +186,17 @@ export default function ConceptPage() {
 
           <div className="hero-copy">
             {/* Title pours out of funnel base */}
-            <h1 className="hero-h1">CONCEPT.</h1>
+            <h1 className="hero-h1">CONCEPT</h1>
             <p className="hero-addr">
               <span className="tt-hero" style={typeStyle(33, '4.6s')}>
                 17 Little Portland Street, London
               </span>
-            </p>
-            {/* 4. Atmospheric copy */}
-            <p className="hero-tagline">
-              <span className="tt-tag">Three&nbsp;spaces.&nbsp;&nbsp;One&nbsp;evening.</span>
             </p>
           </div>
         </section>
 
         {/* ══ ACT II — OBELISK ════════════════════════════════════ */}
         <section className="act a-monolith rs">
-          <span className="act-num act-num-rs" aria-hidden="true">ACT&nbsp;II</span>
           <div className="flank-line flank-a" aria-hidden="true" />
           <div className="monolith-stage">
             <div ref={obeliskParRef} className="par-wrap">
@@ -226,13 +204,10 @@ export default function ConceptPage() {
             </div>
           </div>
           <div className="flank-line flank-b" aria-hidden="true" />
-          {/* 4. Coordinates as atmospheric copy */}
-          <p className="mono-coords" aria-hidden="true">51°31′N&nbsp;&nbsp;—&nbsp;&nbsp;0°08′W</p>
         </section>
 
         {/* ══ ACT III — THE SPACE ════════════════════════════════ */}
         <section className="act a-space rs" aria-labelledby="space-title">
-          <span className="act-num act-num-rs" aria-hidden="true">ACT&nbsp;III</span>
           <div className="shell">
             <h2 id="space-title" className="st space-h2">The Space</h2>
             {/* 4. Section lead copy */}
@@ -267,7 +242,6 @@ export default function ConceptPage() {
 
         {/* ══ ACT IV — GATE ══════════════════════════════════════ */}
         <section className="act a-gate rs" aria-hidden="true">
-          <span className="act-num act-num-rs" aria-hidden="true">ACT&nbsp;IV</span>
           <div className="flank-line flank-a" />
           <div className="gate-stage">
             <div className="gate-funnel-wrap">
@@ -281,7 +255,6 @@ export default function ConceptPage() {
 
         {/* ══ ACT V — EXPERIENCE ══════════════════════════════════ */}
         <section className="act a-exp rs" aria-labelledby="exp-title">
-          <span className="act-num act-num-rs" aria-hidden="true">ACT&nbsp;V</span>
           <div className="shell">
             <h2 id="exp-title" className="st exp-h2">The Experience</h2>
             {/* 4. Section lead copy */}
@@ -430,42 +403,7 @@ export default function ConceptPage() {
           mix-blend-mode: multiply;
         }
 
-        /* ─ 2. scroll progress thread ──────────────────────────── */
-        .scroll-thread {
-          position: fixed;
-          left: clamp(16px, 2.5vw, 32px);
-          top: 0; bottom: 0;
-          width: 1px;
-          background: rgba(28,28,26,.1);
-          z-index: 9998; pointer-events: none;
-        }
-        .scroll-thread-fill {
-          position: absolute; top: 0; left: 0; width: 100%;
-          height: 0%;
-          background: rgba(28,28,26,.44);
-          transition: height .08s linear;
-        }
-
-        /* ─ 3. act markers ───────────────────────────────────────── */
-        .act-num {
-          position: absolute;
-          left: clamp(14px, 2.2vw, 36px);
-          top: clamp(88px, 10.5vw, 124px);
-          font-family: ${MONO};
-          font-size: 8px; letter-spacing: .34em;
-          color: rgba(28,28,26,.2);
-          text-transform: uppercase; user-select: none; z-index: 4;
-          opacity: 0;
-        }
-        /* hero act num — bottom of section */
-        .a-hero .act-num {
-          top: auto;
-          bottom: clamp(28px, 4vw, 52px);
-          animation: actNumIn 1.2s ease 2.6s forwards;
-        }
-        .rs.iv .act-num-rs { animation: actNumIn .9s ease .24s forwards; }
-
-        /* ─ 6. parallax wrapper ──────────────────────────────────── */
+        /* ─ parallax wrapper ─────────────────────────────────────── */
         .par-wrap {
           transition: transform 0.72s cubic-bezier(.25,.46,.45,.94);
           will-change: transform;
@@ -536,18 +474,10 @@ export default function ConceptPage() {
           font-weight: 700; text-transform: uppercase; color: ${C.pink}; margin: 0;
         }
         .tt-hero {
-          display: inline-block; overflow: hidden; clip-path: inset(0 100% 0 0);
+          display: inline-block; overflow: hidden;
+          padding-right: .28em; /* room for trailing letter-spacing so final char isn't clipped */
+          clip-path: inset(0 100% 0 0);
           animation: typeIn .52s steps(33,end) 4.6s forwards;
-        }
-        /* 4. hero tagline copy */
-        .hero-tagline {
-          margin: clamp(2px,.4vw,6px) 0 0;
-          font-size: clamp(9px,.9vw,11px); letter-spacing: .26em;
-          text-transform: uppercase; color: rgba(28,28,26,.36);
-        }
-        .tt-tag {
-          display: inline-block; overflow: hidden; clip-path: inset(0 100% 0 0);
-          animation: typeIn .7s steps(28,end) 6.2s forwards;
         }
 
         /* ─ ACT II — OBELISK ──────────────────────────────────────── */
@@ -582,16 +512,6 @@ export default function ConceptPage() {
             monolithPulse  5.5s ease-in-out                4.4s infinite,
             obeliskRetro  14s  linear                      5.2s infinite;
         }
-
-        /* 4. coordinates copy */
-        .mono-coords {
-          font-family: ${MONO};
-          font-size: 9px; letter-spacing: .28em;
-          text-transform: uppercase; color: rgba(28,28,26,.22);
-          text-align: center; margin: clamp(8px,1.2vw,14px) 0 0;
-          opacity: 0;
-        }
-        .a-monolith.iv .mono-coords { animation: coordsIn .8s ease 3.9s forwards; }
 
         /* ─ ACT III — THE SPACE ───────────────────────────────────── */
         .a-space { padding: clamp(52px,7vw,90px) 0 clamp(44px,5vw,68px); }
@@ -679,15 +599,14 @@ export default function ConceptPage() {
         .gate-funnel-img {
           display: block;
           width: min(46vw, 340px); height: auto;
-          transform: scaleY(-1);
           mix-blend-mode: multiply;
           filter: saturate(.9) contrast(.96);
           pointer-events: none; user-select: none;
         }
         .a-gate.iv .gate-funnel-img {
           animation:
-            funnelFloatInv 7s  ease-in-out  3s   infinite,
-            funnelRetro   11s  linear       4.2s infinite;
+            funnelFloat 7s  ease-in-out  3s   infinite,
+            funnelRetro 11s linear       4.2s infinite;
         }
 
         /* ─ ACT V — EXPERIENCE ────────────────────────────────────── */
@@ -723,7 +642,7 @@ export default function ConceptPage() {
 
         .sig-time {
           display: block;
-          font-size: clamp(20px,2.4vw,32px); font-weight: 700;
+          font-size: clamp(15px,1.7vw,22px); font-weight: 700;
           letter-spacing: .06em; line-height: 1;
           color: rgba(28,28,26,.72); white-space: nowrap;
         }
@@ -792,8 +711,6 @@ export default function ConceptPage() {
         ══════════════════════════════════════════════════════════ */
 
         @keyframes flankGrow    { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-        @keyframes actNumIn     { to { opacity: 1; } }
-        @keyframes coordsIn     { to { opacity: 1; } }
         @keyframes leadIn       { to { opacity: 1; transform: translateY(0); } }
 
         @keyframes heroDropIn   { to { opacity: 1; transform: translateY(0); } }
@@ -813,11 +730,15 @@ export default function ConceptPage() {
           86%  { transform:translateX(-2px); }
           100% { opacity:1; clip-path:inset(0 0 0 0);    transform:translateX(0);    filter:blur(0); }
         }
+        /* chromatic-aberration glitch burst — pink + cyan split, multi-flicker */
         @keyframes stIdle {
-          0%,92%,100% { filter:none; text-shadow:.018em 0 0 currentColor; }
-          93% { filter:blur(.2px); text-shadow:.018em 0 0 currentColor,.08em 0 0 rgba(212,80,122,.26); }
-          94% { filter:none; text-shadow:.018em 0 0 currentColor,-.06em 0 0 rgba(122,120,112,.22); }
-          96% { filter:none; text-shadow:.018em 0 0 currentColor; }
+          0%,84%,100% { filter:none; text-shadow:.018em 0 0 currentColor; }
+          85%   { filter:blur(.4px); text-shadow:-.08em 0 0 rgba(212,80,122,.9), .08em 0 0 rgba(70,185,205,.78), .018em 0 0 currentColor; }
+          86.5% { filter:none;       text-shadow:.10em 0 0 rgba(212,80,122,.78), -.09em 0 0 rgba(70,185,205,.66), .018em 0 0 currentColor; }
+          88%   { filter:blur(.3px); text-shadow:-.06em -.02em 0 rgba(212,80,122,.85), .07em .02em 0 rgba(70,185,205,.7), .018em 0 0 currentColor; }
+          89.5% { filter:none;       text-shadow:.018em 0 0 currentColor; }
+          91%   { filter:none;       text-shadow:.06em 0 0 rgba(212,80,122,.6), -.05em 0 0 rgba(70,185,205,.5), .018em 0 0 currentColor; }
+          92.5% { filter:none;       text-shadow:.018em 0 0 currentColor; }
         }
         @keyframes typeIn { to { clip-path:inset(0 0 0 0); } }
 
@@ -827,12 +748,6 @@ export default function ConceptPage() {
           33%     { transform: translateY(-14px) rotate(.5deg); }
           66%     { transform: translateY(-7px) rotate(-.3deg); }
         }
-        @keyframes funnelFloatInv {
-          0%,100% { transform: scaleY(-1) translateY(0); }
-          33%     { transform: scaleY(-1) translateY(-14px); }
-          66%     { transform: scaleY(-1) translateY(-7px); }
-        }
-
         /* funnel retro: CRT chroma shift then phosphor bloom */
         @keyframes funnelRetro {
           0%      { filter: saturate(.9) contrast(.96); }
@@ -948,10 +863,7 @@ export default function ConceptPage() {
           .sig-time { font-size:clamp(17px,4.5vw,26px); }
           .exp-nav { gap:10px; }
           .section-lead { font-size:clamp(8px,2.2vw,10px); }
-        }
-        @media (max-width:640px) {
-          /* hide scroll thread and act numbers — too tight on mobile */
-          .scroll-thread, .act-num { display: none; }
+          .sig-time { font-size:clamp(15px,3.6vw,20px); }
         }
         @media (max-width:520px) {
           .shell { width:calc(100% - 28px); }
@@ -962,35 +874,33 @@ export default function ConceptPage() {
           .gate-funnel-img { width:min(80vw,240px); }
           .exp-nav { grid-template-columns:1fr; gap:8px; }
           .sig { --sy:46px; }
-          .sig-time { font-size:clamp(16px,4vw,22px); }
-          .hero-tagline { display:none; }
+          .sig-time { font-size:clamp(14px,3.4vw,18px); }
         }
         @media (max-width:380px) {
           .card-title { font-size:16px; }
-          .sig-time { font-size:15px; }
+          .sig-time { font-size:14px; }
         }
 
         /* ─ reduced motion ─────────────────────────────────────── */
         @media (prefers-reduced-motion:reduce) {
           .curtain { transition: none !important; opacity: 0; }
-          .hero-funnel-drop, .hero-h1, .tt-hero, .tt-tag, .st,
+          .hero-funnel-drop, .hero-h1, .tt-hero, .st,
           .flank-line, .obelisk, .gate-funnel-wrap, .gate-funnel-img, .hero-funnel-img,
           .venue-wrap, .vg-a, .vg-b, .v-hl.on,
           .sig-line, .sig-fill, .sig-tick, .sig-node, .sig-sonar, .sig-dot-fill, .sig-time,
-          .mono-coords, .section-lead, .act-num, .scroll-thread-fill,
+          .section-lead,
           .card, .card::after { animation:none !important; transition:none !important; }
           .par-wrap { transition: none !important; }
           .flank-line { transform:none; }
-          .hero-funnel-drop, .hero-funnel-img, .gate-funnel-wrap { opacity:1; transform:none; }
-          .gate-funnel-img { transform:scaleY(-1); }
+          .hero-funnel-drop, .hero-funnel-img, .gate-funnel-wrap, .gate-funnel-img { opacity:1; transform:none; }
           .hero-h1 { opacity:1; transform:none; }
           .st { opacity:1; clip-path:inset(0 0 0 0); transform:none; }
-          .tt-hero, .tt-tag { clip-path:inset(0 0 0 0); }
+          .tt-hero { clip-path:inset(0 0 0 0); }
           .obelisk { opacity:1; transform:none; }
           .venue-wrap, .sig-node, .card { opacity:1; transform:none; }
           .sig-line { transform:none; }
           .card::after { clip-path:inset(0 0 0 0); }
-          .mono-coords, .section-lead, .act-num { opacity:1; transform:none; }
+          .section-lead { opacity:1; transform:none; }
         }
       `}</style>
     </>
