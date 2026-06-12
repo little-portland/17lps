@@ -10,22 +10,25 @@ import {
 import SceneNav from '@components/SceneNav';
 
 const C = {
-  paper: '#ede6d7',
-  paperLight: '#f4efe3',
-  ink: '#202020',
-  inkSoft: '#6a665f',
-  black: '#090909',
+  paper: '#fff4c8',
+  paperSoft: '#f6eecf',
+  ink: '#191817',
+  shadow: '#3b332e',
+  blue: '#313a98',
+  cyan: '#45b6d4',
+  orange: '#f6a100',
+  cream: '#fff7d8',
+  black: '#1c1715',
   pink: '#e84f8a',
-  line: 'rgba(32, 32, 32, 0.2)',
-  lineSoft: 'rgba(32, 32, 32, 0.1)',
+  line: 'rgba(25, 24, 23, 0.16)',
 } as const;
 
 const MONO = '"Space Mono", "Courier New", monospace';
+const SCRIPT = '"Yellowtail", cursive';
+const HEAVY = '"Archivo Black", "Arial Black", sans-serif';
 
 const ASSETS = {
   texture: '/images/concept/concept_bg.jpg',
-  funnel: '/images/concept/grid_funel.png',
-  obelisk: '/images/concept/obelisk-dark-grey.png',
   venue: '/images/concept/the-space-page-venue.png',
   tent: '/images/concept/tent-highlight.png',
   chefs: '/images/concept/chefs-studio-highlight.png',
@@ -114,39 +117,24 @@ function PosterButton({
   );
 }
 
-function HeroVisual() {
+function HeroGraphic() {
   return (
-    <div className="hero-visual-stage" aria-hidden="true">
-      <img
-        src={ASSETS.funnel}
-        alt=""
-        className="wireframe wireframe-top"
-        draggable={false}
-      />
-
-      <img
-        src={ASSETS.funnel}
-        alt=""
-        className="wireframe wireframe-floor"
-        draggable={false}
-      />
-
-      <div className="floor-shadow" />
-
-      <img
-        src={ASSETS.obelisk}
-        alt=""
-        className="monolith-img"
-        draggable={false}
-      />
+    <div className="hero-graphic" aria-hidden="true">
+      <div className="sky-block" />
+      <div className="night-block" />
+      <div className="moon" />
+      <div className="planet" />
+      <div className="orange-disc">
+        <span>17</span>
+      </div>
     </div>
   );
 }
 
-function SpaceVisual({ activeArea }: { activeArea: AreaId | null }) {
+function SpaceGraphic({ activeArea }: { activeArea: AreaId | null }) {
   return (
-    <div className="venue-frame" aria-hidden="true">
-      <span className="scan-line" />
+    <div className="space-graphic" aria-hidden="true">
+      <div className="space-band" />
 
       <div className="venue-wrap">
         <img
@@ -172,9 +160,9 @@ function SpaceVisual({ activeArea }: { activeArea: AreaId | null }) {
   );
 }
 
-function ExperienceVisual() {
+function ExperienceGraphic() {
   return (
-    <div className="experience-visual">
+    <div className="experience-graphic">
       <div className="timeline">
         <div className="timeline-times">
           <span>20:00 / 20:30</span>
@@ -191,17 +179,14 @@ function ExperienceVisual() {
 
       <div className="experience-buttons">
         {EXPERIENCE.map((item, index) => (
-          <PosterButton
+          <a
             key={item.href}
             href={item.href}
-            title={item.title}
-            dark={index === 1}
-            style={
-              {
-                '--button-delay': `${220 + index * 100}ms`,
-              } as CSSProperties
-            }
-          />
+            className={`experience-button ${index === 1 ? 'is-dark' : ''}`}
+          >
+            <span className="experience-time">{item.time}</span>
+            <span className="experience-title">{item.title}</span>
+          </a>
         ))}
       </div>
     </div>
@@ -234,7 +219,7 @@ export default function ConceptPage() {
 
   useEffect(() => {
     const sections = Array.from(
-      document.querySelectorAll<HTMLElement>('.concept-section')
+      document.querySelectorAll<HTMLElement>('.poster-section')
     );
 
     const observer = new IntersectionObserver(
@@ -244,7 +229,7 @@ export default function ConceptPage() {
         });
       },
       {
-        threshold: 0.36,
+        threshold: 0.32,
         rootMargin: '0px 0px -10% 0px',
       }
     );
@@ -317,7 +302,7 @@ export default function ConceptPage() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&family=Yellowtail&display=swap"
           rel="stylesheet"
         />
       </Head>
@@ -333,71 +318,94 @@ export default function ConceptPage() {
 
         <div className="paper-texture" aria-hidden="true" />
 
-        <section className="concept-section hero-section">
-          <div className="section-frame">
-            <div className="section-left">
-              <h1 className="hero-title">CONCEPT.</h1>
+        <section className="poster-section hero-section">
+          <div className="poster-sheet hero-sheet">
+            <div className="script-title">Concept</div>
 
-              <p className="venue-name">
-                17 Little Portland Street, London
-              </p>
+            <div className="blue-bar">
+              <span>17 LITTLE PORTLAND STREET</span>
             </div>
 
-            <div className="section-axis" aria-hidden="true" />
+            <div className="hero-main">
+              <div className="hero-left">
+                <h1>CONCEPT.</h1>
+              </div>
 
-            <div className="section-right">
-              <HeroVisual />
-            </div>
-          </div>
-        </section>
-
-        <section id="space" className="concept-section space-section">
-          <div className="section-frame">
-            <div className="section-left">
-              <h2 className="section-title">THE SPACE.</h2>
-
-              <nav
-                className="button-stack"
-                aria-label="Venue areas"
-                onMouseLeave={handleAreaLeave}
-              >
-                {AREAS.map((area, index) => (
-                  <PosterButton
-                    key={area.id}
-                    href={area.href}
-                    title={area.title}
-                    active={activeArea === area.id}
-                    onMouseEnter={() => handleAreaEnter(area.id)}
-                    onFocus={() => setActiveArea(area.id)}
-                    onClick={handleAreaClick(area.id)}
-                    style={
-                      {
-                        '--button-delay': `${220 + index * 90}ms`,
-                      } as CSSProperties
-                    }
-                  />
-                ))}
-              </nav>
+              <div className="hero-right">
+                <HeroGraphic />
+              </div>
             </div>
 
-            <div className="section-axis" aria-hidden="true" />
-
-            <div className="section-right">
-              <SpaceVisual activeArea={activeArea} />
+            <div className="bottom-strip">
+              <span>17 LITTLE PORTLAND STREET</span>
+              <span>LONDON</span>
             </div>
           </div>
         </section>
 
-        <section id="experience" className="concept-section experience-section">
-          <div className="section-frame">
-            <div className="section-left">
-              <h2 className="section-title">THE EXPERIENCE.</h2>
+        <section id="space" className="poster-section space-section">
+          <div className="poster-sheet space-sheet">
+            <div className="script-title small-script">The Space</div>
+
+            <div className="blue-bar">
+              <span>THE TENT / CHEF'S STUDIO / THE STUDIO</span>
             </div>
 
-            <div className="section-axis" aria-hidden="true" />
+            <div className="space-main">
+              <div className="space-left">
+                <h2>THE SPACE.</h2>
 
-            <div className="section-right">
-              <ExperienceVisual />
+                <nav
+                  className="button-stack"
+                  aria-label="Venue areas"
+                  onMouseLeave={handleAreaLeave}
+                >
+                  {AREAS.map((area, index) => (
+                    <PosterButton
+                      key={area.id}
+                      href={area.href}
+                      title={area.title}
+                      active={activeArea === area.id}
+                      onMouseEnter={() => handleAreaEnter(area.id)}
+                      onFocus={() => setActiveArea(area.id)}
+                      onClick={handleAreaClick(area.id)}
+                      style={
+                        {
+                          '--button-delay': `${220 + index * 90}ms`,
+                        } as CSSProperties
+                      }
+                    />
+                  ))}
+                </nav>
+              </div>
+
+              <div className="space-right">
+                <SpaceGraphic activeArea={activeArea} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience" className="poster-section experience-section">
+          <div className="poster-sheet experience-sheet">
+            <div className="script-title small-script">The Experience</div>
+
+            <div className="blue-bar">
+              <span>DINING / AFTER DARK</span>
+            </div>
+
+            <div className="experience-main">
+              <div className="experience-left">
+                <h2>THE EXPERIENCE.</h2>
+              </div>
+
+              <div className="experience-right">
+                <ExperienceGraphic />
+              </div>
+            </div>
+
+            <div className="bottom-black">
+              <span>17 LITTLE PORTLAND STREET</span>
             </div>
           </div>
         </section>
@@ -414,7 +422,7 @@ export default function ConceptPage() {
           font-family: ${MONO};
           -webkit-font-smoothing: antialiased;
           text-rendering: geometricPrecision;
-          scrollbar-color: ${C.pink} ${C.paper};
+          scrollbar-color: ${C.orange} ${C.paper};
         }
 
         body {
@@ -426,8 +434,8 @@ export default function ConceptPage() {
         }
 
         ::selection {
-          background: ${C.pink};
-          color: ${C.paper};
+          background: ${C.orange};
+          color: ${C.cream};
         }
 
         ::-webkit-scrollbar {
@@ -439,7 +447,7 @@ export default function ConceptPage() {
         }
 
         ::-webkit-scrollbar-thumb {
-          background: ${C.pink};
+          background: ${C.orange};
           border: 2px solid ${C.paper};
           background-clip: content-box;
         }
@@ -447,8 +455,8 @@ export default function ConceptPage() {
         .page {
           position: relative;
           min-height: 100svh;
-          background: ${C.paper};
           overflow-x: hidden;
+          background: ${C.paper};
         }
 
         .paper-texture {
@@ -460,7 +468,7 @@ export default function ConceptPage() {
           background-size: 760px auto;
           background-repeat: repeat;
           background-position: center;
-          opacity: 0.36;
+          opacity: 0.34;
           mix-blend-mode: multiply;
         }
 
@@ -486,18 +494,18 @@ export default function ConceptPage() {
 
         .scene-nav {
           z-index: 10020 !important;
-          background: rgba(244, 239, 227, 0.76) !important;
+          background: rgba(255, 244, 200, 0.78) !important;
           backdrop-filter: blur(18px) !important;
           -webkit-backdrop-filter: blur(18px) !important;
-          border-bottom: 1px solid rgba(32, 32, 32, 0.1);
+          border-bottom: 1px solid rgba(25, 24, 23, 0.12);
           transition:
             background 0.25s ease,
             box-shadow 0.25s ease !important;
         }
 
         .concept-nav-shell.is-scrolled .scene-nav {
-          background: rgba(244, 239, 227, 0.94) !important;
-          box-shadow: 0 14px 36px rgba(32, 32, 32, 0.08);
+          background: rgba(255, 244, 200, 0.94) !important;
+          box-shadow: 0 14px 36px rgba(25, 24, 23, 0.08);
         }
 
         .scene-nav,
@@ -512,7 +520,7 @@ export default function ConceptPage() {
         .scene-nav a[href='/concept'],
         .scene-nav a[href='/concept-test'],
         .scene-nav a[aria-current='page'] {
-          color: ${C.pink} !important;
+          color: ${C.orange} !important;
           opacity: 1 !important;
         }
 
@@ -520,151 +528,215 @@ export default function ConceptPage() {
           background: ${C.ink} !important;
         }
 
-        .concept-section {
+        .poster-section {
           position: relative;
           z-index: 2;
           min-height: 100svh;
           display: flex;
           align-items: center;
-          padding: clamp(108px, 9vw, 142px) 0 clamp(76px, 7vw, 112px);
-          border-bottom: 1px solid ${C.lineSoft};
+          justify-content: center;
+          padding: clamp(96px, 8vw, 128px) 0 clamp(50px, 5vw, 76px);
         }
 
-        .section-frame {
+        .poster-sheet {
           position: relative;
-          width: min(1180px, calc(100% - 96px));
-          min-height: min(620px, 70svh);
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: minmax(310px, 0.75fr) 1px minmax(430px, 1fr);
-          gap: clamp(42px, 5vw, 78px);
-          align-items: center;
-        }
-
-        .section-left,
-        .section-right {
-          position: relative;
-          z-index: 2;
+          width: min(1120px, calc(100% - 72px));
+          min-height: min(760px, 78svh);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          background: rgba(255, 244, 200, 0.18);
           opacity: 0;
           transform: translateY(18px);
         }
 
-        .concept-section.is-inview .section-left {
-          animation: fadeUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 80ms forwards;
+        .poster-section.is-inview .poster-sheet {
+          animation: sheetIn 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
 
-        .concept-section.is-inview .section-right {
-          animation: fadeUp 0.76s cubic-bezier(0.2, 0.8, 0.2, 1) 180ms forwards;
-        }
-
-        .section-axis {
+        .script-title {
           position: relative;
-          width: 1px;
-          height: 100%;
-          min-height: 560px;
-          background: ${C.line};
-          transform: scaleY(0);
-          transform-origin: top center;
-        }
-
-        .concept-section.is-inview .section-axis {
-          animation: axisDraw 0.82s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
-
-        .hero-title,
-        .section-title {
-          margin: 0;
-          color: ${C.ink};
-          font-family: ${MONO};
-          font-weight: 700;
-          line-height: 0.88;
-          letter-spacing: -0.075em;
-          text-transform: uppercase;
+          z-index: 3;
+          color: ${C.orange};
+          font-family: ${SCRIPT};
+          font-size: clamp(72px, 9vw, 138px);
+          line-height: 0.9;
+          letter-spacing: 0.01em;
           text-shadow:
-            0.018em 0 0 currentColor,
-            0 10px 0 rgba(32, 32, 32, 0.055);
+            5px 5px 0 rgba(25, 24, 23, 0.82),
+            0 0 1px rgba(25, 24, 23, 0.2);
+          margin: 0 0 26px;
         }
 
-        .hero-title {
-          font-size: clamp(70px, 9vw, 132px);
+        .small-script {
+          color: ${C.cyan};
+          text-shadow:
+            5px 5px 0 rgba(25, 24, 23, 0.72),
+            0 0 1px rgba(25, 24, 23, 0.2);
         }
 
-        .section-title {
-          max-width: 460px;
-          font-size: clamp(58px, 6.8vw, 104px);
-        }
-
-        .venue-name {
-          margin: clamp(24px, 2.8vw, 42px) 0 0;
-          max-width: 480px;
-          color: ${C.ink};
-          font-size: clamp(14px, 1.24vw, 20px);
-          line-height: 1.35;
-          font-weight: 700;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-        }
-
-        .hero-visual-stage {
+        .blue-bar {
           position: relative;
-          width: min(100%, 540px);
-          aspect-ratio: 1 / 1;
-          margin-left: auto;
+          z-index: 2;
+          width: 100%;
+          min-height: clamp(72px, 6vw, 92px);
+          display: flex;
+          align-items: center;
+          padding: 0 clamp(28px, 4vw, 58px);
+          background: ${C.blue};
+          color: ${C.cream};
+          overflow: hidden;
         }
 
-        .wireframe {
+        .blue-bar span {
+          width: 100%;
+          display: block;
+          font-family: ${HEAVY};
+          font-size: clamp(24px, 3.4vw, 52px);
+          line-height: 1;
+          letter-spacing: 0.48em;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+
+        .hero-main,
+        .space-main,
+        .experience-main {
+          position: relative;
+          display: grid;
+          grid-template-columns: minmax(0, 0.76fr) minmax(420px, 1fr);
+          align-items: center;
+          gap: clamp(32px, 5vw, 70px);
+        }
+
+        .hero-main {
+          min-height: 460px;
+          background: linear-gradient(
+            90deg,
+            ${C.cyan} 0%,
+            ${C.cyan} 45%,
+            ${C.black} 45%,
+            ${C.black} 100%
+          );
+          padding: clamp(34px, 4vw, 56px);
+        }
+
+        .hero-left h1,
+        .space-left h2,
+        .experience-left h2 {
+          margin: 0;
+          font-family: ${HEAVY};
+          font-weight: 900;
+          line-height: 0.88;
+          text-transform: uppercase;
+          letter-spacing: -0.06em;
+        }
+
+        .hero-left h1 {
+          color: ${C.cream};
+          font-size: clamp(56px, 7.8vw, 126px);
+          text-shadow: 6px 6px 0 rgba(25, 24, 23, 0.55);
+        }
+
+        .hero-right {
+          position: relative;
+          min-height: 430px;
+        }
+
+        .hero-graphic {
           position: absolute;
-          pointer-events: none;
-          user-select: none;
-          filter: drop-shadow(0 8px 18px rgba(232, 79, 138, 0.08));
+          inset: 0;
         }
 
-        .wireframe-top {
-          right: 8%;
-          top: 2%;
-          width: 35%;
-          opacity: 0.92;
-          animation: wireTop 7s ease-in-out infinite;
+        .sky-block,
+        .night-block {
+          position: absolute;
+          inset: 0;
         }
 
-        .wireframe-floor {
-          left: 6%;
-          bottom: 10%;
-          width: 52%;
-          opacity: 0.82;
-          transform: rotate(-8deg) skewX(-8deg);
-          animation: wireFloor 8s ease-in-out infinite;
-        }
-
-        .floor-shadow {
+        .planet {
           position: absolute;
           left: 16%;
-          right: 6%;
           bottom: 8%;
-          height: 16%;
-          background: radial-gradient(ellipse at center, rgba(32,32,32,0.2), transparent 70%);
-          filter: blur(10px);
+          width: min(300px, 44vw);
+          aspect-ratio: 1;
+          border-radius: 50%;
+          background:
+            radial-gradient(circle at 30% 28%, rgba(255,255,255,0.35), transparent 21%),
+            radial-gradient(circle at 48% 45%, #6ca8db, #284a92 72%);
+          box-shadow:
+            -28px 20px 40px rgba(246, 161, 0, 0.35),
+            26px 28px 38px rgba(0, 0, 0, 0.42);
         }
 
-        .monolith-img {
+        .moon {
           position: absolute;
-          right: 18%;
-          bottom: 15%;
-          width: 22%;
-          min-width: 86px;
-          pointer-events: none;
-          user-select: none;
-          filter:
-            drop-shadow(0 22px 28px rgba(32,32,32,0.22))
-            contrast(1.04);
-          animation: monolithFloat 6.6s ease-in-out infinite;
+          right: 15%;
+          top: 18%;
+          width: 124px;
+          aspect-ratio: 1;
+          border-radius: 50%;
+          background: ${C.cream};
+        }
+
+        .moon::after {
+          content: '';
+          position: absolute;
+          inset: -3px -18px 0 22px;
+          border-radius: 50%;
+          background: ${C.black};
+        }
+
+        .orange-disc {
+          position: absolute;
+          left: 0;
+          bottom: -22px;
+          width: clamp(130px, 16vw, 190px);
+          aspect-ratio: 1;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          background: ${C.orange};
+          color: ${C.cream};
+          box-shadow: 0 18px 36px rgba(25, 24, 23, 0.18);
+        }
+
+        .orange-disc span {
+          font-family: ${HEAVY};
+          font-size: clamp(58px, 6vw, 88px);
+          line-height: 1;
+        }
+
+        .bottom-strip {
+          display: flex;
+          justify-content: space-between;
+          gap: 24px;
+          padding: 18px 0 0;
+          color: ${C.ink};
+          font-family: ${MONO};
+          font-size: clamp(11px, 1vw, 16px);
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .space-main {
+          min-height: 500px;
+          padding: clamp(38px, 5vw, 64px) 0;
+        }
+
+        .space-left h2,
+        .experience-left h2 {
+          color: ${C.ink};
+          font-size: clamp(54px, 7.4vw, 118px);
+          text-shadow: 7px 7px 0 rgba(25, 24, 23, 0.14);
         }
 
         .button-stack {
           display: grid;
-          gap: 14px;
-          margin-top: clamp(40px, 4vw, 60px);
-          max-width: 430px;
+          gap: 12px;
+          margin-top: clamp(34px, 4vw, 56px);
+          max-width: 420px;
         }
 
         .poster-button {
@@ -673,57 +745,53 @@ export default function ConceptPage() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 14px 0;
+          padding: 15px 18px;
           color: ${C.ink};
           text-decoration: none;
-          border-top: 1px solid ${C.lineSoft};
-          font-weight: 700;
+          border: 2px solid ${C.ink};
+          background: transparent;
+          font-family: ${HEAVY};
+          font-weight: 900;
           text-transform: uppercase;
           opacity: 0;
           transform: translateY(10px);
           transition:
             color 0.22s ease,
+            background 0.22s ease,
             border-color 0.22s ease,
-            padding-left 0.22s ease,
-            background 0.22s ease;
+            transform 0.22s ease;
         }
 
-        .concept-section.is-inview .poster-button {
+        .poster-section.is-inview .poster-button {
           animation: buttonIn 0.48s ease var(--button-delay, 240ms) forwards;
-        }
-
-        .poster-button:last-child {
-          border-bottom: 1px solid ${C.lineSoft};
         }
 
         .poster-button span {
           position: relative;
           z-index: 1;
           display: block;
-          font-size: clamp(18px, 1.45vw, 24px);
+          font-size: clamp(18px, 1.6vw, 27px);
           line-height: 0.96;
           letter-spacing: -0.04em;
         }
 
         .poster-button::after {
           content: '→';
-          color: rgba(32,32,32,0.38);
-          font-size: 22px;
+          font-size: 24px;
           line-height: 1;
           opacity: 0;
           transform: translateX(-6px);
           transition:
             opacity 0.22s ease,
-            transform 0.22s ease,
-            color 0.22s ease;
+            transform 0.22s ease;
         }
 
         .poster-button:hover,
         .poster-button:focus-visible,
         .poster-button.is-active {
-          color: ${C.pink};
-          border-color: rgba(232, 79, 138, 0.46);
-          padding-left: 12px;
+          color: ${C.cream};
+          background: ${C.blue};
+          border-color: ${C.blue};
           outline: none;
         }
 
@@ -732,70 +800,42 @@ export default function ConceptPage() {
         .poster-button.is-active::after {
           opacity: 1;
           transform: translateX(0);
-          color: ${C.pink};
         }
 
         .poster-button.is-dark {
-          background: ${C.ink};
-          color: ${C.paper};
-          border-color: ${C.ink};
-          padding-left: 18px;
-          padding-right: 18px;
-        }
-
-        .poster-button.is-dark::after {
-          color: rgba(244,239,227,0.52);
-        }
-
-        .poster-button.is-dark:hover,
-        .poster-button.is-dark:focus-visible {
-          color: ${C.paper};
+          color: ${C.cream};
           background: ${C.black};
           border-color: ${C.black};
         }
 
-        .venue-frame {
+        .space-graphic {
           position: relative;
-          width: min(100%, 700px);
-          aspect-ratio: 2048 / 1140;
-          margin-left: auto;
-          padding: 22px;
-          border: 1px solid ${C.lineSoft};
-          background: rgba(255,255,255,0.15);
-          overflow: hidden;
+          width: 100%;
+          min-height: 430px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .venue-frame::before {
-          content: '';
+        .space-band {
           position: absolute;
-          inset: 0;
-          background:
-            linear-gradient(rgba(32,32,32,0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(32,32,32,0.08) 1px, transparent 1px);
-          background-size: 48px 48px;
-          opacity: 0.12;
-          pointer-events: none;
-        }
-
-        .scan-line {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 50%;
-          width: 2px;
-          background: ${C.pink};
-          box-shadow: 0 0 18px rgba(232, 79, 138, 0.45);
-          z-index: 5;
-          opacity: 0;
-          animation: scanLine 5.8s linear infinite;
+          left: -5%;
+          right: -5%;
+          top: 50%;
+          height: 62%;
+          background: linear-gradient(90deg, ${C.cyan} 0 45%, ${C.black} 45% 100%);
+          transform: translateY(-50%);
         }
 
         .venue-wrap {
           position: relative;
           z-index: 3;
-          width: 100%;
-          height: 100%;
-          filter: drop-shadow(0 20px 28px rgba(32,32,32,0.14));
+          width: min(100%, 720px);
+          aspect-ratio: 2048 / 1140;
+          filter:
+            drop-shadow(0 24px 32px rgba(25, 24, 23, 0.22))
+            saturate(0.94)
+            contrast(1.04);
         }
 
         .venue-img {
@@ -810,7 +850,6 @@ export default function ConceptPage() {
 
         .venue-base {
           z-index: 1;
-          filter: saturate(0.86) contrast(1.02);
         }
 
         .venue-highlight {
@@ -827,32 +866,35 @@ export default function ConceptPage() {
           visibility: visible;
         }
 
-        .experience-visual {
-          width: min(100%, 650px);
-          margin-left: auto;
+        .experience-main {
+          min-height: 500px;
+          padding: clamp(38px, 5vw, 64px) 0;
+        }
+
+        .experience-graphic {
+          width: 100%;
         }
 
         .timeline {
-          margin-bottom: clamp(32px, 4vw, 50px);
+          margin-bottom: clamp(28px, 3.6vw, 46px);
         }
 
         .timeline-times {
           display: flex;
-          align-items: center;
           justify-content: space-between;
           gap: 20px;
-          margin-bottom: 16px;
-          color: ${C.inkSoft};
-          font-size: clamp(11px, 0.96vw, 14px);
-          line-height: 1;
+          margin-bottom: 14px;
+          color: ${C.ink};
+          font-family: ${MONO};
+          font-size: clamp(11px, 1vw, 15px);
           font-weight: 700;
-          letter-spacing: 0.16em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
         }
 
         .timeline-track {
           position: relative;
-          height: 22px;
+          height: 24px;
         }
 
         .timeline-base,
@@ -861,27 +903,27 @@ export default function ConceptPage() {
           left: 0;
           right: 0;
           top: 50%;
-          height: 1px;
+          height: 2px;
           transform: translateY(-50%);
           transform-origin: left center;
         }
 
         .timeline-base {
-          background: ${C.line};
+          background: rgba(25, 24, 23, 0.22);
         }
 
         .timeline-fill {
-          background: ${C.pink};
+          background: ${C.orange};
           animation: timelineFill 8s ease-in-out infinite;
         }
 
         .timeline-dot {
           position: absolute;
           top: 50%;
-          width: 18px;
-          height: 18px;
+          width: 24px;
+          height: 24px;
           border-radius: 50%;
-          background: ${C.inkSoft};
+          background: ${C.ink};
           transform: translateY(-50%);
         }
 
@@ -901,25 +943,69 @@ export default function ConceptPage() {
           gap: 18px;
         }
 
-        .experience-buttons .poster-button {
-          min-height: 150px;
-          align-items: flex-end;
-          padding: 22px;
-          border: 1px solid ${C.lineSoft};
-          background: rgba(255,255,255,0.16);
+        .experience-button {
+          min-height: 220px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 24px;
+          color: ${C.ink};
+          text-decoration: none;
+          background: ${C.cyan};
+          border: 2px solid ${C.ink};
+          transition:
+            transform 0.22s ease,
+            box-shadow 0.22s ease;
         }
 
-        .experience-buttons .poster-button span {
-          font-size: clamp(24px, 2.4vw, 40px);
+        .experience-button.is-dark {
+          color: ${C.cream};
+          background: ${C.black};
         }
 
-        @keyframes axisDraw {
-          to {
-            transform: scaleY(1);
-          }
+        .experience-button:hover,
+        .experience-button:focus-visible {
+          transform: translateY(-4px);
+          box-shadow: 10px 10px 0 ${C.orange};
+          outline: none;
         }
 
-        @keyframes fadeUp {
+        .experience-time {
+          margin-bottom: 18px;
+          color: ${C.orange};
+          font-family: ${MONO};
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+        }
+
+        .experience-title {
+          font-family: ${HEAVY};
+          font-size: clamp(32px, 4vw, 66px);
+          line-height: 0.9;
+          letter-spacing: -0.07em;
+          text-transform: uppercase;
+        }
+
+        .bottom-black {
+          min-height: clamp(82px, 8vw, 126px);
+          display: flex;
+          align-items: center;
+          padding: 0 clamp(24px, 4vw, 52px);
+          background: ${C.black};
+          color: ${C.cream};
+        }
+
+        .bottom-black span {
+          font-family: ${HEAVY};
+          font-size: clamp(34px, 5.7vw, 92px);
+          line-height: 0.9;
+          letter-spacing: -0.055em;
+          text-transform: uppercase;
+        }
+
+        @keyframes sheetIn {
           to {
             opacity: 1;
             transform: translateY(0);
@@ -930,59 +1016,6 @@ export default function ConceptPage() {
           to {
             opacity: 1;
             transform: translateY(0);
-          }
-        }
-
-        @keyframes monolithFloat {
-          0%,
-          100% {
-            transform: translateY(0) rotate(0deg);
-          }
-
-          50% {
-            transform: translateY(-10px) rotate(0.6deg);
-          }
-        }
-
-        @keyframes wireTop {
-          0%,
-          100% {
-            transform: translateY(0) rotate(0deg);
-          }
-
-          50% {
-            transform: translateY(-8px) rotate(1.2deg);
-          }
-        }
-
-        @keyframes wireFloor {
-          0%,
-          100% {
-            transform: rotate(-8deg) skewX(-8deg) translateY(0);
-          }
-
-          50% {
-            transform: rotate(-8deg) skewX(-8deg) translateY(8px);
-          }
-        }
-
-        @keyframes scanLine {
-          0% {
-            left: 0%;
-            opacity: 0;
-          }
-
-          8% {
-            opacity: 1;
-          }
-
-          50% {
-            opacity: 0.72;
-          }
-
-          100% {
-            left: 100%;
-            opacity: 0;
           }
         }
 
@@ -1013,103 +1046,124 @@ export default function ConceptPage() {
         @keyframes dotLeft {
           0%,
           16% {
-            background: ${C.inkSoft};
+            background: ${C.ink};
           }
 
           24%,
           70% {
-            background: ${C.pink};
+            background: ${C.orange};
           }
 
           86%,
           100% {
-            background: ${C.inkSoft};
+            background: ${C.ink};
           }
         }
 
         @keyframes dotRight {
           0%,
           54% {
-            background: ${C.inkSoft};
+            background: ${C.ink};
           }
 
           68%,
           82% {
-            background: ${C.pink};
+            background: ${C.orange};
           }
 
           92%,
           100% {
-            background: ${C.inkSoft};
+            background: ${C.ink};
           }
         }
 
-        @media (max-width: 1180px) {
-          .section-frame {
+        @media (max-width: 1120px) {
+          .hero-main,
+          .space-main,
+          .experience-main {
             grid-template-columns: 1fr;
-            gap: 42px;
           }
 
-          .section-axis {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            height: auto;
-            min-height: 0;
+          .hero-right {
+            min-height: 360px;
           }
 
-          .section-left,
-          .section-right {
-            padding-left: 34px;
-          }
-
-          .hero-visual-stage,
-          .venue-frame,
-          .experience-visual {
-            margin-left: 0;
+          .space-graphic {
+            min-height: 360px;
           }
         }
 
         @media (max-width: 820px) {
-          .concept-section {
+          .poster-section {
             min-height: auto;
-            padding: 104px 0 74px;
+            padding: 96px 0 54px;
           }
 
-          .section-frame {
-            width: calc(100% - 34px);
+          .poster-sheet {
+            width: calc(100% - 30px);
             min-height: auto;
           }
 
-          .section-left,
-          .section-right {
-            padding-left: 24px;
+          .script-title {
+            font-size: clamp(58px, 17vw, 92px);
+            margin-bottom: 18px;
           }
 
-          .hero-title {
-            font-size: clamp(48px, 15vw, 78px);
+          .blue-bar {
+            min-height: 58px;
+            padding: 0 18px;
           }
 
-          .section-title {
-            font-size: clamp(46px, 13vw, 74px);
+          .blue-bar span {
+            font-size: clamp(16px, 5vw, 28px);
+            letter-spacing: 0.24em;
           }
 
-          .venue-name {
-            font-size: 11px;
-            letter-spacing: 0.14em;
+          .hero-main,
+          .space-main,
+          .experience-main {
+            gap: 28px;
+            padding: 28px 18px;
           }
 
-          .hero-visual-stage {
-            width: min(100%, 390px);
+          .hero-left h1,
+          .space-left h2,
+          .experience-left h2 {
+            font-size: clamp(42px, 13vw, 72px);
           }
 
-          .venue-frame {
-            padding: 14px;
+          .hero-right {
+            min-height: 300px;
+          }
+
+          .planet {
+            width: 190px;
+          }
+
+          .moon {
+            width: 84px;
+          }
+
+          .orange-disc {
+            width: 120px;
+          }
+
+          .orange-disc span {
+            font-size: 52px;
+          }
+
+          .bottom-strip {
+            flex-direction: column;
+            gap: 6px;
+            font-size: 10px;
           }
 
           .button-stack {
-            margin-top: 32px;
+            max-width: none;
+          }
+
+          .space-graphic {
+            min-height: 300px;
           }
 
           .experience-buttons {
@@ -1117,72 +1171,55 @@ export default function ConceptPage() {
             gap: 10px;
           }
 
-          .experience-buttons .poster-button {
-            min-height: 120px;
+          .experience-button {
+            min-height: 150px;
             padding: 16px;
           }
 
-          .experience-buttons .poster-button span {
-            font-size: clamp(18px, 5vw, 28px);
+          .experience-title {
+            font-size: clamp(22px, 7vw, 38px);
+          }
+
+          .bottom-black span {
+            font-size: clamp(28px, 9vw, 54px);
           }
         }
 
         @media (max-width: 520px) {
-          .section-frame {
-            width: calc(100% - 28px);
+          .blue-bar span {
+            letter-spacing: 0.12em;
           }
 
-          .hero-title {
-            font-size: clamp(42px, 14vw, 62px);
+          .experience-button {
+            min-height: 120px;
+            padding: 13px 10px;
           }
 
-          .section-title {
-            font-size: clamp(40px, 12vw, 58px);
+          .experience-time {
+            font-size: 8px;
+            letter-spacing: 0.08em;
           }
 
-          .poster-button span {
-            font-size: 17px;
+          .experience-title {
+            font-size: 18px;
           }
 
           .timeline-times {
             font-size: 9px;
             letter-spacing: 0.08em;
           }
-
-          .experience-buttons {
-            gap: 8px;
-          }
-
-          .experience-buttons .poster-button {
-            min-height: 104px;
-            padding: 13px 10px;
-          }
-
-          .experience-buttons .poster-button span {
-            font-size: 15px;
-          }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .section-axis,
-          .section-left,
-          .section-right,
+          .poster-sheet,
           .poster-button,
-          .wireframe,
-          .monolith-img,
-          .scan-line,
           .timeline-fill,
           .timeline-dot {
             animation: none !important;
             transition: none !important;
           }
 
-          .section-axis {
-            transform: scaleY(1) !important;
-          }
-
-          .section-left,
-          .section-right,
+          .poster-sheet,
           .poster-button {
             opacity: 1 !important;
             transform: none !important;
