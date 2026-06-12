@@ -14,6 +14,7 @@ const C = {
 const MONO = '"Space Mono", "Courier New", monospace';
 
 type AreaId = 'tent' | 'chefs-studio' | 'studio';
+type DonutPhase = 'top' | 'straight' | 'bottom';
 
 type Area = {
   id: AreaId;
@@ -109,15 +110,14 @@ export default function ConceptPage() {
 
   const [curtainPhase, setCurtainPhase] = useState<'visible' | 'fading' | 'gone'>('visible');
 
-  const [firstDonut, setFirstDonut] = useState<'bottom' | 'straight'>('bottom');
-  const [secondDonut, setSecondDonut] = useState<'top' | 'straight'>('top');
-
-  const [firstDonutGlitch, setFirstDonutGlitch] = useState(false);
-  const [secondDonutGlitch, setSecondDonutGlitch] = useState(false);
+  const [topDonutPhase, setTopDonutPhase] = useState<DonutPhase>('top');
+  const [bottomDonutPhase, setBottomDonutPhase] = useState<DonutPhase>('bottom');
+  const [topDonutGlitch, setTopDonutGlitch] = useState(false);
+  const [bottomDonutGlitch, setBottomDonutGlitch] = useState(false);
 
   const obeliskParRef = useRef<HTMLDivElement>(null);
-  const firstDonutParRef = useRef<HTMLDivElement>(null);
-  const secondDonutParRef = useRef<HTMLDivElement>(null);
+  const topDonutParRef = useRef<HTMLDivElement>(null);
+  const bottomDonutParRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let tt: number[] = [];
@@ -146,7 +146,6 @@ export default function ConceptPage() {
     };
 
     run();
-
     const iv = window.setInterval(run, 9600);
 
     return () => {
@@ -169,11 +168,8 @@ export default function ConceptPage() {
 
   useEffect(() => {
     const onS = () => setScrolled(window.scrollY > 24);
-
     onS();
-
     window.addEventListener('scroll', onS, { passive: true });
-
     return () => window.removeEventListener('scroll', onS);
   }, []);
 
@@ -184,29 +180,22 @@ export default function ConceptPage() {
       entries => {
         entries.forEach(e => {
           if (!e.isIntersecting) return;
-
           e.target.classList.add('iv');
           obs.unobserve(e.target);
         });
       },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -5% 0px',
-      }
+      { threshold: 0.1, rootMargin: '0px 0px -5% 0px' }
     );
 
     els.forEach(el => obs.observe(el));
-
     return () => obs.disconnect();
   }, []);
 
   useEffect(() => {
     const mq = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 900px)');
-
     const update = () => setTouch(mq.matches || window.innerWidth <= 900);
 
     update();
-
     mq.addEventListener('change', update);
     window.addEventListener('resize', update);
 
@@ -232,12 +221,12 @@ export default function ConceptPage() {
           obeliskParRef.current.style.transform = `translate(${x * 6}px, ${y * 4}px)`;
         }
 
-        if (firstDonutParRef.current) {
-          firstDonutParRef.current.style.transform = `translate(${x * 10}px, ${y * 8}px)`;
+        if (topDonutParRef.current) {
+          topDonutParRef.current.style.transform = `translate(${x * 9}px, ${y * 7}px)`;
         }
 
-        if (secondDonutParRef.current) {
-          secondDonutParRef.current.style.transform = `translate(${x * -8}px, ${y * -6}px)`;
+        if (bottomDonutParRef.current) {
+          bottomDonutParRef.current.style.transform = `translate(${x * -9}px, ${y * -7}px)`;
         }
       });
     };
@@ -251,58 +240,45 @@ export default function ConceptPage() {
   }, [touch]);
 
   useEffect(() => {
-    let swapTimer = 0;
-    let clearGlitchTimer = 0;
+    let timers: number[] = [];
+    let forward = true; // true: top->bottom and bottom->top, false: reverse
 
-    const trigger = () => {
-      setFirstDonutGlitch(true);
+    const scheduleCycle = (holdMs = 8000) => {
+      timers.push(
+        window.setTimeout(() => {
+          setTopDonutGlitch(true);
+          setBottomDonutGlitch(true);
 
-      swapTimer = window.setTimeout(() => {
-        setFirstDonut(prev => (prev === 'bottom' ? 'straight' : 'bottom'));
-      }, 210);
+          timers.push(
+            window.setTimeout(() => {
+              setTopDonutPhase('straight');
+              setBottomDonutPhase('straight');
+            }, 130)
+          );
 
-      clearGlitchTimer = window.setTimeout(() => {
-        setFirstDonutGlitch(false);
-      }, 620);
+          timers.push(
+            window.setTimeout(() => {
+              setTopDonutPhase(forward ? 'bottom' : 'top');
+              setBottomDonutPhase(forward ? 'top' : 'bottom');
+            }, 430)
+          );
+
+          timers.push(
+            window.setTimeout(() => {
+              setTopDonutGlitch(false);
+              setBottomDonutGlitch(false);
+              forward = !forward;
+              scheduleCycle(8000);
+            }, 820)
+          );
+        }, holdMs)
+      );
     };
 
-    const iv = window.setInterval(trigger, 8000);
+    scheduleCycle(8000);
 
     return () => {
-      window.clearInterval(iv);
-      window.clearTimeout(swapTimer);
-      window.clearTimeout(clearGlitchTimer);
-    };
-  }, []);
-
-  useEffect(() => {
-    let startTimer = 0;
-    let intervalTimer = 0;
-    let swapTimer = 0;
-    let clearGlitchTimer = 0;
-
-    const trigger = () => {
-      setSecondDonutGlitch(true);
-
-      swapTimer = window.setTimeout(() => {
-        setSecondDonut(prev => (prev === 'top' ? 'straight' : 'top'));
-      }, 210);
-
-      clearGlitchTimer = window.setTimeout(() => {
-        setSecondDonutGlitch(false);
-      }, 620);
-    };
-
-    startTimer = window.setTimeout(() => {
-      trigger();
-      intervalTimer = window.setInterval(trigger, 8000);
-    }, 4000);
-
-    return () => {
-      window.clearTimeout(startTimer);
-      window.clearInterval(intervalTimer);
-      window.clearTimeout(swapTimer);
-      window.clearTimeout(clearGlitchTimer);
+      timers.forEach(t => window.clearTimeout(t));
     };
   }, []);
 
@@ -356,13 +332,18 @@ export default function ConceptPage() {
             <div ref={obeliskParRef} className="par-wrap">
               <div className="hero-obelisk-stack">
                 <div className="hero-field">
+                  <span className="hero-back-aura" />
                   <span className="hero-glow" />
                   <span className="hero-mist hero-mist-a" />
                   <span className="hero-mist hero-mist-b" />
                   <span className="hero-grid-plane" />
+                  <span className="hero-base-glow" />
+                  <span className="hero-shadow-floor" />
+                  <span className="hero-dots hero-dots-a" />
+                  <span className="hero-dots hero-dots-b" />
+                  <span className="hero-front-veil" />
                   <span className="hero-burst-lines hero-burst-lines-a" />
                   <span className="hero-burst-lines hero-burst-lines-b" />
-                  <span className="hero-shadow-floor" />
                 </div>
 
                 <div className="hero-obelisk-shell">
@@ -372,14 +353,12 @@ export default function ConceptPage() {
                     className="hero-obelisk-img hero-obelisk-base"
                     draggable={false}
                   />
-
                   <img
                     src={IMG.obelisk}
                     alt=""
                     className="hero-obelisk-img hero-obelisk-ghost hero-obelisk-ghost-a"
                     draggable={false}
                   />
-
                   <img
                     src={IMG.obelisk}
                     alt=""
@@ -406,34 +385,38 @@ export default function ConceptPage() {
 
           <div className="donut-stage">
             <div
-              ref={firstDonutParRef}
-              className={`par-wrap donut-wrap ${firstDonutGlitch ? 'is-glitch' : ''}`}
+              ref={topDonutParRef}
+              className={`par-wrap donut-wrap ${topDonutGlitch ? 'is-glitch' : ''}`}
             >
               <img
-                src={IMG.donutBottom}
+                src={IMG.donutTop}
                 alt=""
-                className={`donut-img ${firstDonut === 'bottom' ? 'is-visible' : ''}`}
+                className={`donut-img donut-view-top ${topDonutPhase === 'top' ? 'is-visible' : ''}`}
                 draggable={false}
               />
-
               <img
                 src={IMG.donutStraight}
                 alt=""
-                className={`donut-img ${firstDonut === 'straight' ? 'is-visible' : ''}`}
+                className={`donut-img donut-view-straight ${topDonutPhase === 'straight' ? 'is-visible' : ''}`}
+                draggable={false}
+              />
+              <img
+                src={IMG.donutBottom}
+                alt=""
+                className={`donut-img donut-view-bottom ${topDonutPhase === 'bottom' ? 'is-visible' : ''}`}
                 draggable={false}
               />
 
               <img
-                src={firstDonut === 'bottom' ? IMG.donutBottom : IMG.donutStraight}
+                src={IMG.donutTop}
                 alt=""
-                className="donut-img donut-ghost donut-ghost-a"
+                className={`donut-img donut-ghost donut-ghost-top ${topDonutGlitch ? 'is-active' : ''}`}
                 draggable={false}
               />
-
               <img
-                src={firstDonut === 'bottom' ? IMG.donutBottom : IMG.donutStraight}
+                src={IMG.donutBottom}
                 alt=""
-                className="donut-img donut-ghost donut-ghost-b"
+                className={`donut-img donut-ghost donut-ghost-bottom ${topDonutGlitch ? 'is-active' : ''}`}
                 draggable={false}
               />
 
@@ -507,34 +490,38 @@ export default function ConceptPage() {
 
           <div className="donut-stage">
             <div
-              ref={secondDonutParRef}
-              className={`par-wrap donut-wrap ${secondDonutGlitch ? 'is-glitch' : ''}`}
+              ref={bottomDonutParRef}
+              className={`par-wrap donut-wrap ${bottomDonutGlitch ? 'is-glitch' : ''}`}
             >
               <img
                 src={IMG.donutTop}
                 alt=""
-                className={`donut-img ${secondDonut === 'top' ? 'is-visible' : ''}`}
+                className={`donut-img donut-view-top ${bottomDonutPhase === 'top' ? 'is-visible' : ''}`}
                 draggable={false}
               />
-
               <img
                 src={IMG.donutStraight}
                 alt=""
-                className={`donut-img ${secondDonut === 'straight' ? 'is-visible' : ''}`}
+                className={`donut-img donut-view-straight ${bottomDonutPhase === 'straight' ? 'is-visible' : ''}`}
+                draggable={false}
+              />
+              <img
+                src={IMG.donutBottom}
+                alt=""
+                className={`donut-img donut-view-bottom ${bottomDonutPhase === 'bottom' ? 'is-visible' : ''}`}
                 draggable={false}
               />
 
               <img
-                src={secondDonut === 'top' ? IMG.donutTop : IMG.donutStraight}
+                src={IMG.donutTop}
                 alt=""
-                className="donut-img donut-ghost donut-ghost-a"
+                className={`donut-img donut-ghost donut-ghost-top ${bottomDonutGlitch ? 'is-active' : ''}`}
                 draggable={false}
               />
-
               <img
-                src={secondDonut === 'top' ? IMG.donutTop : IMG.donutStraight}
+                src={IMG.donutBottom}
                 alt=""
-                className="donut-img donut-ghost donut-ghost-b"
+                className={`donut-img donut-ghost donut-ghost-bottom ${bottomDonutGlitch ? 'is-active' : ''}`}
                 draggable={false}
               />
 
@@ -895,8 +882,8 @@ export default function ConceptPage() {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: clamp(560px, 76svh, 860px);
-          height: clamp(400px, 54svh, 640px);
+          width: clamp(600px, 76svh, 900px);
+          height: clamp(430px, 56svh, 670px);
           transform: translate(-50%, -50%) scale(0.94);
           z-index: 0;
           pointer-events: none;
@@ -904,24 +891,44 @@ export default function ConceptPage() {
           animation: heroFieldContainerIn 1.7s cubic-bezier(0.22, 1, 0.36, 1) 2.3s forwards;
         }
 
-        .hero-glow {
+        .hero-back-aura {
           position: absolute;
           left: 50%;
-          top: 48%;
-          width: 72%;
-          height: 84%;
+          top: 46%;
+          width: 74%;
+          height: 88%;
           transform: translate(-50%, -50%);
           border-radius: 50%;
           background:
             radial-gradient(
               ellipse at center,
-              rgba(212, 80, 122, 0.28) 0%,
-              rgba(212, 80, 122, 0.15) 24%,
-              rgba(232, 226, 212, 0.18) 45%,
+              rgba(212, 80, 122, 0.14) 0%,
+              rgba(212, 80, 122, 0.08) 28%,
+              rgba(232, 226, 212, 0.14) 48%,
+              transparent 76%
+            );
+          filter: blur(22px);
+          animation: heroAuraPulse 11s ease-in-out 4s infinite;
+        }
+
+        .hero-glow {
+          position: absolute;
+          left: 50%;
+          top: 49%;
+          width: 70%;
+          height: 82%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          background:
+            radial-gradient(
+              ellipse at center,
+              rgba(212, 80, 122, 0.26) 0%,
+              rgba(212, 80, 122, 0.12) 24%,
+              rgba(232, 226, 212, 0.17) 44%,
               transparent 72%
             );
           filter: blur(26px);
-          opacity: 0.88;
+          opacity: 0.9;
           animation: heroGlowBreath 10s ease-in-out 4.2s infinite;
         }
 
@@ -938,7 +945,7 @@ export default function ConceptPage() {
           background:
             radial-gradient(circle at 34% 46%, rgba(212, 80, 122, 0.18), transparent 25%),
             radial-gradient(circle at 62% 44%, rgba(232, 226, 212, 0.24), transparent 29%),
-            radial-gradient(circle at 50% 66%, rgba(28, 28, 26, 0.055), transparent 31%);
+            radial-gradient(circle at 50% 66%, rgba(28, 28, 26, 0.05), transparent 31%);
           animation: mistDriftA 13s ease-in-out 4.5s infinite;
         }
 
@@ -958,16 +965,16 @@ export default function ConceptPage() {
           transform: translate(-50%, -50%) perspective(1100px) rotateX(76deg);
           transform-origin: center;
           border-radius: 42%;
-          opacity: 0.38;
+          opacity: 0.35;
           background:
             repeating-linear-gradient(
               90deg,
-              rgba(212, 80, 122, 0.18) 0 1px,
+              rgba(212, 80, 122, 0.16) 0 1px,
               transparent 1px 42px
             ),
             repeating-linear-gradient(
               0deg,
-              rgba(212, 80, 122, 0.16) 0 1px,
+              rgba(212, 80, 122, 0.14) 0 1px,
               transparent 1px 34px
             );
           mask-image: radial-gradient(ellipse at center, #000 0%, #000 58%, transparent 82%);
@@ -981,6 +988,88 @@ export default function ConceptPage() {
           animation:
             gridBreathSoft 10s ease-in-out 4.5s infinite,
             heroBurstShift 10s steps(1, end) 6.2s infinite;
+        }
+
+        .hero-base-glow {
+          position: absolute;
+          left: 50%;
+          top: 67%;
+          width: 26%;
+          height: 10%;
+          transform: translate(-50%, -50%);
+          background:
+            radial-gradient(
+              ellipse,
+              rgba(212, 80, 122, 0.22) 0%,
+              rgba(232, 226, 212, 0.12) 38%,
+              transparent 74%
+            );
+          filter: blur(12px);
+          opacity: 0.82;
+          animation: baseGlowPulse 8.5s ease-in-out 4.5s infinite;
+        }
+
+        .hero-shadow-floor {
+          position: absolute;
+          left: 50%;
+          top: 68.5%;
+          width: 24%;
+          height: 9%;
+          transform: translate(-50%, -50%);
+          background: radial-gradient(ellipse, rgba(28, 28, 26, 0.18), transparent 72%);
+          filter: blur(12px);
+          opacity: 0.18;
+          animation: floorShadowBreath 9s ease-in-out 4.6s infinite;
+        }
+
+        .hero-dots {
+          position: absolute;
+          inset: 0;
+          opacity: 0.55;
+          pointer-events: none;
+        }
+
+        .hero-dots-a {
+          background:
+            radial-gradient(circle at 41% 32%, rgba(212, 80, 122, 0.75) 0 1px, transparent 1.7px),
+            radial-gradient(circle at 58% 36%, rgba(232, 226, 212, 0.7) 0 1px, transparent 1.7px),
+            radial-gradient(circle at 34% 57%, rgba(212, 80, 122, 0.7) 0 1.2px, transparent 1.8px),
+            radial-gradient(circle at 67% 54%, rgba(232, 226, 212, 0.72) 0 1px, transparent 1.8px),
+            radial-gradient(circle at 48% 67%, rgba(212, 80, 122, 0.8) 0 1px, transparent 1.7px),
+            radial-gradient(circle at 60% 63%, rgba(232, 226, 212, 0.66) 0 1px, transparent 1.6px);
+          animation: dotsFloatA 11s ease-in-out 4.5s infinite;
+        }
+
+        .hero-dots-b {
+          background:
+            radial-gradient(circle at 53% 28%, rgba(232, 226, 212, 0.7) 0 1px, transparent 1.6px),
+            radial-gradient(circle at 30% 43%, rgba(212, 80, 122, 0.7) 0 1px, transparent 1.7px),
+            radial-gradient(circle at 71% 46%, rgba(212, 80, 122, 0.72) 0 1px, transparent 1.7px),
+            radial-gradient(circle at 40% 73%, rgba(232, 226, 212, 0.7) 0 1px, transparent 1.6px),
+            radial-gradient(circle at 63% 74%, rgba(212, 80, 122, 0.72) 0 1px, transparent 1.7px);
+          animation: dotsFloatB 14s ease-in-out 4.9s infinite;
+        }
+
+        .hero-front-veil {
+          position: absolute;
+          left: 50%;
+          top: 57%;
+          width: 58%;
+          height: 34%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          background:
+            linear-gradient(
+              180deg,
+              rgba(232, 226, 212, 0.02) 0%,
+              rgba(232, 226, 212, 0.08) 40%,
+              rgba(212, 80, 122, 0.06) 72%,
+              transparent 100%
+            );
+          filter: blur(16px);
+          opacity: 0.72;
+          mix-blend-mode: screen;
+          animation: frontVeilDrift 9s ease-in-out 4.4s infinite;
         }
 
         .hero-burst-lines {
@@ -1011,19 +1100,6 @@ export default function ConceptPage() {
 
         .hero-burst-lines-b {
           animation: heroBurstLinesB 10s steps(1, end) 6.2s infinite;
-        }
-
-        .hero-shadow-floor {
-          position: absolute;
-          left: 50%;
-          top: 67%;
-          width: 24%;
-          height: 9%;
-          transform: translate(-50%, -50%);
-          background: radial-gradient(ellipse, rgba(28, 28, 26, 0.16), transparent 72%);
-          filter: blur(12px);
-          opacity: 0.18;
-          animation: floorShadowBreath 9s ease-in-out 4.6s infinite;
         }
 
         .hero-obelisk-shell {
@@ -1170,18 +1246,44 @@ export default function ConceptPage() {
           height: 100%;
           object-fit: contain;
           opacity: 0;
-          transform: scale(0.985);
-          transition: opacity 0.34s ease, transform 0.34s ease, filter 0.34s ease;
+          transition:
+            opacity 0.28s ease,
+            transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+            filter 0.28s ease;
+          will-change: opacity, transform, filter;
+        }
+
+        .donut-view-top {
+          transform: translateY(-8px) scale(0.96);
+        }
+
+        .donut-view-straight {
+          transform: translateY(0) scaleX(1.02) scaleY(0.9);
+          filter: blur(0.25px);
+        }
+
+        .donut-view-bottom {
+          transform: translateY(8px) scale(0.96);
         }
 
         .donut-img.is-visible {
           opacity: 1;
-          transform: scale(1);
+        }
+
+        .donut-view-top.is-visible {
+          transform: translateY(-3px) scale(1);
+        }
+
+        .donut-view-straight.is-visible {
+          transform: translateY(0) scaleX(1.04) scaleY(0.93);
+        }
+
+        .donut-view-bottom.is-visible {
+          transform: translateY(3px) scale(1);
         }
 
         .donut-wrap.is-glitch .donut-img.is-visible {
-          transform: translateX(-4px) scale(1.012);
-          filter: contrast(1.08) saturate(1.08);
+          filter: contrast(1.08) saturate(1.05);
         }
 
         .donut-ghost {
@@ -1191,22 +1293,22 @@ export default function ConceptPage() {
           pointer-events: none;
         }
 
-        .donut-ghost-a {
+        .donut-ghost-top {
           filter: brightness(0) saturate(100%) invert(47%) sepia(38%) saturate(1159%)
             hue-rotate(299deg) brightness(90%) contrast(91%);
         }
 
-        .donut-ghost-b {
+        .donut-ghost-bottom {
           filter: brightness(0) saturate(100%) invert(93%) sepia(9%) saturate(453%)
             hue-rotate(350deg) brightness(99%) contrast(84%);
         }
 
-        .donut-wrap.is-glitch .donut-ghost-a {
-          animation: donutGhostA 0.62s steps(1, end) forwards;
+        .donut-ghost.is-active.donut-ghost-top {
+          animation: donutGhostTop 0.82s steps(1, end) forwards;
         }
 
-        .donut-wrap.is-glitch .donut-ghost-b {
-          animation: donutGhostB 0.62s steps(1, end) forwards;
+        .donut-ghost.is-active.donut-ghost-bottom {
+          animation: donutGhostBottom 0.82s steps(1, end) forwards;
         }
 
         .donut-glitch-slice {
@@ -1236,11 +1338,11 @@ export default function ConceptPage() {
         }
 
         .donut-wrap.is-glitch .dgs-a {
-          animation: donutGlitchSliceA 0.62s steps(1, end) forwards;
+          animation: donutGlitchSliceA 0.82s steps(1, end) forwards;
         }
 
         .donut-wrap.is-glitch .dgs-b {
-          animation: donutGlitchSliceB 0.62s steps(1, end) forwards;
+          animation: donutGlitchSliceB 0.82s steps(1, end) forwards;
         }
 
         .donut-signal-line {
@@ -1254,9 +1356,9 @@ export default function ConceptPage() {
           background: linear-gradient(
             90deg,
             transparent,
-            rgba(212, 80, 122, 0.6),
-            rgba(232, 226, 212, 0.65),
-            rgba(212, 80, 122, 0.6),
+            rgba(212, 80, 122, 0.7),
+            rgba(232, 226, 212, 0.8),
+            rgba(212, 80, 122, 0.7),
             transparent
           );
           transform: translateY(-50%);
@@ -1264,7 +1366,7 @@ export default function ConceptPage() {
         }
 
         .donut-wrap.is-glitch .donut-signal-line {
-          animation: donutSignalLine 0.62s steps(1, end) forwards;
+          animation: donutSignalLine 0.82s steps(1, end) forwards;
         }
 
         .a-space {
@@ -1624,11 +1726,7 @@ export default function ConceptPage() {
           inset: 0;
           background:
             linear-gradient(135deg, rgba(212, 80, 122, 0.14), transparent 42%),
-            repeating-linear-gradient(
-              90deg,
-              rgba(28, 28, 26, 0.05) 0 1px,
-              transparent 1px 11px
-            );
+            repeating-linear-gradient(90deg, rgba(28, 28, 26, 0.05) 0 1px, transparent 1px 11px);
           opacity: 0;
           transition: opacity 0.22s;
         }
@@ -1709,7 +1807,6 @@ export default function ConceptPage() {
           from {
             transform: scaleY(0);
           }
-
           to {
             transform: scaleY(1);
           }
@@ -1735,7 +1832,6 @@ export default function ConceptPage() {
             transform: translate(-50%, -50%) scale(0.9);
             filter: blur(8px);
           }
-
           to {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
@@ -1748,19 +1844,29 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0);
           }
-
           50% {
             transform: translateY(-8px);
+          }
+        }
+
+        @keyframes heroAuraPulse {
+          0%,
+          100% {
+            opacity: 0.74;
+            transform: translate(-50%, -50%) scale(0.98);
+          }
+          50% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.03);
           }
         }
 
         @keyframes heroGlowBreath {
           0%,
           100% {
-            opacity: 0.76;
+            opacity: 0.8;
             transform: translate(-50%, -50%) scale(0.98);
           }
-
           50% {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1.055);
@@ -1773,7 +1879,6 @@ export default function ConceptPage() {
             opacity: 0.26;
             transform: translate(-50%, -50%) perspective(1100px) rotateX(76deg) scale(0.99);
           }
-
           50% {
             opacity: 0.42;
             transform: translate(-50%, -50%) perspective(1100px) rotateX(76deg) scale(1.04);
@@ -1786,7 +1891,6 @@ export default function ConceptPage() {
             opacity: 0.34;
             transform: scale(1) translate3d(-2%, -1%, 0);
           }
-
           50% {
             opacity: 0.52;
             transform: scale(1.08) translate3d(3%, 2%, 0);
@@ -1799,10 +1903,21 @@ export default function ConceptPage() {
             opacity: 0.26;
             transform: scale(1) translate3d(2%, 1%, 0) rotate(0deg);
           }
-
           50% {
             opacity: 0.4;
             transform: scale(1.12) translate3d(-3%, -2%, 0) rotate(8deg);
+          }
+        }
+
+        @keyframes baseGlowPulse {
+          0%,
+          100% {
+            opacity: 0.6;
+            transform: translate(-50%, -50%) scale(0.94);
+          }
+          50% {
+            opacity: 0.9;
+            transform: translate(-50%, -50%) scale(1.08);
           }
         }
 
@@ -1812,10 +1927,45 @@ export default function ConceptPage() {
             opacity: 0.14;
             transform: translate(-50%, -50%) scale(0.94);
           }
-
           50% {
             opacity: 0.24;
             transform: translate(-50%, -50%) scale(1.04);
+          }
+        }
+
+        @keyframes dotsFloatA {
+          0%,
+          100% {
+            opacity: 0.48;
+            transform: translate3d(0, 0, 0);
+          }
+          50% {
+            opacity: 0.78;
+            transform: translate3d(6px, -5px, 0);
+          }
+        }
+
+        @keyframes dotsFloatB {
+          0%,
+          100% {
+            opacity: 0.34;
+            transform: translate3d(0, 0, 0);
+          }
+          50% {
+            opacity: 0.62;
+            transform: translate3d(-5px, 6px, 0);
+          }
+        }
+
+        @keyframes frontVeilDrift {
+          0%,
+          100% {
+            opacity: 0.54;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          50% {
+            opacity: 0.78;
+            transform: translate(-50%, -49%) scale(1.03);
           }
         }
 
@@ -1825,15 +1975,12 @@ export default function ConceptPage() {
           100% {
             filter: none;
           }
-
           85% {
             filter: drop-shadow(-5px 0 0 rgba(212, 80, 122, 0.18));
           }
-
           86.5% {
             filter: drop-shadow(5px 0 0 rgba(232, 226, 212, 0.18));
           }
-
           88% {
             filter: none;
           }
@@ -1847,25 +1994,21 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
-
           85% {
             opacity: 0.58;
             transform: translate3d(-8px, 0, 0);
             clip-path: inset(12% 0 70% 0);
           }
-
           86.5% {
             opacity: 0.32;
             transform: translate3d(8px, 0, 0);
             clip-path: inset(42% 0 34% 0);
           }
-
           88.2% {
             opacity: 0.16;
             transform: translate3d(-5px, 0, 0);
             clip-path: inset(68% 0 10% 0);
           }
-
           89% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -1881,19 +2024,16 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
-
           85.2% {
             opacity: 0.34;
             transform: translate3d(7px, 0, 0);
             clip-path: inset(28% 0 46% 0);
           }
-
           87.2% {
             opacity: 0.2;
             transform: translate3d(-7px, 0, 0);
             clip-path: inset(58% 0 16% 0);
           }
-
           88.6% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -1908,17 +2048,14 @@ export default function ConceptPage() {
             opacity: 0;
             transform: translate3d(0, 0, 0);
           }
-
           85% {
             opacity: 0.2;
             transform: translate3d(-6px, 0, 0);
           }
-
           86.4% {
             opacity: 0.09;
             transform: translate3d(-3px, 0, 0);
           }
-
           87.6% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -1932,17 +2069,14 @@ export default function ConceptPage() {
             opacity: 0;
             transform: translate3d(0, 0, 0);
           }
-
           85.6% {
             opacity: 0.16;
             transform: translate3d(6px, 0, 0);
           }
-
           86.9% {
             opacity: 0.07;
             transform: translate3d(3px, 0, 0);
           }
-
           88% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -1955,17 +2089,14 @@ export default function ConceptPage() {
             transform: translateY(-28px) scaleY(0.35);
             filter: blur(2px);
           }
-
           60% {
             opacity: 1;
             transform: translateY(4px) scaleY(1.06);
             filter: blur(0);
           }
-
           80% {
             transform: translateY(-2px) scaleY(0.98);
           }
-
           100% {
             opacity: 1;
             transform: translateY(0) scaleY(1);
@@ -1980,22 +2111,18 @@ export default function ConceptPage() {
             transform: translateX(-8px);
             filter: blur(1.5px);
           }
-
           60% {
             opacity: 1;
             clip-path: inset(0 0 0 0);
             transform: translateX(0);
             filter: blur(0);
           }
-
           74% {
             transform: translateX(4px);
           }
-
           86% {
             transform: translateX(-2px);
           }
-
           100% {
             opacity: 1;
             clip-path: inset(0 0 0 0);
@@ -2011,7 +2138,6 @@ export default function ConceptPage() {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
           }
-
           85% {
             filter: blur(0.4px);
             text-shadow:
@@ -2019,7 +2145,6 @@ export default function ConceptPage() {
               0.08em 0 0 rgba(232, 226, 212, 0.92),
               0.018em 0 0 currentColor;
           }
-
           86.5% {
             filter: none;
             text-shadow:
@@ -2027,7 +2152,6 @@ export default function ConceptPage() {
               -0.09em 0 0 rgba(232, 226, 212, 0.76),
               0.018em 0 0 currentColor;
           }
-
           88% {
             filter: blur(0.3px);
             text-shadow:
@@ -2035,12 +2159,10 @@ export default function ConceptPage() {
               0.07em 0.02em 0 rgba(232, 226, 212, 0.84),
               0.018em 0 0 currentColor;
           }
-
           89.5% {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
           }
-
           91% {
             filter: none;
             text-shadow:
@@ -2048,7 +2170,6 @@ export default function ConceptPage() {
               -0.05em 0 0 rgba(122, 120, 112, 0.62),
               0.018em 0 0 currentColor;
           }
-
           92.5% {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
@@ -2066,12 +2187,10 @@ export default function ConceptPage() {
             opacity: 0;
             transform: translateY(36px) scale(0.92);
           }
-
           66% {
             opacity: 1;
             transform: translateY(-3px) scale(1.02);
           }
-
           100% {
             opacity: 1;
             transform: translateY(0) scale(1);
@@ -2083,45 +2202,48 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0) rotate(0deg);
           }
-
           50% {
             transform: translateY(-10px) rotate(0.35deg);
           }
         }
 
-        @keyframes donutGhostA {
+        @keyframes donutGhostTop {
           0%,
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0) scale(1);
           }
-
-          28% {
-            opacity: 0.26;
-            transform: translate3d(-8px, 0, 0) scale(1.012);
+          18% {
+            opacity: 0.28;
+            transform: translate3d(-10px, -2px, 0) scale(1.02);
           }
-
-          52% {
+          42% {
             opacity: 0.12;
-            transform: translate3d(-3px, 1px, 0) scale(0.996);
+            transform: translate3d(-4px, 0, 0) scale(1);
+          }
+          62% {
+            opacity: 0.18;
+            transform: translate3d(6px, 1px, 0) scale(0.99);
           }
         }
 
-        @keyframes donutGhostB {
+        @keyframes donutGhostBottom {
           0%,
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0) scale(1);
           }
-
-          32% {
-            opacity: 0.2;
-            transform: translate3d(8px, 0, 0) scale(1.006);
+          22% {
+            opacity: 0.22;
+            transform: translate3d(10px, 2px, 0) scale(1.02);
           }
-
-          58% {
-            opacity: 0.08;
-            transform: translate3d(3px, -1px, 0) scale(0.998);
+          46% {
+            opacity: 0.1;
+            transform: translate3d(4px, 0, 0) scale(1);
+          }
+          66% {
+            opacity: 0.16;
+            transform: translate3d(-6px, -1px, 0) scale(0.99);
           }
         }
 
@@ -2130,17 +2252,18 @@ export default function ConceptPage() {
             opacity: 0;
             transform: translate3d(0, 0, 0);
           }
-
-          28% {
+          20% {
             opacity: 0.58;
             transform: translate3d(-10px, 0, 0);
           }
-
-          54% {
+          46% {
             opacity: 0.28;
             transform: translate3d(8px, 0, 0);
           }
-
+          72% {
+            opacity: 0.2;
+            transform: translate3d(-5px, 0, 0);
+          }
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -2152,17 +2275,18 @@ export default function ConceptPage() {
             opacity: 0;
             transform: translate3d(0, 0, 0);
           }
-
-          34% {
-            opacity: 0.38;
+          28% {
+            opacity: 0.4;
             transform: translate3d(8px, 0, 0);
           }
-
-          66% {
+          52% {
             opacity: 0.16;
             transform: translate3d(-6px, 0, 0);
           }
-
+          78% {
+            opacity: 0.12;
+            transform: translate3d(5px, 0, 0);
+          }
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -2173,20 +2297,17 @@ export default function ConceptPage() {
           0%,
           100% {
             opacity: 0;
-            transform: translateY(-50%) scaleX(0.3);
+            transform: translateY(-50%) scaleX(0.2);
           }
-
-          26% {
-            opacity: 0.9;
+          18% {
+            opacity: 0.92;
             transform: translateY(-50%) scaleX(1);
           }
-
-          44% {
-            opacity: 0.3;
+          42% {
+            opacity: 0.34;
             transform: translateY(-50%) scaleX(0.72);
           }
-
-          62% {
+          66% {
             opacity: 0.7;
             transform: translateY(-50%) scaleX(1.06);
           }
@@ -2211,7 +2332,6 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0) rotate(-0.15deg);
           }
-
           50% {
             transform: translateY(-9px) rotate(0.22deg);
           }
@@ -2225,25 +2345,21 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
-
           73% {
             opacity: 0.18;
             transform: translate3d(-8px, -3px, 0);
             clip-path: inset(0% 0 82% 0);
           }
-
           74% {
             opacity: 0.2;
             transform: translate3d(10px, 4px, 0);
             clip-path: inset(18% 0 56% 0);
           }
-
           76% {
             opacity: 0.16;
             transform: translate3d(8px, 5px, 0);
             clip-path: inset(54% 0 14% 0);
           }
-
           78% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -2259,25 +2375,21 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
-
           73.2% {
             opacity: 0.12;
             transform: translate3d(7px, 5px, 0);
             clip-path: inset(8% 0 72% 0);
           }
-
           74.8% {
             opacity: 0.14;
             transform: translate3d(-8px, -3px, 0);
             clip-path: inset(26% 0 44% 0);
           }
-
           76.4% {
             opacity: 0.1;
             transform: translate3d(4px, -5px, 0);
             clip-path: inset(62% 0 8% 0);
           }
-
           78% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -2297,17 +2409,14 @@ export default function ConceptPage() {
             transform: scaleX(0);
             opacity: 0;
           }
-
           22% {
             transform: scaleX(0);
             opacity: 1;
           }
-
           56% {
             transform: scaleX(1);
             opacity: 1;
           }
-
           72%,
           100% {
             transform: scaleX(1);
@@ -2333,12 +2442,10 @@ export default function ConceptPage() {
             transform: scale(1);
             opacity: 0.55;
           }
-
           75% {
             transform: scale(3.2);
             opacity: 0;
           }
-
           100% {
             transform: scale(1);
             opacity: 0;
@@ -2350,12 +2457,10 @@ export default function ConceptPage() {
           17% {
             opacity: 0;
           }
-
           22%,
           62% {
             opacity: 1;
           }
-
           78%,
           100% {
             opacity: 0;
@@ -2367,12 +2472,10 @@ export default function ConceptPage() {
           47% {
             opacity: 0;
           }
-
           56%,
           70% {
             opacity: 1;
           }
-
           84%,
           100% {
             opacity: 0;
@@ -2385,13 +2488,11 @@ export default function ConceptPage() {
             color: rgba(28, 28, 26, 0.72);
             filter: none;
           }
-
           22%,
           62% {
             color: ${C.pink};
             filter: drop-shadow(0 0 4px rgba(212, 80, 122, 0.18));
           }
-
           78%,
           100% {
             color: rgba(28, 28, 26, 0.72);
@@ -2406,24 +2507,20 @@ export default function ConceptPage() {
             filter: none;
             transform: translateX(0);
           }
-
           50% {
             color: ${C.pink};
             filter: drop-shadow(0 0 4px rgba(212, 80, 122, 0.22));
             transform: translateX(-2px);
           }
-
           52% {
             transform: translateX(2px);
           }
-
           56%,
           70% {
             color: ${C.pink};
             filter: drop-shadow(0 0 4px rgba(212, 80, 122, 0.22));
             transform: translateX(0);
           }
-
           84%,
           100% {
             color: rgba(28, 28, 26, 0.72);
@@ -2444,11 +2541,9 @@ export default function ConceptPage() {
           0% {
             clip-path: inset(0 100% 100% 0);
           }
-
           45% {
             clip-path: inset(0 0 100% 0);
           }
-
           100% {
             clip-path: inset(0 0 0 0);
           }
@@ -2474,8 +2569,8 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(460px, 64svh, 660px);
-            height: clamp(340px, 48svh, 500px);
+            width: clamp(470px, 64svh, 700px);
+            height: clamp(360px, 48svh, 520px);
           }
 
           .donut-wrap {
@@ -2504,8 +2599,8 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(350px, 52svh, 500px);
-            height: clamp(280px, 40svh, 410px);
+            width: clamp(360px, 52svh, 520px);
+            height: clamp(300px, 40svh, 420px);
           }
 
           .hero-h1 {
@@ -2550,7 +2645,7 @@ export default function ConceptPage() {
 
           .hero-field {
             width: clamp(300px, 46svh, 410px);
-            height: clamp(240px, 34svh, 330px);
+            height: clamp(250px, 34svh, 340px);
           }
 
           .hero-h1 {
@@ -2603,11 +2698,15 @@ export default function ConceptPage() {
           .hero-obelisk-drop,
           .hero-obelisk-stack,
           .hero-field,
+          .hero-back-aura,
           .hero-glow,
           .hero-mist,
           .hero-grid-plane,
-          .hero-burst-lines,
+          .hero-base-glow,
           .hero-shadow-floor,
+          .hero-dots,
+          .hero-front-veil,
+          .hero-burst-lines,
           .hero-obelisk-ghost,
           .hero-h1,
           .tt-hero,
@@ -2650,10 +2749,14 @@ export default function ConceptPage() {
           }
 
           .hero-field,
+          .hero-back-aura,
           .hero-glow,
           .hero-mist,
           .hero-grid-plane,
-          .hero-shadow-floor {
+          .hero-base-glow,
+          .hero-shadow-floor,
+          .hero-dots,
+          .hero-front-veil {
             opacity: 1;
           }
 
