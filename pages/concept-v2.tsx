@@ -901,8 +901,8 @@ export default function ConceptPage() {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: clamp(720px, 82svh, 980px);
-          height: clamp(500px, 64svh, 760px);
+          width: clamp(820px, 88svh, 1120px);
+          height: clamp(560px, 70svh, 820px);
           transform: translate(-50%, -50%) scale(0.94);
           z-index: 0;
           pointer-events: none;
@@ -913,18 +913,19 @@ export default function ConceptPage() {
         .hero-back-aura {
           position: absolute;
           left: 50%;
-          top: 46%;
-          width: 78%;
-          height: 74%;
+          top: 51%;
+          width: 86%;
+          height: 80%;
           transform: translate(-50%, -50%);
           border-radius: 50%;
           background: radial-gradient(
             ellipse at center,
-            rgba(212, 80, 122, 0.08) 0%,
-            rgba(212, 80, 122, 0.04) 34%,
-            transparent 76%
+            rgba(212, 80, 122, 0.18) 0%,
+            rgba(212, 80, 122, 0.1) 32%,
+            rgba(212, 80, 122, 0.04) 52%,
+            transparent 78%
           );
-          filter: blur(20px);
+          filter: blur(28px);
           animation: heroAuraPulse 10s ease-in-out 4s infinite;
         }
 
@@ -936,81 +937,84 @@ export default function ConceptPage() {
           pointer-events: none;
           background-repeat: no-repeat;
           background-size: cover;
-          mix-blend-mode: multiply;
         }
 
         .hero-rear-mist {
-          opacity: 0.5;
-          filter: blur(22px);
+          opacity: 0.9;
+          filter: blur(28px);
+          mix-blend-mode: normal;
         }
 
         .hero-front-mist {
-          opacity: 0.34;
-          filter: blur(18px);
+          opacity: 0.78;
+          filter: blur(22px);
+          mix-blend-mode: normal;
         }
 
         .hero-rear-mist-a {
-          top: 77%;
-          width: 94%;
-          height: 26%;
+          top: 76%;
+          width: 108%;
+          height: 30%;
           transform: translate(-50%, -50%);
           background:
-            radial-gradient(ellipse at 8% 68%, rgba(212, 80, 122, 0.18) 0%, rgba(212, 80, 122, 0.14) 12%, transparent 32%),
-            radial-gradient(ellipse at 24% 54%, rgba(212, 80, 122, 0.2) 0%, rgba(212, 80, 122, 0.16) 12%, transparent 34%),
-            radial-gradient(ellipse at 40% 64%, rgba(212, 80, 122, 0.18) 0%, rgba(212, 80, 122, 0.14) 12%, transparent 34%),
-            radial-gradient(ellipse at 57% 52%, rgba(212, 80, 122, 0.18) 0%, rgba(212, 80, 122, 0.14) 13%, transparent 34%),
-            radial-gradient(ellipse at 72% 62%, rgba(212, 80, 122, 0.19) 0%, rgba(212, 80, 122, 0.15) 12%, transparent 34%),
-            radial-gradient(ellipse at 88% 57%, rgba(212, 80, 122, 0.18) 0%, rgba(212, 80, 122, 0.14) 12%, transparent 34%);
+            radial-gradient(ellipse at 8% 68%, rgba(212, 80, 122, 0.34) 0%, rgba(212, 80, 122, 0.24) 16%, transparent 36%),
+            radial-gradient(ellipse at 22% 54%, rgba(212, 80, 122, 0.38) 0%, rgba(212, 80, 122, 0.27) 16%, transparent 38%),
+            radial-gradient(ellipse at 38% 64%, rgba(212, 80, 122, 0.34) 0%, rgba(212, 80, 122, 0.24) 16%, transparent 38%),
+            radial-gradient(ellipse at 54% 52%, rgba(212, 80, 122, 0.35) 0%, rgba(212, 80, 122, 0.25) 16%, transparent 38%),
+            radial-gradient(ellipse at 70% 62%, rgba(212, 80, 122, 0.36) 0%, rgba(212, 80, 122, 0.25) 16%, transparent 38%),
+            radial-gradient(ellipse at 86% 57%, rgba(212, 80, 122, 0.34) 0%, rgba(212, 80, 122, 0.24) 16%, transparent 38%);
           animation: rearMistDriftA 12s ease-in-out 4.5s infinite;
         }
 
         .hero-rear-mist-b {
-          top: 73%;
-          width: 80%;
-          height: 18%;
+          top: 71%;
+          width: 92%;
+          height: 20%;
           transform: translate(-50%, -50%);
           background:
-            radial-gradient(ellipse at 18% 65%, rgba(232, 226, 212, 0.14) 0%, rgba(212, 80, 122, 0.12) 15%, transparent 38%),
-            radial-gradient(ellipse at 48% 48%, rgba(212, 80, 122, 0.16) 0%, rgba(212, 80, 122, 0.12) 15%, transparent 38%),
-            radial-gradient(ellipse at 80% 60%, rgba(232, 226, 212, 0.12) 0%, rgba(212, 80, 122, 0.1) 14%, transparent 36%);
+            radial-gradient(ellipse at 18% 65%, rgba(255, 214, 228, 0.22) 0%, rgba(212, 80, 122, 0.2) 16%, transparent 38%),
+            radial-gradient(ellipse at 48% 48%, rgba(212, 80, 122, 0.24) 0%, rgba(212, 80, 122, 0.18) 16%, transparent 38%),
+            radial-gradient(ellipse at 80% 60%, rgba(255, 214, 228, 0.2) 0%, rgba(212, 80, 122, 0.18) 16%, transparent 38%);
           animation: rearMistDriftB 10s ease-in-out 4.8s infinite;
         }
 
         .hero-rear-mist-c {
-          top: 68%;
-          width: 58%;
-          height: 14%;
+          top: 67%;
+          width: 68%;
+          height: 16%;
           transform: translate(-50%, -50%);
           background:
-            radial-gradient(ellipse at 26% 58%, rgba(212, 80, 122, 0.12) 0%, transparent 36%),
-            radial-gradient(ellipse at 76% 58%, rgba(212, 80, 122, 0.12) 0%, transparent 36%);
+            radial-gradient(ellipse at 26% 58%, rgba(212, 80, 122, 0.2) 0%, transparent 40%),
+            radial-gradient(ellipse at 76% 58%, rgba(212, 80, 122, 0.2) 0%, transparent 40%);
           animation: rearMistDriftC 11s ease-in-out 5s infinite;
         }
 
         .hero-base-rings {
           position: absolute;
           left: 50%;
-          top: 83.8%;
-          width: 98%;
-          height: 34%;
-          transform: translate(-50%, -50%) perspective(1200px) rotateX(78deg);
+          top: 85.4%;
+          width: 116%;
+          height: 38%;
+          transform: translate(-50%, -50%) perspective(1200px) rotateX(69deg);
           transform-origin: center;
-          opacity: 0.88;
+          opacity: 1;
           background:
             repeating-radial-gradient(
               ellipse at 50% 50%,
-              transparent 0 22px,
-              rgba(212, 80, 122, 0.64) 22px 24px,
-              transparent 24px 48px
+              transparent 0 18px,
+              rgba(212, 80, 122, 0.92) 18px 22px,
+              transparent 22px 42px
             );
-          mask-image: radial-gradient(ellipse at center, #000 0%, #000 78%, transparent 96%);
+          mask-image: radial-gradient(ellipse at center, #000 0%, #000 82%, transparent 98%);
           -webkit-mask-image: radial-gradient(
             ellipse at center,
             #000 0%,
-            #000 78%,
-            transparent 96%
+            #000 82%,
+            transparent 98%
           );
-          filter: drop-shadow(0 0 10px rgba(212, 80, 122, 0.16));
+          filter:
+            drop-shadow(0 0 16px rgba(212, 80, 122, 0.28))
+            drop-shadow(0 0 6px rgba(212, 80, 122, 0.18));
           animation:
             baseRingsPulse 8.2s ease-in-out 4.4s infinite,
             baseRingsGlitch 10s steps(1, end) 6.2s infinite;
@@ -1019,89 +1023,89 @@ export default function ConceptPage() {
         .hero-base-circle {
           position: absolute;
           left: 50%;
-          top: 83.8%;
-          width: 80%;
-          height: 24%;
-          transform: translate(-50%, -50%) perspective(1200px) rotateX(78deg);
+          top: 85.5%;
+          width: 94%;
+          height: 30%;
+          transform: translate(-50%, -50%) perspective(1200px) rotateX(69deg);
           border-radius: 50%;
           background:
             radial-gradient(
               ellipse at center,
-              rgba(212, 80, 122, 0.34) 0%,
-              rgba(212, 80, 122, 0.24) 28%,
-              rgba(212, 80, 122, 0.12) 52%,
+              rgba(212, 80, 122, 0.62) 0%,
+              rgba(212, 80, 122, 0.38) 32%,
+              rgba(212, 80, 122, 0.18) 54%,
               transparent 76%
             );
-          filter: blur(20px);
-          opacity: 0.86;
+          filter: blur(26px);
+          opacity: 0.96;
           animation: baseCirclePulse 8.2s ease-in-out 4.3s infinite;
         }
 
         .hero-base-glow {
           position: absolute;
           left: 50%;
-          top: 86%;
-          width: 28%;
-          height: 8%;
+          top: 87%;
+          width: 36%;
+          height: 10%;
           transform: translate(-50%, -50%);
           background:
             radial-gradient(
               ellipse,
-              rgba(212, 80, 122, 0.2) 0%,
-              rgba(232, 226, 212, 0.08) 42%,
+              rgba(212, 80, 122, 0.34) 0%,
+              rgba(232, 226, 212, 0.12) 42%,
               transparent 76%
             );
-          filter: blur(10px);
-          opacity: 0.68;
+          filter: blur(12px);
+          opacity: 0.9;
           animation: baseGlowPulse 8.5s ease-in-out 4.5s infinite;
         }
 
         .hero-shadow-floor {
           position: absolute;
           left: 50%;
-          top: 86.8%;
-          width: 22%;
-          height: 7%;
+          top: 87.3%;
+          width: 24%;
+          height: 8%;
           transform: translate(-50%, -50%);
-          background: radial-gradient(ellipse, rgba(28, 28, 26, 0.22), transparent 72%);
+          background: radial-gradient(ellipse, rgba(28, 28, 26, 0.28), transparent 72%);
           filter: blur(12px);
-          opacity: 0.18;
+          opacity: 0.22;
           animation: floorShadowBreath 9s ease-in-out 4.6s infinite;
         }
 
         .hero-front-mist-a {
-          top: 81%;
-          width: 92%;
-          height: 18%;
+          top: 80%;
+          width: 104%;
+          height: 20%;
           transform: translate(-50%, -50%);
           background:
-            radial-gradient(ellipse at 12% 62%, rgba(212, 80, 122, 0.18) 0%, rgba(212, 80, 122, 0.14) 14%, transparent 36%),
-            radial-gradient(ellipse at 28% 48%, rgba(232, 226, 212, 0.18) 0%, rgba(212, 80, 122, 0.12) 12%, transparent 34%),
-            radial-gradient(ellipse at 46% 64%, rgba(212, 80, 122, 0.16) 0%, rgba(212, 80, 122, 0.12) 13%, transparent 34%),
-            radial-gradient(ellipse at 64% 52%, rgba(232, 226, 212, 0.14) 0%, rgba(212, 80, 122, 0.11) 12%, transparent 34%),
-            radial-gradient(ellipse at 82% 60%, rgba(212, 80, 122, 0.17) 0%, rgba(212, 80, 122, 0.13) 12%, transparent 34%);
+            radial-gradient(ellipse at 12% 62%, rgba(212, 80, 122, 0.28) 0%, rgba(212, 80, 122, 0.2) 16%, transparent 36%),
+            radial-gradient(ellipse at 28% 48%, rgba(255, 224, 234, 0.24) 0%, rgba(212, 80, 122, 0.18) 14%, transparent 34%),
+            radial-gradient(ellipse at 46% 64%, rgba(212, 80, 122, 0.28) 0%, rgba(212, 80, 122, 0.2) 15%, transparent 34%),
+            radial-gradient(ellipse at 64% 52%, rgba(255, 224, 234, 0.22) 0%, rgba(212, 80, 122, 0.17) 14%, transparent 34%),
+            radial-gradient(ellipse at 82% 60%, rgba(212, 80, 122, 0.28) 0%, rgba(212, 80, 122, 0.2) 14%, transparent 34%);
           animation: frontMistDriftA 9s ease-in-out 4.6s infinite;
         }
 
         .hero-front-mist-b {
-          top: 74%;
-          width: 72%;
-          height: 14%;
+          top: 73%;
+          width: 84%;
+          height: 16%;
           transform: translate(-50%, -50%);
           background:
-            radial-gradient(ellipse at 22% 62%, rgba(212, 80, 122, 0.12) 0%, transparent 36%),
-            radial-gradient(ellipse at 48% 46%, rgba(232, 226, 212, 0.12) 0%, transparent 38%),
-            radial-gradient(ellipse at 76% 56%, rgba(212, 80, 122, 0.12) 0%, transparent 36%);
+            radial-gradient(ellipse at 22% 62%, rgba(212, 80, 122, 0.18) 0%, transparent 38%),
+            radial-gradient(ellipse at 48% 46%, rgba(255, 224, 234, 0.18) 0%, transparent 40%),
+            radial-gradient(ellipse at 76% 56%, rgba(212, 80, 122, 0.18) 0%, transparent 38%);
           animation: frontMistDriftB 10.5s ease-in-out 4.9s infinite;
         }
 
         .hero-front-mist-c {
-          top: 70%;
-          width: 46%;
-          height: 12%;
+          top: 69%;
+          width: 54%;
+          height: 13%;
           transform: translate(-50%, -50%);
           background:
-            radial-gradient(ellipse at 50% 54%, rgba(212, 80, 122, 0.1) 0%, transparent 42%);
+            radial-gradient(ellipse at 50% 54%, rgba(212, 80, 122, 0.16) 0%, transparent 42%);
           animation: frontMistDriftC 12s ease-in-out 5.1s infinite;
         }
 
@@ -1114,12 +1118,12 @@ export default function ConceptPage() {
               to bottom,
               transparent 0%,
               transparent 18%,
-              rgba(212, 80, 122, 0.16) 18%,
-              rgba(212, 80, 122, 0.16) 20%,
+              rgba(212, 80, 122, 0.22) 18%,
+              rgba(212, 80, 122, 0.22) 20%,
               transparent 20%,
               transparent 48%,
-              rgba(232, 226, 212, 0.2) 48%,
-              rgba(232, 226, 212, 0.2) 50%,
+              rgba(232, 226, 212, 0.28) 48%,
+              rgba(232, 226, 212, 0.28) 50%,
               transparent 50%,
               transparent 100%
             );
@@ -1913,23 +1917,23 @@ export default function ConceptPage() {
         @keyframes heroAuraPulse {
           0%,
           100% {
-            opacity: 0.56;
+            opacity: 0.78;
             transform: translate(-50%, -50%) scale(0.98);
           }
           50% {
-            opacity: 0.86;
-            transform: translate(-50%, -50%) scale(1.03);
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.04);
           }
         }
 
         @keyframes rearMistDriftA {
           0%,
           100% {
-            opacity: 0.42;
+            opacity: 0.78;
             transform: translate(-50%, -50%) scale(1) translateY(0);
           }
           50% {
-            opacity: 0.58;
+            opacity: 0.98;
             transform: translate(-50%, -50%) scale(1.05) translateY(-4px);
           }
         }
@@ -1937,11 +1941,11 @@ export default function ConceptPage() {
         @keyframes rearMistDriftB {
           0%,
           100% {
-            opacity: 0.3;
+            opacity: 0.62;
             transform: translate(-50%, -50%) scale(1);
           }
           50% {
-            opacity: 0.44;
+            opacity: 0.84;
             transform: translate(-50%, -50%) scale(1.08);
           }
         }
@@ -1949,11 +1953,11 @@ export default function ConceptPage() {
         @keyframes rearMistDriftC {
           0%,
           100% {
-            opacity: 0.18;
+            opacity: 0.36;
             transform: translate(-50%, -50%) scale(1);
           }
           50% {
-            opacity: 0.28;
+            opacity: 0.54;
             transform: translate(-50%, -50%) scale(1.05);
           }
         }
@@ -1961,12 +1965,12 @@ export default function ConceptPage() {
         @keyframes baseRingsPulse {
           0%,
           100% {
-            opacity: 0.82;
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(78deg) scale(0.98);
+            opacity: 0.92;
+            transform: translate(-50%, -50%) perspective(1200px) rotateX(69deg) scale(0.985);
           }
           50% {
             opacity: 1;
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(78deg) scale(1.03);
+            transform: translate(-50%, -50%) perspective(1200px) rotateX(69deg) scale(1.03);
           }
         }
 
@@ -1974,39 +1978,43 @@ export default function ConceptPage() {
           0%,
           84%,
           100% {
-            filter: drop-shadow(0 0 10px rgba(212, 80, 122, 0.16));
+            filter:
+              drop-shadow(0 0 16px rgba(212, 80, 122, 0.28))
+              drop-shadow(0 0 6px rgba(212, 80, 122, 0.18));
           }
           85% {
-            filter: drop-shadow(-8px 0 0 rgba(212, 80, 122, 0.18));
+            filter: drop-shadow(-8px 0 0 rgba(212, 80, 122, 0.24));
           }
           86.5% {
-            filter: drop-shadow(8px 0 0 rgba(232, 226, 212, 0.18));
+            filter: drop-shadow(8px 0 0 rgba(232, 226, 212, 0.22));
           }
           88% {
-            filter: drop-shadow(0 0 10px rgba(212, 80, 122, 0.16));
+            filter:
+              drop-shadow(0 0 16px rgba(212, 80, 122, 0.28))
+              drop-shadow(0 0 6px rgba(212, 80, 122, 0.18));
           }
         }
 
         @keyframes baseCirclePulse {
           0%,
           100% {
-            opacity: 0.74;
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(78deg) scale(0.97);
+            opacity: 0.88;
+            transform: translate(-50%, -50%) perspective(1200px) rotateX(69deg) scale(0.98);
           }
           50% {
-            opacity: 0.96;
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(78deg) scale(1.05);
+            opacity: 1;
+            transform: translate(-50%, -50%) perspective(1200px) rotateX(69deg) scale(1.05);
           }
         }
 
         @keyframes baseGlowPulse {
           0%,
           100% {
-            opacity: 0.58;
+            opacity: 0.72;
             transform: translate(-50%, -50%) scale(0.94);
           }
           50% {
-            opacity: 0.82;
+            opacity: 1;
             transform: translate(-50%, -50%) scale(1.06);
           }
         }
@@ -2014,11 +2022,11 @@ export default function ConceptPage() {
         @keyframes floorShadowBreath {
           0%,
           100% {
-            opacity: 0.14;
+            opacity: 0.18;
             transform: translate(-50%, -50%) scale(0.94);
           }
           50% {
-            opacity: 0.22;
+            opacity: 0.28;
             transform: translate(-50%, -50%) scale(1.04);
           }
         }
@@ -2026,11 +2034,11 @@ export default function ConceptPage() {
         @keyframes frontMistDriftA {
           0%,
           100% {
-            opacity: 0.24;
+            opacity: 0.64;
             transform: translate(-50%, -50%) scale(1);
           }
           50% {
-            opacity: 0.4;
+            opacity: 0.86;
             transform: translate(-50%, -50%) scale(1.06);
           }
         }
@@ -2038,11 +2046,11 @@ export default function ConceptPage() {
         @keyframes frontMistDriftB {
           0%,
           100% {
-            opacity: 0.16;
+            opacity: 0.42;
             transform: translate(-50%, -50%) scale(1);
           }
           50% {
-            opacity: 0.28;
+            opacity: 0.64;
             transform: translate(-50%, -50%) scale(1.08);
           }
         }
@@ -2050,11 +2058,11 @@ export default function ConceptPage() {
         @keyframes frontMistDriftC {
           0%,
           100% {
-            opacity: 0.12;
+            opacity: 0.24;
             transform: translate(-50%, -50%) scale(1);
           }
           50% {
-            opacity: 0.22;
+            opacity: 0.42;
             transform: translate(-50%, -50%) scale(1.06);
           }
         }
@@ -2681,8 +2689,8 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(540px, 68svh, 760px);
-            height: clamp(400px, 54svh, 560px);
+            width: clamp(620px, 74svh, 860px);
+            height: clamp(450px, 58svh, 610px);
           }
 
           .donut-wrap {
@@ -2711,8 +2719,8 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(420px, 56svh, 560px);
-            height: clamp(340px, 44svh, 430px);
+            width: clamp(470px, 58svh, 620px);
+            height: clamp(360px, 46svh, 460px);
           }
 
           .hero-h1 {
@@ -2740,6 +2748,18 @@ export default function ConceptPage() {
           .section-lead {
             font-size: clamp(8px, 2.2vw, 10px);
           }
+
+          .hero-base-rings {
+            width: 122%;
+            height: 40%;
+            top: 86%;
+          }
+
+          .hero-base-circle {
+            width: 100%;
+            height: 32%;
+            top: 86%;
+          }
         }
 
         @media (max-width: 520px) {
@@ -2756,8 +2776,8 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(340px, 48svh, 430px);
-            height: clamp(290px, 38svh, 360px);
+            width: clamp(360px, 50svh, 460px);
+            height: clamp(310px, 40svh, 380px);
           }
 
           .hero-h1 {
@@ -2788,6 +2808,25 @@ export default function ConceptPage() {
 
           .sn-dark .sig-time {
             min-width: 60px;
+          }
+
+          .hero-base-rings {
+            width: 128%;
+            height: 42%;
+            top: 86.4%;
+            transform: translate(-50%, -50%) perspective(1200px) rotateX(66deg);
+          }
+
+          .hero-base-circle {
+            width: 104%;
+            height: 34%;
+            top: 86.4%;
+            transform: translate(-50%, -50%) perspective(1200px) rotateX(66deg);
+          }
+
+          .hero-rear-mist-a,
+          .hero-front-mist-a {
+            width: 114%;
           }
         }
 
