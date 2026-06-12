@@ -125,7 +125,7 @@ export default function ConceptPage() {
         </div>
         <div className="bg-tex" aria-hidden="true" />
 
-        {/* ══ HERO — funnel from top, title pours out of it ══ */}
+        {/* ══ ACT I — HERO ══ */}
         <section className="act a-hero">
           <div className="hero-funnel-drop" aria-hidden="true">
             <img className="hero-funnel-img" src={IMG.funnel} alt="" draggable={false} />
@@ -140,7 +140,7 @@ export default function ConceptPage() {
           </div>
         </section>
 
-        {/* ══ OBELISK — single top flank line, rises + glitches ══ */}
+        {/* ══ ACT II — OBELISK ══ */}
         <section className="act a-monolith rs">
           <div className="flank-line flank-a" aria-hidden="true" />
           <div className="monolith-stage">
@@ -149,7 +149,7 @@ export default function ConceptPage() {
           <div className="flank-line flank-b" aria-hidden="true" />
         </section>
 
-        {/* ══ THE SPACE ══ */}
+        {/* ══ ACT III — THE SPACE ══ */}
         <section className="act a-space rs" aria-labelledby="space-title">
           <div className="shell">
             <h2 id="space-title" className="st space-h2">The Space</h2>
@@ -181,7 +181,7 @@ export default function ConceptPage() {
           </div>
         </section>
 
-        {/* ══ GATE — inverted funnel with flank lines ══ */}
+        {/* ══ ACT IV — GATE (inverted funnel) ══ */}
         <section className="act a-gate rs" aria-hidden="true">
           <div className="flank-line flank-a" />
           <div className="gate-stage">
@@ -192,12 +192,11 @@ export default function ConceptPage() {
           <div className="flank-line flank-b" />
         </section>
 
-        {/* ══ EXPERIENCE ══ */}
+        {/* ══ ACT V — EXPERIENCE ══ */}
         <section className="act a-exp rs" aria-labelledby="exp-title">
           <div className="shell">
             <h2 id="exp-title" className="st exp-h2">The Experience</h2>
 
-            {/* ── redesigned timeline ── */}
             <div className="sig">
               <div className="sig-track">
                 <div className="sig-line" />
@@ -207,7 +206,6 @@ export default function ConceptPage() {
                 <div className="sig-tick" style={{ left:'75%' }} />
               </div>
               <div className="sig-node sn-dining">
-                <span className="sig-label">Dining</span>
                 <span className="sig-time">{dining}</span>
                 <span className="sig-dot">
                   <span className="sig-sonar" />
@@ -215,7 +213,6 @@ export default function ConceptPage() {
                 </span>
               </div>
               <div className="sig-node sn-dark">
-                <span className="sig-label">After Dark</span>
                 <span className="sig-time">{darkTime}</span>
                 <span className="sig-dot">
                   <span className="sig-sonar" />
@@ -233,7 +230,6 @@ export default function ConceptPage() {
             </nav>
           </div>
         </section>
-
       </main>
 
       {/* ── NAV OVERRIDES ─────────────────────────────────────── */}
@@ -319,10 +315,10 @@ export default function ConceptPage() {
         .act { position: relative; z-index: 2; }
         .shell { width: 68%; max-width: 1140px; margin: 0 auto; }
 
-        /* ── Vertical flank lines — longer, fade each end ─── */
+        /* ── Vertical flank lines ─────────────────────── */
         .flank-line {
           width: 1px;
-          height: clamp(120px, 16vh, 200px); /* longer */
+          height: clamp(120px, 16vh, 200px);
           margin: 0 auto;
           transform: scaleY(0);
         }
@@ -337,37 +333,32 @@ export default function ConceptPage() {
         .rs.iv .flank-a { animation: flankGrow 1.1s cubic-bezier(.25,.8,.25,1) .3s forwards; }
         .rs.iv .flank-b { animation: flankGrow 1.1s cubic-bezier(.25,.8,.25,1) .8s forwards; }
 
-        /* ── ACT I — HERO ───────────────────────────────── */
+        /* ── ACT I — HERO ─────────────────────────────── */
         .a-hero {
           min-height: 100svh;
           display: flex; flex-direction: column;
           align-items: center; justify-content: center; text-align: center;
           padding: clamp(88px,10vw,120px) clamp(20px,5vw,60px) clamp(60px,7vw,90px);
         }
-
-        /* funnel drops from above on page load */
         .hero-funnel-drop {
           display: flex; justify-content: center;
           margin-bottom: clamp(24px,3.5vw,40px);
           opacity: 0; transform: translateY(-80px);
           animation: heroDropIn 1.8s cubic-bezier(.22,1,.36,1) .4s forwards;
         }
-        /* after drop: constant float + glitch */
+        /* retro CRT chroma — replaces funnelGlitch */
         .hero-funnel-img {
           display: block;
-          width: min(44vw, 320px); /* ← larger */
+          width: min(44vw, 320px);
           height: auto;
           mix-blend-mode: multiply;
           filter: saturate(.9) contrast(.96);
           pointer-events: none; user-select: none;
           animation:
             funnelFloat  6.5s ease-in-out 2.5s infinite,
-            funnelGlitch 8.5s steps(1,end) 3.0s infinite;
+            funnelRetro 11s  linear      3.0s infinite;
         }
-
         .hero-copy { display: flex; flex-direction: column; align-items: center; gap: clamp(12px,1.6vw,20px); }
-
-        /* title pours out of funnel's narrow base */
         .hero-h1 {
           font-family: ${MONO};
           font-size: clamp(64px,12.5vw,186px);
@@ -390,7 +381,7 @@ export default function ConceptPage() {
           animation: typeIn .52s steps(33,end) 2.6s forwards;
         }
 
-        /* ── ACT II — OBELISK ───────────────────────────── */
+        /* ── ACT II — OBELISK ─────────────────────────── */
         .a-monolith {
           display: flex; flex-direction: column; align-items: center;
           padding: clamp(40px,5vh,60px) clamp(20px,4vw,40px);
@@ -406,7 +397,7 @@ export default function ConceptPage() {
           filter: blur(6px); opacity: 0; transition: opacity 1.8s ease 2.6s;
         }
         .a-monolith.iv .monolith-stage::after { opacity: 1; }
-
+        /* retro amber/cold cycles — replaces obeliskGlitch */
         .obelisk {
           display: block;
           height: clamp(280px,56svh,540px); width: auto;
@@ -419,12 +410,11 @@ export default function ConceptPage() {
           animation:
             monolithRise   3.4s cubic-bezier(.22,1,.36,1)  .3s forwards,
             monolithPulse  5.5s ease-in-out                4.4s infinite,
-            obeliskGlitch 11s   steps(1,end)                5.2s infinite;
+            obeliskRetro  14s  linear                      5.2s infinite;
         }
 
-        /* ── ACT III — THE SPACE ────────────────────────── */
+        /* ── ACT III — THE SPACE ──────────────────────── */
         .a-space { padding: clamp(52px,7vw,90px) 0 clamp(44px,5vw,68px); }
-
         .st {
           font-family: ${MONO}; font-weight: 700; text-transform: uppercase;
           color: ${C.ink}; text-shadow: .018em 0 0 currentColor;
@@ -436,7 +426,6 @@ export default function ConceptPage() {
         }
         .space-h2 { font-size: clamp(44px,5.5vw,86px); margin-bottom: clamp(32px,4vw,52px) !important; }
         .exp-h2   { font-size: clamp(38px,4.8vw,76px); margin-bottom: clamp(28px,3.5vw,44px) !important; }
-
         .venue-stage {
           position: relative; width: 100%;
           min-height: clamp(240px,32vw,460px);
@@ -449,7 +438,6 @@ export default function ConceptPage() {
           filter: blur(10px); opacity: 0; transform: rotate(-3deg) scaleX(.7);
         }
         .a-space.iv .venue-stage::before { animation: shadowIn .7s ease .5s forwards; }
-
         .venue-wrap {
           position: relative; width: min(100%,800px);
           aspect-ratio: 2048/1140;
@@ -479,7 +467,7 @@ export default function ConceptPage() {
           gap: 14px; margin-top: clamp(6px,1vw,14px);
         }
 
-        /* ── ACT IV — GATE (inverted funnel) ────────────── */
+        /* ── ACT IV — GATE ────────────────────────────── */
         .a-gate {
           display: flex; flex-direction: column; align-items: center;
           padding: clamp(40px,5vh,60px) clamp(20px,4vw,40px);
@@ -494,7 +482,7 @@ export default function ConceptPage() {
         }
         .gate-funnel-img {
           display: block;
-          width: min(46vw, 340px); /* ← larger */
+          width: min(46vw, 340px);
           height: auto;
           transform: scaleY(-1);
           mix-blend-mode: multiply;
@@ -503,24 +491,22 @@ export default function ConceptPage() {
         }
         .a-gate.iv .gate-funnel-img {
           animation:
-            funnelFloatInv 7s   ease-in-out 3s   infinite,
-            funnelGlitch   9.5s steps(1,end) 3.8s infinite;
+            funnelFloatInv 7s  ease-in-out  3s   infinite,
+            funnelRetro   11s  linear       4.2s infinite;
         }
 
-        /* ── ACT V — EXPERIENCE ─────────────────────────── */
+        /* ── ACT V — EXPERIENCE ───────────────────────── */
         .a-exp { padding: clamp(44px,6vw,80px) 0 clamp(80px,10vw,140px); }
 
-        /* ── Redesigned timeline ────────────────────────── */
+        /* ── Timeline ─────────────────────────────────── */
         .sig {
           --sy: 58px;
           position: relative; width: 100%;
-          height: clamp(110px,14vw,160px);
+          height: clamp(96px,12vw,140px);
           margin-top: clamp(28px,3.5vw,44px);
           margin-bottom: clamp(14px,1.8vw,24px);
           overflow: visible;
         }
-
-        /* Track */
         .sig-track {
           position: absolute; left: 0; right: 0;
           top: var(--sy); height: 2px;
@@ -535,8 +521,6 @@ export default function ConceptPage() {
         }
         .a-exp.iv .sig-line { animation: sigLineIn .8s cubic-bezier(.25,.8,.25,1) .3s forwards; }
         .a-exp.iv .sig-fill  { animation: sigFillLoop 9.6s ease-in-out 1.2s infinite; }
-
-        /* Tick marks */
         .sig-tick {
           position: absolute; top: -5px;
           width: 1px; height: 12px;
@@ -544,8 +528,6 @@ export default function ConceptPage() {
           opacity: 0;
         }
         .a-exp.iv .sig-tick { animation: tickIn .4s ease .9s forwards; }
-
-        /* Nodes */
         .sig-node {
           position: absolute; top: 0;
           opacity: 0; transform: translateY(10px);
@@ -554,16 +536,6 @@ export default function ConceptPage() {
         .sn-dark   { right: 0; text-align: right; }
         .a-exp.iv .sn-dining { animation: nodeIn .48s ease .6s forwards; }
         .a-exp.iv .sn-dark   { animation: nodeIn .48s ease .8s forwards; }
-
-        /* Label (small caps above time) */
-        .sig-label {
-          display: block;
-          font-size: 9px; letter-spacing: .3em;
-          text-transform: uppercase; color: ${C.muted};
-          margin-bottom: 5px;
-        }
-
-        /* Time — larger, prominent */
         .sig-time {
           display: block;
           font-size: clamp(20px,2.4vw,32px); font-weight: 700;
@@ -572,42 +544,31 @@ export default function ConceptPage() {
         }
         .a-exp.iv .sn-dining .sig-time { animation: timeDining 9.6s ease-in-out 1.2s infinite; }
         .a-exp.iv .sn-dark   .sig-time { animation: timeDark   9.6s ease-in-out 1.2s infinite; }
-
-        /* Dot — larger with sonar ring */
         .sig-dot {
           position: absolute;
-          top: var(--sy);
-          width: 22px; height: 22px;
-          border-radius: 999px;
-          background: #8A8680;
-          transform: translateY(-50%);
-          z-index: 2; overflow: visible;
+          top: var(--sy); width: 22px; height: 22px;
+          border-radius: 999px; background: #8A8680;
+          transform: translateY(-50%); z-index: 2; overflow: visible;
         }
         .sn-dining .sig-dot { left: -5px; }
         .sn-dark   .sig-dot { right: -5px; }
-
-        /* Sonar expanding ring */
         .sig-sonar {
-          position: absolute; inset: 0;
-          border-radius: 50%;
+          position: absolute; inset: 0; border-radius: 50%;
           border: 1.5px solid rgba(28,28,26,.35);
           transform: scale(1); opacity: 0;
         }
         .a-exp.iv .sn-dining .sig-sonar { animation: sonarRing 3.2s ease-out 1.0s infinite; }
         .a-exp.iv .sn-dark   .sig-sonar { animation: sonarRing 3.2s ease-out 1.7s infinite; }
-
-        /* Dot fill */
         .sig-dot-fill {
           position: absolute; inset: 0;
-          border-radius: inherit;
-          background: ${C.pink}; opacity: 0;
+          border-radius: inherit; background: ${C.pink}; opacity: 0;
         }
         .a-exp.iv .sn-dining .sig-dot-fill { animation: dotDining 9.6s ease-in-out 1.2s infinite; }
         .a-exp.iv .sn-dark   .sig-dot-fill { animation: dotDark   9.6s ease-in-out 1.2s infinite; }
 
         .exp-nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
 
-        /* ── Cards ──────────────────────────────────────── */
+        /* ── Cards ────────────────────────────────────── */
         .card {
           position: relative; min-height: clamp(72px,7vw,100px);
           display: flex; flex-direction: column; justify-content: center; gap: 5px;
@@ -641,13 +602,14 @@ export default function ConceptPage() {
         .card.is-dark .card-meta { color: rgba(232,226,212,.6); }
         .card.is-dark:hover,.card.is-dark:focus-visible { background: ${C.pink}; color: ${C.cream}; }
 
-        /* ── All keyframes ──────────────────────────────── */
+        /* ══════════════════════════════════════════════
+           KEYFRAMES
+        ══════════════════════════════════════════════ */
 
         @keyframes flankGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
         @keyframes heroDropIn { to { opacity: 1; transform: translateY(0); } }
 
-        /* Title pours / squeezes out of funnel narrow base */
         @keyframes titleFromFunnel {
           0%   { opacity: 0; transform: translateY(-28px) scaleY(.35); filter: blur(2px); }
           60%  { opacity: 1; transform: translateY(4px) scaleY(1.06); filter: blur(0); }
@@ -670,7 +632,7 @@ export default function ConceptPage() {
         }
         @keyframes typeIn { to { clip-path:inset(0 0 0 0); } }
 
-        /* Funnel float + glitch */
+        /* Funnel float */
         @keyframes funnelFloat {
           0%,100% { transform: translateY(0) rotate(0deg); }
           33%     { transform: translateY(-14px) rotate(.5deg); }
@@ -681,34 +643,39 @@ export default function ConceptPage() {
           33%     { transform: scaleY(-1) translateY(-14px); }
           66%     { transform: scaleY(-1) translateY(-7px); }
         }
-        @keyframes funnelGlitch {
-          0%,84%,100% { clip-path:inset(0 0 0 0);    filter:saturate(.9) contrast(.96); }
-          85% { clip-path:inset(0 0 72% 0);           filter:saturate(1.22) contrast(1.1) hue-rotate(-10deg); }
-          86% { clip-path:inset(20% 0 46% 0);         filter:saturate(.9) contrast(.96); }
-          87% { clip-path:inset(0 0 0 0);             filter:saturate(1.16) hue-rotate(8deg); }
-          88% { clip-path:inset(56% 0 14% 0);         filter:saturate(1.06); }
-          89% { clip-path:inset(0 0 0 0);             filter:saturate(.9) contrast(.96); }
+
+        /* Funnel retro — CRT chroma shift + phosphor bloom (replaces funnelGlitch) */
+        @keyframes funnelRetro {
+          0%      { filter: saturate(.9) contrast(.96); }
+          /* chroma shift: hue sweeps briefly, like a misaligned electron beam */
+          18%     { filter: saturate(.9) contrast(.96); }
+          22%     { filter: saturate(1.08) contrast(.98) hue-rotate(-14deg) brightness(1.04); }
+          26%     { filter: saturate(1.18) contrast(1.0) hue-rotate(-22deg) brightness(1.07); }
+          30%     { filter: saturate(.86) contrast(.94) hue-rotate(10deg); }
+          34%     { filter: saturate(.9) contrast(.96); }
+          /* phosphor bloom: brightness surge with soft diffusion */
+          62%     { filter: saturate(.9) contrast(.96); }
+          66%     { filter: saturate(.94) contrast(.98) brightness(1.10); }
+          70%     { filter: saturate(.82) contrast(.90) brightness(1.20) blur(.5px); }
+          74%     { filter: saturate(.9) contrast(.96) blur(0); }
+          100%    { filter: saturate(.9) contrast(.96); }
         }
 
-        /* Obelisk — pulse owns transform; glitch uses only filter + clip */
-        @keyframes monolithRise {
-          0%  { opacity:0; transform:translateY(160px); }
-          10% { opacity:1; }
-          100%{ opacity:1; transform:translateY(0); }
-        }
-        @keyframes monolithPulse {
-          0%,100% { transform:translateY(0) scale(1); }
-          50%     { transform:translateY(-8px) scale(1.005); }
-        }
-        @keyframes obeliskGlitch {
-          0%,86%,100% { filter:contrast(.95) saturate(.88); clip-path:inset(0 0 0 0); }
-          87% { filter:contrast(1.2) saturate(0) brightness(1.5) hue-rotate(180deg); clip-path:inset(0 0 0 0); }
-          88% { filter:contrast(.95) saturate(.88); clip-path:inset(10% 0 76% 0); }
-          89% { filter:contrast(1.15) sepia(.9) hue-rotate(-30deg) brightness(1.2); clip-path:inset(0 0 0 0); }
-          90% { filter:contrast(.95) saturate(.88); clip-path:inset(36% 0 40% 0); }
-          91% { filter:contrast(1.1) saturate(.4) hue-rotate(90deg) brightness(1.3); clip-path:inset(0 0 0 0); }
-          92% { filter:contrast(.95) saturate(.88); clip-path:inset(68% 0 10% 0); }
-          93% { filter:contrast(.95) saturate(.88); clip-path:inset(0 0 0 0); }
+        /* Obelisk retro — amber awakening + cold power surge (replaces obeliskGlitch) */
+        @keyframes obeliskRetro {
+          0%      { filter: contrast(.95) saturate(.88); }
+          /* amber awakening: warm sepia pulse, like drawing energy */
+          22%     { filter: contrast(.95) saturate(.88); }
+          28%     { filter: contrast(1.02) saturate(.6) sepia(.32) brightness(1.06) hue-rotate(-6deg); }
+          34%     { filter: contrast(1.08) saturate(.28) sepia(.62) brightness(1.14) hue-rotate(-11deg); }
+          40%     { filter: contrast(1.04) saturate(.48) sepia(.28) brightness(1.07) hue-rotate(-4deg); }
+          46%     { filter: contrast(.95) saturate(.88); }
+          /* cold surge: desaturate to near-white then back */
+          70%     { filter: contrast(.95) saturate(.88); }
+          73%     { filter: contrast(1.2) saturate(.1) brightness(1.28); }
+          76%     { filter: contrast(1.1) saturate(.3) brightness(1.10); }
+          80%     { filter: contrast(.95) saturate(.88); }
+          100%    { filter: contrast(.95) saturate(.88); }
         }
 
         /* Gate funnel */
@@ -739,7 +706,7 @@ export default function ConceptPage() {
           78%  { opacity:0;   transform:translate3d(0,0,0);       clip-path:inset(0 0 0 0); }
         }
 
-        /* Signal / timeline */
+        /* Signal timeline */
         @keyframes sigLineIn  { to { transform:scaleX(1); } }
         @keyframes sigFillLoop {
           0%,17%   { transform:scaleX(0); opacity:0; }
@@ -767,7 +734,7 @@ export default function ConceptPage() {
           100% { clip-path:inset(0 0 0 0); }
         }
 
-        /* ── Responsive ─────────────────────────────────── */
+        /* ── Responsive ───────────────────────────────── */
         @media (max-width:1280px) { .shell { width:76%; } }
         @media (max-width:980px) {
           .shell { width:86%; }
@@ -783,7 +750,7 @@ export default function ConceptPage() {
           .hero-h1 { font-size:clamp(50px,13vw,86px); }
           .obelisk { height:clamp(240px,50svh,420px); }
           .gate-funnel-img { width:min(72vw,280px); }
-          .sig { --sy:52px; height:clamp(100px,13vw,148px); }
+          .sig { --sy:50px; height:clamp(90px,12vw,130px); }
           .sig-time { font-size:clamp(17px,4.5vw,26px); }
           .exp-nav { gap:10px; }
         }
@@ -809,8 +776,7 @@ export default function ConceptPage() {
           .sig-line, .sig-fill, .sig-tick, .sig-node, .sig-sonar, .sig-dot-fill, .sig-time,
           .card, .card::after { animation:none !important; transition:none !important; }
           .flank-line { transform:none; }
-          .hero-funnel-drop { opacity:1; transform:none; }
-          .hero-funnel-img, .gate-funnel-wrap { opacity:1; transform:none; }
+          .hero-funnel-drop, .hero-funnel-img, .gate-funnel-wrap { opacity:1; transform:none; }
           .gate-funnel-img { transform:scaleY(-1); }
           .hero-h1 { opacity:1; transform:none; }
           .st { opacity:1; clip-path:inset(0 0 0 0); transform:none; }
