@@ -8,69 +8,105 @@ const C = { cream:'#E8E2D4', ink:'#1C1C1A', pink:'#D4507A', muted:'#7A7870' } as
 const MONO = '"Space Mono", "Courier New", monospace';
 
 type AreaId = 'tent' | 'chefs-studio' | 'studio';
-type Area   = { id: AreaId; title: string; href: string; highlight: string };
+type Area = { id: AreaId; title: string; href: string; highlight: string };
 
 const IMG = {
-  bg:      '/images/concept/concept_bg.jpg',
-  funnel:  '/images/concept/grid_funel.svg',
+  bg: '/images/concept/concept_bg.jpg',
+  funnel: '/images/concept/grid_funel.svg',
   obelisk: '/images/concept/obelisk-dark-grey.svg',
-  venue:   '/images/concept/the-space-page-venue.png',
+  venue: '/images/concept/the-space-page-venue.png',
 };
 
 const AREAS: Area[] = [
-  { id:'tent',         title:'THE TENT',      href:'/thetent-test',    highlight:'/images/concept/tent-highlight.png'        },
+  { id:'tent', title:'THE TENT', href:'/thetent-test', highlight:'/images/concept/tent-highlight.png' },
   { id:'chefs-studio', title:"CHEF'S STUDIO", href:'/chefstudio-test', highlight:'/images/concept/chefs-studio-highlight.png' },
-  { id:'studio',       title:'THE STUDIO',    href:'/studio-test',     highlight:'/images/concept/studio-highlight.png'       },
+  { id:'studio', title:'THE STUDIO', href:'/studio-test', highlight:'/images/concept/studio-highlight.png' },
 ];
 
 const EXP = [
-  { label:'Dining',     href:'/food-test',    dark:false },
-  { label:'After Dark', href:'/theclub-test', dark:true  },
+  { label:'Dining', href:'/food-test', dark:false },
+  { label:'After Dark', href:'/theclub-test', dark:true },
 ];
 
 const typeStyle = (chars: number, delay: string): CSSProperties =>
   ({ '--chars': chars, '--type-delay': delay }) as CSSProperties;
 
-function Card({ href, title, meta = 'Explore', dark = false, active = false,
-  onEnter, onFocus, onClick, style }: {
-  href: string; title: string; meta?: string; dark?: boolean; active?: boolean;
-  onEnter?: () => void; onFocus?: () => void;
-  onClick?: (e: MouseEvent<HTMLAnchorElement>) => void; style?: CSSProperties;
+function Card({
+  href,
+  title,
+  meta = 'Explore',
+  dark = false,
+  active = false,
+  onEnter,
+  onFocus,
+  onClick,
+  style,
+}: {
+  href: string;
+  title: string;
+  meta?: string;
+  dark?: boolean;
+  active?: boolean;
+  onEnter?: () => void;
+  onFocus?: () => void;
+  onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
+  style?: CSSProperties;
 }) {
   return (
-    <a href={href} className={`card ${dark ? 'is-dark' : ''} ${active ? 'is-active' : ''}`}
-       onMouseEnter={onEnter} onFocus={onFocus} onClick={onClick} style={style}>
+    <a
+      href={href}
+      className={`card ${dark ? 'is-dark' : ''} ${active ? 'is-active' : ''}`}
+      onMouseEnter={onEnter}
+      onFocus={onFocus}
+      onClick={onClick}
+      style={style}
+    >
       <span className="card-title">{title}</span>
-      <span className="card-meta">{meta} <span aria-hidden="true">→</span></span>
+      <span className="card-meta">
+        {meta} <span aria-hidden="true">→</span>
+      </span>
     </a>
   );
 }
 
-/* Fetches an SVG file and inlines its markup so internals are animatable.
-   When draw=true, measures every stroked shape and primes its dash so the
-   lines can draw themselves on. Falls back to a flat <img> if the fetch fails. */
-function InlineSVG({ src, className, draw = false }: {
-  src: string; className?: string; draw?: boolean;
+function InlineSVG({
+  src,
+  className,
+  draw = false,
+}: {
+  src: string;
+  className?: string;
+  draw?: boolean;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [html, setHtml] = useState('');
 
   useEffect(() => {
     let alive = true;
+
     fetch(src)
       .then(r => (r.ok ? r.text() : Promise.reject(new Error('fetch failed'))))
-      .then(txt => { if (alive && txt.includes('<svg')) setHtml(txt); })
+      .then(txt => {
+        if (alive && txt.includes('<svg')) setHtml(txt);
+      })
       .catch(() => {
-        if (alive) setHtml(`<img src="${src}" alt="" style="width:100%;height:auto;display:block" />`);
+        if (alive) {
+          setHtml(`<img src="${src}" alt="" style="width:100%;height:auto;display:block" />`);
+        }
       });
-    return () => { alive = false; };
+
+    return () => {
+      alive = false;
+    };
   }, [src]);
 
   useEffect(() => {
     if (!draw || !ref.current) return;
+
     const shapes = ref.current.querySelectorAll<SVGGeometryElement>(
       'path, rect, line, polyline, polygon, circle, ellipse'
     );
+
     shapes.forEach(s => {
       try {
         const len = s.getTotalLength();
@@ -79,7 +115,9 @@ function InlineSVG({ src, className, draw = false }: {
           s.style.strokeDashoffset = String(len);
           s.style.setProperty('--path-len', String(len));
         }
-      } catch { /* shape without geometry — ignore */ }
+      } catch {
+        // Ignore shapes without geometry.
+      }
     });
   }, [html, draw]);
 
@@ -94,20 +132,18 @@ function InlineSVG({ src, className, draw = false }: {
 }
 
 export default function ConceptPage() {
-  const [active,       setActive]       = useState<AreaId | null>(null);
-  const [touch,        setTouch]        = useState(false);
-  const [ready,        setReady]        = useState(false);
-  const [scrolled,     setScrolled]     = useState(false);
-  const [dining,       setDining]       = useState('20:00 / 20:30');
-  const [darkTime,     setDarkTime]     = useState('22:00');
+  const [active, setActive] = useState<AreaId | null>(null);
+  const [touch, setTouch] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [dining, setDining] = useState('20:00 / 20:30');
+  const [darkTime, setDarkTime] = useState('22:00');
   const [curtainPhase, setCurtainPhase] = useState<'visible' | 'fading' | 'gone'>('visible');
 
-  // refs for zero-rerender parallax
-  const funnelParRef  = useRef<HTMLDivElement>(null);
+  const funnelParRef = useRef<HTMLDivElement>(null);
   const obeliskParRef = useRef<HTMLDivElement>(null);
-  const gateParRef    = useRef<HTMLDivElement>(null);
+  const gateParRef = useRef<HTMLDivElement>(null);
 
-  // ── time scramble ──────────────────────────────────────
   useEffect(() => {
     let tt: number[] = [];
 
@@ -119,34 +155,36 @@ export default function ConceptPage() {
       setDarkTime('22:00');
 
       tt = [
-        window.setTimeout(() => setDining('18:40 / 19:10'),  1700),
-        window.setTimeout(() => setDining('21:12 / 21:40'),  1860),
-        window.setTimeout(() => setDining('19:55 / 20:14'),  2020),
-        window.setTimeout(() => setDining('20:00 / 20:30'),  2240),
+        window.setTimeout(() => setDining('18:40 / 19:10'), 1700),
+        window.setTimeout(() => setDining('21:12 / 21:40'), 1860),
+        window.setTimeout(() => setDining('19:55 / 20:14'), 2020),
+        window.setTimeout(() => setDining('20:00 / 20:30'), 2240),
 
-        window.setTimeout(() => setDarkTime('20:46'),         4080),
-        window.setTimeout(() => setDarkTime('23:17'),         4220),
-        window.setTimeout(() => setDarkTime('01:40'),         4360),
-        window.setTimeout(() => setDarkTime('21:52'),         4500),
-        window.setTimeout(() => setDarkTime('22:34'),         4640),
-        window.setTimeout(() => setDarkTime('23:03'),         4780),
-        window.setTimeout(() => setDarkTime('22:00'),         4980),
+        window.setTimeout(() => setDarkTime('20:46'), 4080),
+        window.setTimeout(() => setDarkTime('23:17'), 4220),
+        window.setTimeout(() => setDarkTime('01:40'), 4360),
+        window.setTimeout(() => setDarkTime('21:52'), 4500),
+        window.setTimeout(() => setDarkTime('22:34'), 4640),
+        window.setTimeout(() => setDarkTime('23:03'), 4780),
+        window.setTimeout(() => setDarkTime('22:00'), 4980),
       ];
     };
 
     run();
+
     const iv = window.setInterval(run, 9600);
+
     return () => {
       window.clearInterval(iv);
       tt.forEach(t => window.clearTimeout(t));
     };
   }, []);
 
-  // ── cinematic curtain + nav ready ──────────────────────
   useEffect(() => {
     const t1 = window.setTimeout(() => setCurtainPhase('fading'), 200);
-    const t2 = window.setTimeout(() => setReady(true),            1900);
-    const t3 = window.setTimeout(() => setCurtainPhase('gone'),   2500);
+    const t2 = window.setTimeout(() => setReady(true), 1900);
+    const t3 = window.setTimeout(() => setCurtainPhase('gone'), 2500);
+
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
@@ -154,72 +192,92 @@ export default function ConceptPage() {
     };
   }, []);
 
-  // ── scrolled state for nav backdrop ────────────────────
   useEffect(() => {
     const onS = () => setScrolled(window.scrollY > 24);
     onS();
+
     window.addEventListener('scroll', onS, { passive: true });
+
     return () => window.removeEventListener('scroll', onS);
   }, []);
 
-  // ── intersection observer ──────────────────────────────
   useEffect(() => {
     const els = document.querySelectorAll<HTMLElement>('.rs');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        e.target.classList.add('iv');
-        obs.unobserve(e.target);
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+
+    const obs = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('iv');
+          obs.unobserve(e.target);
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -5% 0px' }
+    );
+
     els.forEach(el => obs.observe(el));
+
     return () => obs.disconnect();
   }, []);
 
-  // ── touch detection ────────────────────────────────────
   useEffect(() => {
     const mq = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 900px)');
+
     const u = () => setTouch(mq.matches || window.innerWidth <= 900);
+
     u();
+
     mq.addEventListener('change', u);
     window.addEventListener('resize', u);
+
     return () => {
       mq.removeEventListener('change', u);
       window.removeEventListener('resize', u);
     };
   }, []);
 
-  // ── mouse parallax (direct DOM, no re-render) ──────────
   useEffect(() => {
     if (touch) return;
+
     let raf = 0;
 
     const onMove = (e: globalThis.MouseEvent) => {
       if (raf) window.cancelAnimationFrame(raf);
+
       raf = window.requestAnimationFrame(() => {
-        const x = (e.clientX / window.innerWidth  - 0.5) * 2;
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
         const y = (e.clientY / window.innerHeight - 0.5) * 2;
 
-        if (funnelParRef.current)
-          funnelParRef.current.style.transform  = `translate(${x * 10}px,${y * 8}px)`;
+        if (funnelParRef.current) {
+          funnelParRef.current.style.transform = `translate(${x * 10}px,${y * 8}px)`;
+        }
 
-        if (obeliskParRef.current)
+        if (obeliskParRef.current) {
           obeliskParRef.current.style.transform = `translate(${x * 5}px,${y * 3}px)`;
+        }
 
-        if (gateParRef.current)
-          gateParRef.current.style.transform    = `translate(${x * -8}px,${y * -6}px)`;
+        if (gateParRef.current) {
+          gateParRef.current.style.transform = `translate(${x * -8}px,${y * -6}px)`;
+        }
       });
     };
 
     window.addEventListener('mousemove', onMove, { passive: true });
+
     return () => {
       window.removeEventListener('mousemove', onMove);
       if (raf) window.cancelAnimationFrame(raf);
     };
   }, [touch]);
 
-  const onEnter = (id: AreaId) => () => { if (!touch) setActive(id); };
-  const onLeave = () => { if (!touch) setActive(null); };
+  const onEnter = (id: AreaId) => () => {
+    if (!touch) setActive(id);
+  };
+
+  const onLeave = () => {
+    if (!touch) setActive(null);
+  };
+
   const onClick = (id: AreaId) => (e: MouseEvent<HTMLAnchorElement>) => {
     if (touch && active !== id) {
       e.preventDefault();
@@ -231,19 +289,23 @@ export default function ConceptPage() {
     <>
       <Head>
         <title>Concept — 17 Little Portland Street</title>
-        <meta name="description" content="Concept, space and experience at 17 Little Portland Street, London." />
+        <meta
+          name="description"
+          content="Concept, space and experience at 17 Little Portland Street, London."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
-      {/* ── 1. Cinematic curtain ─── */}
       {curtainPhase !== 'gone' && (
         <div className={`curtain${curtainPhase === 'fading' ? ' is-up' : ''}`} aria-hidden="true" />
       )}
 
-      {/* ── 5. CRT scanline overlay ─── */}
       <div className="scanlines" aria-hidden="true" />
 
       <main className="page">
@@ -253,7 +315,6 @@ export default function ConceptPage() {
 
         <div className="bg-tex" aria-hidden="true" />
 
-        {/* ══ ACT I — HERO ═════════════════════════════════════════ */}
         <section className="act a-hero">
           <div className="hero-obelisk-drop" aria-hidden="true">
             <div ref={obeliskParRef} className="par-wrap">
@@ -261,6 +322,8 @@ export default function ConceptPage() {
                 <div className="hero-portal" aria-hidden="true">
                   <span className="portal-mist portal-mist-a" />
                   <span className="portal-mist portal-mist-b" />
+                  <span className="portal-grid portal-grid-a" />
+                  <span className="portal-grid portal-grid-b" />
                   <span className="portal-ring portal-ring-a" />
                   <span className="portal-ring portal-ring-b" />
                   <span className="portal-axis portal-axis-v" />
@@ -268,15 +331,11 @@ export default function ConceptPage() {
                   <span className="portal-dust" />
                 </div>
 
-                <InlineSVG
+                <img
                   src={IMG.obelisk}
-                  className="hero-obelisk hero-obelisk-fill"
-                />
-
-                <InlineSVG
-                  src={IMG.obelisk}
-                  className="hero-obelisk hero-obelisk-outline"
-                  draw
+                  alt=""
+                  className="hero-obelisk-img"
+                  draggable={false}
                 />
               </div>
             </div>
@@ -292,7 +351,6 @@ export default function ConceptPage() {
           </div>
         </section>
 
-        {/* ══ ACT II — FUNNEL ═════════════════════════════════════ */}
         <section className="act a-monolith rs">
           <div className="flank-line flank-a" aria-hidden="true" />
 
@@ -305,7 +363,6 @@ export default function ConceptPage() {
           <div className="flank-line flank-b" aria-hidden="true" />
         </section>
 
-        {/* ══ ACT III — THE SPACE ════════════════════════════════ */}
         <section className="act a-space rs" aria-labelledby="space-title">
           <div className="shell">
             <h2 id="space-title" className="st space-h2">The Space</h2>
@@ -341,6 +398,7 @@ export default function ConceptPage() {
             <nav className="zone-nav" onMouseLeave={onLeave} aria-label="Venue areas">
               {AREAS.map((a, i) => {
                 const on = active === a.id;
+
                 return (
                   <Card
                     key={a.id}
@@ -359,14 +417,18 @@ export default function ConceptPage() {
           </div>
         </section>
 
-        {/* ══ ACT IV — GATE ══════════════════════════════════════ */}
         <section className="act a-gate rs" aria-hidden="true">
           <div className="flank-line flank-a" />
 
           <div className="gate-stage">
-            <div className="gate-funnel-wrap">
+            <div className="wire-gate-wrap">
               <div ref={gateParRef} className="par-wrap">
-                <InlineSVG src={IMG.funnel} className="gate-funnel" draw />
+                <div className="wire-gate">
+                  <span className="wire-gate-rings" />
+                  <span className="wire-gate-spokes" />
+                  <span className="wire-gate-core" />
+                  <span className="wire-gate-scan" />
+                </div>
               </div>
             </div>
           </div>
@@ -374,7 +436,6 @@ export default function ConceptPage() {
           <div className="flank-line flank-b" />
         </section>
 
-        {/* ══ ACT V — EXPERIENCE ══════════════════════════════════ */}
         <section className="act a-exp rs" aria-labelledby="exp-title">
           <div className="shell">
             <h2 id="exp-title" className="st exp-h2">The Experience</h2>
@@ -422,9 +483,10 @@ export default function ConceptPage() {
         </section>
       </main>
 
-      {/* ══ NAV OVERRIDES ══════════════════════════════════════════ */}
       <style jsx global>{`
-        html, body, #__next {
+        html,
+        body,
+        #__next {
           margin: 0;
           min-height: 100%;
           background: ${C.cream};
@@ -433,25 +495,48 @@ export default function ConceptPage() {
           -webkit-font-smoothing: antialiased;
         }
 
-        body { overflow-x: hidden; }
-        * { box-sizing: border-box; }
+        body {
+          overflow-x: hidden;
+        }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: rgba(28,28,26,.1); }
+        * {
+          box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: rgba(28,28,26,.1);
+        }
+
         ::-webkit-scrollbar-thumb {
           background: ${C.ink};
           border: 2px solid rgba(232,226,212,.6);
           background-clip: content-box;
         }
+
         ::-webkit-scrollbar-thumb:hover {
           background: ${C.pink};
           border: 2px solid rgba(232,226,212,.6);
           background-clip: content-box;
         }
 
-        .scene-nav { z-index: 10020 !important; transition: background .3s, box-shadow .3s, backdrop-filter .3s !important; }
-        .scene-nav-burger, .scene-nav-logo { z-index: 10030 !important; }
-        .scene-nav-mobile { z-index: 10010 !important; }
+        .scene-nav {
+          z-index: 10020 !important;
+          transition: background .3s, box-shadow .3s, backdrop-filter .3s !important;
+        }
+
+        .scene-nav-burger,
+        .scene-nav-logo {
+          z-index: 10030 !important;
+        }
+
+        .scene-nav-mobile {
+          z-index: 10010 !important;
+        }
+
         .scene-nav--space {
           background: transparent !important;
           backdrop-filter: none !important;
@@ -503,9 +588,18 @@ export default function ConceptPage() {
         }
 
         @media (max-width: 900px) {
-          .nav-shell { z-index: 50000 !important; }
-          .nav-shell .scene-nav { z-index: 50020 !important; }
-          .scene-nav-burger, .scene-nav-logo { z-index: 50040 !important; }
+          .nav-shell {
+            z-index: 50000 !important;
+          }
+
+          .nav-shell .scene-nav {
+            z-index: 50020 !important;
+          }
+
+          .scene-nav-burger,
+          .scene-nav-logo {
+            z-index: 50040 !important;
+          }
 
           .nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile,
           .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile {
@@ -544,34 +638,12 @@ export default function ConceptPage() {
         }
       `}</style>
 
-      {/* ══ PAGE STYLES ════════════════════════════════════════════ */}
       <style jsx global>{`
-        /* ─ global ─────────────────────────────────────────────── */
         .page {
           position: relative;
           min-height: 100svh;
           overflow-x: clip;
           background: ${C.cream};
-        }
-
-        .page::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 50%;
-          width: 1px;
-          height: 100%;
-          z-index: 1;
-          pointer-events: none;
-          background: linear-gradient(
-            to bottom,
-            transparent 0%,
-            rgba(28,28,26,.08) 10%,
-            rgba(28,28,26,.15) 42%,
-            rgba(28,28,26,.08) 78%,
-            transparent 100%
-          );
-          opacity: .55;
         }
 
         .nav-shell {
@@ -615,7 +687,6 @@ export default function ConceptPage() {
           margin: 0 auto;
         }
 
-        /* ─ 1. cinematic curtain ────────────────────────────────── */
         .curtain {
           position: fixed;
           inset: 0;
@@ -626,9 +697,10 @@ export default function ConceptPage() {
           transition: opacity 2.1s cubic-bezier(.4,0,.2,1);
         }
 
-        .curtain.is-up { opacity: 0; }
+        .curtain.is-up {
+          opacity: 0;
+        }
 
-        /* ─ 5. CRT scanlines ─────────────────────────────────────── */
         .scanlines {
           position: fixed;
           inset: 0;
@@ -644,13 +716,11 @@ export default function ConceptPage() {
           mix-blend-mode: multiply;
         }
 
-        /* ─ parallax wrapper ─────────────────────────────────────── */
         .par-wrap {
           transition: transform 0.72s cubic-bezier(.25,.46,.45,.94);
           will-change: transform;
         }
 
-        /* ─ flank lines — vertical, gradient fade ───────────────── */
         .flank-line {
           width: 1px;
           height: clamp(82px, 10vh, 128px);
@@ -668,10 +738,14 @@ export default function ConceptPage() {
           transform-origin: top;
         }
 
-        .rs.iv .flank-a { animation: flankGrow 1.1s cubic-bezier(.25,.8,.25,1) .3s forwards; }
-        .rs.iv .flank-b { animation: flankGrow 1.1s cubic-bezier(.25,.8,.25,1) .72s forwards; }
+        .rs.iv .flank-a {
+          animation: flankGrow 1.1s cubic-bezier(.25,.8,.25,1) .3s forwards;
+        }
 
-        /* ─ ACT I — HERO ─────────────────────────────────────────── */
+        .rs.iv .flank-b {
+          animation: flankGrow 1.1s cubic-bezier(.25,.8,.25,1) .72s forwards;
+        }
+
         .a-hero {
           min-height: 100svh;
           display: flex;
@@ -699,46 +773,19 @@ export default function ConceptPage() {
           pointer-events: none;
           user-select: none;
           isolation: isolate;
-          animation:
-            heroObeliskFloat 8s ease-in-out 4.2s infinite,
-            heroStackGlitch 10s steps(1,end) 6.2s infinite;
-        }
-
-        .hero-obelisk-stack::after {
-          content: '';
-          position: absolute;
-          inset: 8% -10%;
-          z-index: 6;
-          opacity: 0;
-          pointer-events: none;
-          mix-blend-mode: multiply;
-          background:
-            linear-gradient(to bottom,
-              transparent 0%,
-              transparent 22%,
-              rgba(212,80,122,.20) 22%,
-              rgba(212,80,122,.20) 23%,
-              transparent 23%,
-              transparent 56%,
-              rgba(28,28,26,.12) 56%,
-              rgba(28,28,26,.12) 57%,
-              transparent 57%,
-              transparent 100%
-            );
-          animation: heroGlitchScan 10s steps(1,end) 6.2s infinite;
+          animation: heroObeliskFloat 8s ease-in-out 4.2s infinite;
         }
 
         .hero-portal {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: clamp(360px, 58svh, 660px);
+          width: clamp(520px, 72svh, 820px);
           aspect-ratio: 1;
           z-index: 0;
           pointer-events: none;
-          transform: translate(-50%, -50%) scale(.92);
+          transform: translate(-50%, -50%) scale(.9);
           opacity: 0;
-          filter: blur(0);
           animation:
             portalIn 1.6s cubic-bezier(.22,1,.36,1) 2.35s forwards,
             portalBreath 9s ease-in-out 4.2s infinite;
@@ -747,171 +794,182 @@ export default function ConceptPage() {
         .hero-portal::before {
           content: '';
           position: absolute;
-          inset: 10%;
+          inset: 7%;
           border-radius: 999px;
           background:
             radial-gradient(circle at 50% 50%,
-              rgba(212,80,122,.20) 0%,
-              rgba(212,80,122,.10) 20%,
-              rgba(232,226,212,.16) 38%,
-              rgba(28,28,26,.035) 54%,
-              transparent 68%
+              rgba(212,80,122,.36) 0%,
+              rgba(212,80,122,.20) 22%,
+              rgba(232,226,212,.22) 40%,
+              rgba(28,28,26,.055) 58%,
+              transparent 72%
             );
-          filter: blur(18px);
-          opacity: .8;
+          filter: blur(24px);
+          opacity: .95;
         }
 
         .hero-portal::after {
           content: '';
           position: absolute;
-          inset: 20%;
+          inset: 17%;
           border-radius: 999px;
           background:
             conic-gradient(
               from 90deg,
               transparent 0deg,
-              rgba(212,80,122,.18) 24deg,
-              transparent 42deg,
+              rgba(212,80,122,.34) 22deg,
+              transparent 44deg,
               transparent 102deg,
-              rgba(28,28,26,.12) 126deg,
-              transparent 144deg,
-              transparent 228deg,
-              rgba(212,80,122,.16) 258deg,
-              transparent 280deg,
+              rgba(28,28,26,.18) 126deg,
+              transparent 146deg,
+              transparent 226deg,
+              rgba(212,80,122,.26) 256deg,
+              transparent 282deg,
               transparent 360deg
             );
-          opacity: .38;
-          filter: blur(.3px);
-          animation: portalRotate 28s linear infinite;
+          opacity: .56;
+          animation:
+            portalRotate 30s linear infinite,
+            portalGlitch 10s steps(1,end) 6.2s infinite;
         }
 
         .portal-mist {
           position: absolute;
-          inset: 8%;
+          inset: 5%;
           border-radius: 999px;
-          filter: blur(22px);
-          opacity: .42;
+          filter: blur(24px);
           transform-origin: center;
         }
 
         .portal-mist-a {
+          opacity: .58;
           background:
-            radial-gradient(circle at 35% 48%, rgba(212,80,122,.18), transparent 34%),
-            radial-gradient(circle at 62% 42%, rgba(232,226,212,.28), transparent 36%),
-            radial-gradient(circle at 50% 70%, rgba(28,28,26,.07), transparent 38%);
+            radial-gradient(circle at 34% 48%, rgba(212,80,122,.26), transparent 34%),
+            radial-gradient(circle at 63% 42%, rgba(232,226,212,.34), transparent 36%),
+            radial-gradient(circle at 50% 72%, rgba(28,28,26,.10), transparent 38%);
           animation: mistDriftA 12s ease-in-out infinite;
         }
 
         .portal-mist-b {
-          inset: 15%;
+          inset: 11%;
+          opacity: .46;
           background:
-            radial-gradient(circle at 58% 54%, rgba(212,80,122,.13), transparent 38%),
-            radial-gradient(circle at 42% 34%, rgba(122,120,112,.10), transparent 42%);
+            radial-gradient(circle at 58% 54%, rgba(212,80,122,.20), transparent 38%),
+            radial-gradient(circle at 42% 34%, rgba(122,120,112,.16), transparent 42%);
           animation: mistDriftB 15s ease-in-out infinite;
+        }
+
+        .portal-grid {
+          position: absolute;
+          left: 50%;
+          top: 52%;
+          width: 82%;
+          height: 54%;
+          border-radius: 50%;
+          transform-origin: center;
+          mask-image: radial-gradient(ellipse at center, #000 0%, #000 62%, transparent 76%);
+          -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, #000 62%, transparent 76%);
+        }
+
+        .portal-grid-a {
+          opacity: .52;
+          background:
+            repeating-radial-gradient(
+              ellipse at 50% 50%,
+              transparent 0 21px,
+              rgba(212,80,122,.48) 22px 23px,
+              transparent 24px 42px
+            );
+          transform: translate(-50%, -50%) perspective(620px) rotateX(68deg);
+          animation: portalGridPulse 8s ease-in-out infinite;
+        }
+
+        .portal-grid-b {
+          opacity: .34;
+          background:
+            repeating-conic-gradient(
+              from -5deg at 50% 50%,
+              rgba(28,28,26,.34) 0deg 1deg,
+              transparent 1deg 10deg
+            );
+          transform: translate(-50%, -50%) perspective(620px) rotateX(68deg);
+          animation: portalGridShift 18s linear infinite;
         }
 
         .portal-ring {
           position: absolute;
-          inset: 14%;
+          inset: 13%;
           border-radius: 999px;
-          opacity: .38;
           transform-origin: center;
         }
 
         .portal-ring-a {
-          border: 1px solid rgba(212,80,122,.32);
+          opacity: .58;
+          border: 1px solid rgba(212,80,122,.54);
           box-shadow:
-            0 0 18px rgba(212,80,122,.08),
-            inset 0 0 24px rgba(212,80,122,.035);
+            0 0 22px rgba(212,80,122,.16),
+            inset 0 0 30px rgba(212,80,122,.06);
           animation:
             ringPulse 10s ease-in-out 4.4s infinite,
-            ringGlitch 10s steps(1,end) 6.2s infinite;
+            portalGlitch 10s steps(1,end) 6.2s infinite;
         }
 
         .portal-ring-b {
-          inset: 25%;
-          border: 1px dashed rgba(28,28,26,.18);
+          inset: 24%;
+          opacity: .42;
+          border: 1px dashed rgba(28,28,26,.28);
           transform: rotate(12deg);
           animation:
             ringCounter 24s linear infinite,
-            ringGlitch 10s steps(1,end) 6.2s infinite;
+            portalGlitch 10s steps(1,end) 6.2s infinite;
         }
 
         .portal-axis {
           position: absolute;
           left: 50%;
           top: 50%;
-          background: linear-gradient(to bottom, transparent, rgba(212,80,122,.28), transparent);
-          opacity: .24;
+          opacity: .36;
           transform: translate(-50%, -50%);
         }
 
         .portal-axis-v {
           width: 1px;
-          height: 78%;
+          height: 82%;
+          background: linear-gradient(to bottom, transparent, rgba(212,80,122,.44), transparent);
         }
 
         .portal-axis-h {
-          width: 72%;
+          width: 78%;
           height: 1px;
-          background: linear-gradient(to right, transparent, rgba(212,80,122,.20), transparent);
+          background: linear-gradient(to right, transparent, rgba(212,80,122,.34), transparent);
         }
 
         .portal-dust {
           position: absolute;
           inset: 0;
           border-radius: 999px;
-          opacity: .26;
+          opacity: .42;
           background-image:
-            radial-gradient(circle, rgba(212,80,122,.28) 0 1px, transparent 1.4px),
-            radial-gradient(circle, rgba(28,28,26,.18) 0 .8px, transparent 1.2px),
-            radial-gradient(circle, rgba(232,226,212,.45) 0 1px, transparent 1.5px);
-          background-size: 56px 56px, 72px 72px, 96px 96px;
+            radial-gradient(circle, rgba(212,80,122,.42) 0 1px, transparent 1.5px),
+            radial-gradient(circle, rgba(28,28,26,.22) 0 .8px, transparent 1.2px),
+            radial-gradient(circle, rgba(232,226,212,.58) 0 1px, transparent 1.5px);
+          background-size: 46px 46px, 68px 68px, 92px 92px;
           background-position: 0 0, 18px 28px, 44px 12px;
-          mask-image: radial-gradient(circle at center, #000 0%, #000 42%, transparent 72%);
-          -webkit-mask-image: radial-gradient(circle at center, #000 0%, #000 42%, transparent 72%);
+          mask-image: radial-gradient(circle at center, #000 0%, #000 46%, transparent 74%);
+          -webkit-mask-image: radial-gradient(circle at center, #000 0%, #000 46%, transparent 74%);
           animation:
             dustDrift 18s linear infinite,
             dustGlitch 10s steps(1,end) 6.2s infinite;
         }
 
-        .hero-obelisk {
-          grid-area: 1 / 1;
-          display: block;
-        }
-
-        .hero-obelisk svg {
+        .hero-obelisk-img {
+          position: relative;
+          z-index: 5;
           display: block;
           height: clamp(340px,48svh,540px);
           width: auto;
-          overflow: visible;
-        }
-
-        .hero-obelisk-fill {
-          z-index: 3;
-          opacity: 1;
-          filter: contrast(.99) saturate(1);
-          transform: translate3d(0,0,0);
-          animation: heroObeliskFillLoop 10s ease-in-out 6.2s infinite;
-        }
-
-        .hero-obelisk-outline {
-          z-index: 4;
-          opacity: 0;
-          transform: translate3d(0,0,0);
-          filter: none;
-          mix-blend-mode: normal;
-          animation: heroObeliskOutlineLoop 10s ease-in-out 6.2s infinite;
-        }
-
-        .hero-obelisk-outline svg :is(path, rect, line, polyline, polygon, circle, ellipse) {
-          fill: transparent !important;
-          stroke: ${C.pink} !important;
-          stroke-width: 1.55px !important;
-          vector-effect: non-scaling-stroke;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          animation: obeliskStrokeDrawLoop 10s cubic-bezier(.55,.06,.2,1) 6.2s infinite;
+          pointer-events: none;
+          user-select: none;
         }
 
         .hero-copy {
@@ -959,7 +1017,6 @@ export default function ConceptPage() {
           animation: typeIn .56s steps(33,end) 4.5s forwards;
         }
 
-        /* ─ ACT II — FUNNEL ───────────────────────────────────────── */
         .a-monolith {
           display: flex;
           flex-direction: column;
@@ -989,7 +1046,9 @@ export default function ConceptPage() {
           transition: opacity 1.8s ease 2.2s;
         }
 
-        .a-monolith.iv .monolith-stage::after { opacity: 1; }
+        .a-monolith.iv .monolith-stage::after {
+          opacity: 1;
+        }
 
         .monolith-stage--funnel::after {
           left: 32%;
@@ -1026,7 +1085,6 @@ export default function ConceptPage() {
           animation: svgDraw 2.8s cubic-bezier(.55,.06,.2,1) .42s forwards;
         }
 
-        /* ─ ACT III — THE SPACE ───────────────────────────────────── */
         .a-space {
           padding: clamp(22px,3vw,38px) 0 clamp(40px,4.7vw,62px);
         }
@@ -1074,8 +1132,10 @@ export default function ConceptPage() {
           transform: translateY(5px);
         }
 
-        .a-space.iv .section-lead { animation: leadIn .7s ease .72s forwards; }
-        .a-exp.iv .section-lead { animation: leadIn .7s ease .72s forwards; }
+        .a-space.iv .section-lead,
+        .a-exp.iv .section-lead {
+          animation: leadIn .7s ease .72s forwards;
+        }
 
         .venue-stage {
           position: relative;
@@ -1100,7 +1160,9 @@ export default function ConceptPage() {
           transform: rotate(-3deg) scaleX(.7);
         }
 
-        .a-space.iv .venue-stage::before { animation: shadowIn .7s ease .5s forwards; }
+        .a-space.iv .venue-stage::before {
+          animation: shadowIn .7s ease .5s forwards;
+        }
 
         .venue-wrap {
           position: relative;
@@ -1171,7 +1233,6 @@ export default function ConceptPage() {
           margin-top: clamp(8px,1vw,16px);
         }
 
-        /* ─ ACT IV — GATE ─────────────────────────────────────────── */
         .a-gate {
           display: flex;
           flex-direction: column;
@@ -1187,42 +1248,94 @@ export default function ConceptPage() {
           padding: clamp(10px,1.8vh,20px) 0;
         }
 
-        .gate-funnel-wrap {
+        .wire-gate-wrap {
           opacity: 0;
           transform: translateY(34px) scale(.88);
         }
 
-        .a-gate.iv .gate-funnel-wrap {
+        .a-gate.iv .wire-gate-wrap {
           animation: gateReveal 2.2s cubic-bezier(.2,.8,.2,1) .26s forwards;
         }
 
-        .gate-funnel {
-          display: block;
-          line-height: 0;
+        .wire-gate {
+          position: relative;
+          width: min(46vw, 420px);
+          height: clamp(170px, 21vw, 260px);
           pointer-events: none;
           user-select: none;
-          opacity: .72;
-          filter: saturate(.82) contrast(.96);
+          filter: drop-shadow(0 0 10px rgba(212,80,122,.12));
         }
 
-        .gate-funnel svg {
+        .wire-gate-rings,
+        .wire-gate-spokes,
+        .wire-gate-core,
+        .wire-gate-scan {
+          position: absolute;
+          inset: 0;
           display: block;
-          width: min(34vw, 260px);
-          height: auto;
-          overflow: visible;
         }
 
-        .a-gate.iv .gate-funnel svg {
-          animation:
-            gateFunnelFloat 7.4s ease-in-out 1.6s infinite,
-            gateFunnelRetro 12s ease-in-out 1.8s infinite;
+        .wire-gate-rings {
+          border-radius: 50%;
+          opacity: .74;
+          background:
+            repeating-radial-gradient(
+              ellipse at 50% 50%,
+              transparent 0 19px,
+              rgba(212,80,122,.58) 20px 21px,
+              transparent 22px 38px
+            );
+          transform: perspective(620px) rotateX(66deg) scaleY(.78);
+          mask-image: radial-gradient(ellipse at center, #000 0%, #000 62%, transparent 78%);
+          -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, #000 62%, transparent 78%);
+          animation: wireGatePulse 7.2s ease-in-out infinite;
         }
 
-        .a-gate.iv .gate-funnel svg :is(path, rect, line, polyline, polygon, circle, ellipse) {
-          animation: svgDraw 2.8s cubic-bezier(.55,.06,.2,1) .4s forwards;
+        .wire-gate-spokes {
+          border-radius: 50%;
+          opacity: .44;
+          background:
+            repeating-conic-gradient(
+              from -4deg at 50% 50%,
+              rgba(28,28,26,.45) 0deg 1deg,
+              transparent 1deg 10deg
+            );
+          transform: perspective(620px) rotateX(66deg) scaleY(.78);
+          mask-image: radial-gradient(ellipse at center, #000 0%, #000 64%, transparent 78%);
+          -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, #000 64%, transparent 78%);
+          animation: wireGateRotate 26s linear infinite;
         }
 
-        /* ─ ACT V — EXPERIENCE ────────────────────────────────────── */
+        .wire-gate-core {
+          left: 38%;
+          right: 38%;
+          top: 38%;
+          bottom: 38%;
+          border-radius: 999px;
+          background:
+            radial-gradient(circle, rgba(28,28,26,.20), transparent 58%),
+            radial-gradient(circle, rgba(212,80,122,.45), transparent 64%);
+          opacity: .75;
+          filter: blur(3px);
+          animation: wireGateCore 5.8s ease-in-out infinite;
+        }
+
+        .wire-gate-scan {
+          opacity: 0;
+          background:
+            linear-gradient(
+              to bottom,
+              transparent 0%,
+              transparent 46%,
+              rgba(212,80,122,.28) 46%,
+              rgba(212,80,122,.28) 48%,
+              transparent 48%,
+              transparent 100%
+            );
+          transform: perspective(620px) rotateX(66deg) scaleY(.78);
+          animation: wireGateGlitch 8.8s steps(1,end) 1.6s infinite;
+        }
+
         .a-exp {
           padding: clamp(30px,4.4vw,58px) 0 clamp(80px,10vw,140px);
         }
@@ -1264,8 +1377,13 @@ export default function ConceptPage() {
           opacity: 0;
         }
 
-        .a-exp.iv .sig-line { animation: sigLineIn .8s cubic-bezier(.25,.8,.25,1) .3s forwards; }
-        .a-exp.iv .sig-fill { animation: sigFillLoop 9.6s ease-in-out 1.2s infinite; }
+        .a-exp.iv .sig-line {
+          animation: sigLineIn .8s cubic-bezier(.25,.8,.25,1) .3s forwards;
+        }
+
+        .a-exp.iv .sig-fill {
+          animation: sigFillLoop 9.6s ease-in-out 1.2s infinite;
+        }
 
         .sig-tick {
           position: absolute;
@@ -1276,7 +1394,9 @@ export default function ConceptPage() {
           opacity: 0;
         }
 
-        .a-exp.iv .sig-tick { animation: tickIn .4s ease .9s forwards; }
+        .a-exp.iv .sig-tick {
+          animation: tickIn .4s ease .9s forwards;
+        }
 
         .sig-node {
           position: absolute;
@@ -1285,11 +1405,22 @@ export default function ConceptPage() {
           transform: translateY(10px);
         }
 
-        .sn-dining { left: 0; }
-        .sn-dark { right: 0; text-align: right; }
+        .sn-dining {
+          left: 0;
+        }
 
-        .a-exp.iv .sn-dining { animation: nodeIn .48s ease .6s forwards; }
-        .a-exp.iv .sn-dark { animation: nodeIn .48s ease .8s forwards; }
+        .sn-dark {
+          right: 0;
+          text-align: right;
+        }
+
+        .a-exp.iv .sn-dining {
+          animation: nodeIn .48s ease .6s forwards;
+        }
+
+        .a-exp.iv .sn-dark {
+          animation: nodeIn .48s ease .8s forwards;
+        }
 
         .sig-time {
           display: block;
@@ -1334,8 +1465,13 @@ export default function ConceptPage() {
           overflow: visible;
         }
 
-        .sn-dining .sig-dot { left: -5px; }
-        .sn-dark .sig-dot { right: -5px; }
+        .sn-dining .sig-dot {
+          left: -5px;
+        }
+
+        .sn-dark .sig-dot {
+          right: -5px;
+        }
 
         .sig-sonar {
           position: absolute;
@@ -1346,8 +1482,13 @@ export default function ConceptPage() {
           opacity: 0;
         }
 
-        .a-exp.iv .sn-dining .sig-sonar { animation: sonarRing 3.2s ease-out 1.0s infinite; }
-        .a-exp.iv .sn-dark .sig-sonar { animation: sonarRing 3.2s ease-out 1.7s infinite; }
+        .a-exp.iv .sn-dining .sig-sonar {
+          animation: sonarRing 3.2s ease-out 1.0s infinite;
+        }
+
+        .a-exp.iv .sn-dark .sig-sonar {
+          animation: sonarRing 3.2s ease-out 1.7s infinite;
+        }
 
         .sig-dot-fill {
           position: absolute;
@@ -1357,8 +1498,13 @@ export default function ConceptPage() {
           opacity: 0;
         }
 
-        .a-exp.iv .sn-dining .sig-dot-fill { animation: dotDining 9.6s ease-in-out 1.2s infinite; }
-        .a-exp.iv .sn-dark .sig-dot-fill { animation: dotDark 9.6s ease-in-out 1.2s infinite; }
+        .a-exp.iv .sn-dining .sig-dot-fill {
+          animation: dotDining 9.6s ease-in-out 1.2s infinite;
+        }
+
+        .a-exp.iv .sn-dark .sig-dot-fill {
+          animation: dotDark 9.6s ease-in-out 1.2s infinite;
+        }
 
         .exp-nav {
           display: grid;
@@ -1366,7 +1512,6 @@ export default function ConceptPage() {
           gap: 14px;
         }
 
-        /* ─ cards ─────────────────────────────────────────────────── */
         .card {
           position: relative;
           min-height: clamp(82px,7.4vw,108px);
@@ -1473,10 +1618,6 @@ export default function ConceptPage() {
           color: ${C.cream};
         }
 
-        /* ══════════════════════════════════════════════════════════
-           KEYFRAMES
-        ══════════════════════════════════════════════════════════ */
-
         @keyframes flankGrow {
           from { transform: scaleY(0); }
           to { transform: scaleY(1); }
@@ -1498,10 +1639,9 @@ export default function ConceptPage() {
         @keyframes portalIn {
           0% {
             opacity: 0;
-            transform: translate(-50%, -50%) scale(.86);
-            filter: blur(10px);
+            transform: translate(-50%, -50%) scale(.82);
+            filter: blur(12px);
           }
-
           100% {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
@@ -1512,11 +1652,10 @@ export default function ConceptPage() {
         @keyframes portalBreath {
           0%,100% {
             transform: translate(-50%, -50%) scale(1);
-            opacity: .86;
+            opacity: .88;
           }
-
           50% {
-            transform: translate(-50%, -50%) scale(1.045);
+            transform: translate(-50%, -50%) scale(1.06);
             opacity: 1;
           }
         }
@@ -1525,24 +1664,59 @@ export default function ConceptPage() {
           to { transform: rotate(360deg); }
         }
 
+        @keyframes portalGlitch {
+          0%,4%,14%,100% {
+            filter: none;
+            opacity: .56;
+          }
+          5% {
+            filter: drop-shadow(5px 0 0 rgba(232,226,212,.55));
+            opacity: .82;
+          }
+          6% {
+            filter: drop-shadow(-5px 0 0 rgba(212,80,122,.45));
+            opacity: .62;
+          }
+          8% {
+            filter: none;
+            opacity: .72;
+          }
+        }
+
         @keyframes mistDriftA {
-          0%,100% { transform: translate3d(-2%, -1%, 0) scale(1); opacity: .38; }
-          50% { transform: translate3d(3%, 2%, 0) scale(1.08); opacity: .52; }
+          0%,100% { transform: translate3d(-2%, -1%, 0) scale(1); opacity: .54; }
+          50% { transform: translate3d(3%, 2%, 0) scale(1.1); opacity: .72; }
         }
 
         @keyframes mistDriftB {
-          0%,100% { transform: translate3d(2%, 1%, 0) rotate(0deg) scale(1); opacity: .30; }
-          50% { transform: translate3d(-3%, -2%, 0) rotate(9deg) scale(1.12); opacity: .44; }
+          0%,100% { transform: translate3d(2%, 1%, 0) rotate(0deg) scale(1); opacity: .40; }
+          50% { transform: translate3d(-3%, -2%, 0) rotate(9deg) scale(1.14); opacity: .58; }
+        }
+
+        @keyframes portalGridPulse {
+          0%,100% {
+            opacity: .40;
+            transform: translate(-50%, -50%) perspective(620px) rotateX(68deg) scale(.96);
+          }
+          50% {
+            opacity: .68;
+            transform: translate(-50%, -50%) perspective(620px) rotateX(68deg) scale(1.04);
+          }
+        }
+
+        @keyframes portalGridShift {
+          to {
+            transform: translate(-50%, -50%) perspective(620px) rotateX(68deg) rotate(360deg);
+          }
         }
 
         @keyframes ringPulse {
           0%,100% {
-            opacity: .26;
+            opacity: .46;
             transform: scale(.96);
           }
-
           50% {
-            opacity: .52;
+            opacity: .72;
             transform: scale(1.04);
           }
         }
@@ -1557,242 +1731,45 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes ringGlitch {
-          0%,4%,14%,100% {
-            filter: none;
-          }
-
-          5% {
-            filter: drop-shadow(3px 0 0 rgba(232,226,212,.55));
-          }
-
-          6% {
-            filter: drop-shadow(-3px 0 0 rgba(212,80,122,.45));
-          }
-
-          8% {
-            filter: none;
-          }
-        }
-
         @keyframes dustGlitch {
           0%,4%,15%,100% {
-            opacity: .26;
+            opacity: .42;
             transform: translate3d(0,0,0);
           }
-
           5% {
-            opacity: .46;
+            opacity: .72;
             transform: translate3d(-6px,2px,0);
           }
-
           7% {
-            opacity: .18;
+            opacity: .24;
             transform: translate3d(5px,-2px,0);
           }
-
           9% {
-            opacity: .32;
+            opacity: .52;
             transform: translate3d(0,0,0);
-          }
-        }
-
-        @keyframes heroStackGlitch {
-          0%,4%,15%,100% {
-            filter: none;
-          }
-
-          5% {
-            filter: contrast(1.08) saturate(.96);
-          }
-
-          6% {
-            filter: contrast(1.18) saturate(.82);
-          }
-
-          8% {
-            filter: none;
-          }
-        }
-
-        @keyframes heroGlitchScan {
-          0%,4%,15%,100% {
-            opacity: 0;
-            transform: translate3d(0,0,0);
-            clip-path: inset(0 0 0 0);
-          }
-
-          5% {
-            opacity: .9;
-            transform: translate3d(-8px,0,0);
-            clip-path: inset(12% 0 74% 0);
-          }
-
-          6.4% {
-            opacity: .6;
-            transform: translate3d(9px,1px,0);
-            clip-path: inset(38% 0 46% 0);
-          }
-
-          8% {
-            opacity: .75;
-            transform: translate3d(-4px,-1px,0);
-            clip-path: inset(64% 0 18% 0);
-          }
-
-          10% {
-            opacity: 0;
-            transform: translate3d(0,0,0);
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        /* Original full-colour obelisk remains dominant.
-           It only steps away while the full outline redraw happens. */
-        @keyframes heroObeliskFillLoop {
-          0%,3%,100% {
-            opacity: 1;
-            transform: translate3d(0,0,0) scale(1);
-            filter: contrast(.99) saturate(1) blur(0);
-          }
-
-          4.5% {
-            opacity: .75;
-            transform: translate3d(0,0,0) scale(1);
-            filter: contrast(1.03) saturate(.94) blur(.15px);
-          }
-
-          6%,15% {
-            opacity: 0;
-            transform: translate3d(0,0,0) scale(.996);
-            filter: contrast(1.12) saturate(.86) blur(.5px);
-          }
-
-          16.5% {
-            opacity: .28;
-            transform: translate3d(-3px,0,0) scale(1.004);
-            filter: contrast(1.08) saturate(.92) blur(.25px);
-          }
-
-          18% {
-            opacity: .08;
-            transform: translate3d(4px,1px,0) scale(.998);
-            filter: contrast(1.16) saturate(.78) blur(.45px);
-          }
-
-          20.5% {
-            opacity: .62;
-            transform: translate3d(-1px,0,0) scale(1.006);
-            filter: contrast(1.04) saturate(.92) blur(.15px);
-          }
-
-          24%,60% {
-            opacity: 1;
-            transform: translate3d(0,0,0) scale(1);
-            filter: contrast(.99) saturate(1) blur(0);
-          }
-
-          63% {
-            opacity: 1;
-            transform: translate3d(0,-5px,0) scale(1.003);
-            filter: contrast(1) saturate(.98);
-          }
-
-          74%,100% {
-            opacity: 1;
-            transform: translate3d(0,0,0) scale(1);
-            filter: contrast(.99) saturate(1);
-          }
-        }
-
-        @keyframes heroObeliskOutlineLoop {
-          0%,3%,25%,100% {
-            opacity: 0;
-            transform: translate3d(0,0,0) scale(1);
-            filter: none;
-          }
-
-          4.5% {
-            opacity: .18;
-            transform: translate3d(0,0,0) scale(.998);
-            filter: none;
-          }
-
-          7% {
-            opacity: .95;
-            transform: translate3d(0,0,0) scale(1);
-            filter: drop-shadow(0 0 7px rgba(212,80,122,.22));
-          }
-
-          13.5% {
-            opacity: 1;
-            transform: translate3d(0,0,0) scale(1);
-            filter: drop-shadow(0 0 10px rgba(212,80,122,.28));
-          }
-
-          15% {
-            opacity: 1;
-            transform: translate3d(-5px,0,0) scale(1.004);
-            filter: drop-shadow(4px 0 0 rgba(232,226,212,.9));
-          }
-
-          16.2% {
-            opacity: .78;
-            transform: translate3d(6px,1px,0) scale(.998);
-            filter: drop-shadow(-4px 0 0 rgba(232,226,212,.72));
-          }
-
-          17.4% {
-            opacity: 1;
-            transform: translate3d(-3px,-1px,0) scale(1.006);
-            filter: drop-shadow(2px 0 0 rgba(122,120,112,.55));
-          }
-
-          19% {
-            opacity: .82;
-            transform: translate3d(2px,0,0) scale(1.002);
-            filter: drop-shadow(0 0 8px rgba(212,80,122,.26));
-          }
-
-          22% {
-            opacity: 0;
-            transform: translate3d(0,0,0) scale(1);
-            filter: none;
-          }
-        }
-
-        @keyframes obeliskStrokeDrawLoop {
-          0%,3% {
-            stroke-dashoffset: var(--path-len);
-          }
-
-          13.5%,100% {
-            stroke-dashoffset: 0;
           }
         }
 
         @keyframes titleFromFunnel {
-          0%   { opacity: 0; transform: translateY(-28px) scaleY(.35); filter: blur(2px); }
-          60%  { opacity: 1; transform: translateY(4px) scaleY(1.06); filter: blur(0); }
-          80%  { transform: translateY(-2px) scaleY(.98); }
+          0% { opacity: 0; transform: translateY(-28px) scaleY(.35); filter: blur(2px); }
+          60% { opacity: 1; transform: translateY(4px) scaleY(1.06); filter: blur(0); }
+          80% { transform: translateY(-2px) scaleY(.98); }
           100% { opacity: 1; transform: translateY(0) scaleY(1); filter: blur(0); }
         }
 
         @keyframes scanIn {
-          0%   { opacity:0; clip-path:inset(0 100% 0 0); transform:translateX(-8px); filter:blur(1.5px); }
-          60%  { opacity:1; clip-path:inset(0 0 0 0);    transform:translateX(0);    filter:blur(0); }
-          74%  { transform:translateX(4px); }
-          86%  { transform:translateX(-2px); }
-          100% { opacity:1; clip-path:inset(0 0 0 0);    transform:translateX(0);    filter:blur(0); }
+          0% { opacity:0; clip-path:inset(0 100% 0 0); transform:translateX(-8px); filter:blur(1.5px); }
+          60% { opacity:1; clip-path:inset(0 0 0 0); transform:translateX(0); filter:blur(0); }
+          74% { transform:translateX(4px); }
+          86% { transform:translateX(-2px); }
+          100% { opacity:1; clip-path:inset(0 0 0 0); transform:translateX(0); filter:blur(0); }
         }
 
-        /* chromatic-aberration glitch burst — pink + cream split */
         @keyframes stIdle {
           0%,84%,100% {
             filter:none;
             text-shadow:.018em 0 0 currentColor;
           }
-
           85% {
             filter:blur(.4px);
             text-shadow:
@@ -1800,7 +1777,6 @@ export default function ConceptPage() {
               .08em 0 0 rgba(232,226,212,.92),
               .018em 0 0 currentColor;
           }
-
           86.5% {
             filter:none;
             text-shadow:
@@ -1808,7 +1784,6 @@ export default function ConceptPage() {
               -.09em 0 0 rgba(232,226,212,.76),
               .018em 0 0 currentColor;
           }
-
           88% {
             filter:blur(.3px);
             text-shadow:
@@ -1816,12 +1791,10 @@ export default function ConceptPage() {
               .07em .02em 0 rgba(232,226,212,.84),
               .018em 0 0 currentColor;
           }
-
           89.5% {
             filter:none;
             text-shadow:.018em 0 0 currentColor;
           }
-
           91% {
             filter:none;
             text-shadow:
@@ -1829,7 +1802,6 @@ export default function ConceptPage() {
               -.05em 0 0 rgba(122,120,112,.62),
               .018em 0 0 currentColor;
           }
-
           92.5% {
             filter:none;
             text-shadow:.018em 0 0 currentColor;
@@ -1842,13 +1814,8 @@ export default function ConceptPage() {
 
         @keyframes funnelFloat {
           0%,100% { transform: translateY(0) rotate(0deg); }
-          33%     { transform: translateY(-14px) rotate(.5deg); }
-          66%     { transform: translateY(-7px) rotate(-.3deg); }
-        }
-
-        @keyframes gateFunnelFloat {
-          0%,100% { transform: translateY(0) rotate(0deg) scale(.96); }
-          50%     { transform: translateY(-10px) rotate(.28deg) scale(.98); }
+          33% { transform: translateY(-14px) rotate(.5deg); }
+          66% { transform: translateY(-7px) rotate(-.3deg); }
         }
 
         @keyframes svgDraw {
@@ -1857,30 +1824,70 @@ export default function ConceptPage() {
 
         @keyframes funnelRetro {
           0%,100% { filter: drop-shadow(0 0 4px rgba(212,80,122,.22)) saturate(.95) contrast(.97); }
-          16%     { filter: drop-shadow(0 0 11px rgba(212,80,122,.5)) saturate(1.08) contrast(1); }
-          28%     { filter: drop-shadow(0 0 4px rgba(212,80,122,.22)) saturate(.95) contrast(.97); }
-          60%     { filter: drop-shadow(0 0 5px rgba(212,80,122,.25)) hue-rotate(0deg); }
-          66%     { filter: drop-shadow(0 0 10px rgba(232,226,212,.5)) hue-rotate(0deg) saturate(1.06); }
-          70%     { filter: drop-shadow(0 0 7px rgba(122,120,112,.34)) hue-rotate(0deg) saturate(1.02); }
-          74%     { filter: drop-shadow(0 0 4px rgba(212,80,122,.22)) hue-rotate(0deg); }
-        }
-
-        @keyframes gateFunnelRetro {
-          0%,100% { filter: drop-shadow(0 0 3px rgba(212,80,122,.18)) saturate(.88) contrast(.94); opacity: .72; }
-          28%     { filter: drop-shadow(0 0 8px rgba(212,80,122,.34)) saturate(1.02) contrast(.98); opacity: .88; }
-          42%     { filter: drop-shadow(0 0 3px rgba(212,80,122,.18)) saturate(.88) contrast(.94); opacity: .72; }
-          70%     { filter: drop-shadow(0 0 7px rgba(122,120,112,.3)) saturate(.92) contrast(.96); opacity: .78; }
+          16% { filter: drop-shadow(0 0 11px rgba(212,80,122,.5)) saturate(1.08) contrast(1); }
+          28% { filter: drop-shadow(0 0 4px rgba(212,80,122,.22)) saturate(.95) contrast(.97); }
+          60% { filter: drop-shadow(0 0 5px rgba(212,80,122,.25)) hue-rotate(0deg); }
+          66% { filter: drop-shadow(0 0 10px rgba(232,226,212,.5)) hue-rotate(0deg) saturate(1.06); }
+          70% { filter: drop-shadow(0 0 7px rgba(122,120,112,.34)) hue-rotate(0deg) saturate(1.02); }
+          74% { filter: drop-shadow(0 0 4px rgba(212,80,122,.22)) hue-rotate(0deg); }
         }
 
         @keyframes monolithFunnelIn {
-          0%   { opacity:0; transform:translateY(42px) scale(.92); }
-          66%  { opacity:1; transform:translateY(-3px) scale(1.02); }
+          0% { opacity:0; transform:translateY(42px) scale(.92); }
+          66% { opacity:1; transform:translateY(-3px) scale(1.02); }
           100% { opacity:1; transform:translateY(0) scale(1); }
         }
 
         @keyframes gateReveal {
-          0%   { opacity:0; transform:translateY(34px) scale(.88); }
+          0% { opacity:0; transform:translateY(34px) scale(.88); }
           100% { opacity:1; transform:translateY(0) scale(1); }
+        }
+
+        @keyframes wireGatePulse {
+          0%,100% {
+            opacity: .58;
+            filter: drop-shadow(0 0 3px rgba(212,80,122,.2));
+          }
+          50% {
+            opacity: .86;
+            filter: drop-shadow(0 0 10px rgba(212,80,122,.38));
+          }
+        }
+
+        @keyframes wireGateRotate {
+          to {
+            transform: perspective(620px) rotateX(66deg) scaleY(.78) rotate(360deg);
+          }
+        }
+
+        @keyframes wireGateCore {
+          0%,100% {
+            opacity: .55;
+            transform: scale(.9);
+          }
+          50% {
+            opacity: .9;
+            transform: scale(1.14);
+          }
+        }
+
+        @keyframes wireGateGlitch {
+          0%,72%,100% {
+            opacity: 0;
+            transform: perspective(620px) rotateX(66deg) scaleY(.78) translate3d(0,0,0);
+          }
+          73% {
+            opacity: .8;
+            transform: perspective(620px) rotateX(66deg) scaleY(.78) translate3d(-8px,0,0);
+          }
+          74.5% {
+            opacity: .5;
+            transform: perspective(620px) rotateX(66deg) scaleY(.78) translate3d(8px,1px,0);
+          }
+          76% {
+            opacity: 0;
+            transform: perspective(620px) rotateX(66deg) scaleY(.78) translate3d(0,0,0);
+          }
         }
 
         @keyframes shadowIn {
@@ -1893,7 +1900,7 @@ export default function ConceptPage() {
 
         @keyframes venueFloat {
           0%,100% { transform:translateY(0) rotate(-.15deg); }
-          50%     { transform:translateY(-9px) rotate(.22deg); }
+          50% { transform:translateY(-9px) rotate(.22deg); }
         }
 
         @keyframes glitchA {
@@ -1917,9 +1924,9 @@ export default function ConceptPage() {
         }
 
         @keyframes sigFillLoop {
-          0%,17%   { transform:scaleX(0); opacity:0; }
-          22%      { transform:scaleX(0); opacity:1; }
-          56%      { transform:scaleX(1); opacity:1; }
+          0%,17% { transform:scaleX(0); opacity:0; }
+          22% { transform:scaleX(0); opacity:1; }
+          56% { transform:scaleX(1); opacity:1; }
           72%,100% { transform:scaleX(1); opacity:0; }
         }
 
@@ -1932,35 +1939,35 @@ export default function ConceptPage() {
         }
 
         @keyframes sonarRing {
-          0%   { transform:scale(1); opacity:.55; }
-          75%  { transform:scale(3.2); opacity:0; }
+          0% { transform:scale(1); opacity:.55; }
+          75% { transform:scale(3.2); opacity:0; }
           100% { transform:scale(1); opacity:0; }
         }
 
-        @keyframes dotDining  {
-          0%,17%{opacity:0}
-          22%,62%{opacity:1}
-          78%,100%{opacity:0}
+        @keyframes dotDining {
+          0%,17% { opacity:0; }
+          22%,62% { opacity:1; }
+          78%,100% { opacity:0; }
         }
 
         @keyframes dotDark {
-          0%,47%{opacity:0}
-          56%,70%{opacity:1}
-          84%,100%{opacity:0}
+          0%,47% { opacity:0; }
+          56%,70% { opacity:1; }
+          84%,100% { opacity:0; }
         }
 
         @keyframes timeDining {
-          0%,17%{color:rgba(28,28,26,.72); filter:none;}
-          22%,62%{color:${C.pink}; filter:drop-shadow(0 0 4px rgba(212,80,122,.18));}
-          78%,100%{color:rgba(28,28,26,.72); filter:none;}
+          0%,17% { color:rgba(28,28,26,.72); filter:none; }
+          22%,62% { color:${C.pink}; filter:drop-shadow(0 0 4px rgba(212,80,122,.18)); }
+          78%,100% { color:rgba(28,28,26,.72); filter:none; }
         }
 
         @keyframes timeDark {
-          0%,47%{color:rgba(28,28,26,.72); filter:none; transform:translateX(0);}
-          50%{color:${C.pink}; filter:drop-shadow(0 0 4px rgba(212,80,122,.22)); transform:translateX(-2px);}
-          52%{transform:translateX(2px);}
-          56%,70%{color:${C.pink}; filter:drop-shadow(0 0 4px rgba(212,80,122,.22)); transform:translateX(0);}
-          84%,100%{color:rgba(28,28,26,.72); filter:none; transform:translateX(0);}
+          0%,47% { color:rgba(28,28,26,.72); filter:none; transform:translateX(0); }
+          50% { color:${C.pink}; filter:drop-shadow(0 0 4px rgba(212,80,122,.22)); transform:translateX(-2px); }
+          52% { transform:translateX(2px); }
+          56%,70% { color:${C.pink}; filter:drop-shadow(0 0 4px rgba(212,80,122,.22)); transform:translateX(0); }
+          84%,100% { color:rgba(28,28,26,.72); filter:none; transform:translateX(0); }
         }
 
         @keyframes cardIn {
@@ -1972,22 +1979,37 @@ export default function ConceptPage() {
         }
 
         @keyframes borderDraw {
-          0%   { clip-path:inset(0 100% 100% 0); }
-          45%  { clip-path:inset(0 0 100% 0); }
+          0% { clip-path:inset(0 100% 100% 0); }
+          45% { clip-path:inset(0 0 100% 0); }
           100% { clip-path:inset(0 0 0 0); }
         }
 
-        /* ─ responsive ─────────────────────────────────────────── */
         @media (max-width:1280px) {
-          .shell { width:76%; }
+          .shell {
+            width:76%;
+          }
         }
 
         @media (max-width:980px) {
-          .shell { width:86%; }
-          .zone-nav { grid-template-columns:1fr; }
-          .hero-obelisk svg { height:clamp(280px,40svh,420px); }
-          .hero-portal { width: clamp(320px, 52svh, 560px); }
-          .gate-funnel svg { width:min(48vw,250px); }
+          .shell {
+            width:86%;
+          }
+
+          .zone-nav {
+            grid-template-columns:1fr;
+          }
+
+          .hero-obelisk-img {
+            height:clamp(280px,40svh,420px);
+          }
+
+          .hero-portal {
+            width: clamp(420px, 60svh, 620px);
+          }
+
+          .wire-gate {
+            width:min(58vw, 360px);
+          }
         }
 
         @media (max-width:820px) {
@@ -2001,14 +2023,16 @@ export default function ConceptPage() {
             max-width:none;
           }
 
-          .a-hero { padding-top:96px; }
+          .a-hero {
+            padding-top:96px;
+          }
 
-          .hero-obelisk svg {
+          .hero-obelisk-img {
             height:clamp(250px,34svh,350px);
           }
 
           .hero-portal {
-            width: clamp(300px, 48svh, 460px);
+            width: clamp(350px, 52svh, 500px);
           }
 
           .hero-h1 {
@@ -2019,8 +2043,9 @@ export default function ConceptPage() {
             width:min(62vw,290px);
           }
 
-          .gate-funnel svg {
-            width:min(58vw,240px);
+          .wire-gate {
+            width:min(72vw, 320px);
+            height:clamp(150px, 28vw, 220px);
           }
 
           .sig {
@@ -2050,12 +2075,12 @@ export default function ConceptPage() {
             padding-top:88px;
           }
 
-          .hero-obelisk svg {
+          .hero-obelisk-img {
             height:clamp(220px,30svh,300px);
           }
 
           .hero-portal {
-            width: clamp(270px, 44svh, 380px);
+            width: clamp(300px, 46svh, 410px);
           }
 
           .hero-h1 {
@@ -2066,8 +2091,9 @@ export default function ConceptPage() {
             width:min(78vw,240px);
           }
 
-          .gate-funnel svg {
-            width:min(68vw,220px);
+          .wire-gate {
+            width:min(80vw, 280px);
+            height:clamp(132px, 34vw, 190px);
           }
 
           .exp-nav {
@@ -2093,11 +2119,15 @@ export default function ConceptPage() {
         }
 
         @media (max-width:380px) {
-          .card-title { font-size:16px; }
-          .sig-time { font-size:14px; }
+          .card-title {
+            font-size:16px;
+          }
+
+          .sig-time {
+            font-size:14px;
+          }
         }
 
-        /* ─ reduced motion ─────────────────────────────────────── */
         @media (prefers-reduced-motion:reduce) {
           .curtain {
             transition: none !important;
@@ -2106,24 +2136,25 @@ export default function ConceptPage() {
 
           .hero-obelisk-drop,
           .hero-obelisk-stack,
-          .hero-obelisk-stack::after,
           .hero-portal,
           .hero-portal::before,
           .hero-portal::after,
           .portal-mist,
+          .portal-grid,
           .portal-ring,
           .portal-axis,
           .portal-dust,
-          .hero-obelisk-outline,
-          .hero-obelisk-fill,
           .hero-h1,
           .tt-hero,
           .st,
           .flank-line,
           .monolith-funnel,
           .monolith-funnel svg,
-          .gate-funnel-wrap,
-          .gate-funnel svg,
+          .wire-gate-wrap,
+          .wire-gate-rings,
+          .wire-gate-spokes,
+          .wire-gate-core,
+          .wire-gate-scan,
           .venue-wrap,
           .vg-a,
           .vg-b,
@@ -2151,21 +2182,15 @@ export default function ConceptPage() {
           }
 
           .hero-obelisk-drop,
-          .hero-obelisk-fill,
-          .gate-funnel-wrap,
+          .wire-gate-wrap,
           .monolith-funnel {
             opacity:1;
             transform:none;
           }
 
           .hero-portal {
-            opacity: .72;
+            opacity: .8;
             transform: translate(-50%, -50%) scale(1);
-          }
-
-          .hero-obelisk-outline {
-            opacity:0 !important;
-            transform:none;
           }
 
           .hero-h1 {
@@ -2183,9 +2208,7 @@ export default function ConceptPage() {
             clip-path:inset(0 0 0 0);
           }
 
-          .monolith-funnel svg :is(path,rect,line,polyline,polygon,circle,ellipse),
-          .gate-funnel svg :is(path,rect,line,polyline,polygon,circle,ellipse),
-          .hero-obelisk-outline svg :is(path,rect,line,polyline,polygon,circle,ellipse) {
+          .monolith-funnel svg :is(path,rect,line,polyline,polygon,circle,ellipse) {
             stroke-dashoffset: 0 !important;
             animation: none !important;
           }
