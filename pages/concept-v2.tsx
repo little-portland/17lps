@@ -14,6 +14,7 @@ const C = {
 const MONO = '"Space Mono", "Courier New", monospace';
 
 type AreaId = 'tent' | 'chefs-studio' | 'studio';
+
 type Area = {
   id: AreaId;
   title: string;
@@ -110,6 +111,7 @@ export default function ConceptPage() {
 
   const [firstDonut, setFirstDonut] = useState<'bottom' | 'straight'>('bottom');
   const [secondDonut, setSecondDonut] = useState<'top' | 'straight'>('top');
+
   const [firstDonutGlitch, setFirstDonutGlitch] = useState(false);
   const [secondDonutGlitch, setSecondDonutGlitch] = useState(false);
 
@@ -144,6 +146,7 @@ export default function ConceptPage() {
     };
 
     run();
+
     const iv = window.setInterval(run, 9600);
 
     return () => {
@@ -166,8 +169,11 @@ export default function ConceptPage() {
 
   useEffect(() => {
     const onS = () => setScrolled(window.scrollY > 24);
+
     onS();
+
     window.addEventListener('scroll', onS, { passive: true });
+
     return () => window.removeEventListener('scroll', onS);
   }, []);
 
@@ -178,22 +184,29 @@ export default function ConceptPage() {
       entries => {
         entries.forEach(e => {
           if (!e.isIntersecting) return;
+
           e.target.classList.add('iv');
           obs.unobserve(e.target);
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -5% 0px' }
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -5% 0px',
+      }
     );
 
     els.forEach(el => obs.observe(el));
+
     return () => obs.disconnect();
   }, []);
 
   useEffect(() => {
     const mq = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 900px)');
+
     const update = () => setTouch(mq.matches || window.innerWidth <= 900);
 
     update();
+
     mq.addEventListener('change', update);
     window.addEventListener('resize', update);
 
@@ -246,11 +259,11 @@ export default function ConceptPage() {
 
       swapTimer = window.setTimeout(() => {
         setFirstDonut(prev => (prev === 'bottom' ? 'straight' : 'bottom'));
-      }, 180);
+      }, 210);
 
       clearGlitchTimer = window.setTimeout(() => {
         setFirstDonutGlitch(false);
-      }, 560);
+      }, 620);
     };
 
     const iv = window.setInterval(trigger, 8000);
@@ -273,11 +286,11 @@ export default function ConceptPage() {
 
       swapTimer = window.setTimeout(() => {
         setSecondDonut(prev => (prev === 'top' ? 'straight' : 'top'));
-      }, 180);
+      }, 210);
 
       clearGlitchTimer = window.setTimeout(() => {
         setSecondDonutGlitch(false);
-      }, 560);
+      }, 620);
     };
 
     startTimer = window.setTimeout(() => {
@@ -347,7 +360,6 @@ export default function ConceptPage() {
                   <span className="hero-mist hero-mist-a" />
                   <span className="hero-mist hero-mist-b" />
                   <span className="hero-grid-plane" />
-                  <span className="hero-grid-plane hero-grid-plane-b" />
                   <span className="hero-burst-lines hero-burst-lines-a" />
                   <span className="hero-burst-lines hero-burst-lines-b" />
                   <span className="hero-shadow-floor" />
@@ -360,12 +372,14 @@ export default function ConceptPage() {
                     className="hero-obelisk-img hero-obelisk-base"
                     draggable={false}
                   />
+
                   <img
                     src={IMG.obelisk}
                     alt=""
                     className="hero-obelisk-img hero-obelisk-ghost hero-obelisk-ghost-a"
                     draggable={false}
                   />
+
                   <img
                     src={IMG.obelisk}
                     alt=""
@@ -401,14 +415,31 @@ export default function ConceptPage() {
                 className={`donut-img ${firstDonut === 'bottom' ? 'is-visible' : ''}`}
                 draggable={false}
               />
+
               <img
                 src={IMG.donutStraight}
                 alt=""
                 className={`donut-img ${firstDonut === 'straight' ? 'is-visible' : ''}`}
                 draggable={false}
               />
+
+              <img
+                src={firstDonut === 'bottom' ? IMG.donutBottom : IMG.donutStraight}
+                alt=""
+                className="donut-img donut-ghost donut-ghost-a"
+                draggable={false}
+              />
+
+              <img
+                src={firstDonut === 'bottom' ? IMG.donutBottom : IMG.donutStraight}
+                alt=""
+                className="donut-img donut-ghost donut-ghost-b"
+                draggable={false}
+              />
+
               <span className="donut-glitch-slice dgs-a" />
               <span className="donut-glitch-slice dgs-b" />
+              <span className="donut-signal-line" />
             </div>
           </div>
 
@@ -477,7 +508,7 @@ export default function ConceptPage() {
           <div className="donut-stage">
             <div
               ref={secondDonutParRef}
-              className={`par-wrap donut-wrap donut-wrap--second ${secondDonutGlitch ? 'is-glitch' : ''}`}
+              className={`par-wrap donut-wrap ${secondDonutGlitch ? 'is-glitch' : ''}`}
             >
               <img
                 src={IMG.donutTop}
@@ -485,14 +516,31 @@ export default function ConceptPage() {
                 className={`donut-img ${secondDonut === 'top' ? 'is-visible' : ''}`}
                 draggable={false}
               />
+
               <img
                 src={IMG.donutStraight}
                 alt=""
                 className={`donut-img ${secondDonut === 'straight' ? 'is-visible' : ''}`}
                 draggable={false}
               />
+
+              <img
+                src={secondDonut === 'top' ? IMG.donutTop : IMG.donutStraight}
+                alt=""
+                className="donut-img donut-ghost donut-ghost-a"
+                draggable={false}
+              />
+
+              <img
+                src={secondDonut === 'top' ? IMG.donutTop : IMG.donutStraight}
+                alt=""
+                className="donut-img donut-ghost donut-ghost-b"
+                draggable={false}
+              />
+
               <span className="donut-glitch-slice dgs-a" />
               <span className="donut-glitch-slice dgs-b" />
+              <span className="donut-signal-line" />
             </div>
           </div>
 
@@ -845,120 +893,94 @@ export default function ConceptPage() {
 
         .hero-field {
           position: absolute;
-          inset: auto;
           left: 50%;
           top: 50%;
-          width: clamp(620px, 84svh, 980px);
-          height: clamp(420px, 56svh, 700px);
-          transform: translate(-50%, -50%);
+          width: clamp(560px, 76svh, 860px);
+          height: clamp(400px, 54svh, 640px);
+          transform: translate(-50%, -50%) scale(0.94);
           z-index: 0;
           pointer-events: none;
+          opacity: 0;
+          animation: heroFieldContainerIn 1.7s cubic-bezier(0.22, 1, 0.36, 1) 2.3s forwards;
         }
 
         .hero-glow {
           position: absolute;
           left: 50%;
           top: 48%;
-          width: 70%;
-          height: 86%;
+          width: 72%;
+          height: 84%;
           transform: translate(-50%, -50%);
           border-radius: 50%;
           background:
             radial-gradient(
               ellipse at center,
-              rgba(212, 80, 122, 0.3) 0%,
-              rgba(212, 80, 122, 0.16) 22%,
-              rgba(232, 226, 212, 0.18) 46%,
-              transparent 70%
+              rgba(212, 80, 122, 0.28) 0%,
+              rgba(212, 80, 122, 0.15) 24%,
+              rgba(232, 226, 212, 0.18) 45%,
+              transparent 72%
             );
           filter: blur(26px);
-          opacity: 0.9;
-          animation:
-            heroFieldIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) 2.35s forwards,
-            heroGlowBreath 10s ease-in-out 4.2s infinite;
+          opacity: 0.88;
+          animation: heroGlowBreath 10s ease-in-out 4.2s infinite;
         }
 
         .hero-mist {
           position: absolute;
-          inset: 0;
+          inset: 3%;
           border-radius: 50%;
-          filter: blur(24px);
-          opacity: 0;
-          animation: heroFieldIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) 2.45s forwards;
+          filter: blur(28px);
+          opacity: 0.36;
+          pointer-events: none;
         }
 
         .hero-mist-a {
           background:
-            radial-gradient(circle at 34% 46%, rgba(212, 80, 122, 0.18), transparent 24%),
-            radial-gradient(circle at 62% 44%, rgba(232, 226, 212, 0.26), transparent 28%),
-            radial-gradient(circle at 50% 66%, rgba(28, 28, 26, 0.07), transparent 30%);
-          animation:
-            heroFieldIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) 2.45s forwards,
-            mistDriftA 12s ease-in-out 4.5s infinite;
+            radial-gradient(circle at 34% 46%, rgba(212, 80, 122, 0.18), transparent 25%),
+            radial-gradient(circle at 62% 44%, rgba(232, 226, 212, 0.24), transparent 29%),
+            radial-gradient(circle at 50% 66%, rgba(28, 28, 26, 0.055), transparent 31%);
+          animation: mistDriftA 13s ease-in-out 4.5s infinite;
         }
 
         .hero-mist-b {
           background:
-            radial-gradient(circle at 58% 52%, rgba(212, 80, 122, 0.14), transparent 28%),
-            radial-gradient(circle at 42% 34%, rgba(122, 120, 112, 0.14), transparent 34%);
-          animation:
-            heroFieldIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) 2.55s forwards,
-            mistDriftB 15s ease-in-out 4.8s infinite;
+            radial-gradient(circle at 58% 52%, rgba(212, 80, 122, 0.12), transparent 29%),
+            radial-gradient(circle at 42% 34%, rgba(122, 120, 112, 0.1), transparent 35%);
+          animation: mistDriftB 16s ease-in-out 4.8s infinite;
         }
 
         .hero-grid-plane {
           position: absolute;
           left: 50%;
-          top: 60%;
-          width: 92%;
-          height: 42%;
-          transform: translate(-50%, -50%) perspective(1100px) rotateX(75deg);
-          border-radius: 50%;
-          opacity: 0;
+          top: 61%;
+          width: 78%;
+          height: 34%;
+          transform: translate(-50%, -50%) perspective(1100px) rotateX(76deg);
+          transform-origin: center;
+          border-radius: 42%;
+          opacity: 0.38;
           background:
             repeating-linear-gradient(
               90deg,
-              rgba(212, 80, 122, 0.22) 0 1px,
-              transparent 1px 36px
+              rgba(212, 80, 122, 0.18) 0 1px,
+              transparent 1px 42px
             ),
-            repeating-radial-gradient(
-              ellipse at 50% 45%,
-              transparent 0 24px,
-              rgba(212, 80, 122, 0.34) 24px 25px
+            repeating-linear-gradient(
+              0deg,
+              rgba(212, 80, 122, 0.16) 0 1px,
+              transparent 1px 34px
             );
-          mask-image: radial-gradient(ellipse at center, #000 0%, #000 62%, transparent 84%);
+          mask-image: radial-gradient(ellipse at center, #000 0%, #000 58%, transparent 82%);
           -webkit-mask-image: radial-gradient(
             ellipse at center,
             #000 0%,
-            #000 62%,
-            transparent 84%
+            #000 58%,
+            transparent 82%
           );
+          filter: blur(0.3px);
           animation:
-            heroFieldIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) 2.6s forwards,
-            gridBreath 10s ease-in-out 4.5s infinite,
+            gridBreathSoft 10s ease-in-out 4.5s infinite,
             heroBurstShift 10s steps(1, end) 6.2s infinite;
-        }
-
-        .hero-grid-plane-b {
-          width: 86%;
-          height: 36%;
-          opacity: 0;
-          filter: blur(1px);
-          background:
-            repeating-linear-gradient(
-              90deg,
-              rgba(212, 80, 122, 0.16) 0 1px,
-              transparent 1px 42px
-            ),
-            repeating-radial-gradient(
-              ellipse at 50% 45%,
-              transparent 0 28px,
-              rgba(212, 80, 122, 0.22) 28px 29px
-            );
-          animation:
-            heroFieldIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) 2.8s forwards,
-            gridBreathSoft 11s ease-in-out 4.5s infinite,
-            heroBurstShiftB 10s steps(1, end) 6.2s infinite;
         }
 
         .hero-burst-lines {
@@ -970,12 +992,12 @@ export default function ConceptPage() {
               to bottom,
               transparent 0%,
               transparent 18%,
-              rgba(212, 80, 122, 0.18) 18%,
-              rgba(212, 80, 122, 0.18) 20%,
+              rgba(212, 80, 122, 0.16) 18%,
+              rgba(212, 80, 122, 0.16) 20%,
               transparent 20%,
               transparent 48%,
-              rgba(232, 226, 212, 0.22) 48%,
-              rgba(232, 226, 212, 0.22) 50%,
+              rgba(232, 226, 212, 0.2) 48%,
+              rgba(232, 226, 212, 0.2) 50%,
               transparent 50%,
               transparent 100%
             );
@@ -998,12 +1020,10 @@ export default function ConceptPage() {
           width: 24%;
           height: 9%;
           transform: translate(-50%, -50%);
-          background: radial-gradient(ellipse, rgba(28, 28, 26, 0.18), transparent 72%);
+          background: radial-gradient(ellipse, rgba(28, 28, 26, 0.16), transparent 72%);
           filter: blur(12px);
-          opacity: 0;
-          animation:
-            heroFieldIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) 2.85s forwards,
-            floorShadowBreath 9s ease-in-out 4.6s infinite;
+          opacity: 0.18;
+          animation: floorShadowBreath 9s ease-in-out 4.6s infinite;
         }
 
         .hero-obelisk-shell {
@@ -1031,13 +1051,18 @@ export default function ConceptPage() {
           position: relative;
           z-index: 6;
           opacity: 0;
+          mix-blend-mode: multiply;
         }
 
         .hero-obelisk-ghost-a {
+          filter: brightness(0) saturate(100%) invert(47%) sepia(38%) saturate(1159%)
+            hue-rotate(299deg) brightness(90%) contrast(91%);
           animation: obeliskGhostPink 7.5s steps(1, end) 4.9s infinite;
         }
 
         .hero-obelisk-ghost-b {
+          filter: brightness(0) saturate(100%) invert(93%) sepia(9%) saturate(453%)
+            hue-rotate(350deg) brightness(99%) contrast(84%);
           animation: obeliskGhostCream 7.5s steps(1, end) 4.9s infinite;
         }
 
@@ -1122,24 +1147,20 @@ export default function ConceptPage() {
         .donut-wrap {
           position: relative;
           width: min(42vw, 320px);
-          aspect-ratio: 1.1 / 0.72;
+          height: clamp(190px, 22vw, 300px);
           opacity: 0;
           transform: translateY(36px) scale(0.92);
           line-height: 0;
           pointer-events: none;
           user-select: none;
           filter: drop-shadow(0 0 8px rgba(212, 80, 122, 0.14));
+          overflow: visible;
         }
 
         .rs.iv .donut-wrap {
           animation:
             donutIn 1.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards,
             donutFloat 8s ease-in-out 2s infinite;
-        }
-
-        .donut-wrap--second {
-          width: min(36vw, 260px);
-          aspect-ratio: 1 / 1;
         }
 
         .donut-img {
@@ -1150,7 +1171,7 @@ export default function ConceptPage() {
           object-fit: contain;
           opacity: 0;
           transform: scale(0.985);
-          transition: opacity 0.34s ease, transform 0.34s ease;
+          transition: opacity 0.34s ease, transform 0.34s ease, filter 0.34s ease;
         }
 
         .donut-img.is-visible {
@@ -1158,28 +1179,51 @@ export default function ConceptPage() {
           transform: scale(1);
         }
 
-        .donut-wrap.is-glitch .donut-img {
-          filter: contrast(1.04) saturate(1.04);
+        .donut-wrap.is-glitch .donut-img.is-visible {
+          transform: translateX(-4px) scale(1.012);
+          filter: contrast(1.08) saturate(1.08);
         }
 
-        .donut-wrap.is-glitch .donut-img.is-visible {
-          transform: translateX(-4px) scale(1.008);
+        .donut-ghost {
+          opacity: 0;
+          z-index: 3;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+        }
+
+        .donut-ghost-a {
+          filter: brightness(0) saturate(100%) invert(47%) sepia(38%) saturate(1159%)
+            hue-rotate(299deg) brightness(90%) contrast(91%);
+        }
+
+        .donut-ghost-b {
+          filter: brightness(0) saturate(100%) invert(93%) sepia(9%) saturate(453%)
+            hue-rotate(350deg) brightness(99%) contrast(84%);
+        }
+
+        .donut-wrap.is-glitch .donut-ghost-a {
+          animation: donutGhostA 0.62s steps(1, end) forwards;
+        }
+
+        .donut-wrap.is-glitch .donut-ghost-b {
+          animation: donutGhostB 0.62s steps(1, end) forwards;
         }
 
         .donut-glitch-slice {
           position: absolute;
-          left: 3%;
-          right: 3%;
-          height: 12%;
+          left: 4%;
+          right: 4%;
+          height: 10%;
           opacity: 0;
           pointer-events: none;
           mix-blend-mode: multiply;
+          z-index: 4;
           background:
             linear-gradient(
               90deg,
-              rgba(212, 80, 122, 0.16) 0%,
-              rgba(232, 226, 212, 0.32) 46%,
-              rgba(122, 120, 112, 0.16) 100%
+              rgba(212, 80, 122, 0.14) 0%,
+              rgba(232, 226, 212, 0.3) 46%,
+              rgba(122, 120, 112, 0.12) 100%
             );
         }
 
@@ -1192,11 +1236,35 @@ export default function ConceptPage() {
         }
 
         .donut-wrap.is-glitch .dgs-a {
-          animation: donutGlitchSliceA 0.52s steps(1, end) forwards;
+          animation: donutGlitchSliceA 0.62s steps(1, end) forwards;
         }
 
         .donut-wrap.is-glitch .dgs-b {
-          animation: donutGlitchSliceB 0.52s steps(1, end) forwards;
+          animation: donutGlitchSliceB 0.62s steps(1, end) forwards;
+        }
+
+        .donut-signal-line {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 50%;
+          height: 1px;
+          z-index: 5;
+          opacity: 0;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(212, 80, 122, 0.6),
+            rgba(232, 226, 212, 0.65),
+            rgba(212, 80, 122, 0.6),
+            transparent
+          );
+          transform: translateY(-50%);
+          pointer-events: none;
+        }
+
+        .donut-wrap.is-glitch .donut-signal-line {
+          animation: donutSignalLine 0.62s steps(1, end) forwards;
         }
 
         .a-space {
@@ -1556,7 +1624,11 @@ export default function ConceptPage() {
           inset: 0;
           background:
             linear-gradient(135deg, rgba(212, 80, 122, 0.14), transparent 42%),
-            repeating-linear-gradient(90deg, rgba(28, 28, 26, 0.05) 0 1px, transparent 1px 11px);
+            repeating-linear-gradient(
+              90deg,
+              rgba(28, 28, 26, 0.05) 0 1px,
+              transparent 1px 11px
+            );
           opacity: 0;
           transition: opacity 0.22s;
         }
@@ -1637,6 +1709,7 @@ export default function ConceptPage() {
           from {
             transform: scaleY(0);
           }
+
           to {
             transform: scaleY(1);
           }
@@ -1656,14 +1729,17 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes heroFieldIn {
+        @keyframes heroFieldContainerIn {
           from {
             opacity: 0;
             transform: translate(-50%, -50%) scale(0.9);
+            filter: blur(8px);
           }
+
           to {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
+            filter: blur(0);
           }
         }
 
@@ -1672,6 +1748,7 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0);
           }
+
           50% {
             transform: translateY(-8px);
           }
@@ -1680,47 +1757,38 @@ export default function ConceptPage() {
         @keyframes heroGlowBreath {
           0%,
           100% {
-            opacity: 0.8;
+            opacity: 0.76;
             transform: translate(-50%, -50%) scale(0.98);
           }
+
           50% {
             opacity: 1;
-            transform: translate(-50%, -50%) scale(1.05);
-          }
-        }
-
-        @keyframes gridBreath {
-          0%,
-          100% {
-            opacity: 0.56;
-            transform: translate(-50%, -50%) perspective(1100px) rotateX(75deg) scale(0.98);
-          }
-          50% {
-            opacity: 0.78;
-            transform: translate(-50%, -50%) perspective(1100px) rotateX(75deg) scale(1.03);
+            transform: translate(-50%, -50%) scale(1.055);
           }
         }
 
         @keyframes gridBreathSoft {
           0%,
           100% {
-            opacity: 0.32;
-            transform: translate(-50%, -50%) perspective(1100px) rotateX(75deg) scale(0.99);
+            opacity: 0.26;
+            transform: translate(-50%, -50%) perspective(1100px) rotateX(76deg) scale(0.99);
           }
+
           50% {
-            opacity: 0.5;
-            transform: translate(-50%, -50%) perspective(1100px) rotateX(75deg) scale(1.04);
+            opacity: 0.42;
+            transform: translate(-50%, -50%) perspective(1100px) rotateX(76deg) scale(1.04);
           }
         }
 
         @keyframes mistDriftA {
           0%,
           100% {
-            opacity: 0.38;
+            opacity: 0.34;
             transform: scale(1) translate3d(-2%, -1%, 0);
           }
+
           50% {
-            opacity: 0.58;
+            opacity: 0.52;
             transform: scale(1.08) translate3d(3%, 2%, 0);
           }
         }
@@ -1728,11 +1796,12 @@ export default function ConceptPage() {
         @keyframes mistDriftB {
           0%,
           100% {
-            opacity: 0.3;
+            opacity: 0.26;
             transform: scale(1) translate3d(2%, 1%, 0) rotate(0deg);
           }
+
           50% {
-            opacity: 0.46;
+            opacity: 0.4;
             transform: scale(1.12) translate3d(-3%, -2%, 0) rotate(8deg);
           }
         }
@@ -1740,9 +1809,10 @@ export default function ConceptPage() {
         @keyframes floorShadowBreath {
           0%,
           100% {
-            opacity: 0.15;
+            opacity: 0.14;
             transform: translate(-50%, -50%) scale(0.94);
           }
+
           50% {
             opacity: 0.24;
             transform: translate(-50%, -50%) scale(1.04);
@@ -1755,30 +1825,16 @@ export default function ConceptPage() {
           100% {
             filter: none;
           }
-          85% {
-            filter: drop-shadow(-6px 0 0 rgba(212, 80, 122, 0.22));
-          }
-          86.5% {
-            filter: drop-shadow(6px 0 0 rgba(232, 226, 212, 0.22));
-          }
-          88% {
-            filter: none;
-          }
-        }
 
-        @keyframes heroBurstShiftB {
-          0%,
-          84%,
-          100% {
-            filter: none;
+          85% {
+            filter: drop-shadow(-5px 0 0 rgba(212, 80, 122, 0.18));
           }
-          85.5% {
-            filter: drop-shadow(4px 0 0 rgba(212, 80, 122, 0.18));
+
+          86.5% {
+            filter: drop-shadow(5px 0 0 rgba(232, 226, 212, 0.18));
           }
-          87% {
-            filter: drop-shadow(-4px 0 0 rgba(232, 226, 212, 0.16));
-          }
-          88.5% {
+
+          88% {
             filter: none;
           }
         }
@@ -1791,21 +1847,25 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
+
           85% {
-            opacity: 0.72;
-            transform: translate3d(-10px, 0, 0);
+            opacity: 0.58;
+            transform: translate3d(-8px, 0, 0);
             clip-path: inset(12% 0 70% 0);
           }
+
           86.5% {
-            opacity: 0.4;
-            transform: translate3d(10px, 0, 0);
+            opacity: 0.32;
+            transform: translate3d(8px, 0, 0);
             clip-path: inset(42% 0 34% 0);
           }
+
           88.2% {
-            opacity: 0.2;
-            transform: translate3d(-6px, 0, 0);
+            opacity: 0.16;
+            transform: translate3d(-5px, 0, 0);
             clip-path: inset(68% 0 10% 0);
           }
+
           89% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -1821,16 +1881,19 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
+
           85.2% {
-            opacity: 0.46;
-            transform: translate3d(8px, 0, 0);
+            opacity: 0.34;
+            transform: translate3d(7px, 0, 0);
             clip-path: inset(28% 0 46% 0);
           }
+
           87.2% {
-            opacity: 0.24;
-            transform: translate3d(-8px, 0, 0);
+            opacity: 0.2;
+            transform: translate3d(-7px, 0, 0);
             clip-path: inset(58% 0 16% 0);
           }
+
           88.6% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -1844,23 +1907,21 @@ export default function ConceptPage() {
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
-            filter: none;
           }
+
           85% {
-            opacity: 0.24;
-            transform: translate3d(-7px, 0, 0);
-            filter: drop-shadow(0 0 0 rgba(212, 80, 122, 0.8))
-              drop-shadow(-2px 0 0 rgba(212, 80, 122, 0.75));
+            opacity: 0.2;
+            transform: translate3d(-6px, 0, 0);
           }
+
           86.4% {
-            opacity: 0.1;
+            opacity: 0.09;
             transform: translate3d(-3px, 0, 0);
-            filter: drop-shadow(-1px 0 0 rgba(212, 80, 122, 0.55));
           }
+
           87.6% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
-            filter: none;
           }
         }
 
@@ -1870,22 +1931,21 @@ export default function ConceptPage() {
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
-            filter: none;
           }
+
           85.6% {
-            opacity: 0.18;
-            transform: translate3d(7px, 0, 0);
-            filter: drop-shadow(2px 0 0 rgba(232, 226, 212, 0.86));
+            opacity: 0.16;
+            transform: translate3d(6px, 0, 0);
           }
+
           86.9% {
-            opacity: 0.08;
+            opacity: 0.07;
             transform: translate3d(3px, 0, 0);
-            filter: drop-shadow(1px 0 0 rgba(232, 226, 212, 0.62));
           }
+
           88% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
-            filter: none;
           }
         }
 
@@ -1895,14 +1955,17 @@ export default function ConceptPage() {
             transform: translateY(-28px) scaleY(0.35);
             filter: blur(2px);
           }
+
           60% {
             opacity: 1;
             transform: translateY(4px) scaleY(1.06);
             filter: blur(0);
           }
+
           80% {
             transform: translateY(-2px) scaleY(0.98);
           }
+
           100% {
             opacity: 1;
             transform: translateY(0) scaleY(1);
@@ -1917,18 +1980,22 @@ export default function ConceptPage() {
             transform: translateX(-8px);
             filter: blur(1.5px);
           }
+
           60% {
             opacity: 1;
             clip-path: inset(0 0 0 0);
             transform: translateX(0);
             filter: blur(0);
           }
+
           74% {
             transform: translateX(4px);
           }
+
           86% {
             transform: translateX(-2px);
           }
+
           100% {
             opacity: 1;
             clip-path: inset(0 0 0 0);
@@ -1944,6 +2011,7 @@ export default function ConceptPage() {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
           }
+
           85% {
             filter: blur(0.4px);
             text-shadow:
@@ -1951,6 +2019,7 @@ export default function ConceptPage() {
               0.08em 0 0 rgba(232, 226, 212, 0.92),
               0.018em 0 0 currentColor;
           }
+
           86.5% {
             filter: none;
             text-shadow:
@@ -1958,6 +2027,7 @@ export default function ConceptPage() {
               -0.09em 0 0 rgba(232, 226, 212, 0.76),
               0.018em 0 0 currentColor;
           }
+
           88% {
             filter: blur(0.3px);
             text-shadow:
@@ -1965,10 +2035,12 @@ export default function ConceptPage() {
               0.07em 0.02em 0 rgba(232, 226, 212, 0.84),
               0.018em 0 0 currentColor;
           }
+
           89.5% {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
           }
+
           91% {
             filter: none;
             text-shadow:
@@ -1976,6 +2048,7 @@ export default function ConceptPage() {
               -0.05em 0 0 rgba(122, 120, 112, 0.62),
               0.018em 0 0 currentColor;
           }
+
           92.5% {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
@@ -1993,10 +2066,12 @@ export default function ConceptPage() {
             opacity: 0;
             transform: translateY(36px) scale(0.92);
           }
+
           66% {
             opacity: 1;
             transform: translateY(-3px) scale(1.02);
           }
+
           100% {
             opacity: 1;
             transform: translateY(0) scale(1);
@@ -2008,8 +2083,45 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0) rotate(0deg);
           }
+
           50% {
             transform: translateY(-10px) rotate(0.35deg);
+          }
+        }
+
+        @keyframes donutGhostA {
+          0%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+
+          28% {
+            opacity: 0.26;
+            transform: translate3d(-8px, 0, 0) scale(1.012);
+          }
+
+          52% {
+            opacity: 0.12;
+            transform: translate3d(-3px, 1px, 0) scale(0.996);
+          }
+        }
+
+        @keyframes donutGhostB {
+          0%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+
+          32% {
+            opacity: 0.2;
+            transform: translate3d(8px, 0, 0) scale(1.006);
+          }
+
+          58% {
+            opacity: 0.08;
+            transform: translate3d(3px, -1px, 0) scale(0.998);
           }
         }
 
@@ -2018,14 +2130,17 @@ export default function ConceptPage() {
             opacity: 0;
             transform: translate3d(0, 0, 0);
           }
-          30% {
-            opacity: 0.7;
+
+          28% {
+            opacity: 0.58;
             transform: translate3d(-10px, 0, 0);
           }
-          60% {
-            opacity: 0.34;
+
+          54% {
+            opacity: 0.28;
             transform: translate3d(8px, 0, 0);
           }
+
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -2037,17 +2152,43 @@ export default function ConceptPage() {
             opacity: 0;
             transform: translate3d(0, 0, 0);
           }
-          36% {
-            opacity: 0.44;
+
+          34% {
+            opacity: 0.38;
             transform: translate3d(8px, 0, 0);
           }
-          70% {
-            opacity: 0.18;
+
+          66% {
+            opacity: 0.16;
             transform: translate3d(-6px, 0, 0);
           }
+
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
+          }
+        }
+
+        @keyframes donutSignalLine {
+          0%,
+          100% {
+            opacity: 0;
+            transform: translateY(-50%) scaleX(0.3);
+          }
+
+          26% {
+            opacity: 0.9;
+            transform: translateY(-50%) scaleX(1);
+          }
+
+          44% {
+            opacity: 0.3;
+            transform: translateY(-50%) scaleX(0.72);
+          }
+
+          62% {
+            opacity: 0.7;
+            transform: translateY(-50%) scaleX(1.06);
           }
         }
 
@@ -2070,6 +2211,7 @@ export default function ConceptPage() {
           100% {
             transform: translateY(0) rotate(-0.15deg);
           }
+
           50% {
             transform: translateY(-9px) rotate(0.22deg);
           }
@@ -2083,21 +2225,25 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
+
           73% {
             opacity: 0.18;
             transform: translate3d(-8px, -3px, 0);
             clip-path: inset(0% 0 82% 0);
           }
+
           74% {
             opacity: 0.2;
             transform: translate3d(10px, 4px, 0);
             clip-path: inset(18% 0 56% 0);
           }
+
           76% {
             opacity: 0.16;
             transform: translate3d(8px, 5px, 0);
             clip-path: inset(54% 0 14% 0);
           }
+
           78% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -2113,21 +2259,25 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
             clip-path: inset(0 0 0 0);
           }
+
           73.2% {
             opacity: 0.12;
             transform: translate3d(7px, 5px, 0);
             clip-path: inset(8% 0 72% 0);
           }
+
           74.8% {
             opacity: 0.14;
             transform: translate3d(-8px, -3px, 0);
             clip-path: inset(26% 0 44% 0);
           }
+
           76.4% {
             opacity: 0.1;
             transform: translate3d(4px, -5px, 0);
             clip-path: inset(62% 0 8% 0);
           }
+
           78% {
             opacity: 0;
             transform: translate3d(0, 0, 0);
@@ -2147,14 +2297,17 @@ export default function ConceptPage() {
             transform: scaleX(0);
             opacity: 0;
           }
+
           22% {
             transform: scaleX(0);
             opacity: 1;
           }
+
           56% {
             transform: scaleX(1);
             opacity: 1;
           }
+
           72%,
           100% {
             transform: scaleX(1);
@@ -2180,10 +2333,12 @@ export default function ConceptPage() {
             transform: scale(1);
             opacity: 0.55;
           }
+
           75% {
             transform: scale(3.2);
             opacity: 0;
           }
+
           100% {
             transform: scale(1);
             opacity: 0;
@@ -2195,10 +2350,12 @@ export default function ConceptPage() {
           17% {
             opacity: 0;
           }
+
           22%,
           62% {
             opacity: 1;
           }
+
           78%,
           100% {
             opacity: 0;
@@ -2210,10 +2367,12 @@ export default function ConceptPage() {
           47% {
             opacity: 0;
           }
+
           56%,
           70% {
             opacity: 1;
           }
+
           84%,
           100% {
             opacity: 0;
@@ -2226,11 +2385,13 @@ export default function ConceptPage() {
             color: rgba(28, 28, 26, 0.72);
             filter: none;
           }
+
           22%,
           62% {
             color: ${C.pink};
             filter: drop-shadow(0 0 4px rgba(212, 80, 122, 0.18));
           }
+
           78%,
           100% {
             color: rgba(28, 28, 26, 0.72);
@@ -2245,20 +2406,24 @@ export default function ConceptPage() {
             filter: none;
             transform: translateX(0);
           }
+
           50% {
             color: ${C.pink};
             filter: drop-shadow(0 0 4px rgba(212, 80, 122, 0.22));
             transform: translateX(-2px);
           }
+
           52% {
             transform: translateX(2px);
           }
+
           56%,
           70% {
             color: ${C.pink};
             filter: drop-shadow(0 0 4px rgba(212, 80, 122, 0.22));
             transform: translateX(0);
           }
+
           84%,
           100% {
             color: rgba(28, 28, 26, 0.72);
@@ -2279,9 +2444,11 @@ export default function ConceptPage() {
           0% {
             clip-path: inset(0 100% 100% 0);
           }
+
           45% {
             clip-path: inset(0 0 100% 0);
           }
+
           100% {
             clip-path: inset(0 0 0 0);
           }
@@ -2307,16 +2474,13 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(480px, 66svh, 680px);
-            height: clamp(360px, 48svh, 520px);
+            width: clamp(460px, 64svh, 660px);
+            height: clamp(340px, 48svh, 500px);
           }
 
           .donut-wrap {
             width: min(54vw, 320px);
-          }
-
-          .donut-wrap--second {
-            width: min(44vw, 250px);
+            height: clamp(180px, 28vw, 290px);
           }
         }
 
@@ -2340,8 +2504,8 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(360px, 54svh, 520px);
-            height: clamp(300px, 40svh, 420px);
+            width: clamp(350px, 52svh, 500px);
+            height: clamp(280px, 40svh, 410px);
           }
 
           .hero-h1 {
@@ -2350,10 +2514,7 @@ export default function ConceptPage() {
 
           .donut-wrap {
             width: min(66vw, 280px);
-          }
-
-          .donut-wrap--second {
-            width: min(52vw, 210px);
+            height: clamp(170px, 34vw, 260px);
           }
 
           .sig {
@@ -2389,7 +2550,7 @@ export default function ConceptPage() {
 
           .hero-field {
             width: clamp(300px, 46svh, 410px);
-            height: clamp(250px, 34svh, 330px);
+            height: clamp(240px, 34svh, 330px);
           }
 
           .hero-h1 {
@@ -2398,10 +2559,7 @@ export default function ConceptPage() {
 
           .donut-wrap {
             width: min(74vw, 230px);
-          }
-
-          .donut-wrap--second {
-            width: min(60vw, 180px);
+            height: clamp(150px, 42vw, 220px);
           }
 
           .exp-nav {
@@ -2444,6 +2602,7 @@ export default function ConceptPage() {
 
           .hero-obelisk-drop,
           .hero-obelisk-stack,
+          .hero-field,
           .hero-glow,
           .hero-mist,
           .hero-grid-plane,
@@ -2456,6 +2615,8 @@ export default function ConceptPage() {
           .flank-line,
           .donut-wrap,
           .donut-glitch-slice,
+          .donut-signal-line,
+          .donut-ghost,
           .venue-wrap,
           .vg-a,
           .vg-b,
@@ -2488,6 +2649,7 @@ export default function ConceptPage() {
             transform: none;
           }
 
+          .hero-field,
           .hero-glow,
           .hero-mist,
           .hero-grid-plane,
