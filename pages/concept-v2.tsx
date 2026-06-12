@@ -253,14 +253,14 @@ export default function ConceptPage() {
             window.setTimeout(() => {
               setTopDonutPhase('straight');
               setBottomDonutPhase('straight');
-            }, 70)
+            }, 120)
           );
 
           timers.push(
             window.setTimeout(() => {
               setTopDonutPhase(forward ? 'bottom' : 'top');
               setBottomDonutPhase(forward ? 'top' : 'bottom');
-            }, 230)
+            }, 290)
           );
 
           timers.push(
@@ -269,7 +269,7 @@ export default function ConceptPage() {
               setBottomDonutGlitch(false);
               forward = !forward;
               scheduleCycle(7600);
-            }, 500)
+            }, 540)
           );
         }, holdMs)
       );
@@ -335,12 +335,17 @@ export default function ConceptPage() {
                   <span className="hero-back-aura" />
                   <span className="hero-rear-fog hero-rear-fog-a" />
                   <span className="hero-rear-fog hero-rear-fog-b" />
+                  <span className="hero-rear-fog hero-rear-fog-c" />
+
                   <span className="hero-base-rings" />
                   <span className="hero-base-circle" />
                   <span className="hero-base-glow" />
                   <span className="hero-shadow-floor" />
+
                   <span className="hero-front-fog hero-front-fog-a" />
                   <span className="hero-front-fog hero-front-fog-b" />
+                  <span className="hero-front-fog hero-front-fog-c" />
+
                   <span className="hero-burst-lines hero-burst-lines-a" />
                   <span className="hero-burst-lines hero-burst-lines-b" />
                 </div>
@@ -365,8 +370,6 @@ export default function ConceptPage() {
                     draggable={false}
                   />
                 </div>
-
-                <span className="hero-front-atmosphere" />
               </div>
             </div>
           </div>
@@ -421,10 +424,8 @@ export default function ConceptPage() {
                 draggable={false}
               />
 
-              <span className="donut-glitch-slice dgs-a" />
-              <span className="donut-glitch-slice dgs-b" />
-              <span className="donut-glitch-slice dgs-c" />
-              <span className="donut-signal-line" />
+              <span className="donut-shimmer-line dsl-a" />
+              <span className="donut-shimmer-line dsl-b" />
             </div>
           </div>
 
@@ -527,10 +528,8 @@ export default function ConceptPage() {
                 draggable={false}
               />
 
-              <span className="donut-glitch-slice dgs-a" />
-              <span className="donut-glitch-slice dgs-b" />
-              <span className="donut-glitch-slice dgs-c" />
-              <span className="donut-signal-line" />
+              <span className="donut-shimmer-line dsl-a" />
+              <span className="donut-shimmer-line dsl-b" />
             </div>
           </div>
 
@@ -885,8 +884,8 @@ export default function ConceptPage() {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: clamp(600px, 76svh, 900px);
-          height: clamp(430px, 56svh, 670px);
+          width: clamp(640px, 78svh, 940px);
+          height: clamp(450px, 58svh, 700px);
           transform: translate(-50%, -50%) scale(0.94);
           z-index: 0;
           pointer-events: none;
@@ -897,72 +896,95 @@ export default function ConceptPage() {
         .hero-back-aura {
           position: absolute;
           left: 50%;
-          top: 47%;
-          width: 72%;
+          top: 49%;
+          width: 82%;
           height: 86%;
           transform: translate(-50%, -50%);
           border-radius: 50%;
           background:
             radial-gradient(
               ellipse at center,
-              rgba(212, 80, 122, 0.18) 0%,
-              rgba(212, 80, 122, 0.1) 30%,
-              rgba(232, 226, 212, 0.12) 50%,
+              rgba(212, 80, 122, 0.14) 0%,
+              rgba(212, 80, 122, 0.08) 34%,
+              rgba(232, 226, 212, 0.1) 52%,
               transparent 78%
             );
-          filter: blur(23px);
+          filter: blur(28px);
           animation: heroAuraPulse 11s ease-in-out 4s infinite;
         }
 
         .hero-rear-fog {
           position: absolute;
-          inset: 4%;
           border-radius: 50%;
           filter: blur(30px);
           pointer-events: none;
-          opacity: 0.42;
+          opacity: 0.38;
         }
 
         .hero-rear-fog-a {
+          left: 50%;
+          top: 49%;
+          width: 74%;
+          height: 42%;
+          transform: translate(-50%, -50%);
           background:
-            radial-gradient(circle at 34% 42%, rgba(212, 80, 122, 0.21), transparent 25%),
-            radial-gradient(circle at 60% 43%, rgba(232, 226, 212, 0.18), transparent 30%),
-            radial-gradient(circle at 48% 65%, rgba(212, 80, 122, 0.14), transparent 32%);
-          animation: rearFogA 13s ease-in-out 4.5s infinite;
+            radial-gradient(circle at 30% 50%, rgba(212, 80, 122, 0.2), transparent 28%),
+            radial-gradient(circle at 70% 50%, rgba(212, 80, 122, 0.16), transparent 28%),
+            radial-gradient(circle at 50% 48%, rgba(232, 226, 212, 0.14), transparent 38%);
+          animation: rearFogWideA 14s ease-in-out 4.5s infinite;
         }
 
         .hero-rear-fog-b {
+          left: 50%;
+          top: 58%;
+          width: 62%;
+          height: 26%;
+          transform: translate(-50%, -50%);
           background:
-            radial-gradient(circle at 56% 53%, rgba(212, 80, 122, 0.16), transparent 29%),
-            radial-gradient(circle at 42% 34%, rgba(122, 120, 112, 0.08), transparent 36%);
-          animation: rearFogB 16s ease-in-out 4.8s infinite;
+            radial-gradient(circle at 40% 50%, rgba(212, 80, 122, 0.18), transparent 30%),
+            radial-gradient(circle at 62% 50%, rgba(232, 226, 212, 0.12), transparent 30%);
+          animation: rearFogWideB 11s ease-in-out 4.9s infinite;
+        }
+
+        .hero-rear-fog-c {
+          left: 50%;
+          top: 42%;
+          width: 54%;
+          height: 20%;
+          transform: translate(-50%, -50%);
+          background: radial-gradient(
+            ellipse at center,
+            rgba(212, 80, 122, 0.14) 0%,
+            transparent 60%
+          );
+          animation: rearFogWideC 12s ease-in-out 5.1s infinite;
         }
 
         .hero-base-rings {
           position: absolute;
           left: 50%;
-          top: 66%;
-          width: 58%;
-          height: 28%;
+          top: 75.8%;
+          width: 54%;
+          height: 18%;
           border-radius: 50%;
-          transform: translate(-50%, -50%) perspective(900px) rotateX(68deg);
+          transform: translate(-50%, -50%) perspective(900px) rotateX(72deg);
           transform-origin: center;
-          opacity: 0.64;
+          opacity: 0.68;
           background:
             repeating-radial-gradient(
               ellipse at 50% 50%,
-              transparent 0 20px,
-              rgba(212, 80, 122, 0.42) 21px 22px,
-              transparent 23px 42px
+              transparent 0 18px,
+              rgba(212, 80, 122, 0.42) 19px 20px,
+              transparent 21px 39px
             );
-          filter: blur(0.25px) drop-shadow(0 0 6px rgba(212, 80, 122, 0.12));
-          mask-image: radial-gradient(ellipse at center, #000 0%, #000 62%, transparent 82%);
+          mask-image: radial-gradient(ellipse at center, #000 0%, #000 68%, transparent 88%);
           -webkit-mask-image: radial-gradient(
             ellipse at center,
             #000 0%,
-            #000 62%,
-            transparent 82%
+            #000 68%,
+            transparent 88%
           );
+          filter: blur(0.25px);
           animation:
             baseRingsPulse 8.5s ease-in-out 4.4s infinite,
             baseRingsGlitch 10s steps(1, end) 6.2s infinite;
@@ -971,52 +993,52 @@ export default function ConceptPage() {
         .hero-base-circle {
           position: absolute;
           left: 50%;
-          top: 66.5%;
-          width: 48%;
-          height: 18%;
-          transform: translate(-50%, -50%) perspective(900px) rotateX(68deg);
+          top: 75.8%;
+          width: 46%;
+          height: 13%;
+          transform: translate(-50%, -50%) perspective(900px) rotateX(72deg);
           border-radius: 50%;
           background:
             radial-gradient(
               ellipse at center,
-              rgba(212, 80, 122, 0.32) 0%,
-              rgba(212, 80, 122, 0.18) 35%,
-              rgba(232, 226, 212, 0.12) 52%,
-              transparent 74%
+              rgba(212, 80, 122, 0.34) 0%,
+              rgba(212, 80, 122, 0.18) 38%,
+              rgba(232, 226, 212, 0.08) 56%,
+              transparent 76%
             );
-          filter: blur(13px);
-          opacity: 0.86;
+          filter: blur(12px);
+          opacity: 0.82;
           animation: baseCirclePulse 8.2s ease-in-out 4.3s infinite;
         }
 
         .hero-base-glow {
           position: absolute;
           left: 50%;
-          top: 68%;
-          width: 30%;
-          height: 12%;
+          top: 77.2%;
+          width: 24%;
+          height: 8%;
           transform: translate(-50%, -50%);
           background:
             radial-gradient(
               ellipse,
-              rgba(212, 80, 122, 0.28) 0%,
-              rgba(232, 226, 212, 0.14) 38%,
-              transparent 74%
+              rgba(212, 80, 122, 0.24) 0%,
+              rgba(232, 226, 212, 0.12) 42%,
+              transparent 76%
             );
-          filter: blur(12px);
-          opacity: 0.82;
+          filter: blur(11px);
+          opacity: 0.7;
           animation: baseGlowPulse 8.5s ease-in-out 4.5s infinite;
         }
 
         .hero-shadow-floor {
           position: absolute;
           left: 50%;
-          top: 69.5%;
-          width: 26%;
-          height: 9%;
+          top: 78.4%;
+          width: 21%;
+          height: 7%;
           transform: translate(-50%, -50%);
           background: radial-gradient(ellipse, rgba(28, 28, 26, 0.2), transparent 72%);
-          filter: blur(13px);
+          filter: blur(12px);
           opacity: 0.2;
           animation: floorShadowBreath 9s ease-in-out 4.6s infinite;
         }
@@ -1025,50 +1047,44 @@ export default function ConceptPage() {
           position: absolute;
           pointer-events: none;
           border-radius: 50%;
-          filter: blur(26px);
-          opacity: 0.34;
+          filter: blur(24px);
+          opacity: 0.28;
           mix-blend-mode: multiply;
         }
 
         .hero-front-fog-a {
           left: 50%;
-          top: 58%;
-          width: 54%;
-          height: 40%;
+          top: 56%;
+          width: 64%;
+          height: 22%;
           transform: translate(-50%, -50%);
           background:
-            radial-gradient(circle at 45% 56%, rgba(212, 80, 122, 0.16), transparent 36%),
-            radial-gradient(circle at 58% 46%, rgba(232, 226, 212, 0.16), transparent 38%);
-          animation: frontFogA 10s ease-in-out 4.6s infinite;
+            radial-gradient(circle at 30% 50%, rgba(212, 80, 122, 0.14), transparent 26%),
+            radial-gradient(circle at 68% 48%, rgba(212, 80, 122, 0.14), transparent 26%),
+            radial-gradient(circle at 50% 50%, rgba(232, 226, 212, 0.14), transparent 38%);
+          animation: frontFogWideA 10s ease-in-out 4.6s infinite;
         }
 
         .hero-front-fog-b {
-          left: 52%;
-          top: 62%;
-          width: 44%;
-          height: 30%;
+          left: 50%;
+          top: 67%;
+          width: 58%;
+          height: 18%;
           transform: translate(-50%, -50%);
           background:
-            radial-gradient(circle at 50% 50%, rgba(212, 80, 122, 0.15), transparent 42%);
-          animation: frontFogB 12s ease-in-out 4.8s infinite;
+            radial-gradient(circle at 50% 50%, rgba(212, 80, 122, 0.16), transparent 42%);
+          animation: frontFogWideB 12s ease-in-out 4.8s infinite;
         }
 
-        .hero-front-atmosphere {
-          position: absolute;
+        .hero-front-fog-c {
           left: 50%;
-          top: 58%;
-          width: 36%;
-          height: 52%;
+          top: 48%;
+          width: 48%;
+          height: 18%;
           transform: translate(-50%, -50%);
-          border-radius: 50%;
-          z-index: 8;
-          pointer-events: none;
-          opacity: 0.18;
           background:
-            radial-gradient(circle at 52% 52%, rgba(212, 80, 122, 0.22), transparent 52%);
-          filter: blur(18px);
-          mix-blend-mode: multiply;
-          animation: frontAtmosphereDrift 11s ease-in-out 4.4s infinite;
+            radial-gradient(circle at 50% 50%, rgba(232, 226, 212, 0.12), transparent 44%);
+          animation: frontFogWideC 13s ease-in-out 5s infinite;
         }
 
         .hero-burst-lines {
@@ -1228,7 +1244,7 @@ export default function ConceptPage() {
           line-height: 0;
           pointer-events: none;
           user-select: none;
-          filter: drop-shadow(0 0 8px rgba(212, 80, 122, 0.14));
+          filter: drop-shadow(0 0 8px rgba(212, 80, 122, 0.1));
           overflow: visible;
         }
 
@@ -1236,52 +1252,6 @@ export default function ConceptPage() {
           animation:
             donutIn 1.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards,
             donutFloat 8s ease-in-out 2s infinite;
-        }
-
-        .donut-wrap::before,
-        .donut-wrap::after {
-          content: '';
-          position: absolute;
-          left: -8%;
-          right: -8%;
-          z-index: 7;
-          opacity: 0;
-          pointer-events: none;
-          mix-blend-mode: multiply;
-        }
-
-        .donut-wrap::before {
-          top: 22%;
-          height: 18%;
-          background:
-            linear-gradient(
-              90deg,
-              transparent,
-              rgba(212, 80, 122, 0.32),
-              rgba(232, 226, 212, 0.4),
-              transparent
-            );
-        }
-
-        .donut-wrap::after {
-          top: 58%;
-          height: 14%;
-          background:
-            linear-gradient(
-              90deg,
-              transparent,
-              rgba(232, 226, 212, 0.38),
-              rgba(212, 80, 122, 0.26),
-              transparent
-            );
-        }
-
-        .donut-wrap.is-glitch::before {
-          animation: donutBlockA 0.5s steps(1, end) forwards;
-        }
-
-        .donut-wrap.is-glitch::after {
-          animation: donutBlockB 0.5s steps(1, end) forwards;
         }
 
         .donut-img {
@@ -1292,23 +1262,23 @@ export default function ConceptPage() {
           object-fit: contain;
           opacity: 0;
           transition:
-            opacity 0.14s ease,
+            opacity 0.18s ease,
             transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
-            filter 0.14s ease;
+            filter 0.18s ease;
           will-change: opacity, transform, filter;
+          background: transparent !important;
         }
 
         .donut-view-top {
-          transform: translateY(-12px) scale(0.94) rotate(-1deg);
+          transform: translateY(-10px) scale(0.96);
         }
 
         .donut-view-straight {
-          transform: translateY(0) scaleX(1.08) scaleY(0.86);
-          filter: blur(0.5px) contrast(1.05);
+          transform: translateY(0) scaleX(1.05) scaleY(0.9);
         }
 
         .donut-view-bottom {
-          transform: translateY(12px) scale(0.94) rotate(1deg);
+          transform: translateY(10px) scale(0.96);
         }
 
         .donut-img.is-visible {
@@ -1320,16 +1290,15 @@ export default function ConceptPage() {
         }
 
         .donut-view-straight.is-visible {
-          transform: translateY(0) scaleX(1.1) scaleY(0.88);
+          transform: translateY(0) scaleX(1.08) scaleY(0.92);
         }
 
         .donut-view-bottom.is-visible {
           transform: translateY(3px) scale(1);
         }
 
-        .donut-wrap.is-glitch .donut-img.is-visible {
-          filter: contrast(1.16) saturate(1.12) blur(0.25px);
-          animation: donutImageJitter 0.5s steps(1, end) forwards;
+        .donut-wrap.is-glitch .donut-img {
+          filter: saturate(1.06) contrast(1.04);
         }
 
         .donut-ghost {
@@ -1350,78 +1319,45 @@ export default function ConceptPage() {
         }
 
         .donut-ghost.is-active.donut-ghost-top {
-          animation: donutGhostTop 0.5s steps(1, end) forwards;
+          animation: donutGhostTop 0.54s steps(1, end) forwards;
         }
 
         .donut-ghost.is-active.donut-ghost-bottom {
-          animation: donutGhostBottom 0.5s steps(1, end) forwards;
+          animation: donutGhostBottom 0.54s steps(1, end) forwards;
         }
 
-        .donut-glitch-slice {
+        .donut-shimmer-line {
           position: absolute;
-          left: 4%;
-          right: 4%;
-          height: 10%;
+          left: 6%;
+          right: 6%;
+          height: 1px;
           opacity: 0;
           pointer-events: none;
-          mix-blend-mode: multiply;
           z-index: 4;
-          background:
-            linear-gradient(
-              90deg,
-              rgba(212, 80, 122, 0.18) 0%,
-              rgba(232, 226, 212, 0.36) 46%,
-              rgba(122, 120, 112, 0.14) 100%
-            );
-        }
-
-        .dgs-a {
-          top: 24%;
-        }
-
-        .dgs-b {
-          top: 51%;
-        }
-
-        .dgs-c {
-          top: 70%;
-          height: 7%;
-        }
-
-        .donut-wrap.is-glitch .dgs-a {
-          animation: donutGlitchSliceA 0.5s steps(1, end) forwards;
-        }
-
-        .donut-wrap.is-glitch .dgs-b {
-          animation: donutGlitchSliceB 0.5s steps(1, end) forwards;
-        }
-
-        .donut-wrap.is-glitch .dgs-c {
-          animation: donutGlitchSliceC 0.5s steps(1, end) forwards;
-        }
-
-        .donut-signal-line {
-          position: absolute;
-          left: -4%;
-          right: -4%;
-          top: 50%;
-          height: 1px;
-          z-index: 8;
-          opacity: 0;
           background: linear-gradient(
             90deg,
             transparent,
-            rgba(212, 80, 122, 0.9),
-            rgba(232, 226, 212, 0.95),
-            rgba(212, 80, 122, 0.9),
+            rgba(212, 80, 122, 0.66),
+            rgba(232, 226, 212, 0.88),
+            rgba(212, 80, 122, 0.66),
             transparent
           );
-          transform: translateY(-50%);
-          pointer-events: none;
         }
 
-        .donut-wrap.is-glitch .donut-signal-line {
-          animation: donutSignalLine 0.5s steps(1, end) forwards;
+        .dsl-a {
+          top: 37%;
+        }
+
+        .dsl-b {
+          top: 62%;
+        }
+
+        .donut-wrap.is-glitch .dsl-a {
+          animation: donutShimmerA 0.54s ease forwards;
+        }
+
+        .donut-wrap.is-glitch .dsl-b {
+          animation: donutShimmerB 0.54s ease forwards;
         }
 
         .a-space {
@@ -1907,7 +1843,7 @@ export default function ConceptPage() {
         @keyframes heroAuraPulse {
           0%,
           100% {
-            opacity: 0.74;
+            opacity: 0.72;
             transform: translate(-50%, -50%) scale(0.98);
           }
           50% {
@@ -1916,39 +1852,51 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes rearFogA {
+        @keyframes rearFogWideA {
           0%,
           100% {
-            opacity: 0.38;
-            transform: scale(1) translate3d(-2%, -1%, 0);
+            opacity: 0.34;
+            transform: translate(-50%, -50%) scale(1);
           }
           50% {
-            opacity: 0.62;
-            transform: scale(1.1) translate3d(3%, 2%, 0);
+            opacity: 0.54;
+            transform: translate(-50%, -50%) scale(1.08);
           }
         }
 
-        @keyframes rearFogB {
+        @keyframes rearFogWideB {
           0%,
           100% {
-            opacity: 0.28;
-            transform: scale(1) translate3d(2%, 1%, 0) rotate(0deg);
+            opacity: 0.24;
+            transform: translate(-50%, -50%) scale(1);
           }
           50% {
-            opacity: 0.46;
-            transform: scale(1.12) translate3d(-3%, -2%, 0) rotate(8deg);
+            opacity: 0.42;
+            transform: translate(-50%, -49%) scale(1.1);
+          }
+        }
+
+        @keyframes rearFogWideC {
+          0%,
+          100% {
+            opacity: 0.18;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          50% {
+            opacity: 0.32;
+            transform: translate(-50%, -51%) scale(1.08);
           }
         }
 
         @keyframes baseRingsPulse {
           0%,
           100% {
-            opacity: 0.5;
-            transform: translate(-50%, -50%) perspective(900px) rotateX(68deg) scale(0.96);
+            opacity: 0.56;
+            transform: translate(-50%, -50%) perspective(900px) rotateX(72deg) scale(0.97);
           }
           50% {
-            opacity: 0.74;
-            transform: translate(-50%, -50%) perspective(900px) rotateX(68deg) scale(1.05);
+            opacity: 0.78;
+            transform: translate(-50%, -50%) perspective(900px) rotateX(72deg) scale(1.04);
           }
         }
 
@@ -1956,40 +1904,40 @@ export default function ConceptPage() {
           0%,
           84%,
           100% {
-            filter: blur(0.25px) drop-shadow(0 0 6px rgba(212, 80, 122, 0.12));
+            filter: blur(0.25px);
           }
           85% {
-            filter: blur(0.3px) drop-shadow(-5px 0 0 rgba(212, 80, 122, 0.18));
+            filter: blur(0.25px) drop-shadow(-4px 0 0 rgba(212, 80, 122, 0.16));
           }
           86.5% {
-            filter: blur(0.25px) drop-shadow(5px 0 0 rgba(232, 226, 212, 0.22));
+            filter: blur(0.25px) drop-shadow(4px 0 0 rgba(232, 226, 212, 0.18));
           }
           88% {
-            filter: blur(0.25px) drop-shadow(0 0 6px rgba(212, 80, 122, 0.12));
+            filter: blur(0.25px);
           }
         }
 
         @keyframes baseCirclePulse {
           0%,
           100% {
-            opacity: 0.64;
-            transform: translate(-50%, -50%) perspective(900px) rotateX(68deg) scale(0.94);
+            opacity: 0.7;
+            transform: translate(-50%, -50%) perspective(900px) rotateX(72deg) scale(0.96);
           }
           50% {
-            opacity: 0.95;
-            transform: translate(-50%, -50%) perspective(900px) rotateX(68deg) scale(1.08);
+            opacity: 0.9;
+            transform: translate(-50%, -50%) perspective(900px) rotateX(72deg) scale(1.05);
           }
         }
 
         @keyframes baseGlowPulse {
           0%,
           100% {
-            opacity: 0.6;
+            opacity: 0.58;
             transform: translate(-50%, -50%) scale(0.94);
           }
           50% {
-            opacity: 0.9;
-            transform: translate(-50%, -50%) scale(1.08);
+            opacity: 0.84;
+            transform: translate(-50%, -50%) scale(1.06);
           }
         }
 
@@ -2000,36 +1948,36 @@ export default function ConceptPage() {
             transform: translate(-50%, -50%) scale(0.94);
           }
           50% {
-            opacity: 0.24;
+            opacity: 0.22;
             transform: translate(-50%, -50%) scale(1.04);
           }
         }
 
-        @keyframes frontFogA {
+        @keyframes frontFogWideA {
           0%,
           100% {
-            opacity: 0.26;
-            transform: translate(-50%, -50%) scale(0.98);
-          }
-          50% {
-            opacity: 0.44;
-            transform: translate(-49%, -51%) scale(1.08);
-          }
-        }
-
-        @keyframes frontFogB {
-          0%,
-          100% {
-            opacity: 0.2;
+            opacity: 0.22;
             transform: translate(-50%, -50%) scale(1);
           }
           50% {
             opacity: 0.36;
-            transform: translate(-52%, -49%) scale(1.12);
+            transform: translate(-50%, -50%) scale(1.08);
           }
         }
 
-        @keyframes frontAtmosphereDrift {
+        @keyframes frontFogWideB {
+          0%,
+          100% {
+            opacity: 0.18;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          50% {
+            opacity: 0.32;
+            transform: translate(-50%, -49%) scale(1.1);
+          }
+        }
+
+        @keyframes frontFogWideC {
           0%,
           100% {
             opacity: 0.14;
@@ -2037,7 +1985,7 @@ export default function ConceptPage() {
           }
           50% {
             opacity: 0.24;
-            transform: translate(-50%, -49%) scale(1.04);
+            transform: translate(-50%, -50%) scale(1.06);
           }
         }
 
@@ -2104,11 +2052,11 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
           }
           85% {
-            opacity: 0.2;
+            opacity: 0.18;
             transform: translate3d(-6px, 0, 0);
           }
           86.4% {
-            opacity: 0.09;
+            opacity: 0.08;
             transform: translate3d(-3px, 0, 0);
           }
           87.6% {
@@ -2125,11 +2073,11 @@ export default function ConceptPage() {
             transform: translate3d(0, 0, 0);
           }
           85.6% {
-            opacity: 0.16;
+            opacity: 0.14;
             transform: translate3d(6px, 0, 0);
           }
           86.9% {
-            opacity: 0.07;
+            opacity: 0.06;
             transform: translate3d(3px, 0, 0);
           }
           88% {
@@ -2262,42 +2210,23 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes donutImageJitter {
-          0%,
-          100% {
-            transform: translate3d(0, 0, 0) scale(1);
-          }
-          18% {
-            transform: translate3d(-8px, -1px, 0) scale(1.018);
-          }
-          34% {
-            transform: translate3d(7px, 1px, 0) scale(0.992);
-          }
-          52% {
-            transform: translate3d(-5px, 0, 0) scale(1.01);
-          }
-          70% {
-            transform: translate3d(4px, -1px, 0) scale(0.998);
-          }
-        }
-
         @keyframes donutGhostTop {
           0%,
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0) scale(1);
           }
-          16% {
-            opacity: 0.38;
-            transform: translate3d(-12px, -2px, 0) scale(1.03);
+          18% {
+            opacity: 0.22;
+            transform: translate3d(-7px, -1px, 0) scale(1.01);
           }
-          34% {
-            opacity: 0.18;
-            transform: translate3d(10px, 1px, 0) scale(0.99);
+          40% {
+            opacity: 0.08;
+            transform: translate3d(4px, 0, 0) scale(1);
           }
-          56% {
-            opacity: 0.24;
-            transform: translate3d(-7px, 0, 0) scale(1.01);
+          62% {
+            opacity: 0.12;
+            transform: translate3d(-3px, 0, 0) scale(1);
           }
         }
 
@@ -2307,158 +2236,47 @@ export default function ConceptPage() {
             opacity: 0;
             transform: translate3d(0, 0, 0) scale(1);
           }
-          20% {
-            opacity: 0.32;
-            transform: translate3d(12px, 2px, 0) scale(1.03);
+          18% {
+            opacity: 0.22;
+            transform: translate3d(7px, 1px, 0) scale(1.01);
           }
           40% {
-            opacity: 0.16;
-            transform: translate3d(-9px, -1px, 0) scale(0.99);
+            opacity: 0.08;
+            transform: translate3d(-4px, 0, 0) scale(1);
           }
           62% {
-            opacity: 0.2;
-            transform: translate3d(7px, 0, 0) scale(1.01);
+            opacity: 0.12;
+            transform: translate3d(3px, 0, 0) scale(1);
           }
         }
 
-        @keyframes donutBlockA {
-          0%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            clip-path: inset(0 0 0 0);
-          }
-          18% {
-            opacity: 0.75;
-            transform: translate3d(-16px, 0, 0);
-            clip-path: inset(0 0 35% 0);
-          }
-          42% {
-            opacity: 0.38;
-            transform: translate3d(12px, 0, 0);
-            clip-path: inset(20% 0 12% 0);
-          }
-          66% {
-            opacity: 0.22;
-            transform: translate3d(-8px, 0, 0);
-            clip-path: inset(42% 0 0 0);
-          }
-        }
-
-        @keyframes donutBlockB {
-          0%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            clip-path: inset(0 0 0 0);
-          }
-          24% {
-            opacity: 0.52;
-            transform: translate3d(14px, 0, 0);
-            clip-path: inset(10% 0 28% 0);
-          }
-          48% {
-            opacity: 0.28;
-            transform: translate3d(-12px, 0, 0);
-            clip-path: inset(30% 0 20% 0);
-          }
-          72% {
-            opacity: 0.18;
-            transform: translate3d(6px, 0, 0);
-            clip-path: inset(48% 0 6% 0);
-          }
-        }
-
-        @keyframes donutGlitchSliceA {
+        @keyframes donutShimmerA {
           0% {
             opacity: 0;
-            transform: translate3d(0, 0, 0);
+            transform: translateX(-8px);
           }
-          18% {
-            opacity: 0.78;
-            transform: translate3d(-13px, 0, 0);
-          }
-          42% {
-            opacity: 0.38;
-            transform: translate3d(10px, 0, 0);
-          }
-          70% {
-            opacity: 0.22;
-            transform: translate3d(-6px, 0, 0);
+          30% {
+            opacity: 0.9;
+            transform: translateX(0);
           }
           100% {
             opacity: 0;
-            transform: translate3d(0, 0, 0);
+            transform: translateX(8px);
           }
         }
 
-        @keyframes donutGlitchSliceB {
+        @keyframes donutShimmerB {
           0% {
             opacity: 0;
-            transform: translate3d(0, 0, 0);
+            transform: translateX(8px);
           }
-          24% {
-            opacity: 0.52;
-            transform: translate3d(11px, 0, 0);
-          }
-          48% {
-            opacity: 0.22;
-            transform: translate3d(-9px, 0, 0);
-          }
-          74% {
-            opacity: 0.18;
-            transform: translate3d(6px, 0, 0);
+          30% {
+            opacity: 0.65;
+            transform: translateX(0);
           }
           100% {
             opacity: 0;
-            transform: translate3d(0, 0, 0);
-          }
-        }
-
-        @keyframes donutGlitchSliceC {
-          0% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-          }
-          20% {
-            opacity: 0.4;
-            transform: translate3d(-7px, 0, 0);
-          }
-          48% {
-            opacity: 0.58;
-            transform: translate3d(14px, 0, 0);
-          }
-          78% {
-            opacity: 0.18;
-            transform: translate3d(-4px, 0, 0);
-          }
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-          }
-        }
-
-        @keyframes donutSignalLine {
-          0%,
-          100% {
-            opacity: 0;
-            transform: translateY(-50%) scaleX(0.15);
-          }
-          16% {
-            opacity: 1;
-            transform: translateY(-50%) scaleX(1.12);
-          }
-          34% {
-            opacity: 0.38;
-            transform: translateY(-50%) scaleX(0.62);
-          }
-          54% {
-            opacity: 0.85;
-            transform: translateY(-50%) scaleX(1.18);
-          }
-          76% {
-            opacity: 0.26;
-            transform: translateY(-50%) scaleX(0.8);
+            transform: translateX(-8px);
           }
         }
 
@@ -2718,8 +2536,8 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(470px, 64svh, 700px);
-            height: clamp(360px, 48svh, 520px);
+            width: clamp(500px, 66svh, 740px);
+            height: clamp(380px, 50svh, 540px);
           }
 
           .donut-wrap {
@@ -2748,8 +2566,8 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(360px, 52svh, 520px);
-            height: clamp(300px, 40svh, 420px);
+            width: clamp(380px, 54svh, 540px);
+            height: clamp(320px, 42svh, 430px);
           }
 
           .hero-h1 {
@@ -2793,8 +2611,8 @@ export default function ConceptPage() {
           }
 
           .hero-field {
-            width: clamp(300px, 46svh, 410px);
-            height: clamp(250px, 34svh, 340px);
+            width: clamp(320px, 48svh, 420px);
+            height: clamp(270px, 36svh, 350px);
           }
 
           .hero-h1 {
@@ -2854,7 +2672,6 @@ export default function ConceptPage() {
           .hero-base-glow,
           .hero-shadow-floor,
           .hero-front-fog,
-          .hero-front-atmosphere,
           .hero-burst-lines,
           .hero-obelisk-ghost,
           .hero-h1,
@@ -2862,9 +2679,8 @@ export default function ConceptPage() {
           .st,
           .flank-line,
           .donut-wrap,
-          .donut-glitch-slice,
-          .donut-signal-line,
           .donut-ghost,
+          .donut-shimmer-line,
           .venue-wrap,
           .vg-a,
           .vg-b,
@@ -2904,8 +2720,7 @@ export default function ConceptPage() {
           .hero-base-circle,
           .hero-base-glow,
           .hero-shadow-floor,
-          .hero-front-fog,
-          .hero-front-atmosphere {
+          .hero-front-fog {
             opacity: 1;
           }
 
