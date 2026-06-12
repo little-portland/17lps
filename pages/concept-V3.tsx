@@ -69,7 +69,7 @@ function InlineSVG({ src, className, draw = false }: {
   useEffect(() => {
     if (!draw || !ref.current) return;
     const shapes = ref.current.querySelectorAll<SVGGeometryElement>(
-      'path, line, polyline, polygon, circle, ellipse'
+      'path, rect, line, polyline, polygon, circle, ellipse'
     );
     shapes.forEach(s => {
       try {
@@ -110,6 +110,7 @@ export default function ConceptPage() {
   // ── time scramble ──────────────────────────────────────
   useEffect(() => {
     let tt: number[] = [];
+
     const run = () => {
       tt.forEach(t => window.clearTimeout(t));
       tt = [];
@@ -118,17 +119,18 @@ export default function ConceptPage() {
       setDarkTime('22:00');
 
       tt = [
-        window.setTimeout(() => setDining('18:40 / 19:10'), 1800),
-        window.setTimeout(() => setDining('21:12 / 21:40'), 1960),
-        window.setTimeout(() => setDining('19:55 / 20:14'), 2120),
-        window.setTimeout(() => setDining('20:00 / 20:30'), 2320),
+        window.setTimeout(() => setDining('18:40 / 19:10'),  1700),
+        window.setTimeout(() => setDining('21:12 / 21:40'),  1860),
+        window.setTimeout(() => setDining('19:55 / 20:14'),  2020),
+        window.setTimeout(() => setDining('20:00 / 20:30'),  2240),
 
-        window.setTimeout(() => setDarkTime('20:46'), 4300),
-        window.setTimeout(() => setDarkTime('23:17'), 4460),
-        window.setTimeout(() => setDarkTime('01:40'), 4620),
-        window.setTimeout(() => setDarkTime('21:52'), 4780),
-        window.setTimeout(() => setDarkTime('22:34'), 4940),
-        window.setTimeout(() => setDarkTime('22:00'), 5140),
+        window.setTimeout(() => setDarkTime('20:46'),         4080),
+        window.setTimeout(() => setDarkTime('23:17'),         4220),
+        window.setTimeout(() => setDarkTime('01:40'),         4360),
+        window.setTimeout(() => setDarkTime('21:52'),         4500),
+        window.setTimeout(() => setDarkTime('22:34'),         4640),
+        window.setTimeout(() => setDarkTime('23:03'),         4780),
+        window.setTimeout(() => setDarkTime('22:00'),         4980),
       ];
     };
 
@@ -143,8 +145,8 @@ export default function ConceptPage() {
   // ── cinematic curtain + nav ready ──────────────────────
   useEffect(() => {
     const t1 = window.setTimeout(() => setCurtainPhase('fading'), 200);
-    const t2 = window.setTimeout(() => setReady(true), 1900);
-    const t3 = window.setTimeout(() => setCurtainPhase('gone'), 2500);
+    const t2 = window.setTimeout(() => setReady(true),            1900);
+    const t3 = window.setTimeout(() => setCurtainPhase('gone'),   2500);
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
@@ -191,19 +193,24 @@ export default function ConceptPage() {
   useEffect(() => {
     if (touch) return;
     let raf = 0;
+
     const onMove = (e: globalThis.MouseEvent) => {
       if (raf) window.cancelAnimationFrame(raf);
       raf = window.requestAnimationFrame(() => {
         const x = (e.clientX / window.innerWidth  - 0.5) * 2;
         const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
         if (funnelParRef.current)
-          funnelParRef.current.style.transform = `translate(${x * 10}px,${y * 8}px)`;
+          funnelParRef.current.style.transform  = `translate(${x * 10}px,${y * 8}px)`;
+
         if (obeliskParRef.current)
           obeliskParRef.current.style.transform = `translate(${x * 5}px,${y * 3}px)`;
+
         if (gateParRef.current)
-          gateParRef.current.style.transform = `translate(${x * -8}px,${y * -6}px)`;
+          gateParRef.current.style.transform    = `translate(${x * -8}px,${y * -6}px)`;
       });
     };
+
     window.addEventListener('mousemove', onMove, { passive: true });
     return () => {
       window.removeEventListener('mousemove', onMove);
@@ -224,17 +231,11 @@ export default function ConceptPage() {
     <>
       <Head>
         <title>Concept — 17 Little Portland Street</title>
-        <meta
-          name="description"
-          content="Concept, space and experience at 17 Little Portland Street, London."
-        />
+        <meta name="description" content="Concept, space and experience at 17 Little Portland Street, London." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
 
       {/* ── 1. Cinematic curtain ─── */}
@@ -249,22 +250,23 @@ export default function ConceptPage() {
         <div className={`nav-shell ${ready ? 'rdy' : ''} ${scrolled ? 'scrolled' : ''}`}>
           <SceneNav theme="space" />
         </div>
+
         <div className="bg-tex" aria-hidden="true" />
 
         {/* ══ ACT I — HERO ═════════════════════════════════════════ */}
         <section className="act a-hero">
-          {/* Obelisk now opens the page; par-wrap handles mouse parallax */}
           <div className="hero-obelisk-drop" aria-hidden="true">
             <div ref={obeliskParRef} className="par-wrap">
               <div className="hero-obelisk-stack">
                 <InlineSVG
                   src={IMG.obelisk}
-                  className="hero-obelisk hero-obelisk-outline"
-                  draw
+                  className="hero-obelisk hero-obelisk-fill"
                 />
+
                 <InlineSVG
                   src={IMG.obelisk}
-                  className="hero-obelisk hero-obelisk-fill"
+                  className="hero-obelisk hero-obelisk-outline"
+                  draw
                 />
               </div>
             </div>
@@ -283,11 +285,13 @@ export default function ConceptPage() {
         {/* ══ ACT II — FUNNEL ═════════════════════════════════════ */}
         <section className="act a-monolith rs">
           <div className="flank-line flank-a" aria-hidden="true" />
+
           <div className="monolith-stage monolith-stage--funnel">
             <div ref={funnelParRef} className="par-wrap">
               <InlineSVG src={IMG.funnel} className="monolith-funnel" draw />
             </div>
           </div>
+
           <div className="flank-line flank-b" aria-hidden="true" />
         </section>
 
@@ -295,6 +299,7 @@ export default function ConceptPage() {
         <section className="act a-space rs" aria-labelledby="space-title">
           <div className="shell">
             <h2 id="space-title" className="st space-h2">The Space</h2>
+
             <p className="section-lead">
               Three distinct environments,&nbsp;&nbsp;one continuous experience.
             </p>
@@ -307,6 +312,7 @@ export default function ConceptPage() {
                   className="vi v-base"
                   draggable={false}
                 />
+
                 {AREAS.map(a => (
                   <img
                     key={a.id}
@@ -316,6 +322,7 @@ export default function ConceptPage() {
                     draggable={false}
                   />
                 ))}
+
                 <img src={IMG.venue} alt="" className="vi v-glitch vg-a" draggable={false} />
                 <img src={IMG.venue} alt="" className="vi v-glitch vg-b" draggable={false} />
               </div>
@@ -345,6 +352,7 @@ export default function ConceptPage() {
         {/* ══ ACT IV — GATE ══════════════════════════════════════ */}
         <section className="act a-gate rs" aria-hidden="true">
           <div className="flank-line flank-a" />
+
           <div className="gate-stage">
             <div className="gate-funnel-wrap">
               <div ref={gateParRef} className="par-wrap">
@@ -352,6 +360,7 @@ export default function ConceptPage() {
               </div>
             </div>
           </div>
+
           <div className="flank-line flank-b" />
         </section>
 
@@ -359,6 +368,7 @@ export default function ConceptPage() {
         <section className="act a-exp rs" aria-labelledby="exp-title">
           <div className="shell">
             <h2 id="exp-title" className="st exp-h2">The Experience</h2>
+
             <p className="section-lead">An evening composed with intention.</p>
 
             <div className="sig">
@@ -534,6 +544,26 @@ export default function ConceptPage() {
           background: ${C.cream};
         }
 
+        .page::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: 1px;
+          height: 100%;
+          z-index: 1;
+          pointer-events: none;
+          background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(28,28,26,.08) 10%,
+            rgba(28,28,26,.15) 42%,
+            rgba(28,28,26,.08) 78%,
+            transparent 100%
+          );
+          opacity: .55;
+        }
+
         .nav-shell {
           position: fixed;
           top: 0;
@@ -564,8 +594,16 @@ export default function ConceptPage() {
           opacity: .45;
         }
 
-        .act { position: relative; z-index: 2; }
-        .shell { width: 68%; max-width: 1140px; margin: 0 auto; }
+        .act {
+          position: relative;
+          z-index: 2;
+        }
+
+        .shell {
+          width: 68%;
+          max-width: 1140px;
+          margin: 0 auto;
+        }
 
         /* ─ 1. cinematic curtain ────────────────────────────────── */
         .curtain {
@@ -605,23 +643,23 @@ export default function ConceptPage() {
         /* ─ flank lines — vertical, gradient fade ───────────────── */
         .flank-line {
           width: 1px;
-          height: clamp(110px, 15vh, 180px);
+          height: clamp(82px, 10vh, 128px);
           margin: 0 auto;
           transform: scaleY(0);
         }
 
         .flank-a {
-          background: linear-gradient(to bottom, transparent 0%, rgba(28,28,26,.4) 100%);
+          background: linear-gradient(to bottom, transparent 0%, rgba(28,28,26,.42) 100%);
           transform-origin: bottom;
         }
 
         .flank-b {
-          background: linear-gradient(to bottom, rgba(28,28,26,.4) 0%, transparent 100%);
+          background: linear-gradient(to bottom, rgba(28,28,26,.42) 0%, transparent 100%);
           transform-origin: top;
         }
 
         .rs.iv .flank-a { animation: flankGrow 1.1s cubic-bezier(.25,.8,.25,1) .3s forwards; }
-        .rs.iv .flank-b { animation: flankGrow 1.1s cubic-bezier(.25,.8,.25,1) .8s forwards; }
+        .rs.iv .flank-b { animation: flankGrow 1.1s cubic-bezier(.25,.8,.25,1) .72s forwards; }
 
         /* ─ ACT I — HERO ─────────────────────────────────────────── */
         .a-hero {
@@ -631,16 +669,16 @@ export default function ConceptPage() {
           align-items: center;
           justify-content: center;
           text-align: center;
-          padding: clamp(88px,10vw,120px) clamp(20px,5vw,60px) clamp(60px,7vw,90px);
+          padding: clamp(88px,10vw,120px) clamp(20px,5vw,60px) clamp(54px,6vw,78px);
         }
 
         .hero-obelisk-drop {
           display: flex;
           justify-content: center;
-          margin-bottom: clamp(18px,3vw,28px);
+          margin-bottom: clamp(18px,2.8vw,30px);
           opacity: 0;
           transform: translateY(-80px);
-          animation: heroObeliskIn 1.8s cubic-bezier(.22,1,.36,1) 2.1s forwards;
+          animation: heroObeliskIn 1.65s cubic-bezier(.22,1,.36,1) 2.1s forwards;
         }
 
         .hero-obelisk-stack {
@@ -659,19 +697,24 @@ export default function ConceptPage() {
 
         .hero-obelisk svg {
           display: block;
-          height: clamp(320px,46svh,520px);
+          height: clamp(340px,48svh,540px);
           width: auto;
           overflow: visible;
         }
 
         .hero-obelisk-fill {
+          z-index: 1;
           opacity: 1;
-          filter: contrast(.98) saturate(1);
+          filter: contrast(.99) saturate(1);
+          transform: translate3d(0,0,0);
           animation: heroObeliskFillLoop 10s ease-in-out 6.2s infinite;
         }
 
         .hero-obelisk-outline {
+          z-index: 2;
           opacity: 0;
+          transform: translate3d(0,0,0);
+          filter: none;
           mix-blend-mode: normal;
           animation: heroObeliskOutlineLoop 10s ease-in-out 6.2s infinite;
         }
@@ -679,7 +722,7 @@ export default function ConceptPage() {
         .hero-obelisk-outline svg :is(path, rect, line, polyline, polygon, circle, ellipse) {
           fill: transparent !important;
           stroke: ${C.pink} !important;
-          stroke-width: 1.6px !important;
+          stroke-width: 1.55px !important;
           vector-effect: non-scaling-stroke;
           stroke-linecap: round;
           stroke-linejoin: round;
@@ -736,7 +779,7 @@ export default function ConceptPage() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding: clamp(22px,3.2vh,34px) clamp(20px,4vw,40px);
+          padding: clamp(14px,2.2vh,26px) clamp(20px,4vw,40px);
         }
 
         .monolith-stage {
@@ -744,27 +787,26 @@ export default function ConceptPage() {
           align-items: flex-end;
           justify-content: center;
           width: 100%;
-          padding: clamp(10px,1.6vh,18px) 0;
+          padding: clamp(6px,1.2vh,14px) 0;
           position: relative;
         }
 
         .monolith-stage::after {
           content: '';
           position: absolute;
-          bottom: clamp(14px,2vh,22px);
+          bottom: clamp(10px,1.6vh,18px);
           left: 34%;
           right: 34%;
           height: 2px;
           background: radial-gradient(ellipse, rgba(28,28,26,.14), transparent 70%);
           filter: blur(6px);
           opacity: 0;
-          transition: opacity 1.8s ease 2.6s;
+          transition: opacity 1.8s ease 2.2s;
         }
 
         .a-monolith.iv .monolith-stage::after { opacity: 1; }
 
         .monolith-stage--funnel::after {
-          bottom: clamp(12px,1.8vh,20px);
           left: 32%;
           right: 32%;
         }
@@ -775,16 +817,16 @@ export default function ConceptPage() {
           pointer-events: none;
           user-select: none;
           opacity: 0;
-          transform: translateY(54px) scale(.9);
+          transform: translateY(42px) scale(.92);
         }
 
         .a-monolith.iv .monolith-funnel {
-          animation: monolithFunnelIn 2.3s cubic-bezier(.22,1,.36,1) .24s forwards;
+          animation: monolithFunnelIn 2.1s cubic-bezier(.22,1,.36,1) .18s forwards;
         }
 
         .monolith-funnel svg {
           display: block;
-          width: min(44vw, 330px);
+          width: min(42vw, 320px);
           height: auto;
           overflow: visible;
         }
@@ -795,13 +837,13 @@ export default function ConceptPage() {
             funnelRetro 11.4s ease-in-out 1.9s infinite;
         }
 
-        .a-monolith.iv .monolith-funnel svg :is(path, line, polyline, polygon, circle, ellipse) {
+        .a-monolith.iv .monolith-funnel svg :is(path, rect, line, polyline, polygon, circle, ellipse) {
           animation: svgDraw 2.8s cubic-bezier(.55,.06,.2,1) .42s forwards;
         }
 
         /* ─ ACT III — THE SPACE ───────────────────────────────────── */
         .a-space {
-          padding: clamp(26px,3.6vw,42px) 0 clamp(44px,5vw,68px);
+          padding: clamp(22px,3vw,38px) 0 clamp(40px,4.7vw,62px);
         }
 
         .st {
@@ -820,7 +862,7 @@ export default function ConceptPage() {
         }
 
         .rs.iv .st {
-          animation: scanIn .52s steps(8,end) .28s forwards, stIdle 7.5s steps(2,end) 3.2s infinite;
+          animation: scanIn .52s steps(8,end) .24s forwards, stIdle 7.5s steps(2,end) 3.2s infinite;
         }
 
         .space-h2 {
@@ -840,20 +882,20 @@ export default function ConceptPage() {
           text-transform: uppercase;
           color: rgba(28,28,26,.36);
           text-align: center;
-          margin: 0 auto clamp(18px,2.5vw,32px);
+          margin: 0 auto clamp(18px,2.5vw,30px);
           max-width: 520px;
           line-height: 1.8;
           opacity: 0;
           transform: translateY(5px);
         }
 
-        .a-space.iv .section-lead { animation: leadIn .7s ease .82s forwards; }
-        .a-exp.iv .section-lead { animation: leadIn .7s ease .82s forwards; }
+        .a-space.iv .section-lead { animation: leadIn .7s ease .72s forwards; }
+        .a-exp.iv .section-lead { animation: leadIn .7s ease .72s forwards; }
 
         .venue-stage {
           position: relative;
           width: 100%;
-          min-height: clamp(240px,32vw,460px);
+          min-height: clamp(232px,31vw,440px);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -880,12 +922,12 @@ export default function ConceptPage() {
           width: min(100%,800px);
           aspect-ratio: 2048/1140;
           opacity: 0;
-          transform: translateY(20px) scale(.98);
+          transform: translateY(18px) scale(.985);
         }
 
         .a-space.iv .venue-wrap {
           animation:
-            venueIn .9s cubic-bezier(.2,.8,.2,1) .4s forwards,
+            venueIn .9s cubic-bezier(.2,.8,.2,1) .35s forwards,
             venueFloat 5s ease-in-out 1.8s infinite;
         }
 
@@ -901,7 +943,9 @@ export default function ConceptPage() {
 
         .v-base {
           z-index: 2;
-          filter: saturate(.78) contrast(1.02)
+          filter:
+            saturate(.78)
+            contrast(1.02)
             drop-shadow(0 14px 24px rgba(28,28,26,.1))
             drop-shadow(0 28px 50px rgba(28,28,26,.07));
         }
@@ -938,8 +982,8 @@ export default function ConceptPage() {
         .zone-nav {
           display: grid;
           grid-template-columns: repeat(3,minmax(0,1fr));
-          gap: 14px;
-          margin-top: clamp(6px,1vw,14px);
+          gap: 12px;
+          margin-top: clamp(8px,1vw,16px);
         }
 
         /* ─ ACT IV — GATE ─────────────────────────────────────────── */
@@ -947,7 +991,7 @@ export default function ConceptPage() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding: clamp(28px,4vh,44px) clamp(20px,4vw,40px);
+          padding: clamp(22px,3.2vh,38px) clamp(20px,4vw,40px);
         }
 
         .gate-stage {
@@ -955,16 +999,16 @@ export default function ConceptPage() {
           align-items: center;
           justify-content: center;
           width: 100%;
-          padding: clamp(14px,2.2vh,24px) 0;
+          padding: clamp(10px,1.8vh,20px) 0;
         }
 
         .gate-funnel-wrap {
           opacity: 0;
-          transform: translateY(40px) scale(.88);
+          transform: translateY(34px) scale(.88);
         }
 
         .a-gate.iv .gate-funnel-wrap {
-          animation: gateReveal 2.4s cubic-bezier(.2,.8,.2,1) .3s forwards;
+          animation: gateReveal 2.2s cubic-bezier(.2,.8,.2,1) .26s forwards;
         }
 
         .gate-funnel {
@@ -972,28 +1016,30 @@ export default function ConceptPage() {
           line-height: 0;
           pointer-events: none;
           user-select: none;
+          opacity: .72;
+          filter: saturate(.82) contrast(.96);
         }
 
         .gate-funnel svg {
           display: block;
-          width: min(46vw, 340px);
+          width: min(34vw, 260px);
           height: auto;
           overflow: visible;
         }
 
         .a-gate.iv .gate-funnel svg {
           animation:
-            funnelFloat 7s ease-in-out 1.6s infinite,
-            funnelRetro 11s ease-in-out 1.8s infinite;
+            gateFunnelFloat 7.4s ease-in-out 1.6s infinite,
+            gateFunnelRetro 12s ease-in-out 1.8s infinite;
         }
 
-        .a-gate.iv .gate-funnel svg :is(path, line, polyline, polygon, circle, ellipse) {
+        .a-gate.iv .gate-funnel svg :is(path, rect, line, polyline, polygon, circle, ellipse) {
           animation: svgDraw 2.8s cubic-bezier(.55,.06,.2,1) .4s forwards;
         }
 
         /* ─ ACT V — EXPERIENCE ────────────────────────────────────── */
         .a-exp {
-          padding: clamp(36px,5vw,64px) 0 clamp(80px,10vw,140px);
+          padding: clamp(30px,4.4vw,58px) 0 clamp(80px,10vw,140px);
         }
 
         .sig {
@@ -1068,6 +1114,19 @@ export default function ConceptPage() {
           line-height: 1;
           color: rgba(28,28,26,.72);
           white-space: nowrap;
+          font-variant-numeric: tabular-nums;
+          font-feature-settings: "tnum";
+          text-shadow: .012em 0 0 currentColor;
+        }
+
+        .sn-dining .sig-time {
+          min-width: 156px;
+          text-align: left;
+        }
+
+        .sn-dark .sig-time {
+          min-width: 72px;
+          text-align: right;
         }
 
         .a-exp.iv .sn-dining .sig-time {
@@ -1125,12 +1184,12 @@ export default function ConceptPage() {
         /* ─ cards ─────────────────────────────────────────────────── */
         .card {
           position: relative;
-          min-height: clamp(72px,7vw,100px);
+          min-height: clamp(82px,7.4vw,108px);
           display: flex;
           flex-direction: column;
           justify-content: center;
-          gap: 5px;
-          padding: clamp(14px,1.4vw,20px) clamp(16px,1.8vw,24px);
+          gap: 6px;
+          padding: clamp(16px,1.5vw,22px) clamp(16px,1.8vw,24px);
           border: 1px solid transparent;
           background: rgba(232,226,212,.32);
           color: ${C.ink};
@@ -1142,7 +1201,9 @@ export default function ConceptPage() {
           transition: transform .22s, background .22s, color .22s, box-shadow .22s;
         }
 
-        .rs.iv .card { animation: cardIn .52s ease var(--card-delay,300ms) forwards; }
+        .rs.iv .card {
+          animation: cardIn .52s ease var(--card-delay,300ms) forwards;
+        }
 
         .card::before {
           content: '';
@@ -1202,18 +1263,24 @@ export default function ConceptPage() {
 
         .card:hover::before,
         .card:focus-visible::before,
-        .card.is-active::before { opacity: 1; }
+        .card.is-active::before {
+          opacity: 1;
+        }
 
         .card:hover::after,
         .card:focus-visible::after,
-        .card.is-active::after { border-color: rgba(212,80,122,.82); }
+        .card.is-active::after {
+          border-color: rgba(212,80,122,.82);
+        }
 
         .card.is-dark {
           background: ${C.ink};
           color: ${C.cream};
         }
 
-        .card.is-dark .card-meta { color: rgba(232,226,212,.6); }
+        .card.is-dark .card-meta {
+          color: rgba(232,226,212,.6);
+        }
 
         .card.is-dark:hover,
         .card.is-dark:focus-visible {
@@ -1243,76 +1310,128 @@ export default function ConceptPage() {
           50% { transform: translateY(-8px); }
         }
 
+        /* Original full-colour obelisk remains dominant.
+           It only steps away while the full outline redraw happens. */
         @keyframes heroObeliskFillLoop {
-          0%,60%,100% {
+          0%,3%,100% {
             opacity: 1;
-            filter: contrast(.98) saturate(1) blur(0);
+            transform: translate3d(0,0,0) scale(1);
+            filter: contrast(.99) saturate(1) blur(0);
           }
-          63% {
-            opacity: .55;
-            filter: contrast(1.05) saturate(.88) blur(.2px);
+
+          4.5% {
+            opacity: .75;
+            transform: translate3d(0,0,0) scale(1);
+            filter: contrast(1.03) saturate(.94) blur(.15px);
           }
-          67%,79% {
+
+          6%,15% {
             opacity: 0;
-            filter: contrast(1.14) saturate(.82) blur(.8px);
+            transform: translate3d(0,0,0) scale(.996);
+            filter: contrast(1.12) saturate(.86) blur(.5px);
           }
-          84% {
-            opacity: .45;
-            filter: contrast(1.1) saturate(.94) blur(.25px);
+
+          16.5% {
+            opacity: .28;
+            transform: translate3d(-3px,0,0) scale(1.004);
+            filter: contrast(1.08) saturate(.92) blur(.25px);
           }
-          89% {
+
+          18% {
+            opacity: .08;
+            transform: translate3d(4px,1px,0) scale(.998);
+            filter: contrast(1.16) saturate(.78) blur(.45px);
+          }
+
+          20.5% {
+            opacity: .62;
+            transform: translate3d(-1px,0,0) scale(1.006);
+            filter: contrast(1.04) saturate(.92) blur(.15px);
+          }
+
+          24%,60% {
             opacity: 1;
-            filter: contrast(.98) saturate(1) blur(0);
+            transform: translate3d(0,0,0) scale(1);
+            filter: contrast(.99) saturate(1) blur(0);
+          }
+
+          63% {
+            opacity: 1;
+            transform: translate3d(0,-5px,0) scale(1.003);
+            filter: contrast(1) saturate(.98);
+          }
+
+          74%,100% {
+            opacity: 1;
+            transform: translate3d(0,0,0) scale(1);
+            filter: contrast(.99) saturate(1);
           }
         }
 
         @keyframes heroObeliskOutlineLoop {
-          0%,61%,100% {
+          0%,3%,25%,100% {
             opacity: 0;
-            transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0) scale(1);
             filter: none;
           }
-          63% {
-            opacity: .92;
-            transform: translate3d(0,0,0);
+
+          4.5% {
+            opacity: .18;
+            transform: translate3d(0,0,0) scale(.998);
             filter: none;
           }
-          73% {
-            opacity: .96;
-            transform: translate3d(0,0,0);
-            filter: none;
+
+          7% {
+            opacity: .95;
+            transform: translate3d(0,0,0) scale(1);
+            filter: drop-shadow(0 0 7px rgba(212,80,122,.22));
           }
-          74.5% {
+
+          13.5% {
             opacity: 1;
-            transform: translate3d(-5px,0,0);
+            transform: translate3d(0,0,0) scale(1);
+            filter: drop-shadow(0 0 10px rgba(212,80,122,.28));
+          }
+
+          15% {
+            opacity: 1;
+            transform: translate3d(-5px,0,0) scale(1.004);
             filter: drop-shadow(4px 0 0 rgba(232,226,212,.9));
           }
-          76% {
-            opacity: .72;
-            transform: translate3d(6px,1px,0);
+
+          16.2% {
+            opacity: .78;
+            transform: translate3d(6px,1px,0) scale(.998);
             filter: drop-shadow(-4px 0 0 rgba(232,226,212,.72));
           }
-          77.5% {
-            opacity: .96;
-            transform: translate3d(-3px,-1px,0);
+
+          17.4% {
+            opacity: 1;
+            transform: translate3d(-3px,-1px,0) scale(1.006);
             filter: drop-shadow(2px 0 0 rgba(122,120,112,.55));
           }
-          79.5% {
-            opacity: .6;
-            transform: translate3d(0,0,0);
-            filter: none;
+
+          19% {
+            opacity: .82;
+            transform: translate3d(2px,0,0) scale(1.002);
+            filter: drop-shadow(0 0 8px rgba(212,80,122,.26));
           }
-          82% {
+
+          22% {
             opacity: 0;
-            transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0) scale(1);
             filter: none;
           }
         }
 
         @keyframes obeliskStrokeDrawLoop {
-          0%,61%   { stroke-dashoffset: var(--path-len); }
-          72%      { stroke-dashoffset: 0; }
-          100%     { stroke-dashoffset: 0; }
+          0%,3% {
+            stroke-dashoffset: var(--path-len);
+          }
+
+          13.5%,100% {
+            stroke-dashoffset: 0;
+          }
         }
 
         @keyframes titleFromFunnel {
@@ -1324,20 +1443,60 @@ export default function ConceptPage() {
 
         @keyframes scanIn {
           0%   { opacity:0; clip-path:inset(0 100% 0 0); transform:translateX(-8px); filter:blur(1.5px); }
-          60%  { opacity:1; clip-path:inset(0 0 0 0); transform:translateX(0); filter:blur(0); }
+          60%  { opacity:1; clip-path:inset(0 0 0 0);    transform:translateX(0);    filter:blur(0); }
           74%  { transform:translateX(4px); }
           86%  { transform:translateX(-2px); }
-          100% { opacity:1; clip-path:inset(0 0 0 0); transform:translateX(0); filter:blur(0); }
+          100% { opacity:1; clip-path:inset(0 0 0 0);    transform:translateX(0);    filter:blur(0); }
         }
 
+        /* chromatic-aberration glitch burst — pink + cream split */
         @keyframes stIdle {
-          0%,84%,100% { filter:none; text-shadow:.018em 0 0 currentColor; }
-          85%   { filter:blur(.4px); text-shadow:-.08em 0 0 rgba(212,80,122,.9), .08em 0 0 rgba(232,226,212,.92), .018em 0 0 currentColor; }
-          86.5% { filter:none; text-shadow:.10em 0 0 rgba(212,80,122,.78), -.09em 0 0 rgba(232,226,212,.76), .018em 0 0 currentColor; }
-          88%   { filter:blur(.3px); text-shadow:-.06em -.02em 0 rgba(212,80,122,.85), .07em .02em 0 rgba(232,226,212,.84), .018em 0 0 currentColor; }
-          89.5% { filter:none; text-shadow:.018em 0 0 currentColor; }
-          91%   { filter:none; text-shadow:.06em 0 0 rgba(212,80,122,.6), -.05em 0 0 rgba(122,120,112,.62), .018em 0 0 currentColor; }
-          92.5% { filter:none; text-shadow:.018em 0 0 currentColor; }
+          0%,84%,100% {
+            filter:none;
+            text-shadow:.018em 0 0 currentColor;
+          }
+
+          85% {
+            filter:blur(.4px);
+            text-shadow:
+              -.08em 0 0 rgba(212,80,122,.9),
+              .08em 0 0 rgba(232,226,212,.92),
+              .018em 0 0 currentColor;
+          }
+
+          86.5% {
+            filter:none;
+            text-shadow:
+              .10em 0 0 rgba(212,80,122,.78),
+              -.09em 0 0 rgba(232,226,212,.76),
+              .018em 0 0 currentColor;
+          }
+
+          88% {
+            filter:blur(.3px);
+            text-shadow:
+              -.06em -.02em 0 rgba(212,80,122,.85),
+              .07em .02em 0 rgba(232,226,212,.84),
+              .018em 0 0 currentColor;
+          }
+
+          89.5% {
+            filter:none;
+            text-shadow:.018em 0 0 currentColor;
+          }
+
+          91% {
+            filter:none;
+            text-shadow:
+              .06em 0 0 rgba(212,80,122,.6),
+              -.05em 0 0 rgba(122,120,112,.62),
+              .018em 0 0 currentColor;
+          }
+
+          92.5% {
+            filter:none;
+            text-shadow:.018em 0 0 currentColor;
+          }
         }
 
         @keyframes typeIn {
@@ -1348,6 +1507,11 @@ export default function ConceptPage() {
           0%,100% { transform: translateY(0) rotate(0deg); }
           33%     { transform: translateY(-14px) rotate(.5deg); }
           66%     { transform: translateY(-7px) rotate(-.3deg); }
+        }
+
+        @keyframes gateFunnelFloat {
+          0%,100% { transform: translateY(0) rotate(0deg) scale(.96); }
+          50%     { transform: translateY(-10px) rotate(.28deg) scale(.98); }
         }
 
         @keyframes svgDraw {
@@ -1364,14 +1528,21 @@ export default function ConceptPage() {
           74%     { filter: drop-shadow(0 0 4px rgba(212,80,122,.22)) hue-rotate(0deg); }
         }
 
+        @keyframes gateFunnelRetro {
+          0%,100% { filter: drop-shadow(0 0 3px rgba(212,80,122,.18)) saturate(.88) contrast(.94); opacity: .72; }
+          28%     { filter: drop-shadow(0 0 8px rgba(212,80,122,.34)) saturate(1.02) contrast(.98); opacity: .88; }
+          42%     { filter: drop-shadow(0 0 3px rgba(212,80,122,.18)) saturate(.88) contrast(.94); opacity: .72; }
+          70%     { filter: drop-shadow(0 0 7px rgba(122,120,112,.3)) saturate(.92) contrast(.96); opacity: .78; }
+        }
+
         @keyframes monolithFunnelIn {
-          0%   { opacity:0; transform:translateY(54px) scale(.9); }
+          0%   { opacity:0; transform:translateY(42px) scale(.92); }
           66%  { opacity:1; transform:translateY(-3px) scale(1.02); }
           100% { opacity:1; transform:translateY(0) scale(1); }
         }
 
         @keyframes gateReveal {
-          0%   { opacity:0; transform:translateY(40px) scale(.88); }
+          0%   { opacity:0; transform:translateY(34px) scale(.88); }
           100% { opacity:1; transform:translateY(0) scale(1); }
         }
 
@@ -1429,13 +1600,38 @@ export default function ConceptPage() {
           100% { transform:scale(1); opacity:0; }
         }
 
-        @keyframes dotDining  { 0%,17%{opacity:0} 22%,62%{opacity:1} 78%,100%{opacity:0} }
-        @keyframes dotDark    { 0%,47%{opacity:0} 56%,70%{opacity:1} 84%,100%{opacity:0} }
-        @keyframes timeDining { 0%,17%{color:rgba(28,28,26,.72)} 22%,62%{color:${C.pink}} 78%,100%{color:rgba(28,28,26,.72)} }
-        @keyframes timeDark   { 0%,47%{color:rgba(28,28,26,.72)} 56%,70%{color:${C.pink}} 84%,100%{color:rgba(28,28,26,.72)} }
+        @keyframes dotDining  {
+          0%,17%{opacity:0}
+          22%,62%{opacity:1}
+          78%,100%{opacity:0}
+        }
+
+        @keyframes dotDark {
+          0%,47%{opacity:0}
+          56%,70%{opacity:1}
+          84%,100%{opacity:0}
+        }
+
+        @keyframes timeDining {
+          0%,17%{color:rgba(28,28,26,.72); filter:none;}
+          22%,62%{color:${C.pink}; filter:drop-shadow(0 0 4px rgba(212,80,122,.18));}
+          78%,100%{color:rgba(28,28,26,.72); filter:none;}
+        }
+
+        @keyframes timeDark {
+          0%,47%{color:rgba(28,28,26,.72); filter:none; transform:translateX(0);}
+          50%{color:${C.pink}; filter:drop-shadow(0 0 4px rgba(212,80,122,.22)); transform:translateX(-2px);}
+          52%{transform:translateX(2px);}
+          56%,70%{color:${C.pink}; filter:drop-shadow(0 0 4px rgba(212,80,122,.22)); transform:translateX(0);}
+          84%,100%{color:rgba(28,28,26,.72); filter:none; transform:translateX(0);}
+        }
 
         @keyframes cardIn {
-          to { opacity:1; transform:translateY(0); box-shadow:6px 6px 0 rgba(28,28,26,.07); }
+          to {
+            opacity:1;
+            transform:translateY(0);
+            box-shadow:6px 6px 0 rgba(28,28,26,.07);
+          }
         }
 
         @keyframes borderDraw {
@@ -1453,33 +1649,101 @@ export default function ConceptPage() {
           .shell { width:86%; }
           .zone-nav { grid-template-columns:1fr; }
           .hero-obelisk svg { height:clamp(280px,40svh,420px); }
-          .gate-funnel svg { width:min(60vw,300px); }
+          .gate-funnel svg { width:min(48vw,250px); }
         }
 
         @media (max-width:820px) {
-          .bg-tex { background-size:cover; background-repeat:no-repeat; }
-          .shell { width:calc(100% - 40px); max-width:none; }
+          .bg-tex {
+            background-size:cover;
+            background-repeat:no-repeat;
+          }
+
+          .shell {
+            width:calc(100% - 40px);
+            max-width:none;
+          }
+
           .a-hero { padding-top:96px; }
-          .hero-obelisk svg { height:clamp(240px,34svh,340px); }
-          .hero-h1 { font-size:clamp(50px,13vw,86px); }
-          .monolith-funnel svg { width:min(62vw,290px); }
-          .gate-funnel svg { width:min(72vw,280px); }
-          .sig { --sy:50px; height:clamp(90px,12vw,130px); }
-          .sig-time { font-size:clamp(15px,3.6vw,20px); }
-          .exp-nav { gap:10px; }
-          .section-lead { font-size:clamp(8px,2.2vw,10px); }
+
+          .hero-obelisk svg {
+            height:clamp(250px,34svh,350px);
+          }
+
+          .hero-h1 {
+            font-size:clamp(50px,13vw,86px);
+          }
+
+          .monolith-funnel svg {
+            width:min(62vw,290px);
+          }
+
+          .gate-funnel svg {
+            width:min(58vw,240px);
+          }
+
+          .sig {
+            --sy:50px;
+            height:clamp(90px,12vw,130px);
+          }
+
+          .sig-time {
+            font-size:clamp(15px,3.6vw,20px);
+          }
+
+          .exp-nav {
+            gap:10px;
+          }
+
+          .section-lead {
+            font-size:clamp(8px,2.2vw,10px);
+          }
         }
 
         @media (max-width:520px) {
-          .shell { width:calc(100% - 28px); }
-          .a-hero { padding-top:88px; }
-          .hero-obelisk svg { height:clamp(210px,30svh,290px); }
-          .hero-h1 { font-size:clamp(44px,12.5vw,68px); }
-          .monolith-funnel svg { width:min(78vw,240px); }
-          .gate-funnel svg { width:min(80vw,240px); }
-          .exp-nav { grid-template-columns:1fr; gap:8px; }
-          .sig { --sy:46px; }
-          .sig-time { font-size:clamp(14px,3.4vw,18px); }
+          .shell {
+            width:calc(100% - 28px);
+          }
+
+          .a-hero {
+            padding-top:88px;
+          }
+
+          .hero-obelisk svg {
+            height:clamp(220px,30svh,300px);
+          }
+
+          .hero-h1 {
+            font-size:clamp(44px,12.5vw,68px);
+          }
+
+          .monolith-funnel svg {
+            width:min(78vw,240px);
+          }
+
+          .gate-funnel svg {
+            width:min(68vw,220px);
+          }
+
+          .exp-nav {
+            grid-template-columns:1fr;
+            gap:8px;
+          }
+
+          .sig {
+            --sy:46px;
+          }
+
+          .sig-time {
+            font-size:clamp(14px,3.4vw,18px);
+          }
+
+          .sn-dining .sig-time {
+            min-width: 132px;
+          }
+
+          .sn-dark .sig-time {
+            min-width: 60px;
+          }
         }
 
         @media (max-width:380px) {
@@ -1489,38 +1753,103 @@ export default function ConceptPage() {
 
         /* ─ reduced motion ─────────────────────────────────────── */
         @media (prefers-reduced-motion:reduce) {
-          .curtain { transition: none !important; opacity: 0; }
-          .hero-obelisk-drop, .hero-obelisk-stack, .hero-obelisk-outline, .hero-obelisk-fill, .hero-h1, .tt-hero, .st,
-          .flank-line, .monolith-funnel, .monolith-funnel svg, .gate-funnel-wrap,
-          .gate-funnel svg, .venue-wrap, .vg-a, .vg-b, .v-hl.on,
-          .sig-line, .sig-fill, .sig-tick, .sig-node, .sig-sonar, .sig-dot-fill, .sig-time,
-          .section-lead, .card, .card::after {
+          .curtain {
+            transition: none !important;
+            opacity: 0;
+          }
+
+          .hero-obelisk-drop,
+          .hero-obelisk-stack,
+          .hero-obelisk-outline,
+          .hero-obelisk-fill,
+          .hero-h1,
+          .tt-hero,
+          .st,
+          .flank-line,
+          .monolith-funnel,
+          .monolith-funnel svg,
+          .gate-funnel-wrap,
+          .gate-funnel svg,
+          .venue-wrap,
+          .vg-a,
+          .vg-b,
+          .v-hl.on,
+          .sig-line,
+          .sig-fill,
+          .sig-tick,
+          .sig-node,
+          .sig-sonar,
+          .sig-dot-fill,
+          .sig-time,
+          .section-lead,
+          .card,
+          .card::after {
             animation:none !important;
             transition:none !important;
           }
 
-          .par-wrap { transition: none !important; }
-          .flank-line { transform:none; }
-          .hero-obelisk-drop, .hero-obelisk-outline, .hero-obelisk-fill, .gate-funnel-wrap, .monolith-funnel {
+          .par-wrap {
+            transition: none !important;
+          }
+
+          .flank-line {
+            transform:none;
+          }
+
+          .hero-obelisk-drop,
+          .hero-obelisk-fill,
+          .gate-funnel-wrap,
+          .monolith-funnel {
             opacity:1;
             transform:none;
           }
 
-          .hero-h1 { opacity:1; transform:none; }
-          .st { opacity:1; clip-path:inset(0 0 0 0); transform:none; }
-          .tt-hero { clip-path:inset(0 0 0 0); }
+          .hero-obelisk-outline {
+            opacity:0 !important;
+            transform:none;
+          }
 
-          .monolith-funnel svg :is(path,line,polyline,polygon,circle,ellipse),
-          .gate-funnel svg :is(path,line,polyline,polygon,circle,ellipse),
+          .hero-h1 {
+            opacity:1;
+            transform:none;
+          }
+
+          .st {
+            opacity:1;
+            clip-path:inset(0 0 0 0);
+            transform:none;
+          }
+
+          .tt-hero {
+            clip-path:inset(0 0 0 0);
+          }
+
+          .monolith-funnel svg :is(path,rect,line,polyline,polygon,circle,ellipse),
+          .gate-funnel svg :is(path,rect,line,polyline,polygon,circle,ellipse),
           .hero-obelisk-outline svg :is(path,rect,line,polyline,polygon,circle,ellipse) {
             stroke-dashoffset: 0 !important;
             animation: none !important;
           }
 
-          .venue-wrap, .sig-node, .card { opacity:1; transform:none; }
-          .sig-line { transform:none; }
-          .card::after { clip-path:inset(0 0 0 0); }
-          .section-lead { opacity:1; transform:none; }
+          .venue-wrap,
+          .sig-node,
+          .card {
+            opacity:1;
+            transform:none;
+          }
+
+          .sig-line {
+            transform:none;
+          }
+
+          .card::after {
+            clip-path:inset(0 0 0 0);
+          }
+
+          .section-lead {
+            opacity:1;
+            transform:none;
+          }
         }
       `}</style>
     </>
