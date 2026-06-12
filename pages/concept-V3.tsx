@@ -12,8 +12,8 @@ type Area   = { id: AreaId; title: string; href: string; highlight: string };
 
 const IMG = {
   bg:      '/images/concept/concept_bg.jpg',
-  funnel:  '/images/concept/grid_funel.png',
-  obelisk: '/images/concept/obelisk-dark-grey.png',
+  funnel:  '/images/concept/grid_funel.svg',
+  obelisk: '/images/concept/obelisk-dark-grey.svg',
   venue:   '/images/concept/the-space-page-venue.png',
 };
 
@@ -43,6 +43,48 @@ function Card({ href, title, meta = 'Explore', dark = false, active = false,
       <span className="card-title">{title}</span>
       <span className="card-meta">{meta} <span aria-hidden="true">→</span></span>
     </a>
+  );
+}
+
+/* Fetches an SVG file and inlines its markup so internals are animatable.
+   When draw=true, measures every stroked shape and primes its dash so the
+   lines can draw themselves on. Falls back to a flat <img> if the fetch fails. */
+function InlineSVG({ src, className, draw = false }: {
+  src: string; className?: string; draw?: boolean;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [html, setHtml] = useState('');
+
+  useEffect(() => {
+    let alive = true;
+    fetch(src)
+      .then(r => (r.ok ? r.text() : Promise.reject(new Error('fetch failed'))))
+      .then(txt => { if (alive && txt.includes('<svg')) setHtml(txt); })
+      .catch(() => {
+        if (alive) setHtml(`<img src="${src}" alt="" style="width:100%;height:auto;display:block" />`);
+      });
+    return () => { alive = false; };
+  }, [src]);
+
+  useEffect(() => {
+    if (!draw || !ref.current) return;
+    const shapes = ref.current.querySelectorAll<SVGGeometryElement>(
+      'path, line, polyline, polygon, circle, ellipse'
+    );
+    shapes.forEach(s => {
+      try {
+        const len = s.getTotalLength();
+        if (len > 0) {
+          s.style.strokeDasharray  = String(len);
+          s.style.strokeDashoffset = String(len);
+        }
+      } catch { /* shape without geometry — ignore */ }
+    });
+  }, [html, draw]);
+
+  return (
+    <span ref={ref} className={className} aria-hidden="true"
+          dangerouslySetInnerHTML={{ __html: html }} />
   );
 }
 
@@ -180,7 +222,7 @@ export default function ConceptPage() {
           {/* Funnel drops from above; par-wrap handles mouse parallax */}
           <div className="hero-funnel-drop" aria-hidden="true">
             <div ref={funnelParRef} className="par-wrap">
-              <img className="hero-funnel-img" src={IMG.funnel} alt="" draggable={false} />
+              <InlineSVG src={IMG.funnel} className="hero-funnel" draw />
             </div>
           </div>
 
@@ -200,7 +242,7 @@ export default function ConceptPage() {
           <div className="flank-line flank-a" aria-hidden="true" />
           <div className="monolith-stage">
             <div ref={obeliskParRef} className="par-wrap">
-              <img className="obelisk" src={IMG.obelisk} alt="" draggable={false} aria-hidden="true" />
+              <InlineSVG src={IMG.obelisk} className="obelisk-host" />
             </div>
           </div>
           <div className="flank-line flank-b" aria-hidden="true" />
@@ -246,7 +288,7 @@ export default function ConceptPage() {
           <div className="gate-stage">
             <div className="gate-funnel-wrap">
               <div ref={gateParRef} className="par-wrap">
-                <img className="gate-funnel-img" src={IMG.funnel} alt="" draggable={false} />
+                <InlineSVG src={IMG.funnel} className="gate-funnel" draw />
               </div>
             </div>
           </div>
@@ -442,16 +484,16 @@ export default function ConceptPage() {
           opacity: 0; transform: translateY(-80px);
           animation: heroDropIn 1.8s cubic-bezier(.22,1,.36,1) 2.2s forwards;
         }
-        /* retro CRT chroma shift on funnel (replaces glitch) */
-        .hero-funnel-img {
-          display: block;
-          width: min(44vw, 320px); height: auto;
-          mix-blend-mode: multiply;
-          filter: saturate(.9) contrast(.96);
-          pointer-events: none; user-select: none;
+        /* inline-SVG funnel — strokes draw on, then float + chroma/glow */
+        .hero-funnel { display: block; line-height: 0; pointer-events: none; user-select: none; }
+        .hero-funnel svg {
+          display: block; width: min(44vw, 320px); height: auto; overflow: visible;
           animation:
-            funnelFloat  6.5s ease-in-out 4.2s infinite,
-            funnelRetro 11s  linear      4.6s infinite;
+            funnelFloat 6.5s ease-in-out 4.4s infinite,
+            funnelRetro 11s  ease-in-out 4.6s infinite;
+        }
+        .hero-funnel svg :is(path, line, polyline, polygon, circle, ellipse) {
+          animation: svgDraw 2.8s cubic-bezier(.55,.06,.2,1) 2.2s forwards;
         }
 
         .hero-copy { display: flex; flex-direction: column; align-items: center; gap: clamp(12px,1.6vw,20px); }
@@ -497,20 +539,22 @@ export default function ConceptPage() {
         }
         .a-monolith.iv .monolith-stage::after { opacity: 1; }
 
-        /* retro amber + cold cycles (replaces glitch) */
-        .obelisk {
-          display: block;
-          height: clamp(280px,56svh,540px); width: auto;
+        /* inline-SVG obelisk — rises, pulses, amber/cold surge + glow */
+        .obelisk-host {
+          display: block; line-height: 0; pointer-events: none; user-select: none;
           opacity: 0; transform: translateY(160px);
-          mix-blend-mode: multiply;
-          filter: contrast(.95) saturate(.88);
-          pointer-events: none; user-select: none;
         }
-        .a-monolith.iv .obelisk {
+        .a-monolith.iv .obelisk-host {
+          animation: monolithRise 3.4s cubic-bezier(.22,1,.36,1) .3s forwards;
+        }
+        .obelisk-host svg {
+          display: block; height: clamp(280px,56svh,540px); width: auto; overflow: visible;
+          filter: contrast(.95) saturate(.88);
+        }
+        .a-monolith.iv .obelisk-host svg {
           animation:
-            monolithRise   3.4s cubic-bezier(.22,1,.36,1)  .3s forwards,
-            monolithPulse  5.5s ease-in-out                4.4s infinite,
-            obeliskRetro  14s  linear                      5.2s infinite;
+            monolithPulse  5.5s ease-in-out  4.4s infinite,
+            obeliskRetro  14s  ease-in-out   5.2s infinite;
         }
 
         /* ─ ACT III — THE SPACE ───────────────────────────────────── */
@@ -596,17 +640,17 @@ export default function ConceptPage() {
         .a-gate.iv .gate-funnel-wrap {
           animation: gateReveal 2.4s cubic-bezier(.2,.8,.2,1) .3s forwards;
         }
-        .gate-funnel-img {
-          display: block;
-          width: min(46vw, 340px); height: auto;
-          mix-blend-mode: multiply;
-          filter: saturate(.9) contrast(.96);
-          pointer-events: none; user-select: none;
+        .gate-funnel { display: block; line-height: 0; pointer-events: none; user-select: none; }
+        .gate-funnel svg {
+          display: block; width: min(46vw, 340px); height: auto; overflow: visible;
         }
-        .a-gate.iv .gate-funnel-img {
+        .a-gate.iv .gate-funnel svg {
           animation:
-            funnelFloat 7s  ease-in-out  3s   infinite,
-            funnelRetro 11s linear       4.2s infinite;
+            funnelFloat 7s  ease-in-out  1.6s infinite,
+            funnelRetro 11s ease-in-out  1.8s infinite;
+        }
+        .a-gate.iv .gate-funnel svg :is(path, line, polyline, polygon, circle, ellipse) {
+          animation: svgDraw 2.8s cubic-bezier(.55,.06,.2,1) .4s forwards;
         }
 
         /* ─ ACT V — EXPERIENCE ────────────────────────────────────── */
@@ -748,19 +792,18 @@ export default function ConceptPage() {
           33%     { transform: translateY(-14px) rotate(.5deg); }
           66%     { transform: translateY(-7px) rotate(-.3deg); }
         }
-        /* funnel retro: CRT chroma shift then phosphor bloom */
+        /* draw-on: reveal each stroke over its own length (offset primed inline by JS) */
+        @keyframes svgDraw { to { stroke-dashoffset: 0; } }
+
+        /* funnel retro: neon glow swell + CRT chroma shift toward cyan */
         @keyframes funnelRetro {
-          0%      { filter: saturate(.9) contrast(.96); }
-          18%     { filter: saturate(.9) contrast(.96); }
-          22%     { filter: saturate(1.08) contrast(.98) hue-rotate(-14deg) brightness(1.04); }
-          26%     { filter: saturate(1.18) contrast(1.0) hue-rotate(-22deg) brightness(1.07); }
-          30%     { filter: saturate(.86) contrast(.94) hue-rotate(10deg); }
-          34%     { filter: saturate(.9) contrast(.96); }
-          62%     { filter: saturate(.9) contrast(.96); }
-          66%     { filter: saturate(.94) contrast(.98) brightness(1.10); }
-          70%     { filter: saturate(.82) contrast(.90) brightness(1.20) blur(.5px); }
-          74%     { filter: saturate(.9) contrast(.96) blur(0); }
-          100%    { filter: saturate(.9) contrast(.96); }
+          0%,100% { filter: drop-shadow(0 0 4px rgba(212,80,122,.22)) saturate(.95) contrast(.97); }
+          16%     { filter: drop-shadow(0 0 11px rgba(212,80,122,.5)) saturate(1.08) contrast(1); }   /* glow swell */
+          28%     { filter: drop-shadow(0 0 4px rgba(212,80,122,.22)) saturate(.95) contrast(.97); }
+          60%     { filter: drop-shadow(0 0 5px rgba(212,80,122,.25)) hue-rotate(0deg); }
+          66%     { filter: drop-shadow(0 0 10px rgba(110,200,210,.45)) hue-rotate(-40deg) saturate(1.2); } /* chroma → cyan */
+          70%     { filter: drop-shadow(0 0 7px rgba(110,200,210,.32)) hue-rotate(-22deg) saturate(1.1); }
+          74%     { filter: drop-shadow(0 0 4px rgba(212,80,122,.22)) hue-rotate(0deg); }
         }
 
         /* obelisk retro: amber awakening then cold power surge */
@@ -774,17 +817,16 @@ export default function ConceptPage() {
           50%     { transform:translateY(-8px) scale(1.005); }
         }
         @keyframes obeliskRetro {
-          0%      { filter: contrast(.95) saturate(.88); }
-          22%     { filter: contrast(.95) saturate(.88); }
-          28%     { filter: contrast(1.02) saturate(.6) sepia(.32) brightness(1.06) hue-rotate(-6deg); }
-          34%     { filter: contrast(1.08) saturate(.28) sepia(.62) brightness(1.14) hue-rotate(-11deg); }
-          40%     { filter: contrast(1.04) saturate(.48) sepia(.28) brightness(1.07) hue-rotate(-4deg); }
-          46%     { filter: contrast(.95) saturate(.88); }
-          70%     { filter: contrast(.95) saturate(.88); }
-          73%     { filter: contrast(1.2) saturate(.1) brightness(1.28); }
-          76%     { filter: contrast(1.1) saturate(.3) brightness(1.10); }
-          80%     { filter: contrast(.95) saturate(.88); }
-          100%    { filter: contrast(.95) saturate(.88); }
+          0%,100% { filter: contrast(.95) saturate(.88) drop-shadow(0 0 0 rgba(0,0,0,0)); }
+          22%     { filter: contrast(.95) saturate(.88) drop-shadow(0 0 0 rgba(0,0,0,0)); }
+          28%     { filter: contrast(1.02) saturate(.6) sepia(.32) brightness(1.06) hue-rotate(-6deg) drop-shadow(0 0 8px rgba(214,150,90,.28)); }
+          34%     { filter: contrast(1.08) saturate(.28) sepia(.62) brightness(1.14) hue-rotate(-11deg) drop-shadow(0 0 16px rgba(214,150,90,.45)); } /* amber awaken + warm glow */
+          40%     { filter: contrast(1.04) saturate(.48) sepia(.28) brightness(1.07) hue-rotate(-4deg) drop-shadow(0 0 8px rgba(214,150,90,.25)); }
+          46%     { filter: contrast(.95) saturate(.88) drop-shadow(0 0 0 rgba(0,0,0,0)); }
+          70%     { filter: contrast(.95) saturate(.88) drop-shadow(0 0 0 rgba(0,0,0,0)); }
+          73%     { filter: contrast(1.2) saturate(.1) brightness(1.28) drop-shadow(0 0 16px rgba(150,190,210,.5)); }  /* cold surge + cool glow */
+          76%     { filter: contrast(1.1) saturate(.3) brightness(1.10) drop-shadow(0 0 9px rgba(150,190,210,.3)); }
+          80%     { filter: contrast(.95) saturate(.88) drop-shadow(0 0 0 rgba(0,0,0,0)); }
         }
 
         /* gate funnel */
@@ -848,30 +890,29 @@ export default function ConceptPage() {
         @media (max-width:980px) {
           .shell { width:86%; }
           .zone-nav { grid-template-columns:1fr; }
-          .hero-funnel-img { width:min(58vw,290px); }
-          .gate-funnel-img { width:min(60vw,300px); }
+          .hero-funnel svg { width:min(58vw,290px); }
+          .gate-funnel svg { width:min(60vw,300px); }
         }
         @media (max-width:820px) {
           .bg-tex { background-size:cover; background-repeat:no-repeat; }
           .shell { width:calc(100% - 40px); max-width:none; }
           .a-hero { padding-top:96px; }
-          .hero-funnel-img { width:min(66vw,260px); }
+          .hero-funnel svg { width:min(66vw,260px); }
           .hero-h1 { font-size:clamp(50px,13vw,86px); }
-          .obelisk { height:clamp(240px,50svh,420px); }
-          .gate-funnel-img { width:min(72vw,280px); }
+          .obelisk-host svg { height:clamp(240px,50svh,420px); }
+          .gate-funnel svg { width:min(72vw,280px); }
           .sig { --sy:50px; height:clamp(90px,12vw,130px); }
-          .sig-time { font-size:clamp(17px,4.5vw,26px); }
+          .sig-time { font-size:clamp(15px,3.6vw,20px); }
           .exp-nav { gap:10px; }
           .section-lead { font-size:clamp(8px,2.2vw,10px); }
-          .sig-time { font-size:clamp(15px,3.6vw,20px); }
         }
         @media (max-width:520px) {
           .shell { width:calc(100% - 28px); }
           .a-hero { padding-top:88px; }
-          .hero-funnel-img { width:min(76vw,230px); }
+          .hero-funnel svg { width:min(76vw,230px); }
           .hero-h1 { font-size:clamp(44px,12.5vw,68px); }
-          .obelisk { height:clamp(210px,46svh,380px); }
-          .gate-funnel-img { width:min(80vw,240px); }
+          .obelisk-host svg { height:clamp(210px,46svh,380px); }
+          .gate-funnel svg { width:min(80vw,240px); }
           .exp-nav { grid-template-columns:1fr; gap:8px; }
           .sig { --sy:46px; }
           .sig-time { font-size:clamp(14px,3.4vw,18px); }
@@ -885,18 +926,23 @@ export default function ConceptPage() {
         @media (prefers-reduced-motion:reduce) {
           .curtain { transition: none !important; opacity: 0; }
           .hero-funnel-drop, .hero-h1, .tt-hero, .st,
-          .flank-line, .obelisk, .gate-funnel-wrap, .gate-funnel-img, .hero-funnel-img,
+          .flank-line, .obelisk-host, .obelisk-host svg, .gate-funnel-wrap,
+          .hero-funnel svg, .gate-funnel svg,
           .venue-wrap, .vg-a, .vg-b, .v-hl.on,
           .sig-line, .sig-fill, .sig-tick, .sig-node, .sig-sonar, .sig-dot-fill, .sig-time,
           .section-lead,
           .card, .card::after { animation:none !important; transition:none !important; }
           .par-wrap { transition: none !important; }
           .flank-line { transform:none; }
-          .hero-funnel-drop, .hero-funnel-img, .gate-funnel-wrap, .gate-funnel-img { opacity:1; transform:none; }
+          .hero-funnel-drop, .gate-funnel-wrap, .obelisk-host { opacity:1; transform:none; }
           .hero-h1 { opacity:1; transform:none; }
           .st { opacity:1; clip-path:inset(0 0 0 0); transform:none; }
           .tt-hero { clip-path:inset(0 0 0 0); }
-          .obelisk { opacity:1; transform:none; }
+          /* show fully-drawn strokes instead of animating them on */
+          .hero-funnel svg :is(path,line,polyline,polygon,circle,ellipse),
+          .gate-funnel svg :is(path,line,polyline,polygon,circle,ellipse) {
+            stroke-dashoffset: 0 !important; animation: none !important;
+          }
           .venue-wrap, .sig-node, .card { opacity:1; transform:none; }
           .sig-line { transform:none; }
           .card::after { clip-path:inset(0 0 0 0); }
