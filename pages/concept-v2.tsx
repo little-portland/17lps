@@ -59,7 +59,11 @@ const EXP = [
 ];
 
 const typeStyle = (chars: number, delay: string): CSSProperties =>
-  ({ '--chars': chars, '--type-delay': delay }) as CSSProperties;
+  ({
+    '--chars': chars,
+    '--type-delay': delay,
+    '--type-duration': `${Math.max(0.28, Math.min(1.25, chars * 0.035))}s`,
+  }) as CSSProperties;
 
 function Card({
   href,
@@ -91,9 +95,22 @@ function Card({
       onClick={onClick}
       style={style}
     >
-      <span className="card-title">{title}</span>
+      <span className="card-title">
+        <span
+          className="type-line card-title-type"
+          style={typeStyle(title.length, 'calc(var(--card-delay, 300ms) + 160ms)')}
+        >
+          {title}
+        </span>
+      </span>
+
       <span className="card-meta">
-        {meta} <span aria-hidden="true">→</span>
+        <span
+          className="type-line card-meta-type"
+          style={typeStyle(meta.length + 2, 'calc(var(--card-delay, 300ms) + 420ms)')}
+        >
+          {meta} <span aria-hidden="true">→</span>
+        </span>
       </span>
     </a>
   );
@@ -376,9 +393,14 @@ export default function ConceptPage() {
           </div>
 
           <div className="hero-copy">
-            <h1 className="hero-h1">CONCEPT</h1>
+            <h1 className="hero-h1">
+              <span className="type-line hero-title-type" style={typeStyle(7, '3.52s')}>
+                CONCEPT
+              </span>
+            </h1>
+
             <p className="hero-addr">
-              <span className="tt-hero" style={typeStyle(33, '4.6s')}>
+              <span className="type-line tt-hero" style={typeStyle(33, '4.45s')}>
                 17 Little Portland Street, London
               </span>
             </p>
@@ -444,7 +466,9 @@ export default function ConceptPage() {
         <section className="act a-space rs" aria-labelledby="space-title">
           <div className="shell">
             <h2 id="space-title" className="st space-h2">
-              The Space
+              <span className="type-line section-title-type" style={typeStyle(9, '0.34s')}>
+                The Space
+              </span>
             </h2>
 
             <div className="venue-stage" aria-label="Interactive venue map">
@@ -552,7 +576,9 @@ export default function ConceptPage() {
         <section className="act a-exp rs" aria-labelledby="exp-title">
           <div className="shell">
             <h2 id="exp-title" className="st exp-h2">
-              The Experience
+              <span className="type-line section-title-type" style={typeStyle(14, '0.34s')}>
+                The Experience
+              </span>
             </h2>
 
             <div className="sig">
@@ -565,7 +591,11 @@ export default function ConceptPage() {
               </div>
 
               <div className="sig-node sn-dining">
-                <span className="sig-time">{dining}</span>
+                <span className="sig-time">
+                  <span className="type-line sig-time-type" style={typeStyle(dining.length, '0.68s')}>
+                    {dining}
+                  </span>
+                </span>
                 <span className="sig-dot">
                   <span className="sig-sonar" />
                   <span className="sig-dot-fill" />
@@ -573,7 +603,11 @@ export default function ConceptPage() {
               </div>
 
               <div className="sig-node sn-dark">
-                <span className="sig-time">{darkTime}</span>
+                <span className="sig-time">
+                  <span className="type-line sig-time-type" style={typeStyle(darkTime.length, '0.9s')}>
+                    {darkTime}
+                  </span>
+                </span>
                 <span className="sig-dot">
                   <span className="sig-sonar" />
                   <span className="sig-dot-fill" />
@@ -745,9 +779,42 @@ export default function ConceptPage() {
             padding: 4px 0 !important;
           }
 
+          .nav-shell:has(.scene-nav-burger[aria-expanded='true'])
+            .scene-nav-mobile
+            a:not(.active):not([aria-current='page']),
+          .nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile
+            a:not(.active):not([aria-current='page']) {
+            color: rgba(28, 28, 26, 0.34) !important;
+            opacity: 0.36 !important;
+            text-shadow: none !important;
+            pointer-events: none !important;
+          }
+
+          .nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a.disabled,
+          .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a.disabled,
+          .nav-shell:has(.scene-nav-burger[aria-expanded='true'])
+            .scene-nav-mobile
+            a[aria-disabled='true'],
+          .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a[aria-disabled='true'] {
+            color: rgba(28, 28, 26, 0.28) !important;
+            opacity: 0.32 !important;
+            text-shadow: none !important;
+            pointer-events: none !important;
+          }
+
           .nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a.active,
-          .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a.active {
+          .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a.active,
+          .nav-shell:has(.scene-nav-burger[aria-expanded='true'])
+            .scene-nav-mobile
+            a[aria-current='page'],
+          .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'] {
             color: ${C.pink} !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            text-shadow:
+              0 0 8px rgba(212, 80, 122, 0.24),
+              0.05em 0 0 rgba(212, 80, 122, 0.42) !important;
           }
         }
       `}</style>
@@ -828,6 +895,26 @@ export default function ConceptPage() {
             rgba(28, 28, 26, 0.013) 4px
           );
           mix-blend-mode: multiply;
+        }
+
+        .type-line {
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
+          opacity: 0;
+          clip-path: inset(0 100% 0 0);
+          vertical-align: top;
+          will-change: clip-path, opacity;
+        }
+
+        .a-hero .type-line {
+          animation: typeLineReveal var(--type-duration, 0.7s) steps(var(--chars, 10), end)
+            var(--type-delay, 0s) forwards;
+        }
+
+        .rs.iv .type-line {
+          animation: typeLineReveal var(--type-duration, 0.7s) steps(var(--chars, 10), end)
+            var(--type-delay, 0s) forwards;
         }
 
         .par-wrap {
@@ -991,6 +1078,11 @@ export default function ConceptPage() {
             heroTitleGlitch 7.5s steps(2, end) 4.9s infinite;
         }
 
+        .hero-title-type {
+          line-height: 0.88;
+          padding-right: 0.04em;
+        }
+
         .hero-addr {
           font-size: clamp(11px, 1.1vw, 16px);
           letter-spacing: 0.26em;
@@ -1002,13 +1094,8 @@ export default function ConceptPage() {
         }
 
         .tt-hero {
-          display: inline-flex;
-          white-space: nowrap;
-          overflow: visible;
           padding-right: 0.72em;
           margin-right: -0.08em;
-          clip-path: inset(0 100% 0 0);
-          animation: typeIn 0.56s steps(33, end) 4.5s forwards;
         }
 
         .a-donut {
@@ -1236,13 +1323,12 @@ export default function ConceptPage() {
           margin: 0;
           text-align: center;
           opacity: 0;
-          clip-path: inset(0 100% 0 0);
-          transform: translateX(-8px);
+          transform: translateY(8px);
         }
 
         .rs.iv .st {
           animation:
-            scanIn 0.52s steps(8, end) 0.24s forwards,
+            sectionTitleHolderIn 0.24s ease 0.18s forwards,
             stIdle 7.5s steps(2, end) 3.2s infinite;
         }
 
@@ -1636,6 +1722,17 @@ export default function ConceptPage() {
           color: ${C.cream};
         }
 
+        @keyframes typeLineReveal {
+          0% {
+            opacity: 1;
+            clip-path: inset(0 100% 0 0);
+          }
+          100% {
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
         @keyframes flankGrow {
           from {
             transform: scaleY(0);
@@ -1896,30 +1993,10 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes scanIn {
-          0% {
-            opacity: 0;
-            clip-path: inset(0 100% 0 0);
-            transform: translateX(-8px);
-            filter: blur(1.5px);
-          }
-          60% {
+        @keyframes sectionTitleHolderIn {
+          to {
             opacity: 1;
-            clip-path: inset(0 0 0 0);
-            transform: translateX(0);
-            filter: blur(0);
-          }
-          74% {
-            transform: translateX(4px);
-          }
-          86% {
-            transform: translateX(-2px);
-          }
-          100% {
-            opacity: 1;
-            clip-path: inset(0 0 0 0);
-            transform: translateX(0);
-            filter: blur(0);
+            transform: translateY(0);
           }
         }
 
@@ -1965,12 +2042,6 @@ export default function ConceptPage() {
           92.5% {
             filter: none;
             text-shadow: 0.018em 0 0 currentColor;
-          }
-        }
-
-        @keyframes typeIn {
-          to {
-            clip-path: inset(0 0 0 0);
           }
         }
 
@@ -2542,6 +2613,7 @@ export default function ConceptPage() {
           .hero-obelisk-glitch,
           .hero-obelisk-front-glitch,
           .hero-h1,
+          .type-line,
           .tt-hero,
           .st,
           .flank-line,
@@ -2564,6 +2636,11 @@ export default function ConceptPage() {
           .card::after {
             animation: none !important;
             transition: none !important;
+          }
+
+          .type-line {
+            opacity: 1 !important;
+            clip-path: inset(0 0 0 0) !important;
           }
 
           .par-wrap {
@@ -2592,12 +2669,7 @@ export default function ConceptPage() {
 
           .st {
             opacity: 1;
-            clip-path: inset(0 0 0 0);
             transform: none;
-          }
-
-          .tt-hero {
-            clip-path: inset(0 0 0 0);
           }
 
           .venue-wrap,
