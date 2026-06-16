@@ -350,10 +350,24 @@ export default function ConceptPage() {
                     className="hero-obelisk-img hero-obelisk-glitch hero-obelisk-glitch-c"
                     draggable={false}
                   />
+
                   <img
                     src={IMG.obelisk}
                     alt=""
                     className="hero-obelisk-img hero-obelisk-base"
+                    draggable={false}
+                  />
+
+                  <img
+                    src={IMG.obelisk}
+                    alt=""
+                    className="hero-obelisk-img hero-obelisk-front-glitch hero-obelisk-front-glitch-a"
+                    draggable={false}
+                  />
+                  <img
+                    src={IMG.obelisk}
+                    alt=""
+                    className="hero-obelisk-img hero-obelisk-front-glitch hero-obelisk-front-glitch-b"
                     draggable={false}
                   />
                 </div>
@@ -931,6 +945,23 @@ export default function ConceptPage() {
 
         .hero-obelisk-glitch-c {
           animation: obeliskGhostC 6.6s steps(1, end) 4.2s infinite;
+        }
+
+        .hero-obelisk-front-glitch {
+          position: relative;
+          z-index: 9;
+          opacity: 0;
+          pointer-events: none;
+          mix-blend-mode: normal;
+          filter: contrast(1.08) brightness(0.98);
+        }
+
+        .hero-obelisk-front-glitch-a {
+          animation: obeliskFrontGlitchA 5.8s steps(1, end) 4.6s infinite;
+        }
+
+        .hero-obelisk-front-glitch-b {
+          animation: obeliskFrontGlitchB 4.9s steps(1, end) 5.1s infinite;
         }
 
         .hero-copy {
@@ -1734,6 +1765,76 @@ export default function ConceptPage() {
           }
         }
 
+        @keyframes obeliskFrontGlitchA {
+          0%,
+          70%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+          72% {
+            opacity: 0.36;
+            transform: translate3d(3px, 0, 0) scale(1);
+            clip-path: inset(18% 0 68% 0);
+          }
+          74% {
+            opacity: 0.22;
+            transform: translate3d(-2px, 0, 0) scale(1);
+            clip-path: inset(42% 0 42% 0);
+          }
+          76% {
+            opacity: 0.28;
+            transform: translate3d(2px, 0, 0) scale(1);
+            clip-path: inset(72% 0 12% 0);
+          }
+          79% {
+            opacity: 0.12;
+            transform: translate3d(-1px, 0, 0) scale(1);
+            clip-path: inset(30% 0 26% 0);
+          }
+          82% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        @keyframes obeliskFrontGlitchB {
+          0%,
+          66%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+          68% {
+            opacity: 0.3;
+            transform: translate3d(-3px, 0, 0) scale(1);
+            clip-path: inset(10% 0 74% 0);
+          }
+          70% {
+            opacity: 0.18;
+            transform: translate3d(2px, 0, 0) scale(1);
+            clip-path: inset(34% 0 46% 0);
+          }
+          72.5% {
+            opacity: 0.24;
+            transform: translate3d(-2px, 0, 0) scale(1);
+            clip-path: inset(58% 0 22% 0);
+          }
+          75% {
+            opacity: 0.1;
+            transform: translate3d(1px, 0, 0) scale(1);
+            clip-path: inset(20% 0 16% 0);
+          }
+          78% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
         @keyframes titleFromField {
           0% {
             opacity: 0;
@@ -2377,6 +2478,7 @@ export default function ConceptPage() {
           .hero-obelisk-drop,
           .hero-obelisk-stack,
           .hero-obelisk-glitch,
+          .hero-obelisk-front-glitch,
           .hero-h1,
           .tt-hero,
           .st,
@@ -2414,6 +2516,11 @@ export default function ConceptPage() {
           .donut-wrap {
             opacity: 1;
             transform: none;
+          }
+
+          .hero-obelisk-glitch,
+          .hero-obelisk-front-glitch {
+            opacity: 0;
           }
 
           .hero-h1 {
