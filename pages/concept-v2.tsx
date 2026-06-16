@@ -1761,6 +1761,181 @@ export default function ConceptPage() {
           }
         }
 
+        @keyframes obeliskGhostA {
+          0%,
+          62%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+          64% {
+            opacity: 0.56;
+            transform: translate3d(-16px, -1px, 0) scale(1.045);
+            clip-path: inset(3% 0 76% 0);
+          }
+          66% {
+            opacity: 0.38;
+            transform: translate3d(14px, 1px, 0) scale(1.055);
+            clip-path: inset(27% 0 42% 0);
+          }
+          68% {
+            opacity: 0.5;
+            transform: translate3d(-12px, 0, 0) scale(1.045);
+            clip-path: inset(58% 0 11% 0);
+          }
+          70% {
+            opacity: 0.18;
+            transform: translate3d(8px, 0, 0) scale(1.03);
+            clip-path: inset(10% 0 13% 0);
+          }
+          72% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        @keyframes obeliskGhostB {
+          0%,
+          70%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+          72% {
+            opacity: 0.5;
+            transform: translate3d(18px, 0, 0) scale(1.05);
+            clip-path: inset(12% 0 64% 0);
+          }
+          74% {
+            opacity: 0.24;
+            transform: translate3d(-13px, 0, 0) scale(1.04);
+            clip-path: inset(36% 0 34% 0);
+          }
+          76% {
+            opacity: 0.42;
+            transform: translate3d(15px, 1px, 0) scale(1.05);
+            clip-path: inset(58% 0 14% 0);
+          }
+          78% {
+            opacity: 0.12;
+            transform: translate3d(-6px, 0, 0) scale(1.025);
+            clip-path: inset(7% 0 8% 0);
+          }
+          80% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        @keyframes obeliskGhostC {
+          0%,
+          78%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+          80% {
+            opacity: 0.32;
+            transform: translate3d(-10px, 0, 0) scale(1.03);
+            clip-path: inset(10% 0 70% 0);
+          }
+          81.5% {
+            opacity: 0.48;
+            transform: translate3d(16px, 0, 0) scale(1.055);
+            clip-path: inset(30% 0 38% 0);
+          }
+          83% {
+            opacity: 0.28;
+            transform: translate3d(-13px, 0, 0) scale(1.035);
+            clip-path: inset(54% 0 18% 0);
+          }
+          84.5% {
+            opacity: 0.12;
+            transform: translate3d(5px, 0, 0) scale(1.015);
+            clip-path: inset(0 0 0 0);
+          }
+          86% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        @keyframes obeliskFrontGlitchA {
+          0%,
+          62%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+          64% {
+            opacity: 0.28;
+            transform: translate3d(4px, 0, 0) scale(1);
+            clip-path: inset(17% 0 68% 0);
+          }
+          66% {
+            opacity: 0.2;
+            transform: translate3d(-3px, 0, 0) scale(1);
+            clip-path: inset(42% 0 42% 0);
+          }
+          68% {
+            opacity: 0.24;
+            transform: translate3d(3px, 0, 0) scale(1);
+            clip-path: inset(72% 0 12% 0);
+          }
+          70% {
+            opacity: 0.08;
+            transform: translate3d(-2px, 0, 0) scale(1);
+            clip-path: inset(30% 0 26% 0);
+          }
+          72% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
+        @keyframes obeliskFrontGlitchB {
+          0%,
+          70%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+          72% {
+            opacity: 0.24;
+            transform: translate3d(-4px, 0, 0) scale(1);
+            clip-path: inset(10% 0 74% 0);
+          }
+          74% {
+            opacity: 0.16;
+            transform: translate3d(3px, 0, 0) scale(1);
+            clip-path: inset(34% 0 46% 0);
+          }
+          76% {
+            opacity: 0.2;
+            transform: translate3d(-3px, 0, 0) scale(1);
+            clip-path: inset(58% 0 22% 0);
+          }
+          78% {
+            opacity: 0.08;
+            transform: translate3d(2px, 0, 0) scale(1);
+            clip-path: inset(20% 0 16% 0);
+          }
+          80% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+        }
+
         @keyframes titleFromField {
           0% {
             opacity: 0;
