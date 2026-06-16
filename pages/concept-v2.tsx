@@ -332,38 +332,24 @@ export default function ConceptPage() {
             <div ref={obeliskParRef} className="par-wrap">
               <div className="hero-obelisk-stack">
                 <div className="hero-obelisk-shell">
-                  <span className="hero-obelisk-aura hero-obelisk-aura-a" />
-                  <span className="hero-obelisk-aura hero-obelisk-aura-b" />
-                  <span className="hero-obelisk-pulse-ring" />
-
                   <img
                     src={IMG.obelisk}
                     alt=""
-                    className="hero-obelisk-img hero-obelisk-glow hero-obelisk-glow-wide"
+                    className="hero-obelisk-img hero-obelisk-glitch hero-obelisk-glitch-a"
                     draggable={false}
                   />
-
                   <img
                     src={IMG.obelisk}
                     alt=""
-                    className="hero-obelisk-img hero-obelisk-glow hero-obelisk-glow-tight"
+                    className="hero-obelisk-img hero-obelisk-glitch hero-obelisk-glitch-b"
                     draggable={false}
                   />
-
                   <img
                     src={IMG.obelisk}
                     alt=""
-                    className="hero-obelisk-img hero-obelisk-burst hero-obelisk-burst-a"
+                    className="hero-obelisk-img hero-obelisk-glitch hero-obelisk-glitch-c"
                     draggable={false}
                   />
-
-                  <img
-                    src={IMG.obelisk}
-                    alt=""
-                    className="hero-obelisk-img hero-obelisk-burst hero-obelisk-burst-b"
-                    draggable={false}
-                  />
-
                   <img
                     src={IMG.obelisk}
                     alt=""
@@ -918,112 +904,7 @@ export default function ConceptPage() {
           transform: translateZ(0);
         }
 
-        .hero-obelisk-aura {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          z-index: 1;
-          pointer-events: none;
-          border-radius: 999px;
-          transform: translate(-50%, -50%);
-        }
-
-        .hero-obelisk-aura-a {
-          width: clamp(280px, 30svh, 430px);
-          height: clamp(500px, 60svh, 760px);
-          background:
-            radial-gradient(
-              ellipse at center,
-              rgba(212, 80, 122, 0.34) 0%,
-              rgba(212, 80, 122, 0.2) 22%,
-              rgba(212, 80, 122, 0.09) 46%,
-              transparent 72%
-            );
-          filter: blur(34px);
-          opacity: 0.86;
-          animation: obeliskAuraPulseA 5.4s ease-in-out 4s infinite;
-        }
-
-        .hero-obelisk-aura-b {
-          width: clamp(200px, 23svh, 330px);
-          height: clamp(420px, 52svh, 660px);
-          background:
-            radial-gradient(
-              ellipse at center,
-              rgba(212, 80, 122, 0.3) 0%,
-              rgba(212, 80, 122, 0.14) 35%,
-              transparent 72%
-            );
-          filter: blur(18px);
-          opacity: 0.7;
-          animation: obeliskAuraPulseB 3.8s ease-in-out 4.1s infinite;
-        }
-
-        .hero-obelisk-pulse-ring {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          z-index: 2;
-          width: clamp(180px, 20svh, 300px);
-          height: clamp(420px, 52svh, 660px);
-          transform: translate(-50%, -50%);
-          border: 1px solid rgba(212, 80, 122, 0.18);
-          border-radius: 999px;
-          filter: blur(0.3px);
-          opacity: 0;
-          animation: obeliskSignalRing 6s ease-out 4.4s infinite;
-        }
-
-        .hero-obelisk-glow {
-          position: relative;
-          z-index: 3;
-          opacity: 0;
-          mix-blend-mode: multiply;
-          filter:
-            brightness(0)
-            saturate(100%)
-            invert(46%)
-            sepia(41%)
-            saturate(1020%)
-            hue-rotate(299deg)
-            brightness(91%)
-            contrast(91%);
-        }
-
-        .hero-obelisk-glow-wide {
-          transform: scale(1.24);
-          filter:
-            brightness(0)
-            saturate(100%)
-            invert(46%)
-            sepia(41%)
-            saturate(1020%)
-            hue-rotate(299deg)
-            brightness(91%)
-            contrast(91%)
-            blur(28px);
-          opacity: 0.42;
-          animation: obeliskGlowWide 5.4s ease-in-out 4s infinite;
-        }
-
-        .hero-obelisk-glow-tight {
-          z-index: 4;
-          transform: scale(1.08);
-          filter:
-            brightness(0)
-            saturate(100%)
-            invert(46%)
-            sepia(41%)
-            saturate(1020%)
-            hue-rotate(299deg)
-            brightness(91%)
-            contrast(91%)
-            blur(9px);
-          opacity: 0.54;
-          animation: obeliskGlowTight 4.2s ease-in-out 4s infinite;
-        }
-
-        .hero-obelisk-burst {
+        .hero-obelisk-glitch {
           position: relative;
           z-index: 6;
           opacity: 0;
@@ -1040,21 +921,16 @@ export default function ConceptPage() {
             contrast(91%);
         }
 
-        .hero-obelisk-burst-a {
-          animation: obeliskBurstA 8.8s steps(1, end) 5.2s infinite;
+        .hero-obelisk-glitch-a {
+          animation: obeliskGhostA 5.8s steps(1, end) 4.6s infinite;
         }
 
-        .hero-obelisk-burst-b {
-          filter:
-            brightness(0)
-            saturate(100%)
-            invert(94%)
-            sepia(4%)
-            saturate(774%)
-            hue-rotate(352deg)
-            brightness(96%)
-            contrast(90%);
-          animation: obeliskBurstB 8.8s steps(1, end) 5.2s infinite;
+        .hero-obelisk-glitch-b {
+          animation: obeliskGhostB 4.9s steps(1, end) 5.1s infinite;
+        }
+
+        .hero-obelisk-glitch-c {
+          animation: obeliskGhostC 6.6s steps(1, end) 4.2s infinite;
         }
 
         .hero-copy {
@@ -1753,120 +1629,105 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes obeliskAuraPulseA {
+        @keyframes obeliskGhostA {
           0%,
-          100% {
-            opacity: 0.68;
-            transform: translate(-50%, -50%) scale(0.96);
-          }
-          50% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.08);
-          }
-        }
-
-        @keyframes obeliskAuraPulseB {
-          0%,
-          100% {
-            opacity: 0.46;
-            transform: translate(-50%, -50%) scale(0.94);
-          }
-          50% {
-            opacity: 0.86;
-            transform: translate(-50%, -50%) scale(1.04);
-          }
-        }
-
-        @keyframes obeliskSignalRing {
-          0%,
-          68%,
+          70%,
           100% {
             opacity: 0;
-            transform: translate(-50%, -50%) scale(0.82);
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
+          }
+          72% {
+            opacity: 0.4;
+            transform: translate3d(-12px, 0, 0) scale(1.03);
+            clip-path: inset(4% 0 76% 0);
           }
           74% {
             opacity: 0.28;
-            transform: translate(-50%, -50%) scale(0.95);
+            transform: translate3d(10px, 0, 0) scale(1.04);
+            clip-path: inset(28% 0 42% 0);
           }
-          88% {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(1.28);
-          }
-        }
-
-        @keyframes obeliskGlowWide {
-          0%,
-          100% {
+          76% {
             opacity: 0.34;
-            transform: scale(1.18);
+            transform: translate3d(-8px, 0, 0) scale(1.03);
+            clip-path: inset(60% 0 10% 0);
           }
-          50% {
-            opacity: 0.58;
-            transform: scale(1.28);
+          79% {
+            opacity: 0.16;
+            transform: translate3d(6px, 0, 0) scale(1.02);
+            clip-path: inset(12% 0 14% 0);
           }
-        }
-
-        @keyframes obeliskGlowTight {
-          0%,
-          100% {
-            opacity: 0.46;
-            transform: scale(1.04);
-          }
-          50% {
-            opacity: 0.78;
-            transform: scale(1.1);
+          82% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0) scale(1);
+            clip-path: inset(0 0 0 0);
           }
         }
 
-        @keyframes obeliskBurstA {
+        @keyframes obeliskGhostB {
           0%,
-          84%,
+          66%,
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0) scale(1);
             clip-path: inset(0 0 0 0);
           }
-          85% {
-            opacity: 0.42;
-            transform: translate3d(-10px, 0, 0) scale(1.03);
-            clip-path: inset(6% 0 74% 0);
+          68% {
+            opacity: 0.34;
+            transform: translate3d(14px, 0, 0) scale(1.04);
+            clip-path: inset(14% 0 62% 0);
           }
-          86.4% {
+          70% {
+            opacity: 0.2;
+            transform: translate3d(-9px, 0, 0) scale(1.03);
+            clip-path: inset(36% 0 34% 0);
+          }
+          72.5% {
             opacity: 0.3;
-            transform: translate3d(9px, 0, 0) scale(1.04);
-            clip-path: inset(34% 0 38% 0);
+            transform: translate3d(11px, 0, 0) scale(1.04);
+            clip-path: inset(58% 0 14% 0);
           }
-          87.8% {
-            opacity: 0.22;
-            transform: translate3d(-6px, 0, 0) scale(1.03);
-            clip-path: inset(68% 0 8% 0);
+          75% {
+            opacity: 0.12;
+            transform: translate3d(-5px, 0, 0) scale(1.02);
+            clip-path: inset(6% 0 8% 0);
           }
-          89% {
+          78% {
             opacity: 0;
             transform: translate3d(0, 0, 0) scale(1);
             clip-path: inset(0 0 0 0);
           }
         }
 
-        @keyframes obeliskBurstB {
+        @keyframes obeliskGhostC {
           0%,
-          84%,
+          73%,
           100% {
             opacity: 0;
             transform: translate3d(0, 0, 0) scale(1);
             clip-path: inset(0 0 0 0);
           }
-          85.3% {
-            opacity: 0.28;
-            transform: translate3d(8px, 0, 0) scale(1.02);
-            clip-path: inset(18% 0 58% 0);
+          74% {
+            opacity: 0.24;
+            transform: translate3d(-7px, 0, 0) scale(1.02);
+            clip-path: inset(10% 0 70% 0);
           }
-          86.8% {
-            opacity: 0.18;
-            transform: translate3d(-7px, 0, 0) scale(1.03);
-            clip-path: inset(50% 0 20% 0);
+          76% {
+            opacity: 0.38;
+            transform: translate3d(13px, 0, 0) scale(1.05);
+            clip-path: inset(30% 0 38% 0);
           }
-          88.3% {
+          78% {
+            opacity: 0.2;
+            transform: translate3d(-10px, 0, 0) scale(1.03);
+            clip-path: inset(54% 0 18% 0);
+          }
+          80% {
+            opacity: 0.1;
+            transform: translate3d(4px, 0, 0) scale(1.01);
+            clip-path: inset(0 0 0 0);
+          }
+          82% {
             opacity: 0;
             transform: translate3d(0, 0, 0) scale(1);
             clip-path: inset(0 0 0 0);
@@ -2397,16 +2258,6 @@ export default function ConceptPage() {
             height: clamp(280px, 40svh, 420px);
           }
 
-          .hero-obelisk-aura-a {
-            width: clamp(250px, 28svh, 380px);
-            height: clamp(420px, 54svh, 640px);
-          }
-
-          .hero-obelisk-aura-b {
-            width: clamp(190px, 22svh, 300px);
-            height: clamp(360px, 48svh, 560px);
-          }
-
           .hero-obelisk-shell {
             transform: translateY(-6px);
           }
@@ -2476,18 +2327,6 @@ export default function ConceptPage() {
             transform: translateY(-4px);
           }
 
-          .hero-obelisk-aura-a {
-            width: clamp(220px, 28svh, 310px);
-            height: clamp(340px, 48svh, 500px);
-            filter: blur(26px);
-          }
-
-          .hero-obelisk-aura-b {
-            width: clamp(170px, 22svh, 250px);
-            height: clamp(300px, 42svh, 440px);
-            filter: blur(14px);
-          }
-
           .hero-h1 {
             font-size: clamp(44px, 12.5vw, 68px);
           }
@@ -2537,10 +2376,7 @@ export default function ConceptPage() {
 
           .hero-obelisk-drop,
           .hero-obelisk-stack,
-          .hero-obelisk-aura,
-          .hero-obelisk-pulse-ring,
-          .hero-obelisk-glow,
-          .hero-obelisk-burst,
+          .hero-obelisk-glitch,
           .hero-h1,
           .tt-hero,
           .st,
@@ -2578,18 +2414,6 @@ export default function ConceptPage() {
           .donut-wrap {
             opacity: 1;
             transform: none;
-          }
-
-          .hero-obelisk-aura-a,
-          .hero-obelisk-aura-b,
-          .hero-obelisk-glow-wide,
-          .hero-obelisk-glow-tight {
-            opacity: 0.4;
-          }
-
-          .hero-obelisk-burst,
-          .hero-obelisk-pulse-ring {
-            opacity: 0;
           }
 
           .hero-h1 {
