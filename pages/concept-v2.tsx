@@ -986,7 +986,9 @@ export default function ConceptPage() {
           transform-origin: top center;
           backface-visibility: hidden;
           will-change: opacity, transform;
-          animation: titleFromField 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 3.3s forwards;
+          animation:
+            titleFromField 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 3.3s forwards,
+            heroTitleGlitch 7.5s steps(2, end) 4.9s infinite;
         }
 
         .hero-addr {
@@ -1856,6 +1858,44 @@ export default function ConceptPage() {
           }
         }
 
+        @keyframes heroTitleGlitch {
+          0%,
+          84%,
+          100% {
+            text-shadow: 0.018em 0 0 currentColor;
+          }
+          85% {
+            text-shadow:
+              -0.08em 0 0 rgba(212, 80, 122, 0.9),
+              0.08em 0 0 rgba(232, 226, 212, 0.92),
+              0.018em 0 0 currentColor;
+          }
+          86.5% {
+            text-shadow:
+              0.1em 0 0 rgba(212, 80, 122, 0.78),
+              -0.09em 0 0 rgba(232, 226, 212, 0.76),
+              0.018em 0 0 currentColor;
+          }
+          88% {
+            text-shadow:
+              -0.06em -0.02em 0 rgba(212, 80, 122, 0.85),
+              0.07em 0.02em 0 rgba(232, 226, 212, 0.84),
+              0.018em 0 0 currentColor;
+          }
+          89.5% {
+            text-shadow: 0.018em 0 0 currentColor;
+          }
+          91% {
+            text-shadow:
+              0.06em 0 0 rgba(212, 80, 122, 0.6),
+              -0.05em 0 0 rgba(122, 120, 112, 0.62),
+              0.018em 0 0 currentColor;
+          }
+          92.5% {
+            text-shadow: 0.018em 0 0 currentColor;
+          }
+        }
+
         @keyframes scanIn {
           0% {
             opacity: 0;
@@ -2381,7 +2421,18 @@ export default function ConceptPage() {
           }
 
           .a-hero {
+            min-height: 62svh;
             padding-top: 96px;
+            padding-bottom: clamp(10px, 2.6vh, 20px);
+          }
+
+          .a-hero + .a-donut {
+            margin-top: -28px;
+            padding-top: 0;
+          }
+
+          .a-hero + .a-donut .flank-a {
+            height: clamp(30px, 5vh, 46px);
           }
 
           .hero-obelisk-img {
@@ -2417,7 +2468,18 @@ export default function ConceptPage() {
           }
 
           .a-hero {
+            min-height: 56svh;
             padding-top: 88px;
+            padding-bottom: 8px;
+          }
+
+          .a-hero + .a-donut {
+            margin-top: -34px;
+            padding-top: 0;
+          }
+
+          .a-hero + .a-donut .flank-a {
+            height: 28px;
           }
 
           .hero-obelisk-img {
