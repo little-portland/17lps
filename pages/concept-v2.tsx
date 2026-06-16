@@ -60,7 +60,7 @@ const EXP = [
 
 const typeStyle = (chars: number, delay: string): CSSProperties =>
   ({
-    '--chars': chars,
+    '--chars': chars + 1,
     '--type-delay': delay,
     '--type-duration': `${Math.max(0.28, Math.min(1.25, chars * 0.035))}s`,
   }) as CSSProperties;
@@ -904,6 +904,8 @@ export default function ConceptPage() {
           opacity: 0;
           clip-path: inset(0 100% 0 0);
           vertical-align: top;
+          padding-right: 0.18em;
+          margin-right: -0.12em;
           will-change: clip-path, opacity;
         }
 
@@ -1080,7 +1082,8 @@ export default function ConceptPage() {
 
         .hero-title-type {
           line-height: 0.88;
-          padding-right: 0.04em;
+          padding-right: 0.26em;
+          margin-right: -0.16em;
         }
 
         .hero-addr {
@@ -1729,7 +1732,7 @@ export default function ConceptPage() {
           }
           100% {
             opacity: 1;
-            clip-path: inset(0 0 0 0);
+            clip-path: inset(0 -0.28em 0 0);
           }
         }
 
@@ -2492,18 +2495,18 @@ export default function ConceptPage() {
           }
 
           .a-hero {
-            min-height: 62svh;
+            min-height: 68svh;
             padding-top: 96px;
-            padding-bottom: clamp(10px, 2.6vh, 20px);
+            padding-bottom: clamp(24px, 5vh, 46px);
           }
 
           .a-hero + .a-donut {
-            margin-top: -28px;
-            padding-top: 0;
+            margin-top: 0;
+            padding-top: clamp(26px, 5vh, 50px);
           }
 
           .a-hero + .a-donut .flank-a {
-            height: clamp(30px, 5vh, 46px);
+            height: clamp(42px, 7vh, 70px);
           }
 
           .hero-obelisk-img {
@@ -2539,18 +2542,18 @@ export default function ConceptPage() {
           }
 
           .a-hero {
-            min-height: 56svh;
+            min-height: 64svh;
             padding-top: 88px;
-            padding-bottom: 8px;
+            padding-bottom: clamp(22px, 5vh, 40px);
           }
 
           .a-hero + .a-donut {
-            margin-top: -34px;
-            padding-top: 0;
+            margin-top: 0;
+            padding-top: clamp(24px, 5vh, 42px);
           }
 
           .a-hero + .a-donut .flank-a {
-            height: 28px;
+            height: 44px;
           }
 
           .hero-obelisk-img {
@@ -2640,7 +2643,7 @@ export default function ConceptPage() {
 
           .type-line {
             opacity: 1 !important;
-            clip-path: inset(0 0 0 0) !important;
+            clip-path: inset(0 -0.28em 0 0) !important;
           }
 
           .par-wrap {
