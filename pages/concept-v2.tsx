@@ -331,43 +331,11 @@ export default function ConceptPage() {
           <div className="hero-obelisk-drop" aria-hidden="true">
             <div ref={obeliskParRef} className="par-wrap">
               <div className="hero-obelisk-stack">
-                <div className="hero-field">
-                  <span className="hero-back-aura" />
-
-                  <span className="hero-rear-mist hero-rear-mist-a" />
-                  <span className="hero-rear-mist hero-rear-mist-b" />
-                  <span className="hero-rear-mist hero-rear-mist-c" />
-
-                  <span className="hero-base-rings" />
-                  <span className="hero-base-circle" />
-                  <span className="hero-base-glow" />
-                  <span className="hero-shadow-floor" />
-
-                  <span className="hero-front-mist hero-front-mist-a" />
-                  <span className="hero-front-mist hero-front-mist-b" />
-                  <span className="hero-front-mist hero-front-mist-c" />
-
-                  <span className="hero-burst-lines hero-burst-lines-a" />
-                  <span className="hero-burst-lines hero-burst-lines-b" />
-                </div>
-
                 <div className="hero-obelisk-shell">
                   <img
                     src={IMG.obelisk}
                     alt=""
                     className="hero-obelisk-img hero-obelisk-base"
-                    draggable={false}
-                  />
-                  <img
-                    src={IMG.obelisk}
-                    alt=""
-                    className="hero-obelisk-img hero-obelisk-ghost hero-obelisk-ghost-a"
-                    draggable={false}
-                  />
-                  <img
-                    src={IMG.obelisk}
-                    alt=""
-                    className="hero-obelisk-img hero-obelisk-ghost hero-obelisk-ghost-b"
                     draggable={false}
                   />
                 </div>
@@ -898,255 +866,12 @@ export default function ConceptPage() {
           animation: heroObeliskFloat 8s ease-in-out 4.2s infinite;
         }
 
-        .hero-field {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: clamp(1280px, 132svh, 1760px);
-          height: clamp(600px, 76svh, 900px);
-          transform: translate(-50%, -50%) scale(0.94);
-          z-index: 0;
-          pointer-events: none;
-          opacity: 0;
-          overflow: visible;
-          animation: heroFieldContainerIn 1.7s cubic-bezier(0.22, 1, 0.36, 1) 2.3s forwards;
-        }
-
-        .hero-back-aura {
-          position: absolute;
-          left: 50%;
-          top: 49%;
-          width: 78%;
-          height: 76%;
-          transform: translate(-50%, -50%);
-          border-radius: 50%;
-          background: radial-gradient(
-            ellipse at center,
-            rgba(212, 80, 122, 0.13) 0%,
-            rgba(212, 80, 122, 0.07) 32%,
-            rgba(212, 80, 122, 0.025) 52%,
-            transparent 78%
-          );
-          filter: blur(30px);
-          animation: heroAuraPulse 10s ease-in-out 4s infinite;
-        }
-
-        .hero-rear-mist,
-        .hero-front-mist {
-          position: absolute;
-          left: 50%;
-          border-radius: 50%;
-          pointer-events: none;
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
-
-        .hero-rear-mist {
-          opacity: 0.45;
-          filter: blur(34px);
-          mix-blend-mode: normal;
-        }
-
-        .hero-front-mist {
-          opacity: 0.34;
-          filter: blur(28px);
-          mix-blend-mode: normal;
-        }
-
-        .hero-rear-mist-a {
-          top: calc(72% - 30px);
-          width: 112%;
-          height: 27%;
-          transform: translate(-50%, -50%);
-          background:
-            radial-gradient(ellipse at 8% 68%, rgba(212, 80, 122, 0.14) 0%, rgba(212, 80, 122, 0.1) 16%, transparent 38%),
-            radial-gradient(ellipse at 22% 54%, rgba(212, 80, 122, 0.16) 0%, rgba(212, 80, 122, 0.11) 16%, transparent 40%),
-            radial-gradient(ellipse at 38% 64%, rgba(212, 80, 122, 0.14) 0%, rgba(212, 80, 122, 0.1) 16%, transparent 40%),
-            radial-gradient(ellipse at 54% 52%, rgba(212, 80, 122, 0.15) 0%, rgba(212, 80, 122, 0.11) 16%, transparent 40%),
-            radial-gradient(ellipse at 70% 62%, rgba(212, 80, 122, 0.15) 0%, rgba(212, 80, 122, 0.11) 16%, transparent 40%),
-            radial-gradient(ellipse at 86% 57%, rgba(212, 80, 122, 0.14) 0%, rgba(212, 80, 122, 0.1) 16%, transparent 40%);
-          animation: rearMistDriftA 12s ease-in-out 4.5s infinite;
-        }
-
-        .hero-rear-mist-b {
-          top: calc(67.5% - 30px);
-          width: 96%;
-          height: 19%;
-          transform: translate(-50%, -50%);
-          background:
-            radial-gradient(ellipse at 18% 65%, rgba(255, 214, 228, 0.1) 0%, rgba(212, 80, 122, 0.08) 16%, transparent 40%),
-            radial-gradient(ellipse at 48% 48%, rgba(212, 80, 122, 0.1) 0%, rgba(212, 80, 122, 0.07) 16%, transparent 40%),
-            radial-gradient(ellipse at 80% 60%, rgba(255, 214, 228, 0.08) 0%, rgba(212, 80, 122, 0.07) 16%, transparent 40%);
-          animation: rearMistDriftB 10s ease-in-out 4.8s infinite;
-        }
-
-        .hero-rear-mist-c {
-          top: calc(64% - 30px);
-          width: 72%;
-          height: 15%;
-          transform: translate(-50%, -50%);
-          background:
-            radial-gradient(ellipse at 26% 58%, rgba(212, 80, 122, 0.07) 0%, transparent 42%),
-            radial-gradient(ellipse at 76% 58%, rgba(212, 80, 122, 0.07) 0%, transparent 42%);
-          animation: rearMistDriftC 11s ease-in-out 5s infinite;
-        }
-
-        .hero-base-rings {
-          position: absolute;
-          left: 50%;
-          top: calc(78.8% - 30px);
-          width: 112%;
-          height: 30%;
-          transform: translate(-50%, -50%) perspective(1200px) rotateX(67deg);
-          transform-origin: center;
-          opacity: 1;
-          background:
-            repeating-radial-gradient(
-              ellipse at 50% 50%,
-              transparent 0 18px,
-              rgba(212, 80, 122, 0.92) 18px 22px,
-              transparent 22px 42px
-            );
-          mask-image: radial-gradient(ellipse at center, #000 0%, #000 84%, transparent 98%);
-          -webkit-mask-image: radial-gradient(
-            ellipse at center,
-            #000 0%,
-            #000 84%,
-            transparent 98%
-          );
-          filter:
-            drop-shadow(0 0 16px rgba(212, 80, 122, 0.28))
-            drop-shadow(0 0 6px rgba(212, 80, 122, 0.18));
-          animation:
-            baseRingsPulse 8.2s ease-in-out 4.4s infinite,
-            baseRingsGlitch 10s steps(1, end) 6.2s infinite;
-        }
-
-        .hero-base-circle {
-          position: absolute;
-          left: 50%;
-          top: calc(78.8% - 30px);
-          width: 84%;
-          height: 23%;
-          transform: translate(-50%, -50%) perspective(1200px) rotateX(67deg);
-          border-radius: 50%;
-          background:
-            radial-gradient(
-              ellipse at center,
-              rgba(212, 80, 122, 0.24) 0%,
-              rgba(212, 80, 122, 0.14) 32%,
-              rgba(212, 80, 122, 0.07) 54%,
-              transparent 76%
-            );
-          filter: blur(26px);
-          opacity: 0.62;
-          animation: baseCirclePulse 8.2s ease-in-out 4.3s infinite;
-        }
-
-        .hero-base-glow {
-          position: absolute;
-          left: 50%;
-          top: calc(80.7% - 30px);
-          width: 30%;
-          height: 8%;
-          transform: translate(-50%, -50%);
-          background:
-            radial-gradient(
-              ellipse,
-              rgba(212, 80, 122, 0.18) 0%,
-              rgba(232, 226, 212, 0.06) 42%,
-              transparent 76%
-            );
-          filter: blur(12px);
-          opacity: 0.62;
-          animation: baseGlowPulse 8.5s ease-in-out 4.5s infinite;
-        }
-
-        .hero-shadow-floor {
-          position: absolute;
-          left: 50%;
-          top: calc(81.3% - 30px);
-          width: 20%;
-          height: 7%;
-          transform: translate(-50%, -50%);
-          background: radial-gradient(ellipse, rgba(28, 28, 26, 0.2), transparent 72%);
-          filter: blur(12px);
-          opacity: 0.16;
-          animation: floorShadowBreath 9s ease-in-out 4.6s infinite;
-        }
-
-        .hero-front-mist-a {
-          top: calc(75.5% - 30px);
-          width: 110%;
-          height: 18%;
-          transform: translate(-50%, -50%);
-          background:
-            radial-gradient(ellipse at 12% 62%, rgba(212, 80, 122, 0.12) 0%, rgba(212, 80, 122, 0.08) 16%, transparent 38%),
-            radial-gradient(ellipse at 28% 48%, rgba(255, 224, 234, 0.09) 0%, rgba(212, 80, 122, 0.07) 14%, transparent 36%),
-            radial-gradient(ellipse at 46% 64%, rgba(212, 80, 122, 0.12) 0%, rgba(212, 80, 122, 0.08) 15%, transparent 36%),
-            radial-gradient(ellipse at 64% 52%, rgba(255, 224, 234, 0.08) 0%, rgba(212, 80, 122, 0.06) 14%, transparent 36%),
-            radial-gradient(ellipse at 82% 60%, rgba(212, 80, 122, 0.12) 0%, rgba(212, 80, 122, 0.08) 14%, transparent 36%);
-          animation: frontMistDriftA 9s ease-in-out 4.6s infinite;
-        }
-
-        .hero-front-mist-b {
-          top: calc(70.5% - 30px);
-          width: 86%;
-          height: 15%;
-          transform: translate(-50%, -50%);
-          background:
-            radial-gradient(ellipse at 22% 62%, rgba(212, 80, 122, 0.06) 0%, transparent 40%),
-            radial-gradient(ellipse at 48% 46%, rgba(255, 224, 234, 0.07) 0%, transparent 42%),
-            radial-gradient(ellipse at 76% 56%, rgba(212, 80, 122, 0.06) 0%, transparent 40%);
-          animation: frontMistDriftB 10.5s ease-in-out 4.9s infinite;
-        }
-
-        .hero-front-mist-c {
-          top: calc(66.5% - 30px);
-          width: 54%;
-          height: 12%;
-          transform: translate(-50%, -50%);
-          background:
-            radial-gradient(ellipse at 50% 54%, rgba(212, 80, 122, 0.05) 0%, transparent 44%);
-          animation: frontMistDriftC 12s ease-in-out 5.1s infinite;
-        }
-
-        .hero-burst-lines {
-          position: absolute;
-          inset: 12% 18%;
-          opacity: 0;
-          background:
-            linear-gradient(
-              to bottom,
-              transparent 0%,
-              transparent 18%,
-              rgba(212, 80, 122, 0.22) 18%,
-              rgba(212, 80, 122, 0.22) 20%,
-              transparent 20%,
-              transparent 48%,
-              rgba(232, 226, 212, 0.28) 48%,
-              rgba(232, 226, 212, 0.28) 50%,
-              transparent 50%,
-              transparent 100%
-            );
-          mix-blend-mode: multiply;
-          pointer-events: none;
-        }
-
-        .hero-burst-lines-a {
-          animation: heroBurstLinesA 10s steps(1, end) 6.2s infinite;
-        }
-
-        .hero-burst-lines-b {
-          animation: heroBurstLinesB 10s steps(1, end) 6.2s infinite;
-        }
-
         .hero-obelisk-shell {
           position: relative;
           z-index: 5;
           display: grid;
           place-items: center;
-          transform: translateY(-20px);
+          transform: translateY(-8px);
         }
 
         .hero-obelisk-img {
@@ -1161,25 +886,11 @@ export default function ConceptPage() {
         .hero-obelisk-base {
           position: relative;
           z-index: 5;
-        }
-
-        .hero-obelisk-ghost {
-          position: relative;
-          z-index: 6;
-          opacity: 0;
-          mix-blend-mode: multiply;
-        }
-
-        .hero-obelisk-ghost-a {
-          filter: brightness(0) saturate(100%) invert(47%) sepia(38%) saturate(1159%)
-            hue-rotate(299deg) brightness(90%) contrast(91%);
-          animation: obeliskGhostPink 7.5s steps(1, end) 4.9s infinite;
-        }
-
-        .hero-obelisk-ghost-b {
-          filter: brightness(0) saturate(100%) invert(93%) sepia(9%) saturate(453%)
-            hue-rotate(350deg) brightness(99%) contrast(84%);
-          animation: obeliskGhostCream 7.5s steps(1, end) 4.9s infinite;
+          filter:
+            drop-shadow(0 0 0 rgba(212, 80, 122, 0))
+            drop-shadow(0 0 10px rgba(212, 80, 122, 0.18))
+            drop-shadow(0 0 24px rgba(212, 80, 122, 0.14));
+          animation: obeliskPinkPulse 4.8s ease-in-out 4.1s infinite;
         }
 
         .hero-copy {
@@ -1894,19 +1605,6 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes heroFieldContainerIn {
-          from {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.9);
-            filter: blur(8px);
-          }
-          to {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            filter: blur(0);
-          }
-        }
-
         @keyframes heroObeliskFloat {
           0%,
           100% {
@@ -1917,253 +1615,19 @@ export default function ConceptPage() {
           }
         }
 
-        @keyframes heroAuraPulse {
+        @keyframes obeliskPinkPulse {
           0%,
-          100% {
-            opacity: 0.76;
-            transform: translate(-50%, -50%) scale(0.98);
-          }
-          50% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.04);
-          }
-        }
-
-        @keyframes rearMistDriftA {
-          0%,
-          100% {
-            opacity: 0.38;
-            transform: translate(-50%, -50%) scale(1) translateY(0);
-          }
-          50% {
-            opacity: 0.5;
-            transform: translate(-50%, -50%) scale(1.05) translateY(-4px);
-          }
-        }
-
-        @keyframes rearMistDriftB {
-          0%,
-          100% {
-            opacity: 0.24;
-            transform: translate(-50%, -50%) scale(1);
-          }
-          50% {
-            opacity: 0.36;
-            transform: translate(-50%, -50%) scale(1.08);
-          }
-        }
-
-        @keyframes rearMistDriftC {
-          0%,
-          100% {
-            opacity: 0.14;
-            transform: translate(-50%, -50%) scale(1);
-          }
-          50% {
-            opacity: 0.22;
-            transform: translate(-50%, -50%) scale(1.05);
-          }
-        }
-
-        @keyframes baseRingsPulse {
-          0%,
-          100% {
-            opacity: 0.9;
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(67deg) scale(0.985);
-          }
-          50% {
-            opacity: 1;
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(67deg) scale(1.03);
-          }
-        }
-
-        @keyframes baseRingsGlitch {
-          0%,
-          84%,
           100% {
             filter:
-              drop-shadow(0 0 16px rgba(212, 80, 122, 0.28))
-              drop-shadow(0 0 6px rgba(212, 80, 122, 0.18));
+              drop-shadow(0 0 0 rgba(212, 80, 122, 0))
+              drop-shadow(0 0 10px rgba(212, 80, 122, 0.16))
+              drop-shadow(0 0 24px rgba(212, 80, 122, 0.12));
           }
-          85% {
-            filter: drop-shadow(-8px 0 0 rgba(212, 80, 122, 0.24));
-          }
-          86.5% {
-            filter: drop-shadow(8px 0 0 rgba(232, 226, 212, 0.22));
-          }
-          88% {
+          50% {
             filter:
-              drop-shadow(0 0 16px rgba(212, 80, 122, 0.28))
-              drop-shadow(0 0 6px rgba(212, 80, 122, 0.18));
-          }
-        }
-
-        @keyframes baseCirclePulse {
-          0%,
-          100% {
-            opacity: 0.48;
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(67deg) scale(0.98);
-          }
-          50% {
-            opacity: 0.62;
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(67deg) scale(1.05);
-          }
-        }
-
-        @keyframes baseGlowPulse {
-          0%,
-          100% {
-            opacity: 0.48;
-            transform: translate(-50%, -50%) scale(0.94);
-          }
-          50% {
-            opacity: 0.62;
-            transform: translate(-50%, -50%) scale(1.06);
-          }
-        }
-
-        @keyframes floorShadowBreath {
-          0%,
-          100% {
-            opacity: 0.12;
-            transform: translate(-50%, -50%) scale(0.94);
-          }
-          50% {
-            opacity: 0.2;
-            transform: translate(-50%, -50%) scale(1.04);
-          }
-        }
-
-        @keyframes frontMistDriftA {
-          0%,
-          100% {
-            opacity: 0.26;
-            transform: translate(-50%, -50%) scale(1);
-          }
-          50% {
-            opacity: 0.36;
-            transform: translate(-50%, -50%) scale(1.06);
-          }
-        }
-
-        @keyframes frontMistDriftB {
-          0%,
-          100% {
-            opacity: 0.18;
-            transform: translate(-50%, -50%) scale(1);
-          }
-          50% {
-            opacity: 0.28;
-            transform: translate(-50%, -50%) scale(1.08);
-          }
-        }
-
-        @keyframes frontMistDriftC {
-          0%,
-          100% {
-            opacity: 0.1;
-            transform: translate(-50%, -50%) scale(1);
-          }
-          50% {
-            opacity: 0.18;
-            transform: translate(-50%, -50%) scale(1.06);
-          }
-        }
-
-        @keyframes heroBurstLinesA {
-          0%,
-          84%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            clip-path: inset(0 0 0 0);
-          }
-          85% {
-            opacity: 0.58;
-            transform: translate3d(-8px, 0, 0);
-            clip-path: inset(12% 0 70% 0);
-          }
-          86.5% {
-            opacity: 0.32;
-            transform: translate3d(8px, 0, 0);
-            clip-path: inset(42% 0 34% 0);
-          }
-          88.2% {
-            opacity: 0.16;
-            transform: translate3d(-5px, 0, 0);
-            clip-path: inset(68% 0 10% 0);
-          }
-          89% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes heroBurstLinesB {
-          0%,
-          84%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            clip-path: inset(0 0 0 0);
-          }
-          85.2% {
-            opacity: 0.34;
-            transform: translate3d(7px, 0, 0);
-            clip-path: inset(28% 0 46% 0);
-          }
-          87.2% {
-            opacity: 0.2;
-            transform: translate3d(-7px, 0, 0);
-            clip-path: inset(58% 0 16% 0);
-          }
-          88.6% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes obeliskGhostPink {
-          0%,
-          84%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-          }
-          85% {
-            opacity: 0.18;
-            transform: translate3d(-6px, 0, 0);
-          }
-          86.4% {
-            opacity: 0.08;
-            transform: translate3d(-3px, 0, 0);
-          }
-          87.6% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-          }
-        }
-
-        @keyframes obeliskGhostCream {
-          0%,
-          84%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-          }
-          85.6% {
-            opacity: 0.14;
-            transform: translate3d(6px, 0, 0);
-          }
-          86.9% {
-            opacity: 0.06;
-            transform: translate3d(3px, 0, 0);
-          }
-          88% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
+              drop-shadow(0 0 8px rgba(212, 80, 122, 0.38))
+              drop-shadow(0 0 24px rgba(212, 80, 122, 0.34))
+              drop-shadow(0 0 52px rgba(212, 80, 122, 0.28));
           }
         }
 
@@ -2692,12 +2156,7 @@ export default function ConceptPage() {
           }
 
           .hero-obelisk-shell {
-            transform: translateY(-16px);
-          }
-
-          .hero-field {
-            width: clamp(980px, 108svh, 1280px);
-            height: clamp(500px, 62svh, 700px);
+            transform: translateY(-6px);
           }
 
           .donut-wrap {
@@ -2725,11 +2184,6 @@ export default function ConceptPage() {
             height: clamp(250px, 34svh, 350px);
           }
 
-          .hero-field {
-            width: clamp(760px, 88svh, 980px);
-            height: clamp(420px, 52svh, 560px);
-          }
-
           .hero-h1 {
             font-size: clamp(50px, 13vw, 86px);
           }
@@ -2755,18 +2209,6 @@ export default function ConceptPage() {
           .section-lead {
             font-size: clamp(8px, 2.2vw, 10px);
           }
-
-          .hero-base-rings {
-            width: 118%;
-            height: 32%;
-            top: calc(79.5% - 30px);
-          }
-
-          .hero-base-circle {
-            width: 92%;
-            height: 25%;
-            top: calc(79.5% - 30px);
-          }
         }
 
         @media (max-width: 520px) {
@@ -2783,12 +2225,7 @@ export default function ConceptPage() {
           }
 
           .hero-obelisk-shell {
-            transform: translateY(-12px);
-          }
-
-          .hero-field {
-            width: clamp(620px, 80svh, 760px);
-            height: clamp(360px, 46svh, 440px);
+            transform: translateY(-4px);
           }
 
           .hero-h1 {
@@ -2820,25 +2257,6 @@ export default function ConceptPage() {
           .sn-dark .sig-time {
             min-width: 60px;
           }
-
-          .hero-base-rings {
-            width: 126%;
-            height: 34%;
-            top: calc(80.2% - 30px);
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(64deg);
-          }
-
-          .hero-base-circle {
-            width: 100%;
-            height: 27%;
-            top: calc(80.2% - 30px);
-            transform: translate(-50%, -50%) perspective(1200px) rotateX(64deg);
-          }
-
-          .hero-rear-mist-a,
-          .hero-front-mist-a {
-            width: 120%;
-          }
         }
 
         @media (max-width: 380px) {
@@ -2859,16 +2277,7 @@ export default function ConceptPage() {
 
           .hero-obelisk-drop,
           .hero-obelisk-stack,
-          .hero-field,
-          .hero-back-aura,
-          .hero-rear-mist,
-          .hero-base-rings,
-          .hero-base-circle,
-          .hero-base-glow,
-          .hero-shadow-floor,
-          .hero-front-mist,
-          .hero-burst-lines,
-          .hero-obelisk-ghost,
+          .hero-obelisk-base,
           .hero-h1,
           .tt-hero,
           .st,
@@ -2907,17 +2316,6 @@ export default function ConceptPage() {
           .donut-wrap {
             opacity: 1;
             transform: none;
-          }
-
-          .hero-field,
-          .hero-back-aura,
-          .hero-rear-mist,
-          .hero-base-rings,
-          .hero-base-circle,
-          .hero-base-glow,
-          .hero-shadow-floor,
-          .hero-front-mist {
-            opacity: 1;
           }
 
           .hero-h1 {
