@@ -702,8 +702,13 @@ export default function ConceptPage() {
         .scene-nav--space a.active,
         .scene-nav-mobile--space a.active,
         .scene-nav--space a[aria-current='page'],
-        .scene-nav-mobile--space a[aria-current='page'] {
-          color: ${C.pink} !important;
+        .scene-nav-mobile--space a[aria-current='page'],
+        .scene-nav--space a[href*='nocturn' i],
+        .scene-nav-mobile--space a[href*='nocturn' i] {
+          color: ${C.ink} !important;
+          opacity: 1 !important;
+          text-shadow: none !important;
+          pointer-events: auto !important;
         }
 
         .scene-nav--space a.disabled,
@@ -771,22 +776,12 @@ export default function ConceptPage() {
           .nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a,
           .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a {
             display: block !important;
-            color: ${C.ink} !important;
-            opacity: 1 !important;
+            color: rgba(28, 28, 26, 0.34) !important;
+            opacity: 0.38 !important;
             font-size: clamp(16px, 4.7vw, 24px) !important;
             letter-spacing: 0.16em !important;
             text-align: center !important;
             padding: 4px 0 !important;
-          }
-
-          .nav-shell:has(.scene-nav-burger[aria-expanded='true'])
-            .scene-nav-mobile
-            a:not(.active):not([aria-current='page']),
-          .nav-shell:has(button[aria-expanded='true'])
-            .scene-nav-mobile
-            a:not(.active):not([aria-current='page']) {
-            color: rgba(28, 28, 26, 0.34) !important;
-            opacity: 0.36 !important;
             text-shadow: none !important;
             pointer-events: none !important;
           }
@@ -797,8 +792,8 @@ export default function ConceptPage() {
             .scene-nav-mobile
             a[aria-disabled='true'],
           .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a[aria-disabled='true'] {
-            color: rgba(28, 28, 26, 0.28) !important;
-            opacity: 0.32 !important;
+            color: rgba(28, 28, 26, 0.3) !important;
+            opacity: 0.34 !important;
             text-shadow: none !important;
             pointer-events: none !important;
           }
@@ -808,13 +803,17 @@ export default function ConceptPage() {
           .nav-shell:has(.scene-nav-burger[aria-expanded='true'])
             .scene-nav-mobile
             a[aria-current='page'],
-          .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'] {
-            color: ${C.pink} !important;
+          .nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'],
+          .nav-shell:has(.scene-nav-burger[aria-expanded='true'])
+            .scene-nav-mobile
+            a[href*='nocturn' i],
+          .nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile
+            a[href*='nocturn' i] {
+            color: ${C.ink} !important;
             opacity: 1 !important;
             pointer-events: auto !important;
-            text-shadow:
-              0 0 8px rgba(212, 80, 122, 0.24),
-              0.05em 0 0 rgba(212, 80, 122, 0.42) !important;
+            text-shadow: none !important;
           }
         }
       `}</style>
@@ -1759,181 +1758,6 @@ export default function ConceptPage() {
           }
           50% {
             transform: translateY(-8px);
-          }
-        }
-
-        @keyframes obeliskGhostA {
-          0%,
-          70%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
-          }
-          72% {
-            opacity: 0.4;
-            transform: translate3d(-12px, 0, 0) scale(1.03);
-            clip-path: inset(4% 0 76% 0);
-          }
-          74% {
-            opacity: 0.28;
-            transform: translate3d(10px, 0, 0) scale(1.04);
-            clip-path: inset(28% 0 42% 0);
-          }
-          76% {
-            opacity: 0.34;
-            transform: translate3d(-8px, 0, 0) scale(1.03);
-            clip-path: inset(60% 0 10% 0);
-          }
-          79% {
-            opacity: 0.16;
-            transform: translate3d(6px, 0, 0) scale(1.02);
-            clip-path: inset(12% 0 14% 0);
-          }
-          82% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes obeliskGhostB {
-          0%,
-          66%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
-          }
-          68% {
-            opacity: 0.34;
-            transform: translate3d(14px, 0, 0) scale(1.04);
-            clip-path: inset(14% 0 62% 0);
-          }
-          70% {
-            opacity: 0.2;
-            transform: translate3d(-9px, 0, 0) scale(1.03);
-            clip-path: inset(36% 0 34% 0);
-          }
-          72.5% {
-            opacity: 0.3;
-            transform: translate3d(11px, 0, 0) scale(1.04);
-            clip-path: inset(58% 0 14% 0);
-          }
-          75% {
-            opacity: 0.12;
-            transform: translate3d(-5px, 0, 0) scale(1.02);
-            clip-path: inset(6% 0 8% 0);
-          }
-          78% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes obeliskGhostC {
-          0%,
-          73%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
-          }
-          74% {
-            opacity: 0.24;
-            transform: translate3d(-7px, 0, 0) scale(1.02);
-            clip-path: inset(10% 0 70% 0);
-          }
-          76% {
-            opacity: 0.38;
-            transform: translate3d(13px, 0, 0) scale(1.05);
-            clip-path: inset(30% 0 38% 0);
-          }
-          78% {
-            opacity: 0.2;
-            transform: translate3d(-10px, 0, 0) scale(1.03);
-            clip-path: inset(54% 0 18% 0);
-          }
-          80% {
-            opacity: 0.1;
-            transform: translate3d(4px, 0, 0) scale(1.01);
-            clip-path: inset(0 0 0 0);
-          }
-          82% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes obeliskFrontGlitchA {
-          0%,
-          70%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
-          }
-          72% {
-            opacity: 0.36;
-            transform: translate3d(3px, 0, 0) scale(1);
-            clip-path: inset(18% 0 68% 0);
-          }
-          74% {
-            opacity: 0.22;
-            transform: translate3d(-2px, 0, 0) scale(1);
-            clip-path: inset(42% 0 42% 0);
-          }
-          76% {
-            opacity: 0.28;
-            transform: translate3d(2px, 0, 0) scale(1);
-            clip-path: inset(72% 0 12% 0);
-          }
-          79% {
-            opacity: 0.12;
-            transform: translate3d(-1px, 0, 0) scale(1);
-            clip-path: inset(30% 0 26% 0);
-          }
-          82% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
-          }
-        }
-
-        @keyframes obeliskFrontGlitchB {
-          0%,
-          66%,
-          100% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
-          }
-          68% {
-            opacity: 0.3;
-            transform: translate3d(-3px, 0, 0) scale(1);
-            clip-path: inset(10% 0 74% 0);
-          }
-          70% {
-            opacity: 0.18;
-            transform: translate3d(2px, 0, 0) scale(1);
-            clip-path: inset(34% 0 46% 0);
-          }
-          72.5% {
-            opacity: 0.24;
-            transform: translate3d(-2px, 0, 0) scale(1);
-            clip-path: inset(58% 0 22% 0);
-          }
-          75% {
-            opacity: 0.1;
-            transform: translate3d(1px, 0, 0) scale(1);
-            clip-path: inset(20% 0 16% 0);
-          }
-          78% {
-            opacity: 0;
-            transform: translate3d(0, 0, 0) scale(1);
-            clip-path: inset(0 0 0 0);
           }
         }
 
