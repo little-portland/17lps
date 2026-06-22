@@ -64,7 +64,9 @@ const Menu = ({ menuImage }) => {
            <div className="nocturn-wider-section">
             <div className="row">
                <div className="column">
-                  <img className="flyer" src="/images/nocturn/quiet_husband_noct_afterhours.jpg" />
+                  <a href="https://www.little-portland.com/booking-options-bcdf" target="_blank">
+                     <img className="flyer" src="/images/nocturn/quiet_husband_noct_afterhours.jpg" />
+                  </a>
                  </div>
                <div className="column">
                    <a href="https://sevn.ly/x7vHV9je" target="_blank">
