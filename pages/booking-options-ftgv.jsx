@@ -33,7 +33,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Josh Keit, Pato</h3>
-              <h3><span>STUDIO <b>//</b> </span>DAISYBELLE & SYSTEM OLYMPIA</h3>
+              <h3><span>STUDIO <b>//</b> </span>DAISYBELLE & SYSTEM OLYMPIA, Ollie Drummond </h3>
             </div>
         </div>
 
