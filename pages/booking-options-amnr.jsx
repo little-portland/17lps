@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>BABYBASS, FRANKIE VALENTINE</h3>
-              <h3><span>STUDIO <b>//</b> </span>BIANCA CHU (LIVE) & FLORA YIN-WONG, RICHIE CULVER</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bianca Chu & Flora Yin-Wong (Live), Quiet Husband</h3>
             </div>
         </div>
 
