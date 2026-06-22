@@ -62,6 +62,17 @@ const Menu = ({ menuImage }) => {
            <img src="/images/nocturn-main-web-page-header.png" alt="Nocturn" width="100%" />
          </div>
            <div className="nocturn-wider-section">
+            <div className="row">
+               <div className="column">
+                  <img className="flyer" src="/images/nocturn/quiet_husband_noct_afterhours.jpg" />
+                 </div>
+               <div className="column">
+                   <a href="https://sevn.ly/x7vHV9je" target="_blank">
+                     <img className="flyer" src="/images/nocturn/cosmogram-of-eros-flyer.gif" />
+                   </a>
+                 </div>
+              </div>
+              
            <div className="row">
                <div className="column">
                    <a href="https://www.little-portland.com/nocturn-06" target="_blank">
