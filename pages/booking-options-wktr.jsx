@@ -286,6 +286,11 @@ const BookingOptions = () => {
           white-space: nowrap;
         }
 
+        #bookingOptions .nocturnCabaretTicket {
+          margin-bottom: 0px !important;
+          padding-bottom: 0 !important;
+        }
+
         #bookingOptions .nocturnCabaretTicket a {
           display: flex;
           flex-direction: column;
@@ -335,6 +340,10 @@ const BookingOptions = () => {
 
           #bookingOptions .nocturn-ticket-wrapper.desktop-only {
             display: none !important;
+          }
+
+          #bookingOptions .nocturnCabaretTicket .time {
+              margin: -10px 0 0 !important;
           }
         }
       `}</style>
