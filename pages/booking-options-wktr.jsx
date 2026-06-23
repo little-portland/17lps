@@ -342,6 +342,11 @@ const BookingOptions = () => {
             display: none !important;
           }
 
+          #bookingOptions .nocturnCabaretTicket {
+              margin-bottom: 10px !important;
+              padding-bottom: 10px !important;
+          }
+          
           #bookingOptions .nocturnCabaretTicket .time {
               margin: -10px 0 0 !important;
           }
