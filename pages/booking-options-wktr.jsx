@@ -259,40 +259,47 @@ const BookingOptions = () => {
           width: 100%;
           gap: 10px;
         }
-
+      
         #bookingOptions .nocturn-ticket-wrapper.desktop-only {
           flex-direction: row;
         }
-
+      
         #bookingOptions .nocturn-ticket-wrapper.mobile-only {
           flex-direction: column;
         }
-
+      
         #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact {
           flex: 1;
           width: 100%;
+          min-width: 0;
         }
-
+      
+        #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact,
+        #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact a {
+          font-size: 24px !important;
+          line-height: 1;
+          letter-spacing: -0.02em;
+          white-space: nowrap;
+        }
+      
         #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact a {
           display: flex;
           align-items: center;
           justify-content: center;
           width: 100%;
-          white-space: nowrap;
-          font-size: clamp(18px, 2vw, 28px);
-          line-height: 1;
-          letter-spacing: 0.01em;
           text-align: center;
+          overflow: hidden;
         }
-
+      
         @media (max-width: 767px) {
           #bookingOptions .nocturn-ticket-wrapper {
             gap: 8px;
           }
-
+      
+          #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact,
           #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact a {
-            font-size: clamp(16px, 4.4vw, 18px);
-            letter-spacing: 0;
+            font-size: 17px !important;
+            letter-spacing: -0.03em;
           }
         }
       `}</style>
