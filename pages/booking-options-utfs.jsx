@@ -62,8 +62,7 @@ const BookingOptions = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="nocturn-main-text">NOCTURN CABARET</span>
-              <p className="nocturn-main-text nocturn-time">[7:30PM]</p>
+              <span className="nocturn-main-text">NOCTURN CABARET [7:30PM]</span>
               <p className="time">(INCLUDES CLUB ENTRY)</p>
             </a>
           </Button>
@@ -246,8 +245,7 @@ const BookingOptions = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="nocturn-main-text">NOCTURN CABARET</span>
-              <p className="nocturn-main-text nocturn-time">[7:30PM]</p>
+              <span className="nocturn-main-text">NOCTURN CABARET [7:30PM]</span>
               <p className="time">(INCLUDES CLUB ENTRY)</p>
             </a>
           </Button>
