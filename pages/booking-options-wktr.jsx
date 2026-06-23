@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import Script from "next/script";
 
-//hooks
-import useDeviceDetect from "@utils/useDeviceDetect";
-
-import CenterContainer from "@components/UX/CenterContainer/CenterContainer"; 
+// components
 import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
@@ -24,122 +20,282 @@ const BookingOptions = () => {
       </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category"><span className="day">Thursday</span> Underground</h1>
-        
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Thursday</span> Underground</h1>
+        <h1 className="event-name desktop-only day-category">
+          <span className="day">Thursday</span> Underground
+        </h1>
+
+        <h1 className="event-name mobile-only cat">
+          <span className="cat-day">Thursday</span> Underground
+        </h1>
 
         <div className="event-info">
-            <div class="info date">
-              <h2><span>THU</span>25 JUN</h2>
-            </div>
-            <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DAVIDE DEL VECCHIO, GABRIEL RAI</h3>
-              <h3><span>STUDIO <b>//</b> </span>MATHEW JONSON</h3>
-            </div>
+          <div className="info date">
+            <h2>
+              <span>THU</span>25 JUN
+            </h2>
+          </div>
+
+          <div className="info artists">
+            <h3>
+              <span>
+                TENT <b>//</b>{" "}
+              </span>
+              DAVIDE DEL VECCHIO, GABRIEL RAI
+            </h3>
+            <h3>
+              <span>
+                STUDIO <b>//</b>{" "}
+              </span>
+              MATHEW JONSON
+            </h3>
+          </div>
         </div>
 
-        <div className="button-wrapper new-button-wrapper mobile-only">
-          <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xDWKEH0e" target="_blank">
+        <div className="button-wrapper new-button-wrapper nocturn-ticket-wrapper mobile-only">
+          <Button classes="events-button ticketNew ticketNewCompact" btnType="hollow">
+            <a
+              href="https://sevn.ly/x7vHV9je"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              NOCTURN CABARET
+            </a>
+          </Button>
+
+          <Button classes="events-button ticketNew ticketNewCompact" btnType="hollow">
+            <a
+              href="https://sevn.ly/xDWKEH0e"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               CLUB ENTRY ONLY [11PM]
             </a>
           </Button>
         </div>
 
-        <div className="or mobile-only"><h2>Or</h2></div>
+        <div className="or mobile-only">
+          <h2>Or</h2>
+        </div>
 
         <div className="book-wrapper">
           <div className="override-heading">
             <h2>START WITH DINNER</h2>
-            <p class="time mobile-only">Includes Club Entry</p>
+            <p className="time mobile-only">Includes Club Entry</p>
           </div>
-          <div class="tags mobile-only"><h3><span>DINING CONCEPT: <span className="strongword">FUTURIST</span></span></h3></div>
+
+          <div className="tags mobile-only">
+            <h3>
+              <span>
+                DINING CONCEPT: <span className="strongword">FUTURIST</span>
+              </span>
+            </h3>
+          </div>
 
           <div className="concept">
             <h4>“Override” is our restaurant concept</h4>
           </div>
-          
-          <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
-            <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
+
+          <div className="button-wrapper new-button-wrapper button-wrapper-new dining-con">
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/food"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span>[More about our dining concept]</span>
             </a>
-           </div>
+          </div>
 
           <div className="button-wrapper new-button-wrapper">
-            <Button classes="events-button new-events-button view-menu" btnType="hollow">
-              <a href="https://www.little-portland.com/menu" target="_blank">
+            <Button
+              classes="events-button new-events-button view-menu"
+              btnType="hollow"
+            >
+              <a
+                href="https://www.little-portland.com/menu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span>View Menu</span>
               </a>
             </Button>
           </div>
 
-         <div class="button-wrapper new-button-wrapper desktop-only">
-            <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-06-25&default_time=21:00&default_party_size=4" target="_blank">
-                <span class="space">IN THE TENT</span>
-                <p class="time">Includes Club Entry</p>
-                <p class="details"><span>8:30PM</span></p>
-                <p class="btn-tagline">The Cosmic Experience</p>
-               </a>
-              </Button>
-  
-              <Button classes="events-button ticket"  btnType="hollow">
-                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span class="space">CHEF’S STUDIO</span>
-                <p class="time">Includes Club Entry</p>
-                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
-                <p class="btn-tagline">Where the heads dine</p>
-               </a>
-              </Button>
+          <div className="button-wrapper new-button-wrapper desktop-only">
+            <Button classes="events-button new-events-button" btnType="hollow">
+              <a
+                href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-06-25&default_time=21:00&default_party_size=4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="space">IN THE TENT</span>
+                <p className="time">Includes Club Entry</p>
+                <p className="details">
+                  <span>8:30PM</span>
+                </p>
+                <p className="btn-tagline">The Cosmic Experience</p>
+              </a>
+            </Button>
+
+            <Button classes="events-button ticket" btnType="hollow">
+              <a
+                className="book-link"
+                href="mailto:eat@little-portland.com?subject=Chef’s Studio"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="space">CHEF’S STUDIO</span>
+                <p className="time">Includes Club Entry</p>
+                <p className="details chef-studio-details">
+                  <span>6-12 PAX</span>
+                  <span>8PM</span>
+                </p>
+                <p className="btn-tagline">Where the heads dine</p>
+              </a>
+            </Button>
           </div>
-          
-         <div class="button-wrapper new-button-wrapper button-wrapper-new desktop-only">
-            <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
+
+          <div className="button-wrapper new-button-wrapper button-wrapper-new desktop-only">
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/thetent"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span>[More about The Tent]</span>
             </a>
-            <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[More about Chef's Studio]</span>
-              </a>
-           </div>
-         
-         <div class="button-wrapper new-button-wrapper mobile-only">
-            <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-06-25&default_time=21:00&default_party_size=4" target="_blank">
-                <span class="space">IN THE TENT</span>
-                <p class="details"><span>8:30PM</span></p>
-                <p class="btn-tagline">The Cosmic Experience</p>
-               </a>
-              </Button>
 
-               <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
-                <span>[More about The Tent]</span>
-              </a>
-  
-              <Button classes="events-button ticket"  btnType="hollow">
-                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span class="space">CHEF’S STUDIO</span>
-                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
-                <p class="btn-tagline">Where the heads dine</p>
-               </a>
-              </Button>
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/chefstudio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>[More about Chef&apos;s Studio]</span>
+            </a>
+          </div>
 
-             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[More about Chef's Studio]</span>
-            </a> 
-           
+          <div className="button-wrapper new-button-wrapper mobile-only">
+            <Button classes="events-button new-events-button" btnType="hollow">
+              <a
+                href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-06-25&default_time=21:00&default_party_size=4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="space">IN THE TENT</span>
+                <p className="details">
+                  <span>8:30PM</span>
+                </p>
+                <p className="btn-tagline">The Cosmic Experience</p>
+              </a>
+            </Button>
+
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/thetent"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>[More about The Tent]</span>
+            </a>
+
+            <Button classes="events-button ticket" btnType="hollow">
+              <a
+                className="book-link"
+                href="mailto:eat@little-portland.com?subject=Chef’s Studio"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="space">CHEF’S STUDIO</span>
+                <p className="details chef-studio-details">
+                  <span>6-12 PAX</span>
+                  <span>8PM</span>
+                </p>
+                <p className="btn-tagline">Where the heads dine</p>
+              </a>
+            </Button>
+
+            <a
+              className="menu-btn"
+              href="https://www.little-portland.com/chefstudio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>[More about Chef&apos;s Studio]</span>
+            </a>
           </div>
         </div>
 
-        <div className="or desktop-only or-desktop"><h2>Or</h2></div>
+        <div className="or desktop-only or-desktop">
+          <h2>Or</h2>
+        </div>
 
-        <div className="button-wrapper new-button-wrapper desktop-only">
-          <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xDWKEH0e" target="_blank">
-              CLUB ENTRY ONLY [10PM]
+        <div className="button-wrapper new-button-wrapper nocturn-ticket-wrapper desktop-only">
+          <Button classes="events-button ticketNew ticketNewCompact" btnType="hollow">
+            <a
+              href="https://sevn.ly/x7vHV9je"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              NOCTURN CABARET
+            </a>
+          </Button>
+
+          <Button classes="events-button ticketNew ticketNewCompact" btnType="hollow">
+            <a
+              href="https://sevn.ly/xDWKEH0e"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CLUB ENTRY ONLY [11PM]
             </a>
           </Button>
         </div>
       </div>
+
+      <style jsx global>{`
+        #bookingOptions .nocturn-ticket-wrapper {
+          display: flex;
+          width: 100%;
+          gap: 10px;
+        }
+
+        #bookingOptions .nocturn-ticket-wrapper.desktop-only {
+          flex-direction: row;
+        }
+
+        #bookingOptions .nocturn-ticket-wrapper.mobile-only {
+          flex-direction: column;
+        }
+
+        #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact {
+          flex: 1;
+          width: 100%;
+        }
+
+        #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          white-space: nowrap;
+          font-size: clamp(18px, 2vw, 28px);
+          line-height: 1;
+          letter-spacing: 0.01em;
+          text-align: center;
+        }
+
+        @media (max-width: 767px) {
+          #bookingOptions .nocturn-ticket-wrapper {
+            gap: 8px;
+          }
+
+          #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact a {
+            font-size: clamp(16px, 4.4vw, 18px);
+            letter-spacing: 0;
+          }
+        }
+      `}</style>
     </>
   );
 };
