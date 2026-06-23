@@ -58,7 +58,7 @@ const BookingOptions = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              NOCTURN CABARET
+              NOCTURN CABARET [7:30PM]
             </a>
           </Button>
 
@@ -237,7 +237,7 @@ const BookingOptions = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              NOCTURN CABARET
+              NOCTURN CABARET [7:30PM]
             </a>
           </Button>
 
