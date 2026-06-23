@@ -53,16 +53,17 @@ const BookingOptions = () => {
         </div>
 
         <div className="button-wrapper new-button-wrapper nocturn-ticket-wrapper mobile-only">
-          <Button classes="events-button ticketNew nocturnCabaretTicket" btnType="hollow">
+          <Button
+            classes="events-button ticketNew nocturnCabaretTicket"
+            btnType="hollow"
+          >
             <a
               href="https://sevn.ly/x7vHV9je"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="space">NOCTURN CABARET</span>
-              <p className="details nocturn-time">
-                <span>[7:30PM]</span>
-              </p>
+              <span className="nocturn-main-text">NOCTURN CABARET</span>
+              <p className="nocturn-main-text nocturn-time">[7:30PM]</p>
               <p className="time">(INCLUDES CLUB ENTRY)</p>
             </a>
           </Button>
@@ -236,16 +237,17 @@ const BookingOptions = () => {
         </div>
 
         <div className="button-wrapper new-button-wrapper nocturn-ticket-wrapper desktop-only">
-          <Button classes="events-button ticketNew nocturnCabaretTicket" btnType="hollow">
+          <Button
+            classes="events-button ticketNew nocturnCabaretTicket"
+            btnType="hollow"
+          >
             <a
               href="https://sevn.ly/x7vHV9je"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="space">NOCTURN CABARET</span>
-              <p className="details nocturn-time">
-                <span>[7:30PM]</span>
-              </p>
+              <span className="nocturn-main-text">NOCTURN CABARET</span>
+              <p className="nocturn-main-text nocturn-time">[7:30PM]</p>
               <p className="time">(INCLUDES CLUB ENTRY)</p>
             </a>
           </Button>
@@ -294,19 +296,28 @@ const BookingOptions = () => {
           white-space: normal;
         }
 
-        #bookingOptions .nocturnCabaretTicket .space {
+        #bookingOptions .nocturnCabaretTicket .nocturn-main-text {
           display: block;
           width: 100%;
+          margin: 0;
+          padding: 0;
+          color: inherit !important;
+          font-family: inherit !important;
+          font-size: inherit !important;
+          font-style: inherit !important;
+          font-weight: inherit !important;
+          line-height: inherit !important;
+          letter-spacing: inherit !important;
           text-align: center;
+          text-transform: inherit;
         }
 
         #bookingOptions .nocturnCabaretTicket .nocturn-time {
-          margin: 4px 0 0;
-          padding: 0;
+          margin-top: 2px;
         }
 
         #bookingOptions .nocturnCabaretTicket .time {
-          margin: 4px 0 0;
+          margin: 6px 0 0;
         }
 
         @media (min-width: 768px) {
