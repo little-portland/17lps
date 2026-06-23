@@ -42,6 +42,7 @@ const BookingOptions = () => {
               </span>
               DAVIDE DEL VECCHIO, GABRIEL RAI
             </h3>
+
             <h3>
               <span>
                 STUDIO <b>//</b>{" "}
@@ -52,17 +53,21 @@ const BookingOptions = () => {
         </div>
 
         <div className="button-wrapper new-button-wrapper nocturn-ticket-wrapper mobile-only">
-          <Button classes="events-button ticketNew ticketNewCompact" btnType="hollow">
+          <Button classes="events-button ticketNew nocturnCabaretTicket" btnType="hollow">
             <a
               href="https://sevn.ly/x7vHV9je"
               target="_blank"
               rel="noopener noreferrer"
             >
-              NOCTURN CABARET [7:30PM]
+              <span className="space">NOCTURN CABARET</span>
+              <p className="details nocturn-time">
+                <span>[7:30PM]</span>
+              </p>
+              <p className="time">(INCLUDES CLUB ENTRY)</p>
             </a>
           </Button>
 
-          <Button classes="events-button ticketNew ticketNewCompact" btnType="hollow">
+          <Button classes="events-button ticketNew" btnType="hollow">
             <a
               href="https://sevn.ly/xrBGeZiS"
               target="_blank"
@@ -171,7 +176,7 @@ const BookingOptions = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>[More about Chef&apos;s Studio]</span>
+              <span>[More about Chef's Studio]</span>
             </a>
           </div>
 
@@ -221,7 +226,7 @@ const BookingOptions = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>[More about Chef&apos;s Studio]</span>
+              <span>[More about Chef's Studio]</span>
             </a>
           </div>
         </div>
@@ -231,17 +236,21 @@ const BookingOptions = () => {
         </div>
 
         <div className="button-wrapper new-button-wrapper nocturn-ticket-wrapper desktop-only">
-          <Button classes="events-button ticketNew ticketNewCompact" btnType="hollow">
+          <Button classes="events-button ticketNew nocturnCabaretTicket" btnType="hollow">
             <a
               href="https://sevn.ly/x7vHV9je"
               target="_blank"
               rel="noopener noreferrer"
             >
-              NOCTURN CABARET [7:30PM]
+              <span className="space">NOCTURN CABARET</span>
+              <p className="details nocturn-time">
+                <span>[7:30PM]</span>
+              </p>
+              <p className="time">(INCLUDES CLUB ENTRY)</p>
             </a>
           </Button>
 
-          <Button classes="events-button ticketNew ticketNewCompact" btnType="hollow">
+          <Button classes="events-button ticketNew" btnType="hollow">
             <a
               href="https://sevn.ly/xrBGeZiS"
               target="_blank"
@@ -255,51 +264,68 @@ const BookingOptions = () => {
 
       <style jsx global>{`
         #bookingOptions .nocturn-ticket-wrapper {
-          display: flex;
           width: 100%;
-          gap: 10px;
+          gap: 8px;
         }
-      
-        #bookingOptions .nocturn-ticket-wrapper.desktop-only {
-          flex-direction: row;
-        }
-      
+
+        #bookingOptions .nocturn-ticket-wrapper.desktop-only,
         #bookingOptions .nocturn-ticket-wrapper.mobile-only {
           flex-direction: column;
         }
-      
-        #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact {
-          flex: 1;
+
+        #bookingOptions .nocturn-ticket-wrapper .ticketNew {
           width: 100%;
-          min-width: 0;
         }
-      
-        #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact,
-        #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact a {
-          font-size: 24px !important;
-          line-height: 1;
-          letter-spacing: -0.02em;
-          white-space: nowrap;
-        }
-      
-        #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact a {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+
+        #bookingOptions .nocturn-ticket-wrapper .ticketNew a {
           width: 100%;
           text-align: center;
-          overflow: hidden;
         }
-      
-        @media (max-width: 767px) {
-          #bookingOptions .nocturn-ticket-wrapper {
-            gap: 8px;
+
+        #bookingOptions .nocturn-ticket-wrapper .ticketNew:not(.nocturnCabaretTicket) a {
+          white-space: nowrap;
+        }
+
+        #bookingOptions .nocturnCabaretTicket a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          white-space: normal;
+        }
+
+        #bookingOptions .nocturnCabaretTicket .space {
+          display: block;
+          width: 100%;
+          text-align: center;
+        }
+
+        #bookingOptions .nocturnCabaretTicket .nocturn-time {
+          margin: 4px 0 0;
+          padding: 0;
+        }
+
+        #bookingOptions .nocturnCabaretTicket .time {
+          margin: 4px 0 0;
+        }
+
+        @media (min-width: 768px) {
+          #bookingOptions .nocturn-ticket-wrapper.desktop-only {
+            display: flex;
           }
-      
-          #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact,
-          #bookingOptions .nocturn-ticket-wrapper .ticketNewCompact a {
-            font-size: 17px !important;
-            letter-spacing: -0.03em;
+
+          #bookingOptions .nocturn-ticket-wrapper.mobile-only {
+            display: none !important;
+          }
+        }
+
+        @media (max-width: 767px) {
+          #bookingOptions .nocturn-ticket-wrapper.mobile-only {
+            display: flex;
+          }
+
+          #bookingOptions .nocturn-ticket-wrapper.desktop-only {
+            display: none !important;
           }
         }
       `}</style>
