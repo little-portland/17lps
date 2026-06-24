@@ -34,7 +34,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Jiminy Watts, Trixie</h3>
-              <h3><span>STUDIO <b>//</b> </span>Nesta, Sonus</h3>
+              <h3><span>STUDIO <b>//</b> </span>Nesta, Sonus & Axel S</h3>
             </div>
         </div>
 
