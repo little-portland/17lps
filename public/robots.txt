@@ -2,6 +2,7 @@ User-agent: *
 
 Allow: /
 
+Disallow: /accounts
 Disallow: /booking-options-
 Disallow: /booking-groups-
 Disallow: /preview
