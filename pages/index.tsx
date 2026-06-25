@@ -19,10 +19,18 @@ export default function Index({ eatItem, hireItem }) {
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "NightClub",
+    "@type": ["NightClub", "EventVenue", "Restaurant"],
     name: "Little Portland",
-    alternateName: "17 Little Portland Street",
+    alternateName: [
+      "17 Little Portland Street",
+      "The Tent at the End of the Universe",
+    ],
     url: "https://www.little-portland.com/",
+    logo: "https://www.little-portland.com/favicon.ico",
+    image: "https://www.little-portland.com/og-image.jpg",
+    description:
+      "Little Portland is a multi-concept venue at 17 Little Portland Street, Soho, London, featuring immersive dining, private events and late-night club experiences.",
+    telephone: "+442038487430",
     address: {
       "@type": "PostalAddress",
       streetAddress: "17 Little Portland Street",
@@ -30,9 +38,15 @@ export default function Index({ eatItem, hireItem }) {
       postalCode: "W1W 8BP",
       addressCountry: "GB",
     },
-    description:
-      "Little Portland is a multi-concept venue at 17 Little Portland Street, Soho, London, featuring immersive dining, private events and late-night club experiences.",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 51.5176,
+      longitude: -0.1406,
+    },
+    hasMap: "https://www.google.com/maps/search/?api=1&query=17+Little+Portland+Street+London+W1W+8BP",
     sameAs: ["https://www.instagram.com/thetentattheendoftheuniverse/"],
+    servesCuisine: "Contemporary",
+    priceRange: "$$$",
   };
 
   return (
@@ -52,22 +66,35 @@ export default function Index({ eatItem, hireItem }) {
 
         <link rel="canonical" href="https://www.little-portland.com/" />
 
-        <meta property="og:title" content="Little Portland | 17 Little Portland Street" />
+        <meta
+          property="og:title"
+          content="Little Portland | 17 Little Portland Street, Soho, London"
+        />
         <meta
           property="og:description"
           content="A multi-concept venue at 17 Little Portland Street, Soho, London. Immersive dining, private events and late-night club experiences."
         />
         <meta property="og:url" content="https://www.little-portland.com/" />
         <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.little-portland.com/og-image.jpg"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Little Portland | 17 Little Portland Street"
+          content="Little Portland | 17 Little Portland Street, Soho, London"
         />
         <meta
           name="twitter:description"
           content="A multi-concept venue at 17 Little Portland Street, Soho, London. Immersive dining, private events and late-night club experiences."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.little-portland.com/og-image.jpg"
         />
 
         <link
@@ -86,21 +113,21 @@ export default function Index({ eatItem, hireItem }) {
       <Layout
         main={
           <>
-          <h1
-            style={{
-              position: "absolute",
-              width: "1px",
-              height: "1px",
-              padding: 0,
-              margin: "-1px",
-              overflow: "hidden",
-              clip: "rect(0, 0, 0, 0)",
-              whiteSpace: "nowrap",
-              border: 0,
-            }}
-          >
-            Little Portland - 17 Little Portland Street, Soho, London
-          </h1>
+            <h1
+              style={{
+                position: "absolute",
+                width: "1px",
+                height: "1px",
+                padding: 0,
+                margin: "-1px",
+                overflow: "hidden",
+                clip: "rect(0, 0, 0, 0)",
+                whiteSpace: "nowrap",
+                border: 0,
+              }}
+            >
+              Little Portland - 17 Little Portland Street, Soho, London
+            </h1>
 
             <AnimatePresence exitBeforeEnter>
               <Animation isLoaded={isLoaded} setLoaded={setLoaded} />
