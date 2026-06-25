@@ -19,9 +19,11 @@ const BookingOptions = () => {
 
   return (
     <>
-      <Head>
-        <title>Bookings</title>
-      </Head>
+    <Head>
+      <title>Event Bookings | Little Portland</title>
+      <meta name="robots" content="noindex,follow" />
+      <meta name="googlebot" content="noindex,follow" />
+    </Head>
 
       <div id="bookingOptions">
         <h1 className="event-name desktop-only day-category"><span className="day">Friday</span> Residents</h1>
