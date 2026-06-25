@@ -35,7 +35,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>PASH, Thom Parris</h3>
-              <h3><span>STUDIO <b>//</b> </span>DAVIDE DEL VECCHIO, Nina Yamada</h3>
+              <h3><span>STUDIO <b>//</b> </span>Chris Wheatley, Davide Del Vecchio, Jade Edwards</h3>
             </div>
         </div>
 
