@@ -1,0 +1,11 @@
+User-agent: *
+
+Allow: /
+
+Disallow: /booking-options-
+Disallow: /booking-groups-
+Disallow: /preview
+Disallow: /test
+Disallow: /api/
+
+Sitemap: https://www.little-portland.com/sitemap.xml
