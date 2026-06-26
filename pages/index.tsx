@@ -29,7 +29,7 @@ export default function Index({ eatItem, hireItem }) {
     logo: "https://www.little-portland.com/favicon.ico",
     image: "https://www.little-portland.com/og-image.jpg",
     description:
-      "Little Portland is a multi-concept venue at 17 Little Portland Street, Soho, London, featuring immersive dining, private events and late-night club experiences.",
+      "Little Portland is a multi-concept venue at 17 Little Portland Street, London, featuring immersive dining, private events and late-night club experiences.",
     telephone: "+442038487430",
     address: {
       "@type": "PostalAddress",
@@ -52,27 +52,27 @@ export default function Index({ eatItem, hireItem }) {
   return (
     <>
       <Head>
-        <title>Little Portland | 17 Little Portland Street | Soho London</title>
+        <title>17 Little Portland Street, London</title>
 
         <meta
           name="description"
-          content="Little Portland is a multi-concept venue at 17 Little Portland Street, Soho, London. Discover immersive dining, private events and late-night club experiences."
+          content="Little Portland is a multi-concept venue at 17 Little Portland Street, London. Discover immersive dining, private events and late-night club experiences."
         />
 
         <meta
           name="keywords"
-          content="Little Portland, 17 Little Portland Street, Soho, London, private events, immersive dining, club, The Tent at the End of the Universe"
+          content="Little Portland, 17 Little Portland Street, London, private events, immersive dining, club, The Tent at the End of the Universe"
         />
 
         <link rel="canonical" href="https://www.little-portland.com/" />
 
         <meta
           property="og:title"
-          content="Little Portland | 17 Little Portland Street, Soho, London"
+          content="17 Little Portland Street, London"
         />
         <meta
           property="og:description"
-          content="A multi-concept venue at 17 Little Portland Street, Soho, London. Immersive dining, private events and late-night club experiences."
+          content="A multi-concept venue at 17 Little Portland Street, London. Immersive dining, private events and late-night club experiences."
         />
         <meta property="og:url" content="https://www.little-portland.com/" />
         <meta property="og:type" content="website" />
@@ -86,11 +86,11 @@ export default function Index({ eatItem, hireItem }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Little Portland | 17 Little Portland Street, Soho, London"
+          content="17 Little Portland Street, London"
         />
         <meta
           name="twitter:description"
-          content="A multi-concept venue at 17 Little Portland Street, Soho, London. Immersive dining, private events and late-night club experiences."
+          content="A multi-concept venue at 17 Little Portland Street, London. Immersive dining, private events and late-night club experiences."
         />
         <meta
           name="twitter:image"
@@ -126,7 +126,7 @@ export default function Index({ eatItem, hireItem }) {
                 border: 0,
               }}
             >
-              Little Portland - 17 Little Portland Street, Soho, London
+              17 Little Portland Street, London
             </h1>
 
             <AnimatePresence exitBeforeEnter>
