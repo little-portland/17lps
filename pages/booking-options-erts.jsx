@@ -42,7 +42,7 @@ const BookingOptions = () => {
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xV2ZEedg" target="_blank">
+            <a href="https://sevn.ly/xpKnG2nX" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
@@ -136,7 +136,7 @@ const BookingOptions = () => {
 
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xV2ZEedg" target="_blank">
+            <a href="https://sevn.ly/xpKnG2nX" target="_blank">
               CLUB ENTRY ONLY [10PM]
             </a>
           </Button>
