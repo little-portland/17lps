@@ -36,7 +36,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Harri Pepper</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS Ibellini, Gulp</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS Ibellini</h3>
             </div>
         </div>
 
