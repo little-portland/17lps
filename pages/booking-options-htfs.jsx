@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>03 JUL</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>FUNKTONIO, NATHAN COLINET</h3>
+              <h3><span>TENT <b>//</b> </span>FUNKTONIO, Giacomo XL</h3>
               <h3><span>STUDIO <b>//</b> </span>BAS Ibellini</h3>
             </div>
         </div>
