@@ -35,8 +35,8 @@ const BookingOptions = () => {
               <h2><span>FRI</span>10 Jul</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>LEO JANEIRO, MARCELINA WICK</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, MR SHIVER</h3>
+              <h3><span>TENT <b>//</b> </span>LEO JANEIRO, PAUL DAY</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Mr Shiver, Richard Sen</h3>
             </div>
         </div>
 
