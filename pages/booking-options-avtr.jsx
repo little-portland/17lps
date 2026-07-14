@@ -36,7 +36,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Foxloe & Konman, Tommy 2000</h3>
-              <h3><span>STUDIO <b>//</b> </span>Kuba’ 97, Luca & Sol b2b A.Wild</h3>
+              <h3><span>STUDIO <b>//</b> </span>Kuba’97, Luca & Sol b2b A.Wild</h3>
             </div>
         </div>
 
