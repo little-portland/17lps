@@ -1,7 +1,12 @@
 'use client';
 
 import Head from 'next/head';
-import { useEffect, useState, type CSSProperties, type MouseEvent } from 'react';
+import {
+  useEffect,
+  useState,
+  type CSSProperties,
+  type MouseEvent,
+} from 'react';
 import SceneNav from '@components/SceneNav';
 
 const C = {
@@ -10,39 +15,32 @@ const C = {
   red: '#FF1A12',
   green: '#19FF38',
   blue: '#21178F',
-  mist: '#D1D2CE',
 } as const;
 
 const MONO = '"Space Mono", "Courier New", monospace';
 
 type AreaId = 'tent' | 'chefs-studio' | 'studio';
 
-type AreaConfig = {
+type Area = {
   id: AreaId;
   index: string;
   title: string;
   href: string;
   highlight: string;
-  chars: number;
 };
 
-const CONCEPT_ASSETS = {
-  bg: '/images/concept/concept_bg.jpg',
-  flyerGraphic: '/images/concept/concept_flyer_graphics.png',
-};
-
-const SPACE_ASSETS = {
+const ASSETS = {
+  texture: '/images/concept/concept_bg.jpg',
   venue: '/images/concept/the-space-page-venue.png',
 };
 
-const AREAS: AreaConfig[] = [
+const AREAS: Area[] = [
   {
     id: 'tent',
     index: '01',
     title: 'THE TENT',
     href: '/thetent-test',
     highlight: '/images/concept/tent-highlight.png',
-    chars: 8,
   },
   {
     id: 'chefs-studio',
@@ -50,7 +48,6 @@ const AREAS: AreaConfig[] = [
     title: "CHEF'S STUDIO",
     href: '/chefstudio-test',
     highlight: '/images/concept/chefs-studio-highlight.png',
-    chars: 13,
   },
   {
     id: 'studio',
@@ -58,21 +55,22 @@ const AREAS: AreaConfig[] = [
     title: 'THE STUDIO',
     href: '/studio-test',
     highlight: '/images/concept/studio-highlight.png',
-    chars: 10,
   },
 ];
 
-const EXPERIENCE_BTNS = [
+const EXPERIENCE_LINKS = [
   {
+    index: '01',
     label: 'DINING',
+    time: '20:00 / 20:30',
     href: '/food-test',
-    code: '20:00 / 20:30',
     tone: 'green',
   },
   {
+    index: '02',
     label: 'AFTER DARK',
+    time: '22:00 → LATE',
     href: '/theclub-test',
-    code: '22:00 → LATE',
     tone: 'blue',
   },
 ] as const;
@@ -83,123 +81,96 @@ const typeStyle = (chars: number, delay: string): CSSProperties =>
     '--type-delay': delay,
   }) as CSSProperties;
 
-function AreaLink({
+function AreaButton({
   area,
   active,
-  isTouchMode,
-  onMouseEnter,
+  touchMode,
+  onEnter,
   onFocus,
   onClick,
 }: {
-  area: AreaConfig;
+  area: Area;
   active: boolean;
-  isTouchMode: boolean;
-  onMouseEnter: () => void;
+  touchMode: boolean;
+  onEnter: () => void;
   onFocus: () => void;
   onClick: (event: MouseEvent<HTMLAnchorElement>) => void;
 }) {
   return (
     <a
       href={area.href}
-      className={`area-link ${active ? 'is-active' : ''}`}
-      onMouseEnter={onMouseEnter}
+      className={`area-button ${active ? 'is-active' : ''}`}
+      onMouseEnter={onEnter}
       onFocus={onFocus}
       onClick={onClick}
     >
       <span className="area-orbits" aria-hidden="true">
-        <span />
-        <span />
-        <span />
+        <i />
+        <i />
+        <i />
       </span>
+
       <span className="area-index">{area.index}</span>
       <span className="area-title">{area.title}</span>
-      <span className="area-meta">
-        {isTouchMode ? (active ? 'TAP AGAIN' : 'PREVIEW') : 'EXPLORE'} →
+
+      <span className="area-action">
+        {touchMode ? (active ? 'TAP AGAIN' : 'PREVIEW') : 'EXPLORE'} →
       </span>
     </a>
   );
 }
 
-function ExperienceCard({
-  label,
-  href,
-  code,
-  tone,
+function ExperienceButton({
   index,
+  label,
+  time,
+  href,
+  tone,
+  delay,
 }: {
+  index: string;
   label: string;
+  time: string;
   href: string;
-  code: string;
   tone: 'green' | 'blue';
-  index: number;
+  delay: number;
 }) {
   return (
     <a
       href={href}
-      className={`experience-card is-${tone}`}
-      style={{ '--card-delay': `${480 + index * 140}ms` } as CSSProperties}
+      className={`experience-button is-${tone}`}
+      style={{ '--button-delay': `${delay}ms` } as CSSProperties}
     >
-      <span className="experience-card-grid" aria-hidden="true" />
-      <span className="experience-card-number">0{index + 1}</span>
-      <span className="experience-card-title">{label}</span>
-      <span className="experience-card-code">{code}</span>
-      <span className="experience-card-cta">ENTER SIMULATION →</span>
+      <span className="experience-button-grid" aria-hidden="true" />
+      <span className="experience-button-index">{index}</span>
+      <span className="experience-button-title">{label}</span>
+      <span className="experience-button-time">{time}</span>
+      <span className="experience-button-action">ENTER SIMULATION →</span>
     </a>
   );
 }
 
 export default function ConceptPage() {
   const [activeArea, setActiveArea] = useState<AreaId | null>(null);
-  const [isTouchMode, setIsTouchMode] = useState(false);
+  const [touchMode, setTouchMode] = useState(false);
   const [menuReady, setMenuReady] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [diningTime, setDiningTime] = useState('20:00 / 20:30');
   const [afterDarkTime, setAfterDarkTime] = useState('22:00');
 
   useEffect(() => {
-    let timers: number[] = [];
+    const timer = window.setTimeout(() => setMenuReady(true), 850);
 
-    const clearTimers = () => {
-      timers.forEach((timer) => window.clearTimeout(timer));
-      timers = [];
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
     };
 
-    const runTimeSequence = () => {
-      clearTimers();
-      setDiningTime('20:00 / 20:30');
-      setAfterDarkTime('22:00');
-
-      timers = [
-        window.setTimeout(() => setDiningTime('18:40 / 19:10'), 1800),
-        window.setTimeout(() => setDiningTime('21:12 / 21:40'), 1960),
-        window.setTimeout(() => setDiningTime('19:55 / 20:14'), 2120),
-        window.setTimeout(() => setDiningTime('20:00 / 20:30'), 2320),
-        window.setTimeout(() => setAfterDarkTime('23:17'), 4600),
-        window.setTimeout(() => setAfterDarkTime('01:40'), 4760),
-        window.setTimeout(() => setAfterDarkTime('21:52'), 4920),
-        window.setTimeout(() => setAfterDarkTime('22:00'), 5120),
-      ];
-    };
-
-    runTimeSequence();
-    const interval = window.setInterval(runTimeSequence, 9600);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     return () => {
-      window.clearInterval(interval);
-      clearTimers();
-    };
-  }, []);
-
-  useEffect(() => {
-    const menuTimer = window.setTimeout(() => setMenuReady(true), 900);
-
-    const handleScroll = () => setIsScrolled(window.scrollY > 24);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.clearTimeout(menuTimer);
-      window.removeEventListener('scroll', handleScroll);
+      window.clearTimeout(timer);
+      window.removeEventListener('scroll', onScroll);
     };
   }, []);
 
@@ -212,73 +183,117 @@ export default function ConceptPage() {
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
+
           entry.target.classList.add('is-inview');
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.16, rootMargin: '0px 0px -8% 0px' }
+      {
+        threshold: 0.14,
+        rootMargin: '0px 0px -8% 0px',
+      }
     );
 
     sections.forEach((section) => observer.observe(section));
+
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(
+    const query = window.matchMedia(
       '(hover: none), (pointer: coarse), (max-width: 900px)'
     );
 
-    const updateMode = () => {
-      setIsTouchMode(mediaQuery.matches || window.innerWidth <= 900);
+    const update = () => {
+      setTouchMode(query.matches || window.innerWidth <= 900);
     };
 
-    updateMode();
+    update();
 
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', updateMode);
+    if (query.addEventListener) {
+      query.addEventListener('change', update);
     } else {
-      mediaQuery.addListener(updateMode);
+      query.addListener(update);
     }
 
-    window.addEventListener('resize', updateMode);
+    window.addEventListener('resize', update);
 
     return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener('change', updateMode);
+      if (query.removeEventListener) {
+        query.removeEventListener('change', update);
       } else {
-        mediaQuery.removeListener(updateMode);
+        query.removeListener(update);
       }
-      window.removeEventListener('resize', updateMode);
+
+      window.removeEventListener('resize', update);
     };
   }, []);
 
-  const handleCardClick =
+  useEffect(() => {
+    let timers: number[] = [];
+
+    const clear = () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+      timers = [];
+    };
+
+    const run = () => {
+      clear();
+
+      setDiningTime('20:00 / 20:30');
+      setAfterDarkTime('22:00');
+
+      timers = [
+        window.setTimeout(() => setDiningTime('18:40 / 19:10'), 1850),
+        window.setTimeout(() => setDiningTime('21:12 / 21:40'), 2020),
+        window.setTimeout(() => setDiningTime('19:55 / 20:14'), 2190),
+        window.setTimeout(() => setDiningTime('20:00 / 20:30'), 2390),
+
+        window.setTimeout(() => setAfterDarkTime('23:17'), 4650),
+        window.setTimeout(() => setAfterDarkTime('01:40'), 4820),
+        window.setTimeout(() => setAfterDarkTime('21:52'), 4990),
+        window.setTimeout(() => setAfterDarkTime('22:00'), 5190),
+      ];
+    };
+
+    run();
+
+    const interval = window.setInterval(run, 9600);
+
+    return () => {
+      window.clearInterval(interval);
+      clear();
+    };
+  }, []);
+
+  const handleAreaClick =
     (areaId: AreaId) => (event: MouseEvent<HTMLAnchorElement>) => {
-      if (isTouchMode && activeArea !== areaId) {
+      if (touchMode && activeArea !== areaId) {
         event.preventDefault();
         setActiveArea(areaId);
       }
     };
 
-  const handleCardEnter = (areaId: AreaId) => {
-    if (!isTouchMode) setActiveArea(areaId);
-  };
-
-  const handleControlsLeave = () => {
-    if (!isTouchMode) setActiveArea(null);
-  };
-
   return (
     <>
       <Head>
         <title>Concept — 17 Little Portland Street</title>
+
         <meta
           name="description"
-          content="Concept, space and experience at 17 Little Portland Street, London."
+          content="The venue concept, spaces and evening experience at 17 Little Portland Street."
         />
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
         <link
           href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
           rel="stylesheet"
@@ -288,7 +303,7 @@ export default function ConceptPage() {
       <main className="page page--with-scene-nav">
         <div
           className={`concept-nav-shell ${menuReady ? 'is-ready' : ''} ${
-            isScrolled ? 'is-scrolled' : ''
+            scrolled ? 'is-scrolled' : ''
           }`}
         >
           <SceneNav theme="space" />
@@ -304,10 +319,10 @@ export default function ConceptPage() {
                 <i />
                 <i />
               </span>
+
               <span className="window-title">
-                17LPS.OS // CONCEPT PROTOCOL // LONDON
+                17LPS // VENUE CONCEPT
               </span>
-              <span className="window-status">LIVE</span>
             </div>
 
             <section
@@ -315,32 +330,26 @@ export default function ConceptPage() {
               aria-labelledby="concept-title"
             >
               <div className="hero-copy">
-                <p className="hero-kicker">
-                  <span className="type-text" style={typeStyle(26, '180ms')}>
-                    STUDIO // LITTLE PORTLAND
-                  </span>
-                </p>
-
-                <h1 id="concept-title" className="scan-title scan-title-hero">
+                <h1 id="concept-title" className="scan-title hero-title">
                   CONCEPT
                 </h1>
 
                 <p className="hero-address">
-                  <span className="type-text" style={typeStyle(33, '430ms')}>
+                  <span
+                    className="type-text"
+                    style={typeStyle(33, '360ms')}
+                  >
                     17 LITTLE PORTLAND STREET, LONDON
                   </span>
                 </p>
 
-                <div className="loading-module">
-                  <span className="loading-label">LOADING:</span>
-                  <div className="loading-copy">
-                    <span>DINING</span>
-                    <span>PERFORMANCE</span>
-                    <span>IMMERSION</span>
-                    <span>AFTER DARK</span>
-                    <span>HUMAN SIGNAL</span>
-                  </div>
-                  <div className="loading-orbits" aria-hidden="true">
+                <div className="concept-statement">
+                  <p>
+                    ONE ADDRESS. MULTIPLE STATES. THE EVENING MUTATES FROM TABLE
+                    TO PERFORMANCE TO AFTER-DARK ENERGY.
+                  </p>
+
+                  <div className="statement-orbits" aria-hidden="true">
                     <i />
                     <i />
                     <i />
@@ -354,49 +363,22 @@ export default function ConceptPage() {
                 <span className="spark spark-a" />
                 <span className="spark spark-b" />
 
-                <div className="signal-head">
-                  <div className="signal-head-grid" />
-                  <img
-                    className="concept-flyer-graphic"
-                    src={CONCEPT_ASSETS.flyerGraphic}
-                    alt=""
-                    draggable={false}
-                  />
-                  <div className="signal-nodes">
-                    {Array.from({ length: 11 }).map((_, index) => (
-                      <i key={index} style={{ '--node': index } as CSSProperties} />
+                <div className="signal-orbit">
+                  <div className="orbit-rings" />
+
+                  <div className="obelisk">
+                    <span className="obelisk-front" />
+                    <span className="obelisk-side" />
+                  </div>
+
+                  <div className="orbit-dots">
+                    {Array.from({ length: 10 }).map((_, index) => (
+                      <i
+                        key={index}
+                        style={{ '--node': index } as CSSProperties}
+                      />
                     ))}
                   </div>
-                </div>
-              </div>
-
-              <div className="hero-meta">
-                <div>
-                  <span>ISSUE 17</span>
-                  <strong>17 LITTLE PORTLAND</strong>
-                </div>
-                <div>
-                  <span>FORMAT</span>
-                  <strong>DINNER / THEATRE / NIGHT</strong>
-                </div>
-                <div>
-                  <span>STATUS</span>
-                  <strong>NEW WORLD LOADING</strong>
-                </div>
-              </div>
-
-              <div className="simulator-card">
-                <div className="simulator-grid" aria-hidden="true" />
-                <span className="simulator-label">TRAINING SIMULATOR</span>
-                <span className="simulator-rate">HEART RATE [128 BPM]</span>
-                <div className="simulator-figure" aria-hidden="true">
-                  <span className="sim-head" />
-                  <span className="sim-body" />
-                  <span className="sim-arm sim-arm-left" />
-                  <span className="sim-arm sim-arm-right" />
-                  <span className="sim-deck sim-deck-left" />
-                  <span className="sim-deck sim-deck-right" />
-                  <span className="sim-console" />
                 </div>
               </div>
             </section>
@@ -407,93 +389,129 @@ export default function ConceptPage() {
             >
               <header className="section-heading">
                 <span className="section-number">01</span>
-                <div>
-                  <p>PHYSICAL INTERFACE</p>
-                  <h2 id="space-title" className="scan-title">
-                    THE SPACE
-                  </h2>
-                </div>
-                <span className="section-code">MAP / 3 ZONES</span>
+
+                <h2
+                  id="space-title"
+                  className="scan-title section-title"
+                >
+                  THE SPACE
+                </h2>
               </header>
 
-              <div className="space-grid">
+              <div className="space-layout">
+                <div className="space-upper">
+                  <div className="venue-panel">
+                    <span className="venue-label">
+                      VENUE MODEL // AXONOMETRIC
+                    </span>
+
+                    <span className="venue-coordinate">
+                      51.5176° N / 0.1431° W
+                    </span>
+
+                    <div
+                      className="venue-floor-grid"
+                      aria-hidden="true"
+                    />
+
+                    <div
+                      className="venue-wrap"
+                      aria-label="Interactive venue map"
+                    >
+                      <img
+                        src={ASSETS.venue}
+                        alt="Venue layout showing The Tent, Chef's Studio and The Studio"
+                        className="venue-image venue-base"
+                        draggable={false}
+                      />
+
+                      {AREAS.map((area) => (
+                        <img
+                          key={area.id}
+                          src={area.highlight}
+                          alt=""
+                          className={`venue-image venue-highlight ${
+                            activeArea === area.id ? 'is-active' : ''
+                          }`}
+                          draggable={false}
+                        />
+                      ))}
+
+                      <img
+                        src={ASSETS.venue}
+                        alt=""
+                        className="venue-image venue-glitch venue-glitch-a"
+                        draggable={false}
+                      />
+
+                      <img
+                        src={ASSETS.venue}
+                        alt=""
+                        className="venue-image venue-glitch venue-glitch-b"
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
+
+                  <aside
+                    className="diagnostics"
+                    aria-label="Venue information"
+                  >
+                    <div
+                      className="diagnostic-box radar-box"
+                      aria-hidden="true"
+                    >
+                      <span className="radar-dot" />
+                    </div>
+
+                    <div className="diagnostic-box map-copy-box">
+                      <strong>MAP / 3 ZONES</strong>
+
+                      <p>
+                        Three connected environments support the full evening:
+                        arrival and dining, live performance, and the transition
+                        into late-night energy.
+                      </p>
+
+                      <ul>
+                        <li>THE TENT</li>
+                        <li>CHEF&apos;S STUDIO</li>
+                        <li>THE STUDIO</li>
+                      </ul>
+                    </div>
+
+                    <div
+                      className="diagnostic-box level-box"
+                      aria-hidden="true"
+                    >
+                      {Array.from({ length: 8 }).map((_, index) => (
+                        <i key={index} />
+                      ))}
+                    </div>
+                  </aside>
+                </div>
+
                 <nav
-                  className="area-nav"
+                  className="area-buttons"
                   aria-label="Venue areas"
-                  onMouseLeave={handleControlsLeave}
+                  onMouseLeave={() => {
+                    if (!touchMode) setActiveArea(null);
+                  }}
                 >
-                  <span className="area-nav-label">SELECT ENVIRONMENT:</span>
                   {AREAS.map((area) => (
-                    <AreaLink
+                    <AreaButton
                       key={area.id}
                       area={area}
                       active={activeArea === area.id}
-                      isTouchMode={isTouchMode}
-                      onMouseEnter={() => handleCardEnter(area.id)}
+                      touchMode={touchMode}
+                      onEnter={() => {
+                        if (!touchMode) setActiveArea(area.id);
+                      }}
                       onFocus={() => setActiveArea(area.id)}
-                      onClick={handleCardClick(area.id)}
+                      onClick={handleAreaClick(area.id)}
                     />
                   ))}
                 </nav>
-
-                <div className="venue-panel">
-                  <span className="venue-panel-label">VENUE MODEL // AXONOMETRIC</span>
-                  <span className="venue-panel-coord">51.5176° N / 0.1431° W</span>
-                  <div className="venue-grid-lines" aria-hidden="true" />
-
-                  <div className="venue-wrap" aria-label="Interactive venue map">
-                    <img
-                      src={SPACE_ASSETS.venue}
-                      alt="Venue layout showing The Tent, Chef's Studio and The Studio"
-                      className="venue-image venue-base"
-                      draggable={false}
-                    />
-
-                    {AREAS.map((area) => (
-                      <img
-                        key={area.id}
-                        src={area.highlight}
-                        alt=""
-                        className={`venue-image venue-highlight ${
-                          activeArea === area.id ? 'is-active' : ''
-                        }`}
-                        draggable={false}
-                      />
-                    ))}
-
-                    <img
-                      src={SPACE_ASSETS.venue}
-                      alt=""
-                      className="venue-image venue-glitch venue-glitch-a"
-                      draggable={false}
-                    />
-                    <img
-                      src={SPACE_ASSETS.venue}
-                      alt=""
-                      className="venue-image venue-glitch venue-glitch-b"
-                      draggable={false}
-                    />
-                  </div>
-                </div>
-
-                <aside className="space-diagnostics" aria-label="Venue diagnostics">
-                  <div className="diagnostic-square diagnostic-radar">
-                    <span className="radar-pulse" />
-                  </div>
-                  <div className="diagnostic-copy">
-                    <span>CAPACITY</span>
-                    <strong>VARIABLE</strong>
-                    <span>CONFIGURATION</span>
-                    <strong>ADAPTIVE</strong>
-                    <span>INPUT</span>
-                    <strong>HUMAN</strong>
-                  </div>
-                  <div className="diagnostic-wave" aria-hidden="true">
-                    {Array.from({ length: 8 }).map((_, index) => (
-                      <i key={index} />
-                    ))}
-                  </div>
-                </aside>
               </div>
             </section>
 
@@ -501,63 +519,67 @@ export default function ConceptPage() {
               className="experience-section reveal-section"
               aria-labelledby="experience-title"
             >
-              <header className="section-heading section-heading-experience">
+              <header className="section-heading">
                 <span className="section-number">02</span>
-                <div>
-                  <p>TEMPORAL INTERFACE</p>
-                  <h2 id="experience-title" className="scan-title">
-                    THE EXPERIENCE
-                  </h2>
-                </div>
-                <span className="section-code">SUNSET → LATE</span>
+
+                <h2
+                  id="experience-title"
+                  className="scan-title section-title"
+                >
+                  THE EXPERIENCE
+                </h2>
               </header>
 
               <div className="experience-layout">
-                <div className="experience-monitor">
-                  <span className="monitor-label">SEQUENCE STATUS:</span>
-
-                  <div className="experience-signal" aria-hidden="true">
-                    <div className="signal-track">
-                      <div className="signal-line" />
-                      <div className="signal-line-fill" />
-                    </div>
-
-                    <div className="signal-node signal-node-dining">
-                      <span className="signal-time">{diningTime}</span>
-                      <span className="signal-dot">
-                        <span className="signal-dot-fill" />
-                      </span>
-                    </div>
-
-                    <div className="signal-node signal-node-after-dark">
-                      <span className="signal-time">{afterDarkTime}</span>
-                      <span className="signal-dot">
-                        <span className="signal-dot-fill" />
-                      </span>
-                    </div>
+                <div className="timeline-panel">
+                  <div className="timeline-times">
+                    <span>{diningTime}</span>
+                    <span>{afterDarkTime}</span>
                   </div>
 
-                  <div className="experience-copy">
-                    <p>
-                      ONE ADDRESS. MULTIPLE STATES. THE EVENING MUTATES FROM
-                      TABLE TO PERFORMANCE TO AFTER-DARK ENERGY.
-                    </p>
-                    <span>NO FIXED GENRE // NO PASSIVE AUDIENCE</span>
-                  </div>
+                  <div className="timeline-graphic" aria-hidden="true">
+                    <div className="timeline-grid timeline-grid-back" />
+                    <div className="timeline-grid timeline-grid-floor" />
 
-                  <div className="globe-strip" aria-hidden="true">
-                    <i />
-                    <i />
-                    <i />
+                    <div className="energy-path">
+                      <span className="energy-segment segment-dining" />
+                      <span className="energy-segment segment-performance" />
+                      <span className="energy-segment segment-dark" />
+                      <span className="energy-scan" />
+
+                      <i className="energy-node node-dining" />
+                      <i className="energy-node node-performance" />
+                      <i className="energy-node node-dark" />
+                    </div>
+
+                    <div className="timeline-labels">
+                      <div>
+                        <strong>DINING</strong>
+                        <span>20:00 / 20:30</span>
+                      </div>
+
+                      <div>
+                        <strong>PERFORMANCE</strong>
+                        <span>LIVE TRANSITION</span>
+                      </div>
+
+                      <div>
+                        <strong>AFTER DARK</strong>
+                        <span>22:00 → LATE</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <nav className="experience-nav" aria-label="Explore the experience">
-                  {EXPERIENCE_BTNS.map((button, index) => (
-                    <ExperienceCard
-                      key={button.href}
-                      {...button}
-                      index={index}
+                <nav
+                  className="experience-buttons"
+                  aria-label="Explore the experience"
+                >
+                  {EXPERIENCE_LINKS.map((item, index) => (
+                    <ExperienceButton
+                      key={item.href}
+                      {...item}
+                      delay={460 + index * 140}
                     />
                   ))}
                 </nav>
@@ -565,9 +587,9 @@ export default function ConceptPage() {
             </section>
 
             <footer className="poster-footer">
-              <span>17LPS // RESIDENT SYSTEM</span>
-              <span>YOUNG LITTLE PORTLAND</span>
-              <span>CONCEPT BUILD 02</span>
+              <span>17LPS // VENUE CONCEPT</span>
+              <span>DINING / PERFORMANCE / AFTER DARK</span>
+              <span>3 ZONES // ONE ADDRESS</span>
             </footer>
           </div>
         </div>
@@ -577,14 +599,14 @@ export default function ConceptPage() {
         html,
         body,
         #__next {
-          margin: 0;
           min-height: 100%;
+          margin: 0;
           background: ${C.concrete};
           color: ${C.ink};
           font-family: ${MONO};
           -webkit-font-smoothing: antialiased;
           text-rendering: geometricPrecision;
-          scrollbar-color: ${C.red} rgba(9, 9, 9, 0.18);
+          scrollbar-color: ${C.red} rgba(9, 9, 9, 0.16);
         }
 
         body {
@@ -605,7 +627,7 @@ export default function ConceptPage() {
         }
 
         ::-webkit-scrollbar-track {
-          background: rgba(9, 9, 9, 0.12);
+          background: rgba(9, 9, 9, 0.1);
         }
 
         ::-webkit-scrollbar-thumb {
@@ -703,7 +725,9 @@ export default function ConceptPage() {
             transition: opacity 0.28s ease;
           }
 
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true'])::before,
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )::before,
           .concept-nav-shell:has(button[aria-expanded='true'])::before {
             opacity: 1;
             pointer-events: auto;
@@ -718,18 +742,30 @@ export default function ConceptPage() {
             z-index: 50040 !important;
           }
 
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav {
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )
+            .scene-nav,
+          .concept-nav-shell:has(button[aria-expanded='true'])
+            .scene-nav {
             background: rgba(167, 168, 165, 0.9) !important;
             backdrop-filter: blur(22px) !important;
             -webkit-backdrop-filter: blur(22px) !important;
             box-shadow: none !important;
           }
 
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile,
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile--space,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile--space {
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )
+            .scene-nav-mobile,
+          .concept-nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile,
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )
+            .scene-nav-mobile--space,
+          .concept-nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile--space {
             position: fixed !important;
             inset: 0 !important;
             z-index: 50010 !important;
@@ -747,8 +783,12 @@ export default function ConceptPage() {
             -webkit-backdrop-filter: blur(22px) saturate(1.08) !important;
           }
 
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile-inner,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile-inner {
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )
+            .scene-nav-mobile-inner,
+          .concept-nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile-inner {
             width: 100% !important;
             min-height: auto !important;
             padding: 0 !important;
@@ -759,10 +799,20 @@ export default function ConceptPage() {
             gap: 18px !important;
           }
 
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a,
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile-link,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile-link {
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )
+            .scene-nav-mobile
+            a,
+          .concept-nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile
+            a,
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )
+            .scene-nav-mobile-link,
+          .concept-nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile-link {
             display: block !important;
             position: relative !important;
             margin: 0 !important;
@@ -776,12 +826,28 @@ export default function ConceptPage() {
             text-shadow: none !important;
           }
 
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a.active,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a.active,
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile-link.active,
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile-link.active,
-          .concept-nav-shell:has(.scene-nav-burger[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'],
-          .concept-nav-shell:has(button[aria-expanded='true']) .scene-nav-mobile a[aria-current='page'] {
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )
+            .scene-nav-mobile
+            a.active,
+          .concept-nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile
+            a.active,
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )
+            .scene-nav-mobile-link.active,
+          .concept-nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile-link.active,
+          .concept-nav-shell:has(
+              .scene-nav-burger[aria-expanded='true']
+            )
+            .scene-nav-mobile
+            a[aria-current='page'],
+          .concept-nav-shell:has(button[aria-expanded='true'])
+            .scene-nav-mobile
+            a[aria-current='page'] {
             color: ${C.red} !important;
           }
         }
@@ -792,9 +858,7 @@ export default function ConceptPage() {
           position: relative;
           min-height: 100svh;
           overflow-x: clip;
-          background:
-            linear-gradient(rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.025)),
-            ${C.concrete};
+          background: ${C.concrete};
         }
 
         .concept-nav-shell {
@@ -821,7 +885,7 @@ export default function ConceptPage() {
           z-index: 0;
           pointer-events: none;
           background-image:
-            url('${CONCEPT_ASSETS.bg}'),
+            url('${ASSETS.texture}'),
             repeating-linear-gradient(
               0deg,
               rgba(9, 9, 9, 0.025) 0,
@@ -839,22 +903,24 @@ export default function ConceptPage() {
         .shell {
           position: relative;
           z-index: 2;
-          width: min(1180px, calc(100% - 72px));
+          width: 65%;
+          max-width: 1180px;
+          min-height: 100svh;
           margin: 0 auto;
-          padding: clamp(100px, 9vw, 132px) 0 clamp(48px, 6vw, 84px);
+          padding: clamp(100px, 9vw, 132px) 0
+            clamp(48px, 6vw, 84px);
         }
 
         .poster-frame {
           position: relative;
           border: 2px solid ${C.red};
           background: rgba(167, 168, 165, 0.58);
-          box-shadow: 14px 14px 0 rgba(9, 9, 9, 0.08);
         }
 
         .window-bar {
           min-height: 38px;
           display: grid;
-          grid-template-columns: auto 1fr auto;
+          grid-template-columns: auto 1fr;
           align-items: center;
           gap: 18px;
           padding: 8px 16px;
@@ -863,7 +929,7 @@ export default function ConceptPage() {
           font-size: 11px;
           font-weight: 700;
           letter-spacing: 0.13em;
-          text-transform: lowercase;
+          text-transform: uppercase;
         }
 
         .window-dots {
@@ -884,10 +950,6 @@ export default function ConceptPage() {
           white-space: nowrap;
         }
 
-        .window-status {
-          color: ${C.red};
-        }
-
         .hero-section,
         .space-section,
         .experience-section {
@@ -896,65 +958,14 @@ export default function ConceptPage() {
         }
 
         .hero-section {
-          min-height: 790px;
           display: grid;
-          grid-template-columns: minmax(0, 1.12fr) minmax(330px, 0.88fr);
-          grid-template-areas:
-            'copy visual'
-            'meta simulator';
-          gap: 40px 46px;
-          align-items: start;
+          grid-template-columns:
+            minmax(0, 1.04fr)
+            minmax(300px, 0.96fr);
+          gap: 42px;
+          align-items: center;
           padding: clamp(54px, 6vw, 84px);
           overflow: hidden;
-        }
-
-        .hero-section::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          background:
-            linear-gradient(90deg, transparent 49.9%, rgba(255, 26, 18, 0.14) 50%, transparent 50.1%),
-            linear-gradient(0deg, transparent 49.9%, rgba(255, 26, 18, 0.1) 50%, transparent 50.1%);
-          background-size: 110px 110px;
-          opacity: 0.24;
-          mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
-        }
-
-        .hero-copy {
-          grid-area: copy;
-          position: relative;
-          z-index: 3;
-          min-width: 0;
-        }
-
-        .hero-kicker,
-        .hero-address,
-        .loading-module,
-        .hero-meta,
-        .simulator-card {
-          opacity: 0;
-          transform: translateY(12px);
-        }
-
-        .hero-section.is-inview .hero-kicker {
-          animation: moduleIn 0.5s ease 120ms forwards;
-        }
-
-        .hero-section.is-inview .hero-address {
-          animation: moduleIn 0.5s ease 520ms forwards;
-        }
-
-        .hero-section.is-inview .loading-module {
-          animation: moduleIn 0.65s ease 760ms forwards;
-        }
-
-        .hero-section.is-inview .hero-meta {
-          animation: moduleIn 0.65s ease 980ms forwards;
-        }
-
-        .hero-section.is-inview .simulator-card {
-          animation: moduleIn 0.65s ease 1120ms forwards;
         }
 
         h1,
@@ -963,11 +974,10 @@ export default function ConceptPage() {
           margin: 0;
         }
 
-        .hero-kicker {
-          color: ${C.ink};
-          font-size: clamp(18px, 2.1vw, 30px);
-          letter-spacing: 0.16em;
-          text-transform: lowercase;
+        .hero-copy {
+          position: relative;
+          z-index: 3;
+          min-width: 0;
         }
 
         .scan-title {
@@ -982,15 +992,14 @@ export default function ConceptPage() {
           transform: translateX(-12px);
         }
 
-        .scan-title-hero {
-          margin-top: clamp(22px, 3vw, 38px);
+        .hero-title {
           font-size: clamp(74px, 9.1vw, 142px);
           white-space: nowrap;
         }
 
         .reveal-section.is-inview .scan-title {
           animation:
-            scanTitleReveal 0.56s steps(9, end) 230ms forwards,
+            scanTitleReveal 0.56s steps(9, end) 220ms forwards,
             titleIdleGlitch 8s steps(2, end) 3000ms infinite;
         }
 
@@ -1001,6 +1010,12 @@ export default function ConceptPage() {
           font-weight: 700;
           letter-spacing: 0.26em;
           text-transform: uppercase;
+          opacity: 0;
+          transform: translateY(12px);
+        }
+
+        .hero-section.is-inview .hero-address {
+          animation: moduleIn 0.5s ease 420ms forwards;
         }
 
         .type-text {
@@ -1012,121 +1027,167 @@ export default function ConceptPage() {
         }
 
         .reveal-section.is-inview .type-text {
-          animation: typeReveal 0.55s steps(var(--chars), end) var(--type-delay) forwards;
+          animation: typeReveal 0.55s
+            steps(var(--chars), end)
+            var(--type-delay) forwards;
         }
 
-        .loading-module {
+        .concept-statement {
           position: relative;
-          width: min(100%, 520px);
-          margin-top: clamp(58px, 6vw, 90px);
-          padding-left: 20px;
-          color: ${C.blue};
+          width: min(100%, 580px);
+          min-height: 215px;
+          margin-top: clamp(60px, 6vw, 92px);
+          opacity: 0;
+          transform: translateY(12px);
         }
 
-        .loading-label {
-          display: block;
-          margin-bottom: 20px;
-          font-size: 17px;
-          letter-spacing: 0.16em;
+        .hero-section.is-inview .concept-statement {
+          animation: moduleIn 0.65s ease 690ms forwards;
         }
 
-        .loading-copy {
+        .concept-statement p {
           position: relative;
           z-index: 2;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          font-size: clamp(18px, 1.7vw, 25px);
-          line-height: 1.06;
-          letter-spacing: 0.05em;
+          max-width: 455px;
+          padding-left: 20px;
+          color: ${C.blue};
+          font-size: clamp(20px, 1.85vw, 28px);
+          font-weight: 700;
+          line-height: 1.05;
+          letter-spacing: 0.035em;
+          text-transform: uppercase;
         }
 
-        .loading-copy span:nth-child(4) {
-          color: ${C.ink};
-          background: ${C.green};
-          padding: 0 5px;
-        }
-
-        .loading-orbits {
+        .statement-orbits {
           position: absolute;
           left: 0;
-          top: 58px;
-          width: min(100%, 430px);
-          height: 150px;
+          top: 34px;
+          width: min(100%, 480px);
+          height: 170px;
           pointer-events: none;
         }
 
-        .loading-orbits i {
+        .statement-orbits i {
           position: absolute;
           left: 0;
           width: 100%;
           height: 48px;
           border: 2px solid ${C.red};
           border-radius: 50%;
-          transform: skewX(-7deg);
           opacity: 0.92;
+          transform: skewX(-7deg);
         }
 
-        .loading-orbits i:nth-child(1) { top: 0; }
-        .loading-orbits i:nth-child(2) { top: 24px; }
-        .loading-orbits i:nth-child(3) { top: 48px; }
-        .loading-orbits i:nth-child(4) { top: 72px; }
-        .loading-orbits i:nth-child(5) { top: 96px; }
+        .statement-orbits i:nth-child(1) {
+          top: 0;
+        }
+
+        .statement-orbits i:nth-child(2) {
+          top: 24px;
+        }
+
+        .statement-orbits i:nth-child(3) {
+          top: 48px;
+        }
+
+        .statement-orbits i:nth-child(4) {
+          top: 72px;
+        }
+
+        .statement-orbits i:nth-child(5) {
+          top: 96px;
+        }
 
         .hero-visual {
-          grid-area: visual;
           position: relative;
           z-index: 3;
-          min-height: 460px;
+          min-height: 480px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .signal-head {
+        .signal-orbit {
           position: relative;
-          width: min(100%, 430px);
-          aspect-ratio: 1 / 1;
+          width: min(100%, 470px);
+          aspect-ratio: 1;
           opacity: 0;
           transform: translate3d(30px, 16px, 0) scale(0.96);
         }
 
-        .hero-section.is-inview .signal-head {
+        .hero-section.is-inview .signal-orbit {
           animation:
-            signalHeadIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 480ms forwards,
-            signalHeadFloat 5.4s ease-in-out 1600ms infinite;
+            signalIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)
+              480ms forwards,
+            signalFloat 5.4s ease-in-out 1600ms infinite;
         }
 
-        .signal-head-grid {
+        .orbit-rings {
           position: absolute;
-          inset: 6%;
+          inset: 10%;
           border-radius: 50%;
-          background:
-            repeating-radial-gradient(circle, transparent 0 19px, rgba(25, 255, 56, 0.6) 20px 21px),
-            repeating-linear-gradient(0deg, transparent 0 19px, rgba(25, 255, 56, 0.3) 20px 21px),
-            repeating-linear-gradient(90deg, transparent 0 19px, rgba(25, 255, 56, 0.3) 20px 21px);
-          clip-path: circle(46% at 50% 50%);
-          opacity: 0.42;
-          animation: radarRotate 18s linear infinite;
+          background: repeating-radial-gradient(
+            circle,
+            transparent 0 19px,
+            rgba(25, 255, 56, 0.47) 20px 21px
+          );
+          opacity: 0.54;
+          animation: orbitRotate 18s linear infinite;
         }
 
-        .concept-flyer-graphic {
+        .obelisk {
           position: absolute;
-          inset: 10% 7% auto auto;
-          z-index: 2;
-          width: 84%;
-          height: 84%;
-          object-fit: contain;
-          filter:
-            contrast(1.16)
-            saturate(1.3)
-            drop-shadow(12px 16px 0 rgba(9, 9, 9, 0.12));
-          user-select: none;
-          pointer-events: none;
+          left: 50%;
+          top: 50%;
+          width: 94px;
+          height: 248px;
+          transform: translate(-50%, -50%);
+          filter: drop-shadow(
+            10px 16px 0 rgba(9, 9, 9, 0.12)
+          );
         }
 
-        .signal-nodes i {
-          --angle: calc(var(--node) * 32.72deg);
+        .obelisk-front,
+        .obelisk-side {
+          position: absolute;
+          inset: 0;
+          display: block;
+        }
+
+        .obelisk-front {
+          left: 18px;
+          width: 58px;
+          background: linear-gradient(
+            180deg,
+            #201c20 0%,
+            #090909 100%
+          );
+          clip-path: polygon(
+            20% 0%,
+            100% 0%,
+            80% 100%,
+            0% 100%
+          );
+        }
+
+        .obelisk-side {
+          left: 50px;
+          width: 28px;
+          background: linear-gradient(
+            180deg,
+            rgba(33, 23, 143, 0.26) 0%,
+            rgba(9, 9, 9, 0.78) 100%
+          );
+          clip-path: polygon(
+            0% 0%,
+            100% 5%,
+            100% 95%,
+            0% 100%
+          );
+        }
+
+        .orbit-dots i {
+          --angle: calc(var(--node) * 36deg);
           position: absolute;
           left: 50%;
           top: 50%;
@@ -1134,13 +1195,16 @@ export default function ConceptPage() {
           width: 16px;
           height: 16px;
           border-radius: 50%;
-          background: ${C.green};
-          box-shadow: 0 0 0 2px ${C.ink};
+          background: #3b3aff;
+          box-shadow:
+            0 0 12px rgba(59, 58, 255, 0.72),
+            0 0 28px rgba(59, 58, 255, 0.38);
           transform:
             rotate(var(--angle))
-            translateX(clamp(96px, 12vw, 164px))
+            translateX(clamp(108px, 12vw, 176px))
             rotate(calc(var(--angle) * -1));
-          animation: nodePulse 2.4s ease-in-out calc(var(--node) * -0.14s) infinite;
+          animation: dotPulse 2.4s ease-in-out
+            calc(var(--node) * -0.14s) infinite;
         }
 
         .spark {
@@ -1173,173 +1237,14 @@ export default function ConceptPage() {
         }
 
         .spark-a {
-          top: 5%;
-          right: 1%;
+          top: 6%;
+          right: 2%;
         }
 
         .spark-b {
-          bottom: 3%;
+          bottom: 8%;
           left: 4%;
           transform: scale(0.72);
-        }
-
-        .hero-meta {
-          grid-area: meta;
-          position: relative;
-          z-index: 3;
-          display: grid;
-          align-self: end;
-          gap: 20px;
-          padding-left: 18px;
-          border-left: 2px solid ${C.red};
-        }
-
-        .hero-meta div {
-          display: grid;
-          gap: 5px;
-        }
-
-        .hero-meta span {
-          color: ${C.blue};
-          font-size: 10px;
-          letter-spacing: 0.18em;
-        }
-
-        .hero-meta strong {
-          color: ${C.ink};
-          font-size: 13px;
-          letter-spacing: 0.08em;
-        }
-
-        .simulator-card {
-          grid-area: simulator;
-          position: relative;
-          min-height: 260px;
-          align-self: end;
-          border: 2px solid ${C.red};
-          overflow: hidden;
-        }
-
-        .simulator-grid,
-        .venue-grid-lines,
-        .experience-card-grid {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          background:
-            repeating-linear-gradient(0deg, transparent 0 27px, rgba(255, 26, 18, 0.32) 28px 29px),
-            repeating-linear-gradient(90deg, transparent 0 39px, rgba(255, 26, 18, 0.32) 40px 41px);
-          transform: perspective(320px) rotateX(58deg) scale(1.3);
-          transform-origin: center bottom;
-          opacity: 0.68;
-        }
-
-        .simulator-label,
-        .simulator-rate {
-          position: absolute;
-          z-index: 3;
-          left: 16px;
-          font-size: 12px;
-          letter-spacing: 0.08em;
-        }
-
-        .simulator-label {
-          top: 14px;
-          color: ${C.blue};
-        }
-
-        .simulator-rate {
-          top: 36px;
-          color: ${C.red};
-        }
-
-        .simulator-figure {
-          position: absolute;
-          left: 50%;
-          bottom: 22px;
-          z-index: 3;
-          width: 240px;
-          height: 160px;
-          transform: translateX(-50%);
-        }
-
-        .sim-head,
-        .sim-body,
-        .sim-arm,
-        .sim-deck,
-        .sim-console {
-          position: absolute;
-          display: block;
-        }
-
-        .sim-head {
-          left: 50%;
-          top: 4px;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          background: ${C.blue};
-          transform: translateX(-50%);
-          box-shadow: inset 0 -11px 0 ${C.red};
-        }
-
-        .sim-body {
-          left: 50%;
-          top: 35px;
-          width: 76px;
-          height: 88px;
-          border-radius: 45% 45% 10px 10px;
-          background: ${C.blue};
-          transform: translateX(-50%);
-        }
-
-        .sim-arm {
-          top: 68px;
-          width: 86px;
-          height: 22px;
-          background: ${C.blue};
-        }
-
-        .sim-arm-left {
-          left: 23px;
-          transform: rotate(-18deg);
-          transform-origin: right center;
-          box-shadow: -12px 0 0 ${C.red};
-        }
-
-        .sim-arm-right {
-          right: 23px;
-          transform: rotate(18deg);
-          transform-origin: left center;
-          box-shadow: 12px 0 0 ${C.red};
-        }
-
-        .sim-deck {
-          bottom: 0;
-          width: 94px;
-          height: 48px;
-          border: 5px solid ${C.red};
-          transform: skewX(-14deg);
-        }
-
-        .sim-deck::after {
-          content: '';
-          position: absolute;
-          inset: 10px 24px;
-          border: 4px solid ${C.red};
-          border-radius: 50%;
-        }
-
-        .sim-deck-left { left: 0; }
-        .sim-deck-right { right: 0; transform: skewX(14deg); }
-
-        .sim-console {
-          left: 50%;
-          bottom: 0;
-          width: 46px;
-          height: 42px;
-          background: ${C.red};
-          transform: translateX(-50%);
         }
 
         .space-section,
@@ -1348,153 +1253,44 @@ export default function ConceptPage() {
         }
 
         .section-heading {
-          display: grid;
-          grid-template-columns: auto 1fr auto;
-          align-items: end;
-          gap: 20px;
+          display: block;
           margin-bottom: clamp(44px, 5vw, 68px);
         }
 
         .section-number {
-          align-self: start;
+          display: block;
+          margin-bottom: 18px;
           color: ${C.red};
-          font-size: 14px;
+          font-size: clamp(26px, 3.1vw, 42px);
           font-weight: 700;
-          letter-spacing: 0.18em;
+          line-height: 0.9;
+          letter-spacing: 0.08em;
         }
 
-        .section-heading p,
-        .section-code {
-          color: ${C.blue};
-          font-size: 10px;
-          letter-spacing: 0.18em;
-        }
-
-        .section-heading h2 {
-          margin-top: 10px;
+        .section-title {
           font-size: clamp(56px, 7vw, 104px);
         }
 
-        .section-code {
-          padding-bottom: 8px;
-          text-align: right;
+        .space-layout {
+          display: grid;
+          gap: 18px;
         }
 
-        .space-grid {
+        .space-upper {
           display: grid;
-          grid-template-columns: minmax(210px, 0.72fr) minmax(420px, 1.65fr) minmax(160px, 0.55fr);
+          grid-template-columns:
+            minmax(0, 1.65fr)
+            minmax(180px, 0.55fr);
           gap: 22px;
           align-items: stretch;
         }
 
-        .area-nav {
-          display: flex;
-          flex-direction: column;
-          min-width: 0;
-          padding-top: 10px;
-        }
-
-        .area-nav-label {
-          margin-bottom: 22px;
-          color: ${C.blue};
-          font-size: 11px;
-          letter-spacing: 0.14em;
-        }
-
-        .area-link {
-          position: relative;
-          min-height: 94px;
-          display: grid;
-          grid-template-columns: 32px 1fr;
-          grid-template-areas:
-            'index title'
-            '. meta';
-          align-content: center;
-          gap: 3px 10px;
-          padding: 14px 8px;
-          color: ${C.ink};
-          text-decoration: none;
-          border-bottom: 1px solid rgba(9, 9, 9, 0.38);
-          isolation: isolate;
-        }
-
-        .area-index {
-          grid-area: index;
-          align-self: center;
-          color: ${C.red};
-          font-size: 10px;
-          letter-spacing: 0.12em;
-        }
-
-        .area-title {
-          grid-area: title;
-          position: relative;
-          z-index: 2;
-          align-self: center;
-          font-size: clamp(17px, 1.55vw, 24px);
-          font-weight: 700;
-          line-height: 1;
-        }
-
-        .area-meta {
-          grid-area: meta;
-          position: relative;
-          z-index: 2;
-          color: ${C.blue};
-          font-size: 8px;
-          letter-spacing: 0.14em;
-        }
-
-        .area-orbits {
-          position: absolute;
-          inset: 7px -2px;
-          z-index: 1;
-          opacity: 0;
-          transition: opacity 0.22s ease;
-          pointer-events: none;
-        }
-
-        .area-orbits span {
-          position: absolute;
-          left: 0;
-          right: 0;
-          height: 46px;
-          border: 2px solid ${C.red};
-          border-radius: 50%;
-          transform: skewX(-7deg);
-        }
-
-        .area-orbits span:nth-child(1) { top: 0; }
-        .area-orbits span:nth-child(2) { top: 18px; }
-        .area-orbits span:nth-child(3) { top: 36px; }
-
-        .area-link:hover .area-orbits,
-        .area-link:focus-visible .area-orbits,
-        .area-link.is-active .area-orbits {
-          opacity: 1;
-        }
-
-        .area-link:hover,
-        .area-link:focus-visible,
-        .area-link.is-active {
-          outline: none;
-        }
-
-        .area-link:hover .area-title,
-        .area-link:focus-visible .area-title,
-        .area-link.is-active .area-title {
-          color: ${C.ink};
-          background: ${C.green};
-          width: fit-content;
-          padding: 0 4px;
-        }
-
         .venue-panel {
           position: relative;
-          min-height: 470px;
+          min-height: 510px;
           border: 2px solid ${C.red};
           overflow: hidden;
-          background: rgba(209, 210, 206, 0.18);
+          background: rgba(209, 210, 206, 0.12);
         }
 
         .venue-panel::after {
@@ -1502,12 +1298,16 @@ export default function ConceptPage() {
           position: absolute;
           inset: auto 0 0;
           height: 42%;
-          background: linear-gradient(to top, rgba(33, 23, 143, 0.12), transparent);
+          background: linear-gradient(
+            to top,
+            rgba(33, 23, 143, 0.08),
+            transparent
+          );
           pointer-events: none;
         }
 
-        .venue-panel-label,
-        .venue-panel-coord {
+        .venue-label,
+        .venue-coordinate {
           position: absolute;
           top: 14px;
           z-index: 6;
@@ -1515,25 +1315,45 @@ export default function ConceptPage() {
           letter-spacing: 0.12em;
         }
 
-        .venue-panel-label {
+        .venue-label {
           left: 14px;
           color: ${C.blue};
         }
 
-        .venue-panel-coord {
+        .venue-coordinate {
           right: 14px;
           color: ${C.red};
         }
 
-        .venue-grid-lines {
-          opacity: 0.45;
+        .venue-floor-grid,
+        .experience-button-grid,
+        .timeline-grid {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background:
+            repeating-linear-gradient(
+              0deg,
+              transparent 0 27px,
+              rgba(255, 26, 18, 0.22) 28px 29px
+            ),
+            repeating-linear-gradient(
+              90deg,
+              transparent 0 39px,
+              rgba(255, 26, 18, 0.22) 40px 41px
+            );
+          transform: perspective(320px)
+            rotateX(58deg)
+            scale(1.3);
+          transform-origin: center bottom;
+          opacity: 0.5;
         }
 
         .venue-wrap {
           position: absolute;
           left: 3%;
           right: 3%;
-          top: 15%;
+          top: 13%;
           bottom: 4%;
           z-index: 3;
           opacity: 0;
@@ -1542,7 +1362,8 @@ export default function ConceptPage() {
 
         .space-section.is-inview .venue-wrap {
           animation:
-            venueIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 420ms forwards,
+            venueIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)
+              420ms forwards,
             venueFloat 4.8s ease-in-out 1700ms infinite;
         }
 
@@ -1561,7 +1382,9 @@ export default function ConceptPage() {
           filter:
             saturate(0.7)
             contrast(1.05)
-            drop-shadow(0 16px 18px rgba(9, 9, 9, 0.16));
+            drop-shadow(
+              0 16px 18px rgba(9, 9, 9, 0.16)
+            );
         }
 
         .venue-highlight {
@@ -1576,7 +1399,12 @@ export default function ConceptPage() {
         .venue-highlight.is-active {
           opacity: 1;
           visibility: visible;
-          filter: saturate(1.35) contrast(1.06) drop-shadow(0 0 14px rgba(25, 255, 56, 0.42));
+          filter:
+            saturate(1.35)
+            contrast(1.06)
+            drop-shadow(
+              0 0 14px rgba(25, 255, 56, 0.42)
+            );
         }
 
         .venue-glitch {
@@ -1587,34 +1415,42 @@ export default function ConceptPage() {
 
         .space-section.is-inview .venue-glitch-a {
           filter: hue-rotate(-28deg) saturate(1.6);
-          animation: venueGlitchA 8.5s steps(1, end) 1800ms infinite;
+          animation: venueGlitchA 8.5s steps(1, end)
+            1800ms infinite;
         }
 
         .space-section.is-inview .venue-glitch-b {
           filter: hue-rotate(110deg) saturate(1.8);
-          animation: venueGlitchB 8.5s steps(1, end) 1800ms infinite;
+          animation: venueGlitchB 8.5s steps(1, end)
+            1800ms infinite;
         }
 
-        .space-diagnostics {
+        .diagnostics {
           display: grid;
-          grid-template-rows: auto auto 1fr;
-          gap: 16px;
+          grid-template-rows: repeat(
+            3,
+            minmax(0, 1fr)
+          );
+          gap: 18px;
         }
 
-        .diagnostic-square {
+        .diagnostic-box {
           position: relative;
-          aspect-ratio: 1;
-          border: 2px solid ${C.green};
+          border: 2px solid currentColor;
           overflow: hidden;
         }
 
-        .diagnostic-radar {
-          background:
-            repeating-radial-gradient(circle at 50% 50%, transparent 0 13px, rgba(25, 255, 56, 0.55) 14px 15px),
-            repeating-linear-gradient(45deg, transparent 0 16px, rgba(25, 255, 56, 0.35) 17px 18px);
+        .radar-box {
+          min-height: 170px;
+          color: ${C.green};
+          background: repeating-radial-gradient(
+            circle at 50% 50%,
+            transparent 0 15px,
+            rgba(25, 255, 56, 0.5) 16px 17px
+          );
         }
 
-        .radar-pulse {
+        .radar-dot {
           position: absolute;
           left: 50%;
           top: 50%;
@@ -1627,254 +1463,413 @@ export default function ConceptPage() {
           animation: radarPulse 2.2s ease-out infinite;
         }
 
-        .diagnostic-copy {
-          display: grid;
-          gap: 4px;
-          padding: 13px 12px;
-          border: 1px solid ${C.blue};
-        }
-
-        .diagnostic-copy span {
-          margin-top: 7px;
+        .map-copy-box {
+          padding: 16px 16px 14px;
           color: ${C.blue};
-          font-size: 8px;
-          letter-spacing: 0.12em;
         }
 
-        .diagnostic-copy strong {
+        .map-copy-box strong {
+          display: block;
+          margin-bottom: 12px;
           font-size: 11px;
-          letter-spacing: 0.07em;
+          letter-spacing: 0.14em;
         }
 
-        .diagnostic-wave {
-          min-height: 160px;
+        .map-copy-box p {
+          color: ${C.ink};
+          font-size: 12px;
+          line-height: 1.45;
+        }
+
+        .map-copy-box ul {
+          display: grid;
+          gap: 6px;
+          margin: 14px 0 0;
+          padding: 0;
+          color: ${C.ink};
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          list-style: none;
+        }
+
+        .level-box {
+          min-height: 170px;
           display: flex;
           align-items: flex-end;
           justify-content: space-between;
           gap: 5px;
           padding: 16px;
-          border: 2px solid ${C.green};
-          overflow: hidden;
+          color: ${C.green};
         }
 
-        .diagnostic-wave i {
+        .level-box i {
           flex: 1;
-          background: ${C.green};
           height: 30%;
+          background: currentColor;
           transform-origin: bottom;
-          animation: waveBars 1.8s ease-in-out calc(var(--bar, 0) * -0.11s) infinite;
+          animation: levelBars 1.8s ease-in-out
+            calc(var(--bar, 0) * -0.11s) infinite;
         }
 
-        .diagnostic-wave i:nth-child(2) { --bar: 1; height: 58%; }
-        .diagnostic-wave i:nth-child(3) { --bar: 2; height: 82%; }
-        .diagnostic-wave i:nth-child(4) { --bar: 3; height: 44%; }
-        .diagnostic-wave i:nth-child(5) { --bar: 4; height: 92%; }
-        .diagnostic-wave i:nth-child(6) { --bar: 5; height: 64%; }
-        .diagnostic-wave i:nth-child(7) { --bar: 6; height: 37%; }
-        .diagnostic-wave i:nth-child(8) { --bar: 7; height: 76%; }
+        .level-box i:nth-child(2) {
+          --bar: 1;
+          height: 58%;
+        }
 
-        .experience-layout {
+        .level-box i:nth-child(3) {
+          --bar: 2;
+          height: 82%;
+        }
+
+        .level-box i:nth-child(4) {
+          --bar: 3;
+          height: 44%;
+        }
+
+        .level-box i:nth-child(5) {
+          --bar: 4;
+          height: 92%;
+        }
+
+        .level-box i:nth-child(6) {
+          --bar: 5;
+          height: 64%;
+        }
+
+        .level-box i:nth-child(7) {
+          --bar: 6;
+          height: 37%;
+        }
+
+        .level-box i:nth-child(8) {
+          --bar: 7;
+          height: 76%;
+        }
+
+        .area-buttons {
           display: grid;
-          grid-template-columns: minmax(0, 0.9fr) minmax(400px, 1.1fr);
-          gap: 24px;
-        }
-
-        .experience-monitor {
-          position: relative;
-          min-height: 470px;
-          padding: 24px;
+          grid-template-columns: repeat(
+            3,
+            minmax(0, 1fr)
+          );
           border: 2px solid ${C.red};
-          overflow: hidden;
         }
 
-        .experience-monitor::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background:
-            linear-gradient(90deg, transparent 49.8%, rgba(255, 26, 18, 0.18) 50%, transparent 50.2%),
-            linear-gradient(0deg, transparent 49.8%, rgba(255, 26, 18, 0.18) 50%, transparent 50.2%);
-          background-size: 72px 72px;
-          opacity: 0.4;
+        .area-button {
+          position: relative;
+          min-height: 102px;
+          display: grid;
+          grid-template-columns: 36px 1fr;
+          grid-template-areas:
+            'index title'
+            '. action';
+          align-content: center;
+          gap: 3px 10px;
+          padding: 16px 18px;
+          color: ${C.ink};
+          text-decoration: none;
+          isolation: isolate;
         }
 
-        .monitor-label {
+        .area-button + .area-button {
+          border-left: 1px solid rgba(255, 26, 18, 0.72);
+        }
+
+        .area-index {
+          grid-area: index;
+          align-self: center;
+          color: ${C.red};
+          font-size: 10px;
+          letter-spacing: 0.12em;
+        }
+
+        .area-title {
+          grid-area: title;
+          position: relative;
+          z-index: 2;
+          align-self: center;
+          font-size: clamp(18px, 1.55vw, 24px);
+          font-weight: 700;
+          line-height: 1;
+        }
+
+        .area-action {
+          grid-area: action;
           position: relative;
           z-index: 2;
           color: ${C.blue};
-          font-size: 11px;
+          font-size: 8px;
           letter-spacing: 0.14em;
         }
 
-        .experience-signal {
-          --signal-y: 54px;
-          position: relative;
-          z-index: 3;
-          height: 92px;
-          margin-top: 52px;
+        .area-orbits {
+          position: absolute;
+          inset: 10px 8px;
+          z-index: 1;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.22s ease;
         }
 
-        .signal-track {
+        .area-orbits i {
           position: absolute;
           left: 0;
           right: 0;
-          top: var(--signal-y);
-          height: 2px;
-        }
-
-        .signal-line,
-        .signal-line-fill {
-          position: absolute;
-          inset: 0;
-          height: 2px;
-          transform-origin: left center;
-        }
-
-        .signal-line {
-          background: rgba(9, 9, 9, 0.55);
-          transform: scaleX(0);
-        }
-
-        .signal-line-fill {
-          background: ${C.green};
-          transform: scaleX(0);
-          opacity: 0;
-        }
-
-        .experience-section.is-inview .signal-line {
-          animation: signalLineIn 0.82s ease 420ms forwards;
-        }
-
-        .experience-section.is-inview .signal-line-fill {
-          animation: signalFillLoop 9.6s ease-in-out 1200ms infinite;
-        }
-
-        .signal-node {
-          position: absolute;
-          top: 0;
-          min-width: 170px;
-          height: 72px;
-          opacity: 0;
-          transform: translateY(8px);
-        }
-
-        .signal-node-dining { left: 0; }
-        .signal-node-after-dark { right: 0; text-align: right; }
-
-        .experience-section.is-inview .signal-node-dining {
-          animation: moduleIn 0.45s ease 680ms forwards;
-        }
-
-        .experience-section.is-inview .signal-node-after-dark {
-          animation: moduleIn 0.45s ease 820ms forwards;
-        }
-
-        .signal-dot {
-          position: absolute;
-          top: var(--signal-y);
-          width: 18px;
-          height: 18px;
+          height: 44px;
           border: 2px solid ${C.red};
           border-radius: 50%;
-          background: ${C.concrete};
-          overflow: hidden;
-          transform: translateY(-50%);
+          transform: skewX(-7deg);
         }
 
-        .signal-node-dining .signal-dot { left: 0; }
-        .signal-node-after-dark .signal-dot { right: 0; }
-
-        .signal-dot-fill {
-          position: absolute;
-          inset: 2px;
-          border-radius: inherit;
-          background: ${C.green};
-          opacity: 0;
-        }
-
-        .experience-section.is-inview .signal-node-dining .signal-dot-fill {
-          animation: diningDotFill 9.6s ease-in-out 1200ms infinite;
-        }
-
-        .experience-section.is-inview .signal-node-after-dark .signal-dot-fill {
-          animation: afterDarkDotFill 9.6s ease-in-out 1200ms infinite;
-        }
-
-        .signal-time {
-          position: absolute;
+        .area-orbits i:nth-child(1) {
           top: 0;
+        }
+
+        .area-orbits i:nth-child(2) {
+          top: 18px;
+        }
+
+        .area-orbits i:nth-child(3) {
+          top: 36px;
+        }
+
+        .area-button:hover,
+        .area-button:focus-visible,
+        .area-button.is-active {
+          outline: none;
+          background: rgba(255, 26, 18, 0.04);
+        }
+
+        .area-button:hover .area-orbits,
+        .area-button:focus-visible .area-orbits,
+        .area-button.is-active .area-orbits {
+          opacity: 1;
+        }
+
+        .area-button:hover .area-title,
+        .area-button:focus-visible .area-title,
+        .area-button.is-active .area-title {
+          width: fit-content;
+          padding: 0 4px;
+          background: ${C.green};
+        }
+
+        .experience-layout {
+          display: grid;
+          grid-template-columns:
+            minmax(0, 0.95fr)
+            minmax(360px, 1.05fr);
+          gap: 24px;
+        }
+
+        .timeline-panel {
+          position: relative;
+          min-height: 470px;
+          padding: 22px;
+          border: 2px solid ${C.red};
+          overflow: hidden;
+          background: rgba(209, 210, 206, 0.1);
+        }
+
+        .timeline-times {
+          position: relative;
+          z-index: 4;
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
           color: ${C.blue};
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.14em;
-          white-space: nowrap;
         }
 
-        .signal-node-dining .signal-time { left: 0; }
-        .signal-node-after-dark .signal-time { right: 0; }
-
-        .experience-copy {
+        .timeline-graphic {
           position: relative;
-          z-index: 2;
-          margin-top: 42px;
+          min-height: 390px;
+          margin-top: 16px;
         }
 
-        .experience-copy p {
-          max-width: 520px;
-          font-size: clamp(20px, 2.2vw, 31px);
-          font-weight: 700;
-          line-height: 1.15;
-          letter-spacing: -0.04em;
+        .timeline-grid-back {
+          inset: 6% 16% auto;
+          height: 38%;
+          opacity: 0.12;
+          transform: perspective(360px)
+            rotateX(76deg)
+            scale(1.12);
+          transform-origin: center top;
         }
 
-        .experience-copy span {
+        .timeline-grid-floor {
+          inset: auto -12% 2%;
+          height: 46%;
+          opacity: 0.38;
+        }
+
+        .energy-path {
+          position: absolute;
+          left: 8%;
+          right: 8%;
+          top: 18%;
+          z-index: 3;
+          height: 34%;
+        }
+
+        .energy-segment {
+          position: absolute;
+          top: 50%;
+          height: 12px;
+          border-radius: 999px;
+          transform: translateY(-50%);
+        }
+
+        .segment-dining {
+          left: 0;
+          width: 38%;
+          background: linear-gradient(
+            90deg,
+            rgba(25, 255, 56, 0.2),
+            rgba(25, 255, 56, 0.9)
+          );
+          box-shadow: 0 0 18px rgba(25, 255, 56, 0.28);
+        }
+
+        .segment-performance {
+          left: 31%;
+          width: 36%;
+          background: linear-gradient(
+            90deg,
+            rgba(25, 255, 56, 0.95),
+            rgba(255, 26, 18, 0.92)
+          );
+        }
+
+        .segment-dark {
+          right: 0;
+          width: 40%;
+          background: linear-gradient(
+            90deg,
+            rgba(255, 26, 18, 0.88),
+            rgba(33, 23, 143, 0.94)
+          );
+          box-shadow: 0 0 18px rgba(33, 23, 143, 0.3);
+        }
+
+        .energy-scan {
+          position: absolute;
+          left: -10%;
+          top: 50%;
+          width: 20%;
+          height: 26px;
+          border-radius: 999px;
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0.64),
+            rgba(255, 255, 255, 0)
+          );
+          mix-blend-mode: screen;
+          transform: translateY(-50%);
+          animation: scanAcross 4.8s
+            cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        .energy-node {
+          position: absolute;
+          top: 50%;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          animation: energyPulse 3.6s ease-in-out infinite;
+        }
+
+        .node-dining {
+          left: 18%;
+          background: ${C.green};
+          box-shadow: 0 0 18px rgba(25, 255, 56, 0.5);
+        }
+
+        .node-performance {
+          left: 50%;
+          background: ${C.red};
+          box-shadow: 0 0 18px rgba(255, 26, 18, 0.42);
+          animation-delay: -1s;
+        }
+
+        .node-dark {
+          left: 82%;
+          background: ${C.blue};
+          box-shadow: 0 0 18px rgba(33, 23, 143, 0.46);
+          animation-delay: -2s;
+        }
+
+        .timeline-labels {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 16px;
+          z-index: 4;
+          display: grid;
+          grid-template-columns: repeat(
+            3,
+            minmax(0, 1fr)
+          );
+          gap: 18px;
+        }
+
+        .timeline-labels div {
+          position: relative;
+          padding-top: 22px;
+        }
+
+        .timeline-labels div::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+        }
+
+        .timeline-labels div:nth-child(1)::before {
+          background: ${C.green};
+          box-shadow: 0 0 0 3px rgba(25, 255, 56, 0.18);
+        }
+
+        .timeline-labels div:nth-child(2)::before {
+          background: ${C.red};
+          box-shadow: 0 0 0 3px rgba(255, 26, 18, 0.18);
+        }
+
+        .timeline-labels div:nth-child(3)::before {
+          background: ${C.blue};
+          box-shadow: 0 0 0 3px rgba(33, 23, 143, 0.18);
+        }
+
+        .timeline-labels strong {
           display: block;
-          margin-top: 24px;
-          color: ${C.red};
-          font-size: 10px;
+          font-size: clamp(18px, 2.2vw, 28px);
+          line-height: 1;
+          letter-spacing: -0.05em;
+        }
+
+        .timeline-labels span {
+          display: block;
+          margin-top: 8px;
+          color: ${C.blue};
+          font-size: 9px;
           letter-spacing: 0.14em;
         }
 
-        .globe-strip {
-          position: absolute;
-          left: 24px;
-          right: 24px;
-          bottom: 20px;
-          display: flex;
-          justify-content: flex-end;
-        }
-
-        .globe-strip i {
-          width: 94px;
-          aspect-ratio: 1;
-          margin-left: -12px;
-          border: 2px solid ${C.green};
-          border-radius: 50%;
-          background:
-            repeating-radial-gradient(ellipse at center, transparent 0 13px, rgba(25, 255, 56, 0.65) 14px 15px),
-            repeating-linear-gradient(90deg, transparent 0 16px, rgba(25, 255, 56, 0.65) 17px 18px);
-          opacity: 0.8;
-        }
-
-        .globe-strip i:nth-child(2) {
-          background:
-            repeating-linear-gradient(45deg, transparent 0 12px, rgba(25, 255, 56, 0.75) 13px 14px),
-            repeating-linear-gradient(-45deg, transparent 0 12px, rgba(25, 255, 56, 0.75) 13px 14px);
-        }
-
-        .globe-strip i:nth-child(3) {
-          background:
-            repeating-radial-gradient(circle at 80% 40%, transparent 0 12px, rgba(25, 255, 56, 0.75) 13px 14px),
-            repeating-linear-gradient(0deg, transparent 0 16px, rgba(25, 255, 56, 0.55) 17px 18px);
-        }
-
-        .experience-nav {
+        .experience-buttons {
           display: grid;
           grid-template-columns: 1fr;
           gap: 20px;
         }
 
-        .experience-card {
+        .experience-button {
           position: relative;
           min-height: 225px;
           display: grid;
@@ -1886,57 +1881,56 @@ export default function ConceptPage() {
           overflow: hidden;
           opacity: 0;
           transform: translateY(14px);
+          background: transparent;
           transition:
             transform 0.25s ease,
             box-shadow 0.25s ease,
             background 0.25s ease;
         }
 
-        .experience-section.is-inview .experience-card {
-          animation: moduleIn 0.55s ease var(--card-delay) forwards;
+        .experience-section.is-inview .experience-button {
+          animation: moduleIn 0.55s ease
+            var(--button-delay) forwards;
         }
 
-        .experience-card.is-green {
+        .experience-button.is-green {
           border-color: ${C.green};
         }
 
-        .experience-card.is-blue {
-          color: ${C.mist};
+        .experience-button.is-blue {
           border-color: ${C.blue};
-          background: ${C.blue};
         }
 
-        .experience-card:hover,
-        .experience-card:focus-visible {
+        .experience-button:hover,
+        .experience-button:focus-visible {
           outline: none;
           transform: translate(-5px, -5px);
-          box-shadow: 10px 10px 0 ${C.red};
+          box-shadow: 10px 10px 0 rgba(255, 26, 18, 0.3);
         }
 
-        .experience-card.is-green:hover,
-        .experience-card.is-green:focus-visible {
-          background: ${C.green};
+        .experience-button.is-green:hover,
+        .experience-button.is-green:focus-visible {
+          background: rgba(25, 255, 56, 0.08);
         }
 
-        .experience-card.is-blue:hover,
-        .experience-card.is-blue:focus-visible {
-          background: ${C.ink};
+        .experience-button.is-blue:hover,
+        .experience-button.is-blue:focus-visible {
+          background: rgba(33, 23, 143, 0.08);
         }
 
-        .experience-card-grid {
-          opacity: 0.32;
-          color: inherit;
+        .experience-button-grid {
+          opacity: 0.24;
         }
 
-        .experience-card-number,
-        .experience-card-title,
-        .experience-card-code,
-        .experience-card-cta {
+        .experience-button-index,
+        .experience-button-title,
+        .experience-button-time,
+        .experience-button-action {
           position: relative;
           z-index: 2;
         }
 
-        .experience-card-number {
+        .experience-button-index {
           position: absolute;
           left: 20px;
           top: 17px;
@@ -1945,21 +1939,21 @@ export default function ConceptPage() {
           letter-spacing: 0.14em;
         }
 
-        .experience-card-title {
+        .experience-button-title {
           font-size: clamp(34px, 4vw, 58px);
           font-weight: 700;
           line-height: 0.92;
           letter-spacing: -0.06em;
         }
 
-        .experience-card-code {
+        .experience-button-time {
           margin-top: 10px;
           color: ${C.red};
           font-size: 12px;
           letter-spacing: 0.11em;
         }
 
-        .experience-card-cta {
+        .experience-button-action {
           margin-top: 24px;
           font-size: 9px;
           letter-spacing: 0.15em;
@@ -1977,8 +1971,13 @@ export default function ConceptPage() {
           letter-spacing: 0.14em;
         }
 
-        .poster-footer span:nth-child(2) { text-align: center; }
-        .poster-footer span:nth-child(3) { text-align: right; }
+        .poster-footer span:nth-child(2) {
+          text-align: center;
+        }
+
+        .poster-footer span:nth-child(3) {
+          text-align: right;
+        }
 
         @keyframes scanTitleReveal {
           0% {
@@ -1987,236 +1986,331 @@ export default function ConceptPage() {
             transform: translateX(-12px);
             filter: blur(2px);
           }
+
           68% {
             opacity: 1;
-            clip-path: inset(0 0 0 0);
+            clip-path: inset(0);
             transform: translateX(0);
             filter: none;
           }
-          80% { transform: translateX(5px); }
-          88% { transform: translateX(-3px); }
+
+          80% {
+            transform: translateX(5px);
+          }
+
+          88% {
+            transform: translateX(-3px);
+          }
+
           100% {
             opacity: 1;
-            clip-path: inset(0 0 0 0);
+            clip-path: inset(0);
             transform: translateX(0);
             filter: none;
           }
         }
 
         @keyframes titleIdleGlitch {
-          0%, 91%, 100% { text-shadow: none; filter: none; }
-          92% { text-shadow: 0.08em 0 ${C.red}; }
-          93% { text-shadow: -0.06em 0 ${C.green}; }
-          94% { filter: blur(0.5px); }
-          95% { text-shadow: 0.04em 0 ${C.blue}; filter: none; }
+          0%,
+          91%,
+          100% {
+            text-shadow: none;
+            filter: none;
+          }
+
+          92% {
+            text-shadow: 0.08em 0 ${C.red};
+          }
+
+          93% {
+            text-shadow: -0.06em 0 ${C.green};
+          }
+
+          94% {
+            filter: blur(0.5px);
+          }
+
+          95% {
+            text-shadow: 0.04em 0 ${C.blue};
+            filter: none;
+          }
         }
 
         @keyframes typeReveal {
-          to { clip-path: inset(0 0 0 0); }
+          to {
+            clip-path: inset(0);
+          }
         }
 
         @keyframes moduleIn {
-          to { opacity: 1; transform: translateY(0); }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
-        @keyframes signalHeadIn {
-          to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+        @keyframes signalIn {
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
         }
 
-        @keyframes signalHeadFloat {
-          0%, 100% { transform: translateY(0) rotate(-0.5deg); }
-          50% { transform: translateY(-11px) rotate(0.6deg); }
+        @keyframes signalFloat {
+          0%,
+          100% {
+            transform: translateY(0) rotate(-0.5deg);
+          }
+
+          50% {
+            transform: translateY(-11px) rotate(0.6deg);
+          }
         }
 
-        @keyframes radarRotate {
-          to { transform: rotate(360deg); }
+        @keyframes orbitRotate {
+          to {
+            transform: rotate(360deg);
+          }
         }
 
-        @keyframes nodePulse {
-          0%, 100% { opacity: 0.65; scale: 0.88; }
-          50% { opacity: 1; scale: 1.12; }
+        @keyframes dotPulse {
+          0%,
+          100% {
+            opacity: 0.66;
+            scale: 0.88;
+          }
+
+          50% {
+            opacity: 1;
+            scale: 1.12;
+          }
         }
 
         @keyframes radarPulse {
-          0% { box-shadow: 0 0 0 0 rgba(25, 255, 56, 0.82); }
-          100% { box-shadow: 0 0 0 48px rgba(25, 255, 56, 0); }
+          0% {
+            box-shadow: 0 0 0 0 rgba(25, 255, 56, 0.82);
+          }
+
+          100% {
+            box-shadow: 0 0 0 48px rgba(25, 255, 56, 0);
+          }
         }
 
-        @keyframes waveBars {
-          0%, 100% { transform: scaleY(0.45); }
-          50% { transform: scaleY(1); }
+        @keyframes levelBars {
+          0%,
+          100% {
+            transform: scaleY(0.45);
+          }
+
+          50% {
+            transform: scaleY(1);
+          }
         }
 
         @keyframes venueIn {
-          to { opacity: 1; transform: translateY(0) scale(1); }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
         }
 
         @keyframes venueFloat {
-          0%, 100% { transform: translateY(0) rotate(-0.15deg); }
-          50% { transform: translateY(-8px) rotate(0.2deg); }
+          0%,
+          100% {
+            transform: translateY(0) rotate(-0.15deg);
+          }
+
+          50% {
+            transform: translateY(-8px) rotate(0.2deg);
+          }
         }
 
         @keyframes venueGlitchA {
-          0%, 73%, 100% { opacity: 0; transform: translate3d(0, 0, 0); clip-path: inset(0); }
-          74% { opacity: 0.22; transform: translate3d(-9px, -3px, 0); clip-path: inset(0 0 82% 0); }
-          75% { opacity: 0.2; transform: translate3d(10px, 5px, 0); clip-path: inset(28% 0 44% 0); }
-          76% { opacity: 0.18; transform: translate3d(-7px, 4px, 0); clip-path: inset(64% 0 8% 0); }
-          77% { opacity: 0; transform: translate3d(0, 0, 0); clip-path: inset(0); }
+          0%,
+          73%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            clip-path: inset(0);
+          }
+
+          74% {
+            opacity: 0.22;
+            transform: translate3d(-9px, -3px, 0);
+            clip-path: inset(0 0 82% 0);
+          }
+
+          75% {
+            opacity: 0.2;
+            transform: translate3d(10px, 5px, 0);
+            clip-path: inset(28% 0 44% 0);
+          }
+
+          76% {
+            opacity: 0.18;
+            transform: translate3d(-7px, 4px, 0);
+            clip-path: inset(64% 0 8% 0);
+          }
+
+          77% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            clip-path: inset(0);
+          }
         }
 
         @keyframes venueGlitchB {
-          0%, 73%, 100% { opacity: 0; transform: translate3d(0, 0, 0); clip-path: inset(0); }
-          74.2% { opacity: 0.12; transform: translate3d(8px, 4px, 0); clip-path: inset(12% 0 66% 0); }
-          75.2% { opacity: 0.18; transform: translate3d(-11px, -4px, 0); clip-path: inset(42% 0 30% 0); }
-          76.2% { opacity: 0.14; transform: translate3d(7px, -5px, 0); clip-path: inset(72% 0 4% 0); }
-          77% { opacity: 0; transform: translate3d(0, 0, 0); clip-path: inset(0); }
+          0%,
+          73%,
+          100% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            clip-path: inset(0);
+          }
+
+          74.2% {
+            opacity: 0.12;
+            transform: translate3d(8px, 4px, 0);
+            clip-path: inset(12% 0 66% 0);
+          }
+
+          75.2% {
+            opacity: 0.18;
+            transform: translate3d(-11px, -4px, 0);
+            clip-path: inset(42% 0 30% 0);
+          }
+
+          76.2% {
+            opacity: 0.14;
+            transform: translate3d(7px, -5px, 0);
+            clip-path: inset(72% 0 4% 0);
+          }
+
+          77% {
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            clip-path: inset(0);
+          }
         }
 
-        @keyframes signalLineIn {
-          to { transform: scaleX(1); }
+        @keyframes scanAcross {
+          0% {
+            left: -10%;
+            opacity: 0;
+          }
+
+          8% {
+            opacity: 1;
+          }
+
+          52% {
+            left: 48%;
+            opacity: 1;
+          }
+
+          84% {
+            left: 88%;
+            opacity: 0.66;
+          }
+
+          100% {
+            left: 102%;
+            opacity: 0;
+          }
         }
 
-        @keyframes signalFillLoop {
-          0%, 17% { transform: scaleX(0); opacity: 0; }
-          22% { transform: scaleX(0); opacity: 1; }
-          56% { transform: scaleX(1); opacity: 1; }
-          72%, 100% { transform: scaleX(1); opacity: 0; }
+        @keyframes energyPulse {
+          0%,
+          100% {
+            transform: translate(-50%, -50%) scale(0.88);
+            opacity: 0.7;
+          }
+
+          50% {
+            transform: translate(-50%, -50%) scale(1.18);
+            opacity: 1;
+          }
         }
 
-        @keyframes diningDotFill {
-          0%, 17% { opacity: 0; }
-          22%, 62% { opacity: 1; }
-          78%, 100% { opacity: 0; }
-        }
-
-        @keyframes afterDarkDotFill {
-          0%, 47% { opacity: 0; }
-          56%, 70% { opacity: 1; }
-          84%, 100% { opacity: 0; }
+        @media (max-width: 1280px) {
+          .shell {
+            width: 72%;
+          }
         }
 
         @media (max-width: 1120px) {
-          .shell {
-            width: min(1000px, calc(100% - 48px));
-          }
-
-          .hero-section {
-            grid-template-columns: minmax(0, 1fr) minmax(300px, 0.8fr);
-            padding: 54px;
-          }
-
+          .hero-section,
           .space-section,
           .experience-section {
             padding: 54px;
           }
 
-          .space-grid {
-            grid-template-columns: minmax(190px, 0.65fr) minmax(400px, 1.5fr);
-          }
-
-          .space-diagnostics {
-            grid-column: 1 / -1;
-            grid-template-columns: 180px 1fr 1fr;
-            grid-template-rows: auto;
-          }
-
-          .diagnostic-wave {
-            min-height: 180px;
+          .space-upper {
+            grid-template-columns:
+              minmax(0, 1.4fr)
+              minmax(180px, 0.6fr);
           }
         }
 
-        @media (max-width: 880px) {
+        @media (max-width: 980px) {
           .shell {
-            width: calc(100% - 32px);
-            padding-top: 90px;
+            width: 82%;
           }
 
           .hero-section {
-            min-height: auto;
             grid-template-columns: 1fr;
-            grid-template-areas:
-              'copy'
-              'visual'
-              'simulator'
-              'meta';
-            gap: 34px;
-            padding: 42px 30px;
-          }
-
-          .scan-title-hero {
-            font-size: clamp(62px, 15vw, 108px);
+            gap: 32px;
+            padding: 44px;
           }
 
           .hero-visual {
             min-height: 390px;
           }
 
-          .signal-head {
-            max-width: 400px;
-          }
-
-          .loading-module {
-            margin-top: 48px;
-          }
-
-          .hero-meta {
-            grid-template-columns: repeat(3, 1fr);
-            border-left: 0;
-            border-top: 2px solid ${C.red};
-            padding: 18px 0 0;
-          }
-
           .space-section,
           .experience-section {
-            padding: 44px 30px;
+            padding: 44px;
           }
 
-          .section-heading {
-            grid-template-columns: auto 1fr;
-          }
-
-          .section-code {
-            display: none;
-          }
-
-          .section-heading h2 {
-            font-size: clamp(48px, 11vw, 78px);
-          }
-
-          .space-grid {
+          .space-upper {
             grid-template-columns: 1fr;
           }
 
-          .area-nav {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+          .diagnostics {
+            grid-template-columns: repeat(
+              3,
+              minmax(0, 1fr)
+            );
+            grid-template-rows: auto;
           }
 
-          .area-nav-label {
-            grid-column: 1 / -1;
+          .area-buttons {
+            grid-template-columns: 1fr;
           }
 
-          .area-link {
-            min-height: 115px;
-            border: 1px solid rgba(9, 9, 9, 0.4);
-            padding: 14px;
-          }
-
-          .venue-panel {
-            min-height: 470px;
-          }
-
-          .space-diagnostics {
-            grid-template-columns: repeat(3, 1fr);
+          .area-button + .area-button {
+            border-top: 1px solid rgba(255, 26, 18, 0.72);
+            border-left: 0;
           }
 
           .experience-layout {
             grid-template-columns: 1fr;
           }
 
-          .experience-nav {
-            grid-template-columns: repeat(2, 1fr);
+          .experience-buttons {
+            grid-template-columns: repeat(
+              2,
+              minmax(0, 1fr)
+            );
+          }
+        }
+
+        @media (max-width: 820px) {
+          .shell {
+            width: calc(100% - 40px);
+            max-width: none;
+            padding-top: 96px;
+            padding-bottom: 28px;
           }
         }
 
@@ -2227,12 +2321,8 @@ export default function ConceptPage() {
             padding-bottom: 24px;
           }
 
-          .poster-frame {
-            box-shadow: 7px 7px 0 rgba(9, 9, 9, 0.08);
-          }
-
           .window-bar {
-            grid-template-columns: auto 1fr;
+            gap: 10px;
             padding: 8px 10px;
           }
 
@@ -2246,72 +2336,85 @@ export default function ConceptPage() {
             letter-spacing: 0.08em;
           }
 
-          .window-status {
-            display: none;
-          }
-
           .hero-section {
             padding: 36px 18px;
           }
 
-          .hero-kicker {
-            font-size: 13px;
-            letter-spacing: 0.1em;
-          }
-
-          .scan-title-hero {
-            margin-top: 18px;
+          .hero-title {
             font-size: clamp(48px, 16vw, 78px);
           }
 
           .hero-address {
-            max-width: 270px;
+            max-width: 280px;
             font-size: 9px;
             line-height: 1.7;
-            white-space: normal;
           }
 
           .type-text {
             white-space: normal;
           }
 
-          .loading-module {
+          .concept-statement {
+            min-height: 180px;
             margin-top: 38px;
+          }
+
+          .concept-statement p {
+            max-width: 290px;
             padding-left: 6px;
-          }
-
-          .loading-label {
-            font-size: 12px;
-          }
-
-          .loading-copy {
             font-size: 16px;
           }
 
-          .loading-orbits {
-            top: 50px;
+          .statement-orbits {
+            top: 28px;
             width: 100%;
-            height: 132px;
+            height: 140px;
           }
 
-          .loading-orbits i {
+          .statement-orbits i {
             height: 38px;
           }
 
-          .loading-orbits i:nth-child(2) { top: 21px; }
-          .loading-orbits i:nth-child(3) { top: 42px; }
-          .loading-orbits i:nth-child(4) { top: 63px; }
-          .loading-orbits i:nth-child(5) { top: 84px; }
+          .statement-orbits i:nth-child(2) {
+            top: 21px;
+          }
+
+          .statement-orbits i:nth-child(3) {
+            top: 42px;
+          }
+
+          .statement-orbits i:nth-child(4) {
+            top: 63px;
+          }
+
+          .statement-orbits i:nth-child(5) {
+            top: 84px;
+          }
 
           .hero-visual {
             min-height: 300px;
           }
 
-          .signal-head {
+          .signal-orbit {
             max-width: 310px;
           }
 
-          .signal-nodes i {
+          .obelisk {
+            width: 64px;
+            height: 190px;
+          }
+
+          .obelisk-front {
+            left: 12px;
+            width: 42px;
+          }
+
+          .obelisk-side {
+            left: 36px;
+            width: 20px;
+          }
+
+          .orbit-dots i {
             width: 12px;
             height: 12px;
             transform:
@@ -2320,100 +2423,91 @@ export default function ConceptPage() {
               rotate(calc(var(--angle) * -1));
           }
 
-          .simulator-card {
-            min-height: 230px;
-          }
-
-          .simulator-figure {
-            width: 210px;
-            transform: translateX(-50%) scale(0.88);
-          }
-
-          .hero-meta {
-            grid-template-columns: 1fr;
-          }
-
           .space-section,
           .experience-section {
             padding: 38px 18px;
           }
 
-          .section-heading {
-            gap: 12px;
-            margin-bottom: 34px;
+          .section-number {
+            margin-bottom: 12px;
+            font-size: 24px;
           }
 
-          .section-heading h2 {
+          .section-title {
             font-size: clamp(39px, 12vw, 60px);
-          }
-
-          .section-heading p {
-            font-size: 8px;
-          }
-
-          .area-nav {
-            grid-template-columns: 1fr;
-          }
-
-          .area-link {
-            min-height: 86px;
           }
 
           .venue-panel {
             min-height: 330px;
           }
 
-          .venue-panel-label,
-          .venue-panel-coord {
+          .venue-label,
+          .venue-coordinate {
             font-size: 7px;
           }
 
-          .venue-panel-coord {
+          .venue-coordinate {
             display: none;
           }
 
-          .space-diagnostics {
-            grid-template-columns: 1fr 1fr;
-          }
-
-          .diagnostic-wave {
-            grid-column: 1 / -1;
-            min-height: 130px;
-          }
-
-          .experience-monitor {
-            min-height: 430px;
-            padding: 18px;
-          }
-
-          .experience-signal {
-            --signal-y: 46px;
-            margin-top: 40px;
-          }
-
-          .signal-time {
-            font-size: 9px;
-            letter-spacing: 0.07em;
-          }
-
-          .experience-copy p {
-            font-size: 19px;
-          }
-
-          .globe-strip {
-            left: 18px;
-            right: 18px;
-          }
-
-          .globe-strip i {
-            width: 70px;
-          }
-
-          .experience-nav {
+          .diagnostics {
             grid-template-columns: 1fr;
           }
 
-          .experience-card {
+          .radar-box,
+          .level-box {
+            min-height: 130px;
+          }
+
+          .area-button {
+            min-height: 86px;
+            padding: 14px 12px;
+          }
+
+          .timeline-panel {
+            min-height: 420px;
+            padding: 18px;
+          }
+
+          .timeline-times {
+            font-size: 9px;
+            letter-spacing: 0.08em;
+          }
+
+          .timeline-graphic {
+            min-height: 340px;
+          }
+
+          .energy-path {
+            left: 6%;
+            right: 6%;
+            top: 14%;
+            height: 30%;
+          }
+
+          .timeline-labels {
+            grid-template-columns: 1fr;
+            gap: 14px;
+            bottom: 6px;
+          }
+
+          .timeline-labels div {
+            padding-top: 18px;
+          }
+
+          .timeline-labels strong {
+            font-size: 18px;
+          }
+
+          .timeline-labels span {
+            font-size: 8px;
+          }
+
+          .experience-buttons {
+            grid-template-columns: 1fr;
+          }
+
+          .experience-button {
             min-height: 190px;
           }
 
@@ -2433,38 +2527,29 @@ export default function ConceptPage() {
           .concept-nav-shell,
           .scan-title,
           .type-text,
-          .hero-kicker,
           .hero-address,
-          .loading-module,
-          .hero-meta,
-          .simulator-card,
-          .signal-head,
-          .signal-head-grid,
-          .signal-nodes i,
+          .concept-statement,
+          .signal-orbit,
+          .orbit-rings,
+          .orbit-dots i,
           .venue-wrap,
           .venue-glitch,
-          .radar-pulse,
-          .diagnostic-wave i,
-          .signal-line,
-          .signal-line-fill,
-          .signal-node,
-          .signal-dot-fill,
-          .experience-card {
+          .radar-dot,
+          .level-box i,
+          .energy-scan,
+          .energy-node,
+          .experience-button {
             animation: none !important;
             transition: none !important;
           }
 
           .concept-nav-shell,
           .scan-title,
-          .hero-kicker,
           .hero-address,
-          .loading-module,
-          .hero-meta,
-          .simulator-card,
-          .signal-head,
+          .concept-statement,
+          .signal-orbit,
           .venue-wrap,
-          .signal-node,
-          .experience-card {
+          .experience-button {
             opacity: 1;
             transform: none;
           }
@@ -2472,10 +2557,6 @@ export default function ConceptPage() {
           .scan-title,
           .type-text {
             clip-path: inset(0);
-          }
-
-          .signal-line {
-            transform: scaleX(1);
           }
         }
       `}</style>
