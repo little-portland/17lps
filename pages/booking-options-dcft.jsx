@@ -35,7 +35,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Der, Marc Jarvin</h3>
-              <h3><span>STUDIO <b>//</b> </span>Arthur Baker, Rakim Under</h3>
+              <h3><span>STUDIO <b>//</b> </span>Arthur Baker (Electro Classics Live), Rakim Under</h3>
             </div>
         </div>
 
