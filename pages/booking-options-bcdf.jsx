@@ -42,101 +42,15 @@ const BookingOptions = () => {
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/xHA4I6oq" target="_blank">
-              CLUB ENTRY ONLY [10PM]
+              CLUB ENTRY [10PM]
             </a>
           </Button>
         </div>
-
-        <div className="or mobile-only"><h2>Or</h2></div>
-
-        <div className="book-wrapper">
-          <div className="override-heading">
-            <h2>START WITH DINNER</h2>
-            <p class="time mobile-only">Includes Club Entry</p>
-          </div>
-          <div class="tags mobile-only"><h3><span>DINING CONCEPT: <span className="strongword">FUTURIST</span></span></h3></div>
-
-          <div className="concept">
-            <h4>“Override” is our restaurant concept</h4>
-          </div>
-
-          <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
-            <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
-              <span>[More about our dining concept]</span>
-            </a>
-           </div>
-
-          <div className="button-wrapper new-button-wrapper">
-            <Button classes="events-button new-events-button view-menu" btnType="hollow">
-              <a href="https://www.little-portland.com/menu" target="_blank">
-                <span>View Menu</span>
-              </a>
-            </Button>
-          </div>
-
-         <div class="button-wrapper new-button-wrapper desktop-only">
-            <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-08-01&default_time=21:00&default_party_size=4" target="_blank">
-                <span class="space">IN THE TENT</span>
-                <p class="time">Includes Club Entry</p>
-                <p class="details"><span>8:30PM</span></p>
-                <p class="btn-tagline">The Cosmic Experience</p>
-               </a>
-              </Button>
-  
-              <Button classes="events-button ticket"  btnType="hollow">
-                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span class="space">CHEF’S STUDIO</span>
-                <p class="time">Includes Club Entry</p>
-                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
-                <p class="btn-tagline">Where the heads dine</p>
-               </a>
-              </Button>
-          </div>
-          
-         <div class="button-wrapper new-button-wrapper button-wrapper-new desktop-only">
-            <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
-              <span>[More about The Tent]</span>
-            </a>
-            <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[More about Chef's Studio]</span>
-              </a>
-           </div>
-         
-         <div class="button-wrapper new-button-wrapper mobile-only">
-            <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-08-01&default_time=21:00&default_party_size=4" target="_blank">
-                <span class="space">IN THE TENT</span>
-                <p class="details"><span>8:30PM</span></p>
-                <p class="btn-tagline">The Cosmic Experience</p>
-               </a>
-              </Button>
-
-               <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
-                <span>[More about The Tent]</span>
-              </a>
-  
-              <Button classes="events-button ticket"  btnType="hollow">
-                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span class="space">CHEF’S STUDIO</span>
-                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
-                <p class="btn-tagline">Where the heads dine</p>
-               </a>
-              </Button>
-
-             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[More about Chef's Studio]</span>
-            </a> 
-           
-          </div>
-        </div>
-
-        <div className="or desktop-only or-desktop"><h2>Or</h2></div>
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/xHA4I6oq" target="_blank">
-              CLUB ENTRY ONLY [10PM]
+              CLUB ENTRY [10PM]
             </a>
           </Button>
         </div>
