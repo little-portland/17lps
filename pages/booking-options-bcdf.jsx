@@ -31,7 +31,7 @@ const BookingOptions = () => {
         
         <div className="event-info">
            <div class="info date">
-              <h2><span>SAT</span>08 Aug</h2>
+              <h2><span>SAT</span>01 Aug</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Denny Kem, Trixie</h3>
