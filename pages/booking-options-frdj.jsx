@@ -10,10 +10,10 @@ import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
   useEffect(() => {
-    document.body.classList.add("saturday");
+    document.body.classList.add("thursday");
 
     return () => {
-      document.body.classList.remove("saturday");
+      document.body.classList.remove("thursday");
     };
   }, []);
 
@@ -26,22 +26,23 @@ const BookingOptions = () => {
     </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category"><span className="day">Saturday</span> Disco3000</h1> 
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Saturday</span> Disco3000</h1>
+        <h1 className="event-name desktop-only day-category"><span className="day">Thursday</span> Underground</h1>
         
+        <h1 className="event-name mobile-only cat"><span className="cat-day">Thursday</span> Underground</h1>
+
         <div className="event-info">
-           <div class="info date">
-              <h2><span>SAT</span>25 Jul</h2>
+            <div class="info date">
+              <h2><span>THU</span>13 Aug</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>PASH, Thom Parris</h3>
-              <h3><span>STUDIO <b>//</b> </span>Chris Wheatley, Davide Del Vecchio, Jade Edwards</h3>
+              <h3><span>TENT <b>//</b> </span>OLI SILVA, Patrick Rowe</h3>
+              <h3><span>STUDIO <b>//</b> </span>H-Foundation</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xw6LCYb7" target="_blank">
+            <a href="https://sevn.ly/xpWTIU3K" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
@@ -49,7 +50,7 @@ const BookingOptions = () => {
 
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xw6LCYb7" target="_blank">
+            <a href="https://sevn.ly/xpWTIU3K" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
