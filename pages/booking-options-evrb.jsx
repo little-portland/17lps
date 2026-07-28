@@ -36,7 +36,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>OLI SILVA, Patrick Rowe</h3>
-              <h3><span>STUDIO <b>//</b> </span>H-Foundation</h3>
+              <h3><span>STUDIO <b>//</b> </span>secret guest</h3>
             </div>
         </div>
 
