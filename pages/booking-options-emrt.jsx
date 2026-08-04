@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>21 Aug</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>JIMINY WATTS, Pato</h3>
+              <h3><span>TENT <b>//</b> </span>JIMINY WATTS, Nathan Colinet</h3>
               <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, Rakim Under</h3>
             </div>
         </div>
