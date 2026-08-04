@@ -36,7 +36,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span> Hendrik Brown b2b JOSH KEIT </h3>
-              <h3><span>STUDIO <b>//</b> </span>Batgirl & Dysdale, Raphael Carrau</h3>
+              <h3><span>STUDIO <b>//</b> </span>Joe Seymour b2b Polish Camel, Raphael Carrau</h3>
             </div>
         </div>
 
