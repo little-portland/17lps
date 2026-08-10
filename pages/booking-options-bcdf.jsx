@@ -31,17 +31,17 @@ const BookingOptions = () => {
         
         <div className="event-info">
            <div class="info date">
-              <h2><span>SAT</span>01 Aug</h2>
+              <h2><span>SAT</span>29 Aug</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Denny Kem, Trixie</h3>
-              <h3><span>STUDIO <b>//</b> </span>ALEX BRADLEY, PARAMIDA</h3>
+              <h3><span>TENT <b>//</b> </span>Alfie Aukett, Trixie</h3>
+              <h3><span>STUDIO <b>//</b> </span>Ludwig</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xHA4I6oq" target="_blank">
+            <a href="" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
@@ -49,7 +49,7 @@ const BookingOptions = () => {
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xHA4I6oq" target="_blank">
+            <a href="" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
