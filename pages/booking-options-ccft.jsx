@@ -10,10 +10,10 @@ import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
   useEffect(() => {
-    document.body.classList.add("thursday");
+    document.body.classList.add("saturday");
 
     return () => {
-      document.body.classList.remove("thursday");
+      document.body.classList.remove("saturday");
     };
   }, []);
 
@@ -26,31 +26,30 @@ const BookingOptions = () => {
     </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category"><span className="day">NEXT DOOR RECORDS</span> Presents</h1>
+        <h1 className="event-name desktop-only day-category"><span className="day">Air Karnak</span> Presents</h1> 
+        <h1 className="event-name mobile-only cat"><span className="cat-day">Air Karnak</span> Presents</h1> 
         
-        <h1 className="event-name mobile-only cat"><span className="cat-day">NEXT DOOR RECORDS</span> Presents</h1>
-
         <div className="event-info">
-            <div class="info date">
-              <h2><span>THU</span>06 Aug</h2>
+           <div class="info date">
+              <h2><span>SAT</span>29 Aug</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Allecto, OL Drift</h3>
-              <h3><span>STUDIO <b>//</b> </span>NEXT DOOR RECORDS</h3>
+              <h3><span>TENT <b>//</b> </span>DAYBREAK</h3>
+              <h3><span>STUDIO <b>//</b> </span>DER, MAXIME DB</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/x6l5QMVP" target="_blank">
+            <a href="https://sevn.ly/x6FZr0wv" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
         </div>
-
+        
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/x6l5QMVP" target="_blank">
+            <a href="https://sevn.ly/x6FZr0wv" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
