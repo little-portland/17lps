@@ -13,7 +13,7 @@ const BookingOptions = () => {
     document.body.classList.add("thursday");
 
     return () => {
-      document.body.classList.remove("thursday");
+      document.body.classList.remove("thursday"); 
     };
   }, []);
 
