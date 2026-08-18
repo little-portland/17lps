@@ -32,17 +32,17 @@ const BookingOptions = () => {
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>FRI</span>14 Aug</h2>
+              <h2><span>FRI</span>04 SEP</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>HARRI PEPPER, MAYBE LAURA</h3>
-              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Bruno Schmidt</h3>
+              <h3><span>TENT <b>//</b> </span>DMC b2b Ché</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xyDBD53U" target="_blank">
+            <a href="https://sevn.ly/xoYS3uLZ" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
@@ -50,7 +50,7 @@ const BookingOptions = () => {
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xyDBD53U" target="_blank">
+            <a href="https://sevn.ly/xoYS3uLZ" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
