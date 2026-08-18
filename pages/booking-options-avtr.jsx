@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>03 SEP</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>ALFIE AUKET, The Mushroom Explorer</h3>
+              <h3><span>TENT <b>//</b> </span>Alfie Aukett, The Mushroom Explorer</h3>
               <h3><span>STUDIO <b>//</b> </span>MELLA DEE, STE ROBERTS</h3>
             </div>
         </div>
