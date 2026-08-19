@@ -1,7 +1,7 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-const PRIVATE_ROUTES = [
+const PRIVATE_ROUTES = [ 
   '/access',
   '/test',
   '/nocturn-test',
