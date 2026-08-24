@@ -4499,6 +4499,8 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
               padding: "16px",
               // scale: "200%",
               opacity: 0,
+			  display: "none",
+  		  	  pointerEvents: "none",
             }}
             // onClick={openMenu}
           >
