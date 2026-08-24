@@ -2,10 +2,11 @@ import React from "react";
 import Link from "next/link";
 
 import Button from "../Button";
-//styles
+
+// styles
 import { MobileButtonWrapper } from "./styles";
 
-//Hooks
+// hooks
 import { useUI } from "@components/UX/context";
 
 const MobileButtons = () => {
@@ -13,12 +14,9 @@ const MobileButtons = () => {
     displayLineup,
     closeLineup,
     openLineup,
-    openMenu,
-    closeMenu,
-    displayMenu,
-    openHire,
-    closeHire,
     displayHire,
+    closeHire,
+    openHire,
   } = useUI();
 
   return (
@@ -27,16 +25,14 @@ const MobileButtons = () => {
         style={{
           display: "flex",
           width: "100%",
-          justifyContent: "space-between",
+          justifyContent: "center",
         }}
       >
-        <a onClick={openMenu}>
-          <Button btnType="solid">Eat</Button>
-        </a>
         <a onClick={openLineup}>
           <Button btnType="solid">Dance</Button>
         </a>
       </div>
+
       <div
         style={{
           display: "flex",
@@ -44,9 +40,10 @@ const MobileButtons = () => {
           justifyContent: "space-between",
         }}
       >
-        <a href={"/events"}>
-            <Button btnType="hollow">Events</Button>
-        </a>
+        <Link href="/events">
+          <Button btnType="hollow">Events</Button>
+        </Link>
+
         <a onClick={openHire}>
           <Button btnType="hollow">Hire</Button>
         </a>
