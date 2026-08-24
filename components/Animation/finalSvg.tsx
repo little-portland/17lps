@@ -4515,7 +4515,7 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
           opacity: 1,
         }}
       >
-        <g fill="#FF00FF">
+        <g fill="#FF00FF" id="eat-link">
           <g>
             <path
               d="M2045.5,856.6l11.4,7.2l-6.3,3.8l-11.4-7.2l-13.1,7.6l14.1,9.1l-6.5,3.8l-22.4-14.4l44.5-26l22.6,13.9
