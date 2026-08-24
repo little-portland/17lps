@@ -4514,11 +4514,13 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
           // scale: "200%",
           opacity: 1,
 		  display: "none",
+  		  pointerEvents: "none",
         }}
       >
         <g         
 			style={{
 			  display: "none",
+			  pointerEvents: "none",
 	        }}
 			fill="#FF00FF" id="eat-link">
           <g>
