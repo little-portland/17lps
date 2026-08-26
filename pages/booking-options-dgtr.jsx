@@ -35,7 +35,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MATRIX, Wolf Drifta</h3>
-              <h3><span>STUDIO <b>//</b> </span>SPECIAL GUEST</h3>
+              <h3><span>STUDIO <b>//</b> </span>Cesar Merveille & Vikan</h3>
             </div>
         </div>
 
