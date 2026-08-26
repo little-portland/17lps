@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 import Button from "../Button";
 
@@ -25,24 +24,12 @@ const MobileButtons = () => {
         style={{
           display: "flex",
           width: "100%",
-          justifyContent: "center",
+          justifyContent: "space-between",
         }}
       >
         <a onClick={openLineup}>
           <Button btnType="solid">Dance</Button>
         </a>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          justifyContent: "space-between",
-        }}
-      >
-        <Link href="/events">
-          <Button btnType="hollow">Events</Button>
-        </Link>
 
         <a onClick={openHire}>
           <Button btnType="hollow">Hire</Button>
