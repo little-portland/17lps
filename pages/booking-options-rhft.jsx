@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>25 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Nathan Colinet</h3>
+              <h3><span>TENT <b>//</b> </span>Giacomo XL, Zeynep Erbay</h3>
               <h3><span>STUDIO <b>//</b> </span>Paolo Bartolomeo, Ricky Montanit</h3>
             </div>
         </div>
