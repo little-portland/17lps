@@ -4430,6 +4430,8 @@ const FinalSvg: React.FC<SvgProps> = ({ openLineup, openMenu, openHire }) => {
         style={{
           cursor: "pointer",
           padding: "16px",
+		  display: "none",
+  		  pointerEvents: "none",
           // scale: "200%",
           //visual fix:
           // border: "2px solid red",
