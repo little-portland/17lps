@@ -34,8 +34,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>19 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>JIMINY WATTS, MAYBE LAURA</h3>
-              <h3><span>STUDIO <b>//</b> </span>JACOB HUSLEY</h3>
+              <h3><span>TENT <b>//</b> </span>Maybe Laura, Sam Karam</h3>
+              <h3><span>STUDIO <b>//</b> </span>Jacob Husley, Terry Francis</h3>
             </div>
         </div>
 
