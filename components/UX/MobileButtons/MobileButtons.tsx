@@ -32,7 +32,7 @@ const MobileButtons = () => {
         </a>
 
         <a onClick={openHire}>
-          <Button btnType="hollow">Hire</Button>
+          <Button btnType="solid">Hire</Button>
         </a>
       </div>
     </MobileButtonWrapper>
