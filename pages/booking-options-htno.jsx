@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>17 Sep</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>MARCELINA WICK</h3>
+              <h3><span>TENT <b>//</b> </span>MARCELINA WICK, Nathan Colinet</h3>
               <h3><span>STUDIO <b>//</b> </span>DENNY KEM, James Dean Brown (Narcotic Syntax)</h3>
             </div>
         </div>
