@@ -276,22 +276,6 @@ const Menu = ({ menuImage }) => {
            <img src="/images/thetent/the_tent_page_schedule.png" alt="The Tent" width="100%" />
          </div>
 
-          <div className="override-space-bottom override-logo">
-            <ManualSlideshow />
-          </div>
-
-          <div className="nocturn override override-buttons-wrapper override-logo">
-            <a  target="_blank" href="https://www.little-portland.com/bookings" class="override-button book-override">BOOK DINNER</a>
-           <div className="row">
-              <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/menu" class="override-button">MENU</a>
-              </div>
-              <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/food" class="override-button">DINING CONCEPT</a>
-              </div>
-           </div>
-          </div>
-
           <div className="nocturn">
             <HoverImageLink
               href="mailto:yo@little-portland.com"
@@ -318,7 +302,6 @@ const Menu = ({ menuImage }) => {
            <div className="image-row override-logo">
               <div className="image-column">
                 <img src="/images/thetent/the_tent01.jpg" />
-                <img src="/images/override/slide09.png" />
                 <img src="/images/thetent/the_tent04.jpg" />
                 <img src="/images/thetent/the_tent09.jpg" />
                 <img src="/images/thetent/the_tent06.jpg" />
@@ -335,7 +318,7 @@ const Menu = ({ menuImage }) => {
            <div className="override-buttons-wrapper explore-btns">
               <div className="button-half-page">
                   <HoverImageLink
-                    href="https://www.instagram.com/thetentattheendoftheuniverse/"
+                    href="/chefstudio"
                     img="/images/thetent/the_tent_page_insta.jpg"
                     hoverImg="/images/thetent/the_tent_page_insta_hover.jpg"
                     aspect="1000 / 150"
@@ -345,7 +328,7 @@ const Menu = ({ menuImage }) => {
               </div>
              <div className="button-half-page">
                   <HoverImageLink
-                    href="https://forms.airship.co.uk/forms/1364/the-tent-at-the-end-of-the-universe"
+                    href="/studio"
                     img="/images/thetent/the_tent_page_news.jpg"
                     hoverImg="/images/thetent/the_tent_page_news_hover.jpg"
                     aspect="1000 / 150"
