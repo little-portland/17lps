@@ -318,7 +318,7 @@ const Menu = ({ menuImage }) => {
            <div className="override-buttons-wrapper explore-btns">
               <div className="button-half-page">
                   <HoverImageLink
-                    href="/chefstudio"
+                    href="/studio"
                     img="/images/thetent/the_tent_page_insta.jpg"
                     hoverImg="/images/thetent/the_tent_page_insta_hover.jpg"
                     aspect="1000 / 150"
@@ -328,7 +328,7 @@ const Menu = ({ menuImage }) => {
               </div>
              <div className="button-half-page">
                   <HoverImageLink
-                    href="/studio"
+                    href="/chefstudio"
                     img="/images/thetent/the_tent_page_news.jpg"
                     hoverImg="/images/thetent/the_tent_page_news_hover.jpg"
                     aspect="1000 / 150"
