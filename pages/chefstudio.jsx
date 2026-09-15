@@ -136,14 +136,6 @@ const Menu = ({ menuImage }) => {
 
          <div className="override-buttons-wrapper">
              <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
-           <div className="row">
-              <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/menu" class="override-button">MENU</a>
-              </div>
-              <div className="column">
-                    <a target="_blank" href="https://www.little-portland.com/food" class="override-button">DINING CONCEPT</a>
-              </div>
-           </div>
           </div>
          </div>
 
