@@ -319,8 +319,8 @@ const Menu = ({ menuImage }) => {
               <div className="button-half-page">
                   <HoverImageLink
                     href="/studio"
-                    img="/images/thetent/the_tent_page_insta.jpg"
-                    hoverImg="/images/thetent/the_tent_page_insta_hover.jpg"
+                    img="/images/thetent/the_tent_page_insta_hover.jpg"
+                    hoverImg="/images/thetent/the_tent_page_insta.jpg"
                     aspect="1000 / 150"
                     ariaLabel="Instagram"
                     target="_blank"
