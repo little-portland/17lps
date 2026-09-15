@@ -322,8 +322,7 @@ const Menu = ({ menuImage }) => {
                     img="/images/thetent/the_tent_page_insta_hover.jpg"
                     hoverImg="/images/thetent/the_tent_page_insta.jpg"
                     aspect="1000 / 150"
-                    ariaLabel="Instagram"
-                    target="_blank"
+                    ariaLabel="Studio"
                   />             
               </div>
              <div className="button-half-page">
@@ -332,8 +331,7 @@ const Menu = ({ menuImage }) => {
                     img="/images/thetent/the_tent_page_news.jpg"
                     hoverImg="/images/thetent/the_tent_page_news_hover.jpg"
                     aspect="1000 / 150"
-                    ariaLabel="Newsletter"
-                    target="_blank"
+                    ariaLabel="Chef's Studio"
                   />               
              </div>
             </div>
