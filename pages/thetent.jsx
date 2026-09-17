@@ -301,13 +301,12 @@ const Menu = ({ menuImage }) => {
           <div className="nocturn-wider-section">
            <div className="image-row override-logo">
               <div className="image-column">
-                <img src="/images/thetent/the_tent01.jpg" />
                 <img src="/images/thetent/the_tent04.jpg" />
                 <img src="/images/thetent/the_tent03.jpg" />
                 <img src="/images/thetent/the_tent06.jpg" />
               </div>
              <div className="image-column">
-                <img src="/images/thetent/the_tent02.jpg" />
+                <img src="/images/thetent/the_tent01.jpg" />
                 <img src="/images/thetent/the_tent07.jpg" />
                 <img src="/images/thetent/the_tent09.jpg" />
               </div>
