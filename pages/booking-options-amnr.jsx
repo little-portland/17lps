@@ -34,8 +34,8 @@ const BookingOptions = () => {
               <h2><span>SAT</span>14 Noc</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>TBC</h3>
-              <h3><span>STUDIO <b>//</b> </span>CHEZ DE MILO, RALPH LAWSON</h3>
+              <h3><span>TENT <b>//</b> </span>SADEEDO, TINTIN [08:30PM - 04AM]</h3>
+              <h3><span>STUDIO <b>//</b> </span>CHEZ DE MILO, RALPH LAWSON [10PM - 5AM]</h3>
             </div>
         </div>
 
