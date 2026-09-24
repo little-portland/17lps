@@ -131,7 +131,7 @@ const Menu = ({ menuImage }) => {
       </Head>
       
          <div className="nocturn override">
-           <img className="override-logo" src="/images/chefstudio/chefs-studio-page-top.png" alt="Chef's Studio" width="100%" />
+           <img className="override-logo" src="/images/chefstudio/studio-prelude-page-top.png" alt="Chef's Studio" width="100%" />
            <img src="/images/chefstudio/chefs-studio-page-bottom.png" alt="Chef's Studio" width="100%" />
 
          <div className="override-buttons-wrapper">
