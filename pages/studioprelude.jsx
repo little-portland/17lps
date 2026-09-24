@@ -132,10 +132,10 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn override">
            <img className="override-logo" src="/images/chefstudio/studio-prelude-page-top.png" alt="Chef's Studio" width="100%" />
-           <img src="/images/chefstudio/chefs-studio-page-bottom.png" alt="Chef's Studio" width="100%" />
+           <img src="/images/chefstudio/studio-prelude-page-bottom.png" alt="Chef's Studio" width="100%" />
 
          <div className="override-buttons-wrapper">
-             <a href="mailto:eat@little-portland.com" class="override-button">BOOK Studio Prelude</a>
+             <a href="mailto:eat@little-portland.com" class="override-button">BOOK STUDIO PRELUDE</a>
           </div>
          </div>
 
@@ -154,7 +154,7 @@ const Menu = ({ menuImage }) => {
           </div>
 
          <div className="nocturn override poem">
-           <img src="/images/chefstudio/chefs-studio-poem.png" alt="Chef's Studio" width="100%" />
+           <img src="/images/chefstudio/studio-prelude-poem.png" alt="Chef's Studio" width="100%" />
          </div>
 
          <div className="nocturn-wider-section override-logo bottom-grid">
