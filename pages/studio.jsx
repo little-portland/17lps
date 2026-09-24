@@ -404,7 +404,7 @@ const Menu = ({ menuImage }) => {
       
          <div className="nocturn hire">
             <HoverImageLink
-              href="mailto:yo@little-portland.com"
+              href="mailto:hire@little-portland.com"
               img="/images/studio/studio_private_hire.gif"
               hoverImg="/images/studio/studio_private_hire_hover.gif"
               aspect="1200 / 300"
