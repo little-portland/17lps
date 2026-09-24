@@ -135,7 +135,7 @@ const Menu = ({ menuImage }) => {
            <img src="/images/chefstudio/chefs-studio-page-bottom.png" alt="Chef's Studio" width="100%" />
 
          <div className="override-buttons-wrapper">
-             <a href="mailto:eat@little-portland.com" class="override-button">BOOK CHEF'S STUDIO</a>
+             <a href="mailto:eat@little-portland.com" class="override-button">BOOK Studio Prelude</a>
           </div>
          </div>
 
