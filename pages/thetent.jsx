@@ -326,7 +326,7 @@ const Menu = ({ menuImage }) => {
               </div>
              <div className="button-half-page">
                   <HoverImageLink
-                    href="/chefstudio"
+                    href="/studioprelude"
                     img="/images/thetent/the_tent_page_news.jpg"
                     hoverImg="/images/thetent/the_tent_page_news_hover.jpg"
                     aspect="1000 / 150"
