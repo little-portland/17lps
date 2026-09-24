@@ -421,10 +421,10 @@ const Menu = ({ menuImage }) => {
          <div className="override-buttons-wrapper">
            <div className="row">
               <div className="column">
-                <a target="_blank" href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK CHEF'S STUDIO</a>
+                <a target="_blank" href="mailto:eat@little-portland.com" class="override-button hollow-btn">BOOK STUDIO PRELUDE</a>
               </div>
               <div className="column">
-                  <a target="_blank" href="https://www.little-portland.com/chefstudio" class="override-button hollow-btn">ABOUT CHEF'S STUDIO</a>
+                  <a target="_blank" href="https://www.little-portland.com/studioprelude" class="override-button hollow-btn">ABOUT STUDIO PRELUDE</a>
               </div>
            </div>
           </div>
