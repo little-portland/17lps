@@ -278,7 +278,7 @@ const Menu = ({ menuImage }) => {
 
           <div className="nocturn">
             <HoverImageLink
-              href="mailto:yo@little-portland.com"
+              href="mailto:hire@little-portland.com"
               img="/images/thetent/the_tent_page_private_enquire.jpg"
               hoverImg="/images/thetent/the_tent_page_private_enquire_hover.jpg"
               aspect="2000 / 306"
