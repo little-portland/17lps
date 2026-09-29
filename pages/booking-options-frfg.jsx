@@ -43,7 +43,7 @@ const BookingOptions = () => {
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/x3WhN9qj" target="_blank">
-              CLUB ENTRY [10PM]
+              ENTRY [8PM]
             </a>
           </Button>
         </div>
@@ -51,7 +51,7 @@ const BookingOptions = () => {
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
             <a href="https://sevn.ly/x3WhN9qj" target="_blank">
-              CLUB ENTRY [10PM]
+              ENTRY [8PM]
             </a>
           </Button>
         </div>
