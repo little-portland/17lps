@@ -34,7 +34,7 @@ const BookingOptions = () => {
               <h2><span>SAT</span>03 Oct</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>ARIANE V</h3>
+              <h3><span>TENT <b>//</b> </span>ARIANE V, Asa Tate</h3>
               <h3><span>STUDIO <b>//</b> </span>LOGAN FISHER, TINTIN</h3>
             </div>
         </div>
