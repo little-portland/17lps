@@ -35,8 +35,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>15 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>E. Alexander, Marcelina Wick</h3>
-              <h3><span>STUDIO <b>//</b> </span>cristi Cons, Vincent Lemieux</h3>
+              <h3><span>TENT <b>//</b> </span>DEEP LISTENING SESSIONS - CRISTI CONS</h3>
             </div>
         </div>
 
