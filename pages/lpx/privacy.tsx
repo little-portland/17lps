@@ -588,14 +588,6 @@ export default function LpxPrivacyPolicy() {
             font-size: clamp(38px, 12vw, 48px);
             line-height: 0.95;
           }
-
-          .threeColTable {
-            overflow-x: auto;
-          }
-
-          .twoColTable {
-            overflow: visible;
-          }
         }
 
         @media (max-width: 430px) {
@@ -689,6 +681,7 @@ export default function LpxPrivacyPolicy() {
         .policy-content table {
           width: 100%;
           border-collapse: collapse;
+          table-layout: fixed;
           color: #374151;
           font-size: 13px;
           line-height: 1.45;
@@ -710,28 +703,45 @@ export default function LpxPrivacyPolicy() {
           padding: 14px;
           border: 1px solid #d1d5db;
           vertical-align: top;
+          overflow-wrap: anywhere;
         }
 
         .policy-content tbody tr:nth-child(even) td {
           background: #f6f7f8;
         }
 
+        /* 3-column table */
         .threeColTable table {
           min-width: 680px;
         }
 
-        .twoColTable table {
-          min-width: 0;
-          table-layout: fixed;
-        }
-
-        .twoColTable th:first-child,
-        .twoColTable td:first-child {
+        .threeColTable th:nth-child(1),
+        .threeColTable td:nth-child(1) {
           width: 38%;
         }
 
-        .twoColTable th:last-child,
-        .twoColTable td:last-child {
+        .threeColTable th:nth-child(2),
+        .threeColTable td:nth-child(2) {
+          width: 42%;
+        }
+
+        .threeColTable th:nth-child(3),
+        .threeColTable td:nth-child(3) {
+          width: 20%;
+        }
+
+        /* 2-column table */
+        .twoColTable table {
+          min-width: 0;
+        }
+
+        .twoColTable th:nth-child(1),
+        .twoColTable td:nth-child(1) {
+          width: 38%;
+        }
+
+        .twoColTable th:nth-child(2),
+        .twoColTable td:nth-child(2) {
           width: 62%;
         }
 
@@ -760,9 +770,24 @@ export default function LpxPrivacyPolicy() {
             padding-left: 22px;
           }
 
+          .threeColTable {
+            overflow-x: auto;
+          }
+
           .threeColTable table {
             min-width: 680px;
+            table-layout: fixed;
             font-size: 12px;
+          }
+
+          .threeColTable th,
+          .threeColTable td {
+            font-size: 12px;
+            line-height: 1.45;
+          }
+
+          .twoColTable {
+            overflow: visible;
           }
 
           .twoColTable table {
@@ -781,13 +806,13 @@ export default function LpxPrivacyPolicy() {
             word-break: normal;
           }
 
-          .twoColTable th:first-child,
-          .twoColTable td:first-child {
+          .twoColTable th:nth-child(1),
+          .twoColTable td:nth-child(1) {
             width: 38%;
           }
 
-          .twoColTable th:last-child,
-          .twoColTable td:last-child {
+          .twoColTable th:nth-child(2),
+          .twoColTable td:nth-child(2) {
             width: 62%;
           }
         }
