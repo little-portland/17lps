@@ -36,7 +36,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Kaan Düzarat, THE MUHSROOM EXPLORER </h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, Ohm Hourani</h3>
             </div>
         </div>
 
