@@ -463,6 +463,48 @@ export default function LpxPrivacyPolicy() {
           font-family: ${FONT_STACK};
         }
 
+        /*
+         * Neutralise the site's custom vertical scrollbar styling
+         * for this page only.
+         */
+        :global(html) {
+          scrollbar-width: auto !important;
+          scrollbar-color: auto !important;
+        }
+
+        :global(html::-webkit-scrollbar) {
+          width: auto !important;
+        }
+
+        :global(html::-webkit-scrollbar-track) {
+          background: initial !important;
+        }
+
+        :global(html::-webkit-scrollbar-thumb) {
+          background: initial !important;
+          border: 0 !important;
+          border-radius: 0 !important;
+        }
+
+        :global(body) {
+          scrollbar-width: auto !important;
+          scrollbar-color: auto !important;
+        }
+
+        :global(body::-webkit-scrollbar) {
+          width: auto !important;
+        }
+
+        :global(body::-webkit-scrollbar-track) {
+          background: initial !important;
+        }
+
+        :global(body::-webkit-scrollbar-thumb) {
+          background: initial !important;
+          border: 0 !important;
+          border-radius: 0 !important;
+        }
+
         * {
           box-sizing: border-box;
         }
@@ -540,15 +582,8 @@ export default function LpxPrivacyPolicy() {
         .tableWrap {
           width: 100%;
           margin: 24px 0;
-          -webkit-overflow-scrolling: touch;
-        }
-
-        .threeColTable {
           overflow-x: auto;
-        }
-
-        .twoColTable {
-          overflow: visible;
+          -webkit-overflow-scrolling: touch;
         }
 
         @media (max-width: 700px) {
@@ -710,7 +745,7 @@ export default function LpxPrivacyPolicy() {
           background: #f6f7f8;
         }
 
-        /* 3-column table */
+        /* Three-column table */
         .threeColTable table {
           min-width: 680px;
         }
@@ -730,9 +765,9 @@ export default function LpxPrivacyPolicy() {
           width: 20%;
         }
 
-        /* 2-column table */
+        /* Two-column table */
         .twoColTable table {
-          min-width: 0;
+          min-width: 680px;
         }
 
         .twoColTable th:nth-child(1),
@@ -770,50 +805,24 @@ export default function LpxPrivacyPolicy() {
             padding-left: 22px;
           }
 
-          .threeColTable {
+          .threeColTable,
+          .twoColTable {
             overflow-x: auto;
           }
 
-          .threeColTable table {
+          .threeColTable table,
+          .twoColTable table {
             min-width: 680px;
             table-layout: fixed;
             font-size: 12px;
           }
 
           .threeColTable th,
-          .threeColTable td {
-            font-size: 12px;
-            line-height: 1.45;
-          }
-
-          .twoColTable {
-            overflow: visible;
-          }
-
-          .twoColTable table {
-            width: 100%;
-            min-width: 0;
-            table-layout: fixed;
-            font-size: 12px;
-          }
-
+          .threeColTable td,
           .twoColTable th,
           .twoColTable td {
-            padding: 10px 8px;
             font-size: 12px;
             line-height: 1.45;
-            overflow-wrap: anywhere;
-            word-break: normal;
-          }
-
-          .twoColTable th:nth-child(1),
-          .twoColTable td:nth-child(1) {
-            width: 38%;
-          }
-
-          .twoColTable th:nth-child(2),
-          .twoColTable td:nth-child(2) {
-            width: 62%;
           }
         }
       `}</style>
