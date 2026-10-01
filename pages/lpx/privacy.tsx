@@ -465,6 +465,50 @@ export default function LpxPrivacyPolicy() {
           font-family: ${FONT_STACK};
         }
 
+        /*
+         * Override the site's global green vertical scrollbar
+         * with a neutral scrollbar for this page.
+         *
+         * Horizontal table scrollbars are not targeted.
+         */
+        :global(html) {
+          scrollbar-width: auto !important;
+          scrollbar-color: #b8bdc5 #eef0f2 !important;
+        }
+
+        :global(html::-webkit-scrollbar) {
+          width: 10px !important;
+        }
+
+        :global(html::-webkit-scrollbar-track) {
+          background: #eef0f2 !important;
+        }
+
+        :global(html::-webkit-scrollbar-thumb) {
+          background: #b8bdc5 !important;
+          border: 2px solid #eef0f2 !important;
+          border-radius: 999px !important;
+        }
+
+        :global(body) {
+          scrollbar-width: auto !important;
+          scrollbar-color: #b8bdc5 #eef0f2 !important;
+        }
+
+        :global(body::-webkit-scrollbar) {
+          width: 10px !important;
+        }
+
+        :global(body::-webkit-scrollbar-track) {
+          background: #eef0f2 !important;
+        }
+
+        :global(body::-webkit-scrollbar-thumb) {
+          background: #b8bdc5 !important;
+          border: 2px solid #eef0f2 !important;
+          border-radius: 999px !important;
+        }
+
         * {
           box-sizing: border-box;
         }
@@ -540,8 +584,8 @@ export default function LpxPrivacyPolicy() {
         }
 
         /*
-         * Only controls scrolling behaviour.
-         * No scrollbar colours, widths, thumbs or tracks are styled.
+         * Horizontal scrolling behaviour only.
+         * No visual styling is applied to these scrollbars.
          */
         .tableWrap {
           width: 100%;
@@ -679,7 +723,7 @@ export default function LpxPrivacyPolicy() {
 
         /*
          * Shared table typography.
-         * Explicit sizing prevents Safari/iOS from enlarging individual cells.
+         * Explicit sizing avoids iOS/Safari text boosting in individual cells.
          */
         .policy-content table,
         .policy-content thead,
@@ -699,7 +743,7 @@ export default function LpxPrivacyPolicy() {
           color: #374151;
           font-family: ${FONT_STACK};
           font-size: 13px;
-          font-weight: 400;
+          font-weight: 500;
           line-height: 1.45;
         }
 
@@ -750,10 +794,7 @@ export default function LpxPrivacyPolicy() {
           width: 20%;
         }
 
-        /*
-         * Section 05.
-         * First column remains the same 38% width as section 02.
-         */
+        /* Section 05: 38 / 62 */
         .twoColTable th:nth-child(1),
         .twoColTable td:nth-child(1) {
           width: 38%;
@@ -790,8 +831,8 @@ export default function LpxPrivacyPolicy() {
           }
 
           /*
-           * Both tables behave the same way on mobile:
-           * fixed proportions + horizontal browser-native scrolling.
+           * Both tables use the same mobile behaviour:
+           * fixed width, fixed proportions and horizontal scrolling.
            */
           .threeColTable,
           .twoColTable {
