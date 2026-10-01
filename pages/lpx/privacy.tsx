@@ -35,8 +35,7 @@ export default function LpxPrivacyPolicy() {
             />
 
             <div className="headerMeta">
-              <span>17 LITTLE PORTLAND STREET</span>
-              <strong>CLUB APP</strong>
+              17 LITTLE PORTLAND STREET
             </div>
           </div>
         </header>
@@ -98,7 +97,10 @@ export default function LpxPrivacyPolicy() {
             </p>
           </PolicySection>
 
-          <PolicySection number="02" title="WHAT WE COLLECT, AND WHY">
+          <PolicySection
+            number="02"
+            title="WHAT WE COLLECT, AND WHY"
+          >
             <div className="tableWrap">
               <table>
                 <thead>
@@ -475,10 +477,15 @@ export default function LpxPrivacyPolicy() {
           background: #020efb;
         }
 
+        /*
+         * Same outer width as the card.
+         * Horizontal padding matches the card's internal padding so
+         * the LPX logo and address align with the content below.
+         */
         .headerInner {
           width: min(calc(100% - 48px), 960px);
           margin: 0 auto;
-          padding: 48px 0 28px;
+          padding: 48px 48px 28px;
         }
 
         .logo {
@@ -490,22 +497,12 @@ export default function LpxPrivacyPolicy() {
         }
 
         .headerMeta {
-          display: flex;
-          justify-content: space-between;
-          gap: 24px;
           color: #ffffff;
           font-size: 11px;
+          font-weight: 400;
           letter-spacing: 0.22em;
           line-height: 1.4;
           white-space: nowrap;
-        }
-
-        .headerMeta span {
-          font-weight: 400;
-        }
-
-        .headerMeta strong {
-          font-weight: 800;
         }
 
         .policyCard {
@@ -563,7 +560,7 @@ export default function LpxPrivacyPolicy() {
           }
 
           .headerInner {
-            padding: 32px 8px 20px;
+            padding: 32px 24px 20px;
           }
 
           .logo {
@@ -572,7 +569,6 @@ export default function LpxPrivacyPolicy() {
           }
 
           .headerMeta {
-            gap: 14px;
             font-size: 9px;
             letter-spacing: 0.15em;
           }
@@ -649,20 +645,26 @@ export default function LpxPrivacyPolicy() {
         }
 
         .policy-content ul {
+          display: block;
           margin: 0 0 20px;
-          padding: 0 0 0 20px;
+          padding: 0 0 0 26px;
           color: #4b5563;
           font-size: 15px;
           line-height: 1.65;
+          list-style-type: disc !important;
+          list-style-position: outside !important;
         }
 
-        .policy-content li {
+        .policy-content ul li {
+          display: list-item !important;
           margin: 0 0 8px;
           padding-left: 4px;
+          list-style-type: disc !important;
         }
 
-        .policy-content li::marker {
+        .policy-content ul li::marker {
           color: #020efb;
+          font-size: 1em;
         }
 
         .policy-content a {
@@ -723,6 +725,10 @@ export default function LpxPrivacyPolicy() {
           .policy-content ul {
             font-size: 14px;
             line-height: 1.6;
+          }
+
+          .policy-content ul {
+            padding-left: 22px;
           }
 
           .policy-content table {
