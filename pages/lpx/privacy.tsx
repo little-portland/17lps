@@ -457,52 +457,12 @@ export default function LpxPrivacyPolicy() {
           margin: 0;
           padding: 0;
           background: #020efb;
+          -webkit-text-size-adjust: 100%;
+          text-size-adjust: 100%;
         }
 
         :global(body) {
           font-family: ${FONT_STACK};
-        }
-
-        /*
-         * Neutralise the site's custom vertical scrollbar styling
-         * for this page only.
-         */
-        :global(html) {
-          scrollbar-width: auto !important;
-          scrollbar-color: auto !important;
-        }
-
-        :global(html::-webkit-scrollbar) {
-          width: auto !important;
-        }
-
-        :global(html::-webkit-scrollbar-track) {
-          background: initial !important;
-        }
-
-        :global(html::-webkit-scrollbar-thumb) {
-          background: initial !important;
-          border: 0 !important;
-          border-radius: 0 !important;
-        }
-
-        :global(body) {
-          scrollbar-width: auto !important;
-          scrollbar-color: auto !important;
-        }
-
-        :global(body::-webkit-scrollbar) {
-          width: auto !important;
-        }
-
-        :global(body::-webkit-scrollbar-track) {
-          background: initial !important;
-        }
-
-        :global(body::-webkit-scrollbar-thumb) {
-          background: initial !important;
-          border: 0 !important;
-          border-radius: 0 !important;
         }
 
         * {
@@ -579,6 +539,10 @@ export default function LpxPrivacyPolicy() {
           line-height: 1.5;
         }
 
+        /*
+         * Only controls scrolling behaviour.
+         * No scrollbar colours, widths, thumbs or tracks are styled.
+         */
         .tableWrap {
           width: 100%;
           margin: 24px 0;
@@ -713,12 +677,29 @@ export default function LpxPrivacyPolicy() {
           text-underline-offset: 3px;
         }
 
+        /*
+         * Shared table typography.
+         * Explicit sizing prevents Safari/iOS from enlarging individual cells.
+         */
+        .policy-content table,
+        .policy-content thead,
+        .policy-content tbody,
+        .policy-content tr,
+        .policy-content th,
+        .policy-content td {
+          -webkit-text-size-adjust: 100% !important;
+          text-size-adjust: 100% !important;
+        }
+
         .policy-content table {
           width: 100%;
+          min-width: 680px;
           border-collapse: collapse;
           table-layout: fixed;
           color: #374151;
+          font-family: ${FONT_STACK};
           font-size: 13px;
+          font-weight: 400;
           line-height: 1.45;
         }
 
@@ -727,8 +708,10 @@ export default function LpxPrivacyPolicy() {
           border: 1px solid #d1d5db;
           background: #020efb;
           color: #ffffff;
+          font-family: ${FONT_STACK};
           font-size: 11px;
           font-weight: 800;
+          line-height: 1.35;
           letter-spacing: 0.08em;
           text-align: left;
           vertical-align: top;
@@ -737,19 +720,21 @@ export default function LpxPrivacyPolicy() {
         .policy-content td {
           padding: 14px;
           border: 1px solid #d1d5db;
+          color: #374151;
+          font-family: ${FONT_STACK};
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 1.45;
           vertical-align: top;
-          overflow-wrap: anywhere;
+          overflow-wrap: normal;
+          word-break: normal;
         }
 
         .policy-content tbody tr:nth-child(even) td {
           background: #f6f7f8;
         }
 
-        /* Three-column table */
-        .threeColTable table {
-          min-width: 680px;
-        }
-
+        /* Section 02: 38 / 42 / 20 */
         .threeColTable th:nth-child(1),
         .threeColTable td:nth-child(1) {
           width: 38%;
@@ -765,11 +750,10 @@ export default function LpxPrivacyPolicy() {
           width: 20%;
         }
 
-        /* Two-column table */
-        .twoColTable table {
-          min-width: 680px;
-        }
-
+        /*
+         * Section 05.
+         * First column remains the same 38% width as section 02.
+         */
         .twoColTable th:nth-child(1),
         .twoColTable td:nth-child(1) {
           width: 38%;
@@ -805,24 +789,45 @@ export default function LpxPrivacyPolicy() {
             padding-left: 22px;
           }
 
+          /*
+           * Both tables behave the same way on mobile:
+           * fixed proportions + horizontal browser-native scrolling.
+           */
           .threeColTable,
           .twoColTable {
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
           }
 
           .threeColTable table,
           .twoColTable table {
-            min-width: 680px;
-            table-layout: fixed;
-            font-size: 12px;
+            width: 680px !important;
+            min-width: 680px !important;
+            max-width: none !important;
+            table-layout: fixed !important;
+            font-size: 12px !important;
+            line-height: 1.45 !important;
           }
 
           .threeColTable th,
           .threeColTable td,
           .twoColTable th,
           .twoColTable td {
-            font-size: 12px;
-            line-height: 1.45;
+            font-family: ${FONT_STACK} !important;
+            font-size: 12px !important;
+            line-height: 1.45 !important;
+            -webkit-text-size-adjust: 100% !important;
+            text-size-adjust: 100% !important;
+          }
+
+          .threeColTable th,
+          .twoColTable th {
+            font-weight: 800 !important;
+          }
+
+          .threeColTable td,
+          .twoColTable td {
+            font-weight: 500 !important;
           }
         }
       `}</style>
