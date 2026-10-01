@@ -101,7 +101,7 @@ export default function LpxPrivacyPolicy() {
             number="02"
             title="WHAT WE COLLECT, AND WHY"
           >
-            <div className="tableWrap">
+            <div className="tableWrap threeColTable">
               <table>
                 <thead>
                   <tr>
@@ -297,7 +297,7 @@ export default function LpxPrivacyPolicy() {
             number="05"
             title="HOW LONG WE KEEP IT, AND DELETING YOUR ACCOUNT"
           >
-            <div className="tableWrap">
+            <div className="tableWrap twoColTable">
               <table>
                 <thead>
                   <tr>
@@ -477,11 +477,6 @@ export default function LpxPrivacyPolicy() {
           background: #020efb;
         }
 
-        /*
-         * Same outer width as the card.
-         * Horizontal padding matches the card's internal padding so
-         * the LPX logo and address align with the content below.
-         */
         .headerInner {
           width: min(calc(100% - 48px), 960px);
           margin: 0 auto;
@@ -545,8 +540,15 @@ export default function LpxPrivacyPolicy() {
         .tableWrap {
           width: 100%;
           margin: 24px 0;
-          overflow-x: auto;
           -webkit-overflow-scrolling: touch;
+        }
+
+        .threeColTable {
+          overflow-x: auto;
+        }
+
+        .twoColTable {
+          overflow: visible;
         }
 
         @media (max-width: 700px) {
@@ -583,7 +585,16 @@ export default function LpxPrivacyPolicy() {
           }
 
           h1 {
-            font-size: clamp(42px, 15vw, 64px);
+            font-size: clamp(38px, 12vw, 48px);
+            line-height: 0.95;
+          }
+
+          .threeColTable {
+            overflow-x: auto;
+          }
+
+          .twoColTable {
+            overflow: visible;
           }
         }
 
@@ -677,7 +688,6 @@ export default function LpxPrivacyPolicy() {
 
         .policy-content table {
           width: 100%;
-          min-width: 680px;
           border-collapse: collapse;
           color: #374151;
           font-size: 13px;
@@ -706,6 +716,25 @@ export default function LpxPrivacyPolicy() {
           background: #f6f7f8;
         }
 
+        .threeColTable table {
+          min-width: 680px;
+        }
+
+        .twoColTable table {
+          min-width: 0;
+          table-layout: fixed;
+        }
+
+        .twoColTable th:first-child,
+        .twoColTable td:first-child {
+          width: 38%;
+        }
+
+        .twoColTable th:last-child,
+        .twoColTable td:last-child {
+          width: 62%;
+        }
+
         @media (max-width: 700px) {
           .policy-section {
             grid-template-columns: 1fr;
@@ -731,8 +760,35 @@ export default function LpxPrivacyPolicy() {
             padding-left: 22px;
           }
 
-          .policy-content table {
+          .threeColTable table {
+            min-width: 680px;
             font-size: 12px;
+          }
+
+          .twoColTable table {
+            width: 100%;
+            min-width: 0;
+            table-layout: fixed;
+            font-size: 12px;
+          }
+
+          .twoColTable th,
+          .twoColTable td {
+            padding: 10px 8px;
+            font-size: 12px;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+            word-break: normal;
+          }
+
+          .twoColTable th:first-child,
+          .twoColTable td:first-child {
+            width: 38%;
+          }
+
+          .twoColTable th:last-child,
+          .twoColTable td:last-child {
+            width: 62%;
           }
         }
       `}</style>
