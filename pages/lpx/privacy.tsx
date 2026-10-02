@@ -28,15 +28,21 @@ export default function LpxPrivacyPolicy() {
       <main className="page">
         <header className="appHeader">
           <div className="headerInner">
-            <img
-              src="/images/lpx-club-header.png"
-              alt="LPX"
-              className="logo"
-            />
+            <a
+              href="https://little-portland.com"
+              className="brandLink"
+              aria-label="17 Little Portland Street home"
+            >
+              <img
+                src="/images/lpx-club-header.png"
+                alt="LPX"
+                className="logo"
+              />
 
-            <div className="headerMeta">
-              17 LITTLE PORTLAND STREET
-            </div>
+              <div className="headerMeta">
+                17 LITTLE PORTLAND STREET
+              </div>
+            </a>
           </div>
         </header>
 
@@ -468,8 +474,6 @@ export default function LpxPrivacyPolicy() {
         /*
          * Override the site's global green vertical scrollbar
          * with a neutral scrollbar for this page.
-         *
-         * Horizontal table scrollbars are not targeted.
          */
         :global(html) {
           scrollbar-width: auto !important;
@@ -529,6 +533,22 @@ export default function LpxPrivacyPolicy() {
           padding: 48px 48px 28px;
         }
 
+        .brandLink {
+          display: inline-block;
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .brandLink:hover {
+          opacity: 0.9;
+        }
+
+        .brandLink:focus-visible {
+          outline: 2px solid #ffffff;
+          outline-offset: 6px;
+          border-radius: 2px;
+        }
+
         .logo {
           display: block;
           width: 190px;
@@ -585,7 +605,6 @@ export default function LpxPrivacyPolicy() {
 
         /*
          * Horizontal scrolling behaviour only.
-         * No visual styling is applied to these scrollbars.
          */
         .tableWrap {
           width: 100%;
@@ -721,10 +740,6 @@ export default function LpxPrivacyPolicy() {
           text-underline-offset: 3px;
         }
 
-        /*
-         * Shared table typography.
-         * Explicit sizing avoids iOS/Safari text boosting in individual cells.
-         */
         .policy-content table,
         .policy-content thead,
         .policy-content tbody,
@@ -830,10 +845,6 @@ export default function LpxPrivacyPolicy() {
             padding-left: 22px;
           }
 
-          /*
-           * Both tables use the same mobile behaviour:
-           * fixed width, fixed proportions and horizontal scrolling.
-           */
           .threeColTable,
           .twoColTable {
             overflow-x: auto;
