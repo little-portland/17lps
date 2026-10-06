@@ -36,7 +36,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>NATHAN COLINET, VALENTINA PAHOR</h3>
-              <h3><span>STUDIO <b>//</b> </span>NIRVAN B2B ELLIOSS, SAM PICASSO</h3>
+              <h3><span>STUDIO <b>//</b> </span>NIRVAN B2B ELIOSS, SAM PICASSO</h3>
             </div>
         </div>
 
