@@ -34,14 +34,14 @@ const BookingOptions = () => {
               <h2><span>SAT</span>17 Oct</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>PINKY PRETZEL, Pinky Perzelle</h3>
-              <h3><span>STUDIO <b>//</b> </span>RAKIM UNDER</h3>
+              <h3><span>TENT <b>//</b> </span>PINKY PRETZEL, PINKY PERZELLE</h3>
+              <h3><span>STUDIO <b>//</b> </span>ANTOINE., RAKIM UNDER</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xFAWjr0U" target="_blank">
+            <a href="https://sevn.ly/xDYZN2xJ" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
@@ -49,7 +49,7 @@ const BookingOptions = () => {
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xFAWjr0U" target="_blank">
+            <a href="https://sevn.ly/xDYZN2xJ" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
