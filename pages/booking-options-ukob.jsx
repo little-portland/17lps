@@ -1,19 +1,15 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import Script from "next/script";
 
-//hooks
-import useDeviceDetect from "@utils/useDeviceDetect";
-
-import CenterContainer from "@components/UX/CenterContainer/CenterContainer"; 
+// components
 import Button from "@components/UX/Button";
 
 const BookingOptions = () => {
   useEffect(() => {
-    document.body.classList.add("saturday");
+    document.body.classList.add("thursday");
 
     return () => {
-      document.body.classList.remove("saturday");
+      document.body.classList.remove("thursday");
     };
   }, []);
 
@@ -26,123 +22,172 @@ const BookingOptions = () => {
     </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category disco-saturdays"><span className="day">INTERNATIONAL SOUNDCLASH</span> Presents</h1>
-        
-        <h1 className="event-name mobile-only cat"><span className="cat-day">INTERNATIONAL SOUNDCLASH</span> Presents</h1>
+        <h1 className="event-name desktop-only day-category">
+          <span className="day">Thursday</span> Underground
+        </h1>
+
+        <h1 className="event-name mobile-only cat">
+          <span className="cat-day">Thursday</span> Underground
+        </h1>
 
         <div className="event-info">
-           <div class="info date">
-              <h2><span>SAT</span>14 Mar</h2>
-            </div>
-            <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>ForMankind, Roberta Cutolo, Natalie Marsland</h3>
-              <h3><span>STUDIO <b>//</b> </span>Faze Action, Mr Doris, Tigerbalm</h3>
-            </div>
+          <div className="info date">
+            <h2>
+              <span>THU</span>15 OCT
+            </h2>
+          </div>
+
+          <div className="info artists">
+            <h3>
+              <span>
+                TENT <b>//</b>{" "}
+              </span>
+              [20:00] Deep Listening Sessions with Cristi Cons <br>
+              [22:00] E. Alexander, Marcelina Wick
+            </h3>
+
+            <h3>
+              <span>
+                STUDIO <b>//</b>{" "}
+              </span>
+              Cristi Cons, Vincent Lemieux
+            </h3>
+          </div>
         </div>
 
-        <div className="button-wrapper new-button-wrapper mobile-only">
+        <div className="button-wrapper new-button-wrapper nocturn-ticket-wrapper mobile-only">
+          <Button
+            classes="events-button ticketNew nocturnCabaretTicket"
+            btnType="hollow"
+          >
+            <a href="https://sevn.ly/x3WhN9qj" target="_blank" rel="noopener noreferrer"
+            >
+              <span className="nocturn-main-text">Entry [8PM]</span>
+              <p className="time">(INCLUDES CLUB ENTRY)</p>
+            </a>
+          </Button>
+
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xPk59qM9" target="_blank">
-              CLUB ENTRY ONLY [10PM]
+            <a href="https://sevn.ly/xXJmXgpz" target="_blank" rel="noopener noreferrer"
+            >
+              CLUB ENTRY [10PM]
             </a>
           </Button>
         </div>
 
-       <div className="or mobile-only"><h2>Or</h2></div>
-
-        <div className="book-wrapper">
-          <div className="override-heading">
-            <h2>START WITH DINNER</h2>
-            <p class="time mobile-only">Includes Free Club Entry</p>
-          </div>
-          <div class="tags mobile-only"><h3><span>DINING CONCEPT: <span className="strongword">FUTURIST</span></span></h3></div>
-
-          <div className="concept">
-            <h4>“Override” is our restaurant concept</h4>
-          </div>
-         <div class="dinner-steps desktop-only"><img src="/images/dinner-steps-transition-sat.svg" alt="The Tent Food" width="100%" /></div>
-
-          <div class="button-wrapper new-button-wrapper button-wrapper-new dining-con">
-            <a class="menu-btn" href="https://www.little-portland.com/food" target="_blank">
-              <span>[More about our dining concept]</span>
+        <div className="button-wrapper new-button-wrapper nocturn-ticket-wrapper desktop-only">
+          <Button
+            classes="events-button ticketNew nocturnCabaretTicket"
+            btnType="hollow"
+          >
+            <a
+              href="https://sevn.ly/x3WhN9qj" target="_blank" rel="noopener noreferrer"
+            >
+              <span className="nocturn-main-text">Entry [8PM]</span>
+              <p className="time">(INCLUDES CLUB ENTRY)</p>
             </a>
-           </div>
+          </Button>
 
-          <div className="button-wrapper new-button-wrapper">
-            <Button classes="events-button new-events-button view-menu" btnType="hollow">
-              <a href="https://www.little-portland.com/menu" target="_blank">
-                <span>View Menu</span>
-              </a>
-            </Button>
-          </div>
-
-         <div class="button-wrapper new-button-wrapper desktop-only">
-            <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-03-14&default_time=21:00&default_party_size=4" target="_blank">
-                <span class="space">IN THE TENT</span>
-                <p class="time">Includes Free Club Entry</p>
-                <p class="details"><span>8:30PM</span></p>
-                <p class="btn-tagline">The Cosmic Experience</p>
-               </a>
-              </Button>
-  
-              <Button classes="events-button ticket"  btnType="hollow">
-                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span class="space">CHEF’S STUDIO</span>
-                <p class="time">Includes Free Club Entry</p>
-                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
-                <p class="btn-tagline">Where the heads dine</p>
-               </a>
-              </Button>
-          </div>
-          
-         <div class="button-wrapper new-button-wrapper button-wrapper-new desktop-only">
-            <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
-              <span>[More about The Tent]</span>
-            </a>
-            <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[More about Chef's Studio]</span>
-              </a>
-           </div>
-         
-         <div class="button-wrapper new-button-wrapper mobile-only">
-            <Button classes="events-button new-events-button"  btnType="hollow">
-              <a href="https://www.sevenrooms.com/reservations/littleportland?default_date=2026-03-14&default_time=21:00&default_party_size=4" target="_blank">
-                <span class="space">IN THE TENT</span>
-                <p class="details"><span>8:30PM</span></p>
-                <p class="btn-tagline">The Cosmic Experience</p>
-               </a>
-              </Button>
-
-               <a class="menu-btn" href="https://www.little-portland.com/thetent" target="_blank">
-                <span>[More about The Tent]</span>
-              </a>
-  
-              <Button classes="events-button ticket"  btnType="hollow">
-                <a class="book-link" href="mailto:eat@little-portland.com?subject=Chef’s Studio" target="_blank">
-                <span class="space">CHEF’S STUDIO</span>
-                <p class="details chef-studio-details"><span>6-12 PAX</span><span>8PM</span></p>
-                <p class="btn-tagline">Where the heads dine</p>
-               </a>
-              </Button>
-
-             <a class="menu-btn" href="https://www.little-portland.com/chefstudio" target="_blank">
-                <span>[More about Chef's Studio]</span>
-            </a> 
-           
-          </div>
-        </div>
-
-        <div className="or desktop-only or-desktop"><h2>Or</h2></div>
-        
-        <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xPk59qM9" target="_blank">
-              CLUB ENTRY ONLY [10PM]
+            <a href="https://sevn.ly/xXJmXgpz" target="_blank" rel="noopener noreferrer"
+            >
+              CLUB ENTRY [10PM]
             </a>
           </Button>
         </div>
       </div>
+
+      <style jsx global>{`
+        #bookingOptions .nocturn-ticket-wrapper {
+          width: 100%;
+          gap: 8px;
+        }
+
+        #bookingOptions .nocturn-ticket-wrapper.desktop-only,
+        #bookingOptions .nocturn-ticket-wrapper.mobile-only {
+          flex-direction: column;
+        }
+
+        #bookingOptions .nocturn-ticket-wrapper .ticketNew {
+          width: 100%;
+        }
+
+        #bookingOptions .nocturn-ticket-wrapper .ticketNew a {
+          width: 100%;
+          text-align: center;
+        }
+
+        #bookingOptions .nocturn-ticket-wrapper .ticketNew:not(.nocturnCabaretTicket) a {
+          white-space: nowrap;
+        }
+
+        #bookingOptions .nocturnCabaretTicket {
+          margin-bottom: 0px !important;
+          padding-bottom: 0 !important;
+        }
+
+        #bookingOptions .nocturnCabaretTicket a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          white-space: normal;
+        }
+
+        #bookingOptions .nocturnCabaretTicket .nocturn-main-text {
+          display: block;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          color: inherit !important;
+          font-family: inherit !important;
+          font-size: inherit !important;
+          font-style: inherit !important;
+          font-weight: inherit !important;
+          line-height: inherit !important;
+          letter-spacing: inherit !important;
+          text-align: center;
+          text-transform: inherit;
+        }
+
+        #bookingOptions .nocturnCabaretTicket .nocturn-time {
+          margin-top: 2px;
+        }
+
+        #bookingOptions .nocturnCabaretTicket .time {
+          margin: 6px 0 0;
+        }
+
+        @media (min-width: 768px) {
+          #bookingOptions .nocturn-ticket-wrapper.desktop-only {
+            display: flex;
+          }
+
+          #bookingOptions .nocturn-ticket-wrapper.mobile-only {
+            display: none !important;
+          }
+        }
+
+        @media (max-width: 767px) {
+          #bookingOptions .nocturn-ticket-wrapper.mobile-only {
+            display: flex;
+          }
+
+          #bookingOptions .nocturn-ticket-wrapper.desktop-only {
+            display: none !important;
+          }
+
+          #bookingOptions .nocturnCabaretTicket {
+              margin-bottom: 10px !important;
+              padding-bottom: 10px !important;
+          }
+          
+          #bookingOptions .nocturnCabaretTicket .time {
+              margin: -10px 0 0 !important;
+          }
+          
+        }
+      `}</style>
     </>
   );
 };
