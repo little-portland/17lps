@@ -159,6 +159,13 @@ const BookingOptions = () => {
         }
 
         @media (min-width: 768px) {
+        #bookingOptions .nocturnCabaretTicket .nocturn-main-text {
+            line-height: 20px !important;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        
           #bookingOptions .nocturn-ticket-wrapper.desktop-only {
             display: flex;
           }
