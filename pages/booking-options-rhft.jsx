@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>16 Oct</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Gregorio Soave, UMBERTO</h3>
+              <h3><span>TENT <b>//</b> </span>Gregorio Soave, Hugo Fontaine</h3>
               <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, David Berrie</h3>
             </div>
         </div>
