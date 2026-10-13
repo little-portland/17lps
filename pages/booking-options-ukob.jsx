@@ -42,8 +42,8 @@ const BookingOptions = () => {
               <span>
                 TENT <b>//</b>{" "}
               </span>
-              [20:00] Deep Listening Sessions with Cristi Cons <br />
-              [22:00] E. Alexander, Marcelina Wick
+              Deep Listening Sessions with Cristi Cons [20:00]  <br />
+              E. Alexander, Marcelina Wick [22:00] 
             </h3>
 
             <h3>
