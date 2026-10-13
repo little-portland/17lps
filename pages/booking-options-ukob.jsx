@@ -62,7 +62,7 @@ const BookingOptions = () => {
           >
             <a href="https://sevn.ly/x3WhN9qj" target="_blank" rel="noopener noreferrer"
             >
-              <span className="nocturn-main-text">Entry [8PM]</span>
+              <span className="nocturn-main-text">Listening Sessions [8PM]</span>
               <p className="time">(INCLUDES CLUB ENTRY)</p>
             </a>
           </Button>
@@ -83,7 +83,7 @@ const BookingOptions = () => {
             <a
               href="https://sevn.ly/x3WhN9qj" target="_blank" rel="noopener noreferrer"
             >
-              <span className="nocturn-main-text">Entry [8PM]</span>
+              <span className="nocturn-main-text">Listening Sessions [8PM]</span>
               <p className="time">(INCLUDES CLUB ENTRY)</p>
             </a>
           </Button>
