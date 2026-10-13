@@ -26,16 +26,16 @@ const BookingOptions = () => {
     </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category"><span className="day">Thursday</span> Underground</h1>
+        <h1 className="event-name desktop-only day-category"><span className="day">Friendly Pressure</span> Presents</h1>
         
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Thursday</span> Underground</h1>
+        <h1 className="event-name mobile-only cat"><span className="cat-day">Friendly Pressure</span> Presents</h1>
 
         <div className="event-info">
             <div class="info date">
               <h2><span>THU</span>22 OCT</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>NATHAN COLINET, VALENTINA PAHOR</h3>
+              <h3><span>TENT <b>//</b> </span>OLI BEDIA, VALENTINA PAHOR</h3>
               <h3><span>STUDIO <b>//</b> </span>NIRVAN B2B ELIOSS, SAM PICASSO</h3>
             </div>
         </div>
