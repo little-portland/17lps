@@ -31,7 +31,7 @@ const BookingOptions = () => {
         
         <div className="event-info">
            <div class="info date">
-              <h2><span>SAT</span>14 Noc</h2>
+              <h2><span>SAT</span>14 Nov</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>SADEEDO, TINTIN [08:30PM - 04AM]</h3>
