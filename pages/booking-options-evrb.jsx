@@ -26,23 +26,23 @@ const BookingOptions = () => {
     </Head>
 
       <div id="bookingOptions">
-        <h1 className="event-name desktop-only day-category"><span className="day">Thursday</span> Underground</h1>
+        <h1 className="event-name desktop-only day-category"><span className="day">BALANCE</span> Presents</h1>
         
-        <h1 className="event-name mobile-only cat"><span className="cat-day">Thursday</span> Underground</h1>
+        <h1 className="event-name mobile-only cat"><span className="cat-day">BALANCE</span> Presents</h1>
 
         <div className="event-info">
             <div class="info date">
-              <h2><span>THU</span>08 Oct</h2>
+              <h2><span>THU</span>12 NOV</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>JIMINY WATTS, KEROSH</h3>
-              <h3><span>STUDIO <b>//</b> </span>CEM OZDEN, ION LUDWIG</h3>
+              <h3><span>TENT <b>//</b> </span>Dale Mussingto, Kearun</h3>
+              <h3><span>STUDIO <b>//</b> </span>MOTHER EARTH, SAM BANGURA</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xOXeM3VF" target="_blank">
+            <a href="https://sevn.ly/xnRSZTQG" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
@@ -50,7 +50,7 @@ const BookingOptions = () => {
 
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xOXeM3VF" target="_blank">
+            <a href="https://sevn.ly/xnRSZTQG" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
