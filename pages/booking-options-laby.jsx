@@ -32,17 +32,17 @@ const BookingOptions = () => {
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>FRI</span>23 OCt</h2>
+              <h2><span>FRI</span>13 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>MARC JARVIN, Vitto</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
+              <h3><span>TENT <b>//</b> </span>DAVIDE DEL VECCHIO, MARCELINA WICK</h3>
+              <h3><span>STUDIO <b>//</b> </span>KALABRESE</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xannlrWE" target="_blank">
+            <a href="https://sevn.ly/xgD0EmqM" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
@@ -50,7 +50,7 @@ const BookingOptions = () => {
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xannlrWE" target="_blank">
+            <a href="https://sevn.ly/xgD0EmqM" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
