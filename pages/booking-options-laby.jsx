@@ -36,7 +36,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>DAVIDE DEL VECCHIO, MARCELINA WICK</h3>
-              <h3><span>STUDIO <b>//</b> </span>KALABRESE</h3>
+              <h3><span>STUDIO <b>//</b> </span>Bas Ibellini</h3>
             </div>
         </div>
 
