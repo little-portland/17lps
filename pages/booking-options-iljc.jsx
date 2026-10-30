@@ -32,17 +32,17 @@ const BookingOptions = () => {
 
         <div className="event-info">
             <div class="info date">
-              <h2><span>THU</span>27 Aug</h2>
+              <h2><span>THU</span>26 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Grego, Katia</h3>
-              <h3><span>STUDIO <b>//</b> </span>DAN ANDREI, SEMOA</h3>
+              <h3><span>TENT <b>//</b> </span>Walrus</h3>
+              <h3><span>STUDIO <b>//</b> </span>Anna Wall, Peneloppe</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xLXpBfoC" target="_blank">
+            <a href="https://sevn.ly/xPHk44J4" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
@@ -50,7 +50,7 @@ const BookingOptions = () => {
 
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xLXpBfoC" target="_blank">
+            <a href="https://sevn.ly/xPHk44J4" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
