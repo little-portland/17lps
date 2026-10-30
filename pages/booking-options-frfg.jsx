@@ -32,25 +32,26 @@ const BookingOptions = () => {
 
         <div className="event-info">
             <div class="info date">
-              <h2><span>THU</span>15 OCT</h2>
+              <h2><span>THU</span>08 Oct</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>DEEP LISTENING SESSIONS - CRISTI CONS</h3>
+              <h3><span>TENT <b>//</b> </span>JIMINY WATTS, KEROSH</h3>
+              <h3><span>STUDIO <b>//</b> </span>CEM OZDEN, ION LUDWIG</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/x3WhN9qj" target="_blank">
-              ENTRY [8PM]
+            <a href="https://sevn.ly/xw3kXz2q" target="_blank">
+              CLUB ENTRY [10PM]
             </a>
           </Button>
         </div>
 
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/x3WhN9qj" target="_blank">
-              ENTRY [8PM]
+            <a href="https://sevn.ly/xw3kXz2q" target="_blank">
+              CLUB ENTRY [10PM]
             </a>
           </Button>
         </div>
