@@ -35,7 +35,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>FEDERICO MARTON, PATO</h3>
-              <h3><span>STUDIO <b>//</b> </span>ROB MELLO</h3>
+              <h3><span>STUDIO <b>//</b> </span>Rob Mello & Tristan Da Cunha</h3>
             </div>
         </div>
 
