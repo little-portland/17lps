@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>12 NOV</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>Dale Mussingto, Kearun</h3>
+              <h3><span>TENT <b>//</b> </span>Dale Mussington, Kearun</h3>
               <h3><span>STUDIO <b>//</b> </span>MOTHER EARTH, SAM BANGURA</h3>
             </div>
         </div>
