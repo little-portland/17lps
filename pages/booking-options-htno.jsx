@@ -35,7 +35,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>Jelly Records, Studio Batsumi b2b Cameron Cullen</h3>
-              <h3><span>STUDIO <b>//</b> </span>Aiste Regina & Donatas Chipak, HARRI PEPPER</h3>
+              <h3><span>STUDIO <b>//</b> </span>Aiste Regina B2B Donatas, HARRI PEPPER</h3>
             </div>
         </div>
 
