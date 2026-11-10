@@ -32,7 +32,7 @@ const BookingOptions = () => {
 
         <div className="event-info">
            <div class="info date">
-              <h2><span>FRI</span>06 Nov</h2>
+              <h2><span>FRI</span>26 Nov</h2>
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>CHÉ WAX, NATHAN COLINET</h3>
