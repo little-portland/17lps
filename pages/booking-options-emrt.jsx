@@ -35,14 +35,14 @@ const BookingOptions = () => {
               <h2><span>FRI</span>06 Nov</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>FORMANKIND, MR SHIVER</h3>
-              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI, BOBBY.</h3>
+              <h3><span>TENT <b>//</b> </span>CHÉ WAX, NATHAN COLINET</h3>
+              <h3><span>STUDIO <b>//</b> </span>BAS IBELLINI</h3>
             </div>
         </div>
 
         <div className="button-wrapper new-button-wrapper mobile-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xN6KTELe" target="_blank">
+            <a href="https://sevn.ly/xmZYiU94" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
@@ -50,7 +50,7 @@ const BookingOptions = () => {
         
         <div className="button-wrapper new-button-wrapper desktop-only">
           <Button classes="events-button ticketNew" btnType="hollow">
-            <a href="https://sevn.ly/xN6KTELe" target="_blank">
+            <a href="https://sevn.ly/xmZYiU94" target="_blank">
               CLUB ENTRY [10PM]
             </a>
           </Button>
