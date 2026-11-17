@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <h2><span>THU</span>19 NOV</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>JOSH KEIT, JOSH KEIT</h3>
+              <h3><span>TENT <b>//</b> </span>JOSH KEIT, Oli Silva</h3>
               <h3><span>STUDIO <b>//</b> </span>RHADOO</h3>
             </div>
         </div>
