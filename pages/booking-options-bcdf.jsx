@@ -35,7 +35,7 @@ const BookingOptions = () => {
             </div>
             <div class="info artists">
               <h3><span>TENT <b>//</b> </span>MANDOUI, TINTIN</h3>
-              <h3><span>STUDIO <b>//</b> </span>RALPH lAWSON, LEX WOLF</h3>
+              <h3><span>STUDIO <b>//</b> </span>LEX WOLF, RALPH lAWSON</h3>
             </div>
         </div>
 
