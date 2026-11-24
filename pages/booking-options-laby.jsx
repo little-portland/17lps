@@ -35,7 +35,7 @@ const BookingOptions = () => {
               <h2><span>FRI</span>04 Dec</h2>
             </div>
             <div class="info artists">
-              <h3><span>TENT <b>//</b> </span>KRISTINA MAY, DER</h3>
+              <h3><span>TENT <b>//</b> </span>DER, KRISTINA MAY</h3>
               <h3><span>STUDIO <b>//</b> </span>Bas Ibellini, Bill Patrick</h3>
             </div>
         </div>
